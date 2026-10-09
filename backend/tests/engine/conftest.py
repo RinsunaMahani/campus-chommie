@@ -13,6 +13,12 @@ def smu(catalogue):
     return catalogue["smu"]
 
 
+@pytest.fixture(scope="session")
+def smu_catalogue(smu):
+    """SMU alone, so the plan tests keep their meaning when more packs are added."""
+    return {"smu": smu}
+
+
 @pytest.fixture
 def strong_marks():
     """A learner well above SMU's MBChB minimums (levels 7,7,7,7, LO 7, then 6 and 6 = 47 points)."""
