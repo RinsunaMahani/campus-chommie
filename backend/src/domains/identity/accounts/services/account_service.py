@@ -91,7 +91,6 @@ def public_view(user: User) -> dict:
         "id": str(user.id),
         "email": user.email,
         "status": user.status,
-        "dashboard": user.dashboard,
         "signed_up_with": user.signed_up_with,
         "email_verified": user.email_verified_at is not None,
     }

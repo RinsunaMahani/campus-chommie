@@ -1,7 +1,6 @@
 """accounts -- "the user record".
 
 Owns the users table: email, status (unverified / active / locked),
-which dashboard the account opens (informal business or supplier),
 deactivate and delete.
 
 auth/ and devices/ never write to the users table themselves; they call

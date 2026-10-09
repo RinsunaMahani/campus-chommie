@@ -19,14 +19,6 @@ class AccountStatus(str, enum.Enum):
     DEACTIVATED = "deactivated"  # closed by the user or by us
 
 
-class Dashboard(str, enum.Enum):
-    """Which dashboard the account opens. Only informal businesses sign up
-    in the app today; suppliers are invited through the integration."""
-
-    INFORMAL_BUSINESS = "informal_business"
-    SUPPLIER = "supplier"
-
-
 class SignUpMethod(str, enum.Enum):
     EMAIL = "email"
     GOOGLE = "google"
@@ -36,14 +28,12 @@ class User(BaseModel):
     __tablename__ = "users"
     __table_args__ = (
         db.CheckConstraint("status IN ('unverified', 'active', 'deactivated')", name="ck_users_status"),
-        db.CheckConstraint("dashboard IN ('informal_business', 'supplier')", name="ck_users_dashboard"),
         db.CheckConstraint("signed_up_with IN ('email', 'google')", name="ck_users_signed_up_with"),
         {"schema": "identity"},
     )
 
     email = db.Column(db.String(254), nullable=False, unique=True, index=True)
     status = db.Column(db.String(20), nullable=False, default=AccountStatus.UNVERIFIED.value)
-    dashboard = db.Column(db.String(30), nullable=False, default=Dashboard.INFORMAL_BUSINESS.value)
     signed_up_with = db.Column(db.String(10), nullable=False, default=SignUpMethod.EMAIL.value)
     email_verified_at = db.Column(db.DateTime(timezone=True), nullable=True)
     last_login_at = db.Column(db.DateTime(timezone=True), nullable=True)

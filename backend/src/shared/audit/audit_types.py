@@ -1,7 +1,7 @@
 """
 Audit event contracts — neutral ground.
 
-Both publishers (Auth today; Business, Supplier, Marketplace, Wallet later)
+Both publishers (Auth and notifications today; each new feature later)
 and the consumer (Security's audit service) import from here. Living in
 shared/ is what keeps the dependency arrow correct: Auth never imports
 Security, Security never imports Auth, both import these types.
@@ -23,13 +23,7 @@ from typing import Any, Optional, Union
 
 from src.shared.audit.event_types.auth import AuthAuditEvent
 from src.shared.audit.event_types.admin import AdminAuditEvent
-from src.shared.audit.event_types.business import BusinessAuditEvent
-from src.shared.audit.event_types.catalogue import CatalogueAuditEvent
-from src.shared.audit.event_types.commerce import CommerceAuditEvent
-from src.shared.audit.event_types.network import NetworkAuditEvent
 from src.shared.audit.event_types.platform import PlatformAuditEvent
-from src.shared.audit.event_types.supplier import SupplierAuditEvent
-from src.shared.audit.event_types.verification import VerificationAuditEvent
 
 # Accepts any real domain's event enum -- used as AuditEvent.event_name's
 # own type hint below, and by anything else (e.g. security/audit/rules/
@@ -39,13 +33,7 @@ from src.shared.audit.event_types.verification import VerificationAuditEvent
 AuditEventNameType = Union[
     AdminAuditEvent,
     AuthAuditEvent,
-    CatalogueAuditEvent,
-    CommerceAuditEvent,
-    BusinessAuditEvent,
-    NetworkAuditEvent,
     PlatformAuditEvent,
-    SupplierAuditEvent,
-    VerificationAuditEvent,
 ]
 
 
@@ -53,20 +41,8 @@ class AuditDomain(str, enum.Enum):
     """Which domain the event originated from. Every future domain adds a
     value here — the audit table itself never changes."""
     AUTH = "auth"
-    BUSINESS = "business"
-    SUPPLIER = "supplier"
-    MARKETPLACE = "marketplace"
-    TRUST = "trust"
-    VERIFICATION = "verification"
-    CATALOGUE = "catalogue"
-    COMMERCE = "commerce"
     PLATFORM = "platform"
     SECURITY = "security"
-    # Added for network/connections (file.txt Phase 1) -- a
-    # cross-cutting domain like SECURITY/PLATFORM, not owned by
-    # Business or Supplier alone since the relationship belongs to
-    # both sides equally.
-    NETWORK = "network"
 
 
 class ActorType(str, enum.Enum):
@@ -116,7 +92,7 @@ class AuditStatus(str, enum.Enum):
 # AuditEventName (the single flat 89-line enum every domain's events
 # used to live in together) is GONE -- moved to shared/audit/event_types/,
 # one small file per domain that actually publishes events (auth.py,
-# supplier.py, network.py, platform.py). See event_types/__init__.py's
+# platform.py, admin.py). See event_types/__init__.py's
 # own docstring for the full reasoning. Import the specific domain enum
 # directly instead (e.g. `from src.shared.audit.event_types.auth import
 # AuthAuditEvent`), or use AuditEventNameType below when a type hint

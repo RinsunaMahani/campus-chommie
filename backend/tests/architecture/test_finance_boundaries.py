@@ -5,10 +5,10 @@ WHY THIS FILE EXISTS:
 "Finance must never know about domains" is a rule. Rules decay. Someone
 rushing a feature writes
 
-    from src.domains.informal_trader.credit_book.repositories import CreditRepository
+    from src.domains.student.money.repositories import money_repository
 
 inside Finance. Review misses it. Six months later Finance depends on
-the credit book while the credit book depends on Finance, circular imports begin,
+the money feature while the money feature depends on Finance, circular imports begin,
 and untangling it is a project rather than a fix.
 
 This test makes that impossible instead of merely discouraged: it parses

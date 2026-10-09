@@ -9,65 +9,46 @@ import uuid
 from datetime import datetime
 from typing import Optional
 
-from sqlalchemy import func, select, tuple_
+from sqlalchemy import func, tuple_
 from sqlalchemy.dialects.postgresql import insert
 
 from src.extensions import db
 
-from ..models import Notification, NotificationSettings
+from ..models import Notification
 
 
-def insert_once(values: dict, switch: Optional[str]) -> bool:
+def insert_once(values: dict) -> bool:
     """Write one alert in its own transaction, on ONE connection (the
-    listener runs on the background queue, after the action's own commit):
-    the owner's switch is read and the row written together, so a job never
-    holds one connection open while it waits on another. `switch`: the
-    settings column that must be on, or None (security: always written).
+    listener runs on the background queue, after the action's own commit),
+    so a job never holds one connection open while it waits on another.
     The same (user_id, dedupe_key) again is ignored. True when written."""
-    settings = NotificationSettings.__table__
     stmt = (
         insert(Notification.__table__)
         .values(id=uuid.uuid4(), created_at=func.now(), updated_at=func.now(), is_deleted=False, **values)
         .on_conflict_do_nothing(index_elements=["user_id", "dedupe_key"])
     )
     with db.engine.begin() as conn:
-        if switch is not None:
-            on = conn.execute(
-                select(settings.c[switch]).where(settings.c.user_id == values["user_id"], settings.c.is_deleted.is_(False))
-            ).scalar()
-            if on is False:
-                return False
         return conn.execute(stmt).rowcount == 1
-
-
-def settings(user_id: uuid.UUID) -> Optional[NotificationSettings]:
-    return NotificationSettings.query.filter_by(user_id=user_id, is_deleted=False).first()
-
-
-def add(row) -> None:
-    db.session.add(row)
 
 
 def one(user_id: uuid.UUID, notification_id: uuid.UUID) -> Optional[Notification]:
     return Notification.query.filter_by(id=notification_id, user_id=user_id, is_deleted=False).first()
 
 
-def page(user_id: uuid.UUID, tab: str, before: Optional[Notification], limit: int) -> list[Notification]:
+def page(user_id: uuid.UUID, before: Optional[Notification], limit: int) -> list[Notification]:
     """Newest first; `before` is the last row of the previous page."""
-    query = Notification.query.filter_by(user_id=user_id, tab=tab, is_deleted=False)
+    query = Notification.query.filter_by(user_id=user_id, is_deleted=False)
     if before is not None:
         query = query.filter(tuple_(Notification.created_at, Notification.id) < tuple_(before.created_at, before.id))
     return query.order_by(Notification.created_at.desc(), Notification.id.desc()).limit(limit).all()
 
 
-def unread_counts(user_id: uuid.UUID) -> dict[str, int]:
-    rows = (
-        db.session.query(Notification.tab, func.count(Notification.id))
+def unread_count(user_id: uuid.UUID) -> int:
+    return (
+        db.session.query(func.count(Notification.id))
         .filter(Notification.user_id == user_id, Notification.read_at.is_(None), Notification.is_deleted.is_(False))
-        .group_by(Notification.tab)
-        .all()
+        .scalar()
     )
-    return {tab: int(n) for tab, n in rows}
 
 
 def latest(user_id: uuid.UUID) -> Optional[Notification]:
@@ -78,15 +59,15 @@ def latest(user_id: uuid.UUID) -> Optional[Notification]:
     )
 
 
-def mark_all_read(user_id: uuid.UUID, tab: str, at: datetime) -> int:
+def mark_all_read(user_id: uuid.UUID, at: datetime) -> int:
     return (
         Notification.query.filter(
-            Notification.user_id == user_id, Notification.tab == tab, Notification.read_at.is_(None), Notification.is_deleted.is_(False)
+            Notification.user_id == user_id, Notification.read_at.is_(None), Notification.is_deleted.is_(False)
         ).update({Notification.read_at: at}, synchronize_session=False)
     )
 
 
 def delete_before(cutoff: datetime) -> int:
-    """Hard delete: old alerts are copies of things kept elsewhere (orders,
-    jobs, the audit trail), not a record of their own."""
+    """Hard delete: old alerts are copies of things kept elsewhere (each
+    feature's own records, the audit trail), not a record of their own."""
     return Notification.query.filter(Notification.created_at < cutoff).delete(synchronize_session=False)

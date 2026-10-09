@@ -75,23 +75,6 @@ def _register_models() -> None:
     from src.domains.identity.accounts import models as _accounts  # noqa: F401
     from src.domains.identity.auth import models as _auth  # noqa: F401
     from src.domains.identity.devices import models as _devices  # noqa: F401
-    # trader schema: the informal trader's own data
-    from src.domains.informal_trader.business_profile import models as _business_profile  # noqa: F401
-    from src.domains.informal_trader.credit_book import models as _credit_book  # noqa: F401
-    from src.domains.informal_trader.jobs import models as _jobs  # noqa: F401
-    from src.domains.informal_trader.builder_network import models as _builder_network  # noqa: F401
-    from src.domains.informal_trader.order_book import models as _order_book  # noqa: F401
-    from src.domains.informal_trader.delivery_addresses import models as _delivery_addresses  # noqa: F401
-    # supplier schema: suppliers, their catalogues, their feed runs
-    from src.domains.supplier.supplier_profile import models as _supplier_profile  # noqa: F401
-    from src.domains.supplier.catalogue import models as _catalogue  # noqa: F401
-    from src.domains.supplier.integration import models as _integration  # noqa: F401
-    from src.domains.supplier.connections import models as _connections  # noqa: F401
-    # commerce schema: orders between traders and suppliers
-    from src.domains.commerce.orders import models as _orders  # noqa: F401
-    from src.domains.commerce.payments import models as _payments  # noqa: F401
-    # platform schema: every media upload, start to finish
-    from src.shared.media import models as _media  # noqa: F401
     # platform schema: every user's alerts and their switches
     from src.domains.platform.notifications import models as _notifications  # noqa: F401
     # audit schema: the append-only audit trail
@@ -109,19 +92,7 @@ def _register_listeners(app: Flask) -> None:
     from src.domains.platform.notifications.services import notification_service
 
     notification_service.register(app)
-    # Daily checks: a feature's one alert a day, run on the first poll of the day.
-    from src.domains.informal_trader.credit_book.services import credit_alerts
-    from src.shared.notifications import notifications as shared_notifications
-
-    shared_notifications.register_daily(credit_alerts.due_today)
     rate_limit_responses.register_audit_events(RATE_LIMIT_AUDIT_EVENTS)
-
-    # Cloudinary scan verdicts, routed to the feature that owns the folder.
-    from src.domains.informal_trader.business_profile.services import profile_image_service
-    from src.shared.media import folders, notifications
-
-    notifications.clear_handlers()  # create_app can run more than once (tests)
-    notifications.on_verdict(folders.is_informal_trader_profile_asset, profile_image_service.apply_verdict)
 
 
 def _register_blueprints(app: Flask) -> None:
@@ -132,22 +103,6 @@ def _register_blueprints(app: Flask) -> None:
     from src.domains.identity.auth.api.reset_page import reset_page_bp
 
     app.register_blueprint(reset_page_bp)
-    # Cloudinary calls this one itself (HMAC-signed), not a signed-in user.
-    from src.shared.media.routes import media_webhooks_bp
-
-    app.register_blueprint(media_webhooks_bp)
-    # The client's job sign-off page (outside /api/v1: it must match the link the builder sends).
-    from src.domains.informal_trader.jobs.web.sign_off_page import sign_off_page_bp
-
-    app.register_blueprint(sign_off_page_bp)
-    # The pay pages (outside /api/v1: they match the pay links we hand out).
-    from src.domains.commerce.payments.web.pay_pages import pay_pages_bp
-
-    app.register_blueprint(pay_pages_bp)
-    # Order documents opened from a signed 10-minute link.
-    from src.domains.commerce.documents.web.document_pages import document_pages_bp
-
-    app.register_blueprint(document_pages_bp)
 
 
 def _register_error_handlers(app: Flask) -> None:

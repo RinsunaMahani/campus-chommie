@@ -45,7 +45,7 @@ _AUDIT_EVENT_REGISTRY: dict[str, AuditEventNameType] = {}
 def register_audit_events(mapping: dict[str, AuditEventNameType]) -> None:
     """Called once per domain at app-boot time, e.g.:
 
-        from src.domains.auth.rate_limit.policies import RATE_LIMIT_AUDIT_EVENTS
+        from src.domains.identity.auth.rate_limit.policies import RATE_LIMIT_AUDIT_EVENTS
         rate_limit_responses.register_audit_events(RATE_LIMIT_AUDIT_EVENTS)
 
     Merges rather than replaces, so multiple domains can each register

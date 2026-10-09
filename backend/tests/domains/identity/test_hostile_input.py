@@ -133,22 +133,15 @@ def test_emoji_password_within_limits_works(client, outbox):
 # ------------------------------------------------------------ other fields
 
 
-def save_business_name(client, outbox, name):
-    data = signed_up(client, outbox)
-    headers = {"Authorization": f"Bearer {data['access_token']}"}
-    business = {"business_name": name, "business_type": "spaza", "trade": None, "owner_name": "Nomsa", "years_trading": "1_3", "cellphone": None}
-    return client.patch("/api/v1/me/business-profile", headers=headers, json={"business": business})
+def test_sign_up_takes_nothing_but_email_password_and_consent(client):
+    """Collect the minimum: an ID number (or anything else) is refused, not stored."""
+    assert register(client, id_number="0000000000000").status_code == 422
 
 
-@pytest.mark.parametrize("name", HOSTILE_TEXT)
-def test_business_name_junk(client, outbox, name):
-    r = save_business_name(client, outbox, name)
-    assert r.status_code in (400, 422), (name, r.status_code)  # 400: the app-wide NUL guard
-
-
-def test_sign_up_takes_no_business_name(client):
-    """Email, password and consent only; the name comes in the first step."""
-    assert register(client, business_name="Nomsa's Spaza").status_code == 422
+@pytest.mark.parametrize("text", HOSTILE_TEXT)
+def test_hostile_text_in_an_unknown_field_is_refused(client, outbox, text):
+    assert register(client, display_name=text).status_code in (400, 422)  # 400: the app-wide NUL guard
+    assert outbox == []
 
 
 @pytest.mark.parametrize("code", ["", "12345", "1234567", "abcdef", "١٢٣٤٥٦", "１２３４５６", "12 345", "😀😀😀😀😀😀", None, 123456])
@@ -192,29 +185,6 @@ def test_broken_bodies_never_crash(client, url, raw, ctype):
     assert_refused(r)
 
 
-def test_nan_and_infinity_are_not_numbers_we_accept(client, outbox):
-    """Python's JSON parser accepts NaN/Infinity; a NaN pin would pass a range check."""
-    data = signed_up(client, outbox)
-    headers = {"Authorization": f"Bearer {data['access_token']}", "Content-Type": "application/json"}
-    for bad in ("NaN", "Infinity", "-Infinity"):
-        body = (
-            '{"location": {"building": "", "street": "", "suburb": "Tembisa", "city": "", "province": "", '
-            f'"postal_code": "", "latitude": {bad}, "longitude": 28.2}}}}'
-        )
-        r = client.patch("/api/v1/me/business-profile", data=body, headers=headers)
-        assert r.status_code in (400, 422), (bad, r.status_code)
-
-
-@pytest.mark.parametrize("field", ["owner_name"])
-@pytest.mark.parametrize("value", HOSTILE_TEXT)
-def test_business_profile_text_junk(client, outbox, field, value):
-    data = signed_up(client, outbox)
-    headers = {"Authorization": f"Bearer {data['access_token']}"}
-    business = {"business_type": "spaza", "trade": None, "owner_name": "Nomsa", "years_trading": "1_3", "cellphone": None, field: value}
-    r = client.patch("/api/v1/me/business-profile", headers=headers, json={"business": business})
-    assert r.status_code != 500
-
-
 def test_responses_never_echo_raw_input_as_html(client):
     r = register(client, email="<script>alert(1)</script>@x")
     assert r.headers["Content-Type"].startswith("application/json")
@@ -227,37 +197,6 @@ def test_same_answer_for_bad_and_unknown_login_email_shapes(client):
     a = client.post("/api/v1/auth/login", json={"email": "nobody@example.com", "password": "Wrong2026!"})
     assert a.status_code == 401
     assert json.loads(a.get_data())["code"] == "INVALID_CREDENTIALS"
-
-
-# ------------------------------------------------------------- name rules
-
-BAD_BUSINESS_NAMES = ["12334566", "00000", "😀😀😀", "Spaza 😀", "aaaa", "A", "1a", "!!!!", "---", "Shop@home", "<b>Shop</b>",
-                      "a1 a1", "Shop 24", "Spaza 60", "Shop #2", "7-Eleven"]
-GOOD_BUSINESS_NAMES = ["Nomsa's Spaza", "Sixty Spaza", "Mokoena Build (Pty) Ltd", "Thabo & Sons", "Ēbè Tuck-shop", "S. Dlamini Trading"]
-
-
-@pytest.mark.parametrize("name", BAD_BUSINESS_NAMES)
-def test_business_name_must_be_a_real_name(client, outbox, name):
-    assert save_business_name(client, outbox, name).status_code == 422, name
-
-
-@pytest.mark.parametrize("name", GOOD_BUSINESS_NAMES)
-def test_real_business_names_are_accepted(client, outbox, name):
-    r = save_business_name(client, outbox, name)
-    assert r.status_code == 200 and r.get_json()["data"]["profile"]["business"]["business_name"] == name
-
-
-BAD_PERSON_NAMES = ["Nomsa2", "N0msa", "😀 Nomsa", "12345", "N", "Nomsa & Co", "--"]
-GOOD_PERSON_NAMES = ["Nomsa Dlamini", "Mary-Jane O'Neil", "Dr. N. Mokoena", "Sipho", "Thabo Mokoena-Ndlovu", "Zoë Müller"]
-
-
-@pytest.mark.parametrize("name", BAD_PERSON_NAMES + GOOD_PERSON_NAMES)
-def test_owner_name_is_letters_only(client, outbox, name):
-    data = signed_up(client, outbox)
-    headers = {"Authorization": f"Bearer {data['access_token']}"}
-    business = {"business_type": "spaza", "trade": None, "owner_name": name, "years_trading": "1_3", "cellphone": None}
-    r = client.patch("/api/v1/me/business-profile", headers=headers, json={"business": business})
-    assert r.status_code == (200 if name in GOOD_PERSON_NAMES else 422), (name, r.status_code)
 
 
 @pytest.mark.parametrize("depth", [33, 500, 100_000])

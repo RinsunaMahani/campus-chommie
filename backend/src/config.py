@@ -24,12 +24,8 @@ from src.shared.constants.constants import (
 # creates them all, so a fresh database has the full shape from day one.
 DB_SCHEMAS = (
     "identity",   # accounts, credentials, device keys
-    "trader",     # informal trader data: business profile, credit book, jobs
-    "supplier",   # supplier profiles, catalogue, integration keys
-    "commerce",   # orders and payments between traders and suppliers
-    "proof",      # sealed events, handshakes, flags, reputation, share links
     "audit",      # security and audit events
-    "platform",   # infrastructure no domain owns: idempotency keys
+    "platform",   # infrastructure no domain owns: idempotency keys, notifications
 )
 
 
@@ -56,8 +52,8 @@ class BaseConfig:
     JWT_SECRET_KEY = os.environ.get("JWT_SECRET_KEY", "")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_ENGINE_OPTIONS = {"pool_pre_ping": True}
-    # Requests are small JSON; photos go straight to the media provider.
-    # Anything bigger is refused before it is read (413).
+    # Requests are small JSON. Anything bigger is refused before it is
+    # read (413).
     MAX_CONTENT_LENGTH = 1 * 1024 * 1024
 
     # Tokens: short access, rotating refresh (PLAN 02).
@@ -103,16 +99,6 @@ class BaseConfig:
     # Development: the PC's Wi-Fi address (like the app's API URL). Production: https.
     APP_BASE_URL = os.environ.get("APP_BASE_URL", "http://localhost:5000").rstrip("/")
 
-    # PayFast (docs/supplier/07). sandbox or live; the key and passphrase
-    # never leave the server. PAYFAST_TRUST_PROXY: behind a tunnel or load
-    # balancer, take PayFast's address from the last X-Forwarded-For entry
-    # (the one our own proxy added) instead of the direct connection.
-    PAYFAST_MODE = os.environ.get("PAYFAST_MODE", "sandbox")
-    PAYFAST_MERCHANT_ID = os.environ.get("PAYFAST_MERCHANT_ID", "").strip()
-    PAYFAST_MERCHANT_KEY = os.environ.get("PAYFAST_MERCHANT_KEY", "").strip()
-    PAYFAST_PASSPHRASE = os.environ.get("PAYFAST_PASSPHRASE", "").strip()
-    PAYFAST_TRUST_PROXY = _bool("PAYFAST_TRUST_PROXY", "false")
-
     # The client's IP (shared/net/client_ip.py). Off: the connection's own
     # address, and every forwarding header is ignored. On: Cloudflare's
     # CF-Connecting-IP. Switch it on ONLY when the server is reachable
@@ -129,15 +115,6 @@ class BaseConfig:
     # web), comma-separated. A Google token is only accepted if it was
     # issued to one of these. Empty = Google sign-in switched off.
     GOOGLE_CLIENT_IDS = [c.strip() for c in os.environ.get("GOOGLE_CLIENT_IDS", "").split(",") if c.strip()]
-
-    # CIPC company check (business profile). "sandbox" = a small fake
-    # register for development and tests; "none" = no provider connected,
-    # so every check answers "unavailable" (never a fake "verified").
-    CIPC_PROVIDER = os.environ.get("CIPC_PROVIDER", "sandbox")
-
-    # Mapbox token for address search and reverse geocoding. Server-side
-    # only: the app has its own public token for drawing the map.
-    MAPBOX_TOKEN = os.environ.get("MAPBOX_TOKEN", "")
 
     # Background jobs (clean-ups). Off in tests, which call jobs directly.
     SCHEDULER_ENABLED = True
@@ -173,8 +150,6 @@ class TestingConfig(BaseConfig):
 
 class ProductionConfig(BaseConfig):
     ENV_NAME = "production"
-    # No real CIPC provider is contracted yet: never the sandbox in production.
-    CIPC_PROVIDER = os.environ.get("CIPC_PROVIDER", "none").replace("sandbox", "none")
     DEBUG = False
     SQLALCHEMY_DATABASE_URI = _database_uri()
 
@@ -208,9 +183,4 @@ def get_config(env_name: str | None = None):
             raise RuntimeError(f"Missing email settings for production: {', '.join(mail_missing)}.")
         if not os.environ.get("APP_BASE_URL", "").startswith("https://"):
             raise RuntimeError("APP_BASE_URL must be the https address of this backend in production.")
-        if os.environ.get("MEDIA_PROVIDER", "cloudinary") != "cloudinary":
-            raise RuntimeError("MEDIA_PROVIDER must be cloudinary in production.")
-        media_missing = [k for k in ("CLOUDINARY_CLOUD_NAME", "CLOUDINARY_API_KEY", "CLOUDINARY_API_SECRET") if not os.environ.get(k)]
-        if media_missing:
-            raise RuntimeError(f"Missing media settings for production: {', '.join(media_missing)}.")
     return config
