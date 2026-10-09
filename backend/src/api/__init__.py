@@ -9,11 +9,16 @@ from sqlalchemy import text
 
 from src.core.responses import error_response, success_response
 from src.extensions import db
+from src.shared.rate_limit.limiter import limiter
 
 api_bp = Blueprint("api", __name__)
 
+#: Per IP. Uptime monitors and the app's start-up check stay far below it.
+HEALTH_LIMIT = "120 per minute"
+
 
 @api_bp.get("/health")
+@limiter.limit(HEALTH_LIMIT)
 def health():
     """Public. Reports whether the API and the database answer; used by
     the app on start-up and by monitoring."""

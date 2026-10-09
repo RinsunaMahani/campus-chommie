@@ -10,6 +10,7 @@ from flask_jwt_extended import get_jwt, jwt_required
 from src.api import api_bp
 from src.core.decorators import auth_required, current_user
 from src.core.responses import success_response
+from src.shared.rate_limit.keys import per_user
 from src.shared.rate_limit.limiter import limiter
 
 from ..rate_limit import policies
@@ -104,6 +105,7 @@ def refresh():
 
 
 @api_bp.post("/auth/logout")
+@limiter.limit(policies.LOGOUT, key_func=per_user)
 @jwt_required()
 def logout():
     auth_service.logout(get_jwt().get("sid", ""))
@@ -135,12 +137,14 @@ def _sid() -> str:
 
 
 @api_bp.get("/auth/sessions")
+@limiter.limit(policies.SESSIONS, key_func=per_user)
 @auth_required
 def signed_in_phones():
     return success_response({"sessions": auth_service.signed_in_phones(current_user(), _sid())})
 
 
 @api_bp.post("/auth/logout-others")
+@limiter.limit(policies.LOGOUT_OTHERS, key_func=per_user)
 @auth_required
 def logout_others():
     ended = auth_service.sign_out_other_phones(current_user(), _sid())

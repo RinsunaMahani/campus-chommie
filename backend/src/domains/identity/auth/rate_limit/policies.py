@@ -28,7 +28,11 @@ GOOGLE = "10 per minute"
 GOOGLE_LINK = "5 per minute"
 CLOSE_ACCOUNT = "3 per hour"
 EXPORT_DATA = "5 per hour"
-# GET /me and POST /logout need a valid token already: no extra limit.
+# Signed-in routes still get a limit (every route does: brief section 10),
+# counted per user and generous enough that a real person never meets it.
+SESSIONS = "60 per minute"
+LOGOUT = "30 per minute"
+LOGOUT_OTHERS = "10 per minute"
 
 
 def login_key_func() -> str:
