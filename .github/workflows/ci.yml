@@ -1,6 +1,8 @@
-# Every pull request and every push to main: the whole backend suite on a
-# real PostgreSQL, the app's type check and tests, a dependency audit and a
-# secrets scan. The same checks we run by hand before a merge.
+# Every pull request and every push to main: the backend suite on a real
+# PostgreSQL (engine and architecture tests included, engine coverage at
+# least 80%), the data packs, the migrations against the models, the app's
+# type check, tests, lint and web build, a dependency audit, a secrets scan
+# and the repository's own rules. The same checks we run by hand before a merge.
 name: CI
 
 on:
@@ -17,7 +19,7 @@ permissions:
 
 jobs:
   backend:
-    name: Backend tests (PostgreSQL 16)
+    name: Backend, engine and data (PostgreSQL 16)
     runs-on: ubuntu-latest
     timeout-minutes: 45
     services:
@@ -53,10 +55,18 @@ jobs:
           cache: pip
           cache-dependency-path: backend/requirements.txt
       - run: pip install -r requirements.txt
-      - run: python -m pytest -q -p no:warnings tests
+      - name: Data packs (broken references or an incomplete release pack fail)
+        run: python scripts/validate_data.py
+      - name: Migrations build the database and match the models
+        env:
+          FLASK_APP: app.py
+          FLASK_ENV: testing
+        run: flask db upgrade && flask db check
+      - name: Backend tests, with the engine's coverage
+        run: python -m pytest -q -p no:warnings tests --cov=campus_engine --cov-report=term --cov-fail-under=80
 
   app:
-    name: App (tsc + jest)
+    name: App (tsc, jest, lint, web build)
     runs-on: ubuntu-latest
     timeout-minutes: 20
     defaults:
@@ -74,6 +84,9 @@ jobs:
       - run: printf '/// <reference types="expo/types" />\n' > expo-env.d.ts
       - run: npx tsc --noEmit
       - run: npx jest --silent
+      - run: npx eslint . --max-warnings=0
+      - name: Web build
+        run: npx expo export --platform web --output-dir dist
 
   audit:
     name: Dependency audit
@@ -88,8 +101,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      # What ships in the app: fail on high or critical only (see
-      # docs/teammate/feedback/FINDING_dependency_audit.txt for the moderates).
+      # What ships in the app: fail on high or critical only.
       - run: npm audit --omit=dev --audit-level=high
         working-directory: frontend/mobile
 
@@ -104,3 +116,17 @@ jobs:
       - run: |
           curl -sSL https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz | tar -xz gitleaks
           ./gitleaks git --redact --no-banner .
+
+  repo:
+    name: Repository rules
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      # Only REUSE.md may name the project this one reuses (brief section 4).
+      # The name is split in two so this file doesn't match itself.
+      - run: |
+          found="$(git grep -il "akay""za" || true)"
+          if [ "$found" != "REUSE.md" ]; then
+            echo "Only REUSE.md may name it. Found in:"; echo "$found"; exit 1
+          fi

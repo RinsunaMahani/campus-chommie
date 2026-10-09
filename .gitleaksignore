@@ -1,0 +1,5 @@
+# gitleaks false positives, each checked by hand (9 Oct 2026, Rinsuna, with Claude):
+# the testing config's placeholder JWT key ("test-jwt-secret-key-long-enough-32b"),
+# used only when FLASK_ENV=testing; outside tests the app refuses to start without
+# real keys of 32+ characters from the environment (src/config.py get_config).
+83c31996f4cb0d3d43294979770e869e6658328d:backend/src/config.py:generic-api-key:163
