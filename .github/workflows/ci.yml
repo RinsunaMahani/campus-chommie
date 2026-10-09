@@ -97,12 +97,19 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install pip-audit && pip-audit -r backend/requirements.txt
+      # PYSEC-2026-4146 (PyJWT): no fixed release yet. It needs code that calls
+      # jwt.decode with signature checks off while reusing an options dict; our
+      # code never calls PyJWT, and Flask-JWT-Extended builds a fresh dict with
+      # checks on every time (checked 9 Oct 2026; see docs/SECURITY.md).
+      - run: pip install pip-audit && pip-audit -r backend/requirements.txt --ignore-vuln PYSEC-2026-4146
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      # What ships in the app: fail on high or critical only.
-      - run: npm audit --omit=dev --audit-level=high
+      # What the app depends on: fail on any high or critical advisory except
+      # the ones accepted, with reasons and review dates, in audit-allowlist.json.
+      - run: |
+          npm audit --omit=dev --json > audit.json || true
+          node scripts/check-audit.mjs audit.json
         working-directory: frontend/mobile
 
   secrets:

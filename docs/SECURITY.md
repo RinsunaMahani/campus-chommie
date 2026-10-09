@@ -32,7 +32,7 @@ endpoints.
 | Spoofed client IP | forwarding headers are ignored unless the server sits behind Cloudflare alone (`BEHIND_CLOUDFLARE`) | `shared/net/client_ip.py` |
 | Browser attacks on API responses | `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy: no-referrer`, `Cache-Control: no-store`; CORS only in development | `src/__init__.py` |
 | Design rot | architecture tests: the engine imports no app, web or database code; `shared/` never imports a domain; identity stays sealed; finance stays a leaf; every route has a rate limit | `backend/tests/architecture/` |
-| Vulnerable dependencies, committed secrets | CI runs `pip-audit`, `npm audit --omit=dev --audit-level=high` and a gitleaks scan on every pull request | `.github/workflows/ci.yml` |
+| Vulnerable dependencies, committed secrets | CI runs `pip-audit` and an npm audit gate (any high or critical advisory fails, except the accepted ones below), and a gitleaks scan, on every pull request | `.github/workflows/ci.yml`, `frontend/mobile/scripts/check-audit.mjs` |
 
 ## Test evidence (M0)
 
@@ -50,6 +50,20 @@ Backend: **392 tests pass** on PostgreSQL 16 (9 Oct 2026), including:
 | `tests/engine/` | 83 engine tests, 96.8% coverage (the floor is 80%) |
 
 App: TypeScript check, ESLint (no warnings) and Jest pass, including a test of the exact sign-up request.
+
+## Accepted dependency risks
+
+Checked 9 Oct 2026. Werkzeug (3.1.9) and PyJWT (2.15.0) were upgraded and the Expo SDK 57 packages patched, which
+cleared every other advisory. These remain because no fixed release exists yet; each has a review date, and CI fails
+once it passes.
+
+| Advisory | Package | Why it's accepted for now | Review by |
+|---|---|---|---|
+| PYSEC-2026-4146 | PyJWT | needs code that decodes with signature checks off while reusing an options dict; our code never calls PyJWT, and Flask-JWT-Extended builds a fresh dict with checks on every time | when PyJWT ships a fix |
+| GHSA-vfj7-8cjw-p6xm | braces | denial of service through nested glob patterns, reached only through build tooling (Metro, Jest) with our own patterns; not in the app or web bundle | 23 Oct 2026 |
+| GHSA-86w9-cpqp-85rv | node-forge | signature-check flaw in the Expo CLI's code-signing helper, which we don't use; not in the app or web bundle | 23 Oct 2026 |
+
+The `.gitleaksignore` file holds one reviewed false positive: the testing config's placeholder JWT key.
 
 ## Known gaps
 
