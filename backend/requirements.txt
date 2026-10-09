@@ -23,8 +23,13 @@ limits==5.8.0
 # Ed25519 public keys a signed-in phone registers (identity/devices)
 cryptography==50.0.1
 
-# Tests
+# campus_engine: data-pack schemas and YAML loading (pure Python)
+pydantic==2.13.5
+PyYAML==6.0.3
+
+# Tests (pytest-cov: the engine must stay at 80% coverage or more)
 pytest==9.1.1
+pytest-cov==7.1.0
 
 # Master scheduler (background jobs)
 APScheduler==3.11.3

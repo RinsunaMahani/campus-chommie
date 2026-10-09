@@ -1,0 +1,79 @@
+# Demo students for the hackathon walkthrough.
+# Everyone and every number here is FICTIONAL. Amounts are what a student would enter
+# themselves; they are not NSFAS or university figures. "today" is fixed so the demo
+# behaves the same every time it runs.
+
+today: 2026-10-12
+
+personas:
+  - id: naledi
+    name: Naledi
+    summary: first-year at SMU, allowance-funded, commutes to campus
+    university_label: SMU
+    balance_cents: 61000
+    essentials_per_day_cents: 4000
+    life_fund_reserve_cents: 10000
+    payments:
+      - {label: Living allowance (demo amount), expected_on: 2026-10-30, amount_cents: 150000}
+    spending: [3800, 5200, 4100, 6900, 3500, 4400, 5800, 2900, 4700, 6100, 3900, 4300, 5600, 4800]  # last 14 days, oldest first
+    events:
+      - {title: Quiz 3, kind: quiz, starts: "2026-10-14 10:00", module: BCH111, weighting: 5}
+      - {title: Test 2, kind: test, starts: "2026-10-20 08:00", module: ANA201, weighting: 20}
+      - {title: Assignment 3, kind: assignment, starts: "2026-10-21 23:59", module: PHY121, weighting: 15}
+      - {title: Quiz 4, kind: quiz, starts: "2026-10-22 10:00", module: BCH111, weighting: 10}
+      - {title: Practical 5, kind: practical, starts: "2026-10-29 14:00", module: PHY121, weighting: 5}
+      - {title: ANA201 exam, kind: exam, starts: "2026-11-09 09:00", module: ANA201, weighting: 50}
+      - {title: PHY121 exam, kind: exam, starts: "2026-11-12 09:00", module: PHY121, weighting: 40}
+    modules:
+      - code: ANA201
+        name: Anatomy
+        target: 60
+        assessments:
+          - {name: Test 1, weight: 20, mark: 64}
+          - {name: Assignment 1, weight: 10, mark: 71}
+          - {name: Test 2, weight: 20}
+          - {name: Exam, weight: 50}
+      - code: PHY121
+        name: Physiology
+        target: 50
+        assessments:
+          - {name: Test 1, weight: 25, mark: 48}
+          - {name: Practicals, weight: 15, mark: 55}
+          - {name: Assignment 3, weight: 20}
+          - {name: Exam, weight: 40}
+
+  - id: sipho
+    name: Sipho
+    summary: second-year at UP, self-funded by a monthly family transfer, rents near campus
+    university_label: UP
+    balance_cents: 230000
+    essentials_per_day_cents: 5500
+    life_fund_reserve_cents: 30000
+    payments:
+      - {label: Monthly transfer from family (demo amount), expected_on: 2026-11-01, amount_cents: 300000}
+    spending: [6200, 8800, 5100, 7400, 9900, 6000, 7300, 5600, 8200, 6900, 7700, 5400, 9100, 6800]
+    events:
+      - {title: Assignment 2, kind: assignment, starts: "2026-10-14 23:59", module: INF271, weighting: 10}
+      - {title: Test 2, kind: test, starts: "2026-10-15 10:00", module: STK210, weighting: 20}
+      - {title: Practical 3, kind: practical, starts: "2026-10-16 14:00", module: INF271, weighting: 10}
+      - {title: Quiz 2, kind: quiz, starts: "2026-10-22 09:00", module: STK210, weighting: 5}
+      - {title: INF271 exam, kind: exam, starts: "2026-11-16 09:00", module: INF271, weighting: 50}
+      - {title: STK210 exam, kind: exam, starts: "2026-11-19 09:00", module: STK210, weighting: 50}
+    modules:
+      - code: INF271
+        name: Information Systems
+        target: 65
+        assessments:
+          - {name: Assignment 1, weight: 10, mark: 72}
+          - {name: Test 1, weight: 20, mark: 68}
+          - {name: Assignment 2, weight: 10}
+          - {name: Practical 3, weight: 10}
+          - {name: Exam, weight: 50}
+      - code: STK210
+        name: Statistics
+        target: 55
+        assessments:
+          - {name: Test 1, weight: 25, mark: 58}
+          - {name: Quiz 1, weight: 5, mark: 80}
+          - {name: Test 2, weight: 20}
+          - {name: Exam, weight: 50}

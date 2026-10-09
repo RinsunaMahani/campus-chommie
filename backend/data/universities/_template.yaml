@@ -1,0 +1,49 @@
+# Template for a new university. Copy it to <university-id>.yaml (for example up.yaml).
+#
+# Rules:
+# - Fill it from OFFICIAL sources only: prospectus, admissions pages, rule books.
+# - Every fact cites a source id from the sources list at the bottom.
+# - Leave a field out, or set it to null, rather than guess.
+# - Keep release: false until a second person has checked every value.
+# - Files starting with "_" are skipped by the app, so this template never shows up.
+
+university: example          # short lowercase id, e.g. up, tut
+name: Example University
+city: Pretoria
+academic_year: 2027          # the intake these rules apply to
+release: false
+max_choices: null            # how many programmes one application may list
+
+points_rules:
+  source: s-prospectus
+  subjects_counted: 6        # how many subjects count towards the points score
+  life_orientation: exclude  # full | half | exclude
+  scale:                     # replace with the university's own table if it differs
+    - {min_percent: 80, level: 7}
+    - {min_percent: 70, level: 6}
+    - {min_percent: 60, level: 5}
+    - {min_percent: 50, level: 4}
+    - {min_percent: 40, level: 3}
+    - {min_percent: 30, level: 2}
+    - {min_percent: 0, level: 1}
+
+programmes:
+  - id: example-programme
+    name: Example programme
+    fields: [example_field]  # shared fields link related programmes for the safe-choice slot
+    selective: false
+    requirements:
+      source: s-prospectus
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 4}
+      additional_minimums: []
+    bridges_to: []           # published routes into other programmes, with guarantee by_rule or considered
+
+sources:
+  - id: s-prospectus
+    url: https://example.org/prospectus
+    publisher: Example University
+    title: Undergraduate prospectus
+    retrieved: 2026-10-01
+    last_verified: 2026-10-01
+    verified_by: Name of the person who checked it

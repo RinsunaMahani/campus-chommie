@@ -1,0 +1,25 @@
+# Every tunable number lives here, so calibration never touches code.
+# These are starting values. Calibrate them with the student survey before the event.
+
+workload:
+  base_load:              # load per event type, before weighting and clustering
+    quiz: 1
+    assignment: 2
+    practical: 3
+    test: 3
+    exam: 4
+  cluster_hours: 48       # an event this close to another one counts extra
+  cluster_multiplier: 1.5
+  thresholds:
+    amber: 4.0            # a week scoring at least this is amber
+    red: 7.0              # a week scoring at least this is red
+
+runway:
+  late_days: 14           # the "what if it's two weeks late" scenario
+  buffer_days: 3          # days of spending to spare before the life fund shows green
+  horizon_days: 120       # how far ahead the runway is projected
+
+forecast:
+  ewma_alpha: 0.3         # how much the most recent day counts in the spending pace
+  min_days_of_history: 5  # fewer logged days than this: use the student's essentials estimate
+  spread_window: 14       # days used to measure how much spending varies
