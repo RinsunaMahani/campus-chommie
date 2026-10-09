@@ -58,7 +58,11 @@ class ConsentSchema(_Strict):
     privacy_version = fields.String(required=True, validate=validate.Length(max=30))
     terms_version = fields.String(required=True, validate=validate.Length(max=30))
     confirmed_18_or_older = _MustBeTrue(
-        required=True, error_messages={"required": "Confirm you are 18 or older to create an account."}
+        required=True,
+        error_messages={
+            "required": "Confirm you are 18 or older to create an account.",
+            "null": "Confirm you are 18 or older to create an account.",
+        },
     )
 
 
