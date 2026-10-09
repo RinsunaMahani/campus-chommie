@@ -53,6 +53,7 @@ export function BrandLockup({ onDark = false }: { onDark?: boolean }) {
 }
 
 const styles = StyleSheet.create({
-  word: { fontFamily: fonts.extrabold },
+  // Centred, so it still looks right if large system text makes it wrap.
+  word: { fontFamily: fonts.extrabold, textAlign: 'center' },
   lockup: { flexDirection: 'row', alignItems: 'center', gap: 12 },
 });

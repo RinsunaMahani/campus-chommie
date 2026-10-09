@@ -26,7 +26,8 @@ export default function WelcomeScreen() {
       <SafeAreaView style={styles.safe}>
         <View style={styles.center}>
           <BrandMark size={112} />
-          <Wordmark size={38} />
+          {/* 32 px: "Campus Chommie" stays on one line on a 360 px phone. */}
+          <Wordmark size={32} />
           <Text style={styles.slogan}>{SLOGAN}</Text>
         </View>
 
