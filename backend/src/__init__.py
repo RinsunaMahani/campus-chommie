@@ -36,7 +36,8 @@ def create_app(env_name: str | None = None) -> Flask:
         trigger.start(app)
 
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
-    app.logger.info("Campus Chommie backend ready (env=%s)", env_name or "development")
+    # The config actually in use (FLASK_ENV when no env_name is passed), not the argument.
+    app.logger.info("Campus Chommie backend ready (env=%s)", app.config.get("ENV_NAME"))
     return app
 
 
