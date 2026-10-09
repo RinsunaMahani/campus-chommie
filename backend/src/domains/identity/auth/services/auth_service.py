@@ -40,7 +40,7 @@ from src.shared.security.security import hash_password, validate_password_comple
 from ..models import CodePurpose, EmailCode, GoogleIdentity, PasswordCredential, PasswordReset
 from . import auth_alerts, auth_audit, google_verifier, secrets, session_service, trusted_phones
 
-logger = logging.getLogger("akayza.auth")
+logger = logging.getLogger("campus_chommie.auth")
 
 # Compared against when an account doesn't exist, so a wrong email takes as
 # long as a wrong password (bcrypt is deliberately slow).
@@ -108,7 +108,7 @@ def _send_code(user, resent: bool = False) -> None:
     EmailService.send_template(
         to=user.email,
         template_name="verify_email.html",
-        subject="Your Akayza code",
+        subject="Your Campus Chommie code",
         context={"code": code, "minutes": minutes},
         rate_limit_key=f"verify_email:{user.email}",
         rate_limit_max=6,
@@ -333,7 +333,7 @@ def _send_sign_in_code(user, challenge_hash: str, resent: bool = False) -> None:
     EmailService.send_template(
         to=user.email,
         template_name="sign_in_code.html",
-        subject="Your Akayza sign-in code",
+        subject="Your Campus Chommie sign-in code",
         context={"code": code, "minutes": minutes},
         rate_limit_key=f"sign_in_code:{user.email}",
         rate_limit_max=6,
@@ -448,7 +448,7 @@ def forgot_password(email: str) -> None:
     EmailService.send_template(
         to=user.email,
         template_name="password_reset.html",
-        subject="Reset your Akayza password",
+        subject="Reset your Campus Chommie password",
         context={"link": f"{current_app.config['APP_BASE_URL']}/reset-password?ticket={token}", "minutes": minutes},
         rate_limit_key=f"password_reset:{user.email}",
         rate_limit_max=3,

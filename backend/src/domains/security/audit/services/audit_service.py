@@ -22,7 +22,7 @@ from src.shared.audit.audit_types import AuditEvent
 
 from ..repositories import audit_repository
 
-logger = logging.getLogger("akayza.audit")
+logger = logging.getLogger("campus_chommie.audit")
 
 _registered = False
 

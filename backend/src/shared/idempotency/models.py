@@ -2,11 +2,10 @@
 IdempotencyKey -- the stored result of a request, so a retry returns
 the same answer instead of doing the same thing twice.
 
-THE FAILURE THIS PREVENTS (V2_13 §3.1). A supplier's ERP posts a
-product. The connection times out at fifteen seconds. The ERP has no
-way to know whether we processed it, so -- correctly -- it retries. We
-create a SECOND product. Nobody notices until their catalogue has
-doubled.
+THE FAILURE THIS PREVENTS. A student logs today's spending on a weak
+signal. The connection times out. The app has no way to know whether we
+processed it, so -- correctly -- it retries. We record the spending a
+SECOND time, and their money runway is suddenly wrong.
 
   ─────────────────────────────────────────────────────────────────────
   THIS CANNOT BE ENGINEERED AWAY ON THE CLIENT. If a request times out
@@ -15,7 +14,7 @@ doubled.
   ─────────────────────────────────────────────────────────────────────
 
 SCOPED TO (key, user_id), not to the key alone. Clients generate keys
-themselves, and two suppliers independently choosing the same UUID
+themselves, and two users independently choosing the same UUID
 must not see each other's responses -- which is exactly the kind of
 cross-tenant leak a global key space invites.
 

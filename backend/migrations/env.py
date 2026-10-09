@@ -45,7 +45,7 @@ target_db = current_app.extensions['migrate'].db
 # ... etc.
 
 
-# Akayza: tables live in named schemas (src/config.py DB_SCHEMAS).
+# Campus Chommie: tables live in named schemas (src/config.py DB_SCHEMAS).
 # Autogenerate must look inside them, and only them; the migration
 # history table stays in "public" so a brand-new database works before
 # any schema exists.

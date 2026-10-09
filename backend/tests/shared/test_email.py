@@ -10,7 +10,7 @@ from src.shared.email.email import EmailService, SMTPEmailProvider
 
 def test_every_email_has_a_plain_text_version(app, outbox):
     with app.test_request_context():
-        EmailService.send_template(to="a@example.com", template_name="verify_email.html", subject="Your Akayza code", context={"code": "482193", "minutes": 15})
+        EmailService.send_template(to="a@example.com", template_name="verify_email.html", subject="Your Campus Chommie code", context={"code": "482193", "minutes": 15})
     sent = outbox[-1]
     assert "482193" in sent["text_body"] and "<" not in sent["text_body"]
     assert "482193" in sent["html_body"]
@@ -31,14 +31,14 @@ def test_smtp_message_has_text_html_and_delivery_headers(monkeypatch):
 
     provider = SMTPEmailProvider(
         host="smtp.example.com", port=587, use_tls=True, username="u", password="p",
-        default_sender="Akayza <no-reply@akayza.co.za>", timeout=5, reply_to="help@akayza.co.za",
+        default_sender="Campus Chommie <no-reply@example.com>", timeout=5, reply_to="help@example.com",
     )
     monkeypatch.setattr(provider, "_connect", lambda: FakeServer())
     provider.send("b@example.com", "Hi", "<p>Hello</p>", "Hello")
 
     msg = captured["msg"]
-    assert msg["Date"] and msg["Message-ID"].endswith("@akayza.co.za>")
-    assert msg["Reply-To"] == "help@akayza.co.za"
+    assert msg["Date"] and msg["Message-ID"].endswith("@example.com>")
+    assert msg["Reply-To"] == "help@example.com"
     types = [part.get_content_type() for part in msg.iter_parts()]
     assert types == ["text/plain", "text/html"]
 
@@ -51,7 +51,7 @@ def test_codes_never_reach_the_logs(client, outbox, caplog):
     caplog.set_level(logging.DEBUG)
     client.post(
         "/api/v1/auth/register",
-        json={"email": "logs@example.com", "password": "Spaza2026!",
+        json={"email": "logs@example.com", "password": "Campus2026!",
               "consent": {"privacy_version": "0.1-draft", "terms_version": "0.1-draft"}},
     )
     code = re.search(r">(\d{6})<", outbox[-1]["html_body"]).group(1)

@@ -4,7 +4,7 @@
 Email Service and Provider abstraction.
 "Shared Notification Infrastructure" -- this is the
 ONLY file in the entire backend allowed to import smtplib. Every domain
-(auth, business, supplier, ...) calls EmailService.send_template() and
+(auth, notifications, ...) calls EmailService.send_template() and
 nothing else; none of them know or care that Gmail SMTP is behind it
 today, or that SES/SendGrid/etc. might be behind it tomorrow.
 """
@@ -41,7 +41,7 @@ from src.shared.monitoring.monitoring import (
 )
 from src.shared.queue.queue import enqueue
 
-logger = logging.getLogger("akayza.email")
+logger = logging.getLogger("campus_chommie.email")
 
 _TEMPLATE_DIR = os.path.join(os.path.dirname(__file__), "templates")
 _jinja_env = Environment(loader=FileSystemLoader(_TEMPLATE_DIR), autoescape=select_autoescape(["html"]))

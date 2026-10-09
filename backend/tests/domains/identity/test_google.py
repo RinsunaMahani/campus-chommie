@@ -9,7 +9,7 @@ from src.domains.identity.auth.services.google_verifier import GoogleClaims, Inv
 
 CONSENT = {"privacy_version": "0.1-draft", "terms_version": "0.1-draft"}
 NOMSA = "google-token-for-nomsa-xxxxxxxxxxxx"
-PASSWORD = "Spaza2026!"
+PASSWORD = "Campus2026!"
 
 
 @pytest.fixture

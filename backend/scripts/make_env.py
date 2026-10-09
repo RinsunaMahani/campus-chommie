@@ -22,7 +22,7 @@ def main() -> int:
         print(f"{TARGET} already exists; leaving it alone. Delete it first if you really want a new one.")
         return 1
 
-    password = getpass.getpass("Database password for the 'akayza' role: ").strip()
+    password = getpass.getpass("Database password for the 'campus_chommie' role: ").strip()
     if not password:
         print("No password given; nothing written.")
         return 1

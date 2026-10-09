@@ -8,7 +8,7 @@ import * as SecureStore from 'expo-secure-store';
 
 export type Tokens = { accessToken: string; refreshToken: string };
 
-const KEY = 'akayza.tokens.v1';
+const KEY = 'campus-chommie.tokens.v1';
 let memory: Tokens | null = null;
 let loaded = false;
 

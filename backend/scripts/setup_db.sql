@@ -1,4 +1,4 @@
--- Akayza: create the database role and databases (PostgreSQL 16+).
+-- Campus Chommie: create the database role and databases (PostgreSQL 16+).
 --
 -- Run ONCE per laptop, as the postgres admin user, from the repo root:
 --
@@ -11,16 +11,16 @@
 
 \set ON_ERROR_STOP on
 
-SELECT format('CREATE ROLE akayza LOGIN PASSWORD %L', :'app_password')
-WHERE NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'akayza')
+SELECT format('CREATE ROLE campus_chommie LOGIN PASSWORD %L', :'app_password')
+WHERE NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'campus_chommie')
 \gexec
 
-SELECT 'CREATE DATABASE akayza_dev OWNER akayza'
-WHERE NOT EXISTS (SELECT 1 FROM pg_database WHERE datname = 'akayza_dev')
+SELECT 'CREATE DATABASE campus_chommie_dev OWNER campus_chommie'
+WHERE NOT EXISTS (SELECT 1 FROM pg_database WHERE datname = 'campus_chommie_dev')
 \gexec
 
-SELECT 'CREATE DATABASE akayza_test OWNER akayza'
-WHERE NOT EXISTS (SELECT 1 FROM pg_database WHERE datname = 'akayza_test')
+SELECT 'CREATE DATABASE campus_chommie_test OWNER campus_chommie'
+WHERE NOT EXISTS (SELECT 1 FROM pg_database WHERE datname = 'campus_chommie_test')
 \gexec
 
-\echo 'Done: role akayza, databases akayza_dev and akayza_test are ready. Next: flask db upgrade'
+\echo 'Done: role campus_chommie, databases campus_chommie_dev and campus_chommie_test are ready. Next: flask db upgrade'

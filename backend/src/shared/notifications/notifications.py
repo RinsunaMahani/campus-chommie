@@ -4,15 +4,15 @@ mechanism exactly (register_listener/publish/_listeners), reusing a
 pattern already proven in this exact codebase rather than inventing a
 new one.
 
-This module knows nothing about databases, roles, or stock orders. It
+This module knows nothing about databases, roles, or any feature. It
 builds nothing itself -- callers construct a complete NotificationEvent
 and hand it to publish(). It just makes sure that event reaches
 whichever domain has registered to persist it. domains/platform/
 notifications subscribes to this; it never reaches toward that domain.
 
-WHY publish() ENQUEUES RATHER THAN WRITING SYNCHRONOUSLY: a business
-confirming an order shouldn't wait on a notification row being written
-before their own request returns -- same "the action succeeding must
+WHY publish() ENQUEUES RATHER THAN WRITING SYNCHRONOUSLY: a student
+changing their password shouldn't wait on a notification row being
+written before their own request returns -- same "the action succeeding must
 never depend on a side-effect succeeding" reasoning already applied to
 audit logging. Routed through shared.queue.enqueue(), the SAME
 background job infrastructure EmailService, AuditService, and
@@ -31,7 +31,7 @@ from typing import Any, Callable
 from src.shared.notifications.notification_types import NotificationEvent
 from src.shared.queue.queue import enqueue
 
-logger = logging.getLogger("akayza.notifications")
+logger = logging.getLogger("campus_chommie.notifications")
 
 _listeners: list[Callable[[NotificationEvent], None]] = []
 
@@ -56,8 +56,8 @@ def publish_notification(event: NotificationEvent) -> None:
     background queue -- never blocks the caller's own request.
 
     NEVER RAISES SYNCHRONOUSLY. A notification failing to send must
-    never break the real action that triggered it -- an order
-    genuinely being confirmed must not become a 500 because a
+    never break the real action that triggered it -- a password
+    genuinely being changed must not become a 500 because a
     notification row couldn't be written. Same tradeoff already
     accepted for audit logging, for the same reason."""
 
@@ -77,8 +77,8 @@ _daily: list[Callable[[Any], None]] = []
 
 
 def register_daily(check: Callable[[Any], None]) -> None:
-    """A check that may publish ONE alert a day for a user (the credit
-    book's "pay-backs due today"), run on that user's first unread check
+    """A check that may publish ONE alert a day for a user (for example
+    "a payment is due today"), run on that user's first unread check
     of the day -- no scheduler needed. The owning feature registers it at
     startup (src/__init__.py); the persisting domain runs them, knowing
     nothing about what they check."""

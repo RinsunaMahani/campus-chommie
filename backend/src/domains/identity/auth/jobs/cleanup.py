@@ -28,7 +28,7 @@ from src.shared.scheduling.scheduling_types import JobResult
 from ..models import EmailCode, PasswordReset, Session, TrustedPhone
 from ..services import auth_audit
 
-logger = logging.getLogger("akayza.auth.cleanup")
+logger = logging.getLogger("campus_chommie.auth.cleanup")
 
 CODES_GRACE = timedelta(days=1)
 SESSIONS_GRACE = timedelta(days=30)

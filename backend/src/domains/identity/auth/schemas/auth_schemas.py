@@ -27,7 +27,7 @@ class _Strict(Schema):
 
 class DeviceSchema(_Strict):
     public_key = fields.String(required=True, validate=validate.Length(min=40, max=64))
-    #: The phone signs "akayza-device:<public_key>" with its private key:
+    #: The phone signs "campus-chommie-device:<public_key>" with its private key:
     #: proof it really holds the key, not just a copied public key.
     signature = fields.String(required=True, validate=validate.Length(min=80, max=100))
     platform = fields.String(load_default=None, validate=validate.Length(max=20))

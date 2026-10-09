@@ -6,7 +6,7 @@ also enforced by a unique index), so a lost phone stops working the moment
 its owner signs in on a new one. The key is checked to be a real Ed25519
 public key before it is stored.
 
-PROOF OF POSSESSION: the phone signs "akayza-device:<public_key>" with its
+PROOF OF POSSESSION: the phone signs "campus-chommie-device:<public_key>" with its
 private key. Anyone can copy a public key; only the phone that holds the
 private key can produce this signature. It also rejects keys that parse
 but aren't usable (any 32 bytes parse as an Ed25519 key).
@@ -30,7 +30,7 @@ from ..models import Device
 PLATFORMS = {"android", "ios", "web"}
 
 
-REGISTRATION_MESSAGE = "akayza-device:{public_key}"
+REGISTRATION_MESSAGE = "campus-chommie-device:{public_key}"
 
 
 def _b64(value: str) -> bytes:

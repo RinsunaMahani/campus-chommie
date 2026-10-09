@@ -36,7 +36,7 @@ def create_app(env_name: str | None = None) -> Flask:
         trigger.start(app)
 
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
-    app.logger.info("Akayza backend ready (env=%s)", env_name or "development")
+    app.logger.info("Campus Chommie backend ready (env=%s)", env_name or "development")
     return app
 
 

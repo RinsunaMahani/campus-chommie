@@ -20,7 +20,7 @@ from __future__ import annotations
 
 import logging
 
-logger = logging.getLogger("akayza.email")
+logger = logging.getLogger("campus_chommie.email")
 
 
 def log_email_queued(destination_masked: str, template_name: str) -> None:

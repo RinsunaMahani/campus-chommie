@@ -7,7 +7,7 @@ we keep only the token's HMAC. With the right password AND a live token
 for the same account, sign-in needs no code. Anything else gets a code.
 
 A token is only good for the account it was issued to: a phone shared by
-two traders, or a token copied onto another account's sign-in, still
+two students, or a token copied onto another account's sign-in, still
 gets a code.
 """
 from __future__ import annotations

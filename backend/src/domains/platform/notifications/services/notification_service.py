@@ -38,7 +38,7 @@ from ..models import Notification
 from ..repositories import notification_repository as repo
 from ..templates import LINK_TYPES, TEMPLATES, missing, render
 
-logger = logging.getLogger("akayza.notifications")
+logger = logging.getLogger("campus_chommie.notifications")
 
 _app: Optional[Flask] = None
 _registered = False

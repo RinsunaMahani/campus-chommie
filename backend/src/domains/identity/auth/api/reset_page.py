@@ -3,12 +3,12 @@ The password reset PAGE -- what the button in the reset email opens.
 (Adapted from TruConnect's browser reset page; see REUSE.md.)
 
 WHY A WEB PAGE AND NOT ONLY THE APP: email apps (Gmail especially) strip
-links that aren't https://, so an akayza:// link in an email is a dead
+links that aren't https://, so a campuschommie:// link in an email is a dead
 button. The email links here instead:
 
     {APP_BASE_URL}/reset-password?ticket=...
 
-and this page shows the new-password form (plus "Open the Akayza app"
+and this page shows the new-password form (plus "Open the Campus Chommie app"
 for phones that have it). NOT under /api/v1: it must match the emailed
 URL exactly. It calls the SAME auth_service.reset_password as the app,
 so the rules can never drift between the two.
@@ -32,7 +32,7 @@ from ..services import auth_service
 
 reset_page_bp = Blueprint("reset_page", __name__, template_folder="templates")
 
-APP_LINK = "akayza://reset-password"
+APP_LINK = "campuschommie://reset-password"
 PAGE_LIMIT = "30 per hour"
 
 

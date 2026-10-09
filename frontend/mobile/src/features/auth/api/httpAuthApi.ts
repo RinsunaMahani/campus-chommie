@@ -1,5 +1,5 @@
 /**
- * The REAL auth API: the Akayza backend's /api/v1/auth routes.
+ * The REAL auth API: the Campus Chommie backend's /api/v1/auth routes.
  * Same shape as mockAuthApi, so screens don't change.
  *
  * Tokens from verify/sign-in go straight into secure storage (tokenStore);

@@ -11,7 +11,7 @@ from src.extensions import db
 
 EMAIL = "twofa@example.com"
 OTHER = "other@example.com"
-PASSWORD = "Spaza2026!"
+PASSWORD = "Campus2026!"
 CONSENT = {"privacy_version": "0.1-draft", "terms_version": "0.1-draft"}
 
 
@@ -50,7 +50,7 @@ def test_new_phone_needs_the_emailed_code(client, outbox):
     assert r.status_code == 202
     step1 = r.get_json()["data"]
     assert step1["code_required"] and "access_token" not in step1
-    assert outbox[-1]["subject"] == "Your Akayza sign-in code"
+    assert outbox[-1]["subject"] == "Your Campus Chommie sign-in code"
 
     r = client.post("/api/v1/auth/login/verify", json={"challenge": step1["challenge"], "code": last_code(outbox)})
     assert r.status_code == 200

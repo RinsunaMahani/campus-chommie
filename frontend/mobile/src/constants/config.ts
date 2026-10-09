@@ -5,7 +5,7 @@
  */
 
 /** Slogan under the logo on the landing screen. */
-export const SLOGAN = 'Keep it in the kasi.';
+export const SLOGAN = 'From choosing a course to graduating.';
 
 /** Where the backend lives (on a phone: your PC's IP, not localhost). */
 export const API_BASE_URL: string = process.env.EXPO_PUBLIC_API_URL ?? 'http://localhost:5000/api/v1';

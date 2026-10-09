@@ -5,7 +5,7 @@
  *
  * Mock rules (so the flows can be demoed):
  *  - any 6-digit code verifies, except 000000 (shows the error state)
- *  - ndlamini.work@gmail.com is "already registered", so picking it on the
+ *  - lmokoena.study@gmail.com is "already registered", so picking it on the
  *    Google sheet shows the link-Google screen
  *  - sign in works for any email with an 8+ character password; the first
  *    time on this phone it asks for the email code (two-factor), after
@@ -16,7 +16,7 @@ import { isStrongPassword } from '@/shared/lib/validation';
 import { demoProfile } from '../profile';
 import { AuthApi, AuthError } from '../types';
 
-const ALREADY_REGISTERED = ['ndlamini.work@gmail.com'];
+const ALREADY_REGISTERED = ['lmokoena.study@gmail.com'];
 const trusted = new Set<string>();
 
 const wait = (ms = 600) => new Promise((resolve) => setTimeout(resolve, ms));

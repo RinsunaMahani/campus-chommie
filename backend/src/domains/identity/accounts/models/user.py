@@ -1,5 +1,5 @@
 """
-User -- one person's Akayza account. OWNED BY accounts: auth/ and
+User -- one person's Campus Chommie account. OWNED BY accounts: auth/ and
 devices/ read it through accounts' services and never write it directly.
 
 The email is stored lower-cased and trimmed (the unique index is on that

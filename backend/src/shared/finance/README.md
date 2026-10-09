@@ -1,9 +1,9 @@
-# Akayza Finance Engine
+# Campus Chommie Finance Engine
 
 The platform's financial integrity engine. Every feature that creates,
 calculates, validates, formats, or stores money uses this module.
 
-    Loan Book / Supplier Payments / Akayza Wallet / Financing / Settlement
+    My money (income, payments, spending) / any later money feature
                               |
                               v
                       Shared Finance Engine
@@ -53,13 +53,13 @@ exact file, line, and reason -- then it was removed.
 **Level 1** -- every money module: validation, calculation, formatting,
 allocation, audit, atomic transactions.
 
-**Level 2** -- REAL MONEY MOVEMENT only (Wallet, Supplier Payments,
-Settlement): fraud detection, velocity limits, gateway callbacks,
-reconciliation, payment authorization.
+**Level 2** -- REAL MONEY MOVEMENT only (payments, settlement): fraud
+detection, velocity limits, gateway callbacks, reconciliation, payment
+authorization.
 
-**LOAN BOOK IS LEVEL 1 ONLY.** It records debt between two people; it
-never moves money, so Level 2 machinery does not apply and must not be
-bolted onto it.
+**CAMPUS CHOMMIE IS LEVEL 1 ONLY.** My money records a student's own
+entries; nothing in the app moves money, so Level 2 machinery does not
+apply and must not be bolted onto it.
 
 ## Core guarantees, all verified by tests
 
@@ -86,19 +86,11 @@ Postgres BIGINT -- because every amount eventually crosses a JSON
 boundary to the React Native app, where a larger value would be silently
 corrupted by `JSON.parse` with no error.
 
-## Test suite
+## Tests
 
-84 tests, all passing:
-
-```
-pytest tests/ -v
-```
-
-- `tests/architecture/` (5) -- boundary enforcement
-- `tests/shared/finance/test_money_core.py` (16) -- construction, precision, rejections
-- `tests/shared/finance/test_allocation.py` (22) -- cent-loss guarantees
-- `tests/shared/finance/test_calculations.py` (~20) -- arithmetic, rounding, validation
-- `tests/shared/finance/test_formatting_parsing.py` (~21) -- SA input formats, round-trips
+`tests/architecture/test_finance_boundaries.py` (5 tests) enforces the
+boundaries above. The engine's own unit tests did not come with the
+reused code; they are added with the first feature that uses the engine.
 
 ## What is NOT implemented, deliberately
 
@@ -107,15 +99,13 @@ raise `NotImplementedError` with an explanation. Real signing needs a
 server-held private key with real key management, plus a verification
 endpoint -- none of which exists yet. **A signature that can be forged is
 worse than no signature**, because it invites people to trust a document
-that hasn't been verified. Loan Book's receipts currently carry a plain
-reference code and make no authenticity claim anywhere in their wording.
+that hasn't been verified. Nothing in Campus Chommie issues receipts.
 
 `reconciliation/` and `future/` are empty for the same reason: nothing
-to reconcile until real money movement exists.
+to reconcile, because the app never moves money.
 
 ## Next step
 
-Nothing imports this engine yet. The next piece of work is Loan Book's
-backend, which will be its first consumer -- and the frontend's existing
-`formatCents`/`parseRandsToCents` should eventually be replaced by a
-TypeScript mirror of this module so both sides share identical rules.
+Nothing imports this engine yet. The money domain (My money) is its
+first consumer, and the app's own money formatting (src/shared/lib/money.ts)
+should eventually mirror this module so both sides share identical rules.

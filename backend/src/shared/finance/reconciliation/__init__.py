@@ -9,11 +9,11 @@ security.audit exactly:
     domains/platform/reconciliation/  the workflow: cases, approvals,
                                       investigations, dashboards, jobs
 
-Example: Wallet says paid R500, bank says received R500. This package
+Example: a payment record says R500, the bank says R500. This package
 answers "difference = 0, matched". The DOMAIN decides what to do about
 that -- mark reconciled, log audit, close the case.
 
-NOT IMPLEMENTED YET -- there is nothing to reconcile until real money
-movement exists (Wallet/Settlement). The package exists so the boundary
+NOT IMPLEMENTED -- Campus Chommie never moves money, so there is
+nothing to reconcile. The package exists so the boundary
 is established before the first implementation lands, not after.
 """

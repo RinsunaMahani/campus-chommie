@@ -11,12 +11,12 @@ import { colors, fonts, radius } from '@/shared/theme/tokens';
 
 /**
  * MOCK of Android's own Google account picker. The real one comes from
- * Google Sign-In once the backend can verify Google ID tokens; Akayza
+ * Google Sign-In once the backend can verify Google ID tokens; Campus Chommie
  * gets name, email and photo, never the password.
  */
 const accounts = [
-  { name: 'Nomsa Dlamini', email: 'nomsa.spaza@gmail.com', tint: colors.ink },
-  { name: 'Nomsa D', email: 'ndlamini.work@gmail.com', tint: '#6B6456' },
+  { name: 'Lindiwe Mokoena', email: 'lindiwe.student@gmail.com', tint: colors.ink },
+  { name: 'Lindiwe M', email: 'lmokoena.study@gmail.com', tint: '#6B6456' },
 ];
 
 export default function GooglePicker() {
@@ -65,7 +65,7 @@ export default function GooglePicker() {
           <FontAwesome name="google" size={18} color="#4285F4" />
           <View>
             <Text style={styles.title}>Choose an account</Text>
-            <Text style={styles.sub}>to continue to Akayza</Text>
+            <Text style={styles.sub}>to continue to Campus Chommie</Text>
           </View>
         </View>
         {accounts.map((a) => (
@@ -91,7 +91,7 @@ export default function GooglePicker() {
           <Text style={styles.name}>Use another account</Text>
         </Pressable>
         <Text style={styles.foot}>
-          Google shares your name, email and profile photo with Akayza. Never your password.
+          Google shares your name, email and profile photo with Campus Chommie. Never your password.
         </Text>
       </SafeAreaView>
     </View>

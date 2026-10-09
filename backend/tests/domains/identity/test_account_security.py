@@ -4,7 +4,7 @@ from __future__ import annotations
 import re
 
 EMAIL = "sec@example.com"
-PASSWORD = "Spaza2026!"
+PASSWORD = "Campus2026!"
 CONSENT = {"privacy_version": "0.1-draft", "terms_version": "0.1-draft"}
 
 
@@ -30,17 +30,17 @@ def test_change_password_keeps_this_phone_and_signs_out_others(client, outbox):
     a = signed_up(client, outbox)
     b = second_phone(client, outbox)
     r = client.post("/api/v1/auth/change-password", headers=bearer(a["access_token"]),
-                    json={"current_password": PASSWORD, "new_password": "NewSpaza2026#"})
+                    json={"current_password": PASSWORD, "new_password": "NewCampus2026#"})
     assert r.status_code == 200 and r.get_json()["data"]["signed_out"] == 1
     assert client.get("/api/v1/me", headers=bearer(a["access_token"])).status_code == 200  # this phone stays
     assert client.get("/api/v1/me", headers=bearer(b["access_token"])).status_code == 401  # the other is out
-    assert client.post("/api/v1/auth/login", json={"email": EMAIL, "password": "NewSpaza2026#"}).status_code == 202
+    assert client.post("/api/v1/auth/login", json={"email": EMAIL, "password": "NewCampus2026#"}).status_code == 202
 
 
 def test_change_password_needs_the_right_current_password(client, outbox):
     a = signed_up(client, outbox)
     r = client.post("/api/v1/auth/change-password", headers=bearer(a["access_token"]),
-                    json={"current_password": "Wrong2026!", "new_password": "NewSpaza2026#"})
+                    json={"current_password": "Wrong2026!", "new_password": "NewCampus2026#"})
     assert r.status_code == 400 and r.get_json()["code"] == "WRONG_PASSWORD"
     r = client.post("/api/v1/auth/change-password", headers=bearer(a["access_token"]),
                     json={"current_password": PASSWORD, "new_password": PASSWORD})

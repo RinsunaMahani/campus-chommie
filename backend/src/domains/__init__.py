@@ -1,13 +1,13 @@
-"""domains -- THE BUSINESS. Everything Akayza does lives here.
+"""domains -- THE BUSINESS. Everything Campus Chommie does lives here.
 
 Organised as AREAS that contain FEATURES:
 
     identity/          "who you are"          accounts, auth, devices
-    informal_trader/   "the trader's own work" business_profile, credit_book, jobs
-    supplier/          "the supplier side"    supplier_profile, catalogue, integration
-    commerce/          "trader <-> supplier"  orders, payments
-    proof/             "the trust layer"      ledger, handshake, integrity,
-                                              reputation, share
+    platform/          "for everyone"         notifications
+    security/          "what happened"        audit
+
+Campus Chommie's own areas (catalogue, pathways, student, classes) are
+added the same way as their features are built.
 
 EVERY FEATURE HAS THE SAME FIVE FOLDERS, so learning one teaches all:
 

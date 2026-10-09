@@ -33,13 +33,13 @@ def _bool(name: str, default: str) -> bool:
     return os.environ.get(name, default).lower() in ("true", "1", "yes")
 
 
-def _database_uri(db_name_var: str = "POSTGRES_DB", default_db: str = "akayza_dev") -> str:
+def _database_uri(db_name_var: str = "POSTGRES_DB", default_db: str = "campus_chommie_dev") -> str:
     """DATABASE_URL wins if set (managed hosts give one string). Otherwise
     built from POSTGRES_* parts; user and password are URL-encoded so a
     special character in a password can't break the URI."""
     if os.environ.get("DATABASE_URL") and db_name_var == "POSTGRES_DB":
         return os.environ["DATABASE_URL"]
-    user = quote(os.environ.get("POSTGRES_USER", "akayza"))
+    user = quote(os.environ.get("POSTGRES_USER", "campus_chommie"))
     password = quote(os.environ.get("POSTGRES_PASSWORD", ""))
     host = os.environ.get("POSTGRES_HOST", "localhost")
     port = os.environ.get("POSTGRES_PORT", "5432")
@@ -73,7 +73,7 @@ class BaseConfig:
     MAIL_USE_SSL = _bool("MAIL_USE_SSL", "false")  # implicit TLS, port 465
     MAIL_USERNAME = os.environ.get("MAIL_USERNAME", "")
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD", "")
-    MAIL_DEFAULT_SENDER = os.environ.get("MAIL_DEFAULT_SENDER", "Akayza <no-reply@akayza.co.za>")
+    MAIL_DEFAULT_SENDER = os.environ.get("MAIL_DEFAULT_SENDER", "Campus Chommie <no-reply@example.com>")
     MAIL_REPLY_TO = os.environ.get("MAIL_REPLY_TO", "")
 
     # Delivery BEHAVIOUR is decided in code, not per environment: reviewed,
@@ -95,7 +95,7 @@ class BaseConfig:
     # Password reset links (one use).
     PASSWORD_RESET_EXPIRY_MINUTES = int(os.environ.get("PASSWORD_RESET_EXPIRY_MINUTES", 30))
     # The backend's public address, used in links inside emails (email apps
-    # strip akayza:// links, so the reset button opens {APP_BASE_URL}/reset-password).
+    # strip campuschommie:// links, so the reset button opens {APP_BASE_URL}/reset-password).
     # Development: the PC's Wi-Fi address (like the app's API URL). Production: https.
     APP_BASE_URL = os.environ.get("APP_BASE_URL", "http://localhost:5000").rstrip("/")
 
@@ -138,7 +138,7 @@ class TestingConfig(BaseConfig):
     TESTING = True
     SECRET_KEY = os.environ.get("SECRET_KEY", "test-secret-key")
     JWT_SECRET_KEY = os.environ.get("JWT_SECRET_KEY", "test-jwt-secret-key-long-enough-32b")
-    SQLALCHEMY_DATABASE_URI = os.environ.get("TEST_DATABASE_URL") or _database_uri("POSTGRES_TEST_DB", "akayza_test")
+    SQLALCHEMY_DATABASE_URI = os.environ.get("TEST_DATABASE_URL") or _database_uri("POSTGRES_TEST_DB", "campus_chommie_test")
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(minutes=5)
     MAIL_PROVIDER = "fake"
     MAIL_ASYNC = False  # send inline so tests can read the fake outbox

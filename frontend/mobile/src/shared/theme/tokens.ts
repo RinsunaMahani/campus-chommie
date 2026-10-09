@@ -1,32 +1,34 @@
 /**
- * Design tokens: navy for text and main actions, blue for the accent
- * (primary call to action, progress, selection), amber only for things
- * that need attention. Clean light background.
+ * Design tokens: deep indigo for text and main actions, violet for the
+ * accent (primary call to action, progress, selection), and amber, green
+ * and red only for signals (Busy, Manageable, Heavy; attention). Clean
+ * light background. Every text colour meets WCAG AA on the backgrounds
+ * it is used on. No university's colours: the app serves them all.
  *
  * Key names are kept stable so screens don't churn when values change.
  */
 export const colors = {
-  ink: '#0F172A', // brand navy: text, primary buttons, headers
-  inkSoft: '#1E293B',
-  accent: '#2563EB', // blue: main call to action, progress, selected
-  accentDeep: '#1D4ED8',
-  accentTint: '#DBEAFE',
-  marigold: '#F59E0B', // brand amber: attention only (due today, pending)
+  ink: '#1E1B4B', // deep indigo: text, primary buttons, headers
+  inkSoft: '#312E81',
+  accent: '#6D28D9', // violet: main call to action, progress, selected
+  accentDeep: '#5B21B6',
+  accentTint: '#EDE9FE',
+  marigold: '#F59E0B', // amber: attention only (busy, due soon, pending)
   marigoldDeep: '#B45309',
   marigoldTint: '#FEF3C7',
-  jade: '#059669',
+  jade: '#047857', // green: manageable, done
   jadeTint: '#D1FAE5',
-  garnet: '#DC2626',
+  garnet: '#DC2626', // red: heavy, errors
   garnetTint: '#FEE2E2',
-  porcelain: '#F8FAFC', // app background
-  line: '#E2E8F0',
+  porcelain: '#F8F7FC', // app background
+  line: '#E6E3F0',
   white: '#FFFFFF',
-  text: '#0F172A',
-  textMuted: '#64748B',
-  textFaint: '#94A3B8',
-  iconTile: '#F1F5F9',
-  infoTint: '#F1F5F9',
-  overlay: 'rgba(15, 23, 42, 0.5)',
+  text: '#1E1B4B',
+  textMuted: '#5E5978',
+  textFaint: '#9A95AF',
+  iconTile: '#F1EFF8',
+  infoTint: '#F1EFF8',
+  overlay: 'rgba(30, 27, 75, 0.5)',
 } as const;
 
 export const fonts = {
@@ -39,16 +41,14 @@ export const fonts = {
   extrabold: 'PlusJakartaSans_800ExtraBold',
 } as const;
 
-/** Logo colours for the mark, wordmark, icon and splash. */
+/** Logo colours for the mark, wordmark, icon and splash (assets/images match these). */
 export const brand = {
-  navy: '#0F172A',
-  slate: '#1E293B',
-  emerald: '#10B981',
-  emeraldLight: '#34D399',
-  emeraldDeep: '#059669',
-  amber: '#F59E0B',
-  amberLight: '#FBBF24',
-  white: '#F8FAFC',
+  violet: '#6D28D9',
+  violetLight: '#7C3AED',
+  violetDeep: '#5B21B6',
+  lavender: '#DDD6FE',
+  gold: '#FBBF24',
+  white: '#FFFFFF',
 } as const;
 
 export const space = { xs: 4, sm: 8, md: 12, lg: 16, xl: 24, xxl: 32 } as const;

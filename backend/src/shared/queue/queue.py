@@ -21,12 +21,12 @@ from concurrent.futures import ThreadPoolExecutor
 from threading import Lock
 from typing import Callable, Optional
 
-logger = logging.getLogger("akayza.queue")
+logger = logging.getLogger("campus_chommie.queue")
 
 # How many jobs can genuinely run AT THE SAME TIME. Tune via env var,
 # no code change needed -- same "real constant, overridable per
 # environment" pattern used throughout this build (e.g.
-# CLOUDINARY_MODERATION_ENABLED).
+# LOGIN_MAX_FAILED_ATTEMPTS in config.py).
 MAX_WORKERS = int(os.environ.get("BACKGROUND_WORKER_POOL_SIZE", "5"))
 
 _executor: Optional[ThreadPoolExecutor] = None
@@ -43,7 +43,7 @@ def _ensure_executor_started() -> ThreadPoolExecutor:
     global _executor
     with _executor_lock:
         if _executor is None:
-            _executor = ThreadPoolExecutor(max_workers=MAX_WORKERS, thread_name_prefix="akayza-worker")
+            _executor = ThreadPoolExecutor(max_workers=MAX_WORKERS, thread_name_prefix="campus-chommie-worker")
     return _executor
 
 

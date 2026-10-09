@@ -93,8 +93,8 @@ def handle_rate_limit_exceeded(error: RateLimitExceeded):
     """
     Registered as the Flask error handler for RateLimitExceeded (see
     register() below). Runs for EVERY route ANY domain's limiter guards
-    -- Loan Book/Order Book/Business/Supplier adding their own limits
-    later gets this same handler for free, with zero changes needed
+    -- My money, My week and every later feature adding their own limits
+    get this same handler for free, with zero changes needed
     here, as long as they call register_audit_events() with their own
     mapping at boot time.
 

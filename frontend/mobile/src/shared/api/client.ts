@@ -1,5 +1,5 @@
 /**
- * The one way the app talks to the Akayza API.
+ * The one way the app talks to the Campus Chommie API.
  *
  *  - Speaks the backend's envelope: {success, message, data, code}.
  *    Failures become an ApiError with the server's stable `code`.
@@ -63,7 +63,7 @@ async function raw<T>(method: string, path: string, body?: unknown, token?: stri
     }
     return { status: res.status, json };
   } catch {
-    throw new ApiError(0, 'NETWORK', "Can't reach Akayza. Check your connection and try again.");
+    throw new ApiError(0, 'NETWORK', "Can't reach Campus Chommie. Check your connection and try again.");
   } finally {
     clearTimeout(timer);
   }

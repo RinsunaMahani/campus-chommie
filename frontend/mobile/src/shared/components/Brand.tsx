@@ -1,52 +1,44 @@
 /**
- * The Akayza mark and wordmark, drawn from assets/akayza-images/*.svg
- * so they stay crisp at any size.
+ * The Campus Chommie mark and wordmark, drawn in code so they stay crisp
+ * at any size. The same shapes are in the app icon and splash
+ * (assets/images); change both together.
  *
- * The K: a white pillar (trust), an emerald loop (goods flowing out), an
- * amber loop (cash coming back) and the node where they meet (the handshake).
+ * The mark: a graduation cap on a violet tile, from choosing a course to
+ * graduating. Never a university's logo or colours.
  */
 import { StyleSheet, Text, View } from 'react-native';
-import Svg, { Circle, Defs, LinearGradient, Path, Rect, Stop } from 'react-native-svg';
+import Svg, { Circle, Defs, LinearGradient, Path, Polygon, Rect, Stop } from 'react-native-svg';
 
 import { brand, colors, fonts } from '@/shared/theme/tokens';
 
-const TOP = 'M 64 150 C 90 150, 140 100, 180 50 C 205 20, 245 35, 235 70 C 220 120, 160 170, 110 180 Z';
-const BOTTOM = 'M 100 160 C 145 175, 200 215, 225 255 C 240 280, 205 310, 175 290 C 135 260, 90 200, 64 185 Z';
-
-/** The app-icon squircle with the K inside. */
+/** The app-icon tile with the cap inside. */
 export function BrandMark({ size = 56 }: { size?: number }) {
   return (
-    <Svg width={size} height={size} viewBox="0 0 512 512">
+    <Svg width={size} height={size} viewBox="0 0 512 512" accessibilityLabel="Campus Chommie">
       <Defs>
         <LinearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-          <Stop offset="0" stopColor={brand.navy} />
-          <Stop offset="1" stopColor={brand.slate} />
-        </LinearGradient>
-        <LinearGradient id="em" x1="0" y1="0" x2="1" y2="1">
-          <Stop offset="0" stopColor={brand.emeraldLight} />
-          <Stop offset="1" stopColor={brand.emeraldDeep} />
-        </LinearGradient>
-        <LinearGradient id="am" x1="0" y1="1" x2="1" y2="0">
-          <Stop offset="0" stopColor={brand.amber} />
-          <Stop offset="1" stopColor={brand.amberLight} />
+          <Stop offset="0" stopColor={brand.violetLight} />
+          <Stop offset="1" stopColor={brand.violetDeep} />
         </LinearGradient>
       </Defs>
       <Rect width="512" height="512" rx="112" fill="url(#bg)" />
-      <Rect x="20" y="20" width="472" height="472" rx="96" fill="none" stroke="#334155" strokeWidth="3" opacity={0.6} />
-      <Rect x="136" y="126" width="44" height="260" rx="22" fill={brand.white} />
-      <Path d={TOP} fill="url(#em)" transform="translate(116 106)" />
-      <Path d={BOTTOM} fill="url(#am)" transform="translate(116 106)" />
-      <Circle cx="236" cy="276" r="22" fill={brand.emerald} stroke={brand.navy} strokeWidth="8" />
+      {/* the cap's band, under the board */}
+      <Rect x="150" y="250" width="212" height="96" rx="32" fill={brand.lavender} />
+      {/* the board */}
+      <Polygon points="256,136 450,224 256,312 62,224" fill={brand.white} />
+      {/* the tassel */}
+      <Path d="M256 224 L400 262 L400 330" stroke={brand.gold} strokeWidth="14" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+      <Circle cx="400" cy="348" r="18" fill={brand.gold} />
     </Svg>
   );
 }
 
-/** The wordmark: "akay" + "za" in the accent colour. Pass onDark on navy backgrounds. */
+/** The wordmark: "Campus" + "Chommie" in the accent colour. Pass onDark on violet backgrounds. */
 export function Wordmark({ size = 26, onDark = false }: { size?: number; onDark?: boolean }) {
   return (
-    <Text style={[styles.word, { fontSize: size, letterSpacing: -size * 0.03 }]}>
-      <Text style={{ color: onDark ? brand.white : brand.navy }}>akay</Text>
-      <Text style={{ color: colors.accent }}>za</Text>
+    <Text style={[styles.word, { fontSize: size, letterSpacing: -size * 0.02 }]}>
+      <Text style={{ color: onDark ? brand.white : colors.ink }}>Campus </Text>
+      <Text style={{ color: onDark ? brand.lavender : colors.accent }}>Chommie</Text>
     </Text>
   );
 }

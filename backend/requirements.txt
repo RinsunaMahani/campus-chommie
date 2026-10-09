@@ -1,4 +1,4 @@
-# Akayza backend -- Python 3.12
+# Campus Chommie backend -- Python 3.12
 # Versions follow our earlier, production-tested stack (see REUSE.md).
 
 Flask==3.1.3

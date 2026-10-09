@@ -76,17 +76,3 @@ class AccountLockedError(AppError):
 
     status_code = 423
     code = "ACCOUNT_LOCKED"
-
-
-class InvalidApiKeyError(UnauthorizedError):
-    """A supplier-integration key that is missing, unknown, revoked or
-    expired. ONE error for all of them on purpose: telling an
-    unauthenticated caller which case it is confirms a key exists."""
-
-    code = "INVALID_API_KEY"
-
-
-class ApiKeyScopeError(ForbiddenError):
-    """A valid integration key that isn't allowed to do this."""
-
-    code = "API_KEY_SCOPE"

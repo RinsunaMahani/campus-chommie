@@ -17,8 +17,11 @@ export default function WelcomeScreen() {
   if (status === 'unverified') return <Redirect href="/verify-email" />;
 
   return (
-    // Soft white with a light blue wash top and bottom, as in the design image.
-    <LinearGradient colors={['#E3EDF5', '#F7FAFC', '#F7FAFC', '#E3EDF5']} locations={[0, 0.35, 0.65, 1]} style={styles.fill}>
+    // Soft white with a light violet wash top and bottom.
+    <LinearGradient
+      colors={[colors.accentTint, colors.porcelain, colors.porcelain, colors.accentTint]}
+      locations={[0, 0.35, 0.65, 1]}
+      style={styles.fill}>
       <StatusBar style="dark" />
       <SafeAreaView style={styles.safe}>
         <View style={styles.center}>

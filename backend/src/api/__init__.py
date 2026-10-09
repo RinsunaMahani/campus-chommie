@@ -19,7 +19,7 @@ def health():
     the app on start-up and by monitoring."""
     try:
         db.session.execute(text("SELECT 1"))
-        return success_response({"status": "ok", "database": "ok"}, message="Akayza API is healthy")
+        return success_response({"status": "ok", "database": "ok"}, message="Campus Chommie API is healthy")
     except Exception:  # noqa: BLE001
         return error_response(message="Database unavailable", status_code=503, code="DB_UNAVAILABLE")
 

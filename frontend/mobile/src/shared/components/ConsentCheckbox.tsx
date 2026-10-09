@@ -13,7 +13,7 @@ export function ConsentCheckbox({ checked, onChange, error }: { checked: boolean
   return (
     <Checkbox checked={checked} onChange={onChange} error={error} label="I agree to the Privacy Policy and Terms of Use">
       <Text style={styles.text}>
-        <Text onPress={() => onChange(!checked)}>I agree to Akayza&apos;s</Text>{' '}
+        <Text onPress={() => onChange(!checked)}>I agree to Campus Chommie&apos;s</Text>{' '}
         <Text style={styles.link} onPress={() => router.push('/privacy-policy')} accessibilityRole="link">
           Privacy Policy
         </Text>{' '}

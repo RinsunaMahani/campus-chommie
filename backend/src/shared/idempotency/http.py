@@ -1,11 +1,11 @@
 """
-"A retried request lands exactly once" for any write route (the credit
-book's sales and payments, placing an order...). Written by Risuna for the
-credit book; moved here so every feature shares one implementation.
+"A retried request lands exactly once" for any write route (logging a
+day's spending, adding an assessment...). Written by Rinsuna; kept here so
+every feature shares one implementation.
 
-A phone on a bad signal sends "new credit sale", the answer never arrives,
-and the app tries again. With the same Idempotency-Key header the second
-try gets the first answer instead of adding the sale twice. Uses
+A phone on a bad signal sends "log R45 for today", the answer never
+arrives, and the app tries again. With the same Idempotency-Key header the
+second try gets the first answer instead of logging the spending twice. Uses
 src/shared/idempotency (claim -> run -> store; 5xx releases the claim).
 Without the header the request simply runs.
 """

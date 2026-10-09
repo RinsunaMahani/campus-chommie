@@ -19,7 +19,7 @@ from __future__ import annotations
 # corruption surfacing as an inexplicable figure on someone's phone.
 #
 # For scale: in ZAR cents this is roughly R90 trillion, far beyond any
-# real Akayza value. This bound exists to make an entire failure
+# real Campus Chommie value. This bound exists to make an entire failure
 # mode impossible, not because it's expected to be approached.
 MAX_SAFE_MINOR_UNITS = 2**53 - 1
 MIN_SAFE_MINOR_UNITS = -(2**53 - 1)

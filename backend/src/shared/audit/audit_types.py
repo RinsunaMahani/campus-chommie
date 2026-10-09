@@ -133,7 +133,7 @@ class AuditEvent:
                                   # presentation concern (logs/UI), never storage.
                                   # Investigators must be able to search exact values.
     role: Optional[str] = None
-    tenant_id: Optional[str] = None  # nullable today; Akayza is not
+    tenant_id: Optional[str] = None  # nullable today; Campus Chommie is not
                                       # multi-tenant yet, but retrofitting a
                                       # tenant column across table+indexes+
                                       # repository+API+permissions later is

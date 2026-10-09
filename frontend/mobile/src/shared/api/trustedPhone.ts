@@ -9,7 +9,7 @@
 import * as SecureStore from 'expo-secure-store';
 import { Platform } from 'react-native';
 
-const KEY = 'akayza.trusted-phone.v1';
+const KEY = 'campus-chommie.trusted-phone.v1';
 let memory: Record<string, string> | null = null;
 
 async function all(): Promise<Record<string, string>> {

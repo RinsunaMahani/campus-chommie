@@ -12,7 +12,7 @@ import re
 
 import pytest
 
-PASSWORD = "Spaza2026!"
+PASSWORD = "Campus2026!"
 CONSENT = {"privacy_version": "0.1-draft", "terms_version": "0.1-draft"}
 REFUSED = {400, 401, 403, 404, 409, 413, 415, 422, 423, 429}
 
@@ -122,7 +122,7 @@ def test_account_security_with_huge_passwords(client, outbox, password):
 
 def test_emoji_password_within_limits_works(client, outbox):
     """A password with a few emoji that fits bcrypt is fine: sign up and sign in."""
-    pw = "Spaza2026!😀"
+    pw = "Campus2026!😀"
     register(client, password=pw)
     code = re.search(r">(\d{6})<", outbox[-1]["html_body"]).group(1)
     assert client.post("/api/v1/auth/verify-email", json={"email": "nomsa@example.com", "code": code}).status_code == 200

@@ -20,7 +20,7 @@ from src.shared.audit.audit_context import get_ip_address
 from src.shared.net.client_ip import client_ip, client_ip_key
 from src.shared.rate_limit.limiter import limiter
 
-PASSWORD = "Spaza2026!"
+PASSWORD = "Campus2026!"
 CONSENT = {"privacy_version": "0.1-draft", "terms_version": "0.1-draft"}
 TEST_CLIENT_IP = "127.0.0.1"  # what the test client's connection says
 FORGED = {"X-Forwarded-For": "6.6.6.6", "CF-Connecting-IP": "7.7.7.7", "X-Real-IP": "8.8.8.8"}

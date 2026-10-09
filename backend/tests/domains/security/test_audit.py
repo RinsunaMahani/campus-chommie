@@ -16,7 +16,7 @@ from sqlalchemy import text
 from src.domains.security.audit.models import AuditEventRecord
 from src.extensions import db
 
-PASSWORD = "Spaza2026!"
+PASSWORD = "Campus2026!"
 CONSENT = {"privacy_version": "0.1-draft", "terms_version": "0.1-draft"}
 
 

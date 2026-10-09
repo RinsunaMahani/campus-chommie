@@ -18,8 +18,7 @@ lets in Cloudflare's addresses only): anyone who reaches the server
 directly can send that header too.
 
 Used by the rate limiter (every per-IP key and the login key), the 429
-audit, sessions, auth_service and audit_context. PayFast keeps its own
-rule (PAYFAST_TRUST_PROXY, commerce/payments) while we run ngrok.
+audit, sessions, auth_service and audit_context.
 """
 from __future__ import annotations
 

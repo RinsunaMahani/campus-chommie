@@ -8,5 +8,5 @@
     base_model.py   every table gets: id (UUID), created_at, updated_at,
                     deleted_at (soft delete)
 
-Nothing here knows about traders, suppliers or orders.
+Nothing here knows about students, classes or money.
 """

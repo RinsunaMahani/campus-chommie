@@ -24,7 +24,7 @@ export function Muted({ style, ...props }: TextProps) {
   return <Text {...props} style={[styles.muted, style]} />;
 }
 
-/** "STEP 1 OF 4", "TODAY", "YOUR SUPPLIERS". */
+/** "STEP 1 OF 4", "TODAY", "YOUR ACCOUNT". */
 export function Overline({ style, ...props }: TextProps) {
   return <Text {...props} style={[styles.overline, style]} />;
 }

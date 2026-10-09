@@ -1,14 +1,14 @@
 """
 The page the reset email's button opens: an https link (email apps strip
-akayza:// links), a new-password form, one use.
+campuschommie:// links), a new-password form, one use.
 """
 from __future__ import annotations
 
 import re
 
 EMAIL = "reset@example.com"
-PASSWORD = "Spaza2026!"
-NEW = "NewSpaza2026#"
+PASSWORD = "Campus2026!"
+NEW = "NewCampus2026#"
 CONSENT = {"privacy_version": "0.1-draft", "terms_version": "0.1-draft"}
 
 
@@ -19,7 +19,7 @@ def ticket_from_email(client, outbox) -> str:
     client.post("/api/v1/auth/forgot-password", json={"email": EMAIL})
     html = outbox[-1]["html_body"]
     link = re.search(r'href="([^"]+)"', html).group(1)
-    assert link.startswith("http") and "/reset-password?ticket=" in link  # a real web link, not akayza://
+    assert link.startswith("http") and "/reset-password?ticket=" in link  # a real web link, not campuschommie://
     return link.split("ticket=")[1]
 
 
@@ -27,7 +27,7 @@ def test_email_button_opens_the_form(client, outbox):
     ticket = ticket_from_email(client, outbox)
     r = client.get(f"/reset-password?ticket={ticket}")
     assert r.status_code == 200 and b"Choose a new password" in r.data
-    assert f"akayza://reset-password?token={ticket}".encode() in r.data  # "open the app" still offered
+    assert f"campuschommie://reset-password?token={ticket}".encode() in r.data  # "open the app" still offered
     assert r.headers["Referrer-Policy"] == "no-referrer" and r.headers["Cache-Control"] == "no-store"
 
 

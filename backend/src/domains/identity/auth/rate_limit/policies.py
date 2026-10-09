@@ -34,7 +34,7 @@ EXPORT_DATA = "5 per hour"
 def login_key_func() -> str:
     """IP + the email being tried, not IP alone.
 
-    A spaza with the owner's phone and a helper's phone on one Wi-Fi share
+    Students in one residence or on one campus Wi-Fi share
     an IP: keyed on IP alone they'd lock each other out. Keyed on IP +
     email, each person gets their own allowance, while repeated tries on
     ONE account from ONE place are still capped. Guessing across many

@@ -11,7 +11,7 @@ import { isStrongPassword } from '@/shared/lib/validation';
 import { colors, fonts } from '@/shared/theme/tokens';
 
 /**
- * Opened by the link in the reset email (akayza://reset-password?token=...).
+ * Opened by the link in the reset email (campuschommie://reset-password?token=...).
  * The link works once and expires in 30 minutes; setting the new password
  * signs the account out everywhere.
  */

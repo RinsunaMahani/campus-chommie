@@ -8,13 +8,13 @@ you want scheduled?" rather than knowing that answer itself.
 
     Master Scheduler
             |
-     +------+-------+--------+
-     |      |       |        |
-     v      v       v        v
-    Auth  Business Supplier Platform
-  Scheduler Scheduler Scheduler Scheduler
+     +------+-------+-------------+
+     |      |       |             |
+     v      v       v             v
+    Auth  Notifications  Idempotency  (each new domain)
+  Scheduler Scheduler     Scheduler
    (each domain's OWN file, e.g.
-    domains/auth/schedulers/auth_scheduler.py,
+    domains/identity/auth/schedulers/identity_scheduler.py,
     listing that domain's own jobs)
 
 WHY THIS LIVES OUTSIDE domains/, as a sibling to core/ and shared/,

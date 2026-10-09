@@ -1,10 +1,10 @@
 """
-Akayza Finance Engine -- the platform's financial integrity engine.
+Campus Chommie Finance Engine -- the platform's financial integrity engine.
 
 Every feature that creates, calculates, validates, formats, or stores
 money uses THIS module. No feature implements its own money logic.
 
-    Loan Book / Supplier Payments / Akayza Wallet / Financing / Settlement
+    My money (income, payments, spending) / any later money feature
                               |
                               v
                       Shared Finance Engine
@@ -30,19 +30,19 @@ WHAT THIS ENGINE MUST NEVER OWN
 
     That test exists because a documented rule decays: someone rushing a
     feature adds "just one import", nobody notices in review, and six
-    months later Finance depends on Loan Book while Loan Book depends on
+    months later Finance depends on My money while My money depends on
     Finance. The test makes that impossible rather than discouraged.
 
 TWO LEVELS OF USE (architecture rule)
     Level 1 -- every money module: validation, calculation, formatting,
         allocation, audit, atomic transactions.
-    Level 2 -- REAL MONEY MOVEMENT only (Wallet, Supplier Payments,
-        Settlement): fraud detection, velocity limits, gateway
-        callbacks, reconciliation, payment authorization.
+    Level 2 -- REAL MONEY MOVEMENT only (payments, settlement): fraud
+        detection, velocity limits, gateway callbacks, reconciliation,
+        payment authorization.
 
-    LOAN BOOK IS LEVEL 1 ONLY. It records debt between two people; it
-    never moves money, so Level 2 machinery does not apply and must not
-    be bolted onto it.
+    CAMPUS CHOMMIE IS LEVEL 1 ONLY. My money records a student's own
+    entries; nothing in the app moves money, so Level 2 machinery does
+    not apply and must not be bolted onto it.
 
 INTEGER MINOR UNITS, ALWAYS
     Money is a whole number of a currency's smallest unit (cents for

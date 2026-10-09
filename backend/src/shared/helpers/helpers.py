@@ -12,10 +12,6 @@ def mask_email(email: str) -> str:
     "LOGGING"/"SECURITY" -- never log sensitive values in full).
     Example: "mandla@example.com" -> "m***a@example.com".
 
-    ALSO used by network/connections for search-result display
-    (file.txt §4: enough to recognise the supplier, never the full
-    identifier) -- same masking, a second legitimate use, not a scope
-    creep of what this function does.
     """
     if "@" not in email:
         return "***"

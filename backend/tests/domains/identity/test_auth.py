@@ -12,7 +12,7 @@ from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 from cryptography.hazmat.primitives.serialization import Encoding, PublicFormat
 
 EMAIL = "nomsa@example.com"
-PASSWORD = "Spaza2026!"
+PASSWORD = "Campus2026!"
 CONSENT = {"privacy_version": "0.1-draft", "terms_version": "0.1-draft"}
 
 
@@ -24,7 +24,7 @@ def device(platform="android") -> dict:
     """What the phone sends: its public key, signed with its private key."""
     private = Ed25519PrivateKey.generate()
     public = b64(private.public_key().public_bytes(Encoding.Raw, PublicFormat.Raw))
-    signature = b64(private.sign(f"akayza-device:{public}".encode()))
+    signature = b64(private.sign(f"campus-chommie-device:{public}".encode()))
     return {"public_key": public, "signature": signature, "platform": platform, "label": "Test phone"}
 
 

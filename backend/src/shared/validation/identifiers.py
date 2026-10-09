@@ -4,20 +4,14 @@ canonical form used for INDEXED MATCHING (not display). Scope matches
 this module's sibling validators.py: infrastructure-level, format/shape
 only, never business rules.
 
-WHY THIS EXISTS: nothing in this codebase normalized phone numbers
-before Supplier Discovery needed it (confirmed by reading
-user_repository.py — email normalization there is just an inline
-`.strip().lower()`, and nothing touches phone at all). Real South
-African phone input varies too much for that inline-regex approach to
-be safe here — leading zero vs +27, spaces, dashes, users pasting a
-number with a stray "tel:" prefix. Using `phonenumbers` (Google's
-libphonenumber, the same library iOS/Android's own dialers use) is
-worth the dependency rather than re-deriving that logic badly.
+WHY THIS EXISTS: real South African phone input varies too much for an
+inline regex to be safe -- leading zero vs +27, spaces, dashes, users
+pasting a number with a stray "tel:" prefix. Using `phonenumbers`
+(Google's libphonenumber, the same library iOS/Android's own dialers
+use) is worth the dependency rather than re-deriving that logic badly.
 
-Shared here (not owned by connections alone) since normalizing
-a phone number for matching is a cross-cutting concern other domains
-will eventually want too (OTP delivery already touches phone numbers,
-just doesn't normalize them for matching yet).
+Shared here (not owned by one feature) since normalizing a phone number
+for matching is a cross-cutting concern.
 """
 from __future__ import annotations
 
@@ -26,8 +20,8 @@ from typing import Optional
 import phonenumbers
 
 # Default region for parsing a NATIONAL-format number (one without a
-# leading + / country code) — Akayza's userbase, per every
-# existing example throughout this codebase (+27...). A number that's
+# leading + / country code) — Campus Chommie's users are South African
+# (+27...). A number that's
 # already in full international format (+<any country>...) is parsed
 # correctly regardless of this default.
 DEFAULT_REGION = "ZA"
@@ -79,13 +73,9 @@ def looks_like_phone(value: str) -> bool:
 def escape_like_pattern(value: str) -> str:
     """Escapes SQL LIKE/ILIKE's three special characters (%, _, and
     the escape character itself) in raw user input BEFORE it gets
-    turned into a search pattern -- shared by
-    SupplierProfileRepository.search_by_name_prefix and
-    BusinessProfileRepository.search_by_name_prefix (Find Supplier /
-    Find Business), found as a real gap while reviewing search
-    behaviour: without this, someone searching for the literal
-    business name "50% Off Traders" would have their own "%"
-    interpreted as a wildcard, and someone searching a single "%"
+    turned into a search pattern, for any search by name prefix.
+    Without this, someone searching for a literal name such as
+    "50% Off" would have their own "%" interpreted as a wildcard, and someone searching a single "%"
     character would get back the first N results alphabetically
     instead of a real narrow match -- not a data-exposure risk (the
     caller already only returns the same narrow, already-masked
