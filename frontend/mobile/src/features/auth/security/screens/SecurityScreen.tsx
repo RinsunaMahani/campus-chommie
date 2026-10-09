@@ -17,7 +17,7 @@ function when(iso: string): string {
   return d.toLocaleDateString('en-ZA', { day: 'numeric', month: 'short' }) + ', ' + d.toLocaleTimeString('en-ZA', { hour: '2-digit', minute: '2-digit' });
 }
 
-/** More -> Security: where you're signed in, your password, your data, your account. */
+/** Home -> Account security: where you're signed in, your password, your data, your account. */
 export default function SecurityScreen() {
   const [phones, setPhones] = useState<SignedInPhone[] | null>(null);
   const [message, setMessage] = useState('');
@@ -78,9 +78,9 @@ export default function SecurityScreen() {
 
       <Overline>Password and data</Overline>
       <Card style={{ paddingVertical: 4 }}>
-        <ListRow icon="key" title="Change password" subtitle="Your other phones will be signed out" onPress={() => router.push('/informal-business/security/change-password')} />
+        <ListRow icon="key" title="Change password" subtitle="Your other phones will be signed out" onPress={() => router.push('/change-password')} />
         <ListRow icon="user-x" title="Delete my account and data" subtitle="Coming soon" />
-        <ListRow icon="trash-2" title="Close my account" subtitle="Ends every session on every phone" danger onPress={() => router.push('/informal-business/security/close-account')} last />
+        <ListRow icon="trash-2" title="Close my account" subtitle="Ends every session on every phone" danger onPress={() => router.push('/close-account')} last />
       </Card>
     </Screen>
   );

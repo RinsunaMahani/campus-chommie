@@ -47,12 +47,10 @@ export function isStrongPassword(pw: string): boolean {
 
 /**
  * NAME RULES, the same as the backend's shared/validation/text.py
- * (business_name, person_name). The server decides; these give the
- * message instantly. Change both together.
+ * (person_name). The server decides; these give the message instantly.
+ * Change both together.
  */
-const BUSINESS_NAME_SYMBOLS = " &'’-.,()";
 const PERSON_NAME_SYMBOLS = " '’-.";
-export const BUSINESS_NAME_RULE = "Use letters for the business name (& - ' . are fine; no numbers or emoji).";
 export const PERSON_NAME_RULE = 'Use letters for your name (no numbers or emoji).';
 
 /** A letter in any cased script (Latin, accented, Greek, Cyrillic...). */
@@ -65,15 +63,6 @@ function tidy(name: string): string {
 }
 
 /** '' when fine, otherwise the message to show. */
-export function businessNameProblem(name: string): string {
-  const text = tidy(name);
-  if (text.length > 80) return 'Use at most 80 characters.';
-  const chars = [...text];
-  const allowed = chars.every((ch) => isLetter(ch) || BUSINESS_NAME_SYMBOLS.includes(ch));
-  const distinctLetters = new Set(chars.filter(isLetter).map((ch) => ch.toLowerCase()));
-  return allowed && distinctLetters.size >= 2 ? '' : BUSINESS_NAME_RULE;
-}
-
 export function personNameProblem(name: string): string {
   const text = tidy(name);
   if (text.length > 80) return 'Use at most 80 characters.';

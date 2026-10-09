@@ -46,13 +46,13 @@ export default function GooglePicker() {
     );
   }
 
-  async function pick(name: string, email: string) {
+  async function pick(email: string) {
     setPicked(email);
     const result = await authApi.continueWithGoogle(email);
     if (result === 'link') {
       router.replace({ pathname: '/link-google', params: { email } });
     } else {
-      startGoogleSignUp(email, name, consent === '1'); // onboarding opens on its own
+      startGoogleSignUp(email, consent === '1'); // the signed-in screens open on their own
     }
   }
 
@@ -71,7 +71,7 @@ export default function GooglePicker() {
         {accounts.map((a) => (
           <Pressable
             key={a.email}
-            onPress={() => pick(a.name, a.email)}
+            onPress={() => pick(a.email)}
             disabled={!!picked}
             style={[styles.account, picked === a.email && styles.accountPicked]}>
             <View style={[styles.avatar, { backgroundColor: a.tint }]}>

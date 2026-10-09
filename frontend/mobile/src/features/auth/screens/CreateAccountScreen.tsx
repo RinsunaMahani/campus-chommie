@@ -2,6 +2,7 @@ import { router } from 'expo-router';
 import { useRef, useState } from 'react';
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 
+import { GOOGLE_READY } from '@/constants/config';
 import { Button } from '@/shared/components/Button';
 import { ConsentCheckbox } from '@/shared/components/ConsentCheckbox';
 import { GoogleButton, OrDivider } from '@/shared/components/Parts';
@@ -14,7 +15,7 @@ import { useSession } from '@/features/auth/session/SessionProvider';
 import { isEmail, isStrongPassword } from '@/shared/lib/validation';
 import { colors, fonts } from '@/shared/theme/tokens';
 
-/** Account stage: email, password, and agreeing to the Privacy Policy and Terms. The business comes in the steps after. */
+/** Account stage: email, password, and agreeing to the Privacy Policy and Terms. Nothing else is asked here. */
 export default function CreateAccount() {
   const { startEmailSignUp } = useSession();
   const [email, setEmail] = useState('');
@@ -87,17 +88,22 @@ export default function CreateAccount() {
       <View style={{ gap: 6 }}>
         <Title>Create your account</Title>
       </View>
-      <GoogleButton
-        onPress={() => {
-          // Google sign-up needs the same agreement as email sign-up.
-          if (!agreed) {
-            setConsentError(true);
-            return;
-          }
-          router.push({ pathname: '/google', params: { consent: '1' } });
-        }}
-      />
-      <OrDivider />
+      {/* Only once Google sign-in is set up: never a "coming soon" button. */}
+      {GOOGLE_READY ? (
+        <>
+          <GoogleButton
+            onPress={() => {
+              // Google sign-up needs the same agreement as email sign-up.
+              if (!agreed) {
+                setConsentError(true);
+                return;
+              }
+              router.push({ pathname: '/google', params: { consent: '1' } });
+            }}
+          />
+          <OrDivider />
+        </>
+      ) : null}
       <TextField
         ref={emailRef}
         label="Email address"

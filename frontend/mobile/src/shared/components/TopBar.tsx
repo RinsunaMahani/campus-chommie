@@ -1,6 +1,6 @@
 import { Feather } from '@expo/vector-icons';
 import { ComponentProps } from 'react';
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { colors, fonts, radius, sizes } from '@/shared/theme/tokens';
 
@@ -9,30 +9,21 @@ type Props = {
   title: string;
   subtitle?: string;
   action?: { icon: ComponentProps<typeof Feather>['name']; label: string; onPress: () => void; dot?: boolean; badge?: number };
-  /** A small green tick on the avatar (CIPC-verified business). */
-  verified?: boolean;
-  /** Tapping the avatar opens the business profile. */
+  /** Tapping the avatar opens the student's account. */
   onAvatarPress?: () => void;
-  /** The business's profile photo, shown instead of the initial. */
-  imageUrl?: string | null;
 };
 
-/** Tab screens' top bar: the business and one action (usually the bell). */
-export function TopBar({ initial, title, subtitle, action, verified, onAvatarPress, imageUrl }: Props) {
+/** Tab screens' top bar: who is signed in, and one action (usually the bell). */
+export function TopBar({ initial, title, subtitle, action, onAvatarPress }: Props) {
   return (
     <View style={styles.row}>
       <Pressable
         onPress={onAvatarPress}
         disabled={!onAvatarPress}
         accessibilityRole={onAvatarPress ? 'button' : undefined}
-        accessibilityLabel={verified ? 'Business profile, verified' : 'Business profile'}
+        accessibilityLabel="Your account"
         style={styles.avatar}>
-        {imageUrl ? <Image source={{ uri: imageUrl }} style={styles.photo} /> : <Text style={styles.initial}>{initial.toUpperCase()}</Text>}
-        {verified ? (
-          <View style={styles.tick}>
-            <Feather name="check" size={9} color={colors.white} />
-          </View>
-        ) : null}
+        <Text style={styles.initial}>{initial.toUpperCase()}</Text>
       </Pressable>
       <View style={{ flex: 1 }}>
         <Text style={styles.title} numberOfLines={1}>
@@ -60,20 +51,6 @@ const styles = StyleSheet.create({
   row: { flexDirection: 'row', alignItems: 'center', gap: 12 },
   avatar: { width: 38, height: 38, borderRadius: radius.sm, backgroundColor: colors.ink, alignItems: 'center', justifyContent: 'center' },
   initial: { fontFamily: fonts.display, fontSize: 16, color: colors.white },
-  photo: { width: 38, height: 38, borderRadius: radius.sm },
-  tick: {
-    position: 'absolute',
-    right: -4,
-    bottom: -4,
-    width: 16,
-    height: 16,
-    borderRadius: 8,
-    backgroundColor: colors.jade,
-    borderWidth: 2,
-    borderColor: colors.porcelain,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   title: { fontFamily: fonts.display, fontSize: 19, color: colors.ink },
   subtitle: { fontFamily: fonts.body, fontSize: 12, color: colors.textMuted },
   action: {

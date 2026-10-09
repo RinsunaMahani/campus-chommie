@@ -2,6 +2,7 @@ import { router } from 'expo-router';
 import { useRef, useState } from 'react';
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 
+import { GOOGLE_READY } from '@/constants/config';
 import { Button } from '@/shared/components/Button';
 import { GoogleButton, OrDivider } from '@/shared/components/Parts';
 import { Screen } from '@/shared/components/Screen';
@@ -67,10 +68,14 @@ export default function SignIn() {
       }>
       <View style={{ gap: 8 }}>
         <Title>Welcome back</Title>
-        <Body>Sign in to your business.</Body>
+        <Body>Sign in to your account.</Body>
       </View>
-      <GoogleButton onPress={() => router.push('/google')} />
-      <OrDivider />
+      {GOOGLE_READY ? (
+        <>
+          <GoogleButton onPress={() => router.push('/google')} />
+          <OrDivider />
+        </>
+      ) : null}
       <TextField
         label="Email address"
         icon="mail"

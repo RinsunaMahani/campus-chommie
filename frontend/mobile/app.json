@@ -20,13 +20,7 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "permissions": [
-        "android.permission.ACCESS_COARSE_LOCATION",
-        "android.permission.ACCESS_FINE_LOCATION",
-        "android.permission.ACCESS_COARSE_LOCATION",
-        "android.permission.ACCESS_FINE_LOCATION",
-        "android.permission.RECORD_AUDIO"
-      ]
+      "permissions": []
     },
     "web": {
       "bundler": "metro",
@@ -44,30 +38,13 @@
         }
       ],
       "expo-secure-store",
-      "expo-font",
-      [
-        "expo-location",
-        {
-          "locationWhenInUsePermission": "Akayza uses your location to place your business on the map, so suppliers who deliver to you can find you."
-        }
-      ],
-      [
-        "expo-image-picker",
-        {
-          "photosPermission": "Akayza uses your photos to upload business documents, like your trading permit.",
-          "cameraPermission": "Akayza uses your camera to photograph business documents, like your trading permit."
-        }
-      ]
+      "expo-font"
     ],
     "experiments": {
       "typedRoutes": true
     },
     "extra": {
-      "router": {},
-      "eas": {
-        "projectId": "2ef68108-0c16-4644-b679-698e942c5383"
-      }
-    },
-    "owner": "mandla-baloyi"
+      "router": {}
+    }
   }
 }

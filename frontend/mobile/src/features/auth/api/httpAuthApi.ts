@@ -37,8 +37,6 @@ async function keep(result: SignedIn): Promise<Profile> {
   await setTokens({ accessToken: result.access_token, refreshToken: result.refresh_token });
   // Given after an email code: this phone skips the code next time.
   await setTrustedToken(result.user.email, result.trusted_phone_token);
-  // The server has the account; business details (type, pin, categories)
-  // are still kept on the phone until the business-profile API exists.
   return {
     ...emptyProfile,
     email: result.user.email,

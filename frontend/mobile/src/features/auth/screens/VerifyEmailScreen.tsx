@@ -41,7 +41,7 @@ export default function VerifyEmail() {
     setError('');
     try {
       await authApi.verifyEmail(profile.email, code);
-      emailVerified(); // the router moves on to business type by itself
+      emailVerified(); // the router moves on to the signed-in screens by itself
     } catch (e) {
       setError(e instanceof AuthError ? e.message : 'Something went wrong. Try again.');
       setCode('');

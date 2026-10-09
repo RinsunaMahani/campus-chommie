@@ -17,8 +17,8 @@ clean_text() returns the tidy version or raises ValueError(message):
     letter or number
 
 CleanText is the marshmallow field that applies it; use it for every
-free-text field instead of fields.String. BusinessName and PersonName add
-the stricter rules for names (the app's shared/lib/validation.ts mirrors
+free-text field instead of fields.String. PersonName adds the stricter
+rules for a person's name (the app's shared/lib/validation.ts mirrors
 them for instant messages; the server decides).
 """
 from __future__ import annotations
@@ -75,28 +75,14 @@ class CleanText(fields.String):
 
 # ------------------------------------------------------------------- names
 
-#: Symbols a real business name uses ("Nomsa's Spaza & Deli", "Mokoena Build (Pty) Ltd").
-BUSINESS_NAME_SYMBOLS = set(" &'’-.,()")
 #: Symbols in a person's name ("Mary-Jane O'Neil", "Dr. N. Dlamini").
 PERSON_NAME_SYMBOLS = set(" '’-.")
 
-BUSINESS_NAME_RULE = "Use letters for the business name (& - ' . are fine; no numbers or emoji)."
 PERSON_NAME_RULE = "Use letters for your name (no numbers or emoji)."
 
 
 def _letters(text: str) -> int:
     return sum(1 for ch in text if ch.isalpha())
-
-
-def business_name(value: str) -> str:
-    """At least 2 DIFFERENT letters; only letters and a few symbols, so no
-    digits ("Sixty", not "60"): refuses "12334566", "00000", emoji, "aaaa"."""
-    text = clean_text(value, min_len=2, max_len=80)
-    allowed = all(ch.isalpha() or ch in BUSINESS_NAME_SYMBOLS or unicodedata.category(ch).startswith("M") for ch in text)
-    distinct_letters = {ch.lower() for ch in text if ch.isalpha()}
-    if not allowed or len(distinct_letters) < 2:
-        raise ValueError(BUSINESS_NAME_RULE)
-    return text
 
 
 def person_name(value: str) -> str:
@@ -117,10 +103,6 @@ class _RuleText(fields.String):
             return self._rule(text)
         except ValueError as e:
             raise ValidationError(str(e)) from None
-
-
-class BusinessName(_RuleText):
-    _rule = staticmethod(business_name)
 
 
 class PersonName(_RuleText):

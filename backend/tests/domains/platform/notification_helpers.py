@@ -13,7 +13,7 @@ from src.shared.notifications.notifications import publish_notification
 from src.shared.queue.queue import wait_until_idle
 
 PASSWORD = "Spaza2026!"
-CONSENT = {"privacy_version": "0.2-draft", "terms_version": "0.2-draft"}
+CONSENT = {"privacy_version": "0.1-draft", "terms_version": "0.1-draft"}
 BASE = "/api/v1/me/notifications"
 
 
