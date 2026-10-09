@@ -66,6 +66,18 @@ Sign-up and new-phone sign-in send a 6-digit code by email, so real codes need t
 `backend/.env` (for example a Gmail account with an app password). Codes are never written to any log. The tests use a
 fake mail provider and need none of this.
 
+**Course finder (no account; nothing stored).** All under `/api/v1`, in the usual envelope:
+
+| Endpoint | Body | Answer |
+|---|---|---|
+| `GET /universities` | none | each data pack: id, name, and whether a person has checked it (`confirmed`, `notice`) |
+| `GET /universities/<id>` | none | the whole pack: programmes, requirements, routes and sources |
+| `POST /pathways/assess` | `{university, marks: [{subject, percent}]}` | every programme at that university, best tiers first, each with its reasons and source |
+| `POST /pathways/plan` | `{university, goal, marks: [...]}` | the three-choice plan: the goal, a route into it and a safer related choice |
+
+A learner sends 1 to 9 subjects, each once, with marks from 0 to 100. Subject keys are those in
+`campus_engine/schemas.py` (`SUBJECTS`) plus `another_subject_1` to `another_subject_3` for subjects no rule names.
+
 ## App
 
 Needs Node 22 or newer.
