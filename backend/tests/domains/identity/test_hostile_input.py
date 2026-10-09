@@ -13,7 +13,7 @@ import re
 import pytest
 
 PASSWORD = "Campus2026!"
-CONSENT = {"privacy_version": "0.1-draft", "terms_version": "0.1-draft"}
+CONSENT = {"privacy_version": "0.1-draft", "terms_version": "0.1-draft", "confirmed_18_or_older": True}
 REFUSED = {400, 401, 403, 404, 409, 413, 415, 422, 423, 429}
 
 BAD_EMAILS = [
@@ -136,6 +136,18 @@ def test_emoji_password_within_limits_works(client, outbox):
 def test_sign_up_takes_nothing_but_email_password_and_consent(client):
     """Collect the minimum: an ID number (or anything else) is refused, not stored."""
     assert register(client, id_number="0000000000000").status_code == 422
+
+
+@pytest.mark.parametrize("confirmed", [False, None, "yes", "true", 1, 0, [], {}, "missing"])
+def test_sign_up_needs_a_real_18_or_older_confirmation(client, outbox, confirmed):
+    """Accounts are for adults: only the JSON value true counts. Anything
+    else is refused, and no account is made and no email sent."""
+    consent = {k: v for k, v in CONSENT.items() if k != "confirmed_18_or_older"}
+    if confirmed != "missing":
+        consent["confirmed_18_or_older"] = confirmed
+    r = register(client, consent=consent)
+    assert r.status_code == 422, (confirmed, r.get_json())
+    assert outbox == []
 
 
 @pytest.mark.parametrize("text", HOSTILE_TEXT)

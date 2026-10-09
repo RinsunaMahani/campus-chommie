@@ -5,7 +5,7 @@ import re
 
 EMAIL = "sec@example.com"
 PASSWORD = "Campus2026!"
-CONSENT = {"privacy_version": "0.1-draft", "terms_version": "0.1-draft"}
+CONSENT = {"privacy_version": "0.1-draft", "terms_version": "0.1-draft", "confirmed_18_or_older": True}
 
 
 def bearer(t):
@@ -81,7 +81,7 @@ def test_export_contains_my_data_and_no_secrets(client, outbox):
     a = signed_up(client, outbox)
     data = client.get("/api/v1/me/export", headers=bearer(a["access_token"])).get_json()["data"]
     assert data["account"]["email"] == EMAIL
-    assert {c["document"] for c in data["consents"]} == {"privacy_policy", "terms_of_use"}
+    assert {c["document"] for c in data["consents"]} == {"privacy_policy", "terms_of_use", "age_confirmation"}
     text = str(data).lower()
     assert len(data["trusted_phones"]) == 1
     for secret in ("password_hash", "code_hash", "token_hash", "refresh_jti", PASSWORD.lower(), a["trusted_phone_token"].lower()):

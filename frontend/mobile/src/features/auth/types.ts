@@ -29,7 +29,8 @@ export type SignInResult = { kind: 'signed_in'; profile: Profile } | { kind: 'co
 
 /** Everything the auth screens ask of the server: the mock or the real backend. */
 export interface AuthApi {
-  createAccount(input: { email: string; password: string; consent: Consent }): Promise<void>;
+  /** confirmed18OrOlder: accounts are for adults only; the server refuses anything but true. */
+  createAccount(input: { email: string; password: string; consent: Consent; confirmed18OrOlder: boolean }): Promise<void>;
   verifyEmail(email: string, code: string): Promise<void>;
   resendCode(email: string): Promise<void>;
   /** 'new' creates the account; 'link' means a password account already uses the email. */

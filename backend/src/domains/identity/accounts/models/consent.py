@@ -19,12 +19,14 @@ from src.extensions import db
 class LegalDocument(str, enum.Enum):
     PRIVACY_POLICY = "privacy_policy"
     TERMS_OF_USE = "terms_of_use"
+    #: "I am 18 or older", confirmed at sign-up: accounts are for adults only.
+    AGE_CONFIRMATION = "age_confirmation"
 
 
 class Consent(db.Model):
     __tablename__ = "consents"
     __table_args__ = (
-        db.CheckConstraint("document IN ('privacy_policy', 'terms_of_use')", name="ck_consents_document"),
+        db.CheckConstraint("document IN ('privacy_policy', 'terms_of_use', 'age_confirmation')", name="ck_consents_document"),
         {"schema": "identity"},
     )
 

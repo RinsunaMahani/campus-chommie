@@ -47,8 +47,9 @@ def _phone(data: dict):
 @limiter.limit(policies.REGISTER)
 def register():
     data = load(RegisterSchema(), request.get_json(silent=True))
+    consent = data["consent"]
     auth_service.register(
-        data["email"], data["password"], data["consent"]["privacy_version"], data["consent"]["terms_version"]
+        data["email"], data["password"], consent["privacy_version"], consent["terms_version"], consent["confirmed_18_or_older"]
     )
     return success_response({}, message=CHECK_EMAIL, status_code=202)
 
@@ -180,7 +181,11 @@ def google_sign_in():
     data = load(GoogleSignInSchema(), request.get_json(silent=True))
     consent = data.get("consent") or {}
     result = auth_service.google_sign_in(
-        data["id_token"], consent.get("privacy_version"), consent.get("terms_version"), _device(data)
+        data["id_token"],
+        consent.get("privacy_version"),
+        consent.get("terms_version"),
+        _device(data),
+        confirmed_18_or_older=consent.get("confirmed_18_or_older", False),
     )
     return success_response(result, message="Signed in with Google.")
 

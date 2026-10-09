@@ -12,7 +12,7 @@ from src.extensions import db
 EMAIL = "twofa@example.com"
 OTHER = "other@example.com"
 PASSWORD = "Campus2026!"
-CONSENT = {"privacy_version": "0.1-draft", "terms_version": "0.1-draft"}
+CONSENT = {"privacy_version": "0.1-draft", "terms_version": "0.1-draft", "confirmed_18_or_older": True}
 
 
 def bearer(t):

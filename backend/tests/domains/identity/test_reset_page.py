@@ -9,7 +9,7 @@ import re
 EMAIL = "reset@example.com"
 PASSWORD = "Campus2026!"
 NEW = "NewCampus2026#"
-CONSENT = {"privacy_version": "0.1-draft", "terms_version": "0.1-draft"}
+CONSENT = {"privacy_version": "0.1-draft", "terms_version": "0.1-draft", "confirmed_18_or_older": True}
 
 
 def ticket_from_email(client, outbox) -> str:

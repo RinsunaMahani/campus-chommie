@@ -52,7 +52,11 @@ export const httpAuthApi: AuthApi = {
       await api('POST', '/auth/register', {
         email: input.email,
         password: input.password,
-        consent: { privacy_version: PRIVACY_POLICY.version, terms_version: TERMS_OF_USE.version },
+        consent: {
+          privacy_version: PRIVACY_POLICY.version,
+          terms_version: TERMS_OF_USE.version,
+          confirmed_18_or_older: input.confirmed18OrOlder,
+        },
       });
     }),
 

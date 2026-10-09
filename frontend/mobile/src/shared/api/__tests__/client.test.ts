@@ -36,7 +36,7 @@ test('extra headers are sent and cannot replace the token', async () => {
     return respond(201, { success: true, data: { ok: 1 } });
   }) as unknown as typeof fetch;
 
-  await api('POST', '/me/credit-book/entries', { a: 1 }, { auth: true, headers: { 'Idempotency-Key': 'k-1', Authorization: 'Bearer forged' } });
+  await api('POST', '/money/spending', { a: 1 }, { auth: true, headers: { 'Idempotency-Key': 'k-1', Authorization: 'Bearer forged' } });
 
   expect(calls[0].headers['Idempotency-Key']).toBe('k-1');
   expect(calls[0].headers.Authorization).toBe('Bearer old');
@@ -50,9 +50,9 @@ test('the retry after a token refresh sends the same Idempotency-Key', async () 
     return respond(201, { success: true, data: { saved: true } });
   }) as unknown as typeof fetch;
 
-  const out = await api<{ saved: boolean }>('POST', '/me/credit-book/entries', { a: 1 }, { auth: true, headers: { 'Idempotency-Key': 'k-2' } });
+  const out = await api<{ saved: boolean }>('POST', '/money/spending', { a: 1 }, { auth: true, headers: { 'Idempotency-Key': 'k-2' } });
 
-  const saves = calls.filter((c) => c.url.endsWith('/entries'));
+  const saves = calls.filter((c) => c.url.endsWith('/spending'));
   expect(out.saved).toBe(true);
   expect(saves).toHaveLength(2);
   expect(saves.map((c) => c.headers['Idempotency-Key'])).toEqual(['k-2', 'k-2']);

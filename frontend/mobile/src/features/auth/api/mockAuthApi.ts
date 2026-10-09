@@ -24,6 +24,10 @@ const wait = (ms = 600) => new Promise((resolve) => setTimeout(resolve, ms));
 export const mockAuthApi: AuthApi = {
   async createAccount(input) {
     await wait();
+    // The server refuses sign-ups without it; the mock behaves the same.
+    if (input.confirmed18OrOlder !== true) {
+      throw new AuthError('AGE_NOT_CONFIRMED', 'You must be 18 or older to create an account.');
+    }
     // The server re-checks the password rule: the app's check can be bypassed.
     if (!isStrongPassword(input.password)) {
       throw new AuthError('WEAK_PASSWORD', 'Choose a stronger password: see the list under the password field.');

@@ -5,7 +5,7 @@ The password RULE itself is checked in the service, with a single message.
 """
 from __future__ import annotations
 
-from marshmallow import RAISE, Schema, fields, pre_load, validate
+from marshmallow import RAISE, Schema, ValidationError as MarshmallowError, fields, pre_load, validate
 
 from src.core.exceptions import ValidationError
 
@@ -45,9 +45,21 @@ _code = fields.String(required=True, validate=validate.Regexp(r"^\d{6}$", error=
 _challenge = fields.String(required=True, validate=validate.Length(min=20, max=100))
 
 
+class _MustBeTrue(fields.Field):
+    """Only the JSON value true: not "yes", not 1 (1 == True in Python)."""
+
+    def _deserialize(self, value, attr, data, **kwargs):
+        if value is not True:
+            raise MarshmallowError("Confirm you are 18 or older to create an account.")
+        return True
+
+
 class ConsentSchema(_Strict):
     privacy_version = fields.String(required=True, validate=validate.Length(max=30))
     terms_version = fields.String(required=True, validate=validate.Length(max=30))
+    confirmed_18_or_older = _MustBeTrue(
+        required=True, error_messages={"required": "Confirm you are 18 or older to create an account."}
+    )
 
 
 class RegisterSchema(_Strict):

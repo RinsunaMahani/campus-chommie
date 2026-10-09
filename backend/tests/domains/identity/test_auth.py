@@ -13,7 +13,7 @@ from cryptography.hazmat.primitives.serialization import Encoding, PublicFormat
 
 EMAIL = "nomsa@example.com"
 PASSWORD = "Campus2026!"
-CONSENT = {"privacy_version": "0.1-draft", "terms_version": "0.1-draft"}
+CONSENT = {"privacy_version": "0.1-draft", "terms_version": "0.1-draft", "confirmed_18_or_older": True}
 
 
 def b64(b: bytes) -> str:
@@ -72,8 +72,21 @@ def test_weak_password_rejected_with_one_message(client):
     assert "capital letter" in r.get_json()["message"]
 
 
+def test_sign_up_records_the_documents_and_the_age_confirmation(app, client, outbox):
+    from src.domains.identity.accounts.models import Consent
+    from src.domains.identity.accounts.services.account_service import AGE_CONFIRMATION_VERSION
+
+    signed_up(client, outbox)
+    with app.app_context():
+        rows = Consent.query.all()
+        recorded = {(c.document, c.version) for c in rows}
+        moments = {c.accepted_at for c in rows}
+    assert recorded == {("privacy_policy", "0.1-draft"), ("terms_of_use", "0.1-draft"), ("age_confirmation", AGE_CONFIRMATION_VERSION)}
+    assert len(moments) == 1  # one sign-up, one moment
+
+
 def test_outdated_consent_rejected(client):
-    r = register(client, consent={"privacy_version": "0.0-old", "terms_version": "0.1-draft"})
+    r = register(client, consent={"privacy_version": "0.0-old", "terms_version": "0.1-draft", "confirmed_18_or_older": True})
     assert r.status_code == 422
     assert r.get_json()["code"] == "CONSENT_OUTDATED"
 

@@ -8,7 +8,7 @@
     queue/          run slow work in the background
     rate_limit/     "too many attempts, try later"
     security/       password hashing and rules
-    validation/     email / phone / business-name clean-up
+    validation/     email / phone / name clean-up
     cache/, logging/, monitoring/, scheduling/, helpers/, constants/
 
 THE RULE: shared/ NEVER imports from src/domains. If a tool needs to

@@ -9,7 +9,7 @@ from src.domains.identity.auth.jobs import cleanup
 from src.domains.identity.auth.models import EmailCode, PasswordCredential
 from src.extensions import db
 
-CONSENT = {"privacy_version": "0.1-draft", "terms_version": "0.1-draft"}
+CONSENT = {"privacy_version": "0.1-draft", "terms_version": "0.1-draft", "confirmed_18_or_older": True}
 
 
 def register(client, email):

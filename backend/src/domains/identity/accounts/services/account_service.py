@@ -70,9 +70,28 @@ def check_consent_versions(privacy_version: str, terms_version: str) -> None:
         )
 
 
+#: The wording of the "I am 18 or older" confirmation. Bump it if the
+#: sign-up wording changes, so the records say which wording was confirmed.
+AGE_CONFIRMATION_VERSION = "18-or-older.v1"
+
+
+def check_age_confirmed(confirmed: object) -> None:
+    """Accounts are for people aged 18 or older (POPIA: a child's personal
+    information needs a guardian's consent, so we don't take it). The
+    schema already insists on true; this is the rule itself."""
+    if confirmed is not True:
+        raise ValidationError("You must be 18 or older to create an account.", code="AGE_NOT_CONFIRMED")
+
+
 def record_consents(user: User, privacy_version: str, terms_version: str, ip: Optional[str], user_agent: Optional[str]) -> None:
+    """The documents accepted and the age confirmed at sign-up, one row
+    each, all stamped with the same moment, IP and app."""
     now = utcnow()
-    for document, version in ((LegalDocument.PRIVACY_POLICY, privacy_version), (LegalDocument.TERMS_OF_USE, terms_version)):
+    for document, version in (
+        (LegalDocument.PRIVACY_POLICY, privacy_version),
+        (LegalDocument.TERMS_OF_USE, terms_version),
+        (LegalDocument.AGE_CONFIRMATION, AGE_CONFIRMATION_VERSION),
+    ):
         user_repository.add_consent(
             Consent(
                 user_id=user.id,

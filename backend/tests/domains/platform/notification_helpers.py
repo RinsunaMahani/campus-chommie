@@ -13,7 +13,7 @@ from src.shared.notifications.notifications import publish_notification
 from src.shared.queue.queue import wait_until_idle
 
 PASSWORD = "Campus2026!"
-CONSENT = {"privacy_version": "0.1-draft", "terms_version": "0.1-draft"}
+CONSENT = {"privacy_version": "0.1-draft", "terms_version": "0.1-draft", "confirmed_18_or_older": True}
 BASE = "/api/v1/me/notifications"
 
 

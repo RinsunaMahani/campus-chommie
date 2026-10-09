@@ -5,7 +5,7 @@ Deliberately neutral ground: both a business domain's job service (e.g.
 auth/jobs/cleanup_unverified_emails.py) and Platform's execution machinery
 (domains/platform/schedulers/) import these types. Neither Auth nor
 Platform "owns" this file — it lives in shared/ specifically so importing
-it never creates a Business->Platform or Platform->Business dependency in
+it never creates a Feature->Platform or Platform->Feature dependency in
 either direction. Security's monitoring layer also imports
 JobExecutionOutcome from here for the same reason.
 """

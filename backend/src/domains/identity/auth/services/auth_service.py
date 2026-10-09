@@ -146,13 +146,15 @@ def _trust_this_phone(user, phone: Optional[PhoneInfo]) -> tuple:
 # --------------------------------------------------------------- register
 
 
-def register(email: str, password: str, privacy_version: str, terms_version: str) -> None:
-    """Email, password and consent only. The business name and everything
-    else about the business come in the onboarding steps (business profile)."""
-    """Always ends the same way for the caller ("check your email"), so the
+def register(email: str, password: str, privacy_version: str, terms_version: str, confirmed_18_or_older: bool) -> None:
+    """Email, password, consent and the 18-or-older confirmation only:
+    nothing else is collected at sign-up.
+
+    Always ends the same way for the caller ("check your email"), so the
     response never reveals whether the email already has an account."""
     _check_password_rule(password)
     account_service.check_consent_versions(privacy_version, terms_version)
+    account_service.check_age_confirmed(confirmed_18_or_older)
 
     user = account_service.find_by_email(email)
     if user and user.status != AccountStatus.UNVERIFIED.value:
@@ -613,6 +615,7 @@ def google_sign_in(
     privacy_version: Optional[str],
     terms_version: Optional[str],
     device: Optional[DeviceInfo],
+    confirmed_18_or_older: bool = False,
 ) -> dict:
     """
     Continue with Google. Outcomes:
@@ -654,6 +657,7 @@ def google_sign_in(
             data={"email": claims.email, "name": claims.name},
         )
     account_service.check_consent_versions(privacy_version, terms_version)
+    account_service.check_age_confirmed(confirmed_18_or_older)
 
     claimed = False
     if user and user.status == AccountStatus.UNVERIFIED.value:

@@ -59,7 +59,7 @@ def normalize_phone(value: str, region: str = DEFAULT_REGION) -> Optional[str]:
 def looks_like_phone(value: str) -> bool:
     """Cheap pre-check so callers can decide "try phone matching"
     without paying for a full parse on obviously-not-a-phone input
-    (e.g. a business name search). Deliberately permissive — the real
+    (e.g. a search by name). Deliberately permissive — the real
     validity check is normalize_phone()'s job, not this one's."""
     digits_and_symbols = value.strip()
     if not digits_and_symbols:

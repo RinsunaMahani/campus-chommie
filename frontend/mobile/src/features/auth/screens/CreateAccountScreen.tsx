@@ -3,6 +3,7 @@ import { useRef, useState } from 'react';
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 
 import { GOOGLE_READY } from '@/constants/config';
+import { AgeCheckbox } from '@/shared/components/AgeCheckbox';
 import { Button } from '@/shared/components/Button';
 import { ConsentCheckbox } from '@/shared/components/ConsentCheckbox';
 import { GoogleButton, OrDivider } from '@/shared/components/Parts';
@@ -15,7 +16,10 @@ import { useSession } from '@/features/auth/session/SessionProvider';
 import { isEmail, isStrongPassword } from '@/shared/lib/validation';
 import { colors, fonts } from '@/shared/theme/tokens';
 
-/** Account stage: email, password, and agreeing to the Privacy Policy and Terms. Nothing else is asked here. */
+/**
+ * Account stage: email, password, confirming you're 18 or older, and
+ * agreeing to the Privacy Policy and Terms. Nothing else is asked here.
+ */
 export default function CreateAccount() {
   const { startEmailSignUp } = useSession();
   const [email, setEmail] = useState('');
@@ -28,6 +32,8 @@ export default function CreateAccount() {
   const [formError, setFormError] = useState('');
   const [agreed, setAgreed] = useState(false);
   const [consentError, setConsentError] = useState(false);
+  const [adult, setAdult] = useState(false);
+  const [adultError, setAdultError] = useState(false);
 
   const emailRef = useRef<TextInput>(null);
   const passwordRef = useRef<TextInput>(null);
@@ -47,10 +53,11 @@ export default function CreateAccount() {
   async function submit() {
     setTouched(true);
     setConsentError(!agreed);
-    if (!valid || !agreed) return;
+    setAdultError(!adult);
+    if (!valid || !agreed || !adult) return;
     setBusy(true);
     try {
-      await authApi.createAccount({ email: email.trim(), password, consent: consentNow() });
+      await authApi.createAccount({ email: email.trim(), password, consent: consentNow(), confirmed18OrOlder: adult });
       startEmailSignUp(email.trim().toLowerCase());
       router.push('/verify-email');
     } catch (e) {
@@ -69,6 +76,14 @@ export default function CreateAccount() {
       footer={
         <>
           {formError ? <Text style={styles.formError}>{formError}</Text> : null}
+          <AgeCheckbox
+            checked={adult}
+            onChange={(v) => {
+              setAdult(v);
+              if (v) setAdultError(false);
+            }}
+            error={adultError}
+          />
           <ConsentCheckbox
             checked={agreed}
             onChange={(v) => {
@@ -77,7 +92,7 @@ export default function CreateAccount() {
             }}
             error={consentError}
           />
-          <Button title="Create account" onPress={submit} loading={busy} disabled={!agreed} />
+          <Button title="Create account" onPress={submit} loading={busy} disabled={!agreed || !adult} />
           <Pressable onPress={() => router.replace('/sign-in')} style={styles.alt}>
             <Text style={styles.altText}>
               Already have an account? <Text style={styles.altLink}>Sign in</Text>
@@ -93,9 +108,10 @@ export default function CreateAccount() {
         <>
           <GoogleButton
             onPress={() => {
-              // Google sign-up needs the same agreement as email sign-up.
-              if (!agreed) {
-                setConsentError(true);
+              // Google sign-up needs the same agreement and age as email sign-up.
+              if (!agreed || !adult) {
+                setConsentError(!agreed);
+                setAdultError(!adult);
                 return;
               }
               router.push({ pathname: '/google', params: { consent: '1' } });
