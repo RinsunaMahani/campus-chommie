@@ -31,6 +31,7 @@ def health():
 
 # Each feature's routes attach to api_bp by being imported here.
 from src.domains.catalogue.universities.api import routes as _universities_routes  # noqa: E402,F401
+from src.domains.classes.classes.api import routes as _classes_routes  # noqa: E402,F401
 from src.domains.identity.accounts.api import routes as _accounts_routes  # noqa: E402,F401
 from src.domains.identity.auth.api import routes as _auth_routes  # noqa: E402,F401
 from src.domains.pathways.course_finder.api import routes as _course_finder_routes  # noqa: E402,F401
