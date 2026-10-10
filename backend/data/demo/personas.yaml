@@ -1,15 +1,24 @@
 # Demo students for the hackathon walkthrough.
 # Everyone and every number here is FICTIONAL. Amounts are what a student would enter
-# themselves; they are not NSFAS or university figures. "today" is fixed so the demo
-# behaves the same every time it runs.
+# themselves; they are not NSFAS or university figures.
+#
+# Dates are written as they'd be on "today" below, and the demo keeps each date's distance from
+# today: `flask seed` builds the demo accounts, and a daily job (from 02:00 SAST) re-bases them, so
+# judges always see current dates. The tests use the dates as written.
+#
+# Emails are on example.com, which is reserved and never receives mail. The shared password comes
+# from the DEMO_PASSWORD environment variable, never from this file.
 
 today: 2026-10-12
 
 personas:
   - id: naledi
     name: Naledi
-    summary: first-year at SMU, allowance-funded, commutes to campus
-    university_label: SMU
+    email: naledi.demo@example.com
+    summary: first-year at SMU, allowance-funded, commutes to campus; short money and a heavy week ahead
+    university: smu
+    campus: ga_rankuwa
+    classes_by: thabo  # her classes' rep: he made them and confirmed their events
     balance_cents: 61000
     essentials_per_day_cents: 4000
     life_fund_reserve_cents: 10000
@@ -44,8 +53,11 @@ personas:
 
   - id: sipho
     name: Sipho
-    summary: second-year at UP, self-funded by a monthly family transfer, rents near campus
-    university_label: UP
+    email: sipho.demo@example.com
+    summary: second-year at UP, self-funded by a monthly family transfer, rents near campus; a heavy week now
+    university: up
+    campus: hatfield
+    classes_by: sipho  # he's his classes' rep too
     balance_cents: 230000
     essentials_per_day_cents: 5500
     life_fund_reserve_cents: 30000
@@ -77,3 +89,13 @@ personas:
           - {name: Quiz 1, weight: 5, mark: 80}
           - {name: Test 2, weight: 20}
           - {name: Exam, weight: 50}
+
+  - id: thabo
+    name: Thabo
+    email: thabo.demo@example.com
+    summary: first-year at SMU and class rep for Naledi's three classes
+    university: smu
+    campus: ga_rankuwa
+    # A classmate's announcement waiting for the rep to check and confirm: the rep panel's demo.
+    waiting:
+      - {from: naledi, module: BCH111, text: "Hi all, BCH111 quiz 5 is on Friday at 10:00 in Lab C3", sent: 2026-10-12}

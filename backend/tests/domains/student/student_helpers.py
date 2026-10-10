@@ -1,15 +1,23 @@
 """
 Shared by the student tests: signed-in students with their ids, and the
 fictional demo personas (data/demo/personas.yaml) set up through the API,
-the way a student would enter them.
+the way a student would enter them. Also the demo accounts: a fixed day for
+every service that asks for today, a password made fresh for each run (no
+demo password ever sits in the repo), the seed, and signing in as a persona.
 """
 from __future__ import annotations
 
 import re
+import secrets
 from datetime import date, timedelta
 from pathlib import Path
 
 import yaml
+
+from src.domains.classes.classes.services import class_service
+from src.domains.classes.events.services import events_service, week_service
+from src.domains.platform.demo.services import demo_service
+from src.domains.student.money.services import money_service
 
 PASSWORD = "Campus2026!"
 CONSENT = {"privacy_version": "0.1-draft", "terms_version": "0.1-draft", "confirmed_18_or_older": True}
@@ -57,3 +65,32 @@ def set_up_persona(client, who: Student, persona_id: str) -> date:
         spent_on = (today - timedelta(days=days - i)).isoformat()
         assert client.put(f"{MONEY}/spending/{spent_on}", json={"amount_cents": cents}, headers=who.headers).status_code == 200
     return today
+
+
+# ------------------------------------------------------------ demo accounts
+
+DEMO_TODAY = date(2026, 10, 12)  # the personas' own "today", a Monday
+DEMO_EMAILS = {"naledi": "naledi.demo@example.com", "sipho": "sipho.demo@example.com", "thabo": "thabo.demo@example.com"}
+SERVICES_WITH_TODAY = (money_service, class_service, events_service, week_service, demo_service)
+
+
+def on_day(monkeypatch, day: date) -> None:
+    """Every service that asks for today gets `day`."""
+    for module in SERVICES_WITH_TODAY:
+        monkeypatch.setattr(module, "_today", lambda day=day: day)
+
+
+def fresh_password() -> str:
+    """Meets the password rule: letters, digits, a capital, a small letter and a special character."""
+    return secrets.token_urlsafe(12) + "aZ7!"
+
+
+def seed_demo(app, password: str, day: date = DEMO_TODAY) -> list[str]:
+    with app.app_context():
+        return demo_service.seed(password, today=day)
+
+
+def sign_in_demo(client, persona: str, password: str) -> dict:
+    r = client.post("/api/v1/auth/login", json={"email": DEMO_EMAILS[persona], "password": password})
+    assert r.status_code == 200, r.get_json()
+    return {"Authorization": f"Bearer {r.get_json()['data']['access_token']}"}

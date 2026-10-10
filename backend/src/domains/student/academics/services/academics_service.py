@@ -140,6 +140,12 @@ def delete_assessment(user, module_id: uuid.UUID, assessment_id: uuid.UUID) -> d
     return {"module": _module(module)}
 
 
+def erase_all_for(user) -> None:
+    """Every module and assessment of this student, deleted for real: the demo's daily reset (and DELETE /me's later)."""
+    repo.erase_all(user.id)
+    db.session.commit()
+
+
 # ------------------------------------------------------------- what's sent
 
 

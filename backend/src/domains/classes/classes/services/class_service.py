@@ -193,6 +193,24 @@ def leave(user, class_id: uuid.UUID) -> dict:
     return {}
 
 
+def leave_all(user) -> list[uuid.UUID]:
+    """The student leaves every class they're in: the demo's daily reset (and DELETE /me's later).
+    Returns the classes they left."""
+    rows = repo.memberships(user.id)
+    left = [m.class_id for m in rows]
+    for m in rows:
+        repo.delete(m)
+    db.session.commit()
+    return left
+
+
+def delete_if_empty(class_ids: list[uuid.UUID]) -> int:
+    """Of these classes, the ones nobody is in any more go, with their events."""
+    n = repo.delete_empty(class_ids)
+    db.session.commit()
+    return n
+
+
 # ---------------------------------------------------------------- helpers
 
 

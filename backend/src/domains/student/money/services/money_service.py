@@ -345,6 +345,15 @@ def summary(user, late: bool) -> dict:
     }
 
 
+# ----------------------------------------------------------------- erasing
+
+
+def erase_all_for(user) -> None:
+    """Every money record of this student, deleted for real: the demo's daily reset (and DELETE /me's later)."""
+    repo.erase_all(user.id)
+    db.session.commit()
+
+
 # ------------------------------------------------------------- what's sent
 
 

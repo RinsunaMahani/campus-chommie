@@ -16,6 +16,12 @@ RULES THIS FILE KEEPS (security by design):
     entered, and that phone is then trusted (see trusted_phones.py). The
     code step is only reached with the right password, so it reveals
     nothing to someone guessing.
+  * DEMO ACCOUNTS (decided by Rinsuna, 10 Oct 2026) hold fictional data
+    only, and their password is shared with the judges, who can't read the
+    demo inbox. So they skip the new-phone code, wrong passwords don't lock
+    them (anyone could lock the judges out), and their password can't be
+    changed, reset or used to close them. Sign-in tries on them are capped
+    per IP instead (rate_limit/policies.py: DEMO_LOGIN).
 """
 from __future__ import annotations
 
@@ -27,7 +33,15 @@ from typing import Optional
 from flask import current_app, request
 
 from src.core.base_model import utcnow
-from src.core.exceptions import AccountInactiveError, AccountLockedError, AppError, EmailNotVerifiedError, UnauthorizedError, ValidationError
+from src.core.exceptions import (
+    AccountInactiveError,
+    AccountLockedError,
+    AppError,
+    EmailNotVerifiedError,
+    ForbiddenError,
+    UnauthorizedError,
+    ValidationError,
+)
 from src.domains.identity.accounts.models import AccountStatus, SignUpMethod
 from src.domains.identity.accounts.services import account_service
 from src.domains.identity.devices.services import device_service
@@ -54,6 +68,13 @@ GENERIC_SIGN_IN_CODE_ERROR = "That code is wrong or has expired."
 #: Codes one sign-in attempt can ask for (the first + resends) before the
 #: password has to be entered again.
 MAX_CODES_PER_SIGN_IN = 3
+
+DEMO_KEEPS_PASSWORD = "Demo accounts keep the password the judges were given."
+
+
+def _refuse_demo(user) -> None:
+    if user.is_demo:
+        raise ForbiddenError(DEMO_KEEPS_PASSWORD, code="DEMO_ACCOUNT")
 
 
 class InvalidCodeError(AppError):
@@ -271,6 +292,10 @@ def login(
             raise AccountLockedError("Too many attempts. Try again in a few minutes, or reset your password.")
         raise UnauthorizedError(GENERIC_LOGIN_ERROR, code="INVALID_CREDENTIALS")
 
+    if not correct and user.is_demo:
+        # Never locked: anyone could lock the judges out. DEMO_LOGIN caps tries per IP instead.
+        auth_audit.record(E.LOGIN_FAILED, False, user_id=user.id, email=user.email, reason="wrong_password", demo=True)
+        raise UnauthorizedError(GENERIC_LOGIN_ERROR, code="INVALID_CREDENTIALS")
     if not correct:
         credential.failed_attempts += 1
         just_locked = credential.failed_attempts >= current_app.config["LOGIN_MAX_FAILED_ATTEMPTS"]
@@ -299,6 +324,11 @@ def login(
         raise AccountInactiveError("This account is closed.")
 
     trusted = trusted_phones.match(user.id, trusted_phone_token)
+    if not trusted and user.is_demo:
+        result = _tokens(user, device)
+        db.session.commit()
+        auth_audit.record(E.LOGIN_SUCCESS, user_id=user.id, email=user.email, second_factor="none_demo_account")
+        return result
     if not trusted:
         challenge = secrets.new_token()
         _send_sign_in_code(user, secrets.digest(challenge))
@@ -436,7 +466,7 @@ def logout(sid: str) -> None:
 def forgot_password(email: str) -> None:
     """Same answer for everyone. Only a real account gets an email."""
     user = account_service.find_by_email(email)
-    if not user or user.status == AccountStatus.DEACTIVATED.value or not db.session.get(PasswordCredential, user.id):
+    if not user or user.is_demo or user.status == AccountStatus.DEACTIVATED.value or not db.session.get(PasswordCredential, user.id):
         # Stored so repeated probing of unknown emails can be spotted; the caller sees nothing.
         auth_audit.record(E.PASSWORD_RESET_REQUESTED, False, email=email, reason="no_eligible_account")
         return
@@ -523,7 +553,25 @@ def _require_password(user, password: str, failed_event) -> PasswordCredential:
     return credential
 
 
+def set_demo_password(user, password: str) -> None:
+    """flask seed (through account_service.ensure_demo_account): the shared password from DEMO_PASSWORD.
+    Demo accounts only; the caller commits."""
+    if not user.is_demo:
+        raise ValueError("Only a demo account's password is set this way.")
+    _check_password_rule(password)
+    credential = db.session.get(PasswordCredential, user.id)
+    if credential is None:
+        db.session.add(PasswordCredential(user_id=user.id, password_hash=hash_password(password)))
+        return
+    if not verify_password(password, credential.password_hash):
+        credential.password_hash = hash_password(password)
+        credential.changed_at = utcnow()
+    credential.failed_attempts = 0
+    credential.locked_until = None
+
+
 def change_password(user, current_sid: str, current_password: str, new_password: str) -> int:
+    _refuse_demo(user)
     credential = _require_password(user, current_password, E.PASSWORD_CHANGE_FAILED)
     _check_password_rule(new_password)
     if verify_password(new_password, credential.password_hash):
@@ -575,6 +623,7 @@ def signed_in_phones(user, current_sid: str) -> list[dict]:
 
 
 def close_account(user, current_sid: str, password: str) -> None:
+    _refuse_demo(user)
     _require_password(user, password, E.ACCOUNT_DISABLED)
     account_service.deactivate(user)
     ended = session_service.revoke_all(user.id, session_service.RevokeReason.ACCOUNT_CLOSED)

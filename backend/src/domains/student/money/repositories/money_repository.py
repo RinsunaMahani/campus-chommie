@@ -144,3 +144,11 @@ def spending_on(user_id: uuid.UUID, day: date) -> SpendingEntry | None:
 def delete_spending_before(cutoff: date) -> int:
     """Everyone's spending logged before `cutoff` (the scheduler's rolling year)."""
     return SpendingEntry.query.filter(SpendingEntry.spent_on < cutoff).delete(synchronize_session=False)
+
+
+def erase_all(user_id: uuid.UUID) -> None:
+    """Everything the student entered: spending, payments, income sources and settings."""
+    SpendingEntry.query.filter_by(user_id=user_id).delete(synchronize_session=False)
+    ExpectedPayment.query.filter_by(user_id=user_id).delete(synchronize_session=False)
+    IncomeSource.query.filter_by(user_id=user_id).delete(synchronize_session=False)
+    MoneySettings.query.filter_by(user_id=user_id).delete(synchronize_session=False)

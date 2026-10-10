@@ -97,3 +97,14 @@ def add(row) -> None:
 
 def delete(row) -> None:
     db.session.delete(row)
+
+
+def delete_empty(class_ids: list[uuid.UUID]) -> int:
+    """Of these classes, delete the ones with no members left."""
+    if not class_ids:
+        return 0
+    occupied = db.session.query(ClassMember.class_id).filter(ClassMember.class_id.in_(class_ids))
+    return (
+        ModuleClass.query.filter(ModuleClass.id.in_(class_ids), ModuleClass.id.notin_(occupied))
+        .delete(synchronize_session=False)
+    )
