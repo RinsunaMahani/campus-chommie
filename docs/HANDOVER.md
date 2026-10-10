@@ -12,7 +12,7 @@ git, so Mandla has his own copy; the M2 part is quoted below.
 
 ## Where things stand
 
-`main` holds only the empty first commit. All work sits in six stacked pull requests:
+`main` holds only the empty first commit. All work sits in seven stacked pull requests:
 
 | PR | Branch | What | Reviewer |
 |---|---|---|---|
@@ -22,11 +22,11 @@ git, so Mandla has his own copy; the M2 part is quoted below.
 | #4 | `rinsuna/m1-course-finder-api` | the course-finder API and this file | Mandla |
 | #5 | `rinsuna/m1-data-packs` | draft UP and TUT packs, the approved SMU changes, and how the plan picks its third choice | Rinsuna; Mandla for the changed M1 check |
 | #6 | `rinsuna/m1-how-to-apply` | how to apply, on today's date: each choice's application dates, NSFAS, fees, documents and next steps; notes on NSFAS and on other apps | Rinsuna for the engine and data; Mandla for the plan's new `apply` fields |
+| #7 | `rinsuna/m1-after-acceptance` | your points at every university; campuses, calendars, money dates and support in the packs; first steps from acceptance to the first lecture | Rinsuna for the engine and data; Mandla for the two new endpoints |
 
 **How to merge:**
 - Each PR targets the branch below it, so its diff shows only its own work.
-- Merge in order: #1 into `main`, then #2, #3, #4, #5 and #6, retargeting each to `main` once the one below has
-  merged.
+- Merge in order: #1 into `main`, then #2 to #7, retargeting each to `main` once the one below has merged.
 - Use **Create a merge commit**, not squash or rebase, so every commit stays in `main`'s history (CLAUDE.md: never
   rewrite history).
 
@@ -57,7 +57,13 @@ Everything is recorded, with who and when, in [OPEN_QUESTIONS.md](OPEN_QUESTIONS
   opportunity sites such as Graduates24. An application directory for all 26 public universities was proposed and
   then paused, because UniApplyForMe already does it well; the time goes to support after acceptance.
 - **Other apps:** [research/competitors.md](research/competitors.md) compares UniApplyForMe, UniAPS and others, and
-  says where we differ. Worth reading before the deck.
+  says where we differ. Worth reading before the deck. Rinsuna tried both: UniApplyForMe is very good but stops at
+  the application, so we stand out after acceptance.
+- **After acceptance (#7, 10 Oct):**
+  - **Your points at every university,** as UniApplyForMe does well.
+  - **The packs' calendars, money dates and support,** which My week, My money and Support run on.
+  - **First steps from acceptance to the first lecture.**
+  - Three screen decisions for you are in OPEN_QUESTIONS.
 
 ## What we need from you
 
@@ -96,6 +102,8 @@ The API is in #4, with details in the [README](../README.md), "Course finder":
 | Tier cards | `POST /pathways/assess` with `{university, marks: [{subject, percent}]}` | `matches`, best tiers first |
 | Plan | `POST /pathways/plan` with `{university, goal, marks}` | `plan.goal`, `plan.bridge`, `plan.safe`, `plan.other_routes`, `plan.notes` |
 | How to apply | the same plan answer | each slot's `apply`, and `plan.apply`: `deadlines`, `universities`, `funding`, `notes` |
+| Points everywhere (#7) | `POST /pathways/points` with `{marks}` | `universities`: each with `points`, `summary`, `lines` (how it counts), `tiers` |
+| First steps (#7) | `GET /universities/<id>/first-steps` | `first_steps`: per intake, `steps` (accept, register, orientation, first lecture) with `status`, `label`, dates, `days`, `lines`, `source_urls` |
 
 **What the screens must handle:**
 - **Cards:**
@@ -141,9 +149,9 @@ The API is in #4, with details in the [README](../README.md), "Course finder":
 
 1. **Read first:** [CLAUDE.md](../CLAUDE.md) (AGENTS.md points every agent there), then this file.
 2. **Branch:**
-   - Start from the top of the stack: `git fetch origin`, then `git checkout rinsuna/m1-how-to-apply`.
+   - Start from the top of the stack: `git fetch origin`, then `git checkout rinsuna/m1-after-acceptance`.
    - Branch `mandla/<topic>` from there, for example `mandla/course-finder-screens`.
-   - Once #1 to #6 are merged, branch from `main` instead.
+   - Once #1 to #7 are merged, branch from `main` instead.
 3. **Run the API** (README, "Backend"):
    - Use your own PostgreSQL, or Docker (option B uses port 5434).
    - Then `python scripts/make_env.py`, `flask db upgrade` and `python app.py`.
@@ -167,7 +175,11 @@ The API is in #4, with details in the [README](../README.md), "Course finder":
 
 - **Data packs:** done in #5 (`backend/data/universities/`), with how to apply in #6. A person still has to check
   every value before any pack is released.
-- **Next:** the brief's other M1 pack sections (campuses, calendar, funding cycles, support services, cheap things),
-  which My week, My money and Support run on, then the backend for M3 to M5.
+- **Pack sections:** campuses, calendars, money dates and support are in #7. Cheap things still need sourced places.
+- **Next:** the backend for M3 to M5, in the brief's order:
+  - M3: the profile, and the money domain behind the runway, safe to spend and the life fund
+  - M4: classes, reps, announcements to confirmed events, the week and My marks
+  - M5: alerts, the support endpoint, and demo accounts re-based daily
+  - The engine already does the maths, so your screens can follow each endpoint as it lands.
 
 All of this is in `backend/` and `docs/`; the app is yours.

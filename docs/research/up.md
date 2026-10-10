@@ -241,6 +241,15 @@ Test weeks apply to the Hatfield and Groenkloof campuses.
 
 Recesses (and December to January) are the windows for the vac-work nudge.
 
+Deadlines in the same calendars (read on 10 Oct 2026 for the pack's calendar):
+
+| Deadline | 2026 (s-up-cal-2026) | 2027 (s-up-cal-2027) |
+|---|---|---|
+| Dropping or swapping (2026), or changing or cancelling (2027), modules: after this, fees and GPA are affected | 9 Mar (semester 1); 17 Aug (semester 2) | 8 Mar; 16 Aug |
+| Online registration opens for senior students | 5 Jan | 4 Jan |
+| Graduation ceremonies | 4 - 29 May (autumn); 31 Aug - 4 Sep (spring) | 28 Apr - 28 May; 30 Aug - 3 Sep |
+| Study period before exams | 28-29 May | 27-28 May; 18-20 Jun; 5 Nov; 25-28 Nov |
+
 ## Campuses (F1)
 
 From s-up-infoguide-2026 p6.
