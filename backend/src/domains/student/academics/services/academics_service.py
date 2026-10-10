@@ -140,6 +140,17 @@ def delete_assessment(user, module_id: uuid.UUID, assessment_id: uuid.UUID) -> d
     return {"module": _module(module)}
 
 
+def out_of_reach(user) -> list[tuple[str, float, str]]:
+    """Modules where even full marks on what's left wouldn't reach the student's own target, for the
+    alerts: (code, target, the engine's words)."""
+    out = []
+    for m in repo.modules_for(user.id):
+        s = _module(m)["standing"]
+        if s is not None and s["status"] == "out_of_reach":
+            out.append((m.code, m.target, s["message"]))
+    return out
+
+
 def erase_all_for(user) -> None:
     """Every module and assessment of this student, deleted for real: the demo's daily reset (and DELETE /me's later)."""
     repo.erase_all(user.id)

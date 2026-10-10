@@ -17,6 +17,7 @@ import yaml
 from src.domains.classes.classes.services import class_service
 from src.domains.classes.events.services import events_service, week_service
 from src.domains.platform.demo.services import demo_service
+from src.domains.student.alerts.services import alert_service
 from src.domains.student.money.services import money_service
 
 PASSWORD = "Campus2026!"
@@ -71,7 +72,7 @@ def set_up_persona(client, who: Student, persona_id: str) -> date:
 
 DEMO_TODAY = date(2026, 10, 12)  # the personas' own "today", a Monday
 DEMO_EMAILS = {"naledi": "naledi.demo@example.com", "sipho": "sipho.demo@example.com", "thabo": "thabo.demo@example.com"}
-SERVICES_WITH_TODAY = (money_service, class_service, events_service, week_service, demo_service)
+SERVICES_WITH_TODAY = (money_service, class_service, events_service, week_service, alert_service, demo_service)
 
 
 def on_day(monkeypatch, day: date) -> None:

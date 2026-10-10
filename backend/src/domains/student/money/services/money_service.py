@@ -14,6 +14,7 @@ from __future__ import annotations
 import calendar
 import re
 import uuid
+from dataclasses import dataclass
 from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
 
@@ -24,7 +25,9 @@ from campus_engine.runway import ExpectedPayment as Arrival
 from campus_engine.runway import RunwayResult, project_runway, safe_to_spend
 from campus_engine.text import long_day, rand
 from src.core.exceptions import NotFoundError, ValidationError
+from src.domains.catalogue.universities.services import university_service as catalogue
 from src.domains.classes.events.services import week_service
+from src.domains.student.profile.services import profile_service as profile
 from src.extensions import db
 
 from ..constants import MAX_DAYS_BACK, MAX_SOURCES, PACE_DAYS, PAST_DAYS, TIMEZONE
@@ -34,6 +37,8 @@ from ..repositories import money_repository as repo
 ISO_DAY = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 LATE_PRONE = ("sometimes_late", "often_late")
 WEEK_NOT_YET = "Your week isn't part of this yet: tests and exams count once you've joined your classes."
+NO_CAMPUS = "Choose your university and campus in your profile to see what's near you."
+NOTHING_NEAR = "Nothing near your campus is listed yet: we only list places whose prices we've found on their own pages."
 
 
 def _today() -> date:
@@ -235,21 +240,23 @@ def _balance(user_id: uuid.UUID, settings: MoneySettings, today: date) -> tuple[
     return balance, lines
 
 
-def summary(user, late: bool) -> dict:
-    """How long the money lasts, what's safe to spend, and the life fund, on today's date. With
-    `late`, the next payment arrives two weeks late (the late days are set in config.yaml)."""
-    today = _today()
-    cfg = load_config()
-    runway_cfg = cfg["runway"]
-    late_days = runway_cfg["late_days"] if late else 0
-    out = {"today": today.isoformat(), "late": late, "late_days": runway_cfg["late_days"]}
-    settings = repo.settings_for(user.id)
-    if settings is None:
-        return out | {
-            "ready": False,
-            "lines": ["Add your balance and what you spend on essentials each day to see how long your money lasts."],
-        }
+@dataclass
+class _Projection:
+    rows: list[ExpectedPayment]
+    arrivals: list[Arrival]
+    balance: int
+    balance_lines: list[str]
+    runway: RunwayResult
+    earliest: date | None
+    latest: date | None
+    runway_lines: list[str]
+    pace_out: dict
 
+
+def _project(user, settings: MoneySettings, today: date, late_days: int, cfg: dict) -> _Projection:
+    """The balance now and how long it lasts: from the spending pace once there's enough of it,
+    from the student's essentials estimate until then."""
+    runway_cfg = cfg["runway"]
     rows = _payments(user.id, today)
     arrivals = [Arrival(p.source.label, p.expected_on, p.amount_cents, p.received_on is not None) for p in rows]
     balance, balance_lines = _balance(user.id, settings, today)
@@ -284,6 +291,36 @@ def summary(user, late: bool) -> dict:
                 f"Until then this uses your essentials: {rand(essentials)} a day."
             ],
         }
+    return _Projection(rows, arrivals, balance, balance_lines, runway, earliest, latest, runway_lines, pace_out)
+
+
+def runway_for(user, today: date) -> RunwayResult | None:
+    """How long the money lasts with the next payment on time, for the alerts; None before the student
+    has entered their balance."""
+    settings = repo.settings_for(user.id)
+    if settings is None:
+        return None
+    return _project(user, settings, today, 0, load_config()).runway
+
+
+def summary(user, late: bool) -> dict:
+    """How long the money lasts, what's safe to spend, and the life fund, on today's date. With
+    `late`, the next payment arrives two weeks late (the late days are set in config.yaml)."""
+    today = _today()
+    cfg = load_config()
+    runway_cfg = cfg["runway"]
+    late_days = runway_cfg["late_days"] if late else 0
+    out = {"today": today.isoformat(), "late": late, "late_days": runway_cfg["late_days"]}
+    settings = repo.settings_for(user.id)
+    if settings is None:
+        return out | {
+            "ready": False,
+            "lines": ["Add your balance and what you spend on essentials each day to see how long your money lasts."],
+        }
+
+    p = _project(user, settings, today, late_days, cfg)
+    rows, arrivals, balance, balance_lines = p.rows, p.arrivals, p.balance, p.balance_lines
+    runway, earliest, latest, runway_lines, pace_out = p.runway, p.earliest, p.latest, p.runway_lines, p.pace_out
     if late:
         runway_lines.insert(0, f"If your next payment arrives {late_days} days late:")
 
@@ -342,6 +379,39 @@ def summary(user, late: bool) -> dict:
         "this_week": {"colour": week.colour, "reason": week.reason} if week is not None else None,
         "next_payment": next_out,
         "notes": notes,
+    }
+
+
+# ------------------------------------------------------------ cheap things
+
+
+def cheap_things(user) -> dict:
+    """The data pack's cheap things to do near the student's campus, each with its cost note, its
+    source, and when a person last checked it (None: not checked yet)."""
+    university, campus = profile.place_of(user)
+    uni = catalogue.packs().get(university) if university else None
+    if uni is None:
+        return {"university": None, "campus": None, "cheap_things": [], "lines": [NO_CAMPUS]}
+    sources = {s.id: s for s in uni.sources}
+    places = [c for c in uni.cheap_things if not c.campuses or campus in c.campuses]
+    return {
+        "university": {"id": uni.university, "name": uni.name, **catalogue.confirmation(uni)},
+        "campus": campus,
+        "cheap_things": [_cheap_thing(c, sources.get(c.source)) for c in places],
+        "lines": [] if places else [NOTHING_NEAR],
+    }
+
+
+def _cheap_thing(c, source) -> dict:
+    return {
+        "name": c.name,
+        "category": c.category,
+        "cost_note": c.cost_note,
+        "address": c.address,
+        "hours": c.hours,
+        "source_url": source.url if source else None,
+        "read_on": source.retrieved.isoformat() if source and source.retrieved else None,
+        "last_verified": source.last_verified.isoformat() if source and source.last_verified else None,
     }
 
 
