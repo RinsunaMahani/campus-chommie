@@ -1,8 +1,9 @@
 """
 /api/v1/universities -- what the data packs say, for anyone (no account).
 
-  GET /universities         {universities: [{id, name, city, academic_year, programmes, confirmed, notice}]}
-  GET /universities/<id>    {university: the pack, with confirmed and notice}
+  GET /universities                     {universities: [{id, name, city, academic_year, programmes, confirmed, notice}]}
+  GET /universities/<id>                {university: the pack, with confirmed and notice}
+  GET /universities/<id>/first-steps    {university, today, first_steps: [{intake, steps, notes}]}
 
 Read-only and public. Thin: validate -> service -> answer. Rate-limited per IP.
 """
@@ -33,3 +34,10 @@ def list_universities():
 def get_university(university_id: str):
     load(NoQuerySchema(), request.args.to_dict())
     return success_response({"university": service.detail(university_id)})
+
+
+@api_bp.get(f"{BASE}/<university_id>/first-steps")
+@limiter.limit(READ_LIMIT)
+def get_first_steps(university_id: str):
+    load(NoQuerySchema(), request.args.to_dict())
+    return success_response(service.first_steps(university_id))
