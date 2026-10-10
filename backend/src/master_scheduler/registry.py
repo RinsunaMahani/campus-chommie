@@ -27,6 +27,9 @@ from src.shared.idempotency.schedulers.idempotency_scheduler import (
 from src.domains.classes.classes.schedulers.classes_scheduler import (
     JOB_SPECS as CLASSES_JOB_SPECS,
 )
+from src.domains.classes.events.schedulers.events_scheduler import (
+    JOB_SPECS as EVENTS_JOB_SPECS,
+)
 from src.domains.identity.auth.schedulers.identity_scheduler import (
     JOB_SPECS as IDENTITY_JOB_SPECS,
 )
@@ -47,6 +50,7 @@ ALL_JOB_SPECS: list[JobSpec] = [
     *NOTIFICATIONS_JOB_SPECS,
     *MONEY_JOB_SPECS,
     *CLASSES_JOB_SPECS,
+    *EVENTS_JOB_SPECS,
     # Each new domain adds its own JOB_SPECS here the same way, from
     # domains/<area>/<feature>/schedulers/<feature>_scheduler.py
 ]

@@ -24,6 +24,7 @@ from campus_engine.runway import ExpectedPayment as Arrival
 from campus_engine.runway import RunwayResult, project_runway, safe_to_spend
 from campus_engine.text import long_day, rand
 from src.core.exceptions import NotFoundError, ValidationError
+from src.domains.classes.events.services import week_service
 from src.extensions import db
 
 from ..constants import MAX_DAYS_BACK, MAX_SOURCES, PACE_DAYS, PAST_DAYS, TIMEZONE
@@ -32,7 +33,7 @@ from ..repositories import money_repository as repo
 
 ISO_DAY = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 LATE_PRONE = ("sometimes_late", "often_late")
-WEEK_NOT_YET = "Your week isn't part of this yet: tests and exams count once your classes are in Campus Chommie."
+WEEK_NOT_YET = "Your week isn't part of this yet: tests and exams count once you've joined your classes."
 
 
 def _today() -> date:
@@ -290,8 +291,9 @@ def summary(user, late: bool) -> dict:
         balance, today, arrivals, settings.essentials_per_day_cents, settings.life_fund_reserve_cents,
         late_days=late_days,
     )
-    fund = life_fund_signal(runway, None, today, runway_cfg["buffer_days"])
-    notes = [WEEK_NOT_YET]
+    week = week_service.this_week(user, today)
+    fund = life_fund_signal(runway, week, today, runway_cfg["buffer_days"])
+    notes = [WEEK_NOT_YET] if week is None else []
     nxt = runway.next_payment
     next_out = None
     if nxt is not None:
@@ -337,6 +339,7 @@ def summary(user, late: bool) -> dict:
             "resume_hint": fund.resume_hint,
             "reserve_cents": settings.life_fund_reserve_cents,
         },
+        "this_week": {"colour": week.colour, "reason": week.reason} if week is not None else None,
         "next_payment": next_out,
         "notes": notes,
     }
