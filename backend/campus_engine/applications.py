@@ -17,7 +17,7 @@ from datetime import date
 from .bridges import Plan
 from .config import load_config
 from .schemas import Applications, Funder, FundingPack, SourcedList, University, Window
-from .text import day, in_days, long_day, rand
+from .text import day, in_days, long_day, rand, span
 
 OPEN = "open"
 CLOSING_SOON = "closing_soon"
@@ -139,15 +139,6 @@ def _either(dates: list[date]) -> str:
     return parts[0] if len(parts) == 1 else ", ".join(parts[:-1]) + " or " + parts[-1]
 
 
-def _span(first: date, last: date) -> str:
-    """'Thu 14 to Fri 22 Jan 2027', 'Wed 1 Apr to Fri 31 Jul 2026' or both dates in full."""
-    if (first.year, first.month) == (last.year, last.month):
-        return f"{first:%a} {first.day} to {long_day(last)}"
-    if first.year == last.year:
-        return f"{day(first)} to {long_day(last)}"
-    return f"{long_day(first)} to {long_day(last)}"
-
-
 def _closing(window: Window, programme_id: str | None) -> tuple[date | None, list[date], str, bool]:
     """This programme's closing date (None when not published), the dates it may close on when
     the university hasn't said which applies, the source of the date, and whether the date is the
@@ -189,7 +180,7 @@ def _previous(prev: Window | None, programme_id: str | None, heading: str, today
     if own:
         return [f"{heading}, applications for this programme closed on {long_day(closes)}."]
     if prev.opens:
-        return [f"{heading}, applications ran from {_span(prev.opens, closes)}."]
+        return [f"{heading}, applications ran from {span(prev.opens, closes)}."]
     return [f"{heading}, applications closed on {long_day(closes)}."]
 
 
@@ -237,7 +228,7 @@ def window_status(
 
     def late_lines() -> list[str]:
         assert late is not None
-        return [f"Late applications: {_span(late.opens, late.closes)} ({until(late.opens)})."] + (
+        return [f"Late applications: {span(late.opens, late.closes)} ({until(late.opens)})."] + (
             [late.note] if late.note else []
         )
 
@@ -379,6 +370,8 @@ def funder_guide(pack: FundingPack, funder: Funder, today: date, cfg: dict | Non
     guide.who_can_apply = _group(funder.who_can_apply, url_for)
     guide.tips = _group(funder.tips, url_for)
     guide.warnings = _group(funder.warnings, url_for)
+    if funder.at_registration:
+        guide.after.append(Line(funder.at_registration.text, url_for(funder.at_registration.source)))
     windows = funder.applications.windows
     by_intake = {w.intake: w for w in windows}
     guide.windows = [

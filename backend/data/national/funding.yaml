@@ -34,6 +34,9 @@ funders:
       items:
         - "Never pay anyone to apply. NSFAS will never ask for your password or OTP."
         - "Use nsfas.org.za and my.nsfas.org.za only. Check the spelling in the address bar before you sign in."
+    at_registration:
+      text: "If NSFAS finds you eligible, your funding is confirmed once you register at a public university or TVET college."
+      source: s-nsfas-apply-2027
     applications:
       source: s-nsfas-apply-2027
       url: "https://my.nsfas.org.za/"
@@ -60,8 +63,6 @@ funders:
           source: s-nsfas-home-2027
         - text: "You have 30 working days to answer any request for more information."
           source: s-nsfas-home-2027
-        - text: "If NSFAS finds you eligible, your funding is confirmed once you register at a public university or TVET college."
-          source: s-nsfas-apply-2027
         - text: "If your application is unsuccessful, myNSFAS shows the reason, and you can appeal within the appeal window."
           source: s-nsfas-apply-2027
       windows:

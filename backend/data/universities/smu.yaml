@@ -61,6 +61,78 @@ applications:
       closes: 2026-07-31
       no_late_applications: true   # "it will not be possible to submit your application after the closing date"
 
+# Campus and calendar from SMU's 2026 general calendar (its 2027 calendar isn't published yet); money date from
+# the 2026 fee schedule; support from SMU's student affairs pages. Agent draft, 10 Oct 2026: a person checks every
+# value, and every crisis line, before release.
+campuses:
+  - {id: ga_rankuwa, name: "Ga-Rankuwa (Molotlegi Street)", note: "SMU's only campus.", source: s-smu-cal-2026}
+
+calendar:
+  # 2026 (s-smu-cal-2026)
+  - {period: registration, name: "University resumes; returning students register", start: 2026-01-05, who: returning,
+     source: s-smu-cal-2026}
+  - {period: term, name: "Semester 1 (returning students)", start: 2026-01-06, end: 2026-07-17, who: returning,
+     source: s-smu-cal-2026}
+  - {period: deadline, name: "Last day of registration for returning students", start: 2026-01-16, who: returning,
+     source: s-smu-cal-2026}
+  - {period: term, name: "Lectures start for BSc II and III, and BSc ECP II to IV", start: 2026-01-20, who: returning,
+     source: s-smu-cal-2026}
+  - {period: registration, name: "First-year registration", start: 2026-01-21, end: 2026-01-30, who: first_years,
+     step: register, source: s-smu-cal-2026}
+  - {period: orientation, name: "Orientation for first-time students", start: 2026-01-27, end: 2026-01-30,
+     who: first_years, step: orientation, source: s-smu-cal-2026}
+  - {period: term, name: "Semester 1 (first-years)", start: 2026-02-02, end: 2026-07-17, who: first_years,
+     step: first_lecture, source: s-smu-cal-2026}
+  - {period: deadline, name: "Closing date for late registration and changing courses or modules", start: 2026-02-13,
+     source: s-smu-cal-2026}
+  - {period: recess, name: "Autumn recess", start: 2026-03-30, end: 2026-04-02,
+     note: "Clinical students follow their school's dates where they differ.", source: s-smu-cal-2026}
+  - {period: graduation, name: "Graduation ceremonies", start: 2026-05-13, end: 2026-05-15, source: s-smu-cal-2026}
+  - {period: deadline, name: "Last day to cancel courses or modules, or to interrupt your studies for 2026",
+     start: 2026-05-15, source: s-smu-cal-2026}
+  - {period: revision, name: "Revision week", start: 2026-05-25, end: 2026-05-29, source: s-smu-cal-2026}
+  - {period: exam, name: "Mid-year exams", start: 2026-06-01, end: 2026-06-19, source: s-smu-cal-2026}
+  - {period: exam, name: "Mid-year supplementary exams", start: 2026-06-29, end: 2026-07-07,
+     note: "Read from the calendar's layout: check.", source: s-smu-cal-2026}
+  - {period: recess, name: "Winter recess", start: 2026-07-08, end: 2026-07-17,
+     note: "Clinical students follow their school's dates where they differ.", source: s-smu-cal-2026}
+  - {period: results, name: "Mid-year exam results", start: 2026-07-17, source: s-smu-cal-2026}
+  - {period: term, name: "Semester 2", start: 2026-07-20, end: 2026-12-15, source: s-smu-cal-2026}
+  - {period: graduation, name: "Graduation ceremony", start: 2026-09-18, source: s-smu-cal-2026}
+  - {period: revision, name: "Revision week", start: 2026-10-05, end: 2026-10-09, source: s-smu-cal-2026}
+  - {period: exam, name: "End-of-year exams", start: 2026-10-12, end: 2026-11-06,
+     note: "The end date is read from the calendar's layout: check.", source: s-smu-cal-2026}
+  - {period: exam, name: "Supplementary and deferred exams", start: 2026-11-16, end: 2026-11-24,
+     source: s-smu-cal-2026}
+  - {period: results, name: "Year-end results", start: 2026-12-08, source: s-smu-cal-2026}
+  - {period: recess, name: "University recess", start: 2026-12-23, end: 2027-01-04, source: s-smu-cal-2026}
+
+# Dates only, never amounts.
+funding_cycles:
+  - {funder: university, kind: discount_deadline, name: "3% off if your 2026 account is settled", when: 2026-05-31,
+     source: s-smu-fees-2026}
+
+# Not found: a 24-hour counselling line, food support, chaplaincy, a careers office (the counselling centre
+# offers career counselling), and a financial aid contact.
+support_services:
+  - {kind: health,
+     name: "Campus Health and Wellness Centre: minor ailments, first aid, Hepatitis B vaccination, HIV counselling, testing and management, peer health education (free)",
+     contact: "012 521 5735", hours: "Mon-Fri 08:00-16:00", source: s-smu-health}
+  - {kind: crisis, name: "After hours, weekends and emergencies",
+     contact: "Campus control for ambulance services, or 079 417 9546 / 6278", hours: "after hours",
+     note: "SMU publishes no 24-hour counselling line.", source: s-smu-health}
+  - {kind: counselling,
+     name: "Centre for Student Counselling and Development: relationships, careers, stress, anger and grief; help for first-years settling in",
+     contact: "012 521 3786; administrator 012 521 4225", hours: "Mon-Fri 08:00-12:00 and 13:00-16:00",
+     source: s-smu-counselling}
+  - {kind: counselling,
+     name: "Student Support Referral Unit: life coaching, and referrals to the social worker, counselling, the clinical psychologist, teaching and learning support, Campus Health and Financial Aid (free for registered students)",
+     contact: "012 521 3805; Clinpath Building, room 3L003", source: s-smu-referral}
+
+# Not researched yet (docs/OPEN_QUESTIONS.md).
+cheap_things: []
+
+
 programmes:
   - id: mbchb
     name: MBChB (Bachelor of Medicine and Bachelor of Surgery)
@@ -444,6 +516,41 @@ sources:
     url: "https://www.smu.ac.za/schools/science-and-technology/science-and-technology-undergraduate-admission-requirements/"
     publisher: "Sefako Makgatho Health Sciences University"
     title: "Science and Technology Undergraduate Admission Requirements"
+    retrieved: 2026-10-09
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-smu-cal-2026
+    url: "https://www.smu.ac.za/download/221/applications/275117/general-calendar-2026_approved_23_jan"
+    publisher: "Sefako Makgatho Health Sciences University"
+    title: "2026 General Calendar (approved 23 Jan 2026)"
+    retrieved: 2026-10-09
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-smu-fees-2026
+    url: "https://www.smu.ac.za/download/221/applications/275139/undergraduate-fees-2026.pdf"
+    publisher: "Sefako Makgatho Health Sciences University"
+    title: "Undergraduate student fees 2026"
+    retrieved: 2026-10-09
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-smu-health
+    url: "https://www.smu.ac.za/students/student-affairs/campus-health-and-wellness/"
+    publisher: "Sefako Makgatho Health Sciences University"
+    title: "Campus Health and Wellness"
+    retrieved: 2026-10-09
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-smu-counselling
+    url: "https://www.smu.ac.za/students/student-affairs/centre-for-student-counselling-and-development/"
+    publisher: "Sefako Makgatho Health Sciences University"
+    title: "Centre for Student Counselling and Development"
+    retrieved: 2026-10-09
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-smu-referral
+    url: "https://www.smu.ac.za/students/campus-affairs/student-life-smu/student-support-referral-unit/"
+    publisher: "Sefako Makgatho Health Sciences University"
+    title: "Student Support Referral Unit"
     retrieved: 2026-10-09
     last_verified: null
     verified_by: "agent draft, needs human check"

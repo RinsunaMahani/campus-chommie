@@ -49,8 +49,9 @@ applications:
       source: s-tut-guide-2027
     - text: "TUT can admit you provisionally on your Grade 11 or mid-year Grade 12 results."
       source: s-tut-guide-2027
-    - text: "If TUT accepts you, pay R1 500 and register within three days of the acceptance letter, or the place is cancelled. TUT refunds it, less R220, only if a valid reason stops you registering, such as failing Grade 12."
-      source: s-tut-fees-2026
+  accepting:
+    text: "Pay R1 500 and register within three days of the acceptance letter, or the place is cancelled. TUT refunds it, less R220, only if a valid reason stops you registering, such as failing Grade 12."
+    source: s-tut-fees-2026
   windows:
     - intake: 2027
       source: s-tut-cal-2026   # "30 September 2026: closing date ... for January 2027 (excluding ... specified programmes)"
@@ -89,6 +90,221 @@ applications:
       # The 2027 calendar closes "specific programmes" on 15 June or 31 July 2027 and the rest on 30 September
       # 2027, without naming them: TUT's 2028 guide will. 31 July is also the date for all international applicants.
       closes_one_of: [2027-06-15, 2027-07-31, 2027-09-30]
+
+# Campuses and support from TUT's 2027 general information guide; calendar from TUT's 2026 and 2027 core
+# calendars; money dates from the 2026 fee rules. Agent draft, 10 Oct 2026: a person checks every value, and every
+# crisis line, before release. Each calendar item was matched to its date by its position on the page.
+campuses:
+  - {id: arcadia, name: "Arcadia", source: s-tut-guide-2027}
+  - {id: arts, name: "Arts", source: s-tut-guide-2027}
+  - {id: emalahleni, name: "eMalahleni", source: s-tut-guide-2027}
+  - {id: ga_rankuwa, name: "Ga-Rankuwa", source: s-tut-guide-2027}
+  - {id: mbombela, name: "Mbombela", source: s-tut-guide-2027}
+  - {id: polokwane, name: "Polokwane", source: s-tut-guide-2027}
+  - {id: pretoria, name: "Pretoria", source: s-tut-guide-2027}
+  - {id: soshanguve_north, name: "Soshanguve North",
+     note: "The guide gives one address for Soshanguve North and South.", source: s-tut-guide-2027}
+  - {id: soshanguve_south, name: "Soshanguve South",
+     note: "The guide gives one address for Soshanguve North and South.", source: s-tut-guide-2027}
+
+calendar:
+  # 2026 (s-tut-cal-2026)
+  - {period: registration, name: "Online registration", start: 2026-01-15, end: 2026-02-01, step: register,
+     source: s-tut-cal-2026}
+  - {period: deadline, name: "Closing date for academic exclusion appeals", start: 2026-01-16, source: s-tut-cal-2026}
+  - {period: deadline, name: "Closing date for exam enquiries, re-mark applications and viewing your scripts",
+     start: 2026-01-30, note: "Not for some block-based programmes.", source: s-tut-cal-2026}
+  - {period: deadline, name: "Closing date for registration", start: 2026-02-01, source: s-tut-cal-2026}
+  - {period: term, name: "Semester 1, term 1", start: 2026-02-02, end: 2026-03-27, step: first_lecture,
+     source: s-tut-cal-2026}
+  - {period: orientation, name: "Newcomer orientation", start: 2026-02-02, end: 2026-02-06, who: first_years,
+     step: orientation, source: s-tut-cal-2026}
+  - {period: deadline, name: "Closing date for autumn graduation applications", start: 2026-02-28,
+     source: s-tut-cal-2026}
+  - {period: deadline, name: "Closing date for registration changes and adding first-semester modules",
+     start: 2026-02-28, note: "Not for some block-based programmes.", source: s-tut-cal-2026}
+  - {period: deadline, name: "Last day to cancel year and first-semester modules without owing any tuition for them",
+     start: 2026-02-28, note: "After this date, cancelling costs part of the tuition fee.", source: s-tut-cal-2026}
+  - {period: recess, name: "TUT recess", start: 2026-03-30, end: 2026-04-02, source: s-tut-cal-2026}
+  - {period: term, name: "Semester 1, term 2", start: 2026-04-07, end: 2026-06-30, source: s-tut-cal-2026}
+  - {period: exam, name: "Main exams", start: 2026-05-25, end: 2026-06-12, source: s-tut-cal-2026}
+  - {period: exam, name: "Supplementary exams (semester modules)", start: 2026-06-17, end: 2026-06-30,
+     source: s-tut-cal-2026}
+  - {period: recess, name: "TUT recess", start: 2026-07-01, end: 2026-07-10, source: s-tut-cal-2026}
+  - {period: results, name: "Exam results published", start: 2026-07-03, source: s-tut-cal-2026}
+  - {period: term, name: "Semester 2, term 1", start: 2026-07-13, end: 2026-09-18, source: s-tut-cal-2026}
+  - {period: deadline, name: "Closing date for academic exclusion appeals", start: 2026-07-24, source: s-tut-cal-2026}
+  - {period: deadline, name: "Registration closes for semester 2", start: 2026-07-31, source: s-tut-cal-2026}
+  - {period: deadline, name: "Closing date for exam enquiries, re-mark applications and viewing your scripts",
+     start: 2026-07-31, note: "Not for some block-based programmes.", source: s-tut-cal-2026}
+  - {period: deadline, name: "Last day to cancel second-semester modules without owing any tuition for them",
+     start: 2026-07-31, note: "After this date, cancelling costs part of the tuition fee.", source: s-tut-cal-2026}
+  - {period: deadline, name: "Closing date for second-semester registration changes and adding modules",
+     start: 2026-08-07, note: "Not for some block-based programmes.", source: s-tut-cal-2026}
+  - {period: deadline, name: "Closing date for spring graduation applications", start: 2026-08-31,
+     source: s-tut-cal-2026}
+  - {period: recess, name: "TUT recess", start: 2026-09-21, end: 2026-09-23,
+     note: "24 Sep is Heritage Day and 25 Sep a TUT holiday.", source: s-tut-cal-2026}
+  - {period: term, name: "Semester 2, term 2", start: 2026-09-28, end: 2026-12-04, source: s-tut-cal-2026}
+  - {period: exam, name: "Main exams", start: 2026-11-02, end: 2026-11-20, source: s-tut-cal-2026}
+  - {period: exam, name: "Supplementary exams", start: 2026-11-23, end: 2026-12-04, source: s-tut-cal-2026}
+  - {period: closed, name: "Residences close", start: 2026-12-05, source: s-tut-cal-2026}
+  - {period: results, name: "Final exam results published", start: 2026-12-11, source: s-tut-cal-2026}
+
+  # 2027 (s-tut-cal-2027)
+  - {period: registration, name: "Online registration", start: 2027-01-14, end: 2027-01-31, step: register,
+     source: s-tut-cal-2027}
+  - {period: deadline, name: "Closing date for academic exclusion appeals (undergraduate)", start: 2027-01-15,
+     source: s-tut-cal-2027}
+  - {period: orientation, name: "Residence orientation for first-years", start: 2027-01-18, who: first_years,
+     source: s-tut-cal-2027}
+  - {period: deadline, name: "Closing date for exam enquiries, re-mark applications and viewing your scripts",
+     start: 2027-01-22, note: "Not for some block-based programmes.", source: s-tut-cal-2027}
+  - {period: deadline, name: "Closing date for registration", start: 2027-01-31, source: s-tut-cal-2027}
+  - {period: term, name: "Semester 1, term 1", start: 2027-02-01, end: 2027-03-25, step: first_lecture,
+     source: s-tut-cal-2027}
+  - {period: orientation, name: "Newcomer orientation", start: 2027-02-01, end: 2027-02-05, who: first_years,
+     step: orientation, source: s-tut-cal-2027}
+  - {period: deadline, name: "Closing date for autumn graduation applications", start: 2027-02-28,
+     source: s-tut-cal-2027}
+  - {period: deadline, name: "Closing date for registration changes and adding first-semester modules",
+     start: 2027-02-28, note: "Not for some block-based programmes.", source: s-tut-cal-2027}
+  - {period: deadline, name: "Last day to cancel year and first-semester modules without owing any tuition for them",
+     start: 2027-02-28, note: "After this date, cancelling costs part of the tuition fee.", source: s-tut-cal-2027}
+  - {period: recess, name: "TUT recess", start: 2027-03-30, end: 2027-04-02, source: s-tut-cal-2027}
+  - {period: graduation, name: "Graduation ceremonies", start: 2027-04-01, end: 2027-05-28, source: s-tut-cal-2027}
+  - {period: term, name: "Semester 1, term 2", start: 2027-04-05, end: 2027-06-25, source: s-tut-cal-2027}
+  - {period: exam, name: "Main exams", start: 2027-05-24, end: 2027-06-11, source: s-tut-cal-2027}
+  - {period: exam, name: "Supplementary exams (semester modules)", start: 2027-06-14, end: 2027-06-28,
+     source: s-tut-cal-2027}
+  - {period: recess, name: "TUT recess", start: 2027-06-29, end: 2027-07-09, source: s-tut-cal-2027}
+  - {period: results, name: "Exam results published", start: 2027-07-02, source: s-tut-cal-2027}
+  - {period: term, name: "Semester 2, term 1", start: 2027-07-12, end: 2027-09-17, source: s-tut-cal-2027}
+  - {period: deadline, name: "Closing date for academic exclusion appeals (undergraduate)", start: 2027-07-23,
+     source: s-tut-cal-2027}
+  - {period: deadline, name: "Registration closes for semester 2", start: 2027-07-30, source: s-tut-cal-2027}
+  - {period: deadline, name: "Closing date for exam enquiries, re-mark applications and viewing your scripts",
+     start: 2027-07-30, note: "Not for some block-based programmes.", source: s-tut-cal-2027}
+  - {period: deadline, name: "Last day to cancel second-semester modules without owing any tuition for them",
+     start: 2027-07-30, note: "After this date, cancelling costs part of the tuition fee.", source: s-tut-cal-2027}
+  - {period: deadline, name: "Closing date for second-semester registration changes and adding modules",
+     start: 2027-08-06, note: "Not for some block-based programmes.", source: s-tut-cal-2027}
+  - {period: deadline, name: "Closing date for spring graduation applications", start: 2027-08-31,
+     source: s-tut-cal-2027}
+  - {period: recess, name: "TUT recess", start: 2027-09-20, end: 2027-09-23, source: s-tut-cal-2027}
+  - {period: term, name: "Semester 2, term 2", start: 2027-09-27, end: 2027-12-03, source: s-tut-cal-2027}
+  - {period: graduation, name: "Graduation ceremonies", start: 2027-10-02, end: 2027-10-22, source: s-tut-cal-2027}
+  - {period: exam, name: "Main exams", start: 2027-11-01, end: 2027-11-19, source: s-tut-cal-2027}
+  - {period: exam, name: "Supplementary exams", start: 2027-11-22, end: 2027-12-03, source: s-tut-cal-2027}
+  - {period: closed, name: "Residences close", start: 2027-12-04, source: s-tut-cal-2027}
+  - {period: results, name: "Final exam results published", start: 2027-12-10, source: s-tut-cal-2027}
+  - {period: deadline, name: "Closing date for exam enquiries, re-mark applications and viewing your scripts",
+     start: 2028-01-29, note: "Not for some block-based programmes.", source: s-tut-cal-2027}
+
+# Dates only, never amounts. From TUT's 2026 fee rules (prospectus part 9); 2027's aren't published yet.
+funding_cycles:
+  - {funder: university, kind: fee_due, name: "Residence fees: first-semester accommodation instalment",
+     when: 2026-01-31, source: s-tut-fees-2026}
+  - {funder: university, kind: fee_due, name: "Class fees: first-semester programmes, instalment", when: 2026-02-28,
+     source: s-tut-fees-2026}
+  - {funder: university, kind: fee_due, name: "Residence fees: first-semester accommodation instalment",
+     when: 2026-02-28, source: s-tut-fees-2026}
+  - {funder: university, kind: discount_deadline,
+     name: "Early-payment discount: first-semester programmes paid in full", when: 2026-02-28,
+     note: "5% off class fees paid in full. Not for TUT financial aid bursaries or NSFAS allocations; apply to Student Debtors.",
+     source: s-tut-fees-2026}
+  - {funder: university, kind: fee_due, name: "Class fees: first-semester programmes, instalment", when: 2026-03-31,
+     source: s-tut-fees-2026}
+  - {funder: university, kind: fee_due, name: "Residence fees: first-semester accommodation instalment",
+     when: 2026-03-31, source: s-tut-fees-2026}
+  - {funder: university, kind: fee_due, name: "Class fees: first-semester programmes, last instalment",
+     when: 2026-04-30, source: s-tut-fees-2026}
+  - {funder: university, kind: fee_due, name: "Residence fees: first-semester accommodation, last instalment",
+     when: 2026-04-30, source: s-tut-fees-2026}
+  - {funder: university, kind: discount_deadline, name: "Early-payment discount: year programmes paid in full",
+     when: 2026-04-30,
+     note: "5% off class fees paid in full. Not for TUT financial aid bursaries or NSFAS allocations; apply to Student Debtors.",
+     source: s-tut-fees-2026}
+  - {funder: university, kind: fee_due, name: "Residence fees: second-semester accommodation instalment",
+     when: 2026-07-31, source: s-tut-fees-2026}
+  - {funder: university, kind: fee_due, name: "Class fees: second-semester programmes, instalment", when: 2026-08-31,
+     source: s-tut-fees-2026}
+  - {funder: university, kind: fee_due, name: "Residence fees: second-semester accommodation instalment",
+     when: 2026-08-31, source: s-tut-fees-2026}
+  - {funder: university, kind: discount_deadline,
+     name: "Early-payment discount: second-semester programmes paid in full", when: 2026-08-30,
+     note: "5% off class fees paid in full. Not for TUT financial aid bursaries or NSFAS allocations; apply to Student Debtors. TUT says before 31 August.",
+     source: s-tut-fees-2026}
+  - {funder: university, kind: fee_due, name: "Class fees: second-semester programmes, instalment", when: 2026-09-30,
+     source: s-tut-fees-2026}
+  - {funder: university, kind: fee_due, name: "Residence fees: second-semester accommodation instalment",
+     when: 2026-09-30, source: s-tut-fees-2026}
+  - {funder: university, kind: fee_due, name: "Residence fees: second-semester accommodation, last instalment",
+     when: 2026-10-30, source: s-tut-fees-2026}
+  - {funder: university, kind: fee_due, name: "Residence fees for the year: settle the account", when: 2026-10-30,
+     note: "TUT's fee rules also say year accommodation is paid in ten instalments up to 31 October.",
+     source: s-tut-fees-2026}
+  - {funder: university, kind: fee_due, name: "Class fees: second-semester programmes, last instalment",
+     when: 2026-10-31, source: s-tut-fees-2026}
+  - {funder: university, kind: fee_due, name: "Class fees: year programmes, last of nine instalments",
+     when: 2026-10-31, note: "Nine instalments, from 28 February to 31 October.", source: s-tut-fees-2026}
+
+# NSFAS's contacts are in data/national/funding.yaml. Food support and chaplaincy: not found.
+support_services:
+  - {kind: crisis, name: "TUT personal counselling line (toll-free)", contact: "0800 68 78 88", hours: "24 hours",
+     source: s-tut-guide-2027}
+  - {kind: counselling, name: "Personal counselling: appointments", contact: "counselling@tut.ac.za",
+     source: s-tut-guide-2027}
+  - {kind: careers,
+     name: "Career counselling: free interviews at all sites; a full psychometric assessment at some sites, at a cost",
+     contact: "careercounselling@tut.ac.za or assessmentcentre@tut.ac.za; eMalahleni 012 382 3109/10; Ga-Rankuwa 012 382 0701; Mbombela 012 382 3670; Polokwane 012 382 0953; Soshanguve 012 382 9863; Pretoria 012 382 5010/4826/5273",
+     note: "Check: TUT's 2027 course list gives other numbers for Mbombela and Pretoria.", source: s-tut-guide-2027}
+  - {kind: disability, name: "Disability Unit",
+     contact: "ptadisability@tut.ac.za, or the disability coordinator at your campus", source: s-tut-guide-2027}
+  - {kind: health, name: "Health and Wellness: Director's office", contact: "012 382 6611/6613",
+     note: "Primary health care, mental health care, sexual and reproductive health, HIV, and a gender-based violence programme.",
+     source: s-tut-guide-2027}
+  - {kind: health, name: "Health and Wellness, eMalahleni", contact: "012 382 3122", campuses: [emalahleni],
+     note: "Primary health care, mental health care, sexual and reproductive health, HIV, and a gender-based violence programme.",
+     source: s-tut-guide-2027}
+  - {kind: health, name: "Health and Wellness, Ga-Rankuwa", contact: "012 382 0572", campuses: [ga_rankuwa],
+     note: "Primary health care, mental health care, sexual and reproductive health, HIV, and a gender-based violence programme.",
+     source: s-tut-guide-2027}
+  - {kind: health, name: "Health and Wellness, Mbombela", contact: "012 382 3691", campuses: [mbombela],
+     note: "Primary health care, mental health care, sexual and reproductive health, HIV, and a gender-based violence programme.",
+     source: s-tut-guide-2027}
+  - {kind: health, name: "Health and Wellness, Polokwane", contact: "012 382 0906", campuses: [polokwane],
+     note: "Primary health care, mental health care, sexual and reproductive health, HIV, and a gender-based violence programme.",
+     source: s-tut-guide-2027}
+  - {kind: health, name: "Health and Wellness, Pretoria", contact: "012 382 6612", campuses: [pretoria],
+     note: "Primary health care, mental health care, sexual and reproductive health, HIV, and a gender-based violence programme.",
+     source: s-tut-guide-2027}
+  - {kind: health, name: "Health and Wellness, Soshanguve", contact: "012 382 9184",
+     campuses: [soshanguve_north, soshanguve_south],
+     note: "Primary health care, mental health care, sexual and reproductive health, HIV, and a gender-based violence programme.",
+     source: s-tut-guide-2027}
+  - {kind: financial_aid, name: "Financial aid, Arcadia", contact: "012 382 6295; finaidarc@tut.ac.za",
+     campuses: [arcadia], source: s-tut-guide-2027}
+  - {kind: financial_aid, name: "Financial aid, Arts", contact: "012 382 6157; finaidarts@tut.ac.za",
+     campuses: [arts], source: s-tut-guide-2027}
+  - {kind: financial_aid, name: "Financial aid, eMalahleni", contact: "012 382 3121; finaidema@tut.ac.za",
+     campuses: [emalahleni], source: s-tut-guide-2027}
+  - {kind: financial_aid, name: "Financial aid, Ga-Rankuwa", contact: "012 382 0797; finaidgar@tut.ac.za",
+     campuses: [ga_rankuwa], source: s-tut-guide-2027}
+  - {kind: financial_aid, name: "Financial aid, Mbombela", contact: "012 382 3761; finaidmbom@tut.ac.za",
+     campuses: [mbombela], source: s-tut-guide-2027}
+  - {kind: financial_aid, name: "Financial aid, Polokwane", contact: "012 382 0976; finaidpol@tut.ac.za",
+     campuses: [polokwane], source: s-tut-guide-2027}
+  - {kind: financial_aid, name: "Financial aid, Pretoria", contact: "012 382 4289; finaidpta@tut.ac.za",
+     campuses: [pretoria], source: s-tut-guide-2027}
+  - {kind: financial_aid, name: "Financial aid, Soshanguve North", contact: "012 382 9895; finaidsoshn@tut.ac.za",
+     campuses: [soshanguve_north], source: s-tut-guide-2027}
+  - {kind: financial_aid, name: "Financial aid, Soshanguve South", contact: "012 382 9272; finaidsoshs@tut.ac.za",
+     campuses: [soshanguve_south], source: s-tut-guide-2027}
+
+# Not researched yet (docs/OPEN_QUESTIONS.md).
+cheap_things: []
+
 
 programmes:
 

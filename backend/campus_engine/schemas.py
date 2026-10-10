@@ -250,6 +250,7 @@ class Applications(_Strict):
     contact: str | None = None
     documents: SourcedList | None = None  # None: not verified yet
     after: list[SourcedText] = Field(default_factory=list)
+    accepting: SourcedText | None = None  # how to accept an offer; None: not verified yet
     windows: list[Window] = Field(default_factory=list)
 
     @model_validator(mode="after")
@@ -273,6 +274,8 @@ class Applications(_Strict):
         if self.documents:
             cited.append(("applications documents", self.documents.source))
         cited += [("applications after", a.source) for a in self.after]
+        if self.accepting:
+            cited.append(("applications accepting", self.accepting.source))
         for w in self.windows:
             cited.append((f"window {w.intake}", w.source))
             cited += [(f"window {w.intake}", g.source) for g in w.programme_closes if g.source]
@@ -285,6 +288,82 @@ def _unknown_sources(cited: list[tuple[str, str]], source_ids: list[str]) -> lis
     return [f"{what} cites unknown source '{sid}'" for what, sid in cited if sid not in source_ids]
 
 
+class Campus(_Strict):
+    id: str
+    name: str
+    note: str | None = None  # e.g. which faculties it houses
+    source: str
+
+
+CalendarPeriod = Literal[
+    "term", "registration", "orientation", "test_week", "revision", "exam", "recess", "results", "deadline",
+    "graduation", "closed",
+]
+
+
+class CalendarEntry(_Strict):
+    """A date or period from the university's own calendar. `step` marks the dates a new
+    student's first steps come from: registering, orientation and the first lecture."""
+
+    period: CalendarPeriod
+    name: str
+    start: date
+    end: date | None = None  # None: one day
+    campuses: list[str] = Field(default_factory=list)  # empty: every campus
+    who: Literal["everyone", "first_years", "returning"] = "everyone"
+    step: Literal["register", "orientation", "first_lecture"] | None = None
+    note: str | None = None
+    source: str
+
+    @model_validator(mode="after")
+    def _in_order(self):
+        if self.end is not None and self.end < self.start:
+            raise ValueError(f"'{self.name}' ends before it starts")
+        return self
+
+    @property
+    def last_day(self) -> date:
+        return self.end or self.start
+
+
+class FundingDate(_Strict):
+    """A money date from an official source: fees falling due, a discount ending, a funder paying.
+    Dates only, never amounts: amounts in the app are always the student's own entries."""
+
+    funder: Literal["university", "nsfas", "other"]
+    kind: Literal["fee_due", "discount_deadline", "allowance", "other"]
+    name: str
+    when: date  # not "on": YAML reads that key as true
+    note: str | None = None
+    source: str
+
+
+SupportKind = Literal[
+    "counselling", "crisis", "financial_aid", "food_support", "tutoring", "chaplaincy", "health", "careers",
+    "disability",
+]
+
+
+class SupportService(_Strict):
+    """Campus support. A crisis line is shown only once a person has verified it (CLAUDE.md)."""
+
+    kind: SupportKind
+    name: str
+    contact: str  # as the source publishes it: numbers, addresses, rooms
+    hours: str | None = None
+    campuses: list[str] = Field(default_factory=list)  # empty: every campus
+    note: str | None = None
+    source: str
+
+
+class CheapThing(_Strict):
+    name: str
+    category: str
+    cost_note: str
+    near_campus: str | None = None
+    source: str
+
+
 class University(_Strict):
     university: str
     name: str
@@ -294,6 +373,11 @@ class University(_Strict):
     max_choices: int | None = None
     points_rules: PointsRule | None = None
     applications: Applications | None = None  # None: not verified yet
+    campuses: list[Campus] = Field(default_factory=list)
+    calendar: list[CalendarEntry] = Field(default_factory=list)
+    funding_cycles: list[FundingDate] = Field(default_factory=list)
+    support_services: list[SupportService] = Field(default_factory=list)
+    cheap_things: list[CheapThing] = Field(default_factory=list)
     programmes: list[Programme] = Field(default_factory=list)
     sources: list[Source] = Field(default_factory=list)
 
@@ -326,6 +410,23 @@ class University(_Strict):
                 listed = {pid for g in w.programme_closes for pid in g.programmes}
                 for pid in sorted(listed - set(programme_ids)):
                     problems.append(f"window {w.intake}: closing date for unknown programme '{pid}'")
+        campus_ids = [c.id for c in self.campuses]
+        if len(set(campus_ids)) != len(campus_ids):
+            problems.append("campus ids must be unique")
+        cited = (
+            [(f"campus '{c.id}'", c.source) for c in self.campuses]
+            + [(f"calendar '{e.name}'", e.source) for e in self.calendar]
+            + [(f"funding date '{f.name}'", f.source) for f in self.funding_cycles]
+            + [(f"support '{s.name}'", s.source) for s in self.support_services]
+            + [(f"cheap thing '{t.name}'", t.source) for t in self.cheap_things]
+        )
+        problems += _unknown_sources(cited, source_ids)
+        placed = (
+            [(f"calendar '{e.name}'", c) for e in self.calendar for c in e.campuses]
+            + [(f"support '{s.name}'", c) for s in self.support_services for c in s.campuses]
+            + [(f"cheap thing '{t.name}'", t.near_campus) for t in self.cheap_things if t.near_campus]
+        )
+        problems += [f"{what} names unknown campus '{c}'" for what, c in placed if c not in campus_ids]
         if problems:
             raise ValueError("; ".join(problems))
         return self
@@ -349,6 +450,7 @@ class Funder(_Strict):
     who_can_apply: SourcedList | None = None  # shown as the funder words it; we never ask
     tips: SourcedList | None = None  # e.g. the funder's own list of common document mistakes
     warnings: SourcedList | None = None  # e.g. "never pay anyone to apply"
+    at_registration: SourcedText | None = None  # what happens to the funding when a student registers
     applications: Applications
 
 
@@ -370,7 +472,10 @@ class FundingPack(_Strict):
             problems.append("funder ids must be unique")
         for f in self.funders:
             cited = [(f"{f.id}: {what}", sid) for what, sid in f.applications.citations()]
-            for what, group in (("who_can_apply", f.who_can_apply), ("tips", f.tips), ("warnings", f.warnings)):
+            for what, group in (
+                ("who_can_apply", f.who_can_apply), ("tips", f.tips), ("warnings", f.warnings),
+                ("at_registration", f.at_registration),
+            ):
                 if group:
                     cited.append((f"{f.id}: {what}", group.source))
             problems += _unknown_sources(cited, source_ids)

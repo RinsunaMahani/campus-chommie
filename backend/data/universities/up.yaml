@@ -44,6 +44,183 @@ applications:
         - closes: 2026-05-31   # Veterinary Science
           programmes: [bvsc, b_veterinary_nursing]
 
+# Campuses, money dates and support from UP's InfoGuide 2026; calendar from UP's main dates for 2026
+# (amended) and 2027. Agent draft, 10 Oct 2026: a person checks every value, and every crisis line, before release.
+campuses:
+  - {id: hatfield, name: "Hatfield",
+     note: "Economic and Management Sciences; Engineering, Built Environment and IT; Humanities; Law; Natural and Agricultural Sciences; Theology and Religion",
+     source: s-up-infoguide-2026}
+  - {id: groenkloof, name: "Groenkloof", note: "Education", source: s-up-infoguide-2026}
+  - {id: hillcrest, name: "Hillcrest", note: "TuksSport and the High Performance Centre", source: s-up-infoguide-2026}
+  - {id: mamelodi, name: "Mamelodi", note: "Post-school mathematics and science programmes; community engagement",
+     source: s-up-infoguide-2026}
+  - {id: onderstepoort, name: "Onderstepoort", note: "Veterinary Science", source: s-up-infoguide-2026}
+  - {id: prinshof, name: "Prinshof", note: "Health Sciences", source: s-up-infoguide-2026}
+  - {id: gibs, name: "GIBS (Sandton, Johannesburg)", note: "Gordon Institute of Business Science",
+     source: s-up-infoguide-2026}
+
+# Test weeks are for the Hatfield and Groenkloof campuses.
+calendar:
+  # 2026 (s-up-cal-2026)
+  - {period: registration, name: "Online registration opens for senior students", start: 2026-01-05, who: returning,
+     source: s-up-cal-2026}
+  - {period: orientation, name: "Welcome Day", start: 2026-01-31, source: s-up-cal-2026}
+  - {period: orientation, name: "Orientation for first-year students", start: 2026-02-02, end: 2026-02-06,
+     campuses: [hatfield, groenkloof], who: first_years, step: orientation, source: s-up-cal-2026}
+  - {period: term, name: "Semester 1 lectures", start: 2026-02-09, end: 2026-05-27, step: first_lecture,
+     source: s-up-cal-2026}
+  - {period: deadline, name: "Last day of registration for semester 1", start: 2026-02-20, step: register,
+     note: "No student may register for a module after the first two weeks of lectures, except with the Registrar's approval.",
+     source: s-up-cal-2026}
+  - {period: deadline, name: "Last day to drop or swap semester 1 modules", start: 2026-03-09,
+     note: "Dropping or swapping after this date affects fees and your GPA.", source: s-up-cal-2026}
+  - {period: test_week, name: "Test week 1, semester 1", start: 2026-03-14, end: 2026-03-20,
+     campuses: [hatfield, groenkloof], source: s-up-cal-2026}
+  - {period: test_week, name: "Test week 1, semester 1", start: 2026-03-28, campuses: [hatfield, groenkloof],
+     source: s-up-cal-2026}
+  - {period: recess, name: "March/April recess", start: 2026-03-29, end: 2026-04-06, source: s-up-cal-2026}
+  - {period: test_week, name: "Test week 1, semester 1", start: 2026-04-11, campuses: [hatfield, groenkloof],
+     source: s-up-cal-2026}
+  - {period: test_week, name: "Test week 2, semester 1", start: 2026-05-02, end: 2026-05-09,
+     campuses: [hatfield, groenkloof], source: s-up-cal-2026}
+  - {period: graduation, name: "Autumn graduation ceremonies", start: 2026-05-04, end: 2026-05-29,
+     source: s-up-cal-2026}
+  - {period: test_week, name: "Test week 2, semester 1", start: 2026-05-16, campuses: [hatfield, groenkloof],
+     source: s-up-cal-2026}
+  - {period: revision, name: "Study period before the exams", start: 2026-05-28, end: 2026-05-29,
+     source: s-up-cal-2026}
+  - {period: exam, name: "Exams: semester 1, Q1 and Q2 modules", start: 2026-05-30, end: 2026-06-18,
+     source: s-up-cal-2026}
+  - {period: exam, name: "Supplementary exams: semester 1, Q1 and Q2 modules", start: 2026-06-22, end: 2026-06-27,
+     source: s-up-cal-2026}
+  - {period: recess, name: "July recess", start: 2026-06-28, end: 2026-07-19, source: s-up-cal-2026}
+  - {period: term, name: "Semester 2 lectures", start: 2026-07-20, end: 2026-11-06, source: s-up-cal-2026}
+  - {period: deadline, name: "Last day of registration for semester 2", start: 2026-07-31,
+     note: "No student may register for a module after the first two weeks of lectures, except with the Registrar's approval.",
+     source: s-up-cal-2026}
+  - {period: deadline, name: "Last day to drop or swap semester 2 modules", start: 2026-08-17,
+     note: "Dropping or swapping after this date affects fees and your GPA.", source: s-up-cal-2026}
+  - {period: test_week, name: "Test week 1, semester 2", start: 2026-08-22, end: 2026-08-29,
+     campuses: [hatfield, groenkloof], source: s-up-cal-2026}
+  - {period: graduation, name: "Spring graduation ceremonies", start: 2026-08-31, end: 2026-09-04,
+     source: s-up-cal-2026}
+  - {period: test_week, name: "Test week 1, semester 2", start: 2026-09-05, campuses: [hatfield, groenkloof],
+     source: s-up-cal-2026}
+  - {period: recess, name: "UP Wellness Day: no lectures", start: 2026-09-16, source: s-up-cal-2026}
+  - {period: recess, name: "September recess", start: 2026-09-17, end: 2026-09-27, source: s-up-cal-2026}
+  - {period: test_week, name: "Test week 2, semester 2", start: 2026-10-10, end: 2026-10-17,
+     campuses: [hatfield, groenkloof], source: s-up-cal-2026}
+  - {period: test_week, name: "Test week 2, semester 2", start: 2026-10-24, campuses: [hatfield, groenkloof],
+     source: s-up-cal-2026}
+  - {period: exam, name: "Exams: semester 2, Q3 and Q4 modules", start: 2026-11-07, end: 2026-11-25,
+     source: s-up-cal-2026}
+  - {period: exam, name: "Supplementary exams: semester 2, Q3 and Q4 modules", start: 2026-11-30, end: 2026-12-05,
+     source: s-up-cal-2026}
+  - {period: closed, name: "University closes at 10:00", start: 2026-12-23, source: s-up-cal-2026}
+
+  # 2027 (s-up-cal-2027)
+  - {period: registration, name: "Online registration opens for senior students", start: 2027-01-04, who: returning,
+     source: s-up-cal-2027}
+  - {period: orientation, name: "Welcome Day", start: 2027-01-30, source: s-up-cal-2027}
+  - {period: orientation, name: "Orientation for first-year students", start: 2027-02-01, end: 2027-02-05,
+     campuses: [hatfield, groenkloof], who: first_years, step: orientation, source: s-up-cal-2027}
+  - {period: term, name: "Semester 1 lectures", start: 2027-02-08, end: 2027-05-26, step: first_lecture,
+     source: s-up-cal-2027}
+  - {period: deadline, name: "Last day of registration for semester 1", start: 2027-02-19, step: register,
+     note: "No student may register for a module after the first two weeks of lectures, except with the Registrar's approval.",
+     source: s-up-cal-2027}
+  - {period: test_week, name: "Test week 1, semester 1", start: 2027-03-06, campuses: [hatfield, groenkloof],
+     source: s-up-cal-2027}
+  - {period: deadline, name: "Last day to change or cancel modules for semester 1", start: 2027-03-08,
+     note: "Changing or cancelling year, semester or quarter modules after this date affects fees and your GPA.",
+     source: s-up-cal-2027}
+  - {period: test_week, name: "Test week 1, semester 1", start: 2027-03-13, end: 2027-03-20,
+     campuses: [hatfield, groenkloof], source: s-up-cal-2027}
+  - {period: recess, name: "March recess", start: 2027-03-21, end: 2027-03-29, source: s-up-cal-2027}
+  - {period: test_week, name: "Test week 2, semester 1", start: 2027-04-17, campuses: [hatfield, groenkloof],
+     source: s-up-cal-2027}
+  - {period: test_week, name: "Test week 2, semester 1", start: 2027-04-24, campuses: [hatfield, groenkloof],
+     source: s-up-cal-2027}
+  - {period: graduation, name: "Autumn graduation ceremonies", start: 2027-04-28, end: 2027-05-28,
+     source: s-up-cal-2027}
+  - {period: test_week, name: "Test week 2, semester 1", start: 2027-05-03, end: 2027-05-08,
+     campuses: [hatfield, groenkloof], source: s-up-cal-2027}
+  - {period: revision, name: "Study period before the exams", start: 2027-05-27, end: 2027-05-28,
+     source: s-up-cal-2027}
+  - {period: exam, name: "Exams: semester 1, Q1 and Q2 modules", start: 2027-05-29, end: 2027-06-17,
+     source: s-up-cal-2027}
+  - {period: revision, name: "Study period before the supplementary exams", start: 2027-06-18, end: 2027-06-20,
+     source: s-up-cal-2027}
+  - {period: exam, name: "Supplementary exams: semester 1, Q1 and Q2 modules", start: 2027-06-21, end: 2027-06-26,
+     source: s-up-cal-2027}
+  - {period: recess, name: "July recess", start: 2027-06-27, end: 2027-07-18, source: s-up-cal-2027}
+  - {period: term, name: "Semester 2 lectures", start: 2027-07-19, end: 2027-11-04, source: s-up-cal-2027}
+  - {period: deadline, name: "Last day of registration for semester 2", start: 2027-07-30,
+     note: "No student may register for a module after the first two weeks of lectures, except with the Registrar's approval.",
+     source: s-up-cal-2027}
+  - {period: test_week, name: "Test week 1, semester 2", start: 2027-08-14, campuses: [hatfield, groenkloof],
+     source: s-up-cal-2027}
+  - {period: deadline, name: "Last day to change or cancel modules for semester 2", start: 2027-08-16,
+     note: "Changing or cancelling year, semester or quarter modules after this date affects fees and your GPA.",
+     source: s-up-cal-2027}
+  - {period: test_week, name: "Test week 1, semester 2", start: 2027-08-21, end: 2027-08-28,
+     campuses: [hatfield, groenkloof], source: s-up-cal-2027}
+  - {period: graduation, name: "Spring graduation ceremonies", start: 2027-08-30, end: 2027-09-03,
+     source: s-up-cal-2027}
+  - {period: recess, name: "UP Wellness Day: no lectures", start: 2027-09-15, source: s-up-cal-2027}
+  - {period: recess, name: "September recess", start: 2027-09-16, end: 2027-09-26, source: s-up-cal-2027}
+  - {period: test_week, name: "Test week 2, semester 2", start: 2027-10-02, campuses: [hatfield, groenkloof],
+     source: s-up-cal-2027}
+  - {period: test_week, name: "Test week 2, semester 2", start: 2027-10-09, end: 2027-10-16,
+     campuses: [hatfield, groenkloof], source: s-up-cal-2027}
+  - {period: revision, name: "Study period before the exams", start: 2027-11-05, source: s-up-cal-2027}
+  - {period: exam, name: "Exams: semester 2, Q3 and Q4 modules", start: 2027-11-06, end: 2027-11-24,
+     source: s-up-cal-2027}
+  - {period: revision, name: "Study period before the supplementary exams", start: 2027-11-25, end: 2027-11-28,
+     source: s-up-cal-2027}
+  - {period: exam, name: "Supplementary exams: semester 2, Q3 and Q4 modules", start: 2027-11-29, end: 2027-12-04,
+     source: s-up-cal-2027}
+  - {period: closed, name: "University closes at 10:00", start: 2027-12-23, source: s-up-cal-2027}
+
+# Dates only, never amounts. UP's 2027 payment dates aren't published yet.
+funding_cycles:
+  - {funder: university, kind: discount_deadline, name: "2.5% off if your 2026 account is paid in full",
+     when: 2026-04-30, source: s-up-infoguide-2026}
+  - {funder: university, kind: fee_due, name: "Half of your 2026 tuition fees due", when: 2026-04-30,
+     source: s-up-infoguide-2026}
+  - {funder: university, kind: fee_due, name: "All of your 2026 tuition fees due", when: 2026-07-31,
+     source: s-up-infoguide-2026}
+
+# Food support (seen only in search snippets) and chaplaincy are left out until a person finds them
+# on an official page.
+support_services:
+  - {kind: crisis, name: "UP crisis line (toll-free)", contact: "0800 006 428", hours: "24 hours",
+     source: s-up-infoguide-2026}
+  - {kind: crisis, name: "UP Careline, with SADAG: telephone counselling for registered students",
+     contact: "0800 747 747; SMS 31393 for a call-back", hours: "24 hours, every day", source: s-up-infoguide-2026}
+  - {kind: crisis, name: "Emergencies: UP's 24-hour Operational Management Centre",
+     contact: "012 420 2310 or 012 420 2760", hours: "24 hours", source: s-up-infoguide-2026}
+  - {kind: counselling, name: "Student Counselling Unit", contact: "012 420 2333; studentcounselling@up.ac.za",
+     hours: "07:30-16:00", source: s-up-infoguide-2026}
+  - {kind: health, name: "Student Health Services", contact: "012 420 2500; info.shs@up.ac.za",
+     source: s-up-infoguide-2026}
+  - {kind: health, name: "Centre for Sexualities, AIDS and Gender", contact: "012 420 4391",
+     source: s-up-infoguide-2026}
+  - {kind: crisis, name: "Thuthuzela Care Centre (outside UP), after sexual assault", contact: "012 354 1874",
+     source: s-up-infoguide-2026}
+  - {kind: disability, name: "Access, Disability and Inclusion Services (ADIS)", contact: "012 420 2064",
+     source: s-up-infoguide-2026}
+  - {kind: tutoring, name: "Academic success coaches, by faculty",
+     contact: "012 420 6532 (EBIT); 012 420 6740 (Natural and Agricultural Sciences); 012 420 6743 (EMS); 012 420 6963 (Humanities); 012 420 5968 (Education); 012 356 3351 (Health Sciences); 012 420 6830 (Law); 012 420 6707 (Theology); 012 420 4990 (Veterinary Science)",
+     source: s-up-infoguide-2026}
+  - {kind: careers,
+     name: "Career Services: vacancies, graduate programmes, internships and vacation work on TuksCareers",
+     contact: "012 420 6438; careerservices@up.ac.za", source: s-up-infoguide-2026}
+
+# Not researched yet (docs/OPEN_QUESTIONS.md).
+cheap_things: []
+
+
 programmes:
 
   - id: badmin_public_admin
@@ -1123,6 +1300,27 @@ sources:
     url: "https://drupalwebprod-files.up.ac.za/Public/2026-04/2026%20for%202027%20Selection%20of%20MBChB%20students_13April%202026%20(2).pdf?VersionId=Zhz6Br5WLsS8ahAYQXZ3RDGUkfIq_RNy"
     publisher: "University of Pretoria"
     title: "Faculty of Health Sciences: Selection criteria of MBChB students, 2026 for 2027"
+    retrieved: 2026-10-09
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-up-cal-2026
+    url: "https://linus.up.ac.za/calendars/2026_MAINDATES.pdf"
+    publisher: "University of Pretoria"
+    title: "Academic calendar 2026, main dates (amended, S0002/25)"
+    retrieved: 2026-10-09
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-up-cal-2027
+    url: "https://linus.up.ac.za/calendars/2027_MAINDATES.pdf"
+    publisher: "University of Pretoria"
+    title: "Academic calendar 2027, main dates (S0002/26)"
+    retrieved: 2026-10-09
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-up-infoguide-2026
+    url: "https://drupalwebprod-files.up.ac.za/Public/2025-12/UP_InfoGuide%202026_V5-c.pdf"
+    publisher: "University of Pretoria"
+    title: "InfoGuide 2026"
     retrieved: 2026-10-09
     last_verified: null
     verified_by: "agent draft, needs human check"
