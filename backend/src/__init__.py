@@ -80,9 +80,13 @@ def _register_models() -> None:
     from src.domains.platform.notifications import models as _notifications  # noqa: F401
     # audit schema: the append-only audit trail
     from src.domains.security.audit import models as _audit  # noqa: F401
-    # student schema: a student's own profile and money (owner-only)
+    # student schema: a student's own profile, money and marks (owner-only)
+    from src.domains.student.academics import models as _academics  # noqa: F401
     from src.domains.student.money import models as _money  # noqa: F401
     from src.domains.student.profile import models as _profile  # noqa: F401
+    # classes schema: classes, members, reps, announcements and verified events
+    from src.domains.classes.classes import models as _classes  # noqa: F401
+    from src.domains.classes.events import models as _events  # noqa: F401
 
 
 def _register_listeners(app: Flask) -> None:

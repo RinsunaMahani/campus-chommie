@@ -26,6 +26,9 @@ from src.shared.rate_limit.limiter import limiter  # noqa: E402
 # Emptied with CASCADE, which also empties every table that points at a
 # user (notifications, ...).
 IDENTITY_TABLES = ["google_identities", "sessions", "trusted_phones", "devices", "email_codes", "password_resets", "password_credentials", "consents", "users"]
+# Tables that point at no user, so the CASCADE above doesn't reach them (a
+# class keeps no creator); their own rows cascade from these.
+OTHER_TABLES = ["classes.classes"]
 
 
 @pytest.fixture(scope="session")
@@ -48,7 +51,8 @@ def clean(request):
     # before its tables are emptied (a TRUNCATE waiting on a half-done job hangs).
     wait_until_idle(timeout=30)
     with app.app_context():
-        db.session.execute(text("TRUNCATE " + ", ".join(f"identity.{t}" for t in IDENTITY_TABLES) + " CASCADE"))
+        tables = [f"identity.{t}" for t in IDENTITY_TABLES] + OTHER_TABLES
+        db.session.execute(text("TRUNCATE " + ", ".join(tables) + " CASCADE"))
         db.session.commit()
     get_fake_provider().clear()
     # Per-address email limits live in memory for the whole run; each test
