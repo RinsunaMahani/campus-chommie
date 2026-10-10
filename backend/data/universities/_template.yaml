@@ -7,6 +7,15 @@
 # - Keep release: false until a second person has checked every value.
 # - Files starting with "_" are skipped by the app, so this template never shows up.
 # - Subject keys come from SUBJECTS in campus_engine/schemas.py; an unknown key fails validation.
+# - Fields link related programmes: the plan's safer third choice is the closest programme by
+#   the share of fields it has in common with the goal. Reuse the fields already in the packs:
+#   health_sciences, medicine, medical_sciences, dentistry, nursing, pharmacy, radiography,
+#   rehabilitation, nutrition, emergency_care, environmental_health, sport_science,
+#   natural_sciences, life_sciences, physical_sciences, earth_sciences, mathematical_sciences,
+#   agriculture, food_science, veterinary, engineering, built_environment, computing, commerce,
+#   accounting, finance, economics, management, public_administration, law, safety_and_justice,
+#   education, humanities, languages_and_communication, arts_and_design, performing_arts, music,
+#   theology, tourism_and_hospitality, consumer_sciences.
 
 university: example          # short lowercase id, e.g. up, tut
 name: Example University

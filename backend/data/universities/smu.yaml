@@ -1,15 +1,17 @@
 # Sefako Makgatho Health Sciences University (SMU)
 #
-# Every value below was copied from SMU's official medicine admissions page on 2026-09-30
-# (source s-smu-med). Re-check each one against the current prospectus before release.
-# Anything not on that page is left out or marked null, never guessed.
+# MBChB, the foundation year, the BSc route and B Rad were copied from SMU's medicine admissions
+# page on 2026-09-30 (source s-smu-med). Everything else was drafted by an agent from SMU's own
+# pages on 2026-10-09 (docs/research/smu.md) and approved by Rinsuna for the pack the same day.
+# Re-check each value against its source before release. Anything not published is left out or
+# marked null, never guessed.
 
 university: smu
 name: Sefako Makgatho Health Sciences University
 city: Pretoria
 academic_year: 2027          # intake these rules apply to: verify with SMU
 release: false
-max_choices: null            # not verified yet
+max_choices: 2               # "You are allowed to apply for only two study choices" (s-smu-apply-2027)
 
 points_rules:
   source: s-smu-med
@@ -27,8 +29,9 @@ points_rules:
 programmes:
   - id: mbchb
     name: MBChB (Bachelor of Medicine and Bachelor of Surgery)
-    fields: [health_sciences, medicine]
+    fields: [health_sciences, medicine, medical_sciences]
     selective: true
+    places: 250                # s-smu-med, Table 3, all categories
     selection_note: >-
       SMU pre-selects on final Grade 11 results and makes final decisions on Grade 12 results,
       ranking applicants by their actual percentages in Mathematics, Physical Science,
@@ -47,7 +50,7 @@ programmes:
 
   - id: mbchb_ecp
     name: MBChB Extended Curriculum Programme I (medicine foundation year)
-    fields: [health_sciences, medicine]
+    fields: [health_sciences, medicine, medical_sciences]
     selective: true
     places: 50
     requirements:
@@ -70,16 +73,47 @@ programmes:
           A failed foundation module cannot be repeated.
         added_years: 1
         eligibility_note: >-
-          SMU restricts this programme to specific applicants, including learners from
-          quintile 1 and 2 schools who have not studied at a tertiary institution before.
-          Read the full eligibility rules on SMU's page before choosing it.
+          In SMU's words, this programme is "only available to Indigenous South African
+          (Black) students from quintiles 1 and 2 schools only who have not previously been
+          engaged in tertiary education and have not been able to get admission into the six
+          year SMU medicine degree program". Read SMU's page before choosing it.
         source: s-smu-med
 
   - id: bsc_y1
     name: BSc first year at SMU
     fields: [health_sciences, natural_sciences]
-    requirements: null       # BSc admission requirements not verified yet
+    selective: true
+    selection_note: SMU's selection committee selects on merit for a limited number of places.
+    points_rules:
+      source: s-smu-sst
+      subjects_counted: 6
+      life_orientation: exclude
+      note: "SMU's BSc table adds six subjects without Life Orientation; SMU hasn't said whether it counts."
+      scale:
+        - {min_percent: 80, level: 7}
+        - {min_percent: 70, level: 6}
+        - {min_percent: 60, level: 5}
+        - {min_percent: 50, level: 4}
+        - {min_percent: 40, level: 3}
+        - {min_percent: 30, level: 2}
+        - {min_percent: 0, level: 1}
+    requirements:
+      source: s-smu-sst
+      min_points: 25
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 4, physical_sciences: 4}
+      additional_minimums: [4, 4]
+      extras:
+        - "Each stream also needs level 5 in its subject: Life Sciences for the Life Sciences and Occupational and Environmental Health streams, Mathematics for Mathematical Sciences, and Physical Sciences for Physical Sciences."
     bridges_to:
+      - to: bds
+        guarantee: considered
+        max_places: 2
+        added_years: 1
+        conditions: >-
+          At least three distinctions and an overall average of 75% or above for the year.
+          SMU offers the places to the top two applicants who completed BSc I, MBChB I or
+          BSc ECP II at SMU, so the real bar may be higher.
+        source: s-smu-dent
       - to: mbchb
         guarantee: considered
         max_places: 5
@@ -109,6 +143,232 @@ programmes:
         life_orientation: 3
       additional_minimums: [3, 3]
 
+  - id: bds
+    name: "Bachelor of Dental Surgery (BDS)"
+    fields: [health_sciences, dentistry]
+    selective: true
+    places: 42
+    selection_note: "SMU pre-selects on final Grade 11 results (English, Mathematics, Physical Sciences and Life Sciences must total 23) and decides on Grade 12 results, ranking by actual percentages in those four subjects; Life Orientation breaks ties."
+    requirements:
+      source: s-smu-dent
+      min_points: 37
+      subject_minimums: {english: 5, mathematics: 6, physical_sciences: 6, life_sciences: 6, life_orientation: 5}
+      additional_minimums: [5, 4]
+
+  - id: bdt
+    name: "Bachelor of Dental Therapy"
+    fields: [health_sciences, dentistry]
+    selective: true
+    places: 25
+    selection_note: "SMU pre-selects on final Grade 11 results (the four named subjects must total 16) and decides on Grade 12 results."
+    requirements:
+      source: s-smu-dent
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4, life_orientation: 4}
+      additional_minimums: [4, 4]
+
+  - id: boh
+    name: "Bachelor of Oral Hygiene"
+    fields: [health_sciences, dentistry]
+    selective: true
+    places: 25
+    selection_note: "SMU pre-selects on final Grade 11 results (the four named subjects must total 16, or 19 with Mathematical Literacy) and decides on Grade 12 results."
+    requirements:
+      source: s-smu-dent
+      min_points: 28
+      subject_minimums: {english: 4, physical_sciences: 4, life_sciences: 4, life_orientation: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {mathematical_literacy: 7}
+              min_points: 31
+      additional_minimums: [4, 4]
+
+  # Pharmacy's own table scores 90-100% as 8 and stops at 50%; below 50% these are SMU's general bands.
+  - id: bpharm
+    name: "Bachelor of Pharmacy (B Pharm)"
+    fields: [health_sciences, pharmacy]
+    selective: true
+    selection_note: "SMU ranks applicants by their APS."
+    points_rules:
+      source: s-smu-pharm
+      subjects_counted: 7
+      life_orientation: full
+      scale:
+        - {min_percent: 90, level: 8}
+        - {min_percent: 80, level: 7}
+        - {min_percent: 70, level: 6}
+        - {min_percent: 60, level: 5}
+        - {min_percent: 50, level: 4}
+        - {min_percent: 40, level: 3}
+        - {min_percent: 30, level: 2}
+        - {min_percent: 0, level: 1}
+    requirements:
+      source: s-smu-pharm
+      min_points: 32
+      subject_minimums: {life_sciences: 5, mathematics: 5, physical_sciences: 5, english: 5, life_orientation: 4}
+      additional_minimums: [4, 4]
+      extras:
+        - "SMU prefers Accounting and Economics as the two other subjects."
+        - "First-years register with the South African Pharmacy Council before 31 March."
+
+  - id: dietetics
+    name: "BSc Dietetics"
+    fields: [health_sciences, nutrition]
+    selective: true
+    selection_note: "SMU's selection committee selects on merit for a limited number of places."
+    requirements:
+      source: s-smu-hcs
+      min_points: 25
+      subject_minimums: {mathematics: 4, physical_sciences: 4, english: 4, life_sciences: 4, life_orientation: 3}
+      additional_minimums: [3, 3]
+
+  - id: nursing_midwifery
+    name: "Bachelor of Nursing and Midwifery"
+    fields: [health_sciences, nursing]
+    selective: true
+    selection_note: "SMU's selection committee selects on merit for a limited number of places."
+    requirements:
+      source: s-smu-hcs
+      min_points: 25
+      subject_minimums: {life_sciences: 4, mathematics: 4, physical_sciences: 4, english: 4, life_orientation: 3}
+      additional_minimums: [3, 3]
+      extras:
+        - "SMU's rule also mentions \"a minimum combined score of 16 on the first four subjects\"."
+        - "Students register with the South African Nursing Council within 30 days of admission."
+
+  - id: occupational_therapy
+    name: "Bachelor of Occupational Therapy"
+    fields: [health_sciences, rehabilitation]
+    selective: true
+    selection_note: "SMU's selection committee selects on merit for a limited number of places."
+    requirements:
+      source: s-smu-hcs
+      min_points: 25
+      subject_minimums: {life_sciences: 4, mathematics: 4, physical_sciences: 4, english: 4, life_orientation: 3}
+      additional_minimums: [3, 3]
+
+  - id: physiotherapy
+    name: "BSc Physiotherapy"
+    fields: [health_sciences, rehabilitation]
+    selective: true
+    selection_note: "SMU's selection committee selects on merit and prefers applicants who chose Physiotherapy first."
+    requirements:
+      source: s-smu-hcs
+      min_points: 28
+      subject_minimums: {life_sciences: 4, mathematics: 4, physical_sciences: 4, english: 4, life_orientation: 4}
+      additional_minimums: [4, 4]
+
+  - id: speech_language_pathology
+    name: "Bachelor of Speech-Language Pathology"
+    fields: [health_sciences, rehabilitation]
+    selective: true
+    selection_note: "SMU's selection committee selects on merit for a limited number of places."
+    requirements:
+      source: s-smu-hcs
+      min_points: 25
+      subject_minimums: {mathematics: 4, english: 4, life_sciences: 4, other_language: 4, life_orientation: 3}
+      additional_minimums: [3, 3]
+
+  - id: audiology
+    name: "Bachelor of Audiology"
+    fields: [health_sciences, rehabilitation]
+    selective: true
+    selection_note: "SMU's selection committee selects on merit for a limited number of places."
+    requirements:
+      source: s-smu-hcs
+      min_points: 25
+      subject_minimums: {mathematics: 4, english: 4, life_sciences: 4, other_language: 4, life_orientation: 3}
+      additional_minimums: [3, 3]
+
+  - id: bsc_ecp
+    name: "BSc Extended Curriculum Programme (Life, Mathematical or Physical Sciences)"
+    fields: [natural_sciences, life_sciences]
+    selective: true
+    selection_note: "SMU's selection committee selects on merit for a limited number of places."
+    points_rules:
+      source: s-smu-sst
+      subjects_counted: 6
+      life_orientation: exclude
+      note: "SMU's BSc table adds six subjects without Life Orientation; SMU hasn't said whether it counts."
+      scale:
+        - {min_percent: 80, level: 7}
+        - {min_percent: 70, level: 6}
+        - {min_percent: 60, level: 5}
+        - {min_percent: 50, level: 4}
+        - {min_percent: 40, level: 3}
+        - {min_percent: 30, level: 2}
+        - {min_percent: 0, level: 1}
+    requirements:
+      source: s-smu-sst
+      min_points: 24
+      subject_minimums: {english: 4, mathematics: 4, life_sciences: 4, physical_sciences: 4}
+      additional_minimums: [4, 4]
+      extras:
+        - "After the second year, extended BSc students can apply for the same SMU routes into MBChB I (5 places) and BDS I (2 places) as first-year BSc students."
+
+  - id: hcert_emc
+    name: "Higher Certificate in Emergency Medical Care"
+    fields: [health_sciences, emergency_care]
+    selective: true
+    selection_note: "SMU's selection committee selects on merit for a limited number of places."
+    points_rules:
+      source: s-smu-med
+      subjects_counted: 5
+      life_orientation: exclude
+      note: "SMU's emergency care tables add 5 subjects without Life Orientation."
+      scale:
+        - {min_percent: 80, level: 7}
+        - {min_percent: 70, level: 6}
+        - {min_percent: 60, level: 5}
+        - {min_percent: 50, level: 4}
+        - {min_percent: 40, level: 3}
+        - {min_percent: 30, level: 2}
+        - {min_percent: 0, level: 1}
+    requirements:
+      source: s-smu-med
+      min_points: 15
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 16
+        - one_of:
+            - subjects: {life_sciences: 3}
+            - subjects: {physical_sciences: 3}
+      additional_minimums: [3, 3]
+      extras:
+        - "You must pass SMU's medical and physical fitness evaluations."
+
+  - id: dip_emc
+    name: "Diploma in Emergency Medical Care"
+    fields: [health_sciences, emergency_care]
+    selective: true
+    selection_note: "SMU's selection committee selects on merit for a limited number of places."
+    points_rules:
+      source: s-smu-med
+      subjects_counted: 6
+      life_orientation: exclude
+      note: "SMU's emergency care tables add 6 subjects without Life Orientation."
+      scale:
+        - {min_percent: 80, level: 7}
+        - {min_percent: 70, level: 6}
+        - {min_percent: 60, level: 5}
+        - {min_percent: 50, level: 4}
+        - {min_percent: 40, level: 3}
+        - {min_percent: 30, level: 2}
+        - {min_percent: 0, level: 1}
+    requirements:
+      source: s-smu-med
+      min_points: 18
+      subject_minimums: {english: 3, mathematics: 3, life_sciences: 3, physical_sciences: 3}
+      additional_minimums: [3, 3]
+      extras:
+        - "If English is your first additional language, SMU asks for level 4 in English and 19 points."
+        - "Mathematical Literacy isn't accepted."
+        - "You must pass SMU's medical and physical fitness evaluations."
+
 sources:
   - id: s-smu-med
     url: https://www.smu.ac.za/schools/medicine/medicine-undergraduate-admission-requirements/
@@ -117,3 +377,38 @@ sources:
     retrieved: 2026-09-30
     last_verified: 2026-09-30
     verified_by: Copied by Claude; to be re-checked by the team
+  - id: s-smu-apply-2027
+    url: "https://www.smu.ac.za/students/apply/online-application/"
+    publisher: "Sefako Makgatho Health Sciences University"
+    title: "Online Application: submission of 2027 applications"
+    retrieved: 2026-10-09
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-smu-dent
+    url: "https://www.smu.ac.za/schools/oral-health-sciences/oral-health-sciences-undergraduate-admission-requirements/"
+    publisher: "Sefako Makgatho Health Sciences University"
+    title: "Dentistry Undergraduate Admission Requirements"
+    retrieved: 2026-10-09
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-smu-pharm
+    url: "https://www.smu.ac.za/schools/pharmacy/pharmacy-undergraduate-admission-requirements/"
+    publisher: "Sefako Makgatho Health Sciences University"
+    title: "Pharmacy Undergraduate Admission Requirements"
+    retrieved: 2026-10-09
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-smu-hcs
+    url: "https://www.smu.ac.za/schools/health-care-sciences/health-care-sciences-undergraduate-admission-requirements/"
+    publisher: "Sefako Makgatho Health Sciences University"
+    title: "Health Care Sciences Undergraduate Admission Requirements"
+    retrieved: 2026-10-09
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-smu-sst
+    url: "https://www.smu.ac.za/schools/science-and-technology/science-and-technology-undergraduate-admission-requirements/"
+    publisher: "Sefako Makgatho Health Sciences University"
+    title: "Science and Technology Undergraduate Admission Requirements"
+    retrieved: 2026-10-09
+    last_verified: null
+    verified_by: "agent draft, needs human check"

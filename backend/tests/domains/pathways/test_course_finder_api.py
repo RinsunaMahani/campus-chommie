@@ -8,9 +8,9 @@ from course_finder_helpers import ASSESS, PLAN, STRONG, marks
 
 
 def test_m1_acceptance_the_strong_smu_learners_plan(client):
-    """The brief's M1 check. It holds while SMU is the only pack; once UP's pack lands, the
-    team agreed (9 Oct 2026) that slot 3 moves to the related programme without competitive
-    selection, so this test changes with it."""
+    """The brief's M1 check, as the team changed it on 9 Oct 2026 (fields tagged honestly):
+    slot 3 is no longer SMU's selective B Rad but the closest related programme without
+    competitive selection, UP's BSc Medical Sciences."""
     r = client.post(PLAN, json={"university": "smu", "goal": "mbchb", "marks": STRONG})
     assert r.status_code == 200
     plan = r.get_json()["data"]["plan"]
@@ -27,8 +27,10 @@ def test_m1_acceptance_the_strong_smu_learners_plan(client):
     assert plan["other_routes"][0]["bridge"]["eligibility_note"]
     assert any(n.startswith("Eligibility:") for n in plan["other_routes"][0]["notes"])
 
-    assert plan["safe"]["match"]["programme"] == "brad"
-    assert any("not a safe choice yet" in n for n in plan["safe"]["notes"])
+    safe = plan["safe"]
+    assert (safe["match"]["university"], safe["match"]["programme"]) == ("up", "bsc_medical_sciences")
+    assert safe["match"]["tier"] == "meets_minimum"
+    assert safe["notes"][0].endswith("through health sciences and medical sciences.")
 
 
 def test_every_card_has_its_reasons_source_and_check_status(client):
@@ -38,8 +40,9 @@ def test_every_card_has_its_reasons_source_and_check_status(client):
         match = slot["match"]
         assert match["explanation"]
         assert match["confirmed"] is False and match["notice"] == "Not yet confirmed by the team."
-        if match["tier"] != "unverified":
-            assert match["source_url"].startswith("https://www.smu.ac.za/")
+        assert match["source_url"].startswith("https://")
+    assert plan["goal"]["match"]["source_url"].startswith("https://www.smu.ac.za/")
+    assert plan["safe"]["match"]["source_url"].startswith("https://drupalwebprod-files.up.ac.za/")
     assert plan["bridge"]["bridge"]["source_url"].startswith("https://www.smu.ac.za/")
 
 
@@ -48,8 +51,9 @@ def test_assess_lists_every_programme_best_tiers_first(client):
     assert r.status_code == 200
     data = r.get_json()["data"]
     assert data["university"]["id"] == "smu" and data["university"]["confirmed"] is False
-    tiers = [m["tier"] for m in data["matches"]]
-    assert tiers[0] == "reach" and tiers[-1] == "unverified"
+    order = ["competitive", "meets_minimum", "reach", "unverified", "not_yet"]
+    ranks = [order.index(m["tier"]) for m in data["matches"]]
+    assert ranks == sorted(ranks) and len(ranks) == 17
     mbchb = next(m for m in data["matches"] if m["programme"] == "mbchb")
     assert mbchb["points"] == 47
     assert mbchb["explanation"][0] == "Your points: 47 (minimum 38)."

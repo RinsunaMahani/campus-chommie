@@ -29,5 +29,5 @@ def strong_marks():
         "life_sciences": 85,
         "life_orientation": 88,
         "geography": 74,
-        "home_language": 79,
+        "other_language": 79,
     }

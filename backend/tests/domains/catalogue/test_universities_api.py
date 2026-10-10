@@ -26,11 +26,12 @@ def limits_on(app):
 def test_the_list_needs_no_account_and_flags_unchecked_packs(client):
     r = client.get(BASE)
     assert r.status_code == 200
-    smu = next(u for u in r.get_json()["data"]["universities"] if u["id"] == "smu")
+    universities = {u["id"]: u for u in r.get_json()["data"]["universities"]}
+    assert set(universities) == {"smu", "tut", "up"}
+    smu = universities["smu"]
     assert smu["name"] == "Sefako Makgatho Health Sciences University"
-    assert smu["programmes"] == 4
-    assert smu["confirmed"] is False
-    assert smu["notice"] == "Not yet confirmed by the team."
+    assert smu["programmes"] == 17
+    assert all(u["confirmed"] is False and u["notice"] == "Not yet confirmed by the team." for u in universities.values())
 
 
 def test_one_university_shows_its_pack_and_sources(client):

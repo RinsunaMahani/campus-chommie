@@ -107,9 +107,11 @@ def assess(uni: University, programme: Programme, marks: dict[str, float]) -> Ma
     if req is None or rule is None:
         match.tier = UNVERIFIED
         match.explanation = [
-            "We haven't verified this programme's requirements yet. "
+            "We can't check this programme's requirements against your marks yet. "
             "Check the university's official prospectus."
         ]
+        if programme.selection_note:
+            match.explanation.append(programme.selection_note)
         return match
 
     source = uni.source(req.source)
