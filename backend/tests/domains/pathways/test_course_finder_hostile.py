@@ -72,6 +72,13 @@ def test_a_plan_needs_a_goal(client):
     assert client.post(PLAN, json={"university": "smu", "marks": STRONG}).status_code == 422
 
 
+@pytest.mark.parametrize("extra", [{"today": "2026-01-01"}, {"intake": 2027}, {"stage": "grade_12"}])
+def test_a_plan_takes_no_date_or_stage_from_the_client(client, extra):
+    """Application statuses use the server's date in SAST; nothing about the learner is asked."""
+    body = {"university": "smu", "goal": "mbchb", "marks": STRONG, **extra}
+    assert client.post(PLAN, json=body).status_code == 422
+
+
 def test_unknown_university_or_programme_is_a_404(client):
     r = client.post(ASSESS, json={"university": "hogwarts", "marks": STRONG})
     assert r.status_code == 404 and r.get_json()["code"] == "UNIVERSITY_NOT_FOUND"

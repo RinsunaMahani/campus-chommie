@@ -17,3 +17,6 @@ ANOTHER_SUBJECTS = ("another_subject_1", "another_subject_2", "another_subject_3
 
 #: Every subject key a learner may send.
 SUBJECT_KEYS = frozenset(SUBJECTS) | frozenset(ANOTHER_SUBJECTS)
+
+#: Application dates are South African dates: a plan's "today" is today in SAST.
+TIMEZONE = "Africa/Johannesburg"
