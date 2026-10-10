@@ -38,6 +38,32 @@ points_rules:
     - {min_percent: 30, level: 2}
     - {min_percent: 0, level: 1}
 
+applications:                # how to apply; leave out anything not published (the app says "not verified yet")
+  source: s-apply            # cites url, how, fee and contact
+  url: https://example.org/apply   # the university's own page about applying (https only)
+  how: "Apply online, with an email address of your own."
+  fee_cents: 25000           # integer cents: R250
+  fee_note: "Not refundable."
+  contact: "012 000 0000, admissions@example.org"
+  documents:
+    source: s-apply
+    items:
+      - "A certified copy of your ID"
+  after:                     # what happens after you apply, each line with its source
+    - {text: "Check your status online with your ID number.", source: s-apply}
+  windows:                   # one per intake: the year a learner would start
+    - intake: 2027
+      source: s-apply
+      opens: 2026-04-01
+      closes: 2026-09-30     # the usual closing date
+      closing_time: null     # SAST, quoted, e.g. "23:59"
+      programme_closes:      # programmes with their own closing date
+        - {closes: 2026-06-15, programmes: [example-programme]}
+      closes_one_of: []      # closing dates named without saying which programme closes when
+      late: null             # {opens, closes, note, source} when late applications are published
+      no_late_applications: false   # true only when the university says so
+    # an intake with no window is shown as "not published yet"
+
 programmes:
   - id: example-programme
     name: Example programme
@@ -71,6 +97,13 @@ sources:
     url: https://example.org/prospectus
     publisher: Example University
     title: Undergraduate prospectus
+    retrieved: 2026-10-01
+    last_verified: 2026-10-01
+    verified_by: Name of the person who checked it
+  - id: s-apply
+    url: https://example.org/apply
+    publisher: Example University
+    title: How to apply
     retrieved: 2026-10-01
     last_verified: 2026-10-01
     verified_by: Name of the person who checked it

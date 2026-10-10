@@ -25,6 +25,25 @@ points_rules:
     - {min_percent: 30, level: 2}
     - {min_percent: 0, level: 1}
 
+# How to apply (agent draft, 10 Oct 2026). UP's own application pages refuse automated reading, so where to apply,
+# the fee and the documents stay out until a person has read them (docs/OPEN_QUESTIONS.md). UP's general opening
+# date and its 2028 dates aren't in the documents read.
+applications:
+  after:
+    - text: "Health Sciences: in certain programmes UP considers only first-choice applicants; programmes that take second choices say so."
+      source: s-up-mbchb-2027
+    - text: "MBChB: UP considers you if MBChB is your first or second choice. Applications opened on 1 April 2026, and UP takes no late ones."
+      source: s-up-mbchb-2027
+    - text: "MBChB: a provisional offer on Grade 11 results is confirmed if your final Merit Point Score is no more than five points below your Grade 11 one and you still meet the minimums."
+      source: s-up-mbchb-2027
+  windows:
+    - intake: 2027
+      source: s-up-req-2027
+      closes: 2026-06-30       # "The closing date for programmes in this faculty is 30 June": every faculty but one
+      programme_closes:
+        - closes: 2026-05-31   # Veterinary Science
+          programmes: [bvsc, b_veterinary_nursing]
+
 programmes:
 
   - id: badmin_public_admin

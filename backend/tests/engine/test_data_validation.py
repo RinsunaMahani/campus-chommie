@@ -2,9 +2,9 @@ from datetime import date
 
 import pytest
 
-from campus_engine.catalogue import DataPackError, load_catalogue, load_university
+from campus_engine.catalogue import FUNDING_PATH, DataPackError, load_catalogue, load_university
 from campus_engine.i18n import t
-from scripts.validate_data import check
+from scripts.validate_data import check, check_funding, main
 
 TODAY = date(2026, 10, 9)
 
@@ -63,6 +63,44 @@ def test_incomplete_release_pack_is_an_error(tmp_path):
     errors, _ = check(path, TODAY)
     assert any("requirements not verified" in e for e in errors)
     assert any("never verified" in e for e in errors)
+    assert any("how to apply not verified yet" in e for e in errors)
+
+
+FUNDING_RELEASE_INCOMPLETE = """
+release: true
+funders:
+  - id: fund
+    name: Example Fund
+    short_name: Fund
+    applications: {source: s, url: "https://example.org/fund"}
+sources:
+  - {id: s, url: "https://example.org/fund", publisher: Example Fund}
+"""
+
+
+def test_shipped_funding_pack_has_no_errors():
+    errors, warnings = check_funding(FUNDING_PATH, TODAY)
+    assert errors == [], errors
+    assert any("never verified" in w for w in warnings)  # a draft: warnings until a person checks it
+
+
+def test_incomplete_release_funding_pack_is_an_error(tmp_path):
+    path = tmp_path / "funding.yaml"
+    path.write_text(FUNDING_RELEASE_INCOMPLETE)
+    errors, _ = check_funding(path, TODAY)
+    assert "funding/fund: the application fee not verified yet" in errors
+    assert "funding/fund: documents not verified yet" in errors
+    assert "funding/fund: no application dates yet" in errors
+
+
+def test_a_broken_funding_pack_fails_the_run(tmp_path, capsys):
+    universities = tmp_path / "universities"
+    universities.mkdir()
+    path = tmp_path / "funding.yaml"
+    path.write_text(FUNDING_RELEASE_INCOMPLETE.replace("source: s, url", "source: missing, url"))
+    assert main([str(universities), "--funding", str(path)]) == 1
+    out = capsys.readouterr().out
+    assert "ERROR funding.yaml" in out and "unknown source 'missing'" in out
 
 
 def test_unknown_language_falls_back_to_english():

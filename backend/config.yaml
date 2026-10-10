@@ -23,3 +23,6 @@ forecast:
   ewma_alpha: 0.3         # how much the most recent day counts in the spending pace
   min_days_of_history: 5  # fewer logged days than this: use the student's essentials estimate
   spread_window: 14       # days used to measure how much spending varies
+
+applications:
+  closing_soon_days: 14   # an open application window this close to its closing date is "Closing soon"

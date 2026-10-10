@@ -26,6 +26,41 @@ points_rules:
     - {min_percent: 30, level: 2}
     - {min_percent: 0, level: 1}
 
+# How to apply (agent draft from SMU's 2027 application page, 10 Oct 2026). SMU's bank details are left out on
+# purpose: the app never handles payments. SMU's 2028 dates aren't published yet.
+applications:
+  source: s-smu-apply-2027
+  url: "https://www.smu.ac.za/students/apply/online-application/"
+  how: "Apply online, using your names exactly as they appear in your ID or passport. You can choose two programmes: the first one you pick counts as your first choice."
+  fee_cents: 30000
+  fee_note: "Not refundable. Use your ID number as the payment reference."
+  contact: "012 521 4058, 5886, 4315, 4319, 4137, 4204 or 4979"
+  documents:
+    source: s-smu-apply-2027
+    items:
+      - "A certified copy of your ID or passport (compulsory)"
+      - "Your certified Grade 11 end-of-year results if you're in Grade 12, or your National Senior Certificate or IEB certificate if you've finished school"
+      - "Certified copies of your degree certificates and academic record, if you've studied at SMU or another university"
+      - "A certified copy of your marriage certificate, if it applies"
+      - "Proof of payment of the R300 application fee"
+  after:
+    - text: "SMU doesn't process an application with documents missing, and doesn't consider it if they're still missing after two months."
+      source: s-smu-apply-2027
+    - text: "SMU gets more applications than it has places, so meeting the requirements doesn't guarantee admission."
+      source: s-smu-apply-2027
+    - text: "Residence places are limited and given first come, first served: admission doesn't guarantee a room."
+      source: s-smu-apply-2027
+    - text: "MBChB and Diagnostic Radiography: SMU makes provisional offers on final Grade 11 results. Grade 12 results decide: if yours drop below your Grade 11 ones, you rejoin the general pool of applicants."
+      source: s-smu-med
+    - text: "BDS, Dental Therapy and Oral Hygiene: SMU also makes provisional offers on final Grade 11 results, and Grade 12 results decide."
+      source: s-smu-dent
+  windows:
+    - intake: 2027
+      source: s-smu-apply-2027
+      opens: 2026-04-01
+      closes: 2026-07-31
+      no_late_applications: true   # "it will not be possible to submit your application after the closing date"
+
 programmes:
   - id: mbchb
     name: MBChB (Bachelor of Medicine and Bachelor of Surgery)

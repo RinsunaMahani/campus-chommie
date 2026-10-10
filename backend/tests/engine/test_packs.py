@@ -5,9 +5,13 @@ wrong, with the source in hand, never the test alone.
 """
 from __future__ import annotations
 
+from datetime import date
+
 import pytest
 
+from campus_engine.applications import CLOSED, apply_guide
 from campus_engine.bridges import build_plan
+from campus_engine.catalogue import load_funding
 from campus_engine.matching import COMPETITIVE, MEETS_MINIMUM, NOT_YET, REACH, assess
 from campus_engine.points import compute_points
 
@@ -177,3 +181,65 @@ def test_an_smu_mbchb_goal_gets_ups_bsc_medical_sciences_as_the_safer_choice(cat
     assert (plan.safe.match.university, plan.safe.match.programme_id) == ("up", "bsc_medical_sciences")
     assert plan.safe.match.tier == MEETS_MINIMUM
     assert plan.safe.notes[0].endswith("through health sciences and medical sciences.")
+
+
+# How to apply: s-up-req-2027, s-tut-cal-2026, s-tut-courses-2027, s-tut-cal-2027, s-tut-guide-2027,
+# s-smu-apply-2027, and NSFAS's 2027 pages (s-nsfas-apply-2027, s-nsfas-home-2027)
+
+
+def test_up_closes_on_30_june_and_veterinary_science_on_31_may(up):
+    window = up.applications.windows[0]
+    assert (window.intake, window.opens, window.closes) == (2027, None, date(2026, 6, 30))
+    assert [(g.closes, g.programmes) for g in window.programme_closes] == [(date(2026, 5, 31), ["bvsc", "b_veterinary_nursing"])]
+    # UP's own application page couldn't be read: nothing from it is in the pack.
+    apps = up.applications
+    assert (apps.url, apps.fee_cents, apps.documents) == (None, None, None)
+
+
+def test_tut_closing_dates_follow_the_course_list_and_the_calendar(tut):
+    window = next(w for w in tut.applications.windows if w.intake == 2027)
+    assert (window.opens, window.closes) == (date(2026, 4, 1), date(2026, 9, 30))
+    groups = {g.closes: g.programmes for g in window.programme_closes}
+    assert len(groups[date(2026, 6, 15)]) == 7 and "b_nursing" in groups[date(2026, 6, 15)]
+    assert len(groups[date(2026, 7, 31)]) == 54 and "dip_economics" in groups[date(2026, 7, 31)]
+    assert (window.late.opens, window.late.closes) == (date(2027, 1, 14), date(2027, 1, 22))
+    later = next(w for w in tut.applications.windows if w.intake == 2028)
+    assert later.opens == date(2027, 4, 1) and later.closes is None
+    assert later.closes_one_of == [date(2027, 6, 15), date(2027, 7, 31), date(2027, 9, 30)]
+
+
+def test_tut_fee_and_documents(tut):
+    apps = tut.applications
+    assert apps.fee_cents == 24000
+    assert len(apps.documents.items) == 3
+
+
+def test_smu_closed_on_31_july_with_no_late_applications(smu):
+    apps = smu.applications
+    window = apps.windows[0]
+    assert (window.intake, window.opens, window.closes, window.no_late_applications) == (
+        2027, date(2026, 4, 1), date(2026, 7, 31), True
+    )
+    assert apps.fee_cents == 30000 and len(apps.documents.items) == 5
+
+
+def test_nsfas_2027_window_and_free_application():
+    funding = load_funding()
+    assert funding.release is False
+    assert all(s.verified_by == "agent draft, needs human check" for s in funding.sources)
+    nsfas = funding.funder("nsfas")
+    window = nsfas.applications.windows[0]
+    assert (window.intake, window.opens, window.closes, window.closing_time) == (
+        2027, date(2026, 9, 18), date(2026, 10, 31), "23:59"
+    )
+    assert window.no_late_applications and nsfas.applications.fee_cents == 0
+    assert len(nsfas.tips.items) == 8  # NSFAS's "eight most common reasons a document is sent back"
+
+
+def test_on_10_october_2026_the_smu_learner_should_apply_to_nsfas_first(catalogue):
+    guide = apply_guide(catalogue, load_funding(), build_plan(catalogue, "smu", "mbchb", STRONG), date(2026, 10, 10))
+    first = guide.deadlines[0]
+    assert (first.on, first.days, first.text) == (date(2026, 10, 31), 21, "NSFAS: applications for 2027 funding close at 23:59.")
+    goal_2027 = guide.windows[("smu", "mbchb")][0]
+    assert (goal_2027.intake, goal_2027.status) == (2027, CLOSED)
+    assert goal_2027.lines == ["Closed on Fri 31 Jul 2026.", "No late applications."]
