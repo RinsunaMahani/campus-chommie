@@ -82,7 +82,7 @@ support_services:            # counselling | crisis | financial_aid | food_suppo
                              # | careers | disability; a person verifies every crisis line before release
   - {kind: counselling, name: "Student counselling", contact: "012 000 0000", hours: "08:00-16:00", source: s-calendar}
 
-cheap_things: []             # [{name, category, cost_note, near_campus, source}]
+cheap_things: []             # [{name, category, cost_note, campuses, address, hours, source}]: the price as its own page states it
 
 programmes:
   - id: example-programme

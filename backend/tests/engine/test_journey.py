@@ -172,7 +172,7 @@ def test_a_step_missing_from_a_published_year_is_not_verified():
                               "source": "missing"}]}, "funding date 'Fees' cites unknown source"),
         ({"funding_cycles": [{"funder": "university", "kind": "fee_due", "name": "Fees", "on": "2027-03-31",
                               "source": "s"}]}, "when"),
-        ({"cheap_things": [{"name": "Park", "category": "outdoors", "cost_note": "Free", "near_campus": "east",
+        ({"cheap_things": [{"name": "Park", "category": "outdoors", "cost_note": "Free", "campuses": ["east"],
                             "source": "s"}]}, "names unknown campus 'east'"),
     ],
 )

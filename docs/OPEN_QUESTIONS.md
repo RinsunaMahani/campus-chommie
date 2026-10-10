@@ -49,9 +49,14 @@ sources, gaps and inconsistencies. Other apps and services, for the deck: [compe
   Then set `release: true` and fill in each source's `last_verified` and `verified_by`.
 - [ ] **Campuses** for each university (needed for F1 and the support screen). In all three packs since 10 Oct; a
   person still checks them with the rest.
-- [ ] **Cheap things to do near campus** (F4): not researched yet, so every pack has an empty list. Each place needs
-  its own official page with a price or "free", and a last-verified date. Places the team knows near each campus are
-  a good start, checked against those pages.
+- [ ] **Cheap things to do near campus** (F4). Drafted on 10 Oct 2026 ([cheap-things.md](research/cheap-things.md)):
+  four in Pretoria for UP and TUT (the national botanical garden, Freedom Park, the Voortrekker Monument, the
+  DITSONG natural history museum) and the Lowveld botanical garden for TUT Mbombela, each priced from its own page.
+  Still to do:
+  - **Near SMU (Ga-Rankuwa), and TUT's Soshanguve, Ga-Rankuwa, Polokwane and eMalahleni campuses:** places the
+    team knows are the best start, each with its own page and price.
+  - **Javett-UP, free for UP students:** its site couldn't be reached from our tools, so a person opens the page
+    before it goes in.
 - [ ] **Course finder languages:** which 2 or 3, and the fluent reviewers who sign them off in `docs/translation_review.md`.
 
 ### Gaps the research left

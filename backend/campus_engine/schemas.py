@@ -357,10 +357,14 @@ class SupportService(_Strict):
 
 
 class CheapThing(_Strict):
+    """Something cheap to do, with its price as its own page states it."""
+
     name: str
-    category: str
+    category: str  # outdoors | heritage | museum | ...
     cost_note: str
-    near_campus: str | None = None
+    campuses: list[str] = Field(default_factory=list)  # the campuses in its city; empty: every campus
+    address: str | None = None  # only when the source page gives it
+    hours: str | None = None  # only when the source page gives them
     source: str
 
 
@@ -424,7 +428,7 @@ class University(_Strict):
         placed = (
             [(f"calendar '{e.name}'", c) for e in self.calendar for c in e.campuses]
             + [(f"support '{s.name}'", c) for s in self.support_services for c in s.campuses]
-            + [(f"cheap thing '{t.name}'", t.near_campus) for t in self.cheap_things if t.near_campus]
+            + [(f"cheap thing '{t.name}'", c) for t in self.cheap_things for c in t.campuses]
         )
         problems += [f"{what} names unknown campus '{c}'" for what, c in placed if c not in campus_ids]
         if problems:
