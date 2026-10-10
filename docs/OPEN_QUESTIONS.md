@@ -275,8 +275,8 @@ cents, documents and next steps, each with its source. `funding.yaml` holds nati
 - M3: onboarding brings back an `(onboarding)` route group: 18-or-older confirmation (already recorded at sign-up),
   privacy notice, consent, university and campus. The student profile can read the 18-or-older date from the consent
   records.
-- M5: class updates (a new or changed event) are the first alerts a student could switch off; notification switches
-  come back with them.
+- [x] M5: class updates (a new or changed event) are the first alerts a student can switch off, and the switches came
+  back with them: done on `rinsuna/class-update-alerts` (10 Oct 2026).
 - [x] M4: the money summary's life fund reads the student's week: done on `rinsuna/m4-my-week` (10 Oct 2026). The
   self-funded persona's heavy week now gives an amber life fund (the brief's M3 check); a student in no classes yet
   still sees "Your week isn't part of this yet".
