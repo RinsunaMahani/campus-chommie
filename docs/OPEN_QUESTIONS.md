@@ -6,8 +6,9 @@ settled.
 
 ## Facts for the data packs (Rinsuna)
 
-Research notes from official documents, read on 9 Oct 2026 and not yet checked by a person: [UP](research/up.md),
-[TUT](research/tut.md), [SMU](research/smu.md). Each lists its sources, gaps and inconsistencies.
+Research notes from official documents, read on 9 and 10 Oct 2026 and not yet checked by a person:
+[UP](research/up.md), [TUT](research/tut.md), [SMU](research/smu.md), [NSFAS](research/nsfas.md). Each lists its
+sources, gaps and inconsistencies. Other apps and services, for the deck: [competitors](research/competitors.md).
 
 - [ ] **SMU admissions:** re-check every value in `backend/data/universities/smu.yaml` against the current prospectus
   (copied from SMU's medicine admissions page on 30 Sep 2026; `verified_by` still says it needs the team's check).
@@ -29,24 +30,38 @@ Research notes from official documents, read on 9 Oct 2026 and not yet checked b
 - [x] **UP and TUT packs**, from official sources. Drafted on 10 Oct 2026: `up.yaml` (120 programmes) and `tut.yaml`
   (124; the Diploma in Fire Technology is left out, as it's only for people already in fire services). Both
   `release: false`, every source `verified_by: "agent draft, needs human check"`.
+- [x] **How to apply** for UP, TUT and SMU, and NSFAS in a national pack (`backend/data/national/funding.yaml`).
+  Drafted on 10 Oct 2026 (`rinsuna/m1-how-to-apply`): each pack's `applications` section (dates per intake,
+  programmes with their own closing date, late windows, fee, documents, next steps) and NSFAS's 2027 window, documents
+  and warnings. UP's application page can't be read automatically, so UP has dates only (see "Need a browser").
 - [ ] **A person checks the packs** against their sources before any is released: every value in `up.yaml` and
-  `tut.yaml`, the SMU values added on 10 Oct, and the lines marked "Check" in the packs and research notes. Then set
-  `release: true` and fill in each source's `last_verified` and `verified_by`.
+  `tut.yaml`, the SMU values added on 10 Oct, the `applications` sections, `funding.yaml`, and the lines marked
+  "Check" in the packs and research notes. Then set `release: true` and fill in each source's `last_verified` and
+  `verified_by`.
 - [ ] **Campuses** for each university (needed for F1 and the support screen). Found for all three; a person still
   checks them with the rest.
 - [ ] **Course finder languages:** which 2 or 3, and the fluent reviewers who sign them off in `docs/translation_review.md`.
 
 ### Gaps the research left
 
-- [ ] **Need a browser:** UP's application fee and waiver, documents, offer deadline, registration payment and tuition
-  per programme appeared only in search snippets. UP's web pages refuse automated reading; open them and save as PDF.
+- [ ] **Need a browser:** UP's application page (where to apply, the fee and waiver, documents), offer deadline,
+  registration payment and tuition per programme appeared only in search snippets. UP's web pages refuse automated
+  reading; open them and save as PDF. Until then the app says "not verified yet" for UP's page, fee and documents.
 - [ ] **Programmes per application** at UP and TUT: not published in the documents read.
 - [ ] **TUT's APS:** how many subjects count (TUT says only "a minimum of six subjects", Life Orientation excluded).
   Until TUT confirms, the TUT pack counts the six subjects besides Life Orientation and says so (Rinsuna, 9 Oct 2026):
   if TUT counts more, we only under-count. An email to `admission@tut.ac.za` would settle it.
 - [ ] **Tuition per programme** at TUT (charged per module; TUT has an online quotation page).
 - [ ] **SMU 2027 calendar**, and **2028 entry dates** for UP and SMU (TUT's are published).
-- [ ] **NSFAS:** the 2027 application window and allowance dates (not researched yet).
+- [x] **NSFAS's 2027 window:** 18 Sep to 31 Oct 2026 at 23:59, free, no late applications (NSFAS's own pages, read
+  on 10 Oct 2026; [nsfas.md](research/nsfas.md)).
+- [ ] **NSFAS, still open:** 2027 allowance amounts and payment dates (for F4), and NSFAS's WhatsApp number (its
+  how-to page and TUT's guide give different numbers, so the pack leaves it out).
+- [ ] **TUT's July 2027 intake** (selected programmes; applications close 15 May 2027): TUT doesn't say which
+  programmes, so plans don't show it.
+- [ ] **TUT's closing dates for 2028:** the 2027 calendar names 15 June, 31 July and 30 September 2027 without saying
+  which programme closes when. The app says so, suggests applying by 15 June to be safe, and gives the programme's
+  2027 date.
 - [ ] **Crisis lines** for a person to verify: UP crisis line 0800 006 428 and the UP Careline 0800 747 747 (with
   SADAG); TUT's 24-hour counselling line 0800 68 78 88. SMU publishes no 24-hour line; its clinic page sends students
   to campus control or 079 417 9546 / 6278 after hours.
@@ -91,6 +106,11 @@ Decisions 3, 4 and 9 were taken by Rinsuna on 9 Oct 2026 (below). Decision 5 is 
    audition or calls it highly competitive; published "admitted from" levels become `competitive_points`.
    **Decided:** as proposed.
 
+**How to apply** (built on `rinsuna/m1-how-to-apply`, 10 Oct 2026): a pack's `applications` section holds one window
+per intake (the year a learner would start), with programmes that close on their own date, closing dates a
+university names without saying which programme closes when, a late window or "no late applications", the fee in
+cents, documents and next steps, each with its source. `funding.yaml` holds national funders the same way.
+
 ## Privacy and legal (both)
 
 - [ ] **Privacy Policy and Terms of Use** are drafts (`0.1-draft`, in `frontend/mobile/src/content/legal/`). They need
@@ -121,7 +141,27 @@ Decisions 3, 4 and 9 were taken by Rinsuna on 9 Oct 2026 (below). Decision 5 is 
   the plan, fees, and an application checklist. Like the course finder, it needs no account and stores nothing. Its
   facts come from the research notes. It should show TUT's late applications (14-22 January 2027, online, for
   programmes with space): the only way still open to apply for 2027 at our three universities. F6 goes beyond the
-  brief's five features, so if confirmed, CLAUDE.md's Scope section gains it.
+  brief's five features, so if confirmed, CLAUDE.md's Scope section gains it. **Built in part on 10 Oct 2026** as
+  "how to apply" inside the course finder's plan (`rinsuna/m1-how-to-apply`; README, "How to apply"): each
+  choice's application status today, the dates still ahead, each university's fee, documents and next steps, and
+  NSFAS. No bursary list: we point to NSFAS and to funders' own pages instead
+  ([competitors](research/competitors.md)). Mandla: the M2 screens for it are in HANDOVER.
+- [ ] **Which intakes a plan shows** (decided by Rinsuna's agent while building, 10 Oct 2026; Mandla to confirm): the
+  dates to start next year and the year after, plus this year's while a late window is still ahead, so the app asks
+  nothing about the learner's grade. The alternative is one optional question ("When do you want to start?"), sent
+  with the plan and never stored.
+- [ ] **"Add these dates to my calendar":** the plan's `deadlines` list is ready for it. How (the phone's calendar or
+  an .ics file) is Mandla's call; nothing goes to our server.
+- [x] **Every public university, and private colleges** (proposed by Rinsuna's agent and agreed by Rinsuna on 10 Oct
+  2026): a directory of all 26 public universities with each one's application page, dates and fee, but not their
+  admission rules; private colleges only as a link to DHET's register of private higher education institutions, so a
+  learner can check a college is registered before paying; TVET colleges on the roadmap slide. **Paused** by Rinsuna
+  the same day, after trying UniApplyForMe: it already covers 27 universities with their fees, so the time goes to
+  support after acceptance instead ([competitors](research/competitors.md)). The directory, the DHET register link
+  and TVET colleges go on the roadmap slide; the scope stays "SMU, UP or TUT for now".
+- [ ] **Links to opportunity sites** (Graduates24, bursary websites): leads for us only, never a source for a fact. A
+  "more opportunities" link in the app points learners at someone else's site, so it needs Mandla's OK. Never copy or
+  scrape their listings.
 - [ ] **Vac work, light version** (agreed for M1 the same day; Mandla to confirm):
   - In F6, a sourced "includes vac work" note on bursaries that offer it.
   - In My week, a nudge before each recess ("Recess from [date]: look for vac work in your field"). It links to the

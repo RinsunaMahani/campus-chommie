@@ -73,10 +73,19 @@ fake mail provider and need none of this.
 | `GET /universities` | none | each data pack: id, name, and whether a person has checked it (`confirmed`, `notice`) |
 | `GET /universities/<id>` | none | the whole pack: programmes, requirements, routes and sources |
 | `POST /pathways/assess` | `{university, marks: [{subject, percent}]}` | every programme at that university, best tiers first, each with its reasons and source |
-| `POST /pathways/plan` | `{university, goal, marks: [...]}` | the three-choice plan: the goal, a route into it and a safer related choice |
+| `POST /pathways/plan` | `{university, goal, marks: [...]}` | the three-choice plan: the goal, a route into it and a safer related choice, and how to apply (below) |
 
 A learner sends 1 to 9 subjects, each once, with marks from 0 to 100. Subject keys are those in
 `campus_engine/schemas.py` (`SUBJECTS`) plus `another_subject_1` to `another_subject_3` for subjects no rule names.
+
+**How to apply**, on today's date in South Africa (`campus_engine/applications.py`):
+- Each slot in a plan has `apply`: one entry per intake (next year's and the year after, plus this year's while a
+  late window is still ahead). Each says whether applications are open, closing soon, closed or not published yet,
+  with its dates, days left, plain-words `lines` and `source_url`.
+- `plan.apply` has the date it used (`today`), every date still ahead (`deadlines`, soonest first), each
+  university's fee, documents and next steps (`universities`), national funding (`funding`: NSFAS) and `notes`.
+- Dates come from each pack's `applications` section and from `backend/data/national/funding.yaml`. A date nobody
+  has published shows as not published, never guessed.
 
 ## App
 
