@@ -12,7 +12,7 @@ git, so Mandla has his own copy; the M2 part is quoted below.
 
 ## Where things stand
 
-`main` holds only the empty first commit. All work sits in seven stacked pull requests:
+`main` holds only the empty first commit. All work sits in eight stacked pull requests:
 
 | PR | Branch | What | Reviewer |
 |---|---|---|---|
@@ -23,10 +23,11 @@ git, so Mandla has his own copy; the M2 part is quoted below.
 | #5 | `rinsuna/m1-data-packs` | draft UP and TUT packs, the approved SMU changes, and how the plan picks its third choice | Rinsuna; Mandla for the changed M1 check |
 | #6 | `rinsuna/m1-how-to-apply` | how to apply, on today's date: each choice's application dates, NSFAS, fees, documents and next steps; notes on NSFAS and on other apps | Rinsuna for the engine and data; Mandla for the plan's new `apply` fields |
 | #7 | `rinsuna/m1-after-acceptance` | your points at every university; campuses, calendars, money dates and support in the packs; first steps from acceptance to the first lecture | Rinsuna for the engine and data; Mandla for the two new endpoints |
+| #8 | `rinsuna/m3-profile-and-money` | M3's backend: the student's profile (university and campus) and My money (settings, income, expected payments, spending, summary) | Mandla (API); Rinsuna for the migration |
 
 **How to merge:**
 - Each PR targets the branch below it, so its diff shows only its own work.
-- Merge in order: #1 into `main`, then #2 to #7, retargeting each to `main` once the one below has merged.
+- Merge in order: #1 into `main`, then #2 to #8, retargeting each to `main` once the one below has merged.
 - Use **Create a merge commit**, not squash or rebase, so every commit stays in `main`'s history (CLAUDE.md: never
   rewrite history).
 
@@ -105,6 +106,15 @@ The API is in #4, with details in the [README](../README.md), "Course finder":
 | Points everywhere (#7) | `POST /pathways/points` with `{marks}` | `universities`: each with `points`, `summary`, `lines` (how it counts), `tiers` |
 | First steps (#7) | `GET /universities/<id>/first-steps` | `first_steps`: per intake, `steps` (accept, register, orientation, first lecture) with `status`, `label`, dates, `days`, `lines`, `source_urls` |
 
+**Your M3 screens (Fri 16 to Sat 17 Oct) have their API in #8** (README, "A student's own profile and money"):
+- **Onboarding:** the 18-or-older confirmation and consent are already recorded at sign-up; add the privacy notice,
+  then university and campus (`PUT /me/profile`).
+- **My money:** settings, income sources, the "received?" tap on each payment, one spending number per day, and the
+  runway card from `GET /money/summary`, with the "two weeks late" toggle as `?late=true`.
+- **What the summary gives you:** every part has plain-words `lines`; `life_fund.state` is `green`, `amber` or
+  `paused`; amounts are integer cents (format as rand).
+- **Demo personas:** `tests/domains/student/student_helpers.py` shows them set up through the API.
+
 **What the screens must handle:**
 - **Cards:**
   - Each card has `tier`, `label`, `points`, `min_points`, `gap`, `failed`, `explanation` (the "why" lines) and
@@ -149,9 +159,9 @@ The API is in #4, with details in the [README](../README.md), "Course finder":
 
 1. **Read first:** [CLAUDE.md](../CLAUDE.md) (AGENTS.md points every agent there), then this file.
 2. **Branch:**
-   - Start from the top of the stack: `git fetch origin`, then `git checkout rinsuna/m1-after-acceptance`.
+   - Start from the top of the stack: `git fetch origin`, then `git checkout rinsuna/m3-profile-and-money`.
    - Branch `mandla/<topic>` from there, for example `mandla/course-finder-screens`.
-   - Once #1 to #7 are merged, branch from `main` instead.
+   - Once #1 to #8 are merged, branch from `main` instead.
 3. **Run the API** (README, "Backend"):
    - Use your own PostgreSQL, or Docker (option B uses port 5434).
    - Then `python scripts/make_env.py`, `flask db upgrade` and `python app.py`.
@@ -176,10 +186,12 @@ The API is in #4, with details in the [README](../README.md), "Course finder":
 - **Data packs:** done in #5 (`backend/data/universities/`), with how to apply in #6. A person still has to check
   every value before any pack is released.
 - **Pack sections:** campuses, calendars, money dates and support are in #7. Cheap things still need sourced places.
-- **Next:** the backend for M3 to M5, in the brief's order:
-  - M3: the profile, and the money domain behind the runway, safe to spend and the life fund
-  - M4: classes, reps, announcements to confirmed events, the week and My marks
-  - M5: alerts, the support endpoint, and demo accounts re-based daily
+- **M3 backend:** done in #8 (profile and My money).
+- **Next:**
+  - sourced "cheap things to do" near each campus
+  - M4's backend: classes, reps, announcements to confirmed events, the week (which also feeds the life fund) and
+    My marks
+  - M5's: alerts, the support endpoint, and demo accounts re-based daily
   - The engine already does the maths, so your screens can follow each endpoint as it lands.
 
 All of this is in `backend/` and `docs/`; the app is yours.
