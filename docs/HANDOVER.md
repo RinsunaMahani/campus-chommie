@@ -12,7 +12,7 @@ git, so Mandla has his own copy; the M2 part is quoted below.
 
 ## Where things stand
 
-`main` holds only the empty first commit. All work sits in eight stacked pull requests:
+`main` holds only the empty first commit. All work sits in ten stacked pull requests:
 
 | PR | Branch | What | Reviewer |
 |---|---|---|---|
@@ -24,10 +24,12 @@ git, so Mandla has his own copy; the M2 part is quoted below.
 | #6 | `rinsuna/m1-how-to-apply` | how to apply, on today's date: each choice's application dates, NSFAS, fees, documents and next steps; notes on NSFAS and on other apps | Rinsuna for the engine and data; Mandla for the plan's new `apply` fields |
 | #7 | `rinsuna/m1-after-acceptance` | your points at every university; campuses, calendars, money dates and support in the packs; first steps from acceptance to the first lecture | Rinsuna for the engine and data; Mandla for the two new endpoints |
 | #8 | `rinsuna/m3-profile-and-money` | M3's backend: the student's profile (university and campus) and My money (settings, income, expected payments, spending, summary) | Mandla (API); Rinsuna for the migration |
+| #9 | `rinsuna/m1-cheap-things` | cheap things to do near campus, each priced from the place's own page | Rinsuna (data) |
+| #10 | `rinsuna/m4-my-week` | M4's backend: classes, invite codes and reps, announcements to verified events (changes and flags), the week strip, My marks; the life fund reads the week; 44 labelled class messages | Mandla (API); Rinsuna for the engine and the migration |
 
 **How to merge:**
 - Each PR targets the branch below it, so its diff shows only its own work.
-- Merge in order: #1 into `main`, then #2 to #8, retargeting each to `main` once the one below has merged.
+- Merge in order: #1 into `main`, then #2 to #10, retargeting each to `main` once the one below has merged.
 - Use **Create a merge commit**, not squash or rebase, so every commit stays in `main`'s history (CLAUDE.md: never
   rewrite history).
 
@@ -65,6 +67,12 @@ Everything is recorded, with who and when, in [OPEN_QUESTIONS.md](OPEN_QUESTIONS
   - **The packs' calendars, money dates and support,** which My week, My money and Support run on.
   - **First steps from acceptance to the first lecture.**
   - Three screen decisions for you are in OPEN_QUESTIONS.
+- **My week (#10, 10 Oct):**
+  - A rep's confirmation is the only way an event becomes verified; a student's announcement waits for one.
+  - Members are never listed, not even to reps, so a rep brings in the next rep with a one-time code.
+  - Reps see how many students flagged an event, never who (yours to confirm: OPEN_QUESTIONS, "Flag counts").
+  - The engine also reads Afrikaans words in announcements; a fluent speaker is to check the list.
+  - The brief's M3 check that waited for M4 passes: Sipho's heavy week makes his life fund amber.
 
 ## What we need from you
 
@@ -115,6 +123,17 @@ The API is in #4, with details in the [README](../README.md), "Course finder":
   `paused`; amounts are integer cents (format as rand).
 - **Demo personas:** `tests/domains/student/student_helpers.py` shows them set up through the API.
 
+**Your M4 screens (Sun 18 to Mon 19 Oct) have their API in #10** (README, "My marks" and "Classes, reps and verified
+events"); the screen notes are in OPEN_QUESTIONS, "My week's screens":
+- **Classes:** `POST /classes`, `POST /classes/join` (an invite code or a rep code), `GET /classes/mine`, and
+  `POST /classes/<id>/reps` for a rep's one-time code.
+- **Rep panel:** `POST /classes/<id>/announcements` returns the candidate; confirm with
+  `POST /candidates/<id>/confirm`, starting the form from `proposed` and highlighting `needs_check`.
+- **Week strip:** `GET /week?weeks=8`. Each week has `load` (say the word; colour can only add to it), `reason`,
+  `events` and the university's `calendar`.
+- **My marks:** `/academics/modules` and its assessments; every answer carries `standing`, `projection` and `lines`.
+- **Test helpers:** `tests/domains/classes/class_helpers.py` shows a rep making a class and confirming events.
+
 **What the screens must handle:**
 - **Cards:**
   - Each card has `tier`, `label`, `points`, `min_points`, `gap`, `failed`, `explanation` (the "why" lines) and
@@ -159,9 +178,9 @@ The API is in #4, with details in the [README](../README.md), "Course finder":
 
 1. **Read first:** [CLAUDE.md](../CLAUDE.md) (AGENTS.md points every agent there), then this file.
 2. **Branch:**
-   - Start from the top of the stack: `git fetch origin`, then `git checkout rinsuna/m3-profile-and-money`.
+   - Start from the top of the stack: `git fetch origin`, then `git checkout rinsuna/m4-my-week`.
    - Branch `mandla/<topic>` from there, for example `mandla/course-finder-screens`.
-   - Once #1 to #8 are merged, branch from `main` instead.
+   - Once #1 to #10 are merged, branch from `main` instead.
 3. **Run the API** (README, "Backend"):
    - Use your own PostgreSQL, or Docker (option B uses port 5434).
    - Then `python scripts/make_env.py`, `flask db upgrade` and `python app.py`.
@@ -185,13 +204,11 @@ The API is in #4, with details in the [README](../README.md), "Course finder":
 
 - **Data packs:** done in #5 (`backend/data/universities/`), with how to apply in #6. A person still has to check
   every value before any pack is released.
-- **Pack sections:** campuses, calendars, money dates and support are in #7. Cheap things still need sourced places.
+- **Pack sections:** campuses, calendars, money dates and support are in #7; cheap things near UP and TUT in #9
+  (SMU's list waits for places near Ga-Rankuwa).
 - **M3 backend:** done in #8 (profile and My money).
-- **Next:**
-  - sourced "cheap things to do" near each campus
-  - M4's backend: classes, reps, announcements to confirmed events, the week (which also feeds the life fund) and
-    My marks
-  - M5's: alerts, the support endpoint, and demo accounts re-based daily
-  - The engine already does the maths, so your screens can follow each endpoint as it lands.
+- **M4 backend:** done in #10 (classes, reps, verified events, the week, My marks).
+- **Next:** M5's backend: alerts, the support endpoint, and demo accounts re-based daily at 02:00 SAST. The engine
+  already does the maths, so your screens can follow each endpoint as it lands.
 
 All of this is in `backend/` and `docs/`; the app is yours.

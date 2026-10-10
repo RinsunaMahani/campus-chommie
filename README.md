@@ -98,7 +98,37 @@ A learner sends 1 to 9 subjects, each once, with marks from 0 to 100. Subject ke
 | `GET` / `POST /money/income-sources`, `PUT` / `DELETE /money/income-sources/<id>` | `{label, amount_cents, day_of_month or expected_on, reliability}` | money the student expects, monthly or once |
 | `GET /money/payments`, `PATCH /money/payments/<id>` | `{expected_on?, amount_cents?, received?}` | expected payments from a month back to 120 days ahead; move one, change it, or tap "received" |
 | `GET /money/spending?days=30`, `PUT` / `DELETE /money/spending/<YYYY-MM-DD>` | `{amount_cents}` | one spending number per day |
-| `GET /money/summary?late=true` | none | the balance now, the spending pace, the runway (with its range), safe to spend, the life fund, the next payment; `late` plans for it arriving two weeks late |
+| `GET /money/summary?late=true` | none | the balance now, the spending pace, the runway (with its range), safe to spend, the life fund (which reads this week's load), the next payment; `late` plans for it arriving two weeks late |
+
+**My marks (signed in; owner-only).** Weights and marks are percentages:
+
+| Endpoint | Body | Answer |
+|---|---|---|
+| `GET` / `POST /academics/modules` | `{code, name?, target?}` | the student's modules, each with its assessments, `standing` (where they stand, and the average needed on the rest for their target), `projection` (a projected final mark with a likely range) and plain-words `lines`. The target defaults to 50 |
+| `PUT` / `DELETE /academics/modules/<id>` | `{code, name, target}` | change a module, or delete it with its assessments |
+| `POST /academics/modules/<id>/assessments`, `PUT` / `DELETE .../assessments/<aid>` | `{name, weight, mark?}` | weights add up to at most 100 (a weight not entered yet counts as still to come); a mark from 0 to 100, or null until it's written |
+
+**Classes, reps and verified events (signed in).** A class is one module on one campus in one year. Only a rep's
+confirmation makes an event *verified*; until then a student's announcement stays unverified. Nobody is ever listed:
+views give counts.
+
+| Endpoint | Body | Answer |
+|---|---|---|
+| `POST /classes` | `{university, campus, module_code, module_name?, year}` | a new class with its `invite_code`; you're its first rep |
+| `POST /classes/join` | `{code}` | an invite code joins the class; a rep code makes you a rep (up to 3 per class) |
+| `GET /classes/mine` | none | your classes, your `role`, and how many `members` and `reps` |
+| `POST /classes/<id>/reps` | none | rep only: a one-time rep code for the next rep, valid 48 hours, shown once |
+| `DELETE /classes/<id>/membership` | none | leave the class |
+| `POST /classes/<id>/announcements` | `{text, sent_on?}` | a candidate: what the engine read (`read_as`), its `confidence`, the fields to check (`needs_check`), the confirm form's starting values (`proposed`) and `lines`. For a "moved" or "cancelled" message, `changes_event` is the event it most likely changes |
+| `GET /classes/<id>/candidates` | none | waiting for a rep: all of them for a rep, only your own otherwise |
+| `POST /candidates/<id>/confirm` | `{change, event_id?, kind, title, on, at, venue, weighting}` | rep only: a new verified event, or the change to one (each changed field is recorded and the `version` goes up), with `lines` |
+| `POST /candidates/<id>/discard` | none | a rep turns it down, or the student who sent it takes it back |
+| `GET /classes/<id>/events?from=&to=` | none | verified events with their `changes`; reps also get `flags` (how many and why, never who) |
+| `POST` / `DELETE /events/<id>/flag` | `{reason}` | `wrong_date`, `wrong_time`, `wrong_venue`, `not_happening`, `duplicate` or `other` |
+| `GET /week?weeks=8&from=YYYY-MM-DD` | none | the week strip: each week `Manageable`, `Busy` or `Heavy` (`colour` green, amber or red) with a one-line `reason` and its verified `events`, and beside it the university's `calendar` for the student's campus, which never adds to the score |
+
+The engine reads announcements in English and the Afrikaans words students use for the same things (toets, eksamen,
+verskuif, gekanselleer, the months and days); greetings in any language are passed over.
 
 ## App
 
