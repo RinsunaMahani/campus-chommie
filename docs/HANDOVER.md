@@ -11,7 +11,7 @@ git, so Mandla has his own copy; the M2 part is quoted below.
 
 ## Where things stand
 
-`main` holds only the empty first commit. All work sits in four stacked pull requests, each with CI green:
+`main` holds only the empty first commit. All work sits in five stacked pull requests:
 
 | PR | Branch | What | Reviewer |
 |---|---|---|---|
@@ -19,10 +19,12 @@ git, so Mandla has his own copy; the M2 part is quoted below.
 | #2 | `rinsuna/university-research` | research notes for UP, TUT and SMU, and the open questions they raise | Rinsuna; Mandla for the F6 and vac-work items |
 | #3 | `rinsuna/engine-requirements` | engine: either/or subjects, percentage minimums, per-programme points tables | Rinsuna |
 | #4 | `rinsuna/m1-course-finder-api` | the course-finder API and this file | Mandla |
+| #5 | `rinsuna/m1-data-packs` | draft UP and TUT packs, the approved SMU changes, and how the plan picks its third choice | Rinsuna; Mandla for the changed M1 check |
 
 **How to merge:**
 - Each PR targets the branch below it, so its diff shows only its own work.
-- Merge in order: #1 into `main`, then #2, #3 and #4, retargeting each to `main` once the one below has merged.
+- Merge in order: #1 into `main`, then #2, #3, #4 and #5, retargeting each to `main` once the one below has
+  merged.
 - Use **Create a merge commit**, not squash or rebase, so every commit stays in `main`'s history (CLAUDE.md: never
   rewrite history).
 
@@ -40,8 +42,9 @@ Everything is recorded, with who and when, in [OPEN_QUESTIONS.md](OPEN_QUESTIONS
   - Learners enter the subjects that admission rules name, plus up to three "another subject" rows.
 - **Data:**
   - Rinsuna approved the SMU fact changes.
-  - Programmes are tagged as related honestly, so once UP's pack lands, the brief's M1 test (B Rad as the third
-    choice) changes.
+  - Programmes are tagged as related honestly, and the plan's third choice is the closest related programme the
+    learner can count on (#5). So the brief's M1 test changed: for the strong SMU learner, the third choice is
+    now UP's BSc Medical Sciences, not SMU's B Rad.
   - TUT counts six subjects until TUT confirms.
   - UP's MBChB route and TUT's selection flags go in as proposed.
 
@@ -134,8 +137,8 @@ The API is in #4, with details in the [README](../README.md), "Course finder":
 
 ## Rinsuna's next work, so you don't collide
 
-- **Data packs:** draft `up.yaml` and `tut.yaml`, and make the approved `smu.yaml` changes in
-  `backend/data/universities/`.
+- **Data packs:** done in #5 (`backend/data/universities/`). A person still has to check every value before any
+  pack is released.
 - **More pack sections:** the brief's other M1 sections (campuses, calendar, funding cycles, support services, cheap
   things).
 - **F6:** the engine and API, if you agree to it.

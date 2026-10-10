@@ -40,7 +40,7 @@ which need no account and store nothing. Update it whenever a milestone adds dat
 
 ## Test evidence (M1)
 
-Backend: **457 tests pass** on PostgreSQL 16 (9 Oct 2026), including:
+Backend: **486 tests pass** on PostgreSQL 16 (10 Oct 2026), including:
 
 | Tests | What they prove |
 |---|---|
@@ -54,7 +54,7 @@ Backend: **457 tests pass** on PostgreSQL 16 (9 Oct 2026), including:
 | `tests/domains/pathways/test_course_finder_api.py` | the brief's M1 check (the strong SMU learner's plan), with reasons, a source and the check status on every card |
 | `tests/domains/pathways/test_course_finder_hostile.py` | odd bodies, impossible marks (out of range, NaN, infinity, text), repeated or unknown subjects, ten subjects, unknown fields (including an ID number), huge and deeply nested bodies are refused; no database statement runs and no mark reaches a log during a request; limited per IP |
 | `tests/architecture/` | the boundaries above, including every route having a rate limit and routes never calling the engine |
-| `tests/engine/` | 105 engine tests, 97.2% coverage (the floor is 80%), including data-pack validation |
+| `tests/engine/` | 134 engine tests, 97.6% coverage (the floor is 80%), including data-pack validation and spot checks of the shipped packs against their sources |
 
 App: TypeScript check, ESLint (no warnings) and Jest pass, including a test of the exact sign-up request.
 
