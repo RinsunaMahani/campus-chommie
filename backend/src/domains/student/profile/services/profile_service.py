@@ -30,6 +30,12 @@ def place_of(user) -> tuple[str | None, str | None]:
     return (profile.university, profile.campus) if profile else (None, None)
 
 
+def export_for(user) -> dict | None:
+    """POPIA export: the university and campus the student chose."""
+    profile = repo.for_user(user.id)
+    return {"university": profile.university, "campus": profile.campus} if profile else None
+
+
 def erase_for(user) -> None:
     """The student's university and campus choice, deleted: the demo's daily reset (and DELETE /me's later)."""
     repo.erase(user.id)

@@ -151,6 +151,19 @@ def out_of_reach(user) -> list[tuple[str, float, str]]:
     return out
 
 
+def export_for(user) -> list[dict]:
+    """POPIA export: the student's modules and assessments as they entered them."""
+    return [
+        {
+            "code": m.code,
+            "name": m.name,
+            "target": m.target,
+            "assessments": [{"name": a.name, "weight": a.weight, "mark": a.mark} for a in m.assessments],
+        }
+        for m in repo.modules_for(user.id)
+    ]
+
+
 def erase_all_for(user) -> None:
     """Every module and assessment of this student, deleted for real: the demo's daily reset (and DELETE /me's later)."""
     repo.erase_all(user.id)

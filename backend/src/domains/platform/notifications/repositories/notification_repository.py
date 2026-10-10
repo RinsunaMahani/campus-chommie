@@ -71,3 +71,7 @@ def delete_before(cutoff: datetime) -> int:
     """Hard delete: old alerts are copies of things kept elsewhere (each
     feature's own records, the audit trail), not a record of their own."""
     return Notification.query.filter(Notification.created_at < cutoff).delete(synchronize_session=False)
+
+
+def all_for(user_id: uuid.UUID) -> list[Notification]:
+    return Notification.query.filter_by(user_id=user_id).order_by(Notification.created_at).all()

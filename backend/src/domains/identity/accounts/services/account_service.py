@@ -181,6 +181,14 @@ def check_demo_password(password: str) -> list[str]:
     return validate_password_complexity(password or "")
 
 
+def delete_account(user: User) -> None:
+    """Hard delete, for DELETE /me after auth has checked the password: the row and, by ON DELETE
+    CASCADE, every row that points at it. The caller commits."""
+    from src.extensions import db
+
+    db.session.delete(user)
+
+
 def create_verified(email: str, method: SignUpMethod) -> User:
     """A new account whose email is already proven (e.g. by Google)."""
     user = user_repository.add(

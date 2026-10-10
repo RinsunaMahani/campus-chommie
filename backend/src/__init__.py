@@ -103,6 +103,26 @@ def _register_listeners(app: Flask) -> None:
 
     notification_service.register(app)
     rate_limit_responses.register_audit_events(RATE_LIMIT_AUDIT_EVENTS)
+    _register_exporters()
+
+
+def _register_exporters() -> None:
+    """What each feature holds about a person, for GET /me/export (POPIA). Add one line per feature
+    that stores personal data; identity's own part is added by its export."""
+    from src.domains.classes.classes.services import class_service
+    from src.domains.classes.events.services import events_service
+    from src.domains.platform.notifications.services import notification_service
+    from src.domains.student.academics.services import academics_service
+    from src.domains.student.money.services import money_service
+    from src.domains.student.profile.services import profile_service
+    from src.shared.privacy import privacy
+
+    privacy.register_exporter("profile", profile_service.export_for)
+    privacy.register_exporter("money", money_service.export_for)
+    privacy.register_exporter("marks", academics_service.export_for)
+    privacy.register_exporter("classes", class_service.export_for)
+    privacy.register_exporter("class_messages", events_service.export_for)
+    privacy.register_exporter("alerts", notification_service.export_for)
 
 
 def _register_blueprints(app: Flask) -> None:

@@ -193,6 +193,22 @@ def leave(user, class_id: uuid.UUID) -> dict:
     return {}
 
 
+def export_for(user) -> list[dict]:
+    """POPIA export: the classes the student is in and their role. Never anyone else in them."""
+    return [
+        {
+            "module_code": m.module_class.module_code,
+            "module_name": m.module_class.module_name,
+            "university": m.module_class.university,
+            "campus": m.module_class.campus,
+            "year": m.module_class.year,
+            "role": m.role,
+            "joined_at": m.created_at.isoformat(),
+        }
+        for m in repo.memberships(user.id)
+    ]
+
+
 def leave_all(user) -> list[uuid.UUID]:
     """The student leaves every class they're in: the demo's daily reset (and DELETE /me's later).
     Returns the classes they left."""

@@ -11,6 +11,7 @@ from datetime import date, datetime
 
 from sqlalchemy import func
 
+from src.domains.classes.classes.models import ModuleClass
 from src.extensions import db
 
 from ..models import Announcement, ClassEvent, EventCandidate, EventChange, EventFlag
@@ -142,3 +143,24 @@ def erase_all(user_id: uuid.UUID) -> None:
     """A student's announcements (their candidates go with them) and flags."""
     Announcement.query.filter_by(submitted_by=user_id).delete(synchronize_session=False)
     EventFlag.query.filter_by(user_id=user_id).delete(synchronize_session=False)
+
+
+def announcements_by(user_id: uuid.UUID) -> list[tuple[Announcement, str]]:
+    """A student's own announcements, with their class's module code."""
+    return (
+        db.session.query(Announcement, ModuleClass.module_code)
+        .join(ModuleClass, ModuleClass.id == Announcement.class_id)
+        .filter(Announcement.submitted_by == user_id)
+        .order_by(Announcement.created_at)
+        .all()
+    )
+
+
+def flags_by(user_id: uuid.UUID) -> list[tuple[EventFlag, ClassEvent]]:
+    return (
+        db.session.query(EventFlag, ClassEvent)
+        .join(ClassEvent, ClassEvent.id == EventFlag.event_id)
+        .filter(EventFlag.user_id == user_id)
+        .order_by(EventFlag.created_at)
+        .all()
+    )

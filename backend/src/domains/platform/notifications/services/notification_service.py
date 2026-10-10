@@ -143,6 +143,11 @@ def read_all(user) -> dict:
     return unread(user)
 
 
+def export_for(user) -> list[dict]:
+    """POPIA export: every alert kept for the student, read or not."""
+    return [view(n) for n in repo.all_for(user.id)]
+
+
 def view(n: Notification) -> dict:
     title, body = render(n.kind, n.params)
     return {

@@ -170,6 +170,16 @@ def close_account():
     return success_response({}, message="Your account is closed.")
 
 
+@api_bp.delete("/me")
+@limiter.limit(policies.DELETE_ACCOUNT)
+@auth_required
+def delete_account():
+    """POPIA: the account and everything it holds, gone for good. Needs the password."""
+    data = load(PasswordConfirmSchema(), request.get_json(silent=True))
+    auth_service.delete_account(current_user(), _sid(), data["password"])
+    return success_response({}, message="Your account and everything in it are deleted.")
+
+
 @api_bp.get("/me/export")
 @limiter.limit(policies.EXPORT_DATA)
 @auth_required
