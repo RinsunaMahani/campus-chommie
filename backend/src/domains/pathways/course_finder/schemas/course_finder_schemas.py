@@ -25,8 +25,9 @@ class MarkSchema(_Strict):
     )
 
 
-class AssessSchema(_Strict):
-    university = fields.String(required=True, validate=validate.Length(min=1, max=40))
+class PointsSchema(_Strict):
+    """Marks only: the learner's points at every university."""
+
     marks = fields.List(
         fields.Nested(MarkSchema),
         required=True,
@@ -39,6 +40,10 @@ class AssessSchema(_Strict):
         repeated = sorted({s for s in subjects if subjects.count(s) > 1})
         if repeated:
             raise MarshmallowError({"marks": [f"Enter each subject once: {', '.join(repeated)} is repeated."]})
+
+
+class AssessSchema(PointsSchema):
+    university = fields.String(required=True, validate=validate.Length(min=1, max=40))
 
 
 class PlanSchema(AssessSchema):

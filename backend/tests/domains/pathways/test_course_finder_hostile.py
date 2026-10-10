@@ -8,7 +8,7 @@ from __future__ import annotations
 import logging
 
 import pytest
-from course_finder_helpers import ASSESS, PLAN, STRONG, marks
+from course_finder_helpers import ASSESS, PLAN, POINTS, STRONG, marks
 from sqlalchemy import event
 
 from src.extensions import db
@@ -68,6 +68,25 @@ def test_special_numbers_are_refused(client, value):
     assert client.post(ASSESS, data=raw, content_type="application/json").status_code == 422
 
 
+@pytest.mark.parametrize(
+    "body",
+    [
+        {},
+        {"marks": []},
+        {"marks": TEN_SUBJECTS},
+        {"marks": marks(english=101)},
+        {"marks": marks(english="seventy")},
+        {"marks": [{"subject": "maths", "percent": 70}]},
+        {"marks": [{"subject": "english", "percent": 70}, {"subject": "english", "percent": 80}]},
+        {"marks": STRONG, "university": "smu"},  # points are for every university: no picking one here
+        {"marks": STRONG, "id_number": "0001015009087"},
+        {"marks": {"english": 70}},
+    ],
+)
+def test_odd_points_bodies_are_refused(client, body):
+    assert client.post(POINTS, json=body).status_code == 422
+
+
 def test_a_plan_needs_a_goal(client):
     assert client.post(PLAN, json={"university": "smu", "marks": STRONG}).status_code == 422
 
@@ -111,6 +130,7 @@ def test_a_refusal_never_repeats_the_mark(client):
 def test_marks_are_never_logged(client, caplog):
     caplog.set_level(logging.DEBUG)
     rows = marks(english=73.37, mathematics=81.29)
+    client.post(POINTS, json={"marks": rows})
     client.post(ASSESS, json={"university": "smu", "marks": rows})
     client.post(PLAN, json={"university": "smu", "goal": "mbchb", "marks": rows})
     client.post(ASSESS, json={"university": "smu", "marks": marks(english=173.37)})  # a refusal too
@@ -127,6 +147,7 @@ def test_the_course_finder_never_touches_the_database(app, client):
 
     event.listen(engine, "before_cursor_execute", record)
     try:
+        assert client.post(POINTS, json={"marks": STRONG}).status_code == 200
         assert client.post(ASSESS, json={"university": "smu", "marks": STRONG}).status_code == 200
         assert client.post(PLAN, json={"university": "smu", "goal": "mbchb", "marks": STRONG}).status_code == 200
         assert client.post(ASSESS, json={"university": "smu", "marks": []}).status_code == 422
@@ -141,3 +162,5 @@ def test_the_course_finder_is_limited_per_ip(client, limits_on):
     assert codes[:120] == [200] * 120 and codes[120] == 429
     r = client.post(PLAN, json=dict(body, goal="mbchb"))
     assert r.status_code == 200  # each endpoint keeps its own count
+    codes = [client.post(POINTS, json={"marks": STRONG}).status_code for _ in range(121)]
+    assert codes[:120] == [200] * 120 and codes[120] == 429
