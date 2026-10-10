@@ -108,3 +108,7 @@ def delete_empty(class_ids: list[uuid.UUID]) -> int:
         ModuleClass.query.filter(ModuleClass.id.in_(class_ids), ModuleClass.id.notin_(occupied))
         .delete(synchronize_session=False)
     )
+
+
+def member_ids(class_id: uuid.UUID) -> list[uuid.UUID]:
+    return [row.user_id for row in ClassMember.query.with_entities(ClassMember.user_id).filter_by(class_id=class_id)]

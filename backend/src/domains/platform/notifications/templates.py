@@ -18,14 +18,19 @@ from __future__ import annotations
 import string
 from typing import Any, NamedTuple
 
-#: What tapping an alert opens (the app maps each to a screen).
-LINK_TYPES = ("security",)
+#: What tapping an alert opens (the app maps each to a screen): "class" opens that class's events.
+LINK_TYPES = ("security", "class")
+
+#: Alerts a student may switch off, by topic, with what the switch covers. Security alerts have no
+#: topic: they're always on.
+TOPICS = {"class_updates": "New, moved and cancelled tests and deadlines from your class reps"}
 
 
 class Template(NamedTuple):
     icon: str
     title: str
     body: str
+    topic: str | None = None  # None: always on
 
 
 TEMPLATES: dict[str, Template] = {
@@ -35,6 +40,12 @@ TEMPLATES: dict[str, Template] = {
     "account.phones_signed_out": Template("log-out", "Other phones signed out", "Every other phone was signed out of your account."),
     # Never says why: only that sign-in is paused, and what to do.
     "account.locked": Template("alert-triangle", "Account locked", "Sign-in is paused for {minutes} minutes to keep your account safe. If that wasn't you, change your password."),
+    # Class updates, from a rep's confirmation. Only the module, the kind and the dates: never who, and never
+    # what someone typed (a title or a venue). {when} and {was} read "on Tue 20 Oct 2026 at 08:00" or "due ...".
+    "class.event_new": Template("calendar", "New date from your class", "{module}: a new {kind} {when}.", "class_updates"),
+    "class.event_moved": Template("calendar", "A class date moved", "{module}: the {kind} {was} is now {when}.", "class_updates"),
+    "class.event_changed": Template("calendar", "A class date changed", "{module}: the {kind} {when} has a change. Check where and when.", "class_updates"),
+    "class.event_cancelled": Template("x-circle", "A class date was cancelled", "{module}: the {kind} {when} is cancelled.", "class_updates"),
 }
 
 

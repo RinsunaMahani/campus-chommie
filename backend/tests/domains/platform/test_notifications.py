@@ -144,7 +144,7 @@ def test_alerts_older_than_90_days_are_deleted(app, client, me):
 # --------------------------------------------------------------- templates
 
 
-SAMPLE = {"minutes": 15}
+SAMPLE = {"minutes": 15, "module": "ANA201", "kind": "test", "when": "on Tue 20 Oct 2026 at 08:00", "was": "on Mon 19 Oct 2026"}
 
 
 @pytest.mark.parametrize("kind", sorted(TEMPLATES))

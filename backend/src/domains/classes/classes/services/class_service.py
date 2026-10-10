@@ -104,6 +104,11 @@ def memberships(user) -> list[Membership]:
     return [_membership(m) for m in repo.memberships(user.id)]
 
 
+def member_ids(class_id: uuid.UUID) -> list[uuid.UUID]:
+    """Who's in a class, as account ids, for telling them about a confirmed event. Never shown to anyone."""
+    return repo.member_ids(class_id)
+
+
 # ------------------------------------------------------------- the routes
 
 

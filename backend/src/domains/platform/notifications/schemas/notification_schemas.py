@@ -4,7 +4,8 @@ is 1..50, and "read all" takes no fields at all.
 """
 from __future__ import annotations
 
-from marshmallow import RAISE, Schema, ValidationError as MarshmallowError, fields, validate
+from marshmallow import RAISE, Schema, fields, validate, validates_schema
+from marshmallow import ValidationError as MarshmallowError
 
 from src.core.exceptions import ValidationError
 
@@ -24,6 +25,30 @@ class ListQuerySchema(_Strict):
 
 class ReadAllSchema(_Strict):
     """No fields: every unread alert of the signed-in user."""
+
+
+class StrictBoolean(fields.Boolean):
+    """true or false only: not 1, "true" or "yes"."""
+
+    def _deserialize(self, value, attr, data, **kwargs):
+        if not isinstance(value, bool):
+            raise self.make_error("invalid", input=value)
+        return value
+
+
+class SwitchesSchema(_Strict):
+    """The topics to change, each true (on) or false (off). Security alerts have no switch."""
+
+    class_updates = StrictBoolean()
+
+    @validates_schema
+    def _something(self, data, **kwargs):
+        if not data:
+            raise MarshmallowError({"_schema": ["Send at least one switch, for example {\"class_updates\": false}."]})
+
+
+class NoQuerySchema(_Strict):
+    """No query parameters."""
 
 
 def load(schema: Schema, data) -> dict:
