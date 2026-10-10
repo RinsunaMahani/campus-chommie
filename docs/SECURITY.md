@@ -1,10 +1,10 @@
 # Security
 
-How Campus Chommie protects its users, kept current for the SSDLC form. Version for **M4**: the M0 foundation
+How Campus Chommie protects its users, kept current for the SSDLC form. Version for **M5**: the M0 foundation
 (accounts, sign-in, account security, notifications, audit); the public course finder (with how to apply) and
 university catalogue, which need no account and store nothing; the student's own profile, money and marks, which
-only they can see; and classes, where reps confirm tests and deadlines. Update it whenever a milestone adds data or
-endpoints.
+only they can see; classes, where reps confirm tests and deadlines; alerts and campus support, worked out on each
+request and never stored; and the judges' demo accounts. Update it whenever a milestone adds data or endpoints.
 
 ## What we protect
 
@@ -24,6 +24,7 @@ endpoints.
 | Classes | `classes.classes`, `class_members`, `rep_invites` | a class holds no personal data (who made it isn't kept). Members are never listed, not even to reps: views give counts. Rep codes are kept as SHA-256 hashes only, work once and expire after 48 hours. A class is deleted after its academic year and one more |
 | Announcements | `classes.announcements`, `event_candidates` | pasted text may hold personal data: only the class's reps and the student who sent it see it. The text is deleted 30 days after a rep confirms or discards it; an announcement nobody decides on goes after 60 days; a candidate goes when it's decided |
 | Verified events | `classes.class_events`, `event_changes` | tests and deadlines a rep confirmed, and each change to them. Who confirmed or changed one is kept as a user id that's never returned, and cleared when that account goes |
+| Demo accounts | `identity.users` (`is_demo`), `platform.demo_accounts` | three fictional students, made only by `flask seed`; their shared password comes from `DEMO_PASSWORD`, never the repo; their data is rebuilt every day |
 | Flags | `classes.event_flags` | one per student per event, with a reason from a fixed list (no free text). Reps see how many and which reasons, never who. Kept 12 months |
 
 ## Threats and controls
@@ -33,10 +34,13 @@ endpoints.
 | Stolen or guessed password | bcrypt hashing; 5 wrong passwords lock the account for 15 minutes; rate limits per IP and per IP + email; a new phone needs a 6-digit code from the email (two factors) | `domains/identity/auth/services/auth_service.py`, `auth/rate_limit/policies.py`, `auth/models/trusted_phone.py` |
 | Stolen token | 15-minute access tokens tied to a live session; rotating refresh tokens, and a reused refresh token revokes the whole session; "sign out other phones" | `auth/models/credentials.py` (Session), `auth/services/jwt_callbacks.py`, `session_service.py` |
 | Fishing for which emails have accounts | sign-up, resend and forgot-password give the same answer whatever the email; an existing account's owner gets an email instead | `auth_service.register`, `forgot_password` |
-| Reading someone else's data (IDOR) | every query takes the signed-in user from the token; another user's row is the same 404 as a missing one (alerts, profile, every money record, modules and assessments). Classes are reached only through the student's own membership: a class they're not in, and its candidates, events and flags, are the same 404 as ones that don't exist | `core/decorators.py`, each feature's repository, `classes/classes/services/class_service.py` (`membership`) |
+| Reading someone else's data (IDOR) | every query takes the signed-in user from the token; another user's row is the same 404 as a missing one (alerts, profile, every money record, modules and assessments). Alerts and support read only the signed-in student's own records. Classes are reached only through the student's own membership: a class they're not in, and its candidates, events and flags, are the same 404 as ones that don't exist | `core/decorators.py`, each feature's repository, `classes/classes/services/class_service.py` (`membership`) |
 | A student acting as a rep | the rep role belongs to one class: a rep elsewhere is a student here. Only a rep confirms (403 for a student's own candidate); a student sees only their own candidates (anyone else's is a 404); a change can only touch an event in the candidate's own class | `classes/events/services/events_service.py`, `class_service.require_rep` |
 | Guessing invite or rep codes | invite codes are 8 characters from a 31-character alphabet (about 850 billion codes) and rep codes 10; joining is limited to 20 tries an hour per student; a rep code works once, for 48 hours, and only its hash is stored; a class has at most 3 reps, and codes already waiting can never make a fourth (the class row is locked while reps change) | `classes/classes/` |
 | Unverified information shown as fact | nothing goes live without a rep's confirmation, and the engine never publishes; fields it's unsure of are flagged to the rep (`needs_check`); a student's announcement says it's unverified until a rep confirms; the week strip and the life fund count verified events only; the university calendar beside the week is context and never counted | `campus_engine/extraction.py`, `classes/events/` |
+| Demo accounts misused, or the judges locked out | only `flask seed` makes one, and never from a real account; they hold fictional data only and say so (`GET /me`: `demo: true`); they skip the new-phone code (the judges can't read the demo inbox) but can't be locked by wrong passwords, so each IP gets 20 sign-in tries an hour on them instead; their password can't be changed, reset or used to close them; everything a visitor changes is undone at the next daily re-base | `identity/auth/services/auth_service.py`, `auth/rate_limit/policies.py` (`DEMO_LOGIN`), `domains/platform/demo/` |
+| A wrong crisis number shown as true | crisis lines show only once a person has checked their source (a name, not an agent draft, and a date); until then Support says so. Every other support entry shows its source and when a person last checked it, or "Not verified yet" | `domains/student/alerts/services/alert_service.py` |
+| Wording that labels or frightens a student | alerts describe the situation and end in things to do; they never say "at risk" and never diagnose, and the heavier ones always point to campus counselling (engine tests check the words) | `campus_engine/alerts.py` |
 | Spam through announcements | 60 an hour per student, at most 10 waiting per student in one class, at most 2 000 characters; the text is never logged | `classes/events/constants.py`, `events_service.announce` |
 | Marks gone wrong through bad input | percentages from 0 to 100 (a weight above 0); text, booleans, NaN, infinity and huge integers refused; a module's weights can't pass 100% | `domains/student/academics/schemas/`, `services/` |
 | Money gone wrong through rounding or bad input | amounts are whole cents, built as shared/finance's `Money`: floats (even 1250.0), text, booleans, NaN and infinity are refused; at most R1 000 000; dates checked against today (no future spending, nothing more than a year back) | `domains/student/money/schemas/`, `services/` |
@@ -56,9 +60,9 @@ endpoints.
 | Design rot | architecture tests: the engine imports no app, web or database code; routes never call the engine (services do); `shared/` never imports a domain; identity stays sealed; finance stays a leaf; every route has a rate limit | `backend/tests/architecture/` |
 | Vulnerable dependencies, committed secrets | CI runs `pip-audit` and an npm audit gate (any high or critical advisory fails, except the accepted ones below), and a gitleaks scan, on every pull request | `.github/workflows/ci.yml`, `frontend/mobile/scripts/check-audit.mjs` |
 
-## Test evidence (M4)
+## Test evidence (M5)
 
-Backend: **918 tests pass** on PostgreSQL 16 (10 Oct 2026), including:
+Backend: **954 tests pass** on PostgreSQL 16 (10 Oct 2026), including:
 
 | Tests | What they prove |
 |---|---|
@@ -80,8 +84,10 @@ Backend: **918 tests pass** on PostgreSQL 16 (10 Oct 2026), including:
 | `tests/domains/classes/test_classes.py` | classes and invite codes, rep codes bringing in up to 3 reps (used once, expiring, hashed, never a fourth), only a rep makes rep codes, nobody ever listed, odd input refused, joining slowed to 20 tries an hour, old classes and expired codes deleted |
 | `tests/domains/classes/test_events.py` | the brief's M4 checks: a student's announcement stays unverified until a rep confirms it; a change message updates the event and writes `event_changes` rows; flags show reps counts, never who; the week strip with the university calendar; and the brief's M3 check that needed the week: the self-funded persona's heavy week makes his life fund amber |
 | `tests/domains/classes/test_events_hostile.py` | odd announcements and confirmations (a "verified" flag, impossible times, dates a year out), a rep's role not carried into another class, other classes' candidates and events (404), floods, and old announcement text and flags deleted |
+| `tests/domains/student/test_alerts_support.py` | the personas' alerts (a combined alert for short money and a heavy week ahead, a heavy-week alert with the campus's own tutoring and counselling), a module out of reach, another student's alerts never shown; every kind of support for a campus, "Not verified yet" where the pack has none, crisis lines held back until a person checks them; cheap things for the campus only |
+| `tests/domains/platform/test_demo.py` | `flask seed` (a strong password from the environment, never echoed; a real account never converted), demo sign-in without the code, no lockout, no password change, reset or closing, the stricter demo limit, the personas built as written, and the daily re-base moving every date and undoing what visitors changed |
 | `tests/architecture/` | the boundaries above, including every route having a rate limit and routes never calling the engine |
-| `tests/engine/` | 275 engine tests, 99% coverage from the engine and architecture tests alone (the floor is 80%), including data-pack validation, spot checks of the shipped packs against their sources, every application status on either side of each date, every first step's status either side of its dates, and 44 labelled class messages (new events, moved and cancelled, mixed languages, dates to check) |
+| `tests/engine/` | 279 engine tests, 99% coverage from the engine and architecture tests alone (the floor is 80%), including data-pack validation, spot checks of the shipped packs against their sources, every application status on either side of each date, every first step's status either side of its dates, and 44 labelled class messages (new events, moved and cancelled, mixed languages, dates to check) |
 
 App: TypeScript check, ESLint (no warnings) and Jest pass, including a test of the exact sign-up request.
 
@@ -112,6 +118,7 @@ Tracked with options in [OPEN_QUESTIONS.md](OPEN_QUESTIONS.md):
 - Reps see how many students flagged an event from the first flag (never who). We read CLAUDE.md's 5-student rule
   as covering aggregates of marks and money; the team confirms or changes this in OPEN_QUESTIONS.
 - A student's announcement text is seen by the class's reps by design: it's how they check it.
-- Demo accounts need a decision on the new-phone email code before M5.
+- The demo accounts' password is shared with the judges by design, so those accounts hold fictional data only.
+- Crisis lines stay hidden until a person checks them: every pack's are still agent drafts (OPEN_QUESTIONS).
 - Rate-limit counters live in memory: correct for one server process only.
 - The Privacy Policy and Terms are drafts awaiting legal review.
