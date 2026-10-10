@@ -35,3 +35,4 @@ from src.domains.identity.accounts.api import routes as _accounts_routes  # noqa
 from src.domains.identity.auth.api import routes as _auth_routes  # noqa: E402,F401
 from src.domains.pathways.course_finder.api import routes as _course_finder_routes  # noqa: E402,F401
 from src.domains.platform.notifications.api import routes as _notifications_routes  # noqa: E402,F401
+from src.domains.student.profile.api import routes as _profile_routes  # noqa: E402,F401
