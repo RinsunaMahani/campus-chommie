@@ -250,9 +250,15 @@ cents, documents and next steps, each with its source. `funding.yaml` holds nati
 - [ ] **Module alerts** (added by Rinsuna's agent in M5; Mandla to confirm): besides the brief's combined, heavy-week
   and money alerts, Home shows one when a module's target is out of reach, pointing to tutoring and counselling. Drop
   it if Home should keep to the brief's three.
-- [ ] **Expo and EAS.** The reused app config's EAS project id and owner were removed. Whose Expo account owns Campus Chommie's
-  project (`eas init`), and who builds the Android preview?
-- [ ] **Package name `za.campuschommie.app`.** Confirm before the first Play Store upload; it can't change after.
+- [x] **Expo and EAS.** The reused app config's EAS project id and owner were removed. Whose Expo account owns Campus Chommie's
+  project (`eas init`), and who builds the Android preview? **Decided by Rinsuna on 10 Oct 2026**, because the team
+  needs an installable app in different places: the project is `@rinsunamahani/campus-chommie`, under her own Expo
+  account, and she builds the preview APK (README, "An installable Android app"). It signs in against the built-in
+  mock until the backend is hosted. To let Mandla build too, move the project to her Expo team account
+  (`rinsunamahanis-team`) and invite him there.
+- [ ] **Package name `za.campuschommie.app`.** Confirm before the first Play Store upload; it can't change after. The
+  preview APK already uses it: changing it later is still possible, but phones with the preview would then see a
+  second, separate app.
 - [ ] **App icon, colours and slogan** ("From choosing a course to graduating.") are placeholders drawn for M0:
   keep or replace.
 - [ ] **Google sign-in** is hidden until `GOOGLE_READY` (client ids and a native build). When it's switched on,

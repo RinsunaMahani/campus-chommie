@@ -12,7 +12,7 @@ git, so Mandla has his own copy; the M2 part is quoted below.
 
 ## Where things stand
 
-`main` holds only the empty first commit. All work sits in eleven stacked pull requests:
+`main` holds only the empty first commit. All work sits in twelve stacked pull requests:
 
 | PR | Branch | What | Reviewer |
 |---|---|---|---|
@@ -25,12 +25,13 @@ git, so Mandla has his own copy; the M2 part is quoted below.
 | #7 | `rinsuna/m1-after-acceptance` | your points at every university; campuses, calendars, money dates and support in the packs; first steps from acceptance to the first lecture | Rinsuna for the engine and data; Mandla for the two new endpoints |
 | #8 | `rinsuna/m3-profile-and-money` | M3's backend: the student's profile (university and campus) and My money (settings, income, expected payments, spending, summary) | Mandla (API); Rinsuna for the migration |
 | #9 | `rinsuna/m1-cheap-things` | cheap things to do near campus, each priced from the place's own page | Rinsuna (data) |
+| #12 | `rinsuna/android-preview` | the installable Android app (EAS preview APK, built-in mock sign-in), under Rinsuna's Expo account | Mandla (app config) |
 | #11 | `rinsuna/m5-alerts-support-demo` | M5's backend: alerts, the Support screen's data, cheap things for the campus, and the judges' demo accounts (`flask seed`, re-based daily) | Mandla (API and the identity change); Rinsuna for the engine, data and migration |
 | #10 | `rinsuna/m4-my-week` | M4's backend: classes, invite codes and reps, announcements to verified events (changes and flags), the week strip, My marks; the life fund reads the week; 44 labelled class messages | Mandla (API); Rinsuna for the engine and the migration |
 
 **How to merge:**
 - Each PR targets the branch below it, so its diff shows only its own work.
-- Merge in order: #1 into `main`, then #2 to #11, retargeting each to `main` once the one below has merged.
+- Merge in order: #1 into `main`, then #2 to #12, retargeting each to `main` once the one below has merged.
 - Use **Create a merge commit**, not squash or rebase, so every commit stays in `main`'s history (CLAUDE.md: never
   rewrite history).
 
@@ -86,7 +87,8 @@ Everything is recorded, with who and when, in [OPEN_QUESTIONS.md](OPEN_QUESTIONS
 2. **Decide F6 "Fund and apply" and the vac-work nudge for M1** (OPEN_QUESTIONS, "App and accounts"): yes, no or
    change. Also there: which intakes a plan shows, "Add these dates to my calendar" and links to opportunity sites.
 3. **Your open items in OPEN_QUESTIONS:**
-   - who owns the Expo/EAS project
+   - the Expo project is now under Rinsuna's account (OPEN_QUESTIONS, "Expo and EAS"): ask her to move it to her team
+     account and invite you, so you can build too
    - the package name `za.campuschommie.app` (it can't change after the first Play Store upload)
    - app icon, colours and slogan
    - Google sign-in
