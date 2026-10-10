@@ -30,6 +30,9 @@ from src.domains.identity.auth.schedulers.identity_scheduler import (
 from src.domains.platform.notifications.schedulers.notifications_scheduler import (
     JOB_SPECS as NOTIFICATIONS_JOB_SPECS,
 )
+from src.domains.student.money.schedulers.money_scheduler import (
+    JOB_SPECS as MONEY_JOB_SPECS,
+)
 from src.master_scheduler import runner
 from src.master_scheduler.interfaces import JobSpec, SchedulerEngine
 
@@ -39,6 +42,7 @@ ALL_JOB_SPECS: list[JobSpec] = [
     *IDEMPOTENCY_JOB_SPECS,
     *IDENTITY_JOB_SPECS,
     *NOTIFICATIONS_JOB_SPECS,
+    *MONEY_JOB_SPECS,
     # Each new domain adds its own JOB_SPECS here the same way, from
     # domains/<area>/<feature>/schedulers/<feature>_scheduler.py
 ]
