@@ -80,6 +80,8 @@ def _register_models() -> None:
     from src.domains.platform.notifications import models as _notifications  # noqa: F401
     # audit schema: the append-only audit trail
     from src.domains.security.audit import models as _audit  # noqa: F401
+    # platform schema: which account plays which demo persona
+    from src.domains.platform.demo import models as _demo  # noqa: F401
     # student schema: a student's own profile, money and marks (owner-only)
     from src.domains.student.academics import models as _academics  # noqa: F401
     from src.domains.student.money import models as _money  # noqa: F401
