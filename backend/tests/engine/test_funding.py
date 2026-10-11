@@ -22,6 +22,7 @@ from campus_engine.funding import (
     field_counts,
     group,
     matches,
+    reminders,
 )
 from campus_engine.matching import MEETS_MINIMUM, Match
 from campus_engine.schemas import FIELDS, FundingPack, Programme, University, Window
@@ -298,3 +299,52 @@ def test_a_plan_shows_only_the_funders_meant_for_every_plan():
     assert [g.id for g in guide.funding] == ["nsfas"]
     assert {d.who for d in guide.deadlines} == {"nsfas"}  # no bursary dates in the plan's own list
     assert guide.notes[-1] == "Funding is a separate application: if you might qualify for NSFAS, apply there as well."
+
+
+# ------------------------------------------------------------- saved funding's reminders
+
+
+def _remind(saved: dict[str, str], today: date, *funders: dict) -> list[tuple[str, str | None]]:
+    p = pack(*funders)
+    return [(r.key, r.when) for r in reminders(p, {k: date.fromisoformat(v) for k, v in saved.items()}, today)]
+
+
+ROUND = funder("fund", short_name="Fund", applications=windows(
+    {"intake": 2027, "opens": "2026-10-01", "closes": "2026-10-31", "closing_time": "23:59"}))
+
+
+def test_a_reminder_a_week_and_a_day_before_closing():
+    saved = {"fund": "2026-10-02"}  # after it opened: no "open" reminder
+    assert _remind(saved, date(2026, 10, 23), ROUND) == []  # 8 days to go
+    assert _remind(saved, date(2026, 10, 24), ROUND) == [("fund:2027:closing:7", "in 7 days, on Sat 31 Oct 2026 at 23:59")]
+    assert _remind(saved, date(2026, 10, 27), ROUND) == [("fund:2027:closing:7", "in 4 days, on Sat 31 Oct 2026 at 23:59")]
+    assert _remind(saved, date(2026, 10, 30), ROUND) == [("fund:2027:closing:1", "tomorrow, Sat 31 Oct 2026 at 23:59")]
+    assert _remind(saved, date(2026, 10, 31), ROUND) == [("fund:2027:closing:1", "today, Sat 31 Oct 2026 at 23:59")]
+    assert _remind(saved, date(2026, 11, 1), ROUND) == []  # closed
+
+
+def test_a_reminder_when_it_opens_after_it_was_saved():
+    assert _remind({"fund": "2026-09-20"}, date(2026, 9, 30), ROUND) == []  # not open yet
+    assert _remind({"fund": "2026-09-20"}, date(2026, 10, 2), ROUND) == [("fund:2027:open", None)]
+    assert _remind({"fund": "2026-10-01"}, date(2026, 10, 2), ROUND) == []  # saved on the day it opened: they knew
+    # Saved before it opened, and already within a week of closing: the closing reminder says it all.
+    assert _remind({"fund": "2026-09-20"}, date(2026, 10, 25), ROUND) == [("fund:2027:closing:7", "in 6 days, on Sat 31 Oct 2026 at 23:59")]
+
+
+def test_no_reminders_without_dates_or_an_application():
+    seen = funder("seen", applications=windows({"intake": 2027, "seen": {"status": "open", "checked": "2026-10-11"}}))
+    auto = funder("auto", kind="merit_award", applying="automatic")
+    campus = funder("campus", applying="via_university")
+    saved = {"seen": "2026-09-01", "auto": "2026-09-01", "campus": "2026-09-01", "gone": "2026-09-01"}
+    assert _remind(saved, date(2026, 10, 12), seen, auto, campus) == []
+
+
+def test_each_reminder_has_its_own_key_and_the_funders_short_name():
+    other = funder("other", short_name="Other", applications=windows({"intake": 2027, "opens": "2026-10-01", "closes": "2026-10-25"}))
+    p = pack(ROUND, other)
+    found = reminders(p, {"fund": date(2026, 10, 2), "other": date(2026, 10, 2)}, date(2026, 10, 24))
+    assert [(r.funder, r.template, r.key, r.intake) for r in found] == [
+        ("Fund", "closing", "fund:2027:closing:7", 2027),
+        ("Other", "closing", "other:2027:closing:1", 2027),
+    ]
+    assert found[1].when == "tomorrow, Sun 25 Oct 2026"  # no published time

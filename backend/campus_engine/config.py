@@ -21,7 +21,7 @@ DEFAULTS: dict[str, Any] = {
     "runway": {"late_days": 14, "buffer_days": 3, "horizon_days": 120},
     "forecast": {"ewma_alpha": 0.3, "min_days_of_history": 5, "spread_window": 14},
     "applications": {"closing_soon_days": 14, "seen_open_days": 14},
-    "funding": {"per_choice": 5},
+    "funding": {"per_choice": 5, "remind_days": [7, 1]},
     "alerts": {"lookahead_weeks": 3},
 }
 

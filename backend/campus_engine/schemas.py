@@ -528,7 +528,7 @@ class Funder(_Strict):
     who it's for and where it can be used. Eligibility in the funder's words (`who_can_apply`) is
     shown, never asked: the learner decides."""
 
-    id: str
+    id: str = Field(pattern=r"^[a-z0-9_]{1,40}$")  # in the API's paths, and kept with a student's saved funding
     name: str
     short_name: str
     kind: FunderKind = "bursary"

@@ -2,7 +2,8 @@
 
 Every funder in the funding pack with the status that matters most today (open now, closing soon,
 not open yet, closed, dates not published), the counts a list starts with ("3 open now, 1 closing
-soon"), and the bursaries a programme's fields point to, for the course finder's plan.
+soon"), the bursaries a programme's fields point to, for the course finder's plan, and what to
+remind a student about the funders they saved.
 
 Statuses come from each funder's own dates (applications.window_status). A merit award paid without
 an application, or funding students reach through their university, says so instead. Nothing here
@@ -30,7 +31,7 @@ from .applications import (
 )
 from .config import load_config
 from .schemas import FIELDS, Funder, FundingPack, SourcedList
-from .text import join, plural
+from .text import in_days, join, long_day, plural
 
 AUTOMATIC = "automatic"
 VIA_UNIVERSITY = "via_university"
@@ -215,6 +216,51 @@ def field_counts(pack: FundingPack) -> list[tuple[str, str, int]]:
     open to any field aren't counted here."""
     named = [f for funder in pack.funders if funder.fields != "any" for f in funder.fields]
     return sorted(((tag, FIELDS[tag], named.count(tag)) for tag in set(named)), key=lambda t: t[1])
+
+
+@dataclass
+class Reminder:
+    """Something to tell a student today about funding they saved."""
+
+    funder_id: str
+    template: str  # "open" or "closing"
+    intake: int
+    key: str  # the same key never alerts the same student twice
+    funder: str  # the funder's short name
+    when: str | None = None  # for "closing": "in 7 days, on Sat 31 Oct 2026 at 23:59"
+
+
+def _closing_when(days: int, on: date, at: str | None) -> str:
+    """'in 7 days, on Sat 31 Oct 2026 at 23:59', 'tomorrow, Sat 31 Oct 2026', 'today, ...'."""
+    joiner = ", on " if days > 1 else ", "
+    return f"{in_days(days)}{joiner}{long_day(on)}" + (f" at {at}" if at else "")
+
+
+def reminders(pack: FundingPack, saved: dict[str, date], today: date, cfg: dict | None = None) -> list[Reminder]:
+    """What to tell a student today about the funders they saved (funder id -> the day they saved it):
+    that applications close within one of the reminder days (config: 7, then 1), or that they opened
+    after the student saved the funder. Each reminder's key makes it alert once."""
+    cfg = cfg or load_config()
+    thresholds = sorted(cfg["funding"]["remind_days"])
+    by_id = {f.id: f for f in pack.funders}
+    out: list[Reminder] = []
+    for funder_id, saved_on in saved.items():
+        funder = by_id.get(funder_id)
+        if funder is None or funder.applying != "direct":  # gone from the pack, or nothing to apply for
+            continue
+        c = card(pack, funder, today, cfg)
+        w = c.window
+        if w is None or c.status not in OPEN_NOW:
+            continue
+        within = next((t for t in thresholds if w.days is not None and w.days <= t), None)
+        if within is not None and w.next_date is not None:
+            window = next((x for x in funder.applications.windows if x.intake == w.intake), None)
+            at = window.closing_time if window and w.next_date == window.closes else None
+            out.append(Reminder(funder_id, "closing", w.intake, f"{funder_id}:{w.intake}:closing:{within}",
+                                funder.short_name, _closing_when(w.days, w.next_date, at)))
+        elif w.opens is not None and saved_on < w.opens <= today:
+            out.append(Reminder(funder_id, "open", w.intake, f"{funder_id}:{w.intake}:open", funder.short_name))
+    return out
 
 
 def matches(

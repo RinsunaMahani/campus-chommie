@@ -30,6 +30,7 @@ applications:
 
 funding:
   per_choice: 5           # bursaries shown with each course-finder choice; the app links to the rest
+  remind_days: [7, 1]     # saved funding: an alert when applications close within this many days (once each)
 
 alerts:
   lookahead_weeks: 3      # a heavy week this many weeks ahead (this one included) raises an alert
