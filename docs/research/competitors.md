@@ -103,6 +103,9 @@ already does well.
 **Depth before acceptance:**
 - **A plan, not a list:** a goal, a published route in and a safer related choice, with reasons and sources.
 - **Applications on today's date,** with NSFAS's countdown.
+- **Funding matched to each choice** (built 11 Oct 2026): every choice in a plan shows the bursaries for its fields,
+  and the funding list counts "N open now, N closing soon" like UniApplyForMe's. Fewer funders (19 to start), each
+  from the funder's own page, with who can apply in the funder's words and nothing asked of the learner.
 
 **After acceptance is the real gap,** and the challenge says it in its own words: "remain supported from acceptance
 through graduation". Nobody above does it. The brief's F3 to F5 in the order of a student's year, with two proposed
@@ -125,7 +128,8 @@ additions marked *new*:
 **Our honest weaknesses**, to answer before a judge asks:
 - **Three universities in depth, not 27:** a pack per university, so coverage grows by adding data, not code.
 - **No person has checked our packs yet:** every unchecked pack says so in the app.
-- **No bursary list:** we point learners to NSFAS and to funders' own pages instead.
+- **19 funders, not 280:** each is read on the funder's own page before it goes in, so the list grows slowly
+  ([funding](funding.md) lists the leads still to check).
 
 ## Graduates24 and bursary websites
 
@@ -134,5 +138,6 @@ additions marked *new*:
 - **As links in the app:** a "more opportunities" link points learners at someone else's site, so it needs Mandla's
   OK.
 - **Never copy or scrape their listings.**
-- **Graduates24 on WhatsApp:** no official channel turned up in a search; record its link here once confirmed.
-  UniApplyForMe runs its own WhatsApp channel for bursary alerts.
+- **Graduates24 on WhatsApp:** Rinsuna confirmed its channel on 10 Oct 2026:
+  https://whatsapp.com/channel/0029Va9MQ0jB4hdYtf0Wml0A ("the latest Internships, Learnerships and Bursaries").
+  A link in the app needs Mandla's OK. UniApplyForMe runs its own WhatsApp channel for bursary alerts.

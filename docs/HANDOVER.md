@@ -12,7 +12,7 @@ git, so Mandla has his own copy; the M2 part is quoted below.
 
 ## Where things stand
 
-`main` holds only the empty first commit. All work sits in sixteen stacked pull requests:
+`main` holds only the empty first commit. All work sits in seventeen stacked pull requests:
 
 | PR | Branch | What | Reviewer |
 |---|---|---|---|
@@ -25,6 +25,7 @@ git, so Mandla has his own copy; the M2 part is quoted below.
 | #7 | `rinsuna/m1-after-acceptance` | your points at every university; campuses, calendars, money dates and support in the packs; first steps from acceptance to the first lecture | Rinsuna for the engine and data; Mandla for the two new endpoints |
 | #8 | `rinsuna/m3-profile-and-money` | M3's backend: the student's profile (university and campus) and My money (settings, income, expected payments, spending, summary) | Mandla (API); Rinsuna for the migration |
 | #9 | `rinsuna/m1-cheap-things` | cheap things to do near campus, each priced from the place's own page | Rinsuna (data) |
+| #17 | `rinsuna/funding-list` | funding like UniApplyForMe's: 19 funders from their own pages (NSFAS, bursaries, UP's merit awards, a loan scheme), `GET /funding` with "N open now, N closing soon" and filters, `GET /funding/<id>`, and each plan choice's funding | Rinsuna for the engine and data; Mandla for the API and the screens |
 | #16 | `rinsuna/extraction-50` | the engine reads every date in a message (the new one in a "moved" message, ranges, bare hours) and asks the rep to check; 57 labelled class messages | Rinsuna (engine) |
 | #15 | `rinsuna/ready-to-host` | the backend ready for any host: a container, gunicorn, one process running the background jobs, production CORS for the web build, and DEPLOY.md | Mandla (deploy and CI) |
 | #14 | `rinsuna/class-update-alerts` | class updates as alerts (a rep's confirmation tells the rest of the class), with a switch to turn them off | Mandla (notifications) |
@@ -35,7 +36,7 @@ git, so Mandla has his own copy; the M2 part is quoted below.
 
 **How to merge:**
 - Each PR targets the branch below it, so its diff shows only its own work.
-- Merge in order: #1 into `main`, then #2 to #16, retargeting each to `main` once the one below has merged.
+- Merge in order: #1 into `main`, then #2 to #17, retargeting each to `main` once the one below has merged.
 - Use **Create a merge commit**, not squash or rebase, so every commit stays in `main`'s history (CLAUDE.md: never
   rewrite history).
 
@@ -123,6 +124,7 @@ The API is in #4, with details in the [README](../README.md), "Course finder":
 | Plan | `POST /pathways/plan` with `{university, goal, marks}` | `plan.goal`, `plan.bridge`, `plan.safe`, `plan.other_routes`, `plan.notes` |
 | How to apply | the same plan answer | each slot's `apply`, and `plan.apply`: `deadlines`, `universities`, `funding`, `notes` |
 | Points everywhere (#7) | `POST /pathways/points` with `{marks}` | `universities`: each with `points`, `summary`, `lines` (how it counts), `tiers` |
+| Funding (#17) | `GET /funding?field=&status=&kind=&stage=`, `GET /funding/<id>` | `summary`, `counts`, `fields` (filter chips) and `funders` (cards); one funder's `who_can_apply`, `covers`, `obligations`, `apply` and `sources` |
 | First steps (#7) | `GET /universities/<id>/first-steps` | `first_steps`: per intake, `steps` (accept, register, orientation, first lecture) with `status`, `label`, dates, `days`, `lines`, `source_urls` |
 
 **Your M3 screens (Fri 16 to Sat 17 Oct) have their API in #8** (README, "A student's own profile and money"):
@@ -191,7 +193,17 @@ events"); the screen notes are in OPEN_QUESTIONS, "My week's screens":
     `after` and `lines`. Missing facts come as `null` and a "not verified yet" line: show that line, never a blank.
   - **Funding:** `plan.apply.funding` (NSFAS): its `windows` (the 2027 countdown), `who_can_apply`, `documents`,
     `tips` (the eight document mistakes NSFAS sees most) and `warnings` ("Never pay anyone to apply").
+  - **Funding for each choice (#17):** the slot's `funding`: up to five `funders` (cards), `count` in all,
+    `open_now` and a line. A "See all" can open the Funding list filtered by the slot's `fields`
+    (`GET /funding?field=a,b`).
   - The app never asks about income, disability or family: it shows NSFAS's own words and links to it.
+- **A Funding screen (#17; F6, your call):** like UniApplyForMe's, open to anyone. The top line is `summary`
+  ("19 funding options: 3 open now."); chips from `fields`; tabs or a picker for `kind` (bursaries, merit awards,
+  loans) and `stage`. Each card: `name`, `label` in words with the `days` count, `lines[0]`, the fields, and
+  "Checked on" (`checked`). The detail screen shows `who_can_apply`, `covers` and `obligations` (work-back
+  conditions matter to learners), then `apply` (`how`, `documents`, `windows`, `contact`) and the `sources`. A
+  `seen` status line says the funder's own page said so on a date: show it as written. Never add a question about
+  race, income or anything personal to "match" funding: the funder's words are shown and the learner decides.
   - Each university and funder has `confirmed` and `notice`, as on the cards.
 - **Ideas from UniApplyForMe**, which Rinsuna tried on 10 Oct (your call): one topic per onboarding screen with a
   review step, deadline cards with a day count, and the level shown as a mark is typed.
@@ -237,6 +249,10 @@ events"); the screen notes are in OPEN_QUESTIONS, "My week's screens":
 - **M4 backend:** done in #10 (classes, reps, verified events, the week, My marks).
 - **M5 backend:** done in #11 (alerts, support, cheap things, demo accounts).
 - **Ready to host:** #15 and [DEPLOY.md](DEPLOY.md). Choosing the host is still the team's decision (OPEN_QUESTIONS).
-- **Next:** a person checks the packs, crisis lines first; M6 (the WhatsApp bot) only from Fri 23 Oct 08:30 SAST.
+- **Funding:** #17 (`backend/data/national/funding.yaml`, `campus_engine/funding.py`, `GET /funding`), with the
+  leads still to check in [research/funding.md](research/funding.md). Saving a bursary and its deadline alerts are
+  phase 2, not built.
+- **Next:** a person checks the packs (crisis lines first) and the funding pack; M6 (the WhatsApp bot) only from Fri
+  23 Oct 08:30 SAST.
 
 All of this is in `backend/` and `docs/`; the app is yours.
