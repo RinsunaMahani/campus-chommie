@@ -30,6 +30,9 @@ class JobSpec(NamedTuple):
     name: str
     func: Callable[[], JobResult]
     interval_seconds: float
+    #: Also run once as soon as the scheduler starts: for a job whose work
+    #: is due whenever a sleeping server wakes (the demo's daily re-base).
+    run_at_start: bool = False
 
 
 class SchedulerEngine(abc.ABC):
@@ -40,7 +43,7 @@ class SchedulerEngine(abc.ABC):
     """
 
     @abc.abstractmethod
-    def add_job(self, job_id: str, func: Callable[[], None], interval_seconds: float) -> None:
+    def add_job(self, job_id: str, func: Callable[[], None], interval_seconds: float, run_at_start: bool = False) -> None:
         raise NotImplementedError
 
     @abc.abstractmethod

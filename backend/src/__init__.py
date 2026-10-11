@@ -6,7 +6,9 @@ blueprints, one error handler for every AppError, and the CLI.
 from __future__ import annotations
 
 import logging
+import os
 
+import click
 from flask import Flask
 
 from src.config import get_config
@@ -17,6 +19,8 @@ MAX_JSON_DEPTH = 32
 
 
 def create_app(env_name: str | None = None) -> Flask:
+    # Before anything else logs: the scheduler's start-up lines included.
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
     app = Flask(__name__)
     app.config.from_object(get_config(env_name))
 
@@ -29,16 +33,25 @@ def create_app(env_name: str | None = None) -> Flask:
     _register_security_headers(app)
     _register_cli(app)
 
-    # Background jobs (identity clean-up, idempotency sweep). Not in tests.
-    if app.config.get("SCHEDULER_ENABLED"):
+    # Background jobs (identity clean-up, idempotency sweep). Not in tests, and not in a one-off command.
+    if app.config.get("SCHEDULER_ENABLED") and not _one_off_command():
         from src.master_scheduler import trigger
 
         trigger.start(app)
 
-    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
     # The config actually in use (FLASK_ENV when no env_name is passed), not the argument.
     app.logger.info("Campus Chommie backend ready (env=%s)", app.config.get("ENV_NAME"))
     return app
+
+
+def _one_off_command() -> bool:
+    """`flask db upgrade`, `flask seed` and the like do one thing and stop, so they never run the
+    scheduled jobs: a migration must never race a job, even on a host's very first start. `flask run`
+    (a development server) does run them. Flask's command line sets FLASK_RUN_FROM_CLI for every command."""
+    if os.environ.get("FLASK_RUN_FROM_CLI") != "true":
+        return False
+    ctx = click.get_current_context(silent=True)
+    return ctx is None or ctx.info_name != "run"
 
 
 def _register_extensions(app: Flask) -> None:

@@ -69,4 +69,4 @@ def register_all(engine: SchedulerEngine, context_factory: Optional[Callable] = 
     """
     for spec in ALL_JOB_SPECS:
         safe_func = runner.make_safe(spec.name, spec.func, context_factory=context_factory)
-        engine.add_job(spec.name, safe_func, spec.interval_seconds)
+        engine.add_job(spec.name, safe_func, spec.interval_seconds, spec.run_at_start)

@@ -43,5 +43,8 @@ phonenumbers==8.13.55
 google-auth==2.58.1
 requests==2.34.2
 
-# Browser preview of the app (development only; phones don't use CORS)
+# Browser preview of the app, and the web build in production (CORS_ORIGINS)
 Flask-Cors==6.0.5
+
+# Production web server, inside the container (Linux; not for Windows)
+gunicorn==23.0.0
