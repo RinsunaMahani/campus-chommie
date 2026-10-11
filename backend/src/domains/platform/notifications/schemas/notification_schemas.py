@@ -40,6 +40,7 @@ class SwitchesSchema(_Strict):
     """The topics to change, each true (on) or false (off). Security alerts have no switch."""
 
     class_updates = StrictBoolean()
+    funding_reminders = StrictBoolean()
 
     @validates_schema
     def _something(self, data, **kwargs):

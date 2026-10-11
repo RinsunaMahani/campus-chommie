@@ -170,6 +170,7 @@ def test_a_rebase_moves_every_date_and_undoes_what_visitors_changed(app, client,
     naledi = sign_in(client, "naledi", seeded)
     client.put(f"{API}/money/settings", json={"balance_cents": 1, "balance_on": "2026-10-12", "essentials_per_day_cents": 1},
                headers=naledi)
+    assert client.put(f"{API}/me/funding/nsfas", headers=naledi).status_code == 200
     thabo = sign_in(client, "thabo", seeded)
     extra = client.post(f"{API}/classes", json={"university": "smu", "campus": "ga_rankuwa", "module_code": "CHE101",
                                                 "year": 2026}, headers=thabo).get_json()["data"]["class"]
@@ -188,6 +189,7 @@ def test_a_rebase_moves_every_date_and_undoes_what_visitors_changed(app, client,
     assert money["runway"]["runs_out_on"] == "2026-10-27"
     events = [e for w in get(client, naledi, "/week")["weeks"] for e in w["events"]]
     assert events[0]["title"] == "Quiz 3" and events[0]["on"] == "2026-10-17"
+    assert get(client, naledi, "/me/funding")["funders"] == []  # what a visitor saved is gone
 
 
 def test_a_real_students_class_survives_a_rebase(app, client, outbox, seeded):

@@ -42,3 +42,4 @@ from src.domains.student.academics.api import routes as _academics_routes  # noq
 from src.domains.student.alerts.api import routes as _alerts_routes  # noqa: E402,F401
 from src.domains.student.money.api import routes as _money_routes  # noqa: E402,F401
 from src.domains.student.profile.api import routes as _profile_routes  # noqa: E402,F401
+from src.domains.student.saved_funding.api import routes as _saved_funding_routes  # noqa: E402,F401

@@ -124,7 +124,9 @@ def test_switches_start_on_and_can_be_turned_off_and_on(client, rep, classmate, 
     r = client.get(SWITCHES, headers=classmate.headers)
     assert r.status_code == 200
     assert r.get_json()["data"]["switches"] == [
-        {"topic": "class_updates", "label": "New, moved and cancelled tests and deadlines from your class reps", "on": True}]
+        {"topic": "class_updates", "label": "New, moved and cancelled tests and deadlines from your class reps", "on": True},
+        {"topic": "funding_reminders", "label": "Funding you saved: when it opens, and before it closes", "on": True},
+    ]
 
     r = client.put(SWITCHES, json={"class_updates": False}, headers=classmate.headers)
     assert r.status_code == 200 and r.get_json()["data"]["switches"][0]["on"] is False
@@ -164,7 +166,7 @@ def test_switch_routes_need_a_token_and_take_no_query(client, classmate):
 def test_the_export_has_the_switches(client, classmate):
     client.put(SWITCHES, json={"class_updates": False}, headers=classmate.headers)
     data = client.get(f"{API}/me/export", headers=classmate.headers).get_json()["data"]
-    assert data["alert_switches"] == {"class_updates": False}
+    assert data["alert_switches"] == {"class_updates": False, "funding_reminders": True}
 
 
 def test_the_database_allows_every_template_and_link(app):

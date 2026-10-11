@@ -36,6 +36,7 @@ EXPORTED_TABLES = {
     "classes.event_flags": "class_messages",
     "platform.notifications": "alerts",
     "platform.notification_switches": "alert_switches",
+    "student.saved_funders": "saved_funding",
     # Not a student's own data: who confirmed or changed an event (cleared when they go), and which
     # account plays a demo persona.
     "classes.class_events": None,
@@ -83,6 +84,7 @@ def fill(client, who, code: str) -> dict:
     body = {k: v for k, v in candidate["proposed"].items() if k != "event_id"}
     event = ok(client.post(f"{API}/candidates/{candidate['id']}/confirm", json=body, headers=h))["event"]
     ok(client.post(f"{API}/events/{event['id']}/flag", json={"reason": "wrong_venue"}, headers=h))
+    ok(client.put(f"{API}/me/funding/funza_lushaka", headers=h))
     ok(client.post(f"{API}/auth/logout-others", headers=h))  # an alert: "Other phones signed out"
     wait_until_idle(timeout=10)
     return {"class": made, "event": event}
@@ -114,6 +116,7 @@ def test_the_export_holds_everything_about_me(client, me):
         ("ANA201", "confirmed", "ANA201 test 2 on 20 Oct at 08:00")]
     assert [(f["event"], f["reason"]) for f in messages["flags"]] == [("Test 2", "wrong_venue")]
     assert "Other phones signed out" in [a["title"] for a in data["alerts"]]
+    assert data["saved_funding"] == {"saved": [{"funder": "funza_lushaka", "name": "Funza Lushaka", "saved_on": "2026-10-12"}]}
 
 
 def test_the_export_holds_nothing_about_anyone_else(client, me, other):
@@ -131,6 +134,7 @@ def test_a_new_student_exports_empty_sections(client, me):
     assert data["profile"] is None and data["marks"] == [] and data["classes"] == []
     assert data["money"] == {"settings": None, "income_sources": [], "payments": [], "spending": []}
     assert data["class_messages"] == {"announcements": [], "flags": []}
+    assert data["saved_funding"] == {"saved": []}
 
 
 # ------------------------------------------------------------------ delete

@@ -22,6 +22,7 @@ from src.domains.platform.notifications.services import notification_service
 from src.domains.student.academics.services import academics_service
 from src.domains.student.money.services import money_service
 from src.domains.student.profile.services import profile_service
+from src.domains.student.saved_funding.services import saved_funding_service
 from src.extensions import db
 
 from ..constants import PERSONAS_PATH, TIMEZONE
@@ -82,6 +83,7 @@ def rebase(today: date) -> int:
     for user in users.values():
         money_service.erase_all_for(user)
         academics_service.erase_all_for(user)
+        saved_funding_service.erase_all_for(user)
         events_service.erase_all_for(user)
         left += class_service.leave_all(user)
         profile_service.erase_for(user)
