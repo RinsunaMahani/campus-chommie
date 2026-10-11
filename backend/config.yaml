@@ -26,6 +26,10 @@ forecast:
 
 applications:
   closing_soon_days: 14   # an open application window this close to its closing date is "Closing soon"
+  seen_open_days: 14      # a page that said "open" without dates counts as open this long after we read it
+
+funding:
+  per_choice: 5           # bursaries shown with each course-finder choice; the app links to the rest
 
 alerts:
   lookahead_weeks: 3      # a heavy week this many weeks ahead (this one included) raises an alert

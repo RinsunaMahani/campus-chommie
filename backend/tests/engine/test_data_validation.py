@@ -72,6 +72,9 @@ funders:
   - id: fund
     name: Example Fund
     short_name: Fund
+    sector: government
+    fields: any
+    stages: [first_year]
     applications: {source: s, url: "https://example.org/fund"}
 sources:
   - {id: s, url: "https://example.org/fund", publisher: Example Fund}

@@ -87,7 +87,8 @@ cheap_things: []             # [{name, category, cost_note, campuses, address, h
 programmes:
   - id: example-programme
     name: Example programme
-    fields: [example_field]  # shared fields link related programmes for the safe-choice slot
+    fields: [commerce]       # tags from FIELDS in campus_engine/schemas.py: they link related programmes for
+                             # the safe-choice slot, and funders of those fields
     selective: false
     requirements:
       source: s-prospectus
@@ -98,7 +99,7 @@ programmes:
 
   - id: example-either-or
     name: Example programme with an either/or subject
-    fields: [example_field]
+    fields: [commerce]
     requirements:
       source: s-prospectus
       min_points: 26

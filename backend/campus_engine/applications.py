@@ -16,7 +16,7 @@ from datetime import date
 
 from .bridges import Plan
 from .config import load_config
-from .schemas import Applications, Funder, FundingPack, SourcedList, University, Window
+from .schemas import Applications, Funder, FundingPack, Seen, SourcedList, University, Window
 from .text import day, in_days, long_day, rand, span
 
 OPEN = "open"
@@ -184,6 +184,17 @@ def _previous(prev: Window | None, programme_id: str | None, heading: str, today
     return [f"{heading}, applications closed on {long_day(closes)}."]
 
 
+def _seen(seen: Seen, who: str, today: date, cfg: dict) -> tuple[str, list[str]]:
+    """The status of a window whose page said 'open' or 'closed' without dates. An 'open' stays
+    believable for a few days only: after that the learner is asked to check."""
+    when = long_day(seen.checked)
+    if seen.status == "closed":
+        return CLOSED, [f"Closed: {who}'s own page said so on {when}."]
+    if (today - seen.checked).days <= cfg["applications"]["seen_open_days"]:
+        return OPEN, [f"Open: {who}'s own page said so on {when}. The closing date isn't published, so apply soon."]
+    return CHECK, [f"{who}'s own page said applications were open on {when}. Check that they still are."]
+
+
 def window_status(
     window: Window | None,
     intake: int,
@@ -232,7 +243,13 @@ def window_status(
             [late.note] if late.note else []
         )
 
-    if late and today >= late.opens:
+    seen = window.seen if window.seen and window.seen.checked <= today else None  # not yet known before that day
+    seen_open = seen is not None and seen.status == "open"
+    closed_early = seen is not None and seen.status == "closed" and last is not None and today <= last
+    if seen and late is None and (last is None or closed_early):
+        out.status, said = _seen(seen, who, today, cfg)
+        lines += said
+    elif late and today >= late.opens:
         if today <= late.closes:
             out.status = LATE_OPEN
             lines.append(
@@ -275,7 +292,7 @@ def window_status(
                 f"{_either(upcoming)}: check with {who}."
             )
             lines += earlier
-        elif window.opens is None:
+        elif window.opens is None and not seen_open:
             out.status = CHECK
             closing = f"{long_day(closes)}{at}" if closes is not None else _either(maybe)
             lines.append(f"Closes on {closing} ({when}). We haven't verified when applications open, so check that they're open.")
@@ -430,7 +447,8 @@ def apply_guide(
 
     windows = {(u, pid): programme_windows(catalogue[u], pid, today, cfg) for u, pid, _ in choices}
     universities = [university_guide(catalogue[u]) for u in dict.fromkeys(u for u, _, _ in choices)]
-    funders = [funder_guide(funding, f, today, cfg) for f in funding.funders] if funding else []
+    national = [f for f in funding.funders if f.every_plan] if funding else []  # bursaries come with each choice
+    funders = [funder_guide(funding, f, today, cfg) for f in national]
 
     deadlines: list[Deadline] = []
     for u, pid, pname in choices:
@@ -442,14 +460,13 @@ def apply_guide(
                 deadlines += _window_deadlines(
                     u, uni.name, w, today, _url_for(uni), what=f"applications to start in {w.intake}", programme=(pid, pname)
                 )
-    if funding:
-        for f in funding.funders:
-            years = intakes(today, f.applications.windows)
-            for w in f.applications.windows:
-                if w.intake in years:
-                    deadlines += _window_deadlines(
-                        f.id, f.short_name, w, today, _url_for(funding), what=f"applications for {w.intake} funding"
-                    )
+    for f in national:
+        years = intakes(today, f.applications.windows)
+        for w in f.applications.windows:
+            if w.intake in years:
+                deadlines += _window_deadlines(
+                    f.id, f.short_name, w, today, _url_for(funding), what=f"applications for {w.intake} funding"
+                )
     unique = {(d.on, d.text): d for d in deadlines}
     deadlines = sorted(unique.values(), key=lambda d: (d.on, d.text))
 
@@ -460,7 +477,7 @@ def apply_guide(
     if funders:
         notes.append(
             "Funding is a separate application: if you might qualify for "
-            + " or ".join(f.short_name for f in funding.funders)
+            + " or ".join(f.short_name for f in national)
             + ", apply there as well."
         )
     return ApplyGuide(today, windows, universities, funders, deadlines, notes)

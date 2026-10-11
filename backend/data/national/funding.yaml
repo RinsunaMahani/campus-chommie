@@ -11,6 +11,10 @@ funders:
   - id: nsfas
     name: "National Student Financial Aid Scheme (NSFAS)"
     short_name: NSFAS
+    sector: government
+    every_plan: true
+    fields: any
+    stages: [first_year, senior]
     who_can_apply:
       source: s-nsfas-home-2027
       items:
