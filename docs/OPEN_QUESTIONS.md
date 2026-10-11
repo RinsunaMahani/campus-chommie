@@ -266,7 +266,10 @@ cents, documents and next steps, each with its source. `funding.yaml` holds nati
 - [ ] **Google sign-in** is hidden until `GOOGLE_READY` (client ids and a native build). When it's switched on,
   Google sign-up must show the 18-or-older tick too (the backend already refuses it without).
 - [ ] **Hosting** (brief section 14): which host, and an uptime check on `/api/v1/health`. Rate limits are counted in
-  memory, which is right for one server process; more than one needs Redis (`RATELIMIT_STORAGE_URI`).
+  memory, which is right for one server process; more than one needs Redis (`RATELIMIT_STORAGE_URI`). **The backend
+  is ready for any host that runs a container** (`rinsuna/ready-to-host`, 11 Oct 2026; [DEPLOY.md](DEPLOY.md)). Still
+  to choose: the host, the managed PostgreSQL (a direct connection, not a transaction pooler), and whether to add
+  error monitoring (an external service).
 
 ## Reminders for later milestones
 

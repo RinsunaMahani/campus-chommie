@@ -62,6 +62,9 @@ flask db upgrade
 python app.py                      # http://localhost:5000/api/v1/health
 ```
 
+**Hosting:** the backend ships as a container (`backend/Dockerfile`). [docs/DEPLOY.md](docs/DEPLOY.md) lists what any
+host needs: the settings, the start, the health check and how the background jobs stay in one process.
+
 Sign-up and new-phone sign-in send a 6-digit code by email, so real codes need the `MAIL_*` settings in
 `backend/.env` (for example a Gmail account with an app password). Codes are never written to any log. The tests use a
 fake mail provider and need none of this.
