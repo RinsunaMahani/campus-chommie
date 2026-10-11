@@ -1,1 +1,1 @@
-"""api -- none yet: funding reaches the app inside the course finder's plan."""
+"""api -- /api/v1/funding: the funding list and one funder in full."""

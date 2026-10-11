@@ -8,7 +8,8 @@ the pack it came from.
 
 A plan also says how to apply, on today's date in South Africa: each choice's
 application windows, every date still ahead, each university's fee, documents
-and next steps, and national funding (NSFAS).
+and next steps, and national funding (NSFAS). Each choice also lists the
+bursaries and other funding its fields point to.
 """
 from __future__ import annotations
 
@@ -97,12 +98,14 @@ def _slot(slot: Slot | None, packs: dict[str, University], guide: ApplyGuide) ->
     if slot is None:
         return None
     windows = guide.windows[(slot.match.university, slot.match.programme_id)]
+    programme = packs[slot.match.university].programme(slot.match.programme_id)
     out = {
         "number": slot.number,
         "role": slot.role,
         "match": _match(slot.match, packs),
         "notes": slot.notes,
         "apply": [_window(w) for w in windows],
+        "funding": funding.for_programme(programme.fields, slot.match.university, guide.today),
     }
     if slot.bridge is not None:
         bridge = slot.bridge

@@ -130,6 +130,23 @@ def test_a_plan_says_how_to_apply_on_todays_date(client, on_10_october):
     assert apply["notes"]
 
 
+def test_each_choice_shows_the_funding_its_fields_point_to(client, on_10_october):
+    plan = client.post(PLAN, json={"university": "smu", "goal": "mbchb", "marks": STRONG}).get_json()["data"]["plan"]
+    goal = plan["goal"]["funding"]
+    assert goal["fields"] == ["health_sciences", "medicine", "medical_sciences"]
+    assert 0 < len(goal["funders"]) <= 5 and goal["count"] >= len(goal["funders"])
+    subject = "health sciences, medicine and medical sciences"
+    assert goal["lines"][0].startswith(f"{goal['count']} funding options for {subject}, besides NSFAS: ")
+    ids = [f["id"] for f in goal["funders"]]
+    assert "nsfas" not in ids  # shown once, under apply
+    assert all("first_year" in [s["id"] for s in f["stages"]] for f in goal["funders"])
+    assert all(f["study_at"] == "any" or "smu" in f["study_at"] for f in goal["funders"])
+    up_choice = plan["safe"]  # UP's BSc Medical Sciences
+    assert up_choice["match"]["university"] == "up" and "up_flyup_awards" in [f["id"] for f in up_choice["funding"]["funders"]]
+    assert [g["id"] for g in plan["apply"]["funding"]] == ["nsfas"]
+    assert {d["who"] for d in plan["apply"]["deadlines"]} <= {"nsfas", "smu", "up"}  # no bursary dates in the plan's list
+
+
 def test_a_tut_plan_shows_the_january_late_window(client, on_10_october):
     r = client.post(PLAN, json={"university": "tut", "goal": "b_nursing", "marks": STRONG})
     late, next_year = r.get_json()["data"]["plan"]["goal"]["apply"]
