@@ -1,4 +1,4 @@
-"""Validate every university data pack and the national funding pack.
+"""Validate every university data pack and the national funding pack (NSFAS and bursaries).
 
 Errors (exit code 1, so CI fails): schema problems and broken references, plus
 anything incomplete in a pack marked release: true.
@@ -53,7 +53,8 @@ def check(path: Path, today: date) -> tuple[list[str], list[str]]:
     return errors, warnings
 
 
-def check_funding(path: Path, today: date) -> tuple[list[str], list[str]]:
+def check_funding(path: Path, today: date, universities: set[str] | None = None) -> tuple[list[str], list[str]]:
+    """`universities`: the ids a funder's study_at may name (every pack's id), when known."""
     errors: list[str] = []
     warnings: list[str] = []
     try:
@@ -65,9 +66,26 @@ def check_funding(path: Path, today: date) -> tuple[list[str], list[str]]:
         (errors if pack.release else warnings).append(message)
 
     for f in pack.funders:
-        _check_applications(f"funding/{f.id}", f.applications, problem)
+        if f.applying == "direct":  # an automatic award or university route has no dates or fee of its own
+            _check_applications(f"funding/{f.id}", f.applications, problem)
+        if f.who_can_apply is None:
+            problem(f"funding/{f.id}: who can apply not verified yet")
+        if universities is not None and f.study_at != "any":
+            errors += [f"funding/{f.id}: study_at names unknown university '{u}'" for u in f.study_at if u not in universities]
     _check_sources("funding", pack.sources, today, problem, warnings)
     return errors, warnings
+
+
+def _university_ids(folder: Path) -> set[str]:
+    """The id of every pack that loads (a broken pack reports its own error)."""
+    ids: set[str] = set()
+    for path in sorted(folder.glob("*.yaml")):
+        if not path.name.startswith("_"):
+            try:
+                ids.add(load_university(path).university)
+            except DataPackError:
+                pass
+    return ids
 
 
 def _check_applications(who: str, apps: Applications | None, problem) -> None:
@@ -97,7 +115,7 @@ def main(argv: list[str] | None = None) -> int:
     today = date.today()
     all_errors: list[str] = []
     results = [check(path, today) for path in sorted(Path(args.folder).glob("*.yaml"))]
-    results.append(check_funding(Path(args.funding), today))
+    results.append(check_funding(Path(args.funding), today, _university_ids(Path(args.folder))))
     for errors, warnings in results:
         for w in warnings:
             print(f"WARN  {w}")

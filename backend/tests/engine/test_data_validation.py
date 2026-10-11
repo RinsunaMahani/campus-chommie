@@ -87,6 +87,50 @@ def test_shipped_funding_pack_has_no_errors():
     assert any("never verified" in w for w in warnings)  # a draft: warnings until a person checks it
 
 
+def test_shipped_funding_pack_names_only_universities_we_have():
+    from campus_engine.catalogue import UNIVERSITIES_DIR
+    from scripts.validate_data import _university_ids
+
+    ids = _university_ids(UNIVERSITIES_DIR)
+    assert ids == {"up", "tut", "smu"}
+    errors, _ = check_funding(FUNDING_PATH, TODAY, ids)
+    assert errors == [], errors
+
+
+FUNDING_ELSEWHERE = """
+funders:
+  - id: fund
+    name: Example Fund
+    short_name: Fund
+    sector: company
+    fields: any
+    stages: [first_year]
+    study_at: [hogwarts]
+    applications: {windows: []}
+  - id: award
+    name: Example Award
+    short_name: Award
+    kind: merit_award
+    sector: university
+    fields: any
+    stages: [first_year]
+    applying: automatic
+    who_can_apply: {items: [First-years], source: s}
+    applications: {source: s, how: "There's no application."}
+sources:
+  - {id: s, url: "https://example.org/fund", publisher: Example Fund}
+"""
+
+
+def test_a_funder_at_a_university_we_dont_have_is_an_error(tmp_path):
+    path = tmp_path / "funding.yaml"
+    path.write_text(FUNDING_ELSEWHERE)
+    errors, warnings = check_funding(path, TODAY, {"up"})
+    assert errors == ["funding/fund: study_at names unknown university 'hogwarts'"]
+    assert "funding/fund: who can apply not verified yet" in warnings
+    assert not any(w.startswith("funding/award:") for w in warnings)  # an automatic award has no dates or fee to check
+
+
 def test_incomplete_release_funding_pack_is_an_error(tmp_path):
     path = tmp_path / "funding.yaml"
     path.write_text(FUNDING_RELEASE_INCOMPLETE)

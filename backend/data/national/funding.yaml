@@ -1,9 +1,18 @@
-# National funding: NSFAS
+# National funding: NSFAS and bursaries
 #
-# Agent draft, from NSFAS's own 2027 application pages read on 10 Oct 2026 (docs/research/nsfas.md). Nobody has
-# checked these values yet: release stays false until a person has compared every one with its source. Every
-# course-finder plan shows NSFAS beside its universities. The app never asks about income, disability or family
-# circumstances: it shows NSFAS's own words, and the learner decides whether to apply.
+# Agent draft, from each funder's own pages read on 10 and 11 Oct 2026 (docs/research/nsfas.md and
+# docs/research/funding.md). Nobody has checked these values yet: release stays false until a person has
+# compared every one with its source. Sites that list bursaries (Graduates24, ZABursaries, UniApplyForMe)
+# helped us find funders; no fact here comes from them.
+#
+# NSFAS (every_plan) is shown with every course-finder plan. The others are matched to a plan's choices by
+# their fields. The app never asks about income, race, disability or family circumstances: it shows each
+# funder's own words, and the learner decides whether to apply.
+#
+# Tags: kind (bursary, merit_award: paid without an application, loan), sector, fields ("any" or field tags
+# from campus_engine/schemas.py), stages (first_year: finishing school or starting university; senior: already
+# studying; postgraduate), study_at ("any", or which of our universities when the funder names them) and
+# applying (direct, automatic, via_university).
 
 release: false
 
@@ -73,9 +82,594 @@ funders:
         - intake: 2027
           source: s-nsfas-apply-2027
           opens: 2026-09-18
-          closes: 2026-10-31
+          closes: 2026-10-31            # the Minister's launch speech says 18 Nov 2026: see OPEN_QUESTIONS
           closing_time: "23:59"         # "South African time"
           no_late_applications: true    # "Late applications cannot be accepted"
+
+  - id: nsfas_loans
+    name: "NSFAS loan scheme for the missing middle"
+    short_name: NSFAS loans
+    kind: loan
+    sector: government
+    fields: any
+    stages: [first_year, senior]
+    who_can_apply:
+      source: s-nsfas-launch-2027
+      items:
+        - "Students whose household income is above the NSFAS bursary threshold"
+    obligations:
+      source: s-nsfas-launch-2027
+      items:
+        - "The loans are repaid on their own terms and conditions."
+    applications:
+      source: s-nsfas-launch-2027
+      how: "The Minister said in September 2026 that government is strengthening the missing-middle loan scheme as another way to fund eligible students, and that work has started on a system to manage the loans."
+
+  - id: funza_lushaka
+    name: "Funza Lushaka Bursary Programme"
+    short_name: Funza Lushaka
+    sector: government
+    fields: [education]
+    stages: [first_year, senior]
+    who_can_apply:
+      source: s-funza-notes-2027
+      items:
+        - "South African citizens with a valid South African ID card"
+        - "First-time applicants under the age of 30"
+        - "Accepted (or provisionally accepted) into an approved BEd degree, with a student number"
+        - "Intermediate, Senior and FET phase students specialise in at least two priority subject areas"
+        - "First-time students: a bachelor's pass, with at least level 4 (50%) in the two subjects you'll specialise in teaching"
+        - "Not for a PGCE, Higher Certificate, Honours, Master's or doctorate, or if you already have a teaching qualification"
+        - "Not for subjects with too many teachers already: History, Geography, Accounting, Economics, Business Studies, EMS, Life Orientation and Physical Education"
+        - "Students already funded re-apply every year: they must pass all their modules, with an average of at least 55%"
+    covers:
+      source: s-funza-notes-2027
+      items:
+        - "Tuition fees"
+        - "Accommodation, including meals"
+        - "Books and learning materials"
+        - "Teaching practice"
+        - "If possible, a small monthly allowance for living expenses"
+        - "Up to a set amount: if your fees are higher, you pay the difference"
+    obligations:
+      source: s-funza-notes-2027
+      items:
+        - "Teach one year for every year the bursary paid for."
+        - "Apply for teaching posts in public schools for six months after you qualify, and keep proof that you applied."
+        - "If you break the conditions, such as changing your priority subjects, you repay the whole bursary with interest."
+    tips:
+      source: s-funza-notes-2027
+      items:
+        - "Apply only once you have a student number and an acceptance from your university."
+        - "Send your supporting documents to your university's Funza Lushaka office."
+        - "Changing universities after you apply rules you out: update your application while it's still open."
+        - "No applications are considered after the closing date."
+    applications:
+      source: s-funza-notes-2027
+      url: "https://www.funzalushaka.doe.gov.za/"
+      how: "Apply online at funzalushaka.doe.gov.za or on the government's e-Services portal (eservices.gov.za): register, choose the Funza Lushaka Bursary Scheme, enter the OTP you're sent, accept the terms and click the 2027 application button."
+      contact: "Your university's Funza Lushaka office first. If it can't help: 012 357 3000 or inquiries.funzalushaka@dbe.gov.za"
+      windows:
+        - intake: 2027
+          source: s-funza-home-2027
+          opens: 2026-10-01
+          closes: 2027-01-31
+          note: "Students already funded re-apply by Mon 30 Nov 2026."
+
+  - id: isfap
+    name: "Ikusasa Student Financial Aid Programme (ISFAP)"
+    short_name: ISFAP
+    sector: non_profit
+    fields: any
+    stages: [first_year, postgraduate]
+    study_at: [up, tut, smu]
+    who_can_apply:
+      source: s-isfap-students
+      items:
+        - "South African citizens"
+        - "Enrolled at, or planning to enrol at, an accredited South African university"
+        - "Studying for a qualification in an occupation in high demand: ISFAP names actuaries, accountants, data scientists, engineers, IT professionals, medical doctors and nurses, and related fields"
+        - "Financial need, shown through ISFAP's means test"
+        - "Good academic results, kept up while you study"
+    covers:
+      source: s-isfap-portal
+      items:
+        - "Tuition"
+        - "Accommodation and meals"
+        - "Study material"
+        - "A monthly stipend"
+        - "Student support, with an ISFAP programme manager on campus"
+    tips:
+      source: s-isfap-portal
+      items:
+        - "Each partner university has its own list of courses ISFAP funds: check yours on the application portal."
+        - "Documents must be certified within the last three months."
+    applications:
+      source: s-isfap-students
+      url: "https://applyonline.isfap.org.za/"
+      how: "Apply online with your academic records and personal details. ISFAP then assesses your household's finances (a means test) and selects students on academic merit, financial need and career goals."
+      contact: "010 880 0400, WhatsApp 072 617 8072, info@isfap.org.za"
+      documents:
+        source: s-isfap-portal
+        items:
+          - "A certified copy of your ID"
+          - "Certified copies of the IDs of your parents, guardians or other household contributors"
+          - "A certified copy of your latest results (Grade 11 or matric), not password-protected"
+          - "The consent form, signed by you and your household contributors and certified by a commissioner of oaths"
+      windows:
+        - intake: 2027
+          source: s-isfap-portal
+          seen: {status: closed, checked: 2026-10-11}   # the portal: "2026 apps have closed for the 2027 intake"
+
+  - id: thuthuka
+    name: "Thuthuka Bursary Fund (SAICA)"
+    short_name: Thuthuka
+    sector: non_profit
+    fields: [accounting]
+    stages: [first_year, senior]
+    who_can_apply:
+      source: s-saica-thuthuka-apply
+      items:
+        - "South African citizens"
+        - "Black African or Coloured"
+        - "In Grade 12, out of school (with matric) for no more than two years, or at university studying a CA-stream BCom degree"
+        - "At least 60% (level 5) for Mathematics in Grade 11: Mathematical Literacy and Technical Mathematics aren't considered"
+        - "Applied for, or applying for, a BCom Accounting (CA stream) degree at a university that offers the Thuthuka programme"
+        - "A combined family income of R350 000 a year or less"
+        - "You also write the National Benchmark Tests (NBT) before the end of August, or send your results if you've written them"
+    covers:
+      source: s-saica-thuthuka-apply
+      items:
+        - "Tuition"
+        - "Books"
+        - "Meals"
+        - "Residence fees and accommodation"
+        - "Academic, social and emotional support, work-readiness training and mentoring"
+    applications:
+      source: s-thuthuka-portal
+      url: "https://www.thuthukabursaryfund.co.za/"
+      how: "Apply on the Thuthuka Bursary Fund's own application site."
+      windows:
+        - intake: 2027
+          source: s-thuthuka-portal
+          closes: 2026-08-31
+          closing_time: "23:59"
+
+  - id: national_treasury
+    name: "National Treasury Bursary Scheme"
+    short_name: National Treasury
+    sector: government
+    fields: [accounting, economics, finance, law]
+    stages: [senior, postgraduate]
+    who_can_apply:
+      source: s-treasury-2027
+      items:
+        - "South African citizens"
+        - "Accepted or registered for full-time study at a registered, accredited South African higher education institution"
+        - "Strong results in accounting, economics, finance or law"
+        - "In 2027: third-year undergraduates, and Honours and Master's students"
+        - "Preference goes to high-performing students with top grades"
+    covers:
+      source: s-treasury-2027
+      items:
+        - "Registration"
+        - "Tuition"
+        - "Board exams"
+        - "Accommodation"
+        - "Prescribed material"
+        - "Editing costs"
+        - "A monthly allowance"
+    applications:
+      source: s-treasury-2027
+      url: "https://www.treasury.gov.za/"
+      how: "Apply on National Treasury's e-Recruitment site, with the application form from treasury.gov.za. Posted, hand-delivered, faxed and late applications aren't accepted."
+      documents:
+        source: s-treasury-2027
+        items:
+          - "The completed application form"
+          - "A certified copy of your South African ID"
+          - "Your Grade 12 statement of results and certificate"
+          - "Your official university academic record, from first year to your latest results"
+      after:
+        - text: "If you haven't heard from National Treasury within three months of the closing date, your application was unsuccessful."
+          source: s-treasury-2027
+      windows:
+        - intake: 2027
+          source: s-treasury-2027
+          closes: 2026-09-30
+          closing_time: "12:00"
+          no_late_applications: true
+
+  - id: ndmc
+    name: "National Disaster Management Centre External Bursary"
+    short_name: NDMC
+    sector: government
+    fields: [disaster_and_fire]
+    stages: [first_year, senior, postgraduate]
+    who_can_apply:
+      source: s-ndmc-advert-2027
+      items:
+        - "South African citizens"
+        - "Applied for, accepted for or registered in a full undergraduate, postgraduate diploma, advanced diploma or Master's programme in disaster management or fire technology / fire engineering at a recognised South African public institution (not certificates or PhDs)"
+        - "Undergraduate and diploma students: an average of at least 60% in your latest results"
+        - "Master's students: an average of at least 65%, and a research proposal in line with the NDMC's priority areas"
+    covers:
+      source: s-ndmc-advert-2027
+      items:
+        - "All tuition fees, including registration"
+        - "Not accommodation, meals, books or travel"
+        - "Master's students: a research allowance of up to R11 000"
+    applications:
+      source: s-ndmc-advert-2027
+      url: "https://onlinebursary.ndmc.gov.za/"
+      how: "Apply online only. Incomplete, emailed or late applications, and password-protected or damaged documents, aren't considered."
+      contact: "bursary@ndmc.gov.za or 012 065 1022/1021; technical help: helpdesk@ndmc.gov.za or 012 065 1019"
+      documents:
+        source: s-ndmc-advert-2027
+        items:
+          - "A certified copy of your valid South African ID"
+          - "A certified copy of your matric certificate"
+          - "Your latest academic transcript or statement of results"
+          - "Proof of application, acceptance or registration"
+          - "Master's students: a CV of no more than two pages"
+      windows:
+        - intake: 2027
+          source: s-ndmc-portal-2027
+          closes: 2026-09-30
+          closing_time: "23:59"
+
+  - id: sarb
+    name: "South African Reserve Bank External Bursary Scheme"
+    short_name: Reserve Bank
+    sector: government
+    fields: any
+    stages: [first_year]
+    who_can_apply:
+      source: s-sarb-2027
+      items:
+        - "Provisionally accepted into an undergraduate degree at a South African university"
+        - "An average of 70% in your June Grade 12 exams: the award depends on your final results"
+        - "Younger than 30"
+        - "In financial need: you can't afford university without a bursary"
+        - "Studies related to the Reserve Bank's work, though not only that"
+    applications:
+      source: s-sarb-2027
+      url: "https://www.resbank.co.za/en/home/publications/bursaries"
+      how: "Send your exam results, proof of acceptance (a student number) and other supporting documents by email, by post or online, as the Reserve Bank's bursary notice explains. Shortlisted applicants are interviewed."
+      windows:
+        - intake: 2027
+          source: s-sarb-2027
+          closes: 2026-09-30
+          no_late_applications: true
+
+  - id: allan_gray_fellowship
+    name: "Allan Gray Orbis Foundation University Fellowship"
+    short_name: Allan Gray Fellowship
+    sector: non_profit
+    fields: [commerce, natural_sciences, engineering, law, humanities, health_sciences]
+    not_fields: [medicine, veterinary, dentistry]
+    stages: [first_year]
+    study_at: [up]
+    who_can_apply:
+      source: s-allangray-form-2027
+      items:
+        - "South African citizens in Grade 12, no older than 21 in the year you apply"
+        - "At least 60% for Pure Mathematics or 80% for Mathematical Literacy in your final Grade 11 results"
+        - "An average of at least 70% in your final Grade 11 results, leaving out Life Orientation"
+        - "Planning a Commerce, Science (not Medicine, Veterinary Science or Dentistry), Engineering, Law, Humanities or Arts degree at Wits, UJ, UCT, Nelson Mandela University, Rhodes, UWC, Stellenbosch, UP, UFS, UKZN or TSiBA"
+        - "Signs of entrepreneurial flair and passion"
+    covers:
+      source: s-allangray-form-2027
+      items:
+        - "Household income of R1 million a year or less: tuition, tutoring, counselling, university accommodation and meals, a book allowance and a monthly allowance"
+        - "Less than R1.5 million: tuition, tutoring, counselling, and university accommodation and meals"
+        - "R1.5 million or more: tuition, tutoring and counselling"
+        - "Funding is confirmed after the selection camp"
+    applications:
+      source: s-allangray-fellowship
+      url: "https://allangrayorbis.org/programmes/fellowship/"
+      how: "Apply online, by post or by hand, with a certified copy of your final Grade 11 report and of your ID. Allow at least two days for the form. Late forms aren't accepted."
+      contact: "info@allangrayorbis.org"
+      windows:
+        - intake: 2027
+          source: s-allangray-form-2027
+          closes: 2026-04-30
+          closing_time: "17:00"
+          no_late_applications: true
+
+  - id: gcra
+    name: "Gauteng City Region Academy (GCRA) Bursary"
+    short_name: GCRA
+    sector: government
+    fields: any
+    stages: [first_year, senior, postgraduate]
+    who_can_apply:
+      source: s-gcra-home
+      items:
+        - "South African citizens aged 18 to 35 who live in Gauteng, with proof of residence"
+        - "Accepted for, or registered in, an undergraduate programme at an accredited post-school institution in South Africa, or accepted for postgraduate study"
+        - "Top achievers from Gauteng schools, the top learner from each no-fee school and the top 3 from each LSEN school qualify automatically, but still apply online"
+    covers:
+      source: s-gcra-faq
+      items:
+        - "Tuition, as the institution charges it (not clubs or gym fees)"
+        - "Residence or off-campus accommodation, up to a cap"
+        - "A laptop and books (send GCRA the receipts)"
+        - "A living allowance, for students in self-catering or off-campus housing"
+    applications:
+      source: s-gcra-home
+      url: "https://gcrabursary.gauteng.gov.za/"
+      how: "Register on the GCRA bursary portal, fill in your profile and application, and upload your documents."
+      documents:
+        source: s-gcra-home
+        items:
+          - "A certified copy of your South African ID"
+          - "Proof of Gauteng residence (a utility bill or a letter from your ward councillor)"
+          - "Your matric certificate or latest academic results, certified"
+          - "Proof of your parents' or guardians' income, or an affidavit"
+          - "A motivation letter of no more than two pages"
+          - "Proof of registration, or an acceptance letter"
+          - "A disability or medical report, where it applies"
+
+  - id: clicks_foundation
+    name: "Clicks Foundation Bursary Fund"
+    short_name: Clicks Foundation
+    sector: company
+    fields: [pharmacy]
+    stages: [senior]
+    who_can_apply:
+      source: s-clicks-bursary
+      items:
+        - "South African citizens aged 19 to 35"
+        - "Registered 2nd, 3rd or 4th-year BPharm students"
+        - "Not holding another bursary or a bursary obligation"
+    covers:
+      source: s-clicks-bursary
+      items:
+        - "Registration fees"
+        - "Tuition fees"
+        - "Prescribed textbooks"
+        - "Study assistance and aids, where needed"
+    obligations:
+      source: s-clicks-bursary
+      items:
+        - "None: Clicks says the bursary has no obligations attached."
+    applications:
+      source: s-clicks-bursary
+      url: "https://careers.clicksgroup.co.za/"
+      how: "Apply online on the Clicks careers site. Late or incomplete applications aren't considered."
+      contact: "Bursaryadministrator@clicksgroup.co.za; help registering: 010 140 3099"
+      windows:
+        - intake: 2027
+          source: s-clicks-bursary
+          opens: 2026-10-01
+          closes: 2026-10-31
+          no_late_applications: true
+          note: "Clicks says applications open on 1 October and close on 31 October every year."
+
+  - id: csir
+    name: "CSIR Bursary Programme"
+    short_name: CSIR
+    sector: government
+    fields: [natural_sciences, engineering, computing]
+    stages: [postgraduate]
+    who_can_apply:
+      source: s-csir-guidelines-2026
+      items:
+        - "Unemployed South Africans younger than 35"
+        - "Registered, or planning to register, for an Honours, Master's or doctoral degree at a traditional university"
+        - "An average of 65% or more"
+        - "Preference for applicants from previously disadvantaged backgrounds, and NSFAS holders"
+    covers:
+      source: s-csir-guidelines-2026
+      items:
+        - "Honours: registration, tuition, accommodation and meals, a living allowance, a book allowance and a once-off laptop allowance"
+        - "Master's and doctorate: registration, tuition, a once-off laptop allowance and a living allowance"
+        - "Mentoring, psychosocial support and skills training"
+    obligations:
+      source: s-csir-guidelines-2026
+      items:
+        - "Work at the CSIR after you qualify, for as many years as you were funded."
+        - "Send your results every semester (Honours), or progress reports (Master's and doctorate)."
+    applications:
+      source: s-csir-bursaries-2027
+      url: "https://www.csir.co.za/careers/students-graduates/bursaries"
+      documents:
+        source: s-csir-guidelines-2026
+        items:
+          - "Your South African ID"
+          - "Your matric certificate"
+          - "Your full academic record"
+          - "An up-to-date CV"
+          - "Master's and doctoral applicants: a motivation letter supported by a supervisor"
+      windows:
+        - intake: 2027
+          source: s-csir-bursaries-2027
+          closes: 2026-09-15
+
+  - id: harmony
+    name: "Harmony Gold bursaries"
+    short_name: Harmony
+    sector: company
+    fields: any
+    stages: [first_year, senior]
+    who_can_apply:
+      source: s-harmony-students
+      items:
+        - "South African citizens aged 18 to 35, from the communities in and around Harmony's mining operations"
+        - "Studying, or planning to study, full time"
+        - "Matric: 60% or more in every subject; for engineering, at least 70% in Mathematics and Physical Sciences"
+        - "Students already at university: an average of 60% or more in your major subjects"
+        - "Harmony gives 60% of its bursaries to core and critical fields, 30% to other mining-related fields and 10% to other fields, as its needs change each year"
+    applications:
+      source: s-harmony-students
+      url: "https://www.harmony.co.za/careers/opportunities-for-students/"
+      contact: "Kitsi Taunyana, 018 700 3347"
+      documents:
+        source: s-harmony-students
+        items:
+          - "Your valid South African ID"
+          - "Your National Senior Certificate"
+          - "A short CV (3 pages)"
+          - "Your university results, if you're already studying"
+      windows:
+        - intake: 2027
+          source: s-harmony-students
+          seen: {status: closed, checked: 2026-10-11}
+        - intake: 2028
+          source: s-harmony-students
+          note: "Harmony says applications for 2028 open in October 2027."
+
+  - id: nedbank
+    name: "Nedbank External Bursary Programme"
+    short_name: Nedbank
+    sector: company
+    fields: [natural_sciences, engineering, computing, mathematical_sciences]
+    stages: [first_year, senior, postgraduate]
+    who_can_apply:
+      source: s-nedbank-bursaries
+      items:
+        - "South African citizens studying, or planning to study, an undergraduate or Honours degree in science, technology, engineering or mathematics (STEM), or in green-economy skills"
+        - "Proven financial need, judged on household income"
+        - "An average of 65% in the year you apply, in the subjects linked to your degree"
+        - "Not if you did Mathematical Literacy in Grade 12"
+        - "Admitted to a South African public university or university of technology"
+        - "A parent's or legal guardian's consent"
+    applications:
+      source: s-nedbank-bursaries
+      url: "https://group.nedbank.co.za/careers/graduates-and-bursaries.html"
+      how: "Apply online. Shortlisted applicants do assessments and a virtual interview, and incomplete applications are disqualified."
+      contact: "Unlockyourambition@nedbank.co.za"
+      documents:
+        source: s-nedbank-bursaries
+        items:
+          - "A certified copy of your South African ID"
+          - "Your Grade 11 and 12 results, or your university results"
+          - "A signed financial check affidavit"
+          - "Three months of bank statements"
+      windows:
+        - intake: 2027
+          source: s-nedbank-bursaries
+          seen: {status: closed, checked: 2026-10-11}
+        - intake: 2028
+          source: s-nedbank-bursaries
+          note: "Nedbank says applications for 2028 funding open in 2027."
+
+  - id: ey_ca_bursary
+    name: "EY bursary for CA-stream students"
+    short_name: EY
+    sector: company
+    fields: [accounting]
+    stages: [first_year, senior]
+    who_can_apply:
+      source: s-ey-bursary-2027
+      items:
+        - "Matric learners and university students working towards becoming chartered accountants (the CA stream)"
+        - "An academic record that shows you can do it, with due regard to financial need"
+    covers:
+      source: s-ey-bursary-2027
+      items:
+        - "Academic merit with financial need: one or more of tuition, accommodation, books and meals"
+        - "Academic merit only: part of the tuition fees"
+    obligations:
+      source: s-ey-bursary-2027
+      items:
+        - "Work at EY for your training contract: at least three years."
+    applications:
+      source: s-ey-bursary-2027
+      url: "https://www.ey.com/en_za/careers/apply-for-our-bursary-program"
+      how: "Apply on EY's careers site, with your documents combined into one PDF."
+      documents:
+        source: s-ey-bursary-2027
+        items:
+          - "A CV and a certified copy of your ID"
+          - "Matric learners: your Grade 11 certificate and full report, and your Grade 12 term 1 and 2 results"
+          - "University students: your certified matric certificate and full academic record, with this year's mid-year results"
+          - "A parent's payslip, or an unemployment affidavit"
+          - "University students: three months of bank statements"
+      windows:
+        - intake: 2027
+          source: s-ey-bursary-2027
+          opens: 2026-07-01
+          closes: 2026-09-30
+
+  - id: hwseta
+    name: "Health and Welfare SETA (HWSETA) bursaries"
+    short_name: HWSETA
+    sector: government
+    fields: [health_sciences]
+    stages: [first_year, senior]
+    applying: via_university
+    who_can_apply:
+      source: s-hwseta-funding
+      items:
+        - "HWSETA's bursaries for unemployed people are administered through NSFAS, and awarded on a means test"
+    applications:
+      source: s-hwseta-eoi-2026
+      url: "https://www.hwseta.org.za/"
+      how: "HWSETA doesn't recruit students directly: ask your university about HWSETA funding."
+
+  - id: tut_bursary_fund
+    name: "TUT Bursary and Scholarship Fund"
+    short_name: TUT Bursary Fund
+    sector: university
+    fields: any
+    stages: [first_year, senior, postgraduate]
+    study_at: [tut]
+    applying: via_university
+    who_can_apply:
+      source: s-tut-bursary-fund
+      items:
+        - "Academically deserving TUT students who face financial exclusion"
+        - "Especially the missing middle: students who don't qualify for NSFAS but can't afford tuition, accommodation or basic living costs"
+    applications:
+      source: s-tut-bursary-fund
+      url: "https://www.tut.ac.za/student-finance/undergraduate/tut-bursary-and-scholarship-fund/"
+      contact: "bursaryfund@tut.ac.za or 012 382 5825 (Advancement and Partnerships Office)"
+
+  - id: up_flyup_awards
+    name: "UP FLY@UP Assist First-Year Awards"
+    short_name: FLY@UP Assist
+    kind: merit_award
+    sector: university
+    fields: any
+    stages: [first_year]
+    study_at: [up]
+    applying: automatic
+    who_can_apply:
+      source: s-up-infoguide-2026
+      items:
+        - "First-time first-year students at UP, straight after Grade 12 or after a gap year: not if you registered at a tertiary institution before"
+        - "Based on your final school results (NSC, IEB or SACAI): the average of your six best subjects, leaving out Life Orientation. It isn't rounded, and re-marked papers don't count"
+        - "Mathematical Literacy, Technical Mathematics and Technical Sciences don't count for the subject awards"
+    covers:
+      source: s-up-infoguide-2026
+      items:
+        - "In 2026: R18 000 for an average of 80% to 89.99%, or R45 000 for 90% to 100%"
+        - "In 2026: another R2 000 each for Mathematics and Physical Sciences (or their advanced versions) at 80% or more, only with the average award"
+        - "UP also lists other first-year awards, such as the Vice-Chancellor's Distinguished Merit Award, which covers three years' tuition"
+        - "An award is cancelled if you discontinue or are excluded during the year, and awards depend on funds being available"
+    applications:
+      source: s-up-infoguide-2026
+      how: "There's no application: UP makes these awards automatically to first-time first-years who qualify."
+
+  - id: up_funding_database
+    name: "UP's funding database"
+    short_name: UP funding database
+    sector: university
+    fields: any
+    stages: [first_year, senior, postgraduate]
+    study_at: [up]
+    applying: via_university
+    who_can_apply:
+      source: s-up-infoguide-2026
+      items:
+        - "Any UP student who wants to be considered for bursaries and other funding, whatever your household income, programme or year of study"
+        - "Registering doesn't guarantee funding: UP offers it when suitable opportunities come up"
+    applications:
+      source: s-up-infoguide-2026
+      url: "https://www.up.ac.za/article/2894107/financial-aid"
+      how: "Register on the database through the UP student portal or UP's financial aid page."
 
 sources:
   - id: s-nsfas-apply-2027
@@ -90,5 +684,180 @@ sources:
     publisher: "National Student Financial Aid Scheme (NSFAS)"
     title: "NSFAS 2027 Applications (home page)"
     retrieved: 2026-10-10
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-nsfas-launch-2027
+    url: "https://www.gov.za/news/speeches/minister-buti-manamela-launch-nsfas-2027-application-cycle-18-sep-2026"
+    publisher: "Government of South Africa"
+    title: "Minister Buti Manamela: Launch of NSFAS 2027 application cycle (18 Sep 2026)"
+    retrieved: 2026-10-11
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-funza-home-2027
+    url: "https://www.funzalushaka.doe.gov.za/"
+    publisher: "Department of Basic Education"
+    title: "The Funza Lushaka Bursary (home page: 2027 dates)"
+    retrieved: 2026-10-11
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-funza-notes-2027
+    url: "https://www.funzalushaka.doe.gov.za/Content/Documents/Funza%20Lushaka%20Bursary%20Application%20Notes%202027.pdf"
+    publisher: "Department of Basic Education"
+    title: "Funza Lushaka Bursary Application Notes 2027"
+    retrieved: 2026-10-11
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-isfap-students
+    url: "https://www.isfap.org.za/students"
+    publisher: "Ikusasa Student Financial Aid Programme (ISFAP)"
+    title: "ISFAP: for students"
+    retrieved: 2026-10-11
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-isfap-portal
+    url: "https://applyonline.isfap.org.za/content/welcome-isfap-online-applications"
+    publisher: "Ikusasa Student Financial Aid Programme (ISFAP)"
+    title: "ISFAP online applications: welcome page and partner universities"
+    retrieved: 2026-10-11
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-saica-thuthuka-apply
+    url: "https://www.saica.org.za/initiatives/thuthuka/apply-to-the-thuthuka-bursary-fund"
+    publisher: "South African Institute of Chartered Accountants (SAICA)"
+    title: "Apply to the Thuthuka Bursary"
+    retrieved: 2026-10-11
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-thuthuka-portal
+    url: "https://www.thuthukabursaryfund.co.za/"
+    publisher: "Thuthuka Bursary Fund (SAICA)"
+    title: "Thuthuka Bursary Application System (closing date shown on the site)"
+    retrieved: 2026-10-11
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-treasury-2027
+    url: "https://www.treasury.gov.za/graduate/2027%20External%20Bursary%20Advert%20e-Recruitment%20v3.pdf"
+    publisher: "National Treasury"
+    title: "Apply for the National Treasury Bursary Scheme 2027"
+    retrieved: 2026-10-11
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ndmc-advert-2027
+    url: "https://onlinebursary.ndmc.gov.za/docs/2027BursaryAdvertisement.jpg"
+    publisher: "Department of Cooperative Governance: National Disaster Management Centre"
+    title: "External bursary advertisement for the 2027 academic year"
+    retrieved: 2026-10-11
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ndmc-portal-2027
+    url: "https://onlinebursary.ndmc.gov.za/"
+    publisher: "Department of Cooperative Governance: National Disaster Management Centre"
+    title: "2027 NDMC Bursary Application System (the closing date and time)"
+    retrieved: 2026-10-11
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-sarb-2027
+    url: "https://www.resbank.co.za/content/dam/sarb/publications/bursary/2026/external-bursary-2027.pdf"
+    publisher: "South African Reserve Bank"
+    title: "South African Reserve Bank External Bursary Scheme for undergraduate studies (2027)"
+    retrieved: 2026-10-11
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-allangray-fellowship
+    url: "https://allangrayorbis.org/programmes/fellowship/"
+    publisher: "Allan Gray Orbis Foundation"
+    title: "Fellowship Programme"
+    retrieved: 2026-10-11
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-allangray-form-2027
+    url: "https://allangrayorbis.org/wp-content/uploads/2026/02/Fellowship-Programme-Application-Form_2026.pdf"
+    publisher: "Allan Gray Orbis Foundation"
+    title: "University Fellowship Programme 2027: Grade 12 application form"
+    retrieved: 2026-10-11
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-gcra-home
+    url: "https://gcrabursary.gauteng.gov.za/"
+    publisher: "Gauteng City Region Academy (Gauteng Provincial Government)"
+    title: "GCRA Bursary Application: criteria and key requirements"
+    retrieved: 2026-10-11
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-gcra-faq
+    url: "https://gcrabursary.gauteng.gov.za/Home/FAQ"
+    publisher: "Gauteng City Region Academy (Gauteng Provincial Government)"
+    title: "GCRA Bursary Application: frequently asked questions"
+    retrieved: 2026-10-11
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-clicks-bursary
+    url: "https://careers.clicksgroup.co.za/applicant/index.php?controller=Page&name=bursarypage"
+    publisher: "Clicks Group"
+    title: "Bursary Programme: Clicks Foundation Bursary Fund"
+    retrieved: 2026-10-11
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-csir-bursaries-2027
+    url: "https://www.csir.co.za/careers/students-graduates/bursaries"
+    publisher: "Council for Scientific and Industrial Research (CSIR)"
+    title: "Bursaries: the 2027 call"
+    retrieved: 2026-10-11
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-csir-guidelines-2026
+    url: "https://www.csir.co.za/sites/default/files/2026-07/2026%20CSIR%20Bursary-Guidelines.pdf"
+    publisher: "Council for Scientific and Industrial Research (CSIR)"
+    title: "General guidelines on eligibility for the CSIR Bursary Programme (July 2026)"
+    retrieved: 2026-10-11
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-harmony-students
+    url: "https://www.harmony.co.za/careers/opportunities-for-students/"
+    publisher: "Harmony Gold Mining Company"
+    title: "Opportunities for students"
+    retrieved: 2026-10-11
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-nedbank-bursaries
+    url: "https://group.nedbank.co.za/careers/graduates-and-bursaries.html"
+    publisher: "Nedbank Group"
+    title: "Graduates and bursaries: Nedbank External Bursary Programme"
+    retrieved: 2026-10-11
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ey-bursary-2027
+    url: "https://www.ey.com/en_za/careers/apply-for-our-bursary-program"
+    publisher: "EY South Africa"
+    title: "Apply for our bursary program (2027 bursary opportunities)"
+    retrieved: 2026-10-11
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-hwseta-funding
+    url: "https://www.hwseta.org.za/employers/access-to-funding/"
+    publisher: "Health and Welfare Sector Education and Training Authority (HWSETA)"
+    title: "Access to funding"
+    retrieved: 2026-10-11
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-hwseta-eoi-2026
+    url: "https://www.hwseta.org.za/expression-of-interest-for-funding-2026-2027-closing-date-20-february-2026/"
+    publisher: "Health and Welfare Sector Education and Training Authority (HWSETA)"
+    title: "Expression of interest for funding 2026/2027 (HWSETA's replies under the advert)"
+    retrieved: 2026-10-11
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-tut-bursary-fund
+    url: "https://www.tut.ac.za/student-finance/undergraduate/tut-bursary-and-scholarship-fund/"
+    publisher: "Tshwane University of Technology"
+    title: "TUT Bursary and Scholarship Fund"
+    retrieved: 2026-10-11
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-up-infoguide-2026
+    url: "https://drupalwebprod-files.up.ac.za/Public/2025-12/UP_InfoGuide%202026_V5-c.pdf"
+    publisher: "University of Pretoria"
+    title: "InfoGuide 2026 (pp. 13-15: financial aid, the funding database and FLY@UP awards)"
+    retrieved: 2026-10-11
     last_verified: null
     verified_by: "agent draft, needs human check"

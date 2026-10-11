@@ -13,6 +13,7 @@ import pytest
 from campus_engine.applications import CLOSED, apply_guide
 from campus_engine.bridges import build_plan
 from campus_engine.catalogue import load_funding
+from campus_engine.funding import OPEN_NOW, cards, counts, matches
 from campus_engine.matching import COMPETITIVE, MEETS_MINIMUM, NOT_YET, REACH, assess
 from campus_engine.points import compute_points
 
@@ -245,6 +246,78 @@ def test_on_10_october_2026_the_smu_learner_should_apply_to_nsfas_first(catalogu
     assert (goal_2027.intake, goal_2027.status) == (2027, CLOSED)
     assert goal_2027.lines == ["Closed on Fri 31 Jul 2026.", "No late applications."]
 
+
+
+# Funding: NSFAS and the bursaries (docs/research/funding.md names each funder's pages)
+
+
+@pytest.fixture(scope="module")
+def funding():
+    return load_funding()
+
+
+def test_the_funding_pack_is_a_draft_with_every_source_its_own(funding):
+    assert funding.release is False
+    assert all(s.verified_by == "agent draft, needs human check" and s.last_verified is None for s in funding.sources)
+    assert all(s.url.startswith("https://") for s in funding.sources)
+    assert [f.id for f in funding.funders if f.every_plan] == ["nsfas"]
+    assert all(f.who_can_apply for f in funding.funders)
+
+
+def test_no_fact_comes_from_a_site_that_lists_bursaries(funding):
+    lists = ("graduates24", "zabursaries", "uniapplyforme", "studentroom", "nasi-ispani", "gostudy", "varsitywise",
+             "fundiconnect", "edupstairs", "careerdrive", "allbursaries")
+    assert [s.url for s in funding.sources if any(site in s.url for site in lists)] == []
+
+
+def test_funza_lushaka_2027_dates_and_teaching_back(funding):  # s-funza-home-2027, s-funza-notes-2027
+    funza = funding.funder("funza_lushaka")
+    (window,) = funza.applications.windows
+    assert (window.intake, window.opens, window.closes) == (2027, date(2026, 10, 1), date(2027, 1, 31))
+    assert window.note == "Students already funded re-apply by Mon 30 Nov 2026."
+    assert funza.fields == ["education"]
+    assert funza.obligations.items[0] == "Teach one year for every year the bursary paid for."
+
+
+def test_closing_dates_and_times_as_each_funder_publishes_them(funding):
+    def first(fid):
+        return funding.funder(fid).applications.windows[0]
+
+    assert (first("thuthuka").closes, first("thuthuka").closing_time) == (date(2026, 8, 31), "23:59")
+    assert (first("national_treasury").closes, first("national_treasury").closing_time) == (date(2026, 9, 30), "12:00")
+    assert (first("ndmc").closes, first("ndmc").closing_time) == (date(2026, 9, 30), "23:59")
+    assert first("sarb").closes == date(2026, 9, 30) and first("sarb").no_late_applications
+    assert (first("allan_gray_fellowship").closes, first("allan_gray_fellowship").closing_time) == (date(2026, 4, 30), "17:00")
+    assert first("csir").closes == date(2026, 9, 15)
+    assert (first("ey_ca_bursary").opens, first("ey_ca_bursary").closes) == (date(2026, 7, 1), date(2026, 9, 30))
+    assert (first("clicks_foundation").opens, first("clicks_foundation").closes) == (date(2026, 10, 1), date(2026, 10, 31))
+    for fid in ("isfap", "harmony", "nedbank"):  # each page said "closed" without dates
+        assert (first(fid).seen.status, first(fid).seen.checked) == ("closed", date(2026, 10, 11))
+
+
+def test_on_11_october_2026_three_are_open(funding):
+    found = cards(funding, date(2026, 10, 11))
+    assert [c.funder.id for c in found if c.status in OPEN_NOW] == ["clicks_foundation", "nsfas", "funza_lushaka"]
+    assert counts(found).line == "19 funding options: 3 open now."
+
+
+def test_eligibility_is_shown_in_the_funders_words_never_asked(funding):
+    # SAICA's own criterion, shown beside the fund: the app never asks a learner about race.
+    assert "Black African or Coloured" in funding.funder("thuthuka").who_can_apply.items
+
+
+def test_each_choice_sees_funding_for_its_fields(catalogue, funding):
+    today = date(2026, 10, 11)
+
+    def shown(university, programme):
+        fields = catalogue[university].programme(programme).fields
+        return [c.funder.id for c in matches(funding, fields, university, today).cards]
+
+    assert shown("tut", "bed_foundation_phase")[0] == "funza_lushaka"  # open, and for education
+    assert "allan_gray_fellowship" in shown("up", "bcom_accounting_sciences")
+    assert "allan_gray_fellowship" not in shown("up", "mbchb")  # the Fellowship rules medicine out
+    assert "up_flyup_awards" in shown("up", "mbchb") and "up_flyup_awards" not in shown("smu", "mbchb")
+    assert "nsfas" not in shown("smu", "mbchb")  # every plan shows NSFAS already
 
 # Calendars, money dates and support: s-up-cal-2026, s-up-cal-2027, s-up-infoguide-2026, s-tut-cal-2026,
 # s-tut-cal-2027, s-tut-guide-2027, s-tut-fees-2026, s-smu-cal-2026 and SMU's student affairs pages
