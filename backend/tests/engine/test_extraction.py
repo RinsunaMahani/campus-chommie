@@ -3,7 +3,8 @@ A labelled set of realistic class messages: new events, "moved" and
 "cancelled" messages, messages mixing English with other South African
 languages, and dates a rep has to look at twice. Each label is what the
 engine should read; `check` is the fields it should ask the rep to check.
-Grow it to about 50 before the event.
+The brief asks for at least 30; we keep at least 50. Add a message whenever
+a real one reads wrong.
 """
 from datetime import date, datetime, time
 
@@ -50,6 +51,11 @@ NEW_EVENTS = [
     ("Submit BCH111 report by 30 October 23:59", dict(kind="assignment", on=date(2026, 10, 30), at=time(23, 59))),
     # Only "due" says it's an assignment: the rep checks the type.
     ("ANA201 work due Friday", dict(kind="assignment", on=date(2026, 10, 16), check=["kind"])),
+    ("Reminder: BCH111 quiz this Friday", dict(kind="quiz", module="BCH111", on=date(2026, 10, 16))),
+    (
+        "BCH111 assignment 4: submit on Blackboard by 6 Nov, 23:59",
+        dict(title="Assignment 4", on=date(2026, 11, 6), at=time(23, 59), check=[]),
+    ),
 ]
 
 CHANGES = [
@@ -86,6 +92,21 @@ CHANGES = [
     ("ANA201 quiz 3 won't take place tomorrow", dict(title="Quiz 3", on=date(2026, 10, 13), change="cancelled")),
     # A cancellation needs no date.
     ("BCH111 class test called off due to the strike", dict(title="Class test", on=None, change="cancelled", check=[])),
+    # From one date to another: the new one, after "to", and the rep checks.
+    (
+        "ANA201 Test 2 moved from 20 Oct to 22 Oct",
+        dict(title="Test 2", on=date(2026, 10, 22), change="moved", check=["on"]),
+    ),
+    (
+        "Test 2 moved from Tue 20 Oct to Thursday 22 Oct at 10:00",
+        dict(title="Test 2", on=date(2026, 10, 22), at=time(10, 0), change="moved"),
+    ),
+    # Only one date is written out ("20" has no month), and it's the new one.
+    ("ANA201 Test 2 moved from 20 to 22 Oct", dict(on=date(2026, 10, 22), change="moved", check=[])),
+    # "Tomorrow" is the old day; "Thursday" the new one.
+    ("ANA201: no test tomorrow, it has been moved to Thursday", dict(on=date(2026, 10, 15), change="moved", check=["on"])),
+    # Moved, but not to a date yet.
+    ("ANA201 test 2 postponed until further notice", dict(title="Test 2", on=None, change="moved", check=["on"])),
 ]
 
 MIXED_LANGUAGES = [
@@ -122,6 +143,8 @@ MIXED_LANGUAGES = [
     ),
     ("Herinnering: BCH111 toets 3 op 5 Mrt 2027 om 08h00", dict(title="Test 3", on=date(2027, 3, 5), at=time(8, 0))),
     ("PHY121 opdrag uitgestel na 2 Des", dict(kind="assignment", on=date(2026, 12, 2), change="moved")),
+    # "Na" is "to": the new date.
+    ("ANA201 toets 2 verskuif van 20 Okt na 23 Okt", dict(title="Test 2", on=date(2026, 10, 23), change="moved", check=["on"])),
 ]
 
 DATES_TO_CHECK = [
@@ -137,13 +160,22 @@ DATES_TO_CHECK = [
     ("ANA201 test 2 on the 20th", dict(title="Test 2", on=None, check=["on"])),
     # Before the message was sent: flagged.
     ("ANA201 test was on 1 Oct", dict(on=date(2026, 10, 1), check=["on"])),
+    # A range: its first day, flagged.
+    ("PHY121 practical 4 on 20-22 Oct, book one slot", dict(title="Practical 4", on=date(2026, 10, 20), check=["on"])),
+    ("PHY121 exam: 12 - 13 November, two sessions", dict(kind="exam", on=date(2026, 11, 12), check=["on"])),
+    # Two possible days, not a change: the first, flagged.
+    ("ANA201 test on 20 Oct or 21 Oct, the lecturer will confirm", dict(on=date(2026, 10, 20), check=["on"])),
+    # An hour with no minutes: a time, flagged (it could be a length).
+    ("BCH111 test at 14h on 3 Nov", dict(on=date(2026, 11, 3), at=time(14, 0), check=["at"])),
+    # Which week is week 9 depends on the university's calendar: not guessed.
+    ("STK test in week 9", dict(kind="test", on=None, check=["module", "on"])),
 ]
 
 CASES = NEW_EVENTS + CHANGES + MIXED_LANGUAGES + DATES_TO_CHECK
 
 
 def test_the_labelled_set_is_big_enough():
-    assert len(CASES) >= 30  # the brief's M4 bar
+    assert len(CASES) >= 50  # the brief's M4 bar is 30
 
 
 @pytest.mark.parametrize("message,expected", CASES, ids=[c[0][:30] for c in CASES])
@@ -267,3 +299,27 @@ def test_change_lines():
     assert change_line("cancelled", True, False) == "Back on: no longer cancelled."
     with pytest.raises(ValueError):
         change_line("weighting", 10, 20)
+
+
+# ------------------------------------------------- dates a rep should check
+
+
+def test_several_dates_say_which_was_read():
+    moved = extract("ANA201 Test 2 moved from 20 Oct to 22 Oct", SENT, MODULES)
+    assert moved.notes == ["This message has more than one date: we read the new one. Check it."]
+    either = extract("ANA201 test on 20 Oct or 21 Oct", SENT, MODULES)
+    assert either.notes == ["This message has more than one date: we read the first. Check which one it's about."]
+    same = extract("ANA201 test on Tuesday 20 Oct (Tue 20/10)", SENT, MODULES)
+    assert same.on == date(2026, 10, 20) and same.notes == []  # the same day twice is one date
+
+
+def test_a_range_says_it_read_the_first_day():
+    c = extract("PHY121 practical 4 on 20-22 Oct", SENT, MODULES)
+    assert c.notes == ["This message gives a range of days: we read the first. Check it."]
+    assert reading(c)[-1] == "This message gives a range of days: we read the first. Check it."
+
+
+def test_a_bare_hour_is_a_time_to_check():
+    c = extract("BCH111 test at 14h on 3 Nov", SENT, MODULES)
+    assert c.at == time(14, 0) and c.confidence["at"] < 0.7
+    assert extract("BCH111 test at 14h30 on 3 Nov", SENT, MODULES).confidence["at"] == 0.9  # with minutes: sure
