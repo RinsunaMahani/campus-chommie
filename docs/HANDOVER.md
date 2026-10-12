@@ -199,7 +199,7 @@ events"); the screen notes are in OPEN_QUESTIONS, "My week's screens":
     (`GET /funding?field=a,b`).
   - The app never asks about income, disability or family: it shows NSFAS's own words and links to it.
 - **A Funding screen (#17; F6, your call):** like UniApplyForMe's, open to anyone. The top line is `summary`
-  ("19 funding options: 3 open now."); chips from `fields`; tabs or a picker for `kind` (bursaries, merit awards,
+  ("24 funding options: 5 open now."); chips from `fields`; tabs or a picker for `kind` (bursaries, merit awards,
   loans) and `stage`. Each card: `name`, `label` in words with the `days` count, `lines[0]`, the fields, and
   "Checked on" (`checked`). The detail screen shows `who_can_apply`, `covers` and `obligations` (work-back
   conditions matter to learners), then `apply` (`how`, `documents`, `windows`, `contact`) and the `sources`. A

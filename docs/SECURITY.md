@@ -18,7 +18,7 @@ request and never stored; and the judges' demo accounts. Update it whenever a mi
 | Audit trail | `audit.audit_events` | append-only (see the open question on the personal data it holds) |
 | Marks typed into the course finder | memory, for one request only | never stored or logged; learners using it may be under 18 |
 | University data packs | `backend/data/universities/*.yaml` | public facts, each citing its source: admission rules, application dates, campuses, calendars, money dates (never amounts) and support contacts; served read-only; changed only by pull request. Crisis lines are verified by a person before any pack is released |
-| National funding pack | `backend/data/national/funding.yaml` | public facts about NSFAS and 18 other funders (bursaries, merit awards, a loan scheme), under the same rules as a university pack. Each fact comes from the funder's own page, never from a site that lists bursaries; eligibility is shown in the funder's words and never asked |
+| National funding pack | `backend/data/national/funding.yaml` | public facts about NSFAS and 23 other funders (bursaries, merit awards, a loan scheme), under the same rules as a university pack. Each fact comes from the funder's own page, never from a site that lists bursaries; eligibility is shown in the funder's words and never asked |
 | Student profile | `student.profiles` | university and campus (data-pack ids); owner-only |
 | My money | `student.money_settings`, `income_sources`, `expected_payments`, `spending_entries` | the student's own entries in integer cents: balance, essentials, life-fund reserve, expected income, one spending number per day. Owner-only; no rep or admin view. No bank or NSFAS details, and nothing moves money. Spending is kept for a rolling year |
 | My marks | `student.modules`, `student.assessments` | the student's modules, assessment weights and marks. Owner-only; no rep or admin view. Deleted for real when the student deletes them |
@@ -68,7 +68,7 @@ request and never stored; and the judges' demo accounts. Update it whenever a mi
 
 ## Test evidence (M5)
 
-Backend: **1115 tests pass** on PostgreSQL 16 (12 Oct 2026), including:
+Backend: **1116 tests pass** on PostgreSQL 16 (12 Oct 2026), including:
 
 | Tests | What they prove |
 |---|---|
@@ -99,7 +99,7 @@ Backend: **1115 tests pass** on PostgreSQL 16 (12 Oct 2026), including:
 | `tests/domains/platform/test_privacy.py` | the export holds every feature's data and nothing of anyone else's; `DELETE /me` needs the password, leaves no row behind in any table, signs the student out everywhere, keeps the class's events nameless and touches no one else; demo accounts refused; odd requests refused; limited; every table that points at an account has an export section |
 | `tests/domains/platform/test_demo.py` | `flask seed` (a strong password from the environment, never echoed; a real account never converted), demo sign-in without the code, no lockout, no password change, reset or closing, the stricter demo limit, the personas built as written, and the daily re-base moving every date and undoing what visitors changed |
 | `tests/architecture/` | the boundaries above, including every route having a rate limit and routes never calling the engine |
-| `tests/engine/` | 333 engine tests, 99% coverage from the engine and architecture tests alone (the floor is 80%), including data-pack validation, spot checks of the shipped packs against their sources, every application status on either side of each date, every first step's status either side of its dates, every funder's status (including a page that says "open" or "closed" without dates), the funding list's order, filters and matches, saved funding's reminders, and 57 labelled class messages (new events, moved and cancelled, mixed languages, dates to check: several dates in one message, ranges, bare hours) |
+| `tests/engine/` | 334 engine tests, 99% coverage from the engine and architecture tests alone (the floor is 80%), including data-pack validation, spot checks of the shipped packs against their sources, every application status on either side of each date, every first step's status either side of its dates, every funder's status (including a page that says "open" or "closed" without dates), the funding list's order, filters and matches, saved funding's reminders, and 57 labelled class messages (new events, moved and cancelled, mixed languages, dates to check: several dates in one message, ranges, bare hours) |
 
 App: TypeScript check, ESLint (no warnings) and Jest pass, including a test of the exact sign-up request.
 
