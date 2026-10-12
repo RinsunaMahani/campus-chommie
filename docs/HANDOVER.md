@@ -12,7 +12,7 @@ git, so Mandla has his own copy; the M2 part is quoted below.
 
 ## Where things stand
 
-`main` holds only the empty first commit. All work sits in eighteen stacked pull requests:
+`main` holds only the empty first commit. All work sits in twenty stacked pull requests:
 
 | PR | Branch | What | Reviewer |
 |---|---|---|---|
@@ -25,6 +25,8 @@ git, so Mandla has his own copy; the M2 part is quoted below.
 | #7 | `rinsuna/m1-after-acceptance` | your points at every university; campuses, calendars, money dates and support in the packs; first steps from acceptance to the first lecture | Rinsuna for the engine and data; Mandla for the two new endpoints |
 | #8 | `rinsuna/m3-profile-and-money` | M3's backend: the student's profile (university and campus) and My money (settings, income, expected payments, spending, summary) | Mandla (API); Rinsuna for the migration |
 | #9 | `rinsuna/m1-cheap-things` | cheap things to do near campus, each priced from the place's own page | Rinsuna (data) |
+| #20 | `rinsuna/more-funders` | five more funders from their own pages (24 in all; 5 open on 12 Oct) | Rinsuna (data) |
+| #19 | `rinsuna/smu-gaps` | SMU's financial aid office, food support and Religious Desk on the Support screen; cheap things in northern Tshwane for SMU and TUT's nearby campuses | Rinsuna (data) |
 | #18 | `rinsuna/saved-funding` | saving funding (UniApplyForMe's bookmark) with reminders when it opens and a week and a day before it closes; a switch for them; migration 0006 | Mandla (API, alerts, migration); Rinsuna for the engine |
 | #17 | `rinsuna/funding-list` | funding like UniApplyForMe's: 19 funders from their own pages (NSFAS, bursaries, UP's merit awards, a loan scheme), `GET /funding` with "N open now, N closing soon" and filters, `GET /funding/<id>`, and each plan choice's funding | Rinsuna for the engine and data; Mandla for the API and the screens |
 | #16 | `rinsuna/extraction-50` | the engine reads every date in a message (the new one in a "moved" message, ranges, bare hours) and asks the rep to check; 57 labelled class messages | Rinsuna (engine) |
@@ -37,7 +39,7 @@ git, so Mandla has his own copy; the M2 part is quoted below.
 
 **How to merge:**
 - Each PR targets the branch below it, so its diff shows only its own work.
-- Merge in order: #1 into `main`, then #2 to #18, retargeting each to `main` once the one below has merged.
+- Merge in order: #1 into `main`, then #2 to #20, retargeting each to `main` once the one below has merged.
 - Use **Create a merge commit**, not squash or rebase, so every commit stays in `main`'s history (CLAUDE.md: never
   rewrite history).
 
