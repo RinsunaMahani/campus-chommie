@@ -13,9 +13,15 @@ blogs) don't count, even when they quote a price.
 | Voortrekker Monument, Groenkloof | Students at a recognised university R130; adult R250; pensioner R130; children under 18 R130 (the first two free); grounds only R55 adult, R35 child; parking R20 a car; cheaper online (amount not given) | as above | [vtm.org.za](https://vtm.org.za/entrance-fees/) |
 | DITSONG National Museum of Natural History, Pretoria CBD | Fees for 1 April 2026 to 31 March 2027: adult self-tour R60, guided R70; children, learners and pensioners R40; open every day 07:30-16:00, closed Christmas, New Year and Good Friday. No separate student price | as above | [fee list (PDF)](https://ditsong.org.za/en/wp-content/uploads/2019/09/Natural-History-Museum-Admission-Fees.pdf) |
 | Lowveld National Botanical Garden, Mbombela | Student R50 in peak season (September to March); adult R80; children 6 to 17 R30; under 6 free | TUT Mbombela | [SANBI tickets](https://www.sanbi.org/gardens/lowveld/information-8/buy-tickets-lowveld-nbg/) |
+| Wonderboom Nature Reserve, northern Tshwane | Adults (18 to 59) R47 a day; pensioners, people with disabilities and schoolchildren R31.50; guided day hike (about four hours) R100 a person; open every day 07:00-17:00, entry until 16:00; bookings only for the lapa or a guide. No student price | SMU Ga-Rankuwa; TUT Ga-Rankuwa, Soshanguve North and South (northern Tshwane) | [City of Tshwane](https://www.tshwane.gov.za/?page_id=5481) |
+| DITSONG: Tswaing Meteorite Crater, Soshanguve | Fees for 1 April 2026 to 31 March 2027: adult self tour R60, guided R70; children and learners R40; pensioners R40; picnic lawn R60 an adult. No separate student price | as above | [fee list (PDF)](https://ditsong.org.za/en/wp-content/uploads/2019/09/Tswaing-Meteorite-Crater-Admission-Fees.pdf) |
 
 The SANBI ticket links redirect to SANBI's ticketing page (sanbi.plnktn.io), which lists the prices. The DITSONG
 file sits in a 2019 upload folder, but its own heading dates the fees 1 April 2026 to 31 March 2027.
+
+Tswaing's hours disagree: its web page says weekdays 07:30-16:00 and weekends 06:00-14:00, its fee list says 07:30-16:00
+every day, so the pack gives no hours for it. Both northern Tshwane places were added on 12 Oct 2026; neither is in
+walking distance of Ga-Rankuwa.
 
 ## Left out, and why
 
@@ -29,5 +35,6 @@ file sits in a 2019 upload folder, but its own heading dates the fees 1 April 20
 
 ## Not researched yet
 
-- SMU (Ga-Rankuwa), TUT Soshanguve, Ga-Rankuwa, Polokwane and eMalahleni, and UP's GIBS campus in Sandton.
+- Anything closer to Ga-Rankuwa and Soshanguve than Wonderboom and Tswaing; TUT Polokwane and eMalahleni; UP's GIBS
+  campus in Sandton.
 - Places the team knows near each campus are the best start. Each still needs its own page with a price.

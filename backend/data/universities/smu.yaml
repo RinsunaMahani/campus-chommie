@@ -112,8 +112,10 @@ funding_cycles:
   - {funder: university, kind: discount_deadline, name: "3% off if your 2026 account is settled", when: 2026-05-31,
      source: s-smu-fees-2026}
 
-# Not found: a 24-hour counselling line, food support, chaplaincy, a careers office (the counselling centre
-# offers career counselling), and a financial aid contact.
+# Not found: a 24-hour counselling line, and a careers office (the counselling centre offers career counselling).
+# SMU has no chaplaincy office: its Religious Desk, the umbrella body of the student church structures, is listed
+# instead. Its Harambee Fund (food parcels and sanitary products, SMU news, Oct 2024) publishes no way to ask for
+# help, so it waits (docs/OPEN_QUESTIONS.md).
 support_services:
   - {kind: health,
      name: "Campus Health and Wellness Centre: minor ailments, first aid, Hepatitis B vaccination, HIV counselling, testing and management, peer health education (free)",
@@ -128,10 +130,27 @@ support_services:
   - {kind: counselling,
      name: "Student Support Referral Unit: life coaching, and referrals to the social worker, counselling, the clinical psychologist, teaching and learning support, Campus Health and Financial Aid (free for registered students)",
      contact: "012 521 3805; Clinpath Building, room 3L003", source: s-smu-referral}
+  - {kind: financial_aid, name: "Financial Aid Office: fee blocks and financial clearance",
+     contact: "012 521 4614 / 4500 / 4317; financialaid@smu.ac.za", source: s-smu-reg-2026}
+  - {kind: food_support,
+     name: "SMU Community Garden: fresh vegetables for students in need (more than 15 a week, SMU said in March 2026)",
+     contact: "On campus; SMU names horticulturist Mpho Mmako as the project's representative",
+     note: "SMU doesn't publish how students ask for vegetables.", source: s-smu-garden-2026}
+  - {kind: chaplaincy,
+     name: "Religious Desk (Student Life and Governance): the umbrella body of the student church structures, from Orthodox to contemporary",
+     contact: "012 521 5836 or 012 521 5835; Natural Science Building, ground floor", hours: "Mon-Fri 07:30-16:00",
+     note: "SMU has no chaplaincy office: this is the closest.", source: s-smu-life-gov}
 
-# Nothing sourced near Ga-Rankuwa yet: places the team knows there are the best start
-# (docs/OPEN_QUESTIONS.md). Pretoria's are in the UP and TUT packs.
-cheap_things: []
+# Northern Tshwane, each priced from its own page (docs/research/cheap-things.md). Places the team knows near
+# Ga-Rankuwa are still the best additions (docs/OPEN_QUESTIONS.md); Pretoria's are in the UP and TUT packs.
+cheap_things:
+  - {name: "Wonderboom Nature Reserve: a fig tree over 1 000 years old, and walks on the Magaliesberg", category: outdoors,
+     cost_note: "Adults R47 a day; pensioners and people with disabilities R31.50; a guided day hike (about four hours) R100 a person. No student price.",
+     campuses: [ga_rankuwa], address: "Northern Tshwane, on the Magaliesberg",
+     hours: "Every day, 07:00-17:00; last entry 16:00", source: s-tshwane-wonderboom}
+  - {name: "DITSONG: Tswaing Meteorite Crater", category: museum,
+     cost_note: "Adults R60 for a self tour, R70 guided (no separate student price); children and learners R40; pensioners R40; a picnic on the lawn R60 for adults. Fees for 1 April 2026 to 31 March 2027.",
+     campuses: [ga_rankuwa], address: "Plot 149 JR Soutpan, Soshanguve", source: s-ditsong-tswaing-fees}
 
 
 programmes:
@@ -553,5 +572,40 @@ sources:
     publisher: "Sefako Makgatho Health Sciences University"
     title: "Student Support Referral Unit"
     retrieved: 2026-10-09
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-smu-reg-2026
+    url: "https://www.smu.ac.za/students/apply/registrations/registration-guidelines/"
+    publisher: "Sefako Makgatho Health Sciences University"
+    title: "Registration guidelines and notices (2026): student fees and clearance"
+    retrieved: 2026-10-11
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-smu-life-gov
+    url: "https://www.smu.ac.za/students/student-affairs/student-life-and-governance/"
+    publisher: "Sefako Makgatho Health Sciences University"
+    title: "Student Life and Governance: the Religious Desk"
+    retrieved: 2026-10-11
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-smu-garden-2026
+    url: "https://www.smu.ac.za/2026/03/11/smu-garden-named-shoprite-competition-finalist/"
+    publisher: "Sefako Makgatho Health Sciences University"
+    title: "SMU garden named Shoprite competition finalist (11 Mar 2026)"
+    retrieved: 2026-10-11
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-tshwane-wonderboom
+    url: "https://www.tshwane.gov.za/?page_id=5481"
+    publisher: "City of Tshwane"
+    title: "Wonderboom Nature Reserve: tariffs and visiting hours"
+    retrieved: 2026-10-12
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ditsong-tswaing-fees
+    url: "https://ditsong.org.za/en/wp-content/uploads/2019/09/Tswaing-Meteorite-Crater-Admission-Fees.pdf"
+    publisher: "DITSONG Museums of South Africa"
+    title: "DITSONG: Tswaing Meteorite Crater admission fees, 1 April 2026 to 31 March 2027"
+    retrieved: 2026-10-12
     last_verified: null
     verified_by: "agent draft, needs human check"

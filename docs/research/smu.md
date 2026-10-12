@@ -29,6 +29,9 @@ verified yet".
 | s-smu-counselling | Centre for Student Counselling and Development | [page](https://www.smu.ac.za/students/student-affairs/centre-for-student-counselling-and-development/) |
 | s-smu-referral | Student Support Referral Unit | [page](https://www.smu.ac.za/students/campus-affairs/student-life-smu/student-support-referral-unit/) |
 | s-smu-contacts | Student Affairs contact numbers | [page](https://www.smu.ac.za/students/student-affairs/student-affairs-contact-numbers/) |
+| s-smu-reg-2026 | Registration guidelines and notices (2026): student fees and clearance (read 11 Oct 2026) | [page](https://www.smu.ac.za/students/apply/registrations/registration-guidelines/) |
+| s-smu-life-gov | Student Life and Governance: the Religious Desk (read 11 Oct 2026) | [page](https://www.smu.ac.za/students/student-affairs/student-life-and-governance/) |
+| s-smu-garden-2026 | SMU garden named Shoprite competition finalist, 11 Mar 2026 (read 11 Oct 2026) | [page](https://www.smu.ac.za/2026/03/11/smu-garden-named-shoprite-competition-finalist/) |
 
 ## Applications (F6)
 
@@ -183,9 +186,15 @@ Crisis numbers must be checked by a person before release (CLAUDE.md).
 | Student Residences | 012 521 3742 | | s-smu-contacts |
 | Student Life and Governance | 012 521 5836 | | s-smu-contacts |
 | Sport and Recreation | 012 521 3858 / 4185 | | s-smu-contacts |
+| Financial Aid Office: "For any financial block please do not hesitate to consult the Financial Aid Office" | 012 521 4614 / 4500 / 4317; financialaid@smu.ac.za (the page also names two staff addresses) | | s-smu-reg-2026 |
+| Religious Desk, in Student Life and Governance: "an umbrella body of all Students church structures at the university, ranging from the Orthodox Church structures to Contemporary church structures" | 012 521 5836 or 012 521 5835; Natural Science Building, ground floor | Mon-Fri 07:30-16:00 | s-smu-life-gov |
+| SMU Community Garden, Ga-Rankuwa: "provides fresh vegetables to more than 15 students in need each week" (March 2026) | SMU names horticulturist Mpho Mmako as the project's representative; how students ask isn't published | | s-smu-garden-2026 |
 
-Not found: a 24-hour counselling or crisis line, food support, chaplaincy, a careers office (the counselling centre
-offers career counselling).
+Added on 11 Oct 2026: the Financial Aid Office, the Religious Desk (SMU has no chaplaincy office) and the garden.
+SMU's news also describes the **Harambee Fund** ("supports financially struggling students, ensuring they have access
+to essentials like food parcels and sanitary products", 31 Oct 2024; first described in 2022), but no page says how a
+student asks for it, so it isn't in the pack. Still not found: a 24-hour counselling or crisis line, and a careers
+office (the counselling centre offers career counselling).
 
 ## Fees and funding (F4, F6)
 
@@ -241,12 +250,12 @@ Maths or Maths Lit route with its own APS (decision 1). Every SMU programme stay
 
 ## Gaps and inconsistencies
 
-- SMU's 2027 calendar: not published.
+- SMU's 2027 calendar: not published (its downloads page still listed only 2026's on 12 Oct 2026).
 - Life Orientation in the BSc and emergency care APS: unclear.
 - Places for Pharmacy, Health Care Sciences, emergency care and BSc: not published on the pages.
 - Mid-year supplementary exams and the end of year-end exams: dates read from the calendar layout.
 - The general calendar puts the 2027 undergraduate closing date in the 30-31 July rows; the application page says
   Friday 31 July.
-- Not found: a 24-hour support line, food support, chaplaincy, a careers office.
+- Not found: a 24-hour support line, a careers office, and how students reach the Harambee Fund.
 - Programmes in the fee schedule but not on the admissions pages: BSc Environmental Management and Toxicology, BSc
   Biotechnology, Nursing Science (phasing out).

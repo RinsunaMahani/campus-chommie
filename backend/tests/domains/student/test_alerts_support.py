@@ -71,7 +71,8 @@ def test_the_allowance_funded_persona_gets_one_combined_alert(client, demo):
     targets = [(a["target"], a["support_kind"]) for a in alert["actions"]]
     assert targets == [("money", None), ("week", None), ("support", "financial_aid"), ("support", "counselling")]
     aid, counselling = alert["actions"][2], alert["actions"][3]
-    assert aid["service"] is None  # SMU's pack has no financial aid office yet: the app opens Support
+    assert aid["service"]["name"] == "Financial Aid Office: fee blocks and financial clearance"
+    assert aid["service"]["contact"].startswith("012 521 4614")
     assert counselling["service"]["name"].startswith("Centre for Student Counselling and Development")
 
 
@@ -170,7 +171,10 @@ def test_cheap_things_near_the_campus(client, me):
     assert get(client, me.headers, "/money/cheap-things")["cheap_things"] == []
     place(client, me, "smu", "ga_rankuwa")
     smu = get(client, me.headers, "/money/cheap-things")
-    assert smu["cheap_things"] == [] and smu["lines"][0].startswith("Nothing near your campus is listed yet")
+    assert [c["name"] for c in smu["cheap_things"]] == [
+        "Wonderboom Nature Reserve: a fig tree over 1 000 years old, and walks on the Magaliesberg",
+        "DITSONG: Tswaing Meteorite Crater",
+    ]
 
 
 @pytest.mark.parametrize("path", ["/alerts?all=1", "/support?campus=hatfield", "/money/cheap-things?university=up"])
