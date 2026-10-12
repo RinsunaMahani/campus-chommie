@@ -26,8 +26,12 @@ Research notes from official documents, read on 9 and 10 Oct 2026 and not yet ch
 - [ ] **SMU calendar, allowance dates and support contacts** (counselling, crisis lines, financial aid, food support,
   tutoring, chaplaincy, health), each from an official source. Crisis contacts must be verified by a person before
   release. In `smu.yaml` since 10 Oct: the 2026 calendar, health, counselling, the referral unit (it refers to
-  tutoring and financial aid) and the 2026 early-payment date. Still missing: the 2027 calendar, a 24-hour line, food
-  support, chaplaincy, a financial aid contact and allowance dates.
+  tutoring and financial aid) and the 2026 early-payment date. Added 11 Oct: the Financial Aid Office, the campus
+  garden (food support) and the Religious Desk (SMU has no chaplaincy office), each from SMU's own pages. Still
+  missing: the 2027 calendar (not published on 12 Oct), a 24-hour line and allowance dates.
+- [ ] **SMU's Harambee Fund** gives struggling students food parcels and sanitary products (SMU news, Oct 2024), but no
+  page says how a student asks for it. If Student Affairs can say, it belongs on Naledi's Support screen beside the
+  garden.
 - [x] **Changes to `smu.yaml`** that the research supports, for the team's OK: `max_choices: 2`; the BSc first-year
   requirements above; MBChB `places: 250`; the other SMU programmes; a considered route from SMU's first year into
   BDS (2 places); and the medicine foundation year's eligibility note, which leaves out SMU's population-group
@@ -59,8 +63,10 @@ Research notes from official documents, read on 9 and 10 Oct 2026 and not yet ch
   four in Pretoria for UP and TUT (the national botanical garden, Freedom Park, the Voortrekker Monument, the
   DITSONG natural history museum) and the Lowveld botanical garden for TUT Mbombela, each priced from its own page.
   Still to do:
-  - **Near SMU (Ga-Rankuwa), and TUT's Soshanguve, Ga-Rankuwa, Polokwane and eMalahleni campuses:** places the
-    team knows are the best start, each with its own page and price.
+  - **Near SMU (Ga-Rankuwa) and TUT's Soshanguve and Ga-Rankuwa campuses:** Wonderboom Nature Reserve (R47) and the
+    Tswaing Meteorite Crater (R60), added 12 Oct, are in northern Tshwane but not in walking distance. Closer places
+    the team knows are still the best start, each with its own page and price.
+  - **TUT Polokwane and eMalahleni:** nothing yet.
   - **Javett-UP, free for UP students:** its site couldn't be reached from our tools, so a person opens the page
     before it goes in.
 - [ ] **Course finder languages:** which 2 or 3, and the fluent reviewers who sign them off in `docs/translation_review.md`.

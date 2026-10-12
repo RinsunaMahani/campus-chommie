@@ -250,8 +250,8 @@ events"); the screen notes are in OPEN_QUESTIONS, "My week's screens":
 
 - **Data packs:** done in #5 (`backend/data/universities/`), with how to apply in #6. A person still has to check
   every value before any pack is released.
-- **Pack sections:** campuses, calendars, money dates and support are in #7; cheap things near UP and TUT in #9
-  (SMU's list waits for places near Ga-Rankuwa).
+- **Pack sections:** campuses, calendars, money dates and support are in #7; cheap things near UP and TUT in #9;
+  SMU's financial aid office, food support, Religious Desk and first two cheap things (northern Tshwane) in #19.
 - **M3 backend:** done in #8 (profile and My money).
 - **M4 backend:** done in #10 (classes, reps, verified events, the week, My marks).
 - **M5 backend:** done in #11 (alerts, support, cheap things, demo accounts).
