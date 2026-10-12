@@ -295,10 +295,29 @@ def test_closing_dates_and_times_as_each_funder_publishes_them(funding):
         assert (first(fid).seen.status, first(fid).seen.checked) == ("closed", date(2026, 10, 11))
 
 
-def test_on_11_october_2026_three_are_open(funding):
+def test_on_11_october_2026_four_are_open(funding):
     found = cards(funding, date(2026, 10, 11))
-    assert [c.funder.id for c in found if c.status in OPEN_NOW] == ["clicks_foundation", "nsfas", "funza_lushaka"]
-    assert counts(found).line == "19 funding options: 3 open now."
+    assert [c.funder.id for c in found if c.status in OPEN_NOW] == ["clicks_foundation", "nsfas", "feenix_fref", "funza_lushaka"]
+    assert counts(found).line == "24 funding options: 4 open now."
+    # Limpopo Public Works' page was read on 12 Oct: from then on it counts as open too.
+    later = cards(funding, date(2026, 10, 12))
+    assert "limpopo_public_works" in [c.funder.id for c in later if c.status in OPEN_NOW]
+
+
+def test_the_funders_added_on_12_october(funding):
+    # s-feenix-fref-2027, s-limpopo-dpw-bursary, s-dffe-bursaries-2027, s-sasol-welcome, s-oldmutual-bursaries
+    def first(fid):
+        return funding.funder(fid).applications.windows[0]
+
+    assert (first("feenix_fref").opens, first("feenix_fref").closes) == (date(2026, 9, 28), date(2026, 12, 31))
+    assert funding.funder("feenix_fref").stages == ["postgraduate"]
+    limpopo = first("limpopo_public_works")
+    assert (limpopo.closes, limpopo.seen.status, limpopo.seen.checked) == (date(2026, 10, 31), "open", date(2026, 10, 12))
+    assert funding.funder("limpopo_public_works").obligations.items[0] == "Work for the department for as many years as it paid for."
+    assert (first("dffe").closes, first("dffe").no_late_applications) == (date(2026, 10, 2), True)
+    assert first("sasol_foundation").seen.status == "closed"
+    assert "Reserved for children of Sasol employees" in funding.funder("sasol_foundation").who_can_apply.items[5]
+    assert (first("old_mutual").opens, first("old_mutual").closes) == (None, date(2026, 6, 30))  # "from April": no day
 
 
 def test_eligibility_is_shown_in_the_funders_words_never_asked(funding):
