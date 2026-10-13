@@ -64,7 +64,8 @@ ever copied from it.**
 ## Campus Chommie's own
 
 - `backend/campus_engine/`, `backend/data/`, `backend/config.yaml`, `backend/scripts/validate_data.py`,
-  `backend/tests/engine/`: the engine starter written for Campus Chommie, added on 9 October 2026.
+  `backend/tests/engine/`: the engine starter written for Campus Chommie, added on 9 October 2026. The map data in
+  `backend/data/maps/` is OpenStreetMap's, under its own licence (below).
 - The graduation-cap mark, app icon and splash, the theme colours, the draft Privacy Policy and Terms of Use, and the
   docs.
 
@@ -74,6 +75,7 @@ ever copied from it.**
 |---|---|---|
 | Plus Jakarta Sans (via `@expo-google-fonts/plus-jakarta-sans`) | SIL Open Font License 1.1 | the app's typeface |
 | Feather icons (via `@expo/vector-icons`) | MIT | icons in the app |
+| OpenStreetMap data: campus outlines, buildings and place names (via the Overpass API) | Open Database License (ODbL) 1.0, © OpenStreetMap contributors; our copy, with the names we add on campus, stays under the ODbL | `backend/data/maps/`, the map API and screen |
 
 Every other library is an ordinary dependency listed in `backend/requirements.txt` and `frontend/mobile/package.json`,
 used under its own licence.

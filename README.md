@@ -19,11 +19,13 @@ backend/
   campus_engine/         the pure Python engine: matching, plans, workload, runway, forecasts, extraction
   data/universities/     one YAML data pack per university (up, tut and smu; _template.yaml for new ones)
   data/national/         funding.yaml: NSFAS, bursaries, merit awards and a loan scheme
+  data/maps/             campus maps from OpenStreetMap (under the ODbL), one file per university
   data/demo/             fictional demo personas
   config.yaml            every engine threshold and weight
   src/                   the Flask API: core/, shared/, domains/<area>/<feature>/, master_scheduler/
   migrations/            Alembic, 0001_baseline to 0006_saved_funding
-  scripts/               validate_data.py (data packs), setup_db.sql and make_env.py (local setup)
+  scripts/               validate_data.py (data packs and maps), fetch_osm_maps.py (campus maps), setup_db.sql and
+                         make_env.py (local setup)
   tests/                 engine/ and architecture/ run without a database; the rest use PostgreSQL
 frontend/mobile/         the Expo app (Android and web): src/app (routes), src/features, src/shared
 docs/                    HANDOVER.md (start here), OPEN_QUESTIONS.md (gaps and decisions), SECURITY.md (threat model
@@ -126,6 +128,25 @@ A learner sends 1 to 9 subjects, each once, with marks from 0 to 100. Subject ke
   in `plan.apply.funding`, once for the whole plan.
 - A page that says "applications are open" or "closed" without dates is recorded as `seen`, with the day we read it.
   "Open" counts for 14 days after that (`backend/config.yaml`), then asks the learner to check.
+
+**Campus maps (no account; nothing stored or asked).** Each campus's outline, its buildings and named places, from
+OpenStreetMap: `backend/data/maps/`, written by `scripts/fetch_osm_maps.py`
+([docs/research/maps.md](docs/research/maps.md)).
+
+| Endpoint | Body | Answer |
+|---|---|---|
+| `GET /universities/<id>/map?campus=` | none | every campus in the pack, in its order, or only the one asked for: `mapped`, its `outline` (rings of `[lat, lon]`), `south_west` and `north_east` to fit the first view, `centre`, `places`, `support`, `lines` and `source_url`; with `attribution`, `attribution_url`, `licence`, `licence_url`, `confirmed` and `notice` |
+
+- Each place has its OpenStreetMap `id` (`w123` a building's shape, `n123` a point), a `name` or `null` (a building
+  without one is drawn as a shape, never guessed), a `kind` for its icon (`academic`, `library`, `admin`,
+  `residence`, `health`, `sport`, `food`, `parking`, `services` or `other`), `centre`, `outline`, and
+  `named_by_team` when a person on campus gave the name.
+- `support` lists the campus's support services whose contact names a building on the map, with that building's
+  id (`place`), so the Support screen can offer "Show on map".
+- A campus with no map yet comes with `mapped: false` and a line that says so.
+- The data is © OpenStreetMap contributors, under the Open Database License: the map shows `attribution` linked to
+  `attribution_url`, and the app names the licence (`licence`, `licence_url`). Our copy stays under the ODbL.
+- The route takes no location, and refuses one.
 
 **Saved funding (signed in; owner-only):**
 
@@ -242,7 +263,7 @@ the backend is hosted. It holds the app as it was when built: build again to sha
 cd backend
 python -m pytest -q tests                                        # all backend tests (needs the database)
 python -m pytest -q tests/engine tests/architecture --cov=campus_engine --cov-fail-under=80   # no database
-python scripts/validate_data.py                                  # data packs: errors fail, warnings list gaps
+python scripts/validate_data.py                                  # packs, funding and maps: errors fail, warnings list gaps
 
 cd frontend/mobile
 npx tsc --noEmit && npx jest && npx expo lint
