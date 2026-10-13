@@ -29,6 +29,10 @@ export const colors = {
   iconTile: '#F1EFF8',
   infoTint: '#F1EFF8',
   overlay: 'rgba(30, 27, 75, 0.5)',
+  // On the violet band at the top of a screen (white is at least 6:1 on it)
+  onAccent: '#FFFFFF',
+  onAccentSoft: 'rgba(255, 255, 255, 0.86)',
+  onAccentTint: 'rgba(255, 255, 255, 0.18)',
 } as const;
 
 export const fonts = {
@@ -53,7 +57,7 @@ export const brand = {
 
 export const space = { xs: 4, sm: 8, md: 12, lg: 16, xl: 24, xxl: 32 } as const;
 
-export const radius = { sm: 10, md: 14, lg: 18, pill: 999 } as const;
+export const radius = { sm: 10, md: 14, lg: 18, xl: 24, pill: 999 } as const;
 
 // Big targets: buttons 52 px high, inputs 50.
 export const sizes = { button: 52, input: 50, iconButton: 36, tile: 40 } as const;
