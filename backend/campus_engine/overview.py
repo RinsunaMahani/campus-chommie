@@ -50,14 +50,15 @@ def _own_tables(rule: PointsRule) -> str | None:
     """Which subjects count on a table of their own here, or points from the percentage, said once."""
     if rule.percent_points:
         p = rule.percent_points
-        per = f"Each subject scores {p.per_percent * 100:g} points for every 100%"
-        return per + (f", and nothing under {p.from_percent}%." if p.from_percent else ".")
+        share = {1: "its percentage", 0.1: "a tenth of its percentage"}.get(p.per_percent, f"{p.per_percent:g} times its percentage")
+        return f"Each subject scores {share}" + (f", and nothing under {p.from_percent}%." if p.from_percent else ".")
     names = [s.replace("_", " ").title() if s != LIFE_ORIENTATION else "Life Orientation" for s in rule.subject_points]
     if not names:
         return None
+    others = " Every other subject counts on a general points table." if rule.other_points else ""
     if len(names) == 1:
-        return f"{names[0]} counts on its own points table here."
-    return f"{join(names)} count on their own points tables here."
+        return f"{names[0]} counts on its own points table here.{others}"
+    return f"{join(names)} count on their own points tables here.{others}"
 
 
 def _summary(tiers: dict[str, int]) -> str:
@@ -84,7 +85,7 @@ def university_points(uni: University, marks: dict[str, float]) -> UniversityPoi
     out = UniversityPoints(uni.university, uni.name, None, tiers=tiers, summary=_summary(tiers))
     rule = uni.points_rules
     if rule is None:
-        out.lines = ["We don't have this university's points rule yet."]
+        out.lines = ["We don't have this university's points rule yet."] + ([uni.points_note] if uni.points_note else [])
         return out
     result = compute_points(marks, rule)
     source = uni.source(rule.source)

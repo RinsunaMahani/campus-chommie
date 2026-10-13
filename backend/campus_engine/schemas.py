@@ -149,6 +149,8 @@ class PointsRule(_Strict):
     # A subject's own points, where the university gives it a table of its own (Wits adds 2 for English
     # and Mathematics from 60%; its Life Orientation table tops out at 4). Others add their level.
     subject_points: dict[str, list[PointsBand]] = Field(default_factory=dict)
+    # Every other subject's points, where the university gives them a table too (UWC: 8 at 90%, nothing under 20%).
+    other_points: list[PointsBand] = Field(default_factory=list)
     # Set when a subject's points come straight from its percentage instead of its level.
     percent_points: PercentPoints | None = None
 
@@ -156,8 +158,11 @@ class PointsRule(_Strict):
     def _scale_starts_at_zero(self):
         if not any(band.min_percent == 0 for band in self.scale):
             raise ValueError("points scale must include a band starting at 0%")
-        for subject, table in self.subject_points.items():
-            if subject not in SUBJECTS:
+        tables = dict(self.subject_points)
+        if self.other_points:
+            tables["other subjects"] = self.other_points
+        for subject, table in tables.items():
+            if subject not in SUBJECTS and subject != "other subjects":
                 raise ValueError(f"subject_points names unknown subject '{subject}'")
             if not any(band.min_percent == 0 for band in table):
                 raise ValueError(f"{subject}'s points table must include a band starting at 0%")
@@ -472,6 +477,8 @@ class University(_Strict):
     release: bool = False
     max_choices: int | None = None
     points_rules: PointsRule | None = None
+    # Why there's no points rule, when there isn't one: shown to the learner instead of a number.
+    points_note: str | None = None
     applications: Applications | None = None  # None: not verified yet
     campuses: list[Campus] = Field(default_factory=list)
     calendar: list[CalendarEntry] = Field(default_factory=list)

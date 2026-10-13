@@ -37,7 +37,7 @@ def subject_points(subject: str, percent: float, level: int, rule: PointsRule) -
     """What one subject is worth at this university: its own table's points where the university
     gives one; points from the percentage where the university counts that way; otherwise its level
     (none below the rule's lowest counted level)."""
-    table = rule.subject_points.get(subject)
+    table = rule.subject_points.get(subject) or rule.other_points
     if table:
         return next(b.points for b in sorted(table, key=lambda b: b.min_percent, reverse=True) if percent >= b.min_percent)
     if rule.percent_points:
