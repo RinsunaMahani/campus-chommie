@@ -1,0 +1,120 @@
+{
+ "data": {
+  "modules": [
+   {
+    "assessments": [
+     {
+      "id": "531b9902-e6bb-4b8c-8913-b56f9a5cb891",
+      "mark": 72.0,
+      "name": "Assignment 1",
+      "weight": 10.0
+     },
+     {
+      "id": "bb924ce5-874b-4073-9dd1-8845d3e7caab",
+      "mark": 68.0,
+      "name": "Test 1",
+      "weight": 20.0
+     },
+     {
+      "id": "cd785296-1d6e-4682-8c27-615169b353ba",
+      "mark": null,
+      "name": "Assignment 2",
+      "weight": 10.0
+     },
+     {
+      "id": "3e6c9449-a3f4-4205-a2a8-26400329e8f4",
+      "mark": null,
+      "name": "Practical 3",
+      "weight": 10.0
+     },
+     {
+      "id": "beb614d6-c4df-4402-8a82-e558e1d8a0ed",
+      "mark": null,
+      "name": "Exam",
+      "weight": 50.0
+     }
+    ],
+    "code": "INF271",
+    "id": "f478c417-b12d-4c0b-9b2c-f972d7eddd96",
+    "lines": [
+     "You need an average of 63.1% on the remaining 70% of the mark to reach 65%.",
+     "If the rest goes like your results so far, you'd finish around 69% (likely 68% to 71%). On track for your 65% target."
+    ],
+    "name": "Information Systems",
+    "projection": {
+     "based_on": 2,
+     "below_target": false,
+     "high": 70.7,
+     "low": 67.9,
+     "message": "If the rest goes like your results so far, you'd finish around 69% (likely 68% to 71%). On track for your 65% target.",
+     "projected": 69.3
+    },
+    "standing": {
+     "completed_weight": 30.0,
+     "current": 69.3,
+     "message": "You need an average of 63.1% on the remaining 70% of the mark to reach 65%.",
+     "needed": 63.1,
+     "remaining_weight": 70.0,
+     "status": "possible"
+    },
+    "target": 65.0,
+    "total_weight": 100.0
+   },
+   {
+    "assessments": [
+     {
+      "id": "9712471d-fcb0-4cd6-8cae-ba9e3b9f6e78",
+      "mark": 58.0,
+      "name": "Test 1",
+      "weight": 25.0
+     },
+     {
+      "id": "8a338c8d-d378-472c-9d33-a2e7ecd31ca8",
+      "mark": 80.0,
+      "name": "Quiz 1",
+      "weight": 5.0
+     },
+     {
+      "id": "35121c71-e9d6-4655-8d21-c56183ed78d3",
+      "mark": null,
+      "name": "Test 2",
+      "weight": 20.0
+     },
+     {
+      "id": "8847393d-2b7f-4d0b-b443-08df7b08d18f",
+      "mark": null,
+      "name": "Exam",
+      "weight": 50.0
+     }
+    ],
+    "code": "STK210",
+    "id": "2851720d-0cd3-400a-a478-de4cf9f1157f",
+    "lines": [
+     "You need an average of 52.1% on the remaining 70% of the mark to reach 55%.",
+     "If the rest goes like your results so far, you'd finish around 62% (likely 54% to 69%). On track for your 55% target."
+    ],
+    "name": "Statistics",
+    "projection": {
+     "based_on": 2,
+     "below_target": false,
+     "high": 69.4,
+     "low": 54.0,
+     "message": "If the rest goes like your results so far, you'd finish around 62% (likely 54% to 69%). On track for your 55% target.",
+     "projected": 61.7
+    },
+    "standing": {
+     "completed_weight": 30.0,
+     "current": 61.7,
+     "message": "You need an average of 52.1% on the remaining 70% of the mark to reach 55%.",
+     "needed": 52.1,
+     "remaining_weight": 70.0,
+     "status": "possible"
+    },
+    "target": 55.0,
+    "total_weight": 100.0
+   }
+  ]
+ },
+ "message": "Success",
+ "success": true
+}

@@ -1,0 +1,49 @@
+{
+ "data": {
+  "candidates": [
+   {
+    "changes_event": null,
+    "class_id": "1c6c85cb-1f61-43f1-9d84-4ef23db1b61d",
+    "confidence": {
+     "at": 0.9,
+     "kind": 0.9,
+     "module": 0.95,
+     "on": 0.7,
+     "venue": 0.85
+    },
+    "confirmable": true,
+    "from_rep": false,
+    "id": "0766d3ae-9bb0-44ec-9478-03c32e82629a",
+    "lines": [
+     "We read this as: Quiz 5 for BCH111 on Fri 16 Oct 2026 at 10:00, Lab C3."
+    ],
+    "needs_check": [],
+    "proposed": {
+     "at": "10:00",
+     "change": null,
+     "event_id": null,
+     "kind": "quiz",
+     "on": "2026-10-16",
+     "title": "Quiz 5",
+     "venue": "Lab C3",
+     "weighting": null
+    },
+    "read_as": {
+     "at": "10:00",
+     "change": null,
+     "kind": "quiz",
+     "module": "BCH111",
+     "on": "2026-10-16",
+     "title": "Quiz 5",
+     "venue": "Lab C3",
+     "weighting": null
+    },
+    "sent_on": "2026-10-13",
+    "text": "Hi all, BCH111 quiz 5 is on Friday at 10:00 in Lab C3",
+    "yours": false
+   }
+  ]
+ },
+ "message": "Success",
+ "success": true
+}
