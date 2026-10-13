@@ -101,6 +101,8 @@ can't change their password; `GET /me` says `demo: true`, and the app shows "Dem
 
 A learner sends 1 to 9 subjects, each once, with marks from 0 to 100. Subject keys are those in
 `campus_engine/schemas.py` (`SUBJECTS`) plus `another_subject_1` to `another_subject_3` for subjects no rule names.
+The app's picker offers every subject on the DBE's Grade 10 to 12 list and sends each under one of these keys
+([docs/research/nsc-subjects.md](docs/research/nsc-subjects.md)).
 
 **How to apply**, on today's date in South Africa (`campus_engine/applications.py`):
 - Each slot in a plan has `apply`: one entry per intake (next year's and the year after, plus this year's while a

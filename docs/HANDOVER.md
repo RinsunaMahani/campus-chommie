@@ -14,7 +14,7 @@ repo folder but is kept out of git; the parts the screens need are quoted below.
 
 ## Where things stand
 
-`main` holds only the empty first commit. All work sits in twenty-six stacked pull requests:
+`main` holds only the empty first commit. All work sits in twenty-seven stacked pull requests:
 
 | PR | Branch | What |
 |---|---|---|
@@ -27,6 +27,7 @@ repo folder but is kept out of git; the parts the screens need are quoted below.
 | #7 | `rinsuna/m1-after-acceptance` | your points at every university; campuses, calendars, money dates and support in the packs; first steps from acceptance to the first lecture |
 | #8 | `rinsuna/m3-profile-and-money` | M3's backend: the student's profile (university and campus) and My money (settings, income, expected payments, spending, summary) |
 | #9 | `rinsuna/m1-cheap-things` | cheap things to do near campus, each priced from the place's own page |
+| #27 | `rinsuna/subject-picker` | Find my course's subject picker: every subject on the DBE's Grade 10 to 12 list in folders (languages, mathematics, sciences and so on), ticked in one go with every language by name; the best-marked language besides English goes as the other official language and the results say which; Jest tests for the picker and how marks reach the API |
 | #26 | `rinsuna/alerts-support-screens` | M5: Home's alerts (each action opening its screen) and updates with their switches; the Support tab (crisis lines held back until checked); cheap things nearby; "Delete my account and data" for real; Jest tests for alerts and support. The brief's judge flow runs end to end |
 | #25 | `rinsuna/week-screens` | M4: the Week tab (eight weeks, each load in words with its reason) and a week (events, flags, the university calendar); classes (start, join, invite and rep codes), the rep panel and confirming class messages; My marks; Jest tests for the week strip, the rep panel, confirming and marks |
 | #24 | `rinsuna/money-screens` | M3: onboarding (privacy notice, then university and campus) and the My money screens (the Money tab with runway, safe to spend, life fund and "two weeks late"; balance and budget, money coming in, expected payments, spending); the demo banner; Jest tests for the runway card and the life fund |
@@ -51,7 +52,7 @@ new-phone code, and #13 deletes accounts.
 
 **How to merge:**
 - Each PR targets the branch below it, so its diff shows only its own work.
-- Merge in order: #1 into `main`, then #2 to #26, retargeting each to `main` once the one below has merged.
+- Merge in order: #1 into `main`, then #2 to #27, retargeting each to `main` once the one below has merged.
 - Use **Create a merge commit**, not squash or rebase, so every commit stays in `main`'s history (CLAUDE.md: never
   rewrite history).
 
@@ -141,7 +142,7 @@ Everything is recorded, with who and when, in [OPEN_QUESTIONS.md](OPEN_QUESTIONS
 ## Next build: the app screens, M2 to M5
 
 The screens were Mandla's; since 13 Oct they're ours. The brief gives M2 Wed 14 to Thu 15 Oct, M3 Fri 16 to Sat 17,
-M4 Sun 18 to Mon 19 and M5 Tue 20 to Wed 21. M2 to M5 are built (#23 to #26, 13 Oct), and the judge flow runs end to end. Next: hosting (Azure for Students, once Rinsuna activates it), a preview APK on the hosted API, polish (the plan screen is long), and M6 from Fri 23 Oct.
+M4 Sun 18 to Mon 19 and M5 Tue 20 to Wed 21. M2 to M5 are built (#23 to #26, 13 Oct), and the judge flow runs end to end. #27 (13 Oct) replaces the marks screen's one-subject-at-a-time rows with a picker in folders. Next: hosting (Azure for Students, once Rinsuna activates it), a preview APK on the hosted API, polish (the plan screen is long), and M6 from Fri 23 Oct.
 
 **M2, the Find my course screens.** From the brief: "University, then marks (add or remove rows, up to 9), then tier
 cards, then the three-choice plan and sources. Add i18n plumbing with English only visible. Acceptance: works at 360
@@ -219,8 +220,9 @@ events"); the screen notes are in OPEN_QUESTIONS, "My week's screens":
   - `tier` is one of `reach`, `meets_minimum`, `competitive`, `not_yet`, `unverified`.
 - **Unchecked data:** when `confirmed` is false, show `notice` ("Not yet confirmed by the team.") with the university
   and on each card.
-- **Subjects:** offer the keys in `SUBJECTS` (`backend/campus_engine/schemas.py`), each with a display name the app
-  owns, plus up to three "Another subject" rows (`another_subject_1` to `another_subject_3`).
+- **Subjects:** the API takes the keys in `SUBJECTS` (`backend/campus_engine/schemas.py`) plus up to three
+  points-only `another_subject_1` to `another_subject_3`. Since #27 the picker offers every subject on the DBE's
+  list, in folders, and sends each under one of those keys ([research/nsc-subjects.md](research/nsc-subjects.md)).
 - **Repeats:** the API refuses a repeated subject (422). Keep the last mark, show the `duplicate` text and send each
   subject once.
 - **Nothing stored:**

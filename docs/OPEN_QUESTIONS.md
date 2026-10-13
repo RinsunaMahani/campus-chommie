@@ -155,6 +155,21 @@ per intake (the year a learner would start), with programmes that close on their
 university names without saying which programme closes when, a late window or "no late applications", the fee in
 cents, documents and next steps, each with its source. `funding.yaml` holds national funders the same way.
 
+## Subjects in Find my course
+
+The picker offers every subject on the DBE's Grade 10 to 12 list, in folders ([research/nsc-subjects.md](research/nsc-subjects.md)).
+**Decided** by Rinsuna on 13 Oct 2026: of several official languages besides English, the best-marked counts as the
+other official language, and the results say which; second additional languages count towards points only.
+
+- [ ] **Home and first additional level share one key.** `english` and `other_language` each cover both levels, so a
+  programme that sets a different minimum for each (TUT's BEd in Foundation Phase Teaching: a home language at 5 and
+  a first additional language at 4) keeps `requirements: null`. Should the schema hold the level?
+- [ ] **Technical-school versions.** The DBE also lists Technical: Civil, Electrical and Mechanical Technology. The
+  picker offers one entry for each subject, sent under the key the rules use. Nobody has checked whether the
+  universities treat the two versions alike.
+- [ ] **Subjects outside the DBE's list** (for example ones only an independent examining body offers) have no
+  place in the picker yet. Rinsuna to decide whether to add them as points-only subjects, each from its own source.
+
 ## Reading class announcements
 
 - [ ] **Afrikaans words the engine reads** (added by Rinsuna's agent, 10 Oct 2026; a fluent speaker to check): toets,
@@ -194,9 +209,9 @@ cents, documents and next steps, each with its source. `funding.yaml` holds nati
 - [x] **Packs nobody has checked yet** are served, each labelled "Not yet confirmed by the team", so the demo works
   (Rinsuna, 9 Oct 2026). Whether production hides them can wait.
 - [x] **Subjects a learner enters in the course finder:** the subjects admission rules name, plus up to three
-  "another subject" rows that count towards points only; anything else is refused (Rinsuna, 9 Oct 2026). The M2
-  marks screen offers these; see README, "Course finder". The API refuses a repeated subject, so the app keeps the
-  last mark, says so (the engine's `duplicate` text), and sends each subject once.
+  "another subject" rows that count towards points only; anything else is refused (Rinsuna, 9 Oct 2026). Since #27
+  the marks screen's picker offers every subject on the DBE's list and sends each under one of these keys (see
+  "Subjects in Find my course"). The API refuses a repeated subject, so the app sends each subject once.
 
 - [x] **F6 "Fund and apply"** (agreed by Rinsuna on 9 Oct 2026 for M1; in scope since 13 Oct, when she became the
   whole team). The challenge asks us to
