@@ -1,0 +1,111 @@
+{
+ "data": {
+  "campus": "ga_rankuwa",
+  "campus_name": "Ga-Rankuwa (Molotlegi Street)",
+  "kinds": [
+   {
+    "kind": "counselling",
+    "line": null,
+    "services": [
+     {
+      "contact": "012 521 3786; administrator 012 521 4225",
+      "hours": "Mon-Fri 08:00-12:00 and 13:00-16:00",
+      "last_verified": null,
+      "name": "Centre for Student Counselling and Development: relationships, careers, stress, anger and grief; help for first-years settling in",
+      "note": null,
+      "read_on": "2026-10-09",
+      "source_url": "https://www.smu.ac.za/students/student-affairs/centre-for-student-counselling-and-development/"
+     },
+     {
+      "contact": "012 521 3805; Clinpath Building, room 3L003",
+      "hours": null,
+      "last_verified": null,
+      "name": "Student Support Referral Unit: life coaching, and referrals to the social worker, counselling, the clinical psychologist, teaching and learning support, Campus Health and Financial Aid (free for registered students)",
+      "note": null,
+      "read_on": "2026-10-09",
+      "source_url": "https://www.smu.ac.za/students/campus-affairs/student-life-smu/student-support-referral-unit/"
+     }
+    ]
+   },
+   {
+    "kind": "crisis",
+    "line": "Crisis numbers show here once a person on our team has checked them with the university.",
+    "services": []
+   },
+   {
+    "kind": "financial_aid",
+    "line": null,
+    "services": [
+     {
+      "contact": "012 521 4614 / 4500 / 4317; financialaid@smu.ac.za",
+      "hours": null,
+      "last_verified": null,
+      "name": "Financial Aid Office: fee blocks and financial clearance",
+      "note": null,
+      "read_on": "2026-10-11",
+      "source_url": "https://www.smu.ac.za/students/apply/registrations/registration-guidelines/"
+     }
+    ]
+   },
+   {
+    "kind": "food_support",
+    "line": null,
+    "services": [
+     {
+      "contact": "On campus; SMU names horticulturist Mpho Mmako as the project's representative",
+      "hours": null,
+      "last_verified": null,
+      "name": "SMU Community Garden: fresh vegetables for students in need (more than 15 a week, SMU said in March 2026)",
+      "note": "SMU doesn't publish how students ask for vegetables.",
+      "read_on": "2026-10-11",
+      "source_url": "https://www.smu.ac.za/2026/03/11/smu-garden-named-shoprite-competition-finalist/"
+     }
+    ]
+   },
+   {
+    "kind": "tutoring",
+    "line": "Not verified yet",
+    "services": []
+   },
+   {
+    "kind": "chaplaincy",
+    "line": null,
+    "services": [
+     {
+      "contact": "012 521 5836 or 012 521 5835; Natural Science Building, ground floor",
+      "hours": "Mon-Fri 07:30-16:00",
+      "last_verified": null,
+      "name": "Religious Desk (Student Life and Governance): the umbrella body of the student church structures, from Orthodox to contemporary",
+      "note": "SMU has no chaplaincy office: this is the closest.",
+      "read_on": "2026-10-11",
+      "source_url": "https://www.smu.ac.za/students/student-affairs/student-life-and-governance/"
+     }
+    ]
+   },
+   {
+    "kind": "health",
+    "line": null,
+    "services": [
+     {
+      "contact": "012 521 5735",
+      "hours": "Mon-Fri 08:00-16:00",
+      "last_verified": null,
+      "name": "Campus Health and Wellness Centre: minor ailments, first aid, Hepatitis B vaccination, HIV counselling, testing and management, peer health education (free)",
+      "note": null,
+      "read_on": "2026-10-09",
+      "source_url": "https://www.smu.ac.za/students/student-affairs/campus-health-and-wellness/"
+     }
+    ]
+   }
+  ],
+  "lines": [],
+  "university": {
+   "confirmed": false,
+   "id": "smu",
+   "name": "Sefako Makgatho Health Sciences University",
+   "notice": "Not yet confirmed by the team."
+  }
+ },
+ "message": "Success",
+ "success": true
+}
