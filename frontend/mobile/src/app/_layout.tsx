@@ -59,8 +59,9 @@ function RootNavigator() {
         <Stack.Protected guard={status === 'active'}>
           <Stack.Screen name="(app)" />
         </Stack.Protected>
-        {/* Legal pages are reachable from every stage. */}
+        {/* Legal pages and the course finder are reachable from every stage. */}
         <Stack.Screen name="(legal)" />
+        <Stack.Screen name="course-finder" />
       </Stack>
     </>
   );
