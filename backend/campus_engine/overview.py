@@ -9,9 +9,9 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 
 from .matching import COMPETITIVE, MEETS_MINIMUM, REACH, TIER_RANK, UNVERIFIED, assess_all
-from .points import LIFE_ORIENTATION, PointsResult, compute_points, points_for
+from .points import LIFE_ORIENTATION, PointsResult, compute_points
 from .schemas import PointsRule, University
-from .text import plural
+from .text import join, plural
 
 
 @dataclass
@@ -46,6 +46,20 @@ def _how(rule: PointsRule) -> str:
     return f"Counts {n} subjects: Life Orientation and your best {n - 1} others."
 
 
+def _own_tables(rule: PointsRule) -> str | None:
+    """Which subjects count on a table of their own here, or points from the percentage, said once."""
+    if rule.percent_points:
+        p = rule.percent_points
+        per = f"Each subject scores {p.per_percent * 100:g} points for every 100%"
+        return per + (f", and nothing under {p.from_percent}%." if p.from_percent else ".")
+    names = [s.replace("_", " ").title() if s != LIFE_ORIENTATION else "Life Orientation" for s in rule.subject_points]
+    if not names:
+        return None
+    if len(names) == 1:
+        return f"{names[0]} counts on its own points table here."
+    return f"{join(names)} count on their own points tables here."
+
+
 def _summary(tiers: dict[str, int]) -> str:
     """A Reach programme's minimum is met too: it adds competitive selection on top."""
     total = sum(tiers.values())
@@ -75,26 +89,21 @@ def university_points(uni: University, marks: dict[str, float]) -> UniversityPoi
     result = compute_points(marks, rule)
     source = uni.source(rule.source)
     out.points, out.counted = result.total, result.counted
-    out.subjects = _subjects(result, rule)
+    out.subjects = _subjects(result)
     out.source_url = source.url if source else None
     # The rule line already says how Life Orientation counts.
-    out.lines = [_how(rule)] + [n for n in result.notes if not n.startswith("Life Orientation")]
+    out.lines = [_how(rule)] + [line for line in [_own_tables(rule)] if line] + [
+        n for n in result.notes if not n.startswith("Life Orientation")
+    ]
     if any(p.points_rules for p in uni.programmes):
         out.lines.append("Some programmes count points their own way: their cards show those points.")
     return out
 
 
-def _subjects(result: PointsResult, rule: PointsRule) -> list[SubjectPoints]:
+def _subjects(result: PointsResult) -> list[SubjectPoints]:
     """Each subject's level and what it adds, in the order the learner gave them: together they
     make the total."""
-    out = []
-    for subject, level in result.levels.items():
-        counted = subject in result.counted
-        points = float(points_for(level, rule)) if counted else 0.0
-        if counted and subject == LIFE_ORIENTATION and rule.life_orientation == "half":
-            points /= 2
-        out.append(SubjectPoints(subject, level, points, counted))
-    return out
+    return [SubjectPoints(s, level, result.adds[s], s in result.counted) for s, level in result.levels.items()]
 
 
 def points_everywhere(catalogue: dict[str, University], marks: dict[str, float]) -> list[UniversityPoints]:

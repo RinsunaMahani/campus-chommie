@@ -121,6 +121,20 @@ class ScaleBand(_Strict):
     level: int = Field(ge=1, le=8)
 
 
+class PointsBand(_Strict):
+    """From this percentage up, a subject adds these points (a university's own table)."""
+
+    min_percent: int = Field(ge=0, le=100)
+    points: float = Field(ge=0, le=20)
+
+
+class PercentPoints(_Strict):
+    """Points straight from the percentage: UNIVEN scores 75% as 7.5 and nothing under 40%."""
+
+    per_percent: float = Field(gt=0, le=1)
+    from_percent: int = Field(default=0, ge=0, le=100)
+
+
 class PointsRule(_Strict):
     """How one university turns school marks into points."""
 
@@ -132,11 +146,23 @@ class PointsRule(_Strict):
     # Shown with every result counted this way, e.g. when a rule rests on an assumption.
     note: str | None = None
     scale: list[ScaleBand]
+    # A subject's own points, where the university gives it a table of its own (Wits adds 2 for English
+    # and Mathematics from 60%; its Life Orientation table tops out at 4). Others add their level.
+    subject_points: dict[str, list[PointsBand]] = Field(default_factory=dict)
+    # Set when a subject's points come straight from its percentage instead of its level.
+    percent_points: PercentPoints | None = None
 
     @model_validator(mode="after")
     def _scale_starts_at_zero(self):
         if not any(band.min_percent == 0 for band in self.scale):
             raise ValueError("points scale must include a band starting at 0%")
+        for subject, table in self.subject_points.items():
+            if subject not in SUBJECTS:
+                raise ValueError(f"subject_points names unknown subject '{subject}'")
+            if not any(band.min_percent == 0 for band in table):
+                raise ValueError(f"{subject}'s points table must include a band starting at 0%")
+            if len({band.min_percent for band in table}) != len(table):
+                raise ValueError(f"{subject}'s points table repeats a percentage")
         return self
 
 
