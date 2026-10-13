@@ -155,6 +155,22 @@ per intake (the year a learner would start), with programmes that close on their
 university names without saying which programme closes when, a late window or "no late applications", the fee in
 cents, documents and next steps, each with its source. `funding.yaml` holds national funders the same way.
 
+## All 26 universities
+
+Every public university now has a pack (#30, 13 Oct 2026, [research/universities.md](research/universities.md)):
+its points rule where it publishes one the engine can follow, and how and when to apply. Programmes are still only
+at UP, TUT and SMU. All are agent drafts.
+
+- [ ] **Check the 23 new packs** against their sources, in a browser: UJ, UKZN, DUT and CPUT were read through a
+  search engine's copy (bot checks, an unreachable site, expired or broken certificates).
+- [ ] **No points rule yet** at DUT, MUT, CUT, SPU, CPUT and Fort Hare (not published, or not readable in full), and
+  none possible at UCT and Stellenbosch (a Faculty Points Score; averages). Each says why in the app.
+- [ ] **Where the engine is close but not exact** (each pack's `note` says so): UMP, UWC, UFS, UKZN, NMU and WSU
+  always count certain subjects; the engine counts the best ones, which is the same for a learner with seven
+  subjects. NMU's 7 points for quintile 1 to 3 schools and SPU's home-language bonus need questions we don't ask.
+- [ ] **Two closing dates** at VUT (30 Sep and 30 Oct 2026): both kept until VUT says which.
+- [ ] **Which universities get programmes next?** Rinsuna to choose.
+
 ## Subjects in Find my course
 
 The picker offers every subject on the DBE's Grade 10 to 12 list, in folders ([research/nsc-subjects.md](research/nsc-subjects.md)).

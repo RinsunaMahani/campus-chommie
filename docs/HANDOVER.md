@@ -14,7 +14,7 @@ repo folder but is kept out of git; the parts the screens need are quoted below.
 
 ## Where things stand
 
-`main` holds only the empty first commit. All work sits in twenty-nine stacked pull requests:
+`main` holds only the empty first commit. All work sits in thirty stacked pull requests:
 
 | PR | Branch | What |
 |---|---|---|
@@ -27,6 +27,7 @@ repo folder but is kept out of git; the parts the screens need are quoted below.
 | #7 | `rinsuna/m1-after-acceptance` | your points at every university; campuses, calendars, money dates and support in the packs; first steps from acceptance to the first lecture |
 | #8 | `rinsuna/m3-profile-and-money` | M3's backend: the student's profile (university and campus) and My money (settings, income, expected payments, spending, summary) |
 | #9 | `rinsuna/m1-cheap-things` | cheap things to do near campus, each priced from the place's own page |
+| #30 | `rinsuna/all-universities` | all 26 public universities: each one's points rule where it publishes one the engine can follow, and how and when to apply (dates, fee, link, choices), from its own pages; agent drafts; two new ways of counting (a subject's own table, points from the percentage) and a general table; a university without a rule says why |
 | #29 | `rinsuna/qualify-first` | Find my course marks first: your marks, then where you qualify (every university with your points there and how many programmes you meet, funding open now), then one university (points card opening per subject, courses and how to apply on sliding tabs), then the plan; a violet header and movement from the HTML Rinsuna chose (press, shimmer, sliding tabs, swipe rows, opening sections), in the app's own colours; the points answer gives each subject's points, and the assess answer how to apply there |
 | #28 | `rinsuna/apply-preview` | "What you can still do now" at the top of the plan (open now, coming up, not published, closed), from the plan's own dates; a test date for previews only (`CAMPUS_PREVIEW_TODAY`, which production refuses), which the plan says it's using; tests for both |
 | #27 | `rinsuna/subject-picker` | Find my course's subject picker: every subject on the DBE's Grade 10 to 12 list in folders (languages, mathematics, sciences and so on), ticked in one go with every language by name; the best-marked language besides English goes as the other official language and the results say which; Jest tests for the picker and how marks reach the API |
@@ -54,7 +55,7 @@ new-phone code, and #13 deletes accounts.
 
 **How to merge:**
 - Each PR targets the branch below it, so its diff shows only its own work.
-- Merge in order: #1 into `main`, then #2 to #29, retargeting each to `main` once the one below has merged.
+- Merge in order: #1 into `main`, then #2 to #30, retargeting each to `main` once the one below has merged.
 - Use **Create a merge commit**, not squash or rebase, so every commit stays in `main`'s history (CLAUDE.md: never
   rewrite history).
 
@@ -144,7 +145,7 @@ Everything is recorded, with who and when, in [OPEN_QUESTIONS.md](OPEN_QUESTIONS
 ## Next build: the app screens, M2 to M5
 
 The screens were Mandla's; since 13 Oct they're ours. The brief gives M2 Wed 14 to Thu 15 Oct, M3 Fri 16 to Sat 17,
-M4 Sun 18 to Mon 19 and M5 Tue 20 to Wed 21. M2 to M5 are built (#23 to #26, 13 Oct), and the judge flow runs end to end. #27 (13 Oct) replaces the marks screen's one-subject-at-a-time rows with a picker in folders, #28 puts what a learner can still do at the top of the plan, and #29 puts the marks first. Next: hosting (Azure for Students, once Rinsuna activates it), a preview APK on the hosted API, polish (the plan screen is long), and M6 from Fri 23 Oct.
+M4 Sun 18 to Mon 19 and M5 Tue 20 to Wed 21. M2 to M5 are built (#23 to #26, 13 Oct), and the judge flow runs end to end. #27 (13 Oct) replaces the marks screen's one-subject-at-a-time rows with a picker in folders, #28 puts what a learner can still do at the top of the plan, #29 puts the marks first, and #30 covers all 26 universities. Next: hosting (Azure for Students, once Rinsuna activates it), a preview APK on the hosted API, polish (the plan screen is long), and M6 from Fri 23 Oct.
 
 **M2, the Find my course screens.** From the brief: "University, then marks (add or remove rows, up to 9), then tier
 cards, then the three-choice plan and sources. Add i18n plumbing with English only visible. Acceptance: works at 360
