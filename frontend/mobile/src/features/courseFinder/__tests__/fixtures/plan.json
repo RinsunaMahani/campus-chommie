@@ -1,0 +1,1550 @@
+{
+ "data": {
+  "plan": {
+   "apply": {
+    "deadlines": [
+     {
+      "date": "2026-10-31",
+      "days": 18,
+      "intake": 2027,
+      "programme": null,
+      "source_url": "https://nsfas.org.za/content/how-to-apply.html",
+      "text": "NSFAS: applications for 2027 funding close at 23:59.",
+      "who": "nsfas"
+     }
+    ],
+    "funding": [
+     {
+      "after": [
+       {
+        "source_url": "https://www.nsfas.org.za/content/",
+        "text": "Save your reference number, then follow your status in the tracker on myNSFAS."
+       },
+       {
+        "source_url": "https://www.nsfas.org.za/content/",
+        "text": "You have 30 working days to answer any request for more information."
+       },
+       {
+        "source_url": "https://nsfas.org.za/content/how-to-apply.html",
+        "text": "If your application is unsuccessful, myNSFAS shows the reason, and you can appeal within the appeal window."
+       },
+       {
+        "source_url": "https://nsfas.org.za/content/how-to-apply.html",
+        "text": "If NSFAS finds you eligible, your funding is confirmed once you register at a public university or TVET college."
+       }
+      ],
+      "confirmed": false,
+      "contact": "Toll-free 08000 67327, USSD *134*67327#, info@nsfas.org.za",
+      "documents": {
+       "items": [
+        "Your South African ID or birth certificate (a smart ID card: both sides)",
+        "The NSFAS 2027 consent form, signed by hand in black ink by you and by every parent, legal guardian or spouse on your application",
+        "If you're 34 or younger: the NSFAS declaration form, which confirms your parent or guardian details",
+        "If a parent, legal guardian or spouse earns an income: payslips for the last three months, a UIF statement, or an affidavit if the income is informal",
+        "If someone in your household gets a SASSA grant: nothing extra, because NSFAS checks with SASSA",
+        "If you have a disability: the disability annexure, completed and signed with a medical practitioner, in one file with your medical report",
+        "If you're under 18 and an orphan or a vulnerable child: the orphan or vulnerable child declaration, completed by a social worker",
+        "If a parent or guardian has died: a death certificate for each",
+        "If your parents are divorced or separated: the divorce decree, or the settlement agreement showing maintenance",
+        "If you're married, or a spouse signs for you: your marriage certificate and your spouse's ID",
+        "If you live with a legal guardian: proof of legal guardianship issued by a court",
+        "If a parent or legal guardian was retrenched: the retrenchment letter from the employer"
+       ],
+       "source_url": "https://www.nsfas.org.za/content/"
+      },
+      "fee_cents": 0,
+      "fee_note": null,
+      "how": "Apply online on myNSFAS or in the official NSFAS app. Create your profile with your South African ID number, your cellphone number and your email address, then fill in your personal and household information, give consent, upload your documents and submit. You can save and finish later.",
+      "id": "nsfas",
+      "kind": "funder",
+      "lines": [
+       "Where to apply: https://my.nsfas.org.za/",
+       "Apply online on myNSFAS or in the official NSFAS app. Create your profile with your South African ID number, your cellphone number and your email address, then fill in your personal and household information, give consent, upload your documents and submit. You can save and finish later.",
+       "Applying is free.",
+       "Questions: Toll-free 08000 67327, USSD *134*67327#, info@nsfas.org.za"
+      ],
+      "max_choices": null,
+      "name": "National Student Financial Aid Scheme (NSFAS)",
+      "notice": "Not yet confirmed by the team.",
+      "source_url": "https://nsfas.org.za/content/how-to-apply.html",
+      "tips": {
+       "items": [
+        "A corner or edge is cut off in the photo.",
+        "The image is blurry, dark, or has glare across the text.",
+        "A signature is missing, or an electronic signature was used.",
+        "It's written in pencil or coloured ink instead of black.",
+        "Correction fluid was used, or a change wasn't initialled.",
+        "Last year's version of the form was submitted.",
+        "Only one page of a two-page form was uploaded.",
+        "Names or ID numbers don't match the ID document."
+       ],
+       "source_url": "https://nsfas.org.za/content/how-to-apply.html"
+      },
+      "url": "https://my.nsfas.org.za/",
+      "warnings": {
+       "items": [
+        "Never pay anyone to apply. NSFAS will never ask for your password or OTP.",
+        "Use nsfas.org.za and my.nsfas.org.za only. Check the spelling in the address bar before you sign in."
+       ],
+       "source_url": "https://nsfas.org.za/content/how-to-apply.html"
+      },
+      "who_can_apply": {
+       "items": [
+        "South African citizens studying or planning to study at a public university or TVET college",
+        "SASSA grant recipients",
+        "Students from households earning up to R350 000 a year",
+        "Students with disabilities from households earning up to R600 000 a year"
+       ],
+       "source_url": "https://www.nsfas.org.za/content/"
+      },
+      "windows": [
+       {
+        "closes": "2026-10-31",
+        "closes_one_of": [],
+        "days": 18,
+        "heading": "Funding for 2027",
+        "intake": 2027,
+        "label": "Open",
+        "late_closes": null,
+        "late_opens": null,
+        "lines": [
+         "Open now. Closes on Sat 31 Oct 2026 at 23:59 (in 18 days).",
+         "No late applications."
+        ],
+        "next_date": "2026-10-31",
+        "opens": "2026-09-18",
+        "source_url": "https://nsfas.org.za/content/how-to-apply.html",
+        "status": "open"
+       },
+       {
+        "closes": null,
+        "closes_one_of": [],
+        "days": null,
+        "heading": "Funding for 2028",
+        "intake": 2028,
+        "label": "Dates not published yet",
+        "late_closes": null,
+        "late_opens": null,
+        "lines": [
+         "NSFAS hasn't published these dates yet."
+        ],
+        "next_date": null,
+        "opens": null,
+        "source_url": null,
+        "status": "not_published"
+       }
+      ]
+     }
+    ],
+    "notes": [
+     "Apply on each university's own website, and pay a fee only as its page explains. Campus Chommie can't apply for you.",
+     "Funding is a separate application: if you might qualify for NSFAS, apply there as well."
+    ],
+    "today": "2026-10-13",
+    "universities": [
+     {
+      "after": [
+       {
+        "source_url": "https://www.smu.ac.za/students/apply/online-application/",
+        "text": "SMU doesn't process an application with documents missing, and doesn't consider it if they're still missing after two months."
+       },
+       {
+        "source_url": "https://www.smu.ac.za/students/apply/online-application/",
+        "text": "SMU gets more applications than it has places, so meeting the requirements doesn't guarantee admission."
+       },
+       {
+        "source_url": "https://www.smu.ac.za/students/apply/online-application/",
+        "text": "Residence places are limited and given first come, first served: admission doesn't guarantee a room."
+       },
+       {
+        "source_url": "https://www.smu.ac.za/schools/medicine/medicine-undergraduate-admission-requirements/",
+        "text": "MBChB and Diagnostic Radiography: SMU makes provisional offers on final Grade 11 results. Grade 12 results decide: if yours drop below your Grade 11 ones, you rejoin the general pool of applicants."
+       },
+       {
+        "source_url": "https://www.smu.ac.za/schools/oral-health-sciences/oral-health-sciences-undergraduate-admission-requirements/",
+        "text": "BDS, Dental Therapy and Oral Hygiene: SMU also makes provisional offers on final Grade 11 results, and Grade 12 results decide."
+       }
+      ],
+      "confirmed": false,
+      "contact": "012 521 4058, 5886, 4315, 4319, 4137, 4204 or 4979",
+      "documents": {
+       "items": [
+        "A certified copy of your ID or passport (compulsory)",
+        "Your certified Grade 11 end-of-year results if you're in Grade 12, or your National Senior Certificate or IEB certificate if you've finished school",
+        "Certified copies of your degree certificates and academic record, if you've studied at SMU or another university",
+        "A certified copy of your marriage certificate, if it applies",
+        "Proof of payment of the R300 application fee"
+       ],
+       "source_url": "https://www.smu.ac.za/students/apply/online-application/"
+      },
+      "fee_cents": 30000,
+      "fee_note": "Not refundable. Use your ID number as the payment reference.",
+      "how": "Apply online, using your names exactly as they appear in your ID or passport. You can choose two programmes: the first one you pick counts as your first choice.",
+      "id": "smu",
+      "kind": "university",
+      "lines": [
+       "Where to apply: https://www.smu.ac.za/students/apply/online-application/",
+       "Apply online, using your names exactly as they appear in your ID or passport. You can choose two programmes: the first one you pick counts as your first choice.",
+       "Application fee: R300.",
+       "Not refundable. Use your ID number as the payment reference.",
+       "You can list 2 programmes on one application.",
+       "Questions: 012 521 4058, 5886, 4315, 4319, 4137, 4204 or 4979"
+      ],
+      "max_choices": 2,
+      "name": "Sefako Makgatho Health Sciences University",
+      "notice": "Not yet confirmed by the team.",
+      "source_url": "https://www.smu.ac.za/students/apply/online-application/",
+      "tips": null,
+      "url": "https://www.smu.ac.za/students/apply/online-application/",
+      "warnings": null,
+      "who_can_apply": null,
+      "windows": []
+     },
+     {
+      "after": [
+       {
+        "source_url": "https://drupalwebprod-files.up.ac.za/Public/2026-04/2026%20for%202027%20Selection%20of%20MBChB%20students_13April%202026%20(2).pdf?VersionId=Zhz6Br5WLsS8ahAYQXZ3RDGUkfIq_RNy",
+        "text": "Health Sciences: in certain programmes UP considers only first-choice applicants; programmes that take second choices say so."
+       },
+       {
+        "source_url": "https://drupalwebprod-files.up.ac.za/Public/2026-04/2026%20for%202027%20Selection%20of%20MBChB%20students_13April%202026%20(2).pdf?VersionId=Zhz6Br5WLsS8ahAYQXZ3RDGUkfIq_RNy",
+        "text": "MBChB: UP considers you if MBChB is your first or second choice. Applications opened on 1 April 2026, and UP takes no late ones."
+       },
+       {
+        "source_url": "https://drupalwebprod-files.up.ac.za/Public/2026-04/2026%20for%202027%20Selection%20of%20MBChB%20students_13April%202026%20(2).pdf?VersionId=Zhz6Br5WLsS8ahAYQXZ3RDGUkfIq_RNy",
+        "text": "MBChB: a provisional offer on Grade 11 results is confirmed if your final Merit Point Score is no more than five points below your Grade 11 one and you still meet the minimums."
+       }
+      ],
+      "confirmed": false,
+      "contact": null,
+      "documents": null,
+      "fee_cents": null,
+      "fee_note": null,
+      "how": null,
+      "id": "up",
+      "kind": "university",
+      "lines": [
+       "Where to apply: not verified yet.",
+       "Application fee: not verified yet.",
+       "Documents: not verified yet.",
+       "How many programmes you can list on one application: not verified yet."
+      ],
+      "max_choices": null,
+      "name": "University of Pretoria",
+      "notice": "Not yet confirmed by the team.",
+      "source_url": null,
+      "tips": null,
+      "url": null,
+      "warnings": null,
+      "who_can_apply": null,
+      "windows": []
+     }
+    ]
+   },
+   "bridge": {
+    "apply": [
+     {
+      "closes": "2026-07-31",
+      "closes_one_of": [],
+      "days": null,
+      "heading": "To start in 2027",
+      "intake": 2027,
+      "label": "Closed",
+      "late_closes": null,
+      "late_opens": null,
+      "lines": [
+       "Closed on Fri 31 Jul 2026.",
+       "No late applications."
+      ],
+      "next_date": null,
+      "opens": "2026-04-01",
+      "source_url": "https://www.smu.ac.za/students/apply/online-application/",
+      "status": "closed"
+     },
+     {
+      "closes": null,
+      "closes_one_of": [],
+      "days": null,
+      "heading": "To start in 2028",
+      "intake": 2028,
+      "label": "Dates not published yet",
+      "late_closes": null,
+      "late_opens": null,
+      "lines": [
+       "Sefako Makgatho Health Sciences University hasn't published these dates yet.",
+       "To start in 2027, applications ran from Wed 1 Apr to Fri 31 Jul 2026."
+      ],
+      "next_date": null,
+      "opens": null,
+      "source_url": null,
+      "status": "not_published"
+     }
+    ],
+    "bridge": {
+     "added_years": 1,
+     "conditions": "At least three distinctions and an overall average of 75% or above for the year. SMU offers places to the top five applicants by combined average, so the real bar may be higher.",
+     "eligibility_note": null,
+     "guarantee": "considered",
+     "guarantee_label": "Considered, not guaranteed",
+     "max_places": 5,
+     "source_url": "https://www.smu.ac.za/schools/medicine/medicine-undergraduate-admission-requirements/",
+     "to": "mbchb"
+    },
+    "funding": {
+     "count": 9,
+     "fields": [
+      "health_sciences",
+      "natural_sciences"
+     ],
+     "funders": [
+      {
+       "any_field": false,
+       "applying": "via_university",
+       "checked": "2026-10-11",
+       "closes": null,
+       "days": null,
+       "fields": [
+        {
+         "id": "health_sciences",
+         "label": "Health sciences"
+        }
+       ],
+       "heading": null,
+       "id": "hwseta",
+       "intake": null,
+       "kind": "bursary",
+       "kind_label": "Bursary",
+       "label": "Apply through the university",
+       "lines": [
+        "You apply through the university, not to the funder directly."
+       ],
+       "name": "Health and Welfare SETA (HWSETA) bursaries",
+       "next_date": null,
+       "not_fields": [],
+       "opens": null,
+       "sector": "government",
+       "sector_label": "Government",
+       "short_name": "HWSETA",
+       "source_url": "https://www.hwseta.org.za/expression-of-interest-for-funding-2026-2027-closing-date-20-february-2026/",
+       "stages": [
+        {
+         "id": "first_year",
+         "label": "Starting university"
+        },
+        {
+         "id": "senior",
+         "label": "Already studying"
+        }
+       ],
+       "status": "via_university",
+       "study_at": "any",
+       "url": "https://www.hwseta.org.za/",
+       "why": "Funds health sciences."
+      },
+      {
+       "any_field": true,
+       "applying": "direct",
+       "checked": "2026-10-11",
+       "closes": null,
+       "days": null,
+       "fields": [],
+       "heading": "Funding for 2027",
+       "id": "gcra",
+       "intake": 2027,
+       "kind": "bursary",
+       "kind_label": "Bursary",
+       "label": "Dates not published yet",
+       "lines": [
+        "GCRA hasn't published these dates yet."
+       ],
+       "name": "Gauteng City Region Academy (GCRA) Bursary",
+       "next_date": null,
+       "not_fields": [],
+       "opens": null,
+       "sector": "government",
+       "sector_label": "Government",
+       "short_name": "GCRA",
+       "source_url": "https://gcrabursary.gauteng.gov.za/",
+       "stages": [
+        {
+         "id": "first_year",
+         "label": "Starting university"
+        },
+        {
+         "id": "senior",
+         "label": "Already studying"
+        },
+        {
+         "id": "postgraduate",
+         "label": "Postgraduate"
+        }
+       ],
+       "status": "not_published",
+       "study_at": "any",
+       "url": "https://gcrabursary.gauteng.gov.za/",
+       "why": "Open to any field."
+      },
+      {
+       "any_field": true,
+       "applying": "direct",
+       "checked": "2026-10-11",
+       "closes": null,
+       "days": null,
+       "fields": [],
+       "heading": "Funding for 2027",
+       "id": "nsfas_loans",
+       "intake": 2027,
+       "kind": "loan",
+       "kind_label": "Loan",
+       "label": "Dates not published yet",
+       "lines": [
+        "NSFAS loans hasn't published these dates yet."
+       ],
+       "name": "NSFAS loan scheme for the missing middle",
+       "next_date": null,
+       "not_fields": [],
+       "opens": null,
+       "sector": "government",
+       "sector_label": "Government",
+       "short_name": "NSFAS loans",
+       "source_url": "https://www.gov.za/news/speeches/minister-buti-manamela-launch-nsfas-2027-application-cycle-18-sep-2026",
+       "stages": [
+        {
+         "id": "first_year",
+         "label": "Starting university"
+        },
+        {
+         "id": "senior",
+         "label": "Already studying"
+        }
+       ],
+       "status": "not_published",
+       "study_at": "any",
+       "url": null,
+       "why": "Open to any field."
+      },
+      {
+       "any_field": false,
+       "applying": "direct",
+       "checked": "2026-10-12",
+       "closes": "2026-10-02",
+       "days": null,
+       "fields": [
+        {
+         "id": "earth_sciences",
+         "label": "Earth and environmental sciences"
+        },
+        {
+         "id": "life_sciences",
+         "label": "Life sciences"
+        },
+        {
+         "id": "natural_sciences",
+         "label": "Natural sciences"
+        }
+       ],
+       "heading": "Funding for 2027",
+       "id": "dffe",
+       "intake": 2027,
+       "kind": "bursary",
+       "kind_label": "Bursary",
+       "label": "Closed",
+       "lines": [
+        "Closed on Fri 2 Oct 2026.",
+        "No late applications.",
+        "Funding for 2028: DFFE hasn't published these dates yet."
+       ],
+       "name": "Department of Forestry, Fisheries and the Environment (DFFE) student bursary",
+       "next_date": null,
+       "not_fields": [],
+       "opens": null,
+       "sector": "government",
+       "sector_label": "Government",
+       "short_name": "DFFE",
+       "source_url": "https://www.dffe.gov.za/bursaries",
+       "stages": [
+        {
+         "id": "first_year",
+         "label": "Starting university"
+        },
+        {
+         "id": "senior",
+         "label": "Already studying"
+        }
+       ],
+       "status": "closed",
+       "study_at": "any",
+       "url": "https://www.dffe.gov.za/bursaries",
+       "why": "Funds natural sciences."
+      },
+      {
+       "any_field": false,
+       "applying": "direct",
+       "checked": "2026-10-11",
+       "closes": null,
+       "days": null,
+       "fields": [
+        {
+         "id": "natural_sciences",
+         "label": "Natural sciences"
+        },
+        {
+         "id": "engineering",
+         "label": "Engineering"
+        },
+        {
+         "id": "computing",
+         "label": "Computing and IT"
+        },
+        {
+         "id": "mathematical_sciences",
+         "label": "Mathematics and statistics"
+        }
+       ],
+       "heading": "Funding for 2027",
+       "id": "nedbank",
+       "intake": 2027,
+       "kind": "bursary",
+       "kind_label": "Bursary",
+       "label": "Closed",
+       "lines": [
+        "Closed: Nedbank's own page said so on Sun 11 Oct 2026.",
+        "Funding for 2028: Nedbank hasn't published these dates yet.",
+        "Nedbank says applications for 2028 funding open in 2027."
+       ],
+       "name": "Nedbank External Bursary Programme",
+       "next_date": null,
+       "not_fields": [],
+       "opens": null,
+       "sector": "company",
+       "sector_label": "Company",
+       "short_name": "Nedbank",
+       "source_url": "https://group.nedbank.co.za/careers/graduates-and-bursaries.html",
+       "stages": [
+        {
+         "id": "first_year",
+         "label": "Starting university"
+        },
+        {
+         "id": "senior",
+         "label": "Already studying"
+        },
+        {
+         "id": "postgraduate",
+         "label": "Postgraduate"
+        }
+       ],
+       "status": "closed",
+       "study_at": "any",
+       "url": "https://group.nedbank.co.za/careers/graduates-and-bursaries.html",
+       "why": "Funds natural sciences."
+      }
+     ],
+     "lines": [
+      "9 funding options for health sciences and natural sciences, besides NSFAS: none open right now."
+     ],
+     "open_now": 0
+    },
+    "match": {
+     "confirmed": false,
+     "explanation": [
+      "Your points: 40 (minimum 25).",
+      "This programme uses its own points table, not the university's usual one.",
+      "Life Orientation is not counted here.",
+      "SMU's BSc table adds six subjects without Life Orientation; SMU hasn't said whether it counts.",
+      "Places are limited and selection is competitive.",
+      "SMU's selection committee selects on merit for a limited number of places.",
+      "Each stream also needs level 5 in its subject: Life Sciences for the Life Sciences and Occupational and Environmental Health streams, Mathematics for Mathematical Sciences, and Physical Sciences for Physical Sciences.",
+      "Meeting the minimum does not guarantee a place."
+     ],
+     "failed": [],
+     "gap": null,
+     "label": "Reach",
+     "min_points": 25.0,
+     "notice": "Not yet confirmed by the team.",
+     "points": 40.0,
+     "programme": "bsc_y1",
+     "programme_name": "BSc first year at SMU",
+     "selective": true,
+     "source_url": "https://www.smu.ac.za/schools/science-and-technology/science-and-technology-undergraduate-admission-requirements/",
+     "tier": "reach",
+     "university": "smu",
+     "university_name": "Sefako Makgatho Health Sciences University"
+    },
+    "notes": [
+     "Considered, not guaranteed.",
+     "Conditions: At least three distinctions and an overall average of 75% or above for the year. SMU offers places to the top five applicants by combined average, so the real bar may be higher.",
+     "Places on this route: 5.",
+     "Adds about 1 year before you start the goal programme.",
+     "Your points: 40 (minimum 25).",
+     "This programme uses its own points table, not the university's usual one.",
+     "Life Orientation is not counted here.",
+     "SMU's BSc table adds six subjects without Life Orientation; SMU hasn't said whether it counts.",
+     "Places are limited and selection is competitive.",
+     "SMU's selection committee selects on merit for a limited number of places.",
+     "Each stream also needs level 5 in its subject: Life Sciences for the Life Sciences and Occupational and Environmental Health streams, Mathematics for Mathematical Sciences, and Physical Sciences for Physical Sciences.",
+     "Meeting the minimum does not guarantee a place."
+    ],
+    "number": 2,
+    "role": "bridge"
+   },
+   "goal": {
+    "apply": [
+     {
+      "closes": "2026-07-31",
+      "closes_one_of": [],
+      "days": null,
+      "heading": "To start in 2027",
+      "intake": 2027,
+      "label": "Closed",
+      "late_closes": null,
+      "late_opens": null,
+      "lines": [
+       "Closed on Fri 31 Jul 2026.",
+       "No late applications."
+      ],
+      "next_date": null,
+      "opens": "2026-04-01",
+      "source_url": "https://www.smu.ac.za/students/apply/online-application/",
+      "status": "closed"
+     },
+     {
+      "closes": null,
+      "closes_one_of": [],
+      "days": null,
+      "heading": "To start in 2028",
+      "intake": 2028,
+      "label": "Dates not published yet",
+      "late_closes": null,
+      "late_opens": null,
+      "lines": [
+       "Sefako Makgatho Health Sciences University hasn't published these dates yet.",
+       "To start in 2027, applications ran from Wed 1 Apr to Fri 31 Jul 2026."
+      ],
+      "next_date": null,
+      "opens": null,
+      "source_url": null,
+      "status": "not_published"
+     }
+    ],
+    "funding": {
+     "count": 7,
+     "fields": [
+      "health_sciences",
+      "medicine",
+      "medical_sciences"
+     ],
+     "funders": [
+      {
+       "any_field": false,
+       "applying": "via_university",
+       "checked": "2026-10-11",
+       "closes": null,
+       "days": null,
+       "fields": [
+        {
+         "id": "health_sciences",
+         "label": "Health sciences"
+        }
+       ],
+       "heading": null,
+       "id": "hwseta",
+       "intake": null,
+       "kind": "bursary",
+       "kind_label": "Bursary",
+       "label": "Apply through the university",
+       "lines": [
+        "You apply through the university, not to the funder directly."
+       ],
+       "name": "Health and Welfare SETA (HWSETA) bursaries",
+       "next_date": null,
+       "not_fields": [],
+       "opens": null,
+       "sector": "government",
+       "sector_label": "Government",
+       "short_name": "HWSETA",
+       "source_url": "https://www.hwseta.org.za/expression-of-interest-for-funding-2026-2027-closing-date-20-february-2026/",
+       "stages": [
+        {
+         "id": "first_year",
+         "label": "Starting university"
+        },
+        {
+         "id": "senior",
+         "label": "Already studying"
+        }
+       ],
+       "status": "via_university",
+       "study_at": "any",
+       "url": "https://www.hwseta.org.za/",
+       "why": "Funds health sciences."
+      },
+      {
+       "any_field": true,
+       "applying": "direct",
+       "checked": "2026-10-11",
+       "closes": null,
+       "days": null,
+       "fields": [],
+       "heading": "Funding for 2027",
+       "id": "gcra",
+       "intake": 2027,
+       "kind": "bursary",
+       "kind_label": "Bursary",
+       "label": "Dates not published yet",
+       "lines": [
+        "GCRA hasn't published these dates yet."
+       ],
+       "name": "Gauteng City Region Academy (GCRA) Bursary",
+       "next_date": null,
+       "not_fields": [],
+       "opens": null,
+       "sector": "government",
+       "sector_label": "Government",
+       "short_name": "GCRA",
+       "source_url": "https://gcrabursary.gauteng.gov.za/",
+       "stages": [
+        {
+         "id": "first_year",
+         "label": "Starting university"
+        },
+        {
+         "id": "senior",
+         "label": "Already studying"
+        },
+        {
+         "id": "postgraduate",
+         "label": "Postgraduate"
+        }
+       ],
+       "status": "not_published",
+       "study_at": "any",
+       "url": "https://gcrabursary.gauteng.gov.za/",
+       "why": "Open to any field."
+      },
+      {
+       "any_field": true,
+       "applying": "direct",
+       "checked": "2026-10-11",
+       "closes": null,
+       "days": null,
+       "fields": [],
+       "heading": "Funding for 2027",
+       "id": "nsfas_loans",
+       "intake": 2027,
+       "kind": "loan",
+       "kind_label": "Loan",
+       "label": "Dates not published yet",
+       "lines": [
+        "NSFAS loans hasn't published these dates yet."
+       ],
+       "name": "NSFAS loan scheme for the missing middle",
+       "next_date": null,
+       "not_fields": [],
+       "opens": null,
+       "sector": "government",
+       "sector_label": "Government",
+       "short_name": "NSFAS loans",
+       "source_url": "https://www.gov.za/news/speeches/minister-buti-manamela-launch-nsfas-2027-application-cycle-18-sep-2026",
+       "stages": [
+        {
+         "id": "first_year",
+         "label": "Starting university"
+        },
+        {
+         "id": "senior",
+         "label": "Already studying"
+        }
+       ],
+       "status": "not_published",
+       "study_at": "any",
+       "url": null,
+       "why": "Open to any field."
+      },
+      {
+       "any_field": false,
+       "applying": "direct",
+       "checked": "2026-10-12",
+       "closes": null,
+       "days": null,
+       "fields": [
+        {
+         "id": "engineering",
+         "label": "Engineering"
+        },
+        {
+         "id": "physical_sciences",
+         "label": "Physical sciences"
+        },
+        {
+         "id": "computing",
+         "label": "Computing and IT"
+        },
+        {
+         "id": "mathematical_sciences",
+         "label": "Mathematics and statistics"
+        },
+        {
+         "id": "health_sciences",
+         "label": "Health sciences"
+        },
+        {
+         "id": "agriculture",
+         "label": "Agriculture"
+        },
+        {
+         "id": "finance",
+         "label": "Finance"
+        },
+        {
+         "id": "education",
+         "label": "Education and teaching"
+        }
+       ],
+       "heading": "Funding for 2027",
+       "id": "sasol_foundation",
+       "intake": 2027,
+       "kind": "bursary",
+       "kind_label": "Bursary",
+       "label": "Closed",
+       "lines": [
+        "Closed: Sasol Foundation's own page said so on Mon 12 Oct 2026.",
+        "Funding for 2028: Sasol Foundation hasn't published these dates yet."
+       ],
+       "name": "Sasol Foundation Bursary Programme",
+       "next_date": null,
+       "not_fields": [],
+       "opens": null,
+       "sector": "company",
+       "sector_label": "Company",
+       "short_name": "Sasol Foundation",
+       "source_url": "https://www.sasolbursaries.com/welcome/sasol-foundation-bursaries/",
+       "stages": [
+        {
+         "id": "first_year",
+         "label": "Starting university"
+        },
+        {
+         "id": "senior",
+         "label": "Already studying"
+        }
+       ],
+       "status": "closed",
+       "study_at": "any",
+       "url": "https://www.sasolbursaries.com/welcome/sasol-foundation-bursaries/",
+       "why": "Funds health sciences."
+      },
+      {
+       "any_field": true,
+       "applying": "direct",
+       "checked": "2026-10-11",
+       "closes": null,
+       "days": null,
+       "fields": [],
+       "heading": "Funding for 2027",
+       "id": "harmony",
+       "intake": 2027,
+       "kind": "bursary",
+       "kind_label": "Bursary",
+       "label": "Closed",
+       "lines": [
+        "Closed: Harmony's own page said so on Sun 11 Oct 2026.",
+        "Funding for 2028: Harmony hasn't published these dates yet.",
+        "Harmony says applications for 2028 open in October 2027."
+       ],
+       "name": "Harmony Gold bursaries",
+       "next_date": null,
+       "not_fields": [],
+       "opens": null,
+       "sector": "company",
+       "sector_label": "Company",
+       "short_name": "Harmony",
+       "source_url": "https://www.harmony.co.za/careers/opportunities-for-students/",
+       "stages": [
+        {
+         "id": "first_year",
+         "label": "Starting university"
+        },
+        {
+         "id": "senior",
+         "label": "Already studying"
+        }
+       ],
+       "status": "closed",
+       "study_at": "any",
+       "url": "https://www.harmony.co.za/careers/opportunities-for-students/",
+       "why": "Open to any field."
+      }
+     ],
+     "lines": [
+      "7 funding options for health sciences, medicine and medical sciences, besides NSFAS: none open right now."
+     ],
+     "open_now": 0
+    },
+    "match": {
+     "confirmed": false,
+     "explanation": [
+      "Your points: 47 (minimum 38).",
+      "Places are limited and selection is competitive.",
+      "SMU pre-selects on final Grade 11 results and makes final decisions on Grade 12 results, ranking applicants by their actual percentages in Mathematics, Physical Science, Life Sciences, Life Orientation and English. First-time applicants who score well but are not selected may be placed on a waiting list.",
+      "Meeting the minimum does not guarantee a place."
+     ],
+     "failed": [],
+     "gap": null,
+     "label": "Reach",
+     "min_points": 38.0,
+     "notice": "Not yet confirmed by the team.",
+     "points": 47.0,
+     "programme": "mbchb",
+     "programme_name": "MBChB (Bachelor of Medicine and Bachelor of Surgery)",
+     "selective": true,
+     "source_url": "https://www.smu.ac.za/schools/medicine/medicine-undergraduate-admission-requirements/",
+     "tier": "reach",
+     "university": "smu",
+     "university_name": "Sefako Makgatho Health Sciences University"
+    },
+    "notes": [
+     "Your points: 47 (minimum 38).",
+     "Places are limited and selection is competitive.",
+     "SMU pre-selects on final Grade 11 results and makes final decisions on Grade 12 results, ranking applicants by their actual percentages in Mathematics, Physical Science, Life Sciences, Life Orientation and English. First-time applicants who score well but are not selected may be placed on a waiting list.",
+     "Meeting the minimum does not guarantee a place."
+    ],
+    "number": 1,
+    "role": "goal"
+   },
+   "notes": [],
+   "other_routes": [
+    {
+     "apply": [
+      {
+       "closes": "2026-07-31",
+       "closes_one_of": [],
+       "days": null,
+       "heading": "To start in 2027",
+       "intake": 2027,
+       "label": "Closed",
+       "late_closes": null,
+       "late_opens": null,
+       "lines": [
+        "Closed on Fri 31 Jul 2026.",
+        "No late applications."
+       ],
+       "next_date": null,
+       "opens": "2026-04-01",
+       "source_url": "https://www.smu.ac.za/students/apply/online-application/",
+       "status": "closed"
+      },
+      {
+       "closes": null,
+       "closes_one_of": [],
+       "days": null,
+       "heading": "To start in 2028",
+       "intake": 2028,
+       "label": "Dates not published yet",
+       "late_closes": null,
+       "late_opens": null,
+       "lines": [
+        "Sefako Makgatho Health Sciences University hasn't published these dates yet.",
+        "To start in 2027, applications ran from Wed 1 Apr to Fri 31 Jul 2026."
+       ],
+       "next_date": null,
+       "opens": null,
+       "source_url": null,
+       "status": "not_published"
+      }
+     ],
+     "bridge": {
+      "added_years": 1,
+      "conditions": "Pass all six foundation modules with at least 50% to progress into MBChB I. A failed foundation module cannot be repeated.",
+      "eligibility_note": "In SMU's words, this programme is \"only available to Indigenous South African (Black) students from quintiles 1 and 2 schools only who have not previously been engaged in tertiary education and have not been able to get admission into the six year SMU medicine degree program\". Read SMU's page before choosing it.",
+      "guarantee": "by_rule",
+      "guarantee_label": "Guaranteed by the university's rules if you meet the conditions",
+      "max_places": null,
+      "source_url": "https://www.smu.ac.za/schools/medicine/medicine-undergraduate-admission-requirements/",
+      "to": "mbchb"
+     },
+     "funding": {
+      "count": 7,
+      "fields": [
+       "health_sciences",
+       "medicine",
+       "medical_sciences"
+      ],
+      "funders": [
+       {
+        "any_field": false,
+        "applying": "via_university",
+        "checked": "2026-10-11",
+        "closes": null,
+        "days": null,
+        "fields": [
+         {
+          "id": "health_sciences",
+          "label": "Health sciences"
+         }
+        ],
+        "heading": null,
+        "id": "hwseta",
+        "intake": null,
+        "kind": "bursary",
+        "kind_label": "Bursary",
+        "label": "Apply through the university",
+        "lines": [
+         "You apply through the university, not to the funder directly."
+        ],
+        "name": "Health and Welfare SETA (HWSETA) bursaries",
+        "next_date": null,
+        "not_fields": [],
+        "opens": null,
+        "sector": "government",
+        "sector_label": "Government",
+        "short_name": "HWSETA",
+        "source_url": "https://www.hwseta.org.za/expression-of-interest-for-funding-2026-2027-closing-date-20-february-2026/",
+        "stages": [
+         {
+          "id": "first_year",
+          "label": "Starting university"
+         },
+         {
+          "id": "senior",
+          "label": "Already studying"
+         }
+        ],
+        "status": "via_university",
+        "study_at": "any",
+        "url": "https://www.hwseta.org.za/",
+        "why": "Funds health sciences."
+       },
+       {
+        "any_field": true,
+        "applying": "direct",
+        "checked": "2026-10-11",
+        "closes": null,
+        "days": null,
+        "fields": [],
+        "heading": "Funding for 2027",
+        "id": "gcra",
+        "intake": 2027,
+        "kind": "bursary",
+        "kind_label": "Bursary",
+        "label": "Dates not published yet",
+        "lines": [
+         "GCRA hasn't published these dates yet."
+        ],
+        "name": "Gauteng City Region Academy (GCRA) Bursary",
+        "next_date": null,
+        "not_fields": [],
+        "opens": null,
+        "sector": "government",
+        "sector_label": "Government",
+        "short_name": "GCRA",
+        "source_url": "https://gcrabursary.gauteng.gov.za/",
+        "stages": [
+         {
+          "id": "first_year",
+          "label": "Starting university"
+         },
+         {
+          "id": "senior",
+          "label": "Already studying"
+         },
+         {
+          "id": "postgraduate",
+          "label": "Postgraduate"
+         }
+        ],
+        "status": "not_published",
+        "study_at": "any",
+        "url": "https://gcrabursary.gauteng.gov.za/",
+        "why": "Open to any field."
+       },
+       {
+        "any_field": true,
+        "applying": "direct",
+        "checked": "2026-10-11",
+        "closes": null,
+        "days": null,
+        "fields": [],
+        "heading": "Funding for 2027",
+        "id": "nsfas_loans",
+        "intake": 2027,
+        "kind": "loan",
+        "kind_label": "Loan",
+        "label": "Dates not published yet",
+        "lines": [
+         "NSFAS loans hasn't published these dates yet."
+        ],
+        "name": "NSFAS loan scheme for the missing middle",
+        "next_date": null,
+        "not_fields": [],
+        "opens": null,
+        "sector": "government",
+        "sector_label": "Government",
+        "short_name": "NSFAS loans",
+        "source_url": "https://www.gov.za/news/speeches/minister-buti-manamela-launch-nsfas-2027-application-cycle-18-sep-2026",
+        "stages": [
+         {
+          "id": "first_year",
+          "label": "Starting university"
+         },
+         {
+          "id": "senior",
+          "label": "Already studying"
+         }
+        ],
+        "status": "not_published",
+        "study_at": "any",
+        "url": null,
+        "why": "Open to any field."
+       },
+       {
+        "any_field": false,
+        "applying": "direct",
+        "checked": "2026-10-12",
+        "closes": null,
+        "days": null,
+        "fields": [
+         {
+          "id": "engineering",
+          "label": "Engineering"
+         },
+         {
+          "id": "physical_sciences",
+          "label": "Physical sciences"
+         },
+         {
+          "id": "computing",
+          "label": "Computing and IT"
+         },
+         {
+          "id": "mathematical_sciences",
+          "label": "Mathematics and statistics"
+         },
+         {
+          "id": "health_sciences",
+          "label": "Health sciences"
+         },
+         {
+          "id": "agriculture",
+          "label": "Agriculture"
+         },
+         {
+          "id": "finance",
+          "label": "Finance"
+         },
+         {
+          "id": "education",
+          "label": "Education and teaching"
+         }
+        ],
+        "heading": "Funding for 2027",
+        "id": "sasol_foundation",
+        "intake": 2027,
+        "kind": "bursary",
+        "kind_label": "Bursary",
+        "label": "Closed",
+        "lines": [
+         "Closed: Sasol Foundation's own page said so on Mon 12 Oct 2026.",
+         "Funding for 2028: Sasol Foundation hasn't published these dates yet."
+        ],
+        "name": "Sasol Foundation Bursary Programme",
+        "next_date": null,
+        "not_fields": [],
+        "opens": null,
+        "sector": "company",
+        "sector_label": "Company",
+        "short_name": "Sasol Foundation",
+        "source_url": "https://www.sasolbursaries.com/welcome/sasol-foundation-bursaries/",
+        "stages": [
+         {
+          "id": "first_year",
+          "label": "Starting university"
+         },
+         {
+          "id": "senior",
+          "label": "Already studying"
+         }
+        ],
+        "status": "closed",
+        "study_at": "any",
+        "url": "https://www.sasolbursaries.com/welcome/sasol-foundation-bursaries/",
+        "why": "Funds health sciences."
+       },
+       {
+        "any_field": true,
+        "applying": "direct",
+        "checked": "2026-10-11",
+        "closes": null,
+        "days": null,
+        "fields": [],
+        "heading": "Funding for 2027",
+        "id": "harmony",
+        "intake": 2027,
+        "kind": "bursary",
+        "kind_label": "Bursary",
+        "label": "Closed",
+        "lines": [
+         "Closed: Harmony's own page said so on Sun 11 Oct 2026.",
+         "Funding for 2028: Harmony hasn't published these dates yet.",
+         "Harmony says applications for 2028 open in October 2027."
+        ],
+        "name": "Harmony Gold bursaries",
+        "next_date": null,
+        "not_fields": [],
+        "opens": null,
+        "sector": "company",
+        "sector_label": "Company",
+        "short_name": "Harmony",
+        "source_url": "https://www.harmony.co.za/careers/opportunities-for-students/",
+        "stages": [
+         {
+          "id": "first_year",
+          "label": "Starting university"
+         },
+         {
+          "id": "senior",
+          "label": "Already studying"
+         }
+        ],
+        "status": "closed",
+        "study_at": "any",
+        "url": "https://www.harmony.co.za/careers/opportunities-for-students/",
+        "why": "Open to any field."
+       }
+      ],
+      "lines": [
+       "7 funding options for health sciences, medicine and medical sciences, besides NSFAS: none open right now."
+      ],
+      "open_now": 0
+     },
+     "match": {
+      "confirmed": false,
+      "explanation": [
+       "Your points: 47 (minimum 32).",
+       "Places are limited and selection is competitive.",
+       "SMU may accept a level 4 in English if the learner's overall points stay competitive.",
+       "Meeting the minimum does not guarantee a place."
+      ],
+      "failed": [],
+      "gap": null,
+      "label": "Reach",
+      "min_points": 32.0,
+      "notice": "Not yet confirmed by the team.",
+      "points": 47.0,
+      "programme": "mbchb_ecp",
+      "programme_name": "MBChB Extended Curriculum Programme I (medicine foundation year)",
+      "selective": true,
+      "source_url": "https://www.smu.ac.za/schools/medicine/medicine-undergraduate-admission-requirements/",
+      "tier": "reach",
+      "university": "smu",
+      "university_name": "Sefako Makgatho Health Sciences University"
+     },
+     "notes": [
+      "Guaranteed by the university's rules if you meet the conditions.",
+      "Conditions: Pass all six foundation modules with at least 50% to progress into MBChB I. A failed foundation module cannot be repeated.",
+      "Adds about 1 year before you start the goal programme.",
+      "Eligibility: In SMU's words, this programme is \"only available to Indigenous South African (Black) students from quintiles 1 and 2 schools only who have not previously been engaged in tertiary education and have not been able to get admission into the six year SMU medicine degree program\". Read SMU's page before choosing it.",
+      "Your points: 47 (minimum 32).",
+      "Places are limited and selection is competitive.",
+      "SMU may accept a level 4 in English if the learner's overall points stay competitive.",
+      "Meeting the minimum does not guarantee a place."
+     ],
+     "number": 0,
+     "role": "route"
+    }
+   ],
+   "safe": {
+    "apply": [
+     {
+      "closes": "2026-06-30",
+      "closes_one_of": [],
+      "days": null,
+      "heading": "To start in 2027",
+      "intake": 2027,
+      "label": "Closed",
+      "late_closes": null,
+      "late_opens": null,
+      "lines": [
+       "Closed on Tue 30 Jun 2026."
+      ],
+      "next_date": null,
+      "opens": null,
+      "source_url": "https://drupalwebprod-files.up.ac.za/Public/2026-03/UP_DESA_Application%20requirements%20tables_2027_web.pdf?VersionId=vw30gCBk2BMAXzOhFSBflmkFOHOMFOoa",
+      "status": "closed"
+     },
+     {
+      "closes": null,
+      "closes_one_of": [],
+      "days": null,
+      "heading": "To start in 2028",
+      "intake": 2028,
+      "label": "Dates not published yet",
+      "late_closes": null,
+      "late_opens": null,
+      "lines": [
+       "University of Pretoria hasn't published these dates yet.",
+       "To start in 2027, applications closed on Tue 30 Jun 2026."
+      ],
+      "next_date": null,
+      "opens": null,
+      "source_url": null,
+      "status": "not_published"
+     }
+    ],
+    "funding": {
+     "count": 12,
+     "fields": [
+      "natural_sciences",
+      "health_sciences",
+      "medical_sciences"
+     ],
+     "funders": [
+      {
+       "any_field": false,
+       "applying": "via_university",
+       "checked": "2026-10-11",
+       "closes": null,
+       "days": null,
+       "fields": [
+        {
+         "id": "health_sciences",
+         "label": "Health sciences"
+        }
+       ],
+       "heading": null,
+       "id": "hwseta",
+       "intake": null,
+       "kind": "bursary",
+       "kind_label": "Bursary",
+       "label": "Apply through the university",
+       "lines": [
+        "You apply through the university, not to the funder directly."
+       ],
+       "name": "Health and Welfare SETA (HWSETA) bursaries",
+       "next_date": null,
+       "not_fields": [],
+       "opens": null,
+       "sector": "government",
+       "sector_label": "Government",
+       "short_name": "HWSETA",
+       "source_url": "https://www.hwseta.org.za/expression-of-interest-for-funding-2026-2027-closing-date-20-february-2026/",
+       "stages": [
+        {
+         "id": "first_year",
+         "label": "Starting university"
+        },
+        {
+         "id": "senior",
+         "label": "Already studying"
+        }
+       ],
+       "status": "via_university",
+       "study_at": "any",
+       "url": "https://www.hwseta.org.za/",
+       "why": "Funds health sciences."
+      },
+      {
+       "any_field": true,
+       "applying": "automatic",
+       "checked": "2026-10-11",
+       "closes": null,
+       "days": null,
+       "fields": [],
+       "heading": null,
+       "id": "up_flyup_awards",
+       "intake": null,
+       "kind": "merit_award",
+       "kind_label": "Merit award",
+       "label": "No application needed",
+       "lines": [
+        "There's no application: it's paid to students who qualify."
+       ],
+       "name": "UP FLY@UP Assist First-Year Awards",
+       "next_date": null,
+       "not_fields": [],
+       "opens": null,
+       "sector": "university",
+       "sector_label": "University",
+       "short_name": "FLY@UP Assist",
+       "source_url": "https://drupalwebprod-files.up.ac.za/Public/2025-12/UP_InfoGuide%202026_V5-c.pdf",
+       "stages": [
+        {
+         "id": "first_year",
+         "label": "Starting university"
+        }
+       ],
+       "status": "automatic",
+       "study_at": [
+        "up"
+       ],
+       "url": null,
+       "why": "Open to any field."
+      },
+      {
+       "any_field": true,
+       "applying": "via_university",
+       "checked": "2026-10-11",
+       "closes": null,
+       "days": null,
+       "fields": [],
+       "heading": null,
+       "id": "up_funding_database",
+       "intake": null,
+       "kind": "bursary",
+       "kind_label": "Bursary",
+       "label": "Apply through the university",
+       "lines": [
+        "You apply through the university, not to the funder directly."
+       ],
+       "name": "UP's funding database",
+       "next_date": null,
+       "not_fields": [],
+       "opens": null,
+       "sector": "university",
+       "sector_label": "University",
+       "short_name": "UP funding database",
+       "source_url": "https://drupalwebprod-files.up.ac.za/Public/2025-12/UP_InfoGuide%202026_V5-c.pdf",
+       "stages": [
+        {
+         "id": "first_year",
+         "label": "Starting university"
+        },
+        {
+         "id": "senior",
+         "label": "Already studying"
+        },
+        {
+         "id": "postgraduate",
+         "label": "Postgraduate"
+        }
+       ],
+       "status": "via_university",
+       "study_at": [
+        "up"
+       ],
+       "url": "https://www.up.ac.za/article/2894107/financial-aid",
+       "why": "Open to any field."
+      },
+      {
+       "any_field": true,
+       "applying": "direct",
+       "checked": "2026-10-11",
+       "closes": null,
+       "days": null,
+       "fields": [],
+       "heading": "Funding for 2027",
+       "id": "gcra",
+       "intake": 2027,
+       "kind": "bursary",
+       "kind_label": "Bursary",
+       "label": "Dates not published yet",
+       "lines": [
+        "GCRA hasn't published these dates yet."
+       ],
+       "name": "Gauteng City Region Academy (GCRA) Bursary",
+       "next_date": null,
+       "not_fields": [],
+       "opens": null,
+       "sector": "government",
+       "sector_label": "Government",
+       "short_name": "GCRA",
+       "source_url": "https://gcrabursary.gauteng.gov.za/",
+       "stages": [
+        {
+         "id": "first_year",
+         "label": "Starting university"
+        },
+        {
+         "id": "senior",
+         "label": "Already studying"
+        },
+        {
+         "id": "postgraduate",
+         "label": "Postgraduate"
+        }
+       ],
+       "status": "not_published",
+       "study_at": "any",
+       "url": "https://gcrabursary.gauteng.gov.za/",
+       "why": "Open to any field."
+      },
+      {
+       "any_field": true,
+       "applying": "direct",
+       "checked": "2026-10-11",
+       "closes": null,
+       "days": null,
+       "fields": [],
+       "heading": "Funding for 2027",
+       "id": "nsfas_loans",
+       "intake": 2027,
+       "kind": "loan",
+       "kind_label": "Loan",
+       "label": "Dates not published yet",
+       "lines": [
+        "NSFAS loans hasn't published these dates yet."
+       ],
+       "name": "NSFAS loan scheme for the missing middle",
+       "next_date": null,
+       "not_fields": [],
+       "opens": null,
+       "sector": "government",
+       "sector_label": "Government",
+       "short_name": "NSFAS loans",
+       "source_url": "https://www.gov.za/news/speeches/minister-buti-manamela-launch-nsfas-2027-application-cycle-18-sep-2026",
+       "stages": [
+        {
+         "id": "first_year",
+         "label": "Starting university"
+        },
+        {
+         "id": "senior",
+         "label": "Already studying"
+        }
+       ],
+       "status": "not_published",
+       "study_at": "any",
+       "url": null,
+       "why": "Open to any field."
+      }
+     ],
+     "lines": [
+      "12 funding options for natural sciences, health sciences and medical sciences, besides NSFAS: none open right now."
+     ],
+     "open_now": 0
+    },
+    "match": {
+     "confirmed": false,
+     "explanation": [
+      "Your points: 40 (minimum 32).",
+      "Life Orientation is not counted here.",
+      "Meeting the minimum does not guarantee a place."
+     ],
+     "failed": [],
+     "gap": null,
+     "label": "Meets the minimum",
+     "min_points": 32.0,
+     "notice": "Not yet confirmed by the team.",
+     "points": 40.0,
+     "programme": "bsc_medical_sciences",
+     "programme_name": "BSc in Medical Sciences",
+     "selective": false,
+     "source_url": "https://drupalwebprod-files.up.ac.za/Public/2026-03/UP_DESA_Application%20requirements%20tables_2027_web.pdf?VersionId=vw30gCBk2BMAXzOhFSBflmkFOHOMFOoa",
+     "tier": "meets_minimum",
+     "university": "up",
+     "university_name": "University of Pretoria"
+    },
+    "notes": [
+     "Related to MBChB (Bachelor of Medicine and Bachelor of Surgery) through health sciences and medical sciences.",
+     "Your points: 40 (minimum 32).",
+     "Life Orientation is not counted here.",
+     "Meeting the minimum does not guarantee a place."
+    ],
+    "number": 3,
+    "role": "safe"
+   }
+  }
+ },
+ "message": "Success",
+ "success": true
+}
