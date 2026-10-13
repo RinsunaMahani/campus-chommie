@@ -65,10 +65,10 @@ The names Rinsuna reads on campus could also go into OpenStreetMap itself, so ev
 | UP | Onderstepoort | 2 | 0 | [way 427085320](https://www.openstreetmap.org/way/427085320) and [way 236250989](https://www.openstreetmap.org/way/236250989): OpenStreetMap has only these 2 buildings mapped there (checked 13 Oct) |
 | UP | Mamelodi | 22 | 18 | [way 1009606676](https://www.openstreetmap.org/way/1009606676) |
 | TUT | Pretoria | 118 | 20 | [way 63131200](https://www.openstreetmap.org/way/63131200) |
-| TUT | Arts | 32 | 0 | [way 435671653](https://www.openstreetmap.org/way/435671653) |
+| TUT | Arts | 25 | 0 | [way 435671653](https://www.openstreetmap.org/way/435671653) |
 | TUT | Arcadia | 9 | 0 | [way 723941347](https://www.openstreetmap.org/way/723941347) |
-| TUT | Ga-Rankuwa | not yet | | [way 293217287](https://www.openstreetmap.org/way/293217287): the servers were too busy on 12 and 13 Oct |
-| TUT | Soshanguve South | 8 | 2 | [way 413120107](https://www.openstreetmap.org/way/413120107) |
+| TUT | Ga-Rankuwa | 0 | 0 | [way 293217287](https://www.openstreetmap.org/way/293217287): the outline only, since OpenStreetMap has no buildings mapped there (checked 13 Oct) |
+| TUT | Soshanguve South | 8 | 2 | [way 413120107](https://www.openstreetmap.org/way/413120107) (fetched on 12 Oct; busy servers on 13 Oct) |
 | SMU | Ga-Rankuwa | 281 | 6 | [way 86253741](https://www.openstreetmap.org/way/86253741): the six names are all sewage works, so the buildings wait for Rinsuna's names |
 
 **No outline in OpenStreetMap, so not mapped:** UP Hillcrest and GIBS (Sandton); TUT Soshanguve North, eMalahleni,

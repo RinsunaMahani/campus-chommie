@@ -314,7 +314,8 @@ cents, documents and next steps, each with its source. `funding.yaml` holds nati
   First the two the Support screen already names: the Clinpath Building (Student Support Referral Unit, room
   3L003) and the Natural Science Building (Religious Desk).
 - [ ] **Campuses not mapped yet** ([maps](research/maps.md)): six have no outline in OpenStreetMap (UP Hillcrest and
-  GIBS; TUT Soshanguve North, eMalahleni, Mbombela and Polokwane). A person could draw them in OpenStreetMap.
+  GIBS; TUT Soshanguve North, eMalahleni, Mbombela and Polokwane), and two have an outline with almost no buildings
+  in it (UP Onderstepoort has 2, TUT Ga-Rankuwa none). A person could draw them in OpenStreetMap.
 - [ ] **The map's background** (an external service, so it's Rinsuna's call): our shapes on a plain background (no
   service at all), OpenStreetMap's own tiles (free but best-effort, with rules for apps: its tile usage policy), or
   a tile provider built on OpenStreetMap (usually an account and a key).
