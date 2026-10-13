@@ -62,7 +62,7 @@ For the pitch deck and to steer what we build. Rinsuna tried UniApplyForMe and U
 | **Budgeting apps** (22seven, GoodBudget) | General budgets | Allowance timing, study workload | [guide](https://gauteng.net/nsfas/essential-features-of-the-nsfas-app/) |
 | **Bursary and advice sites** (ZABursaries, VarsityWise, GoCareers) | Bursary lists and how-to-apply articles | Official status: they repeat funders' information, sometimes out of date | [ZABursaries](https://www.zabursaries.co.za/bursaries-closing-in-august-2026/), [VarsityWise](https://www.varsitywise.com/posts/how-to-apply-to-south-african-universities-online-) |
 
-## Lessons for our screens (ideas for Mandla)
+## Lessons for our screens
 
 Learn from their patterns. Don't copy their data, wording or images.
 
@@ -135,9 +135,9 @@ additions marked *new*:
 
 - **As leads for us:** useful for finding bursaries and vac work, which we then confirm on the funder's own page.
   Nothing goes into a data pack from them.
-- **As links in the app:** a "more opportunities" link points learners at someone else's site, so it needs Mandla's
+- **As links in the app:** a "more opportunities" link points learners at someone else's site, so it needs Rinsuna's
   OK.
 - **Never copy or scrape their listings.**
 - **Graduates24 on WhatsApp:** Rinsuna confirmed its channel on 10 Oct 2026:
   https://whatsapp.com/channel/0029Va9MQ0jB4hdYtf0Wml0A ("the latest Internships, Learnerships and Bursaries").
-  A link in the app needs Mandla's OK. UniApplyForMe runs its own WhatsApp channel for bursary alerts.
+  A link in the app needs Rinsuna's OK. UniApplyForMe runs its own WhatsApp channel for bursary alerts.

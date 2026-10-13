@@ -4,7 +4,10 @@ Facts we don't have yet and decisions only the team can make. The app shows "Not
 missing; nothing here may be guessed. Tick an item and add a line (who, when, the answer or a link) when it's
 settled.
 
-## Facts for the data packs (Rinsuna)
+Since 13 Oct 2026 the team is Rinsuna alone (Mandla Baloyi is no longer on it), so every decision here is hers: the
+items that waited for Mandla now wait for her.
+
+## Facts for the data packs
 
 Research notes from official documents, read on 9 and 10 Oct 2026 and not yet checked by a person:
 [UP](research/up.md), [TUT](research/tut.md), [SMU](research/smu.md), [NSFAS](research/nsfas.md) and
@@ -101,7 +104,7 @@ Research notes from official documents, read on 9 and 10 Oct 2026 and not yet ch
 - [ ] **Smaller inconsistencies** are listed at the end of each research note (for example, two closing dates for TUT's
   Bachelor of Geomatics, and a UP table that ends mid-row).
 
-## Data-pack schema (Rinsuna)
+## Data-pack schema
 
 Today's `Requirements` holds a fixed list of subjects and one APS. About 100 of UP's 120 programmes fit, about 18 of
 TUT's 125, and most of SMU's.
@@ -152,7 +155,7 @@ per intake (the year a learner would start), with programmes that close on their
 university names without saying which programme closes when, a late window or "no late applications", the fee in
 cents, documents and next steps, each with its source. `funding.yaml` holds national funders the same way.
 
-## Reading class announcements (Rinsuna)
+## Reading class announcements
 
 - [ ] **Afrikaans words the engine reads** (added by Rinsuna's agent, 10 Oct 2026; a fluent speaker to check): toets,
   eksamen, vasvra, opdrag, werkopdrag, werkstuk, praktika, prak, verskuif, uitgestel, nuwe datum, gekanselleer,
@@ -163,7 +166,7 @@ cents, documents and next steps, each with its source. `funding.yaml` holds nati
   others): not added, because we don't guess. A fluent speaker can list the words students really use. Messages that
   mix languages already work when the facts are in English (they're in the labelled set).
 
-## Privacy and legal (both)
+## Privacy and legal
 
 - [ ] **Privacy Policy and Terms of Use** are drafts (`0.1-draft`, in `frontend/mobile/src/content/legal/`). They need
   the team's review and a legal professional's check before release. Each must name the information officer and
@@ -176,12 +179,17 @@ cents, documents and next steps, each with its source. `funding.yaml` holds nati
 - [ ] **Retention** for security records and for closed accounts. "Close my account" deactivates it; nothing removes
   a closed account's data yet. The brief's `DELETE /me` (delete the account and its data) and a complete
   `GET /me/export` are built on `rinsuna/privacy-export-delete` (10 Oct 2026), so the Security screen's "Delete my
-  account and data: Coming soon" can become real (Mandla). Still open: how long a closed account is kept, and the
+  account and data: Coming soon" can become real. Still open: how long a closed account is kept, and the
   audit trail's records, which neither the export nor deleting touches.
+- [ ] **The reused foundation, with Mandla no longer on the team** (raised 13 Oct 2026). M0 copied code from Akayza,
+  © Team PR (Mandla and Rinsuna), and through it from TruConnect, an earlier project of Mandla's (REUSE.md). Both
+  of Mandla's confirmations in REUSE.md are unsigned, and so is Rinsuna's. Rinsuna decides before the submission
+  (Mon 26 Oct): get his written OK, or replace the reused files. LICENSE still names "Team PR (Mandla and
+  Rinsuna)": also hers to decide. Agents don't edit REUSE.md or LICENSE.
 - [ ] **Email sender.** Placeholders use `example.com` (we own no domain). Which address and inbox send the codes in
   production (`MAIL_DEFAULT_SENDER`, `MAIL_REPLY_TO`)?
 
-## App and accounts (Mandla)
+## App and accounts
 
 - [x] **Packs nobody has checked yet** are served, each labelled "Not yet confirmed by the team", so the demo works
   (Rinsuna, 9 Oct 2026). Whether production hides them can wait.
@@ -190,50 +198,50 @@ cents, documents and next steps, each with its source. `funding.yaml` holds nati
   marks screen offers these; see README, "Course finder". The API refuses a repeated subject, so the app keeps the
   last mark, says so (the engine's `duplicate` text), and sends each subject once.
 
-- [ ] **F6 "Fund and apply"** (agreed by Rinsuna on 9 Oct 2026 for M1; Mandla to confirm). The challenge asks us to
+- [x] **F6 "Fund and apply"** (agreed by Rinsuna on 9 Oct 2026 for M1; in scope since 13 Oct, when she became the
+  whole team). The challenge asks us to
   help learners "compare funding options" and "complete applications". F6 shows funding routes for each choice in
   the plan, fees, and an application checklist. Like the course finder, it needs no account and stores nothing. Its
   facts come from the research notes. It should show TUT's late applications (14-22 January 2027, online, for
   programmes with space): the only way still open to apply for 2027 at our three universities. F6 goes beyond the
-  brief's five features, so if confirmed, CLAUDE.md's Scope section gains it. **Built in part on 10 Oct 2026** as
+  brief's five features, so CLAUDE.md's Scope section now lists it. **Built in part on 10 Oct 2026** as
   "how to apply" inside the course finder's plan (`rinsuna/m1-how-to-apply`; README, "How to apply"): each
   choice's application status today, the dates still ahead, each university's fee, documents and next steps, and
   NSFAS. **Bursaries added on 11 Oct 2026:** Rinsuna asked for funding like UniApplyForMe's, reversing "no bursary
   list". `GET /funding` lists 19 funders (NSFAS, bursaries, UP's merit awards, a government loan scheme) with
   "N open now, N closing soon" and filters, `GET /funding/<id>` gives one in full, and each plan choice shows the
-  funding its fields point to (README, "Funding"; [funding](research/funding.md)). Mandla: the screens are in
-  HANDOVER.
-- [x] **Saving funding, with reminders** (new personal data: approved by Rinsuna on 11 Oct 2026; Mandla to confirm
-  the screens). A signed-in student saves funders (UniApplyForMe's bookmark) and gets an alert when one opens after
+  funding its fields point to (README, "Funding"; [funding](research/funding.md)). The screens are in HANDOVER.
+- [x] **Saving funding, with reminders** (new personal data: approved by Rinsuna on 11 Oct 2026). A
+  signed-in student saves funders (UniApplyForMe's bookmark) and gets an alert when one opens after
   they saved it, and a week and a day before it closes; a switch turns the reminders off. We keep only the funder's
   id and the day, owner-only, in the export and deleted with the account. A saved list can hint at a funder's
   criteria (a population group, a disability), so no rep or admin view reads it and it's never counted. Built on
   `rinsuna/saved-funding` (README, "Saved funding").
-- [ ] **Which intakes a plan shows** (decided by Rinsuna's agent while building, 10 Oct 2026; Mandla to confirm): the
+- [ ] **Which intakes a plan shows** (decided by Rinsuna's agent while building, 10 Oct 2026; Rinsuna to confirm): the
   dates to start next year and the year after, plus this year's while a late window is still ahead, so the app asks
   nothing about the learner's grade. The alternative is one optional question ("When do you want to start?"), sent
   with the plan and never stored.
 - [ ] **"Add these dates to my calendar":** the plan's `deadlines` list is ready for it. How (the phone's calendar or
-  an .ics file) is Mandla's call; nothing goes to our server.
-- [ ] **Your points at every university** (agreed by Rinsuna on 10 Oct 2026, after trying UniApplyForMe; Mandla to
+  an .ics file) is Rinsuna's call; nothing goes to our server.
+- [ ] **Your points at every university** (agreed by Rinsuna on 10 Oct 2026, after trying UniApplyForMe; Rinsuna to
   confirm the screen): `POST /pathways/points` gives the learner's points at UP, TUT and SMU, each by its own rule,
   and how many programmes they meet. It could open the course finder, before the learner picks a university.
-- [ ] **Accepted: your first steps** (agreed by Rinsuna on 10 Oct 2026; Mandla to confirm the screen):
+- [ ] **Accepted: your first steps** (agreed by Rinsuna on 10 Oct 2026; Rinsuna to confirm the screen):
   `GET /universities/<id>/first-steps` gives accepting the offer, registering, orientation and the first lecture, on
   today's date, with what NSFAS does at registration. It could follow the plan, and greet a new student on Home
   before term. It's the "from acceptance" in the challenge.
-- [ ] **My money's screens** (M3, Mandla), on the API in `rinsuna/m3-profile-and-money` (README, "A student's own
+- [ ] **My money's screens** (M3), on the API in `rinsuna/m3-profile-and-money` (README, "A student's own
   profile and money"):
   - **Reliability:** income sources say how reliable they are (`on_time`, `sometimes_late`, `often_late`,
-    `not_sure`); the wording is yours. A late-prone next payment adds a note suggesting the "late" view.
+    `not_sure`); the wording is ours. A late-prone next payment adds a note suggesting the "late" view.
   - **Balance:** the student enters it once, with the day it was true. It then stays current from the spending
     they log and the payments they mark received, so the screen never has to ask again.
   - **Onboarding:** a university and campus picker for `PUT /me/profile`.
-- [ ] **The university's own deadlines in My week** (agreed by Rinsuna on 10 Oct 2026; Mandla to confirm): calendar
+- [ ] **The university's own deadlines in My week** (agreed by Rinsuna on 10 Oct 2026; Rinsuna to confirm): calendar
   entries with `period: deadline` (re-marks, exclusion appeals, module changes, graduation applications) shown with
   the class deadlines in M4's week view. **Built** on `rinsuna/m4-my-week`: each week of `GET /week` lists the
   calendar entries for the student's campus (deadlines, test weeks, exams, recess) beside its verified events.
-- [ ] **My week's screens** (M4, Mandla), on the API in `rinsuna/m4-my-week` (README, "My marks" and "Classes, reps
+- [ ] **My week's screens** (M4), on the API in `rinsuna/m4-my-week` (README, "My marks" and "Classes, reps
   and verified events"):
   - **Classes:** create one (you become its rep), join with a code (an invite code or a rep code, in the same box),
     and a rep's "add a rep" button that shows a one-time code to pass on.
@@ -245,7 +253,7 @@ cents, documents and next steps, each with its source. `funding.yaml` holds nati
   - **Week strip:** eight weeks with the `load` word (never colour alone), the `reason` line, and a tap to see the
     week's events and calendar entries.
   - **My marks:** modules with their assessments, the standing message, and the projection with its range.
-- [ ] **Flag counts for reps** (decided by Rinsuna's agent while building, 10 Oct 2026; Mandla to confirm): a rep sees
+- [ ] **Flag counts for reps** (decided by Rinsuna's agent while building, 10 Oct 2026; Rinsuna to confirm): a rep sees
   how many students flagged an event and why, from the first flag, never who. We read CLAUDE.md's "aggregates only
   when at least 5 students contribute" as covering marks and money. If the team reads it as covering flags too,
   reps would see counts only from 5 flags, and small classes would rarely see any.
@@ -257,11 +265,11 @@ cents, documents and next steps, each with its source. `funding.yaml` holds nati
   support after acceptance instead ([competitors](research/competitors.md)). The directory, the DHET register link
   and TVET colleges go on the roadmap slide; the scope stays "SMU, UP or TUT for now".
 - [ ] **Links to opportunity sites** (Graduates24, bursary websites): leads for us only, never a source for a fact. A
-  "more opportunities" link in the app points learners at someone else's site, so it needs Mandla's OK. Never copy or
+  "more opportunities" link in the app points learners at someone else's site, so it needs Rinsuna's OK. Never copy or
   scrape their listings. Rinsuna gave Graduates24's WhatsApp channel on 10 Oct 2026:
-  https://whatsapp.com/channel/0029Va9MQ0jB4hdYtf0Wml0A. If Mandla agrees, it could sit beside the careers office on
+  https://whatsapp.com/channel/0029Va9MQ0jB4hdYtf0Wml0A. If Rinsuna agrees, it could sit beside the careers office on
   the Support screen; nothing in the app links to it yet.
-- [ ] **Vac work, light version** (agreed for M1 the same day; Mandla to confirm):
+- [ ] **Vac work, light version** (agreed for M1 the same day; Rinsuna to confirm):
   - In F6, a sourced "includes vac work" note on bursaries that offer it.
   - In My week, a nudge before each recess ("Recess from [date]: look for vac work in your field"). It links to the
     careers office: UP Career Services, TUT career counselling, or SMU's counselling centre, which offers career
@@ -271,16 +279,16 @@ cents, documents and next steps, each with its source. `funding.yaml` holds nati
   email, and judges can't read the demo inbox. **Decided by Rinsuna on 10 Oct 2026:** demo accounts (made only by
   `flask seed`, fictional data only) skip the new-phone code. They can't be locked by wrong passwords, with 20 sign-in
   tries an hour per IP instead, and they can't change, reset or close. Built on `rinsuna/m5-alerts-support-demo`;
-  Mandla reviews the identity change.
-- [ ] **Module alerts** (added by Rinsuna's agent in M5; Mandla to confirm): besides the brief's combined, heavy-week
+  Rinsuna reviews the identity change (#11).
+- [ ] **Module alerts** (added by Rinsuna's agent in M5; Rinsuna to confirm): besides the brief's combined, heavy-week
   and money alerts, Home shows one when a module's target is out of reach, pointing to tutoring and counselling. Drop
   it if Home should keep to the brief's three.
 - [x] **Expo and EAS.** The reused app config's EAS project id and owner were removed. Whose Expo account owns Campus Chommie's
   project (`eas init`), and who builds the Android preview? **Decided by Rinsuna on 10 Oct 2026**, because the team
   needs an installable app in different places: the project is `@rinsunamahani/campus-chommie`, under her own Expo
   account, and she builds the preview APK (README, "An installable Android app"). It signs in against the built-in
-  mock until the backend is hosted. To let Mandla build too, move the project to her Expo team account
-  (`rinsunamahanis-team`) and invite him there.
+  mock until the backend is hosted. Since 13 Oct Rinsuna builds alone, so it stays under
+  her own account.
 - [ ] **Package name `za.campuschommie.app`.** Confirm before the first Play Store upload; it can't change after. The
   preview APK already uses it: changing it later is still possible, but phones with the preview would then see a
   second, separate app.

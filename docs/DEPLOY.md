@@ -1,8 +1,8 @@
 # Deploying the backend
 
-How to run the Campus Chommie API on any host that runs a container. Which host is still the team's choice
-(OPEN_QUESTIONS, "Hosting"); nothing here depends on one. The app (Expo) and its web build are Mandla's; the last
-section says what they need from the backend.
+How to run the Campus Chommie API on any host that runs a container. Which host is still Rinsuna's choice
+(OPEN_QUESTIONS, "Hosting"); nothing here depends on one. The last section says what the app (Expo) and its web
+build need from the backend.
 
 ## What a host must give it
 
@@ -89,8 +89,8 @@ one process either way.
   followed by a new build.
 - **The web build:** if it's hosted, add its https address to `CORS_ORIGINS`.
 
-## Still the team's to decide
+## Still Rinsuna's to decide
 
 - **The host and the managed PostgreSQL.**
-- **Error monitoring.** An external service, so the team agrees to it first (CLAUDE.md).
+- **Error monitoring.** An external service, so Rinsuna agrees to it first (CLAUDE.md).
 - **The email sender address**, which needs a domain we don't have yet.
