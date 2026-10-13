@@ -9,9 +9,19 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 
 from .matching import COMPETITIVE, MEETS_MINIMUM, REACH, TIER_RANK, UNVERIFIED, assess_all
-from .points import compute_points
+from .points import LIFE_ORIENTATION, PointsResult, compute_points, points_for
 from .schemas import PointsRule, University
 from .text import plural
+
+
+@dataclass
+class SubjectPoints:
+    """One subject at one university: its level on that university's scale and the points it adds."""
+
+    subject: str
+    level: int
+    points: float  # what it adds here: 0 when it isn't counted
+    counted: bool
 
 
 @dataclass
@@ -20,6 +30,7 @@ class UniversityPoints:
     name: str
     points: float | None  # None when we don't hold the university's points rule yet
     counted: list[str] = field(default_factory=list)  # the subjects that counted
+    subjects: list[SubjectPoints] = field(default_factory=list)  # each subject's level and points, as given
     tiers: dict[str, int] = field(default_factory=dict)  # how many programmes in each tier
     summary: str = ""
     lines: list[str] = field(default_factory=list)  # how this university counts
@@ -38,6 +49,8 @@ def _how(rule: PointsRule) -> str:
 def _summary(tiers: dict[str, int]) -> str:
     """A Reach programme's minimum is met too: it adds competitive selection on top."""
     total = sum(tiers.values())
+    if not total:
+        return "We haven't added this university's programmes yet."
     meets = tiers[COMPETITIVE] + tiers[MEETS_MINIMUM] + tiers[REACH]
     parts = [f"You meet the minimum for {meets} of {plural(total, 'programme')}."]
     if tiers[REACH] == 1:
@@ -62,11 +75,25 @@ def university_points(uni: University, marks: dict[str, float]) -> UniversityPoi
     result = compute_points(marks, rule)
     source = uni.source(rule.source)
     out.points, out.counted = result.total, result.counted
+    out.subjects = _subjects(result, rule)
     out.source_url = source.url if source else None
     # The rule line already says how Life Orientation counts.
     out.lines = [_how(rule)] + [n for n in result.notes if not n.startswith("Life Orientation")]
     if any(p.points_rules for p in uni.programmes):
         out.lines.append("Some programmes count points their own way: their cards show those points.")
+    return out
+
+
+def _subjects(result: PointsResult, rule: PointsRule) -> list[SubjectPoints]:
+    """Each subject's level and what it adds, in the order the learner gave them: together they
+    make the total."""
+    out = []
+    for subject, level in result.levels.items():
+        counted = subject in result.counted
+        points = float(points_for(level, rule)) if counted else 0.0
+        if counted and subject == LIFE_ORIENTATION and rule.life_orientation == "half":
+            points /= 2
+        out.append(SubjectPoints(subject, level, points, counted))
     return out
 
 

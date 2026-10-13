@@ -50,6 +50,38 @@ def test_the_summary_in_plain_words():
     assert _summary({COMPETITIVE: 0, MEETS_MINIMUM: 0, REACH: 0, UNVERIFIED: 0, NOT_YET: 1}) == (
         "You meet the minimum for 0 of 1 programme."
     )
+    # A university whose programmes we haven't added yet: its points still show.
+    assert _summary({COMPETITIVE: 0, MEETS_MINIMUM: 0, REACH: 0, UNVERIFIED: 0, NOT_YET: 0}) == (
+        "We haven't added this university's programmes yet."
+    )
+
+
+def test_each_subjects_level_and_points_add_up_to_the_total(catalogue, strong_marks):
+    for u in points_everywhere(catalogue, strong_marks):
+        assert [s.subject for s in u.subjects] == list(strong_marks)
+        assert sum(s.points for s in u.subjects) == u.points
+        assert {s.subject for s in u.subjects if s.counted} == set(u.counted)
+    tut = university_points(catalogue["tut"], strong_marks)
+    lo = next(s for s in tut.subjects if s.subject == "life_orientation")
+    assert (lo.level, lo.points, lo.counted) == (7, 0.0, False)  # TUT leaves Life Orientation out
+
+
+def test_life_orientation_at_half_adds_half_its_points():
+    uni = University.model_validate(
+        {"university": "ex", "name": "Example University", "city": "Pretoria", "academic_year": 2027,
+         "programmes": [{"id": "a", "name": "A"}],
+         "sources": [{"id": "s", "url": "https://example.org", "publisher": "Example"}],
+         "points_rules": {"source": "s", "subjects_counted": 3, "life_orientation": "half",
+                          "scale": [{"min_percent": 0, "level": 1}, {"min_percent": 70, "level": 6}]}}
+    )
+    u = university_points(uni, {"english": 75, "mathematics": 72, "history": 40, "life_orientation": 80})
+    assert [(s.subject, s.level, s.points, s.counted) for s in u.subjects] == [
+        ("english", 6, 6.0, True),
+        ("mathematics", 6, 6.0, True),
+        ("history", 1, 0.0, False),
+        ("life_orientation", 6, 3.0, True),
+    ]
+    assert u.points == 15.0
 
 
 def test_a_university_without_a_points_rule_says_so():

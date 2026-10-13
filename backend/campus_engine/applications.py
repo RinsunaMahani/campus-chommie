@@ -207,10 +207,12 @@ def window_status(
     previous: Window | None = None,
     previous_heading: str = "",
     cfg: dict | None = None,
+    whole: bool = False,
 ) -> WindowStatus:
     """Where one intake's applications stand today, in plain words. `who` names the university
     or funder; `previous` is the intake before, whose dates are offered as a guide (and said to be
-    last time's) when this intake's aren't published."""
+    last time's) when this intake's aren't published. `whole` words it for a university as a whole
+    rather than one programme."""
     cfg = cfg or load_config()
     out = WindowStatus(intake=intake, heading=heading, status=NOT_PUBLISHED)
     earlier = _previous(previous, programme_id, previous_heading, today)
@@ -226,11 +228,13 @@ def window_status(
         out.late_opens, out.late_closes = late.opens, late.closes
     at = f" at {window.closing_time}" if window.closing_time else ""
     last = closes or (maybe[-1] if maybe else None)  # the last day this programme could close
-    unsure = (
-        f"Programmes close on {_either(maybe)}, and which date applies to this one isn't published yet"
-        if maybe
-        else ""
-    )
+    unsure = ""
+    if maybe:
+        unsure = (
+            f"Programmes close on {_either(maybe)}, depending on the programme"
+            if whole
+            else f"Programmes close on {_either(maybe)}, and which date applies to this one isn't published yet"
+        )
     lines: list[str] = []
 
     def until(d: date) -> str:
@@ -288,7 +292,10 @@ def window_status(
         if passed:
             out.status = CHECK
             lines.append(
-                f"This programme may already have closed on {_either(passed)}. If it hasn't, it closes on "
+                f"Some programmes may already have closed on {_either(passed)}; others close on "
+                f"{_either(upcoming)}: check yours with {who}."
+                if whole
+                else f"This programme may already have closed on {_either(passed)}. If it hasn't, it closes on "
                 f"{_either(upcoming)}: check with {who}."
             )
             lines += earlier
@@ -317,24 +324,34 @@ def window_status(
 
     if window.no_late_applications:
         lines.append("No late applications.")
+    if whole and window.programme_closes and out.status not in (CLOSED, NOT_PUBLISHED):
+        lines.append("Some programmes have their own closing dates: plan with one to see its date.")
     if window.note:
         lines.append(window.note)
     out.lines = lines
     return out
 
 
-def programme_windows(uni: University, programme_id: str, today: date, cfg: dict | None = None) -> list[WindowStatus]:
-    """One status per intake for one programme."""
+def programme_windows(
+    uni: University, programme_id: str | None, today: date, cfg: dict | None = None, *, whole: bool = False
+) -> list[WindowStatus]:
+    """One status per intake for one programme, or for the university as a whole."""
     windows = uni.applications.windows if uni.applications else []
     by_intake = {w.intake: w for w in windows}
     return [
         window_status(
             by_intake.get(year), year, today,
             who=uni.name, heading=f"To start in {year}", url_for=_url_for(uni), programme_id=programme_id,
-            previous=by_intake.get(year - 1), previous_heading=f"To start in {year - 1}", cfg=cfg,
+            previous=by_intake.get(year - 1), previous_heading=f"To start in {year - 1}", cfg=cfg, whole=whole,
         )
         for year in intakes(today, windows)
     ]
+
+
+def university_windows(uni: University, today: date, cfg: dict | None = None) -> list[WindowStatus]:
+    """One status per intake for the university as a whole: its usual dates, with a programme's
+    own closing date left to that programme's plan."""
+    return programme_windows(uni, None, today, cfg, whole=True)
 
 
 def _group(items: SourcedList | None, url_for: UrlFor) -> Group | None:
