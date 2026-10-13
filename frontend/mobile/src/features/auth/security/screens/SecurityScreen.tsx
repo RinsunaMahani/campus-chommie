@@ -7,6 +7,7 @@ import { AuthError } from '@/features/auth/types';
 import { Button } from '@/shared/components/Button';
 import { Card, IconTile, ListRow, Tag } from '@/shared/components/Parts';
 import { Screen } from '@/shared/components/Screen';
+import { t } from '@/shared/i18n';
 import { Overline, Title } from '@/shared/components/Text';
 import { colors, fonts } from '@/shared/theme/tokens';
 
@@ -79,7 +80,7 @@ export default function SecurityScreen() {
       <Overline>Password and data</Overline>
       <Card style={{ paddingVertical: 4 }}>
         <ListRow icon="key" title="Change password" subtitle="Your other phones will be signed out" onPress={() => router.push('/change-password')} />
-        <ListRow icon="user-x" title="Delete my account and data" subtitle="Coming soon" />
+        <ListRow icon="user-x" title={t('delete.title')} subtitle={t('delete.sub')} onPress={() => router.push('/delete-account')} />
         <ListRow icon="trash-2" title="Close my account" subtitle="Ends every session on every phone" danger onPress={() => router.push('/close-account')} last />
       </Card>
     </Screen>

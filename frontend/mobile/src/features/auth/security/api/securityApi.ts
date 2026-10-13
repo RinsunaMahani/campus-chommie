@@ -23,6 +23,8 @@ export interface SecurityApi {
   changePassword(current: string, next: string): Promise<number>;
   exportData(): Promise<Record<string, unknown>>;
   closeAccount(password: string): Promise<void>;
+  /** POPIA: delete the account and everything kept about the student (DELETE /me). */
+  deleteAccount(password: string): Promise<void>;
 }
 
 async function call<T>(fn: () => Promise<T>): Promise<T> {
@@ -43,6 +45,10 @@ const http: SecurityApi = {
   closeAccount: (password) =>
     call(async () => {
       await api('POST', '/me/close-account', { password }, { auth: true });
+    }),
+  deleteAccount: (password) =>
+    call(async () => {
+      await api('DELETE', '/me', { password }, { auth: true });
     }),
 };
 
@@ -78,6 +84,10 @@ const mock: SecurityApi = {
     return { account: { note: 'Sample data (mock mode)' } };
   },
   async closeAccount(password) {
+    await wait();
+    if (password.length < 8) throw new AuthError('WRONG_PASSWORD', 'That password is incorrect.');
+  },
+  async deleteAccount(password) {
     await wait();
     if (password.length < 8) throw new AuthError('WRONG_PASSWORD', 'That password is incorrect.');
   },
