@@ -1,0 +1,20 @@
+# Which OpenStreetMap outline is which of our campuses (scripts/fetch_osm_maps.py reads this).
+# A campus with two parts lists both. Campuses not here have no outline in OpenStreetMap yet:
+# UP Hillcrest and GIBS; TUT Soshanguve North, eMalahleni, Mbombela and Polokwane.
+
+up:
+  hatfield: {name: "University of Pretoria (Hatfield)", osm: [relation/17478004]}
+  groenkloof: {name: "University of Pretoria, Groenkloof Campus", osm: [way/433978067]}
+  prinshof: {name: "University of Pretoria (Prinshof Campus)", osm: [way/1010238957, way/1098735040]}
+  onderstepoort: {name: "University of Pretoria, Onderstepoort Campus", osm: [way/427085320, way/236250989]}
+  mamelodi: {name: "University of Pretoria Mamelodi Campus", osm: [way/1009606676]}
+
+tut:
+  pretoria: {name: "TUT Pretoria Campus", osm: [way/63131200]}
+  arts: {name: "TUT Arts Campus", osm: [way/435671653]}
+  arcadia: {name: "TUT Arcadia Campus", osm: [way/723941347]}
+  ga_rankuwa: {name: "Tshwane University of Technology: Ga-Rankuwa Campus", osm: [way/293217287]}
+  soshanguve_south: {name: "Tshwane University of Technology - Soshanguve South Campus", osm: [way/413120107]}
+
+smu:
+  ga_rankuwa: {name: "Sefako Makgatho Health Sciences University", osm: [way/86253741]}

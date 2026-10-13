@@ -1,11 +1,11 @@
-"""Validate every university data pack and the national funding pack (NSFAS and bursaries).
+"""Validate every university data pack, the national funding pack (NSFAS and bursaries) and the campus maps.
 
 Errors (exit code 1, so CI fails): schema problems and broken references, plus
 anything incomplete in a pack marked release: true.
 Warnings: unverified programmes and application facts, and stale or missing
 verification dates.
 
-Usage: python scripts/validate_data.py [folder] [--funding path]
+Usage: python scripts/validate_data.py [folder] [--funding path] [--maps folder]
 """
 from __future__ import annotations
 
@@ -18,7 +18,15 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from campus_engine.catalogue import FUNDING_PATH, DataPackError, load_funding, load_university  # noqa: E402
+from campus_engine.catalogue import (  # noqa: E402
+    FUNDING_PATH,
+    MAPS_CONFIG,
+    MAPS_DIR,
+    DataPackError,
+    load_funding,
+    load_map,
+    load_university,
+)
 from campus_engine.schemas import Applications, Source  # noqa: E402
 
 STALE_AFTER_DAYS = 365
@@ -76,6 +84,46 @@ def check_funding(path: Path, today: date, universities: set[str] | None = None)
     return errors, warnings
 
 
+def check_maps(folder: Path, today: date, campuses: dict[str, set[str]]) -> tuple[list[str], list[str]]:
+    """Every campus map loads, names a university we have, and only campuses its pack lists.
+    `campuses`: each university's campus ids."""
+    errors: list[str] = []
+    warnings: list[str] = []
+    for path in sorted(folder.glob("*.yaml")):
+        if path.name == MAPS_CONFIG or path.name.startswith("_"):
+            continue
+        try:
+            umap = load_map(path)
+        except DataPackError as exc:
+            errors.append(str(exc))
+            continue
+        if umap.university not in campuses:
+            errors.append(f"maps/{path.name}: no pack for university '{umap.university}'")
+            continue
+        for c in umap.campuses:
+            if c.campus not in campuses[umap.university]:
+                errors.append(f"maps/{umap.university}: unknown campus '{c.campus}'")
+
+        def problem(message: str, umap=umap) -> None:
+            (errors if umap.release else warnings).append(message)
+
+        _check_sources(f"maps/{umap.university}", umap.sources, today, problem, warnings)
+    return errors, warnings
+
+
+def _campus_ids(folder: Path) -> dict[str, set[str]]:
+    """Each pack's campus ids, by university (a broken pack reports its own error)."""
+    found: dict[str, set[str]] = {}
+    for path in sorted(folder.glob("*.yaml")):
+        if not path.name.startswith("_"):
+            try:
+                uni = load_university(path)
+            except DataPackError:
+                continue
+            found[uni.university] = {c.id for c in uni.campuses}
+    return found
+
+
 def _university_ids(folder: Path) -> set[str]:
     """The id of every pack that loads (a broken pack reports its own error)."""
     ids: set[str] = set()
@@ -111,11 +159,13 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Validate university data packs and the national funding pack.")
     parser.add_argument("folder", nargs="?", default=str(ROOT / "data" / "universities"))
     parser.add_argument("--funding", default=str(FUNDING_PATH))
+    parser.add_argument("--maps", default=str(MAPS_DIR))
     args = parser.parse_args(argv)
     today = date.today()
     all_errors: list[str] = []
     results = [check(path, today) for path in sorted(Path(args.folder).glob("*.yaml"))]
     results.append(check_funding(Path(args.funding), today, _university_ids(Path(args.folder))))
+    results.append(check_maps(Path(args.maps), today, _campus_ids(Path(args.folder))))
     for errors, warnings in results:
         for w in warnings:
             print(f"WARN  {w}")
