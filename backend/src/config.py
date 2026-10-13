@@ -8,7 +8,7 @@ nothing secret is written here.
 from __future__ import annotations
 
 import os
-from datetime import timedelta
+from datetime import date, timedelta
 from urllib.parse import quote
 
 from src.shared.constants.constants import (
@@ -49,10 +49,23 @@ def _database_uri(db_name_var: str = "POSTGRES_DB", default_db: str = "campus_ch
     return f"postgresql+psycopg2://{user}:{password}@{host}:{port}/{name}"
 
 
+def _preview_today() -> date | None:
+    """CAMPUS_PREVIEW_TODAY=YYYY-MM-DD: a test date for a preview (src/shared/clock). Unset or empty: the real date."""
+    raw = os.environ.get("CAMPUS_PREVIEW_TODAY", "").strip()
+    if not raw:
+        return None
+    try:
+        return date.fromisoformat(raw)
+    except ValueError:
+        raise RuntimeError("CAMPUS_PREVIEW_TODAY must be a date like 2026-08-01.") from None
+
+
 class BaseConfig:
     SECRET_KEY = os.environ.get("SECRET_KEY", "")
     JWT_SECRET_KEY = os.environ.get("JWT_SECRET_KEY", "")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    # A test date for previews only (src/shared/clock). Only DevelopmentConfig sets it.
+    PREVIEW_TODAY: date | None = None
     SQLALCHEMY_ENGINE_OPTIONS = {"pool_pre_ping": True}
     # Requests are small JSON. Anything bigger is refused before it is
     # read (413).
@@ -134,6 +147,7 @@ class DevelopmentConfig(BaseConfig):
     # need CORS; production allows no browser origins at all.
     CORS_ORIGINS = [o.strip() for o in os.environ.get("CORS_ORIGINS", "http://localhost:8081").split(",") if o.strip()]
     SQLALCHEMY_DATABASE_URI = _database_uri()
+    PREVIEW_TODAY = _preview_today()
 
 
 class TestingConfig(BaseConfig):
@@ -171,6 +185,9 @@ CONFIG_MAP = {
 def get_config(env_name: str | None = None):
     env_name = env_name or os.environ.get("FLASK_ENV", "development")
     config = CONFIG_MAP.get(env_name, DevelopmentConfig)
+    # A test date makes every application window and funding date wrong on purpose: previews only. Tests ignore it.
+    if os.environ.get("CAMPUS_PREVIEW_TODAY", "").strip() and env_name not in ("development", "testing"):
+        raise RuntimeError(f"CAMPUS_PREVIEW_TODAY is for previews only and is not allowed in {env_name}.")
     # Refuse to start with empty secrets outside tests: an app that runs
     # with a blank JWT key signs tokens anyone can forge.
     if env_name != "testing":

@@ -11,15 +11,15 @@ shows next to it.
 """
 from __future__ import annotations
 
-from datetime import date, datetime
-from zoneinfo import ZoneInfo
+from datetime import date
 
 from campus_engine import funding as engine
 from campus_engine.applications import Group, Guide, WindowStatus
 from campus_engine.schemas import FIELDS, Funder, FundingPack
 from src.core.exceptions import NotFoundError
+from src.shared.clock.clock import today_sast
 
-from ..constants import TIMEZONE, UNCONFIRMED_NOTICE
+from ..constants import UNCONFIRMED_NOTICE
 from ..repositories.pack_repository import funding_pack
 
 
@@ -34,8 +34,8 @@ def confirmation(funding: FundingPack) -> dict:
 
 
 def _today() -> date:
-    """Today in South Africa: every application date is SAST."""
-    return datetime.now(ZoneInfo(TIMEZONE)).date()
+    """Today in South Africa, or a preview's test date (src/shared/clock)."""
+    return today_sast()
 
 
 def funding_list(*, fields: list[str] | None = None, status: str | None = None, kind: str | None = None,
