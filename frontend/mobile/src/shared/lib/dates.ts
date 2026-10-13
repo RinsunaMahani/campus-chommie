@@ -31,3 +31,30 @@ export function formatMonth(yearMonth: string): string {
   const [y, m] = yearMonth.split('-').map(Number);
   return `${t('date.months').split(' ')[m - 1]} ${y}`;
 }
+
+/** "2026-10", "2026-11", ... : `count` months starting `offset` months from this month (SAST). */
+export function monthsFrom(offset: number, count: number, today: string = todaySast()): string[] {
+  const [y, m] = today.split('-').map(Number);
+  return Array.from({ length: count }, (_, i) => {
+    const d = new Date(Date.UTC(y, m - 1 + offset + i, 1));
+    return `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}`;
+  });
+}
+
+/** A day that exists in that month ("2026-02-30" doesn't) as "2026-02-28" style text, or null. */
+export function dayInMonth(yearMonth: string, day: number): string | null {
+  const [y, m] = yearMonth.split('-').map(Number);
+  const d = new Date(Date.UTC(y, m - 1, day));
+  if (d.getUTCMonth() !== m - 1 || day < 1) return null;
+  return `${yearMonth}-${String(day).padStart(2, '0')}`;
+}
+
+/** "2026-10-12" -> "Mon 12 Oct": for dates the reader knows the year of. */
+export function formatShortDay(iso: string): string {
+  return formatDay(iso).split(' ').slice(0, 3).join(' ');
+}
+
+/** A percentage as people say it: 10, 63.1 (never 10.0). */
+export function percent(n: number): string {
+  return String(Math.round(n * 10) / 10);
+}

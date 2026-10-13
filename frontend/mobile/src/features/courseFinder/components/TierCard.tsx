@@ -14,7 +14,7 @@ import { t } from '@/shared/i18n';
 import { colors, fonts, radius } from '@/shared/theme/tokens';
 
 import { Match, Tier } from '../types';
-import { SourceLink } from './SourceLink';
+import { SourceLink } from '@/shared/components/SourceLink';
 
 type IconName = ComponentProps<typeof Feather>['name'];
 
