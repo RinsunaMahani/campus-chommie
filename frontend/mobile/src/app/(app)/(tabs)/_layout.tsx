@@ -36,7 +36,8 @@ export default function TabsLayout() {
         headerShown: false,
         tabBarActiveTintColor: colors.accentDeep,
         tabBarInactiveTintColor: colors.textMuted,
-        tabBarLabelStyle: { fontFamily: fonts.bold, fontSize: 12.5, marginTop: 4 },
+        // A line height, or a label with a descender ('Money') loses its tail.
+        tabBarLabelStyle: { fontFamily: fonts.bold, fontSize: 12.5, lineHeight: 17, marginTop: 4 },
         tabBarItemStyle: { paddingTop: 8 },
         tabBarStyle: {
           backgroundColor: colors.white,
@@ -47,6 +48,7 @@ export default function TabsLayout() {
         sceneStyle: { backgroundColor: colors.porcelain },
       }}>
       <Tabs.Screen name="home" options={tab('Home', 'home')} />
+      <Tabs.Screen name="money" options={tab('Money', 'credit-card')} />
     </Tabs>
   );
 }
