@@ -68,3 +68,15 @@ export type SummaryReady = SummaryBase & {
 };
 
 export type Summary = SummaryNotReady | SummaryReady;
+
+/** A cheap thing to do near the student's campus, priced from the place's own page. */
+export type CheapThing = {
+  name: string;
+  category: string;
+  cost_note: string | null;
+  address: string | null;
+  hours: string | null;
+  source_url: string | null;
+  read_on: string | null;
+  last_verified: string | null;
+};

@@ -50,6 +50,7 @@ export default function TabsLayout() {
       <Tabs.Screen name="home" options={tab('Home', 'home')} />
       <Tabs.Screen name="week" options={tab('Week', 'calendar')} />
       <Tabs.Screen name="money" options={tab('Money', 'credit-card')} />
+      <Tabs.Screen name="support" options={tab('Support', 'life-buoy')} />
     </Tabs>
   );
 }
