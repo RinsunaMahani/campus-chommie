@@ -10,7 +10,7 @@ import { colors, fonts, radius } from '@/shared/theme/tokens';
 
 import { courseFinderApi } from '../api/courseFinderApi';
 import { checkRows } from '../marks';
-import { ErrorBox } from '../components/Status';
+import { ErrorBox } from '@/shared/components/Status';
 import { TierCard } from '../components/TierCard';
 import { useCourseFinder } from '../state';
 import { Match, Tier } from '../types';

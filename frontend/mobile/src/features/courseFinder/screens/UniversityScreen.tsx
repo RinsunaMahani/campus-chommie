@@ -10,7 +10,7 @@ import { t } from '@/shared/i18n';
 import { colors } from '@/shared/theme/tokens';
 
 import { courseFinderApi } from '../api/courseFinderApi';
-import { ErrorBox, Loading } from '../components/Status';
+import { ErrorBox, Loading } from '@/shared/components/Status';
 import { useCourseFinder } from '../state';
 import { UniversitySummary } from '../types';
 import { errorText } from '../words';
@@ -52,7 +52,7 @@ export default function UniversityScreen() {
 
       <Strong>{t('courseFinder.universityPick')}</Strong>
       {error ? <ErrorBox message={error} onRetry={retry} /> : null}
-      {!error && !list ? <Loading /> : null}
+      {!error && !list ? <Loading label={t('courseFinder.loading')} /> : null}
       {list && !list.length ? <Body>{t('courseFinder.noUniversities')}</Body> : null}
       {list?.map((u) => (
         <Card key={u.id} onPress={() => choose(u)} style={styles.card}>

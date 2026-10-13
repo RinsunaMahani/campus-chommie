@@ -13,7 +13,7 @@ import { MessageKey, t } from '@/shared/i18n';
 import { colors, fonts, radius } from '@/shared/theme/tokens';
 
 import { courseFinderApi } from '../api/courseFinderApi';
-import { ErrorBox } from '../components/Status';
+import { ErrorBox } from '@/shared/components/Status';
 import { checkRows, cleanPercent, MarkRow, newRow } from '../marks';
 import { useCourseFinder } from '../state';
 import { MAX_SUBJECTS, subjectOptions } from '../subjects';
