@@ -1,0 +1,166 @@
+/**
+ * What the course-finder API answers (backend: domains/pathways/course_finder
+ * and catalogue/universities). Field names stay as the server sends them.
+ * Missing facts come as null, with a "not verified yet" line beside them.
+ */
+
+/** Words for a tier come from the server's `label`; this is only for icons and colour. */
+export type Tier = 'reach' | 'meets_minimum' | 'competitive' | 'not_yet' | 'unverified';
+
+export type Confirmation = {
+  /** False until a person on the team has checked the pack. */
+  confirmed: boolean;
+  /** "Not yet confirmed by the team." when not confirmed. */
+  notice: string | null;
+};
+
+export type UniversitySummary = Confirmation & {
+  id: string;
+  name: string;
+  city: string | null;
+  academic_year: number | null;
+  programmes: number;
+};
+
+export type Match = Confirmation & {
+  university: string;
+  university_name: string;
+  programme: string;
+  programme_name: string;
+  tier: Tier;
+  label: string;
+  selective: boolean;
+  points: number | null;
+  min_points: number | null;
+  gap: number | null;
+  /** Requirements not met; each also appears in `explanation`. */
+  failed: string[];
+  /** The "why" lines. */
+  explanation: string[];
+  source_url: string | null;
+};
+
+export type AssessAnswer = { university: UniversitySummary; matches: Match[] };
+
+export type WindowStatus =
+  | 'open'
+  | 'closing_soon'
+  | 'check'
+  | 'opens_later'
+  | 'late_open'
+  | 'late_ahead'
+  | 'closed'
+  | 'not_published';
+
+export type ApplyWindow = {
+  intake: number;
+  heading: string;
+  status: WindowStatus;
+  label: string;
+  opens: string | null;
+  closes: string | null;
+  closes_one_of: string[];
+  late_opens: string | null;
+  late_closes: string | null;
+  next_date: string | null;
+  days: number | null;
+  lines: string[];
+  source_url: string | null;
+};
+
+export type SlotFunder = {
+  id: string;
+  name: string;
+  short_name: string | null;
+  label: string;
+  status: string;
+  days: number | null;
+  lines: string[];
+  kind_label: string;
+  url: string | null;
+  source_url: string | null;
+  checked: string | null;
+};
+
+export type SlotFunding = {
+  count: number;
+  open_now: number;
+  fields: string[];
+  funders: SlotFunder[];
+  lines: string[];
+};
+
+export type Bridge = {
+  to: string;
+  guarantee: 'by_rule' | 'considered';
+  guarantee_label: string;
+  conditions: string | null;
+  max_places: number | null;
+  added_years: number | null;
+  eligibility_note: string | null;
+  source_url: string | null;
+};
+
+export type Slot = {
+  number: number;
+  role: string;
+  match: Match;
+  notes: string[];
+  apply: ApplyWindow[];
+  funding: SlotFunding | null;
+  bridge?: Bridge;
+};
+
+export type Group = { items: string[]; source_url: string | null } | null;
+
+/** One university's or funder's "how to apply". */
+export type Guide = Confirmation & {
+  id: string;
+  name: string;
+  kind: 'university' | 'funder';
+  url: string | null;
+  how: string | null;
+  fee_cents: number | null;
+  fee_note: string | null;
+  contact: string | null;
+  max_choices: number | null;
+  documents: Group;
+  after: { text: string; source_url: string | null }[];
+  who_can_apply: Group;
+  tips: Group;
+  warnings: Group;
+  windows: ApplyWindow[];
+  lines: string[];
+  source_url: string | null;
+};
+
+export type Deadline = {
+  date: string;
+  days: number;
+  text: string;
+  intake: number | null;
+  who: string;
+  programme: string | null;
+  source_url: string | null;
+};
+
+export type PlanApply = {
+  today: string;
+  universities: Guide[];
+  funding: Guide[];
+  deadlines: Deadline[];
+  notes: string[];
+};
+
+export type Plan = {
+  goal: Slot | null;
+  bridge: Slot | null;
+  safe: Slot | null;
+  other_routes: Slot[];
+  notes: string[];
+  apply: PlanApply;
+};
+
+/** One row the learner sends. Subject keys are in subjects.ts. */
+export type Mark = { subject: string; percent: number };
+
