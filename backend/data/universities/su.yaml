@@ -1,0 +1,39 @@
+# Stellenbosch University (SU)
+#
+# Agent draft, read on 13 Oct 2026 (docs/research/universities.md). Stellenbosch selects on averages of
+# your marks, programme by programme, not on a points score: no points rule yet. Nobody has checked these
+# values yet: release stays false until a person has compared every one with its source.
+
+university: su
+name: Stellenbosch University
+city: Stellenbosch
+academic_year: 2027
+release: false
+max_choices: 3
+
+points_rules: null
+points_note: "Stellenbosch selects on averages of your marks, programme by programme, not on a points score."
+
+applications:
+  source: s-su-howto
+  url: https://blogs.sun.ac.za/open-day/files/2026/03/How-to-Apply-Undergraduate-programmes-2027-intake.pdf
+  how: "Create an online profile and apply. You can be offered more than one of your three choices, and accept one at a time."
+  fee_cents: 10000
+  fee_note: "For South African applicants. SU waives it for some schools, by quintile."
+  windows:
+    - intake: 2027
+      source: s-su-howto
+      opens: null
+      closes: 2026-07-31
+      note: "The Diploma in Public Accountability closes on 15 December 2026."
+
+programmes: []
+
+sources:
+  - id: s-su-howto
+    url: "https://blogs.sun.ac.za/open-day/files/2026/03/How-to-Apply-Undergraduate-programmes-2027-intake.pdf"
+    publisher: "Stellenbosch University"
+    title: "How to apply: undergraduate programmes, 2027 intake"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"

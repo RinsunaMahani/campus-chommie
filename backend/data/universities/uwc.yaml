@@ -1,0 +1,97 @@
+# University of the Western Cape (UWC)
+#
+# Agent draft, read on 13 Oct 2026 (docs/research/universities.md). UWC weights subjects: English and
+# Mathematics count up to 15, other subjects up to 8 and Life Orientation up to 3. Nobody has checked
+# these values yet: release stays false until a person has compared every one with its source.
+
+university: uwc
+name: University of the Western Cape
+city: Cape Town (Bellville)
+academic_year: 2027
+release: false
+max_choices: 2
+
+points_rules:
+  source: s-uwc-aps
+  subjects_counted: 7
+  life_orientation: full
+  note: "UWC counts English, an additional language, Mathematics or Mathematical Literacy, Life Orientation and your three best other subjects. We count Life Orientation and your best six others, which is the same when you take seven subjects."
+  scale:
+    - {min_percent: 90, level: 8}
+    - {min_percent: 80, level: 7}
+    - {min_percent: 70, level: 6}
+    - {min_percent: 60, level: 5}
+    - {min_percent: 50, level: 4}
+    - {min_percent: 40, level: 3}
+    - {min_percent: 30, level: 2}
+    - {min_percent: 0, level: 1}
+  subject_points:
+    english:
+      - {min_percent: 90, points: 15}
+      - {min_percent: 80, points: 13}
+      - {min_percent: 70, points: 11}
+      - {min_percent: 60, points: 9}
+      - {min_percent: 50, points: 7}
+      - {min_percent: 40, points: 5}
+      - {min_percent: 30, points: 3}
+      - {min_percent: 20, points: 1}
+      - {min_percent: 0, points: 0}
+    mathematics:
+      - {min_percent: 90, points: 15}
+      - {min_percent: 80, points: 13}
+      - {min_percent: 70, points: 11}
+      - {min_percent: 60, points: 9}
+      - {min_percent: 50, points: 7}
+      - {min_percent: 40, points: 5}
+      - {min_percent: 30, points: 3}
+      - {min_percent: 20, points: 1}
+      - {min_percent: 0, points: 0}
+    life_orientation:
+      - {min_percent: 90, points: 3}
+      - {min_percent: 80, points: 3}
+      - {min_percent: 70, points: 2}
+      - {min_percent: 60, points: 2}
+      - {min_percent: 50, points: 2}
+      - {min_percent: 40, points: 1}
+      - {min_percent: 30, points: 1}
+      - {min_percent: 20, points: 1}
+      - {min_percent: 0, points: 0}
+  other_points:
+    - {min_percent: 90, points: 8}
+    - {min_percent: 80, points: 7}
+    - {min_percent: 70, points: 6}
+    - {min_percent: 60, points: 5}
+    - {min_percent: 50, points: 4}
+    - {min_percent: 40, points: 3}
+    - {min_percent: 30, points: 2}
+    - {min_percent: 20, points: 1}
+    - {min_percent: 0, points: 0}
+
+applications:
+  source: s-uwc-apply
+  url: https://www.uwc.ac.za/admission-and-financial-aid/apply/undergraduate-applications
+  how: "Apply online on UWC's portal, student.uwc.ac.za."
+  windows:
+    - intake: 2027
+      source: s-uwc-apply
+      opens: 2026-04-01
+      closes: 2026-09-30
+      note: "Dentistry and Oral Health closed on 31 August 2026."
+
+programmes: []
+
+sources:
+  - id: s-uwc-aps
+    url: "https://www.uwc.ac.za/admission-point-score-calculator/south-african-aps-calculator"
+    publisher: "University of the Western Cape"
+    title: "South African APS calculator (the points table)"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-uwc-apply
+    url: "https://www.uwc.ac.za/admission-and-financial-aid/apply/undergraduate-applications"
+    publisher: "University of the Western Cape"
+    title: "Undergraduate applications"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"

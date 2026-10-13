@@ -1,0 +1,57 @@
+# Nelson Mandela University (NMU)
+#
+# Agent draft, read on 13 Oct 2026 (docs/research/universities.md). NMU's Applicant Score adds six
+# subjects' percentages, out of 600. Nobody has checked these values yet: release stays false until a
+# person has compared every one with its source.
+
+university: nmu
+name: Nelson Mandela University
+city: Gqeberha and George
+academic_year: 2027
+release: false
+max_choices: null
+
+points_rules:
+  source: s-nmu-as
+  subjects_counted: 6
+  life_orientation: exclude
+  percent_points: {per_percent: 1, from_percent: 0}
+  note: "Your Applicant Score is out of 600: NMU always counts your two languages and Mathematics, Mathematical Literacy or Technical Mathematics. Learners at quintile 1 to 3 schools with 50% or more in Life Orientation get 7 more points, which we can't add without asking about your school."
+  scale:
+    - {min_percent: 80, level: 7}
+    - {min_percent: 70, level: 6}
+    - {min_percent: 60, level: 5}
+    - {min_percent: 50, level: 4}
+    - {min_percent: 40, level: 3}
+    - {min_percent: 30, level: 2}
+    - {min_percent: 0, level: 1}
+
+applications:
+  source: s-nmu-closing
+  url: https://www.mandela.ac.za/Study-at-Mandela/Application/Closing-dates
+  fee_cents: 0
+  fee_note: "South African applicants pay no application fee."
+  windows:
+    - intake: 2027
+      source: s-nmu-closing
+      opens: null
+      closes: 2026-09-30
+      note: "MBChB, Pharmacy, Radiography and Nursing closed on 30 June 2026, and early applications on 3 August; the rest closed on 30 September."
+
+programmes: []
+
+sources:
+  - id: s-nmu-as
+    url: "https://myfuture.mandela.ac.za/Applicant-Score"
+    publisher: "Nelson Mandela University"
+    title: "Applicant Score"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-nmu-closing
+    url: "https://www.mandela.ac.za/Study-at-Mandela/Application/Closing-dates"
+    publisher: "Nelson Mandela University"
+    title: "Closing dates"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"

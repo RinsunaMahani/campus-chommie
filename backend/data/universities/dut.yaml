@@ -1,0 +1,55 @@
+# Durban University of Technology (DUT)
+#
+# Agent draft, read on 13 Oct 2026 (docs/research/universities.md). DUT's site certificate had expired
+# that day, so its 2027 study guide couldn't be opened: only the top of its points table was read, through
+# a search engine, so there's no points rule yet. Dates come from the Central Applications Office (CAO).
+# Nobody has checked these values yet: release stays false until a person has compared every one with its
+# source.
+
+university: dut
+name: Durban University of Technology
+city: Durban and Pietermaritzburg
+academic_year: 2027
+release: false
+max_choices: null
+
+points_rules: null
+points_note: "DUT's 2027 points table couldn't be read in full yet."
+
+applications:
+  source: s-cao-faq
+  url: https://www.cao.ac.za/
+  how: "Apply through the Central Applications Office (CAO), at cao.ac.za."
+  fee_cents: 25000
+  fee_note: "The CAO's fee: R250 if it reaches the CAO by 31 October 2026, R470 from 1 November."
+  windows:
+    - intake: 2027
+      source: s-cao-changes
+      opens: null
+      closes_one_of: [2026-08-31, 2026-09-30]
+      note: "Each DUT programme has its own closing date on the CAO's list: Diagnostic Radiography closed on 31 August 2026, Medical Laboratory Science on 30 September."
+
+programmes: []
+
+sources:
+  - id: s-dut-opportunities
+    url: "https://www.dut.ac.za/wp-content/uploads/2026/06/Study-Opportunities-2027.pdf"
+    publisher: "Durban University of Technology"
+    title: "Study Opportunities 2027"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cao-faq
+    url: "https://cao.ac.za/2027%20Entry%20FAQs.html"
+    publisher: "Central Applications Office"
+    title: "2027 entry FAQs (fees)"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cao-changes
+    url: "https://cao.ac.za/download/Entry%20Requirement%20Changes%202027%20Entry%20-%2024.07.2026.pdf"
+    publisher: "Central Applications Office"
+    title: "Entry requirement changes, 2027 entry (closing dates)"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"

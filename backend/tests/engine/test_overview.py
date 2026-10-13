@@ -25,11 +25,19 @@ def test_universities_without_programmes_still_count_points_their_own_way(catalo
     assert by_id["wits"].lines[1] == "English, Mathematics and Life Orientation count on their own points tables here."
     # UNIVEN scores the marks themselves: 8.2 + 8.1 + 8.0 + 8.5 + 7.4 + 7.9.
     assert by_id["univen"].points == pytest.approx(48.1)
-    assert by_id["univen"].lines[1] == "Each subject scores 10 points for every 100%, and nothing under 40%."
+    assert by_id["univen"].lines[1] == "Each subject scores a tenth of its percentage, and nothing under 40%."
     # UMP: the best six, and Life Orientation at half its level 7.
     assert by_id["ump"].points == 43.5
     for uni in ("uj", "unisa", "ul", "nwu", "vut"):
         assert by_id[uni].points == 40, uni
+    # NMU adds the six percentages, out of 600: 82 + 81 + 80 + 85 + 74 + 79.
+    assert by_id["nmu"].points == 481
+    # UWC: English and Mathematics 13 each at 80%+, others 7, 7, 6, 6, Life Orientation 3.
+    assert by_id["uwc"].points == 13 + 13 + 7 + 7 + 6 + 6 + 3
+    # No points rule: say so, and why.
+    assert by_id["uct"].points is None
+    assert by_id["uct"].lines[0] == "We don't have this university's points rule yet."
+    assert "Faculty Points Score" in by_id["uct"].lines[1]
     # No programmes yet: points, and the summary says why there's nothing to meet.
     assert by_id["wits"].summary == "We haven't added this university's programmes yet."
     assert sum(by_id["wits"].subjects[i].points for i in range(len(strong_marks))) == 47
@@ -53,6 +61,9 @@ def test_a_subjects_own_points_table_and_points_from_the_percentage():
     assert u.points == 14
     marks = uni({"percent_points": {"per_percent": 0.1, "from_percent": 40}})
     assert university_points(marks, {"english": 65, "mathematics": 39}).points == 6.5
+    # A general table for every subject without its own: nothing under 20% here.
+    general = uni({"other_points": [{"min_percent": 0, "points": 0}, {"min_percent": 20, "points": 1}, {"min_percent": 60, "points": 5}]})
+    assert university_points(general, {"english": 65, "history": 15}).points == 5
 
 
 def test_universities_come_in_name_order_so_none_is_ranked_above_another(catalogue, strong_marks):
@@ -98,8 +109,11 @@ def test_the_summary_in_plain_words():
 
 def test_each_subjects_level_and_points_add_up_to_the_total(catalogue, strong_marks):
     for u in points_everywhere(catalogue, strong_marks):
+        if u.points is None:  # no points rule yet: nothing to break down
+            assert u.subjects == []
+            continue
         assert [s.subject for s in u.subjects] == list(strong_marks)
-        assert sum(s.points for s in u.subjects) == u.points
+        assert sum(s.points for s in u.subjects) == pytest.approx(u.points)
         assert {s.subject for s in u.subjects if s.counted} == set(u.counted)
     tut = university_points(catalogue["tut"], strong_marks)
     lo = next(s for s in tut.subjects if s.subject == "life_orientation")

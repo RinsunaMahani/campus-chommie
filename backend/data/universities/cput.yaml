@@ -1,0 +1,46 @@
+# Cape Peninsula University of Technology (CPUT)
+#
+# Agent draft, read on 13 Oct 2026 (docs/research/universities.md). CPUT's site sent an incomplete
+# certificate chain that day, so these values came from a search engine's copy of CPUT's pages. Its points
+# method wasn't found: no points rule yet. Nobody has checked these values yet: release stays false until
+# a person has compared every one with its source.
+
+university: cput
+name: Cape Peninsula University of Technology
+city: Cape Town
+academic_year: 2027
+release: false
+max_choices: null
+
+points_rules: null
+points_note: "CPUT's points method wasn't found on its pages."
+
+applications:
+  source: s-cput-apply
+  url: https://www.cput.ac.za/study-at-cput/undergraduate/apply
+  fee_cents: 0
+  fee_note: "Applying online is free; a paper application costs R100."
+  windows:
+    - intake: 2027
+      source: s-cput-apply
+      opens: null
+      closes_one_of: [2026-06-30, 2026-07-31, 2026-08-31, 2026-09-30]
+      note: "Each CPUT programme has its own closing date."
+
+programmes: []
+
+sources:
+  - id: s-cput-apply
+    url: "https://www.cput.ac.za/study-at-cput/undergraduate/apply"
+    publisher: "Cape Peninsula University of Technology"
+    title: "Apply to study: undergraduate"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cput-fee
+    url: "https://www.cput.ac.za/help/content/19/82/en/07-do-i-have-to-pay-any-application-fee-if-applying-online.html"
+    publisher: "Cape Peninsula University of Technology"
+    title: "Do I have to pay an application fee if applying online?"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
