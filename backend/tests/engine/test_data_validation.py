@@ -92,7 +92,7 @@ def test_shipped_funding_pack_names_only_universities_we_have():
     from scripts.validate_data import _university_ids
 
     ids = _university_ids(UNIVERSITIES_DIR)
-    assert ids == {"up", "tut", "smu"}
+    assert {"up", "tut", "smu", "wits", "uj", "unisa"} <= ids
     errors, _ = check_funding(FUNDING_PATH, TODAY, ids)
     assert errors == [], errors
 
@@ -180,3 +180,22 @@ def test_a_map_names_only_universities_and_campuses_we_have(tmp_path):
     (tmp_path / "zz.yaml").write_text(MAP.replace("UNI", "hogwarts").replace("CAMPUS", "main"))
     errors, _ = check_maps(tmp_path, TODAY, {"smu": {"ga_rankuwa"}})
     assert errors == ["maps/smu: unknown campus 'atlantis'", "maps/zz.yaml: no pack for university 'hogwarts'"]
+
+
+@pytest.mark.parametrize(
+    "rule, problem",
+    [
+        ({"subject_points": {"latin": [{"min_percent": 0, "points": 1}]}}, "unknown subject 'latin'"),
+        ({"subject_points": {"english": [{"min_percent": 50, "points": 4}]}}, "must include a band starting at 0%"),
+        ({"subject_points": {"english": [{"min_percent": 0, "points": 0}, {"min_percent": 0, "points": 1}]}}, "repeats a percentage"),
+        ({"subject_points": {"english": [{"min_percent": 0, "points": 25}]}}, "less than or equal to 20"),
+        ({"percent_points": {"per_percent": 0, "from_percent": 40}}, "greater than 0"),
+    ],
+)
+def test_a_points_rule_refuses_tables_that_cant_be_right(rule, problem):
+    from pydantic import ValidationError
+
+    from campus_engine.schemas import PointsRule
+
+    with pytest.raises(ValidationError, match=problem):
+        PointsRule.model_validate({"source": "s", "scale": [{"min_percent": 0, "level": 1}], **rule})

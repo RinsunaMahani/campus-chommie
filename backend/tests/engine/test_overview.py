@@ -5,6 +5,8 @@ programmes the marks meet and how that university counts.
 from __future__ import annotations
 
 from campus_engine.matching import COMPETITIVE, MEETS_MINIMUM, NOT_YET, REACH, UNVERIFIED
+import pytest
+
 from campus_engine.overview import _how, _summary, points_everywhere, university_points
 from campus_engine.schemas import PointsRule, University
 
@@ -12,7 +14,45 @@ from campus_engine.schemas import PointsRule, University
 def test_the_same_marks_give_each_universitys_own_points(catalogue, strong_marks):
     points = {u.university: u.points for u in points_everywhere(catalogue, strong_marks)}
     # SMU counts seven subjects with Life Orientation; UP and TUT count six without it.
-    assert points == {"smu": 47, "tut": 40, "up": 40}
+    assert {k: points[k] for k in ("smu", "tut", "up")} == {"smu": 47, "tut": 40, "up": 40}
+
+
+def test_universities_without_programmes_still_count_points_their_own_way(catalogue, strong_marks):
+    by_id = {u.university: u for u in points_everywhere(catalogue, strong_marks)}
+    # Wits: the best seven with Life Orientation on its own table, and 2 more for English and Mathematics:
+    # 9 + 9 + 7 + 7 + 6 + 6, and Life Orientation 3 for 88%.
+    assert by_id["wits"].points == 47
+    assert by_id["wits"].lines[1] == "English, Mathematics and Life Orientation count on their own points tables here."
+    # UNIVEN scores the marks themselves: 8.2 + 8.1 + 8.0 + 8.5 + 7.4 + 7.9.
+    assert by_id["univen"].points == pytest.approx(48.1)
+    assert by_id["univen"].lines[1] == "Each subject scores 10 points for every 100%, and nothing under 40%."
+    # UMP: the best six, and Life Orientation at half its level 7.
+    assert by_id["ump"].points == 43.5
+    for uni in ("uj", "unisa", "ul", "nwu", "vut"):
+        assert by_id[uni].points == 40, uni
+    # No programmes yet: points, and the summary says why there's nothing to meet.
+    assert by_id["wits"].summary == "We haven't added this university's programmes yet."
+    assert sum(by_id["wits"].subjects[i].points for i in range(len(strong_marks))) == 47
+
+
+def test_a_subjects_own_points_table_and_points_from_the_percentage():
+    def uni(rule: dict) -> University:
+        return University.model_validate(
+            {"university": "ex", "name": "Example University", "city": "Pretoria", "academic_year": 2027,
+             "sources": [{"id": "s", "url": "https://example.org", "publisher": "Example"}],
+             "points_rules": {"source": "s", "subjects_counted": 2, "life_orientation": "exclude",
+                              "scale": [{"min_percent": 0, "level": 1}, {"min_percent": 60, "level": 5}], **rule}}
+        )
+
+    table = uni({"subject_points": {"mathematics": [{"min_percent": 0, "points": 0}, {"min_percent": 60, "points": 9}]}})
+    u = university_points(table, {"english": 65, "mathematics": 61, "history": 70})
+    # Mathematics is worth 9 here, so it beats history's level 5 for the second place.
+    assert [(s.subject, s.points, s.counted) for s in u.subjects] == [
+        ("english", 5.0, True), ("mathematics", 9.0, True), ("history", 0.0, False)
+    ]
+    assert u.points == 14
+    marks = uni({"percent_points": {"per_percent": 0.1, "from_percent": 40}})
+    assert university_points(marks, {"english": 65, "mathematics": 39}).points == 6.5
 
 
 def test_universities_come_in_name_order_so_none_is_ranked_above_another(catalogue, strong_marks):

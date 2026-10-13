@@ -1,0 +1,88 @@
+# University of the Witwatersrand (Wits)
+#
+# Agent draft, from Wits's own pages read on 13 Oct 2026 (docs/research/universities.md). Nobody has
+# checked these values yet: release stays false until a person has compared every one with its source.
+# Programmes aren't added yet: only how Wits counts points, and how and when to apply.
+
+university: wits
+name: University of the Witwatersrand
+city: Johannesburg
+academic_year: 2027
+release: false
+max_choices: null
+
+points_rules:
+  source: s-wits-entry
+  subjects_counted: 7          # "the best seven subjects including Life Orientation"
+  life_orientation: full       # counted, on its own smaller table below
+  count_from_level: 3          # under 40% adds nothing
+  note: "Wits counts any subject a faculty requires, even when it isn't among your best seven."
+  scale:
+    - {min_percent: 90, level: 8}
+    - {min_percent: 80, level: 7}
+    - {min_percent: 70, level: 6}
+    - {min_percent: 60, level: 5}
+    - {min_percent: 50, level: 4}
+    - {min_percent: 40, level: 3}
+    - {min_percent: 30, level: 2}
+    - {min_percent: 0, level: 1}
+  subject_points:              # English and Mathematics add 2 from 60%; Life Orientation tops out at 4
+    english:
+      - {min_percent: 90, points: 10}
+      - {min_percent: 80, points: 9}
+      - {min_percent: 70, points: 8}
+      - {min_percent: 60, points: 7}
+      - {min_percent: 50, points: 4}
+      - {min_percent: 40, points: 3}
+      - {min_percent: 0, points: 0}
+    mathematics:
+      - {min_percent: 90, points: 10}
+      - {min_percent: 80, points: 9}
+      - {min_percent: 70, points: 8}
+      - {min_percent: 60, points: 7}
+      - {min_percent: 50, points: 4}
+      - {min_percent: 40, points: 3}
+      - {min_percent: 0, points: 0}
+    life_orientation:
+      - {min_percent: 90, points: 4}
+      - {min_percent: 80, points: 3}
+      - {min_percent: 70, points: 2}
+      - {min_percent: 60, points: 1}
+      - {min_percent: 0, points: 0}
+
+applications:
+  source: s-wits-apply
+  url: https://www.wits.ac.za/undergraduate/apply-to-wits/
+  how: "Apply online, then upload documents and follow your application on the Wits self-service portal."
+  fee_cents: 10000
+  windows:
+    - intake: 2027
+      source: s-wits-timelines
+      opens: null                # "March: Applications open", without a day
+      closes: 2026-09-30
+      note: "Applications opened in March 2026. Every Health Sciences programme closed on 30 June 2026, as did Architectural Studies, Audiology, Speech-Language Pathology and BA Film and TV."
+
+programmes: []
+
+sources:
+  - id: s-wits-entry
+    url: "https://www.wits.ac.za/undergraduate/entry-requirements/"
+    publisher: "University of the Witwatersrand"
+    title: "Entry requirements (the APS table)"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-apply
+    url: "https://www.wits.ac.za/undergraduate/apply-to-wits/"
+    publisher: "University of the Witwatersrand"
+    title: "Apply to Wits"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-timelines
+    url: "https://www.wits.ac.za/undergraduate/apply-to-wits/timelines/"
+    publisher: "University of the Witwatersrand"
+    title: "Timelines for the 2027 intake"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
