@@ -14,6 +14,13 @@ export function daysLeft(days: number): string {
   return t('courseFinder.daysLeft', { n: days });
 }
 
+/** "today", "tomorrow", "in 93 days": how far off a date is. */
+export function inDays(days: number): string {
+  if (days <= 0) return t('courseFinder.today');
+  if (days === 1) return t('courseFinder.tomorrow');
+  return t('courseFinder.inDays', { n: days });
+}
+
 /** What went wrong, in one sentence: the server's own words, or every field message on a 422. */
 export function errorText(error: unknown): string {
   return sharedErrorText(error, t('courseFinder.errorGeneric'));

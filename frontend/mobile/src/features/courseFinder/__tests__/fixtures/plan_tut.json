@@ -1,0 +1,921 @@
+{
+ "data": {
+  "plan": {
+   "apply": {
+    "deadlines": [
+     {
+      "date": "2026-10-31",
+      "days": 18,
+      "intake": 2027,
+      "programme": null,
+      "source_url": "https://nsfas.org.za/content/how-to-apply.html",
+      "text": "NSFAS: applications for 2027 funding close at 23:59.",
+      "who": "nsfas"
+     },
+     {
+      "date": "2027-01-14",
+      "days": 93,
+      "intake": 2027,
+      "programme": null,
+      "source_url": "https://www.tut.ac.za/media/tshwane-interim/site-content/documents/2027-Academic-Core-Calendar.pdf",
+      "text": "Tshwane University of Technology: late applications to start in 2027 open.",
+      "who": "tut"
+     },
+     {
+      "date": "2027-01-22",
+      "days": 101,
+      "intake": 2027,
+      "programme": null,
+      "source_url": "https://www.tut.ac.za/media/tshwane-interim/site-content/documents/2027-Academic-Core-Calendar.pdf",
+      "text": "Tshwane University of Technology: late applications to start in 2027 close.",
+      "who": "tut"
+     },
+     {
+      "date": "2027-04-01",
+      "days": 170,
+      "intake": 2028,
+      "programme": null,
+      "source_url": "https://www.tut.ac.za/media/tshwane-interim/site-content/documents/2027-Academic-Core-Calendar.pdf",
+      "text": "Tshwane University of Technology: applications to start in 2028 open.",
+      "who": "tut"
+     },
+     {
+      "date": "2027-06-15",
+      "days": 245,
+      "intake": 2028,
+      "programme": "b_environmental_health",
+      "source_url": "https://www.tut.ac.za/media/tshwane-interim/site-content/documents/2027-Academic-Core-Calendar.pdf",
+      "text": "Tshwane University of Technology, Bachelor of Environmental Health: applications to start in 2028 may close on this date, so apply by then to be safe.",
+      "who": "tut"
+     },
+     {
+      "date": "2027-06-15",
+      "days": 245,
+      "intake": 2028,
+      "programme": "b_nursing",
+      "source_url": "https://www.tut.ac.za/media/tshwane-interim/site-content/documents/2027-Academic-Core-Calendar.pdf",
+      "text": "Tshwane University of Technology, Bachelor of Nursing: applications to start in 2028 may close on this date, so apply by then to be safe.",
+      "who": "tut"
+     }
+    ],
+    "funding": [
+     {
+      "after": [
+       {
+        "source_url": "https://www.nsfas.org.za/content/",
+        "text": "Save your reference number, then follow your status in the tracker on myNSFAS."
+       },
+       {
+        "source_url": "https://www.nsfas.org.za/content/",
+        "text": "You have 30 working days to answer any request for more information."
+       },
+       {
+        "source_url": "https://nsfas.org.za/content/how-to-apply.html",
+        "text": "If your application is unsuccessful, myNSFAS shows the reason, and you can appeal within the appeal window."
+       },
+       {
+        "source_url": "https://nsfas.org.za/content/how-to-apply.html",
+        "text": "If NSFAS finds you eligible, your funding is confirmed once you register at a public university or TVET college."
+       }
+      ],
+      "confirmed": false,
+      "contact": "Toll-free 08000 67327, USSD *134*67327#, info@nsfas.org.za",
+      "documents": {
+       "items": [
+        "Your South African ID or birth certificate (a smart ID card: both sides)",
+        "The NSFAS 2027 consent form, signed by hand in black ink by you and by every parent, legal guardian or spouse on your application",
+        "If you're 34 or younger: the NSFAS declaration form, which confirms your parent or guardian details",
+        "If a parent, legal guardian or spouse earns an income: payslips for the last three months, a UIF statement, or an affidavit if the income is informal",
+        "If someone in your household gets a SASSA grant: nothing extra, because NSFAS checks with SASSA",
+        "If you have a disability: the disability annexure, completed and signed with a medical practitioner, in one file with your medical report",
+        "If you're under 18 and an orphan or a vulnerable child: the orphan or vulnerable child declaration, completed by a social worker",
+        "If a parent or guardian has died: a death certificate for each",
+        "If your parents are divorced or separated: the divorce decree, or the settlement agreement showing maintenance",
+        "If you're married, or a spouse signs for you: your marriage certificate and your spouse's ID",
+        "If you live with a legal guardian: proof of legal guardianship issued by a court",
+        "If a parent or legal guardian was retrenched: the retrenchment letter from the employer"
+       ],
+       "source_url": "https://www.nsfas.org.za/content/"
+      },
+      "fee_cents": 0,
+      "fee_note": null,
+      "how": "Apply online on myNSFAS or in the official NSFAS app. Create your profile with your South African ID number, your cellphone number and your email address, then fill in your personal and household information, give consent, upload your documents and submit. You can save and finish later.",
+      "id": "nsfas",
+      "kind": "funder",
+      "lines": [
+       "Where to apply: https://my.nsfas.org.za/",
+       "Apply online on myNSFAS or in the official NSFAS app. Create your profile with your South African ID number, your cellphone number and your email address, then fill in your personal and household information, give consent, upload your documents and submit. You can save and finish later.",
+       "Applying is free.",
+       "Questions: Toll-free 08000 67327, USSD *134*67327#, info@nsfas.org.za"
+      ],
+      "max_choices": null,
+      "name": "National Student Financial Aid Scheme (NSFAS)",
+      "notice": "Not yet confirmed by the team.",
+      "source_url": "https://nsfas.org.za/content/how-to-apply.html",
+      "tips": {
+       "items": [
+        "A corner or edge is cut off in the photo.",
+        "The image is blurry, dark, or has glare across the text.",
+        "A signature is missing, or an electronic signature was used.",
+        "It's written in pencil or coloured ink instead of black.",
+        "Correction fluid was used, or a change wasn't initialled.",
+        "Last year's version of the form was submitted.",
+        "Only one page of a two-page form was uploaded.",
+        "Names or ID numbers don't match the ID document."
+       ],
+       "source_url": "https://nsfas.org.za/content/how-to-apply.html"
+      },
+      "url": "https://my.nsfas.org.za/",
+      "warnings": {
+       "items": [
+        "Never pay anyone to apply. NSFAS will never ask for your password or OTP.",
+        "Use nsfas.org.za and my.nsfas.org.za only. Check the spelling in the address bar before you sign in."
+       ],
+       "source_url": "https://nsfas.org.za/content/how-to-apply.html"
+      },
+      "who_can_apply": {
+       "items": [
+        "South African citizens studying or planning to study at a public university or TVET college",
+        "SASSA grant recipients",
+        "Students from households earning up to R350 000 a year",
+        "Students with disabilities from households earning up to R600 000 a year"
+       ],
+       "source_url": "https://www.nsfas.org.za/content/"
+      },
+      "windows": [
+       {
+        "closes": "2026-10-31",
+        "closes_one_of": [],
+        "days": 18,
+        "heading": "Funding for 2027",
+        "intake": 2027,
+        "label": "Open",
+        "late_closes": null,
+        "late_opens": null,
+        "lines": [
+         "Open now. Closes on Sat 31 Oct 2026 at 23:59 (in 18 days).",
+         "No late applications."
+        ],
+        "next_date": "2026-10-31",
+        "opens": "2026-09-18",
+        "source_url": "https://nsfas.org.za/content/how-to-apply.html",
+        "status": "open"
+       },
+       {
+        "closes": null,
+        "closes_one_of": [],
+        "days": null,
+        "heading": "Funding for 2028",
+        "intake": 2028,
+        "label": "Dates not published yet",
+        "late_closes": null,
+        "late_opens": null,
+        "lines": [
+         "NSFAS hasn't published these dates yet."
+        ],
+        "next_date": null,
+        "opens": null,
+        "source_url": null,
+        "status": "not_published"
+       }
+      ]
+     }
+    ],
+    "notes": [
+     "Apply on each university's own website, and pay a fee only as its page explains. Campus Chommie can't apply for you.",
+     "Funding is a separate application: if you might qualify for NSFAS, apply there as well."
+    ],
+    "today": "2026-10-13",
+    "universities": [
+     {
+      "after": [
+       {
+        "source_url": "https://www.tut.ac.za/media/tshwane-interim/site-content/documents/General-Information-First-Year-Enrolment.pdf",
+        "text": "Check your status at www.tut.ac.za: choose Study@TUT, then Check Your Status, and enter your ID number."
+       },
+       {
+        "source_url": "https://www.tut.ac.za/media/tshwane-interim/site-content/documents/General-Information-First-Year-Enrolment.pdf",
+        "text": "TUT can admit you provisionally on your Grade 11 or mid-year Grade 12 results."
+       }
+      ],
+      "confirmed": false,
+      "contact": "012 382 5750 or 012 382 5780, admission@tut.ac.za",
+      "documents": {
+       "items": [
+        "Proof of payment of the application fee",
+        "A certified copy of your ID document or card",
+        "A certified copy of your National Senior Certificate, or your final Grade 11 results if you're in Grade 12"
+       ],
+       "source_url": "https://www.tut.ac.za/media/tshwane-interim/site-content/documents/General-Information-First-Year-Enrolment.pdf"
+      },
+      "fee_cents": 24000,
+      "fee_note": "Paid once, by first-time applicants, and not refundable. Use your ID number as the payment reference. TUT takes no cash on any campus.",
+      "how": "Apply online at www.tut.ac.za with an email address of your own, not someone else's, and have every document ready before you start. Apply as soon as you can: a programme may close before its closing date once it's full.",
+      "id": "tut",
+      "kind": "university",
+      "lines": [
+       "Where to apply: https://www.tut.ac.za/",
+       "Apply online at www.tut.ac.za with an email address of your own, not someone else's, and have every document ready before you start. Apply as soon as you can: a programme may close before its closing date once it's full.",
+       "Application fee: R240.",
+       "Paid once, by first-time applicants, and not refundable. Use your ID number as the payment reference. TUT takes no cash on any campus.",
+       "How many programmes you can list on one application: not verified yet.",
+       "Questions: 012 382 5750 or 012 382 5780, admission@tut.ac.za"
+      ],
+      "max_choices": null,
+      "name": "Tshwane University of Technology",
+      "notice": "Not yet confirmed by the team.",
+      "source_url": "https://www.tut.ac.za/media/tshwane-interim/site-content/documents/General-Information-First-Year-Enrolment.pdf",
+      "tips": null,
+      "url": "https://www.tut.ac.za/",
+      "warnings": null,
+      "who_can_apply": null,
+      "windows": []
+     }
+    ]
+   },
+   "bridge": null,
+   "goal": {
+    "apply": [
+     {
+      "closes": "2026-06-15",
+      "closes_one_of": [],
+      "days": 93,
+      "heading": "To start in 2027",
+      "intake": 2027,
+      "label": "Closed, late applications ahead",
+      "late_closes": "2027-01-22",
+      "late_opens": "2027-01-14",
+      "lines": [
+       "Closed on Mon 15 Jun 2026.",
+       "Late applications: Thu 14 to Fri 22 Jan 2027 (in 93 days).",
+       "Online only (no walk-ins), for programmes that still have space."
+      ],
+      "next_date": "2027-01-14",
+      "opens": "2026-04-01",
+      "source_url": "https://www.tut.ac.za/media/tshwane-interim/site-content/documents/First-Year-Course_Information.pdf",
+      "status": "late_ahead"
+     },
+     {
+      "closes": null,
+      "closes_one_of": [
+       "2027-06-15",
+       "2027-07-31",
+       "2027-09-30"
+      ],
+      "days": 170,
+      "heading": "To start in 2028",
+      "intake": 2028,
+      "label": "Not open yet",
+      "late_closes": null,
+      "late_opens": null,
+      "lines": [
+       "Opens on Thu 1 Apr 2027 (in 170 days).",
+       "Programmes close on Tue 15 Jun, Sat 31 Jul or Thu 30 Sep 2027, and which date applies to this one isn't published yet: apply by Tue 15 Jun 2027 to be safe.",
+       "To start in 2027, applications for this programme closed on Mon 15 Jun 2026."
+      ],
+      "next_date": "2027-04-01",
+      "opens": "2027-04-01",
+      "source_url": "https://www.tut.ac.za/media/tshwane-interim/site-content/documents/2027-Academic-Core-Calendar.pdf",
+      "status": "opens_later"
+     }
+    ],
+    "funding": {
+     "count": 8,
+     "fields": [
+      "health_sciences",
+      "nursing"
+     ],
+     "funders": [
+      {
+       "any_field": false,
+       "applying": "via_university",
+       "checked": "2026-10-11",
+       "closes": null,
+       "days": null,
+       "fields": [
+        {
+         "id": "health_sciences",
+         "label": "Health sciences"
+        }
+       ],
+       "heading": null,
+       "id": "hwseta",
+       "intake": null,
+       "kind": "bursary",
+       "kind_label": "Bursary",
+       "label": "Apply through the university",
+       "lines": [
+        "You apply through the university, not to the funder directly."
+       ],
+       "name": "Health and Welfare SETA (HWSETA) bursaries",
+       "next_date": null,
+       "not_fields": [],
+       "opens": null,
+       "sector": "government",
+       "sector_label": "Government",
+       "short_name": "HWSETA",
+       "source_url": "https://www.hwseta.org.za/expression-of-interest-for-funding-2026-2027-closing-date-20-february-2026/",
+       "stages": [
+        {
+         "id": "first_year",
+         "label": "Starting university"
+        },
+        {
+         "id": "senior",
+         "label": "Already studying"
+        }
+       ],
+       "status": "via_university",
+       "study_at": "any",
+       "url": "https://www.hwseta.org.za/",
+       "why": "Funds health sciences."
+      },
+      {
+       "any_field": true,
+       "applying": "via_university",
+       "checked": "2026-10-11",
+       "closes": null,
+       "days": null,
+       "fields": [],
+       "heading": null,
+       "id": "tut_bursary_fund",
+       "intake": null,
+       "kind": "bursary",
+       "kind_label": "Bursary",
+       "label": "Apply through the university",
+       "lines": [
+        "You apply through the university, not to the funder directly."
+       ],
+       "name": "TUT Bursary and Scholarship Fund",
+       "next_date": null,
+       "not_fields": [],
+       "opens": null,
+       "sector": "university",
+       "sector_label": "University",
+       "short_name": "TUT Bursary Fund",
+       "source_url": "https://www.tut.ac.za/student-finance/undergraduate/tut-bursary-and-scholarship-fund/",
+       "stages": [
+        {
+         "id": "first_year",
+         "label": "Starting university"
+        },
+        {
+         "id": "senior",
+         "label": "Already studying"
+        },
+        {
+         "id": "postgraduate",
+         "label": "Postgraduate"
+        }
+       ],
+       "status": "via_university",
+       "study_at": [
+        "tut"
+       ],
+       "url": "https://www.tut.ac.za/student-finance/undergraduate/tut-bursary-and-scholarship-fund/",
+       "why": "Open to any field."
+      },
+      {
+       "any_field": true,
+       "applying": "direct",
+       "checked": "2026-10-11",
+       "closes": null,
+       "days": null,
+       "fields": [],
+       "heading": "Funding for 2027",
+       "id": "gcra",
+       "intake": 2027,
+       "kind": "bursary",
+       "kind_label": "Bursary",
+       "label": "Dates not published yet",
+       "lines": [
+        "GCRA hasn't published these dates yet."
+       ],
+       "name": "Gauteng City Region Academy (GCRA) Bursary",
+       "next_date": null,
+       "not_fields": [],
+       "opens": null,
+       "sector": "government",
+       "sector_label": "Government",
+       "short_name": "GCRA",
+       "source_url": "https://gcrabursary.gauteng.gov.za/",
+       "stages": [
+        {
+         "id": "first_year",
+         "label": "Starting university"
+        },
+        {
+         "id": "senior",
+         "label": "Already studying"
+        },
+        {
+         "id": "postgraduate",
+         "label": "Postgraduate"
+        }
+       ],
+       "status": "not_published",
+       "study_at": "any",
+       "url": "https://gcrabursary.gauteng.gov.za/",
+       "why": "Open to any field."
+      },
+      {
+       "any_field": true,
+       "applying": "direct",
+       "checked": "2026-10-11",
+       "closes": null,
+       "days": null,
+       "fields": [],
+       "heading": "Funding for 2027",
+       "id": "nsfas_loans",
+       "intake": 2027,
+       "kind": "loan",
+       "kind_label": "Loan",
+       "label": "Dates not published yet",
+       "lines": [
+        "NSFAS loans hasn't published these dates yet."
+       ],
+       "name": "NSFAS loan scheme for the missing middle",
+       "next_date": null,
+       "not_fields": [],
+       "opens": null,
+       "sector": "government",
+       "sector_label": "Government",
+       "short_name": "NSFAS loans",
+       "source_url": "https://www.gov.za/news/speeches/minister-buti-manamela-launch-nsfas-2027-application-cycle-18-sep-2026",
+       "stages": [
+        {
+         "id": "first_year",
+         "label": "Starting university"
+        },
+        {
+         "id": "senior",
+         "label": "Already studying"
+        }
+       ],
+       "status": "not_published",
+       "study_at": "any",
+       "url": null,
+       "why": "Open to any field."
+      },
+      {
+       "any_field": false,
+       "applying": "direct",
+       "checked": "2026-10-12",
+       "closes": null,
+       "days": null,
+       "fields": [
+        {
+         "id": "engineering",
+         "label": "Engineering"
+        },
+        {
+         "id": "physical_sciences",
+         "label": "Physical sciences"
+        },
+        {
+         "id": "computing",
+         "label": "Computing and IT"
+        },
+        {
+         "id": "mathematical_sciences",
+         "label": "Mathematics and statistics"
+        },
+        {
+         "id": "health_sciences",
+         "label": "Health sciences"
+        },
+        {
+         "id": "agriculture",
+         "label": "Agriculture"
+        },
+        {
+         "id": "finance",
+         "label": "Finance"
+        },
+        {
+         "id": "education",
+         "label": "Education and teaching"
+        }
+       ],
+       "heading": "Funding for 2027",
+       "id": "sasol_foundation",
+       "intake": 2027,
+       "kind": "bursary",
+       "kind_label": "Bursary",
+       "label": "Closed",
+       "lines": [
+        "Closed: Sasol Foundation's own page said so on Mon 12 Oct 2026.",
+        "Funding for 2028: Sasol Foundation hasn't published these dates yet."
+       ],
+       "name": "Sasol Foundation Bursary Programme",
+       "next_date": null,
+       "not_fields": [],
+       "opens": null,
+       "sector": "company",
+       "sector_label": "Company",
+       "short_name": "Sasol Foundation",
+       "source_url": "https://www.sasolbursaries.com/welcome/sasol-foundation-bursaries/",
+       "stages": [
+        {
+         "id": "first_year",
+         "label": "Starting university"
+        },
+        {
+         "id": "senior",
+         "label": "Already studying"
+        }
+       ],
+       "status": "closed",
+       "study_at": "any",
+       "url": "https://www.sasolbursaries.com/welcome/sasol-foundation-bursaries/",
+       "why": "Funds health sciences."
+      }
+     ],
+     "lines": [
+      "8 funding options for health sciences and nursing, besides NSFAS: none open right now."
+     ],
+     "open_now": 0
+    },
+    "match": {
+     "confirmed": false,
+     "explanation": [
+      "Your points: 33 (minimum 27).",
+      "Life Orientation is not counted here.",
+      "TUT doesn't say how many subjects count, so we count the six besides Life Orientation until TUT confirms.",
+      "Counted Mathematics (level 5) for an either/or requirement.",
+      "With 27 to 29 points you write TUT's potential assessment and need 50%.",
+      "Meeting the minimum does not guarantee a place."
+     ],
+     "failed": [],
+     "gap": null,
+     "label": "Competitive",
+     "min_points": 27.0,
+     "notice": "Not yet confirmed by the team.",
+     "points": 33.0,
+     "programme": "b_nursing",
+     "programme_name": "Bachelor of Nursing",
+     "selective": false,
+     "source_url": "https://www.tut.ac.za/media/tshwane-interim/site-content/documents/General-Information-First-Year-Enrolment.pdf",
+     "tier": "competitive",
+     "university": "tut",
+     "university_name": "Tshwane University of Technology"
+    },
+    "notes": [
+     "Your points: 33 (minimum 27).",
+     "Life Orientation is not counted here.",
+     "TUT doesn't say how many subjects count, so we count the six besides Life Orientation until TUT confirms.",
+     "Counted Mathematics (level 5) for an either/or requirement.",
+     "With 27 to 29 points you write TUT's potential assessment and need 50%.",
+     "Meeting the minimum does not guarantee a place."
+    ],
+    "number": 1,
+    "role": "goal"
+   },
+   "notes": [
+    "No published route into Bachelor of Nursing is in our data yet.",
+    "Check how many programmes Tshwane University of Technology lets you list on one application."
+   ],
+   "other_routes": [],
+   "safe": {
+    "apply": [
+     {
+      "closes": "2026-07-31",
+      "closes_one_of": [],
+      "days": 93,
+      "heading": "To start in 2027",
+      "intake": 2027,
+      "label": "Closed, late applications ahead",
+      "late_closes": "2027-01-22",
+      "late_opens": "2027-01-14",
+      "lines": [
+       "Closed on Fri 31 Jul 2026.",
+       "Late applications: Thu 14 to Fri 22 Jan 2027 (in 93 days).",
+       "Online only (no walk-ins), for programmes that still have space."
+      ],
+      "next_date": "2027-01-14",
+      "opens": "2026-04-01",
+      "source_url": "https://www.tut.ac.za/media/tshwane-interim/site-content/documents/First-Year-Course_Information.pdf",
+      "status": "late_ahead"
+     },
+     {
+      "closes": null,
+      "closes_one_of": [
+       "2027-06-15",
+       "2027-07-31",
+       "2027-09-30"
+      ],
+      "days": 170,
+      "heading": "To start in 2028",
+      "intake": 2028,
+      "label": "Not open yet",
+      "late_closes": null,
+      "late_opens": null,
+      "lines": [
+       "Opens on Thu 1 Apr 2027 (in 170 days).",
+       "Programmes close on Tue 15 Jun, Sat 31 Jul or Thu 30 Sep 2027, and which date applies to this one isn't published yet: apply by Tue 15 Jun 2027 to be safe.",
+       "To start in 2027, applications for this programme closed on Fri 31 Jul 2026."
+      ],
+      "next_date": "2027-04-01",
+      "opens": "2027-04-01",
+      "source_url": "https://www.tut.ac.za/media/tshwane-interim/site-content/documents/2027-Academic-Core-Calendar.pdf",
+      "status": "opens_later"
+     }
+    ],
+    "funding": {
+     "count": 8,
+     "fields": [
+      "health_sciences",
+      "environmental_health"
+     ],
+     "funders": [
+      {
+       "any_field": false,
+       "applying": "via_university",
+       "checked": "2026-10-11",
+       "closes": null,
+       "days": null,
+       "fields": [
+        {
+         "id": "health_sciences",
+         "label": "Health sciences"
+        }
+       ],
+       "heading": null,
+       "id": "hwseta",
+       "intake": null,
+       "kind": "bursary",
+       "kind_label": "Bursary",
+       "label": "Apply through the university",
+       "lines": [
+        "You apply through the university, not to the funder directly."
+       ],
+       "name": "Health and Welfare SETA (HWSETA) bursaries",
+       "next_date": null,
+       "not_fields": [],
+       "opens": null,
+       "sector": "government",
+       "sector_label": "Government",
+       "short_name": "HWSETA",
+       "source_url": "https://www.hwseta.org.za/expression-of-interest-for-funding-2026-2027-closing-date-20-february-2026/",
+       "stages": [
+        {
+         "id": "first_year",
+         "label": "Starting university"
+        },
+        {
+         "id": "senior",
+         "label": "Already studying"
+        }
+       ],
+       "status": "via_university",
+       "study_at": "any",
+       "url": "https://www.hwseta.org.za/",
+       "why": "Funds health sciences."
+      },
+      {
+       "any_field": true,
+       "applying": "via_university",
+       "checked": "2026-10-11",
+       "closes": null,
+       "days": null,
+       "fields": [],
+       "heading": null,
+       "id": "tut_bursary_fund",
+       "intake": null,
+       "kind": "bursary",
+       "kind_label": "Bursary",
+       "label": "Apply through the university",
+       "lines": [
+        "You apply through the university, not to the funder directly."
+       ],
+       "name": "TUT Bursary and Scholarship Fund",
+       "next_date": null,
+       "not_fields": [],
+       "opens": null,
+       "sector": "university",
+       "sector_label": "University",
+       "short_name": "TUT Bursary Fund",
+       "source_url": "https://www.tut.ac.za/student-finance/undergraduate/tut-bursary-and-scholarship-fund/",
+       "stages": [
+        {
+         "id": "first_year",
+         "label": "Starting university"
+        },
+        {
+         "id": "senior",
+         "label": "Already studying"
+        },
+        {
+         "id": "postgraduate",
+         "label": "Postgraduate"
+        }
+       ],
+       "status": "via_university",
+       "study_at": [
+        "tut"
+       ],
+       "url": "https://www.tut.ac.za/student-finance/undergraduate/tut-bursary-and-scholarship-fund/",
+       "why": "Open to any field."
+      },
+      {
+       "any_field": true,
+       "applying": "direct",
+       "checked": "2026-10-11",
+       "closes": null,
+       "days": null,
+       "fields": [],
+       "heading": "Funding for 2027",
+       "id": "gcra",
+       "intake": 2027,
+       "kind": "bursary",
+       "kind_label": "Bursary",
+       "label": "Dates not published yet",
+       "lines": [
+        "GCRA hasn't published these dates yet."
+       ],
+       "name": "Gauteng City Region Academy (GCRA) Bursary",
+       "next_date": null,
+       "not_fields": [],
+       "opens": null,
+       "sector": "government",
+       "sector_label": "Government",
+       "short_name": "GCRA",
+       "source_url": "https://gcrabursary.gauteng.gov.za/",
+       "stages": [
+        {
+         "id": "first_year",
+         "label": "Starting university"
+        },
+        {
+         "id": "senior",
+         "label": "Already studying"
+        },
+        {
+         "id": "postgraduate",
+         "label": "Postgraduate"
+        }
+       ],
+       "status": "not_published",
+       "study_at": "any",
+       "url": "https://gcrabursary.gauteng.gov.za/",
+       "why": "Open to any field."
+      },
+      {
+       "any_field": true,
+       "applying": "direct",
+       "checked": "2026-10-11",
+       "closes": null,
+       "days": null,
+       "fields": [],
+       "heading": "Funding for 2027",
+       "id": "nsfas_loans",
+       "intake": 2027,
+       "kind": "loan",
+       "kind_label": "Loan",
+       "label": "Dates not published yet",
+       "lines": [
+        "NSFAS loans hasn't published these dates yet."
+       ],
+       "name": "NSFAS loan scheme for the missing middle",
+       "next_date": null,
+       "not_fields": [],
+       "opens": null,
+       "sector": "government",
+       "sector_label": "Government",
+       "short_name": "NSFAS loans",
+       "source_url": "https://www.gov.za/news/speeches/minister-buti-manamela-launch-nsfas-2027-application-cycle-18-sep-2026",
+       "stages": [
+        {
+         "id": "first_year",
+         "label": "Starting university"
+        },
+        {
+         "id": "senior",
+         "label": "Already studying"
+        }
+       ],
+       "status": "not_published",
+       "study_at": "any",
+       "url": null,
+       "why": "Open to any field."
+      },
+      {
+       "any_field": false,
+       "applying": "direct",
+       "checked": "2026-10-12",
+       "closes": null,
+       "days": null,
+       "fields": [
+        {
+         "id": "engineering",
+         "label": "Engineering"
+        },
+        {
+         "id": "physical_sciences",
+         "label": "Physical sciences"
+        },
+        {
+         "id": "computing",
+         "label": "Computing and IT"
+        },
+        {
+         "id": "mathematical_sciences",
+         "label": "Mathematics and statistics"
+        },
+        {
+         "id": "health_sciences",
+         "label": "Health sciences"
+        },
+        {
+         "id": "agriculture",
+         "label": "Agriculture"
+        },
+        {
+         "id": "finance",
+         "label": "Finance"
+        },
+        {
+         "id": "education",
+         "label": "Education and teaching"
+        }
+       ],
+       "heading": "Funding for 2027",
+       "id": "sasol_foundation",
+       "intake": 2027,
+       "kind": "bursary",
+       "kind_label": "Bursary",
+       "label": "Closed",
+       "lines": [
+        "Closed: Sasol Foundation's own page said so on Mon 12 Oct 2026.",
+        "Funding for 2028: Sasol Foundation hasn't published these dates yet."
+       ],
+       "name": "Sasol Foundation Bursary Programme",
+       "next_date": null,
+       "not_fields": [],
+       "opens": null,
+       "sector": "company",
+       "sector_label": "Company",
+       "short_name": "Sasol Foundation",
+       "source_url": "https://www.sasolbursaries.com/welcome/sasol-foundation-bursaries/",
+       "stages": [
+        {
+         "id": "first_year",
+         "label": "Starting university"
+        },
+        {
+         "id": "senior",
+         "label": "Already studying"
+        }
+       ],
+       "status": "closed",
+       "study_at": "any",
+       "url": "https://www.sasolbursaries.com/welcome/sasol-foundation-bursaries/",
+       "why": "Funds health sciences."
+      }
+     ],
+     "lines": [
+      "8 funding options for health sciences and environmental health, besides NSFAS: none open right now."
+     ],
+     "open_now": 0
+    },
+    "match": {
+     "confirmed": false,
+     "explanation": [
+      "Your points: 33 (minimum 24).",
+      "Life Orientation is not counted here.",
+      "TUT doesn't say how many subjects count, so we count the six besides Life Orientation until TUT confirms.",
+      "Counted Mathematics (level 5) for an either/or requirement.",
+      "Counted Physical sciences (level 5) for an either/or requirement.",
+      "Meeting the minimum does not guarantee a place."
+     ],
+     "failed": [],
+     "gap": null,
+     "label": "Meets the minimum",
+     "min_points": 24.0,
+     "notice": "Not yet confirmed by the team.",
+     "points": 33.0,
+     "programme": "b_environmental_health",
+     "programme_name": "Bachelor of Environmental Health",
+     "selective": false,
+     "source_url": "https://www.tut.ac.za/media/tshwane-interim/site-content/documents/First-Year-Course_Information.pdf",
+     "tier": "meets_minimum",
+     "university": "tut",
+     "university_name": "Tshwane University of Technology"
+    },
+    "notes": [
+     "Related to Bachelor of Nursing through health sciences.",
+     "Your points: 33 (minimum 24).",
+     "Life Orientation is not counted here.",
+     "TUT doesn't say how many subjects count, so we count the six besides Life Orientation until TUT confirms.",
+     "Counted Mathematics (level 5) for an either/or requirement.",
+     "Counted Physical sciences (level 5) for an either/or requirement.",
+     "Meeting the minimum does not guarantee a place."
+    ],
+    "number": 3,
+    "role": "safe"
+   }
+  }
+ },
+ "message": "Success",
+ "success": true
+}

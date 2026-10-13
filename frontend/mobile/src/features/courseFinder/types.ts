@@ -146,6 +146,8 @@ export type Deadline = {
 
 export type PlanApply = {
   today: string;
+  /** True when `today` is a preview's test date (CAMPUS_PREVIEW_TODAY), never in production. */
+  test_date: boolean;
   universities: Guide[];
   funding: Guide[];
   deadlines: Deadline[];
