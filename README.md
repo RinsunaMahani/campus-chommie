@@ -3,26 +3,31 @@
 A mobile app that takes a South African student from choosing a course to graduating. The student picks their
 university and the app adapts to it: programmes and admission rules, the academic calendar, allowance rhythm, campus
 support and student life. Our entry for the FNB App of the Year Hackathon 2026 ("Access to higher education"), by
-Team PR (Mandla Baloyi and Rinsuna Mahani).
+Team PR (Rinsuna Mahani).
 
-**Status: M0 (foundation).** Sign-up (with the 18-or-older confirmation and consent), email verification, two-factor
-sign-in, account security and sign-out work against the API. The engine and the SMU data pack are in, with their tests.
-The features come next: course finder (M1 and M2), profile and money (M3), my week (M4), alerts and support (M5).
+**Status: the backend is built; the screens come next.** Sign-up (with the 18-or-older confirmation and consent), email
+verification, two-factor sign-in, account security and sign-out work in the app. The API, the engine and the UP, TUT
+and SMU data packs also serve the course finder and how to apply (M1), funding (F6), a student's profile and money
+(M3), my week (M4), and alerts and support (M5), each with its tests, in pull requests that wait for review
+([docs/HANDOVER.md](docs/HANDOVER.md)). Their screens (M2 to M5) come next. No person has checked the data packs or
+the funding list yet.
 
 ## What's where
 
 ```text
 backend/
   campus_engine/         the pure Python engine: matching, plans, workload, runway, forecasts, extraction
-  data/universities/     one YAML data pack per university (smu.yaml; _template.yaml for new ones)
+  data/universities/     one YAML data pack per university (up, tut and smu; _template.yaml for new ones)
+  data/national/         funding.yaml: NSFAS, bursaries, merit awards and a loan scheme
   data/demo/             fictional demo personas
   config.yaml            every engine threshold and weight
   src/                   the Flask API: core/, shared/, domains/<area>/<feature>/, master_scheduler/
-  migrations/            Alembic (one baseline so far)
+  migrations/            Alembic, 0001_baseline to 0006_saved_funding
   scripts/               validate_data.py (data packs), setup_db.sql and make_env.py (local setup)
   tests/                 engine/ and architecture/ run without a database; the rest use PostgreSQL
 frontend/mobile/         the Expo app (Android and web): src/app (routes), src/features, src/shared
-docs/                    OPEN_QUESTIONS.md (gaps for the team), SECURITY.md (threat model and controls)
+docs/                    HANDOVER.md (start here), OPEN_QUESTIONS.md (gaps and decisions), SECURITY.md (threat model
+                         and controls), DEPLOY.md (hosting), research/ (notes from official sources)
 CLAUDE.md                rules for everyone working here, people and coding agents
 REUSE.md                 what came from our earlier project, and the permissions to confirm
 ```
