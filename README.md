@@ -5,12 +5,12 @@ university and the app adapts to it: programmes and admission rules, the academi
 support and student life. Our entry for the FNB App of the Year Hackathon 2026 ("Access to higher education"), by
 Team PR (Rinsuna Mahani).
 
-**Status: the backend is built; the screens come next.** Sign-up (with the 18-or-older confirmation and consent), email
-verification, two-factor sign-in, account security and sign-out work in the app. The API, the engine and the UP, TUT
-and SMU data packs also serve the course finder and how to apply (M1), funding (F6), a student's profile and money
-(M3), my week (M4), and alerts and support (M5), each with its tests, in pull requests that wait for review
-([docs/HANDOVER.md](docs/HANDOVER.md)). Their screens (M2 to M5) come next. No person has checked the data packs or
-the funding list yet.
+**Status: the backend and the app's screens are built, in pull requests that wait for review**
+([docs/HANDOVER.md](docs/HANDOVER.md)). The app has sign-up (with the 18-or-older confirmation and consent), email
+verification, two-factor sign-in and account security; Find my course with how to apply, open without an account (M2);
+onboarding and My money (M3); My week with classes, reps and My marks (M4); and Home's alerts, Support, cheap things,
+updates and deleting an account (M5). The brief's judge flow runs end to end. Still to come: hosting, the WhatsApp bot
+during the hackathon (M6), and a person's check of the data packs and the funding list.
 
 ## What's where
 
