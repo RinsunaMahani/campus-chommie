@@ -108,10 +108,15 @@ The app's picker offers every subject on the DBE's Grade 10 to 12 list and sends
 - Each slot in a plan has `apply`: one entry per intake (next year's and the year after, plus this year's while a
   late window is still ahead). Each says whether applications are open, closing soon, closed or not published yet,
   with its dates, days left, plain-words `lines` and `source_url`.
-- `plan.apply` has the date it used (`today`), every date still ahead (`deadlines`, soonest first), each
-  university's fee, documents and next steps (`universities`), national funding (`funding`: NSFAS) and `notes`.
+- `plan.apply` has the date it used (`today`, with `test_date: true` when that was a preview's test date, below),
+  every date still ahead (`deadlines`, soonest first), each university's fee, documents and next steps
+  (`universities`), national funding (`funding`: NSFAS) and `notes`.
 - Dates come from each pack's `applications` section and from `backend/data/national/funding.yaml`. A date nobody
   has published shows as not published, never guessed.
+- **A test date for previews:** with `CAMPUS_PREVIEW_TODAY=2026-06-01` (development only), application windows and
+  funding dates are worked out as if today were that day, so a preview can walk the apply steps while applications
+  are closed. The plan says so (`test_date`), and the app shows a note. Production, and any environment but
+  development, refuses to start with it set (`src/shared/clock/clock.py`, `src/config.py`).
 
 **Funding (no account; nothing stored or asked).** NSFAS, bursaries, merit awards and loans, from
 `backend/data/national/funding.yaml`, each fact from the funder's own page (`docs/research/funding.md`):

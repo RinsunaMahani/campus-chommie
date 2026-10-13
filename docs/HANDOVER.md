@@ -14,7 +14,7 @@ repo folder but is kept out of git; the parts the screens need are quoted below.
 
 ## Where things stand
 
-`main` holds only the empty first commit. All work sits in twenty-seven stacked pull requests:
+`main` holds only the empty first commit. All work sits in twenty-eight stacked pull requests:
 
 | PR | Branch | What |
 |---|---|---|
@@ -27,6 +27,7 @@ repo folder but is kept out of git; the parts the screens need are quoted below.
 | #7 | `rinsuna/m1-after-acceptance` | your points at every university; campuses, calendars, money dates and support in the packs; first steps from acceptance to the first lecture |
 | #8 | `rinsuna/m3-profile-and-money` | M3's backend: the student's profile (university and campus) and My money (settings, income, expected payments, spending, summary) |
 | #9 | `rinsuna/m1-cheap-things` | cheap things to do near campus, each priced from the place's own page |
+| #28 | `rinsuna/apply-preview` | "What you can still do now" at the top of the plan (open now, coming up, not published, closed), from the plan's own dates; a test date for previews only (`CAMPUS_PREVIEW_TODAY`, which production refuses), which the plan says it's using; tests for both |
 | #27 | `rinsuna/subject-picker` | Find my course's subject picker: every subject on the DBE's Grade 10 to 12 list in folders (languages, mathematics, sciences and so on), ticked in one go with every language by name; the best-marked language besides English goes as the other official language and the results say which; Jest tests for the picker and how marks reach the API |
 | #26 | `rinsuna/alerts-support-screens` | M5: Home's alerts (each action opening its screen) and updates with their switches; the Support tab (crisis lines held back until checked); cheap things nearby; "Delete my account and data" for real; Jest tests for alerts and support. The brief's judge flow runs end to end |
 | #25 | `rinsuna/week-screens` | M4: the Week tab (eight weeks, each load in words with its reason) and a week (events, flags, the university calendar); classes (start, join, invite and rep codes), the rep panel and confirming class messages; My marks; Jest tests for the week strip, the rep panel, confirming and marks |
@@ -52,7 +53,7 @@ new-phone code, and #13 deletes accounts.
 
 **How to merge:**
 - Each PR targets the branch below it, so its diff shows only its own work.
-- Merge in order: #1 into `main`, then #2 to #27, retargeting each to `main` once the one below has merged.
+- Merge in order: #1 into `main`, then #2 to #28, retargeting each to `main` once the one below has merged.
 - Use **Create a merge commit**, not squash or rebase, so every commit stays in `main`'s history (CLAUDE.md: never
   rewrite history).
 
@@ -142,7 +143,7 @@ Everything is recorded, with who and when, in [OPEN_QUESTIONS.md](OPEN_QUESTIONS
 ## Next build: the app screens, M2 to M5
 
 The screens were Mandla's; since 13 Oct they're ours. The brief gives M2 Wed 14 to Thu 15 Oct, M3 Fri 16 to Sat 17,
-M4 Sun 18 to Mon 19 and M5 Tue 20 to Wed 21. M2 to M5 are built (#23 to #26, 13 Oct), and the judge flow runs end to end. #27 (13 Oct) replaces the marks screen's one-subject-at-a-time rows with a picker in folders. Next: hosting (Azure for Students, once Rinsuna activates it), a preview APK on the hosted API, polish (the plan screen is long), and M6 from Fri 23 Oct.
+M4 Sun 18 to Mon 19 and M5 Tue 20 to Wed 21. M2 to M5 are built (#23 to #26, 13 Oct), and the judge flow runs end to end. #27 (13 Oct) replaces the marks screen's one-subject-at-a-time rows with a picker in folders, and #28 puts what a learner can still do at the top of the plan. Next: hosting (Azure for Students, once Rinsuna activates it), a preview APK on the hosted API, polish (the plan screen is long), and M6 from Fri 23 Oct.
 
 **M2, the Find my course screens.** From the brief: "University, then marks (add or remove rows, up to 9), then tier
 cards, then the three-choice plan and sources. Add i18n plumbing with English only visible. Acceptance: works at 360
@@ -284,6 +285,8 @@ events"); the screen notes are in OPEN_QUESTIONS, "My week's screens":
    - Leave `backend/.env` alone (it's Rinsuna's): give your process the sandbox's settings as environment variables,
      which win over the file. Then `flask db upgrade` and `python app.py`.
    - Agents use ports 5090 (API) and 8090 (Expo), and never stop Rinsuna's servers on 5000 or 8081.
+   - To walk the apply steps while applications are closed, give the API `CAMPUS_PREVIEW_TODAY` (for example
+     `2026-06-01`): the plan then shows a "Test date" note. Never on a hosted API (production refuses it).
 4. **Seeing it on a phone:** with the phone on the PC's Wi-Fi, Expo Go opens `exp://<the PC's address>:8090`. The
    app's `EXPO_PUBLIC_API_URL` must be an address the phone can reach, through a program Windows' firewall lets in
    (on 13 Oct, Node was allowed and the preview's Python wasn't, so a small Node relay forwarded to the API).
