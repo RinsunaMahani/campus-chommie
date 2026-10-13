@@ -72,6 +72,6 @@ test('the box shows each section and line', () => {
 
 test("a preview's test date is said; the real date says nothing", () => {
   render(<TestDateNote apply={{ ...smuPlan.apply, today: '2026-06-01', test_date: true }} />);
-  expect(screen.getByText('Test date: this plan works out every date as if today were Mon 1 Jun 2026. Only a preview does this.')).toBeTruthy();
+  expect(screen.getByText('Test date: every date here is worked out as if today were Mon 1 Jun 2026. Only a preview does this.')).toBeTruthy();
   expect(render(<TestDateNote apply={{ ...smuPlan.apply, test_date: false }} />).toJSON()).toBeNull();
 });

@@ -1,33 +1,27 @@
 import { Feather } from '@expo/vector-icons';
-import { Redirect, router } from 'expo-router';
+import { router } from 'expo-router';
 import { useState } from 'react';
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 
 import { Button } from '@/shared/components/Button';
+import { HeroScreen } from '@/shared/components/HeroScreen';
 import { Card, InfoNote } from '@/shared/components/Parts';
-import { Screen } from '@/shared/components/Screen';
 import { ErrorBox } from '@/shared/components/Status';
-import { Body, Muted, Overline, Title } from '@/shared/components/Text';
+import { Body } from '@/shared/components/Text';
 import { MessageKey, t } from '@/shared/i18n';
 import { colors, fonts, radius } from '@/shared/theme/tokens';
 
-import { courseFinderApi } from '../api/courseFinderApi';
 import { SubjectPicker } from '../components/SubjectPicker';
 import { checkRows, cleanPercent, rowsFor } from '../marks';
 import { useCourseFinder } from '../state';
 import { SUBJECTS, subjectName } from '../subjects';
-import { errorText } from '../words';
 
-/** Step 2: the learner's subjects, picked in one go, and a mark for each. Never saved and never logged. */
+/** Step 1: the learner's subjects, picked in one go, and a mark for each. Never saved and never logged. */
 export default function MarksScreen() {
   const cf = useCourseFinder();
   const [picking, setPicking] = useState(false);
   const [errors, setErrors] = useState<Record<string, MessageKey>>({});
   const [formError, setFormError] = useState<string | null>(null);
-  const [busy, setBusy] = useState(false);
-
-  if (!cf.university) return <Redirect href="/course-finder" />;
-  const university = cf.university;
   const rows = cf.rows;
 
   /** Errors only for the subjects still there, and none for `fixed`. */
@@ -57,7 +51,7 @@ export default function MarksScreen() {
     setPicking(false);
   }
 
-  async function submit() {
+  function submit() {
     const { marks, errors: rowErrors } = checkRows(rows);
     setErrors(rowErrors);
     setFormError(null);
@@ -66,25 +60,16 @@ export default function MarksScreen() {
       setFormError(t('courseFinder.marksEmpty'));
       return;
     }
-    setBusy(true);
-    try {
-      cf.setAnswer(await courseFinderApi.assess(university.id, marks));
-      router.push('/course-finder/results');
-    } catch (e) {
-      setFormError(errorText(e));
-    } finally {
-      setBusy(false);
-    }
+    router.push('/course-finder/qualify');
   }
 
   return (
-    <Screen back footer={<Button title={t('courseFinder.show')} variant="accent" onPress={submit} loading={busy} />}>
-      <View style={{ gap: 6 }}>
-        <Overline>{t('courseFinder.step', { n: 2 })}</Overline>
-        <Title>{t('courseFinder.marksHeading')}</Title>
-        <Body>{t('courseFinder.marksHelp')}</Body>
-        <Muted>{university.name}</Muted>
-      </View>
+    <HeroScreen
+      back
+      overline={t('courseFinder.step', { n: 1 })}
+      title={t('courseFinder.marksHeading')}
+      subtitle={t('courseFinder.marksHelp')}
+      footer={<Button title={t('courseFinder.toQualify')} variant="accent" onPress={submit} />}>
 
       {rows.length ? (
         <Card style={styles.card}>
@@ -142,7 +127,7 @@ export default function MarksScreen() {
       <InfoNote icon="lock">{t('courseFinder.nothingStored')}</InfoNote>
 
       {picking ? <SubjectPicker chosen={rows.map((r) => r.subject)} onDone={choose} onClose={() => setPicking(false)} /> : null}
-    </Screen>
+    </HeroScreen>
   );
 }
 

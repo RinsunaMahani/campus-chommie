@@ -40,7 +40,46 @@ export type Match = Confirmation & {
   source_url: string | null;
 };
 
-export type AssessAnswer = { university: UniversitySummary; matches: Match[] };
+/** One university's programmes for these marks, and how to apply there on today's date. */
+export type AssessAnswer = {
+  university: UniversitySummary;
+  matches: Match[];
+  apply: { today: string; test_date: boolean; guide: Guide };
+};
+
+/** One subject at one university: its level there and the points it adds (0 when not counted). */
+export type SubjectPoints = { subject: string; level: number; points: number; counted: boolean };
+
+/** Your points at one university, by its own rule, and how many of its programmes you meet. */
+export type UniversityPoints = Confirmation & {
+  university: string;
+  university_name: string;
+  /** Null when we don't hold the university's points rule yet. */
+  points: number | null;
+  counted: string[];
+  /** In the order the marks were sent; together they make `points`. */
+  subjects: SubjectPoints[];
+  tiers: Record<Tier, number>;
+  summary: string;
+  lines: string[];
+  source_url: string | null;
+};
+
+export type PointsAnswer = { universities: UniversityPoints[] };
+
+/** A funder on the funding list, as much of it as the course finder shows. */
+export type FundingCard = {
+  id: string;
+  name: string;
+  short_name: string | null;
+  status: string;
+  label: string;
+  heading: string | null;
+  opens: string | null;
+  days: number | null;
+  url: string | null;
+  source_url: string | null;
+};
 
 export type WindowStatus =
   | 'open'

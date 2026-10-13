@@ -2,9 +2,9 @@ import { Redirect, router } from 'expo-router';
 import { View } from 'react-native';
 
 import { Button } from '@/shared/components/Button';
+import { HeroScreen } from '@/shared/components/HeroScreen';
 import { InfoNote } from '@/shared/components/Parts';
-import { Screen } from '@/shared/components/Screen';
-import { Body, Overline, Title } from '@/shared/components/Text';
+import { Overline, Title } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
 
 import { ApplyGuide } from '../components/ApplyBox';
@@ -24,18 +24,16 @@ export default function PlanScreen() {
   }
 
   return (
-    <Screen
+    <HeroScreen
       back
+      title={t('courseFinder.plan')}
+      subtitle={t('courseFinder.planIntro')}
       footer={
         <View style={{ flexDirection: 'row', gap: 10 }}>
           <Button compact title={t('courseFinder.changeGoal')} variant="secondary" onPress={() => router.back()} />
           <Button compact title={t('courseFinder.startOver')} variant="secondary" icon="rotate-ccw" onPress={startOver} />
         </View>
       }>
-      <View style={{ gap: 6 }}>
-        <Title>{t('courseFinder.plan')}</Title>
-        <Body>{t('courseFinder.planIntro')}</Body>
-      </View>
       <TestDateNote apply={plan.apply} />
       <StillOpen plan={plan} />
 
@@ -60,6 +58,6 @@ export default function PlanScreen() {
 
       <Title style={{ fontSize: 22, marginTop: 8 }}>{t('courseFinder.apply')}</Title>
       <ApplyGuide apply={plan.apply} />
-    </Screen>
+    </HeroScreen>
   );
 }

@@ -120,7 +120,7 @@ export function StillOpen({ plan }: { plan: Plan }) {
 }
 
 /** Said whenever the plan's dates come from a preview's test date rather than today. */
-export function TestDateNote({ apply }: { apply: PlanApply }) {
+export function TestDateNote({ apply }: { apply: Pick<PlanApply, 'today' | 'test_date'> }) {
   if (!apply.test_date) return null;
   return <InfoNote icon="clock">{t('courseFinder.testDate', { date: formatDay(apply.today) })}</InfoNote>;
 }

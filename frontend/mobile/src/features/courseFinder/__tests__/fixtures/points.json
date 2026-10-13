@@ -1,0 +1,242 @@
+{
+ "data": {
+  "universities": [
+   {
+    "confirmed": false,
+    "counted": [
+     "other_language",
+     "english",
+     "mathematics",
+     "life_sciences",
+     "physical_sciences",
+     "geography",
+     "life_orientation"
+    ],
+    "lines": [
+     "Counts 7 subjects: Life Orientation and your best 6 others.",
+     "Some programmes count points their own way: their cards show those points."
+    ],
+    "notice": "Not yet confirmed by the team.",
+    "points": 42.0,
+    "source_url": "https://www.smu.ac.za/schools/medicine/medicine-undergraduate-admission-requirements/",
+    "subjects": [
+     {
+      "counted": true,
+      "level": 6,
+      "points": 6.0,
+      "subject": "english"
+     },
+     {
+      "counted": true,
+      "level": 7,
+      "points": 7.0,
+      "subject": "other_language"
+     },
+     {
+      "counted": true,
+      "level": 6,
+      "points": 6.0,
+      "subject": "mathematics"
+     },
+     {
+      "counted": true,
+      "level": 5,
+      "points": 5.0,
+      "subject": "physical_sciences"
+     },
+     {
+      "counted": true,
+      "level": 6,
+      "points": 6.0,
+      "subject": "life_sciences"
+     },
+     {
+      "counted": true,
+      "level": 5,
+      "points": 5.0,
+      "subject": "geography"
+     },
+     {
+      "counted": true,
+      "level": 7,
+      "points": 7.0,
+      "subject": "life_orientation"
+     },
+     {
+      "counted": false,
+      "level": 5,
+      "points": 0.0,
+      "subject": "another_subject_1"
+     }
+    ],
+    "summary": "You meet the minimum for 15 of 17 programmes. 15 of them select competitively, so each is a reach.",
+    "tiers": {
+     "competitive": 0,
+     "meets_minimum": 0,
+     "not_yet": 2,
+     "reach": 15,
+     "unverified": 0
+    },
+    "university": "smu",
+    "university_name": "Sefako Makgatho Health Sciences University"
+   },
+   {
+    "confirmed": false,
+    "counted": [
+     "other_language",
+     "english",
+     "mathematics",
+     "life_sciences",
+     "physical_sciences",
+     "geography"
+    ],
+    "lines": [
+     "Counts your best 6 subjects, leaving out Life Orientation.",
+     "TUT doesn't say how many subjects count, so we count the six besides Life Orientation until TUT confirms."
+    ],
+    "notice": "Not yet confirmed by the team.",
+    "points": 35.0,
+    "source_url": "https://www.tut.ac.za/media/tshwane-interim/site-content/images/prospectus/Part1_Students_Rules_and_Regulations.pdf",
+    "subjects": [
+     {
+      "counted": true,
+      "level": 6,
+      "points": 6.0,
+      "subject": "english"
+     },
+     {
+      "counted": true,
+      "level": 7,
+      "points": 7.0,
+      "subject": "other_language"
+     },
+     {
+      "counted": true,
+      "level": 6,
+      "points": 6.0,
+      "subject": "mathematics"
+     },
+     {
+      "counted": true,
+      "level": 5,
+      "points": 5.0,
+      "subject": "physical_sciences"
+     },
+     {
+      "counted": true,
+      "level": 6,
+      "points": 6.0,
+      "subject": "life_sciences"
+     },
+     {
+      "counted": true,
+      "level": 5,
+      "points": 5.0,
+      "subject": "geography"
+     },
+     {
+      "counted": false,
+      "level": 7,
+      "points": 0.0,
+      "subject": "life_orientation"
+     },
+     {
+      "counted": false,
+      "level": 5,
+      "points": 0.0,
+      "subject": "another_subject_1"
+     }
+    ],
+    "summary": "You meet the minimum for 119 of 124 programmes. 30 of them select competitively, so each is a reach. We can't check 2 yet.",
+    "tiers": {
+     "competitive": 14,
+     "meets_minimum": 75,
+     "not_yet": 3,
+     "reach": 30,
+     "unverified": 2
+    },
+    "university": "tut",
+    "university_name": "Tshwane University of Technology"
+   },
+   {
+    "confirmed": false,
+    "counted": [
+     "other_language",
+     "english",
+     "mathematics",
+     "life_sciences",
+     "physical_sciences",
+     "geography"
+    ],
+    "lines": [
+     "Counts your best 6 subjects, leaving out Life Orientation."
+    ],
+    "notice": "Not yet confirmed by the team.",
+    "points": 35.0,
+    "source_url": "https://drupalwebprod-files.up.ac.za/Public/2026-04/2026%20for%202027%20Selection%20of%20MBChB%20students_13April%202026%20(2).pdf?VersionId=Zhz6Br5WLsS8ahAYQXZ3RDGUkfIq_RNy",
+    "subjects": [
+     {
+      "counted": true,
+      "level": 6,
+      "points": 6.0,
+      "subject": "english"
+     },
+     {
+      "counted": true,
+      "level": 7,
+      "points": 7.0,
+      "subject": "other_language"
+     },
+     {
+      "counted": true,
+      "level": 6,
+      "points": 6.0,
+      "subject": "mathematics"
+     },
+     {
+      "counted": true,
+      "level": 5,
+      "points": 5.0,
+      "subject": "physical_sciences"
+     },
+     {
+      "counted": true,
+      "level": 6,
+      "points": 6.0,
+      "subject": "life_sciences"
+     },
+     {
+      "counted": true,
+      "level": 5,
+      "points": 5.0,
+      "subject": "geography"
+     },
+     {
+      "counted": false,
+      "level": 7,
+      "points": 0.0,
+      "subject": "life_orientation"
+     },
+     {
+      "counted": false,
+      "level": 5,
+      "points": 0.0,
+      "subject": "another_subject_1"
+     }
+    ],
+    "summary": "You meet the minimum for 107 of 120 programmes. 20 of them select competitively, so each is a reach. We can't check 3 yet.",
+    "tiers": {
+     "competitive": 0,
+     "meets_minimum": 87,
+     "not_yet": 10,
+     "reach": 20,
+     "unverified": 3
+    },
+    "university": "up",
+    "university_name": "University of Pretoria"
+   }
+  ]
+ },
+ "message": "Success",
+ "success": true
+}
