@@ -107,10 +107,11 @@ Everything is recorded, with who and when, in [OPEN_QUESTIONS.md](OPEN_QUESTIONS
 2. **Check the facts by Thu 22 Oct:** the packs (crisis lines first: Support hides them until then) and the funding
    pack. Compare every value with its source, then set `last_verified`, `verified_by` and `release: true`
    (OPEN_QUESTIONS, "Facts for the data packs").
-3. **The reused foundation** (REUSE.md; OPEN_QUESTIONS, "Privacy and legal"). #1 copies code from Akayza, which is
-   © Team PR (Mandla and Rinsuna), and through it from TruConnect, an earlier project of Mandla's. Mandla's
+3. **The reused foundation** (REUSE.md; OPEN_QUESTIONS, "Privacy and legal"). #1 copies code from our earlier project
+   (© Team PR: Mandla and Rinsuna) and, through it, from TruConnect, an earlier project of Mandla's. Mandla's
    confirmations in REUSE.md are still unsigned. Before the submission, get his written OK or replace the reused
-   files. LICENSE still names "Team PR (Mandla and Rinsuna)". Agents leave both files alone: they're Rinsuna's call.
+   files. LICENSE still names "Team PR (Mandla and Rinsuna)". Agents don't change REUSE.md's permissions or
+   LICENSE: they're Rinsuna's call.
 4. **Decisions that were Mandla's** (OPEN_QUESTIONS, "App and accounts"):
    - which intakes a plan shows, and "Add these dates to my calendar"
    - flag counts for reps, and module alerts

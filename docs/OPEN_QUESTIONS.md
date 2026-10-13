@@ -181,11 +181,11 @@ cents, documents and next steps, each with its source. `funding.yaml` holds nati
   `GET /me/export` are built on `rinsuna/privacy-export-delete` (10 Oct 2026), so the Security screen's "Delete my
   account and data: Coming soon" can become real. Still open: how long a closed account is kept, and the
   audit trail's records, which neither the export nor deleting touches.
-- [ ] **The reused foundation, with Mandla no longer on the team** (raised 13 Oct 2026). M0 copied code from Akayza,
-  © Team PR (Mandla and Rinsuna), and through it from TruConnect, an earlier project of Mandla's (REUSE.md). Both
-  of Mandla's confirmations in REUSE.md are unsigned, and so is Rinsuna's. Rinsuna decides before the submission
-  (Mon 26 Oct): get his written OK, or replace the reused files. LICENSE still names "Team PR (Mandla and
-  Rinsuna)": also hers to decide. Agents don't edit REUSE.md or LICENSE.
+- [ ] **The reused foundation, with Mandla no longer on the team** (raised 13 Oct 2026). M0 copied code from our
+  earlier project (© Team PR: Mandla and Rinsuna) and, through it, from TruConnect, an earlier project of Mandla's
+  (REUSE.md). Both of Mandla's confirmations in REUSE.md are unsigned, and so is Rinsuna's. Rinsuna decides before
+  the submission (Mon 26 Oct): get his written OK, or replace the reused files. LICENSE still names "Team PR (Mandla
+  and Rinsuna)": also hers to decide. Agents don't change REUSE.md's permissions or LICENSE.
 - [ ] **Email sender.** Placeholders use `example.com` (we own no domain). Which address and inbox send the codes in
   production (`MAIL_DEFAULT_SENDER`, `MAIL_REPLY_TO`)?
 
