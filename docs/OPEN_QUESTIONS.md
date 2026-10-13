@@ -237,6 +237,9 @@ cents, documents and next steps, each with its source. `funding.yaml` holds nati
   - **Balance:** the student enters it once, with the day it was true. It then stays current from the spending
     they log and the payments they mark received, so the screen never has to ask again.
   - **Onboarding:** a university and campus picker for `PUT /me/profile`.
+  - **Built** on `rinsuna/money-screens` (#24, 13 Oct 2026). The words chosen, for Rinsuna to confirm: reliability as
+    "Always on time", "Sometimes late", "Often late" and "Not sure"; the life fund as "Go out", "Go easy" and
+    "Paused" (the engine's green, amber and paused); a balance that isn't changed keeps the day it was entered for.
 - [ ] **The university's own deadlines in My week** (agreed by Rinsuna on 10 Oct 2026; Rinsuna to confirm): calendar
   entries with `period: deadline` (re-marks, exclusion appeals, module changes, graduation applications) shown with
   the class deadlines in M4's week view. **Built** on `rinsuna/m4-my-week`: each week of `GET /week` lists the
