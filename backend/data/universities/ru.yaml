@@ -1,8 +1,9 @@
 # Rhodes University (RU)
 #
-# Agent draft, read on 13 Oct 2026 (docs/research/universities.md). Rhodes adds a tenth of each of six
-# subjects' percentages. Nobody has checked these values yet: release stays false until a person has
-# compared every one with its source.
+# Agent draft, from Rhodes's 2026/2027 RU Ready Undergraduate Prospectus read on 14 Oct 2026 (docs/research/ru.md).
+# Rhodes adds a tenth of each of six subjects' percentages (excluding Life Orientation).
+# Nobody has checked these values yet: release stays false until a person has compared every
+# one with its source. All 16 undergraduate degree qualifications take their requirements from the prospectus.
 
 university: ru
 name: Rhodes University
@@ -16,7 +17,7 @@ points_rules:
   subjects_counted: 6
   life_orientation: exclude
   percent_points: {per_percent: 0.1, from_percent: 0}
-  note: "Life Orientation isn't counted, but Rhodes asks for at least 50% in it."
+  note: "Life Orientation isn't counted in the APS, but Rhodes asks for at least 50% (level 4) in it."
   scale:
     - {min_percent: 80, level: 7}
     - {min_percent: 70, level: 6}
@@ -29,22 +30,257 @@ points_rules:
 applications:
   source: s-ru-fees
   url: https://www.ru.ac.za/admissiongateway/application/paymentoffees/
-  how: "Apply online at ross.ru.ac.za, with your Grade 11 final report or your Grade 12 Term 2 report."
+  how: "Apply online at ross.ru.ac.za, using your final Grade 11 report or Grade 12 Term 2 results."
   fee_cents: 10000
+  fee_note: "Non-refundable application handling fee."
+  documents:
+    source: s-ru-prospectus
+    items:
+      - "Certified copy of ID document or passport"
+      - "Certified copy of Grade 11 final results or Grade 12 Term 2 report (if in Grade 12) or statement of Grade 12 results / National Senior Certificate"
+      - "Academic transcript and certificate of conduct (for transfer students from another tertiary institution)"
+      - "USAf exemption evaluation certificate (for international qualifications)"
+  after:
+    - text: "Meeting the minimum requirements does not guarantee acceptance as places are limited."
+      source: s-ru-prospectus
+    - text: "An APS of 45+ points receives a provisional firm offer; 34 to 44 points is considered at the Dean's discretion depending on the faculty."
+      source: s-ru-prospectus
+    - text: "Life Orientation is not counted for points, but you are required to obtain at least Level 4 (50%) for acceptance across all faculties."
+      source: s-ru-prospectus
   windows:
     - intake: 2027
       source: s-ru-prospectus
       opens: 2026-04-01
       closes: 2026-09-30
+      note: "Applications opened 1 April 2026 and closed 30 September 2026."
 
-programmes: []
+programmes:
+
+  # Commerce Faculty (prospectus pages 11 and 12)
+
+  - id: bbussc
+    name: "Bachelor of Business Science (BBusSc)"
+    fields: [commerce, management, economics]
+    requirements:
+      source: s-ru-prospectus
+      min_points: 38
+      competitive_points: 45
+      subject_minimums: {english: 4, mathematics: 6}
+      extras:
+        - "Offers provisional acceptance from 45 points, and considers 38 to 44 points at the Dean's discretion."
+        - "Duration is 4 years. Majors in Computer Science, Economics, Information Systems, Management, or Quantitative Management."
+
+  - id: bcom
+    name: "Bachelor of Commerce (BCom)"
+    fields: [commerce, accounting]
+    requirements:
+      source: s-ru-prospectus
+      min_points: 34
+      competitive_points: 40
+      subject_minimums: {english: 4, mathematics: 4}
+      extras:
+        - "Offers provisional acceptance from 40 points, and considers 34 to 39 points at the Dean's discretion."
+        - "Duration is 3 years. Majors in Accounting or General Curriculum."
+
+  - id: becon
+    name: "Bachelor of Economics (BEcon)"
+    fields: [economics, commerce]
+    requirements:
+      source: s-ru-prospectus
+      min_points: 34
+      competitive_points: 40
+      subject_minimums: {english: 4, mathematics: 4}
+      extras:
+        - "Offers provisional acceptance from 40 points, and considers 34 to 39 points at the Dean's discretion."
+        - "Duration is 3 years. Majors in Business Sciences, Environmental Economics, Mineral Economics, or Social Sciences."
+
+  - id: bcom_extended
+    name: "Bachelor of Commerce (Extended Studies Programme)"
+    fields: [commerce, accounting]
+    requirements:
+      source: s-ru-prospectus
+      min_points: 34
+      subject_minimums: {mathematics: 4}
+      extras:
+        - "Duration is 4 years. For students with 34 to 37 points from disadvantaged backgrounds."
+
+  # Humanities Faculty (prospectus pages 13 and 14)
+
+  - id: ba
+    name: "Bachelor of Arts (BA)"
+    fields: [humanities, languages_and_communication]
+    requirements:
+      source: s-ru-prospectus
+      min_points: 34
+      competitive_points: 45
+      subject_minimums: {english: 5}
+      extras:
+        - "Requires English Home Language at 60% or English First Additional Language at 65%. Life Orientation at 50% (level 4) required."
+        - "Offers provisional acceptance from 45 points, and considers 34 to 44 points at the Dean's discretion."
+        - "Duration is 3 years. Majors across Anthropology, Drama, English, Languages, Literature, Politics, Psychology, Sociology."
+
+  - id: bss
+    name: "Bachelor of Social Science (BSocSc)"
+    fields: [humanities, public_administration]
+    requirements:
+      source: s-ru-prospectus
+      min_points: 34
+      competitive_points: 45
+      subject_minimums: {english: 5}
+      extras:
+        - "Requires English Home Language at 60% or English First Additional Language at 65%. Life Orientation at 50% (level 4) required."
+        - "Offers provisional acceptance from 45 points, and considers 34 to 44 points at the Dean's discretion."
+        - "Duration is 3 years. Majors across Anthropology, Economics, Management, Politics, Psychology, Sociology."
+
+  - id: bfa
+    name: "Bachelor of Fine Arts (BFA)"
+    fields: [arts_and_design]
+    selective: true
+    selection_note: "Portfolio submission required."
+    requirements:
+      source: s-ru-prospectus
+      min_points: 34
+      competitive_points: 45
+      subject_minimums: {english: 5}
+      extras:
+        - "Requires English Home Language at 60% or English First Additional Language at 65%, Life Orientation at 50%, and a portfolio submission."
+        - "Offers provisional acceptance from 45 points, and considers 34 to 44 points at the Dean's discretion. Duration is 4 years."
+
+  - id: bmus
+    name: "Bachelor of Music (BMus)"
+    fields: [music]
+    selective: true
+    selection_note: "Departmental audition required."
+    requirements:
+      source: s-ru-prospectus
+      min_points: 34
+      competitive_points: 45
+      subject_minimums: {english: 5}
+      extras:
+        - "Requires English Home Language at 60% or English First Additional Language at 65%, Life Orientation at 50%, and an audition."
+        - "Offers provisional acceptance from 45 points, and considers 34 to 44 points at the Dean's discretion. Duration is 4 years."
+
+  - id: bjourn
+    name: "Bachelor of Journalism (BJourn)"
+    fields: [humanities, languages_and_communication]
+    selective: true
+    selection_note: "Limited places; competitive selection."
+    requirements:
+      source: s-ru-prospectus
+      min_points: 34
+      competitive_points: 45
+      subject_minimums: {english: 5}
+      extras:
+        - "Requires English Home Language at 60% or English First Additional Language at 65%. Life Orientation at 50% required."
+        - "Offers provisional acceptance from 45 points, and considers 34 to 44 points at the Dean's discretion. Duration is 4 years."
+
+  - id: ba_bss_extended
+    name: "Bachelor of Arts / Social Science (Extended Studies Programme)"
+    fields: [humanities]
+    requirements:
+      source: s-ru-prospectus
+      min_points: 34
+      subject_minimums: {english: 5}
+      extras:
+        - "Duration is 4 years. For students with 34 to 37 points from disadvantaged backgrounds."
+
+  # Education Faculty (prospectus page 15)
+
+  - id: bed_foundation_phase
+    name: "Bachelor of Education in Foundation Phase Teaching"
+    fields: [education]
+    requirements:
+      source: s-ru-prospectus
+      min_points: 39
+      competitive_points: 44
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "Offers provisional acceptance from 44 points, and considers 39 to 43 points at the Dean's discretion."
+        - "Requires Mathematics 3 (40%) or Mathematical Literacy 4 (50%), and Life Orientation 4 (50%). Duration is 4 years."
+
+  - id: pgce
+    name: "Postgraduate Certificate in Education (PGCE)"
+    fields: [education]
+    requirements: null
+
+  # Law Faculty (prospectus page 16)
+
+  - id: llb
+    name: "Bachelor of Laws (LLB)"
+    fields: [law]
+    selective: true
+    selection_note: "The Faculty admits a limited number of students directly into LLB1. Most students complete a general degree first."
+    requirements:
+      source: s-ru-prospectus
+      min_points: 40
+      competitive_points: 45
+      subject_minimums: {english: 5}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {mathematical_literacy: 5}
+      extras:
+        - "Requires English Home Language 5 (60%) or English First Additional Language 6 (70%), and Mathematics 4 (50%) or Mathematical Literacy 5 (60%). Life Orientation 50% required."
+        - "Offers provisional acceptance from 45 points, and considers 40 to 44 points at the Dean's discretion. Duration is 4 years."
+
+  # Pharmacy Faculty (prospectus page 17)
+
+  - id: bpharm
+    name: "Bachelor of Pharmacy (BPharm)"
+    fields: [pharmacy, health_sciences]
+    selective: true
+    selection_note: "Strictly limited places; competitive selection."
+    requirements:
+      source: s-ru-prospectus
+      min_points: 40
+      competitive_points: 45
+      subject_minimums: {mathematics: 5, life_sciences: 5, physical_sciences: 5}
+      extras:
+        - "Dean's discretion admission at 40-44 points requires Mathematics 5, Life Sciences 5, and Physical Sciences 5."
+        - "Provisional firm offer at 45+ points requires Mathematics 6, Life Sciences 6, and Physical Sciences 6."
+        - "Life Orientation at 50% required. Duration is 4 years."
+
+  # Science Faculty (prospectus page 18)
+
+  - id: bsc
+    name: "Bachelor of Science (BSc)"
+    fields: [natural_sciences, life_sciences, physical_sciences]
+    requirements:
+      source: s-ru-prospectus
+      min_points: 39
+      competitive_points: 45
+      subject_minimums: {english: 5, mathematics: 4}
+      choices:
+        - one_of:
+            - subjects: {physical_sciences: 5}
+            - subjects: {life_sciences: 5}
+      extras:
+        - "Requires English Home Language 60% or English First Additional Language 65%, Mathematics 4 (50%), and Physical Sciences 5 (60%) or Life Sciences 5 (60%)."
+        - "Offers provisional acceptance from 45 points, and considers 39 to 44 points at the Dean's discretion. Duration is 3 years."
+        - "Majors across Biological Sciences, Computational Sciences, Earth Sciences, and Physical Sciences."
+
+  - id: bsc_infosys
+    name: "Bachelor of Science in Information Systems (BSc InfoSys)"
+    fields: [computing, commerce]
+    requirements:
+      source: s-ru-prospectus
+      min_points: 40
+      competitive_points: 45
+      subject_minimums: {english: 5, mathematics: 4, physical_sciences: 5}
+      extras:
+        - "Requires English 5 (60%), Mathematics 4 (50%), and Physical Sciences 5 (60%). Life Orientation 50% required."
+        - "Offers provisional acceptance from 45 points, and considers 40 to 44 points at the Dean's discretion. Duration is 3 years."
 
 sources:
   - id: s-ru-prospectus
     url: "https://www.ru.ac.za/media/rhodesuniversity/content/registrar/documents/information/studentrecruitment/RU_READY_Undergraduate_Prospectus_2026_DIGITAL_A5_Landscape_24pp_18Mar2026.pdf"
     publisher: "Rhodes University"
-    title: "RU Ready: undergraduate prospectus (the APS, page 22; applications, page 23)"
-    retrieved: 2026-10-13
+    title: "RU Ready: undergraduate prospectus (the APS, pages 6-8; faculty requirements, pages 11-18; applications, page 22)"
+    retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
   - id: s-ru-fees
