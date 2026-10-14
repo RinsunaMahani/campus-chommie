@@ -112,7 +112,7 @@ export function SelectField<T extends string>(props: Single<T> | Multiple<T>) {
                     </View>
                     {props.multiple ? (
                       <View style={[styles.check, on && styles.checkOn]}>
-                        {on ? <Feather name="check" size={14} color={colors.white} /> : null}
+                        {on ? <Feather name="check" size={14} color={colors.pillText} /> : null}
                       </View>
                     ) : (
                       <View style={[styles.radio, on && { borderColor: colors.accent }]}>{on ? <View style={styles.dot} /> : null}</View>

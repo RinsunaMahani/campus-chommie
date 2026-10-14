@@ -157,5 +157,5 @@ const styles = StyleSheet.create({
   },
   chipOn: { backgroundColor: colors.ink, borderColor: colors.ink },
   chipText: { fontFamily: fonts.semibold, fontSize: 13, color: colors.ink },
-  chipTextOn: { color: colors.white },
+  chipTextOn: { color: colors.pillText },
 });

@@ -32,7 +32,7 @@ export function Checkbox({
         onPress={() => onChange(!checked)}
         hitSlop={14}
         style={[styles.box, checked && styles.boxOn, error && !checked && { borderColor: colors.garnet }]}>
-        {checked ? <Feather name="check" size={14} color={colors.white} /> : null}
+        {checked ? <Feather name="check" size={14} color={colors.pillText} /> : null}
       </Pressable>
       <View style={{ flex: 1 }}>{children}</View>
     </View>

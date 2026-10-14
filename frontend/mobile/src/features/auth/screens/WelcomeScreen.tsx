@@ -1,4 +1,3 @@
-import { LinearGradient } from 'expo-linear-gradient';
 import { Redirect, router } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
@@ -7,6 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { SLOGAN } from '@/constants/config';
 import { useSession } from '@/features/auth/session/SessionProvider';
 import { BrandMark, Wordmark } from '@/shared/components/Brand';
+import { Wallpaper } from '@/shared/components/Wallpaper';
 import { Button } from '@/shared/components/Button';
 import { t } from '@/shared/i18n';
 import { colors, fonts } from '@/shared/theme/tokens';
@@ -18,12 +18,9 @@ export default function WelcomeScreen() {
   if (status === 'unverified') return <Redirect href="/verify-email" />;
 
   return (
-    // Soft white with a light violet wash top and bottom.
-    <LinearGradient
-      colors={[colors.accentTint, colors.porcelain, colors.porcelain, colors.accentTint]}
-      locations={[0, 0.35, 0.65, 1]}
-      style={styles.fill}>
-      <StatusBar style="dark" />
+    <View style={styles.fill}>
+      <Wallpaper />
+      <StatusBar style="light" />
       <SafeAreaView style={styles.safe}>
         <View style={styles.center}>
           <BrandMark size={112} />
@@ -51,7 +48,7 @@ export default function WelcomeScreen() {
           </Pressable>
         </View>
       </SafeAreaView>
-    </LinearGradient>
+    </View>
   );
 }
 
