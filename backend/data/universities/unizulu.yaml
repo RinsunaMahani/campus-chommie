@@ -2,7 +2,9 @@
 #
 # Agent draft, read on 13 Oct 2026 (docs/research/universities.md). The points rule is from UNIZULU's
 # admissions policy, the newest found; its 2027 dates weren't found. Nobody has checked these values yet:
-# release stays false until a person has compared every one with its source.
+# release stays false until a person has compared every one with its source. The 185 programmes, added on
+# 14 Oct 2026, come from the CAO's 2027 handbook and its list of programmes added after it, checked against
+# UNIZULU's 2026 brochure and faculty handbooks (docs/research/unizulu.md).
 
 university: unizulu
 name: University of Zululand
@@ -11,6 +13,8 @@ academic_year: 2027
 release: false
 max_choices: null
 
+# Check first (docs/research/unizulu.md): this scale stops at 7 points from 80%, but the policy it cites
+# (section 5.4) and UNIZULU's 2026 Commerce and Education handbooks give 8 points for 90-100%.
 points_rules:
   source: s-unizulu-policy
   subjects_counted: 6
@@ -33,7 +37,2528 @@ applications:
   fee_note: "The CAO's fee: R250 if it reaches the CAO by 31 October 2026, R470 from 1 November."
   windows: []               # 2027 dates not found on the pages read
 
-programmes: []
+# Requirements from the CAO's 2027 handbook (UNIZULU's rows, printed pages 45 to 195) and, for 40 Bachelor of
+# Education programmes, the CAO's list of programmes added after the handbook. No 2027 document of UNIZULU's
+# own was found; where its 2026 brochure or faculty handbooks ask for more, extras say so. Each programme's
+# comment gives its CAO code and page. Agent draft, 14 Oct 2026.
+programmes:
+
+  # Faculty of Commerce, Administration and Law: KwaDlangezwa campus
+
+  - id: bcom_accounting_science                         # ZU-M-BAS, CAO p45
+    name: "Bachelor of Commerce in Accounting Science"
+    fields: [accounting, commerce]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+
+  - id: bcom_accounting                                 # ZU-M-BCN, CAO p45
+    name: "Bachelor of Commerce in Accounting"
+    fields: [accounting, commerce]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+
+  - id: bcom_mis                                        # ZU-M-BC6, CAO p128
+    name: "Bachelor of Commerce (Management Information Systems)"
+    fields: [computing, commerce]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+
+  - id: bcom_accounting_economics                       # ZU-M-BC7, CAO p127
+    name: "Bachelor of Commerce (Accounting and Economics)"
+    fields: [accounting, economics, commerce]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 6}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Choose only one B Com stream when you apply."
+
+  - id: bcom_banking_business_management                # ZU-M-BC8, CAO p127
+    name: "Bachelor of Commerce (Banking and Business Management)"
+    fields: [finance, management, commerce]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 6}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Choose only one B Com stream when you apply."
+
+  - id: bcom_business_management_accounting             # ZU-M-BMB, CAO p127
+    name: "Bachelor of Commerce (Business Management and Accounting)"
+    fields: [management, accounting, commerce]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 6}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Choose only one B Com stream when you apply."
+
+  - id: bcom_business_management_economics              # ZU-M-BBO, CAO p127
+    name: "Bachelor of Commerce (Business Management and Economics)"
+    fields: [management, economics, commerce]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 6}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Choose only one B Com stream when you apply."
+
+  - id: bcom_economics_banking                          # ZU-M-BC9, CAO p127
+    name: "Bachelor of Commerce (Economics and Banking)"
+    fields: [economics, finance, commerce]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 6}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Choose only one B Com stream when you apply."
+
+  - id: bcom_economics_hrm                              # ZU-M-BER, CAO p127
+    name: "Bachelor of Commerce (Economics and Human Resource Management)"
+    fields: [economics, management, commerce]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 6}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Choose only one B Com stream when you apply."
+
+  - id: bcom_hrm_business_management                    # ZU-M-BUS, CAO p128
+    name: "Bachelor of Commerce (Human Resource Management and Business Management)"
+    fields: [management, commerce]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 6}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Choose only one B Com stream when you apply."
+
+  - id: bcom_aug_banking_business_management            # ZU-A-AB2, CAO p46
+    name: "Bachelor of Commerce Augmented (Banking and Business Management)"
+    fields: [finance, management, commerce]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented B Com takes four years; UNIZULU offers it to applicants who don't meet the three-year degree's requirements."
+        - "Choose only one stream of the four-year augmented B Com when you apply."
+
+  - id: bcom_aug_business_management_accounting         # ZU-A-ABU, CAO p46
+    name: "Bachelor of Commerce Augmented (Business Management and Accounting)"
+    fields: [management, accounting, commerce]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented B Com takes four years; UNIZULU offers it to applicants who don't meet the three-year degree's requirements."
+        - "Choose only one stream of the four-year augmented B Com when you apply."
+
+  - id: bcom_aug_business_management_economics          # ZU-A-ABE, CAO p46
+    name: "Bachelor of Commerce Augmented (Business Management and Economics)"
+    fields: [management, economics, commerce]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented B Com takes four years; UNIZULU offers it to applicants who don't meet the three-year degree's requirements."
+        - "Choose only one stream of the four-year augmented B Com when you apply."
+
+  - id: bcom_aug_economics_banking                      # ZU-A-ABK, CAO p46
+    name: "Bachelor of Commerce Augmented (Economics and Banking)"
+    fields: [economics, finance, commerce]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented B Com takes four years; UNIZULU offers it to applicants who don't meet the three-year degree's requirements."
+        - "Choose only one stream of the four-year augmented B Com when you apply."
+
+  - id: bcom_aug_economics_hrm                          # ZU-A-AHU, CAO p46
+    name: "Bachelor of Commerce Augmented (Economics and Human Resources Management)"
+    fields: [economics, management, commerce]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented B Com takes four years; UNIZULU offers it to applicants who don't meet the three-year degree's requirements."
+        - "Choose only one stream of the four-year augmented B Com when you apply."
+
+  - id: bcom_aug_hrm_business_management                # ZU-A-AHB, CAO p46
+    name: "Bachelor of Commerce Augmented (Human Resources Management and Business Management)"
+    fields: [management, commerce]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented B Com takes four years; UNIZULU offers it to applicants who don't meet the three-year degree's requirements."
+        - "Choose only one stream of the four-year augmented B Com when you apply."
+
+  - id: bcom_aug_accounting_economics                   # ZU-A-AES, CAO p47
+    name: "Bachelor of Commerce Augmented (Accounting & Economics)"
+    fields: [accounting, economics, commerce]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented B Com takes four years; UNIZULU offers it to applicants who don't meet the three-year degree's requirements."
+        - "Choose only one stream of the four-year augmented B Com when you apply."
+
+  - id: bcom_aug_accounting_auditing                    # ZU-A-AAA, CAO p47
+    name: "Bachelor of Commerce Augmented (Accounting and Auditing)"
+    fields: [accounting, commerce]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented B Com takes four years; UNIZULU offers it to applicants who don't meet the three-year degree's requirements."
+        - "Choose only one stream of the four-year augmented B Com when you apply."
+
+  - id: badmin_public_admin_business_management         # ZU-M-PAB, CAO p60
+    name: "Bachelor of Administration: Public Administration and Business Management"
+    fields: [public_administration, management]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Choose only one B Admin stream when you apply."
+
+  - id: badmin_public_admin_economics                   # ZU-M-BAE, CAO p60
+    name: "Bachelor of Administration: Public Administration and Economics"
+    fields: [public_administration, economics]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Choose only one B Admin stream when you apply."
+
+  - id: badmin_public_admin_human_resources             # ZU-M-PHU, CAO p60
+    name: "Bachelor of Administration: Public Administration and Human Resources"
+    fields: [public_administration, management]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Choose only one B Admin stream when you apply."
+
+  - id: badmin_public_admin_political_science           # ZU-M-PAP, CAO p60
+    name: "Bachelor of Administration: Public Administration and Political Science"
+    fields: [public_administration, humanities]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Choose only one B Admin stream when you apply."
+
+  - id: llb                                             # ZU-M-BL1, CAO p183
+    name: "Bachelor of Laws"
+    fields: [law]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 30
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who put this programme as their first, second or third choice."
+
+  # Faculty of Commerce, Administration and Law: Richards Bay campus
+
+  - id: hcert_accountancy                               # ZU-R-AC2, CAO p52
+    name: "Higher Certificate in Accountancy"
+    fields: [accounting, commerce]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 22
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "Your NSC must show admission to higher certificate study."
+        - "Offered at the Richards Bay campus."
+
+  - id: dip_cooperatives_management                     # ZU-R-CO3, CAO p129
+    name: "Diploma in Co-Operatives Management"
+    fields: [management, commerce]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 24
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "Your NSC must show admission to diploma study."
+        - "Offered at the Richards Bay campus."
+
+  - id: dip_logistics_management                        # ZU-R-LM3, CAO p195
+    name: "Diploma in Logistics Management"
+    fields: [management, commerce]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 24
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "Your NSC must show admission to diploma study."
+        - "Offered at the Richards Bay campus."
+        - "UNIZULU considers applicants who rank this programme as their first or second choice."
+
+  - id: dip_transport_management                        # ZU-R-TP3, CAO p195
+    name: "Diploma in Transport Management"
+    fields: [management, commerce]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 24
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "Your NSC must show admission to diploma study."
+        - "Offered at the Richards Bay campus."
+        - "UNIZULU considers applicants who rank this programme as their first or second choice."
+
+  # Faculty of Humanities and Social Sciences: KwaDlangezwa campus
+
+  - id: ba_environmental_planning_development           # ZU-M-ARO, CAO p67
+    name: "Bachelor of Arts (Environmental Planning & Development)"
+    fields: [earth_sciences, humanities]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, geography: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who put this programme as their first choice."
+
+  - id: ba_intercultural_communication                  # ZU-M-BIC, CAO p72
+    name: "Bachelor of Arts (Intercultural Communication)"
+    fields: [languages_and_communication, humanities]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who put this programme as their first choice."
+        - "UNIZULU's 2026 faculty handbook also asks for level 4 (50%) in five other subjects: check with UNIZULU."
+
+  - id: ba_correctional_studies                         # ZU-M-ARM, CAO p78
+    name: "Bachelor of Arts (Correctional Studies)"
+    fields: [safety_and_justice, humanities]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who put this programme as their first choice."
+        - "UNIZULU's 2026 brochure and faculty handbook ask for English at level 5: check with UNIZULU."
+
+  - id: ba_industrial_sociology                         # ZU-M-ARI, CAO p104
+    name: "Bachelor of Arts (Industrial Sociology)"
+    fields: [humanities]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who put this programme as their first choice."
+        - "UNIZULU's 2026 faculty handbook also asks for five other subjects at level 3 or 4 (its wording is unclear): check with UNIZULU."
+
+  - id: ba_anthropology_history                         # ZU-M-BNH, CAO p109
+    name: "Bachelor of Arts (Anthropology & History)"
+    fields: [humanities]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who put this programme as their first choice."
+        - "UNIZULU's 2026 faculty handbook also asks for level 4 (50%) in five other subjects: check with UNIZULU."
+
+  - id: ba_geography_history                            # ZU-M-BGE, CAO p109
+    name: "Bachelor of Arts (Geography & History)"
+    fields: [humanities, earth_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who put this programme as their first choice."
+        - "UNIZULU's 2026 faculty handbook also asks for level 4 (50%) in five other subjects: check with UNIZULU."
+
+  - id: ba_geography_tourism                            # ZU-M-BGT, CAO p109
+    name: "Bachelor of Arts (Geography & Tourism)"
+    fields: [earth_sciences, tourism_and_hospitality, humanities]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who put this programme as their first choice."
+        - "UNIZULU's 2026 faculty handbook also asks for level 4 (50%) in five other subjects: check with UNIZULU."
+
+  - id: ba_history_isizulu                              # ZU-M-BHI, CAO p109
+    name: "Bachelor of Arts (History & IsiZulu)"
+    fields: [humanities, languages_and_communication]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who put this programme as their first choice."
+        - "UNIZULU's 2026 faculty handbook also asks for level 4 (50%) in five other subjects: check with UNIZULU."
+
+  - id: ba_linguistics_english                          # ZU-M-BLE, CAO p109
+    name: "Bachelor of Arts (Linguistics & English)"
+    fields: [languages_and_communication, humanities]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who put this programme as their first choice."
+        - "UNIZULU's 2026 faculty handbook also asks for level 4 (50%) in five other subjects: check with UNIZULU."
+
+  - id: ba_philosophy_psychology                        # ZU-M-BPY, CAO p109
+    name: "Bachelor of Arts (Philosophy & Psychology)"
+    fields: [humanities]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who put this programme as their first choice."
+        - "UNIZULU's 2026 faculty handbook also asks for level 4 (50%) in five other subjects: check with UNIZULU."
+
+  - id: ba_psychology                                   # ZU-M-PSY, CAO p109
+    name: "Bachelor of Arts (Psychology)"
+    fields: [humanities]
+    selective: true
+    selection_note: "Selected candidates are interviewed for suitability."
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {geography: 4}
+            - subjects: {history: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who put this programme as their first choice."
+        - "UNIZULU's 2026 faculty handbook asks for English First Additional Language at level 5: check with UNIZULU."
+
+  - id: ba_drama_theatre_performance                    # ZU-M-BTP, CAO p158
+    name: "Bachelor of Arts in Drama, Theatre and Performance"
+    fields: [performing_arts, arts_and_design]
+    selective: true
+    selection_note: "UNIZULU selects on auditions (music, drama, dance and visual art), then interviews successful applicants."
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {dramatic_arts: 4}
+            - subjects: {visual_arts: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who put this programme as their first choice."
+        - "Applicants with at least 50% in Dramatic Arts (or a related subject) get first priority."
+        - "UNIZULU's 2026 faculty handbook also asks for level 4 (50%) in five other subjects: check with UNIZULU."
+
+  - id: ba_development_studies                          # ZU-M-ABS, CAO p180
+    name: "Bachelor of Arts (Development Studies)"
+    fields: [humanities]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who put this programme as their first choice."
+        - "UNIZULU's 2026 faculty handbook also asks for five other subjects at level 3 or 4 (its wording is unclear): check with UNIZULU."
+
+  - id: ba_information_science                          # ZU-M-ARK, CAO p180
+    name: "Bachelor of Arts (Information Science)"
+    fields: [humanities, computing]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who put this programme as their first choice."
+        - "UNIZULU's 2026 faculty handbook also asks for five other subjects at level 3 or 4 (its wording is unclear): check with UNIZULU."
+        - "UNIZULU's 2026 faculty handbook asks for English First Additional Language at level 5 (Home Language at level 4): check with UNIZULU."
+
+  - id: b_library_information_science                   # ZU-M-BLI, CAO p180
+    name: "Bachelor of Library & Information Science"
+    fields: [humanities, computing]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who put this programme as their first choice."
+        - "UNIZULU's 2026 faculty handbook also asks for five other subjects at level 3 or 4 (its wording is unclear): check with UNIZULU."
+        - "UNIZULU's 2026 faculty handbook asks for English First Additional Language at level 5 (Home Language at level 4): check with UNIZULU."
+
+  - id: bsw                                             # ZU-M-BSX, CAO p181
+    name: "Bachelor of Social Work"
+    fields: [humanities]
+    selective: true
+    selection_note: "Shortlisted applicants must attend selection interviews."
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4}
+      extras:
+        - "English Home Language at level 4, or English First Additional Language at level 5."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who put this programme as their first choice."
+        - "You'll need to meet the National Child Protection Register (Part B) and police clearance requirements before you can register as a student social worker with the SACSSP."
+        - "UNIZULU's 2026 faculty handbook also asks for level 4 (50%) in five other subjects: check with UNIZULU."
+
+  - id: ba_sociology                                    # ZU-M-ARD, CAO p183
+    name: "Bachelor of Arts (Sociology)"
+    fields: [humanities]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who put this programme as their first choice."
+        - "UNIZULU's 2026 faculty handbook also asks for five other subjects at level 3 or 4 (its wording is unclear): check with UNIZULU."
+
+  - id: bsocsci_political_international_studies         # ZU-M-PIS, CAO p184
+    name: "Bachelor of Social Sciences in Political and International Studies"
+    fields: [humanities, public_administration]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 4, geography: 4, history: 4}
+      choices:
+        - one_of:
+            - subjects: {economics: 4}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who put this programme as their first choice."
+        - "UNIZULU's 2026 faculty handbook asks for English, Geography and History at level 5: check with UNIZULU."
+
+  - id: b_tourism_studies                               # ZU-M-BTS, CAO p189
+    name: "Bachelor of Tourism Studies"
+    fields: [tourism_and_hospitality]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {geography: 4}
+            - subjects: {tourism: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who put this programme as their first choice."
+
+  # Faculty of Humanities and Social Sciences: Richards Bay campus
+
+  - id: dip_media_studies                               # ZU-R-MD4, CAO p72
+    name: "Diploma in Media Studies"
+    fields: [languages_and_communication]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 24
+      subject_minimums: {english: 4}
+      extras:
+        - "Your NSC must show admission to diploma study."
+        - "Offered at the Richards Bay campus."
+        - "UNIZULU gives preference to applicants who put this programme as their first choice."
+        - "UNIZULU's 2026 handbooks also ask for other subjects at a minimum level (level 3 in four, or level 4 in five): check with UNIZULU."
+
+  - id: dip_public_relations_management                 # ZU-R-PR5, CAO p161
+    name: "Diploma in Public Relations Management"
+    fields: [languages_and_communication, management]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 24
+      subject_minimums: {english: 4}
+      extras:
+        - "Your NSC must show admission to diploma study."
+        - "Offered at the Richards Bay campus."
+        - "UNIZULU gives preference to applicants who put this programme as their first choice."
+        - "UNIZULU's 2026 handbooks also ask for other subjects at a minimum level (level 3 in four, or level 4 in five): check with UNIZULU."
+
+  - id: dip_tourism_management                          # ZU-R-TM1, CAO p191
+    name: "Diploma in Tourism Management"
+    fields: [tourism_and_hospitality, management]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 24
+      subject_minimums: {english: 4, tourism: 4}
+      additional_minimums: [4, 4, 4, 4]
+      extras:
+        - "Your NSC must show admission to diploma study."
+        - "Offered at the Richards Bay campus."
+        - "The four other subjects must come from this list: Mathematics (level 4) or Mathematical Literacy (level 5), Geography, Hospitality Studies, Consumer Studies, Business Studies, Accounting and Economics, each at level 4 or more."
+        - "UNIZULU gives preference to applicants who put this programme as their first choice."
+        - "UNIZULU's 2026 brochure and handbooks don't ask for Tourism; they ask for level 4 in any four subjects from a similar list: check with UNIZULU."
+
+  # Faculty of Science, Agriculture and Engineering: agriculture, consumer science and nursing
+
+  - id: bsc_agric_agronomy                              # ZU-M-SCA, CAO p68
+    name: "Bachelor of Science in Agriculture: Agronomy"
+    fields: [agriculture]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 3}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_agric_animal_science                        # ZU-M-SCK, CAO p68
+    name: "Bachelor of Science in Agriculture: Animal Science"
+    fields: [agriculture]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 3}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_agric_economics_agribusiness                # ZU-M-SCJ, CAO p68
+    name: "Bachelor of Science in Agricultural Economics: Agribusiness Management"
+    fields: [agriculture, economics, management]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 3}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bconsumer_extension_rural_development           # ZU-M-BPE, CAO p102
+    name: "Bachelor of Consumer Science: Extension & Rural Development"
+    fields: [consumer_sciences, agriculture]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+        - "UNIZULU's 2026 brochure and science handbook also ask for Life Orientation at level 4: check with UNIZULU."
+
+  - id: bconsumer_hospitality_tourism                   # ZU-M-BPT, CAO p189
+    name: "Bachelor of Consumer Science: Hospitality & Tourism"
+    fields: [consumer_sciences, tourism_and_hospitality]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+        - "UNIZULU's 2026 brochure and science handbook also ask for Life Orientation at level 4: check with UNIZULU."
+
+  - id: b_nursing_science                               # ZU-M-BNS, CAO p156
+    name: "Bachelor of Nursing Science"
+    fields: [nursing, health_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 30
+      subject_minimums: {english: 4, life_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {mathematical_literacy: 6}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  # Faculty of Science, Agriculture and Engineering: B Sc, three years (two majors)
+
+  - id: bsc_appmaths_compsci                            # ZU-M-AMC, CAO p168
+    name: "Bachelor of Science: Applied Mathematics with Computer Sciences as Major 2"
+    fields: [mathematical_sciences, computing, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_appmaths_hydro                              # ZU-M-AMH, CAO p168
+    name: "Bachelor of Science: Applied Mathematics with Hydrology as Major 2"
+    fields: [mathematical_sciences, earth_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_appmaths_maths                              # ZU-M-AMM, CAO p168
+    name: "Bachelor of Science: Applied Mathematics with Mathematics as Major 2"
+    fields: [mathematical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_appmaths_physics                            # ZU-M-APH, CAO p168
+    name: "Bachelor of Science: Applied Mathematics with Physics as Major 2"
+    fields: [mathematical_sciences, physical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_appmaths_stats                              # ZU-M-AMS, CAO p168
+    name: "Bachelor of Science: Applied Mathematics with Statistics as Major 2"
+    fields: [mathematical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_maths_physics                               # ZU-M-MPM, CAO p168
+    name: "Bachelor of Science: Mathematics with Physics as Major 2"
+    fields: [mathematical_sciences, physical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_maths_stats                                 # ZU-M-MAS, CAO p168
+    name: "Bachelor of Science: Mathematics with Statistics as Major 2"
+    fields: [mathematical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_micro_hms                                   # ZU-M-MIH, CAO p168
+    name: "Bachelor of Science: Microbiology with Human Movement Science as Major 2"
+    fields: [life_sciences, sport_science, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+        - "UNIZULU's 2026 science handbook asks for Physical Sciences at level 3 for these majors: check with UNIZULU."
+
+  - id: bsc_micro_zoology                               # ZU-M-MIZ, CAO p168
+    name: "Bachelor of Science: Microbiology with Zoology as Major 2"
+    fields: [life_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 3}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_biochem_botany                              # ZU-M-BBM, CAO p173
+    name: "Bachelor of Science: Biochemistry with Botany as Major 2"
+    fields: [life_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 3}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_biochem_chem                                # ZU-M-BC3, CAO p173
+    name: "Bachelor of Science: Biochemistry with Chemistry as Major 2"
+    fields: [life_sciences, physical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_biochem_hms                                 # ZU-M-BH3, CAO p173
+    name: "Bachelor of Science: Biochemistry with Human Movement Science as Major 2"
+    fields: [life_sciences, sport_science, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+        - "UNIZULU's 2026 science handbook asks for Physical Sciences at level 3 for these majors: check with UNIZULU."
+
+  - id: bsc_biochem_micro                               # ZU-M-BIM, CAO p173
+    name: "Bachelor of Science: Biochemistry with Microbiology as Major 2"
+    fields: [life_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 3}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_biochem_zoology                             # ZU-M-BZ3, CAO p173
+    name: "Bachelor of Science: Biochemistry with Zoology as Major 2"
+    fields: [life_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 3}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_botany_geog                                 # ZU-M-BOG, CAO p174
+    name: "Bachelor of Science: Botany with Geography as Major 2"
+    fields: [life_sciences, earth_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 3, geography: 4}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_botany_hydro                                # ZU-M-BOH, CAO p174
+    name: "Bachelor of Science: Botany with Hydrology as Major 2"
+    fields: [life_sciences, earth_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_botany_micro                                # ZU-M-BOM, CAO p174
+    name: "Bachelor of Science: Botany with Microbiology as Major 2"
+    fields: [life_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 3}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_botany_zoology                              # ZU-M-BOZ, CAO p174
+    name: "Bachelor of Science: Botany with Zoology as Major 2"
+    fields: [life_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 3}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_chem_compsci                                # ZU-M-CHC, CAO p174
+    name: "Bachelor of Science: Chemistry with Computer Science as Major 2"
+    fields: [physical_sciences, computing, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_chem_hydro                                  # ZU-M-CHH, CAO p174
+    name: "Bachelor of Science: Chemistry with Hydrology as Major 2"
+    fields: [physical_sciences, earth_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_chem_maths                                  # ZU-M-CHM, CAO p174
+    name: "Bachelor of Science: Chemistry with Mathematics as Major 2"
+    fields: [physical_sciences, mathematical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_chem_physics                                # ZU-M-CHP, CAO p174
+    name: "Bachelor of Science: Chemistry with Physics as Major 2"
+    fields: [physical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_chem_zoology                                # ZU-M-CZM, CAO p174
+    name: "Bachelor of Science: Chemistry with Zoology as Major 2"
+    fields: [physical_sciences, life_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_compsci_hydro                               # ZU-M-CSH, CAO p175
+    name: "Bachelor of Science: Computer Science with Hydrology as Major 2"
+    fields: [computing, earth_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_compsci_maths                               # ZU-M-CSC, CAO p175
+    name: "Bachelor of Science: Computer Science with Mathematics as Major 2"
+    fields: [computing, mathematical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_compsci_physics                             # ZU-M-CPH, CAO p175
+    name: "Bachelor of Science: Computer Science with Physics as Major 2"
+    fields: [computing, physical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_compsci_stats                               # ZU-M-COS, CAO p175
+    name: "Bachelor of Science: Computer Science with Statistics as Major 2"
+    fields: [computing, mathematical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_geog_hydro                                  # ZU-M-GEH, CAO p175
+    name: "Bachelor of Science: Geography with Hydrology as Major 2"
+    fields: [earth_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, geography: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_geog_physics                                # ZU-M-GEP, CAO p175
+    name: "Bachelor of Science: Geography with Physics as Major 2"
+    fields: [earth_sciences, physical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 4, geography: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_geog_stats                                  # ZU-M-GES, CAO p175
+    name: "Bachelor of Science: Geography with Statistics as Major 2"
+    fields: [earth_sciences, mathematical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 4, geography: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_geog_zoology                                # ZU-M-GEZ, CAO p175
+    name: "Bachelor of Science: Geography with Zoology as Major 2"
+    fields: [earth_sciences, life_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 3, geography: 4}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_hms_physics                                 # ZU-M-HMP, CAO p175
+    name: "Bachelor of Science: Human Movement Science with Physics as Major 2"
+    fields: [sport_science, physical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_hydro_micro                                 # ZU-M-HYM, CAO p176
+    name: "Bachelor of Science: Hydrology with Microbiology as Major 2"
+    fields: [earth_sciences, life_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_hydro_physics                               # ZU-M-HYP, CAO p176
+    name: "Bachelor of Science: Hydrology with Physics as Major 2"
+    fields: [earth_sciences, physical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_hydro_stats                                 # ZU-M-HYS, CAO p176
+    name: "Bachelor of Science: Hydrology with Statistics as Major 2"
+    fields: [earth_sciences, mathematical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_hydro_zoology                               # ZU-M-HYZ, CAO p176
+    name: "Bachelor of Science: Hydrology with Zoology as Major 2"
+    fields: [earth_sciences, life_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  # Faculty of Science, Agriculture and Engineering: B Sc Augmented, four years
+
+  - id: bsc_aug_appmaths_compsci                        # ZU-A-AM8, CAO p170
+    name: "Bachelor of Science Augmented (Applied Mathematics and Computer Science)"
+    fields: [mathematical_sciences, computing, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented stream takes four years: the first year's work is spread over two years, with extra tuition and support."
+        - "Applicants who have already studied at a university or college are not admitted."
+
+  - id: bsc_aug_appmaths_hydro                          # ZU-A-AM9, CAO p170
+    name: "Bachelor of Science Augmented (Applied Mathematics and Hydrology)"
+    fields: [mathematical_sciences, earth_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented stream takes four years: the first year's work is spread over two years, with extra tuition and support."
+        - "Applicants who have already studied at a university or college are not admitted."
+
+  - id: bsc_aug_appmaths_maths                          # ZU-A-AM5, CAO p170
+    name: "Bachelor of Science Augmented (Applied Mathematics and Mathematics)"
+    fields: [mathematical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented stream takes four years: the first year's work is spread over two years, with extra tuition and support."
+        - "Applicants who have already studied at a university or college are not admitted."
+
+  - id: bsc_aug_appmaths_physics                        # ZU-A-AM1, CAO p170
+    name: "Bachelor of Science Augmented (Applied Mathematics and Physics)"
+    fields: [mathematical_sciences, physical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented stream takes four years: the first year's work is spread over two years, with extra tuition and support."
+        - "Applicants who have already studied at a university or college are not admitted."
+
+  - id: bsc_aug_biochem_botany                          # ZU-A-AB1, CAO p171
+    name: "Bachelor of Science Augmented (Biochemistry and Botany)"
+    fields: [life_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3, life_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented stream takes four years: the first year's work is spread over two years, with extra tuition and support."
+        - "Applicants who have already studied at a university or college are not admitted."
+
+  - id: bsc_aug_biochem_chem                            # ZU-A-AB5, CAO p171
+    name: "Bachelor of Science Augmented (Biochemistry and Chemistry)"
+    fields: [life_sciences, physical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3, life_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented stream takes four years: the first year's work is spread over two years, with extra tuition and support."
+        - "Applicants who have already studied at a university or college are not admitted."
+
+  - id: bsc_aug_biochem_hms                             # ZU-A-AB6, CAO p171
+    name: "Bachelor of Science Augmented (Biochemistry and Human Movement Science)"
+    fields: [life_sciences, sport_science, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3, life_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented stream takes four years: the first year's work is spread over two years, with extra tuition and support."
+        - "Applicants who have already studied at a university or college are not admitted."
+
+  - id: bsc_aug_biochem_micro                           # ZU-A-AB3, CAO p171
+    name: "Bachelor of Science Augmented (Biochemistry and Microbiology)"
+    fields: [life_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3, life_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented stream takes four years: the first year's work is spread over two years, with extra tuition and support."
+        - "Applicants who have already studied at a university or college are not admitted."
+
+  - id: bsc_aug_biochem_zoology                         # ZU-A-AM6, CAO p171
+    name: "Bachelor of Science Augmented (Biochemistry and Zoology)"
+    fields: [life_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3, life_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented stream takes four years: the first year's work is spread over two years, with extra tuition and support."
+        - "Applicants who have already studied at a university or college are not admitted."
+
+  - id: bsc_aug_botany_geog                             # ZU-A-ABG, CAO p171
+    name: "Bachelor of Science Augmented (Botany and Geography)"
+    fields: [life_sciences, earth_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3, life_sciences: 3, geography: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented stream takes four years: the first year's work is spread over two years, with extra tuition and support."
+        - "Applicants who have already studied at a university or college are not admitted."
+
+  - id: bsc_aug_botany_hydro                            # ZU-A-ABH, CAO p171
+    name: "Bachelor of Science Augmented (Botany and Hydrology)"
+    fields: [life_sciences, earth_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3, life_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented stream takes four years: the first year's work is spread over two years, with extra tuition and support."
+        - "Applicants who have already studied at a university or college are not admitted."
+
+  - id: bsc_aug_botany_micro                            # ZU-A-AB4, CAO p171
+    name: "Bachelor of Science Augmented (Botany and Microbiology)"
+    fields: [life_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented stream takes four years: the first year's work is spread over two years, with extra tuition and support."
+        - "Applicants who have already studied at a university or college are not admitted."
+        - "UNIZULU's 2026 science handbook asks for Life Sciences at level 3 in the life-science streams: check with UNIZULU."
+
+  - id: bsc_aug_botany_zoology                          # ZU-A-ABZ, CAO p171
+    name: "Bachelor of Science Augmented (Botany and Zoology)"
+    fields: [life_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3, life_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented stream takes four years: the first year's work is spread over two years, with extra tuition and support."
+        - "Applicants who have already studied at a university or college are not admitted."
+
+  - id: bsc_aug_chem_compsci                            # ZU-A-ACO, CAO p171
+    name: "Bachelor of Science Augmented (Chemistry and Computer Science)"
+    fields: [physical_sciences, computing, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented stream takes four years: the first year's work is spread over two years, with extra tuition and support."
+        - "Applicants who have already studied at a university or college are not admitted."
+
+  - id: bsc_aug_chem_hydro                              # ZU-A-AC1, CAO p171
+    name: "Bachelor of Science Augmented (Chemistry and Hydrology)"
+    fields: [physical_sciences, earth_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented stream takes four years: the first year's work is spread over two years, with extra tuition and support."
+        - "Applicants who have already studied at a university or college are not admitted."
+
+  - id: bsc_aug_chem_maths                              # ZU-A-ATC, CAO p171
+    name: "Bachelor of Science Augmented (Chemistry and Mathematics)"
+    fields: [physical_sciences, mathematical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented stream takes four years: the first year's work is spread over two years, with extra tuition and support."
+        - "Applicants who have already studied at a university or college are not admitted."
+
+  - id: bsc_aug_chem_physics                            # ZU-A-APY, CAO p171
+    name: "Bachelor of Science Augmented (Chemistry and Physics)"
+    fields: [physical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented stream takes four years: the first year's work is spread over two years, with extra tuition and support."
+        - "Applicants who have already studied at a university or college are not admitted."
+
+  - id: bsc_aug_chem_zoology                            # ZU-A-AZC, CAO p172
+    name: "Bachelor of Science Augmented (Chemistry and Zoology)"
+    fields: [physical_sciences, life_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3, life_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented stream takes four years: the first year's work is spread over two years, with extra tuition and support."
+        - "Applicants who have already studied at a university or college are not admitted."
+
+  - id: bsc_aug_compsci_hydro                           # ZU-A-AC8, CAO p172
+    name: "Bachelor of Science Augmented (Computer Science and Hydrology)"
+    fields: [computing, earth_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented stream takes four years: the first year's work is spread over two years, with extra tuition and support."
+        - "Applicants who have already studied at a university or college are not admitted."
+
+  - id: bsc_aug_compsci_maths                           # ZU-A-AC9, CAO p172
+    name: "Bachelor of Science Augmented (Computer Science and Mathematics)"
+    fields: [computing, mathematical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented stream takes four years: the first year's work is spread over two years, with extra tuition and support."
+        - "Applicants who have already studied at a university or college are not admitted."
+
+  - id: bsc_aug_compsci_physics                         # ZU-A-AC6, CAO p172
+    name: "Bachelor of Science Augmented (Computer Science and Physics)"
+    fields: [computing, physical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented stream takes four years: the first year's work is spread over two years, with extra tuition and support."
+        - "Applicants who have already studied at a university or college are not admitted."
+
+  - id: bsc_aug_compsci_stats                           # ZU-A-ASI, CAO p172
+    name: "Bachelor of Science Augmented (Computer Science and Statistics)"
+    fields: [computing, mathematical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented stream takes four years: the first year's work is spread over two years, with extra tuition and support."
+        - "Applicants who have already studied at a university or college are not admitted."
+
+  - id: bsc_aug_geog_hydro                              # ZU-A-AGH, CAO p172
+    name: "Bachelor of Science Augmented (Geography and Hydrology)"
+    fields: [earth_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3, geography: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented stream takes four years: the first year's work is spread over two years, with extra tuition and support."
+        - "Applicants who have already studied at a university or college are not admitted."
+
+  - id: bsc_aug_geog_physics                            # ZU-A-AGP, CAO p172
+    name: "Bachelor of Science Augmented (Geography and Physics)"
+    fields: [earth_sciences, physical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3, geography: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented stream takes four years: the first year's work is spread over two years, with extra tuition and support."
+        - "Applicants who have already studied at a university or college are not admitted."
+
+  - id: bsc_aug_geog_stats                              # ZU-A-AGS, CAO p172
+    name: "Bachelor of Science Augmented (Geography and Statistics)"
+    fields: [earth_sciences, mathematical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3, geography: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented stream takes four years: the first year's work is spread over two years, with extra tuition and support."
+        - "Applicants who have already studied at a university or college are not admitted."
+
+  - id: bsc_aug_geog_zoology                            # ZU-A-AGZ, CAO p172
+    name: "Bachelor of Science Augmented (Geography and Zoology)"
+    fields: [earth_sciences, life_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3, life_sciences: 3, geography: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented stream takes four years: the first year's work is spread over two years, with extra tuition and support."
+        - "Applicants who have already studied at a university or college are not admitted."
+
+  - id: bsc_aug_hms_physics                             # ZU-A-AH1, CAO p172
+    name: "Bachelor of Science Augmented (Human Movement Science and Physics)"
+    fields: [sport_science, physical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3, life_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented stream takes four years: the first year's work is spread over two years, with extra tuition and support."
+        - "Applicants who have already studied at a university or college are not admitted."
+
+  - id: bsc_aug_hydro_micro                             # ZU-A-AHM, CAO p172
+    name: "Bachelor of Science Augmented (Hydrology and Microbiology)"
+    fields: [earth_sciences, life_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3, life_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented stream takes four years: the first year's work is spread over two years, with extra tuition and support."
+        - "Applicants who have already studied at a university or college are not admitted."
+
+  - id: bsc_aug_hydro_physics                           # ZU-A-AH2, CAO p172
+    name: "Bachelor of Science Augmented (Hydrology and Physics)"
+    fields: [earth_sciences, physical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented stream takes four years: the first year's work is spread over two years, with extra tuition and support."
+        - "Applicants who have already studied at a university or college are not admitted."
+
+  - id: bsc_aug_hydro_stats                             # ZU-A-AHY, CAO p172
+    name: "Bachelor of Science Augmented (Hydrology and Statistics)"
+    fields: [earth_sciences, mathematical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented stream takes four years: the first year's work is spread over two years, with extra tuition and support."
+        - "Applicants who have already studied at a university or college are not admitted."
+
+  - id: bsc_aug_hydro_zoology                           # ZU-A-AHZ, CAO p173
+    name: "Bachelor of Science Augmented (Hydrology and Zoology)"
+    fields: [earth_sciences, life_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3, life_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented stream takes four years: the first year's work is spread over two years, with extra tuition and support."
+        - "Applicants who have already studied at a university or college are not admitted."
+
+  - id: bsc_aug_maths_physics                           # ZU-A-AM2, CAO p173
+    name: "Bachelor of Science Augmented (Mathematics and Physics)"
+    fields: [mathematical_sciences, physical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented stream takes four years: the first year's work is spread over two years, with extra tuition and support."
+        - "Applicants who have already studied at a university or college are not admitted."
+
+  - id: bsc_aug_maths_stats                             # ZU-A-AMT, CAO p173
+    name: "Bachelor of Science Augmented (Mathematics and Statistics)"
+    fields: [mathematical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented stream takes four years: the first year's work is spread over two years, with extra tuition and support."
+        - "Applicants who have already studied at a university or college are not admitted."
+
+  - id: bsc_aug_micro_hms                               # ZU-A-AMO, CAO p173
+    name: "Bachelor of Science Augmented (Microbiology and Human Movement Science)"
+    fields: [life_sciences, sport_science, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3, life_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented stream takes four years: the first year's work is spread over two years, with extra tuition and support."
+        - "Applicants who have already studied at a university or college are not admitted."
+
+  - id: bsc_aug_micro_zoology                           # ZU-A-AM7, CAO p173
+    name: "Bachelor of Science Augmented (Microbiology and Zoology)"
+    fields: [life_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 28
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3, life_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The augmented stream takes four years: the first year's work is spread over two years, with extra tuition and support."
+        - "Applicants who have already studied at a university or college are not admitted."
+
+  # Faculty of Science, Agriculture and Engineering: B Sc Foundation, four years
+
+  - id: bsc_foundation_appmaths_physics                 # ZU-A-B6M, CAO p177
+    name: "Bachelor of Science Foundation: Applied Mathematics & Physics"
+    fields: [mathematical_sciences, physical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 2, life_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The foundation stream takes four years: a first year in a dedicated foundation programme, then the degree."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_foundation_biochem_botany                   # ZU-A-B6B, CAO p177
+    name: "Bachelor of Science Foundation: Biochemistry & Botany"
+    fields: [life_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 2, life_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The foundation stream takes four years: a first year in a dedicated foundation programme, then the degree."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_foundation_biochem_micro                    # ZU-A-B6I, CAO p177
+    name: "Bachelor of Science Foundation: Biochemistry & Microbiology"
+    fields: [life_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 2, life_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The foundation stream takes four years: a first year in a dedicated foundation programme, then the degree."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_foundation_biochem_zoology                  # ZU-A-B6Z, CAO p177
+    name: "Bachelor of Science Foundation: Biochemistry & Zoology"
+    fields: [life_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 2, life_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The foundation stream takes four years: a first year in a dedicated foundation programme, then the degree."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_foundation_botany_micro                     # ZU-A-B6T, CAO p177
+    name: "Bachelor of Science Foundation: Botany & Microbiology"
+    fields: [life_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 2}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 3}
+            - subjects: {agricultural_sciences: 3}
+      extras:
+        - "English Home Language at level 4, or English First Additional Language at level 3."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The foundation stream takes four years: a first year in a dedicated foundation programme, then the degree."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_foundation_botany_zoology                   # ZU-A-B6Y, CAO p177
+    name: "Bachelor of Science Foundation: Botany & Zoology"
+    fields: [life_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 2, life_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The foundation stream takes four years: a first year in a dedicated foundation programme, then the degree."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_foundation_chem_maths                       # ZU-A-B6E, CAO p177
+    name: "Bachelor of Science Foundation: Chemistry & Mathematics"
+    fields: [physical_sciences, mathematical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 2, life_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The foundation stream takes four years: a first year in a dedicated foundation programme, then the degree."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_foundation_chem_physics                     # ZU-A-B6P, CAO p177
+    name: "Bachelor of Science Foundation: Chemistry & Physics"
+    fields: [physical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 2, life_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The foundation stream takes four years: a first year in a dedicated foundation programme, then the degree."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_foundation_chem_zoology                     # ZU-A-B6O, CAO p177
+    name: "Bachelor of Science Foundation: Chemistry & Zoology"
+    fields: [physical_sciences, life_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 2, life_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The foundation stream takes four years: a first year in a dedicated foundation programme, then the degree."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_foundation_maths_physics                    # ZU-A-B6H, CAO p177
+    name: "Bachelor of Science Foundation: Mathematics & Physics"
+    fields: [mathematical_sciences, physical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 2, life_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The foundation stream takes four years: a first year in a dedicated foundation programme, then the degree."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_foundation_biochem_chem                     # ZU-A-B6C, CAO p177
+    name: "Bachelor of Science Foundation: Biochemistry & Chemistry"
+    fields: [life_sciences, physical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 2, life_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The foundation stream takes four years: a first year in a dedicated foundation programme, then the degree."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  - id: bsc_foundation_micro_zoology                    # ZU-A-B6G, CAO p177
+    name: "Bachelor of Science Foundation: Microbiology & Zoology"
+    fields: [life_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 2, life_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The foundation stream takes four years: a first year in a dedicated foundation programme, then the degree."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+
+  # Faculty of Science, Agriculture and Engineering: Richards Bay campus
+
+  - id: beng_electrical_computer                        # ZU-R-BOE, CAO p88
+    name: "Bachelor of Engineering in Electrical Engineering and Computer Engineering"
+    fields: [engineering, computing]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 30
+      subject_minimums: {english: 4, physical_sciences: 5}
+      subject_min_percents: {mathematics: 65}
+      extras:
+        - "Mathematics at 65% or more: level 5 (60%) alone isn't enough."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Offered at the Richards Bay campus."
+        - "UNIZULU gives preference to applicants with a bachelor's pass who apply on time, and first preference to those who haven't studied at another university."
+
+  - id: beng_electrical                                 # ZU-R-BEZ, CAO p88
+    name: "Bachelor of Engineering in Electrical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 30
+      subject_minimums: {english: 4, physical_sciences: 5}
+      subject_min_percents: {mathematics: 65}
+      extras:
+        - "Mathematics at 65% or more: level 5 (60%) alone isn't enough."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Offered at the Richards Bay campus."
+        - "UNIZULU gives preference to applicants with a bachelor's pass who apply on time, and first preference to those who haven't studied at another university."
+
+  - id: beng_mechanical                                 # ZU-R-BMZ, CAO p88
+    name: "Bachelor of Engineering in Mechanical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 30
+      subject_minimums: {english: 4, physical_sciences: 5}
+      subject_min_percents: {mathematics: 65}
+      extras:
+        - "Mathematics at 65% or more: level 5 (60%) alone isn't enough."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Offered at the Richards Bay campus."
+        - "UNIZULU gives preference to applicants with a bachelor's pass who apply on time, and first preference to those who haven't studied at another university."
+
+  - id: beng_mechatronic                                # ZU-R-BM7, CAO p91
+    name: "Bachelor of Engineering in Mechatronic Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 30
+      subject_minimums: {english: 4, physical_sciences: 5}
+      subject_min_percents: {mathematics: 65}
+      extras:
+        - "Mathematics at 65% or more: level 5 (60%) alone isn't enough."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Offered at the Richards Bay campus."
+        - "UNIZULU gives preference to applicants with a bachelor's pass who apply on time, and first preference to those who haven't studied at another university."
+
+  - id: dip_sport_exercise_technology                   # ZU-R-SET, CAO p182
+    name: "Diploma in Sport & Exercise Technology"
+    fields: [sport_science]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 3}
+      extras:
+        - "English Home Language at level 4, or English First Additional Language at level 3."
+        - "Your NSC must show admission to diploma study."
+        - "Offered at the Richards Bay campus."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+        - "UNIZULU's 2026 handbooks also ask for level 3 (40%) in four other subjects: check with UNIZULU."
+
+  - id: dip_hospitality_management                      # ZU-R-DHM, CAO p189
+    name: "Diploma in Hospitality Management"
+    fields: [tourism_and_hospitality, management]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 4}
+      additional_minimums: [3, 3, 3, 3]
+      extras:
+        - "The four other subjects at level 3 can't be languages."
+        - "Your NSC must show admission to diploma study."
+        - "Offered at the Richards Bay campus."
+        - "UNIZULU gives first preference to applicants who haven't studied at another university."
+        - "UNIZULU's 2026 science handbook also asks for Life Orientation at level 4: check with UNIZULU."
+
+  # Faculty of Education
+
+  - id: bed_foundation_phase                            # ZU-M-FPT, CAO p80
+    name: "Bachelor of Education in Foundation Phase Teaching"
+    fields: [education]
+    requirements:
+      source: s-unizulu-cao-2027
+      min_points: 26
+      subject_minimums: {english: 4, other_language: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "Your other language must be IsiZulu Home Language, at level 4 (50%) or more; the app can't tell which language you took."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+
+  - id: bed_spfet_ems_accounting_business_studies       # ZU-M-IEO, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: EMS, Accounting, Business Studies"
+    fields: [education, commerce]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4, accounting: 4, business_studies: 4, economics: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+        - "UNIZULU's 2026 Education handbook asks for level 4 (50%) in two languages, one of them English: check with UNIZULU."
+
+  - id: bed_spfet_ems_accounting_economics              # ZU-M-IEP, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: EMS, Accounting, Economics"
+    fields: [education, commerce]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4, accounting: 4, business_studies: 4, economics: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+        - "UNIZULU's 2026 Education handbook asks for level 4 (50%) in two languages, one of them English: check with UNIZULU."
+
+  - id: bed_spfet_ems_economics_business_studies        # ZU-M-IEQ, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: EMS, Economics, Business Studies"
+    fields: [education, commerce]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4, accounting: 4, business_studies: 4, economics: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+        - "UNIZULU's 2026 Education handbook asks for level 4 (50%) in two languages, one of them English: check with UNIZULU."
+
+  - id: bed_spfet_isizulu_fet_sp_geography              # ZU-M-ILK, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: IsiZulu HL FET, IsiZulu HL Senior Phase, Geography"
+    fields: [education, languages_and_communication, humanities]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {other_language: 4, geography: 4}
+      extras:
+        - "Your other language must be IsiZulu Home Language, at level 4 (50%) or more; the app can't tell which language you took."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+        - "UNIZULU's 2026 Education handbook asks for level 4 (50%) in two languages, one of them English: check with UNIZULU."
+
+  - id: bed_spfet_english_sp_fet_history                # ZU-M-ILV, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: English FAL Senior Phase, English FAL FET, History"
+    fields: [education, languages_and_communication, humanities]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4, history: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+        - "UNIZULU's 2026 Education handbook asks for level 4 (50%) in two languages, one of them English: check with UNIZULU."
+
+  - id: bed_spfet_english_sp_fet_tourism                # ZU-M-ILX, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: English FAL Senior Phase, English FAL FET, Tourism"
+    fields: [education, languages_and_communication]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {geography: 4}
+            - subjects: {tourism: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+        - "UNIZULU's 2026 Education handbook asks for level 4 (50%) in two languages, one of them English: check with UNIZULU."
+
+  - id: bed_spfet_english_geography_history             # ZU-M-ILQ, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: English FAL Senior Phase, Geography, History"
+    fields: [education, languages_and_communication, humanities]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4, history: 4, geography: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+        - "UNIZULU's 2026 Education handbook asks for level 4 (50%) in two languages, one of them English: check with UNIZULU."
+
+  - id: bed_spfet_english_geography_tourism_ilf         # ZU-M-ILF, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: English FAL Senior Phase, Geography, Tourism (CAO code ZU-M-ILF)"
+    fields: [education, languages_and_communication, humanities]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4, other_language: 4}
+      choices:
+        - one_of:
+            - subjects: {geography: 4}
+            - subjects: {tourism: 4}
+      extras:
+        - "Your other language must be IsiZulu Home Language, at level 4 (50%) or more; the app can't tell which language you took."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+        - "The CAO lists this combination twice (ZU-M-ILF and ZU-M-ILI) with different requirements: check with UNIZULU which code to use."
+
+  - id: bed_spfet_english_geography_tourism_ili         # ZU-M-ILI, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: English FAL Senior Phase, Geography, Tourism (CAO code ZU-M-ILI)"
+    fields: [education, languages_and_communication, humanities]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {geography: 4}
+            - subjects: {tourism: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+        - "UNIZULU's 2026 Education handbook asks for level 4 (50%) in two languages, one of them English: check with UNIZULU."
+        - "The CAO lists this combination twice (ZU-M-ILF and ZU-M-ILI) with different requirements: check with UNIZULU which code to use."
+
+  - id: bed_spfet_english_history_tourism_ilz           # ZU-M-ILZ, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: English FAL Senior Phase, History, Tourism (CAO code ZU-M-ILZ)"
+    fields: [education, languages_and_communication, humanities]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4, history: 4}
+      choices:
+        - one_of:
+            - subjects: {geography: 4}
+            - subjects: {tourism: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+        - "UNIZULU's 2026 Education handbook asks for level 4 (50%) in two languages, one of them English: check with UNIZULU."
+        - "The CAO lists English FAL, History and Tourism under three codes (ZU-M-ILZ, ZU-M-ILW and ZU-M-IEJ) with different requirements: check with UNIZULU which to use."
+
+  - id: bed_spfet_english_social_sciences_geography     # ZU-M-ILD, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: English FAL Senior Phase, Social Sciences, Geography"
+    fields: [education, languages_and_communication, humanities]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4, history: 4, geography: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+        - "UNIZULU's 2026 Education handbook asks for level 4 (50%) in two languages, one of them English: check with UNIZULU."
+
+  - id: bed_spfet_english_social_sciences_history       # ZU-M-ILC, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: English FAL Senior Phase, Social Sciences, History"
+    fields: [education, languages_and_communication, humanities]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4, history: 4, geography: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+        - "UNIZULU's 2026 Education handbook asks for level 4 (50%) in two languages, one of them English: check with UNIZULU."
+
+  - id: bed_spfet_english_tourism_history_iej           # ZU-M-IEJ, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: English FAL Senior Phase, Tourism, History"
+    fields: [education, languages_and_communication, humanities]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4, history: 4}
+      choices:
+        - one_of:
+            - subjects: {geography: 4}
+            - subjects: {tourism: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+        - "UNIZULU's 2026 Education handbook asks for level 4 (50%) in two languages, one of them English: check with UNIZULU."
+        - "The CAO lists English FAL, History and Tourism under three codes (ZU-M-ILZ, ZU-M-ILW and ZU-M-IEJ) with different requirements: check with UNIZULU which to use."
+
+  - id: bed_spfet_isizulu_fet_english_sp_fet            # ZU-M-IEN, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: IsiZulu HL FET Phase, English FAL Senior Phase, English FAL FET"
+    fields: [education, languages_and_communication]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4, other_language: 4}
+      extras:
+        - "Your other language must be IsiZulu Home Language, at level 4 (50%) or more; the app can't tell which language you took."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+
+  - id: bed_spfet_isizulu_fet_english_sp_tourism        # ZU-M-IEC, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: IsiZulu HL FET, English FAL Senior Phase, Tourism"
+    fields: [education, languages_and_communication]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4, other_language: 4}
+      choices:
+        - one_of:
+            - subjects: {geography: 4}
+            - subjects: {tourism: 4}
+      extras:
+        - "Your other language must be IsiZulu Home Language, at level 4 (50%) or more; the app can't tell which language you took."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+
+  - id: bed_spfet_isizulu_fet_english_sp_geography      # ZU-M-IEF, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: IsiZulu HL FET, English FAL Senior Phase, Geography"
+    fields: [education, languages_and_communication, humanities]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4, other_language: 4, geography: 4}
+      extras:
+        - "Your other language must be IsiZulu Home Language, at level 4 (50%) or more; the app can't tell which language you took."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+
+  - id: bed_spfet_english_history_tourism_ilw           # ZU-M-ILW, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: English FAL Senior Phase, History, Tourism (CAO code ZU-M-ILW)"
+    fields: [education, languages_and_communication, humanities]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {geography: 4}
+            - subjects: {tourism: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+        - "UNIZULU's 2026 Education handbook asks for level 4 (50%) in two languages, one of them English: check with UNIZULU."
+        - "The CAO lists English FAL, History and Tourism under three codes (ZU-M-ILZ, ZU-M-ILW and ZU-M-IEJ) with different requirements: check with UNIZULU which to use."
+
+  - id: bed_spfet_isizulu_sp_english_fet_geography      # ZU-M-IEE, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: IsiZulu HL Senior Phase, English FAL FET, Geography"
+    fields: [education, languages_and_communication, humanities]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4, other_language: 4, geography: 4}
+      extras:
+        - "Your other language must be IsiZulu Home Language, at level 4 (50%) or more; the app can't tell which language you took."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+
+  - id: bed_spfet_isizulu_sp_english_fet_history        # ZU-M-IEI, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: IsiZulu HL Senior Phase, English FAL FET, History"
+    fields: [education, languages_and_communication, humanities]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4, other_language: 4, history: 4}
+      extras:
+        - "Your other language must be IsiZulu Home Language, at level 4 (50%) or more; the app can't tell which language you took."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+
+  - id: bed_spfet_isizulu_sp_english_fet_tourism        # ZU-M-IEA, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: IsiZulu HL Senior Phase, English FAL FET, Tourism"
+    fields: [education, languages_and_communication]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4, other_language: 4}
+      choices:
+        - one_of:
+            - subjects: {geography: 4}
+            - subjects: {tourism: 4}
+      extras:
+        - "Your other language must be IsiZulu Home Language, at level 4 (50%) or more; the app can't tell which language you took."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+
+  - id: bed_spfet_isizulu_sp_english_sp_geography       # ZU-M-ILG, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: IsiZulu HL Senior Phase, English FAL Senior Phase, Geography"
+    fields: [education, languages_and_communication, humanities]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4, other_language: 4, geography: 4}
+      extras:
+        - "Your other language must be IsiZulu Home Language, at level 4 (50%) or more; the app can't tell which language you took."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+
+  - id: bed_spfet_isizulu_sp_english_sp_history         # ZU-M-ILS, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: IsiZulu HL Senior Phase, English FAL Senior Phase, History"
+    fields: [education, languages_and_communication, humanities]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4, other_language: 4, history: 4}
+      extras:
+        - "Your other language must be IsiZulu Home Language, at level 4 (50%) or more; the app can't tell which language you took."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+
+  - id: bed_spfet_isizulu_sp_english_sp_tourism         # ZU-M-ILU, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: IsiZulu HL Senior Phase, English FAL Senior Phase, Tourism"
+    fields: [education, languages_and_communication]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4, other_language: 4}
+      choices:
+        - one_of:
+            - subjects: {geography: 4}
+            - subjects: {tourism: 4}
+      extras:
+        - "Your other language must be IsiZulu Home Language, at level 4 (50%) or more; the app can't tell which language you took."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+
+  - id: bed_spfet_isizulu_sp_geography_history          # ZU-M-ILR, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: IsiZulu HL Senior Phase, Geography, History"
+    fields: [education, languages_and_communication, humanities]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4, other_language: 4, geography: 4, history: 4}
+      extras:
+        - "Your other language must be IsiZulu Home Language, at level 4 (50%) or more; the app can't tell which language you took."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+
+  - id: bed_spfet_isizulu_sp_geography_tourism          # ZU-M-ILJ, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: IsiZulu HL Senior Phase, Geography, Tourism"
+    fields: [education, languages_and_communication, humanities]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4, other_language: 4}
+      choices:
+        - one_of:
+            - subjects: {geography: 4}
+            - subjects: {tourism: 4}
+      extras:
+        - "Your other language must be IsiZulu Home Language, at level 4 (50%) or more; the app can't tell which language you took."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+
+  - id: bed_spfet_isizulu_sp_fet_english_fet            # ZU-M-IEL, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: IsiZulu HL Senior Phase, IsiZulu HL FET Phase, English FAL FET"
+    fields: [education, languages_and_communication]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4, other_language: 4}
+      extras:
+        - "Your other language must be IsiZulu Home Language, at level 4 (50%) or more; the app can't tell which language you took."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+
+  - id: bed_spfet_isizulu_sp_fet_history                # ZU-M-IEG, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: IsiZulu HL Senior Phase, IsiZulu HL FET, History"
+    fields: [education, languages_and_communication, humanities]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4, other_language: 4, history: 4}
+      extras:
+        - "Your other language must be IsiZulu Home Language, at level 4 (50%) or more; the app can't tell which language you took."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+
+  - id: bed_spfet_isizulu_sp_fet_tourism                # ZU-M-IEB, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: IsiZulu HL Senior Phase, IsiZulu HL FET, Tourism"
+    fields: [education, languages_and_communication]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4, other_language: 4}
+      choices:
+        - one_of:
+            - subjects: {geography: 4}
+            - subjects: {tourism: 4}
+      extras:
+        - "Your other language must be IsiZulu Home Language, at level 4 (50%) or more; the app can't tell which language you took."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+
+  - id: bed_spfet_isizulu_sp_social_sciences_geography  # ZU-M-ILA, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: IsiZulu HL Senior Phase, Social Sciences, Geography"
+    fields: [education, languages_and_communication, humanities]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4, other_language: 4, geography: 4, history: 4}
+      extras:
+        - "Your other language must be IsiZulu Home Language, at level 4 (50%) or more; the app can't tell which language you took."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+
+  - id: bed_spfet_isizulu_sp_social_sciences_history    # ZU-M-ILB, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: IsiZulu HL Senior Phase, Social Sciences, History"
+    fields: [education, languages_and_communication, humanities]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4, other_language: 4, geography: 4, history: 4}
+      extras:
+        - "Your other language must be IsiZulu Home Language, at level 4 (50%) or more; the app can't tell which language you took."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+
+  - id: bed_spfet_isizulu_sp_tourism_history            # ZU-M-IEK, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: IsiZulu HL Senior Phase, Tourism, History"
+    fields: [education, languages_and_communication, humanities]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4, other_language: 4, history: 4}
+      choices:
+        - one_of:
+            - subjects: {geography: 4}
+            - subjects: {tourism: 4}
+      extras:
+        - "Your other language must be IsiZulu Home Language, at level 4 (50%) or more; the app can't tell which language you took."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+
+  - id: bed_spfet_maths_cat                             # ZU-M-ILP, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: Maths Senior Phase, Maths FET & Computer Application and Technology"
+    fields: [education, mathematical_sciences, computing]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+        - "UNIZULU's 2026 Education handbook asks for level 4 (50%) in two languages, one of them English: check with UNIZULU."
+
+  - id: bed_spfet_maths_egd_technology                  # ZU-M-ILE, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: Maths Senior Phase, Maths FET & Engineering Graphic design, Technology"
+    fields: [education, mathematical_sciences]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+        - "UNIZULU's 2026 Education handbook asks for level 4 (50%) in two languages, one of them English: check with UNIZULU."
+
+  - id: bed_spfet_maths_life_sciences                   # ZU-M-ILN, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: Maths Senior Phase, Maths FET & Life Sciences"
+    fields: [education, mathematical_sciences, life_sciences]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 4, life_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+        - "UNIZULU's 2026 Education handbook asks for level 4 (50%) in two languages, one of them English: check with UNIZULU."
+
+  - id: bed_spfet_maths_maths_literacy                  # ZU-M-ILO, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: Maths Senior Phase, Maths FET & Mathematical Literacy"
+    fields: [education, mathematical_sciences]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 4}
+      choices:
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {life_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+        - "UNIZULU's 2026 Education handbook asks for level 4 (50%) in two languages, one of them English: check with UNIZULU."
+
+  - id: bed_spfet_maths_natural_sciences                # ZU-M-ILL, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: Maths Senior Phase, Maths FET & Natural Sciences"
+    fields: [education, mathematical_sciences, natural_sciences]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+        - "UNIZULU's 2026 Education handbook asks for level 4 (50%) in two languages, one of them English: check with UNIZULU."
+
+  - id: bed_spfet_maths_physical_sciences               # ZU-M-ILT, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: Maths Senior Phase, Maths FET & Physical Sciences"
+    fields: [education, mathematical_sciences, physical_sciences]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+        - "UNIZULU's 2026 Education handbook asks for level 4 (50%) in two languages, one of them English: check with UNIZULU."
+
+  - id: bed_spfet_social_sciences_geography_history     # ZU-M-ILY, CAO new programmes
+    name: "Bachelor of Education in Senior & FET Phase Teaching: Social Sciences, Geography, History"
+    fields: [education, humanities]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4, history: 4, geography: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+        - "UNIZULU's 2026 Education handbook asks for level 4 (50%) in two languages, one of them English: check with UNIZULU."
+
+  - id: bed_ip_languages_humanities                     # ZU-M-ILH, CAO new programmes
+    name: "Bachelor of Education in Intermediate Phase Teaching: Languages and Humanities"
+    fields: [education, languages_and_communication, humanities]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4, other_language: 4, geography: 4, history: 4}
+      extras:
+        - "Your other language must be IsiZulu Home Language, at level 4 (50%) or more; the app can't tell which language you took."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
+
+  - id: bed_ip_languages_maths_science_technology       # ZU-M-ILM, CAO new programmes
+    name: "Bachelor of Education in Intermediate Phase Teaching: Languages, Maths, Natural Science & Technology"
+    fields: [education, languages_and_communication, mathematical_sciences]
+    requirements:
+      source: s-unizulu-cao-new-2027
+      min_points: 26
+      subject_minimums: {english: 4, other_language: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4, physical_sciences: 3}
+            - subjects: {mathematics: 3, physical_sciences: 4}
+      extras:
+        - "Your other language must be IsiZulu Home Language, at level 4 (50%) or more; the app can't tell which language you took."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UNIZULU gives preference to applicants who rank this programme first or second."
+        - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
 
 sources:
   - id: s-unizulu-policy
@@ -55,5 +2580,61 @@ sources:
     publisher: "Central Applications Office"
     title: "2027 entry FAQs (fees)"
     retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-unizulu-cao-2027
+    url: "https://www.cao.ac.za/Download/CAO%20HANDBOOK%202027%20Entry%20web.pdf"
+    publisher: "Central Applications Office"
+    title: "CAO Handbook 2027 Entry: UNIZULU's programmes (printed pages 45 to 195)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-unizulu-cao-new-2027
+    url: "https://www.cao.ac.za/download/New_Programmes.html"
+    publisher: "Central Applications Office"
+    title: "New Programmes Not Listed in the Handbook (2027 entry: UNIZULU's 40 Bachelor of Education programmes)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-unizulu-brochure-2026
+    url: "https://www.unizulu.ac.za/wp-content/uploads/2025/02/2026-Brochure-for-undergraduate.pdf"
+    publisher: "University of Zululand"
+    title: "Undergraduate Programmes brochure for the 2026 intake (a cross-check)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-unizulu-fhss-2026
+    url: "https://reg.unizulu.ac.za/wp-content/uploads/2026/01/FHSS-Undergrad-Handbook-2026.pdf"
+    publisher: "University of Zululand"
+    title: "Faculty of Humanities and Social Sciences Undergraduate Handbook 2026 (a cross-check)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-unizulu-fsae-2026
+    url: "https://reg.unizulu.ac.za/wp-content/uploads/2026/01/FSAE-Undergraduate-Handbook-2026.cleaned.pdf"
+    publisher: "University of Zululand"
+    title: "Faculty of Science, Agriculture and Engineering Undergraduate Handbook 2026 (a cross-check)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-unizulu-fcal-2026
+    url: "https://reg.unizulu.ac.za/wp-content/uploads/2026/01/FCAL-Handbook-2026.pdf"
+    publisher: "University of Zululand"
+    title: "Faculty of Commerce, Administration and Law Handbook 2026 (a cross-check)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-unizulu-fedu-2026
+    url: "https://reg.unizulu.ac.za/wp-content/uploads/2026/01/FEDU-Undergraduate-Handbook-2026.pdf"
+    publisher: "University of Zululand"
+    title: "Faculty of Education Undergraduate Handbook 2026 (a cross-check)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-unizulu-rb-2026
+    url: "https://reg.unizulu.ac.za/wp-content/uploads/2026/01/2026-Richards-Bay-Campus-Handbook.pdf"
+    publisher: "University of Zululand"
+    title: "Richards Bay Campus Handbook 2026 (a cross-check)"
+    retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
