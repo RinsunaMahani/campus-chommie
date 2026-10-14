@@ -1,9 +1,8 @@
 # North-West University (NWU)
 #
-# Agent draft, from NWU's own pages read on 13 Oct 2026 (docs/research/universities.md). Nobody has
-# checked these values yet: release stays false until a person has compared every one with its source.
-# The points rule comes from NWU's 2026 Grade 12 prospectus, the newest found. Programmes aren't added
-# yet: only how NWU counts points, and how and when to apply.
+# Agent draft, from NWU's Grade 12 Prospectus read on 14 Oct 2026 (docs/research/nwu.md).
+# Nobody has checked these values yet: release stays false until a person has compared every
+# one with its source. All undergraduate programmes take their requirements from the prospectus.
 
 university: nwu
 name: North-West University
@@ -15,7 +14,8 @@ max_choices: null
 points_rules:
   source: s-nwu-prospectus
   subjects_counted: 6
-  life_orientation: exclude    # "most faculties at the NWU recommend a 60% pass in Life Orientation"
+  life_orientation: exclude
+  note: "NWU counts the best six subjects excluding Life Orientation. Most faculties recommend at least 60% in Life Orientation."
   scale:
     - {min_percent: 90, level: 8}
     - {min_percent: 80, level: 7}
@@ -29,36 +29,1025 @@ points_rules:
 applications:
   source: s-nwu-apply
   url: https://studies.nwu.ac.za/studies/apply
+  how: "Apply online on NWU's application portal before the closing date."
   fee_cents: 15000
   fee_note: "Paid online before you submit. Not refunded."
+  documents:
+    source: s-nwu-prospectus
+    items:
+      - "Certified copy of ID document or passport"
+      - "Certified copy of Grade 11 final stamped results or statement of Grade 12 results / National Senior Certificate"
+      - "Academic record and certificate of good conduct (if transferring from another university)"
+      - "Proof of USAf evaluation certificate (for international qualifications)"
+  after:
+    - text: "Meeting the minimum APS and subject requirements does not guarantee admission as programme capacity is limited."
+      source: s-nwu-prospectus
+    - text: "Programmes with selection criteria (e.g. Nursing, Pharmacy, Graphic Design, Music) require additional screening and closed early."
+      source: s-nwu-prospectus
   windows:
     - intake: 2027
       source: s-nwu-apply
       opens: 2026-06-01
       closes: 2026-08-31
-      note: "Programmes with selection closed earlier, on 30 June 2026."
+      programme_closes:
+        - closes: 2026-06-30
+          programmes: [bpharm, bnurs, bsc_dietetics, b_biokinetics, bsw, ba_graphic_design, bmus]
+          source: s-nwu-apply
+      note: "Programmes with selection closed on 30 June 2026. General undergraduate applications closed on 31 August 2026."
 
-programmes: []
+programmes:
+
+  # Faculty of Engineering (prospectus page 12)
+
+  - id: beng_chemical
+    name: "Bachelor of Engineering in Chemical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 34
+      subject_minimums: {english: 5, mathematics: 6, physical_sciences: 6}
+      extras:
+        - "Conditional acceptance with Grade 11 results: APS 31, English/Afrikaans 60%, Mathematics 65%, Physical Sciences 65%."
+        - "Final Grade 12 acceptance: APS 34, English/Afrikaans 60%, Mathematics 70%, Physical Sciences 70%. Duration is 4 years. Potchefstroom Campus."
+
+  - id: beng_electrical_electronic
+    name: "Bachelor of Engineering in Electrical and Electronic Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 34
+      subject_minimums: {english: 5, mathematics: 6, physical_sciences: 6}
+      extras:
+        - "Final Grade 12 acceptance requires APS 34, English/Afrikaans 60%, Mathematics 70%, Physical Sciences 70%. Duration is 4 years. Potchefstroom Campus."
+
+  - id: beng_computer_electronic
+    name: "Bachelor of Engineering in Computer and Electronic Engineering"
+    fields: [engineering, computing]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 34
+      subject_minimums: {english: 5, mathematics: 6, physical_sciences: 6}
+      extras:
+        - "Final Grade 12 acceptance requires APS 34, English/Afrikaans 60%, Mathematics 70%, Physical Sciences 70%. Duration is 4 years. Potchefstroom Campus."
+
+  - id: beng_electromechanical
+    name: "Bachelor of Engineering in Electromechanical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 34
+      subject_minimums: {english: 5, mathematics: 6, physical_sciences: 6}
+      extras:
+        - "Final Grade 12 acceptance requires APS 34, English/Afrikaans 60%, Mathematics 70%, Physical Sciences 70%. Duration is 4 years. Potchefstroom Campus."
+
+  - id: beng_mechanical
+    name: "Bachelor of Engineering in Mechanical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 34
+      subject_minimums: {english: 5, mathematics: 6, physical_sciences: 6}
+      extras:
+        - "Final Grade 12 acceptance requires APS 34, English/Afrikaans 60%, Mathematics 70%, Physical Sciences 70%. Duration is 4 years. Potchefstroom Campus."
+
+  - id: beng_industrial
+    name: "Bachelor of Engineering in Industrial Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 34
+      subject_minimums: {english: 5, mathematics: 6, physical_sciences: 6}
+      extras:
+        - "Final Grade 12 acceptance requires APS 34, English/Afrikaans 60%, Mathematics 70%, Physical Sciences 70%. Duration is 4 years. Potchefstroom Campus."
+
+  - id: beng_mechatronic
+    name: "Bachelor of Engineering in Mechatronic Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 34
+      subject_minimums: {english: 5, mathematics: 6, physical_sciences: 6}
+      extras:
+        - "Final Grade 12 acceptance requires APS 34, English/Afrikaans 60%, Mathematics 70%, Physical Sciences 70%. Duration is 4 years. Potchefstroom Campus."
+
+  # Faculty of Law (prospectus page 13)
+
+  - id: ba_law
+    name: "Bachelor of Arts in Law (BA in Law)"
+    fields: [law, humanities]
+    selective: true
+    selection_note: "Placement process based on academic performance and limited capacity."
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 28
+      subject_minimums: {english: 5, other_language: 5}
+      extras:
+        - "Requires level 5 in Home Language and First Additional Language. Duration is 3 years. Potchefstroom and Vanderbijlpark campuses."
+
+  - id: bcom_law
+    name: "Bachelor of Commerce in Law (BCom in Law)"
+    fields: [law, commerce]
+    selective: true
+    selection_note: "Placement process based on academic performance and limited capacity."
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 30
+      subject_minimums: {english: 5, other_language: 5, mathematics: 4}
+      extras:
+        - "Requires level 5 in Home Language and First Additional Language, and level 4 in Mathematics. Duration is 3 years."
+
+  - id: llb
+    name: "Bachelor of Laws (LLB)"
+    fields: [law]
+    selective: true
+    selection_note: "Placement process based on academic performance and limited capacity."
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 30
+      subject_minimums: {english: 5, other_language: 5}
+      extras:
+        - "Requires level 5 in Home Language and First Additional Language. Duration is 4 years. Mahikeng and Potchefstroom campuses."
+
+  - id: llb_extended
+    name: "Extended Bachelor of Laws (LLB)"
+    fields: [law]
+    selective: true
+    selection_note: "Placement process based on academic performance and limited capacity."
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 28
+      subject_minimums: {english: 4, other_language: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+      extras:
+        - "Requires level 4 in Home Language and First Additional Language, and Mathematics 3 or Mathematical Literacy 5. Duration is 5 years. Mahikeng Campus."
+
+  # Faculty of Theology (prospectus page 14)
+
+  - id: ba_ancient_languages
+    name: "BA in Ancient Languages"
+    fields: [theology, humanities, languages_and_communication]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 24
+      subject_minimums: {english: 4}
+      extras:
+        - "Duration is 3 years. Potchefstroom Campus."
+
+  - id: ba_pastoral_psychology
+    name: "BA in Pastoral Psychology"
+    fields: [theology, humanities]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 26
+      subject_minimums: {english: 4}
+      extras:
+        - "In consultation with ACRP. Duration is 3 years. Mahikeng and Vanderbijlpark campuses."
+
+  - id: bth
+    name: "Bachelor of Theology (BTh)"
+    fields: [theology]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 24
+      subject_minimums: {english: 4}
+      extras:
+        - "Duration is 3 years. Potchefstroom Campus."
+
+  - id: bdiv
+    name: "Bachelor of Divinity (BDiv)"
+    fields: [theology]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 24
+      subject_minimums: {english: 4}
+      extras:
+        - "In consultation with curators of Reformed Churches. Duration is 4 years. Contact and Distance."
+
+  # Faculty of Education (prospectus pages 15 and 16)
+
+  - id: bed_ecce
+    name: "Bachelor of Education in Early Childhood Care and Education (ECCE)"
+    fields: [education]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 26
+      subject_minimums: {english: 4, other_language: 4}
+      extras:
+        - "Home Language and First Additional Language level 4 (level 5 if chosen as language of learning and teaching). Children's Act clearance certificate required. Distance learning."
+
+  - id: bed_foundation_phase
+    name: "Bachelor of Education in Foundation Phase Teaching (Grade R - 3)"
+    fields: [education]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 26
+      subject_minimums: {english: 4, other_language: 4}
+      extras:
+        - "Requires level 4 in Home Language and First Additional Language. Duration is 4 years. Mahikeng, Potchefstroom, Vanderbijlpark, and Distance."
+
+  - id: bed_intermediate_phase_mst
+    name: "Bachelor of Education in Intermediate Phase Teaching (Mathematics, Science and Technology)"
+    fields: [education]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 26
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 4}
+      extras:
+        - "Requires Mathematics level 3 or Technical Mathematics level 4. Duration is 4 years. Potchefstroom and Vanderbijlpark campuses."
+
+  - id: bed_intermediate_phase_life_skills
+    name: "Bachelor of Education in Intermediate Phase Teaching (Life Skills and Social Sciences)"
+    fields: [education]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 26
+      subject_minimums: {english: 4, other_language: 4}
+      extras:
+        - "Requires Home Language and First Additional Language level 4. Duration is 4 years."
+
+  - id: bed_senior_fet
+    name: "Bachelor of Education in Senior Phase and FET Teaching (Grade 7 - 12)"
+    fields: [education]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 26
+      subject_minimums: {english: 4, other_language: 4}
+      extras:
+        - "Home Language and First Additional Language level 4, plus subject requirements depending on specialisation (e.g. Maths 5, Physical Sciences 4, Accounting 4). Duration is 4 years."
+
+  # Faculty of Natural and Agricultural Sciences (prospectus pages 17 to 19)
+
+  - id: dip_animal_health
+    name: "Diploma in Animal Health"
+    fields: [agriculture, veterinary]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 22
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 3}
+            - subjects: {life_sciences: 3}
+      extras:
+        - "Duration is 3 years. Mahikeng Campus."
+
+  - id: dip_animal_science
+    name: "Diploma in Animal Science"
+    fields: [agriculture]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 22
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 4}
+            - subjects: {mathematical_literacy: 5}
+        - one_of:
+            - subjects: {physical_sciences: 3}
+            - subjects: {life_sciences: 3}
+            - subjects: {agricultural_sciences: 4}
+      extras:
+        - "Duration is 3 years. Mahikeng Campus."
+
+  - id: dip_plant_science
+    name: "Diploma in Plant Science"
+    fields: [agriculture]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 22
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 4}
+            - subjects: {mathematical_literacy: 5}
+        - one_of:
+            - subjects: {physical_sciences: 3}
+            - subjects: {life_sciences: 3}
+            - subjects: {agricultural_sciences: 4}
+      extras:
+        - "Duration is 3 years. Mahikeng Campus."
+
+  - id: bsc_chemistry_physics
+    name: "Bachelor of Science in Chemistry and Physics"
+    fields: [physical_sciences, natural_sciences]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 26
+      subject_minimums: {mathematics: 5, physical_sciences: 4}
+      extras:
+        - "Duration is 3 years. Mahikeng and Potchefstroom campuses."
+
+  - id: bsc_physics_mathematics
+    name: "Bachelor of Science in Physics and Mathematics"
+    fields: [physical_sciences, mathematical_sciences, natural_sciences]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 26
+      subject_minimums: {mathematics: 5, physical_sciences: 4}
+      extras:
+        - "Duration is 3 years. Mahikeng and Potchefstroom campuses."
+
+  - id: bsc_computer_science_mathematics
+    name: "Bachelor of Science in Computer Science and Mathematics"
+    fields: [computing, mathematical_sciences, natural_sciences]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 26
+      subject_minimums: {mathematics: 5, physical_sciences: 4}
+      extras:
+        - "Duration is 3 years. Mahikeng, Potchefstroom, and Vanderbijlpark campuses."
+
+  - id: bsc_biochemistry_chemistry
+    name: "Bachelor of Science in Biochemistry and Chemistry"
+    fields: [life_sciences, physical_sciences, natural_sciences]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 26
+      subject_minimums: {physical_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+      extras:
+        - "Duration is 3 years. Mahikeng and Potchefstroom campuses."
+
+  - id: bsc_it
+    name: "Bachelor of Science in Information Technology"
+    fields: [computing, natural_sciences]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 26
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+      extras:
+        - "Duration is 3 years. Contact and Distance learning."
+
+  - id: bsc_it_extended
+    name: "Extended Bachelor of Science in Information Technology"
+    fields: [computing, natural_sciences]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 24
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 4}
+      extras:
+        - "Duration is 4 years. Vanderbijlpark Campus."
+
+  - id: bsc_biological_sciences
+    name: "Bachelor of Science in Biological Sciences"
+    fields: [life_sciences, natural_sciences]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 26
+      subject_minimums: {physical_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+      extras:
+        - "Majors in Microbiology, Botany, Zoology, Biochemistry, Physiology. Duration is 3 years."
+
+  - id: bsc_environmental_sciences
+    name: "Bachelor of Science in Environmental Sciences"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 26
+      subject_minimums: {physical_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+      extras:
+        - "Majors in Geology, Geography, Zoology, Botany, Microbiology, Tourism. Duration is 3 years."
+
+  - id: bsc_financial_mathematics
+    name: "Bachelor of Science in Financial Mathematics"
+    fields: [finance, mathematical_sciences, natural_sciences]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 32
+      subject_minimums: {mathematics: 6}
+      extras:
+        - "Duration is 3 years. Potchefstroom and Vanderbijlpark campuses."
+
+  - id: bsc_financial_mathematics_extended
+    name: "Extended Bachelor of Science in Financial Mathematics"
+    fields: [finance, mathematical_sciences, natural_sciences]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 28
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+      extras:
+        - "Duration is 4 years. Vanderbijlpark Campus."
+
+  - id: bsc_business_analytics
+    name: "Bachelor of Science in Business Analytics"
+    fields: [commerce, computing, mathematical_sciences]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 32
+      subject_minimums: {mathematics: 6}
+      extras:
+        - "Duration is 3 years. Potchefstroom and Vanderbijlpark campuses."
+
+  - id: bsc_quantitative_risk_management
+    name: "Bachelor of Science in Quantitative Risk Management"
+    fields: [finance, mathematical_sciences]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 32
+      subject_minimums: {mathematics: 6}
+      extras:
+        - "Duration is 3 years. Potchefstroom and Vanderbijlpark campuses."
+
+  - id: bsc_actuarial_sciences
+    name: "Bachelor of Science in Actuarial Sciences"
+    fields: [finance, mathematical_sciences]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 32
+      subject_minimums: {mathematics: 6}
+      extras:
+        - "Duration is 3 years. Potchefstroom Campus."
+
+  - id: bsc_urban_regional_planning
+    name: "Bachelor of Science in Urban and Regional Planning"
+    fields: [built_environment, natural_sciences]
+    selective: true
+    selection_note: "Departmental selection test required."
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 28
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+      extras:
+        - "Selection test required. Duration is 4 years. Potchefstroom Campus."
+
+  - id: bsc_agriculture
+    name: "Bachelor of Science in Agricultural Sciences"
+    fields: [agriculture, natural_sciences]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 26
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {life_sciences: 4}
+      extras:
+        - "Majors in Agricultural Economics, Animal Science, Agronomy & Horticulture, Animal Health, Soil Science. Duration is 4 years."
+
+  - id: bsc_iks
+    name: "Bachelor of Science in Indigenous Knowledge Systems"
+    fields: [natural_sciences, humanities]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 26
+      subject_minimums: {english: 4}
+      extras:
+        - "Duration is 4 years. Mahikeng Campus."
+
+  - id: bsc_extended
+    name: "Extended Bachelor of Science (General Science Streams)"
+    fields: [natural_sciences]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 24
+      subject_minimums: {english: 4, physical_sciences: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 4}
+      extras:
+        - "Duration is 4 years. Mahikeng Campus."
+
+  # Faculty of Economic and Management Sciences (prospectus pages 20 to 22)
+
+  - id: bcom_accounting
+    name: "Bachelor of Commerce in Accounting"
+    fields: [accounting, commerce]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 24
+      subject_minimums: {mathematics: 3}
+      extras:
+        - "Duration is 3 years. Vanderbijlpark Campus."
+
+  - id: bcom_chartered_accountancy
+    name: "Bachelor of Commerce in Chartered Accountancy (CA stream)"
+    fields: [accounting, commerce, finance]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 32
+      choices:
+        - one_of:
+            - subjects: {mathematics: 5, accounting: 4}
+            - subjects: {mathematics: 6}
+      extras:
+        - "Mathematics 5 (with Accounting) or Mathematics 6 (without Accounting). Duration is 3 years."
+
+  - id: bcom_ca_extended
+    name: "Bachelor of Commerce in Chartered Accountancy (Extended Programme)"
+    fields: [accounting, commerce, finance]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 28
+      subject_minimums: {mathematics: 3}
+      extras:
+        - "Duration is 4 years. Mahikeng and Vanderbijlpark campuses."
+
+  - id: bcom_financial_accountancy
+    name: "Bachelor of Commerce in Financial Accountancy"
+    fields: [accounting, commerce]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 28
+      subject_minimums: {mathematics: 4}
+      extras:
+        - "Duration is 3 years. Mahikeng, Potchefstroom, and Vanderbijlpark campuses."
+
+  - id: bcom_financial_accountancy_extended
+    name: "Bachelor of Commerce in Financial Accountancy (Extended Programme)"
+    fields: [accounting, commerce]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 24
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 7}
+      extras:
+        - "Requires Mathematics 3 or Mathematical Literacy 7 (80-89%). Duration is 4 years."
+
+  - id: bcom_forensic_accountancy
+    name: "Bachelor of Commerce in Forensic Accountancy"
+    fields: [accounting, commerce, law]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 36
+      subject_minimums: {english: 5}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 5, accounting: 4}
+            - subjects: {mathematics: 6}
+      extras:
+        - "Requires English or Afrikaans level 5, and Mathematics 5 (with Accounting) or Mathematics 6 (without Accounting). Duration is 3 years. Potchefstroom Campus."
+
+  - id: bcom_management_accountancy
+    name: "Bachelor of Commerce in Management Accountancy"
+    fields: [accounting, commerce, management]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 30
+      subject_minimums: {mathematics: 5}
+      extras:
+        - "Duration is 3 years. Potchefstroom and Vanderbijlpark campuses."
+
+  - id: bcom_economics
+    name: "Bachelor of Commerce in Economic Sciences"
+    fields: [economics, commerce]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 26
+      subject_minimums: {mathematics: 4}
+      extras:
+        - "Majors in International Trade, Risk Management, Informatics, Information Systems, Agricultural Economics. Duration is 3 years."
+
+  - id: bcom_economics_extended
+    name: "Bachelor of Commerce in Economic Sciences (Extended Programme)"
+    fields: [economics, commerce]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 20
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "Requires Mathematics 3 or Mathematical Literacy 4. Duration is 4 years."
+
+  - id: bcom_logistics_management
+    name: "Bachelor of Commerce in Business Operations (Logistics Management)"
+    fields: [management, commerce]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 24
+      subject_minimums: {mathematics: 3}
+      extras:
+        - "Duration is 3 years. Mahikeng and Vanderbijlpark campuses."
+
+  - id: bcom_logistics_extended
+    name: "Bachelor of Commerce in Business Operations (Logistics Extended)"
+    fields: [management, commerce]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 20
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "Duration is 4 years. Mahikeng and Vanderbijlpark campuses."
+
+  - id: badmin
+    name: "Bachelor of Administration (BAdmin)"
+    fields: [public_administration, management]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 23
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "Specialisations in Human Resource Management or Industrial Psychology. Duration is 3 years. Mahikeng Campus."
+
+  - id: badmin_extended
+    name: "Bachelor of Administration (Extended Programme)"
+    fields: [public_administration, management]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 21
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "Duration is 4 years. Mahikeng Campus."
+
+  - id: bcom_human_resource_management
+    name: "Bachelor of Commerce in Human Resource Management"
+    fields: [management, commerce]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 30
+      subject_minimums: {mathematics: 4}
+      extras:
+        - "Duration is 3 years. Mahikeng, Potchefstroom, and Vanderbijlpark campuses."
+
+  - id: bcom_industrial_psychology
+    name: "Bachelor of Commerce in Industrial and Organisational Psychology"
+    fields: [management, commerce, humanities]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 30
+      subject_minimums: {mathematics: 4}
+      extras:
+        - "Duration is 3 years. Mahikeng, Potchefstroom, and Vanderbijlpark campuses."
+
+  - id: bcom_management_sciences
+    name: "Bachelor of Commerce in Management Sciences"
+    fields: [management, commerce]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 24
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 6}
+      extras:
+        - "Specialisations in Marketing, Communication, Sport Business, Safety Management, Tourism. Duration is 3 years."
+
+  - id: bcom_marketing_extended
+    name: "Bachelor of Commerce in Management Sciences (Marketing Extended)"
+    fields: [management, commerce]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 20
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "Duration is 4 years. Mahikeng and Vanderbijlpark campuses."
+
+  # Faculty of Health Sciences (prospectus pages 23 to 25)
+
+  - id: dip_coaching_science
+    name: "Diploma in Coaching Science"
+    fields: [sport_science]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 18
+      subject_minimums: {english: 4}
+      extras:
+        - "Academic paper selection. Duration is 2 years. Potchefstroom and Mahikeng campuses."
+
+  - id: bhsc_sport_coaching
+    name: "Bachelor of Health Sciences with Sport Coaching and Human Movement Sciences"
+    fields: [sport_science, health_sciences]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 24
+      subject_minimums: {english: 4}
+      extras:
+        - "Academic paper selection. Duration is 3 years. Potchefstroom and Mahikeng campuses."
+
+  - id: bhsc_recreation_tourism
+    name: "Bachelor of Health Sciences with Recreation Science and Tourism Management"
+    fields: [sport_science, tourism_and_hospitality, health_sciences]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 24
+      subject_minimums: {english: 4}
+      extras:
+        - "Academic paper selection. Duration is 3 years. Potchefstroom Campus."
+
+  - id: b_biokinetics
+    name: "Bachelor of Health Sciences in Biokinetics"
+    fields: [health_sciences, sport_science, rehabilitation]
+    selective: true
+    selection_note: "Strict selection based on academic performance and physical fitness. Closed 30 June 2026."
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 32
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {life_sciences: 4}
+      extras:
+        - "Students must be medically fit. Academic selection. Duration is 4 years. Potchefstroom Campus."
+
+  - id: bpharm
+    name: "Bachelor of Pharmacy (BPharm)"
+    fields: [pharmacy, health_sciences]
+    selective: true
+    selection_note: "Strictly competitive selection due to high volume of applications and limited capacity. Closed 30 June 2026."
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 5}
+      extras:
+        - "Life Sciences recommended. Academic selection based on best average mark. Duration is 4 years. Potchefstroom Campus."
+
+  - id: bhsc_physiology_biochemistry
+    name: "Bachelor of Health Sciences (Physiology and Biochemistry)"
+    fields: [health_sciences, life_sciences]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 4}
+      extras:
+        - "Life Sciences recommended. Academic paper selection. Duration is 3 years. Potchefstroom Campus."
+
+  - id: bhsc_physiology_psychology
+    name: "Bachelor of Health Sciences with Physiology and Psychology"
+    fields: [health_sciences, humanities]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 3, physical_sciences: 4}
+      extras:
+        - "Life Sciences recommended. Academic paper selection. Duration is 3 years. Potchefstroom Campus."
+
+  - id: b_consumer_studies
+    name: "Bachelor of Consumer Studies"
+    fields: [consumer_sciences]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 24
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {mathematical_literacy: 6}
+            - subjects: {physical_sciences: 4}
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+      extras:
+        - "Requires at least one natural science passed at level 4, or Mathematical Literacy level 6. Duration is 3 years. Potchefstroom Campus."
+
+  - id: b_consumer_sciences_food
+    name: "Bachelor of Consumer Sciences with Food Product Management"
+    fields: [consumer_sciences, food_science]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 24
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {mathematical_literacy: 6}
+      extras:
+        - "Mathematics level 4 or Mathematical Literacy level 6 (70%+). If Chemistry is chosen, Physical Sciences level 4 required. Duration is 4 years."
+
+  - id: bsc_dietetics
+    name: "Bachelor of Science in Dietetics"
+    fields: [nutrition, health_sciences]
+    selective: true
+    selection_note: "Strictly competitive selection based on academic performance and limited capacity. Closed 30 June 2026."
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 5}
+      extras:
+        - "Academic selection based on best average mark. Duration is 4 years. Potchefstroom Campus."
+
+  - id: bhsc_occupational_hygiene
+    name: "Bachelor of Health Sciences in Occupational Hygiene"
+    fields: [health_sciences, environmental_health]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 27
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 5}
+      extras:
+        - "Academic paper selection. Duration is 4 years. Potchefstroom Campus."
+
+  - id: bsw
+    name: "Bachelor of Social Work (BSW)"
+    fields: [humanities]
+    selective: true
+    selection_note: "Strictly competitive selection based on academic performance and limited capacity. Closed 30 June 2026."
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 28
+      subject_minimums: {english: 4}
+      extras:
+        - "Academic selection. Duration is 4 years. Mahikeng, Potchefstroom, and Vanderbijlpark campuses."
+
+  - id: bnurs
+    name: "Bachelor of Nursing"
+    fields: [nursing, health_sciences]
+    selective: true
+    selection_note: "Strictly competitive selection due to high volume of applications and clinical training quotas. Closed 30 June 2026."
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 25
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {physical_sciences: 4}
+            - subjects: {life_sciences: 4}
+      extras:
+        - "Requires Mathematics 4, Physical Sciences 4, or Life Sciences 4. 40 hours of job shadowing recommended. Duration is 4 years. Mahikeng and Potchefstroom campuses."
+
+  # Faculty of Humanities (prospectus pages 26 to 29)
+
+  - id: ba_communication
+    name: "Bachelor of Arts in Communication"
+    fields: [humanities, languages_and_communication]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 24
+      subject_minimums: {english: 5}
+      extras:
+        - "Requires English HL or FAL level 5. Duration is 3 years. Mahikeng, Potchefstroom, and Vanderbijlpark campuses."
+
+  - id: ba_graphic_design
+    name: "Bachelor of Arts in Graphic Design"
+    fields: [arts_and_design]
+    selective: true
+    selection_note: "Selection phase includes photo portfolio of graphics/art, academic record, and interview. Closed 30 June 2026."
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 24
+      subject_minimums: {english: 5}
+      extras:
+        - "Screening process: portfolio, academic record, interview. Duration is 4 years. Potchefstroom Campus."
+
+  - id: ba_public_governance
+    name: "Bachelor of Arts in Public Governance"
+    fields: [public_administration, humanities]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 25
+      extras:
+        - "Specialisations in Public Administration, Politics, Social Studies, Geography, Labour Relations. Duration is 3 years."
+
+  - id: bsocsc
+    name: "Bachelor of Social Sciences (BSocSc)"
+    fields: [humanities]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 22
+      extras:
+        - "Majors in Development Studies, Geography, History, Population Studies, Psychology, Sociology, Anthropology. Duration is 3 years."
+
+  - id: ba_language_literary_studies
+    name: "Bachelor of Arts in Language and Literary Studies"
+    fields: [humanities, languages_and_communication]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 24
+      choices:
+        - one_of:
+            - subjects: {english: 4}
+            - subjects: {other_language: 4}
+      extras:
+        - "Subjects in English, Afrikaans, Setswana, Sesotho, French, German, South African Sign Language. Duration is 3 years."
+
+  - id: ba_language_technology
+    name: "Bachelor of Arts in Language Technology"
+    fields: [humanities, computing, languages_and_communication]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 24
+      subject_minimums: {mathematics: 5}
+      choices:
+        - one_of:
+            - subjects: {english: 4}
+            - subjects: {other_language: 4}
+        - one_of:
+            - subjects: {information_technology: 4}
+            - subjects: {accounting: 4}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - "Requires Mathematics level 5, a language at level 4, and Information Technology, Accounting or Physical Sciences at level 4. Duration is 3 years. Potchefstroom Campus."
+
+  - id: dip_music
+    name: "Diploma in Music"
+    fields: [music]
+    selective: true
+    selection_note: "Language proficiency test, musical aptitude test, and audition required."
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 18
+      subject_minimums: {english: 4}
+      extras:
+        - "Audition and musical aptitude test required. Duration is 3 years. Potchefstroom Campus."
+
+  - id: ba_music_society
+    name: "Bachelor of Arts in Music and Society"
+    fields: [music, humanities]
+    selective: true
+    selection_note: "Practical audition (Grade 3 standard), theoretical placement test (Grade 2), and language test."
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 21
+      subject_minimums: {english: 4}
+      extras:
+        - "Practical audition and placement test required. Duration is 3 years. Potchefstroom Campus."
+
+  - id: bmus
+    name: "Baccalaureus Musicae (BMus)"
+    fields: [music]
+    selective: true
+    selection_note: "Practical audition (Grade 6 standard), theoretical placement test (Grade 5), and language test. Closed 30 June 2026."
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 24
+      extras:
+        - "Practical audition and theoretical test required. Duration is 4 years. Potchefstroom Campus."
+
+  - id: bphil
+    name: "Bachelor of Philosophy (BPhil in PPE)"
+    fields: [humanities, economics]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 26
+      extras:
+        - "Philosophy, Politics and Economics. Duration is 3 years. Potchefstroom Campus."
+
+  - id: ba_humanities
+    name: "Bachelor of Arts in Humanities"
+    fields: [humanities]
+    requirements:
+      source: s-nwu-prospectus
+      min_points: 24
+      extras:
+        - "Majors across Psychology, History, Geography, Politics, Philosophy, Sociology, Languages. Duration is 3 years."
 
 sources:
   - id: s-nwu-prospectus
     url: "https://studies.nwu.ac.za/sites/studies.nwu.ac.za/files/files/undergrad/2025-Grade-12-Prospectus.pdf"
     publisher: "North-West University"
-    title: "2026 Grade 12 prospectus (the APS)"
-    retrieved: 2026-10-13
+    title: "NWU Grade 12 Undergraduate Prospectus (general requirements and faculty tables)"
+    retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
   - id: s-nwu-apply
     url: "https://studies.nwu.ac.za/studies/apply"
     publisher: "North-West University"
-    title: "How to apply"
-    retrieved: 2026-10-13
-    last_verified: null
-    verified_by: "agent draft, needs human check"
-  - id: s-nwu-news
-    url: "https://news.nwu.ac.za/applications-and-admissions-north-west-university-2026"
-    publisher: "North-West University"
-    title: "Applications and admissions (selection programmes' closing date)"
+    title: "How to apply: application timelines and online application"
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
