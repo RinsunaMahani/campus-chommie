@@ -3,7 +3,9 @@
 # Agent draft, read on 13 Oct 2026 (docs/research/universities.md). SPU's 2026 prospectus table doesn't
 # say how many subjects count, and its bonus depends on which language is a home language, which the app
 # doesn't ask: no points rule yet. Nobody has checked these values yet: release stays false until a person
-# has compared every one with its source.
+# has compared every one with its source. Programmes come from SPU's 2027 undergraduate prospectus, read on
+# 14 Oct 2026 (docs/research/spu.md), whose points table matches 2026's; the three found only on SPU's
+# faculty pages each carry a line asking learners to check that SPU takes first-years in them in 2027.
 
 university: spu
 name: Sol Plaatje University
@@ -24,7 +26,401 @@ applications:
       opens: null
       closes: 2026-10-31
 
-programmes: []
+# Minimum points are on SPU's own scale (levels to 8, with extra points for Mathematics, a home language and
+# Life Orientation): the app can't check them until SPU says how many subjects count. Page numbers are the
+# online prospectus viewer's (docs/research/spu.md also gives the printed ones).
+programmes:
+
+  # Faculty of Education (2027 prospectus, pages 7 to 9)
+
+  - id: bed_foundation_phase
+    name: "B.Ed. Foundation Phase Teaching (Grade R-3)"
+    fields: [education]
+    requirements:
+      source: s-spu-prospectus-2027       # page 7
+      min_points: 30
+      subject_minimums: {english: 4, other_language: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "English Home Language at level 4, or English First Additional Language at level 5."
+        - "Your other language must be Afrikaans, Setswana or isiXhosa (home or first additional language)."
+        - "Your NSC must show admission to bachelor's degree study."
+
+  - id: bed_intermediate_maths_science
+    name: "B.Ed. Intermediate Phase Teaching (Grades 4-6): Languages, Mathematics, Natural Science and Technology"
+    fields: [education]
+    requirements:
+      source: s-spu-prospectus-2027       # page 7
+      min_points: 30
+      subject_minimums: {english: 4, other_language: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+      extras:
+        - "English Home Language at level 4, or English First Additional Language at level 5."
+        - "Your other language must be Afrikaans, Setswana or isiXhosa (home or first additional language)."
+        - "Your NSC must show admission to bachelor's degree study."
+
+  - id: bed_intermediate_social_sciences
+    name: "B.Ed. Intermediate Phase Teaching (Grades 4-6): Languages, Social Sciences and Life Skills"
+    fields: [education]
+    requirements:
+      source: s-spu-prospectus-2027       # page 7
+      min_points: 30
+      subject_minimums: {english: 4, other_language: 4}
+      choices:
+        - one_of:
+            - subjects: {geography: 4}
+            - subjects: {history: 4}
+      extras:
+        - "English Home Language at level 4, or English First Additional Language at level 5."
+        - "Your other language must be Afrikaans, Setswana or isiXhosa (home or first additional language)."
+        - "Your NSC must show admission to bachelor's degree study."
+
+  - id: bed_sp_fet_science_maths
+    name: "B.Ed. Senior and FET Phase Teaching (Grades 7-12): Life Sciences, Natural Sciences and Mathematics"
+    fields: [education]
+    requirements:
+      source: s-spu-prospectus-2027       # page 8
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 4, life_sciences: 4}
+      extras:
+        - "English Home Language at level 4, or English First Additional Language at level 5."
+        - "Your NSC must show admission to bachelor's degree study."
+
+  - id: bed_sp_fet_languages
+    name: "B.Ed. Senior and FET Phase Teaching (Grades 7-12): Languages, or Language and History"
+    fields: [education]
+    requirements:
+      source: s-spu-prospectus-2027       # page 8
+      min_points: 30
+      subject_minimums: {english: 4, other_language: 4}
+      extras:
+        - "English Home Language at level 4, or English First Additional Language at level 5."
+        - "Your other language must be Afrikaans or Setswana (home or first additional language)."
+        - "If you'll take History as an elective, you need History at level 4 too."
+        - "Your NSC must show admission to bachelor's degree study."
+
+  - id: bed_sp_fet_history_geography
+    name: "B.Ed. Senior and FET Phase Teaching (Grades 7-12): History, Social Sciences and Language"
+    fields: [education]
+    requirements:
+      source: s-spu-prospectus-2027       # page 8
+      min_points: 30
+      subject_minimums: {english: 4, other_language: 4, geography: 4, history: 4}
+      extras:
+        - "English Home Language at level 4, or English First Additional Language at level 5."
+        - "Your other language must be Afrikaans or Setswana (home or first additional language)."
+        - "Your NSC must show admission to bachelor's degree study."
+
+  - id: bed_sp_fet_commerce
+    name: "B.Ed. Senior and FET Phase Teaching (Grades 7-12): Accounting, Economics, Business Studies plus Economic and Management Sciences"
+    fields: [education]
+    requirements:
+      source: s-spu-prospectus-2027       # page 9
+      min_points: 30
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:                         # "any two of" Accounting, Business Studies and Economics
+            - subjects: {accounting: 4, business_studies: 4}
+            - subjects: {accounting: 4, economics: 4}
+            - subjects: {business_studies: 4, economics: 4}
+      extras:
+        - "English Home Language at level 4, or English First Additional Language at level 5."
+        - "Your NSC must show admission to bachelor's degree study."
+
+  # Faculty of Economic and Management Sciences (2027 prospectus, pages 13 to 16; two more from the faculty's page)
+
+  - id: hcert_entrepreneurship
+    name: "Higher Certificate in Entrepreneurship"
+    fields: [management, commerce]
+    requirements:
+      source: s-spu-prospectus-2027       # page 13
+      min_points: 25
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+        - one_of:
+            - subjects: {accounting: 3}
+            - subjects: {business_studies: 3}
+            - subjects: {economics: 3}
+      extras:
+        - "English Home Language at level 4, or English First Additional Language at level 5."
+        - "Your NSC must show admission to higher certificate study."
+
+  - id: dip_retail_business_management
+    name: "Diploma in Retail Business Management"
+    fields: [management, commerce]
+    requirements:
+      source: s-spu-prospectus-2027       # page 14
+      min_points: 25
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+        - one_of:
+            - subjects: {accounting: 4}
+            - subjects: {business_studies: 4}
+            - subjects: {economics: 4}
+      extras:
+        - "English Home Language at level 4, or English First Additional Language at level 5."
+        - "Your NSC must show admission to diploma study."
+
+  - id: bcom_accounting
+    name: "Bachelor of Commerce in Accounting"
+    fields: [commerce, accounting]
+    requirements:
+      source: s-spu-prospectus-2027       # page 15
+      min_points: 30
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 5}
+            - subjects: {mathematics: 4, accounting: 3}
+      extras:
+        - "English Home Language at level 4, or English First Additional Language at level 5."
+        - "Your NSC must show admission to bachelor's degree study."
+
+  - id: bcom_economics
+    name: "Bachelor of Commerce in Economics"
+    fields: [commerce, economics]
+    requirements:
+      source: s-spu-prospectus-2027       # page 16
+      min_points: 30
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 5}
+            - subjects: {mathematics: 4, economics: 3}
+            - subjects: {mathematics: 4, business_studies: 3}
+      extras:
+        - "English Home Language at level 4, or English First Additional Language at level 5."
+        - "Your NSC must show admission to bachelor's degree study."
+
+  - id: bcom_tourism_management
+    name: "Bachelor of Commerce in Tourism Management"
+    fields: [commerce, tourism_and_hospitality, management]
+    requirements:
+      source: s-spu-ems-programmes
+      min_points: 30
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+      extras:
+        - "SPU's faculty page lists this programme, but its 2027 prospectus doesn't: check with SPU that it takes first-years in 2027."
+        - "The faculty page asks for English at level 4, home or first additional language; SPU's 2027 prospectus asks every programme for level 5 in English First Additional Language."
+        - "Your NSC must show admission to bachelor's degree study."
+
+  - id: b_public_administration
+    name: "Bachelor of Public Administration"
+    fields: [public_administration]
+    requirements:
+      source: s-spu-ems-programmes
+      min_points: 30
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "SPU's faculty page lists this programme, but its 2027 prospectus doesn't: check with SPU that it takes first-years in 2027."
+        - "English Home Language at level 4, or English First Additional Language at level 5."
+        - "Your NSC must show admission to bachelor's degree study."
+
+  # Faculty of Humanities (2027 prospectus, pages 18 to 20)
+
+  - id: hcert_heritage_studies
+    name: "Higher Certificate in Heritage Studies"
+    fields: [humanities]
+    requirements:
+      source: s-spu-prospectus-2027       # page 18
+      min_points: 25
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {mathematical_literacy: 3}
+      extras:
+        - "English Home Language at level 4, or English First Additional Language at level 5."
+        - "Your NSC must show admission to higher certificate study."
+    bridges_to:
+      - to: ba
+        guarantee: considered
+        conditions: "SPU considers its Higher Certificate in Heritage Studies for entry into the BA; the Dean of Humanities gives the details."
+        source: s-spu-prospectus-2027     # page 20
+
+  - id: hcert_court_interpreting
+    name: "Higher Certificate in Court Interpreting"
+    fields: [languages_and_communication, humanities]
+    requirements:
+      source: s-spu-prospectus-2027       # page 19
+      min_points: 25
+      subject_minimums: {english: 4, other_language: 4}
+      extras:
+        - "English Home Language at level 4, or English First Additional Language at level 5."
+        - "Your other language must be an African language: level 4 as a home language, or level 5 as a first additional language."
+        - "Your NSC must show admission to higher certificate study; SPU also takes a National Certificate (Vocational) with appropriate subjects."
+        - "SPU's Humanities programmes page also asks for Mathematics at level 2 or Mathematical Literacy at level 3."
+    bridges_to:
+      - to: ba
+        guarantee: considered
+        conditions: "SPU considers its Higher Certificate in Court Interpreting for entry into the BA; the Dean of Humanities gives the details."
+        source: s-spu-prospectus-2027     # page 20
+
+  - id: ba
+    name: "Bachelor of Arts"
+    fields: [humanities, languages_and_communication]
+    requirements:
+      source: s-spu-prospectus-2027       # page 20
+      min_points: 30
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {mathematical_literacy: 3}
+      extras:
+        - "English Home Language at level 4, or English First Additional Language at level 5."
+        - "To major in Geography, you need Geography at level 4."
+        - "Your NSC must show admission to bachelor's degree study."
+
+  # Faculty of Natural and Applied Sciences (2027 prospectus, pages 22 to 28; Geology from the faculty's page).
+  # The prospectus offers the BSc in three sub-fields, with Chemistry, Geography and Physics under Physical
+  # Sciences; the faculty's page gives each its own code, so each is listed on its own.
+
+  - id: dip_agriculture
+    name: "Diploma in Agriculture"
+    fields: [agriculture]
+    requirements:
+      source: s-spu-prospectus-2027       # page 22
+      min_points: 25
+      subject_minimums: {english: 4, physical_sciences: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+        - one_of:
+            - subjects: {life_sciences: 3}
+            - subjects: {agricultural_sciences: 3}
+      extras:
+        - "English Home Language at level 4, or English First Additional Language at level 5."
+        - "Your NSC must show admission to diploma study."
+
+  - id: dip_ict_applications_development
+    name: "Diploma in Information and Communication Technology in Applications Development"
+    fields: [computing]
+    requirements:
+      source: s-spu-prospectus-2027       # page 24
+      min_points: 25
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+      extras:
+        - "English Home Language at level 4, or English First Additional Language at level 5."
+        - "SPU highly recommends Computer Applications Technology or Information Technology as a school subject."
+        - "Your NSC must show admission to diploma study."
+
+  - id: b_environmental_science
+    name: "Bachelor of Environmental Science"
+    fields: [earth_sciences, natural_sciences]
+    requirements:
+      source: s-spu-prospectus-2027       # page 26
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+      extras:
+        - "English Home Language at level 4, or English First Additional Language at level 5."
+        - "Mathematical Literacy isn't accepted."
+        - "Your NSC must show admission to bachelor's degree study."
+
+  - id: bsc_biological_sciences
+    name: "Bachelor of Science: Biological Sciences"
+    fields: [life_sciences, natural_sciences]
+    requirements:
+      source: s-spu-prospectus-2027       # page 27
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+      extras:
+        - "English Home Language at level 4, or English First Additional Language at level 5."
+        - "Mathematical Literacy isn't accepted."
+        - "Your NSC must show admission to bachelor's degree study."
+
+  - id: bsc_mathematical_computer_sciences
+    name: "Bachelor of Science: Mathematical and Computer Sciences"
+    fields: [mathematical_sciences, computing, natural_sciences]
+    requirements:
+      source: s-spu-prospectus-2027       # page 27
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+      extras:
+        - "English Home Language at level 4, or English First Additional Language at level 5."
+        - "Mathematical Literacy isn't accepted."
+        - "Your NSC must show admission to bachelor's degree study."
+
+  - id: bsc_chemistry
+    name: "Bachelor of Science: Physical Sciences (Chemistry)"
+    fields: [physical_sciences, natural_sciences]
+    requirements:
+      source: s-spu-prospectus-2027       # page 27
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+      extras:
+        - "English Home Language at level 4, or English First Additional Language at level 5."
+        - "Mathematical Literacy isn't accepted."
+        - "Your NSC must show admission to bachelor's degree study."
+
+  - id: bsc_geography
+    name: "Bachelor of Science: Physical Sciences (Geography)"
+    fields: [earth_sciences, natural_sciences]
+    requirements:
+      source: s-spu-prospectus-2027       # page 27
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+      extras:
+        - "English Home Language at level 4, or English First Additional Language at level 5."
+        - "Mathematical Literacy isn't accepted."
+        - "Your NSC must show admission to bachelor's degree study."
+
+  - id: bsc_physics
+    name: "Bachelor of Science: Physical Sciences (Physics)"
+    fields: [physical_sciences, natural_sciences]
+    requirements:
+      source: s-spu-prospectus-2027       # page 27
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+      extras:
+        - "English Home Language at level 4, or English First Additional Language at level 5."
+        - "Mathematical Literacy isn't accepted."
+        - "Your NSC must show admission to bachelor's degree study."
+
+  - id: bsc_geology
+    name: "Bachelor of Science: Physical Sciences (Geology)"
+    fields: [earth_sciences, natural_sciences]
+    requirements:
+      source: s-spu-nas-programmes
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+      extras:
+        - "SPU's faculty page lists this programme, but its 2027 prospectus doesn't: check with SPU that it takes first-years in 2027."
+        - "English Home Language at level 4, or English First Additional Language at level 5."
+        - "Your NSC must show admission to bachelor's degree study."
+
+  - id: bsc_data_science
+    name: "Bachelor of Science in Data Science"
+    fields: [mathematical_sciences, computing]
+    requirements:
+      source: s-spu-prospectus-2027       # page 28
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 5}
+      extras:
+        - "English Home Language at level 4, or English First Additional Language at level 5."
+        - "Mathematical Literacy isn't accepted."
+        - "Your NSC must show admission to bachelor's degree study."
 
 sources:
   - id: s-spu-apply
@@ -39,5 +435,33 @@ sources:
     publisher: "Sol Plaatje University"
     title: "2026 undergraduate prospectus (the APS table)"
     retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-spu-prospectus-2027
+    url: "https://indd.adobe.com/view/57eda609-9efc-43e8-b806-791d2e347328"
+    publisher: "Sol Plaatje University"
+    title: "SPU 2027 Undergraduate Prospectus, an online publication linked from the menu of SPU's website (APS table page 4, programmes pages 7 to 28)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-spu-ems-programmes
+    url: "https://www.spu.ac.za/index.php/spu-economic-and-management-sciences/"
+    publisher: "Sol Plaatje University"
+    title: "Faculty of Economic and Management Sciences: programmes (BCom in Tourism Management, Bachelor of Public Administration)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-spu-hum-programmes
+    url: "https://www.spu.ac.za/index.php/faculty-of-hum-programmes/"
+    publisher: "Sol Plaatje University"
+    title: "Faculty of Humanities: programmes (Court Interpreting's Mathematics line)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-spu-nas-programmes
+    url: "https://www.spu.ac.za/index.php/spu-nas-programmes/"
+    publisher: "Sol Plaatje University"
+    title: "Faculty of Natural and Applied Sciences: programmes (the BSc streams and their codes, BSc Physical Sciences in Geology)"
+    retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
