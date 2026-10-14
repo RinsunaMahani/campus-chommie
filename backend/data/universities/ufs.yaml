@@ -38,7 +38,17 @@ points_rules:
 applications:
   source: s-ufs-prospective
   url: https://www.ufs.ac.za/prospective
-  windows: []               # 2027 dates not found on the pages read
+  windows:
+    - intake: 2027
+      source: s-ufs-prospectus-2027   # page 51, "Important application closing dates"
+      closes: 2026-09-30              # every non-selection programme and the remaining selection programmes
+      programme_closes:
+        - closes: 2026-05-31
+          programmes: [mbchb, bocc_ther, boptom, bsc_physiotherapy, bmedsc_radiation_science, bbiok, bsc_dietetics, bsport_coach]
+        - closes: 2026-07-31
+          programmes: [bnursing, bsw, barch]
+      no_late_applications: true      # "If your application is received after the following closing dates, it will not be considered."
+      note: "International applicants: 31 August 2026."
 
 programmes:
 
