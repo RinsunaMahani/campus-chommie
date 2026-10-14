@@ -1,4 +1,5 @@
 import pytest
+from pydantic import ValidationError
 
 from campus_engine.matching import (
     COMPETITIVE,
@@ -11,7 +12,7 @@ from campus_engine.matching import (
     assess,
     assess_all,
 )
-from campus_engine.schemas import University
+from campus_engine.schemas import Choice, Requirements, University
 
 SCALE = [
     {"min_percent": 80, "level": 7},
@@ -103,3 +104,45 @@ def test_assess_all_puts_best_tiers_first(smu, strong_marks):
     ranks = [TIER_RANK[m.tier] for m in assess_all(smu, weaker)]
     assert ranks == sorted(ranks)
     assert ranks[0] == TIER_RANK[REACH] and ranks[-1] == TIER_RANK[NOT_YET]
+
+
+def _no_minimum(uni, **update):
+    """open_uni's BCom as if the university published no points minimum for it."""
+    bcom = uni.programme("bcom")
+    req = bcom.requirements.model_copy(update={"min_points": None, "competitive_points": None, **update})
+    return bcom.model_copy(update={"requirements": req})
+
+
+def test_min_points_is_required_but_may_say_nothing_is_published():
+    with pytest.raises(ValidationError):
+        Requirements.model_validate({"source": "s"})
+    assert Requirements.model_validate({"source": "s", "min_points": None}).min_points is None
+
+
+def test_no_published_minimum_checks_the_subjects_only(open_uni):
+    marks = {"mathematics": 55, "english": 45, "geography": 40, "history": 40, "accounting": 40, "economics": 40}
+    m = assess(open_uni, _no_minimum(open_uni), marks)  # 4 + 5 x 3 = 19 points: low, but no minimum is published
+    assert (m.tier, m.points, m.min_points, m.gap) == (MEETS_MINIMUM, 19, None, None)
+    assert m.explanation[0] == (
+        "Your points: 19. The university publishes no points minimum for this programme, "
+        "so only your subjects were checked."
+    )
+    assert m.explanation[-1] == NO_GUARANTEE
+
+
+def test_no_published_minimum_still_needs_the_subjects(open_uni):
+    marks = {"mathematics": 45, "english": 75, "geography": 75, "history": 75, "accounting": 75, "economics": 75}
+    m = assess(open_uni, _no_minimum(open_uni), marks)
+    assert (m.tier, m.gap) == (NOT_YET, None)
+    assert "Mathematics: level 3, needs 4." in m.explanation
+
+
+def test_a_route_can_publish_a_minimum_the_programme_doesnt(open_uni):
+    either = Choice.model_validate(
+        {"one_of": [{"subjects": {"mathematics": 4}}, {"subjects": {"mathematical_literacy": 5}, "min_points": 22}]}
+    )
+    programme = _no_minimum(open_uni, subject_minimums={}, choices=[either])
+    marks = {"mathematical_literacy": 65, "english": 55, "geography": 55, "history": 55, "accounting": 55}
+    m = assess(open_uni, programme, marks)  # 5 + 4 x 4 = 21 points: one short of the route's 22
+    assert (m.tier, m.min_points, m.gap) == (NOT_YET, 22, 1)
+    assert "With Mathematical literacy level 5, the minimum is 22 points." in m.explanation

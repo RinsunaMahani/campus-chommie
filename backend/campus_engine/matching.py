@@ -77,19 +77,28 @@ def _meets(option: Option, levels: dict[str, int]) -> bool:
     return all(levels.get(s, 0) >= lvl for s, lvl in option.subjects.items())
 
 
-def _route(choices: list[Choice], levels: dict[str, int], base: float) -> tuple[list[Option | None], float]:
+def _route(
+    choices: list[Choice], levels: dict[str, int], base: float | None
+) -> tuple[list[Option | None], float | None]:
     """The options that serve the learner best, one per choice (None where none is met),
-    and the minimum points they lead to. The lowest minimum wins; on a tie the university's
-    own order of options decides."""
+    and the minimum points they lead to. The lowest minimum wins, and no published minimum
+    counts as the lowest; on a tie the university's own order of options decides."""
     met = [[o for o in c.one_of if _meets(o, levels)] or [None] for c in choices]
-    best: tuple[list[Option | None], float] | None = None
+    best: tuple[list[Option | None], float | None] | None = None
     for combo in product(*met):  # with no choices, one empty route
         own = [o.min_points for o in combo if o is not None and o.min_points is not None]
         minimum = max(own) if own else base
-        if best is None or minimum < best[1]:
+        if best is None or _lower(minimum, best[1]):
             best = (list(combo), minimum)
     assert best is not None
     return best
+
+
+def _lower(a: float | None, b: float | None) -> bool:
+    """Whether minimum a is lower than b, where None (nothing published) is lowest."""
+    if a is None:
+        return b is not None
+    return b is not None and a < b
 
 
 def assess(uni: University, programme: Programme, marks: dict[str, float]) -> Match:
@@ -152,9 +161,8 @@ def assess(uni: University, programme: Programme, marks: dict[str, float]) -> Ma
             named |= set(option.subjects)
     if min_points != req.min_points:
         cause = next(o for o in route if o is not None and o.min_points == min_points)
-        route_notes.append(
-            f"With {_describe(cause)}, the minimum is {num(min_points)} points instead of {num(req.min_points)}."
-        )
+        instead = "" if req.min_points is None else f" instead of {num(req.min_points)}"
+        route_notes.append(f"With {_describe(cause)}, the minimum is {num(min_points)} points{instead}.")
 
     remaining = sorted((lvl for s, lvl in result.levels.items() if s not in named), reverse=True)
     for i, minimum in enumerate(req.additional_minimums):
@@ -163,11 +171,17 @@ def assess(uni: University, programme: Programme, marks: dict[str, float]) -> Ma
         elif remaining[i] < minimum:
             failed.append(f"Additional subject {i + 1}: level {remaining[i]}, needs {minimum}.")
 
-    explanation = [f"Your points: {num(result.total)} (minimum {num(min_points)})."]
+    if min_points is None:
+        explanation = [
+            f"Your points: {num(result.total)}. The university publishes no points minimum for this "
+            "programme, so only your subjects were checked."
+        ]
+    else:
+        explanation = [f"Your points: {num(result.total)} (minimum {num(min_points)})."]
     if programme.points_rules is not None:
         explanation.append("This programme uses its own points table, not the university's usual one.")
     explanation += result.notes + route_notes
-    if result.total < min_points:
+    if min_points is not None and result.total < min_points:
         match.gap = min_points - result.total
 
     if failed or match.gap:
