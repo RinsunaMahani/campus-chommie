@@ -14,7 +14,7 @@ repo folder but is kept out of git; the parts the screens need are quoted below.
 
 ## Where things stand
 
-`main` holds only the empty first commit. All work sits in thirty-three stacked pull requests:
+`main` holds only the empty first commit. All work sits in thirty-four stacked pull requests:
 
 | PR | Branch | What |
 |---|---|---|
@@ -27,6 +27,7 @@ repo folder but is kept out of git; the parts the screens need are quoted below.
 | #7 | `rinsuna/m1-after-acceptance` | your points at every university; campuses, calendars, money dates and support in the packs; first steps from acceptance to the first lecture |
 | #8 | `rinsuna/m3-profile-and-money` | M3's backend: the student's profile (university and campus) and My money (settings, income, expected payments, spending, summary) |
 | #9 | `rinsuna/m1-cheap-things` | cheap things to do near campus, each priced from the place's own page |
+| #34 | `rinsuna/courses-wave-3` | full course lists, wave 3: UNIVEN (80 programmes), UL (54 programmes), Rhodes (16 programmes) and NWU (81 programmes) across 4 universities (231 programmes total), each from its official 2026/2027 prospectus with closing dates and selection criteria, and a research note per university (agent drafts, `release: false`) |
 | #33 | `rinsuna/courses-wave-2` | full course lists, wave 2: UFS (172 programmes) from its 2027 prospectus with closing dates, and UNIZULU (185 programmes) from the CAO's 2027 handbook, each with a research note per university (agent drafts, `release: false`) |
 | #32 | `rinsuna/courses-wave-1` | full course lists, wave 1: VUT (49 programmes), WSU (105), UMP (24), MUT (40) and SPU (26), each from the university's own 2027 documents, with a research note per university (agent drafts, `release: false`); a programme whose university publishes no points minimum checks the subjects only (`min_points: null`) |
 | #31 | `rinsuna/forest-theme` | the whole app in Rinsuna's forest theme, from her homescreen: every screen on her wallpaper (forest moss down to terracotta rose), dark forest-glass cards, the white pill for the main action, a floating glass dock, and her CC monogram as the mark, app icon, adaptive icon and splash; every text colour meets WCAG AA on every band of the wallpaper |
@@ -58,7 +59,7 @@ new-phone code, and #13 deletes accounts.
 
 **How to merge:**
 - Each PR targets the branch below it, so its diff shows only its own work.
-- Merge in order: #1 into `main`, then #2 to #33, retargeting each to `main` once the one below has merged.
+- Merge in order: #1 into `main`, then #2 to #34, retargeting each to `main` once the one below has merged.
 - Use **Create a merge commit**, not squash or rebase, so every commit stays in `main`'s history (CLAUDE.md: never
   rewrite history).
 
