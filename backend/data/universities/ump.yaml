@@ -2,7 +2,8 @@
 #
 # Agent draft, from UMP's own pages read on 13 Oct 2026 (docs/research/universities.md). Nobody has
 # checked these values yet: release stays false until a person has compared every one with its source.
-# Programmes aren't added yet: only how UMP counts points, and how and when to apply.
+# Programmes: all 24 undergraduate first qualifications UMP lists, each citing its own programme page (read
+# 14 Oct 2026; the pages give no year), except the Bachelor of Social Sciences, which has no published requirements.
 
 university: ump
 name: University of Mpumalanga
@@ -37,7 +38,376 @@ applications:
       opens: 2026-06-01
       closes: 2026-11-30
 
-programmes: []
+# Programmes, agent draft of 14 Oct 2026: requirements come from each programme's own page (s-ump-*). The pages give no
+# year, and some differ from UMP's older programmes leaflet (s-ump-ug-leaflet, made Oct 2023): the pages are newer, so
+# they win, and docs/research/ump.md lists every difference. No programme adds a test, interview or portfolio. Left
+# out: the old Diploma in Hospitality Management (phased out after 2023, for returning students only), advanced
+# diplomas and postgraduate programmes.
+programmes:
+
+  # Faculty of Agriculture and Natural Sciences: School of Agricultural Sciences
+  - id: dip_plant_production
+    name: "Diploma in Agriculture in Plant Production"
+    fields: [agriculture]
+    requirements:
+      source: s-ump-dip-plant-production
+      min_points: 23
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 24
+        - one_of:                    # "Agriculture or Geography or Life Science: Level 4"
+            - subjects: {agricultural_sciences: 4}
+            - subjects: {geography: 4}
+            - subjects: {life_sciences: 4}
+
+  - id: dip_animal_production
+    name: "Diploma in Animal Production"
+    fields: [agriculture]
+    requirements:
+      source: s-ump-dip-animal-production
+      min_points: 24
+      subject_minimums: {english: 4, physical_sciences: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 6}
+              min_points: 27
+        - one_of:                    # "Life Sciences or Agriculture: Level 4"
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+
+  - id: bagric_extension
+    name: "Bachelor of Agriculture in Agricultural Extension and Rural Resource Management"
+    fields: [agriculture]
+    requirements:
+      source: s-ump-bagric-extension
+      min_points: 26
+      subject_minimums: {english: 4, life_orientation: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            # The page gives 28 points with Mathematical Literacy but no level: level 6 is from s-ump-ug-leaflet p6.
+            - subjects: {mathematical_literacy: 6}
+              min_points: 28
+        - one_of:                    # "(Physical or Life or Agricultural Sciences) level 4"
+            - subjects: {physical_sciences: 4}
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+      extras:
+        - "With Mathematical Literacy you need 28 points. UMP's page doesn't give the Mathematical Literacy level: level 6 is from UMP's older programmes leaflet."
+
+  - id: bsc_agriculture
+    name: "Bachelor of Science in Agriculture"
+    fields: [agriculture]
+    requirements:
+      source: s-ump-bsc-agriculture
+      min_points: 32
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {mathematical_literacy: 6}
+        - one_of:                    # "Two of Physical, Life, Agricultural Sciences of Geography at level 4"
+            - subjects: {physical_sciences: 4, life_sciences: 4}
+            - subjects: {physical_sciences: 4, agricultural_sciences: 4}
+            - subjects: {physical_sciences: 4, geography: 4}
+            - subjects: {life_sciences: 4, agricultural_sciences: 4}
+            - subjects: {life_sciences: 4, geography: 4}
+            - subjects: {agricultural_sciences: 4, geography: 4}
+      extras:
+        - "With Mathematical Literacy (level 6 or more) UMP will consider you, but you may need to take a supporting mathematics module."
+
+  - id: bsc_forestry
+    name: "Bachelor of Science in Forestry"
+    fields: [agriculture]
+    requirements:
+      source: s-ump-bsc-forestry
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+      choices:
+        - one_of:                    # "Two subjects from Life Science, Agricultural Science or Geography at level 4"
+            - subjects: {life_sciences: 4, agricultural_sciences: 4}
+            - subjects: {life_sciences: 4, geography: 4}
+            - subjects: {agricultural_sciences: 4, geography: 4}
+
+  # School of Biology and Environmental Sciences
+  - id: dip_nature_conservation
+    name: "Diploma in Nature Conservation"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-ump-dip-nature-conservation
+      min_points: 28
+      subject_minimums: {english: 4, life_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {mathematical_literacy: 4}
+
+  - id: bsc
+    name: "Bachelor of Science"
+    fields: [natural_sciences, life_sciences, earth_sciences]
+    requirements:
+      source: s-ump-bsc
+      min_points: 30
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {mathematical_literacy: 6}
+        - one_of:                    # "level 4 for two of Life Science, Physical Science or Geography"
+            - subjects: {life_sciences: 4, physical_sciences: 4}
+            - subjects: {life_sciences: 4, geography: 4}
+            - subjects: {physical_sciences: 4, geography: 4}
+
+  - id: bsc_environmental_science
+    name: "Bachelor of Science in Environmental Science"
+    fields: [natural_sciences, earth_sciences]
+    requirements:
+      source: s-ump-bsc-environmental
+      min_points: 30
+      subject_minimums: {english: 4, geography: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {mathematical_literacy: 6}
+        - one_of:                    # "plus Level 4 in either Life Sciences or Physical Sciences"
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+
+  # School of Computing and Mathematical Sciences
+  - id: hcert_ict_user_support
+    name: "Higher Certificate in Information Communication Technology in User Support"
+    fields: [computing]
+    requirements:
+      source: s-ump-hcert-ict
+      min_points: 20
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 22
+      additional_minimums: [2, 2, 2]   # "at least 2 (30 – 39%) for any other 3 content subjects"
+
+  - id: dip_ict_applications_development
+    name: "Diploma in ICT in Applications Development"
+    fields: [computing]
+    requirements:
+      source: s-ump-dip-ict
+      min_points: 24
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 6}
+      extras:
+        - "UMP's page asks for English Home Language at level 4: if you take English as a first additional language, check with UMP."
+
+  - id: bict
+    name: "Bachelor of Information and Communication Technology"
+    fields: [computing]
+    requirements:
+      source: s-ump-bict
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 4}
+
+  # Faculty of Economics, Development and Business Sciences: School of Development Studies
+  - id: badmin
+    name: "Bachelor of Administration"
+    fields: [public_administration]
+    requirements:
+      source: s-ump-badmin
+      min_points: 32
+      subject_minimums: {english: 4, other_language: 4}   # "Second language: Level 4"
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {mathematical_literacy: 3}
+      extras:
+        - "To take Economics as an elective you need Mathematics at level 4."
+
+  - id: bcom
+    name: "Bachelor of Commerce (General)"
+    fields: [commerce]
+    requirements:
+      source: s-ump-bcom
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 4}
+      extras:
+        - "Mathematical Literacy isn't accepted."
+
+  - id: bdev_studies
+    name: "Bachelor of Development Studies"
+    fields: [humanities, economics]
+    requirements:
+      source: s-ump-bdev
+      min_points: 32
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {mathematical_literacy: 3}
+        - one_of:                    # "Geography/History and One Other Social or Commercial Sciences Subject at level 4"
+            - subjects: {geography: 4}
+            - subjects: {history: 4}
+      extras:
+        - "You also need one other social or commercial sciences subject at level 4."
+
+  - id: llb
+    name: "Bachelor of Laws"
+    fields: [law]
+    requirements:
+      source: s-ump-llb
+      min_points: 33
+      subject_minimums: {english: 4, other_language: 4}   # "Additional Language at level 4"
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "UMP selects every month: applicants above the minimum who have finished matric get conditional offers, and those who just meet it are put on hold and considered again each month."
+        - "At least half the places are kept for applicants still finishing matric."
+
+  - id: dip_entrepreneurship
+    name: "Diploma in Entrepreneurship"
+    fields: [management, commerce]
+    requirements:
+      source: s-ump-dip-entrepreneurship
+      min_points: 22
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+              min_points: 26
+        - one_of:                    # "any of the commerce subjects, such as Business Studies, Economics, Accounting, Tourism, among others"
+            - subjects: {business_studies: 4}
+            - subjects: {economics: 4}
+            - subjects: {accounting: 4}
+            - subjects: {tourism: 4}
+      extras:
+        - "UMP asks for level 4 in a commerce subject, naming Business Studies, Economics, Accounting and Tourism \"among others\"."
+
+  # School of Hospitality and Tourism Management
+  - id: hcert_event_management
+    name: "Higher Certificate in Event Management"
+    fields: [tourism_and_hospitality, management]
+    requirements:
+      source: s-ump-hcert-events
+      min_points: 19
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 21
+            # The page names Technical Mathematics without a level: level 4 is from s-ump-ug-leaflet p2.
+            - subjects: {technical_mathematics: 4}
+              min_points: 21
+      additional_minimums: [2, 2, 2]
+      extras:
+        - "UMP's page asks for \"any three additional vocational subjects\" at level 2."
+        - "UMP's page doesn't give the Technical Mathematics level: level 4 is from UMP's older programmes leaflet."
+
+  - id: dip_hospitality_management
+    name: "Diploma in Hospitality Management"
+    fields: [tourism_and_hospitality, management]
+    requirements:
+      source: s-ump-dip-hospitality   # the Revised Curriculum page: new students since 2024
+      min_points: 26
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 27
+      extras:
+        - "This diploma's page repeats the Diploma in Culinary Arts' rule (26 points, or 27 with Mathematical Literacy); UMP's older leaflet said 24, or 25 with Mathematical Literacy. Check with UMP."
+        - "UMP's page asks for English Home Language at level 4: if you take English as a first additional language, check with UMP."
+
+  - id: dip_culinary_arts
+    name: "Diploma in Culinary Arts"
+    fields: [tourism_and_hospitality, food_science]
+    requirements:
+      source: s-ump-dip-culinary
+      min_points: 26
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 27
+      extras:
+        - "UMP's page asks for English Home Language at level 4: if you take English as a first additional language, check with UMP."
+
+  # School of Social Sciences
+  - id: ba
+    name: "Bachelor of Arts (General)"
+    fields: [humanities]
+    requirements:
+      source: s-ump-ba
+      min_points: 28
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {mathematical_literacy: 3}
+
+  - id: ba_media_communication_culture
+    name: "Bachelor of Arts in Media, Communication and Culture"
+    fields: [humanities, languages_and_communication]
+    requirements:
+      source: s-ump-ba-media
+      min_points: 32
+      subject_minimums: {english: 4, other_language: 4}   # "Second language on level 4"
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {mathematical_literacy: 3}
+
+  - id: bsw
+    name: "Bachelor of Social Work"
+    fields: [humanities]
+    requirements:
+      source: s-ump-bsw
+      min_points: 32
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {mathematical_literacy: 3}
+      extras:
+        - "You need a police clearance certificate, or proof that you've applied for one."
+
+  # In UMP's 2026 Fees Handbook (s-ump-fees-2026 p15, first year only), but with no programme page or requirements.
+  - id: bsocsci
+    name: "Bachelor of Social Sciences"
+    fields: [humanities]
+    requirements: null
+
+  # Faculty of Education: School of Early Childhood Education
+  - id: bed_foundation_phase
+    name: "Bachelor of Education in Foundation Phase Teaching"
+    fields: [education]
+    requirements:
+      source: s-ump-aps
+      min_points: 26
+      # Group A: language of teaching and learning 5, another recognised language 4, Mathematics 3 or Mathematical
+      # Literacy 4, Life Orientation 4. Group B: three more subjects at 4.
+      subject_minimums: {english: 5, other_language: 4, life_orientation: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 27
+      additional_minimums: [4, 4, 4]
+      extras:
+        - "UMP asks for its language of teaching and learning at level 5 (we check English) and another recognised language at level 4."
+        - "UMP admits you provisionally on your final Grade 11 results; final admission rests on your final Grade 12 results."
 
 sources:
   - id: s-ump-aps
@@ -52,5 +422,173 @@ sources:
     publisher: "University of Mpumalanga"
     title: "Online applications"
     retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ump-ug-leaflet
+    url: "https://www.ump.ac.za/getattachment/Study-with-us/Application-Process/Online-Applications/Undergraduate-Programmes.pdf.aspx?lang=en-US"
+    publisher: "University of Mpumalanga"
+    title: "Undergraduate Programmes (8-page leaflet, made 5 Oct 2023, no year printed)"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ump-fees-2026
+    url: "https://www.ump.ac.za/getattachment/Study-with-us/Fee-Structure/UMP-2026-Fees-Handbook.pdf.aspx?lang=en-US"
+    publisher: "University of Mpumalanga"
+    title: "2026 Fees Handbook (the programmes UMP offers, pages 8 to 17)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ump-dip-plant-production
+    url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Agriculture-and-Natural-Sciences/School-of-Agricultural-Sciences/Diploma-in-Agriculture-in-Plant-Production.aspx"
+    publisher: "University of Mpumalanga"
+    title: "Diploma in Agriculture in Plant Production (programme page: admission requirements)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ump-dip-animal-production
+    url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Agriculture-and-Natural-Sciences/School-of-Agricultural-Sciences/Diploma-in-Animal-Production.aspx"
+    publisher: "University of Mpumalanga"
+    title: "Diploma in Animal Production (programme page: admission requirements)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ump-bagric-extension
+    url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Agriculture-and-Natural-Sciences/School-of-Agricultural-Sciences/Bachelor-of-Agriculture-in-Agricultural-Extension-.aspx"
+    publisher: "University of Mpumalanga"
+    title: "Bachelor of Agriculture in Agricultural Extension and Rural Resource Management (programme page: admission requirements)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ump-bsc-agriculture
+    url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Agriculture-and-Natural-Sciences/School-of-Agricultural-Sciences/Bachelor-of-Science-in-Agriculture.aspx"
+    publisher: "University of Mpumalanga"
+    title: "Bachelor of Science in Agriculture (programme page: admission requirements)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ump-bsc-forestry
+    url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Agriculture-and-Natural-Sciences/School-of-Agricultural-Sciences/Bachelor-of-Science-in-Forestry.aspx"
+    publisher: "University of Mpumalanga"
+    title: "Bachelor of Science in Forestry (programme page: admission requirements)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ump-dip-nature-conservation
+    url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Agriculture-and-Natural-Sciences/School-of-Biology-and-Environmental-Sciences/Diploma-in-Nature-Conservation.aspx"
+    publisher: "University of Mpumalanga"
+    title: "Diploma in Nature Conservation (programme page: admission requirements)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ump-bsc
+    url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Agriculture-and-Natural-Sciences/School-of-Biology-and-Environmental-Sciences/Bachelor-of-Science-Degree.aspx"
+    publisher: "University of Mpumalanga"
+    title: "Bachelor of Science Degree (programme page: admission requirements)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ump-bsc-environmental
+    url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Agriculture-and-Natural-Sciences/School-of-Biology-and-Environmental-Sciences/Bachelor-of-Science-in-Environmental-Science.aspx"
+    publisher: "University of Mpumalanga"
+    title: "Bachelor of Science in Environmental Science (programme page: admission requirements)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ump-hcert-ict
+    url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Agriculture-and-Natural-Sciences/School-of-Computing-and-Mathematical-Sciences/Higher-Certificate-in-Information-Communication-Te.aspx"
+    publisher: "University of Mpumalanga"
+    title: "Higher Certificate in Information Communication Technology in User Support (programme page: admission requirements)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ump-dip-ict
+    url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Agriculture-and-Natural-Sciences/School-of-Computing-and-Mathematical-Sciences/Diploma-in-ICT-in-Applications-Development.aspx"
+    publisher: "University of Mpumalanga"
+    title: "Diploma in ICT in Applications Development (programme page: admission requirements)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ump-bict
+    url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Agriculture-and-Natural-Sciences/School-of-Computing-and-Mathematical-Sciences/Bachelor-of-Information-and-Communication-Technolo.aspx"
+    publisher: "University of Mpumalanga"
+    title: "Bachelor of Information and Communication Technology (programme page: admission requirements)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ump-badmin
+    url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Economics,-Development-and-Business-Sci/School-of-Development-Studies/Bachelor-of-Administration.aspx"
+    publisher: "University of Mpumalanga"
+    title: "Bachelor of Administration (programme page: admission requirements)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ump-bcom
+    url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Economics,-Development-and-Business-Sci/School-of-Development-Studies/Bachelor-of-Commerce.aspx"
+    publisher: "University of Mpumalanga"
+    title: "Bachelor of Commerce (programme page: admission requirements)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ump-bdev
+    url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Economics,-Development-and-Business-Sci/School-of-Development-Studies/Bachelor-of-Development-Studies.aspx"
+    publisher: "University of Mpumalanga"
+    title: "Bachelor of Development Studies (programme page: admission requirements)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ump-llb
+    url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Economics,-Development-and-Business-Sci/School-of-Development-Studies/Bachelor-of-Laws.aspx"
+    publisher: "University of Mpumalanga"
+    title: "Bachelor of Laws (programme page: admission requirements)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ump-dip-entrepreneurship
+    url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Economics,-Development-and-Business-Sci/School-of-Development-Studies/Diploma-in-Entrepreneurship.aspx"
+    publisher: "University of Mpumalanga"
+    title: "Diploma in Entrepreneurship (programme page: admission requirements)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ump-hcert-events
+    url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Economics,-Development-and-Business-Sci/School-of-Hospitality-and-Tourism-Management/Higher-Certificate-in-Event-Management.aspx"
+    publisher: "University of Mpumalanga"
+    title: "Higher Certificate in Event Management (programme page: admission requirements)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ump-dip-hospitality
+    url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Economics,-Development-and-Business-Sci/School-of-Hospitality-and-Tourism-Management/Diploma-in-Hospitality-Management-(Revised-Curricu.aspx"
+    publisher: "University of Mpumalanga"
+    title: "Diploma in Hospitality Management (Revised Curriculum) (programme page: admission requirements)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ump-dip-culinary
+    url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Economics,-Development-and-Business-Sci/School-of-Hospitality-and-Tourism-Management/Diploma-in-Culinary-Arts.aspx"
+    publisher: "University of Mpumalanga"
+    title: "Diploma in Culinary Arts (programme page: admission requirements)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ump-ba
+    url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Economics,-Development-and-Business-Sci/School-of-Social-Sciences/Bachelor-of-Arts-General.aspx"
+    publisher: "University of Mpumalanga"
+    title: "Bachelor of Arts General (programme page: admission requirements)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ump-ba-media
+    url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Economics,-Development-and-Business-Sci/School-of-Social-Sciences/Bachelor-of-Arts-in-Media,-Communication-and-Cultu.aspx"
+    publisher: "University of Mpumalanga"
+    title: "Bachelor of Arts in Media, Communication and Culture (programme page: admission requirements)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ump-bsw
+    url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Economics,-Development-and-Business-Sci/School-of-Social-Sciences/Bachelor-of-Social-Work.aspx"
+    publisher: "University of Mpumalanga"
+    title: "Bachelor of Social Work (programme page: admission requirements)"
+    retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
