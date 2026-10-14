@@ -51,7 +51,7 @@ function RootNavigator() {
 
   return (
     <>
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
       <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.porcelain } }}>
         <Stack.Protected guard={status === 'signedOut' || status === 'unverified'}>
           <Stack.Screen name="(auth)" />

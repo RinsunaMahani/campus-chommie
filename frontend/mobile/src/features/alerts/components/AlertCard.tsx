@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   message: { fontFamily: fonts.body, fontSize: 14, lineHeight: 21, color: colors.text },
   action: { gap: 6, paddingTop: 10, borderTopWidth: 1, borderTopColor: colors.line },
   actionText: { fontFamily: fonts.medium, fontSize: 13.5, lineHeight: 20, color: colors.text },
-  service: { gap: 2, padding: 10, borderRadius: radius.sm, backgroundColor: colors.infoTint },
+  service: { gap: 2, padding: 10, borderRadius: radius.sm, backgroundColor: colors.iconTile },
   serviceName: { fontFamily: fonts.semibold, fontSize: 13, lineHeight: 18, color: colors.ink },
   contact: { fontFamily: fonts.bold, fontSize: 13.5, color: colors.ink },
   link: { flexDirection: 'row', alignItems: 'center', gap: 6, alignSelf: 'flex-start' },

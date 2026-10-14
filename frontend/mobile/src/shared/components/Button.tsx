@@ -47,10 +47,10 @@ export function Button({ title, onPress, variant = 'primary', icon, leading, loa
 }
 
 const variants: Record<Variant, { bg: string; fg: string; border: string }> = {
-  primary: { bg: colors.ink, fg: colors.white, border: colors.ink },
+  primary: { bg: colors.ink, fg: colors.pillText, border: colors.ink },
   secondary: { bg: colors.white, fg: colors.ink, border: colors.line },
-  accent: { bg: colors.accent, fg: colors.white, border: colors.accent },
-  danger: { bg: colors.garnet, fg: colors.white, border: colors.garnet },
+  accent: { bg: colors.accent, fg: colors.pillText, border: colors.accent },
+  danger: { bg: colors.garnet, fg: colors.pillText, border: colors.garnet },
 };
 
 const styles = StyleSheet.create({

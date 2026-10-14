@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
   },
   accountPicked: { borderColor: colors.ink, borderWidth: 1.5 },
   avatar: { width: 38, height: 38, borderRadius: radius.sm, alignItems: 'center', justifyContent: 'center' },
-  avatarText: { fontFamily: fonts.display, fontSize: 16, color: colors.white },
+  avatarText: { fontFamily: fonts.display, fontSize: 16, color: colors.pillText },
   name: { fontFamily: fonts.bold, fontSize: 14.5, color: colors.text },
   foot: { fontFamily: fonts.body, fontSize: 12, lineHeight: 17, color: colors.textMuted, marginTop: 4 },
 });

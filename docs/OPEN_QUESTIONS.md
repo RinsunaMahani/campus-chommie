@@ -329,8 +329,11 @@ other official language, and the results say which; second additional languages 
 - [ ] **Package name `za.campuschommie.app`.** Confirm before the first Play Store upload; it can't change after. The
   preview APK already uses it: changing it later is still possible, but phones with the preview would then see a
   second, separate app.
-- [ ] **App icon, colours and slogan** ("From choosing a course to graduating.") are placeholders drawn for M0:
-  keep or replace.
+- [x] **App icon and colours:** Rinsuna chose them on 13 Oct 2026 (#31): her forest theme, sampled from her
+  homescreen (forest moss, olive sage, warm sage gold, dusty mauve and terracotta rose, with dark forest-glass cards
+  and a white pill for the main action), for the whole app, and her interlocking CC as the app icon, adaptive icon and
+  splash. Text colours were checked for WCAG AA on every band of the wallpaper.
+- [ ] **Slogan** ("From choosing a course to graduating.") is a placeholder drawn for M0: keep or replace.
 - [ ] **Google sign-in** is hidden until `GOOGLE_READY` (client ids and a native build). When it's switched on,
   Google sign-up must show the 18-or-older tick too (the backend already refuses it without).
 - [ ] **Hosting** (brief section 14): which host, and an uptime check on `/api/v1/health`. Rate limits are counted in

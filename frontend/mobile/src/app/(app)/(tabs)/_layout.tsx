@@ -34,16 +34,28 @@ export default function TabsLayout() {
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: colors.accentDeep,
-        tabBarInactiveTintColor: colors.textMuted,
+        tabBarActiveTintColor: colors.ink,
+        tabBarInactiveTintColor: colors.textFaint,
         // A line height, or a label with a descender ('Money') loses its tail.
         tabBarLabelStyle: { fontFamily: fonts.bold, fontSize: 12.5, lineHeight: 18, marginTop: 2 },
-        tabBarItemStyle: { paddingTop: 8 },
+        // Each tab stacks 5 + 28 (icon) + 20 (label) + 5 = 58 under this padding. The dock's 76 holds that with
+        // the same gap above the pill as under the words; any less and the label's bottom is cut off.
+        tabBarItemStyle: { paddingTop: 11 },
+        // Floating glass, clear of the screen's edges and the system bar.
         tabBarStyle: {
-          backgroundColor: colors.white,
+          position: 'absolute',
+          left: 14,
+          right: 14,
+          bottom: 12 + insets.bottom,
+          height: 76,
+          paddingBottom: 0,
+          borderRadius: 24,
+          borderTopWidth: 1,
+          borderWidth: 1,
           borderTopColor: colors.line,
-          height: 78 + insets.bottom,
-          paddingBottom: 8 + insets.bottom,
+          borderColor: colors.line,
+          backgroundColor: colors.dock,
+          elevation: 0,
         },
         sceneStyle: { backgroundColor: colors.porcelain },
       }}>
