@@ -129,7 +129,7 @@ export function SubjectPicker({ chosen, onDone, onClose }: Props) {
                               {sub ? <Text style={styles.optSub}>{sub}</Text> : null}
                             </View>
                             <View style={[styles.check, on && styles.checkOn]}>
-                              {on ? <Feather name="check" size={14} color={colors.white} /> : null}
+                              {on ? <Feather name="check" size={14} color={colors.pillText} /> : null}
                             </View>
                           </Pressable>
                         );

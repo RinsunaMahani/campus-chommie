@@ -3,7 +3,7 @@
  */
 import { FontAwesome, Feather } from '@expo/vector-icons';
 import { ComponentProps, ReactNode } from 'react';
-import { Pressable, StyleSheet, Switch, Text, View, ViewStyle } from 'react-native';
+import { Platform, Pressable, StyleSheet, Switch, Text, View, ViewStyle } from 'react-native';
 
 import { colors, fonts, radius, sizes } from '@/shared/theme/tokens';
 
@@ -102,8 +102,10 @@ export function ToggleRow({
           onValueChange={onChange}
           disabled={locked}
           accessibilityLabel={title}
+          // On: the white pill with a dark knob. Off: a faint track with a white knob.
           trackColor={{ false: colors.line, true: locked ? colors.textFaint : colors.ink }}
-          thumbColor={colors.white}
+          thumbColor={value ? colors.pillText : colors.ink}
+          {...WEB_KNOB}
         />
       )}
     </View>
@@ -120,6 +122,9 @@ export function Tag({ label, tone = 'info' }: { label: string; tone?: Tone }) {
     </View>
   );
 }
+
+// The web switch takes its "on" knob colour from a prop of its own, or it turns teal.
+const WEB_KNOB = Platform.OS === 'web' ? ({ activeThumbColor: colors.pillText } as object) : {};
 
 const tones: Record<Tone, { bg: string; fg: string }> = {
   marigold: { bg: colors.marigoldTint, fg: colors.marigoldDeep },
