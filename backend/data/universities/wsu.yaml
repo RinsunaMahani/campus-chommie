@@ -2,6 +2,9 @@
 #
 # Agent draft, read on 13 Oct 2026 (docs/research/universities.md). Nobody has checked these values yet:
 # release stays false until a person has compared every one with its source.
+# The programmes are every first qualification in WSU's 2027 brochure (docs/research/wsu.md lists what to check
+# first), and the Faculty of Education's programmes carry their own points rule: seven subjects, Life Orientation
+# included, as WSU's example counts for Foundation Phase and as six of the faculty's other nine lists add up.
 
 university: wsu
 name: Walter Sisulu University
@@ -14,7 +17,7 @@ points_rules:
   source: s-wsu-brochure
   subjects_counted: 6
   life_orientation: exclude
-  note: "WSU counts English and one other language, then your four best other subjects; the Faculty of Education counts seven."
+  note: "WSU counts English and one other language, then your four best other subjects; its example for Foundation Phase teaching counts seven, Life Orientation included."
   scale:
     - {min_percent: 90, level: 8}
     - {min_percent: 80, level: 7}
@@ -38,7 +41,1466 @@ applications:
       closes: 2026-10-31
       note: "Applicants from outside South Africa closed on 30 September 2026."
 
-programmes: []
+programmes:
+
+  # Faculty of Economic and Financial Sciences, Mthatha (pages 6 and 7)
+
+  - id: dip_accountancy
+    name: "Diploma in Accountancy"
+    fields: [accounting, commerce]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 21
+      subject_minimums: {english: 3, mathematics: 3}
+      additional_minimums: [3, 3]
+
+  - id: dip_financial_information_systems
+    name: "Diploma in Financial Information Systems"
+    fields: [accounting, computing]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 21
+      subject_minimums: {english: 3, mathematics: 3}
+      additional_minimums: [3, 3]
+
+  - id: dip_internal_auditing
+    name: "Diploma in Internal Auditing"
+    fields: [accounting, commerce]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 21
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {accounting: 3}
+            - subjects: {mathematical_literacy: 5}
+
+  - id: dip_internal_auditing_ecp
+    name: "Diploma in Internal Auditing Extended Curriculum Programme (ECP)"
+    fields: [accounting, commerce]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 20
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {accounting: 3}
+            - subjects: {mathematical_literacy: 4}
+
+  - id: bacc
+    name: "Bachelor of Accounting"
+    fields: [accounting, commerce]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 25
+      subject_minimums: {english: 4, mathematics: 4}
+
+  - id: bacc_science
+    name: "Bachelor of Accounting Science"
+    fields: [accounting, commerce]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 27
+      subject_minimums: {english: 5, mathematics: 4}
+
+  - id: bcom
+    name: "Bachelor of Commerce"
+    fields: [commerce]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 25
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+
+  - id: bcom_business_management
+    name: "Bachelor of Commerce in Business Management"
+    fields: [commerce, management]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 25
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+
+  - id: bcom_economics
+    name: "Bachelor of Commerce in Economics"
+    fields: [commerce, economics]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 25
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 6}
+
+  # Faculty of Education, Komani with a delivery site at Mthatha (pages 8 to 10). Page 5 counts seven subjects for
+  # Foundation Phase, Life Orientation included (two languages, the best four others and Life Orientation); six of the
+  # other nine lists name seven subjects whose minimums add up to the APS asked. So each programme has its own points
+  # rule: WSU's scale, seven subjects (to confirm with WSU for all but Foundation Phase). "Any other subjects totalling N" rules are in extras. Each
+  # "any other African language" is checked as your other language, with the rule in extras.
+
+  - id: bed_foundation_phase
+    name: "Bachelor of Education in Foundation Phase Teaching"
+    fields: [education]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 24
+      subject_minimums: {life_orientation: 5, other_language: 4, english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "isiXhosa must be your home language (level 4 or more) and English your first additional language (level 4 or more)."
+        - "Any two other subjects must add up to at least 8 points."
+        - "WSU counts seven subjects for this programme, Life Orientation included."
+    points_rules:
+      source: s-wsu-brochure-2027
+      subjects_counted: 7
+      life_orientation: full
+      scale:
+        - {min_percent: 90, level: 8}
+        - {min_percent: 80, level: 7}
+        - {min_percent: 70, level: 6}
+        - {min_percent: 60, level: 5}
+        - {min_percent: 50, level: 4}
+        - {min_percent: 40, level: 3}
+        - {min_percent: 30, level: 2}
+        - {min_percent: 0, level: 1}
+
+  - id: bed_sp_fet_creative_arts_history
+    name: "Bachelor of Education in Senior Phase & FET Teaching (Creative Arts History)"
+    fields: [education, arts_and_design, humanities]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 24
+      subject_minimums: {english: 4, other_language: 4, history: 4}
+      choices:
+        - one_of:
+            - subjects: {music: 4}
+            - subjects: {dance_studies: 4}
+            - subjects: {dramatic_arts: 4}
+            - subjects: {visual_arts: 4}
+      extras:
+        - "Your other language must be an African language."
+        - "Any three other subjects must add up to at least 8 points."
+        - "Applicants without Music in matric do an audition and a music aptitude test."
+        - "We count seven subjects, Life Orientation included, as WSU's own example does for Education: ask WSU to confirm for this programme."
+    points_rules:
+      source: s-wsu-brochure-2027
+      subjects_counted: 7
+      life_orientation: full
+      scale:
+        - {min_percent: 90, level: 8}
+        - {min_percent: 80, level: 7}
+        - {min_percent: 70, level: 6}
+        - {min_percent: 60, level: 5}
+        - {min_percent: 50, level: 4}
+        - {min_percent: 40, level: 3}
+        - {min_percent: 30, level: 2}
+        - {min_percent: 0, level: 1}
+
+  - id: bed_sp_fet_creative_arts_english
+    name: "Bachelor of Education in Senior Phase & FET Teaching (Creative Arts English)"
+    fields: [education, arts_and_design, languages_and_communication]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 24
+      subject_minimums: {english: 5, other_language: 4}
+      choices:
+        - one_of:
+            - subjects: {music: 4}
+            - subjects: {dance_studies: 4}
+            - subjects: {dramatic_arts: 4}
+            - subjects: {visual_arts: 4}
+      additional_minimums: [4]
+      extras:
+        - "Your other language must be an African language."
+        - "Besides one more subject at level 4, any three other subjects must add up to at least 7 points."
+        - "Applicants without Music in matric do an audition and a music aptitude test."
+        - "We count seven subjects, Life Orientation included, as WSU's own example does for Education: ask WSU to confirm for this programme."
+    points_rules:
+      source: s-wsu-brochure-2027
+      subjects_counted: 7
+      life_orientation: full
+      scale:
+        - {min_percent: 90, level: 8}
+        - {min_percent: 80, level: 7}
+        - {min_percent: 70, level: 6}
+        - {min_percent: 60, level: 5}
+        - {min_percent: 50, level: 4}
+        - {min_percent: 40, level: 3}
+        - {min_percent: 30, level: 2}
+        - {min_percent: 0, level: 1}
+
+  # W62023 is on page 9 but not in the faculty's list of qualifications on page 8.
+  - id: bed_sp_fet_creative_arts_english_ecp
+    name: "Bachelor of Education in Senior Phase & FET Teaching (Creative Arts English) - ECP"
+    fields: [education, arts_and_design, languages_and_communication]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 22
+      subject_minimums: {english: 4, other_language: 4}
+      choices:
+        - one_of:
+            - subjects: {music: 3}
+            - subjects: {dance_studies: 3}
+            - subjects: {dramatic_arts: 3}
+            - subjects: {visual_arts: 3}
+      additional_minimums: [4]
+      extras:
+        - "Your other language must be an African language."
+        - "Besides one more subject at level 4, any three other subjects must add up to at least 7 points."
+        - "Applicants without Music in matric do an audition and a music aptitude test."
+        - "We count seven subjects, Life Orientation included, as WSU's own example does for Education: ask WSU to confirm for this programme."
+    points_rules:
+      source: s-wsu-brochure-2027
+      subjects_counted: 7
+      life_orientation: full
+      scale:
+        - {min_percent: 90, level: 8}
+        - {min_percent: 80, level: 7}
+        - {min_percent: 70, level: 6}
+        - {min_percent: 60, level: 5}
+        - {min_percent: 50, level: 4}
+        - {min_percent: 40, level: 3}
+        - {min_percent: 30, level: 2}
+        - {min_percent: 0, level: 1}
+
+  - id: bed_sp_fet_consumer_management
+    name: "Bachelor of Education in Senior Phase & FET Teaching (Consumer & Management Science)"
+    fields: [education, consumer_sciences, management]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 24
+      subject_minimums: {english: 4, other_language: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {mathematical_literacy: 4}
+        - one_of:
+            - subjects: {consumer_studies: 4}
+            - subjects: {hospitality_studies: 4}
+            - subjects: {tourism: 4}
+      extras:
+        - "Your other language must be an African language."
+        - "Any two other subjects must add up to at least 10 points."
+        - "We count seven subjects, Life Orientation included, as WSU's own example does for Education: ask WSU to confirm for this programme."
+    points_rules:
+      source: s-wsu-brochure-2027
+      subjects_counted: 7
+      life_orientation: full
+      scale:
+        - {min_percent: 90, level: 8}
+        - {min_percent: 80, level: 7}
+        - {min_percent: 70, level: 6}
+        - {min_percent: 60, level: 5}
+        - {min_percent: 50, level: 4}
+        - {min_percent: 40, level: 3}
+        - {min_percent: 30, level: 2}
+        - {min_percent: 0, level: 1}
+
+  - id: bed_sp_fet_economic_management
+    name: "Bachelor of Education in Senior Phase & FET Teaching (Economic & Management Science)"
+    fields: [education, commerce, economics]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 24
+      subject_minimums: {english: 4, other_language: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {mathematical_literacy: 4}
+        - one_of:
+            - subjects: {accounting: 4, business_studies: 4}
+            - subjects: {accounting: 4, economics: 4}
+            - subjects: {business_studies: 4, economics: 4}
+      extras:
+        - "Your other language must be an African language."
+        - "Any two other subjects must add up to at least 6 points."
+        - "We count seven subjects, Life Orientation included, as WSU's own example does for Education: ask WSU to confirm for this programme."
+    points_rules:
+      source: s-wsu-brochure-2027
+      subjects_counted: 7
+      life_orientation: full
+      scale:
+        - {min_percent: 90, level: 8}
+        - {min_percent: 80, level: 7}
+        - {min_percent: 70, level: 6}
+        - {min_percent: 60, level: 5}
+        - {min_percent: 50, level: 4}
+        - {min_percent: 40, level: 3}
+        - {min_percent: 30, level: 2}
+        - {min_percent: 0, level: 1}
+
+  - id: bed_sp_fet_humanities
+    name: "Bachelor of Education in Senior Phase & FET Teaching (Humanities)"
+    fields: [education, humanities]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 24
+      subject_minimums: {english: 4, other_language: 4, history: 4, geography: 4}
+      extras:
+        - "Your other language must be an African language."
+        - "Any three other subjects must add up to at least 8 points."
+        - "We count seven subjects, Life Orientation included, as WSU's own example does for Education: ask WSU to confirm for this programme."
+    points_rules:
+      source: s-wsu-brochure-2027
+      subjects_counted: 7
+      life_orientation: full
+      scale:
+        - {min_percent: 90, level: 8}
+        - {min_percent: 80, level: 7}
+        - {min_percent: 70, level: 6}
+        - {min_percent: 60, level: 5}
+        - {min_percent: 50, level: 4}
+        - {min_percent: 40, level: 3}
+        - {min_percent: 30, level: 2}
+        - {min_percent: 0, level: 1}
+
+  - id: bed_sp_fet_languages
+    name: "Bachelor of Education in Senior Phase & FET Teaching (Languages)"
+    fields: [education, languages_and_communication]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 24
+      subject_minimums: {english: 5, other_language: 4}
+      additional_minimums: [4, 4]
+      extras:
+        - "Your other language must be isiXhosa, as a home or first additional language."
+        - "Besides two more subjects at level 4, any three other subjects must add up to at least 7 points."
+        - "We count seven subjects, Life Orientation included, as WSU's own example does for Education: ask WSU to confirm for this programme."
+    points_rules:
+      source: s-wsu-brochure-2027
+      subjects_counted: 7
+      life_orientation: full
+      scale:
+        - {min_percent: 90, level: 8}
+        - {min_percent: 80, level: 7}
+        - {min_percent: 70, level: 6}
+        - {min_percent: 60, level: 5}
+        - {min_percent: 50, level: 4}
+        - {min_percent: 40, level: 3}
+        - {min_percent: 30, level: 2}
+        - {min_percent: 0, level: 1}
+
+  - id: bed_sp_fet_maths_science_technology
+    name: "Bachelor of Education in Senior Phase & FET Teaching (Maths, Science & Technology)"
+    fields: [education, mathematical_sciences, natural_sciences]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 24
+      subject_minimums: {english: 4, other_language: 4, mathematics: 4}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - "Your other language must be an African language."
+        - "Any two other subjects must add up to at least 8 points."
+        - "We count seven subjects, Life Orientation included, as WSU's own example does for Education: ask WSU to confirm for this programme."
+    points_rules:
+      source: s-wsu-brochure-2027
+      subjects_counted: 7
+      life_orientation: full
+      scale:
+        - {min_percent: 90, level: 8}
+        - {min_percent: 80, level: 7}
+        - {min_percent: 70, level: 6}
+        - {min_percent: 60, level: 5}
+        - {min_percent: 50, level: 4}
+        - {min_percent: 40, level: 3}
+        - {min_percent: 30, level: 2}
+        - {min_percent: 0, level: 1}
+
+  # "Any two technical subjects at 4 from the list": every pair from WSU's list of eight, in its order.
+  - id: bed_sp_fet_technical_vocational
+    name: "Bachelor of Education in Senior Phase & FET Teaching (Technical and Vocational Education)"
+    fields: [education, engineering]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 24
+      subject_minimums: {english: 4, other_language: 4}
+      choices:
+        - one_of:
+            - subjects: {technical_mathematics: 4, technical_sciences: 4}
+            - subjects: {technical_mathematics: 4, engineering_graphics_and_design: 4}
+            - subjects: {technical_mathematics: 4, civil_technology: 4}
+            - subjects: {technical_mathematics: 4, electrical_technology: 4}
+            - subjects: {technical_mathematics: 4, mechanical_technology: 4}
+            - subjects: {technical_mathematics: 4, mathematics: 4}
+            - subjects: {technical_mathematics: 4, physical_sciences: 4}
+            - subjects: {technical_sciences: 4, engineering_graphics_and_design: 4}
+            - subjects: {technical_sciences: 4, civil_technology: 4}
+            - subjects: {technical_sciences: 4, electrical_technology: 4}
+            - subjects: {technical_sciences: 4, mechanical_technology: 4}
+            - subjects: {technical_sciences: 4, mathematics: 4}
+            - subjects: {technical_sciences: 4, physical_sciences: 4}
+            - subjects: {engineering_graphics_and_design: 4, civil_technology: 4}
+            - subjects: {engineering_graphics_and_design: 4, electrical_technology: 4}
+            - subjects: {engineering_graphics_and_design: 4, mechanical_technology: 4}
+            - subjects: {engineering_graphics_and_design: 4, mathematics: 4}
+            - subjects: {engineering_graphics_and_design: 4, physical_sciences: 4}
+            - subjects: {civil_technology: 4, electrical_technology: 4}
+            - subjects: {civil_technology: 4, mechanical_technology: 4}
+            - subjects: {civil_technology: 4, mathematics: 4}
+            - subjects: {civil_technology: 4, physical_sciences: 4}
+            - subjects: {electrical_technology: 4, mechanical_technology: 4}
+            - subjects: {electrical_technology: 4, mathematics: 4}
+            - subjects: {electrical_technology: 4, physical_sciences: 4}
+            - subjects: {mechanical_technology: 4, mathematics: 4}
+            - subjects: {mechanical_technology: 4, physical_sciences: 4}
+            - subjects: {mathematics: 4, physical_sciences: 4}
+      extras:
+        - "Your other language must be an African language."
+        - "You need two of these at level 4 or more: Technical Mathematics, Technical Sciences, Engineering Graphics and Design, Civil Technology, Electrical Technology, Mechanical Technology, Mathematics and Physical Sciences."
+        - "Any two other subjects must add up to at least 8 points."
+        - "We count seven subjects, Life Orientation included, as WSU's own example does for Education: ask WSU to confirm for this programme."
+    points_rules:
+      source: s-wsu-brochure-2027
+      subjects_counted: 7
+      life_orientation: full
+      scale:
+        - {min_percent: 90, level: 8}
+        - {min_percent: 80, level: 7}
+        - {min_percent: 70, level: 6}
+        - {min_percent: 60, level: 5}
+        - {min_percent: 50, level: 4}
+        - {min_percent: 40, level: 3}
+        - {min_percent: 30, level: 2}
+        - {min_percent: 0, level: 1}
+
+  # Faculty of Engineering, Built Environment and Information Technology, Buffalo City with a delivery site at
+  # Butterworth (pages 11 to 14). Each extended curriculum programme (ECP) asks fewer points and takes applicants one
+  # level below the main stream in ONE of its subjects: its options list each way of doing that.
+
+  - id: dip_building_technology
+    name: "Diploma in Building Technology"
+    fields: [built_environment]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 24
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 3}
+            - subjects: {technical_sciences: 4}
+
+  # The brochure says both "a rating of 3" and "one level below the required levels": for Technical Mathematics (5)
+  # and Physical Sciences (3) these differ, so we use the stricter of the two (Technical Mathematics 4, Physical
+  # Sciences not lowered).
+  - id: dip_building_technology_ecp
+    name: "Diploma in Building Technology Extended Curriculum Programme (ECP)"
+    fields: [built_environment]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 22
+      choices:
+        - one_of:
+            - subjects: {english: 3, mathematics: 4, physical_sciences: 3}
+            - subjects: {english: 3, mathematics: 4, technical_sciences: 4}
+            - subjects: {english: 3, technical_mathematics: 5, physical_sciences: 3}
+            - subjects: {english: 3, technical_mathematics: 5, technical_sciences: 4}
+            - subjects: {english: 4, mathematics: 3, physical_sciences: 3}
+            - subjects: {english: 4, mathematics: 3, technical_sciences: 4}
+            - subjects: {english: 4, technical_mathematics: 4, physical_sciences: 3}
+            - subjects: {english: 4, technical_mathematics: 4, technical_sciences: 4}
+            - subjects: {english: 4, mathematics: 4, technical_sciences: 3}
+            - subjects: {english: 4, technical_mathematics: 5, technical_sciences: 3}
+      extras:
+        - "The extended programme takes applicants one level below the main stream's minimum in ONE of English, Mathematics (or Technical Mathematics) and Physical Sciences (or Technical Sciences)."
+
+  - id: dip_civil_engineering
+    name: "Diploma in Civil Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 24
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+
+  - id: dip_civil_engineering_ecp
+    name: "Diploma in Civil Engineering Extended Curriculum Programme (ECP)"
+    fields: [engineering]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 22
+      choices:
+        - one_of:
+            - subjects: {english: 3, mathematics: 4, physical_sciences: 4}
+            - subjects: {english: 4, mathematics: 3, physical_sciences: 4}
+            - subjects: {english: 4, mathematics: 4, physical_sciences: 3}
+      extras:
+        - "The extended programme takes applicants with level 3 in ONE of English, Mathematics and Physical Sciences."
+
+  - id: dip_electrical_engineering
+    name: "Diploma in Electrical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 24
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+
+  - id: dip_electrical_engineering_ecp
+    name: "Diploma in Electrical Engineering Extended Curriculum Programme (ECP)"
+    fields: [engineering]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 22
+      choices:
+        - one_of:
+            - subjects: {english: 3, mathematics: 4, physical_sciences: 4}
+            - subjects: {english: 4, mathematics: 3, physical_sciences: 4}
+            - subjects: {english: 4, mathematics: 4, physical_sciences: 3}
+      extras:
+        - "The extended programme takes applicants with level 3 in ONE of English, Mathematics and Physical Sciences."
+
+  - id: dip_mechanical_engineering
+    name: "Diploma in Mechanical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 24
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+
+  - id: dip_mechanical_engineering_ecp
+    name: "Diploma in Mechanical Engineering Extended Curriculum Programme (ECP)"
+    fields: [engineering]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 22
+      choices:
+        - one_of:
+            - subjects: {english: 3, mathematics: 4, physical_sciences: 4}
+            - subjects: {english: 3, mathematics: 4, technical_sciences: 4}
+            - subjects: {english: 3, technical_mathematics: 4, physical_sciences: 4}
+            - subjects: {english: 3, technical_mathematics: 4, technical_sciences: 4}
+            - subjects: {english: 4, mathematics: 3, physical_sciences: 4}
+            - subjects: {english: 4, mathematics: 3, technical_sciences: 4}
+            - subjects: {english: 4, technical_mathematics: 3, physical_sciences: 4}
+            - subjects: {english: 4, technical_mathematics: 3, technical_sciences: 4}
+            - subjects: {english: 4, mathematics: 4, physical_sciences: 3}
+            - subjects: {english: 4, mathematics: 4, technical_sciences: 3}
+            - subjects: {english: 4, technical_mathematics: 4, physical_sciences: 3}
+            - subjects: {english: 4, technical_mathematics: 4, technical_sciences: 3}
+      extras:
+        - "The extended programme takes applicants with level 3 in ONE of English, Mathematics (or Technical Mathematics) and Physical Sciences (or Technical Sciences)."
+
+  - id: dip_ict_applications_development
+    name: "Diploma in Information and Communications Technology in Applications Development"
+    fields: [computing]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 22
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+              min_points: 24
+
+  - id: dip_ict_applications_development_ecp
+    name: "Diploma in Information and Communications Technology in Applications Development Extended Curriculum Programme (ECP)"
+    fields: [computing]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 18
+      choices:
+        - one_of:
+            - subjects: {english: 3, mathematics: 3}
+            - subjects: {english: 4, mathematics: 2}
+            - subjects: {english: 3, mathematical_literacy: 5}
+              min_points: 20
+            - subjects: {english: 4, mathematical_literacy: 4}
+              min_points: 20
+      extras:
+        - "The extended programme takes applicants one level below the main stream's minimum in ONE of English and Mathematics (or Mathematical Literacy)."
+
+  - id: dip_ict_business_analysis
+    name: "Diploma in Information and Communications Technology in Business Analysis"
+    fields: [computing]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 22
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+              min_points: 24
+
+  - id: dip_ict_business_analysis_ecp
+    name: "Diploma in Information and Communications Technology in Business Analysis Extended Curriculum Programme (ECP)"
+    fields: [computing]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 18
+      choices:
+        - one_of:
+            - subjects: {english: 3, mathematics: 3}
+            - subjects: {english: 4, mathematics: 2}
+            - subjects: {english: 3, mathematical_literacy: 5}
+              min_points: 20
+            - subjects: {english: 4, mathematical_literacy: 4}
+              min_points: 20
+      extras:
+        - "The extended programme takes applicants one level below the main stream's minimum in ONE of English and Mathematics (or Mathematical Literacy)."
+
+  - id: dip_ict_communication_networks
+    name: "Diploma in Information and Communications Technology in Communication Networks"
+    fields: [computing]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 22
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+              min_points: 24
+
+  - id: dip_ict_communication_networks_ecp
+    name: "Diploma in Information and Communications Technology in Communication Networks Extended Curriculum Programme (ECP)"
+    fields: [computing]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 18
+      choices:
+        - one_of:
+            - subjects: {english: 3, mathematics: 3}
+            - subjects: {english: 4, mathematics: 2}
+            - subjects: {english: 3, mathematical_literacy: 5}
+              min_points: 20
+            - subjects: {english: 4, mathematical_literacy: 4}
+              min_points: 20
+      extras:
+        - "The extended programme takes applicants one level below the main stream's minimum in ONE of English and Mathematics (or Mathematical Literacy)."
+
+  - id: dip_ict_support_services
+    name: "Diploma in Information and Communications Technology in Support Services"
+    fields: [computing]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 22
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+              min_points: 24
+
+  - id: dip_ict_support_services_ecp
+    name: "Diploma in Information and Communications Technology in Support Services Extended Curriculum Programme (ECP)"
+    fields: [computing]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 18
+      choices:
+        - one_of:
+            - subjects: {english: 3, mathematics: 3}
+            - subjects: {english: 4, mathematics: 2}
+            - subjects: {english: 3, mathematical_literacy: 5}
+              min_points: 20
+            - subjects: {english: 4, mathematical_literacy: 4}
+              min_points: 20
+      extras:
+        - "The extended programme takes applicants one level below the main stream's minimum in ONE of English and Mathematics (or Mathematical Literacy)."
+
+  # Faculty of Law, Humanities and Social Sciences, Mthatha; Fashion and Fine Art at Buffalo City (pages 15 to 17).
+  # isiXhosa or Sesotho is checked as your other language, with the rule in extras.
+
+  - id: dip_fashion
+    name: "Diploma in Fashion"
+    fields: [arts_and_design]
+    selective: true
+    selection_note: "Students who meet the minimum requirements are evaluated to confirm their final placement."
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 19
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {mathematical_literacy: 3}
+            - subjects: {accounting: 2}
+
+  - id: dip_fine_art
+    name: "Diploma in Fine Art"
+    fields: [arts_and_design]
+    selective: true
+    selection_note: "Students who meet the minimum requirements are evaluated to confirm their final placement."
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 19
+      subject_minimums: {english: 3}
+      extras:
+        - "In exceptional cases, an excellent portfolio of artworks and passing WSU's internal assessment or interview can let a talented artist in with English at level 2."
+
+  - id: ba
+    name: "Bachelor of Arts"
+    fields: [humanities]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 25
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {other_language: 4, geography: 4}
+            - subjects: {other_language: 4, history: 4}
+            - subjects: {geography: 4, history: 4}
+      extras:
+        - "WSU asks for two of isiXhosa, Sesotho, Geography and History at level 4 or more: we count your other language as isiXhosa or Sesotho."
+
+  # The brochure asks for English "5 (50-59%)": level 5 is 60-69%, so we check the level both readings share (4).
+  - id: ba_english
+    name: "Bachelor of Arts (English)"
+    fields: [humanities, languages_and_communication]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 25
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {other_language: 4}
+            - subjects: {geography: 4}
+            - subjects: {history: 4}
+      extras:
+        - "WSU asks for English at \"5 (50-59%)\", but level 5 is 60-69%: ask WSU which it means."
+        - "You also need one of isiXhosa, Sesotho, Geography or History at level 4 or more: we count your other language as isiXhosa or Sesotho."
+
+  - id: bsocsc_anthropology
+    name: "Bachelor of Social Science (Anthropology)"
+    fields: [humanities]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 25
+      subject_minimums: {english: 4}
+      additional_minimums: [4, 4, 4, 4]
+
+  - id: bsocsc_anthropology_ecp
+    name: "Bachelor of Social Science (Anthropology) Extended Curriculum Programme (ECP)"
+    fields: [humanities]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 24
+      subject_minimums: {english: 3}
+      additional_minimums: [4, 4, 4, 4]
+
+  - id: bsocsc_criminology
+    name: "Bachelor of Social Science (Criminology)"
+    fields: [humanities, safety_and_justice]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 25
+      subject_minimums: {english: 4}
+      additional_minimums: [4, 4, 4, 4]
+
+  - id: bsocsc_criminology_ecp
+    name: "Bachelor of Social Science (Criminology) Extended Curriculum Programme (ECP)"
+    fields: [humanities, safety_and_justice]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 24
+      subject_minimums: {english: 3}
+      additional_minimums: [4, 4, 4, 4]
+
+  - id: bsocsc_philosophy
+    name: "Bachelor of Social Science (Philosophy)"
+    fields: [humanities]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 25
+      subject_minimums: {english: 4}
+      additional_minimums: [4, 4, 4, 4]
+
+  - id: bsocsc_philosophy_ecp
+    name: "Bachelor of Social Science (Philosophy) Extended Curriculum Programme (ECP)"
+    fields: [humanities]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 24
+      subject_minimums: {english: 3}
+      additional_minimums: [4, 4, 4, 4]
+
+  - id: bsocsc_political_studies
+    name: "Bachelor of Social Science (Political Studies)"
+    fields: [humanities]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 25
+      subject_minimums: {english: 4}
+      additional_minimums: [4, 4, 4, 4]
+
+  - id: bsocsc_political_studies_ecp
+    name: "Bachelor of Social Science (Political Studies) Extended Curriculum Programme (ECP)"
+    fields: [humanities]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 24
+      subject_minimums: {english: 3}
+      additional_minimums: [4, 4, 4, 4]
+
+  - id: bsocsc_population_studies
+    name: "Bachelor of Social Science (Population Studies)"
+    fields: [humanities]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 25
+      subject_minimums: {english: 4}
+      additional_minimums: [4, 4, 4, 4]
+
+  - id: bsocsc_population_studies_ecp
+    name: "Bachelor of Social Science (Population Studies) Extended Curriculum Programme (ECP)"
+    fields: [humanities]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 24
+      subject_minimums: {english: 3}
+      additional_minimums: [4, 4, 4, 4]
+
+  - id: bsocsc_psychology
+    name: "Bachelor of Social Science (Psychology)"
+    fields: [humanities]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 25
+      subject_minimums: {english: 4}
+      additional_minimums: [4, 4, 4, 4]
+
+  - id: bsocsc_psychology_ecp
+    name: "Bachelor of Social Science (Psychology) Extended Curriculum Programme (ECP)"
+    fields: [humanities]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 24
+      subject_minimums: {english: 3}
+      additional_minimums: [4, 4, 4, 4]
+
+  - id: bsocsc_sociology
+    name: "Bachelor of Social Science (Sociology)"
+    fields: [humanities]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 25
+      subject_minimums: {english: 4}
+      additional_minimums: [4, 4, 4, 4]
+
+  - id: bsocsc_sociology_ecp
+    name: "Bachelor of Social Science (Sociology) Extended Curriculum Programme (ECP)"
+    fields: [humanities]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 24
+      subject_minimums: {english: 3}
+      additional_minimums: [4, 4, 4, 4]
+
+  - id: llb
+    name: "Bachelor of Laws"
+    fields: [law]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 26
+      subject_minimums: {english: 5}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+
+  # "An achievement in any two subjects as follows": we read it as any two of the three it lists.
+  - id: bpsych
+    name: "Bachelor of Psychology"
+    fields: [humanities, health_sciences]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 26
+      choices:
+        - one_of:
+            - subjects: {english: 4, other_language: 4}
+            - subjects: {english: 4, life_sciences: 4}
+            - subjects: {other_language: 4, life_sciences: 4}
+      extras:
+        - "WSU asks for any two of these at level 4 or more: English, another African language and Life Sciences."
+
+  # Same heading as Psychology ("any two subjects as follows") over four lines, the last being three other subjects:
+  # we read it as any two of the first three, plus three other subjects at level 4. Check with WSU.
+  - id: bsw
+    name: "Bachelor of Social Work"
+    fields: [humanities]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 26
+      choices:
+        - one_of:
+            - subjects: {english: 4, other_language: 5}
+            - subjects: {english: 4, life_sciences: 4}
+            - subjects: {other_language: 5, life_sciences: 4}
+      additional_minimums: [4, 4, 4]
+      extras:
+        - "WSU asks for any two of English (level 4), another African language (level 5) and Life Sciences (level 4), and level 4 in three other subjects that aren't on that list, Life Orientation excluded."
+        - "WSU checks the character references of everyone it admits: a negative check can lead to deregistration."
+
+  # Faculty of Management and Public Administration Sciences, Butterworth, with some programmes at Buffalo City and
+  # Komani (pages 18 to 21). "Any other language" isn't a subject we can check on its own: it counts among the
+  # additional subjects, with the rule in extras.
+
+  - id: hcert_versatile_broadcasting
+    name: "Higher Certificate in Versatile Broadcasting"
+    fields: [languages_and_communication]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 18
+      subject_minimums: {english: 4}
+      additional_minimums: [3, 3, 3]
+      extras:
+        - "WSU asks for another language besides English at level 3 or more, and any two more subjects at level 3 or more."
+
+  - id: dip_administrative_management
+    name: "Diploma in Administrative Management"
+    fields: [management]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 21
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {mathematical_literacy: 4}
+      additional_minimums: [4, 4]
+
+  - id: dip_hospitality_management
+    name: "Diploma in Hospitality Management"
+    fields: [tourism_and_hospitality, management]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 21
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      additional_minimums: [3, 3, 3]
+      extras:
+        - "WSU asks for three relevant school subjects at level 3 or more."
+
+  - id: dip_human_resources_management
+    name: "Diploma in Human Resources Management"
+    fields: [management]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 21
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      additional_minimums: [3, 3]
+
+  - id: dip_human_resources_management_ecp
+    name: "Diploma in Human Resources Management Extended Curriculum Programme (ECP)"
+    fields: [management]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 20
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {mathematical_literacy: 3}
+      additional_minimums: [3, 3]
+
+  - id: dip_journalism
+    name: "Diploma in Journalism"
+    fields: [languages_and_communication]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 21
+      subject_minimums: {english: 5}
+      additional_minimums: [4, 4, 4]
+      extras:
+        - "WSU asks for another language besides English at level 4 or more, and any two more subjects at level 4 or more."
+
+  # Page 20 says "one of the three options below" but lists two (Accounting or Mathematics).
+  - id: dip_local_government_finance
+    name: "Diploma in Local Government Finance"
+    fields: [public_administration, finance]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 21
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {accounting: 3}
+            - subjects: {mathematics: 3}
+
+  - id: dip_local_government_finance_ecp
+    name: "Diploma in Local Government Finance Extended Curriculum Programme (ECP)"
+    fields: [public_administration, finance]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 20
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {accounting: 2}
+            - subjects: {mathematics: 2}
+
+  - id: dip_management
+    name: "Diploma in Management"
+    fields: [management]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 21
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {accounting: 3}
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+
+  - id: dip_management_ecp
+    name: "Diploma in Management Extended Curriculum Programme (ECP)"
+    fields: [management]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 20
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {accounting: 2}
+            - subjects: {mathematics: 2}
+            - subjects: {mathematical_literacy: 3}
+
+  - id: dip_marketing_management
+    name: "Diploma in Marketing Management"
+    fields: [management, commerce]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 21
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      additional_minimums: [3, 3]
+
+  - id: dip_policing
+    name: "Diploma in Policing"
+    fields: [safety_and_justice]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 21
+      subject_minimums: {english: 3}
+      additional_minimums: [3, 3, 3, 3]
+
+  - id: dip_office_management_technology
+    name: "Diploma in Office Management & Technology"
+    fields: [management]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 21
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      additional_minimums: [4, 4]
+
+  - id: dip_office_management_technology_ecp
+    name: "Diploma in Office Management & Technology Extended Curriculum Programme (ECP)"
+    fields: [management]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 19
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {mathematical_literacy: 3}
+      additional_minimums: [3, 3]
+
+  - id: dip_public_management
+    name: "Diploma in Public Management"
+    fields: [public_administration, management]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 21
+      subject_minimums: {english: 3}
+      additional_minimums: [3, 3, 3, 3]
+
+  - id: dip_public_relations_management
+    name: "Diploma in Public Relations Management"
+    fields: [languages_and_communication, management]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 21
+      subject_minimums: {english: 5}
+      additional_minimums: [4, 4, 4]
+      extras:
+        - "WSU asks for another language besides English at level 4 or more, and any two more subjects at level 4 or more."
+
+  - id: dip_public_relations_management_ecp
+    name: "Diploma in Public Relations Management Extended Curriculum Programme (ECP)"
+    fields: [languages_and_communication, management]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 19
+      subject_minimums: {english: 4}
+      additional_minimums: [3, 3, 3]
+      extras:
+        - "WSU asks for another language besides English at level 3 or more, and any two more subjects at level 3 or more."
+
+  - id: dip_small_business_management
+    name: "Diploma in Small Business Management"
+    fields: [management, commerce]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 21
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {accounting: 3}
+            - subjects: {mathematical_literacy: 4}
+      additional_minimums: [3, 3]
+
+  - id: dip_sport_management
+    name: "Diploma in Sport Management"
+    fields: [sport_science, management]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 21
+      subject_minimums: {english: 3}
+      additional_minimums: [3, 3, 3]
+
+  - id: dip_tourism_management
+    name: "Diploma in Tourism Management"
+    fields: [tourism_and_hospitality, management]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 21
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      additional_minimums: [3, 3, 3]
+      extras:
+        - "WSU asks for three relevant school subjects at level 3 or more."
+
+  - id: badmin
+    name: "Bachelor of Administration"
+    fields: [public_administration, management]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 25
+      subject_minimums: {english: 4}
+      additional_minimums: [4, 4, 4, 4]
+
+  # Faculty of Medicine and Health Sciences, Mthatha (pages 22 and 23). "Any other African language" is checked as
+  # your other language, and "any other subject" outside the list (not Life Orientation) as one more subject.
+
+  - id: bmedsc
+    name: "Bachelor of Medical Sciences"
+    fields: [medical_sciences, life_sciences]
+    selective: true
+    selection_note: "Additional selection criteria apply when final selections are made: WSU's faculty prospectus has the details."
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 24
+      subject_minimums: {english: 4, other_language: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+      additional_minimums: [4]
+      extras:
+        - "Your other language must be an African language."
+
+  - id: bmed_clinical_practice
+    name: "Bachelor of Medicine in Clinical Practice"
+    fields: [health_sciences, medicine]
+    selective: true
+    selection_note: "Additional selection criteria apply when final selections are made: WSU's faculty prospectus has the details."
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 24
+      subject_minimums: {english: 4, other_language: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+      additional_minimums: [4]
+      extras:
+        - "Your other language must be an African language."
+
+  - id: bnursing
+    name: "Bachelor of Nursing"
+    fields: [nursing]
+    selective: true
+    selection_note: "Additional selection criteria apply when final selections are made: WSU's faculty prospectus has the details."
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 24
+      subject_minimums: {english: 4, other_language: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+      additional_minimums: [4]
+      extras:
+        - "Your other language must be an African language."
+
+  - id: bhsc_orthotics_prosthetics
+    name: "Bachelor of Health Sciences in Medical Orthotics and Prosthetics"
+    fields: [health_sciences, rehabilitation]
+    selective: true
+    selection_note: "Additional selection criteria apply when final selections are made: WSU's faculty prospectus has the details."
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 24
+      subject_minimums: {english: 4, other_language: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+      additional_minimums: [4]
+      extras:
+        - "Your other language must be an African language."
+
+  # Page 23 labels this row W65005 (the orthotics code); the faculty's list on page 22 gives W65006.
+  - id: mbchb
+    name: "Bachelor of Medicine and Bachelor of Surgery"
+    fields: [medicine]
+    selective: true
+    selection_note: "Additional selection criteria apply when final selections are made: WSU's faculty prospectus has the details."
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 30
+      subject_minimums: {english: 5, other_language: 5, mathematics: 5, physical_sciences: 5, life_sciences: 5}
+      additional_minimums: [5]
+      extras:
+        - "Your other language must be an African language."
+
+  # Faculty of Natural Sciences, Mthatha; the applied sciences diplomas (Analytical Chemistry, Consumer Science) at
+  # Buffalo City (pages 24 to 28). Where an extended stream asks "3 for two of the majors and 4 for the third", the
+  # options list the three ways of doing that.
+
+  - id: dip_analytical_chemistry
+    name: "Diploma in Analytical Chemistry"
+    fields: [physical_sciences, natural_sciences]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 22
+      subject_minimums: {english: 4, mathematics: 3, physical_sciences: 4}
+
+  # The extended stream lists English at 3 and also says "as for main-stream" (English 4): we use the 3 it lists.
+  - id: dip_analytical_chemistry_ecp
+    name: "Diploma in Analytical Chemistry Extended Curriculum Programme (ECP)"
+    fields: [physical_sciences, natural_sciences]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 20
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 4}
+      extras:
+        - "WSU lists English at level 3 for the extended stream but also calls it \"as for main-stream\", which asks level 4: ask WSU."
+
+  # Page 26 asks Physical Sciences "4 (40-49%)": level 4 is 50-59%, so we check the level both readings share (3).
+  - id: dip_consumer_science_food_nutrition
+    name: "Diploma in Consumer Science in Food and Nutrition"
+    fields: [consumer_sciences, food_science, nutrition]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 22
+      subject_minimums: {english: 4, mathematics: 3, physical_sciences: 3}
+      extras:
+        - "WSU asks for Physical Sciences at \"4 (40-49%)\", but level 4 is 50-59%: ask WSU which it means."
+
+  - id: dip_consumer_science_food_nutrition_ecp
+    name: "Diploma in Consumer Science in Food and Nutrition Extended Curriculum Programme (ECP)"
+    fields: [consumer_sciences, food_science, nutrition]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 20
+      subject_minimums: {english: 4, mathematics: 3, physical_sciences: 3}
+
+  # Page 26 asks Physical Sciences "3 (30-39%)": level 3 is 40-49%, so we check the level both readings share (2).
+  - id: dip_pest_management
+    name: "Diploma in Pest Management"
+    fields: [agriculture, life_sciences]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 21
+      subject_minimums: {english: 4, mathematics: 3, life_sciences: 3, physical_sciences: 2}
+      extras:
+        - "WSU asks for Physical Sciences at \"3 (30-39%)\", but level 3 is 40-49%: ask WSU which it means."
+
+  - id: bsc_applied_mathematics
+    name: "Bachelor of Science in Applied Mathematics"
+    fields: [mathematical_sciences, natural_sciences]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 25
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 4}
+
+  - id: bsc_applied_mathematics_ecp
+    name: "Bachelor of Science in Applied Mathematics Extended Curriculum Programme (ECP)"
+    fields: [mathematical_sciences, natural_sciences]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 23
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 3}
+
+  - id: bsc_applied_statistical_sciences
+    name: "Bachelor of Science in Applied Statistical Sciences"
+    fields: [mathematical_sciences, natural_sciences]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 25
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 4}
+
+  - id: bsc_applied_statistical_sciences_ecp
+    name: "Bachelor of Science in Applied Statistical Sciences Extended Curriculum Programme (ECP)"
+    fields: [mathematical_sciences, natural_sciences]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 23
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 3}
+
+  - id: bsc_biological_sciences
+    name: "Bachelor of Science in Biological Sciences"
+    fields: [life_sciences, natural_sciences]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 25
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 5, life_sciences: 5}
+
+  - id: bsc_biological_sciences_ecp
+    name: "Bachelor of Science in Biological Sciences Extended Curriculum Programme (ECP)"
+    fields: [life_sciences, natural_sciences]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 23
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4, physical_sciences: 3, life_sciences: 3}
+            - subjects: {mathematics: 3, physical_sciences: 4, life_sciences: 3}
+            - subjects: {mathematics: 3, physical_sciences: 3, life_sciences: 4}
+
+  - id: bsc_chemistry
+    name: "Bachelor of Science in Chemistry"
+    fields: [physical_sciences, natural_sciences]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 25
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 5}
+
+  - id: bsc_chemistry_ecp
+    name: "Bachelor of Science in Chemistry Extended Curriculum Programme (ECP)"
+    fields: [physical_sciences, natural_sciences]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 23
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+
+  - id: bsc_computer_science
+    name: "Bachelor of Science in Computer Science"
+    fields: [computing, natural_sciences]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 25
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 4}
+
+  - id: bsc_computer_science_ecp
+    name: "Bachelor of Science in Computer Science Extended Curriculum Programme (ECP)"
+    fields: [computing, natural_sciences]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 23
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 3}
+
+  - id: bsc_environmental_studies
+    name: "Bachelor of Science in Environmental Studies"
+    fields: [earth_sciences, natural_sciences]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 25
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+            - subjects: {tourism: 4}
+      extras:
+        - "WSU writes \"Agriculture\": we read it as Agricultural Sciences, so ask WSU if you have another agriculture subject."
+
+  # The brochure gives no English minimum for this extended stream.
+  - id: bsc_environmental_studies_ecp
+    name: "Bachelor of Science in Environmental Studies Extended Curriculum Programme (ECP)"
+    fields: [earth_sciences, natural_sciences]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 23
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4, physical_sciences: 3, life_sciences: 3}
+            - subjects: {mathematics: 3, physical_sciences: 4, life_sciences: 3}
+            - subjects: {mathematics: 3, physical_sciences: 3, life_sciences: 4}
+
+  - id: bsc_mathematics
+    name: "Bachelor of Science in Mathematics"
+    fields: [mathematical_sciences, natural_sciences]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 25
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 4}
+
+  - id: bsc_mathematics_ecp
+    name: "Bachelor of Science in Mathematics Extended Curriculum Programme (ECP)"
+    fields: [mathematical_sciences, natural_sciences]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 23
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 3}
+
+  # The main stream's list runs from page 27 onto page 28.
+  - id: bsc_pest_management
+    name: "Bachelor of Science in Pest Management"
+    fields: [life_sciences, agriculture, natural_sciences]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 25
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+
+  - id: bsc_pest_management_ecp
+    name: "Bachelor of Science in Pest Management Extended Curriculum Programme (ECP)"
+    fields: [life_sciences, agriculture, natural_sciences]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 23
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4, physical_sciences: 3, life_sciences: 3}
+            - subjects: {mathematics: 3, physical_sciences: 4, life_sciences: 3}
+            - subjects: {mathematics: 3, physical_sciences: 3, life_sciences: 4}
+
+  - id: bsc_physics
+    name: "Bachelor of Science in Physics"
+    fields: [physical_sciences, natural_sciences]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 25
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 5}
+
+  - id: bsc_physics_ecp
+    name: "Bachelor of Science in Physics Extended Curriculum Programme (ECP)"
+    fields: [physical_sciences, natural_sciences]
+    requirements:
+      source: s-wsu-brochure-2027
+      min_points: 23
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
 
 sources:
   - id: s-wsu-brochure
@@ -52,6 +1514,13 @@ sources:
     url: "https://www.wsu.ac.za/index.php/en/study-with-us/application-and-registration/how-to-apply-the-process"
     publisher: "Walter Sisulu University"
     title: "How to apply: the process"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wsu-brochure-2027
+    url: "https://wsu.ac.za/media/attachments/2026/05/27/2027-information-brochure-admission-requirements.pdf"
+    publisher: "Walter Sisulu University"
+    title: "2027 Undergraduate Information Brochure & Admission Requirements (programmes and their requirements, pages 6 to 28; the Faculty of Education's seven-subject APS, page 5)"
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
