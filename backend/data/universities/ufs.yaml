@@ -4,6 +4,9 @@
 # UFS's 2027 MBChB selection rules; the scale from its conversion table, read through a search engine. Its
 # 2027 closing date wasn't found. Nobody has checked these values yet: release stays false until a person
 # has compared every one with its source.
+#
+# The 172 programmes (agent draft, 14 Oct 2026) come from UFS's 2027 undergraduate prospectus, and its extended
+# programmes from the 2026 faculty rule books; docs/research/ufs.md gives the pages and what to check first.
 
 university: ufs
 name: University of the Free State
@@ -37,7 +40,1861 @@ applications:
   url: https://www.ufs.ac.za/prospective
   windows: []               # 2027 dates not found on the pages read
 
-programmes: []
+programmes:
+
+  # Economic and Management Sciences, Bloemfontein Campus (prospectus pages 14 and 15)
+
+  - id: bcom
+    name: "Bachelor of Commerce (BCom)"
+    fields: [commerce]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4}
+
+  - id: bcom_economics
+    name: "BCom with specialisation in Economics"
+    fields: [commerce, economics]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4}
+
+  - id: bcom_finance
+    name: "BCom with specialisation in Finance"
+    fields: [commerce, finance]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4}
+
+  - id: bcom_business_analytics
+    name: "BCom with specialisation in Business Analytics"
+    fields: [commerce, mathematical_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 34
+      subject_minimums: {english: 4, mathematics: 5}
+
+  - id: bcom_marketing
+    name: "BCom with specialisation in Marketing"
+    fields: [commerce, management]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 3}
+
+  - id: bcom_business_management
+    name: "BCom with specialisation in Business Management"
+    fields: [commerce, management]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 3}
+
+  - id: bcom_human_resource_management
+    name: "BCom with specialisation in Human Resource Management"
+    fields: [commerce, management]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 3}
+
+  - id: bcom_law
+    name: "BCom (Law)"
+    fields: [commerce, law]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 33
+      subject_minimums: {english: 4, mathematics: 4}
+
+  - id: badmin
+    name: "Bachelor of Administration (BAdmin)"
+    fields: [public_administration, management]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 2}
+      extras:
+        - "UFS's 2026 EMS rule book also accepts Mathematical Literacy at level 5 (60%) instead of Mathematics; the 2027 prospectus names only Mathematics, so ask UFS."
+
+  - id: bacc
+    name: "Bachelor of Accounting (BAcc)"
+    fields: [accounting, commerce]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 34
+      subject_minimums: {english: 4, mathematics: 5}
+
+  - id: bcom_accounting
+    name: "BCom (Accounting)"
+    fields: [accounting, commerce]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4}
+
+  # Economic and Management Sciences, Qwaqwa Campus (prospectus page 15)
+
+  - id: bcom_management_qwaqwa
+    name: "BCom with specialisation in Management (Qwaqwa Campus)"
+    fields: [commerce, management]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4}
+
+  - id: badmin_qwaqwa
+    name: "Bachelor of Administration (Qwaqwa Campus)"
+    fields: [public_administration, management]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 2}
+      extras:
+        - "UFS's 2026 EMS rule book also accepts Mathematical Literacy at level 5 (60%) instead of Mathematics; the 2027 prospectus names only Mathematics, so ask UFS."
+
+  # Economic and Management Sciences, extended curriculum programmes: not in the 2027 prospectus, so from the
+  # 2026 EMS rule book (pages 8 and 9)
+
+  - id: bcom_extended
+    name: "BCom (extended curriculum programme)"
+    fields: [commerce]
+    requirements:
+      source: s-ufs-rb-ems-2026
+      min_points: 24
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {mathematics: 3}
+              min_points: 28
+      extras:
+        - "UFS's 2026 EMS rule book: an AP of 24 to 27 with Mathematics 4, or an AP of 28 with Mathematics 3. With an AP of 28 or more and Mathematics 4, you'd meet the mainstream BCom instead."
+        - "You can't apply for this directly: apply for the mainstream programme, and UFS places you here if you qualify and space allows, higher scores first (2027 prospectus)."
+
+  - id: bcom_accounting_extended
+    name: "BCom (Accounting) (extended curriculum programme)"
+    fields: [accounting, commerce]
+    requirements:
+      source: s-ufs-rb-ems-2026
+      min_points: 24
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {mathematics: 3}
+              min_points: 28
+      extras:
+        - "UFS's 2026 EMS rule book: an AP of 24 to 27 with Mathematics 4, or an AP of 28 with Mathematics 3. With an AP of 28 or more and Mathematics 4, you'd meet the mainstream BCom (Accounting) instead."
+        - "You can't apply for this directly: apply for the mainstream programme, and UFS places you here if you qualify and space allows, higher scores first (2027 prospectus)."
+
+  - id: bcom_management_extended_qwaqwa
+    name: "BCom with specialisation in Management (extended curriculum programme, Qwaqwa Campus)"
+    fields: [commerce, management]
+    requirements:
+      source: s-ufs-rb-ems-2026
+      min_points: 24
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {mathematics: 3}
+              min_points: 28
+      extras:
+        - "UFS's 2026 EMS rule book: an AP of 24 to 27 with Mathematics 4, or an AP of 28 with Mathematics 3. With an AP of 28 or more and Mathematics 4, you'd meet the mainstream BCom with specialisation in Management instead."
+        - "You can't apply for this directly: apply for the mainstream programme, and UFS places you here if you qualify and space allows, higher scores first (2027 prospectus)."
+
+  - id: badmin_extended
+    name: "Bachelor of Administration (extended curriculum programme; Bloemfontein and Qwaqwa campuses)"
+    fields: [public_administration, management]
+    requirements:
+      source: s-ufs-rb-ems-2026
+      min_points: 24
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {mathematical_literacy: 5}
+      extras:
+        - "UFS's 2026 EMS rule book: an AP of 24 to 27. With 28 or more, you'd be considered for the mainstream BAdmin."
+        - "Without the Mathematics level a BCom asks, you can't move to a BCom later (2026 rule book)."
+        - "You can't apply for this directly: apply for the mainstream programme, and UFS places you here if you qualify and space allows, higher scores first (2027 prospectus)."
+
+  # Education (prospectus pages 16 and 17). Each language specialisation asks a named home language, checked
+  # as your other language with the exact rule in extras.
+
+  - id: bed_fp_afrikaans
+    name: "BEd in Foundation Phase: specialisation in Afrikaans Home Language (South Campus)"
+    fields: [education]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, other_language: 4}
+      extras:
+        - "The other language must be Afrikaans at home language level, at level 4 (50%); the app can't tell which language you took."
+        - "English first additional language at level 4 (50%) is enough."
+        - "UFS's 2026 Education rule book counts only the subjects it lists towards the AP; Computer Applications Technology, Tourism and Hospitality Studies are among those not listed, so your AP here may be lower than shown."
+
+  - id: bed_fp_sesotho
+    name: "BEd in Foundation Phase: specialisation in Sesotho Home Language (South and Qwaqwa campuses)"
+    fields: [education]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, other_language: 4}
+      extras:
+        - "The other language must be Sesotho at home language level, at level 4 (50%); the app can't tell which language you took."
+        - "English first additional language at level 4 (50%) is enough."
+        - "UFS's 2026 Education rule book counts only the subjects it lists towards the AP; Computer Applications Technology, Tourism and Hospitality Studies are among those not listed, so your AP here may be lower than shown."
+
+  - id: bed_fp_isizulu
+    name: "BEd in Foundation Phase: specialisation in isiZulu Home Language (Qwaqwa Campus)"
+    fields: [education]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, other_language: 4}
+      extras:
+        - "The other language must be isiZulu at home language level, at level 4 (50%); the app can't tell which language you took."
+        - "English first additional language at level 4 (50%) is enough."
+        - "UFS's 2026 Education rule book counts only the subjects it lists towards the AP; Computer Applications Technology, Tourism and Hospitality Studies are among those not listed, so your AP here may be lower than shown."
+
+  - id: bed_fp_english
+    name: "BEd in Foundation Phase: specialisation in English Home Language (South Campus)"
+    fields: [education]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, other_language: 4}
+      extras:
+        - "English must be your home language, at level 4 (50%)."
+        - "Afrikaans at level 4 (50%) is also required: the app checks your other language and can't tell which it is."
+        - "UFS's 2026 Education rule book counts only the subjects it lists towards the AP; Computer Applications Technology, Tourism and Hospitality Studies are among those not listed, so your AP here may be lower than shown."
+
+  - id: bed_ip_mnst_afrikaans
+    name: "BEd in Intermediate Phase: Mathematics, Natural Sciences and Technology, and Afrikaans Home Language"
+    fields: [education]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 4, other_language: 4}
+      extras:
+        - "The other language must be Afrikaans at home language level, at level 4 (50%); the app can't tell which language you took."
+        - "UFS's 2026 Education rule book counts only the subjects it lists towards the AP; Computer Applications Technology, Tourism and Hospitality Studies are among those not listed, so your AP here may be lower than shown."
+
+  - id: bed_ip_lsss_afrikaans
+    name: "BEd in Intermediate Phase: Life Skills and Social Sciences, and Afrikaans Home Language"
+    fields: [education]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, other_language: 4}
+      extras:
+        - "The other language must be Afrikaans at home language level, at level 4 (50%); the app can't tell which language you took."
+        - "UFS's 2026 Education rule book counts only the subjects it lists towards the AP; Computer Applications Technology, Tourism and Hospitality Studies are among those not listed, so your AP here may be lower than shown."
+
+  - id: bed_ip_mnst_sesotho
+    name: "BEd in Intermediate Phase: Mathematics, Natural Sciences and Technology, and Sesotho Home Language (Bloemfontein and Qwaqwa campuses)"
+    fields: [education]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 4, other_language: 4}
+      extras:
+        - "The other language must be Sesotho at home language level, at level 4 (50%); the app can't tell which language you took."
+        - "UFS's 2026 Education rule book counts only the subjects it lists towards the AP; Computer Applications Technology, Tourism and Hospitality Studies are among those not listed, so your AP here may be lower than shown."
+
+  - id: bed_ip_lsss_sesotho
+    name: "BEd in Intermediate Phase: Life Skills and Social Sciences, and Sesotho Home Language (Bloemfontein and Qwaqwa campuses)"
+    fields: [education]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, other_language: 4}
+      extras:
+        - "The other language must be Sesotho at home language level, at level 4 (50%); the app can't tell which language you took."
+        - "UFS's 2026 Education rule book counts only the subjects it lists towards the AP; Computer Applications Technology, Tourism and Hospitality Studies are among those not listed, so your AP here may be lower than shown."
+
+  - id: bed_ip_mnst_isizulu
+    name: "BEd in Intermediate Phase: Mathematics, Natural Sciences and Technology, and isiZulu Home Language (Qwaqwa Campus)"
+    fields: [education]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 4, other_language: 4}
+      extras:
+        - "The other language must be isiZulu at home language level, at level 4 (50%); the app can't tell which language you took."
+        - "UFS's 2026 Education rule book counts only the subjects it lists towards the AP; Computer Applications Technology, Tourism and Hospitality Studies are among those not listed, so your AP here may be lower than shown."
+
+  - id: bed_ip_lsss_isizulu
+    name: "BEd in Intermediate Phase: Life Skills and Social Sciences, and isiZulu Home Language (Qwaqwa Campus)"
+    fields: [education]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, other_language: 4}
+      extras:
+        - "The other language must be isiZulu at home language level, at level 4 (50%); the app can't tell which language you took."
+        - "UFS's 2026 Education rule book counts only the subjects it lists towards the AP; Computer Applications Technology, Tourism and Hospitality Studies are among those not listed, so your AP here may be lower than shown."
+
+  - id: bed_ip_mnst_english
+    name: "BEd in Intermediate Phase: Mathematics, Natural Sciences and Technology, and English Home Language"
+    fields: [education]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 4, other_language: 4}
+      extras:
+        - "English must be your home language, at level 4 (50%)."
+        - "Afrikaans first additional language at level 4 (50%) is also required: the app checks your other language and can't tell which it is."
+        - "UFS's 2026 Education rule book counts only the subjects it lists towards the AP; Computer Applications Technology, Tourism and Hospitality Studies are among those not listed, so your AP here may be lower than shown."
+
+  - id: bed_ip_lsss_english
+    name: "BEd in Intermediate Phase: Life Skills and Social Sciences, and English Home Language"
+    fields: [education]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, other_language: 4}
+      extras:
+        - "English must be your home language, at level 4 (50%)."
+        - "Afrikaans first additional language at level 4 (50%) is also required: the app checks your other language and can't tell which it is."
+        - "UFS's 2026 Education rule book counts only the subjects it lists towards the AP; Computer Applications Technology, Tourism and Hospitality Studies are among those not listed, so your AP here may be lower than shown."
+
+  - id: bed_fet_accounting_business_studies
+    name: "BEd in Senior Phase and FET: Accounting and Business Studies"
+    fields: [education]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 4, accounting: 4, business_studies: 4}
+      extras:
+        - "UFS's 2026 Education rule book counts only the subjects it lists towards the AP; Computer Applications Technology, Tourism and Hospitality Studies are among those not listed, so your AP here may be lower than shown."
+
+  - id: bed_fet_ems_accounting
+    name: "BEd in Senior Phase and FET: EMS and Accounting"
+    fields: [education]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 4, accounting: 4}
+      choices:
+        - one_of:
+            - subjects: {economics: 4}
+            - subjects: {business_studies: 4}
+      extras:
+        - "UFS's 2026 Education rule book counts only the subjects it lists towards the AP; Computer Applications Technology, Tourism and Hospitality Studies are among those not listed, so your AP here may be lower than shown."
+
+  - id: bed_fet_technology_egd
+    name: "BEd in Senior Phase and FET: Technology and Engineering Graphics and Design"
+    fields: [education, engineering]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, engineering_graphics_and_design: 4}
+      extras:
+        - "UFS's 2026 Education rule book counts only the subjects it lists towards the AP; Computer Applications Technology, Tourism and Hospitality Studies are among those not listed, so your AP here may be lower than shown."
+
+  - id: bed_fet_life_sciences_mathematics
+    name: "BEd in Senior Phase and FET: Life Sciences and Mathematics (Bloemfontein and Qwaqwa campuses)"
+    fields: [education]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5}
+      extras:
+        - "UFS's 2026 Education rule book counts only the subjects it lists towards the AP; Computer Applications Technology, Tourism and Hospitality Studies are among those not listed, so your AP here may be lower than shown."
+
+  - id: bed_fet_technology_life_sciences
+    name: "BEd in Senior Phase and FET: Technology and Life Sciences"
+    fields: [education]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, life_sciences: 5}
+      extras:
+        - "UFS's 2026 Education rule book counts only the subjects it lists towards the AP; Computer Applications Technology, Tourism and Hospitality Studies are among those not listed, so your AP here may be lower than shown."
+
+  - id: bed_fet_sesotho_english
+    name: "BEd in Senior Phase and FET: Sesotho Home Language and English First Additional Language (Bloemfontein and Qwaqwa campuses)"
+    fields: [education]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, other_language: 4}
+      extras:
+        - "The other language must be Sesotho at home language level, at level 4 (50%); the app can't tell which language you took."
+        - "UFS's 2026 Education rule book counts only the subjects it lists towards the AP; Computer Applications Technology, Tourism and Hospitality Studies are among those not listed, so your AP here may be lower than shown."
+
+  - id: bed_fet_isizulu_english
+    name: "BEd in Senior Phase and FET: isiZulu Home Language and English First Additional Language (Qwaqwa Campus)"
+    fields: [education]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, other_language: 4}
+      extras:
+        - "The other language must be isiZulu at home language level, at level 4 (50%); the app can't tell which language you took."
+        - "UFS's 2026 Education rule book counts only the subjects it lists towards the AP; Computer Applications Technology, Tourism and Hospitality Studies are among those not listed, so your AP here may be lower than shown."
+
+  - id: bed_fet_mathematics_physical_sciences
+    name: "BEd in Senior Phase and FET: Mathematics and Physical Sciences (Bloemfontein and Qwaqwa campuses)"
+    fields: [education]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 5}
+      extras:
+        - "UFS's 2026 Education rule book counts only the subjects it lists towards the AP; Computer Applications Technology, Tourism and Hospitality Studies are among those not listed, so your AP here may be lower than shown."
+
+  - id: bed_fet_sesotho_history
+    name: "BEd in Senior Phase and FET: Sesotho Home Language and History (Bloemfontein and Qwaqwa campuses)"
+    fields: [education]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, other_language: 4}
+      extras:
+        - "The other language must be Sesotho at home language level, at level 4 (50%); the app can't tell which language you took."
+        - "UFS's 2026 Education rule book counts only the subjects it lists towards the AP; Computer Applications Technology, Tourism and Hospitality Studies are among those not listed, so your AP here may be lower than shown."
+
+  - id: bed_fet_isizulu_history
+    name: "BEd in Senior Phase and FET: isiZulu Home Language and History (Qwaqwa Campus)"
+    fields: [education]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, other_language: 4}
+      extras:
+        - "The other language must be isiZulu at home language level, at level 4 (50%); the app can't tell which language you took."
+        - "UFS's 2026 Education rule book counts only the subjects it lists towards the AP; Computer Applications Technology, Tourism and Hospitality Studies are among those not listed, so your AP here may be lower than shown."
+
+  - id: bed_fet_english_history
+    name: "BEd in Senior Phase and FET: English and History"
+    fields: [education]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4}
+      extras:
+        - "UFS's 2026 Education rule book counts only the subjects it lists towards the AP; Computer Applications Technology, Tourism and Hospitality Studies are among those not listed, so your AP here may be lower than shown."
+
+  - id: bed_fet_afrikaans_english
+    name: "BEd in Senior Phase and FET: Afrikaans Home Language and English"
+    fields: [education]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, other_language: 4}
+      extras:
+        - "The other language must be Afrikaans at home language level, at level 4 (50%); the app can't tell which language you took."
+        - "UFS's 2026 Education rule book also accepts Afrikaans first additional language at 70%."
+        - "UFS's 2026 Education rule book counts only the subjects it lists towards the AP; Computer Applications Technology, Tourism and Hospitality Studies are among those not listed, so your AP here may be lower than shown."
+
+  - id: bed_fet_geography_life_sciences
+    name: "BEd in Senior Phase and FET: Geography and Life Sciences (Bloemfontein and Qwaqwa campuses)"
+    fields: [education]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 3, geography: 5, life_sciences: 5}
+      extras:
+        - "UFS's 2026 Education rule book counts only the subjects it lists towards the AP; Computer Applications Technology, Tourism and Hospitality Studies are among those not listed, so your AP here may be lower than shown."
+
+  - id: bed_extended
+    name: "Bachelor of Education (extended curriculum programme)"
+    fields: [education]
+    selection_note: "UFS's 2027 prospectus lists an extended BEd in its fee table but publishes no requirements for it; apply for a mainstream BEd and UFS places students in extended programmes if space allows."
+    requirements: null       # no requirements published: the 2027 prospectus and the 2026 Education rule book give none
+
+  # Health Sciences, Bloemfontein Campus (prospectus pages 18 and 19). Every one is subject to selection and
+  # must be your first choice.
+
+  - id: bmedsc_radiation_science
+    name: "Bachelor of Medical Science with specialisation in Radiation Science (BMedSc)"
+    fields: [health_sciences, medical_sciences]
+    selective: true
+    selection_note: "Subject to selection: UFS ranks applicants on an overall selection point from school marks and non-academic achievement. It must be your first choice (2027 selection rules)."
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 5, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+
+  - id: mbchb
+    name: "Bachelor of Medicine and Bachelor of Surgery (MBChB)"
+    fields: [health_sciences, medicine, medical_sciences]
+    selective: true
+    selection_note: "Subject to selection: UFS ranks applicants on an overall selection point from school marks and non-academic achievement. MBChB must be your first choice; at most 180 first-years a year, repeaters included (2027 selection rules)."
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 36
+      subject_minimums: {english: 5, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+
+  - id: boptom
+    name: "Bachelor of Optometry (BOptom)"
+    fields: [health_sciences]
+    selective: true
+    selection_note: "Subject to selection: a points system that counts academic achievement and cultural, leadership and sport activities. It must be your first choice."
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 33
+      subject_minimums: {english: 5, mathematics: 4, life_sciences: 5, physical_sciences: 5}
+
+  - id: bsc_physiotherapy
+    name: "BSc in Physiotherapy"
+    fields: [health_sciences, rehabilitation]
+    selective: true
+    selection_note: "Subject to selection: a points system that counts academic achievement and cultural, leadership and sport activities. It must be your first choice."
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 33
+      subject_minimums: {english: 5, mathematics: 4, life_sciences: 5, physical_sciences: 4}
+
+  - id: bsc_dietetics
+    name: "BSc in Dietetics"
+    fields: [health_sciences, nutrition]
+    selective: true
+    selection_note: "Subject to selection: a points system that counts academic achievement and cultural, leadership and sport activities. It must be your first choice."
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 33
+      subject_minimums: {english: 5, mathematics: 4}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 5}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - "You need Life Sciences or Physical Sciences at the level shown, or both: the prospectus marks this programme 'Life Sciences and/or Physical Sciences', as does UFS's School of Health and Rehabilitation Sciences selection policy (2026 intake)."
+
+  - id: bocc_ther
+    name: "Bachelor of Occupational Therapy (BOccTher)"
+    fields: [health_sciences, rehabilitation]
+    selective: true
+    selection_note: "Subject to selection: a points system that counts academic achievement and cultural, leadership and sport activities. It must be your first choice."
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 33
+      subject_minimums: {english: 5, mathematics: 4}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 5}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - "You need Life Sciences or Physical Sciences at the level shown, or both: the prospectus marks this programme 'Life Sciences and/or Physical Sciences', as does UFS's School of Health and Rehabilitation Sciences selection policy (2026 intake)."
+
+  - id: bbiok
+    name: "Bachelor of Biokinetics (BBiok)"
+    fields: [health_sciences, sport_science]
+    selective: true
+    selection_note: "Subject to selection: a points system that counts academic achievement and cultural, leadership and sport activities. It must be your first choice."
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 5, mathematics: 4}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - "You need Life Sciences or Physical Sciences at the level shown, or both: the prospectus marks this programme 'Life Sciences and/or Physical Sciences', as does UFS's School of Health and Rehabilitation Sciences selection policy (2026 intake)."
+
+  - id: bsport_coach
+    name: "Bachelor of Sport Coaching (BSportCoach)"
+    fields: [sport_science, health_sciences]
+    selective: true
+    selection_note: "Subject to selection: a points system that counts academic achievement and cultural, leadership and sport activities. It must be your first choice. Higher levels of sport participation and sport-related certificates count in your favour."
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4}
+      extras:
+        - "UFS recommends, but doesn't require, Mathematics 3 or Mathematical Literacy 6, and Physical Sciences or Life Sciences at 3 (its School of Health and Rehabilitation Sciences selection policy, 2026 intake)."
+
+  - id: bnursing
+    name: "Bachelor of Nursing"
+    fields: [health_sciences, nursing]
+    selective: true
+    selection_note: "Subject to selection: academic achievement is the main criterion, and a higher science AP gets preference. Nursing must be your first choice (School of Nursing selection policy)."
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 6}
+        - one_of:
+            - subjects: {life_sciences: 5}
+            - subjects: {physical_sciences: 4}
+
+  # Law, Bloemfontein Campus (prospectus page 20; the extended LLB from the 2026 Law rule book, rule E1.3)
+
+  - id: llb
+    name: "Bachelor of Laws (LLB), four years"
+    fields: [law]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 33
+      subject_minimums: {english: 6}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {mathematical_literacy: 6}
+      extras:
+        - "UFS's 2026 Law rule book asks every LLB candidate to write the National Benchmark Tests (academic and quantitative literacy)."
+
+  - id: llb_extended
+    name: "Bachelor of Laws (LLB), extended curriculum programme (five years)"
+    fields: [law]
+    requirements:
+      source: s-ufs-rb-law-2026
+      min_points: 30
+      subject_minimums: {english: 4}
+      extras:
+        - "From UFS's 2026 Law rule book (rule E1.3): the 2027 prospectus lists only the four-year LLB."
+        - "UFS's 2026 Law rule book asks every LLB candidate to write the National Benchmark Tests (academic and quantitative literacy)."
+        - "You can't apply for this directly: apply for the mainstream programme, and UFS places you here if you qualify and space allows, higher scores first (2027 prospectus)."
+
+  # Natural and Agricultural Sciences, Bloemfontein Campus (prospectus pages 22 to 27). Each row is a major
+  # with its own plan code; you apply for the academic programme and choose the majors.
+
+  - id: bsc_bio_behavioural_genetics
+    name: "BSc specialising in Biological Sciences: Behavioural Genetics"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+      extras:
+        - "On the application you choose the BSc specialising in Biological Sciences (B4310) and then your majors."
+
+  - id: bsc_bio_biochemistry_botany
+    name: "BSc specialising in Biological Sciences: Biochemistry and Botany"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+      extras:
+        - "On the application you choose the BSc specialising in Biological Sciences (B4310) and then your majors."
+
+  - id: bsc_bio_biochemistry_entomology
+    name: "BSc specialising in Biological Sciences: Biochemistry and Entomology"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+      extras:
+        - "On the application you choose the BSc specialising in Biological Sciences (B4310) and then your majors."
+
+  - id: bsc_bio_biochemistry_genetics
+    name: "BSc specialising in Biological Sciences: Biochemistry and Genetics"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+      extras:
+        - "On the application you choose the BSc specialising in Biological Sciences (B4310) and then your majors."
+
+  - id: bsc_bio_biochemistry_microbiology
+    name: "BSc specialising in Biological Sciences: Biochemistry and Microbiology"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+      extras:
+        - "On the application you choose the BSc specialising in Biological Sciences (B4310) and then your majors."
+
+  - id: bsc_bio_biochemistry_physiology
+    name: "BSc specialising in Biological Sciences: Biochemistry and Physiology"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+      extras:
+        - "On the application you choose the BSc specialising in Biological Sciences (B4310) and then your majors."
+
+  - id: bsc_bio_biochemistry_statistics
+    name: "BSc specialising in Biological Sciences: Biochemistry and Statistics"
+    fields: [natural_sciences, life_sciences, mathematical_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+      extras:
+        - "On the application you choose the BSc specialising in Biological Sciences (B4310) and then your majors."
+
+  - id: bsc_bio_biochemistry_zoology
+    name: "BSc specialising in Biological Sciences: Biochemistry and Zoology"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+      extras:
+        - "On the application you choose the BSc specialising in Biological Sciences (B4310) and then your majors."
+
+  - id: bsc_bio_biodiversity_conservation_ecology
+    name: "BSc specialising in Biological Sciences: Biodiversity and Conservation Ecology"
+    fields: [natural_sciences, life_sciences, earth_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+      extras:
+        - "On the application you choose the BSc specialising in Biological Sciences (B4310) and then your majors."
+
+  - id: bsc_bio_botany_entomology
+    name: "BSc specialising in Biological Sciences: Botany and Entomology"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+      extras:
+        - "On the application you choose the BSc specialising in Biological Sciences (B4310) and then your majors."
+
+  - id: bsc_bio_botany_genetics
+    name: "BSc specialising in Biological Sciences: Botany and Genetics"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+      extras:
+        - "On the application you choose the BSc specialising in Biological Sciences (B4310) and then your majors."
+
+  - id: bsc_bio_botany_microbiology
+    name: "BSc specialising in Biological Sciences: Botany and Microbiology"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+      extras:
+        - "On the application you choose the BSc specialising in Biological Sciences (B4310) and then your majors."
+
+  - id: bsc_bio_botany_plant_breeding
+    name: "BSc specialising in Biological Sciences: Botany and Plant Breeding"
+    fields: [natural_sciences, life_sciences, agriculture]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+      extras:
+        - "On the application you choose the BSc specialising in Biological Sciences (B4310) and then your majors."
+
+  - id: bsc_bio_botany_plant_pathology
+    name: "BSc specialising in Biological Sciences: Botany and Plant Pathology"
+    fields: [natural_sciences, life_sciences, agriculture]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+      extras:
+        - "On the application you choose the BSc specialising in Biological Sciences (B4310) and then your majors."
+
+  - id: bsc_bio_botany_zoology
+    name: "BSc specialising in Biological Sciences: Botany and Zoology"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+      extras:
+        - "On the application you choose the BSc specialising in Biological Sciences (B4310) and then your majors."
+
+  - id: bsc_bio_entomology_genetics
+    name: "BSc specialising in Biological Sciences: Entomology and Genetics"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+      extras:
+        - "On the application you choose the BSc specialising in Biological Sciences (B4310) and then your majors."
+
+  - id: bsc_bio_entomology_microbiology
+    name: "BSc specialising in Biological Sciences: Entomology and Microbiology"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+      extras:
+        - "On the application you choose the BSc specialising in Biological Sciences (B4310) and then your majors."
+
+  - id: bsc_bio_entomology_zoology
+    name: "BSc specialising in Biological Sciences: Entomology and Zoology"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+      extras:
+        - "On the application you choose the BSc specialising in Biological Sciences (B4310) and then your majors."
+
+  - id: bsc_bio_genetics_microbiology
+    name: "BSc specialising in Biological Sciences: Genetics and Microbiology"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+      extras:
+        - "On the application you choose the BSc specialising in Biological Sciences (B4310) and then your majors."
+
+  - id: bsc_bio_genetics_physiology
+    name: "BSc specialising in Biological Sciences: Genetics and Physiology"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+      extras:
+        - "On the application you choose the BSc specialising in Biological Sciences (B4310) and then your majors."
+
+  - id: bsc_bio_genetics_zoology
+    name: "BSc specialising in Biological Sciences: Genetics and Zoology"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+      extras:
+        - "On the application you choose the BSc specialising in Biological Sciences (B4310) and then your majors."
+
+  - id: bsc_bio_microbiology_statistics
+    name: "BSc specialising in Biological Sciences: Microbiology and Statistics"
+    fields: [natural_sciences, life_sciences, mathematical_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+      extras:
+        - "On the application you choose the BSc specialising in Biological Sciences (B4310) and then your majors."
+
+  - id: bsc_bio_microbiology_zoology
+    name: "BSc specialising in Biological Sciences: Microbiology and Zoology"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+      extras:
+        - "On the application you choose the BSc specialising in Biological Sciences (B4310) and then your majors."
+
+  - id: bsc_bio_plant_health_ecology
+    name: "BSc specialising in Biological Sciences: Plant Health Ecology"
+    fields: [natural_sciences, life_sciences, agriculture]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+      extras:
+        - "On the application you choose the BSc specialising in Biological Sciences (B4310) and then your majors."
+
+  - id: bsc_bio_plant_health_management
+    name: "BSc specialising in Biological Sciences: Plant Health Management"
+    fields: [natural_sciences, life_sciences, agriculture]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+      extras:
+        - "On the application you choose the BSc specialising in Biological Sciences (B4310) and then your majors."
+
+  - id: bsc_forensic_science
+    name: "BSc specialising in Forensic Science"
+    fields: [natural_sciences, life_sciences, safety_and_justice]
+    selective: true
+    selection_note: "Subject to selection; at most 80 students are admitted (2026 rule book)."
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 34
+      subject_minimums: {english: 4, mathematics: 6, life_sciences: 6, physical_sciences: 5}
+      extras:
+        - "UFS also asks a combined AP of at least 17 for Mathematics, Life Sciences and Physical Sciences."
+        - "UFS's 2026 rule book: no one with a criminal record is admitted to this programme."
+
+  - id: bsc_mathematics_applied_mathematics
+    name: "BSc specialising in Mathematical Sciences: Mathematics and Applied Mathematics"
+    fields: [mathematical_sciences, natural_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 6, physical_sciences: 5}
+      extras:
+        - "On the application you choose the BSc specialising in Mathematical Sciences (B4321) and then your majors."
+
+  - id: bsc_mathematics_chemistry
+    name: "BSc specialising in Mathematical Sciences: Mathematics and Chemistry"
+    fields: [mathematical_sciences, physical_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 6, physical_sciences: 5}
+      extras:
+        - "On the application you choose the BSc specialising in Mathematical Sciences (B4321) and then your majors."
+
+  - id: bsc_mathematics_mathematical_statistics
+    name: "BSc specialising in Mathematical Sciences: Mathematics and Mathematical Statistics"
+    fields: [mathematical_sciences, natural_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 6, physical_sciences: 5}
+      extras:
+        - "On the application you choose the BSc specialising in Mathematical Sciences (B4321) and then your majors."
+
+  - id: bsc_mathematics_physics
+    name: "BSc specialising in Mathematical Sciences: Mathematics and Physics"
+    fields: [mathematical_sciences, physical_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 6, physical_sciences: 5}
+      extras:
+        - "On the application you choose the BSc specialising in Mathematical Sciences (B4321) and then your majors."
+
+  - id: bsc_actuarial_science
+    name: "BSc specialising in Actuarial Science"
+    fields: [mathematical_sciences, finance]
+    selective: true
+    selection_note: "Subject to selection on academic performance. Apply for Econometrics as well: if you aren't selected, UFS may offer you Econometrics instead."
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 34
+      subject_minimums: {english: 4, mathematics: 6}
+
+  - id: bsc_climate_sciences
+    name: "BSc specialising in Mathematical Statistics and Applied Statistics: Climate Sciences"
+    fields: [mathematical_sciences, earth_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 6, physical_sciences: 5}
+
+  - id: bsc_econometrics
+    name: "BSc specialising in Mathematical Statistics and Applied Statistics: Econometrics"
+    fields: [mathematical_sciences, economics]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 6}
+    bridges_to:
+      - to: bsc_actuarial_science
+        guarantee: considered
+        conditions: "If you excel in Econometrics in your first two years, UFS says a space will be made for you in the third year of Actuarial Science."
+        source: s-ufs-prospectus-2027
+
+  - id: bsc_mathematical_statistics_psychometrics
+    name: "BSc specialising in Mathematical Statistics and Applied Statistics: Mathematical Statistics and Psychometrics"
+    fields: [mathematical_sciences, humanities]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 6}
+
+  - id: bsc_statistics_economics
+    name: "BSc specialising in Mathematical Statistics and Applied Statistics: Statistics and Economics"
+    fields: [mathematical_sciences, economics]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5}
+
+  - id: bsc_statistics_psychology
+    name: "BSc specialising in Mathematical Statistics and Applied Statistics: Statistics and Psychology"
+    fields: [mathematical_sciences, humanities]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5}
+
+  - id: bsc_chemistry_biochemistry
+    name: "BSc specialising in Chemical Sciences: Chemistry and Biochemistry"
+    fields: [natural_sciences, physical_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+      extras:
+        - "On the application you choose the BSc specialising in Chemical Sciences (B4330); majors are chosen in the second year, when UFS admits a limited number of Chemistry majors on academic excellence."
+
+  - id: bsc_chemistry_botany
+    name: "BSc specialising in Chemical Sciences: Chemistry and Botany"
+    fields: [natural_sciences, physical_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+      extras:
+        - "On the application you choose the BSc specialising in Chemical Sciences (B4330); majors are chosen in the second year, when UFS admits a limited number of Chemistry majors on academic excellence."
+
+  - id: bsc_chemistry_microbiology
+    name: "BSc specialising in Chemical Sciences: Chemistry and Microbiology"
+    fields: [natural_sciences, physical_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+      extras:
+        - "On the application you choose the BSc specialising in Chemical Sciences (B4330); majors are chosen in the second year, when UFS admits a limited number of Chemistry majors on academic excellence."
+
+  - id: bsc_chemistry_physics
+    name: "BSc specialising in Chemical Sciences: Chemistry and Physics"
+    fields: [natural_sciences, physical_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 5}
+      extras:
+        - "On the application you choose the BSc specialising in Chemical Sciences (B4330); majors are chosen in the second year, when UFS admits a limited number of Chemistry majors on academic excellence."
+
+  - id: bsc_physics_agrometeorology
+    name: "BSc specialising in Physical Sciences: Physics and Agrometeorology"
+    fields: [physical_sciences, natural_sciences, earth_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+
+  - id: bsc_physics_astrophysics
+    name: "BSc specialising in Physical Sciences: Physics and Astrophysics"
+    fields: [physical_sciences, natural_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 6, physical_sciences: 5}
+
+  - id: bsc_physics_engineering_subjects
+    name: "BSc specialising in Physical Sciences with Engineering Subjects"
+    fields: [physical_sciences, engineering]
+    selective: true
+    selection_note: "Subject to selection."
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 6, physical_sciences: 5}
+
+  - id: beng_agricultural_biosystems
+    name: "Bachelor of Engineering (BEng) in Agricultural and Biosystems Engineering"
+    fields: [engineering, agriculture]
+    selective: true
+    selection_note: "Subject to selection."
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 6, physical_sciences: 5}
+
+  - id: bsc_geography_environmental_science
+    name: "BSc specialising in Geography: Geography and Environmental Science"
+    fields: [earth_sciences, natural_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5}
+
+  - id: bsc_geography
+    name: "BSc specialising in Geography: Geography Specialisation"
+    fields: [earth_sciences, natural_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+
+  - id: bsc_environmental_soil_science
+    name: "BSc specialising in Environmental Soil Science"
+    fields: [earth_sciences, agriculture, natural_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+
+  - id: bsc_geology_chemistry
+    name: "BSc specialising in Geology: Geology and Chemistry"
+    fields: [earth_sciences, natural_sciences]
+    selective: true
+    selection_note: "UFS's 2026 rule book lists Geology among its selection programmes: at most 80 first-years, admitted on academic performance."
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 5}
+
+  - id: bsc_environmental_geology
+    name: "BSc specialising in Geology: Environmental Geology"
+    fields: [earth_sciences, natural_sciences]
+    selective: true
+    selection_note: "UFS's 2026 rule book lists Geology among its selection programmes: at most 80 first-years, admitted on academic performance."
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 5}
+
+  - id: bsc_geochemistry
+    name: "BSc specialising in Geology: Geochemistry"
+    fields: [earth_sciences, natural_sciences]
+    selective: true
+    selection_note: "UFS's 2026 rule book lists Geology among its selection programmes: at most 80 first-years, admitted on academic performance."
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 5}
+
+  - id: bsc_geology
+    name: "BSc specialising in Geology: Geology"
+    fields: [earth_sciences, natural_sciences]
+    selective: true
+    selection_note: "UFS's 2026 rule book lists Geology among its selection programmes: at most 80 first-years, admitted on academic performance."
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 5}
+
+  - id: bsc_geology_physics
+    name: "BSc specialising in Geology: Geology and Physics"
+    fields: [earth_sciences, natural_sciences]
+    selective: true
+    selection_note: "UFS's 2026 rule book lists Geology among its selection programmes: at most 80 first-years, admitted on academic performance."
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 5}
+
+  - id: bsc_agricultural_economics
+    name: "BSc in Agricultural Economics"
+    fields: [agriculture, economics]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5}
+
+  - id: bscit_cs_chemistry
+    name: "BSc in Information Technology: Computer Science and Chemistry"
+    fields: [computing, physical_sciences]
+    selective: true
+    selection_note: "All BSc (IT) programmes on the Bloemfontein Campus are subject to a selection process, which may include an admission assessment (2026 rule book)."
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 5}
+
+  - id: bscit_cs_mathematical_statistics
+    name: "BSc in Information Technology: Computer Science and Mathematical Statistics"
+    fields: [computing, mathematical_sciences]
+    selective: true
+    selection_note: "All BSc (IT) programmes on the Bloemfontein Campus are subject to a selection process, which may include an admission assessment (2026 rule book)."
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 6, physical_sciences: 5}
+
+  - id: bscit_cs_mathematics
+    name: "BSc in Information Technology: Computer Science and Mathematics"
+    fields: [computing, mathematical_sciences]
+    selective: true
+    selection_note: "All BSc (IT) programmes on the Bloemfontein Campus are subject to a selection process, which may include an admission assessment (2026 rule book)."
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 6, physical_sciences: 5}
+
+  - id: bscit_cs_physics
+    name: "BSc in Information Technology: Computer Science and Physics"
+    fields: [computing, physical_sciences]
+    selective: true
+    selection_note: "All BSc (IT) programmes on the Bloemfontein Campus are subject to a selection process, which may include an admission assessment (2026 rule book)."
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 5}
+
+  - id: bscit_data_science
+    name: "BSc in Information Technology: Data Science"
+    fields: [computing, mathematical_sciences]
+    selective: true
+    selection_note: "All BSc (IT) programmes on the Bloemfontein Campus are subject to a selection process, which may include an admission assessment (2026 rule book)."
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 6, physical_sciences: 5}
+
+  - id: bscit_cs_business_management
+    name: "BSc in Information Technology: Computer Science and Business Management"
+    fields: [computing, management]
+    selective: true
+    selection_note: "All BSc (IT) programmes on the Bloemfontein Campus are subject to a selection process, which may include an admission assessment (2026 rule book)."
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 4}
+
+  - id: bcis
+    name: "Bachelor of Computer Information Systems"
+    fields: [computing]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 33
+      subject_minimums: {english: 4, mathematics: 4}
+
+  - id: b_sustainable_food_systems
+    name: "Bachelor of Sustainable Food Systems"
+    fields: [agriculture, food_science]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {mathematical_literacy: 5}
+
+  # Agricultural Sciences, Bloemfontein Campus (prospectus pages 28 and 29)
+
+  - id: bagric_agricultural_extension
+    name: "Bachelor of Agriculture: Agricultural Extension"
+    fields: [agriculture]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 7}
+              min_points: 31
+      extras:
+        - "On the application you choose the Bachelor of Agriculture (B5300); majors are chosen in the second year."
+
+  - id: bagric_animal_production_management
+    name: "Bachelor of Agriculture: Animal Production Management"
+    fields: [agriculture]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 7}
+              min_points: 31
+      extras:
+        - "On the application you choose the Bachelor of Agriculture (B5300); majors are chosen in the second year."
+
+  - id: bagric_crop_production
+    name: "Bachelor of Agriculture: Crop Production"
+    fields: [agriculture]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 7}
+              min_points: 31
+      extras:
+        - "On the application you choose the Bachelor of Agriculture (B5300); majors are chosen in the second year."
+
+  - id: bagric_mixed_farming_management
+    name: "Bachelor of Agriculture: Mixed Farming Management"
+    fields: [agriculture]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 7}
+              min_points: 31
+      extras:
+        - "On the application you choose the Bachelor of Agriculture (B5300); majors are chosen in the second year."
+
+  - id: bagric_irrigation_management
+    name: "Bachelor of Agriculture: Irrigation Management"
+    fields: [agriculture]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 3}
+      extras:
+        - "On the application you choose the Bachelor of Agriculture (B5300); majors are chosen in the second year."
+
+  - id: bagric_agricultural_economics
+    name: "Bachelor of Agriculture: Agricultural Economics"
+    fields: [agriculture, economics]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 4}
+      extras:
+        - "On the application you choose the Bachelor of Agriculture (B5300); majors are chosen in the second year."
+
+  - id: bagric_agricultural_management
+    name: "Bachelor of Agriculture: Agricultural Management"
+    fields: [agriculture, management]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 7}
+              min_points: 31
+      extras:
+        - "On the application you choose the Bachelor of Agriculture (B5300); majors are chosen in the second year."
+
+  - id: bscagric_animal_science
+    name: "BSc in Agriculture: Animal Science"
+    fields: [agriculture, life_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 5}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 5}
+            - subjects: {agricultural_sciences: 5}
+
+  - id: bscagric_agrometeorology
+    name: "BSc in Agriculture: Agrometeorology"
+    fields: [agriculture, earth_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 5}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 5}
+            - subjects: {agricultural_sciences: 5}
+
+  - id: bscagric_agronomy
+    name: "BSc in Agriculture: Agronomy"
+    fields: [agriculture]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 5}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 5}
+            - subjects: {agricultural_sciences: 5}
+
+  - id: bscagric_plant_breeding
+    name: "BSc in Agriculture: Plant Breeding"
+    fields: [agriculture, life_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 5}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 5}
+            - subjects: {agricultural_sciences: 5}
+
+  - id: bscagric_plant_pathology
+    name: "BSc in Agriculture: Plant Pathology"
+    fields: [agriculture, life_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 5}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 5}
+            - subjects: {agricultural_sciences: 5}
+
+  - id: bscagric_soil_science
+    name: "BSc in Agriculture: Soil Science"
+    fields: [agriculture, earth_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 5}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 5}
+            - subjects: {agricultural_sciences: 5}
+
+  # Building Sciences, Bloemfontein Campus (prospectus pages 30 and 31). The Compact Learning options are left
+  # out: they're only for people 22 or older who work full-time in construction.
+
+  - id: barch
+    name: "Bachelor of Architecture (BArch)"
+    fields: [built_environment, arts_and_design]
+    selective: true
+    selection_note: "You must pass a selection process: UFS's selection form goes in by 31 July with your application, and outcomes come by 30 November. At most 45 students are admitted (2026 rule book)."
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 4}
+
+  - id: bsc_construction_economics_management
+    name: "BSc in Construction Economics and Management (full-time)"
+    fields: [built_environment, management]
+    selective: true
+    selection_note: "Subject to selection."
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 5}
+      choices:
+        - one_of:
+            - subjects: {economics: 4}
+            - subjects: {business_studies: 4}
+            - subjects: {accounting: 4}
+            - subjects: {physical_sciences: 4}
+
+  # Natural and Agricultural Sciences, Qwaqwa Campus (prospectus pages 32 and 33)
+
+  - id: bsc_bio_botany_life_sciences_qwaqwa
+    name: "BSc specialising in Biological Sciences: Botany and Life Sciences (Qwaqwa Campus)"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+
+  - id: bsc_bio_life_sciences_qwaqwa
+    name: "BSc specialising in Biological Sciences: Life Sciences (Qwaqwa Campus)"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+
+  - id: bsc_bio_zoology_life_sciences_qwaqwa
+    name: "BSc specialising in Biological Sciences: Zoology and Life Sciences (Qwaqwa Campus)"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+
+  - id: bsc_chemistry_physics_qwaqwa
+    name: "BSc specialising in Chemical and Physical Sciences: Chemistry and Physics (Qwaqwa Campus)"
+    fields: [natural_sciences, physical_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 5}
+
+  - id: bsc_chemistry_botany_qwaqwa
+    name: "BSc specialising in Chemical and Physical Sciences: Chemistry and Botany (Qwaqwa Campus)"
+    fields: [natural_sciences, physical_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+
+  - id: bsc_geography_environmental_geography_qwaqwa
+    name: "BSc specialising in Geography: Geography and Environmental Geography (Qwaqwa Campus)"
+    fields: [earth_sciences, natural_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5}
+
+  - id: bsc_geography_qwaqwa
+    name: "BSc specialising in Geography: Geography (Qwaqwa Campus)"
+    fields: [earth_sciences, natural_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+
+  - id: bscit_cs_chemistry_qwaqwa
+    name: "BSc in Information Technology: Computer Science and Chemistry (Qwaqwa Campus)"
+    fields: [computing, physical_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 5}
+
+  - id: bscit_cs_physics_qwaqwa
+    name: "BSc in Information Technology: Computer Science and Physics (Qwaqwa Campus)"
+    fields: [computing, physical_sciences]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 5}
+
+  - id: bscit_cs_management_qwaqwa
+    name: "BSc in Information Technology: Computer Science and Management (Qwaqwa Campus)"
+    fields: [computing, management]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 4}
+
+  # Natural and Agricultural Sciences, extended curriculum programmes: not in the 2027 prospectus, so from the
+  # 2026 rule book's admission rules (NAS 2.2, pages 24 and 25). Its own table (section 12.2) differs in places:
+  # extras say where.
+
+  - id: bagric_extended
+    name: "Bachelor of Agriculture (extended curriculum programme, four years)"
+    fields: [agriculture]
+    requirements:
+      source: s-ufs-rb-nas-2026
+      min_points: 27
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {mathematical_literacy: 5}
+      extras:
+        - "Apply for the mainstream programme and UFS may offer you this one if space allows (2027 prospectus); with your final NSC results you can also apply for it directly (2026 rule book)."
+
+  - id: bscagric_extended
+    name: "BSc in Agriculture (extended curriculum programme, five years)"
+    fields: [agriculture]
+    requirements:
+      source: s-ufs-rb-nas-2026
+      min_points: 27
+      subject_minimums: {english: 4, mathematics: 3}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 3}
+            - subjects: {agricultural_sciences: 3}
+            - subjects: {physical_sciences: 3}
+      extras:
+        - "The rule book's table of extended programmes (section 12.2) names Geography at 3 instead of Agricultural Sciences; ask UFS which applies."
+        - "Apply for the mainstream programme and UFS may offer you this one if space allows (2027 prospectus); with your final NSC results you can also apply for it directly (2026 rule book)."
+
+  - id: bsc_extended_sciences
+    name: "BSc (extended curriculum programme, four years): Biological Sciences, Chemical and Physical Sciences, Geology, Geography or Information Technology"
+    fields: [natural_sciences]
+    requirements:
+      source: s-ufs-rb-nas-2026
+      min_points: 27
+      subject_minimums: {english: 4, mathematics: 3}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 3}
+            - subjects: {physical_sciences: 3}
+      extras:
+        - "In Bloemfontein the first year is on the South Campus; the Qwaqwa Campus offers Biological Sciences, Chemical and Physical Sciences and Geography this way."
+        - "The rule book's table of extended programmes (section 12.2) also accepts Geography at 3 for some of these fields; ask UFS."
+        - "Apply for the mainstream programme and UFS may offer you this one if space allows (2027 prospectus); with your final NSC results you can also apply for it directly (2026 rule book)."
+
+  - id: bsc_extended_mathematical
+    name: "BSc (extended curriculum programme, four years): Mathematical Sciences, Actuarial Sciences, Agricultural Economics or Building Science"
+    fields: [mathematical_sciences, natural_sciences]
+    requirements:
+      source: s-ufs-rb-nas-2026
+      min_points: 27
+      subject_minimums: {english: 4, mathematics: 3}
+      extras:
+        - "The rule book's table of extended programmes (section 12.2) also asks Physical Sciences, Business Studies, Economics or Accounting at 3 (Building Science: Life Sciences or Physical Sciences at 3); its admission rules don't. Ask UFS."
+        - "Moving on to Architecture, Quantity Surveying, Construction Management or Mathematical Sciences needs selection (2026 rule book)."
+        - "Apply for the mainstream programme and UFS may offer you this one if space allows (2027 prospectus); with your final NSC results you can also apply for it directly (2026 rule book)."
+
+  - id: bsc_extended_it_qwaqwa
+    name: "BSc (extended curriculum programme, four years; Qwaqwa Campus): Information Technology (Computer Science), or Computer Science and Mathematics"
+    fields: [computing, mathematical_sciences]
+    requirements:
+      source: s-ufs-rb-nas-2026
+      min_points: 27
+      subject_minimums: {english: 4, mathematics: 3}
+      extras:
+        - "Majoring in Physics or Chemistry with Computer Science also needs Physical Sciences at level 3 (2026 rule book)."
+        - "Apply for the mainstream programme and UFS may offer you this one if space allows (2027 prospectus); with your final NSC results you can also apply for it directly (2026 rule book)."
+
+  - id: bcis_extended
+    name: "Bachelor of Computer Information Systems (extended curriculum programme, four years)"
+    fields: [computing]
+    requirements:
+      source: s-ufs-rb-nas-2026
+      min_points: 27
+      subject_minimums: {english: 4, mathematics: 3}
+      extras:
+        - "Apply for the mainstream programme and UFS may offer you this one if space allows (2027 prospectus); with your final NSC results you can also apply for it directly (2026 rule book)."
+
+  - id: b_sustainable_food_systems_extended
+    name: "Bachelor of Sustainable Food Systems (extended curriculum programme)"
+    fields: [agriculture, food_science]
+    selection_note: "UFS's 2026 rule book gives two different Mathematics rules for this programme (Mathematics 3, or Mathematics 2 or Mathematical Literacy 5, both with an AP of 27); ask UFS."
+    requirements: null       # the 2026 rule book's NAS 2.2 and section 12.2 disagree on Mathematics
+
+  # The Humanities, Bloemfontein Campus (prospectus pages 34 to 37). The advanced diplomas in Music and Opera
+  # Studies are left out: they need a Diploma in Music first.
+
+  - id: hcert_music_performance
+    name: "Higher Certificate in Music Performance"
+    fields: [music, performing_arts]
+    selective: true
+    selection_note: "Subject to selection: a compulsory audition and musical aptitude test, before 30 September, on your chosen instrument or in singing."
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 20
+      subject_minimums: {english: 4}
+
+  - id: dip_music
+    name: "Diploma in Music"
+    fields: [music, performing_arts]
+    selective: true
+    selection_note: "Subject to selection: Grade 5 (Unisa, ABRSM or Trinity College) in your principal instrument or voice, or equivalent skills, and a compulsory audition and theory proficiency test before 30 September. Grade 3 Music Theory (Unisa or ABRSM) is advised."
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 25
+      subject_minimums: {english: 4}
+
+  - id: ba_language_practice
+    name: "BA (Language Practice)"
+    fields: [languages_and_communication, humanities]
+    selective: true
+    selection_note: "Subject to selection."
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 5}
+      extras:
+        - "UFS's language rule: no less than level 5 (60%) for any home language and no less than 65% for any first additional language you took in Grade 12; a second additional language doesn't count."
+
+  - id: ba_governance_political_transformation
+    name: "BA (Governance and Political Transformation)"
+    fields: [humanities, public_administration]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4}
+
+  - id: ba_integrated_organisational_communication
+    name: "BA (Integrated Organisational Communication)"
+    fields: [languages_and_communication, management]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 5}
+      extras:
+        - "UFS asks English home language at 60%, or English first (or second) additional language at 65% or more. (The prospectus writes 'Level 6 (60%)' for home language; 60% is level 5.)"
+
+  - id: ba_journalism
+    name: "BA (Journalism)"
+    fields: [languages_and_communication, humanities]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 5}
+      extras:
+        - "UFS asks English home language at 60%, or English first (or second) additional language at 65% or more. (The prospectus writes 'Level 6 (60%)' for home language; 60% is level 5.)"
+
+  - id: ba_fine_arts
+    name: "BA (Fine Arts)"
+    fields: [arts_and_design]
+    selective: true
+    selection_note: "Subject to selection: a portfolio of creative work and a selection form, due with your application by 30 September."
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4}
+
+  - id: ba_drama_theatre_arts
+    name: "BA (Drama and Theatre Arts)"
+    fields: [performing_arts]
+    selective: true
+    selection_note: "Subject to selection: a compulsory audition and interview. Drama experience at school is recommended."
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 5}
+      extras:
+        - "UFS asks English home language at 60%, or English first (or second) additional language at 65% or more."
+
+  - id: ba_general
+    name: "BA General"
+    fields: [humanities]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4}
+      extras:
+        - "Majoring in Geography needs Mathematics at level 3 (40%)."
+
+  - id: ba_languages
+    name: "BA specialising in Languages"
+    fields: [humanities, languages_and_communication]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4}
+
+  - id: bmus
+    name: "Bachelor of Music (BMus)"
+    fields: [music, performing_arts]
+    selective: true
+    selection_note: "Subject to selection: Music Theory Grade 5 (Unisa or ABRSM) or equivalent, Music Performance Grade 7 (Unisa, ABRSM or Trinity College) or equivalent, and a compulsory audition and theory proficiency test before 30 September."
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4}
+
+  - id: ba_music
+    name: "BA (Music)"
+    fields: [music, performing_arts]
+    selective: true
+    selection_note: "Subject to selection: Music Theory Grade 5 (Unisa or ABRSM) or equivalent, Music Performance Grade 7 (Unisa, ABRSM or Trinity College) or equivalent, and a compulsory audition and theory proficiency test before 30 September."
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4}
+
+  - id: bsocsci
+    name: "Bachelor of Social Sciences (BSocSci)"
+    fields: [humanities]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4}
+
+  - id: bsw
+    name: "Bachelor of Social Work"
+    fields: [humanities]
+    selective: true
+    selection_note: "Subject to selection. UFS prioritises direct school leavers, and first-choice applications get preference."
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 35
+      subject_minimums: {english: 5}
+
+  # The Humanities, Qwaqwa Campus (prospectus pages 37 and 38)
+
+  - id: ba_general_qwaqwa
+    name: "BA General (Qwaqwa Campus)"
+    fields: [humanities]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4}
+
+  - id: bcommdev_qwaqwa
+    name: "Bachelor of Community Development (BCommDev) (Qwaqwa Campus)"
+    fields: [humanities]
+    selective: true
+    selection_note: "Admission is subject to a selection process."
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 5}
+      extras:
+        - "UFS also accepts a Diploma in Vocational Skills with English at level 4 instead of an AP of 30."
+
+  - id: bsocsci_qwaqwa
+    name: "Bachelor of Social Sciences (BSocSci) (Qwaqwa Campus)"
+    fields: [humanities]
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4}
+
+  # The Humanities, extended curriculum programmes: not in the 2027 prospectus, so from the 2026 Humanities rule book
+
+  - id: ba_extended
+    name: "BA (extended curriculum programme, four years; Bloemfontein and Qwaqwa campuses)"
+    fields: [humanities]
+    requirements:
+      source: s-ufs-rb-hum-2026
+      min_points: 25
+      subject_minimums: {english: 4}
+      extras:
+        - "UFS's 2026 Humanities rule book: an AP of 25 to 29. With 30 or more, you'd be considered for the mainstream BA."
+        - "Majoring in Geography needs Mathematics at level 3 (40%)."
+        - "You can't apply for this directly: apply for the mainstream programme, and UFS places you here if you qualify and space allows, higher scores first (2027 prospectus)."
+
+  - id: ba_language_practice_extended
+    name: "BA (Language Practice) (extended curriculum programme, four years)"
+    fields: [languages_and_communication, humanities]
+    selective: true
+    selection_note: "Limited space: meeting the minimums doesn't guarantee a place (2026 rule book)."
+    requirements:
+      source: s-ufs-rb-hum-2026
+      min_points: 28
+      subject_minimums: {english: 5}
+      extras:
+        - "UFS's 2026 Humanities rule book asks an AP of no less than 28 for this extended programme."
+        - "UFS's language rule: no less than 60% for any home language and no less than 65% for any first additional language you took in Grade 12; a second additional language doesn't count. English is checked at level 5."
+        - "You can't apply for this directly: apply for the mainstream programme, and UFS places you here if you qualify and space allows, higher scores first (2027 prospectus)."
+
+  - id: ba_drama_theatre_arts_extended
+    name: "BA (Drama and Theatre Arts) (extended curriculum programme, four years)"
+    fields: [performing_arts]
+    selective: true
+    selection_note: "Subject to a selection process: the department emails a selection form to applicants who meet the minimums (2026 rule book)."
+    requirements:
+      source: s-ufs-rb-hum-2026
+      min_points: 25
+      subject_minimums: {english: 4}
+      extras:
+        - "UFS's 2026 Humanities rule book: an AP of 25 to 29. With 30 or more, you'd be considered for the mainstream BA (Drama and Theatre Arts)."
+        - "You can't apply for this directly: apply for the mainstream programme, and UFS places you here if you qualify and space allows, higher scores first (2027 prospectus)."
+
+  - id: ba_fine_arts_extended
+    name: "BA (Fine Arts) (extended curriculum programme, five years)"
+    fields: [arts_and_design]
+    selective: true
+    selection_note: "You must also submit a portfolio of creative works for the Department of Fine Arts to approve (2026 rule book)."
+    requirements:
+      source: s-ufs-rb-hum-2026
+      min_points: 25
+      subject_minimums: {english: 4}
+      extras:
+        - "UFS's 2026 Humanities rule book: an AP of 25 to 29. With 30 or more, you'd be considered for the mainstream BA (Fine Arts)."
+        - "You can't apply for this directly: apply for the mainstream programme, and UFS places you here if you qualify and space allows, higher scores first (2027 prospectus)."
+
+  - id: ba_governance_political_transformation_extended
+    name: "BA (Governance and Political Transformation) (extended curriculum programme, four years)"
+    fields: [humanities, public_administration]
+    requirements:
+      source: s-ufs-rb-hum-2026
+      min_points: 25
+      subject_minimums: {english: 4}
+      extras:
+        - "UFS's 2026 Humanities rule book: an AP of 25 to 29. With 30 or more, you'd be considered for the mainstream BA (Governance and Political Transformation)."
+        - "You can't apply for this directly: apply for the mainstream programme, and UFS places you here if you qualify and space allows, higher scores first (2027 prospectus)."
+
+  - id: bsocsci_extended
+    name: "BSocSci (extended curriculum programme, four years; Bloemfontein and Qwaqwa campuses)"
+    fields: [humanities]
+    requirements:
+      source: s-ufs-rb-hum-2026
+      min_points: 25
+      subject_minimums: {english: 4}
+      extras:
+        - "UFS's 2026 Humanities rule book: an AP of 25 to 29. With 30 or more, you'd be considered for the mainstream BSocSci."
+        - "You can't apply for this directly: apply for the mainstream programme, and UFS places you here if you qualify and space allows, higher scores first (2027 prospectus)."
+
+  # Theology and Religion, Bloemfontein Campus (prospectus page 39; the extended BDiv from the 2026 rule book)
+
+  - id: bdiv
+    name: "Bachelor of Divinity (BDiv)"
+    fields: [theology]
+    selective: true
+    selection_note: "UFS considers everyone who meets the requirements for selection, using a selection form you get during the online application; without it you aren't considered."
+    requirements:
+      source: s-ufs-prospectus-2027
+      min_points: 28
+      subject_minimums: {english: 4}
+
+  - id: bdiv_extended
+    name: "Bachelor of Divinity (extended curriculum programme, five years)"
+    fields: [theology]
+    selective: true
+    selection_note: "UFS considers everyone who meets the requirements for selection, using a selection form you get during the online application; without it you aren't considered."
+    requirements:
+      source: s-ufs-rb-theo-2026
+      min_points: 25
+      subject_minimums: {english: 4}
+      extras:
+        - "From UFS's 2026 Theology and Religion rule book: an AP of at least 25. The 2027 prospectus lists the extended BDiv only in its fee table."
+        - "You can't apply for this directly: apply for the mainstream programme, and UFS places you here if you qualify and space allows, higher scores first (2027 prospectus)."
 
 sources:
   - id: s-ufs-rules
@@ -59,5 +1916,75 @@ sources:
     publisher: "University of the Free State"
     title: "Prospective students"
     retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ufs-prospectus-2027
+    url: "https://www.ufs.ac.za/docs/librariesprovider44/undergraduate/ufs---ug-prospectus-2027---jan.pdf?sfvrsn=f3a0f820_1"
+    publisher: "University of the Free State"
+    title: "Undergraduate Prospectus 2027 (faculty tables, pages 10 to 39; the AP, page 50)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ufs-shrs-policy
+    url: "https://www.ufs.ac.za/docs/librariesprovider25/default-document-library/shrs-selection-policye87e7ee75b146fc79f4fff0600aa9400.pdf?sfvrsn=4c6a1120_0"
+    publisher: "University of the Free State"
+    title: "School of Health and Rehabilitation Sciences: selection policy for the 2026 student intake (pages 4 and 5)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ufs-bmedsc-rules-2027
+    url: "https://www.ufs.ac.za/docs/librariesprovider25/default-document-library/2027-bmedsc-(radiation-science)-selection-rules555f9ae75b146fc79f4fff0600aa9400.pdf?sfvrsn=f14bf520_0"
+    publisher: "University of the Free State"
+    title: "2027 BMedSc (Radiation Science) selection rules"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ufs-nursing-policy
+    url: "https://www.ufs.ac.za/docs/librariesprovider25/default-document-library/SoN_Bachelor_of_Nursing_selection_policy_2025"
+    publisher: "University of the Free State"
+    title: "School of Nursing: policy on the selection of Bachelor of Nursing students (amended March 2025)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ufs-rb-ems-2026
+    url: "https://www.ufs.ac.za/docs/librariesprovider23/year-books/2026/ufs-ems-rulebook-2026-website.pdf?sfvrsn=3400fb20_1"
+    publisher: "University of the Free State"
+    title: "Faculty of Economic and Management Sciences Rule Book 2026 (admission requirements, pages 8 and 9)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ufs-rb-edu-2026
+    url: "https://www.ufs.ac.za/docs/librariesprovider24/2026-documents/education-2026-rulebook.pdf?sfvrsn=363cf920_1"
+    publisher: "University of the Free State"
+    title: "Faculty of Education Rule Book 2026 (admission points and requirements, pages 26 and 27)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ufs-rb-law-2026
+    url: "https://www.ufs.ac.za/docs/librariesprovider21/rulebooks/ufs---law-combined-rulebook-2026.pdf?sfvrsn=49adfb20_3"
+    publisher: "University of the Free State"
+    title: "Faculty of Law Rule Book 2026 (rule E1.3, admission to the LLB)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ufs-rb-nas-2026
+    url: "https://www.ufs.ac.za/docs/librariesprovider22/rulebooks/nas-rule-book-2026-final.pdf?sfvrsn=ecaae220_1"
+    publisher: "University of the Free State"
+    title: "Faculty of Natural and Agricultural Sciences Rule Book 2026 (NAS 2.1 and 2.2, pages 21 to 27; section 12.2, pages 63 to 65)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ufs-rb-hum-2026
+    url: "https://www.ufs.ac.za/docs/librariesprovider20/rule-books/2026/the-humanities_rule-book_2026.pdf?sfvrsn=86c7fc20_1"
+    publisher: "University of the Free State"
+    title: "Faculty of the Humanities Rule Book 2026 (admission requirements of each extended programme)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ufs-rb-theo-2026
+    url: "https://www.ufs.ac.za/docs/librariesprovider19/all-documents/2026rulebook-theology-and-religion-final.pdf?sfvrsn=e866fc20_1"
+    publisher: "University of the Free State"
+    title: "Faculty of Theology and Religion Rule Book 2026 (admission to the Bachelor of Divinity and its extended programme)"
+    retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
