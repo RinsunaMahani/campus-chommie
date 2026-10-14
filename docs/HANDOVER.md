@@ -14,7 +14,7 @@ repo folder but is kept out of git; the parts the screens need are quoted below.
 
 ## Where things stand
 
-`main` holds only the empty first commit. All work sits in thirty-two stacked pull requests:
+`main` holds only the empty first commit. All work sits in thirty-three stacked pull requests:
 
 | PR | Branch | What |
 |---|---|---|
@@ -27,6 +27,7 @@ repo folder but is kept out of git; the parts the screens need are quoted below.
 | #7 | `rinsuna/m1-after-acceptance` | your points at every university; campuses, calendars, money dates and support in the packs; first steps from acceptance to the first lecture |
 | #8 | `rinsuna/m3-profile-and-money` | M3's backend: the student's profile (university and campus) and My money (settings, income, expected payments, spending, summary) |
 | #9 | `rinsuna/m1-cheap-things` | cheap things to do near campus, each priced from the place's own page |
+| #33 | `rinsuna/courses-wave-2` | full course lists, wave 2: UFS (172 programmes) from its 2027 prospectus with closing dates, and UNIZULU (185 programmes) from the CAO's 2027 handbook, each with a research note per university (agent drafts, `release: false`) |
 | #32 | `rinsuna/courses-wave-1` | full course lists, wave 1: VUT (49 programmes), WSU (105), UMP (24), MUT (40) and SPU (26), each from the university's own 2027 documents, with a research note per university (agent drafts, `release: false`); a programme whose university publishes no points minimum checks the subjects only (`min_points: null`) |
 | #31 | `rinsuna/forest-theme` | the whole app in Rinsuna's forest theme, from her homescreen: every screen on her wallpaper (forest moss down to terracotta rose), dark forest-glass cards, the white pill for the main action, a floating glass dock, and her CC monogram as the mark, app icon, adaptive icon and splash; every text colour meets WCAG AA on every band of the wallpaper |
 | #30 | `rinsuna/all-universities` | all 26 public universities: each one's points rule where it publishes one the engine can follow, and how and when to apply (dates, fee, link, choices), from its own pages; agent drafts; two new ways of counting (a subject's own table, points from the percentage) and a general table; a university without a rule says why |
@@ -57,7 +58,7 @@ new-phone code, and #13 deletes accounts.
 
 **How to merge:**
 - Each PR targets the branch below it, so its diff shows only its own work.
-- Merge in order: #1 into `main`, then #2 to #30, retargeting each to `main` once the one below has merged.
+- Merge in order: #1 into `main`, then #2 to #33, retargeting each to `main` once the one below has merged.
 - Use **Create a merge commit**, not squash or rebase, so every commit stays in `main`'s history (CLAUDE.md: never
   rewrite history).
 
@@ -152,7 +153,7 @@ Everything is recorded, with who and when, in [OPEN_QUESTIONS.md](OPEN_QUESTIONS
 ## Next build: the app screens, M2 to M5
 
 The screens were Mandla's; since 13 Oct they're ours. The brief gives M2 Wed 14 to Thu 15 Oct, M3 Fri 16 to Sat 17,
-M4 Sun 18 to Mon 19 and M5 Tue 20 to Wed 21. M2 to M5 are built (#23 to #26, 13 Oct), and the judge flow runs end to end. #27 (13 Oct) replaces the marks screen's one-subject-at-a-time rows with a picker in folders, #28 puts what a learner can still do at the top of the plan, #29 puts the marks first, #30 covers all 26 universities, #31 puts the whole app in Rinsuna's forest theme, and #32 adds the full course lists of five more universities (the others follow in waves). Next: hosting (Azure for Students, once Rinsuna activates it), a preview APK on the hosted API, polish (the plan screen is long), and M6 from Fri 23 Oct.
+M4 Sun 18 to Mon 19 and M5 Tue 20 to Wed 21. M2 to M5 are built (#23 to #26, 13 Oct), and the judge flow runs end to end. #27 (13 Oct) replaces the marks screen's one-subject-at-a-time rows with a picker in folders, #28 puts what a learner can still do at the top of the plan, #29 puts the marks first, #30 covers all 26 universities, #31 puts the whole app in Rinsuna's forest theme, and #32 and #33 add the full course lists of seven more universities (VUT, WSU, UMP, MUT, SPU in wave 1; UFS and UNIZULU in wave 2; the others follow in waves). Next: hosting (Azure for Students, once Rinsuna activates it), a preview APK on the hosted API, polish (the plan screen is long), and M6 from Fri 23 Oct.
 
 **M2, the Find my course screens.** From the brief: "University, then marks (add or remove rows, up to 9), then tier
 cards, then the three-choice plan and sources. Add i18n plumbing with English only visible. Acceptance: works at 360

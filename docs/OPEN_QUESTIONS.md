@@ -159,7 +159,7 @@ cents, documents and next steps, each with its source. `funding.yaml` holds nati
 
 Every public university now has a pack (#30, 13 Oct 2026, [research/universities.md](research/universities.md)):
 its points rule where it publishes one the engine can follow, and how and when to apply. Programmes are at UP, TUT
-and SMU and, since #32, at VUT, WSU, UMP, MUT and SPU; the rest follow in waves. All are agent drafts.
+and SMU and, since #32 and #33, at VUT, WSU, UMP, MUT, SPU, UFS and UNIZULU; the rest follow in waves. All are agent drafts.
 
 - [ ] **Check the 23 new packs** against their sources, in a browser: UJ, UKZN, DUT and CPUT were read through a
   search engine's copy (bot checks, an unreachable site, expired or broken certificates).
@@ -170,7 +170,7 @@ and SMU and, since #32, at VUT, WSU, UMP, MUT and SPU; the rest follow in waves.
   subjects. NMU's 7 points for quintile 1 to 3 schools and SPU's home-language bonus need questions we don't ask.
 - [ ] **Two closing dates** at VUT (30 Sep and 30 Oct 2026): both kept until VUT says which.
 - [x] **Which universities get programmes next?** All of them, Rinsuna chose (13 Oct): agents draft them in waves,
-  those still taking applications first. Wave 1 is #32; UJ, UKZN and DUT need prospectuses downloaded in a browser.
+  those still taking applications first. Wave 1 is #32, wave 2 is #33; UJ, UKZN and DUT need prospectuses downloaded in a browser.
 - [ ] **Check wave 1's course lists** (#32): each university's note in [research/](research/) starts with what to
   check first. The ones that change what learners see:
   - **WSU's Education programmes count seven subjects, Life Orientation included.** WSU says so for Foundation Phase;
@@ -183,6 +183,13 @@ and SMU and, since #32, at VUT, WSU, UMP, MUT and SPU; the rest follow in waves.
   - **SPU** doesn't say how many subjects its points count, so its 26 programmes say they can't be checked yet.
   - Smaller ones in the notes: VUT's Internal Auditing (Mathematical Literacy 6 or 5), Technical Mathematics for its
     engineering diplomas, points under 30%; UMP's Hospitality Management page repeating Culinary Arts' points.
+- [ ] **Check wave 2's course lists** (#33, [ufs.md](research/ufs.md), [unizulu.md](research/unizulu.md)):
+  - **UFS (172 programmes):** two ECPs keep `requirements: null` (extended BEd, extended Bachelor of Sustainable
+    Food Systems); check the AP calculation for selection programmes and the 2026 faculty rule books' ECPs.
+  - **UNIZULU (185 programmes):** points scale stops at 7 points from 80%, but policy section 5.4, the 2022 guide,
+    and 2026 handbooks give 8 points for 90-100% (see [unizulu.md](research/unizulu.md) "Check first" 1); duplicate
+    B Ed codes in CAO new programmes list (ZU-M-ILF / ZU-M-ILI, ZU-M-ILZ / ZU-M-ILW / ZU-M-IEJ); confirm with UNIZULU
+    whether Senior/FET B Eds have 2027 intake after the 2026 pause.
 - [ ] **Sites that ask AI agents not to fetch them** (their `robots.txt`, checked 14 Oct 2026):
   - **Fort Hare** disallows ClaudeBot and anthropic-ai on its whole site. Its course list (81 programmes, from its
     2027 study guide) was drafted before the agent read that file, so it's held out of the repo. The clean way: Rinsuna
