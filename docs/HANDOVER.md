@@ -130,10 +130,10 @@ Everything is recorded, with who and when, in [OPEN_QUESTIONS.md](OPEN_QUESTIONS
    LICENSE: they're Rinsuna's call.
 4. **Name SMU's buildings** on campus, the Clinpath and Natural Science buildings first (OPEN_QUESTIONS, "Campus
    maps").
-4b. **Download what agents may not fetch,** in a browser, into Downloads (OPEN_QUESTIONS, "All 26 universities"):
+5. **Download what agents may not fetch,** in a browser, into Downloads (OPEN_QUESTIONS, "All 26 universities"):
    UJ's, UKZN's and DUT's prospectuses (UJ's closes 31 Oct, so first); Fort Hare's 2027 study guide; the Gauteng City
    Region Academy bursary page and the Reserve Bank's bursary PDF.
-5. **Decisions waiting for her** (OPEN_QUESTIONS, "App and accounts" and "Campus maps"):
+6. **Decisions waiting for her** (OPEN_QUESTIONS, "App and accounts" and "Campus maps"):
    - the map's background, and "you are here"
    - which intakes a plan shows, and "Add these dates to my calendar"
    - flag counts for reps, and module alerts
@@ -143,7 +143,7 @@ Everything is recorded, with who and when, in [OPEN_QUESTIONS.md](OPEN_QUESTIONS
    - Google sign-in
    - hosting
    - the email sender
-6. **Human deadlines:**
+7. **Human deadlines:**
    - **Sonke:** create the team by Tue 20 Oct.
    - **WhatsApp:** set up WhatsApp Business (Meta app, test number) before Fri 23 Oct.
    - **Hackathon:** Fri 23 Oct 08:30 to Sun 25 Oct 17:00 SAST. M6 doesn't start before 08:30 on the Friday.
