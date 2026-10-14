@@ -9,7 +9,8 @@ Team PR (Rinsuna Mahani).
 ([docs/HANDOVER.md](docs/HANDOVER.md)). The app has sign-up (with the 18-or-older confirmation and consent), email
 verification, two-factor sign-in and account security; Find my course, marks first, at all 26 public universities (your points and how to apply at each; programmes at UP, TUT and SMU), open without an account (M2);
 onboarding and My money (M3); My week with classes, reps and My marks (M4); and Home's alerts, Support, cheap things,
-updates and deleting an account (M5). The brief's judge flow runs end to end. Still to come: hosting, the WhatsApp bot
+updates and deleting an account (M5), all in Rinsuna's forest theme with her CC icon. The brief's judge flow runs end
+to end. Still to come: hosting, the WhatsApp bot
 during the hackathon (M6), and a person's check of the data packs and the funding list.
 
 ## What's where
