@@ -1,8 +1,9 @@
 # University of Limpopo (UL)
 #
-# Agent draft, from UL's own pages read on 13 Oct 2026 (docs/research/universities.md). Nobody has
-# checked these values yet: release stays false until a person has compared every one with its source.
-# Programmes aren't added yet: only how UL counts points, and how and when to apply.
+# Agent draft, from UL's 2027 Undergraduate Prospectus read on 14 Oct 2026 (docs/research/ul.md).
+# Nobody has checked these values yet: release stays false until a person has compared every
+# one with its source. All 54 undergraduate programmes take their requirements from the 2027
+# prospectus. Bank details in UL's document are left out on purpose.
 
 university: ul
 name: University of Limpopo
@@ -12,10 +13,10 @@ release: false
 max_choices: null
 
 points_rules:
-  source: s-ul-undergrad
+  source: s-ul-prospectus-2027
   subjects_counted: 6          # six recognised 20-credit subjects
   life_orientation: exclude
-  note: "UL also asks for Life Orientation at level 3 or more, though it doesn't count it."
+  note: "UL requires Life Orientation at level 3 or more for admission, but does not count it in the APS."
   scale:
     - {min_percent: 80, level: 7}
     - {min_percent: 70, level: 6}
@@ -28,24 +29,702 @@ points_rules:
 applications:
   source: s-ul-2027
   url: https://www.ul.ac.za/study-with-us-university-of-limpopo-2027-application-now-open/
-  how: "Apply online, with a valid email address of your own."
+  how: "Apply online on UL's student I-Enabler portal with your own valid email address."
   fee_cents: 20000
-  fee_note: "Not refunded."
+  fee_note: "Non-refundable application handling fee."
+  documents:
+    source: s-ul-prospectus-2027
+    items:
+      - "Certified copy of your ID document or passport"
+      - "Certified copy of Grade 11 final stamped results (if in Grade 12) or statement of Grade 12 results / National Senior Certificate"
+      - "Academic record and certificate of good conduct (if transferring from another tertiary institution)"
+      - "Proof of foreign exemption evaluation certificate from USAf / SAQA (for international qualifications)"
+  after:
+    - text: "Meeting the minimum APS for a particular programme does not guarantee admission, as places are limited."
+      source: s-ul-prospectus-2027
+    - text: "Life Orientation with an achievement level of at least 3 (40%) and English with at least level 3 (40%) are required for entry to any undergraduate programme."
+      source: s-ul-prospectus-2027
   windows:
     - intake: 2027
       source: s-ul-2027
       opens: 2026-04-01
       closes: 2026-09-30
-      note: "MBChB (Medicine), and applicants from outside South Africa, closed on 30 July 2026."
+      programme_closes:
+        - closes: 2026-07-30
+          programmes: [mbchb]
+          source: s-ul-2027
+      note: "MBChB (Medicine) and international applications closed on 30 July 2026. General undergraduate applications closed on 30 September 2026."
 
-programmes: []
+programmes:
+
+  # Faculty of Humanities (prospectus page 1)
+  # School of Education
+
+  - id: bed_sp_fet_languages_lo
+    name: "BEd in Senior Phase & FET Teaching (majoring in Languages and Life Orientation)"
+    fields: [education]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 24
+      subject_minimums: {english: 5, other_language: 4}
+      extras:
+        - "Requires English at level 5 (60-69%) and an African language (Sepedi, Tshivenda, or Xitsonga) at level 4 (50-59%)."
+
+  - id: bed_sp_fet_languages_social_sciences
+    name: "BEd in Senior Phase & FET Teaching (majoring in Languages and Social Sciences)"
+    fields: [education]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 24
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {history: 4}
+            - subjects: {geography: 4}
+            - subjects: {other_language: 4}
+      extras:
+        - "English level 3 (level 4 to major in English), plus level 4 in two subjects from Geography, History, Sepedi, Tshivenda, Xitsonga."
+
+  - id: bed_sp_fet_ems
+    name: "BEd in Senior Phase & FET Teaching (majoring in Economics and Management Studies)"
+    fields: [education]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 24
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {accounting: 4}
+            - subjects: {economics: 4}
+            - subjects: {business_studies: 4}
+      extras:
+        - "Requires English at level 3 (40-49%) plus two subjects at level 4 (50-59%) from Accounting, Economics, Business Studies."
+
+  - id: bed_sp_fet_maths_sci_tech
+    name: "BEd in Senior Phase & FET Teaching (majoring in Mathematics, Science & Technology)"
+    fields: [education]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 24
+      subject_minimums: {english: 3, mathematics: 4}
+      choices:
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {life_sciences: 4}
+      extras:
+        - "Requires English level 3 (40-49%), Mathematics level 4 (50-59%), and Physical Sciences or Life Sciences level 4 (50-59%)."
+
+  - id: bed_foundation_phase
+    name: "BEd in Foundation Phase Teaching"
+    fields: [education]
+    selective: true
+    selection_note: "Departmental selection test required."
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 24
+      subject_minimums: {english: 4, other_language: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "Selection test required. Requires Home Language at level 4 (50-59%), English at level 4 (50-59%), and Mathematics level 3 (40-49%) or Mathematical Literacy level 4 (50-59%)."
+
+  # School of Social Sciences (prospectus page 1)
+
+  - id: ba_criminology_psychology
+    name: "Bachelor of Arts (Criminology and Psychology stream)"
+    fields: [humanities, safety_and_justice]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 23
+      subject_minimums: {english: 4, other_language: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+              min_points: 25
+      extras:
+        - "APS 23 with Mathematics level 3 (40-49%), or APS 25 with Mathematical Literacy level 5 (60-69%)."
+
+  - id: ba_criminology_psychology_extended
+    name: "Bachelor of Arts (Criminology and Psychology stream; Extended Curriculum Programme)"
+    fields: [humanities, safety_and_justice]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 22
+      subject_minimums: {english: 4, other_language: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 24
+      extras:
+        - "APS 22 with Mathematics level 2 (30-39%), or APS 24 with Mathematical Literacy level 4 (50-59%). Duration is 4 years."
+
+  - id: ba_cultural_studies
+    name: "Bachelor of Arts (Cultural Studies stream)"
+    fields: [humanities]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 23
+      subject_minimums: {english: 4, other_language: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+              min_points: 25
+      extras:
+        - "APS 23 with Mathematics level 3, or APS 25 with Mathematical Literacy level 5."
+
+  - id: ba_sociology_anthropology
+    name: "Bachelor of Arts (Sociology and Anthropology stream)"
+    fields: [humanities]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 23
+      subject_minimums: {english: 4, other_language: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+              min_points: 25
+      extras:
+        - "APS 23 with Mathematics level 3, or APS 25 with Mathematical Literacy level 5."
+
+  - id: ba_political_studies
+    name: "Bachelor of Arts (Political Studies stream)"
+    fields: [humanities, public_administration]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 25
+      subject_minimums: {english: 4}
+
+  - id: bpsych
+    name: "Bachelor of Psychology"
+    fields: [health_sciences, humanities]
+    selective: true
+    selection_note: "Departmental selection test required."
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 23
+      subject_minimums: {english: 4, other_language: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+              min_points: 25
+      extras:
+        - "Selection test required. APS 23 with Mathematics 3, or APS 25 with Mathematical Literacy 5. Duration is 4 years."
+
+  - id: bsw
+    name: "Bachelor of Social Work"
+    fields: [humanities]
+    selective: true
+    selection_note: "Departmental selection test required."
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 23
+      subject_minimums: {english: 4, other_language: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+              min_points: 25
+      extras:
+        - "Selection test required. APS 23 with Mathematics 3, or APS 25 with Mathematical Literacy 5. Duration is 4 years."
+
+  # School of Languages and Communication Studies (prospectus page 1)
+
+  - id: ba_languages
+    name: "Bachelor of Arts (Languages stream)"
+    fields: [humanities, languages_and_communication]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 25
+      subject_minimums: {english: 4, other_language: 5}
+      extras:
+        - "Requires English level 4 (50-59%) and Northern Sotho, Tshivenda, or Xitsonga level 5 (60-69%)."
+
+  - id: ba_translation_linguistics
+    name: "Bachelor of Arts (Translation and Linguistics stream)"
+    fields: [humanities, languages_and_communication]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 25
+      subject_minimums: {english: 4, other_language: 5}
+
+  - id: ba_performing_arts
+    name: "Bachelor of Arts (Performing Arts stream)"
+    fields: [humanities, performing_arts]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 25
+      subject_minimums: {english: 4, other_language: 5}
+
+  - id: binfst
+    name: "Bachelor of Information Studies"
+    fields: [humanities, computing]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 25
+      subject_minimums: {english: 4, other_language: 5}
+      extras:
+        - "Duration is 4 years."
+
+  - id: ba_contemporary_english
+    name: "Bachelor of Arts in Contemporary English and Multilingual Studies"
+    fields: [humanities, languages_and_communication]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 25
+      subject_minimums: {english: 4, other_language: 5}
+      extras:
+        - "Requires English level 4 and Northern Sotho level 5."
+
+  - id: ba_communication_studies
+    name: "Bachelor of Arts in Communication Studies"
+    fields: [humanities, languages_and_communication]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 25
+      subject_minimums: {english: 4, other_language: 5}
+
+  - id: ba_media_studies
+    name: "Bachelor of Arts in Media Studies"
+    fields: [humanities, languages_and_communication]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 25
+      subject_minimums: {english: 4, other_language: 5}
+
+  - id: ba_media_studies_extended
+    name: "Bachelor of Arts in Media Studies (Extended Curriculum Programme)"
+    fields: [humanities, languages_and_communication]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 23
+      subject_minimums: {english: 4, other_language: 4}
+      extras:
+        - "Duration is 4 years."
+
+  # Faculty of Management & Law (prospectus page 2)
+  # School of Accountancy
+
+  - id: bacc
+    name: "Bachelor of Accountancy"
+    fields: [accounting, commerce, finance]
+    selective: true
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 4}
+      extras:
+        - "Duration is 4 years."
+
+  - id: bcom_accountancy
+    name: "Bachelor of Commerce in Accountancy"
+    fields: [accounting, commerce]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4}
+
+  - id: bcom_accountancy_extended
+    name: "Bachelor of Commerce in Accountancy (Extended Curriculum Programme)"
+    fields: [accounting, commerce]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 4}
+      extras:
+        - "Duration is 4 years."
+
+  # School of Economics & Management (prospectus page 2)
+
+  - id: bcom_business_management
+    name: "Bachelor of Commerce in Business Management"
+    fields: [management, commerce]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 26
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 3}
+
+  - id: bcom_business_management_extended
+    name: "Bachelor of Commerce in Business Management (Extended Curriculum Programme)"
+    fields: [management, commerce]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 22
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 3}
+      extras:
+        - "Duration is 4 years."
+
+  - id: bcom_economics
+    name: "Bachelor of Commerce in Economics"
+    fields: [economics, commerce]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 26
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {economics: 4}
+
+  - id: bcom_economics_extended
+    name: "Bachelor of Commerce in Economics (Extended Curriculum Programme)"
+    fields: [economics, commerce]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 22
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {economics: 4}
+      extras:
+        - "Duration is 4 years."
+
+  - id: bcom_human_resource_management
+    name: "Bachelor of Commerce in Human Resource Management"
+    fields: [management, commerce]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 26
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 3}
+
+  - id: bcom_human_resource_management_extended
+    name: "Bachelor of Commerce in Human Resource Management (Extended Curriculum Programme)"
+    fields: [management, commerce]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 22
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 3}
+      extras:
+        - "Duration is 4 years."
+
+  - id: badmin
+    name: "Bachelor of Administration"
+    fields: [public_administration, management]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 26
+      subject_minimums: {english: 4}
+
+  - id: badmin_local_government
+    name: "Bachelor of Administration in Local Government"
+    fields: [public_administration, management]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 26
+      subject_minimums: {english: 4}
+
+  - id: bdev_planning_management
+    name: "Bachelor of Development in Planning and Management"
+    fields: [management, built_environment]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 26
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+      additional_minimums: [4, 4, 4]
+      extras:
+        - "Requires Mathematics 3 or Mathematical Literacy 5, plus level 4 in each of at least three additional subjects."
+
+  # School of Law (prospectus page 2)
+
+  - id: llb
+    name: "Bachelor of Laws"
+    fields: [law]
+    selective: true
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 30
+      choices:
+        - one_of:
+            - subjects: {english: 5}
+            - subjects: {english: 4}  # A score of 4 for English Home Language is accepted
+      extras:
+        - "Level 5 (60-69%) in English First Additional Language, or level 4 (50-59%) in English Home Language."
+
+  - id: llb_extended
+    name: "Bachelor of Laws (Extended Curriculum Programme)"
+    fields: [law]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 26
+      choices:
+        - one_of:
+            - subjects: {english: 5}
+            - subjects: {english: 4}
+      extras:
+        - "Level 5 in English First Additional Language, or level 4 in English Home Language. Duration is 5 years."
+
+  # Faculty of Science & Agriculture (prospectus page 2)
+  # Physical & Mineral Sciences
+
+  - id: bsc_physical_sciences
+    name: "Bachelor of Science (Physical Sciences stream)"
+    fields: [natural_sciences, physical_sciences]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 5}
+
+  - id: bsc_physical_sciences_extended
+    name: "Bachelor of Science (Physical Sciences stream; Extended Curriculum Programme)"
+    fields: [natural_sciences, physical_sciences]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 22
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 3}
+      extras:
+        - "Duration is 4 years."
+
+  - id: bsc_geology
+    name: "Bachelor of Science in Geology"
+    fields: [earth_sciences, natural_sciences]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 5}
+
+  # Agriculture and Environmental Sciences (prospectus page 2)
+
+  - id: bagricman
+    name: "Bachelor of Agricultural Management"
+    fields: [agriculture, management]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 24
+      subject_minimums: {english: 4, mathematics: 3, physical_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+
+  - id: bsc_agric_economics
+    name: "Bachelor of Science in Agriculture in Agricultural Economics"
+    fields: [agriculture, economics]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 24
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+      extras:
+        - "Duration is 4 years."
+
+  - id: bsc_agric_plant_production
+    name: "Bachelor of Science in Agriculture in Plant Production"
+    fields: [agriculture, life_sciences]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 24
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+      extras:
+        - "Duration is 4 years."
+
+  - id: bsc_agric_animal_production
+    name: "Bachelor of Science in Agriculture in Animal Production"
+    fields: [agriculture, life_sciences]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 24
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+      extras:
+        - "Duration is 4 years."
+
+  - id: bsc_agric_soil_science
+    name: "Bachelor of Science in Agriculture in Soil Science"
+    fields: [agriculture, earth_sciences]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 25
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 5}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+      extras:
+        - "Duration is 4 years."
+
+  - id: bsc_environmental_resource_studies
+    name: "Bachelor of Science in Environmental & Resource Studies"
+    fields: [earth_sciences, natural_sciences]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 24
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {geography: 4}
+      extras:
+        - "Duration is 4 years."
+
+  - id: bsc_water_sanitation_sciences
+    name: "Bachelor of Science in Water & Sanitation Sciences"
+    fields: [earth_sciences, natural_sciences]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 24
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 5, life_sciences: 4}
+      extras:
+        - "Duration is 4 years."
+
+  # Mathematical and Computer Sciences (prospectus page 2)
+
+  - id: bsc_mathematical_sciences
+    name: "Bachelor of Science (Mathematical Sciences stream)"
+    fields: [natural_sciences, mathematical_sciences, computing]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 24
+      subject_minimums: {english: 4, mathematics: 5}
+      extras:
+        - "Students selecting Physics as an elective require level 4 (50%) in Physical Sciences. Students selecting Life Sciences require level 4 in Life Sciences."
+
+  - id: bsc_mathematical_sciences_extended
+    name: "Bachelor of Science (Mathematical Sciences stream; Extended Curriculum Programme)"
+    fields: [natural_sciences, mathematical_sciences, computing]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 22
+      subject_minimums: {english: 4, mathematics: 4}
+      extras:
+        - "Duration is 4 years."
+
+  # Molecular and Life Sciences (prospectus page 2)
+
+  - id: bsc_life_sciences
+    name: "Bachelor of Science (Life Sciences Stream)"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 5, life_sciences: 4}
+
+  - id: bsc_life_sciences_extended
+    name: "Bachelor of Science (Life Sciences Stream; Extended Curriculum Programme)"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 22
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 3}
+      extras:
+        - "Duration is 4 years."
+
+  # Faculty of Health Sciences (prospectus page 2)
+  # School of Medicine
+
+  - id: mbchb
+    name: "Bachelor of Medicine & Bachelor of Surgery"
+    fields: [medicine, health_sciences]
+    selective: true
+    selection_note: "Strictly competitive selection. Applications closed on 30 July 2026."
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 27
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 5, life_sciences: 5}
+      additional_minimums: [4, 4]
+      extras:
+        - "Requires level 5 in Mathematics, Physical Sciences and Life Sciences, level 4 in English, and level 4 in at least two additional subjects. Duration is 6 years."
+
+  # School of Health Care Sciences (prospectus page 2)
+
+  - id: bsc_dietetics
+    name: "Bachelor of Science in Dietetics"
+    fields: [nutrition, health_sciences]
+    selective: true
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 5, life_sciences: 5}
+      additional_minimums: [4, 4]
+      extras:
+        - "Duration is 4 years."
+
+  - id: boptom
+    name: "Bachelor of Optometry"
+    fields: [health_sciences]
+    selective: true
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 27
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 5, life_sciences: 5}
+      additional_minimums: [4, 4]
+      extras:
+        - "Duration is 4 years."
+
+  - id: bsc_medical_sciences
+    name: "Bachelor of Science in Medical Sciences"
+    fields: [medical_sciences, health_sciences]
+    selective: true
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 5, life_sciences: 5}
+      additional_minimums: [4, 4]
+      extras:
+        - "Duration is 4 years."
+
+  - id: bnurs
+    name: "Bachelor of Nursing"
+    fields: [nursing, health_sciences]
+    selective: true
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 5, life_sciences: 5}
+      additional_minimums: [4, 4]
+      extras:
+        - "Duration is 4 years."
+
+  - id: bpharm
+    name: "Bachelor of Pharmacy"
+    fields: [pharmacy, health_sciences]
+    selective: true
+    requirements:
+      source: s-ul-prospectus-2027
+      min_points: 27
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 5, life_sciences: 5}
+      additional_minimums: [4, 4]
+      extras:
+        - "Duration is 4 years."
 
 sources:
-  - id: s-ul-undergrad
-    url: "https://www.ul.ac.za/admissions/undergraduate-studies/"
+  - id: s-ul-prospectus-2027
+    url: "https://www.ul.ac.za/wp-content/uploads/2025/03/Undergraduate-Prospectus-2027.pdf"
     publisher: "University of Limpopo"
-    title: "Undergraduate studies (the APS)"
-    retrieved: 2026-10-13
+    title: "Undergraduate Prospectus 2027 (General admission requirements and faculty tables)"
+    retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
   - id: s-ul-2027
