@@ -78,11 +78,105 @@ export type FundingCard = {
   short_name: string | null;
   status: string;
   label: string;
-  heading: string | null;
-  opens: string | null;
+  heading?: string | null;
+  opens?: string | null;
+  closes?: string | null;
   days: number | null;
   url: string | null;
   source_url: string | null;
+  kind?: string;
+  kind_label?: string;
+  sector?: string;
+  sector_label?: string;
+  any_field?: boolean;
+  fields?: { id: string; label: string }[];
+  not_fields?: { id: string; label: string }[];
+  stages?: { id: string; label: string }[];
+  study_at?: string | string[];
+  applying?: string;
+  intake?: number | null;
+  next_date?: string | null;
+  lines?: string[];
+  why?: string | null;
+  checked?: string | null;
+};
+
+export type FundingField = {
+  id: string;
+  label: string;
+  funders: number;
+};
+
+export type FundingCounts = {
+  total: number;
+  open_now: number;
+  closing_soon: number;
+};
+
+export type FundingListAnswer = Confirmation & {
+  today: string;
+  summary: string;
+  counts: FundingCounts;
+  fields: FundingField[];
+  funders: FundingCard[];
+};
+
+export type FundingFilters = {
+  field?: string;
+  status?: string;
+  kind?: string;
+  stage?: string;
+};
+
+export type FunderSource = {
+  url: string;
+  publisher: string;
+  title: string;
+  retrieved: string | null;
+  last_verified: string | null;
+};
+
+export type FunderWindow = {
+  intake: number;
+  heading: string;
+  status: string;
+  label: string;
+  opens: string | null;
+  closes: string | null;
+  late_opens: string | null;
+  late_closes: string | null;
+  next_date: string | null;
+  days: number | null;
+  lines: string[];
+  source_url: string | null;
+};
+
+export type FunderApply = {
+  url: string | null;
+  how: string | null;
+  fee_cents: number | null;
+  fee_note: string | null;
+  contact: string | null;
+  documents: Group;
+  after: { text: string; source_url: string | null }[];
+  tips: Group;
+  warnings: Group;
+  windows: FunderWindow[];
+  lines: string[];
+  source_url: string | null;
+};
+
+export type FunderDetail = Confirmation & FundingCard & {
+  who_can_apply: Group;
+  covers: Group;
+  obligations: Group;
+  apply: FunderApply;
+  sources: FunderSource[];
+};
+
+export type FunderAnswer = Confirmation & {
+  today: string;
+  funder: FunderDetail;
 };
 
 export type WindowStatus =

@@ -5,7 +5,15 @@
  */
 import { api } from '@/shared/api/client';
 
-import { AssessAnswer, FundingCard, Mark, Plan, PointsAnswer } from '../types';
+import { AssessAnswer, FunderAnswer, FunderDetail, FundingCard, FundingFilters, FundingListAnswer, Mark, Plan, PointsAnswer } from '../types';
+
+function toQuery(filters?: FundingFilters): string {
+  if (!filters) return '';
+  const entries = Object.entries(filters).filter(([, v]) => typeof v === 'string' && v.length > 0);
+  if (!entries.length) return '';
+  const qs = entries.map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v as string)}`).join('&');
+  return `?${qs}`;
+}
 
 export const courseFinderApi = {
   /** Your points at every university we cover, each by its own rule, and how many programmes you meet. */
@@ -18,6 +26,18 @@ export const courseFinderApi = {
 
   /** The funding list (public, nothing sent): for what's open now. */
   funding: () => api<{ funders: FundingCard[] }>('GET', '/funding').then((d) => d.funders),
+
+  /** The full funding list with counts, fields and optional filters. */
+  fundingList: (filters?: FundingFilters) =>
+    api<FundingListAnswer>('GET', `/funding${toQuery(filters)}`),
+
+  /** One funder in full: who can apply, covers, obligations, how to apply and sources. */
+  funder: (id: string): Promise<FunderDetail> =>
+    api<FunderAnswer>('GET', `/funding/${id}`).then((d) => ({
+      ...d.funder,
+      confirmed: d.confirmed,
+      notice: d.notice,
+    })),
 };
 
 /** Every message in a 422's field errors (marshmallow's nested shape), flattened. */

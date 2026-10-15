@@ -1,0 +1,180 @@
+{
+  "data": {
+    "confirmed": false,
+    "funder": {
+      "any_field": true,
+      "apply": {
+        "after": [
+          {
+            "source_url": "https://www.nsfas.org.za/content/",
+            "text": "Save your reference number, then follow your status in the tracker on myNSFAS."
+          },
+          {
+            "source_url": "https://www.nsfas.org.za/content/",
+            "text": "You have 30 working days to answer any request for more information."
+          },
+          {
+            "source_url": "https://nsfas.org.za/content/how-to-apply.html",
+            "text": "If your application is unsuccessful, myNSFAS shows the reason, and you can appeal within the appeal window."
+          },
+          {
+            "source_url": "https://nsfas.org.za/content/how-to-apply.html",
+            "text": "If NSFAS finds you eligible, your funding is confirmed once you register at a public university or TVET college."
+          }
+        ],
+        "contact": "Toll-free 08000 67327, USSD *134*67327#, info@nsfas.org.za",
+        "documents": {
+          "items": [
+            "Your South African ID or birth certificate (a smart ID card: both sides)",
+            "The NSFAS 2027 consent form, signed by hand in black ink by you and by every parent, legal guardian or spouse on your application",
+            "If you're 34 or younger: the NSFAS declaration form, which confirms your parent or guardian details",
+            "If a parent, legal guardian or spouse earns an income: payslips for the last three months, a UIF statement, or an affidavit if the income is informal",
+            "If someone in your household gets a SASSA grant: nothing extra, because NSFAS checks with SASSA",
+            "If you have a disability: the disability annexure, completed and signed with a medical practitioner, in one file with your medical report",
+            "If you're under 18 and an orphan or a vulnerable child: the orphan or vulnerable child declaration, completed by a social worker",
+            "If a parent or guardian has died: a death certificate for each",
+            "If your parents are divorced or separated: the divorce decree, or the settlement agreement showing maintenance",
+            "If you're married, or a spouse signs for you: your marriage certificate and your spouse's ID",
+            "If you live with a legal guardian: proof of legal guardianship issued by a court",
+            "If a parent or legal guardian was retrenched: the retrenchment letter from the employer"
+          ],
+          "source_url": "https://www.nsfas.org.za/content/"
+        },
+        "fee_cents": 0,
+        "fee_note": null,
+        "how": "Apply online on myNSFAS or in the official NSFAS app. Create your profile with your South African ID number, your cellphone number and your email address, then fill in your personal and household information, give consent, upload your documents and submit. You can save and finish later.",
+        "lines": [
+          "Where to apply: https://my.nsfas.org.za/",
+          "Apply online on myNSFAS or in the official NSFAS app. Create your profile with your South African ID number, your cellphone number and your email address, then fill in your personal and household information, give consent, upload your documents and submit. You can save and finish later.",
+          "Applying is free.",
+          "Questions: Toll-free 08000 67327, USSD *134*67327#, info@nsfas.org.za"
+        ],
+        "source_url": "https://nsfas.org.za/content/how-to-apply.html",
+        "tips": {
+          "items": [
+            "A corner or edge is cut off in the photo.",
+            "The image is blurry, dark, or has glare across the text.",
+            "A signature is missing, or an electronic signature was used.",
+            "It's written in pencil or coloured ink instead of black.",
+            "Correction fluid was used, or a change wasn't initialled.",
+            "Last year's version of the form was submitted.",
+            "Only one page of a two-page form was uploaded.",
+            "Names or ID numbers don't match the ID document."
+          ],
+          "source_url": "https://nsfas.org.za/content/how-to-apply.html"
+        },
+        "url": "https://my.nsfas.org.za/",
+        "warnings": {
+          "items": [
+            "Never pay anyone to apply. NSFAS will never ask for your password or OTP.",
+            "Use nsfas.org.za and my.nsfas.org.za only. Check the spelling in the address bar before you sign in."
+          ],
+          "source_url": "https://nsfas.org.za/content/how-to-apply.html"
+        },
+        "windows": [
+          {
+            "closes": "2026-10-31",
+            "days": 16,
+            "heading": "Funding for 2027",
+            "intake": 2027,
+            "label": "Open",
+            "late_closes": null,
+            "late_opens": null,
+            "lines": [
+              "Open now. Closes on Sat 31 Oct 2026 at 23:59 (in 16 days).",
+              "No late applications."
+            ],
+            "next_date": "2026-10-31",
+            "opens": "2026-09-18",
+            "source_url": "https://nsfas.org.za/content/how-to-apply.html",
+            "status": "open"
+          },
+          {
+            "closes": null,
+            "days": null,
+            "heading": "Funding for 2028",
+            "intake": 2028,
+            "label": "Dates not published yet",
+            "late_closes": null,
+            "late_opens": null,
+            "lines": [
+              "NSFAS hasn't published these dates yet."
+            ],
+            "next_date": null,
+            "opens": null,
+            "source_url": null,
+            "status": "not_published"
+          }
+        ]
+      },
+      "applying": "direct",
+      "checked": "2026-10-10",
+      "closes": "2026-10-31",
+      "covers": null,
+      "days": 16,
+      "fields": [],
+      "heading": "Funding for 2027",
+      "id": "nsfas",
+      "intake": 2027,
+      "kind": "bursary",
+      "kind_label": "Bursary",
+      "label": "Open",
+      "lines": [
+        "Open now. Closes on Sat 31 Oct 2026 at 23:59 (in 16 days).",
+        "No late applications."
+      ],
+      "name": "National Student Financial Aid Scheme (NSFAS)",
+      "next_date": "2026-10-31",
+      "not_fields": [],
+      "obligations": null,
+      "opens": "2026-09-18",
+      "sector": "government",
+      "sector_label": "Government",
+      "short_name": "NSFAS",
+      "source_url": "https://nsfas.org.za/content/how-to-apply.html",
+      "sources": [
+        {
+          "last_verified": null,
+          "publisher": "National Student Financial Aid Scheme (NSFAS)",
+          "retrieved": "2026-10-10",
+          "title": "NSFAS 2027 Applications: how to apply",
+          "url": "https://nsfas.org.za/content/how-to-apply.html"
+        },
+        {
+          "last_verified": null,
+          "publisher": "National Student Financial Aid Scheme (NSFAS)",
+          "retrieved": "2026-10-10",
+          "title": "NSFAS 2027 Applications (home page)",
+          "url": "https://www.nsfas.org.za/content/"
+        }
+      ],
+      "stages": [
+        {
+          "id": "first_year",
+          "label": "Starting university"
+        },
+        {
+          "id": "senior",
+          "label": "Already studying"
+        }
+      ],
+      "status": "open",
+      "study_at": "any",
+      "url": "https://my.nsfas.org.za/",
+      "who_can_apply": {
+        "items": [
+          "South African citizens studying or planning to study at a public university or TVET college",
+          "SASSA grant recipients",
+          "Students from households earning up to R350 000 a year",
+          "Students with disabilities from households earning up to R600 000 a year"
+        ],
+        "source_url": "https://www.nsfas.org.za/content/"
+      },
+      "why": null
+    },
+    "notice": "Not yet confirmed by the team.",
+    "today": "2026-10-15"
+  },
+  "message": "Success",
+  "success": true
+}

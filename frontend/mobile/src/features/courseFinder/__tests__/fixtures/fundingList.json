@@ -1,0 +1,1293 @@
+{
+  "data": {
+    "confirmed": false,
+    "counts": {
+      "closing_soon": 0,
+      "open_now": 5,
+      "total": 24
+    },
+    "fields": [
+      {
+        "funders": 4,
+        "id": "accounting",
+        "label": "Accounting"
+      },
+      {
+        "funders": 1,
+        "id": "agriculture",
+        "label": "Agriculture"
+      },
+      {
+        "funders": 1,
+        "id": "built_environment",
+        "label": "Built environment"
+      },
+      {
+        "funders": 1,
+        "id": "commerce",
+        "label": "Commerce"
+      },
+      {
+        "funders": 5,
+        "id": "computing",
+        "label": "Computing and IT"
+      },
+      {
+        "funders": 1,
+        "id": "disaster_and_fire",
+        "label": "Disaster management and fire"
+      },
+      {
+        "funders": 1,
+        "id": "earth_sciences",
+        "label": "Earth and environmental sciences"
+      },
+      {
+        "funders": 1,
+        "id": "economics",
+        "label": "Economics"
+      },
+      {
+        "funders": 2,
+        "id": "education",
+        "label": "Education and teaching"
+      },
+      {
+        "funders": 6,
+        "id": "engineering",
+        "label": "Engineering"
+      },
+      {
+        "funders": 3,
+        "id": "finance",
+        "label": "Finance"
+      },
+      {
+        "funders": 3,
+        "id": "health_sciences",
+        "label": "Health sciences"
+      },
+      {
+        "funders": 1,
+        "id": "humanities",
+        "label": "Humanities"
+      },
+      {
+        "funders": 2,
+        "id": "law",
+        "label": "Law"
+      },
+      {
+        "funders": 1,
+        "id": "life_sciences",
+        "label": "Life sciences"
+      },
+      {
+        "funders": 1,
+        "id": "management",
+        "label": "Management"
+      },
+      {
+        "funders": 4,
+        "id": "mathematical_sciences",
+        "label": "Mathematics and statistics"
+      },
+      {
+        "funders": 4,
+        "id": "natural_sciences",
+        "label": "Natural sciences"
+      },
+      {
+        "funders": 1,
+        "id": "pharmacy",
+        "label": "Pharmacy"
+      },
+      {
+        "funders": 2,
+        "id": "physical_sciences",
+        "label": "Physical sciences"
+      }
+    ],
+    "funders": [
+      {
+        "any_field": false,
+        "applying": "direct",
+        "checked": "2026-10-11",
+        "closes": "2026-10-31",
+        "days": 16,
+        "fields": [
+          {
+            "id": "pharmacy",
+            "label": "Pharmacy"
+          }
+        ],
+        "heading": "Funding for 2027",
+        "id": "clicks_foundation",
+        "intake": 2027,
+        "kind": "bursary",
+        "kind_label": "Bursary",
+        "label": "Open",
+        "lines": [
+          "Open now. Closes on Sat 31 Oct 2026 (in 16 days).",
+          "No late applications.",
+          "Clicks says applications open on 1 October and close on 31 October every year."
+        ],
+        "name": "Clicks Foundation Bursary Fund",
+        "next_date": "2026-10-31",
+        "not_fields": [],
+        "opens": "2026-10-01",
+        "sector": "company",
+        "sector_label": "Company",
+        "short_name": "Clicks Foundation",
+        "source_url": "https://careers.clicksgroup.co.za/applicant/index.php?controller=Page&name=bursarypage",
+        "stages": [
+          {
+            "id": "senior",
+            "label": "Already studying"
+          }
+        ],
+        "status": "open",
+        "study_at": "any",
+        "url": "https://careers.clicksgroup.co.za/",
+        "why": null
+      },
+      {
+        "any_field": false,
+        "applying": "direct",
+        "checked": "2026-10-12",
+        "closes": "2026-10-31",
+        "days": 16,
+        "fields": [
+          {
+            "id": "built_environment",
+            "label": "Built environment"
+          },
+          {
+            "id": "engineering",
+            "label": "Engineering"
+          },
+          {
+            "id": "computing",
+            "label": "Computing and IT"
+          },
+          {
+            "id": "management",
+            "label": "Management"
+          }
+        ],
+        "heading": "Funding for 2027",
+        "id": "limpopo_public_works",
+        "intake": 2027,
+        "kind": "bursary",
+        "kind_label": "Bursary",
+        "label": "Open",
+        "lines": [
+          "Open now. Closes on Sat 31 Oct 2026 (in 16 days).",
+          "Limpopo Public Works says applications close on 31 October every year."
+        ],
+        "name": "Limpopo Department of Public Works, Roads and Infrastructure bursary",
+        "next_date": "2026-10-31",
+        "not_fields": [],
+        "opens": null,
+        "sector": "government",
+        "sector_label": "Government",
+        "short_name": "Limpopo Public Works",
+        "source_url": "https://www.dpw.limpopo.gov.za/pages/def_bursary.php",
+        "stages": [
+          {
+            "id": "first_year",
+            "label": "Starting university"
+          },
+          {
+            "id": "senior",
+            "label": "Already studying"
+          }
+        ],
+        "status": "open",
+        "study_at": "any",
+        "url": "https://www.dpw.limpopo.gov.za/pages/def_bursary.php",
+        "why": null
+      },
+      {
+        "any_field": true,
+        "applying": "direct",
+        "checked": "2026-10-10",
+        "closes": "2026-10-31",
+        "days": 16,
+        "fields": [],
+        "heading": "Funding for 2027",
+        "id": "nsfas",
+        "intake": 2027,
+        "kind": "bursary",
+        "kind_label": "Bursary",
+        "label": "Open",
+        "lines": [
+          "Open now. Closes on Sat 31 Oct 2026 at 23:59 (in 16 days).",
+          "No late applications."
+        ],
+        "name": "National Student Financial Aid Scheme (NSFAS)",
+        "next_date": "2026-10-31",
+        "not_fields": [],
+        "opens": "2026-09-18",
+        "sector": "government",
+        "sector_label": "Government",
+        "short_name": "NSFAS",
+        "source_url": "https://nsfas.org.za/content/how-to-apply.html",
+        "stages": [
+          {
+            "id": "first_year",
+            "label": "Starting university"
+          },
+          {
+            "id": "senior",
+            "label": "Already studying"
+          }
+        ],
+        "status": "open",
+        "study_at": "any",
+        "url": "https://my.nsfas.org.za/",
+        "why": null
+      },
+      {
+        "any_field": false,
+        "applying": "direct",
+        "checked": "2026-10-12",
+        "closes": "2026-12-31",
+        "days": 77,
+        "fields": [
+          {
+            "id": "mathematical_sciences",
+            "label": "Mathematics and statistics"
+          },
+          {
+            "id": "computing",
+            "label": "Computing and IT"
+          },
+          {
+            "id": "engineering",
+            "label": "Engineering"
+          },
+          {
+            "id": "physical_sciences",
+            "label": "Physical sciences"
+          }
+        ],
+        "heading": "Funding for 2027",
+        "id": "feenix_fref",
+        "intake": 2027,
+        "kind": "bursary",
+        "kind_label": "Bursary",
+        "label": "Open",
+        "lines": [
+          "Open now. Closes on Thu 31 Dec 2026 (in 77 days).",
+          "Feenix calls 31 December 2026 a provisional closing date."
+        ],
+        "name": "FirstRand Empowerment Foundation postgraduate bursary (through Feenix)",
+        "next_date": "2026-12-31",
+        "not_fields": [],
+        "opens": "2026-09-28",
+        "sector": "non_profit",
+        "sector_label": "Non-profit",
+        "short_name": "FirstRand Foundation",
+        "source_url": "https://bursaries.feenix.org/fref/apply-now/",
+        "stages": [
+          {
+            "id": "postgraduate",
+            "label": "Postgraduate"
+          }
+        ],
+        "status": "open",
+        "study_at": "any",
+        "url": "https://bursaries.feenix.org/fref/apply-now/",
+        "why": null
+      },
+      {
+        "any_field": false,
+        "applying": "direct",
+        "checked": "2026-10-11",
+        "closes": "2027-01-31",
+        "days": 108,
+        "fields": [
+          {
+            "id": "education",
+            "label": "Education and teaching"
+          }
+        ],
+        "heading": "Funding for 2027",
+        "id": "funza_lushaka",
+        "intake": 2027,
+        "kind": "bursary",
+        "kind_label": "Bursary",
+        "label": "Open",
+        "lines": [
+          "Open now. Closes on Sun 31 Jan 2027 (in 108 days).",
+          "Students already funded re-apply by Mon 30 Nov 2026."
+        ],
+        "name": "Funza Lushaka Bursary Programme",
+        "next_date": "2027-01-31",
+        "not_fields": [],
+        "opens": "2026-10-01",
+        "sector": "government",
+        "sector_label": "Government",
+        "short_name": "Funza Lushaka",
+        "source_url": "https://www.funzalushaka.doe.gov.za/Content/Documents/Funza%20Lushaka%20Bursary%20Application%20Notes%202027.pdf",
+        "stages": [
+          {
+            "id": "first_year",
+            "label": "Starting university"
+          },
+          {
+            "id": "senior",
+            "label": "Already studying"
+          }
+        ],
+        "status": "open",
+        "study_at": "any",
+        "url": "https://www.funzalushaka.doe.gov.za/",
+        "why": null
+      },
+      {
+        "any_field": false,
+        "applying": "via_university",
+        "checked": "2026-10-11",
+        "closes": null,
+        "days": null,
+        "fields": [
+          {
+            "id": "health_sciences",
+            "label": "Health sciences"
+          }
+        ],
+        "heading": null,
+        "id": "hwseta",
+        "intake": null,
+        "kind": "bursary",
+        "kind_label": "Bursary",
+        "label": "Apply through the university",
+        "lines": [
+          "You apply through the university, not to the funder directly."
+        ],
+        "name": "Health and Welfare SETA (HWSETA) bursaries",
+        "next_date": null,
+        "not_fields": [],
+        "opens": null,
+        "sector": "government",
+        "sector_label": "Government",
+        "short_name": "HWSETA",
+        "source_url": "https://www.hwseta.org.za/expression-of-interest-for-funding-2026-2027-closing-date-20-february-2026/",
+        "stages": [
+          {
+            "id": "first_year",
+            "label": "Starting university"
+          },
+          {
+            "id": "senior",
+            "label": "Already studying"
+          }
+        ],
+        "status": "via_university",
+        "study_at": "any",
+        "url": "https://www.hwseta.org.za/",
+        "why": null
+      },
+      {
+        "any_field": true,
+        "applying": "via_university",
+        "checked": "2026-10-11",
+        "closes": null,
+        "days": null,
+        "fields": [],
+        "heading": null,
+        "id": "tut_bursary_fund",
+        "intake": null,
+        "kind": "bursary",
+        "kind_label": "Bursary",
+        "label": "Apply through the university",
+        "lines": [
+          "You apply through the university, not to the funder directly."
+        ],
+        "name": "TUT Bursary and Scholarship Fund",
+        "next_date": null,
+        "not_fields": [],
+        "opens": null,
+        "sector": "university",
+        "sector_label": "University",
+        "short_name": "TUT Bursary Fund",
+        "source_url": "https://www.tut.ac.za/student-finance/undergraduate/tut-bursary-and-scholarship-fund/",
+        "stages": [
+          {
+            "id": "first_year",
+            "label": "Starting university"
+          },
+          {
+            "id": "senior",
+            "label": "Already studying"
+          },
+          {
+            "id": "postgraduate",
+            "label": "Postgraduate"
+          }
+        ],
+        "status": "via_university",
+        "study_at": [
+          "tut"
+        ],
+        "url": "https://www.tut.ac.za/student-finance/undergraduate/tut-bursary-and-scholarship-fund/",
+        "why": null
+      },
+      {
+        "any_field": true,
+        "applying": "automatic",
+        "checked": "2026-10-11",
+        "closes": null,
+        "days": null,
+        "fields": [],
+        "heading": null,
+        "id": "up_flyup_awards",
+        "intake": null,
+        "kind": "merit_award",
+        "kind_label": "Merit award",
+        "label": "No application needed",
+        "lines": [
+          "There's no application: it's paid to students who qualify."
+        ],
+        "name": "UP FLY@UP Assist First-Year Awards",
+        "next_date": null,
+        "not_fields": [],
+        "opens": null,
+        "sector": "university",
+        "sector_label": "University",
+        "short_name": "FLY@UP Assist",
+        "source_url": "https://drupalwebprod-files.up.ac.za/Public/2025-12/UP_InfoGuide%202026_V5-c.pdf",
+        "stages": [
+          {
+            "id": "first_year",
+            "label": "Starting university"
+          }
+        ],
+        "status": "automatic",
+        "study_at": [
+          "up"
+        ],
+        "url": null,
+        "why": null
+      },
+      {
+        "any_field": true,
+        "applying": "via_university",
+        "checked": "2026-10-11",
+        "closes": null,
+        "days": null,
+        "fields": [],
+        "heading": null,
+        "id": "up_funding_database",
+        "intake": null,
+        "kind": "bursary",
+        "kind_label": "Bursary",
+        "label": "Apply through the university",
+        "lines": [
+          "You apply through the university, not to the funder directly."
+        ],
+        "name": "UP's funding database",
+        "next_date": null,
+        "not_fields": [],
+        "opens": null,
+        "sector": "university",
+        "sector_label": "University",
+        "short_name": "UP funding database",
+        "source_url": "https://drupalwebprod-files.up.ac.za/Public/2025-12/UP_InfoGuide%202026_V5-c.pdf",
+        "stages": [
+          {
+            "id": "first_year",
+            "label": "Starting university"
+          },
+          {
+            "id": "senior",
+            "label": "Already studying"
+          },
+          {
+            "id": "postgraduate",
+            "label": "Postgraduate"
+          }
+        ],
+        "status": "via_university",
+        "study_at": [
+          "up"
+        ],
+        "url": "https://www.up.ac.za/article/2894107/financial-aid",
+        "why": null
+      },
+      {
+        "any_field": true,
+        "applying": "direct",
+        "checked": "2026-10-11",
+        "closes": null,
+        "days": null,
+        "fields": [],
+        "heading": "Funding for 2027",
+        "id": "gcra",
+        "intake": 2027,
+        "kind": "bursary",
+        "kind_label": "Bursary",
+        "label": "Dates not published yet",
+        "lines": [
+          "GCRA hasn't published these dates yet."
+        ],
+        "name": "Gauteng City Region Academy (GCRA) Bursary",
+        "next_date": null,
+        "not_fields": [],
+        "opens": null,
+        "sector": "government",
+        "sector_label": "Government",
+        "short_name": "GCRA",
+        "source_url": "https://gcrabursary.gauteng.gov.za/",
+        "stages": [
+          {
+            "id": "first_year",
+            "label": "Starting university"
+          },
+          {
+            "id": "senior",
+            "label": "Already studying"
+          },
+          {
+            "id": "postgraduate",
+            "label": "Postgraduate"
+          }
+        ],
+        "status": "not_published",
+        "study_at": "any",
+        "url": "https://gcrabursary.gauteng.gov.za/",
+        "why": null
+      },
+      {
+        "any_field": true,
+        "applying": "direct",
+        "checked": "2026-10-11",
+        "closes": null,
+        "days": null,
+        "fields": [],
+        "heading": "Funding for 2027",
+        "id": "nsfas_loans",
+        "intake": 2027,
+        "kind": "loan",
+        "kind_label": "Loan",
+        "label": "Dates not published yet",
+        "lines": [
+          "NSFAS loans hasn't published these dates yet."
+        ],
+        "name": "NSFAS loan scheme for the missing middle",
+        "next_date": null,
+        "not_fields": [],
+        "opens": null,
+        "sector": "government",
+        "sector_label": "Government",
+        "short_name": "NSFAS loans",
+        "source_url": "https://www.gov.za/news/speeches/minister-buti-manamela-launch-nsfas-2027-application-cycle-18-sep-2026",
+        "stages": [
+          {
+            "id": "first_year",
+            "label": "Starting university"
+          },
+          {
+            "id": "senior",
+            "label": "Already studying"
+          }
+        ],
+        "status": "not_published",
+        "study_at": "any",
+        "url": null,
+        "why": null
+      },
+      {
+        "any_field": false,
+        "applying": "direct",
+        "checked": "2026-10-11",
+        "closes": "2026-04-30",
+        "days": null,
+        "fields": [
+          {
+            "id": "commerce",
+            "label": "Commerce"
+          },
+          {
+            "id": "natural_sciences",
+            "label": "Natural sciences"
+          },
+          {
+            "id": "engineering",
+            "label": "Engineering"
+          },
+          {
+            "id": "law",
+            "label": "Law"
+          },
+          {
+            "id": "humanities",
+            "label": "Humanities"
+          },
+          {
+            "id": "health_sciences",
+            "label": "Health sciences"
+          }
+        ],
+        "heading": "Funding for 2027",
+        "id": "allan_gray_fellowship",
+        "intake": 2027,
+        "kind": "bursary",
+        "kind_label": "Bursary",
+        "label": "Closed",
+        "lines": [
+          "Closed on Thu 30 Apr 2026.",
+          "No late applications.",
+          "Funding for 2028: Allan Gray Fellowship hasn't published these dates yet."
+        ],
+        "name": "Allan Gray Orbis Foundation University Fellowship",
+        "next_date": null,
+        "not_fields": [
+          {
+            "id": "medicine",
+            "label": "Medicine"
+          },
+          {
+            "id": "veterinary",
+            "label": "Veterinary science"
+          },
+          {
+            "id": "dentistry",
+            "label": "Dentistry and oral health"
+          }
+        ],
+        "opens": null,
+        "sector": "non_profit",
+        "sector_label": "Non-profit",
+        "short_name": "Allan Gray Fellowship",
+        "source_url": "https://allangrayorbis.org/programmes/fellowship/",
+        "stages": [
+          {
+            "id": "first_year",
+            "label": "Starting university"
+          }
+        ],
+        "status": "closed",
+        "study_at": [
+          "up"
+        ],
+        "url": "https://allangrayorbis.org/programmes/fellowship/",
+        "why": null
+      },
+      {
+        "any_field": false,
+        "applying": "direct",
+        "checked": "2026-10-11",
+        "closes": "2026-09-15",
+        "days": null,
+        "fields": [
+          {
+            "id": "natural_sciences",
+            "label": "Natural sciences"
+          },
+          {
+            "id": "engineering",
+            "label": "Engineering"
+          },
+          {
+            "id": "computing",
+            "label": "Computing and IT"
+          }
+        ],
+        "heading": "Funding for 2027",
+        "id": "csir",
+        "intake": 2027,
+        "kind": "bursary",
+        "kind_label": "Bursary",
+        "label": "Closed",
+        "lines": [
+          "Closed on Tue 15 Sep 2026.",
+          "Funding for 2028: CSIR hasn't published these dates yet."
+        ],
+        "name": "CSIR Bursary Programme",
+        "next_date": null,
+        "not_fields": [],
+        "opens": null,
+        "sector": "government",
+        "sector_label": "Government",
+        "short_name": "CSIR",
+        "source_url": "https://www.csir.co.za/careers/students-graduates/bursaries",
+        "stages": [
+          {
+            "id": "postgraduate",
+            "label": "Postgraduate"
+          }
+        ],
+        "status": "closed",
+        "study_at": "any",
+        "url": "https://www.csir.co.za/careers/students-graduates/bursaries",
+        "why": null
+      },
+      {
+        "any_field": false,
+        "applying": "direct",
+        "checked": "2026-10-12",
+        "closes": "2026-10-02",
+        "days": null,
+        "fields": [
+          {
+            "id": "earth_sciences",
+            "label": "Earth and environmental sciences"
+          },
+          {
+            "id": "life_sciences",
+            "label": "Life sciences"
+          },
+          {
+            "id": "natural_sciences",
+            "label": "Natural sciences"
+          }
+        ],
+        "heading": "Funding for 2027",
+        "id": "dffe",
+        "intake": 2027,
+        "kind": "bursary",
+        "kind_label": "Bursary",
+        "label": "Closed",
+        "lines": [
+          "Closed on Fri 2 Oct 2026.",
+          "No late applications.",
+          "Funding for 2028: DFFE hasn't published these dates yet."
+        ],
+        "name": "Department of Forestry, Fisheries and the Environment (DFFE) student bursary",
+        "next_date": null,
+        "not_fields": [],
+        "opens": null,
+        "sector": "government",
+        "sector_label": "Government",
+        "short_name": "DFFE",
+        "source_url": "https://www.dffe.gov.za/bursaries",
+        "stages": [
+          {
+            "id": "first_year",
+            "label": "Starting university"
+          },
+          {
+            "id": "senior",
+            "label": "Already studying"
+          }
+        ],
+        "status": "closed",
+        "study_at": "any",
+        "url": "https://www.dffe.gov.za/bursaries",
+        "why": null
+      },
+      {
+        "any_field": false,
+        "applying": "direct",
+        "checked": "2026-10-11",
+        "closes": "2026-09-30",
+        "days": null,
+        "fields": [
+          {
+            "id": "accounting",
+            "label": "Accounting"
+          }
+        ],
+        "heading": "Funding for 2027",
+        "id": "ey_ca_bursary",
+        "intake": 2027,
+        "kind": "bursary",
+        "kind_label": "Bursary",
+        "label": "Closed",
+        "lines": [
+          "Closed on Wed 30 Sep 2026.",
+          "Funding for 2028: EY hasn't published these dates yet."
+        ],
+        "name": "EY bursary for CA-stream students",
+        "next_date": null,
+        "not_fields": [],
+        "opens": "2026-07-01",
+        "sector": "company",
+        "sector_label": "Company",
+        "short_name": "EY",
+        "source_url": "https://www.ey.com/en_za/careers/apply-for-our-bursary-program",
+        "stages": [
+          {
+            "id": "first_year",
+            "label": "Starting university"
+          },
+          {
+            "id": "senior",
+            "label": "Already studying"
+          }
+        ],
+        "status": "closed",
+        "study_at": "any",
+        "url": "https://www.ey.com/en_za/careers/apply-for-our-bursary-program",
+        "why": null
+      },
+      {
+        "any_field": true,
+        "applying": "direct",
+        "checked": "2026-10-11",
+        "closes": null,
+        "days": null,
+        "fields": [],
+        "heading": "Funding for 2027",
+        "id": "harmony",
+        "intake": 2027,
+        "kind": "bursary",
+        "kind_label": "Bursary",
+        "label": "Closed",
+        "lines": [
+          "Closed: Harmony's own page said so on Sun 11 Oct 2026.",
+          "Funding for 2028: Harmony hasn't published these dates yet.",
+          "Harmony says applications for 2028 open in October 2027."
+        ],
+        "name": "Harmony Gold bursaries",
+        "next_date": null,
+        "not_fields": [],
+        "opens": null,
+        "sector": "company",
+        "sector_label": "Company",
+        "short_name": "Harmony",
+        "source_url": "https://www.harmony.co.za/careers/opportunities-for-students/",
+        "stages": [
+          {
+            "id": "first_year",
+            "label": "Starting university"
+          },
+          {
+            "id": "senior",
+            "label": "Already studying"
+          }
+        ],
+        "status": "closed",
+        "study_at": "any",
+        "url": "https://www.harmony.co.za/careers/opportunities-for-students/",
+        "why": null
+      },
+      {
+        "any_field": true,
+        "applying": "direct",
+        "checked": "2026-10-11",
+        "closes": null,
+        "days": null,
+        "fields": [],
+        "heading": "Funding for 2027",
+        "id": "isfap",
+        "intake": 2027,
+        "kind": "bursary",
+        "kind_label": "Bursary",
+        "label": "Closed",
+        "lines": [
+          "Closed: ISFAP's own page said so on Sun 11 Oct 2026.",
+          "Funding for 2028: ISFAP hasn't published these dates yet."
+        ],
+        "name": "Ikusasa Student Financial Aid Programme (ISFAP)",
+        "next_date": null,
+        "not_fields": [],
+        "opens": null,
+        "sector": "non_profit",
+        "sector_label": "Non-profit",
+        "short_name": "ISFAP",
+        "source_url": "https://www.isfap.org.za/students",
+        "stages": [
+          {
+            "id": "first_year",
+            "label": "Starting university"
+          },
+          {
+            "id": "postgraduate",
+            "label": "Postgraduate"
+          }
+        ],
+        "status": "closed",
+        "study_at": [
+          "up",
+          "tut",
+          "smu"
+        ],
+        "url": "https://applyonline.isfap.org.za/",
+        "why": null
+      },
+      {
+        "any_field": false,
+        "applying": "direct",
+        "checked": "2026-10-11",
+        "closes": "2026-09-30",
+        "days": null,
+        "fields": [
+          {
+            "id": "disaster_and_fire",
+            "label": "Disaster management and fire"
+          }
+        ],
+        "heading": "Funding for 2027",
+        "id": "ndmc",
+        "intake": 2027,
+        "kind": "bursary",
+        "kind_label": "Bursary",
+        "label": "Closed",
+        "lines": [
+          "Closed on Wed 30 Sep 2026.",
+          "Funding for 2028: NDMC hasn't published these dates yet."
+        ],
+        "name": "National Disaster Management Centre External Bursary",
+        "next_date": null,
+        "not_fields": [],
+        "opens": null,
+        "sector": "government",
+        "sector_label": "Government",
+        "short_name": "NDMC",
+        "source_url": "https://onlinebursary.ndmc.gov.za/docs/2027BursaryAdvertisement.jpg",
+        "stages": [
+          {
+            "id": "first_year",
+            "label": "Starting university"
+          },
+          {
+            "id": "senior",
+            "label": "Already studying"
+          },
+          {
+            "id": "postgraduate",
+            "label": "Postgraduate"
+          }
+        ],
+        "status": "closed",
+        "study_at": "any",
+        "url": "https://onlinebursary.ndmc.gov.za/",
+        "why": null
+      },
+      {
+        "any_field": false,
+        "applying": "direct",
+        "checked": "2026-10-11",
+        "closes": "2026-09-30",
+        "days": null,
+        "fields": [
+          {
+            "id": "accounting",
+            "label": "Accounting"
+          },
+          {
+            "id": "economics",
+            "label": "Economics"
+          },
+          {
+            "id": "finance",
+            "label": "Finance"
+          },
+          {
+            "id": "law",
+            "label": "Law"
+          }
+        ],
+        "heading": "Funding for 2027",
+        "id": "national_treasury",
+        "intake": 2027,
+        "kind": "bursary",
+        "kind_label": "Bursary",
+        "label": "Closed",
+        "lines": [
+          "Closed on Wed 30 Sep 2026.",
+          "No late applications.",
+          "Funding for 2028: National Treasury hasn't published these dates yet."
+        ],
+        "name": "National Treasury Bursary Scheme",
+        "next_date": null,
+        "not_fields": [],
+        "opens": null,
+        "sector": "government",
+        "sector_label": "Government",
+        "short_name": "National Treasury",
+        "source_url": "https://www.treasury.gov.za/graduate/2027%20External%20Bursary%20Advert%20e-Recruitment%20v3.pdf",
+        "stages": [
+          {
+            "id": "senior",
+            "label": "Already studying"
+          },
+          {
+            "id": "postgraduate",
+            "label": "Postgraduate"
+          }
+        ],
+        "status": "closed",
+        "study_at": "any",
+        "url": "https://www.treasury.gov.za/",
+        "why": null
+      },
+      {
+        "any_field": false,
+        "applying": "direct",
+        "checked": "2026-10-11",
+        "closes": null,
+        "days": null,
+        "fields": [
+          {
+            "id": "natural_sciences",
+            "label": "Natural sciences"
+          },
+          {
+            "id": "engineering",
+            "label": "Engineering"
+          },
+          {
+            "id": "computing",
+            "label": "Computing and IT"
+          },
+          {
+            "id": "mathematical_sciences",
+            "label": "Mathematics and statistics"
+          }
+        ],
+        "heading": "Funding for 2027",
+        "id": "nedbank",
+        "intake": 2027,
+        "kind": "bursary",
+        "kind_label": "Bursary",
+        "label": "Closed",
+        "lines": [
+          "Closed: Nedbank's own page said so on Sun 11 Oct 2026.",
+          "Funding for 2028: Nedbank hasn't published these dates yet.",
+          "Nedbank says applications for 2028 funding open in 2027."
+        ],
+        "name": "Nedbank External Bursary Programme",
+        "next_date": null,
+        "not_fields": [],
+        "opens": null,
+        "sector": "company",
+        "sector_label": "Company",
+        "short_name": "Nedbank",
+        "source_url": "https://group.nedbank.co.za/careers/graduates-and-bursaries.html",
+        "stages": [
+          {
+            "id": "first_year",
+            "label": "Starting university"
+          },
+          {
+            "id": "senior",
+            "label": "Already studying"
+          },
+          {
+            "id": "postgraduate",
+            "label": "Postgraduate"
+          }
+        ],
+        "status": "closed",
+        "study_at": "any",
+        "url": "https://group.nedbank.co.za/careers/graduates-and-bursaries.html",
+        "why": null
+      },
+      {
+        "any_field": false,
+        "applying": "direct",
+        "checked": "2026-10-12",
+        "closes": "2026-06-30",
+        "days": null,
+        "fields": [
+          {
+            "id": "accounting",
+            "label": "Accounting"
+          },
+          {
+            "id": "finance",
+            "label": "Finance"
+          },
+          {
+            "id": "mathematical_sciences",
+            "label": "Mathematics and statistics"
+          }
+        ],
+        "heading": "Funding for 2027",
+        "id": "old_mutual",
+        "intake": 2027,
+        "kind": "bursary",
+        "kind_label": "Bursary",
+        "label": "Closed",
+        "lines": [
+          "Closed on Tue 30 Jun 2026.",
+          "Old Mutual says applications open in April.",
+          "Funding for 2028: Old Mutual hasn't published these dates yet."
+        ],
+        "name": "Old Mutual bursaries for accountants and actuaries",
+        "next_date": null,
+        "not_fields": [],
+        "opens": null,
+        "sector": "company",
+        "sector_label": "Company",
+        "short_name": "Old Mutual",
+        "source_url": "https://www.oldmutual.co.za/careers/bursaries/",
+        "stages": [
+          {
+            "id": "first_year",
+            "label": "Starting university"
+          }
+        ],
+        "status": "closed",
+        "study_at": "any",
+        "url": "https://www.oldmutual.co.za/careers/bursaries/",
+        "why": null
+      },
+      {
+        "any_field": false,
+        "applying": "direct",
+        "checked": "2026-10-12",
+        "closes": null,
+        "days": null,
+        "fields": [
+          {
+            "id": "engineering",
+            "label": "Engineering"
+          },
+          {
+            "id": "physical_sciences",
+            "label": "Physical sciences"
+          },
+          {
+            "id": "computing",
+            "label": "Computing and IT"
+          },
+          {
+            "id": "mathematical_sciences",
+            "label": "Mathematics and statistics"
+          },
+          {
+            "id": "health_sciences",
+            "label": "Health sciences"
+          },
+          {
+            "id": "agriculture",
+            "label": "Agriculture"
+          },
+          {
+            "id": "finance",
+            "label": "Finance"
+          },
+          {
+            "id": "education",
+            "label": "Education and teaching"
+          }
+        ],
+        "heading": "Funding for 2027",
+        "id": "sasol_foundation",
+        "intake": 2027,
+        "kind": "bursary",
+        "kind_label": "Bursary",
+        "label": "Closed",
+        "lines": [
+          "Closed: Sasol Foundation's own page said so on Mon 12 Oct 2026.",
+          "Funding for 2028: Sasol Foundation hasn't published these dates yet."
+        ],
+        "name": "Sasol Foundation Bursary Programme",
+        "next_date": null,
+        "not_fields": [],
+        "opens": null,
+        "sector": "company",
+        "sector_label": "Company",
+        "short_name": "Sasol Foundation",
+        "source_url": "https://www.sasolbursaries.com/welcome/sasol-foundation-bursaries/",
+        "stages": [
+          {
+            "id": "first_year",
+            "label": "Starting university"
+          },
+          {
+            "id": "senior",
+            "label": "Already studying"
+          }
+        ],
+        "status": "closed",
+        "study_at": "any",
+        "url": "https://www.sasolbursaries.com/welcome/sasol-foundation-bursaries/",
+        "why": null
+      },
+      {
+        "any_field": true,
+        "applying": "direct",
+        "checked": "2026-10-11",
+        "closes": "2026-09-30",
+        "days": null,
+        "fields": [],
+        "heading": "Funding for 2027",
+        "id": "sarb",
+        "intake": 2027,
+        "kind": "bursary",
+        "kind_label": "Bursary",
+        "label": "Closed",
+        "lines": [
+          "Closed on Wed 30 Sep 2026.",
+          "No late applications.",
+          "Funding for 2028: Reserve Bank hasn't published these dates yet."
+        ],
+        "name": "South African Reserve Bank External Bursary Scheme",
+        "next_date": null,
+        "not_fields": [],
+        "opens": null,
+        "sector": "government",
+        "sector_label": "Government",
+        "short_name": "Reserve Bank",
+        "source_url": "https://www.resbank.co.za/content/dam/sarb/publications/bursary/2026/external-bursary-2027.pdf",
+        "stages": [
+          {
+            "id": "first_year",
+            "label": "Starting university"
+          }
+        ],
+        "status": "closed",
+        "study_at": "any",
+        "url": "https://www.resbank.co.za/en/home/publications/bursaries",
+        "why": null
+      },
+      {
+        "any_field": false,
+        "applying": "direct",
+        "checked": "2026-10-11",
+        "closes": "2026-08-31",
+        "days": null,
+        "fields": [
+          {
+            "id": "accounting",
+            "label": "Accounting"
+          }
+        ],
+        "heading": "Funding for 2027",
+        "id": "thuthuka",
+        "intake": 2027,
+        "kind": "bursary",
+        "kind_label": "Bursary",
+        "label": "Closed",
+        "lines": [
+          "Closed on Mon 31 Aug 2026.",
+          "Funding for 2028: Thuthuka hasn't published these dates yet."
+        ],
+        "name": "Thuthuka Bursary Fund (SAICA)",
+        "next_date": null,
+        "not_fields": [],
+        "opens": null,
+        "sector": "non_profit",
+        "sector_label": "Non-profit",
+        "short_name": "Thuthuka",
+        "source_url": "https://www.thuthukabursaryfund.co.za/",
+        "stages": [
+          {
+            "id": "first_year",
+            "label": "Starting university"
+          },
+          {
+            "id": "senior",
+            "label": "Already studying"
+          }
+        ],
+        "status": "closed",
+        "study_at": "any",
+        "url": "https://www.thuthukabursaryfund.co.za/",
+        "why": null
+      }
+    ],
+    "notice": "Not yet confirmed by the team.",
+    "summary": "24 funding options: 5 open now.",
+    "today": "2026-10-15"
+  },
+  "message": "Success",
+  "success": true
+}
