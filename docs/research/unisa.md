@@ -86,3 +86,7 @@ extras.
 5. The Diploma in Adult and Community Education and Training (90189) is kept as a school-leaver option because its
    NSC route asks only a diploma pass and 40%: confirm it isn't meant for people already teaching adults.
 6. The Diploma in Mining Engineering's extra "Engineering and Technology or Computer subject" (extras only).
+
+## Colleges (15 Oct 2026)
+
+Each qualification's `faculty` is the UNISA college whose list on the [All qualifications](https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications) page includes it, with that page's college filter set (UNISA's robots.txt answers 404, so nothing is disallowed). Every qualification appeared under exactly one college. To check in a browser: set the college filter and compare.

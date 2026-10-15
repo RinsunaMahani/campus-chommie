@@ -44,6 +44,7 @@ programmes:
 
   - id: hc_accounting_sciences
     name: "Higher Certificate in Accounting Sciences"
+    faculty: "College of Accounting Sciences"
     fields: [accounting]
     requirements:
       source: s-unisa-q-98201
@@ -55,6 +56,7 @@ programmes:
 
   - id: hc_animal_welfare
     name: "Higher Certificate in Animal Welfare"
+    faculty: "College of Agriculture and Environmental Sciences"
     fields: [veterinary, agriculture]
     requirements:
       source: s-unisa-q-90098
@@ -70,6 +72,7 @@ programmes:
 
   - id: hc_archives_records_management
     name: "Higher Certificate in Archives and Records Management"
+    faculty: "College of Human Sciences"
     fields: [humanities]
     requirements:
       source: s-unisa-q-98577
@@ -81,6 +84,7 @@ programmes:
 
   - id: hc_banking
     name: "Higher Certificate in Banking"
+    faculty: "College of Economic and Management Sciences"
     fields: [finance]
     requirements:
       source: s-unisa-q-98225
@@ -92,6 +96,7 @@ programmes:
 
   - id: hc_criminal_justice
     name: "Higher Certificate in Criminal Justice"
+    faculty: "College of Law"
     fields: [safety_and_justice, law]
     requirements:
       source: s-unisa-q-90006
@@ -103,6 +108,7 @@ programmes:
 
   - id: hc_economic_management_sciences
     name: "Higher Certificate in Economic and Management Sciences"
+    faculty: "College of Economic and Management Sciences"
     fields: [commerce, economics, management]
     requirements:
       source: s-unisa-q-98237
@@ -114,6 +120,7 @@ programmes:
 
   - id: hc_education_foundation_intermediate
     name: "Higher Certificate in Education (Foundation Phase and Intermediate Phase)"
+    faculty: "College of Education"
     fields: [education]
     requirements:
       source: s-unisa-q-90093-fip
@@ -126,6 +133,7 @@ programmes:
 
   - id: hc_education_senior_maths_science
     name: "Higher Certificate in Education (Senior Phase Maths and Science Education)"
+    faculty: "College of Education"
     fields: [education]
     requirements:
       source: s-unisa-q-90093-sms
@@ -138,6 +146,7 @@ programmes:
 
   - id: hc_education_senior_fet
     name: "Higher Certificate in Education (Senior Phase and Further Education and Training Teaching)"
+    faculty: "College of Education"
     fields: [education]
     requirements:
       source: s-unisa-q-90093-spf
@@ -150,6 +159,7 @@ programmes:
 
   - id: hc_law
     name: "Higher Certificate in Law"
+    faculty: "College of Law"
     fields: [law]
     requirements:
       source: s-unisa-q-98751
@@ -161,6 +171,7 @@ programmes:
 
   - id: hc_life_environmental_sciences
     name: "Higher Certificate in Life and Environmental Sciences"
+    faculty: "College of Agriculture and Environmental Sciences"
     fields: [life_sciences, natural_sciences]
     requirements:
       source: s-unisa-q-98366
@@ -172,6 +183,7 @@ programmes:
 
   - id: hc_marketing
     name: "Higher Certificate in Marketing"
+    faculty: "College of Economic and Management Sciences"
     fields: [commerce, management]
     requirements:
       source: s-unisa-q-98229
@@ -183,6 +195,7 @@ programmes:
 
   - id: hc_mathematics_statistics
     name: "Higher Certificate in Mathematics and Statistics"
+    faculty: "College of Science, Engineering and Technology"
     fields: [mathematical_sciences]
     requirements:
       source: s-unisa-q-90129
@@ -194,6 +207,7 @@ programmes:
 
   - id: hc_music
     name: "Higher Certificate in Music"
+    faculty: "College of Human Sciences"
     fields: [music]
     requirements:
       source: s-unisa-q-90194
@@ -205,6 +219,7 @@ programmes:
 
   - id: hc_physical_sciences
     name: "Higher Certificate in Physical Sciences"
+    faculty: "College of Science, Engineering and Technology"
     fields: [physical_sciences]
     requirements:
       source: s-unisa-q-90101
@@ -216,6 +231,7 @@ programmes:
 
   - id: hc_retailing
     name: "Higher Certificate in Retailing"
+    faculty: "College of Economic and Management Sciences"
     fields: [commerce, management]
     requirements:
       source: s-unisa-q-90014
@@ -227,6 +243,7 @@ programmes:
 
   - id: hc_social_auxiliary_work
     name: "Higher Certificate in Social Auxiliary Work"
+    faculty: "College of Human Sciences"
     fields: [humanities]
     selective: true
     selection_note: "A selection qualification: Unisa assesses your suitability for the profession, and asks for two testimonials (for example from a school, religious or community leader)."
@@ -241,6 +258,7 @@ programmes:
 
   - id: hc_supervisory_management
     name: "Higher Certificate in Supervisory Management"
+    faculty: "College of Economic and Management Sciences"
     fields: [management]
     requirements:
       source: s-unisa-q-90015
@@ -256,6 +274,7 @@ programmes:
 
   - id: hc_tourism_management
     name: "Higher Certificate in Tourism Management"
+    faculty: "College of Economic and Management Sciences"
     fields: [tourism_and_hospitality, management]
     requirements:
       source: s-unisa-q-98226
@@ -269,6 +288,7 @@ programmes:
 
   - id: dip_accounting_sciences
     name: "Diploma in Accounting Sciences"
+    faculty: "College of Accounting Sciences"
     fields: [accounting]
     requirements:
       source: s-unisa-q-98200
@@ -284,6 +304,7 @@ programmes:
 
   - id: dip_administrative_management
     name: "Diploma in Administrative Management"
+    faculty: "College of Economic and Management Sciences"
     fields: [management]
     requirements:
       source: s-unisa-q-98216
@@ -299,6 +320,7 @@ programmes:
 
   - id: dip_adult_community_education_getc
     name: "Diploma in Adult and Community Education and Training (General Education and Training Certificate for Adults)"
+    faculty: "College of Education"
     fields: [education]
     requirements:
       source: s-unisa-q-90189-get
@@ -310,6 +332,7 @@ programmes:
 
   - id: dip_agricultural_management
     name: "Diploma in Agricultural Management"
+    faculty: "College of Agriculture and Environmental Sciences"
     fields: [agriculture, management]
     requirements:
       source: s-unisa-q-90097
@@ -327,6 +350,7 @@ programmes:
 
   - id: dip_animal_health
     name: "Diploma in Animal Health"
+    faculty: "College of Agriculture and Environmental Sciences"
     fields: [veterinary, agriculture]
     requirements:
       source: s-unisa-q-98026-ahe
@@ -344,6 +368,7 @@ programmes:
 
   - id: dip_chemical_engineering
     name: "Diploma in Chemical Engineering"
+    faculty: "College of Science, Engineering and Technology"
     fields: [engineering]
     requirements:
       source: s-unisa-q-90130
@@ -363,6 +388,7 @@ programmes:
 
   - id: dip_civil_engineering
     name: "Diploma in Civil Engineering"
+    faculty: "College of Science, Engineering and Technology"
     fields: [engineering, built_environment]
     requirements:
       source: s-unisa-q-90137
@@ -382,6 +408,7 @@ programmes:
 
   - id: dip_corrections_management
     name: "Diploma in Corrections Management"
+    faculty: "College of Law"
     fields: [safety_and_justice]
     requirements:
       source: s-unisa-q-98218
@@ -393,6 +420,7 @@ programmes:
 
   - id: dip_early_childhood_care_education
     name: "Diploma in Early Childhood Care and Education"
+    faculty: "College of Education"
     fields: [education]
     requirements:
       source: s-unisa-q-90187
@@ -405,6 +433,7 @@ programmes:
 
   - id: dip_electrical_engineering
     name: "Diploma in Electrical Engineering"
+    faculty: "College of Science, Engineering and Technology"
     fields: [engineering]
     requirements:
       source: s-unisa-q-90138
@@ -424,6 +453,7 @@ programmes:
 
   - id: dip_human_resource_management
     name: "Diploma in Human Resource Management"
+    faculty: "College of Economic and Management Sciences"
     fields: [management]
     requirements:
       source: s-unisa-q-98211
@@ -439,6 +469,7 @@ programmes:
 
   - id: dip_industrial_engineering
     name: "Diploma in Industrial Engineering"
+    faculty: "College of Science, Engineering and Technology"
     fields: [engineering]
     requirements:
       source: s-unisa-q-90136
@@ -458,6 +489,7 @@ programmes:
 
   - id: dip_information_technology
     name: "Diploma in Information Technology"
+    faculty: "College of Science, Engineering and Technology"
     fields: [computing]
     requirements:
       source: s-unisa-q-98806-ite
@@ -469,6 +501,7 @@ programmes:
 
   - id: dip_law
     name: "Diploma in Law"
+    faculty: "College of Law"
     fields: [law]
     requirements:
       source: s-unisa-q-98750
@@ -480,6 +513,7 @@ programmes:
 
   - id: dip_local_government_finance
     name: "Diploma in Local Government Finance"
+    faculty: "College of Economic and Management Sciences"
     fields: [public_administration, finance]
     requirements:
       source: s-unisa-q-90083
@@ -495,6 +529,7 @@ programmes:
 
   - id: dip_marketing_management
     name: "Diploma in Marketing Management"
+    faculty: "College of Economic and Management Sciences"
     fields: [commerce, management]
     requirements:
       source: s-unisa-q-98202
@@ -510,6 +545,7 @@ programmes:
 
   - id: dip_mechanical_engineering
     name: "Diploma in Mechanical Engineering"
+    faculty: "College of Science, Engineering and Technology"
     fields: [engineering]
     requirements:
       source: s-unisa-q-90132
@@ -529,6 +565,7 @@ programmes:
 
   - id: dip_mining_engineering
     name: "Diploma in Mining Engineering"
+    faculty: "College of Science, Engineering and Technology"
     fields: [engineering, earth_sciences]
     requirements:
       source: s-unisa-q-90140
@@ -549,6 +586,7 @@ programmes:
 
   - id: dip_nature_conservation
     name: "Diploma in Nature Conservation"
+    faculty: "College of Agriculture and Environmental Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-unisa-q-98024-nco
@@ -566,6 +604,7 @@ programmes:
 
   - id: dip_operations_management
     name: "Diploma in Operations Management"
+    faculty: "College of Economic and Management Sciences"
     fields: [management]
     requirements:
       source: s-unisa-q-90183
@@ -581,6 +620,7 @@ programmes:
 
   - id: dip_ornamental_horticulture
     name: "Diploma in Ornamental Horticulture"
+    faculty: "College of Agriculture and Environmental Sciences"
     fields: [agriculture]
     requirements:
       source: s-unisa-q-98025-hor
@@ -598,6 +638,7 @@ programmes:
 
   - id: dip_policing
     name: "Diploma in Policing"
+    faculty: "College of Law"
     fields: [safety_and_justice]
     requirements:
       source: s-unisa-q-98220
@@ -609,6 +650,7 @@ programmes:
 
   - id: dip_public_administration_management
     name: "Diploma in Public Administration and Management"
+    faculty: "College of Economic and Management Sciences"
     fields: [public_administration]
     requirements:
       source: s-unisa-q-98203
@@ -624,6 +666,7 @@ programmes:
 
   - id: dip_public_relations
     name: "Diploma in Public Relations"
+    faculty: "College of Human Sciences"
     fields: [languages_and_communication]
     requirements:
       source: s-unisa-q-90077
@@ -636,6 +679,7 @@ programmes:
 
   - id: dip_pulp_paper_technology
     name: "Diploma in Pulp and Paper Technology"
+    faculty: "College of Science, Engineering and Technology"
     fields: [engineering]
     requirements:
       source: s-unisa-q-90141
@@ -655,6 +699,7 @@ programmes:
 
   - id: dip_safety_management
     name: "Diploma in Safety Management"
+    faculty: "College of Economic and Management Sciences"
     fields: [safety_and_justice, management]
     requirements:
       source: s-unisa-q-90107
@@ -670,6 +715,7 @@ programmes:
 
   - id: dip_security_management
     name: "Diploma in Security Management"
+    faculty: "College of Law"
     fields: [safety_and_justice, management]
     requirements:
       source: s-unisa-q-98221
@@ -681,6 +727,7 @@ programmes:
 
   - id: dip_small_business_management
     name: "Diploma in Small Business Management"
+    faculty: "College of Economic and Management Sciences"
     fields: [management, commerce]
     requirements:
       source: s-unisa-q-90073
@@ -696,6 +743,7 @@ programmes:
 
   - id: dip_tourism_management
     name: "Diploma in Tourism Management"
+    faculty: "College of Economic and Management Sciences"
     fields: [tourism_and_hospitality, management]
     requirements:
       source: s-unisa-q-98223
@@ -709,6 +757,7 @@ programmes:
 
   - id: bacc_financial_accounting
     name: "Bachelor of Accounting Sciences in Financial Accounting"
+    faculty: "College of Accounting Sciences"
     fields: [accounting]
     requirements:
       source: s-unisa-q-98302-fa1
@@ -724,6 +773,7 @@ programmes:
 
   - id: bacc_internal_auditing
     name: "Bachelor of Accounting Sciences in Internal Auditing"
+    faculty: "College of Accounting Sciences"
     fields: [accounting]
     requirements:
       source: s-unisa-q-98303-aui
@@ -739,6 +789,7 @@ programmes:
 
   - id: bacc_management_accounting
     name: "Bachelor of Accounting Sciences in Management Accounting"
+    faculty: "College of Accounting Sciences"
     fields: [accounting]
     requirements:
       source: s-unisa-q-98304-ma1
@@ -754,6 +805,7 @@ programmes:
 
   - id: bacc_taxation
     name: "Bachelor of Accounting Sciences in Taxation"
+    faculty: "College of Accounting Sciences"
     fields: [accounting, finance]
     requirements:
       source: s-unisa-q-98318-tax
@@ -769,6 +821,7 @@ programmes:
 
   - id: badmin
     name: "Bachelor of Administration"
+    faculty: "College of Economic and Management Sciences"
     fields: [public_administration]
     requirements:
       source: s-unisa-q-98315-bad
@@ -780,6 +833,7 @@ programmes:
 
   - id: badmin_human_settlements
     name: "Bachelor of Administration in Human Settlements Management"
+    faculty: "College of Economic and Management Sciences"
     fields: [public_administration, built_environment]
     requirements:
       source: s-unisa-q-90016-hsm
@@ -791,6 +845,7 @@ programmes:
 
   - id: ba
     name: "Bachelor of Arts"
+    faculty: "College of Human Sciences"
     fields: [humanities]
     requirements:
       source: s-unisa-q-99311-gen
@@ -803,6 +858,7 @@ programmes:
 
   - id: ba_communication_studies
     name: "Bachelor of Arts in Communication Studies"
+    faculty: "College of Human Sciences"
     fields: [languages_and_communication, humanities]
     requirements:
       source: s-unisa-q-90186
@@ -814,6 +870,7 @@ programmes:
 
   - id: ba_community_development
     name: "Bachelor of Arts in Community Development"
+    faculty: "College of Human Sciences"
     fields: [humanities]
     requirements:
       source: s-unisa-q-98618
@@ -825,6 +882,7 @@ programmes:
 
   - id: ba_creative_writing
     name: "Bachelor of Arts in Creative Writing"
+    faculty: "College of Human Sciences"
     fields: [languages_and_communication, arts_and_design]
     requirements:
       source: s-unisa-q-99313
@@ -836,6 +894,7 @@ programmes:
 
   - id: ba_criminology
     name: "Bachelor of Arts in Criminology"
+    faculty: "College of Law"
     fields: [safety_and_justice, humanities]
     requirements:
       source: s-unisa-q-98681
@@ -847,6 +906,7 @@ programmes:
 
   - id: ba_development_studies
     name: "Bachelor of Arts in Development Studies"
+    faculty: "College of Human Sciences"
     fields: [humanities]
     requirements:
       source: s-unisa-q-99312
@@ -858,6 +918,7 @@ programmes:
 
   - id: ba_environmental_management
     name: "Bachelor of Arts in Environmental Management"
+    faculty: "College of Agriculture and Environmental Sciences"
     fields: [earth_sciences, humanities]
     requirements:
       source: s-unisa-q-98055
@@ -869,6 +930,7 @@ programmes:
 
   - id: ba_forensic_science_technology
     name: "Bachelor of Arts in Forensic Science and Technology"
+    faculty: "College of Law"
     fields: [safety_and_justice]
     requirements:
       source: s-unisa-q-90002
@@ -880,6 +942,7 @@ programmes:
 
   - id: ba_government_administration_development
     name: "Bachelor of Arts in Government, Administration and Development"
+    faculty: "College of Human Sciences"
     fields: [public_administration, humanities]
     requirements:
       source: s-unisa-q-99301
@@ -891,6 +954,7 @@ programmes:
 
   - id: ba_international_relations
     name: "Bachelor of Arts in International Relations"
+    faculty: "College of Human Sciences"
     fields: [humanities]
     requirements:
       source: s-unisa-q-99302
@@ -902,6 +966,7 @@ programmes:
 
   - id: ba_police_science
     name: "Bachelor of Arts in Police Science"
+    faculty: "College of Law"
     fields: [safety_and_justice]
     requirements:
       source: s-unisa-q-98683
@@ -913,6 +978,7 @@ programmes:
 
   - id: ba_policy_studies
     name: "Bachelor of Arts in Policy Studies"
+    faculty: "College of Human Sciences"
     fields: [public_administration, humanities]
     requirements:
       source: s-unisa-q-99303
@@ -924,6 +990,7 @@ programmes:
 
   - id: ba_political_leadership_citizenship
     name: "Bachelor of Arts in Political Leadership and Citizenship"
+    faculty: "College of Human Sciences"
     fields: [humanities]
     requirements:
       source: s-unisa-q-99304
@@ -935,6 +1002,7 @@ programmes:
 
   - id: ba_politics_philosophy_economics
     name: "Bachelor of Arts in Politics, Philosophy and Economics"
+    faculty: "College of Human Sciences"
     fields: [humanities, economics]
     requirements:
       source: s-unisa-q-90079
@@ -946,6 +1014,7 @@ programmes:
 
   - id: ba_psychology
     name: "Bachelor of Arts in Psychology"
+    faculty: "College of Human Sciences"
     fields: [humanities]
     requirements:
       source: s-unisa-q-90180
@@ -956,6 +1025,7 @@ programmes:
 
   - id: ba_visual_multimedia_arts
     name: "Bachelor of Arts in Visual Multimedia Arts"
+    faculty: "College of Human Sciences"
     fields: [arts_and_design]
     selective: true
     selection_note: "You need a permission letter from Unisa's Department of Art and Music: submit a portfolio of 4 drawings and 4 paintings, and only qualifying students get the letter."
@@ -969,6 +1039,7 @@ programmes:
 
   - id: bba
     name: "Bachelor of Business Administration"
+    faculty: "College of Economic and Management Sciences"
     fields: [management, commerce]
     requirements:
       source: s-unisa-q-98316-bba
@@ -980,6 +1051,7 @@ programmes:
 
   - id: bcom
     name: "Bachelor of Commerce"
+    faculty: "College of Economic and Management Sciences"
     fields: [commerce]
     requirements:
       source: s-unisa-q-98314-gen
@@ -991,6 +1063,7 @@ programmes:
 
   - id: bcom_business_informatics
     name: "Bachelor of Commerce in Business Informatics"
+    faculty: "College of Economic and Management Sciences"
     fields: [commerce, computing]
     requirements:
       source: s-unisa-q-98300-bis
@@ -1002,6 +1075,7 @@ programmes:
 
   - id: bcom_business_management
     name: "Bachelor of Commerce in Business Management"
+    faculty: "College of Economic and Management Sciences"
     fields: [commerce, management]
     requirements:
       source: s-unisa-q-98310-bsm
@@ -1013,6 +1087,7 @@ programmes:
 
   - id: bcom_economics
     name: "Bachelor of Commerce in Economics"
+    faculty: "College of Economic and Management Sciences"
     fields: [commerce, economics]
     requirements:
       source: s-unisa-q-98305-ecs
@@ -1024,6 +1099,7 @@ programmes:
 
   - id: bcom_quantitative_economics
     name: "Bachelor of Commerce in Economics (Quantitative Economics)"
+    faculty: "College of Economic and Management Sciences"
     fields: [commerce, economics, mathematical_sciences]
     requirements:
       source: s-unisa-q-98305-qec
@@ -1035,6 +1111,7 @@ programmes:
 
   - id: bcom_entrepreneurship
     name: "Bachelor of Commerce in Entrepreneurship"
+    faculty: "College of Economic and Management Sciences"
     fields: [commerce, management]
     requirements:
       source: s-unisa-q-90106-ent
@@ -1046,6 +1123,7 @@ programmes:
 
   - id: bcom_financial_management
     name: "Bachelor of Commerce in Financial Management"
+    faculty: "College of Economic and Management Sciences"
     fields: [commerce, finance]
     requirements:
       source: s-unisa-q-98306-fmn
@@ -1057,6 +1135,7 @@ programmes:
 
   - id: bcom_human_resource_management
     name: "Bachelor of Commerce in Human Resource Management"
+    faculty: "College of Economic and Management Sciences"
     fields: [commerce, management]
     requirements:
       source: s-unisa-q-98307-hrm
@@ -1068,6 +1147,7 @@ programmes:
 
   - id: bcom_industrial_organisational_psychology
     name: "Bachelor of Commerce in Industrial and Organisational Psychology"
+    faculty: "College of Economic and Management Sciences"
     fields: [commerce, humanities]
     requirements:
       source: s-unisa-q-98308-iop
@@ -1079,6 +1159,7 @@ programmes:
 
   - id: bcom_law
     name: "Bachelor of Commerce in Law"
+    faculty: "College of Law"
     fields: [commerce, law]
     requirements:
       source: s-unisa-q-90123-law
@@ -1090,6 +1171,7 @@ programmes:
 
   - id: bcom_marketing_management
     name: "Bachelor of Commerce in Marketing Management"
+    faculty: "College of Economic and Management Sciences"
     fields: [commerce, management]
     requirements:
       source: s-unisa-q-98301-mkt
@@ -1101,6 +1183,7 @@ programmes:
 
   - id: bcom_public_procurement_management
     name: "Bachelor of Commerce in Public Procurement Management"
+    faculty: "College of Economic and Management Sciences"
     fields: [commerce, public_administration]
     requirements:
       source: s-unisa-q-98767-ppm
@@ -1112,6 +1195,7 @@ programmes:
 
   - id: bcom_quantitative_management
     name: "Bachelor of Commerce in Quantitative Management"
+    faculty: "College of Economic and Management Sciences"
     fields: [commerce, mathematical_sciences]
     requirements:
       source: s-unisa-q-98311-qma
@@ -1123,6 +1207,7 @@ programmes:
 
   - id: bcom_supply_chain_operations
     name: "Bachelor of Commerce in Supply Chain and Operations Management"
+    faculty: "College of Economic and Management Sciences"
     fields: [commerce, management]
     requirements:
       source: s-unisa-q-98766-scm
@@ -1134,6 +1219,7 @@ programmes:
 
   - id: bcom_tourism_management
     name: "Bachelor of Commerce in Tourism Management"
+    faculty: "College of Economic and Management Sciences"
     fields: [commerce, tourism_and_hospitality]
     requirements:
       source: s-unisa-q-98312-trt
@@ -1145,6 +1231,7 @@ programmes:
 
   - id: bcom_transport_logistics
     name: "Bachelor of Commerce in Transport and Logistics"
+    faculty: "College of Economic and Management Sciences"
     fields: [commerce, management]
     requirements:
       source: s-unisa-q-98313-trl
@@ -1156,6 +1243,7 @@ programmes:
 
   - id: bconsci_fashion_retail_management
     name: "Bachelor of Consumer Science: Fashion Retail Management"
+    faculty: "College of Agriculture and Environmental Sciences"
     fields: [consumer_sciences]
     requirements:
       source: s-unisa-q-98005-far
@@ -1172,6 +1260,7 @@ programmes:
 
   - id: bconsci_fashion_small_business
     name: "Bachelor of Consumer Science: Fashion Small-Business Management"
+    faculty: "College of Agriculture and Environmental Sciences"
     fields: [consumer_sciences]
     requirements:
       source: s-unisa-q-98005-fsb
@@ -1188,6 +1277,7 @@ programmes:
 
   - id: bconsci_food_service_management
     name: "Bachelor of Consumer Science: Food Service Management"
+    faculty: "College of Agriculture and Environmental Sciences"
     fields: [consumer_sciences, food_science]
     requirements:
       source: s-unisa-q-98005-fsm
@@ -1204,6 +1294,7 @@ programmes:
 
   - id: bconsci_food_clothing
     name: "Bachelor of Consumer Science: Food and Clothing"
+    faculty: "College of Agriculture and Environmental Sciences"
     fields: [consumer_sciences]
     requirements:
       source: s-unisa-q-98005-fcl
@@ -1220,6 +1311,7 @@ programmes:
 
   - id: bconsci_food_nutrition
     name: "Bachelor of Consumer Science: Food and Nutrition"
+    faculty: "College of Agriculture and Environmental Sciences"
     fields: [consumer_sciences, nutrition]
     requirements:
       source: s-unisa-q-98005-fnu
@@ -1236,6 +1328,7 @@ programmes:
 
   - id: bconsci_hospitality_management
     name: "Bachelor of Consumer Science: Hospitality Management"
+    faculty: "College of Agriculture and Environmental Sciences"
     fields: [consumer_sciences, tourism_and_hospitality]
     requirements:
       source: s-unisa-q-98005-hom
@@ -1252,6 +1345,7 @@ programmes:
 
   - id: bed_foundation_phase
     name: "Bachelor of Education in Foundation Phase Teaching"
+    faculty: "College of Education"
     fields: [education]
     requirements:
       source: s-unisa-q-90102
@@ -1267,6 +1361,7 @@ programmes:
 
   - id: bed_intermediate_maths_life_skills
     name: "Bachelor of Education in Intermediate Phase Teaching: Mathematics and Life Skills"
+    faculty: "College of Education"
     fields: [education]
     requirements:
       source: s-unisa-q-90103-mls
@@ -1282,6 +1377,7 @@ programmes:
 
   - id: bed_intermediate_maths_natural_sciences_technology
     name: "Bachelor of Education in Intermediate Phase Teaching: Mathematics and Natural Sciences and Technology"
+    faculty: "College of Education"
     fields: [education]
     requirements:
       source: s-unisa-q-90103-mnt
@@ -1297,6 +1393,7 @@ programmes:
 
   - id: bed_intermediate_maths_social_science
     name: "Bachelor of Education in Intermediate Phase Teaching: Mathematics and Social Science"
+    faculty: "College of Education"
     fields: [education]
     requirements:
       source: s-unisa-q-90103-mss
@@ -1312,6 +1409,7 @@ programmes:
 
   - id: bed_sp_fet_art_life_orientation
     name: "Bachelor of Education in Senior Phase and Further Education and Training Teaching: Art and Life Orientation"
+    faculty: "College of Education"
     fields: [education, arts_and_design]
     selective: true
     selection_note: "Submit a portfolio of artworks to Unisa's Department of Art and Music; its permission letter must be submitted when you apply."
@@ -1325,6 +1423,7 @@ programmes:
 
   - id: bed_sp_fet_agricultural_science
     name: "Bachelor of Education in Senior Phase and Further Education and Training Teaching: Agricultural Science"
+    faculty: "College of Education"
     fields: [education, agriculture]
     requirements:
       source: s-unisa-q-90104-ags
@@ -1336,6 +1435,7 @@ programmes:
 
   - id: bed_sp_fet_agricultural_technology
     name: "Bachelor of Education in Senior Phase and Further Education and Training Teaching: Agricultural Technology"
+    faculty: "College of Education"
     fields: [education, agriculture]
     requirements:
       source: s-unisa-q-90104-agt
@@ -1347,6 +1447,7 @@ programmes:
 
   - id: bed_sp_fet_agriculture_management
     name: "Bachelor of Education in Senior Phase and Further Education and Training Teaching: Agriculture and Management"
+    faculty: "College of Education"
     fields: [education, agriculture]
     requirements:
       source: s-unisa-q-90104-agm
@@ -1358,6 +1459,7 @@ programmes:
 
   - id: bed_sp_fet_art_languages
     name: "Bachelor of Education in Senior Phase and Further Education and Training Teaching: Art and Languages"
+    faculty: "College of Education"
     fields: [education, arts_and_design]
     selective: true
     selection_note: "Submit a portfolio of artworks to Unisa's Department of Art and Music; its permission letter must be submitted when you apply."
@@ -1371,6 +1473,7 @@ programmes:
 
   - id: bed_sp_fet_computer_applications_technology
     name: "Bachelor of Education in Senior Phase and Further Education and Training Teaching: Computer Application Technology"
+    faculty: "College of Education"
     fields: [education, computing]
     requirements:
       source: s-unisa-q-90104-cat
@@ -1382,6 +1485,7 @@ programmes:
 
   - id: bed_sp_fet_consumer_studies
     name: "Bachelor of Education in Senior Phase and Further Education and Training Teaching: Consumer Studies"
+    faculty: "College of Education"
     fields: [education, consumer_sciences]
     requirements:
       source: s-unisa-q-90104-con
@@ -1393,6 +1497,7 @@ programmes:
 
   - id: bed_sp_fet_economics_management_science
     name: "Bachelor of Education in Senior Phase and Further Education and Training Teaching: Economics and Management Science"
+    faculty: "College of Education"
     fields: [education, economics]
     requirements:
       source: s-unisa-q-90104-ems
@@ -1404,6 +1509,7 @@ programmes:
 
   - id: bed_sp_fet_financial_accounting
     name: "Bachelor of Education in Senior Phase and Further Education and Training Teaching: Financial Accounting"
+    faculty: "College of Education"
     fields: [education, accounting]
     requirements:
       source: s-unisa-q-90104-fac
@@ -1415,6 +1521,7 @@ programmes:
 
   - id: bed_sp_fet_geography_languages
     name: "Bachelor of Education in Senior Phase and Further Education and Training Teaching: Geography and Languages"
+    faculty: "College of Education"
     fields: [education]
     requirements:
       source: s-unisa-q-90104-gel
@@ -1426,6 +1533,7 @@ programmes:
 
   - id: bed_sp_fet_history_geography
     name: "Bachelor of Education in Senior Phase and Further Education and Training Teaching: History and Geography"
+    faculty: "College of Education"
     fields: [education]
     requirements:
       source: s-unisa-q-90104-hig
@@ -1437,6 +1545,7 @@ programmes:
 
   - id: bed_sp_fet_hospitality_business_studies
     name: "Bachelor of Education in Senior Phase and Further Education and Training Teaching: Hospitality Studies and Business Studies"
+    faculty: "College of Education"
     fields: [education, tourism_and_hospitality]
     requirements:
       source: s-unisa-q-90104-hsb
@@ -1448,6 +1557,7 @@ programmes:
 
   - id: bed_sp_fet_hospitality_tourism
     name: "Bachelor of Education in Senior Phase and Further Education and Training Teaching: Hospitality Studies and Tourism"
+    faculty: "College of Education"
     fields: [education, tourism_and_hospitality]
     requirements:
       source: s-unisa-q-90104-hst
@@ -1459,6 +1569,7 @@ programmes:
 
   - id: bed_sp_fet_information_technology
     name: "Bachelor of Education in Senior Phase and Further Education and Training Teaching: Information Technology"
+    faculty: "College of Education"
     fields: [education, computing]
     requirements:
       source: s-unisa-q-90104-ift
@@ -1470,6 +1581,7 @@ programmes:
 
   - id: bed_sp_fet_language
     name: "Bachelor of Education in Senior Phase and Further Education and Training Teaching: Language"
+    faculty: "College of Education"
     fields: [education, languages_and_communication]
     requirements:
       source: s-unisa-q-90104-lan
@@ -1481,6 +1593,7 @@ programmes:
 
   - id: bed_sp_fet_life_orientation_language
     name: "Bachelor of Education in Senior Phase and Further Education and Training Teaching: Life Orientation and Language"
+    faculty: "College of Education"
     fields: [education]
     requirements:
       source: s-unisa-q-90104-lol
@@ -1492,6 +1605,7 @@ programmes:
 
   - id: bed_sp_fet_life_science_mathematics
     name: "Bachelor of Education in Senior Phase and Further Education and Training Teaching: Life Science and Mathematics"
+    faculty: "College of Education"
     fields: [education, life_sciences]
     requirements:
       source: s-unisa-q-90104-lsm
@@ -1503,6 +1617,7 @@ programmes:
 
   - id: bed_sp_fet_life_sciences
     name: "Bachelor of Education in Senior Phase and Further Education and Training Teaching: Life Sciences"
+    faculty: "College of Education"
     fields: [education, life_sciences]
     requirements:
       source: s-unisa-q-90104-bio
@@ -1514,6 +1629,7 @@ programmes:
 
   - id: bed_sp_fet_maths_literacy_economics
     name: "Bachelor of Education in Senior Phase and Further Education and Training Teaching: Mathematical Literacy and Economics"
+    faculty: "College of Education"
     fields: [education, economics]
     requirements:
       source: s-unisa-q-90104-mle
@@ -1529,6 +1645,7 @@ programmes:
 
   - id: bed_sp_fet_maths_literacy_financial_accounting
     name: "Bachelor of Education in Senior Phase and Further Education and Training Teaching: Mathematical Literacy and Financial Accounting"
+    faculty: "College of Education"
     fields: [education, accounting]
     requirements:
       source: s-unisa-q-90104-mfa
@@ -1544,6 +1661,7 @@ programmes:
 
   - id: bed_sp_fet_mathematics_english
     name: "Bachelor of Education in Senior Phase and Further Education and Training Teaching: Mathematics and English"
+    faculty: "College of Education"
     fields: [education, mathematical_sciences]
     requirements:
       source: s-unisa-q-90104-mte
@@ -1555,6 +1673,7 @@ programmes:
 
   - id: bed_sp_fet_mathematics_maths_literacy
     name: "Bachelor of Education in Senior Phase and Further Education and Training Teaching: Mathematics and Mathematical Literacy"
+    faculty: "College of Education"
     fields: [education, mathematical_sciences]
     requirements:
       source: s-unisa-q-90104-mml
@@ -1566,6 +1685,7 @@ programmes:
 
   - id: bed_sp_fet_physical_science_mathematics
     name: "Bachelor of Education in Senior Phase and Further Education and Training Teaching: Physical Science and Mathematics"
+    faculty: "College of Education"
     fields: [education, physical_sciences]
     requirements:
       source: s-unisa-q-90104-psm
@@ -1577,6 +1697,7 @@ programmes:
 
   - id: bed_sp_fet_religious_studies
     name: "Bachelor of Education in Senior Phase and Further Education and Training Teaching: Religious Studies"
+    faculty: "College of Education"
     fields: [education, theology]
     requirements:
       source: s-unisa-q-90104-res
@@ -1588,6 +1709,7 @@ programmes:
 
   - id: bed_sp_fet_technology
     name: "Bachelor of Education in Senior Phase and Further Education and Training Teaching: Technology"
+    faculty: "College of Education"
     fields: [education]
     requirements:
       source: s-unisa-q-90104-tec
@@ -1599,6 +1721,7 @@ programmes:
 
   - id: bed_sp_fet_tourism_geography
     name: "Bachelor of Education in Senior Phase and Further Education and Training Teaching: Tourism and Geography"
+    faculty: "College of Education"
     fields: [education, tourism_and_hospitality]
     requirements:
       source: s-unisa-q-90104-trg
@@ -1610,6 +1733,7 @@ programmes:
 
   - id: bed_sp_fet_tourism_management
     name: "Bachelor of Education in Senior Phase and Further Education and Training Teaching: Tourism and Management"
+    faculty: "College of Education"
     fields: [education, tourism_and_hospitality]
     requirements:
       source: s-unisa-q-90104-trm
@@ -1621,6 +1745,7 @@ programmes:
 
   - id: binfsci
     name: "Bachelor of Information Science"
+    faculty: "College of Human Sciences"
     fields: [computing, humanities]
     requirements:
       source: s-unisa-q-90188
@@ -1632,6 +1757,7 @@ programmes:
 
   - id: llb
     name: "Bachelor of Laws (LLB)"
+    faculty: "College of Law"
     fields: [law]
     requirements:
       source: s-unisa-q-98680
@@ -1643,6 +1769,7 @@ programmes:
 
   - id: bmus
     name: "Bachelor of Music"
+    faculty: "College of Human Sciences"
     fields: [music]
     requirements:
       source: s-unisa-q-90089
@@ -1655,6 +1782,7 @@ programmes:
 
   - id: bsc_applied_maths_computer_science
     name: "Bachelor of Science: Applied Mathematics and Computer Science"
+    faculty: "College of Science, Engineering and Technology"
     fields: [mathematical_sciences, computing]
     requirements:
       source: s-unisa-q-98801-amc
@@ -1671,6 +1799,7 @@ programmes:
 
   - id: bsc_applied_maths_physics
     name: "Bachelor of Science: Applied Mathematics and Physics"
+    faculty: "College of Science, Engineering and Technology"
     fields: [mathematical_sciences, physical_sciences]
     requirements:
       source: s-unisa-q-98801-amp
@@ -1690,6 +1819,7 @@ programmes:
 
   - id: bsc_applied_maths_statistics
     name: "Bachelor of Science: Applied Mathematics and Statistics"
+    faculty: "College of Science, Engineering and Technology"
     fields: [mathematical_sciences]
     requirements:
       source: s-unisa-q-98801-ams
@@ -1706,6 +1836,7 @@ programmes:
 
   - id: bsc_chemistry_applied_maths
     name: "Bachelor of Science: Chemistry and Applied Mathematics"
+    faculty: "College of Science, Engineering and Technology"
     fields: [physical_sciences, mathematical_sciences]
     requirements:
       source: s-unisa-q-98801-cam
@@ -1725,6 +1856,7 @@ programmes:
 
   - id: bsc_chemistry_computer_science
     name: "Bachelor of Science: Chemistry and Computer Science"
+    faculty: "College of Science, Engineering and Technology"
     fields: [physical_sciences, computing]
     requirements:
       source: s-unisa-q-98801-ccs
@@ -1744,6 +1876,7 @@ programmes:
 
   - id: bsc_chemistry_information_systems
     name: "Bachelor of Science: Chemistry and Information Systems"
+    faculty: "College of Science, Engineering and Technology"
     fields: [physical_sciences, computing]
     requirements:
       source: s-unisa-q-98801-cis
@@ -1763,6 +1896,7 @@ programmes:
 
   - id: bsc_chemistry_physics
     name: "Bachelor of Science: Chemistry and Physics"
+    faculty: "College of Science, Engineering and Technology"
     fields: [physical_sciences]
     requirements:
       source: s-unisa-q-98801-cap
@@ -1782,6 +1916,7 @@ programmes:
 
   - id: bsc_chemistry_statistics
     name: "Bachelor of Science: Chemistry and Statistics"
+    faculty: "College of Science, Engineering and Technology"
     fields: [physical_sciences, mathematical_sciences]
     requirements:
       source: s-unisa-q-98801-cas
@@ -1801,6 +1936,7 @@ programmes:
 
   - id: bsc_general
     name: "Bachelor of Science: General"
+    faculty: "College of Science, Engineering and Technology"
     fields: [natural_sciences]
     requirements:
       source: s-unisa-q-98801-gen
@@ -1817,6 +1953,7 @@ programmes:
 
   - id: bsc_maths_applied_maths
     name: "Bachelor of Science: Mathematics and Applied Mathematics"
+    faculty: "College of Science, Engineering and Technology"
     fields: [mathematical_sciences]
     requirements:
       source: s-unisa-q-98801-mam
@@ -1833,6 +1970,7 @@ programmes:
 
   - id: bsc_maths_chemistry
     name: "Bachelor of Science: Mathematics and Chemistry"
+    faculty: "College of Science, Engineering and Technology"
     fields: [mathematical_sciences, physical_sciences]
     requirements:
       source: s-unisa-q-98801-mac
@@ -1852,6 +1990,7 @@ programmes:
 
   - id: bsc_maths_computer_science
     name: "Bachelor of Science: Mathematics and Computer Science"
+    faculty: "College of Science, Engineering and Technology"
     fields: [mathematical_sciences, computing]
     requirements:
       source: s-unisa-q-98801-mcs
@@ -1868,6 +2007,7 @@ programmes:
 
   - id: bsc_maths_information_systems
     name: "Bachelor of Science: Mathematics and Information Systems"
+    faculty: "College of Science, Engineering and Technology"
     fields: [mathematical_sciences, computing]
     requirements:
       source: s-unisa-q-98801-mis
@@ -1884,6 +2024,7 @@ programmes:
 
   - id: bsc_maths_physics
     name: "Bachelor of Science: Mathematics and Physics"
+    faculty: "College of Science, Engineering and Technology"
     fields: [mathematical_sciences, physical_sciences]
     requirements:
       source: s-unisa-q-98801-map
@@ -1903,6 +2044,7 @@ programmes:
 
   - id: bsc_maths_statistics
     name: "Bachelor of Science: Mathematics and Statistics"
+    faculty: "College of Science, Engineering and Technology"
     fields: [mathematical_sciences]
     requirements:
       source: s-unisa-q-98801-mas
@@ -1919,6 +2061,7 @@ programmes:
 
   - id: bsc_statistics_physics
     name: "Bachelor of Science: Statistics and Physics"
+    faculty: "College of Science, Engineering and Technology"
     fields: [mathematical_sciences, physical_sciences]
     requirements:
       source: s-unisa-q-98801-stp
@@ -1938,6 +2081,7 @@ programmes:
 
   - id: bsc_agric_business_management
     name: "Bachelor of Science in Agricultural Science: Agricultural Business and Management"
+    faculty: "College of Agriculture and Environmental Sciences"
     fields: [agriculture, management]
     requirements:
       source: s-unisa-q-90082-abm
@@ -1954,6 +2098,7 @@ programmes:
 
   - id: bsc_agric_animal_science
     name: "Bachelor of Science in Agricultural Science: Animal Science"
+    faculty: "College of Agriculture and Environmental Sciences"
     fields: [agriculture]
     requirements:
       source: s-unisa-q-90082-ans
@@ -1970,6 +2115,7 @@ programmes:
 
   - id: bsc_agric_plant_science
     name: "Bachelor of Science in Agricultural Science: Plant Science"
+    faculty: "College of Agriculture and Environmental Sciences"
     fields: [agriculture]
     requirements:
       source: s-unisa-q-90082-pls
@@ -1986,6 +2132,7 @@ programmes:
 
   - id: bsc_computing
     name: "Bachelor of Science in Computing"
+    faculty: "College of Science, Engineering and Technology"
     fields: [computing]
     requirements:
       source: s-unisa-q-98906-com
@@ -2002,6 +2149,7 @@ programmes:
 
   - id: bsc_env_management_botany
     name: "Bachelor of Science in Environmental Management: Botany"
+    faculty: "College of Agriculture and Environmental Sciences"
     fields: [earth_sciences, life_sciences]
     requirements:
       source: s-unisa-q-98052-ebo
@@ -2018,6 +2166,7 @@ programmes:
 
   - id: bsc_env_management_chemistry
     name: "Bachelor of Science in Environmental Management: Chemistry"
+    faculty: "College of Agriculture and Environmental Sciences"
     fields: [earth_sciences, physical_sciences]
     requirements:
       source: s-unisa-q-98052-ech
@@ -2037,6 +2186,7 @@ programmes:
 
   - id: bsc_env_management_zoology
     name: "Bachelor of Science in Environmental Management: Zoology"
+    faculty: "College of Agriculture and Environmental Sciences"
     fields: [earth_sciences, life_sciences]
     requirements:
       source: s-unisa-q-98052-ezo
@@ -2053,6 +2203,7 @@ programmes:
 
   - id: bsc_informatics
     name: "Bachelor of Science in Informatics"
+    faculty: "College of Science, Engineering and Technology"
     fields: [computing]
     requirements:
       source: s-unisa-q-98907-inf
@@ -2069,6 +2220,7 @@ programmes:
 
   - id: bsc_life_biochemistry_business_management
     name: "Bachelor of Science in Life Sciences: Biochemistry (or Physiology or Microbiology) with Business Management"
+    faculty: "College of Agriculture and Environmental Sciences"
     fields: [life_sciences, management]
     requirements:
       source: s-unisa-q-98053-bbm
@@ -2085,6 +2237,7 @@ programmes:
 
   - id: bsc_life_biochemistry_botany
     name: "Bachelor of Science in Life Sciences: Biochemistry and Botany"
+    faculty: "College of Agriculture and Environmental Sciences"
     fields: [life_sciences]
     requirements:
       source: s-unisa-q-98053-bab
@@ -2101,6 +2254,7 @@ programmes:
 
   - id: bsc_life_biochemistry_microbiology
     name: "Bachelor of Science in Life Sciences: Biochemistry and Microbiology"
+    faculty: "College of Agriculture and Environmental Sciences"
     fields: [life_sciences]
     requirements:
       source: s-unisa-q-98053-bam
@@ -2117,6 +2271,7 @@ programmes:
 
   - id: bsc_life_biochemistry_physiology
     name: "Bachelor of Science in Life Sciences: Biochemistry and Physiology"
+    faculty: "College of Agriculture and Environmental Sciences"
     fields: [life_sciences]
     requirements:
       source: s-unisa-q-98053-bap
@@ -2133,6 +2288,7 @@ programmes:
 
   - id: bsc_life_biochemistry_zoology
     name: "Bachelor of Science in Life Sciences: Biochemistry and Zoology"
+    faculty: "College of Agriculture and Environmental Sciences"
     fields: [life_sciences]
     requirements:
       source: s-unisa-q-98053-baz
@@ -2149,6 +2305,7 @@ programmes:
 
   - id: bsc_life_biomedical_sciences
     name: "Bachelor of Science in Life Sciences: Biomedical Sciences"
+    faculty: "College of Agriculture and Environmental Sciences"
     fields: [life_sciences, medical_sciences]
     requirements:
       source: s-unisa-q-98053-bmi
@@ -2165,6 +2322,7 @@ programmes:
 
   - id: bsc_life_biotechnology
     name: "Bachelor of Science in Life Sciences: Biotechnology"
+    faculty: "College of Agriculture and Environmental Sciences"
     fields: [life_sciences]
     requirements:
       source: s-unisa-q-98053-bit
@@ -2181,6 +2339,7 @@ programmes:
 
   - id: bsc_life_botany_microbiology
     name: "Bachelor of Science in Life Sciences: Botany and Microbiology"
+    faculty: "College of Agriculture and Environmental Sciences"
     fields: [life_sciences]
     requirements:
       source: s-unisa-q-98053-bnm
@@ -2197,6 +2356,7 @@ programmes:
 
   - id: bsc_life_botany_zoology_geography
     name: "Bachelor of Science in Life Sciences: Botany and Zoology (with Geography)"
+    faculty: "College of Agriculture and Environmental Sciences"
     fields: [life_sciences, earth_sciences]
     requirements:
       source: s-unisa-q-98053-bzg
@@ -2213,6 +2373,7 @@ programmes:
 
   - id: bsc_life_genetics_zoology
     name: "Bachelor of Science in Life Sciences: Genetics and Zoology (or Botany, Microbiology, Physiology or Biochemistry)"
+    faculty: "College of Agriculture and Environmental Sciences"
     fields: [life_sciences]
     requirements:
       source: s-unisa-q-98053-gzb
@@ -2229,6 +2390,7 @@ programmes:
 
   - id: bsc_life_microbiology_physiology
     name: "Bachelor of Science in Life Sciences: Microbiology and Physiology"
+    faculty: "College of Agriculture and Environmental Sciences"
     fields: [life_sciences]
     requirements:
       source: s-unisa-q-98053-map
@@ -2245,6 +2407,7 @@ programmes:
 
   - id: bsc_life_microbiology_zoology
     name: "Bachelor of Science in Life Sciences: Microbiology and Zoology"
+    faculty: "College of Agriculture and Environmental Sciences"
     fields: [life_sciences]
     requirements:
       source: s-unisa-q-98053-maz
@@ -2261,6 +2424,7 @@ programmes:
 
   - id: bsc_life_physiology_zoology
     name: "Bachelor of Science in Life Sciences: Physiology and Zoology"
+    faculty: "College of Agriculture and Environmental Sciences"
     fields: [life_sciences]
     requirements:
       source: s-unisa-q-98053-paz
@@ -2277,6 +2441,7 @@ programmes:
 
   - id: bsc_life_psychology_physiology_genetics
     name: "Bachelor of Science in Life Sciences: Psychology and Physiology (with Genetics)"
+    faculty: "College of Agriculture and Environmental Sciences"
     fields: [life_sciences, humanities]
     requirements:
       source: s-unisa-q-98053-ppg
@@ -2293,6 +2458,7 @@ programmes:
 
   - id: bsw
     name: "Bachelor of Social Work"
+    faculty: "College of Human Sciences"
     fields: [humanities]
     selective: true
     selection_note: "A selection qualification: Unisa assesses your suitability for the profession, and asks for two testimonials (for example from a school, religious or community leader)."
@@ -2308,6 +2474,7 @@ programmes:
 
   - id: btheology
     name: "Bachelor of Theology"
+    faculty: "College of Human Sciences"
     fields: [theology]
     requirements:
       source: s-unisa-q-90160

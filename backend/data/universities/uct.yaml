@@ -40,6 +40,7 @@ programmes:
 
   - id: bcom_bbussc_general
     name: "Bachelor of Commerce or Bachelor of Business Science: all specialisations other than Actuarial Science"
+    faculty: "Faculty of Commerce"
     fields: [commerce, accounting, economics]
     requirements:
       source: s-uct-prospectus-2027
@@ -55,6 +56,7 @@ programmes:
 
   - id: bcom_bbussc_computing_data_science
     name: "Bachelor of Commerce or Bachelor of Business Science: Computer Science, or Statistics and Data Science"
+    faculty: "Faculty of Commerce"
     fields: [computing, mathematical_sciences, commerce]
     requirements:
       source: s-uct-prospectus-2027
@@ -70,6 +72,7 @@ programmes:
 
   - id: bcom_bbussc_actuarial_science
     name: "Bachelor of Commerce or Bachelor of Business Science: Actuarial Science"
+    faculty: "Faculty of Commerce"
     fields: [finance, mathematical_sciences, commerce]
     requirements:
       source: s-uct-prospectus-2027
@@ -84,6 +87,7 @@ programmes:
 
   - id: bcom_bbussc_general_adp
     name: "Bachelor of Commerce or Bachelor of Business Science: Academic Development Programme (all specialisations other than Actuarial Science)"
+    faculty: "Faculty of Commerce"
     fields: [commerce, accounting, economics]
     requirements:
       source: s-uct-prospectus-2027
@@ -98,6 +102,7 @@ programmes:
 
   - id: bcom_bbussc_actuarial_science_adp
     name: "Bachelor of Commerce or Bachelor of Business Science: Academic Development Programme (Actuarial Science)"
+    faculty: "Faculty of Commerce"
     fields: [finance, mathematical_sciences, commerce]
     requirements:
       source: s-uct-prospectus-2027
@@ -114,6 +119,7 @@ programmes:
 
   - id: bas
     name: "Bachelor of Architectural Studies"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [built_environment, arts_and_design]
     selective: true
     selection_note: "All applicants must submit a written motivation and a portfolio of creative work; the Architecture Portfolio Score counts towards admission."
@@ -128,6 +134,7 @@ programmes:
 
   - id: bsc_construction_studies
     name: "Bachelor of Science in Construction Studies"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [built_environment]
     requirements:
       source: s-uct-prospectus-2027
@@ -141,6 +148,7 @@ programmes:
 
   - id: bsc_property_studies
     name: "Bachelor of Science in Property Studies"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [built_environment, finance]
     requirements:
       source: s-uct-prospectus-2027
@@ -154,6 +162,7 @@ programmes:
 
   - id: bsc_eng_chemical
     name: "Bachelor of Science in Engineering in Chemical Engineering"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
     requirements:
       source: s-uct-prospectus-2027
@@ -167,6 +176,7 @@ programmes:
 
   - id: bsc_eng_civil
     name: "Bachelor of Science in Engineering in Civil Engineering"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
     requirements:
       source: s-uct-prospectus-2027
@@ -181,6 +191,7 @@ programmes:
 
   - id: bsc_eng_electrical
     name: "Bachelor of Science in Engineering in Electrical Engineering"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
     requirements:
       source: s-uct-prospectus-2027
@@ -195,6 +206,7 @@ programmes:
 
   - id: bsc_eng_electrical_computer
     name: "Bachelor of Science in Engineering in Electrical & Computer Engineering"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering, computing]
     requirements:
       source: s-uct-prospectus-2027
@@ -209,6 +221,7 @@ programmes:
 
   - id: bsc_eng_mechatronics
     name: "Bachelor of Science in Engineering in Mechatronics"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
     requirements:
       source: s-uct-prospectus-2027
@@ -223,6 +236,7 @@ programmes:
 
   - id: bsc_eng_mechanical
     name: "Bachelor of Science in Engineering in Mechanical Engineering"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
     requirements:
       source: s-uct-prospectus-2027
@@ -237,6 +251,7 @@ programmes:
 
   - id: bsc_eng_mechanical_mechatronic
     name: "Bachelor of Science in Engineering in Mechanical & Mechatronic Engineering"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
     requirements:
       source: s-uct-prospectus-2027
@@ -251,6 +266,7 @@ programmes:
 
   - id: bsc_geomatics
     name: "Bachelor of Science in Geomatics"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [built_environment, earth_sciences]
     requirements:
       source: s-uct-prospectus-2027
@@ -267,6 +283,7 @@ programmes:
 
   - id: mbchb
     name: "Bachelor of Medicine and Bachelor of Surgery (MBChB)"
+    faculty: "Faculty of Health Sciences"
     fields: [medicine]
     selective: true
     places: 240
@@ -285,6 +302,7 @@ programmes:
 
   - id: bsc_physiotherapy
     name: "Bachelor of Science in Physiotherapy"
+    faculty: "Faculty of Health Sciences"
     fields: [rehabilitation, health_sciences]
     selective: true
     places: 70
@@ -308,6 +326,7 @@ programmes:
 
   - id: bsc_occupational_therapy
     name: "Bachelor of Science in Occupational Therapy"
+    faculty: "Faculty of Health Sciences"
     fields: [rehabilitation, health_sciences]
     selective: true
     places: 70
@@ -335,6 +354,7 @@ programmes:
 
   - id: bsc_audiology
     name: "Bachelor of Science in Audiology"
+    faculty: "Faculty of Health Sciences"
     fields: [rehabilitation, health_sciences]
     selective: true
     places: 37
@@ -362,6 +382,7 @@ programmes:
 
   - id: bsc_speech_language_pathology
     name: "Bachelor of Science in Speech-Language Pathology"
+    faculty: "Faculty of Health Sciences"
     fields: [rehabilitation, health_sciences]
     selective: true
     places: 40
@@ -390,6 +411,7 @@ programmes:
 
   - id: hc_disability_practice
     name: "Higher Certificate in Disability Practice"
+    faculty: "Faculty of Health Sciences"
     fields: [rehabilitation, health_sciences]
     selective: true
     places: 30
@@ -406,6 +428,7 @@ programmes:
 
   - id: ba
     name: "Bachelor of Arts (BA)"
+    faculty: "Faculty of Humanities"
     fields: [humanities, languages_and_communication]
     requirements:
       source: s-uct-prospectus-2027
@@ -421,6 +444,7 @@ programmes:
 
   - id: bsocsc
     name: "Bachelor of Social Science (BSocSc)"
+    faculty: "Faculty of Humanities"
     fields: [humanities]
     requirements:
       source: s-uct-prospectus-2027
@@ -437,6 +461,7 @@ programmes:
 
   - id: bsocsc_ppe
     name: "Bachelor of Social Science in Philosophy, Politics and Economics"
+    faculty: "Faculty of Humanities"
     fields: [humanities, economics]
     requirements:
       source: s-uct-prospectus-2027
@@ -450,6 +475,7 @@ programmes:
 
   - id: bsw
     name: "Bachelor of Social Work"
+    faculty: "Faculty of Humanities"
     fields: [humanities]
     selective: true
     places: 80
@@ -467,6 +493,7 @@ programmes:
 
   - id: ba_fine_art
     name: "Bachelor of Arts in Fine Art"
+    faculty: "Faculty of Humanities"
     fields: [arts_and_design]
     selective: true
     selection_note: "A portfolio evaluation and a supplementary questionnaire: the portfolio is the leading indicator for admission, and places are awarded on merit."
@@ -481,6 +508,7 @@ programmes:
 
   - id: ba_theatre_performance
     name: "Bachelor of Arts in Theatre & Performance"
+    faculty: "Faculty of Humanities"
     fields: [performing_arts]
     selective: true
     selection_note: &uct_audition "An audition is the leading indicator for admission, and places are awarded on merit."
@@ -496,6 +524,7 @@ programmes:
 
   - id: bmus
     name: "Bachelor of Music"
+    faculty: "Faculty of Humanities"
     fields: [music, performing_arts]
     selective: true
     selection_note: "An audition, an interview and a music theory test: the audition is the leading indicator for admission, and places are awarded on merit."
@@ -512,6 +541,7 @@ programmes:
 
   - id: dip_music_performance
     name: "Diploma in Music Performance"
+    faculty: "Faculty of Humanities"
     fields: [music, performing_arts]
     selective: true
     selection_note: "An audition, an interview and a music theory test: the audition is the leading indicator for admission, and places are awarded on merit."
@@ -526,6 +556,7 @@ programmes:
 
   - id: dip_theatre_performance
     name: "Diploma in Theatre & Performance"
+    faculty: "Faculty of Humanities"
     fields: [performing_arts]
     selective: true
     selection_note: *uct_audition
@@ -542,6 +573,7 @@ programmes:
 
   - id: llb
     name: "Bachelor of Laws (LLB), four years"
+    faculty: "Faculty of Law"
     fields: [law]
     selective: true
     selection_note: "Applications far exceed the places: if more applicants meet the criteria than there are places, only the best get offers. UCT considers your school results and your NBT Academic and Quantitative Literacy scores."
@@ -557,6 +589,7 @@ programmes:
 
   - id: bsc
     name: "Bachelor of Science (BSc)"
+    faculty: "Faculty of Science"
     fields: [natural_sciences, physical_sciences, life_sciences]
     requirements:
       source: s-uct-prospectus-2027
@@ -575,6 +608,7 @@ programmes:
 
   - id: bsc_archaeology_egs
     name: "Bachelor of Science (BSc) without Physical Sciences: Archaeology, or Environmental & Geographical Science"
+    faculty: "Faculty of Science"
     fields: [earth_sciences, natural_sciences]
     requirements:
       source: s-uct-prospectus-2027
