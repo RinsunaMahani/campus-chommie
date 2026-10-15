@@ -4,6 +4,11 @@
 # certificate chain that day, so these values came from a search engine's copy of CPUT's pages. Its points
 # method wasn't found: no points rule yet. Nobody has checked these values yet: release stays false until
 # a person has compared every one with its source.
+#
+# The 119 programmes (agent draft, 15 Oct 2026) come from CPUT's online prospectus for the 2027 intake
+# (prospectus.cput.ac.za, one course page per qualification code, noted beside each programme), with the
+# Health and Wellness Sciences APS tables and department pages where the course page is blank;
+# docs/research/cput.md says what was read, what was left out and what to check first.
 
 university: cput
 name: Cape Peninsula University of Technology
@@ -13,7 +18,7 @@ release: false
 max_choices: null
 
 points_rules: null
-points_note: "CPUT's points method wasn't found on its pages."
+points_note: "CPUT counts its APS differently from faculty to faculty, so we can't check most of its programmes yet; its health programmes show their own points."
 
 applications:
   source: s-cput-apply
@@ -27,7 +32,1642 @@ applications:
       closes_one_of: [2026-06-30, 2026-07-31, 2026-08-31, 2026-09-30]
       note: "Each CPUT programme has its own closing date."
 
-programmes: []
+programmes:
+
+  # ---------------------------------------------------------------------------------------------------------
+  # Applied Sciences. Course pages: prospectus.cput.ac.za/index.php/course-details?q=<code>&f=20
+  # ---------------------------------------------------------------------------------------------------------
+
+  - id: dip_agriculture                    # D3AGRC
+    name: "Diploma in Agriculture"
+    fields: [agriculture]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 32
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 4}
+              min_points: 33
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - &cput_fas_all "CPUT's page says all your subjects except Life Orientation count towards this APS."
+
+  - id: dip_agriculture_ecp                # D3AGRX (its own page is blank; the D3AGRC page gives the ECP points)
+    name: "Diploma in Agriculture (Extended Curriculum Programme)"
+    fields: [agriculture]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 30
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 4}
+              min_points: 31
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - *cput_fas_all
+        - "These subjects are the ones CPUT lists for the Diploma in Agriculture; its page gives the extended programme's points but no subjects of its own."
+
+  - id: dip_agricultural_management        # D3AGRM
+    name: "Diploma in Agricultural Management"
+    fields: [agriculture, management]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 32
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 4}
+              min_points: 33
+            - subjects: {mathematical_literacy: 5}
+              min_points: 34
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - *cput_fas_all
+
+  - id: dip_agricultural_management_ecp    # D3AGMX
+    name: "Diploma in Agricultural Management (Extended Curriculum Programme)"
+    fields: [agriculture, management]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 30
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 4}
+              min_points: 31
+            - subjects: {mathematical_literacy: 5}
+              min_points: 32
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - *cput_fas_all
+
+  - id: dip_consumer_science_food_nutrition      # D3CSFN
+    name: "Diploma in Consumer Science in Food and Nutrition"
+    fields: [consumer_sciences, nutrition]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 28
+      subject_minimums: {english: 4, physical_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 4}
+              min_points: 29
+      extras:
+        - &cput_csfn_place "CPUT uses the APS to place students in the mainstream or the extended programme."
+
+  - id: dip_consumer_science_food_nutrition_ecp  # D3CNSX
+    name: "Diploma in Consumer Science in Food and Nutrition (Extended Curriculum Programme)"
+    fields: [consumer_sciences, nutrition]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 26
+      subject_minimums: {english: 4, physical_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 4}
+              min_points: 27
+      extras:
+        - *cput_csfn_place
+
+  - id: dip_biotechnology                  # D3BIOT
+    name: "Diploma in Biotechnology"
+    fields: [life_sciences]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4, life_sciences: 4, physical_sciences: 4}
+      extras:
+        - "English Home Language or First Additional Language."
+
+  - id: dip_biotechnology_ecp              # D3BITX
+    name: "Diploma in Biotechnology (Extended Curriculum Programme)"
+    fields: [life_sciences]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 4, life_sciences: 4, physical_sciences: 4}
+      extras:
+        - "English Home Language or First Additional Language."
+        - "CPUT allows one level 3 (45% or more) in Mathematics, Life Sciences or Physical Sciences if the other three subjects are at level 4; English must be at level 4."
+
+  - id: dip_analytical_chemistry           # D3ANCH
+    name: "Diploma in Analytical Chemistry"
+    fields: [physical_sciences]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 30
+      subject_minimums: {english: 4, physical_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+              min_points: 31
+      extras:
+        - "English Home Language or First Additional Language."
+
+  - id: dip_analytical_chemistry_ecp       # D3ANCX
+    name: "Diploma in Analytical Chemistry (Extended Curriculum Programme)"
+    fields: [physical_sciences]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 28
+      subject_minimums: {english: 4, physical_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+              min_points: 29
+      extras:
+        - "English Home Language or First Additional Language."
+        - "CPUT also considers 45% or more in Mathematics, Physical Sciences or Life Sciences if the other three are 50% or more."
+
+  - id: bachelor_food_science_technology   # BPFSTH
+    name: "Bachelor of Food Science and Technology"
+    fields: [food_science]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 32
+      subject_minimums: {english: 4, life_sciences: 4, physical_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+      additional_minimums: [3, 3]
+      extras:
+        - "You also need two other subjects at level 3 (40% to 49%) or more, and neither of them may be a language."
+
+  - id: dip_marine_science                 # DPMASC
+    name: "Diploma in Marine Science"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 30
+      subject_minimums: {english: 4, physical_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+              min_points: 31
+      extras:
+        - "English Home Language or First Additional Language."
+
+  - id: dip_marine_science_ecp             # DPMASX
+    name: "Diploma in Marine Science (Extended Curriculum Programme)"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 28
+      subject_minimums: {english: 4, physical_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+              min_points: 29
+      extras:
+        - "CPUT accepts 45% to 49% in Physical Sciences if Mathematics is at level 4 (50% or more), or 45% to 49% in Mathematics if Physical Sciences is at level 4."
+
+  - id: dip_nature_conservation            # D3NCNS
+    name: "Diploma in Nature Conservation"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 30
+      subject_minimums: {english: 4, life_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 4}
+              min_points: 31
+            - subjects: {mathematical_literacy: 5}
+              min_points: 32
+      extras:
+        - &cput_diploma_pass "Your NSC must allow diploma study."
+
+  - id: dip_nature_conservation_ecp        # D3NCNX
+    name: "Diploma in Nature Conservation (Extended Curriculum Programme)"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 28
+      subject_minimums: {english: 4, life_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 4}
+              min_points: 29
+            - subjects: {mathematical_literacy: 5}
+              min_points: 30
+      extras:
+        - *cput_diploma_pass
+
+  - id: bachelor_environmental_health      # BPENVH
+    name: "Bachelor of Environmental Health"
+    fields: [environmental_health]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 32
+      subject_minimums: {english: 4, physical_sciences: 4, life_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+              min_points: 33
+      extras:
+        - &cput_degree_pass "Your NSC must allow bachelor's degree study."
+
+  - id: bachelor_environmental_health_ecp  # BPENVX
+    name: "Bachelor of Environmental Health (Extended Curriculum Programme)"
+    fields: [environmental_health]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 30
+      subject_minimums: {english: 4, physical_sciences: 4, life_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+              min_points: 31
+      extras:
+        - *cput_degree_pass
+
+  - id: dip_environmental_management       # D3EVMN
+    name: "Diploma in Environmental Management"
+    fields: [natural_sciences, earth_sciences]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 28
+      subject_minimums: {english: 4, physical_sciences: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 4}
+              min_points: 29
+            - subjects: {mathematical_literacy: 5}
+              min_points: 30
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {geography: 4}
+      extras:
+        - "English Home Language or First Additional Language, and any two other subjects except Life Orientation."
+
+  - id: dip_environmental_management_ecp   # D3EVMX
+    name: "Diploma in Environmental Management (Extended Curriculum Programme)"
+    fields: [natural_sciences, earth_sciences]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 26
+      subject_minimums: {english: 4, physical_sciences: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 4}
+              min_points: 27
+            - subjects: {mathematical_literacy: 5}
+              min_points: 28
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {geography: 4}
+      extras:
+        - "English Home Language or First Additional Language."
+        - "Subject to space, CPUT may admit students to this programme with at least 50% for Geography or Life Sciences."
+
+  - id: dip_horticulture                   # D3HRCT
+    name: "Diploma in Horticulture"
+    fields: [agriculture]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 30
+      subject_minimums: {english: 4, life_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 4}
+              min_points: 31
+            - subjects: {mathematical_literacy: 5}
+              min_points: 32
+
+  - id: dip_horticulture_ecp               # D3HRCX
+    name: "Diploma in Horticulture (Extended Curriculum Programme)"
+    fields: [agriculture]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 28
+      subject_minimums: {english: 4, life_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 4}
+              min_points: 29
+            - subjects: {mathematical_literacy: 5}
+              min_points: 30
+
+  - id: dip_landscape_architecture         # D3LARC
+    name: "Diploma in Landscape Architecture"
+    fields: [built_environment]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 30
+      subject_minimums: {english: 4, life_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 4}
+              min_points: 31
+            - subjects: {mathematical_literacy: 5}
+              min_points: 32
+
+  - id: dip_landscape_architecture_ecp     # D3LARX
+    name: "Diploma in Landscape Architecture (Extended Curriculum Programme)"
+    fields: [built_environment]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 28
+      subject_minimums: {english: 4, life_sciences: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 4}
+              min_points: 29
+            - subjects: {mathematical_literacy: 5}
+              min_points: 30
+
+  - id: dip_mathematical_sciences          # D3MTHS
+    name: "Diploma in Mathematical Sciences"
+    fields: [mathematical_sciences]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 28
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+              min_points: 29
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {geography: 4}
+            - subjects: {accounting: 4}
+            - subjects: {business_studies: 4}
+            - subjects: {economics: 4}
+
+  - id: dip_mathematical_sciences_ecp      # D3MTHX
+    name: "Diploma in Mathematical Sciences (Extended Curriculum Programme)"
+    fields: [mathematical_sciences]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 26
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+              min_points: 27
+        - one_of:
+            - subjects: {physical_sciences: 3}
+            - subjects: {geography: 3}
+            - subjects: {accounting: 3}
+            - subjects: {business_studies: 3}
+            - subjects: {economics: 3}
+
+  # ---------------------------------------------------------------------------------------------------------
+  # Business and Management Sciences. Course pages: course-details?q=<code>&f=60. Most of this faculty's
+  # course pages give no admission requirements; its 2027 diploma prospectus is on Issuu, which we may not
+  # read (docs/research/cput.md).
+  # ---------------------------------------------------------------------------------------------------------
+
+  - id: dip_accountancy                    # D3ACCY
+    name: "Diploma in Accountancy"
+    fields: [accounting]
+    requirements:
+      source: s-cput-accounting
+      min_points: 38
+      subject_minimums: {english: 4, accounting: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+
+  - id: dip_accountancy_ecp                # D3ACCX
+    name: "Diploma in Accountancy (Extended Curriculum Programme)"
+    fields: [accounting]
+    requirements:
+      source: s-cput-accounting
+      min_points: 35
+      subject_minimums: {english: 4, accounting: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+
+  - id: dip_retail_business_management     # D3RBMT
+    name: "Diploma in Retail Business Management"
+    fields: [management, commerce]
+    requirements:
+      source: s-cput-retail
+      min_points: 26
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {mathematical_literacy: 4}
+
+  - id: dip_real_estate                    # D3REAL
+    name: "Diploma in Real Estate"
+    fields: [commerce]
+    requirements:
+      source: s-cput-real-estate
+      min_points: null
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {mathematical_literacy: 4}
+        - one_of:
+            - subjects: {economics: 4}
+            - subjects: {business_studies: 4}
+            - subjects: {accounting: 4}
+      extras:
+        - "CPUT asks for the commerce subject for full-time study; the diploma is also offered by distance learning."
+
+  - id: dip_business_information_administration       # D3BIAS
+    name: "Diploma in Business and Information Administration"
+    fields: [management]
+    requirements: null
+
+  - id: dip_business_information_administration_ecp   # D3BSIX
+    name: "Diploma in Business and Information Administration (Extended Curriculum Programme)"
+    fields: [management]
+    requirements: null
+
+  - id: dip_hospitality_hotel_management   # D3HSPH
+    name: "Diploma in Hospitality and Hotel Management"
+    fields: [tourism_and_hospitality]
+    requirements: null
+
+  - id: dip_hospitality_professional_cookery   # D3HSPC
+    name: "Diploma in Hospitality and Professional Cookery"
+    fields: [tourism_and_hospitality]
+    requirements: null
+
+  - id: dip_hospitality_food_beverage_management   # D3HSPF
+    name: "Diploma in Hospitality and Food and Beverage Management"
+    fields: [tourism_and_hospitality]
+    requirements: null
+
+  - id: bachelor_paralegal_studies         # BGPLGL
+    name: "Bachelor of Paralegal Studies"
+    fields: [law]
+    requirements: null
+
+  - id: dip_public_administration          # D3PBAD
+    name: "Diploma in Public Administration"
+    fields: [public_administration]
+    requirements: null
+
+  - id: dip_public_administration_ecp      # D3PBAX
+    name: "Diploma in Public Administration and Governance (Extended Curriculum Programme)"
+    fields: [public_administration]
+    requirements: null
+
+  - id: bachelor_business_informatics      # BGBICS
+    name: "Bachelor of Business Informatics"
+    fields: [computing, commerce]
+    requirements: null
+
+  - id: dip_human_resource_management      # D3HRMT
+    name: "Diploma in Human Resource Management"
+    fields: [management]
+    requirements: null
+
+  - id: dip_human_resource_management_ecp  # D3HRMX
+    name: "Diploma in Human Resource Management (Extended Curriculum Programme)"
+    fields: [management]
+    requirements: null
+
+  - id: dip_management                     # D3MNGT
+    name: "Diploma in Management"
+    fields: [management]
+    requirements: null
+
+  - id: dip_management_ecp                 # D3MNGX
+    name: "Diploma in Management (Extended Curriculum Programme)"
+    fields: [management]
+    requirements: null
+
+  - id: dip_operations_management          # D3OPMT
+    name: "Diploma in Operations Management"
+    fields: [management]
+    requirements: null
+
+  - id: dip_entrepreneurship               # D3ENTP
+    name: "Diploma in Entrepreneurship"
+    fields: [management, commerce]
+    requirements: null
+
+  - id: dip_entrepreneurship_ecp           # D3ENTX
+    name: "Diploma in Entrepreneurship (Extended Curriculum Programme)"
+    fields: [management, commerce]
+    requirements: null
+
+  - id: dip_banking                        # D3BNKG
+    name: "Diploma in Banking"
+    fields: [finance]
+    requirements: null
+
+  - id: dip_marketing                      # D3MRKG
+    name: "Diploma in Marketing"
+    fields: [commerce, management]
+    requirements: null
+
+  - id: dip_marketing_ecp                  # D3MRKX
+    name: "Diploma in Marketing (Extended Curriculum Programme)"
+    fields: [commerce, management]
+    requirements: null
+
+  - id: dip_sport_leisure_management       # D3SPMT
+    name: "Diploma in Sport and Leisure Management"
+    fields: [sport_science, management]
+    selection_note: &cput_sport_q "Applicants complete CPUT's Sport Management questionnaire about their involvement in sport, culture and leadership."
+    requirements: null
+
+  - id: dip_sport_leisure_management_ecp   # D3SPMX
+    name: "Diploma in Sport and Leisure Management (Extended Curriculum Programme)"
+    fields: [sport_science, management]
+    selection_note: *cput_sport_q
+    requirements: null
+
+  - id: dip_event_management               # D3EVMT
+    name: "Diploma in Event Management"
+    fields: [tourism_and_hospitality, management]
+    selection_note: &cput_event_letter "Applicants send a motivational letter explaining why they want to follow this programme and what they understand of the industry."
+    requirements: null
+
+  - id: dip_event_management_ecp           # D3EVTX
+    name: "Diploma in Event Management (Extended Curriculum Programme)"
+    fields: [tourism_and_hospitality, management]
+    selection_note: *cput_event_letter
+    requirements: null
+
+  - id: dip_tourism_management             # D3TMNG
+    name: "Diploma in Tourism Management"
+    fields: [tourism_and_hospitality]
+    selection_note: *cput_event_letter
+    requirements: null
+
+  - id: dip_tourism_management_ecp         # D3TMNX
+    name: "Diploma in Tourism Management (Extended Curriculum Programme)"
+    fields: [tourism_and_hospitality]
+    selection_note: *cput_event_letter
+    requirements: null
+
+  # ---------------------------------------------------------------------------------------------------------
+  # Education. Course pages: course-details?q=<code>&f=100. The Diploma in Grade R Teaching and the Diploma in
+  # Early Childhood Care and Education are left out: both need a letter confirming the applicant's employment.
+  # ---------------------------------------------------------------------------------------------------------
+
+  - id: bed_foundation_phase               # BEFNPT
+    name: "Bachelor of Education in Foundation Phase Teaching"
+    fields: [education]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: null
+      additional_minimums: [4, 4, 4, 4]
+      extras:
+        - &cput_bed_four "Your NSC must allow bachelor's degree study, with level 4 or more in four subjects from the designated subject list, one of them an official language."
+        - &cput_bed_lang "You also need level 3 or more in another official language, and one of these languages must be CPUT's language of learning and teaching."
+
+  - id: bed_intermediate_phase             # BEINPT
+    name: "Bachelor of Education in Intermediate Phase Teaching"
+    fields: [education]
+    selective: true
+    selection_note: "Applicants who meet the minimum go to a further round of selection, which could look at the quality of your results, admission tests, interviews and a report from your principal."
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: null
+      additional_minimums: [4, 4, 4, 4]
+      extras:
+        - *cput_bed_four
+        - *cput_bed_lang
+        - "You also need level 4 or more in subjects related to the teaching electives you choose, such as Mathematics, Accounting, Life Sciences and Physical Sciences."
+
+  - id: bed_senior_phase_fet               # BESPFT
+    name: "Bachelor of Education in Senior Phase and FET Teaching"
+    fields: [education]
+    requirements: null
+
+  # ---------------------------------------------------------------------------------------------------------
+  # Engineering and the Built Environment. Course pages: course-details?q=<code>&f=140. Every APS here is
+  # counted with CPUT's Method 2 (s-cput-aps-method-2), which the app can't count yet.
+  # ---------------------------------------------------------------------------------------------------------
+
+  - id: dip_chemical_engineering           # D3CHME
+    name: "Diploma in Chemical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 30
+      subject_minimums: {english: 4, physical_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+      extras:
+        - &cput_method2 "CPUT counts this APS with its Method 2: your percentages for English, Mathematics, Physical Sciences and your next best subject, with Mathematics and Physical Sciences doubled, added up and divided by 10; Life Orientation doesn't count."
+        - &cput_eng_english "CPUT asks for English as a first language at this level."
+
+  - id: dip_chemical_engineering_ecp       # D3CHMX
+    name: "Diploma in Chemical Engineering (Extended Curriculum Programme)"
+    fields: [engineering]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 30
+      subject_minimums: {english: 4, physical_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+      extras:
+        - *cput_method2
+        - *cput_eng_english
+        - "Subject to space, CPUT may admit you to this programme with English at 50%, one of Mathematics or Physical Sciences at 50% and the other at 45% or more."
+
+  - id: bet_chemical_engineering           # BPETCE
+    name: "Bachelor of Engineering Technology in Chemical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 36
+      subject_minimums: {english: 5, physical_sciences: 5}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 5}
+            - subjects: {technical_mathematics: 5}
+      extras:
+        - *cput_method2
+        - *cput_eng_english
+
+  - id: dip_civil_engineering              # D3CIVL
+    name: "Diploma in Civil Engineering"
+    fields: [engineering, built_environment]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 30
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 5}
+      extras:
+        - *cput_method2
+        - *cput_eng_english
+
+  - id: dip_civil_engineering_ecp          # D3CIVX
+    name: "Diploma in Civil Engineering (Extended Curriculum Programme)"
+    fields: [engineering, built_environment]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 30
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 5}
+      extras:
+        - *cput_method2
+        - *cput_eng_english
+        - &cput_ecp_space "Subject to space, CPUT may admit you to this programme with English at 50%, one of Mathematics or Physical Sciences at 50% and the other at 45% or more, or Technical Mathematics or Technical Sciences at 60% and the other at 55% or more."
+
+  - id: bet_civil_engineering              # BGENCV
+    name: "Bachelor of Engineering Technology in Civil Engineering"
+    fields: [engineering, built_environment]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 36
+      subject_minimums: {english: 5}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 5}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 5}
+            - subjects: {technical_sciences: 5}
+      extras:
+        - *cput_method2
+        - *cput_eng_english
+
+  - id: dip_geomatics                      # D3GMTS
+    name: "Diploma in Geomatics"
+    fields: [engineering, built_environment]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 30
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 5}
+      extras:
+        - *cput_method2
+        - *cput_eng_english
+
+  - id: bachelor_geomatics                 # BPGMTS
+    name: "Bachelor of Geomatics"
+    fields: [engineering, built_environment]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 36
+      subject_minimums: {english: 5}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 5}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 5}
+            - subjects: {technical_sciences: 5}
+      extras:
+        - *cput_method2
+        - *cput_eng_english
+
+  - id: dip_eng_tech_computer_engineering        # D2ENCE
+    name: "Diploma in Engineering Technology in Computer Engineering"
+    fields: [engineering, computing]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 30
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 5}
+            - subjects: {electrical_technology: 4}
+      extras:
+        - *cput_method2
+        - *cput_eng_english
+        - &cput_eeng_rec4 "CPUT recommends Computer Applications Technology, Information Technology or Electrical Technology at level 4."
+
+  - id: dip_eng_tech_computer_engineering_ecp    # D2ENCX
+    name: "Diploma in Engineering Technology in Computer Engineering (Extended Curriculum Programme)"
+    fields: [engineering, computing]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 30
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 5}
+            - subjects: {electrical_technology: 4}
+      extras:
+        - *cput_method2
+        - *cput_eng_english
+        - *cput_eeng_rec4
+        - *cput_ecp_space
+
+  - id: dip_eng_tech_electrical_engineering      # D2ETEE
+    name: "Diploma in Engineering Technology in Electrical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 30
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 5}
+            - subjects: {electrical_technology: 4}
+      extras:
+        - *cput_method2
+        - *cput_eng_english
+        - *cput_eeng_rec4
+
+  - id: dip_eng_tech_electrical_engineering_ecp  # D2ETEX
+    name: "Diploma in Engineering Technology in Electrical Engineering (Extended Curriculum Programme)"
+    fields: [engineering]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 30
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 5}
+            - subjects: {electrical_technology: 4}
+      extras:
+        - *cput_method2
+        - *cput_eng_english
+        - *cput_eeng_rec4
+        - *cput_ecp_space
+
+  - id: bet_computer_engineering           # BPETCP
+    name: "Bachelor of Engineering Technology in Computer Engineering"
+    fields: [engineering, computing]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 36
+      subject_minimums: {english: 5}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 5}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 5}
+            - subjects: {technical_sciences: 5}
+            - subjects: {electrical_technology: 5}
+      extras:
+        - *cput_method2
+        - *cput_eng_english
+        - &cput_eeng_rec5 "CPUT recommends Computer Applications Technology, Information Technology or Electrical Technology at level 5."
+
+  - id: bet_electrical_engineering         # BPETEE
+    name: "Bachelor of Engineering Technology in Electrical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 36
+      subject_minimums: {english: 5}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 5}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 5}
+            - subjects: {technical_sciences: 5}
+            - subjects: {electrical_technology: 5}
+      extras:
+        - *cput_method2
+        - *cput_eng_english
+        - *cput_eeng_rec5
+
+  - id: bachelor_marine_engineering        # BPMARE
+    name: "Bachelor of Marine Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 36
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 5}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 5}
+            - subjects: {technical_sciences: 5}
+      extras:
+        - *cput_method2
+        - *cput_eng_english
+        - &cput_samsa "You also need an eyesight and medical examination by a medical practitioner approved by SAMSA."
+
+  - id: bachelor_marine_engineering_ecp    # BPMARX
+    name: "Bachelor of Marine Engineering (Extended Curriculum Programme)"
+    fields: [engineering]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 31
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+      extras:
+        - *cput_method2
+        - *cput_eng_english
+        - &cput_maritime_ecp "This programme takes an APS of 31 to 35; applicants with 28 to 30 are waitlisted."
+        - *cput_samsa
+
+  - id: bachelor_nautical_science          # BGNSCI
+    name: "Bachelor of Nautical Science"
+    fields: [engineering]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 36
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 5}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 5}
+            - subjects: {technical_sciences: 5}
+      extras:
+        - *cput_method2
+        - *cput_eng_english
+        - *cput_samsa
+
+  - id: bachelor_nautical_science_ecp      # BGNSCX
+    name: "Bachelor of Nautical Science (Extended Curriculum Programme)"
+    fields: [engineering]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 31
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+      extras:
+        - *cput_method2
+        - *cput_eng_english
+        - *cput_maritime_ecp
+        - *cput_samsa
+
+  - id: dip_clothing_textile_technology    # D3CLOT
+    name: "Diploma in Clothing and Textile Technology"
+    fields: [engineering]
+    selection_note: &cput_clothing_letter "Applicants send a motivational letter with their application."
+    requirements: null
+
+  - id: dip_clothing_textile_technology_ecp   # D3CLOX
+    name: "Diploma in Clothing and Textile Technology (Extended Curriculum Programme)"
+    fields: [engineering]
+    selection_note: *cput_clothing_letter
+    requirements: null
+
+  - id: dip_construction                   # D3CSRN
+    name: "Diploma in Construction"
+    fields: [built_environment]
+    requirements: null
+
+  - id: dip_construction_ecp               # D3CSRX
+    name: "Diploma in Construction (Extended Curriculum Programme)"
+    fields: [built_environment]
+    requirements: null
+
+  - id: dip_industrial_engineering         # D3IENG
+    name: "Diploma in Industrial Engineering"
+    fields: [engineering]
+    requirements: null
+
+  - id: dip_industrial_engineering_ecp     # D3IENX
+    name: "Diploma in Industrial Engineering (Extended Curriculum Programme)"
+    fields: [engineering]
+    requirements: null
+
+  - id: dip_mechanical_engineering         # D3MCNE
+    name: "Diploma in Mechanical Engineering"
+    fields: [engineering]
+    requirements: null
+
+  - id: dip_mechanical_engineering_ecp     # D3MCNX
+    name: "Diploma in Mechanical Engineering (Extended Curriculum Programme)"
+    fields: [engineering]
+    requirements: null
+
+  - id: dip_mechanical_engineering_mechatronics   # D3MECS
+    name: "Diploma in Mechanical Engineering in Mechatronics"
+    fields: [engineering]
+    requirements: null
+
+  # ---------------------------------------------------------------------------------------------------------
+  # Health and Wellness Sciences. Course pages: course-details?q=<code>&f=180, each showing the faculty's APS
+  # table for that programme (one source per table). The faculty states how it counts: the percentages of
+  # the 6 highest subjects without Life Orientation, added up and divided by 10. So these programmes carry
+  # that rule. Every table says places are limited and first-choice applicants come first.
+  # ---------------------------------------------------------------------------------------------------------
+
+  - id: bhsc_medical_laboratory_science    # BPMLSC
+    name: "Bachelor of Health Sciences in Medical Laboratory Science"
+    fields: [medical_sciences, health_sciences]
+    selective: true
+    places: 45
+    selection_note: &cput_fhws_sel "Places are limited: CPUT's health faculty puts first-choice applicants first and prefers higher results in the required subjects and a higher APS."
+    requirements:
+      source: s-cput-aps-bpmlsc
+      min_points: 38
+      subject_minimums: {english: 4, mathematics: 4, life_sciences: 5, physical_sciences: 4}
+      extras:
+        - "English Home Language or First Additional Language."
+        - *cput_degree_pass
+        - &cput_hepb "You must show proof of your first Hepatitis B vaccination when the programme starts in January."
+    points_rules:
+      source: s-cput-aps-bpmlsc
+      subjects_counted: 6
+      life_orientation: exclude
+      percent_points: {per_percent: 0.1}
+      note: &cput_fhws_note "CPUT's health faculty adds the percentages of your 6 highest subjects, without Life Orientation, and divides by 10: 57% adds 5.7."
+      scale: &cput_nsc_scale
+        - {min_percent: 80, level: 7}
+        - {min_percent: 70, level: 6}
+        - {min_percent: 60, level: 5}
+        - {min_percent: 50, level: 4}
+        - {min_percent: 40, level: 3}
+        - {min_percent: 30, level: 2}
+        - {min_percent: 0, level: 1}
+
+  - id: bhsc_medical_laboratory_science_ecp   # BPMLSX
+    name: "Bachelor of Health Sciences in Medical Laboratory Science (Extended Curriculum Programme)"
+    fields: [medical_sciences, health_sciences]
+    selective: true
+    places: 15
+    selection_note: *cput_fhws_sel
+    requirements:
+      source: s-cput-aps-bpmlsx
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 4, life_sciences: 4, physical_sciences: 4}
+      extras:
+        - "English Home Language or First Additional Language."
+        - *cput_degree_pass
+        - "This programme takes an APS of 30 to 37."
+        - "Subject to space, CPUT considers level 3 (48% or more) in Mathematics or Physical Sciences."
+        - "This programme is open only to South African citizens."
+        - *cput_hepb
+    points_rules:
+      source: s-cput-aps-bpmlsx
+      subjects_counted: 6
+      life_orientation: exclude
+      percent_points: {per_percent: 0.1}
+      note: *cput_fhws_note
+      scale: *cput_nsc_scale
+
+  - id: bachelor_emergency_medical_care    # BPEMCA
+    name: "Bachelor of Emergency Medical Care"
+    fields: [emergency_care]
+    selective: true
+    places: 30
+    selection_note: &cput_ems_sel "Shortlisted applicants do an online digital interview; those selected then do medical, physical and environmental assessments at the Bellville campus."
+    requirements:
+      source: s-cput-aps-bpemca
+      min_points: 35
+      subject_minimums: {english: 4, mathematics: 4, life_sciences: 4, physical_sciences: 4}
+      extras:
+        - "English Home Language or First Additional Language."
+        - *cput_fhws_sel
+    points_rules:
+      source: s-cput-aps-bpemca
+      subjects_counted: 6
+      life_orientation: exclude
+      percent_points: {per_percent: 0.1}
+      note: *cput_fhws_note
+      scale: *cput_nsc_scale
+
+  - id: bachelor_emergency_medical_care_ecp   # BPEMCX
+    name: "Bachelor of Emergency Medical Care (Extended Curriculum Programme)"
+    fields: [emergency_care]
+    selective: true
+    places: 15
+    selection_note: *cput_ems_sel
+    requirements:
+      source: s-cput-aps-bpemcx
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 4, life_sciences: 4, physical_sciences: 4}
+      extras:
+        - "English Home Language or First Additional Language."
+        - "This programme takes an APS of 30 to 34."
+        - "Subject to space, CPUT considers 47% to 49% in one of English, Mathematics, Life Sciences or Physical Sciences."
+        - *cput_fhws_sel
+    points_rules:
+      source: s-cput-aps-bpemcx
+      subjects_counted: 6
+      life_orientation: exclude
+      percent_points: {per_percent: 0.1}
+      note: *cput_fhws_note
+      scale: *cput_nsc_scale
+
+  - id: dip_emergency_care                 # D2EMCA
+    name: "Diploma in Emergency Care"
+    fields: [emergency_care]
+    selective: true
+    places: 30
+    selection_note: *cput_ems_sel
+    requirements:
+      source: s-cput-aps-d2emca
+      min_points: 28
+      subject_minimums: {english: 3, mathematics: 3, life_sciences: 3, physical_sciences: 3}
+      extras:
+        - "English Home Language or First Additional Language."
+        - *cput_diploma_pass
+        - *cput_fhws_sel
+    points_rules:
+      source: s-cput-aps-d2emca
+      subjects_counted: 6
+      life_orientation: exclude
+      percent_points: {per_percent: 0.1}
+      note: *cput_fhws_note
+      scale: *cput_nsc_scale
+
+  - id: hc_emergency_medical_care          # HCEMDC
+    name: "Higher Certificate in Emergency Medical Care"
+    fields: [emergency_care]
+    selective: true
+    places: 30
+    selection_note: *cput_ems_sel
+    requirements:
+      source: s-cput-aps-hcemdc
+      min_points: 26
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 4}
+            - subjects: {mathematical_literacy: 6}
+        - one_of:
+            - subjects: {life_sciences: 3}
+            - subjects: {physical_sciences: 3}
+      extras:
+        - "English Home Language or First Additional Language."
+        - *cput_fhws_sel
+    points_rules:
+      source: s-cput-aps-hcemdc
+      subjects_counted: 6
+      life_orientation: exclude
+      percent_points: {per_percent: 0.1}
+      note: *cput_fhws_note
+      scale: *cput_nsc_scale
+
+  - id: bsc_diagnostic_radiography         # BPSDGR
+    name: "BSc in Diagnostic Radiography"
+    fields: [radiography]
+    selective: true
+    places: 67
+    selection_note: &cput_mits_sel "Shortlisted applicants complete an online digital health screening questionnaire (also called an interview)."
+    requirements:
+      source: s-cput-aps-bpsdgr
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 4}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - "English Home Language or First Additional Language."
+        - *cput_fhws_sel
+    points_rules:
+      source: s-cput-aps-bpsdgr
+      subjects_counted: 6
+      life_orientation: exclude
+      percent_points: {per_percent: 0.1}
+      note: *cput_fhws_note
+      scale: *cput_nsc_scale
+
+  - id: bsc_diagnostic_ultrasound          # BPSDGU
+    name: "BSc in Diagnostic Ultrasound"
+    fields: [radiography]
+    selective: true
+    places: 10
+    selection_note: *cput_mits_sel
+    requirements:
+      source: s-cput-aps-bpsdgu
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 4}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - "English Home Language or First Additional Language."
+        - *cput_fhws_sel
+    points_rules:
+      source: s-cput-aps-bpsdgu
+      subjects_counted: 6
+      life_orientation: exclude
+      percent_points: {per_percent: 0.1}
+      note: *cput_fhws_note
+      scale: *cput_nsc_scale
+
+  - id: bsc_nuclear_medicine_technology    # BPSNUM
+    name: "BSc in Nuclear Medicine Technology"
+    fields: [radiography, health_sciences]
+    selective: true
+    places: 8
+    selection_note: *cput_mits_sel
+    requirements:
+      source: s-cput-aps-bpsnum
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 4, life_sciences: 4, physical_sciences: 4}
+      extras:
+        - "English Home Language or First Additional Language."
+        - *cput_fhws_sel
+    points_rules:
+      source: s-cput-aps-bpsnum
+      subjects_counted: 6
+      life_orientation: exclude
+      percent_points: {per_percent: 0.1}
+      note: *cput_fhws_note
+      scale: *cput_nsc_scale
+
+  - id: bsc_radiation_therapy              # BPSRDT
+    name: "BSc in Radiation Therapy"
+    fields: [radiography]
+    selective: true
+    places: 15
+    selection_note: *cput_mits_sel
+    requirements:
+      source: s-cput-aps-bpsrdt
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 4}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - "English Home Language or First Additional Language."
+        - *cput_fhws_sel
+    points_rules:
+      source: s-cput-aps-bpsrdt
+      subjects_counted: 6
+      life_orientation: exclude
+      percent_points: {per_percent: 0.1}
+      note: *cput_fhws_note
+      scale: *cput_nsc_scale
+
+  - id: bachelor_nursing                   # BPNURS
+    name: "Bachelor of Nursing"
+    fields: [nursing]
+    selective: true
+    places: 30
+    selection_note: &cput_nursing_sel "Shortlisted applicants complete an online digital interview."
+    requirements:
+      source: s-cput-aps-bpnurs
+      min_points: 30
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {mathematical_literacy: 5}
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - "English Home Language or First Additional Language."
+        - *cput_fhws_sel
+        - &cput_nursing_vacc "You must be vaccinated against Covid-19 and Hepatitis B, and show proof of your first Hepatitis B vaccination when the programme starts in January."
+    points_rules:
+      source: s-cput-aps-bpnurs
+      subjects_counted: 6
+      life_orientation: exclude
+      percent_points: {per_percent: 0.1}
+      note: *cput_fhws_note
+      scale: *cput_nsc_scale
+
+  - id: bachelor_nursing_ecp               # BPNURX
+    name: "Bachelor of Nursing (Extended Curriculum Programme)"
+    fields: [nursing]
+    selective: true
+    places: 30
+    selection_note: *cput_nursing_sel
+    requirements:
+      source: s-cput-aps-bpnurx
+      min_points: 27
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - "English Home Language or First Additional Language."
+        - "This programme takes an APS of 27 to 29."
+        - *cput_fhws_sel
+        - *cput_nursing_vacc
+    points_rules:
+      source: s-cput-aps-bpnurx
+      subjects_counted: 6
+      life_orientation: exclude
+      percent_points: {per_percent: 0.1}
+      note: *cput_fhws_note
+      scale: *cput_nsc_scale
+
+  - id: bhsc_opticianry                    # BGOPTY
+    name: "Bachelor of Health Science in Opticianry"
+    fields: [health_sciences]
+    selective: true
+    places: 65
+    selection_note: *cput_fhws_sel
+    requirements:
+      source: s-cput-aps-bgopty
+      min_points: 32
+      subject_minimums: {english: 4, life_sciences: 4, physical_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {mathematical_literacy: 5}
+      extras:
+        - "English Home Language or First Additional Language."
+        - *cput_degree_pass
+    points_rules:
+      source: s-cput-aps-bgopty
+      subjects_counted: 6
+      life_orientation: exclude
+      percent_points: {per_percent: 0.1}
+      note: *cput_fhws_note
+      scale: *cput_nsc_scale
+
+  - id: dip_somatology                     # D3SOMA
+    name: "Diploma in Somatology"
+    fields: [health_sciences]
+    selective: true
+    places: 80
+    selection_note: *cput_fhws_sel
+    requirements:
+      source: s-cput-aps-d3soma
+      min_points: 24
+      subject_minimums: {english: 4, life_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 25
+      extras:
+        - "English Home Language or First Additional Language."
+        - "You must show proof of vaccination against Hepatitis B when you register."
+    points_rules:
+      source: s-cput-aps-d3soma
+      subjects_counted: 6
+      life_orientation: exclude
+      percent_points: {per_percent: 0.1}
+      note: *cput_fhws_note
+      scale: *cput_nsc_scale
+
+  - id: hc_dental_assisting                # HCDNAS
+    name: "Higher Certificate in Dental Assisting"
+    fields: [dentistry]
+    selective: true
+    places: 80
+    selection_note: *cput_fhws_sel
+    requirements:
+      source: s-cput-aps-hcdnas
+      min_points: 25
+      subject_minimums: {english: 3, life_sciences: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {mathematical_literacy: 3}
+      extras:
+        - "English Home Language or First Additional Language."
+        - "CPUT's online prospectus asks you to job-shadow at a dental practice for eight hours and send the Department of Dental Sciences a questionnaire about it."
+        - "You must show proof of vaccination against Hepatitis B when you register, and register with the HPCSA as a student dental assistant once accepted."
+    points_rules:
+      source: s-cput-aps-hcdnas
+      subjects_counted: 6
+      life_orientation: exclude
+      percent_points: {per_percent: 0.1}
+      note: *cput_fhws_note
+      scale: *cput_nsc_scale
+
+  # ---------------------------------------------------------------------------------------------------------
+  # Informatics and Design. Course pages: course-details?q=<code>&f=220; the design diplomas' figures come
+  # from the Applied Design department's pages.
+  # ---------------------------------------------------------------------------------------------------------
+
+  - id: dip_architectural_technology       # D3ARCT
+    name: "Diploma in Architectural Technology"
+    fields: [built_environment, arts_and_design]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 30
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+            - subjects: {mathematical_literacy: 6}
+              min_points: 32
+      extras:
+        - "English Home Language or First Additional Language."
+        - &cput_drawing "CPUT recommends technical drawing and design subjects."
+
+  - id: dip_architectural_technology_ecp   # D3ARCX
+    name: "Diploma in Architectural Technology (Extended Curriculum Programme)"
+    fields: [built_environment, arts_and_design]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 26
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 4}
+            - subjects: {mathematical_literacy: 5}
+              min_points: 28
+      extras:
+        - "English Home Language or First Additional Language."
+
+  - id: dip_interior_design                # D3INTD
+    name: "Diploma in Interior Design"
+    fields: [arts_and_design]
+    requirements:
+      source: s-cput-online-prospectus
+      min_points: 30
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+            - subjects: {mathematical_literacy: 6}
+              min_points: 32
+      extras:
+        - "English Home Language or First Additional Language."
+        - *cput_drawing
+
+  - id: dip_fashion                        # D3FASH
+    name: "Diploma in Fashion"
+    fields: [arts_and_design]
+    selective: true
+    selection_note: &cput_design_sel "CPUT's design pages say the mainstream design diplomas add portfolio or entrance test requirements to the minimums."
+    requirements:
+      source: s-cput-fashion
+      min_points: 28
+      subject_minimums: {english: 4}
+      choices:
+        - &cput_design_maths
+          one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 4}
+            - subjects: {mathematical_literacy: 5}
+      extras:
+        - &cput_design_english "English Home Language or First Additional Language."
+
+  - id: dip_jewellery_design_manufacture   # D3JEWD
+    name: "Diploma in Jewellery Design and Manufacture"
+    fields: [arts_and_design]
+    selective: true
+    selection_note: *cput_design_sel
+    requirements:
+      source: s-cput-jewellery
+      min_points: 28
+      subject_minimums: {english: 4}
+      choices:
+        - *cput_design_maths
+      extras:
+        - *cput_design_english
+
+  - id: dip_product_design                 # D3PRDS
+    name: "Diploma in Product Design"
+    fields: [arts_and_design]
+    selective: true
+    selection_note: *cput_design_sel
+    requirements:
+      source: s-cput-product-design
+      min_points: 28
+      subject_minimums: {english: 4}
+      choices:
+        - *cput_design_maths
+      extras:
+        - *cput_design_english
+
+  - id: dip_visual_communication_design    # D3VCOD
+    name: "Diploma in Visual Communication Design"
+    fields: [arts_and_design]
+    selective: true
+    selection_note: *cput_design_sel
+    requirements:
+      source: s-cput-vcd
+      min_points: 28
+      subject_minimums: {english: 4}
+      choices:
+        - *cput_design_maths
+      extras:
+        - *cput_design_english
+
+  # The design extended programmes have no course page of their own; the department names them "ECP Fashion" and so on.
+  - id: design_ecp_fashion
+    name: "Design Extended Curriculum Programme: Fashion"
+    fields: [arts_and_design]
+    selective: true
+    selection_note: &cput_design_ecp_sel "You submit a portfolio. The programme is for applicants who meet the mainstream minimums but may not meet its extra portfolio or entrance test requirements."
+    requirements:
+      source: s-cput-design-ecp
+      min_points: 26
+      subject_minimums: {english: 4}
+      choices:
+        - &cput_design_ecp_maths
+          one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - *cput_design_english
+
+  - id: design_ecp_jewellery
+    name: "Design Extended Curriculum Programme: Jewellery Design and Manufacture"
+    fields: [arts_and_design]
+    selective: true
+    selection_note: *cput_design_ecp_sel
+    requirements:
+      source: s-cput-design-ecp
+      min_points: 26
+      subject_minimums: {english: 4}
+      choices:
+        - *cput_design_ecp_maths
+      extras:
+        - *cput_design_english
+
+  - id: design_ecp_product_design
+    name: "Design Extended Curriculum Programme: Product Design"
+    fields: [arts_and_design]
+    selective: true
+    selection_note: *cput_design_ecp_sel
+    requirements:
+      source: s-cput-design-ecp
+      min_points: 26
+      subject_minimums: {english: 4}
+      choices:
+        - *cput_design_ecp_maths
+      extras:
+        - *cput_design_english
+
+  - id: design_ecp_visual_communication
+    name: "Design Extended Curriculum Programme: Visual Communication Design"
+    fields: [arts_and_design]
+    selective: true
+    selection_note: *cput_design_ecp_sel
+    requirements:
+      source: s-cput-design-ecp
+      min_points: 26
+      subject_minimums: {english: 4}
+      choices:
+        - *cput_design_ecp_maths
+      extras:
+        - *cput_design_english
+
+  - id: dip_ict_applications_development   # DPICTA
+    name: "Diploma in ICT in Applications Development"
+    fields: [computing]
+    requirements: null
+
+  - id: dip_ict_multimedia_applications    # D3ICTM
+    name: "Diploma in ICT in Multimedia Applications"
+    fields: [computing]
+    requirements: null
+
+  - id: dip_ict_communication_networks     # DPICTC
+    name: "Diploma in ICT in Communication Networks"
+    fields: [computing]
+    requirements: null
+
+  - id: hc_ict                             # HCINCT
+    name: "Higher Certificate in Information and Communication Technology"
+    fields: [computing]
+    requirements: null
+
+  - id: dip_public_relations_communication # D3PRCN
+    name: "Diploma in Public Relations and Communication"
+    fields: [languages_and_communication]
+    requirements: null
+
+  - id: dip_film_production                # D3FMPD
+    name: "Diploma in Film Production"
+    fields: [arts_and_design]
+    requirements: null
+
+  - id: dip_journalism                     # D3JURN
+    name: "Diploma in Journalism"
+    fields: [languages_and_communication]
+    requirements: null
+
+  - id: dip_photography                    # D3PHGY
+    name: "Diploma in Photography"
+    fields: [arts_and_design]
+    requirements: null
+
+  - id: dip_urban_regional_planning        # D3URPG
+    name: "Diploma in Urban and Regional Planning"
+    fields: [built_environment]
+    requirements: null
 
 sources:
   - id: s-cput-apply
@@ -42,5 +1682,187 @@ sources:
     publisher: "Cape Peninsula University of Technology"
     title: "Do I have to pay an application fee if applying online?"
     retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cput-online-prospectus
+    url: "https://prospectus.cput.ac.za/"
+    publisher: "Cape Peninsula University of Technology"
+    title: "Online Prospectus: one course page per qualification code (index.php/course-details?q=<code>), 2027 intake"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cput-aps-method-2
+    url: "https://www.cput.ac.za/images/Faculties/Engineering-and-the-Built-Environment/Documents-and-Resources/APS-Method-2.jpg"
+    publisher: "Cape Peninsula University of Technology"
+    title: "Calculating the APS score: Method 2 (table shown on the engineering course pages)"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cput-aps-bpmlsc
+    url: "https://www.cput.ac.za/images/Faculties/Health-and-Wellness-Sciences/Documents-and-Resources/APS-Scores/BHSc-in-Medical-Laboratory-Science-APS.jpg"
+    publisher: "Cape Peninsula University of Technology"
+    title: "APS table: BHSc in Medical Laboratory Science (shown on course page BPMLSC)"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cput-aps-bpmlsx
+    url: "https://www.cput.ac.za/images/Faculties/Health-and-Wellness-Sciences/Documents-and-Resources/APS-Scores/BHSc-in-Medical-Laboratory-Science-ECP-APS.jpg"
+    publisher: "Cape Peninsula University of Technology"
+    title: "APS table: BHSc in Medical Laboratory Science (ECP) (shown on course page BPMLSX)"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cput-aps-bpemca
+    url: "https://www.cput.ac.za/images/Faculties/Health-and-Wellness-Sciences/Documents-and-Resources/APS-Scores/Bachelor-of-Emergency-Medical-Care-APS.jpg"
+    publisher: "Cape Peninsula University of Technology"
+    title: "APS table: Bachelor of Emergency Medical Care (shown on course page BPEMCA)"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cput-aps-bpemcx
+    url: "https://www.cput.ac.za/images/Faculties/Health-and-Wellness-Sciences/Documents-and-Resources/APS-Scores/Bachelor-of-Emergency-Medical-Care-ECP-APS.jpg"
+    publisher: "Cape Peninsula University of Technology"
+    title: "APS table: Bachelor of Emergency Medical Care (ECP) (shown on course page BPEMCX)"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cput-aps-d2emca
+    url: "https://www.cput.ac.za/images/Faculties/Health-and-Wellness-Sciences/Documents-and-Resources/APS-Scores/Diploma-in-Emergency-Care-APS.jpg"
+    publisher: "Cape Peninsula University of Technology"
+    title: "APS table: Diploma in Emergency Care (shown on course page D2EMCA)"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cput-aps-hcemdc
+    url: "https://www.cput.ac.za/images/Faculties/Health-and-Wellness-Sciences/Documents-and-Resources/APS-Scores/Higher-Certificate-in-Emergency-Medical-Care-APS.jpg"
+    publisher: "Cape Peninsula University of Technology"
+    title: "APS table: Higher Certificate in Emergency Medical Care (shown on course page HCEMDC)"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cput-aps-bpsdgr
+    url: "https://www.cput.ac.za/images/Faculties/Health-and-Wellness-Sciences/Documents-and-Resources/APS-Scores/BSc-in-Diagnostic-Radiography-APS.jpg"
+    publisher: "Cape Peninsula University of Technology"
+    title: "APS table: BSc in Diagnostic Radiography (shown on course page BPSDGR)"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cput-aps-bpsdgu
+    url: "https://www.cput.ac.za/images/Faculties/Health-and-Wellness-Sciences/Documents-and-Resources/APS-Scores/BSc-in-Diagnostic-Ultrasound-APS.jpg"
+    publisher: "Cape Peninsula University of Technology"
+    title: "APS table: BSc in Diagnostic Ultrasound (shown on course page BPSDGU)"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cput-aps-bpsnum
+    url: "https://www.cput.ac.za/images/Faculties/Health-and-Wellness-Sciences/Documents-and-Resources/APS-Scores/BSc-in-Nuclear-Medicine-Technology-APS.jpg"
+    publisher: "Cape Peninsula University of Technology"
+    title: "APS table: BSc in Nuclear Medicine Technology (shown on course page BPSNUM)"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cput-aps-bpsrdt
+    url: "https://www.cput.ac.za/images/Faculties/Health-and-Wellness-Sciences/Documents-and-Resources/APS-Scores/BSc-in-Radiation-Therapy-APS.jpg"
+    publisher: "Cape Peninsula University of Technology"
+    title: "APS table: BSc in Radiation Therapy (shown on course page BPSRDT)"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cput-aps-bpnurs
+    url: "https://www.cput.ac.za/images/Faculties/Health-and-Wellness-Sciences/Documents-and-Resources/APS-Scores/Bachelor-of-Nursing-APS.jpg"
+    publisher: "Cape Peninsula University of Technology"
+    title: "APS table: Bachelor of Nursing (shown on course page BPNURS)"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cput-aps-bpnurx
+    url: "https://www.cput.ac.za/images/Faculties/Health-and-Wellness-Sciences/Documents-and-Resources/APS-Scores/Bachelor-of-Nursing-ECP-APS.jpg"
+    publisher: "Cape Peninsula University of Technology"
+    title: "APS table: Bachelor of Nursing (ECP) (shown on course page BPNURX)"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cput-aps-bgopty
+    url: "https://www.cput.ac.za/images/Faculties/Health-and-Wellness-Sciences/Documents-and-Resources/APS-Scores/Bachelor-of-Health-Science-in-Opticianry-APS.jpg"
+    publisher: "Cape Peninsula University of Technology"
+    title: "APS table: Bachelor of Health Science in Opticianry (shown on course page BGOPTY)"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cput-aps-d3soma
+    url: "https://www.cput.ac.za/images/Faculties/Health-and-Wellness-Sciences/Documents-and-Resources/APS-Scores/Diploma-in-Somatology-APS.jpg"
+    publisher: "Cape Peninsula University of Technology"
+    title: "APS table: Diploma in Somatology (shown on course page D3SOMA)"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cput-aps-hcdnas
+    url: "https://www.cput.ac.za/images/Faculties/Health-and-Wellness-Sciences/Documents-and-Resources/APS-Scores/Higher-Certificate-in-Dental-Assisting-APS.jpg"
+    publisher: "Cape Peninsula University of Technology"
+    title: "APS table: Higher Certificate in Dental Assisting (shown on course page HCDNAS)"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cput-accounting
+    url: "https://www.cput.ac.za/faculties/fbms/departments/accounting-sciences"
+    publisher: "Cape Peninsula University of Technology"
+    title: "Department of Accounting Sciences: qualifications and admission requirements"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cput-retail
+    url: "https://www.cput.ac.za/faculties/fbms/departments/retail-business-management"
+    publisher: "Cape Peninsula University of Technology"
+    title: "Retail Business Management: entry requirements for first-year students"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cput-real-estate
+    url: "https://www.cput.ac.za/faculties/fbms/departments/unit-for-applied-economics-real-estate"
+    publisher: "Cape Peninsula University of Technology"
+    title: "Unit for Applied Economics and Real Estate: Diploma in Real Estate admission requirements"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cput-fashion
+    url: "https://www.cput.ac.za/faculties/fid/departments/applied-design/fashion-design"
+    publisher: "Cape Peninsula University of Technology"
+    title: "Applied Design: Fashion Design (Diploma in Fashion admission requirements)"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cput-jewellery
+    url: "https://www.cput.ac.za/faculties/fid/departments/applied-design/jewellery-design-and-manufacture"
+    publisher: "Cape Peninsula University of Technology"
+    title: "Applied Design: Jewellery Design and Manufacture (admission requirements)"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cput-product-design
+    url: "https://www.cput.ac.za/faculties/fid/departments/applied-design/product-and-industrial-design"
+    publisher: "Cape Peninsula University of Technology"
+    title: "Applied Design: Product and Industrial Design (Diploma in Product Design admission requirements)"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cput-vcd
+    url: "https://www.cput.ac.za/faculties/fid/departments/applied-design/visual-communication-design"
+    publisher: "Cape Peninsula University of Technology"
+    title: "Applied Design: Visual Communication Design (admission requirements)"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cput-design-ecp
+    url: "https://www.cput.ac.za/faculties/fid/departments/applied-design/design-extended-curriculum-programmes"
+    publisher: "Cape Peninsula University of Technology"
+    title: "Applied Design: Design Extended Curriculum Programmes (admission requirements)"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cput-supporting-docs-2027
+    url: "https://www.cput.ac.za/images/Study-at-CPUT/Documents/2027-Supporting-Documentation-040526.pdf"
+    publisher: "Cape Peninsula University of Technology"
+    title: "2027 supporting documentation and additional programme requirements (updated 4 May 2026)"
+    retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
