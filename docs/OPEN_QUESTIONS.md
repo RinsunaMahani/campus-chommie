@@ -170,7 +170,8 @@ and SMU and, since #32 and #33, at VUT, WSU, UMP, MUT, SPU, UFS and UNIZULU; the
   subjects. NMU's 7 points for quintile 1 to 3 schools and SPU's home-language bonus need questions we don't ask.
 - [ ] **Two closing dates** at VUT (30 Sep and 30 Oct 2026): both kept until VUT says which.
 - [x] **Which universities get programmes next?** All of them, Rinsuna chose (13 Oct): agents draft them in waves,
-  those still taking applications first. Wave 1 is #32, wave 2 is #33; UJ, UKZN and DUT need prospectuses downloaded in a browser.
+  those still taking applications first. Wave 1 is #32, wave 2 is #33, wave 3 is #34, wave 5 is #35; UJ, UKZN, DUT,
+  Fort Hare and UWC need documents downloaded in a browser (HANDOVER, "Only Rinsuna can do these").
 - [ ] **Check wave 1's course lists** (#32): each university's note in [research/](research/) starts with what to
   check first. The ones that change what learners see:
   - **WSU's Education programmes count seven subjects, Life Orientation included.** WSU says so for Foundation Phase;
@@ -186,18 +187,33 @@ and SMU and, since #32 and #33, at VUT, WSU, UMP, MUT, SPU, UFS and UNIZULU; the
 - [ ] **Check wave 2's course lists** (#33, [ufs.md](research/ufs.md), [unizulu.md](research/unizulu.md)):
   - **UFS (172 programmes):** two ECPs keep `requirements: null` (extended BEd, extended Bachelor of Sustainable
     Food Systems); check the AP calculation for selection programmes and the 2026 faculty rule books' ECPs.
-  - **UNIZULU (185 programmes):** points scale stops at 7 points from 80%, but policy section 5.4, the 2022 guide,
-    and 2026 handbooks give 8 points for 90-100% (see [unizulu.md](research/unizulu.md) "Check first" 1); duplicate
+  - **UNIZULU (185 programmes):** the points scale now gives 8 for 90-100%, as policy section 5.4 does, and the 2027
+    window (31 Oct; the 40 new B Eds 30 Nov) is in (#33, 15 Oct); duplicate
     B Ed codes in CAO new programmes list (ZU-M-ILF / ZU-M-ILI, ZU-M-ILZ / ZU-M-ILW / ZU-M-IEJ); confirm with UNIZULU
     whether Senior/FET B Eds have 2027 intake after the 2026 pause.
+- [ ] **Check wave 5's course lists** (#35): each note in [research/](research/) starts with what to check first.
+  The ones that change what learners see:
+  - **Stellenbosch** uses its 2026 prospectus (the 2027 booklet is on a host that refuses honest requests); the 2027
+    one already asks more for some programmes (BA 65% average, Actuarial Science 85%).
+  - **CPUT:** 44 of 119 programmes wait for the Issuu prospectus; the 15 health programmes use CPUT's own stated
+    points method. **Nelson Mandela:** 32 either/or minimums fall between levels (55%, 65%), so the app checks from
+    the level below and says so; an engine change could take exact percentages there.
+  - **UCT, Stellenbosch and CUT** can't be checked yet (a Faculty Points Score, averages, and no stated subject
+    count); their programmes show the published minimums.
+  - **UWC** has no programmes: its site answers 403 to every honest request.
+- [ ] **A local wave 4 nobody should push.** On the night of 14 Oct another session built `rinsuna/courses-wave-4`
+  (12 universities in about 70 minutes), never pushed. Its values cite pages that don't hold them, and Fort Hare's
+  came from the site that disallows Anthropic's agents. Rinsuna chose to redo it carefully (wave 5); the branch and
+  `.worktrees/courses-4` are left untouched for her to delete.
 - [ ] **Sites that ask AI agents not to fetch them** (their `robots.txt`, checked 14 Oct 2026):
   - **Fort Hare** disallows ClaudeBot and anthropic-ai on its whole site. Its course list (81 programmes, from its
     2027 study guide) was drafted before the agent read that file, so it's held out of the repo. The clean way: Rinsuna
     downloads the guide in her browser, and we check the draft against her copy before it goes in.
   - **The funding pack:** the Gauteng City Region Academy bursary pages and the Reserve Bank's bursary PDF disallow
     every bot. The same fix: Rinsuna's own downloads, checked against the pack.
-  - **Couldn't tell:** UP's file server, UJ, UKZN's applications site, DUT, Rhodes, UWC, CPUT, ISFAP, the City of
-    Tshwane and VTM refuse their `robots.txt` to an honest user agent.
+  - **Couldn't tell:** UP's file server, UJ, UKZN's applications site, DUT, Rhodes, UWC, ISFAP, the City of
+    Tshwane and VTM refuse their `robots.txt` to an honest user agent. Also blocked for wave 5: Issuu (Wits's and
+    CPUT's prospectuses), files.su.ac.za (Stellenbosch's 2027 booklet) and cms.cut.ac.za (`Disallow: /`).
   - Until 14 Oct the agents' brief told them to send a browser's user agent. That was wrong: they now read
     `robots.txt` first and use their own (HANDOVER, "For a coding agent").
 
