@@ -55,7 +55,7 @@ export function UniversityRow({ u, onPress }: { u: UniversityPoints; onPress: ()
   const sub = total ? t('courseFinder.meetsOf', { met, total }) : t('courseFinder.noProgrammesYet');
   return (
     <PressScale accessibilityRole="button" accessibilityLabel={`${u.university_name}: ${aps(u)}. ${sub}`} onPress={onPress} style={styles.row}>
-      <UniMonogram id={u.university} />
+      <UniMonogram id={u.university} size={40} />
       <View style={{ flex: 1, gap: 3 }}>
         <Text style={styles.name}>{u.university_name}</Text>
         <Text style={styles.sub}>{sub}</Text>
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 12,
+    gap: 10,
     padding: 14,
     borderRadius: radius.md,
     borderWidth: 1,
@@ -98,7 +98,8 @@ const styles = StyleSheet.create({
   name: { fontFamily: fonts.bold, fontSize: 15, lineHeight: 20, color: colors.text },
   sub: { fontFamily: fonts.medium, fontSize: 13, color: colors.textMuted },
   notice: { fontFamily: fonts.body, fontSize: 12, color: colors.textFaint },
-  score: { alignItems: 'flex-end', minWidth: 54 },
+  // Narrow, so the university's name keeps the room: "No points rule yet" wraps onto two lines.
+  score: { alignItems: 'flex-end', minWidth: 48, maxWidth: 64 },
   points: { fontFamily: fonts.display, fontSize: 26, lineHeight: 30, color: colors.accent },
   apsLabel: { fontFamily: fonts.semibold, fontSize: 11, color: colors.textMuted, textAlign: 'right' },
 });
