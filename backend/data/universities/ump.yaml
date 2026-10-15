@@ -48,6 +48,7 @@ programmes:
   # Faculty of Agriculture and Natural Sciences: School of Agricultural Sciences
   - id: dip_plant_production
     name: "Diploma in Agriculture in Plant Production"
+    faculty: "Faculty of Agriculture and Natural Sciences"
     fields: [agriculture]
     requirements:
       source: s-ump-dip-plant-production
@@ -65,6 +66,7 @@ programmes:
 
   - id: dip_animal_production
     name: "Diploma in Animal Production"
+    faculty: "Faculty of Agriculture and Natural Sciences"
     fields: [agriculture]
     requirements:
       source: s-ump-dip-animal-production
@@ -81,6 +83,7 @@ programmes:
 
   - id: bagric_extension
     name: "Bachelor of Agriculture in Agricultural Extension and Rural Resource Management"
+    faculty: "Faculty of Agriculture and Natural Sciences"
     fields: [agriculture]
     requirements:
       source: s-ump-bagric-extension
@@ -101,6 +104,7 @@ programmes:
 
   - id: bsc_agriculture
     name: "Bachelor of Science in Agriculture"
+    faculty: "Faculty of Agriculture and Natural Sciences"
     fields: [agriculture]
     requirements:
       source: s-ump-bsc-agriculture
@@ -122,6 +126,7 @@ programmes:
 
   - id: bsc_forestry
     name: "Bachelor of Science in Forestry"
+    faculty: "Faculty of Agriculture and Natural Sciences"
     fields: [agriculture]
     requirements:
       source: s-ump-bsc-forestry
@@ -136,6 +141,7 @@ programmes:
   # School of Biology and Environmental Sciences
   - id: dip_nature_conservation
     name: "Diploma in Nature Conservation"
+    faculty: "Faculty of Agriculture and Natural Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-ump-dip-nature-conservation
@@ -148,6 +154,7 @@ programmes:
 
   - id: bsc
     name: "Bachelor of Science"
+    faculty: "Faculty of Agriculture and Natural Sciences"
     fields: [natural_sciences, life_sciences, earth_sciences]
     requirements:
       source: s-ump-bsc
@@ -164,6 +171,7 @@ programmes:
 
   - id: bsc_environmental_science
     name: "Bachelor of Science in Environmental Science"
+    faculty: "Faculty of Agriculture and Natural Sciences"
     fields: [natural_sciences, earth_sciences]
     requirements:
       source: s-ump-bsc-environmental
@@ -180,6 +188,7 @@ programmes:
   # School of Computing and Mathematical Sciences
   - id: hcert_ict_user_support
     name: "Higher Certificate in Information Communication Technology in User Support"
+    faculty: "Faculty of Agriculture and Natural Sciences"
     fields: [computing]
     requirements:
       source: s-ump-hcert-ict
@@ -194,6 +203,7 @@ programmes:
 
   - id: dip_ict_applications_development
     name: "Diploma in ICT in Applications Development"
+    faculty: "Faculty of Agriculture and Natural Sciences"
     fields: [computing]
     requirements:
       source: s-ump-dip-ict
@@ -209,6 +219,7 @@ programmes:
 
   - id: bict
     name: "Bachelor of Information and Communication Technology"
+    faculty: "Faculty of Agriculture and Natural Sciences"
     fields: [computing]
     requirements:
       source: s-ump-bict
@@ -218,6 +229,7 @@ programmes:
   # Faculty of Economics, Development and Business Sciences: School of Development Studies
   - id: badmin
     name: "Bachelor of Administration"
+    faculty: "Faculty of Economics, Development and Business Sciences"
     fields: [public_administration]
     requirements:
       source: s-ump-badmin
@@ -232,6 +244,7 @@ programmes:
 
   - id: bcom
     name: "Bachelor of Commerce (General)"
+    faculty: "Faculty of Economics, Development and Business Sciences"
     fields: [commerce]
     requirements:
       source: s-ump-bcom
@@ -242,6 +255,7 @@ programmes:
 
   - id: bdev_studies
     name: "Bachelor of Development Studies"
+    faculty: "Faculty of Economics, Development and Business Sciences"
     fields: [humanities, economics]
     requirements:
       source: s-ump-bdev
@@ -259,6 +273,7 @@ programmes:
 
   - id: llb
     name: "Bachelor of Laws"
+    faculty: "Faculty of Economics, Development and Business Sciences"
     fields: [law]
     requirements:
       source: s-ump-llb
@@ -274,6 +289,7 @@ programmes:
 
   - id: dip_entrepreneurship
     name: "Diploma in Entrepreneurship"
+    faculty: "Faculty of Economics, Development and Business Sciences"
     fields: [management, commerce]
     requirements:
       source: s-ump-dip-entrepreneurship
@@ -295,6 +311,7 @@ programmes:
   # School of Hospitality and Tourism Management
   - id: hcert_event_management
     name: "Higher Certificate in Event Management"
+    faculty: "Faculty of Economics, Development and Business Sciences"
     fields: [tourism_and_hospitality, management]
     requirements:
       source: s-ump-hcert-events
@@ -315,6 +332,7 @@ programmes:
 
   - id: dip_hospitality_management
     name: "Diploma in Hospitality Management"
+    faculty: "Faculty of Economics, Development and Business Sciences"
     fields: [tourism_and_hospitality, management]
     requirements:
       source: s-ump-dip-hospitality   # the Revised Curriculum page: new students since 2024
@@ -331,6 +349,7 @@ programmes:
 
   - id: dip_culinary_arts
     name: "Diploma in Culinary Arts"
+    faculty: "Faculty of Economics, Development and Business Sciences"
     fields: [tourism_and_hospitality, food_science]
     requirements:
       source: s-ump-dip-culinary
@@ -347,6 +366,7 @@ programmes:
   # School of Social Sciences
   - id: ba
     name: "Bachelor of Arts (General)"
+    faculty: "Faculty of Economics, Development and Business Sciences"
     fields: [humanities]
     requirements:
       source: s-ump-ba
@@ -359,6 +379,7 @@ programmes:
 
   - id: ba_media_communication_culture
     name: "Bachelor of Arts in Media, Communication and Culture"
+    faculty: "Faculty of Economics, Development and Business Sciences"
     fields: [humanities, languages_and_communication]
     requirements:
       source: s-ump-ba-media
@@ -371,6 +392,7 @@ programmes:
 
   - id: bsw
     name: "Bachelor of Social Work"
+    faculty: "Faculty of Economics, Development and Business Sciences"
     fields: [humanities]
     requirements:
       source: s-ump-bsw
@@ -386,12 +408,14 @@ programmes:
   # In UMP's 2026 Fees Handbook (s-ump-fees-2026 p15, first year only), but with no programme page or requirements.
   - id: bsocsci
     name: "Bachelor of Social Sciences"
+    faculty: "Faculty of Economics, Development and Business Sciences"
     fields: [humanities]
     requirements: null
 
   # Faculty of Education: School of Early Childhood Education
   - id: bed_foundation_phase
     name: "Bachelor of Education in Foundation Phase Teaching"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-ump-aps

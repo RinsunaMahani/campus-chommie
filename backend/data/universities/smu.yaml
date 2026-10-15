@@ -156,6 +156,7 @@ cheap_things:
 programmes:
   - id: mbchb
     name: MBChB (Bachelor of Medicine and Bachelor of Surgery)
+    faculty: "School of Medicine"
     fields: [health_sciences, medicine, medical_sciences]
     selective: true
     places: 250                # s-smu-med, Table 3, all categories
@@ -177,6 +178,7 @@ programmes:
 
   - id: mbchb_ecp
     name: MBChB Extended Curriculum Programme I (medicine foundation year)
+    faculty: "School of Medicine"
     fields: [health_sciences, medicine, medical_sciences]
     selective: true
     places: 50
@@ -208,6 +210,7 @@ programmes:
 
   - id: bsc_y1
     name: BSc first year at SMU
+    faculty: "School of Science and Technology"
     fields: [health_sciences, natural_sciences]
     selective: true
     selection_note: SMU's selection committee selects on merit for a limited number of places.
@@ -253,6 +256,7 @@ programmes:
 
   - id: brad
     name: Bachelor of Radiography (B Rad)
+    faculty: "School of Medicine"
     fields: [health_sciences, radiography]
     selective: true
     places: 40
@@ -272,6 +276,7 @@ programmes:
 
   - id: bds
     name: "Bachelor of Dental Surgery (BDS)"
+    faculty: "School of Dentistry"
     fields: [health_sciences, dentistry]
     selective: true
     places: 42
@@ -284,6 +289,7 @@ programmes:
 
   - id: bdt
     name: "Bachelor of Dental Therapy"
+    faculty: "School of Dentistry"
     fields: [health_sciences, dentistry]
     selective: true
     places: 25
@@ -296,6 +302,7 @@ programmes:
 
   - id: boh
     name: "Bachelor of Oral Hygiene"
+    faculty: "School of Dentistry"
     fields: [health_sciences, dentistry]
     selective: true
     places: 25
@@ -314,6 +321,7 @@ programmes:
   # Pharmacy's own table scores 90-100% as 8 and stops at 50%; below 50% these are SMU's general bands.
   - id: bpharm
     name: "Bachelor of Pharmacy (B Pharm)"
+    faculty: "School of Pharmacy"
     fields: [health_sciences, pharmacy]
     selective: true
     selection_note: "SMU ranks applicants by their APS."
@@ -341,6 +349,7 @@ programmes:
 
   - id: dietetics
     name: "BSc Dietetics"
+    faculty: "School of Health Care Sciences"
     fields: [health_sciences, nutrition]
     selective: true
     selection_note: "SMU's selection committee selects on merit for a limited number of places."
@@ -352,6 +361,7 @@ programmes:
 
   - id: nursing_midwifery
     name: "Bachelor of Nursing and Midwifery"
+    faculty: "School of Health Care Sciences"
     fields: [health_sciences, nursing]
     selective: true
     selection_note: "SMU's selection committee selects on merit for a limited number of places."
@@ -366,6 +376,7 @@ programmes:
 
   - id: occupational_therapy
     name: "Bachelor of Occupational Therapy"
+    faculty: "School of Health Care Sciences"
     fields: [health_sciences, rehabilitation]
     selective: true
     selection_note: "SMU's selection committee selects on merit for a limited number of places."
@@ -377,6 +388,7 @@ programmes:
 
   - id: physiotherapy
     name: "BSc Physiotherapy"
+    faculty: "School of Health Care Sciences"
     fields: [health_sciences, rehabilitation]
     selective: true
     selection_note: "SMU's selection committee selects on merit and prefers applicants who chose Physiotherapy first."
@@ -388,6 +400,7 @@ programmes:
 
   - id: speech_language_pathology
     name: "Bachelor of Speech-Language Pathology"
+    faculty: "School of Health Care Sciences"
     fields: [health_sciences, rehabilitation]
     selective: true
     selection_note: "SMU's selection committee selects on merit for a limited number of places."
@@ -399,6 +412,7 @@ programmes:
 
   - id: audiology
     name: "Bachelor of Audiology"
+    faculty: "School of Health Care Sciences"
     fields: [health_sciences, rehabilitation]
     selective: true
     selection_note: "SMU's selection committee selects on merit for a limited number of places."
@@ -410,6 +424,7 @@ programmes:
 
   - id: bsc_ecp
     name: "BSc Extended Curriculum Programme (Life, Mathematical or Physical Sciences)"
+    faculty: "School of Science and Technology"
     fields: [natural_sciences, life_sciences]
     selective: true
     selection_note: "SMU's selection committee selects on merit for a limited number of places."
@@ -436,6 +451,7 @@ programmes:
 
   - id: hcert_emc
     name: "Higher Certificate in Emergency Medical Care"
+    faculty: "School of Medicine"
     fields: [health_sciences, emergency_care]
     selective: true
     selection_note: "SMU's selection committee selects on merit for a limited number of places."
@@ -470,6 +486,7 @@ programmes:
 
   - id: dip_emc
     name: "Diploma in Emergency Medical Care"
+    faculty: "School of Medicine"
     fields: [health_sciences, emergency_care]
     selective: true
     selection_note: "SMU's selection committee selects on merit for a limited number of places."

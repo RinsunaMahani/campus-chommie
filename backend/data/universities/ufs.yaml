@@ -56,6 +56,7 @@ programmes:
 
   - id: bcom
     name: "Bachelor of Commerce (BCom)"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [commerce]
     requirements:
       source: s-ufs-prospectus-2027
@@ -64,6 +65,7 @@ programmes:
 
   - id: bcom_economics
     name: "BCom with specialisation in Economics"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [commerce, economics]
     requirements:
       source: s-ufs-prospectus-2027
@@ -72,6 +74,7 @@ programmes:
 
   - id: bcom_finance
     name: "BCom with specialisation in Finance"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [commerce, finance]
     requirements:
       source: s-ufs-prospectus-2027
@@ -80,6 +83,7 @@ programmes:
 
   - id: bcom_business_analytics
     name: "BCom with specialisation in Business Analytics"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [commerce, mathematical_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -88,6 +92,7 @@ programmes:
 
   - id: bcom_marketing
     name: "BCom with specialisation in Marketing"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [commerce, management]
     requirements:
       source: s-ufs-prospectus-2027
@@ -96,6 +101,7 @@ programmes:
 
   - id: bcom_business_management
     name: "BCom with specialisation in Business Management"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [commerce, management]
     requirements:
       source: s-ufs-prospectus-2027
@@ -104,6 +110,7 @@ programmes:
 
   - id: bcom_human_resource_management
     name: "BCom with specialisation in Human Resource Management"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [commerce, management]
     requirements:
       source: s-ufs-prospectus-2027
@@ -112,6 +119,7 @@ programmes:
 
   - id: bcom_law
     name: "BCom (Law)"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [commerce, law]
     requirements:
       source: s-ufs-prospectus-2027
@@ -120,6 +128,7 @@ programmes:
 
   - id: badmin
     name: "Bachelor of Administration (BAdmin)"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [public_administration, management]
     requirements:
       source: s-ufs-prospectus-2027
@@ -130,6 +139,7 @@ programmes:
 
   - id: bacc
     name: "Bachelor of Accounting (BAcc)"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [accounting, commerce]
     requirements:
       source: s-ufs-prospectus-2027
@@ -138,6 +148,7 @@ programmes:
 
   - id: bcom_accounting
     name: "BCom (Accounting)"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [accounting, commerce]
     requirements:
       source: s-ufs-prospectus-2027
@@ -148,6 +159,7 @@ programmes:
 
   - id: bcom_management_qwaqwa
     name: "BCom with specialisation in Management (Qwaqwa Campus)"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [commerce, management]
     requirements:
       source: s-ufs-prospectus-2027
@@ -156,6 +168,7 @@ programmes:
 
   - id: badmin_qwaqwa
     name: "Bachelor of Administration (Qwaqwa Campus)"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [public_administration, management]
     requirements:
       source: s-ufs-prospectus-2027
@@ -169,6 +182,7 @@ programmes:
 
   - id: bcom_extended
     name: "BCom (extended curriculum programme)"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [commerce]
     requirements:
       source: s-ufs-rb-ems-2026
@@ -185,6 +199,7 @@ programmes:
 
   - id: bcom_accounting_extended
     name: "BCom (Accounting) (extended curriculum programme)"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [accounting, commerce]
     requirements:
       source: s-ufs-rb-ems-2026
@@ -201,6 +216,7 @@ programmes:
 
   - id: bcom_management_extended_qwaqwa
     name: "BCom with specialisation in Management (extended curriculum programme, Qwaqwa Campus)"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [commerce, management]
     requirements:
       source: s-ufs-rb-ems-2026
@@ -217,6 +233,7 @@ programmes:
 
   - id: badmin_extended
     name: "Bachelor of Administration (extended curriculum programme; Bloemfontein and Qwaqwa campuses)"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [public_administration, management]
     requirements:
       source: s-ufs-rb-ems-2026
@@ -236,6 +253,7 @@ programmes:
 
   - id: bed_fp_afrikaans
     name: "BEd in Foundation Phase: specialisation in Afrikaans Home Language (South Campus)"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-ufs-prospectus-2027
@@ -248,6 +266,7 @@ programmes:
 
   - id: bed_fp_sesotho
     name: "BEd in Foundation Phase: specialisation in Sesotho Home Language (South and Qwaqwa campuses)"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-ufs-prospectus-2027
@@ -260,6 +279,7 @@ programmes:
 
   - id: bed_fp_isizulu
     name: "BEd in Foundation Phase: specialisation in isiZulu Home Language (Qwaqwa Campus)"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-ufs-prospectus-2027
@@ -272,6 +292,7 @@ programmes:
 
   - id: bed_fp_english
     name: "BEd in Foundation Phase: specialisation in English Home Language (South Campus)"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-ufs-prospectus-2027
@@ -284,6 +305,7 @@ programmes:
 
   - id: bed_ip_mnst_afrikaans
     name: "BEd in Intermediate Phase: Mathematics, Natural Sciences and Technology, and Afrikaans Home Language"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-ufs-prospectus-2027
@@ -295,6 +317,7 @@ programmes:
 
   - id: bed_ip_lsss_afrikaans
     name: "BEd in Intermediate Phase: Life Skills and Social Sciences, and Afrikaans Home Language"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-ufs-prospectus-2027
@@ -306,6 +329,7 @@ programmes:
 
   - id: bed_ip_mnst_sesotho
     name: "BEd in Intermediate Phase: Mathematics, Natural Sciences and Technology, and Sesotho Home Language (Bloemfontein and Qwaqwa campuses)"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-ufs-prospectus-2027
@@ -317,6 +341,7 @@ programmes:
 
   - id: bed_ip_lsss_sesotho
     name: "BEd in Intermediate Phase: Life Skills and Social Sciences, and Sesotho Home Language (Bloemfontein and Qwaqwa campuses)"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-ufs-prospectus-2027
@@ -328,6 +353,7 @@ programmes:
 
   - id: bed_ip_mnst_isizulu
     name: "BEd in Intermediate Phase: Mathematics, Natural Sciences and Technology, and isiZulu Home Language (Qwaqwa Campus)"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-ufs-prospectus-2027
@@ -339,6 +365,7 @@ programmes:
 
   - id: bed_ip_lsss_isizulu
     name: "BEd in Intermediate Phase: Life Skills and Social Sciences, and isiZulu Home Language (Qwaqwa Campus)"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-ufs-prospectus-2027
@@ -350,6 +377,7 @@ programmes:
 
   - id: bed_ip_mnst_english
     name: "BEd in Intermediate Phase: Mathematics, Natural Sciences and Technology, and English Home Language"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-ufs-prospectus-2027
@@ -362,6 +390,7 @@ programmes:
 
   - id: bed_ip_lsss_english
     name: "BEd in Intermediate Phase: Life Skills and Social Sciences, and English Home Language"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-ufs-prospectus-2027
@@ -374,6 +403,7 @@ programmes:
 
   - id: bed_fet_accounting_business_studies
     name: "BEd in Senior Phase and FET: Accounting and Business Studies"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-ufs-prospectus-2027
@@ -384,6 +414,7 @@ programmes:
 
   - id: bed_fet_ems_accounting
     name: "BEd in Senior Phase and FET: EMS and Accounting"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-ufs-prospectus-2027
@@ -398,6 +429,7 @@ programmes:
 
   - id: bed_fet_technology_egd
     name: "BEd in Senior Phase and FET: Technology and Engineering Graphics and Design"
+    faculty: "Faculty of Education"
     fields: [education, engineering]
     requirements:
       source: s-ufs-prospectus-2027
@@ -408,6 +440,7 @@ programmes:
 
   - id: bed_fet_life_sciences_mathematics
     name: "BEd in Senior Phase and FET: Life Sciences and Mathematics (Bloemfontein and Qwaqwa campuses)"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-ufs-prospectus-2027
@@ -418,6 +451,7 @@ programmes:
 
   - id: bed_fet_technology_life_sciences
     name: "BEd in Senior Phase and FET: Technology and Life Sciences"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-ufs-prospectus-2027
@@ -428,6 +462,7 @@ programmes:
 
   - id: bed_fet_sesotho_english
     name: "BEd in Senior Phase and FET: Sesotho Home Language and English First Additional Language (Bloemfontein and Qwaqwa campuses)"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-ufs-prospectus-2027
@@ -439,6 +474,7 @@ programmes:
 
   - id: bed_fet_isizulu_english
     name: "BEd in Senior Phase and FET: isiZulu Home Language and English First Additional Language (Qwaqwa Campus)"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-ufs-prospectus-2027
@@ -450,6 +486,7 @@ programmes:
 
   - id: bed_fet_mathematics_physical_sciences
     name: "BEd in Senior Phase and FET: Mathematics and Physical Sciences (Bloemfontein and Qwaqwa campuses)"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-ufs-prospectus-2027
@@ -460,6 +497,7 @@ programmes:
 
   - id: bed_fet_sesotho_history
     name: "BEd in Senior Phase and FET: Sesotho Home Language and History (Bloemfontein and Qwaqwa campuses)"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-ufs-prospectus-2027
@@ -471,6 +509,7 @@ programmes:
 
   - id: bed_fet_isizulu_history
     name: "BEd in Senior Phase and FET: isiZulu Home Language and History (Qwaqwa Campus)"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-ufs-prospectus-2027
@@ -482,6 +521,7 @@ programmes:
 
   - id: bed_fet_english_history
     name: "BEd in Senior Phase and FET: English and History"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-ufs-prospectus-2027
@@ -492,6 +532,7 @@ programmes:
 
   - id: bed_fet_afrikaans_english
     name: "BEd in Senior Phase and FET: Afrikaans Home Language and English"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-ufs-prospectus-2027
@@ -504,6 +545,7 @@ programmes:
 
   - id: bed_fet_geography_life_sciences
     name: "BEd in Senior Phase and FET: Geography and Life Sciences (Bloemfontein and Qwaqwa campuses)"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-ufs-prospectus-2027
@@ -514,6 +556,7 @@ programmes:
 
   - id: bed_extended
     name: "Bachelor of Education (extended curriculum programme)"
+    faculty: "Faculty of Education"
     fields: [education]
     selection_note: "UFS's 2027 prospectus lists an extended BEd in its fee table but publishes no requirements for it; apply for a mainstream BEd and UFS places students in extended programmes if space allows."
     requirements: null       # no requirements published: the 2027 prospectus and the 2026 Education rule book give none
@@ -523,6 +566,7 @@ programmes:
 
   - id: bmedsc_radiation_science
     name: "Bachelor of Medical Science with specialisation in Radiation Science (BMedSc)"
+    faculty: "Faculty of Health Sciences"
     fields: [health_sciences, medical_sciences]
     selective: true
     selection_note: "Subject to selection: UFS ranks applicants on an overall selection point from school marks and non-academic achievement. It must be your first choice (2027 selection rules)."
@@ -533,6 +577,7 @@ programmes:
 
   - id: mbchb
     name: "Bachelor of Medicine and Bachelor of Surgery (MBChB)"
+    faculty: "Faculty of Health Sciences"
     fields: [health_sciences, medicine, medical_sciences]
     selective: true
     selection_note: "Subject to selection: UFS ranks applicants on an overall selection point from school marks and non-academic achievement. MBChB must be your first choice; at most 180 first-years a year, repeaters included (2027 selection rules)."
@@ -543,6 +588,7 @@ programmes:
 
   - id: boptom
     name: "Bachelor of Optometry (BOptom)"
+    faculty: "Faculty of Health Sciences"
     fields: [health_sciences]
     selective: true
     selection_note: "Subject to selection: a points system that counts academic achievement and cultural, leadership and sport activities. It must be your first choice."
@@ -553,6 +599,7 @@ programmes:
 
   - id: bsc_physiotherapy
     name: "BSc in Physiotherapy"
+    faculty: "Faculty of Health Sciences"
     fields: [health_sciences, rehabilitation]
     selective: true
     selection_note: "Subject to selection: a points system that counts academic achievement and cultural, leadership and sport activities. It must be your first choice."
@@ -563,6 +610,7 @@ programmes:
 
   - id: bsc_dietetics
     name: "BSc in Dietetics"
+    faculty: "Faculty of Health Sciences"
     fields: [health_sciences, nutrition]
     selective: true
     selection_note: "Subject to selection: a points system that counts academic achievement and cultural, leadership and sport activities. It must be your first choice."
@@ -579,6 +627,7 @@ programmes:
 
   - id: bocc_ther
     name: "Bachelor of Occupational Therapy (BOccTher)"
+    faculty: "Faculty of Health Sciences"
     fields: [health_sciences, rehabilitation]
     selective: true
     selection_note: "Subject to selection: a points system that counts academic achievement and cultural, leadership and sport activities. It must be your first choice."
@@ -595,6 +644,7 @@ programmes:
 
   - id: bbiok
     name: "Bachelor of Biokinetics (BBiok)"
+    faculty: "Faculty of Health Sciences"
     fields: [health_sciences, sport_science]
     selective: true
     selection_note: "Subject to selection: a points system that counts academic achievement and cultural, leadership and sport activities. It must be your first choice."
@@ -611,6 +661,7 @@ programmes:
 
   - id: bsport_coach
     name: "Bachelor of Sport Coaching (BSportCoach)"
+    faculty: "Faculty of Health Sciences"
     fields: [sport_science, health_sciences]
     selective: true
     selection_note: "Subject to selection: a points system that counts academic achievement and cultural, leadership and sport activities. It must be your first choice. Higher levels of sport participation and sport-related certificates count in your favour."
@@ -623,6 +674,7 @@ programmes:
 
   - id: bnursing
     name: "Bachelor of Nursing"
+    faculty: "Faculty of Health Sciences"
     fields: [health_sciences, nursing]
     selective: true
     selection_note: "Subject to selection: academic achievement is the main criterion, and a higher science AP gets preference. Nursing must be your first choice (School of Nursing selection policy)."
@@ -642,6 +694,7 @@ programmes:
 
   - id: llb
     name: "Bachelor of Laws (LLB), four years"
+    faculty: "Faculty of Law"
     fields: [law]
     requirements:
       source: s-ufs-prospectus-2027
@@ -656,6 +709,7 @@ programmes:
 
   - id: llb_extended
     name: "Bachelor of Laws (LLB), extended curriculum programme (five years)"
+    faculty: "Faculty of Law"
     fields: [law]
     requirements:
       source: s-ufs-rb-law-2026
@@ -671,6 +725,7 @@ programmes:
 
   - id: bsc_bio_behavioural_genetics
     name: "BSc specialising in Biological Sciences: Behavioural Genetics"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -681,6 +736,7 @@ programmes:
 
   - id: bsc_bio_biochemistry_botany
     name: "BSc specialising in Biological Sciences: Biochemistry and Botany"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -691,6 +747,7 @@ programmes:
 
   - id: bsc_bio_biochemistry_entomology
     name: "BSc specialising in Biological Sciences: Biochemistry and Entomology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -701,6 +758,7 @@ programmes:
 
   - id: bsc_bio_biochemistry_genetics
     name: "BSc specialising in Biological Sciences: Biochemistry and Genetics"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -711,6 +769,7 @@ programmes:
 
   - id: bsc_bio_biochemistry_microbiology
     name: "BSc specialising in Biological Sciences: Biochemistry and Microbiology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -721,6 +780,7 @@ programmes:
 
   - id: bsc_bio_biochemistry_physiology
     name: "BSc specialising in Biological Sciences: Biochemistry and Physiology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -731,6 +791,7 @@ programmes:
 
   - id: bsc_bio_biochemistry_statistics
     name: "BSc specialising in Biological Sciences: Biochemistry and Statistics"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences, mathematical_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -741,6 +802,7 @@ programmes:
 
   - id: bsc_bio_biochemistry_zoology
     name: "BSc specialising in Biological Sciences: Biochemistry and Zoology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -751,6 +813,7 @@ programmes:
 
   - id: bsc_bio_biodiversity_conservation_ecology
     name: "BSc specialising in Biological Sciences: Biodiversity and Conservation Ecology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences, earth_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -761,6 +824,7 @@ programmes:
 
   - id: bsc_bio_botany_entomology
     name: "BSc specialising in Biological Sciences: Botany and Entomology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -771,6 +835,7 @@ programmes:
 
   - id: bsc_bio_botany_genetics
     name: "BSc specialising in Biological Sciences: Botany and Genetics"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -781,6 +846,7 @@ programmes:
 
   - id: bsc_bio_botany_microbiology
     name: "BSc specialising in Biological Sciences: Botany and Microbiology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -791,6 +857,7 @@ programmes:
 
   - id: bsc_bio_botany_plant_breeding
     name: "BSc specialising in Biological Sciences: Botany and Plant Breeding"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences, agriculture]
     requirements:
       source: s-ufs-prospectus-2027
@@ -801,6 +868,7 @@ programmes:
 
   - id: bsc_bio_botany_plant_pathology
     name: "BSc specialising in Biological Sciences: Botany and Plant Pathology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences, agriculture]
     requirements:
       source: s-ufs-prospectus-2027
@@ -811,6 +879,7 @@ programmes:
 
   - id: bsc_bio_botany_zoology
     name: "BSc specialising in Biological Sciences: Botany and Zoology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -821,6 +890,7 @@ programmes:
 
   - id: bsc_bio_entomology_genetics
     name: "BSc specialising in Biological Sciences: Entomology and Genetics"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -831,6 +901,7 @@ programmes:
 
   - id: bsc_bio_entomology_microbiology
     name: "BSc specialising in Biological Sciences: Entomology and Microbiology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -841,6 +912,7 @@ programmes:
 
   - id: bsc_bio_entomology_zoology
     name: "BSc specialising in Biological Sciences: Entomology and Zoology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -851,6 +923,7 @@ programmes:
 
   - id: bsc_bio_genetics_microbiology
     name: "BSc specialising in Biological Sciences: Genetics and Microbiology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -861,6 +934,7 @@ programmes:
 
   - id: bsc_bio_genetics_physiology
     name: "BSc specialising in Biological Sciences: Genetics and Physiology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -871,6 +945,7 @@ programmes:
 
   - id: bsc_bio_genetics_zoology
     name: "BSc specialising in Biological Sciences: Genetics and Zoology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -881,6 +956,7 @@ programmes:
 
   - id: bsc_bio_microbiology_statistics
     name: "BSc specialising in Biological Sciences: Microbiology and Statistics"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences, mathematical_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -891,6 +967,7 @@ programmes:
 
   - id: bsc_bio_microbiology_zoology
     name: "BSc specialising in Biological Sciences: Microbiology and Zoology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -901,6 +978,7 @@ programmes:
 
   - id: bsc_bio_plant_health_ecology
     name: "BSc specialising in Biological Sciences: Plant Health Ecology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences, agriculture]
     requirements:
       source: s-ufs-prospectus-2027
@@ -911,6 +989,7 @@ programmes:
 
   - id: bsc_bio_plant_health_management
     name: "BSc specialising in Biological Sciences: Plant Health Management"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences, agriculture]
     requirements:
       source: s-ufs-prospectus-2027
@@ -921,6 +1000,7 @@ programmes:
 
   - id: bsc_forensic_science
     name: "BSc specialising in Forensic Science"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences, safety_and_justice]
     selective: true
     selection_note: "Subject to selection; at most 80 students are admitted (2026 rule book)."
@@ -934,6 +1014,7 @@ programmes:
 
   - id: bsc_mathematics_applied_mathematics
     name: "BSc specialising in Mathematical Sciences: Mathematics and Applied Mathematics"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [mathematical_sciences, natural_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -944,6 +1025,7 @@ programmes:
 
   - id: bsc_mathematics_chemistry
     name: "BSc specialising in Mathematical Sciences: Mathematics and Chemistry"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [mathematical_sciences, physical_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -954,6 +1036,7 @@ programmes:
 
   - id: bsc_mathematics_mathematical_statistics
     name: "BSc specialising in Mathematical Sciences: Mathematics and Mathematical Statistics"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [mathematical_sciences, natural_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -964,6 +1047,7 @@ programmes:
 
   - id: bsc_mathematics_physics
     name: "BSc specialising in Mathematical Sciences: Mathematics and Physics"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [mathematical_sciences, physical_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -974,6 +1058,7 @@ programmes:
 
   - id: bsc_actuarial_science
     name: "BSc specialising in Actuarial Science"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [mathematical_sciences, finance]
     selective: true
     selection_note: "Subject to selection on academic performance. Apply for Econometrics as well: if you aren't selected, UFS may offer you Econometrics instead."
@@ -984,6 +1069,7 @@ programmes:
 
   - id: bsc_climate_sciences
     name: "BSc specialising in Mathematical Statistics and Applied Statistics: Climate Sciences"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [mathematical_sciences, earth_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -992,6 +1078,7 @@ programmes:
 
   - id: bsc_econometrics
     name: "BSc specialising in Mathematical Statistics and Applied Statistics: Econometrics"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [mathematical_sciences, economics]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1005,6 +1092,7 @@ programmes:
 
   - id: bsc_mathematical_statistics_psychometrics
     name: "BSc specialising in Mathematical Statistics and Applied Statistics: Mathematical Statistics and Psychometrics"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [mathematical_sciences, humanities]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1013,6 +1101,7 @@ programmes:
 
   - id: bsc_statistics_economics
     name: "BSc specialising in Mathematical Statistics and Applied Statistics: Statistics and Economics"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [mathematical_sciences, economics]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1021,6 +1110,7 @@ programmes:
 
   - id: bsc_statistics_psychology
     name: "BSc specialising in Mathematical Statistics and Applied Statistics: Statistics and Psychology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [mathematical_sciences, humanities]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1029,6 +1119,7 @@ programmes:
 
   - id: bsc_chemistry_biochemistry
     name: "BSc specialising in Chemical Sciences: Chemistry and Biochemistry"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, physical_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1039,6 +1130,7 @@ programmes:
 
   - id: bsc_chemistry_botany
     name: "BSc specialising in Chemical Sciences: Chemistry and Botany"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, physical_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1049,6 +1141,7 @@ programmes:
 
   - id: bsc_chemistry_microbiology
     name: "BSc specialising in Chemical Sciences: Chemistry and Microbiology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, physical_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1059,6 +1152,7 @@ programmes:
 
   - id: bsc_chemistry_physics
     name: "BSc specialising in Chemical Sciences: Chemistry and Physics"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, physical_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1069,6 +1163,7 @@ programmes:
 
   - id: bsc_physics_agrometeorology
     name: "BSc specialising in Physical Sciences: Physics and Agrometeorology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [physical_sciences, natural_sciences, earth_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1077,6 +1172,7 @@ programmes:
 
   - id: bsc_physics_astrophysics
     name: "BSc specialising in Physical Sciences: Physics and Astrophysics"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [physical_sciences, natural_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1085,6 +1181,7 @@ programmes:
 
   - id: bsc_physics_engineering_subjects
     name: "BSc specialising in Physical Sciences with Engineering Subjects"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [physical_sciences, engineering]
     selective: true
     selection_note: "Subject to selection."
@@ -1095,6 +1192,7 @@ programmes:
 
   - id: beng_agricultural_biosystems
     name: "Bachelor of Engineering (BEng) in Agricultural and Biosystems Engineering"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [engineering, agriculture]
     selective: true
     selection_note: "Subject to selection."
@@ -1105,6 +1203,7 @@ programmes:
 
   - id: bsc_geography_environmental_science
     name: "BSc specialising in Geography: Geography and Environmental Science"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [earth_sciences, natural_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1113,6 +1212,7 @@ programmes:
 
   - id: bsc_geography
     name: "BSc specialising in Geography: Geography Specialisation"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [earth_sciences, natural_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1121,6 +1221,7 @@ programmes:
 
   - id: bsc_environmental_soil_science
     name: "BSc specialising in Environmental Soil Science"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [earth_sciences, agriculture, natural_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1129,6 +1230,7 @@ programmes:
 
   - id: bsc_geology_chemistry
     name: "BSc specialising in Geology: Geology and Chemistry"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [earth_sciences, natural_sciences]
     selective: true
     selection_note: "UFS's 2026 rule book lists Geology among its selection programmes: at most 80 first-years, admitted on academic performance."
@@ -1139,6 +1241,7 @@ programmes:
 
   - id: bsc_environmental_geology
     name: "BSc specialising in Geology: Environmental Geology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [earth_sciences, natural_sciences]
     selective: true
     selection_note: "UFS's 2026 rule book lists Geology among its selection programmes: at most 80 first-years, admitted on academic performance."
@@ -1149,6 +1252,7 @@ programmes:
 
   - id: bsc_geochemistry
     name: "BSc specialising in Geology: Geochemistry"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [earth_sciences, natural_sciences]
     selective: true
     selection_note: "UFS's 2026 rule book lists Geology among its selection programmes: at most 80 first-years, admitted on academic performance."
@@ -1159,6 +1263,7 @@ programmes:
 
   - id: bsc_geology
     name: "BSc specialising in Geology: Geology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [earth_sciences, natural_sciences]
     selective: true
     selection_note: "UFS's 2026 rule book lists Geology among its selection programmes: at most 80 first-years, admitted on academic performance."
@@ -1169,6 +1274,7 @@ programmes:
 
   - id: bsc_geology_physics
     name: "BSc specialising in Geology: Geology and Physics"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [earth_sciences, natural_sciences]
     selective: true
     selection_note: "UFS's 2026 rule book lists Geology among its selection programmes: at most 80 first-years, admitted on academic performance."
@@ -1179,6 +1285,7 @@ programmes:
 
   - id: bsc_agricultural_economics
     name: "BSc in Agricultural Economics"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [agriculture, economics]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1187,6 +1294,7 @@ programmes:
 
   - id: bscit_cs_chemistry
     name: "BSc in Information Technology: Computer Science and Chemistry"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [computing, physical_sciences]
     selective: true
     selection_note: "All BSc (IT) programmes on the Bloemfontein Campus are subject to a selection process, which may include an admission assessment (2026 rule book)."
@@ -1197,6 +1305,7 @@ programmes:
 
   - id: bscit_cs_mathematical_statistics
     name: "BSc in Information Technology: Computer Science and Mathematical Statistics"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [computing, mathematical_sciences]
     selective: true
     selection_note: "All BSc (IT) programmes on the Bloemfontein Campus are subject to a selection process, which may include an admission assessment (2026 rule book)."
@@ -1207,6 +1316,7 @@ programmes:
 
   - id: bscit_cs_mathematics
     name: "BSc in Information Technology: Computer Science and Mathematics"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [computing, mathematical_sciences]
     selective: true
     selection_note: "All BSc (IT) programmes on the Bloemfontein Campus are subject to a selection process, which may include an admission assessment (2026 rule book)."
@@ -1217,6 +1327,7 @@ programmes:
 
   - id: bscit_cs_physics
     name: "BSc in Information Technology: Computer Science and Physics"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [computing, physical_sciences]
     selective: true
     selection_note: "All BSc (IT) programmes on the Bloemfontein Campus are subject to a selection process, which may include an admission assessment (2026 rule book)."
@@ -1227,6 +1338,7 @@ programmes:
 
   - id: bscit_data_science
     name: "BSc in Information Technology: Data Science"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [computing, mathematical_sciences]
     selective: true
     selection_note: "All BSc (IT) programmes on the Bloemfontein Campus are subject to a selection process, which may include an admission assessment (2026 rule book)."
@@ -1237,6 +1349,7 @@ programmes:
 
   - id: bscit_cs_business_management
     name: "BSc in Information Technology: Computer Science and Business Management"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [computing, management]
     selective: true
     selection_note: "All BSc (IT) programmes on the Bloemfontein Campus are subject to a selection process, which may include an admission assessment (2026 rule book)."
@@ -1247,6 +1360,7 @@ programmes:
 
   - id: bcis
     name: "Bachelor of Computer Information Systems"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [computing]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1255,6 +1369,7 @@ programmes:
 
   - id: b_sustainable_food_systems
     name: "Bachelor of Sustainable Food Systems"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [agriculture, food_science]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1269,6 +1384,7 @@ programmes:
 
   - id: bagric_agricultural_extension
     name: "Bachelor of Agriculture: Agricultural Extension"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [agriculture]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1284,6 +1400,7 @@ programmes:
 
   - id: bagric_animal_production_management
     name: "Bachelor of Agriculture: Animal Production Management"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [agriculture]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1299,6 +1416,7 @@ programmes:
 
   - id: bagric_crop_production
     name: "Bachelor of Agriculture: Crop Production"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [agriculture]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1314,6 +1432,7 @@ programmes:
 
   - id: bagric_mixed_farming_management
     name: "Bachelor of Agriculture: Mixed Farming Management"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [agriculture]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1329,6 +1448,7 @@ programmes:
 
   - id: bagric_irrigation_management
     name: "Bachelor of Agriculture: Irrigation Management"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [agriculture]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1339,6 +1459,7 @@ programmes:
 
   - id: bagric_agricultural_economics
     name: "Bachelor of Agriculture: Agricultural Economics"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [agriculture, economics]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1349,6 +1470,7 @@ programmes:
 
   - id: bagric_agricultural_management
     name: "Bachelor of Agriculture: Agricultural Management"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [agriculture, management]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1364,6 +1486,7 @@ programmes:
 
   - id: bscagric_animal_science
     name: "BSc in Agriculture: Animal Science"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [agriculture, life_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1376,6 +1499,7 @@ programmes:
 
   - id: bscagric_agrometeorology
     name: "BSc in Agriculture: Agrometeorology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [agriculture, earth_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1388,6 +1512,7 @@ programmes:
 
   - id: bscagric_agronomy
     name: "BSc in Agriculture: Agronomy"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [agriculture]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1400,6 +1525,7 @@ programmes:
 
   - id: bscagric_plant_breeding
     name: "BSc in Agriculture: Plant Breeding"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [agriculture, life_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1412,6 +1538,7 @@ programmes:
 
   - id: bscagric_plant_pathology
     name: "BSc in Agriculture: Plant Pathology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [agriculture, life_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1424,6 +1551,7 @@ programmes:
 
   - id: bscagric_soil_science
     name: "BSc in Agriculture: Soil Science"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [agriculture, earth_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1439,6 +1567,7 @@ programmes:
 
   - id: barch
     name: "Bachelor of Architecture (BArch)"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [built_environment, arts_and_design]
     selective: true
     selection_note: "You must pass a selection process: UFS's selection form goes in by 31 July with your application, and outcomes come by 30 November. At most 45 students are admitted (2026 rule book)."
@@ -1449,6 +1578,7 @@ programmes:
 
   - id: bsc_construction_economics_management
     name: "BSc in Construction Economics and Management (full-time)"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [built_environment, management]
     selective: true
     selection_note: "Subject to selection."
@@ -1467,6 +1597,7 @@ programmes:
 
   - id: bsc_bio_botany_life_sciences_qwaqwa
     name: "BSc specialising in Biological Sciences: Botany and Life Sciences (Qwaqwa Campus)"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1475,6 +1606,7 @@ programmes:
 
   - id: bsc_bio_life_sciences_qwaqwa
     name: "BSc specialising in Biological Sciences: Life Sciences (Qwaqwa Campus)"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1483,6 +1615,7 @@ programmes:
 
   - id: bsc_bio_zoology_life_sciences_qwaqwa
     name: "BSc specialising in Biological Sciences: Zoology and Life Sciences (Qwaqwa Campus)"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1491,6 +1624,7 @@ programmes:
 
   - id: bsc_chemistry_physics_qwaqwa
     name: "BSc specialising in Chemical and Physical Sciences: Chemistry and Physics (Qwaqwa Campus)"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, physical_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1499,6 +1633,7 @@ programmes:
 
   - id: bsc_chemistry_botany_qwaqwa
     name: "BSc specialising in Chemical and Physical Sciences: Chemistry and Botany (Qwaqwa Campus)"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, physical_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1507,6 +1642,7 @@ programmes:
 
   - id: bsc_geography_environmental_geography_qwaqwa
     name: "BSc specialising in Geography: Geography and Environmental Geography (Qwaqwa Campus)"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [earth_sciences, natural_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1515,6 +1651,7 @@ programmes:
 
   - id: bsc_geography_qwaqwa
     name: "BSc specialising in Geography: Geography (Qwaqwa Campus)"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [earth_sciences, natural_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1523,6 +1660,7 @@ programmes:
 
   - id: bscit_cs_chemistry_qwaqwa
     name: "BSc in Information Technology: Computer Science and Chemistry (Qwaqwa Campus)"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [computing, physical_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1531,6 +1669,7 @@ programmes:
 
   - id: bscit_cs_physics_qwaqwa
     name: "BSc in Information Technology: Computer Science and Physics (Qwaqwa Campus)"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [computing, physical_sciences]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1539,6 +1678,7 @@ programmes:
 
   - id: bscit_cs_management_qwaqwa
     name: "BSc in Information Technology: Computer Science and Management (Qwaqwa Campus)"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [computing, management]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1551,6 +1691,7 @@ programmes:
 
   - id: bagric_extended
     name: "Bachelor of Agriculture (extended curriculum programme, four years)"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [agriculture]
     requirements:
       source: s-ufs-rb-nas-2026
@@ -1565,6 +1706,7 @@ programmes:
 
   - id: bscagric_extended
     name: "BSc in Agriculture (extended curriculum programme, five years)"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [agriculture]
     requirements:
       source: s-ufs-rb-nas-2026
@@ -1581,6 +1723,7 @@ programmes:
 
   - id: bsc_extended_sciences
     name: "BSc (extended curriculum programme, four years): Biological Sciences, Chemical and Physical Sciences, Geology, Geography or Information Technology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences]
     requirements:
       source: s-ufs-rb-nas-2026
@@ -1597,6 +1740,7 @@ programmes:
 
   - id: bsc_extended_mathematical
     name: "BSc (extended curriculum programme, four years): Mathematical Sciences, Actuarial Sciences, Agricultural Economics or Building Science"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [mathematical_sciences, natural_sciences]
     requirements:
       source: s-ufs-rb-nas-2026
@@ -1609,6 +1753,7 @@ programmes:
 
   - id: bsc_extended_it_qwaqwa
     name: "BSc (extended curriculum programme, four years; Qwaqwa Campus): Information Technology (Computer Science), or Computer Science and Mathematics"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [computing, mathematical_sciences]
     requirements:
       source: s-ufs-rb-nas-2026
@@ -1620,6 +1765,7 @@ programmes:
 
   - id: bcis_extended
     name: "Bachelor of Computer Information Systems (extended curriculum programme, four years)"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [computing]
     requirements:
       source: s-ufs-rb-nas-2026
@@ -1630,6 +1776,7 @@ programmes:
 
   - id: b_sustainable_food_systems_extended
     name: "Bachelor of Sustainable Food Systems (extended curriculum programme)"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [agriculture, food_science]
     selection_note: "UFS's 2026 rule book gives two different Mathematics rules for this programme (Mathematics 3, or Mathematics 2 or Mathematical Literacy 5, both with an AP of 27); ask UFS."
     requirements: null       # the 2026 rule book's NAS 2.2 and section 12.2 disagree on Mathematics
@@ -1639,6 +1786,7 @@ programmes:
 
   - id: hcert_music_performance
     name: "Higher Certificate in Music Performance"
+    faculty: "Faculty of The Humanities"
     fields: [music, performing_arts]
     selective: true
     selection_note: "Subject to selection: a compulsory audition and musical aptitude test, before 30 September, on your chosen instrument or in singing."
@@ -1649,6 +1797,7 @@ programmes:
 
   - id: dip_music
     name: "Diploma in Music"
+    faculty: "Faculty of The Humanities"
     fields: [music, performing_arts]
     selective: true
     selection_note: "Subject to selection: Grade 5 (Unisa, ABRSM or Trinity College) in your principal instrument or voice, or equivalent skills, and a compulsory audition and theory proficiency test before 30 September. Grade 3 Music Theory (Unisa or ABRSM) is advised."
@@ -1659,6 +1808,7 @@ programmes:
 
   - id: ba_language_practice
     name: "BA (Language Practice)"
+    faculty: "Faculty of The Humanities"
     fields: [languages_and_communication, humanities]
     selective: true
     selection_note: "Subject to selection."
@@ -1671,6 +1821,7 @@ programmes:
 
   - id: ba_governance_political_transformation
     name: "BA (Governance and Political Transformation)"
+    faculty: "Faculty of The Humanities"
     fields: [humanities, public_administration]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1679,6 +1830,7 @@ programmes:
 
   - id: ba_integrated_organisational_communication
     name: "BA (Integrated Organisational Communication)"
+    faculty: "Faculty of The Humanities"
     fields: [languages_and_communication, management]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1689,6 +1841,7 @@ programmes:
 
   - id: ba_journalism
     name: "BA (Journalism)"
+    faculty: "Faculty of The Humanities"
     fields: [languages_and_communication, humanities]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1699,6 +1852,7 @@ programmes:
 
   - id: ba_fine_arts
     name: "BA (Fine Arts)"
+    faculty: "Faculty of The Humanities"
     fields: [arts_and_design]
     selective: true
     selection_note: "Subject to selection: a portfolio of creative work and a selection form, due with your application by 30 September."
@@ -1709,6 +1863,7 @@ programmes:
 
   - id: ba_drama_theatre_arts
     name: "BA (Drama and Theatre Arts)"
+    faculty: "Faculty of The Humanities"
     fields: [performing_arts]
     selective: true
     selection_note: "Subject to selection: a compulsory audition and interview. Drama experience at school is recommended."
@@ -1721,6 +1876,7 @@ programmes:
 
   - id: ba_general
     name: "BA General"
+    faculty: "Faculty of The Humanities"
     fields: [humanities]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1731,6 +1887,7 @@ programmes:
 
   - id: ba_languages
     name: "BA specialising in Languages"
+    faculty: "Faculty of The Humanities"
     fields: [humanities, languages_and_communication]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1739,6 +1896,7 @@ programmes:
 
   - id: bmus
     name: "Bachelor of Music (BMus)"
+    faculty: "Faculty of The Humanities"
     fields: [music, performing_arts]
     selective: true
     selection_note: "Subject to selection: Music Theory Grade 5 (Unisa or ABRSM) or equivalent, Music Performance Grade 7 (Unisa, ABRSM or Trinity College) or equivalent, and a compulsory audition and theory proficiency test before 30 September."
@@ -1749,6 +1907,7 @@ programmes:
 
   - id: ba_music
     name: "BA (Music)"
+    faculty: "Faculty of The Humanities"
     fields: [music, performing_arts]
     selective: true
     selection_note: "Subject to selection: Music Theory Grade 5 (Unisa or ABRSM) or equivalent, Music Performance Grade 7 (Unisa, ABRSM or Trinity College) or equivalent, and a compulsory audition and theory proficiency test before 30 September."
@@ -1759,6 +1918,7 @@ programmes:
 
   - id: bsocsci
     name: "Bachelor of Social Sciences (BSocSci)"
+    faculty: "Faculty of The Humanities"
     fields: [humanities]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1767,6 +1927,7 @@ programmes:
 
   - id: bsw
     name: "Bachelor of Social Work"
+    faculty: "Faculty of The Humanities"
     fields: [humanities]
     selective: true
     selection_note: "Subject to selection. UFS prioritises direct school leavers, and first-choice applications get preference."
@@ -1779,6 +1940,7 @@ programmes:
 
   - id: ba_general_qwaqwa
     name: "BA General (Qwaqwa Campus)"
+    faculty: "Faculty of The Humanities"
     fields: [humanities]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1787,6 +1949,7 @@ programmes:
 
   - id: bcommdev_qwaqwa
     name: "Bachelor of Community Development (BCommDev) (Qwaqwa Campus)"
+    faculty: "Faculty of The Humanities"
     fields: [humanities]
     selective: true
     selection_note: "Admission is subject to a selection process."
@@ -1799,6 +1962,7 @@ programmes:
 
   - id: bsocsci_qwaqwa
     name: "Bachelor of Social Sciences (BSocSci) (Qwaqwa Campus)"
+    faculty: "Faculty of The Humanities"
     fields: [humanities]
     requirements:
       source: s-ufs-prospectus-2027
@@ -1809,6 +1973,7 @@ programmes:
 
   - id: ba_extended
     name: "BA (extended curriculum programme, four years; Bloemfontein and Qwaqwa campuses)"
+    faculty: "Faculty of The Humanities"
     fields: [humanities]
     requirements:
       source: s-ufs-rb-hum-2026
@@ -1821,6 +1986,7 @@ programmes:
 
   - id: ba_language_practice_extended
     name: "BA (Language Practice) (extended curriculum programme, four years)"
+    faculty: "Faculty of The Humanities"
     fields: [languages_and_communication, humanities]
     selective: true
     selection_note: "Limited space: meeting the minimums doesn't guarantee a place (2026 rule book)."
@@ -1835,6 +2001,7 @@ programmes:
 
   - id: ba_drama_theatre_arts_extended
     name: "BA (Drama and Theatre Arts) (extended curriculum programme, four years)"
+    faculty: "Faculty of The Humanities"
     fields: [performing_arts]
     selective: true
     selection_note: "Subject to a selection process: the department emails a selection form to applicants who meet the minimums (2026 rule book)."
@@ -1848,6 +2015,7 @@ programmes:
 
   - id: ba_fine_arts_extended
     name: "BA (Fine Arts) (extended curriculum programme, five years)"
+    faculty: "Faculty of The Humanities"
     fields: [arts_and_design]
     selective: true
     selection_note: "You must also submit a portfolio of creative works for the Department of Fine Arts to approve (2026 rule book)."
@@ -1861,6 +2029,7 @@ programmes:
 
   - id: ba_governance_political_transformation_extended
     name: "BA (Governance and Political Transformation) (extended curriculum programme, four years)"
+    faculty: "Faculty of The Humanities"
     fields: [humanities, public_administration]
     requirements:
       source: s-ufs-rb-hum-2026
@@ -1872,6 +2041,7 @@ programmes:
 
   - id: bsocsci_extended
     name: "BSocSci (extended curriculum programme, four years; Bloemfontein and Qwaqwa campuses)"
+    faculty: "Faculty of The Humanities"
     fields: [humanities]
     requirements:
       source: s-ufs-rb-hum-2026
@@ -1885,6 +2055,7 @@ programmes:
 
   - id: bdiv
     name: "Bachelor of Divinity (BDiv)"
+    faculty: "Faculty of Theology and Religion"
     fields: [theology]
     selective: true
     selection_note: "UFS considers everyone who meets the requirements for selection, using a selection form you get during the online application; without it you aren't considered."
@@ -1895,6 +2066,7 @@ programmes:
 
   - id: bdiv_extended
     name: "Bachelor of Divinity (extended curriculum programme, five years)"
+    faculty: "Faculty of Theology and Religion"
     fields: [theology]
     selective: true
     selection_note: "UFS considers everyone who meets the requirements for selection, using a selection form you get during the online application; without it you aren't considered."
