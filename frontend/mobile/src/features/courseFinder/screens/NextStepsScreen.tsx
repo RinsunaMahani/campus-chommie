@@ -9,6 +9,7 @@ import { SourceLink } from '@/shared/components/SourceLink';
 import { ErrorBox } from '@/shared/components/Status';
 import { Muted, Title } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
+import { rememberUniversity } from '@/shared/lib/chosenUniversity';
 import { formatDay } from '@/shared/lib/dates';
 import { SkeletonCards } from '@/shared/motion/Shimmer';
 import { colors, fonts } from '@/shared/theme/tokens';
@@ -73,7 +74,11 @@ export default function NextStepsScreen() {
           title={t('courseFinder.createStudentAccount')}
           variant="primary"
           icon="user-plus"
-          onPress={() => router.push({ pathname: '/(auth)/create-account', params: { university: id } })}
+          onPress={() => {
+            // Sign-up and email verification don't pass parameters on, so onboarding reads it from memory.
+            if (id) rememberUniversity(id);
+            router.push({ pathname: '/(auth)/create-account', params: { university: id } });
+          }}
         />
       }>
       {loading ? <SkeletonCards count={3} /> : null}

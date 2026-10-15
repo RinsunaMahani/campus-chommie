@@ -121,24 +121,26 @@ export default function FundingScreen() {
             <View style={styles.choiceHeader}>
               <View style={{ flex: 1, gap: 2 }}>
                 <Overline>{t('courseFinder.nsfasTitle')}</Overline>
-                <Title style={styles.choiceTitle}>{nsfas?.name ?? 'NSFAS'}</Title>
+                {nsfas?.name ? <Title style={styles.choiceTitle}>{nsfas.name}</Title> : null}
               </View>
               {nsfas?.label ? (
                 <Tag label={nsfas.label} tone={tagTone(nsfas.status)} />
               ) : null}
             </View>
-            <View style={styles.metaRow}>
-              <Muted>{nsfas?.kind_label ?? 'Bursary'}</Muted>
-              <Muted>·</Muted>
-              <Muted>{nsfas?.sector_label ?? 'Government'}</Muted>
-            </View>
+            {nsfas ? (
+              <View style={styles.metaRow}>
+                <Muted>{nsfas.kind_label}</Muted>
+                <Muted>·</Muted>
+                <Muted>{nsfas.sector_label}</Muted>
+              </View>
+            ) : null}
             {nsfas?.lines?.length ? (
               <Text style={styles.line}>{nsfas.lines[0]}</Text>
             ) : (
               <Text style={styles.line}>{t('courseFinder.nsfasSubtitle')}</Text>
             )}
             <View style={styles.tapRow}>
-              <Text style={styles.tapText}>{t('courseFinder.fundingForChoice')}</Text>
+              <Text style={styles.tapText}>{t('courseFinder.seeFunderDetails')}</Text>
               <Feather name="chevron-right" size={16} color={colors.accentDeep} />
             </View>
           </Card>

@@ -8,6 +8,7 @@ import { Screen } from '@/shared/components/Screen';
 import { SelectField } from '@/shared/components/SelectField';
 import { Body, Muted, Overline, Title } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
+import { takeUniversity } from '@/shared/lib/chosenUniversity';
 import { colors } from '@/shared/theme/tokens';
 
 import { profileApi } from '../api/profileApi';
@@ -33,8 +34,10 @@ export default function CampusScreen() {
       .universities()
       .then((list) => {
         setUniversities(list);
-        if (universityParam && list.some((u) => u.id === universityParam)) {
-          chooseUniversity(universityParam);
+        // From the course finder: a route parameter, or the id it remembered before sign-up.
+        const wanted = universityParam ?? takeUniversity();
+        if (wanted && list.some((u) => u.id === wanted)) {
+          chooseUniversity(wanted);
         }
       })
       .catch((e) => setError(errorText(e, t('common.error'))));
