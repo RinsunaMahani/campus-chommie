@@ -40,6 +40,7 @@ programmes:
 
   - id: dip_agriculture                    # D3AGRC
     name: "Diploma in Agriculture"
+    faculty: "Faculty of Applied Sciences"
     fields: [agriculture]
     requirements:
       source: s-cput-online-prospectus
@@ -58,6 +59,7 @@ programmes:
 
   - id: dip_agriculture_ecp                # D3AGRX (its own page is blank; the D3AGRC page gives the ECP points)
     name: "Diploma in Agriculture (Extended Curriculum Programme)"
+    faculty: "Faculty of Applied Sciences"
     fields: [agriculture]
     requirements:
       source: s-cput-online-prospectus
@@ -77,6 +79,7 @@ programmes:
 
   - id: dip_agricultural_management        # D3AGRM
     name: "Diploma in Agricultural Management"
+    faculty: "Faculty of Applied Sciences"
     fields: [agriculture, management]
     requirements:
       source: s-cput-online-prospectus
@@ -97,6 +100,7 @@ programmes:
 
   - id: dip_agricultural_management_ecp    # D3AGMX
     name: "Diploma in Agricultural Management (Extended Curriculum Programme)"
+    faculty: "Faculty of Applied Sciences"
     fields: [agriculture, management]
     requirements:
       source: s-cput-online-prospectus
@@ -117,6 +121,7 @@ programmes:
 
   - id: dip_consumer_science_food_nutrition      # D3CSFN
     name: "Diploma in Consumer Science in Food and Nutrition"
+    faculty: "Faculty of Applied Sciences"
     fields: [consumer_sciences, nutrition]
     requirements:
       source: s-cput-online-prospectus
@@ -132,6 +137,7 @@ programmes:
 
   - id: dip_consumer_science_food_nutrition_ecp  # D3CNSX
     name: "Diploma in Consumer Science in Food and Nutrition (Extended Curriculum Programme)"
+    faculty: "Faculty of Applied Sciences"
     fields: [consumer_sciences, nutrition]
     requirements:
       source: s-cput-online-prospectus
@@ -147,6 +153,7 @@ programmes:
 
   - id: dip_biotechnology                  # D3BIOT
     name: "Diploma in Biotechnology"
+    faculty: "Faculty of Applied Sciences"
     fields: [life_sciences]
     requirements:
       source: s-cput-online-prospectus
@@ -157,6 +164,7 @@ programmes:
 
   - id: dip_biotechnology_ecp              # D3BITX
     name: "Diploma in Biotechnology (Extended Curriculum Programme)"
+    faculty: "Faculty of Applied Sciences"
     fields: [life_sciences]
     requirements:
       source: s-cput-online-prospectus
@@ -168,6 +176,7 @@ programmes:
 
   - id: dip_analytical_chemistry           # D3ANCH
     name: "Diploma in Analytical Chemistry"
+    faculty: "Faculty of Applied Sciences"
     fields: [physical_sciences]
     requirements:
       source: s-cput-online-prospectus
@@ -183,6 +192,7 @@ programmes:
 
   - id: dip_analytical_chemistry_ecp       # D3ANCX
     name: "Diploma in Analytical Chemistry (Extended Curriculum Programme)"
+    faculty: "Faculty of Applied Sciences"
     fields: [physical_sciences]
     requirements:
       source: s-cput-online-prospectus
@@ -199,6 +209,7 @@ programmes:
 
   - id: bachelor_food_science_technology   # BPFSTH
     name: "Bachelor of Food Science and Technology"
+    faculty: "Faculty of Applied Sciences"
     fields: [food_science]
     requirements:
       source: s-cput-online-prospectus
@@ -214,6 +225,7 @@ programmes:
 
   - id: dip_marine_science                 # DPMASC
     name: "Diploma in Marine Science"
+    faculty: "Faculty of Applied Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-cput-online-prospectus
@@ -229,6 +241,7 @@ programmes:
 
   - id: dip_marine_science_ecp             # DPMASX
     name: "Diploma in Marine Science (Extended Curriculum Programme)"
+    faculty: "Faculty of Applied Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-cput-online-prospectus
@@ -244,6 +257,7 @@ programmes:
 
   - id: dip_nature_conservation            # D3NCNS
     name: "Diploma in Nature Conservation"
+    faculty: "Faculty of Applied Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-cput-online-prospectus
@@ -261,6 +275,7 @@ programmes:
 
   - id: dip_nature_conservation_ecp        # D3NCNX
     name: "Diploma in Nature Conservation (Extended Curriculum Programme)"
+    faculty: "Faculty of Applied Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-cput-online-prospectus
@@ -278,6 +293,7 @@ programmes:
 
   - id: bachelor_environmental_health      # BPENVH
     name: "Bachelor of Environmental Health"
+    faculty: "Faculty of Applied Sciences"
     fields: [environmental_health]
     requirements:
       source: s-cput-online-prospectus
@@ -293,6 +309,7 @@ programmes:
 
   - id: bachelor_environmental_health_ecp  # BPENVX
     name: "Bachelor of Environmental Health (Extended Curriculum Programme)"
+    faculty: "Faculty of Applied Sciences"
     fields: [environmental_health]
     requirements:
       source: s-cput-online-prospectus
@@ -308,6 +325,7 @@ programmes:
 
   - id: dip_environmental_management       # D3EVMN
     name: "Diploma in Environmental Management"
+    faculty: "Faculty of Applied Sciences"
     fields: [natural_sciences, earth_sciences]
     requirements:
       source: s-cput-online-prospectus
@@ -328,6 +346,7 @@ programmes:
 
   - id: dip_environmental_management_ecp   # D3EVMX
     name: "Diploma in Environmental Management (Extended Curriculum Programme)"
+    faculty: "Faculty of Applied Sciences"
     fields: [natural_sciences, earth_sciences]
     requirements:
       source: s-cput-online-prospectus
@@ -349,6 +368,7 @@ programmes:
 
   - id: dip_horticulture                   # D3HRCT
     name: "Diploma in Horticulture"
+    faculty: "Faculty of Applied Sciences"
     fields: [agriculture]
     requirements:
       source: s-cput-online-prospectus
@@ -364,6 +384,7 @@ programmes:
 
   - id: dip_horticulture_ecp               # D3HRCX
     name: "Diploma in Horticulture (Extended Curriculum Programme)"
+    faculty: "Faculty of Applied Sciences"
     fields: [agriculture]
     requirements:
       source: s-cput-online-prospectus
@@ -379,6 +400,7 @@ programmes:
 
   - id: dip_landscape_architecture         # D3LARC
     name: "Diploma in Landscape Architecture"
+    faculty: "Faculty of Applied Sciences"
     fields: [built_environment]
     requirements:
       source: s-cput-online-prospectus
@@ -394,6 +416,7 @@ programmes:
 
   - id: dip_landscape_architecture_ecp     # D3LARX
     name: "Diploma in Landscape Architecture (Extended Curriculum Programme)"
+    faculty: "Faculty of Applied Sciences"
     fields: [built_environment]
     requirements:
       source: s-cput-online-prospectus
@@ -409,6 +432,7 @@ programmes:
 
   - id: dip_mathematical_sciences          # D3MTHS
     name: "Diploma in Mathematical Sciences"
+    faculty: "Faculty of Applied Sciences"
     fields: [mathematical_sciences]
     requirements:
       source: s-cput-online-prospectus
@@ -428,6 +452,7 @@ programmes:
 
   - id: dip_mathematical_sciences_ecp      # D3MTHX
     name: "Diploma in Mathematical Sciences (Extended Curriculum Programme)"
+    faculty: "Faculty of Applied Sciences"
     fields: [mathematical_sciences]
     requirements:
       source: s-cput-online-prospectus
@@ -453,6 +478,7 @@ programmes:
 
   - id: dip_accountancy                    # D3ACCY
     name: "Diploma in Accountancy"
+    faculty: "Faculty of Business and Management Sciences"
     fields: [accounting]
     requirements:
       source: s-cput-accounting
@@ -465,6 +491,7 @@ programmes:
 
   - id: dip_accountancy_ecp                # D3ACCX
     name: "Diploma in Accountancy (Extended Curriculum Programme)"
+    faculty: "Faculty of Business and Management Sciences"
     fields: [accounting]
     requirements:
       source: s-cput-accounting
@@ -477,6 +504,7 @@ programmes:
 
   - id: dip_retail_business_management     # D3RBMT
     name: "Diploma in Retail Business Management"
+    faculty: "Faculty of Business and Management Sciences"
     fields: [management, commerce]
     requirements:
       source: s-cput-retail
@@ -489,6 +517,7 @@ programmes:
 
   - id: dip_real_estate                    # D3REAL
     name: "Diploma in Real Estate"
+    faculty: "Faculty of Business and Management Sciences"
     fields: [commerce]
     requirements:
       source: s-cput-real-estate
@@ -507,131 +536,156 @@ programmes:
 
   - id: dip_business_information_administration       # D3BIAS
     name: "Diploma in Business and Information Administration"
+    faculty: "Faculty of Business and Management Sciences"
     fields: [management]
     requirements: null
 
   - id: dip_business_information_administration_ecp   # D3BSIX
     name: "Diploma in Business and Information Administration (Extended Curriculum Programme)"
+    faculty: "Faculty of Business and Management Sciences"
     fields: [management]
     requirements: null
 
   - id: dip_hospitality_hotel_management   # D3HSPH
     name: "Diploma in Hospitality and Hotel Management"
+    faculty: "Faculty of Business and Management Sciences"
     fields: [tourism_and_hospitality]
     requirements: null
 
   - id: dip_hospitality_professional_cookery   # D3HSPC
     name: "Diploma in Hospitality and Professional Cookery"
+    faculty: "Faculty of Business and Management Sciences"
     fields: [tourism_and_hospitality]
     requirements: null
 
   - id: dip_hospitality_food_beverage_management   # D3HSPF
     name: "Diploma in Hospitality and Food and Beverage Management"
+    faculty: "Faculty of Business and Management Sciences"
     fields: [tourism_and_hospitality]
     requirements: null
 
   - id: bachelor_paralegal_studies         # BGPLGL
     name: "Bachelor of Paralegal Studies"
+    faculty: "Faculty of Business and Management Sciences"
     fields: [law]
     requirements: null
 
   - id: dip_public_administration          # D3PBAD
     name: "Diploma in Public Administration"
+    faculty: "Faculty of Business and Management Sciences"
     fields: [public_administration]
     requirements: null
 
   - id: dip_public_administration_ecp      # D3PBAX
     name: "Diploma in Public Administration and Governance (Extended Curriculum Programme)"
+    faculty: "Faculty of Business and Management Sciences"
     fields: [public_administration]
     requirements: null
 
   - id: bachelor_business_informatics      # BGBICS
     name: "Bachelor of Business Informatics"
+    faculty: "Faculty of Business and Management Sciences"
     fields: [computing, commerce]
     requirements: null
 
   - id: dip_human_resource_management      # D3HRMT
     name: "Diploma in Human Resource Management"
+    faculty: "Faculty of Business and Management Sciences"
     fields: [management]
     requirements: null
 
   - id: dip_human_resource_management_ecp  # D3HRMX
     name: "Diploma in Human Resource Management (Extended Curriculum Programme)"
+    faculty: "Faculty of Business and Management Sciences"
     fields: [management]
     requirements: null
 
   - id: dip_management                     # D3MNGT
     name: "Diploma in Management"
+    faculty: "Faculty of Business and Management Sciences"
     fields: [management]
     requirements: null
 
   - id: dip_management_ecp                 # D3MNGX
     name: "Diploma in Management (Extended Curriculum Programme)"
+    faculty: "Faculty of Business and Management Sciences"
     fields: [management]
     requirements: null
 
   - id: dip_operations_management          # D3OPMT
     name: "Diploma in Operations Management"
+    faculty: "Faculty of Business and Management Sciences"
     fields: [management]
     requirements: null
 
   - id: dip_entrepreneurship               # D3ENTP
     name: "Diploma in Entrepreneurship"
+    faculty: "Faculty of Business and Management Sciences"
     fields: [management, commerce]
     requirements: null
 
   - id: dip_entrepreneurship_ecp           # D3ENTX
     name: "Diploma in Entrepreneurship (Extended Curriculum Programme)"
+    faculty: "Faculty of Business and Management Sciences"
     fields: [management, commerce]
     requirements: null
 
   - id: dip_banking                        # D3BNKG
     name: "Diploma in Banking"
+    faculty: "Faculty of Business and Management Sciences"
     fields: [finance]
     requirements: null
 
   - id: dip_marketing                      # D3MRKG
     name: "Diploma in Marketing"
+    faculty: "Faculty of Business and Management Sciences"
     fields: [commerce, management]
     requirements: null
 
   - id: dip_marketing_ecp                  # D3MRKX
     name: "Diploma in Marketing (Extended Curriculum Programme)"
+    faculty: "Faculty of Business and Management Sciences"
     fields: [commerce, management]
     requirements: null
 
   - id: dip_sport_leisure_management       # D3SPMT
     name: "Diploma in Sport and Leisure Management"
+    faculty: "Faculty of Business and Management Sciences"
     fields: [sport_science, management]
     selection_note: &cput_sport_q "Applicants complete CPUT's Sport Management questionnaire about their involvement in sport, culture and leadership."
     requirements: null
 
   - id: dip_sport_leisure_management_ecp   # D3SPMX
     name: "Diploma in Sport and Leisure Management (Extended Curriculum Programme)"
+    faculty: "Faculty of Business and Management Sciences"
     fields: [sport_science, management]
     selection_note: *cput_sport_q
     requirements: null
 
   - id: dip_event_management               # D3EVMT
     name: "Diploma in Event Management"
+    faculty: "Faculty of Business and Management Sciences"
     fields: [tourism_and_hospitality, management]
     selection_note: &cput_event_letter "Applicants send a motivational letter explaining why they want to follow this programme and what they understand of the industry."
     requirements: null
 
   - id: dip_event_management_ecp           # D3EVTX
     name: "Diploma in Event Management (Extended Curriculum Programme)"
+    faculty: "Faculty of Business and Management Sciences"
     fields: [tourism_and_hospitality, management]
     selection_note: *cput_event_letter
     requirements: null
 
   - id: dip_tourism_management             # D3TMNG
     name: "Diploma in Tourism Management"
+    faculty: "Faculty of Business and Management Sciences"
     fields: [tourism_and_hospitality]
     selection_note: *cput_event_letter
     requirements: null
 
   - id: dip_tourism_management_ecp         # D3TMNX
     name: "Diploma in Tourism Management (Extended Curriculum Programme)"
+    faculty: "Faculty of Business and Management Sciences"
     fields: [tourism_and_hospitality]
     selection_note: *cput_event_letter
     requirements: null
@@ -643,6 +697,7 @@ programmes:
 
   - id: bed_foundation_phase               # BEFNPT
     name: "Bachelor of Education in Foundation Phase Teaching"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-cput-online-prospectus
@@ -654,6 +709,7 @@ programmes:
 
   - id: bed_intermediate_phase             # BEINPT
     name: "Bachelor of Education in Intermediate Phase Teaching"
+    faculty: "Faculty of Education"
     fields: [education]
     selective: true
     selection_note: "Applicants who meet the minimum go to a further round of selection, which could look at the quality of your results, admission tests, interviews and a report from your principal."
@@ -668,6 +724,7 @@ programmes:
 
   - id: bed_senior_phase_fet               # BESPFT
     name: "Bachelor of Education in Senior Phase and FET Teaching"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements: null
 
@@ -678,6 +735,7 @@ programmes:
 
   - id: dip_chemical_engineering           # D3CHME
     name: "Diploma in Chemical Engineering"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
     requirements:
       source: s-cput-online-prospectus
@@ -693,6 +751,7 @@ programmes:
 
   - id: dip_chemical_engineering_ecp       # D3CHMX
     name: "Diploma in Chemical Engineering (Extended Curriculum Programme)"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
     requirements:
       source: s-cput-online-prospectus
@@ -709,6 +768,7 @@ programmes:
 
   - id: bet_chemical_engineering           # BPETCE
     name: "Bachelor of Engineering Technology in Chemical Engineering"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
     requirements:
       source: s-cput-online-prospectus
@@ -724,6 +784,7 @@ programmes:
 
   - id: dip_civil_engineering              # D3CIVL
     name: "Diploma in Civil Engineering"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering, built_environment]
     requirements:
       source: s-cput-online-prospectus
@@ -742,6 +803,7 @@ programmes:
 
   - id: dip_civil_engineering_ecp          # D3CIVX
     name: "Diploma in Civil Engineering (Extended Curriculum Programme)"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering, built_environment]
     requirements:
       source: s-cput-online-prospectus
@@ -761,6 +823,7 @@ programmes:
 
   - id: bet_civil_engineering              # BGENCV
     name: "Bachelor of Engineering Technology in Civil Engineering"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering, built_environment]
     requirements:
       source: s-cput-online-prospectus
@@ -779,6 +842,7 @@ programmes:
 
   - id: dip_geomatics                      # D3GMTS
     name: "Diploma in Geomatics"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering, built_environment]
     requirements:
       source: s-cput-online-prospectus
@@ -797,6 +861,7 @@ programmes:
 
   - id: bachelor_geomatics                 # BPGMTS
     name: "Bachelor of Geomatics"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering, built_environment]
     requirements:
       source: s-cput-online-prospectus
@@ -815,6 +880,7 @@ programmes:
 
   - id: dip_eng_tech_computer_engineering        # D2ENCE
     name: "Diploma in Engineering Technology in Computer Engineering"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering, computing]
     requirements:
       source: s-cput-online-prospectus
@@ -835,6 +901,7 @@ programmes:
 
   - id: dip_eng_tech_computer_engineering_ecp    # D2ENCX
     name: "Diploma in Engineering Technology in Computer Engineering (Extended Curriculum Programme)"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering, computing]
     requirements:
       source: s-cput-online-prospectus
@@ -856,6 +923,7 @@ programmes:
 
   - id: dip_eng_tech_electrical_engineering      # D2ETEE
     name: "Diploma in Engineering Technology in Electrical Engineering"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
     requirements:
       source: s-cput-online-prospectus
@@ -876,6 +944,7 @@ programmes:
 
   - id: dip_eng_tech_electrical_engineering_ecp  # D2ETEX
     name: "Diploma in Engineering Technology in Electrical Engineering (Extended Curriculum Programme)"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
     requirements:
       source: s-cput-online-prospectus
@@ -897,6 +966,7 @@ programmes:
 
   - id: bet_computer_engineering           # BPETCP
     name: "Bachelor of Engineering Technology in Computer Engineering"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering, computing]
     requirements:
       source: s-cput-online-prospectus
@@ -917,6 +987,7 @@ programmes:
 
   - id: bet_electrical_engineering         # BPETEE
     name: "Bachelor of Engineering Technology in Electrical Engineering"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
     requirements:
       source: s-cput-online-prospectus
@@ -937,6 +1008,7 @@ programmes:
 
   - id: bachelor_marine_engineering        # BPMARE
     name: "Bachelor of Marine Engineering"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
     requirements:
       source: s-cput-online-prospectus
@@ -956,6 +1028,7 @@ programmes:
 
   - id: bachelor_marine_engineering_ecp    # BPMARX
     name: "Bachelor of Marine Engineering (Extended Curriculum Programme)"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
     requirements:
       source: s-cput-online-prospectus
@@ -976,6 +1049,7 @@ programmes:
 
   - id: bachelor_nautical_science          # BGNSCI
     name: "Bachelor of Nautical Science"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
     requirements:
       source: s-cput-online-prospectus
@@ -995,6 +1069,7 @@ programmes:
 
   - id: bachelor_nautical_science_ecp      # BGNSCX
     name: "Bachelor of Nautical Science (Extended Curriculum Programme)"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
     requirements:
       source: s-cput-online-prospectus
@@ -1015,48 +1090,57 @@ programmes:
 
   - id: dip_clothing_textile_technology    # D3CLOT
     name: "Diploma in Clothing and Textile Technology"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
     selection_note: &cput_clothing_letter "Applicants send a motivational letter with their application."
     requirements: null
 
   - id: dip_clothing_textile_technology_ecp   # D3CLOX
     name: "Diploma in Clothing and Textile Technology (Extended Curriculum Programme)"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
     selection_note: *cput_clothing_letter
     requirements: null
 
   - id: dip_construction                   # D3CSRN
     name: "Diploma in Construction"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [built_environment]
     requirements: null
 
   - id: dip_construction_ecp               # D3CSRX
     name: "Diploma in Construction (Extended Curriculum Programme)"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [built_environment]
     requirements: null
 
   - id: dip_industrial_engineering         # D3IENG
     name: "Diploma in Industrial Engineering"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
     requirements: null
 
   - id: dip_industrial_engineering_ecp     # D3IENX
     name: "Diploma in Industrial Engineering (Extended Curriculum Programme)"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
     requirements: null
 
   - id: dip_mechanical_engineering         # D3MCNE
     name: "Diploma in Mechanical Engineering"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
     requirements: null
 
   - id: dip_mechanical_engineering_ecp     # D3MCNX
     name: "Diploma in Mechanical Engineering (Extended Curriculum Programme)"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
     requirements: null
 
   - id: dip_mechanical_engineering_mechatronics   # D3MECS
     name: "Diploma in Mechanical Engineering in Mechatronics"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
     requirements: null
 
@@ -1069,6 +1153,7 @@ programmes:
 
   - id: bhsc_medical_laboratory_science    # BPMLSC
     name: "Bachelor of Health Sciences in Medical Laboratory Science"
+    faculty: "Faculty of Health and Wellness Sciences"
     fields: [medical_sciences, health_sciences]
     selective: true
     places: 45
@@ -1098,6 +1183,7 @@ programmes:
 
   - id: bhsc_medical_laboratory_science_ecp   # BPMLSX
     name: "Bachelor of Health Sciences in Medical Laboratory Science (Extended Curriculum Programme)"
+    faculty: "Faculty of Health and Wellness Sciences"
     fields: [medical_sciences, health_sciences]
     selective: true
     places: 15
@@ -1123,6 +1209,7 @@ programmes:
 
   - id: bachelor_emergency_medical_care    # BPEMCA
     name: "Bachelor of Emergency Medical Care"
+    faculty: "Faculty of Health and Wellness Sciences"
     fields: [emergency_care]
     selective: true
     places: 30
@@ -1144,6 +1231,7 @@ programmes:
 
   - id: bachelor_emergency_medical_care_ecp   # BPEMCX
     name: "Bachelor of Emergency Medical Care (Extended Curriculum Programme)"
+    faculty: "Faculty of Health and Wellness Sciences"
     fields: [emergency_care]
     selective: true
     places: 15
@@ -1167,6 +1255,7 @@ programmes:
 
   - id: dip_emergency_care                 # D2EMCA
     name: "Diploma in Emergency Care"
+    faculty: "Faculty of Health and Wellness Sciences"
     fields: [emergency_care]
     selective: true
     places: 30
@@ -1189,6 +1278,7 @@ programmes:
 
   - id: hc_emergency_medical_care          # HCEMDC
     name: "Higher Certificate in Emergency Medical Care"
+    faculty: "Faculty of Health and Wellness Sciences"
     fields: [emergency_care]
     selective: true
     places: 30
@@ -1218,6 +1308,7 @@ programmes:
 
   - id: bsc_diagnostic_radiography         # BPSDGR
     name: "BSc in Diagnostic Radiography"
+    faculty: "Faculty of Health and Wellness Sciences"
     fields: [radiography]
     selective: true
     places: 67
@@ -1243,6 +1334,7 @@ programmes:
 
   - id: bsc_diagnostic_ultrasound          # BPSDGU
     name: "BSc in Diagnostic Ultrasound"
+    faculty: "Faculty of Health and Wellness Sciences"
     fields: [radiography]
     selective: true
     places: 10
@@ -1268,6 +1360,7 @@ programmes:
 
   - id: bsc_nuclear_medicine_technology    # BPSNUM
     name: "BSc in Nuclear Medicine Technology"
+    faculty: "Faculty of Health and Wellness Sciences"
     fields: [radiography, health_sciences]
     selective: true
     places: 8
@@ -1289,6 +1382,7 @@ programmes:
 
   - id: bsc_radiation_therapy              # BPSRDT
     name: "BSc in Radiation Therapy"
+    faculty: "Faculty of Health and Wellness Sciences"
     fields: [radiography]
     selective: true
     places: 15
@@ -1314,6 +1408,7 @@ programmes:
 
   - id: bachelor_nursing                   # BPNURS
     name: "Bachelor of Nursing"
+    faculty: "Faculty of Health and Wellness Sciences"
     fields: [nursing]
     selective: true
     places: 30
@@ -1343,6 +1438,7 @@ programmes:
 
   - id: bachelor_nursing_ecp               # BPNURX
     name: "Bachelor of Nursing (Extended Curriculum Programme)"
+    faculty: "Faculty of Health and Wellness Sciences"
     fields: [nursing]
     selective: true
     places: 30
@@ -1373,6 +1469,7 @@ programmes:
 
   - id: bhsc_opticianry                    # BGOPTY
     name: "Bachelor of Health Science in Opticianry"
+    faculty: "Faculty of Health and Wellness Sciences"
     fields: [health_sciences]
     selective: true
     places: 65
@@ -1398,6 +1495,7 @@ programmes:
 
   - id: dip_somatology                     # D3SOMA
     name: "Diploma in Somatology"
+    faculty: "Faculty of Health and Wellness Sciences"
     fields: [health_sciences]
     selective: true
     places: 80
@@ -1424,6 +1522,7 @@ programmes:
 
   - id: hc_dental_assisting                # HCDNAS
     name: "Higher Certificate in Dental Assisting"
+    faculty: "Faculty of Health and Wellness Sciences"
     fields: [dentistry]
     selective: true
     places: 80
@@ -1455,6 +1554,7 @@ programmes:
 
   - id: dip_architectural_technology       # D3ARCT
     name: "Diploma in Architectural Technology"
+    faculty: "Faculty of Informatics and Design"
     fields: [built_environment, arts_and_design]
     requirements:
       source: s-cput-online-prospectus
@@ -1472,6 +1572,7 @@ programmes:
 
   - id: dip_architectural_technology_ecp   # D3ARCX
     name: "Diploma in Architectural Technology (Extended Curriculum Programme)"
+    faculty: "Faculty of Informatics and Design"
     fields: [built_environment, arts_and_design]
     requirements:
       source: s-cput-online-prospectus
@@ -1488,6 +1589,7 @@ programmes:
 
   - id: dip_interior_design                # D3INTD
     name: "Diploma in Interior Design"
+    faculty: "Faculty of Informatics and Design"
     fields: [arts_and_design]
     requirements:
       source: s-cput-online-prospectus
@@ -1505,6 +1607,7 @@ programmes:
 
   - id: dip_fashion                        # D3FASH
     name: "Diploma in Fashion"
+    faculty: "Faculty of Informatics and Design"
     fields: [arts_and_design]
     selective: true
     selection_note: &cput_design_sel "CPUT's design pages say the mainstream design diplomas add portfolio or entrance test requirements to the minimums."
@@ -1523,6 +1626,7 @@ programmes:
 
   - id: dip_jewellery_design_manufacture   # D3JEWD
     name: "Diploma in Jewellery Design and Manufacture"
+    faculty: "Faculty of Informatics and Design"
     fields: [arts_and_design]
     selective: true
     selection_note: *cput_design_sel
@@ -1537,6 +1641,7 @@ programmes:
 
   - id: dip_product_design                 # D3PRDS
     name: "Diploma in Product Design"
+    faculty: "Faculty of Informatics and Design"
     fields: [arts_and_design]
     selective: true
     selection_note: *cput_design_sel
@@ -1551,6 +1656,7 @@ programmes:
 
   - id: dip_visual_communication_design    # D3VCOD
     name: "Diploma in Visual Communication Design"
+    faculty: "Faculty of Informatics and Design"
     fields: [arts_and_design]
     selective: true
     selection_note: *cput_design_sel
@@ -1566,6 +1672,7 @@ programmes:
   # The design extended programmes have no course page of their own; the department names them "ECP Fashion" and so on.
   - id: design_ecp_fashion
     name: "Design Extended Curriculum Programme: Fashion"
+    faculty: "Faculty of Informatics and Design"
     fields: [arts_and_design]
     selective: true
     selection_note: &cput_design_ecp_sel "You submit a portfolio. The programme is for applicants who meet the mainstream minimums but may not meet its extra portfolio or entrance test requirements."
@@ -1584,6 +1691,7 @@ programmes:
 
   - id: design_ecp_jewellery
     name: "Design Extended Curriculum Programme: Jewellery Design and Manufacture"
+    faculty: "Faculty of Informatics and Design"
     fields: [arts_and_design]
     selective: true
     selection_note: *cput_design_ecp_sel
@@ -1598,6 +1706,7 @@ programmes:
 
   - id: design_ecp_product_design
     name: "Design Extended Curriculum Programme: Product Design"
+    faculty: "Faculty of Informatics and Design"
     fields: [arts_and_design]
     selective: true
     selection_note: *cput_design_ecp_sel
@@ -1612,6 +1721,7 @@ programmes:
 
   - id: design_ecp_visual_communication
     name: "Design Extended Curriculum Programme: Visual Communication Design"
+    faculty: "Faculty of Informatics and Design"
     fields: [arts_and_design]
     selective: true
     selection_note: *cput_design_ecp_sel
@@ -1626,46 +1736,55 @@ programmes:
 
   - id: dip_ict_applications_development   # DPICTA
     name: "Diploma in ICT in Applications Development"
+    faculty: "Faculty of Informatics and Design"
     fields: [computing]
     requirements: null
 
   - id: dip_ict_multimedia_applications    # D3ICTM
     name: "Diploma in ICT in Multimedia Applications"
+    faculty: "Faculty of Informatics and Design"
     fields: [computing]
     requirements: null
 
   - id: dip_ict_communication_networks     # DPICTC
     name: "Diploma in ICT in Communication Networks"
+    faculty: "Faculty of Informatics and Design"
     fields: [computing]
     requirements: null
 
   - id: hc_ict                             # HCINCT
     name: "Higher Certificate in Information and Communication Technology"
+    faculty: "Faculty of Informatics and Design"
     fields: [computing]
     requirements: null
 
   - id: dip_public_relations_communication # D3PRCN
     name: "Diploma in Public Relations and Communication"
+    faculty: "Faculty of Informatics and Design"
     fields: [languages_and_communication]
     requirements: null
 
   - id: dip_film_production                # D3FMPD
     name: "Diploma in Film Production"
+    faculty: "Faculty of Informatics and Design"
     fields: [arts_and_design]
     requirements: null
 
   - id: dip_journalism                     # D3JURN
     name: "Diploma in Journalism"
+    faculty: "Faculty of Informatics and Design"
     fields: [languages_and_communication]
     requirements: null
 
   - id: dip_photography                    # D3PHGY
     name: "Diploma in Photography"
+    faculty: "Faculty of Informatics and Design"
     fields: [arts_and_design]
     requirements: null
 
   - id: dip_urban_regional_planning        # D3URPG
     name: "Diploma in Urban and Regional Planning"
+    faculty: "Faculty of Informatics and Design"
     fields: [built_environment]
     requirements: null
 

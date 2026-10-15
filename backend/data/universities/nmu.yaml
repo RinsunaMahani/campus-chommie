@@ -49,6 +49,7 @@ programmes:
   # page 22
   - id: hcert_accountancy
     name: "Higher Certificate in Accountancy"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [accounting, finance]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -68,6 +69,7 @@ programmes:
   # page 22
   - id: hcert_business_studies
     name: "Higher Certificate in Business Studies"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [commerce, management]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -87,6 +89,7 @@ programmes:
   # page 23
   - id: dip_accountancy
     name: "Diploma in Accountancy"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [accounting, finance]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -107,6 +110,7 @@ programmes:
   # page 23
   - id: dip_economics
     name: "Diploma in Economics"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [economics, commerce]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -125,6 +129,7 @@ programmes:
   # page 24
   - id: dip_economics_ecp
     name: "Diploma in Economics (Extended Curriculum)"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [economics, commerce]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -145,6 +150,7 @@ programmes:
   # page 24
   - id: dip_human_resource_management
     name: "Diploma in Human Resource Management"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [management, commerce]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -164,6 +170,7 @@ programmes:
   # page 24
   - id: dip_human_resource_management_ecp
     name: "Diploma in Human Resource Management (Extended Curriculum)"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [management, commerce]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -182,6 +189,7 @@ programmes:
   # page 25
   - id: dip_inventory_stores_management
     name: "Diploma in Inventory and Stores Management"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [management, commerce]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -200,6 +208,7 @@ programmes:
   # page 25
   - id: dip_logistics
     name: "Diploma in Logistics"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [management, commerce]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -219,6 +228,7 @@ programmes:
   # page 25
   - id: dip_logistics_ecp
     name: "Diploma in Logistics (Extended Curriculum)"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [management, commerce]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -239,6 +249,7 @@ programmes:
   # page 26
   - id: dip_management
     name: "Diploma in Management"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [management, commerce]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -259,6 +270,7 @@ programmes:
   # page 26
   - id: dip_management_ecp
     name: "Diploma in Management (Extended Curriculum)"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [management, commerce]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -280,6 +292,7 @@ programmes:
   # page 27
   - id: dip_marketing
     name: "Diploma in Marketing"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [management, commerce]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -299,6 +312,7 @@ programmes:
   # page 27
   - id: dip_marketing_ecp
     name: "Diploma in Marketing (Extended Curriculum)"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [management, commerce]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -320,6 +334,7 @@ programmes:
   # page 28
   - id: dip_tourism_management
     name: "Diploma in Tourism Management"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [tourism_and_hospitality, management]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -339,6 +354,7 @@ programmes:
   # page 28
   - id: dip_tourism_management_ecp
     name: "Diploma in Tourism Management (Extended Curriculum)"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [tourism_and_hospitality, management]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -360,6 +376,7 @@ programmes:
   # page 32
   - id: bcom_general_economics
     name: "Bachelor of Commerce: General (Economics)"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [economics, commerce]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -371,6 +388,7 @@ programmes:
   # page 32
   - id: bcom_general_economics_ecp
     name: "Bachelor of Commerce: General (Economics) (Extended Curriculum)"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [economics, commerce]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -384,6 +402,7 @@ programmes:
   # page 33
   - id: bcom_general_accounting
     name: "Bachelor of Commerce: General (Accounting)"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [accounting, commerce]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -397,6 +416,7 @@ programmes:
   # page 33
   - id: bcom_general_accounting_ecp
     name: "Bachelor of Commerce: General (Accounting) (Extended Curriculum)"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [accounting, commerce]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -410,6 +430,7 @@ programmes:
   # page 34
   - id: bcom_general_business_management
     name: "Bachelor of Commerce: General (Business Management)"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [management, commerce]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -422,6 +443,7 @@ programmes:
   # page 34
   - id: bcom_general_business_management_ecp
     name: "Bachelor of Commerce: General (Business Management) (Extended Curriculum)"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [management, commerce]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -435,6 +457,7 @@ programmes:
   # page 34
   - id: bcom_financial_planning
     name: "Bachelor of Commerce (Financial Planning)"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [finance, commerce]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -446,6 +469,7 @@ programmes:
   # page 35
   - id: bcom_financial_planning_ecp
     name: "Bachelor of Commerce (Financial Planning) (Extended Curriculum)"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [finance, commerce]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -458,6 +482,7 @@ programmes:
   # page 36
   - id: bcom_general_tourism
     name: "Bachelor of Commerce: General (Tourism)"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [tourism_and_hospitality, commerce]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -475,6 +500,7 @@ programmes:
   # page 36
   - id: bcom_general_tourism_ecp
     name: "Bachelor of Commerce: General (Tourism) (Extended Curriculum)"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [tourism_and_hospitality, commerce]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -494,6 +520,7 @@ programmes:
   # page 36
   - id: bcom_marketing_business_management
     name: "Bachelor of Commerce (Marketing and Business Management)"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [management, commerce]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -505,6 +532,7 @@ programmes:
   # page 37
   - id: bcom_hospitality_management
     name: "Bachelor of Commerce (Hospitality Management)"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [tourism_and_hospitality, management]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -522,6 +550,7 @@ programmes:
   # page 37
   - id: bcom_general_statistics
     name: "Bachelor of Commerce: General (Statistics)"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [mathematical_sciences, commerce]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -533,6 +562,7 @@ programmes:
   # page 38
   - id: bcom_accounting
     name: "Bachelor of Commerce (Accounting)"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [accounting, finance]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -546,6 +576,7 @@ programmes:
   # page 38
   - id: bcom_computer_science_information_systems
     name: "Bachelor of Commerce (Computer Science and Information Systems)"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [computing, commerce]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -557,6 +588,7 @@ programmes:
   # page 38
   - id: bcom_economics_statistics
     name: "Bachelor of Commerce (Economics and Statistics)"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [economics, mathematical_sciences]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -568,6 +600,7 @@ programmes:
   # page 39
   - id: bcom_industrial_psychology_hrm
     name: "Bachelor of Commerce (Industrial Psychology and Human Resource Management)"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [management, commerce]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -579,6 +612,7 @@ programmes:
   # page 39
   - id: bcom_information_systems_business_management
     name: "Bachelor of Commerce: Information Systems (Business Management)"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [computing, management]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -590,6 +624,7 @@ programmes:
   # page 39
   - id: bcom_logistics_transport_economics
     name: "Bachelor of Commerce (Logistics and Transport Economics)"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [economics, management]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -601,6 +636,7 @@ programmes:
   # page 40
   - id: bcom_food_service_management
     name: "Bachelor of Commerce (Food Service Management)"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [management, food_science]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -612,6 +648,7 @@ programmes:
   # page 40
   - id: bcom_accounting_science_economics_business_management
     name: "Bachelor of Commerce: Accounting Science (Economics or Business Management)"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [accounting, finance]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -624,6 +661,7 @@ programmes:
   # page 41
   - id: bcom_accounting_science_law
     name: "Bachelor of Commerce: Accounting Science (Law)"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [accounting, law]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -637,6 +675,7 @@ programmes:
   # page 41
   - id: bcom_accounting_science_computer_science
     name: "Bachelor of Commerce: Accounting Science (Computer Science and Information Systems)"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [accounting, computing]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -649,6 +688,7 @@ programmes:
   # page 42
   - id: ba_human_resource_management
     name: "Bachelor of Arts (Human Resource Management)"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [management, humanities]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -666,6 +706,7 @@ programmes:
   # page 43
   - id: ba_development_studies
     name: "Bachelor of Arts (Development Studies)"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [economics, humanities]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -686,6 +727,7 @@ programmes:
   # page 46
   - id: bed_foundation_phase
     name: "Bachelor of Education: Foundation Phase (Grades R to 3)"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -707,6 +749,7 @@ programmes:
   # page 46
   - id: bed_intermediate_phase
     name: "Bachelor of Education: Intermediate Phase (Grades 4 to 6)"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -728,6 +771,7 @@ programmes:
   # page 47
   - id: bed_sp_fet_commerce
     name: "Bachelor of Education: Senior Phase and Further Education and Training (Commerce stream)"
+    faculty: "Faculty of Education"
     fields: [education, commerce]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -742,6 +786,7 @@ programmes:
   # page 48
   - id: bed_sp_fet_science
     name: "Bachelor of Education: Senior Phase and Further Education and Training (Science stream)"
+    faculty: "Faculty of Education"
     fields: [education, natural_sciences]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -756,6 +801,7 @@ programmes:
   # page 48
   - id: bed_sp_fet_humanities
     name: "Bachelor of Education: Senior Phase and Further Education and Training (Humanities stream)"
+    faculty: "Faculty of Education"
     fields: [education, humanities]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -783,6 +829,7 @@ programmes:
   # page 54
   - id: hcert_mechatronic_engineering
     name: "Higher Certificate in Mechatronic Engineering"
+    faculty: "Faculty of Engineering, the Built Environment and Technology"
     fields: [engineering]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -804,6 +851,7 @@ programmes:
   # page 54
   - id: hcert_renewable_energy_engineering
     name: "Higher Certificate in Renewable Energy Engineering"
+    faculty: "Faculty of Engineering, the Built Environment and Technology"
     fields: [engineering]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -825,6 +873,7 @@ programmes:
   # page 57
   - id: beng_mechatronics
     name: "Bachelor of Engineering (Mechatronics)"
+    faculty: "Faculty of Engineering, the Built Environment and Technology"
     fields: [engineering]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -838,6 +887,7 @@ programmes:
   # page 58
   - id: bengtech_electrical
     name: "Bachelor of Engineering Technology (Electrical Engineering)"
+    faculty: "Faculty of Engineering, the Built Environment and Technology"
     fields: [engineering]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -859,6 +909,7 @@ programmes:
   # page 59
   - id: bengtech_industrial
     name: "Bachelor of Engineering Technology (Industrial Engineering)"
+    faculty: "Faculty of Engineering, the Built Environment and Technology"
     fields: [engineering]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -880,6 +931,7 @@ programmes:
   # page 59
   - id: bengtech_mechanical
     name: "Bachelor of Engineering Technology (Mechanical Engineering)"
+    faculty: "Faculty of Engineering, the Built Environment and Technology"
     fields: [engineering]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -901,6 +953,7 @@ programmes:
   # page 60
   - id: bengtech_marine
     name: "Bachelor of Engineering Technology (Marine Engineering)"
+    faculty: "Faculty of Engineering, the Built Environment and Technology"
     fields: [engineering]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -922,6 +975,7 @@ programmes:
   # page 61
   - id: dip_architectural_technology
     name: "Diploma in Architectural Technology"
+    faculty: "Faculty of Engineering, the Built Environment and Technology"
     fields: [built_environment, arts_and_design]
     selective: true
     selection_note: "Qualifying applicants prepare a prescribed portfolio and attend an interview."
@@ -943,6 +997,7 @@ programmes:
   # page 62
   - id: dip_interior_design
     name: "Diploma in Interior Design"
+    faculty: "Faculty of Engineering, the Built Environment and Technology"
     fields: [arts_and_design, built_environment]
     selective: true
     selection_note: "Departmental selection: a creative portfolio (drawings, sketches and other creative or technical projects) and an interview about it."
@@ -964,6 +1019,7 @@ programmes:
   # page 66
   - id: bas_architecture
     name: "Bachelor of Architectural Studies"
+    faculty: "Faculty of Engineering, the Built Environment and Technology"
     fields: [built_environment, arts_and_design]
     selective: true
     selection_note: "Selection is based on a creative portfolio, an interview with the department's selection committee and a discussion of the portfolio."
@@ -978,6 +1034,7 @@ programmes:
   # page 67
   - id: dip_building
     name: "Diploma in Building"
+    faculty: "Faculty of Engineering, the Built Environment and Technology"
     fields: [built_environment]
     selective: true
     selection_note: "Limited places: departmental selection based on academic merit."
@@ -999,6 +1056,7 @@ programmes:
   # page 69
   - id: bsc_construction_economics
     name: "Bachelor of Science in Construction Economics"
+    faculty: "Faculty of Engineering, the Built Environment and Technology"
     fields: [built_environment, economics]
     selective: true
     selection_note: "Limited places: departmental selection based on academic merit."
@@ -1014,6 +1072,7 @@ programmes:
   # page 69
   - id: bsc_construction_management
     name: "Bachelor of Science (Construction Management)"
+    faculty: "Faculty of Engineering, the Built Environment and Technology"
     fields: [built_environment, management]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -1026,6 +1085,7 @@ programmes:
   # page 70
   - id: bhsd_human_settlement_development
     name: "Bachelor of Human Settlement Development"
+    faculty: "Faculty of Engineering, the Built Environment and Technology"
     fields: [built_environment, public_administration]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -1044,6 +1104,7 @@ programmes:
   # page 70
   - id: bengtech_civil
     name: "Bachelor of Engineering Technology (Civil Engineering)"
+    faculty: "Faculty of Engineering, the Built Environment and Technology"
     fields: [engineering, built_environment]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -1065,6 +1126,7 @@ programmes:
   # page 71
   - id: hcert_it_user_support_services
     name: "Higher Certificate in Information Technology (User Support Services)"
+    faculty: "Faculty of Engineering, the Built Environment and Technology"
     fields: [computing]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -1085,6 +1147,7 @@ programmes:
   # page 71
   - id: dip_it_software_development
     name: "Diploma in Information Technology (Software Development)"
+    faculty: "Faculty of Engineering, the Built Environment and Technology"
     fields: [computing]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -1103,6 +1166,7 @@ programmes:
   # page 71
   - id: dip_it_communication_networks
     name: "Diploma in Information Technology (Communication Networks)"
+    faculty: "Faculty of Engineering, the Built Environment and Technology"
     fields: [computing]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -1121,6 +1185,7 @@ programmes:
   # page 72
   - id: dip_it_support_services
     name: "Diploma in Information Technology (Support Services)"
+    faculty: "Faculty of Engineering, the Built Environment and Technology"
     fields: [computing]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -1140,6 +1205,7 @@ programmes:
   # page 72
   - id: bit
     name: "Bachelor of Information Technology"
+    faculty: "Faculty of Engineering, the Built Environment and Technology"
     fields: [computing]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -1158,6 +1224,7 @@ programmes:
   # page 76
   - id: b_environmental_health
     name: "Bachelor of Environmental Health"
+    faculty: "Faculty of Health Sciences"
     fields: [environmental_health]
     selective: true
     selection_note: "Admission is subject to departmental selection."
@@ -1171,6 +1238,7 @@ programmes:
   # page 77
   - id: ba_psychology
     name: "Bachelor of Arts in Psychology"
+    faculty: "Faculty of Health Sciences"
     fields: [humanities, health_sciences]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -1190,6 +1258,7 @@ programmes:
   # page 78
   - id: bsw_social_work
     name: "Bachelor of Social Work"
+    faculty: "Faculty of Health Sciences"
     fields: [humanities, health_sciences]
     selective: true
     selection_note: "Admission is subject to departmental selection."
@@ -1212,6 +1281,7 @@ programmes:
   # page 79
   - id: bsc_dietetics
     name: "Bachelor of Science (Dietetics)"
+    faculty: "Faculty of Health Sciences"
     fields: [nutrition, health_sciences]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -1223,6 +1293,7 @@ programmes:
   # page 80
   - id: dip_sport_management
     name: "Diploma in Sport Management"
+    faculty: "Faculty of Health Sciences"
     fields: [sport_science, management]
     selective: true
     selection_note: "Active participation in competitive sport approved by the department; preference goes to applicants who have excelled in sport or are extensively involved in it."
@@ -1244,6 +1315,7 @@ programmes:
   # page 80
   - id: bhms_human_movement_science
     name: "Bachelor of Human Movement Science"
+    faculty: "Faculty of Health Sciences"
     fields: [sport_science]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -1264,6 +1336,7 @@ programmes:
   # page 81
   - id: bhsc_biokinetics
     name: "Bachelor of Health Sciences in Biokinetics"
+    faculty: "Faculty of Health Sciences"
     fields: [sport_science, rehabilitation]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -1285,6 +1358,7 @@ programmes:
   # page 82
   - id: bachelor_of_nursing_ecp
     name: "Bachelor of Nursing (Extended Curriculum)"
+    faculty: "Faculty of Health Sciences"
     fields: [nursing]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -1308,6 +1382,7 @@ programmes:
   # page 82
   - id: bachelor_of_nursing
     name: "Bachelor of Nursing"
+    faculty: "Faculty of Health Sciences"
     fields: [nursing]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -1329,6 +1404,7 @@ programmes:
   # page 83
   - id: brad_diagnostic
     name: "Bachelor of Radiography in Diagnostic"
+    faculty: "Faculty of Health Sciences"
     fields: [radiography]
     selective: true
     selection_note: "Departmental selection; applicants referred for selection submit a satisfactory medical report. Final selection takes place in September."
@@ -1345,6 +1421,7 @@ programmes:
   # page 84
   - id: bemc_emergency_medical_care
     name: "Bachelor of Emergency Medical Care"
+    faculty: "Faculty of Health Sciences"
     fields: [emergency_care]
     selective: true
     selection_note: "Departmental selection, including an interview, a medical fitness report and a satisfactory physical assessment."
@@ -1367,6 +1444,7 @@ programmes:
   # page 84
   - id: bhsc_medical_laboratory_science
     name: "Bachelor of Health Sciences in Medical Laboratory Science"
+    faculty: "Faculty of Health Sciences"
     fields: [medical_sciences, health_sciences]
     selective: true
     selection_note: "Limited laboratory space: departmental selection based on academic merit, which may include an interview and/or a practical assessment."
@@ -1381,6 +1459,7 @@ programmes:
   # page 85
   - id: bpharm
     name: "Bachelor of Pharmacy"
+    faculty: "Faculty of Health Sciences"
     fields: [pharmacy]
     selective: true
     selection_note: "Limited places: departmental selection on merit, in the year before first year."
@@ -1396,6 +1475,7 @@ programmes:
   # page 86
   - id: mbchb
     name: "Bachelor of Medicine and Bachelor of Surgery"
+    faculty: "Faculty of Health Sciences"
     fields: [medicine]
     selective: true
     selection_note: "Limited places: the Medical Programme Selection Committee selects on academic and non-academic merit, considering applicants from non-fee-paying schools; meeting the minimums doesn't guarantee a place."
@@ -1414,6 +1494,7 @@ programmes:
   # page 90
   - id: bva_visual_art
     name: "Bachelor of Visual Art"
+    faculty: "Faculty of Humanities"
     fields: [arts_and_design]
     selective: true
     selection_note: "Departmental selection: a prescribed portfolio (the leading indicator) and an interview; numbers are limited."
@@ -1436,6 +1517,7 @@ programmes:
   # page 93
   - id: dipmus_curriculum_1
     name: "Diploma in Music (Curriculum 1)"
+    faculty: "Faculty of Humanities"
     fields: [music, performing_arts]
     selective: true
     selection_note: "Departmental selection based on an audition on your chosen First Instrument."
@@ -1457,6 +1539,7 @@ programmes:
   # page 93
   - id: dipmus_curriculum_2
     name: "Diploma in Music (Curriculum 2)"
+    faculty: "Faculty of Humanities"
     fields: [music, performing_arts]
     selective: true
     selection_note: "An audition on your chosen First Instrument."
@@ -1478,6 +1561,7 @@ programmes:
   # page 94
   - id: bmus_school_music
     name: "Bachelor of Music (School Music)"
+    faculty: "Faculty of Humanities"
     fields: [music, education]
     selective: true
     selection_note: "An audition on your chosen First Instrument and a music theory entrance test."
@@ -1499,6 +1583,7 @@ programmes:
   # page 94
   - id: bmus_school_music_ecp
     name: "Bachelor of Music (School Music) (Extended Curriculum)"
+    faculty: "Faculty of Humanities"
     fields: [music, education]
     selective: true
     selection_note: "Admission is subject to departmental selection."
@@ -1521,6 +1606,7 @@ programmes:
   # page 95
   - id: bmus_performing_arts
     name: "Bachelor of Music (Performing Arts)"
+    faculty: "Faculty of Humanities"
     fields: [music, performing_arts]
     selective: true
     selection_note: "An audition on your chosen First Instrument and a music theory entrance test."
@@ -1542,6 +1628,7 @@ programmes:
   # page 95
   - id: bmus_performing_arts_ecp
     name: "Bachelor of Music (Performing Arts) (Extended Curriculum)"
+    faculty: "Faculty of Humanities"
     fields: [music, performing_arts]
     selective: true
     selection_note: "Admission is subject to departmental selection."
@@ -1564,6 +1651,7 @@ programmes:
   # page 96
   - id: bmus_music_technology
     name: "Bachelor of Music (Music Technology)"
+    faculty: "Faculty of Humanities"
     fields: [music]
     selective: true
     selection_note: "An audition on your chosen First Instrument and a music theory entrance test."
@@ -1585,6 +1673,7 @@ programmes:
   # page 96
   - id: bmus_music_technology_ecp
     name: "Bachelor of Music (Music Technology) (Extended Curriculum)"
+    faculty: "Faculty of Humanities"
     fields: [music]
     selective: true
     selection_note: "Admission is subject to departmental selection."
@@ -1607,6 +1696,7 @@ programmes:
   # page 96
   - id: bmus_general
     name: "Bachelor of Music (General)"
+    faculty: "Faculty of Humanities"
     fields: [music]
     selective: true
     selection_note: "An audition on your chosen First Instrument and a music theory entrance test."
@@ -1628,6 +1718,7 @@ programmes:
   # page 97
   - id: bmus_general_ecp
     name: "Bachelor of Music (General) (Extended Curriculum)"
+    faculty: "Faculty of Humanities"
     fields: [music]
     selective: true
     selection_note: "Admission is subject to departmental selection."
@@ -1650,6 +1741,7 @@ programmes:
   # page 98
   - id: dip_public_relations_management
     name: "Diploma in Public Relations Management"
+    faculty: "Faculty of Humanities"
     fields: [languages_and_communication, management]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -1670,6 +1762,7 @@ programmes:
   # pages 99, 100 and 102
   - id: ba
     name: "Bachelor of Arts"
+    faculty: "Faculty of Humanities"
     fields: [humanities, languages_and_communication]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -1691,6 +1784,7 @@ programmes:
   # page 100
   - id: ba_media_communication_culture
     name: "Bachelor of Arts (Media, Communication and Culture)"
+    faculty: "Faculty of Humanities"
     fields: [languages_and_communication, humanities]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -1711,6 +1805,7 @@ programmes:
   # page 101
   - id: dip_public_management
     name: "Diploma in Public Management"
+    faculty: "Faculty of Humanities"
     fields: [public_administration]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -1730,6 +1825,7 @@ programmes:
   # page 101
   - id: dip_public_management_ecp
     name: "Diploma in Public Management (Extended Curriculum)"
+    faculty: "Faculty of Humanities"
     fields: [public_administration]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -1749,6 +1845,7 @@ programmes:
   # page 103
   - id: ba_politics_economics
     name: "Bachelor of Arts (Politics and Economics)"
+    faculty: "Faculty of Humanities"
     fields: [humanities, economics]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -1768,6 +1865,7 @@ programmes:
   # page 103
   - id: badmin_public_administration
     name: "Bachelor of Administration (Public Administration)"
+    faculty: "Faculty of Humanities"
     fields: [public_administration]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -1790,6 +1888,7 @@ programmes:
   # page 106
   - id: hcert_law_enforcement
     name: "Higher Certificate in Law Enforcement"
+    faculty: "Faculty of Law"
     fields: [safety_and_justice, law]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -1811,6 +1910,7 @@ programmes:
   # page 106
   - id: dip_law_enforcement
     name: "Diploma in Law Enforcement"
+    faculty: "Faculty of Law"
     fields: [safety_and_justice, law]
     selective: true
     selection_note: "Departmental selection according to the Faculty Management Committee's criteria."
@@ -1835,6 +1935,7 @@ programmes:
   # page 107
   - id: ba_law
     name: "Bachelor of Arts (Law)"
+    faculty: "Faculty of Law"
     fields: [law, humanities]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -1857,6 +1958,7 @@ programmes:
   # page 107
   - id: bcom_law
     name: "Bachelor of Commerce (Law)"
+    faculty: "Faculty of Law"
     fields: [law, commerce]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -1870,6 +1972,7 @@ programmes:
   # page 108
   - id: llb
     name: "Bachelor of Laws (LLB)"
+    faculty: "Faculty of Law"
     fields: [law]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -1882,6 +1985,7 @@ programmes:
   # page 109
   - id: llb_ecp
     name: "Bachelor of Laws (LLB) (Extended Curriculum)"
+    faculty: "Faculty of Law"
     fields: [law]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -1907,6 +2011,7 @@ programmes:
   # pages 112 and 122
   - id: dip_agricultural_management
     name: "Diploma in Agricultural Management"
+    faculty: "Faculty of Science"
     fields: [agriculture, management]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -1933,6 +2038,7 @@ programmes:
   # page 112
   - id: dip_analytical_chemistry
     name: "Diploma in Analytical Chemistry"
+    faculty: "Faculty of Science"
     fields: [physical_sciences]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -1945,6 +2051,7 @@ programmes:
   # page 112
   - id: dip_game_ranch_management
     name: "Diploma in Game Ranch Management"
+    faculty: "Faculty of Science"
     fields: [agriculture, earth_sciences]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -1963,6 +2070,7 @@ programmes:
   # page 113
   - id: dip_polymer_technology
     name: "Diploma in Polymer Technology"
+    faculty: "Faculty of Science"
     fields: [physical_sciences, engineering]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -1975,6 +2083,7 @@ programmes:
   # page 113
   - id: dip_chemical_process_technology
     name: "Diploma in Chemical Process Technology"
+    faculty: "Faculty of Science"
     fields: [physical_sciences, engineering]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -1988,6 +2097,7 @@ programmes:
   # page 115
   - id: bsc_biological_sciences
     name: "Bachelor of Science (Biological Sciences)"
+    faculty: "Faculty of Science"
     fields: [life_sciences, natural_sciences]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -1999,6 +2109,7 @@ programmes:
   # page 115
   - id: bsc_biological_sciences_ecp
     name: "Bachelor of Science (Biological Sciences) (Extended Curriculum)"
+    faculty: "Faculty of Science"
     fields: [life_sciences, natural_sciences]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -2011,6 +2122,7 @@ programmes:
   # page 116
   - id: bsc_biochem_chem_micro_physiology
     name: "Bachelor of Science (Biochemistry, Chemistry, Microbiology and Physiology)"
+    faculty: "Faculty of Science"
     fields: [life_sciences, physical_sciences]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -2022,6 +2134,7 @@ programmes:
   # page 116
   - id: bsc_biochem_chem_micro_physiology_ecp
     name: "Bachelor of Science (Biochemistry, Chemistry, Microbiology and Physiology) (Extended Curriculum)"
+    faculty: "Faculty of Science"
     fields: [life_sciences, physical_sciences]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -2034,6 +2147,7 @@ programmes:
   # page 116
   - id: bsc_environmental_sciences
     name: "Bachelor of Science (Environmental Sciences)"
+    faculty: "Faculty of Science"
     fields: [earth_sciences, natural_sciences]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -2045,6 +2159,7 @@ programmes:
   # page 116
   - id: bsc_environmental_sciences_ecp
     name: "Bachelor of Science (Environmental Sciences) (Extended Curriculum)"
+    faculty: "Faculty of Science"
     fields: [earth_sciences, natural_sciences]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -2057,6 +2172,7 @@ programmes:
   # page 117
   - id: bsc_geosciences
     name: "Bachelor of Science (Geosciences: Geology and Geography)"
+    faculty: "Faculty of Science"
     fields: [earth_sciences]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -2068,6 +2184,7 @@ programmes:
   # page 117
   - id: bsc_geosciences_ecp
     name: "Bachelor of Science (Geosciences: Geology and Geography) (Extended Curriculum)"
+    faculty: "Faculty of Science"
     fields: [earth_sciences]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -2080,6 +2197,7 @@ programmes:
   # pages 117 and 118
   - id: bsc_computer_science
     name: "Bachelor of Science (Computer Science)"
+    faculty: "Faculty of Science"
     fields: [computing, mathematical_sciences]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -2092,6 +2210,7 @@ programmes:
   # page 119
   - id: bsc_physical_science_mathematics
     name: "Bachelor of Science (Physical Science and Mathematics)"
+    faculty: "Faculty of Science"
     fields: [physical_sciences, mathematical_sciences]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -2105,6 +2224,7 @@ programmes:
   # page 122
   - id: dip_forestry
     name: "Diploma in Forestry"
+    faculty: "Faculty of Science"
     fields: [agriculture, earth_sciences]
     selective: true
     selection_note: "Admission is subject to departmental selection."
@@ -2132,6 +2252,7 @@ programmes:
   # page 123
   - id: dip_nature_conservation
     name: "Diploma in Nature Conservation"
+    faculty: "Faculty of Science"
     fields: [earth_sciences, life_sciences]
     selective: true
     selection_note: "Admission is subject to departmental selection."
@@ -2157,6 +2278,7 @@ programmes:
   # page 123
   - id: dip_wood_technology
     name: "Diploma in Wood Technology"
+    faculty: "Faculty of Science"
     fields: [agriculture, engineering]
     selective: true
     selection_note: "Admission is subject to departmental selection."
@@ -2181,6 +2303,7 @@ programmes:
   # page 130
   - id: bcom_general_george
     name: "Bachelor of Commerce: General (George Campus)"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [commerce, economics, accounting]
     requirements:
       source: s-nmu-ug-guide-2027
@@ -2193,6 +2316,7 @@ programmes:
   # page 133
   - id: bcom_general_business_management_iop
     name: "Bachelor of Commerce: General (Business Management and Industrial and Organisational Psychology)"
+    faculty: "Faculty of Business and Economic Sciences"
     fields: [management, commerce]
     requirements:
       source: s-nmu-ug-guide-2027
