@@ -3,6 +3,10 @@
 # Agent draft, read on 13 Oct 2026 (docs/research/universities.md). Stellenbosch selects on averages of
 # your marks, programme by programme, not on a points score: no points rule yet. Nobody has checked these
 # values yet: release stays false until a person has compared every one with its source.
+#
+# The 73 programmes (agent draft, 15 Oct 2026) come from SU's 2026 NSC/IEB undergraduate prospectus, the newest we
+# could read: the 2027 edition sits on files.su.ac.za, whose robots.txt answered 403, so a person must download it and
+# compare every figure; docs/research/su.md says what was read, what was left out and what to check first.
 
 university: su
 name: Stellenbosch University
@@ -27,7 +31,1218 @@ applications:
       closes: 2026-07-31
       note: "The Diploma in Public Accountability closes on 15 December 2026."
 
-programmes: []
+programmes:
+
+  # Every requirement below (except the BEng extended programmes) is from SU's 2026 prospectus, pages 2 to 15. SU
+  # says all its programmes are selection programmes: it gets more applications than it has places, and meeting the
+  # minimums doesn't guarantee a place (prospectus, page 2). Averages exclude Life Orientation; the app can't check
+  # an average yet, so each one is in extras. Where SU names "English or Afrikaans", the pack's either/or uses english
+  # or other_language, and other_language only counts if it is Afrikaans (said in extras).
+
+  # Faculty of AgriSciences (prospectus pages 2 to 4)
+
+  - id: bagric_agribusiness_management
+    name: "BAgric in Agribusiness Management"
+    fields: [agriculture, management, economics]
+    selective: true
+    selection_note: &su_sel "SU selects among applicants who meet the minimums, by each faculty's selection guidelines; meeting them doesn't guarantee a place."
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {mathematics: 60, physical_sciences: 50}
+      choices: &su_lang_ea
+        - one_of:
+            - subjects: {english: 4}
+            - subjects: {other_language: 4}
+      extras:
+        - &su_2026 "From SU's 2026 prospectus, the newest we could read: check SU's 2027 prospectus before you rely on these figures."
+        - &su_avg60 "SU asks for an NSC average of at least 60%, without Life Orientation. The app can't check averages yet."
+        - &su_lang_ea_text "English or Afrikaans (Home Language or First Additional Language) at 50% or more."
+        - "Physical Sciences means Physics and Chemistry. The programme takes three years."
+
+  - id: bscagric_agricultural_economics
+    name: "BScAgric in Agricultural Economics"
+    fields: [agriculture, economics]
+    selective: true
+    selection_note: *su_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {mathematics: 60, physical_sciences: 50}
+      choices: *su_lang_ea
+      extras:
+        - *su_2026
+        - *su_avg60
+        - *su_lang_ea_text
+        - "Fields of study: Agricultural Economic Analysis; Agricultural Economic Analysis and Management (with or without Food Science); Agricultural Economics with Food Science. Four years."
+
+  - id: bagric_agricultural_production_management_elsenburg
+    name: "BAgric in Agricultural Production and Management: Elsenburg"
+    fields: [agriculture]
+    selective: true
+    selection_note: *su_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      choices:
+        - one_of:
+            - subjects: {english: 4}
+            - subjects: {other_language: 4}
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {mathematical_literacy: 5}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+      extras:
+        - *su_2026
+        - "SU asks for an NSC average of at least 55%, without Life Orientation. The app can't check averages yet."
+        - *su_lang_ea_text
+        - "Mathematics 50% or Mathematical Literacy 60%; and Physical Sciences, Life Sciences or Agricultural Sciences at 50%."
+        - "Offered with the Elsenburg Agricultural Training Institute: students live and train on the Elsenburg campus. Three years."
+
+  - id: bscfor_forestry_natural_resources
+    name: "BSc in Forestry (Forestry and Wood Sciences): Forestry and Natural Resources Sciences"
+    fields: [agriculture, natural_sciences]
+    selective: true
+    selection_note: *su_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {mathematics: 60, physical_sciences: 50}
+      choices: *su_lang_ea
+      extras:
+        - *su_2026
+        - *su_avg60
+        - *su_lang_ea_text
+        - "Four years."
+
+  - id: bscfor_wood_products
+    name: "BSc in Forestry (Forestry and Wood Sciences): Wood and Wood Products Sciences"
+    fields: [agriculture, natural_sciences]
+    selective: true
+    selection_note: *su_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {mathematics: 70, physical_sciences: 60}
+      choices: *su_lang_ea
+      extras:
+        - *su_2026
+        - *su_avg60
+        - *su_lang_ea_text
+        - "Four years."
+
+  - id: bscagric_plant_soil_science
+    name: "BScAgric in Plant and Soil Science"
+    fields: [agriculture, natural_sciences]
+    selective: true
+    selection_note: *su_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {mathematics: 60, physical_sciences: 50}
+      choices: *su_lang_ea
+      extras:
+        - *su_2026
+        - *su_avg60
+        - *su_lang_ea_text
+        - "SU's 2026 AgriSciences brochure asks Mathematics 70% for those taking Soil Science and Chemistry as majors."
+        - "Fields of study: Crop Production Systems (also with Agronomy, Agricultural Economics and Animal Science); Crop Protection and Breeding; Soil and Water Management. Four years."
+
+  - id: bscagric_viticulture_oenology
+    name: "BScAgric in Viticulture and Oenology"
+    fields: [agriculture, food_science]
+    selective: true
+    selection_note: *su_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {mathematics: 60, physical_sciences: 50}
+      choices: *su_lang_ea
+      extras:
+        - *su_2026
+        - *su_avg60
+        - *su_lang_ea_text
+        - "Four years."
+
+  - id: bscagric_animal_production_systems
+    name: "BScAgric in Animal Production Systems"
+    fields: [agriculture, life_sciences]
+    selective: true
+    selection_note: *su_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {mathematics: 60, physical_sciences: 50}
+      choices: *su_lang_ea
+      extras:
+        - *su_2026
+        - *su_avg60
+        - *su_lang_ea_text
+        - "Field of study: Animal Science. Four years."
+
+  - id: bsc_conservation_ecology
+    name: "BSc in Conservation Ecology"
+    fields: [natural_sciences, life_sciences, agriculture]
+    selective: true
+    selection_note: *su_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {mathematics: 60, physical_sciences: 50}
+      choices: *su_lang_ea
+      extras:
+        - *su_2026
+        - *su_avg60
+        - *su_lang_ea_text
+        - "Four years."
+
+  - id: bsc_food_science
+    name: "BSc in Food Science"
+    fields: [food_science, natural_sciences]
+    selective: true
+    selection_note: *su_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {mathematics: 60, physical_sciences: 50}
+      choices: *su_lang_ea
+      extras:
+        - *su_2026
+        - *su_avg60
+        - *su_lang_ea_text
+        - "Four years."
+
+  - id: agrisciences_extended
+    name: "AgriSciences extended curriculum programmes (one extra year)"
+    fields: [agriculture]
+    selective: true
+    selection_note: *su_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      # The lowest marks in either combination; the combinations themselves are in extras.
+      subject_min_percents: {mathematics: 55, physical_sciences: 45}
+      choices: *su_lang_ea
+      extras:
+        - *su_2026
+        - *su_avg60
+        - *su_lang_ea_text
+        - "You need one of two combinations: Mathematics 55% to 59.9% with Physical Sciences 50% or more; or Mathematics 60% or more with Physical Sciences 45% to 49.9%. The app checks only Mathematics 55% and Physical Sciences 45%."
+        - "For Wood and Wood Products Sciences: Mathematics 60% to 69.9% with Physical Sciences 60% or more; or Mathematics 70% or more with Physical Sciences 55% to 59.9%."
+        - "Every AgriSciences programme above has an extended version except the BAgric at Elsenburg and the BSc in Food Science."
+
+  - id: bdatsci
+    name: "Bachelor of Data Science (BDatSci)"
+    fields: [computing, mathematical_sciences]
+    selective: true
+    selection_note: *su_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {mathematics: 80}
+      choices:
+        - one_of:
+            - subjects: {english: 5}
+            - subjects: {other_language: 5}
+      extras:
+        - *su_2026
+        - "SU asks for an NSC average of at least 80%, without Life Orientation. The app can't check averages yet."
+        - "Afrikaans or English Home Language at 60%, or Afrikaans or English First Additional Language at 75%."
+        - "An interfaculty programme over four years. Focal areas: Statistical Genetics; Geoinformatics; Analytics and Optimisation; Behavioural Economics; Statistical Learning; Computer Science; Applied Mathematics; Statistical Physics."
+
+  # Faculty of Arts and Social Sciences (prospectus pages 4 to 6). The faculty also asks for at least 50% in each of
+  # four school subjects from its list; that is in extras.
+
+  - id: ba_humanities
+    name: "BA in Humanities"
+    fields: [humanities]
+    selective: true
+    selection_note: *su_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      choices: &su_hl50_fal40
+        - one_of:
+            - subjects: {english: 4, other_language: 3}
+            - subjects: {english: 3, other_language: 4}
+      extras:
+        - *su_2026
+        - &su_avg63 "SU asks for an NSC average of at least 63%, without Life Orientation. The app can't check averages yet."
+        - &su_hl50_fal40_text "Home Language at 50% or more and First Additional Language at 40% or more."
+        - &su_fass_four "You also need at least 50% in each of four school subjects from the faculty's list (it includes the languages, Mathematics or Mathematical Literacy, the sciences, History, Geography and the commerce subjects)."
+        - &su_socinf "If you take Socio-Informatics at university: Mathematics 50% or Mathematical Literacy 70%."
+        - "Routes: Human Thought, Language, Culture and Art; People and Society. Three years."
+
+  - id: ba_language_culture
+    name: "BA in Language and Culture"
+    fields: [humanities, languages_and_communication]
+    selective: true
+    selection_note: *su_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {english: 50, other_language: 50}
+      extras:
+        - *su_2026
+        - *su_avg63
+        - "Home Language and First Additional Language each at 50% or more."
+        - *su_fass_four
+        - "Three years."
+
+  - id: ba_development_environment
+    name: "BA in Development and the Environment"
+    fields: [humanities, earth_sciences]
+    selective: true
+    selection_note: *su_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      choices: *su_hl50_fal40
+      extras:
+        - *su_2026
+        - *su_avg63
+        - *su_hl50_fal40_text
+        - *su_fass_four
+        - *su_socinf
+        - "If you take Economics at university: Mathematics 60%. Three years."
+
+  - id: ba_human_resource_management
+    name: "BA in Human Resource Management"
+    fields: [humanities, management]
+    selective: true
+    selection_note: *su_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      choices:
+        - one_of:
+            - subjects: {english: 4, other_language: 3}
+            - subjects: {english: 3, other_language: 4}
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {mathematical_literacy: 6}
+      extras:
+        - *su_2026
+        - *su_avg63
+        - *su_hl50_fal40_text
+        - "Mathematics 50% or Mathematical Literacy 70%."
+        - *su_fass_four
+        - "Three years."
+
+  - id: ba_international_studies
+    name: "BA in International Studies"
+    fields: [humanities]
+    selective: true
+    selection_note: *su_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {english: 50}
+      extras:
+        - *su_2026
+        - *su_avg63
+        - "English Home Language at 50% or English First Additional Language at 60%."
+        - *su_fass_four
+        - "Three years."
+
+  - id: ba_ppe
+    name: "BA in Political, Philosophical and Economic Studies (PPE)"
+    fields: [humanities, economics]
+    selective: true
+    selection_note: *su_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {mathematics: 60}
+      choices: *su_hl50_fal40
+      extras:
+        - *su_2026
+        - *su_avg63
+        - *su_hl50_fal40_text
+        - *su_fass_four
+        - "Three years."
+
+  - id: ba_drama_theatre
+    name: "BA in Drama and Theatre Studies"
+    fields: [performing_arts]
+    selective: true
+    selection_note: "Auditions and/or interviews at the Drama Department in Stellenbosch during August."
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      choices:
+        - one_of:
+            - subjects: {english: 5, other_language: 4}
+            - subjects: {english: 4, other_language: 5}
+      extras:
+        - *su_2026
+        - "SU asks for an NSC average of at least 65%, without Life Orientation. The app can't check averages yet."
+        - "Home Language at 60% or more and First Additional Language at 50% or more."
+        - *su_fass_four
+        - "Routes: Acting and Performance Training; Technical and Management Training. Three years."
+
+  - id: ba_music
+    name: "BA in Music"
+    fields: [music]
+    selective: true
+    selection_note: &su_audition "An audition and a theory test at the Department of Music in Stellenbosch."
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      choices: *su_hl50_fal40
+      extras:
+        - *su_2026
+        - *su_avg60
+        - *su_hl50_fal40_text
+        - *su_fass_four
+        - &su_music_grade7 "Your main instrument (or singing) at a classical standard equal to the Grade VII practical examination, and theory equal to any examining body's Grade V."
+        - &su_music_maths "If you take Mathematics at university: Mathematics 70%."
+        - "Three years."
+
+  - id: bmus
+    name: "Bachelor of Music (BMus)"
+    fields: [music]
+    selective: true
+    selection_note: *su_audition
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      choices: *su_hl50_fal40
+      extras:
+        - *su_2026
+        - *su_avg60
+        - *su_hl50_fal40_text
+        - *su_fass_four
+        - *su_music_grade7
+        - *su_music_maths
+        - "Routes: Music Education; Musicology; Music Technology; Performance; Composition. Four years."
+
+  - id: dip_practical_music
+    name: "Diploma in Practical Music"
+    fields: [music]
+    selective: true
+    selection_note: *su_audition
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      additional_minimums: [3, 3, 3, 3]
+      extras:
+        - *su_2026
+        - "A National Senior Certificate with at least 40% in each of four school subjects, without Life Orientation."
+        - "Your main instrument (or singing) at a classical standard equal to the Grade VII practical examination, and theory equal to any examining body's Grade III or IV."
+        - "Three years."
+
+  - id: hc_music
+    name: "Higher Certificate in Music"
+    fields: [music]
+    selective: true
+    selection_note: "An audition."
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      extras:
+        - *su_2026
+        - "A National Senior Certificate."
+        - "Your main instrument (or singing) at a classical standard equal to the Grade V or VI practical examination, and theory equal to any examining body's Grade III or IV."
+        - "One year. It can prepare you for the Diploma in Practical Music or a music degree, if you meet their requirements."
+
+  - id: bsw
+    name: "Bachelor of Social Work"
+    fields: [humanities]
+    selective: true
+    places: 100
+    selection_note: *su_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {english: 50, other_language: 50}
+      extras:
+        - *su_2026
+        - *su_avg63
+        - "Home Language and First Additional Language each at 50% or more."
+        - *su_fass_four
+        - "Four years."
+
+  - id: ba_visual_arts
+    name: "BA in Visual Arts"
+    fields: [arts_and_design]
+    selective: true
+    places: 60
+    selection_note: "A prescribed portfolio of art, handed in by 1 September."
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      choices: *su_hl50_fal40
+      extras:
+        - *su_2026
+        - *su_avg60
+        - *su_hl50_fal40_text
+        - *su_fass_four
+        - "Routes: Fine Arts; Jewellery and Metal Design; Visual Communication Design. Four years."
+
+  - id: ba_extended
+    name: "BA extended curriculum programmes (four years)"
+    fields: [humanities]
+    selective: true
+    selection_note: "Available for the BA in Humanities, Language and Culture, Development and the Environment, Human Resource Management and International Studies. SU selects students for them at the faculty's discretion."
+    requirements: null
+
+  - id: dip_sustainable_development
+    name: "Diploma in Sustainable Development"
+    fields: [management, earth_sciences]
+    selective: true
+    selection_note: "A committee selects on a combined score: your NSC average and the interest and experience you show in the departmental application form."
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {english: 50}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {mathematical_literacy: 5}
+            - subjects: {mathematics: 3, business_studies: 5}
+            - subjects: {mathematics: 3, economics: 5}
+            - subjects: {mathematics: 3, accounting: 5}
+            - subjects: {mathematical_literacy: 4, business_studies: 5}
+            - subjects: {mathematical_literacy: 4, economics: 5}
+            - subjects: {mathematical_literacy: 4, accounting: 5}
+      extras:
+        - *su_2026
+        - "SU asks for an NSC average of at least 55%, without Life Orientation. The app can't check averages yet."
+        - "English Home Language at 50% or English First Additional Language at 60%."
+        - "Mathematics 50% or Mathematical Literacy 60%; or Mathematics 40% or Mathematical Literacy 50% with 60% in Business Studies, Economics or Accounting."
+        - "Taught in English. Three years."
+
+  # Faculty of Economic and Management Sciences (prospectus pages 6 to 9)
+
+  - id: bcom_economic_sciences
+    name: "BCom (Economic Sciences)"
+    fields: [commerce, economics]
+    selective: true
+    selection_note: *su_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {mathematics: 60}
+      choices: *su_lang_ea
+      extras:
+        - *su_2026
+        - &su_avg65 "SU asks for an NSC average of at least 65%, without Life Orientation. The app can't check averages yet."
+        - &su_ems_lang "English or Afrikaans Home Language at 50%, or Afrikaans or English First Additional Language at 70%."
+        - "The Econometrics and Financial Sector focal areas (and Actuarial Science 112) need Mathematics 70%."
+        - "Focal areas: Econometrics; Economic and Management Consultation; Financial Sector; Transport Economics. Three years."
+
+  - id: bcom_management_sciences
+    name: "BCom (Management Sciences)"
+    fields: [commerce, management]
+    selective: true
+    selection_note: *su_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {mathematics: 60}
+      choices: *su_lang_ea
+      extras:
+        - *su_2026
+        - *su_avg65
+        - *su_ems_lang
+        - "Focal areas: Agricultural Economics; Business Analytics; Entrepreneurship and Innovation Management; Financial Management; Financial Planning; Human Resource Management; Information Systems Management; Investment Management; Logistics and Supply Chain Management; Marketing Management; Public and Development Management. Three years."
+
+  - id: bcom_management_sciences_extended
+    name: "BCom (Management Sciences) Extended Curriculum Programme"
+    fields: [commerce, management]
+    selective: true
+    places: 100
+    selection_note: "About 100 students a year. Preference goes to applicants who also meet the socio-economic status requirements of SU's admission policy."
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {mathematics: 50}
+      choices: *su_lang_ea
+      extras:
+        - *su_2026
+        - *su_avg60
+        - *su_ems_lang
+        - "Only South African citizens can register. If you repeated any Grade 12 subject to improve your marks, you can't register for this programme. Four years."
+
+  - id: bcom_mathematical_sciences
+    name: "BCom (Mathematical Sciences)"
+    fields: [commerce, mathematical_sciences]
+    selective: true
+    selection_note: *su_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {mathematics: 75}
+      choices: *su_lang_ea
+      extras:
+        - *su_2026
+        - "SU asks for an NSC average of at least 70%, without Life Orientation. The app can't check averages yet."
+        - *su_ems_lang
+        - "Focal areas: Data Science; Financial Risk Management; Operations Research. Three years."
+
+  - id: bcom_international_business
+    name: "BCom (International Business)"
+    fields: [commerce, management]
+    selective: true
+    selection_note: "A limited number of students are chosen by a special selection process; you must meet set criteria to move on each year. The third year includes an international exchange semester."
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {mathematics: 70, english: 70}
+      extras:
+        - *su_2026
+        - "SU asks for an NSC average of at least 80%, without Life Orientation. The app can't check averages yet."
+        - "English Home Language at 70% or English First Additional Language at 80%."
+        - "Taught in English. Four years."
+
+  - id: bcom_actuarial_science
+    name: "BCom (Actuarial Science)"
+    fields: [finance, mathematical_sciences]
+    selective: true
+    selection_note: *su_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {mathematics: 80, english: 60}
+      extras:
+        - *su_2026
+        - "SU asks for an NSC average of at least 80%, without Life Orientation. The app can't check averages yet."
+        - "Home Language at 60%; if your Home Language isn't English, also English First Additional Language at 75%."
+        - "SU's 2026/2027 Actuarial Science brochure says you will most likely need Mathematics and an NSC average of at least 85% to be selected."
+        - "Three years."
+
+  - id: bcom_industrial_psychology
+    name: "BCom (Industrial Psychology)"
+    fields: [commerce, management]
+    selective: true
+    selection_note: *su_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {mathematics: 60}
+      choices: *su_lang_ea
+      extras:
+        - *su_2026
+        - *su_avg65
+        - *su_ems_lang
+        - "Three years."
+
+  - id: bacc
+    name: "BAcc"
+    fields: [accounting]
+    selective: true
+    selection_note: *su_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      choices:
+        - one_of:
+            - subjects: {english: 4}
+            - subjects: {other_language: 4}
+        - one_of:
+            - subjects: {mathematics: 6}
+            - subjects: {mathematics: 5, accounting: 6}
+      extras:
+        - *su_2026
+        - "SU asks for an NSC average of at least 70%, without Life Orientation. The app can't check averages yet."
+        - "Mathematics 70%, or Mathematics 60% with Accounting 70%."
+        - *su_ems_lang
+        - "The first step towards becoming a Chartered Accountant. Three years."
+
+  - id: bcom_management_accounting
+    name: "BCom (Management Accounting)"
+    fields: [accounting, commerce]
+    selective: true
+    selection_note: *su_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {mathematics: 60}
+      choices: *su_lang_ea
+      extras:
+        - *su_2026
+        - *su_avg65
+        - *su_ems_lang
+        - "Three years."
+
+  - id: bcom_financial_accounting
+    name: "BCom (Financial Accounting)"
+    fields: [accounting, commerce]
+    selective: true
+    selection_note: *su_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {mathematics: 60}
+      choices: *su_lang_ea
+      extras:
+        - *su_2026
+        - *su_avg65
+        - *su_ems_lang
+        - "Three years."
+
+  - id: dip_public_accountability
+    name: "Diploma in Public Accountability"
+    fields: [public_administration]
+    selective: false
+    requirements: null
+
+  # Faculty of Education (prospectus page 9)
+
+  - id: bed_foundation_phase
+    name: "BEd (Foundation Phase Education)"
+    fields: [education]
+    selective: true
+    places: 125
+    selection_note: &su_bed_sel "Only academic merit counts in selection."
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      choices: &su_bed_choices
+        - one_of:
+            - subjects: {english: 5, other_language: 4}
+            - subjects: {english: 4, other_language: 5}
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+      extras:
+        - *su_2026
+        - *su_avg60
+        - &su_bed_lang "Your language of teaching at school (English, Afrikaans or isiXhosa) as Home Language at 60%, and one of the other two (Home Language or First Additional Language) at 50%."
+        - &su_bed_maths "Mathematics 40% or Mathematical Literacy 60%."
+        - "Trains teachers for Grades R to 3. Four years."
+
+  - id: bed_intermediate_phase
+    name: "BEd (Intermediate Phase Education)"
+    fields: [education]
+    selective: true
+    places: 125
+    selection_note: *su_bed_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      choices: *su_bed_choices
+      extras:
+        - *su_2026
+        - *su_avg60
+        - *su_bed_lang
+        - *su_bed_maths
+        - "Teaching subjects: Natural Sciences needs Life Sciences or Physical Sciences at 50%; Social Sciences needs History or Geography at 50%."
+        - "Trains teachers for Grades 4 to 7. Four years."
+
+  # Faculty of Engineering (prospectus page 10). All BEng programmes share the same minimums and selection mark.
+
+  - id: beng_chemical
+    name: "BEng (Chemical)"
+    fields: [engineering]
+    selective: true
+    selection_note: &su_beng_sel "Selection mark = Mathematics % + Physical Sciences % + 6 × your average of the six best subjects (without Life Orientation), out of 800, from Grade 11 marks for a conditional offer and Grade 12 for the final one. In recent years 600 or more gave a good chance for some programmes; others needed 620 or more."
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: &su_beng_subjects {mathematics: 70, physical_sciences: 60, english: 50}
+      extras: &su_beng_extras
+        - *su_2026
+        - "SU asks for an NSC average of at least 70%, without Life Orientation. The app can't check averages yet."
+        - "English Home Language 50%; or English First Additional Language 60%; or English First Additional Language 50% with Afrikaans Home Language 50% or Afrikaans as an additional language at 60%."
+        - "Four years. Each BEng also has an extended version over five years (listed separately)."
+
+  - id: beng_civil
+    name: "BEng (Civil)"
+    fields: [engineering, built_environment]
+    selective: true
+    selection_note: *su_beng_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: *su_beng_subjects
+      extras: *su_beng_extras
+
+  - id: beng_electrical_electronic
+    name: "BEng (Electrical and Electronic)"
+    fields: [engineering]
+    selective: true
+    selection_note: *su_beng_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: *su_beng_subjects
+      extras: *su_beng_extras
+
+  - id: beng_electrical_electronic_data
+    name: "BEng (Electrical and Electronic) (Data Engineering)"
+    fields: [engineering, computing]
+    selective: true
+    selection_note: *su_beng_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: *su_beng_subjects
+      extras: *su_beng_extras
+
+  - id: beng_industrial
+    name: "BEng (Industrial)"
+    fields: [engineering]
+    selective: true
+    selection_note: *su_beng_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: *su_beng_subjects
+      extras: *su_beng_extras
+
+  - id: beng_mechanical
+    name: "BEng (Mechanical)"
+    fields: [engineering]
+    selective: true
+    selection_note: *su_beng_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: *su_beng_subjects
+      extras: *su_beng_extras
+
+  - id: beng_mechatronic
+    name: "BEng (Mechatronic)"
+    fields: [engineering]
+    selective: true
+    selection_note: *su_beng_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: *su_beng_subjects
+      extras: *su_beng_extras
+
+  - id: beng_extended
+    name: "BEng extended curriculum programmes (five years)"
+    fields: [engineering]
+    selective: true
+    selection_note: "You can't apply for these directly: applicants to a four-year BEng who aren't admitted are considered, with preference to students from underserved educational backgrounds."
+    requirements:
+      source: s-su-eng-faq-2027
+      min_points: null
+      subject_min_percents: {mathematics: 65, physical_sciences: 55, english: 50}
+      extras:
+        - "SU asks for an NSC average of at least 60% and a selection mark of at least 560 (Mathematics % + Physical Sciences % + 6 × your six-subject average, without Life Orientation). The app can't check these yet."
+        - "English Home Language 50%; or English First Additional Language 60%; or English First Additional Language 50% with Afrikaans Home Language 50% or Afrikaans First Additional Language 60%."
+        - "One extra year comes before the mainstream BEng curriculum (SU's Faculty of Engineering FAQ for the 2027 intake)."
+
+  # Faculty of Law (prospectus page 11). Selection: final Grade 11 (or Grade 12) results and NBT results, 80:20.
+  # The three-year LLB is a second degree and is left out.
+
+  - id: llb
+    name: "LLB (four-year)"
+    fields: [law]
+    selective: true
+    places: 120
+    selection_note: &su_law_sel "Ranked on your Grade 11 (or Grade 12) results and your National Benchmark Test results, 80:20. Write the NBTs before 31 July."
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      choices: &su_law_lang
+        - one_of:
+            - subjects: {english: 5}
+            - subjects: {other_language: 5}
+      extras:
+        - *su_2026
+        - &su_avg70 "SU asks for an NSC average of at least 70%, without Life Orientation. The app can't check averages yet."
+        - &su_law_lang_text "English or Afrikaans Home Language at 60%, or Afrikaans or English First Additional Language at 70%."
+        - "Write the NBT (AQL) before 31 July."
+        - &su_law_econ "If you take Economics at university: Mathematics 60%."
+
+  - id: ba_law
+    name: "BA (Law)"
+    fields: [law, humanities]
+    selective: true
+    places: 55
+    selection_note: *su_law_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      choices: *su_law_lang
+      extras:
+        - *su_2026
+        - *su_avg70
+        - *su_law_lang_text
+        - "Write the NBT (AQL) before 31 July."
+        - *su_law_econ
+        - "Three years; it gives entry to the two-year LLB."
+
+  - id: bcom_law
+    name: "BCom (Law)"
+    fields: [law, commerce]
+    selective: true
+    places: 80
+    selection_note: *su_law_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {mathematics: 60}
+      choices: *su_law_lang
+      extras:
+        - *su_2026
+        - *su_avg70
+        - *su_law_lang_text
+        - "Write the NBTs (AQL and MAT) before 31 July."
+        - "Three years; it gives entry to the two-year LLB."
+
+  - id: bacc_llb
+    name: "BAccLLB"
+    fields: [law, accounting]
+    selective: true
+    places: 35
+    selection_note: *su_law_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      choices:
+        - one_of:
+            - subjects: {english: 5}
+            - subjects: {other_language: 5}
+        - one_of:
+            - subjects: {mathematics: 6}
+            - subjects: {mathematics: 5, accounting: 6}
+      extras:
+        - *su_2026
+        - "SU asks for an NSC average of at least 80%, without Life Orientation. The app can't check averages yet."
+        - *su_law_lang_text
+        - "Mathematics 70%, or Mathematics 60% with Accounting 70%."
+        - "Write the NBTs (AQL and MAT) before 31 July. Five years."
+
+  # Faculty of Medicine and Health Sciences (prospectus page 12). Applicants still at school, or who finished
+  # school recently without further study, are selected on academic merit.
+
+  - id: mbchb
+    name: "MBChB"
+    fields: [medicine]
+    selective: true
+    selection_note: &su_fmhs_sel "Selected by the faculty's selection guidelines; current learners and recent school-leavers on academic merit."
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {mathematics: 60, physical_sciences: 50, life_sciences: 50}
+      extras:
+        - *su_2026
+        - "SU asks for an NSC average of at least 75%, without Life Orientation. The app can't check averages yet."
+        - "About 300 candidates are selected each year (2026 prospectus). Six years."
+
+  - id: bnursing
+    name: "Bachelor of Nursing"
+    fields: [nursing]
+    selective: true
+    selection_note: *su_fmhs_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {life_sciences: 50}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 6}
+      extras:
+        - *su_2026
+        - *su_avg60
+        - "Mathematics 40% or Mathematical Literacy 70%."
+        - "About 50 candidates are selected each year. Four years."
+
+  - id: bsc_dietetics
+    name: "BSc in Dietetics"
+    fields: [nutrition, health_sciences]
+    selective: true
+    selection_note: *su_fmhs_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {mathematics: 50, physical_sciences: 50, life_sciences: 50}
+      extras:
+        - *su_2026
+        - *su_avg60
+        - "About 35 candidates are selected each year. Four years."
+
+  - id: bot
+    name: "Bachelor of Occupational Therapy"
+    fields: [rehabilitation, health_sciences]
+    selective: true
+    selection_note: *su_fmhs_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {life_sciences: 50}
+      extras:
+        - *su_2026
+        - *su_avg60
+        - "Mathematics: the 2026 prospectus asks 40%, but SU's newer faculty leaflet seems to ask 50%. The app doesn't check it until this is confirmed."
+        - "About 50 candidates are selected each year. Four years."
+
+  - id: bsc_physiotherapy
+    name: "BSc in Physiotherapy"
+    fields: [rehabilitation, health_sciences]
+    selective: true
+    selection_note: *su_fmhs_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {mathematics: 60, physical_sciences: 50}
+      extras:
+        - *su_2026
+        - *su_avg60
+        - "About 55 candidates are selected each year. Four years."
+
+  - id: bslht
+    name: "Bachelor of Speech-Language and Hearing Therapy"
+    fields: [rehabilitation, health_sciences]
+    selective: true
+    selection_note: *su_fmhs_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {english: 60, other_language: 60}
+      choices:
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {life_sciences: 4}
+      extras:
+        - *su_2026
+        - *su_avg60
+        - "Physical Sciences or Life Sciences at 50%."
+        - "At least two of English, Afrikaans and a third South African language (Home Language or First Additional Language) at 60%."
+        - "SU's newer faculty leaflet seems to add Mathematics 50% or Mathematical Literacy 80%; the 2026 prospectus doesn't. The app doesn't check it until this is confirmed."
+        - "About 30 candidates are selected each year. Four years."
+
+  # Faculty of Science (prospectus pages 13 to 15). Selection mark: (Mathematics × 2 + five other subjects) ÷ 7.
+
+  - id: bsc_biodiversity_ecology
+    name: "BSc Biodiversity and Ecology"
+    fields: [life_sciences, natural_sciences]
+    selective: true
+    selection_note: &su_sci_sel "Selection mark = (Mathematics % × 2 + five other subjects, at least one of them English or Afrikaans, without Life Orientation) ÷ 7, from final Grade 11 marks if you're in Grade 12. The selection threshold is higher than the minimums."
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {mathematics: 60, physical_sciences: 50}
+      choices: *su_lang_ea
+      extras:
+        - *su_2026
+        - *su_avg65
+        - *su_lang_ea_text
+        - "Focal areas: Climate Change Ecology; Plant and Animal Biodiversity; Plants and Microbes. Three years."
+
+  - id: bsc_human_life_sciences
+    name: "BSc Human Life Sciences"
+    fields: [life_sciences, health_sciences]
+    selective: true
+    selection_note: *su_sci_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {mathematics: 60, physical_sciences: 50}
+      choices: *su_lang_ea
+      extras:
+        - *su_2026
+        - *su_avg65
+        - *su_lang_ea_text
+        - &su_sci_maths "Mathematics 70% if you take Mathematics and Physics in first year; 60% if you take Mathematics (Bio) and Physics (Bio)."
+        - "Focal areas: Biology; Biology with Psychology. Three years."
+
+  - id: bsc_molecular_biology_biotechnology
+    name: "BSc Molecular Biology and Biotechnology"
+    fields: [life_sciences]
+    selective: true
+    selection_note: *su_sci_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {mathematics: 60, physical_sciences: 50}
+      choices: *su_lang_ea
+      extras:
+        - *su_2026
+        - *su_avg65
+        - *su_lang_ea_text
+        - *su_sci_maths
+        - "Three years."
+
+  - id: bsc_sport_science
+    name: "BSc Sport Science"
+    fields: [sport_science]
+    selective: true
+    selection_note: *su_sci_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {mathematics: 60, physical_sciences: 50}
+      choices: *su_lang_ea
+      extras:
+        - *su_2026
+        - *su_avg65
+        - *su_lang_ea_text
+        - "Three years."
+
+  - id: bsc_chemistry
+    name: "BSc Chemistry"
+    fields: [physical_sciences]
+    selective: true
+    selection_note: *su_sci_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {mathematics: 70, physical_sciences: 50}
+      choices: *su_lang_ea
+      extras:
+        - *su_2026
+        - *su_avg65
+        - *su_lang_ea_text
+        - "Focal areas: Chemistry and Polymer Science; Chemical Biology; Applied and Sustainable Chemistry. Three years."
+
+  - id: bsc_earth_science
+    name: "BSc Earth Science"
+    fields: [earth_sciences]
+    selective: true
+    selection_note: *su_sci_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {mathematics: 60, physical_sciences: 50}
+      choices: *su_lang_ea
+      extras:
+        - *su_2026
+        - *su_avg65
+        - *su_lang_ea_text
+        - *su_sci_maths
+        - "Focal areas: Applied Earth Science; Geo-environmental Science. Three years."
+
+  - id: bsc_geoinformatics
+    name: "BSc GeoInformatics"
+    fields: [earth_sciences, computing]
+    selective: true
+    selection_note: *su_sci_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {mathematics: 60, physical_sciences: 50}
+      choices: *su_lang_ea
+      extras:
+        - *su_2026
+        - *su_avg65
+        - *su_lang_ea_text
+        - "Mathematics 70% if you choose Computer Science as a university subject. Three years."
+
+  - id: bsc_physics
+    name: "BSc Physics"
+    fields: [physical_sciences]
+    selective: true
+    selection_note: *su_sci_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {mathematics: 70, physical_sciences: 50}
+      choices: *su_lang_ea
+      extras:
+        - *su_2026
+        - *su_avg65
+        - *su_lang_ea_text
+        - "Focal areas: Laser Physics (Physical); Laser Physics (Biological); Theoretical Physics. Three years."
+
+  - id: bsc_mathematical_sciences
+    name: "BSc Mathematical Sciences"
+    fields: [mathematical_sciences]
+    selective: true
+    selection_note: *su_sci_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {mathematics: 70}
+      choices: *su_lang_ea
+      extras:
+        - *su_2026
+        - *su_avg65
+        - *su_lang_ea_text
+        - &su_sci_ps_if "If you take Chemistry or Physics at university: Physical Sciences 50%."
+        - "Focal areas: Applied Mathematics; Mathematics; Operations Research. Three years."
+
+  - id: bsc_computer_science
+    name: "BSc Computer Science"
+    fields: [computing, mathematical_sciences]
+    selective: true
+    selection_note: *su_sci_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {mathematics: 70}
+      choices: *su_lang_ea
+      extras:
+        - *su_2026
+        - *su_avg65
+        - *su_lang_ea_text
+        - *su_sci_ps_if
+        - "Focal areas: General Computer Science; Computer Systems; Data Science. Three years."
+
+  - id: bsc_interdisciplinary
+    name: "BSc (interdisciplinary programmes)"
+    fields: [natural_sciences, mathematical_sciences]
+    selective: true
+    selection_note: *su_sci_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      subject_min_percents: {mathematics: 70, physical_sciences: 50}
+      choices: *su_lang_ea
+      extras:
+        - *su_2026
+        - *su_avg65
+        - *su_lang_ea_text
+        - "Focal areas: Biomedical Mathematical Sciences; Applied Medicinal Chemistry; Bioinformatics and Computational Biology; Biomathematics. Three years."
+
+  - id: bsc_extended
+    name: "BSc extended curriculum programmes (four years)"
+    fields: [natural_sciences]
+    selective: true
+    selection_note: "A foundation year, then a mainstream BSc. SU offers these places in October, or on request in January, to applicants in its designated diversity and socio-economic categories who don't meet a BSc's selection requirements."
+    requirements: null
+
+  # Faculty of Theology (prospectus page 15)
+
+  - id: bth
+    name: "BTh (Bachelor of Theology)"
+    fields: [theology]
+    selective: true
+    selection_note: *su_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      extras:
+        - *su_2026
+        - *su_avg60
+        - "Three years."
+
+  - id: bdiv
+    name: "BDiv (Bachelor of Divinity)"
+    fields: [theology]
+    selective: true
+    selection_note: *su_sel
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      extras:
+        - *su_2026
+        - *su_avg60
+        - "The first step in ministerial training. Four years."
+
+  - id: theology_extended
+    name: "BTh and BDiv extended curriculum programme (one extra year)"
+    fields: [theology]
+    selective: true
+    selection_note: "Limited places; an interview with the Dean or a representative if required."
+    requirements:
+      source: s-su-prospectus-2026
+      min_points: null
+      extras:
+        - *su_2026
+        - "For an NSC average of at least 55% but below 60%, without Life Orientation. The app can't check averages yet."
+        - "The prospectus also mentions a motivational letter from your church or minister about your involvement and why they recommend you for Theology studies."
 
 sources:
   - id: s-su-howto
@@ -35,5 +1250,19 @@ sources:
     publisher: "Stellenbosch University"
     title: "How to apply: undergraduate programmes, 2027 intake"
     retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-su-prospectus-2026
+    url: "https://blogs.sun.ac.za/open-day/files/2025/02/Prospectus.pdf"
+    publisher: "Stellenbosch University"
+    title: "2026 Undergraduate Prospectus, NSC or IEB (pages 2 to 15); the newest we could read, as the 2027 edition is on a host whose robots.txt answered 403"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-su-eng-faq-2027
+    url: "https://blogs.sun.ac.za/open-day/files/2026/03/Faculty-FAQ-Eng.pdf"
+    publisher: "Stellenbosch University"
+    title: "Faculty of Engineering: frequently asked questions, 2027 intake (questions 5 and 9)"
+    retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
