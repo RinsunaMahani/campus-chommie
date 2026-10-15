@@ -57,6 +57,7 @@ programmes:
 
   - id: ba_media_studies
     name: "Bachelor of Arts (Media Studies)"
+    faculty: "Faculty of Humanities, Social Sciences and Education"
     fields: [humanities, languages_and_communication]
     requirements:
       source: s-univen-prospectus
@@ -70,6 +71,7 @@ programmes:
 
   - id: ba
     name: "Bachelor of Arts"
+    faculty: "Faculty of Humanities, Social Sciences and Education"
     fields: [humanities]
     requirements:
       source: s-univen-prospectus
@@ -78,6 +80,7 @@ programmes:
 
   - id: ba_development_studies
     name: "Bachelor of Arts (Development Studies)"
+    faculty: "Faculty of Humanities, Social Sciences and Education"
     fields: [humanities, economics]
     requirements:
       source: s-univen-prospectus
@@ -90,6 +93,7 @@ programmes:
 
   - id: b_indigenous_knowledge_systems
     name: "Bachelor of Indigenous Knowledge Systems"
+    faculty: "Faculty of Humanities, Social Sciences and Education"
     fields: [humanities]
     requirements:
       source: s-univen-prospectus
@@ -98,6 +102,7 @@ programmes:
 
   - id: ba_language_practice
     name: "Bachelor of Arts in Language Practice"
+    faculty: "Faculty of Humanities, Social Sciences and Education"
     fields: [humanities, languages_and_communication]
     requirements:
       source: s-univen-prospectus
@@ -108,6 +113,7 @@ programmes:
 
   - id: ba_english_literature
     name: "Bachelor of Arts (English Language and Literature)"
+    faculty: "Faculty of Humanities, Social Sciences and Education"
     fields: [humanities, languages_and_communication]
     requirements:
       source: s-univen-prospectus
@@ -116,6 +122,7 @@ programmes:
 
   - id: ba_international_relations
     name: "Bachelor of Arts in International Relations"
+    faculty: "Faculty of Humanities, Social Sciences and Education"
     fields: [humanities, public_administration]
     requirements:
       source: s-univen-prospectus
@@ -128,6 +135,7 @@ programmes:
 
   - id: ba_youth_development
     name: "Bachelor of Arts in Youth Development"
+    faculty: "Faculty of Humanities, Social Sciences and Education"
     fields: [humanities]
     requirements:
       source: s-univen-prospectus
@@ -136,6 +144,7 @@ programmes:
 
   - id: ba_history
     name: "Bachelor of Arts (History)"
+    faculty: "Faculty of Humanities, Social Sciences and Education"
     fields: [humanities]
     requirements:
       source: s-univen-prospectus
@@ -144,6 +153,7 @@ programmes:
 
   - id: b_theology
     name: "Bachelor of Theology"
+    faculty: "Faculty of Humanities, Social Sciences and Education"
     fields: [theology, humanities]
     requirements:
       source: s-univen-prospectus
@@ -153,6 +163,7 @@ programmes:
 
   - id: hcert_music
     name: "Higher Certificate in Music"
+    faculty: "Faculty of Humanities, Social Sciences and Education"
     fields: [music, performing_arts]
     requirements:
       source: s-univen-prospectus
@@ -163,6 +174,7 @@ programmes:
 
   - id: b_social_work
     name: "Bachelor of Social Work"
+    faculty: "Faculty of Humanities, Social Sciences and Education"
     fields: [humanities]
     selective: true
     requirements:
@@ -174,6 +186,7 @@ programmes:
 
   - id: bed_senior_phase_fet
     name: "Bachelor of Education in Senior Phase and Further Education and Training"
+    faculty: "Faculty of Humanities, Social Sciences and Education"
     fields: [education]
     selective: true
     requirements:
@@ -185,6 +198,7 @@ programmes:
 
   - id: bed_foundation_phase
     name: "Bachelor of Education in Foundation Phase Teaching"
+    faculty: "Faculty of Humanities, Social Sciences and Education"
     fields: [education]
     selective: true
     requirements:
@@ -202,6 +216,7 @@ programmes:
 
   - id: b_nursing
     name: "Bachelor of Nursing"
+    faculty: "Faculty of Health Sciences"
     fields: [nursing, health_sciences]
     selective: true
     requirements:
@@ -213,6 +228,7 @@ programmes:
 
   - id: bsc_nutrition
     name: "BSc in Nutrition"
+    faculty: "Faculty of Health Sciences"
     fields: [nutrition, health_sciences]
     requirements:
       source: s-univen-prospectus
@@ -225,6 +241,7 @@ programmes:
 
   - id: bsc_sport_exercise_science
     name: "BSc in Sports and Exercise Science"
+    faculty: "Faculty of Health Sciences"
     fields: [sport_science, health_sciences]
     requirements:
       source: s-univen-prospectus
@@ -233,6 +250,7 @@ programmes:
 
   - id: bsc_biokinetics
     name: "BSc in Biokinetics"
+    faculty: "Faculty of Health Sciences"
     fields: [rehabilitation, health_sciences, sport_science]
     selective: true
     requirements:
@@ -242,6 +260,7 @@ programmes:
 
   - id: bsc_recreation_leisure
     name: "BSc in Recreation and Leisure Studies"
+    faculty: "Faculty of Health Sciences"
     fields: [sport_science, health_sciences]
     requirements:
       source: s-univen-prospectus
@@ -250,6 +269,7 @@ programmes:
 
   - id: b_psychology
     name: "Bachelor of Psychology"
+    faculty: "Faculty of Health Sciences"
     fields: [health_sciences, humanities]
     selective: true
     selection_note: "Departmental selection test required."
@@ -262,6 +282,7 @@ programmes:
 
   - id: dip_nursing
     name: "Diploma in Nursing"
+    faculty: "Faculty of Health Sciences"
     fields: [nursing, health_sciences]
     selective: true
     requirements:
@@ -274,6 +295,7 @@ programmes:
 
   - id: badmin_public_admin
     name: "Bachelor of Admin in Public Administration"
+    faculty: "Faculty of Management, Commerce and Law"
     fields: [public_administration, management]
     requirements:
       source: s-univen-prospectus
@@ -283,6 +305,7 @@ programmes:
 
   - id: bcom_accounting_sciences
     name: "Bachelor of Commerce in Accounting Sciences"
+    faculty: "Faculty of Management, Commerce and Law"
     fields: [accounting, commerce, finance]
     selective: true
     requirements:
@@ -292,6 +315,7 @@ programmes:
 
   - id: bcom_tourism_management
     name: "Bachelor of Commerce in Tourism Management"
+    faculty: "Faculty of Management, Commerce and Law"
     fields: [tourism_and_hospitality, commerce]
     requirements:
       source: s-univen-prospectus
@@ -306,6 +330,7 @@ programmes:
 
   - id: bcom_accounting
     name: "Bachelor of Commerce in Accounting"
+    faculty: "Faculty of Management, Commerce and Law"
     fields: [accounting, commerce]
     requirements:
       source: s-univen-prospectus
@@ -318,6 +343,7 @@ programmes:
 
   - id: bcom_business_information_systems
     name: "Bachelor of Commerce in Business Information Systems"
+    faculty: "Faculty of Management, Commerce and Law"
     fields: [computing, commerce]
     requirements:
       source: s-univen-prospectus
@@ -332,6 +358,7 @@ programmes:
 
   - id: bcom_business_management
     name: "Bachelor of Commerce in Business Management"
+    faculty: "Faculty of Management, Commerce and Law"
     fields: [management, commerce]
     requirements:
       source: s-univen-prospectus
@@ -342,6 +369,7 @@ programmes:
 
   - id: bcom_cost_management_accounting
     name: "Bachelor of Commerce in Cost and Management Accounting"
+    faculty: "Faculty of Management, Commerce and Law"
     fields: [accounting, commerce, finance]
     requirements:
       source: s-univen-prospectus
@@ -354,6 +382,7 @@ programmes:
 
   - id: bcom_economics
     name: "Bachelor of Commerce in Economics"
+    faculty: "Faculty of Management, Commerce and Law"
     fields: [economics, commerce]
     requirements:
       source: s-univen-prospectus
@@ -368,6 +397,7 @@ programmes:
 
   - id: bcom_human_resource_management
     name: "Bachelor of Commerce in Human Resource Management"
+    faculty: "Faculty of Management, Commerce and Law"
     fields: [management, commerce]
     requirements:
       source: s-univen-prospectus
@@ -378,6 +408,7 @@ programmes:
 
   - id: bcom_industrial_psychology
     name: "Bachelor of Commerce in Industrial Psychology"
+    faculty: "Faculty of Management, Commerce and Law"
     fields: [commerce, humanities]
     requirements:
       source: s-univen-prospectus
@@ -390,6 +421,7 @@ programmes:
 
   - id: llb
     name: "Bachelor of Laws"
+    faculty: "Faculty of Management, Commerce and Law"
     fields: [law]
     selective: true
     requirements:
@@ -399,6 +431,7 @@ programmes:
 
   - id: ba_criminal_justice
     name: "Bachelor of Arts in Criminal Justice"
+    faculty: "Faculty of Management, Commerce and Law"
     fields: [safety_and_justice, law]
     requirements:
       source: s-univen-prospectus
@@ -409,6 +442,7 @@ programmes:
 
   - id: badmin_extended
     name: "Extended Bachelor of Administration"
+    faculty: "Faculty of Management, Commerce and Law"
     fields: [public_administration, management]
     requirements:
       source: s-univen-prospectus
@@ -419,6 +453,7 @@ programmes:
 
   - id: bcom_accounting_extended
     name: "Extended Bachelor of Commerce (Accounting)"
+    faculty: "Faculty of Management, Commerce and Law"
     fields: [accounting, commerce]
     requirements:
       source: s-univen-prospectus
@@ -433,6 +468,7 @@ programmes:
 
   - id: bcom_business_information_systems_extended
     name: "Extended Bachelor of Commerce (Business Information Systems)"
+    faculty: "Faculty of Management, Commerce and Law"
     fields: [computing, commerce]
     requirements:
       source: s-univen-prospectus
@@ -443,6 +479,7 @@ programmes:
 
   - id: bcom_business_management_extended
     name: "Extended Bachelor of Commerce (Business Management)"
+    faculty: "Faculty of Management, Commerce and Law"
     fields: [management, commerce]
     requirements:
       source: s-univen-prospectus
@@ -453,6 +490,7 @@ programmes:
 
   - id: bcom_cost_management_accounting_extended
     name: "Extended Bachelor of Commerce (Cost and Management Accounting)"
+    faculty: "Faculty of Management, Commerce and Law"
     fields: [accounting, commerce, finance]
     requirements:
       source: s-univen-prospectus
@@ -467,6 +505,7 @@ programmes:
 
   - id: bcom_economics_extended
     name: "Extended Bachelor of Commerce (Economics)"
+    faculty: "Faculty of Management, Commerce and Law"
     fields: [economics, commerce]
     requirements:
       source: s-univen-prospectus
@@ -477,6 +516,7 @@ programmes:
 
   - id: bcom_human_resources_extended
     name: "Extended Bachelor of Commerce (Human Resources Management)"
+    faculty: "Faculty of Management, Commerce and Law"
     fields: [management, commerce]
     requirements:
       source: s-univen-prospectus
@@ -490,6 +530,7 @@ programmes:
 
   - id: dip_freshwater_technology
     name: "Diploma in Freshwater Technology"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [natural_sciences, earth_sciences]
     requirements:
       source: s-univen-prospectus
@@ -509,6 +550,7 @@ programmes:
 
   - id: bsc_biochemistry_microbiology
     name: "BSc (Biochemistry and Microbiology)"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-univen-prospectus
@@ -517,6 +559,7 @@ programmes:
 
   - id: bsc_biochemistry_biology
     name: "BSc (Biochemistry and Biology)"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-univen-prospectus
@@ -525,6 +568,7 @@ programmes:
 
   - id: bsc_microbiology_botany
     name: "BSc (Microbiology and Botany)"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-univen-prospectus
@@ -533,6 +577,7 @@ programmes:
 
   - id: bsc_mathematics_applied_mathematics
     name: "BSc (Mathematics and Applied Mathematics)"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [natural_sciences, mathematical_sciences]
     requirements:
       source: s-univen-prospectus
@@ -541,6 +586,7 @@ programmes:
 
   - id: bsc_mathematics_physics
     name: "BSc (Mathematics and Physics)"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [natural_sciences, mathematical_sciences, physical_sciences]
     requirements:
       source: s-univen-prospectus
@@ -549,6 +595,7 @@ programmes:
 
   - id: bsc_mathematics_statistics
     name: "BSc (Mathematics and Statistics)"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [natural_sciences, mathematical_sciences]
     requirements:
       source: s-univen-prospectus
@@ -557,6 +604,7 @@ programmes:
 
   - id: bsc_physics_chemistry
     name: "BSc (Physics and Chemistry)"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [natural_sciences, physical_sciences]
     requirements:
       source: s-univen-prospectus
@@ -565,6 +613,7 @@ programmes:
 
   - id: bsc_chemistry_mathematics
     name: "BSc (Chemistry and Mathematics)"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [natural_sciences, physical_sciences, mathematical_sciences]
     requirements:
       source: s-univen-prospectus
@@ -573,6 +622,7 @@ programmes:
 
   - id: bsc_chemistry_biochemistry
     name: "BSc (Chemistry and Biochemistry)"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [natural_sciences, physical_sciences, life_sciences]
     requirements:
       source: s-univen-prospectus
@@ -581,6 +631,7 @@ programmes:
 
   - id: bsc_chemistry_applied_chemistry
     name: "BSc in Chemistry and Applied Chemistry"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [natural_sciences, physical_sciences]
     requirements:
       source: s-univen-prospectus
@@ -589,6 +640,7 @@ programmes:
 
   - id: bsc_botany_zoology
     name: "BSc (Botany and Zoology)"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-univen-prospectus
@@ -597,6 +649,7 @@ programmes:
 
   - id: bsc_computer_science
     name: "BSc (Computer Science)"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [computing, natural_sciences]
     requirements:
       source: s-univen-prospectus
@@ -605,6 +658,7 @@ programmes:
 
   - id: bsc_computer_science_mathematics
     name: "BSc (Computer Science and Mathematics)"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [computing, mathematical_sciences, natural_sciences]
     requirements:
       source: s-univen-prospectus
@@ -615,6 +669,7 @@ programmes:
 
   - id: b_environmental_sciences
     name: "Bachelor of Environmental Sciences"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [earth_sciences, natural_sciences]
     requirements:
       source: s-univen-prospectus
@@ -629,6 +684,7 @@ programmes:
 
   - id: b_earth_sciences_mining_geology
     name: "Bachelor of Earth Sciences in Mining and Environmental Geology"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [earth_sciences, engineering]
     requirements:
       source: s-univen-prospectus
@@ -639,6 +695,7 @@ programmes:
 
   - id: b_earth_sciences_hydrology
     name: "Bachelor of Earth Sciences in Hydrology and Water Resources"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [earth_sciences, natural_sciences]
     requirements:
       source: s-univen-prospectus
@@ -649,6 +706,7 @@ programmes:
 
   - id: b_urban_regional_planning
     name: "Bachelor of Urban and Regional Planning"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [built_environment, earth_sciences]
     selective: true
     requirements:
@@ -660,6 +718,7 @@ programmes:
 
   - id: b_environmental_sciences_disaster_risk
     name: "Bachelor of Environmental Sciences in Disaster Risk Reduction"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [disaster_and_fire, earth_sciences]
     requirements:
       source: s-univen-prospectus
@@ -670,6 +729,7 @@ programmes:
 
   - id: bsc_agric_economics
     name: "Bachelor of Science in Agriculture (Agricultural Economics)"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [agriculture, economics]
     requirements:
       source: s-univen-prospectus
@@ -682,6 +742,7 @@ programmes:
 
   - id: bsc_agric_agribusiness
     name: "Bachelor of Science in Agriculture (Agribusiness Management)"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [agriculture, management]
     requirements:
       source: s-univen-prospectus
@@ -690,6 +751,7 @@ programmes:
 
   - id: bsc_agric_animal_science
     name: "Bachelor of Science in Agriculture (Animal Science)"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [agriculture, life_sciences]
     requirements:
       source: s-univen-prospectus
@@ -698,6 +760,7 @@ programmes:
 
   - id: bsc_agric_horticulture
     name: "Bachelor of Science in Agriculture (Horticultural Sciences)"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [agriculture, life_sciences]
     requirements:
       source: s-univen-prospectus
@@ -706,6 +769,7 @@ programmes:
 
   - id: bsc_agric_plant_production
     name: "Bachelor of Science in Agriculture (Plant Production)"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [agriculture, life_sciences]
     requirements:
       source: s-univen-prospectus
@@ -714,6 +778,7 @@ programmes:
 
   - id: bsc_agric_soil_science
     name: "Bachelor of Science in Soil Science"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [agriculture, earth_sciences]
     requirements:
       source: s-univen-prospectus
@@ -722,6 +787,7 @@ programmes:
 
   - id: bsc_forestry
     name: "Bachelor of Science in Forestry"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [agriculture, life_sciences]
     requirements:
       source: s-univen-prospectus
@@ -730,6 +796,7 @@ programmes:
 
   - id: bsc_food_science_technology
     name: "Bachelor of Science in Food Science and Technology"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [food_science, agriculture]
     requirements:
       source: s-univen-prospectus
@@ -744,6 +811,7 @@ programmes:
 
   - id: extended_bsc_biochemistry_microbiology
     name: "Extended BSc (Biochemistry and Microbiology)"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-univen-prospectus
@@ -754,6 +822,7 @@ programmes:
 
   - id: extended_bsc_biochemistry_biology
     name: "Extended BSc (Biochemistry and Biology)"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-univen-prospectus
@@ -764,6 +833,7 @@ programmes:
 
   - id: extended_bsc_microbiology_botany
     name: "Extended BSc (Microbiology and Botany)"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-univen-prospectus
@@ -774,6 +844,7 @@ programmes:
 
   - id: extended_bsc_mathematics_applied_mathematics
     name: "Extended BSc (Mathematics and Applied Mathematics)"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [natural_sciences, mathematical_sciences]
     requirements:
       source: s-univen-prospectus
@@ -784,6 +855,7 @@ programmes:
 
   - id: extended_bsc_computer_science_mathematics
     name: "Extended BSc (Computer Science and Mathematics)"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [computing, mathematical_sciences, natural_sciences]
     requirements:
       source: s-univen-prospectus
@@ -794,6 +866,7 @@ programmes:
 
   - id: extended_bsc_mathematics_physics
     name: "Extended BSc (Mathematics and Physics)"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [natural_sciences, mathematical_sciences, physical_sciences]
     requirements:
       source: s-univen-prospectus
@@ -811,6 +884,7 @@ programmes:
 
   - id: extended_bsc_mathematics_statistics
     name: "Extended BSc (Mathematics and Statistics)"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [natural_sciences, mathematical_sciences]
     requirements:
       source: s-univen-prospectus
@@ -828,6 +902,7 @@ programmes:
 
   - id: extended_bsc_physics_chemistry
     name: "Extended BSc (Physics and Chemistry)"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [natural_sciences, physical_sciences]
     requirements:
       source: s-univen-prospectus
@@ -845,6 +920,7 @@ programmes:
 
   - id: extended_bsc_chemistry_mathematics
     name: "Extended BSc (Chemistry and Mathematics)"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [natural_sciences, physical_sciences, mathematical_sciences]
     requirements:
       source: s-univen-prospectus
@@ -862,6 +938,7 @@ programmes:
 
   - id: extended_bsc_chemistry_biochemistry
     name: "Extended BSc (Chemistry and Biochemistry)"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [natural_sciences, physical_sciences, life_sciences]
     requirements:
       source: s-univen-prospectus
@@ -879,6 +956,7 @@ programmes:
 
   - id: extended_bsc_chemistry_applied_chemistry
     name: "Extended BSc (Chemistry and Applied Chemistry)"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [natural_sciences, physical_sciences]
     requirements:
       source: s-univen-prospectus
@@ -889,6 +967,7 @@ programmes:
 
   - id: extended_bsc_botany_zoology
     name: "Extended BSc (Botany and Zoology)"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-univen-prospectus
@@ -899,6 +978,7 @@ programmes:
 
   - id: extended_bsc_computer_science
     name: "Extended BSc (Computer Science)"
+    faculty: "Faculty of Science, Engineering and Agriculture"
     fields: [computing, natural_sciences]
     requirements:
       source: s-univen-prospectus

@@ -47,6 +47,7 @@ programmes:
 
   - id: bcom_accounting_science                         # ZU-M-BAS, CAO p45
     name: "Bachelor of Commerce in Accounting Science"
+    faculty: "Faculty of Commerce, Administration and Law"
     fields: [accounting, commerce]
     requirements:
       source: s-unizulu-cao-2027
@@ -57,6 +58,7 @@ programmes:
 
   - id: bcom_accounting                                 # ZU-M-BCN, CAO p45
     name: "Bachelor of Commerce in Accounting"
+    faculty: "Faculty of Commerce, Administration and Law"
     fields: [accounting, commerce]
     requirements:
       source: s-unizulu-cao-2027
@@ -67,6 +69,7 @@ programmes:
 
   - id: bcom_mis                                        # ZU-M-BC6, CAO p128
     name: "Bachelor of Commerce (Management Information Systems)"
+    faculty: "Faculty of Commerce, Administration and Law"
     fields: [computing, commerce]
     requirements:
       source: s-unizulu-cao-2027
@@ -77,6 +80,7 @@ programmes:
 
   - id: bcom_accounting_economics                       # ZU-M-BC7, CAO p127
     name: "Bachelor of Commerce (Accounting and Economics)"
+    faculty: "Faculty of Commerce, Administration and Law"
     fields: [accounting, economics, commerce]
     requirements:
       source: s-unizulu-cao-2027
@@ -92,6 +96,7 @@ programmes:
 
   - id: bcom_banking_business_management                # ZU-M-BC8, CAO p127
     name: "Bachelor of Commerce (Banking and Business Management)"
+    faculty: "Faculty of Commerce, Administration and Law"
     fields: [finance, management, commerce]
     requirements:
       source: s-unizulu-cao-2027
@@ -107,6 +112,7 @@ programmes:
 
   - id: bcom_business_management_accounting             # ZU-M-BMB, CAO p127
     name: "Bachelor of Commerce (Business Management and Accounting)"
+    faculty: "Faculty of Commerce, Administration and Law"
     fields: [management, accounting, commerce]
     requirements:
       source: s-unizulu-cao-2027
@@ -122,6 +128,7 @@ programmes:
 
   - id: bcom_business_management_economics              # ZU-M-BBO, CAO p127
     name: "Bachelor of Commerce (Business Management and Economics)"
+    faculty: "Faculty of Commerce, Administration and Law"
     fields: [management, economics, commerce]
     requirements:
       source: s-unizulu-cao-2027
@@ -137,6 +144,7 @@ programmes:
 
   - id: bcom_economics_banking                          # ZU-M-BC9, CAO p127
     name: "Bachelor of Commerce (Economics and Banking)"
+    faculty: "Faculty of Commerce, Administration and Law"
     fields: [economics, finance, commerce]
     requirements:
       source: s-unizulu-cao-2027
@@ -152,6 +160,7 @@ programmes:
 
   - id: bcom_economics_hrm                              # ZU-M-BER, CAO p127
     name: "Bachelor of Commerce (Economics and Human Resource Management)"
+    faculty: "Faculty of Commerce, Administration and Law"
     fields: [economics, management, commerce]
     requirements:
       source: s-unizulu-cao-2027
@@ -167,6 +176,7 @@ programmes:
 
   - id: bcom_hrm_business_management                    # ZU-M-BUS, CAO p128
     name: "Bachelor of Commerce (Human Resource Management and Business Management)"
+    faculty: "Faculty of Commerce, Administration and Law"
     fields: [management, commerce]
     requirements:
       source: s-unizulu-cao-2027
@@ -182,6 +192,7 @@ programmes:
 
   - id: bcom_aug_banking_business_management            # ZU-A-AB2, CAO p46
     name: "Bachelor of Commerce Augmented (Banking and Business Management)"
+    faculty: "Faculty of Commerce, Administration and Law"
     fields: [finance, management, commerce]
     requirements:
       source: s-unizulu-cao-2027
@@ -198,6 +209,7 @@ programmes:
 
   - id: bcom_aug_business_management_accounting         # ZU-A-ABU, CAO p46
     name: "Bachelor of Commerce Augmented (Business Management and Accounting)"
+    faculty: "Faculty of Commerce, Administration and Law"
     fields: [management, accounting, commerce]
     requirements:
       source: s-unizulu-cao-2027
@@ -214,6 +226,7 @@ programmes:
 
   - id: bcom_aug_business_management_economics          # ZU-A-ABE, CAO p46
     name: "Bachelor of Commerce Augmented (Business Management and Economics)"
+    faculty: "Faculty of Commerce, Administration and Law"
     fields: [management, economics, commerce]
     requirements:
       source: s-unizulu-cao-2027
@@ -230,6 +243,7 @@ programmes:
 
   - id: bcom_aug_economics_banking                      # ZU-A-ABK, CAO p46
     name: "Bachelor of Commerce Augmented (Economics and Banking)"
+    faculty: "Faculty of Commerce, Administration and Law"
     fields: [economics, finance, commerce]
     requirements:
       source: s-unizulu-cao-2027
@@ -246,6 +260,7 @@ programmes:
 
   - id: bcom_aug_economics_hrm                          # ZU-A-AHU, CAO p46
     name: "Bachelor of Commerce Augmented (Economics and Human Resources Management)"
+    faculty: "Faculty of Commerce, Administration and Law"
     fields: [economics, management, commerce]
     requirements:
       source: s-unizulu-cao-2027
@@ -262,6 +277,7 @@ programmes:
 
   - id: bcom_aug_hrm_business_management                # ZU-A-AHB, CAO p46
     name: "Bachelor of Commerce Augmented (Human Resources Management and Business Management)"
+    faculty: "Faculty of Commerce, Administration and Law"
     fields: [management, commerce]
     requirements:
       source: s-unizulu-cao-2027
@@ -278,6 +294,7 @@ programmes:
 
   - id: bcom_aug_accounting_economics                   # ZU-A-AES, CAO p47
     name: "Bachelor of Commerce Augmented (Accounting & Economics)"
+    faculty: "Faculty of Commerce, Administration and Law"
     fields: [accounting, economics, commerce]
     requirements:
       source: s-unizulu-cao-2027
@@ -294,6 +311,7 @@ programmes:
 
   - id: bcom_aug_accounting_auditing                    # ZU-A-AAA, CAO p47
     name: "Bachelor of Commerce Augmented (Accounting and Auditing)"
+    faculty: "Faculty of Commerce, Administration and Law"
     fields: [accounting, commerce]
     requirements:
       source: s-unizulu-cao-2027
@@ -310,6 +328,7 @@ programmes:
 
   - id: badmin_public_admin_business_management         # ZU-M-PAB, CAO p60
     name: "Bachelor of Administration: Public Administration and Business Management"
+    faculty: "Faculty of Commerce, Administration and Law"
     fields: [public_administration, management]
     requirements:
       source: s-unizulu-cao-2027
@@ -325,6 +344,7 @@ programmes:
 
   - id: badmin_public_admin_economics                   # ZU-M-BAE, CAO p60
     name: "Bachelor of Administration: Public Administration and Economics"
+    faculty: "Faculty of Commerce, Administration and Law"
     fields: [public_administration, economics]
     requirements:
       source: s-unizulu-cao-2027
@@ -340,6 +360,7 @@ programmes:
 
   - id: badmin_public_admin_human_resources             # ZU-M-PHU, CAO p60
     name: "Bachelor of Administration: Public Administration and Human Resources"
+    faculty: "Faculty of Commerce, Administration and Law"
     fields: [public_administration, management]
     requirements:
       source: s-unizulu-cao-2027
@@ -355,6 +376,7 @@ programmes:
 
   - id: badmin_public_admin_political_science           # ZU-M-PAP, CAO p60
     name: "Bachelor of Administration: Public Administration and Political Science"
+    faculty: "Faculty of Commerce, Administration and Law"
     fields: [public_administration, humanities]
     requirements:
       source: s-unizulu-cao-2027
@@ -370,6 +392,7 @@ programmes:
 
   - id: llb                                             # ZU-M-BL1, CAO p183
     name: "Bachelor of Laws"
+    faculty: "Faculty of Commerce, Administration and Law"
     fields: [law]
     requirements:
       source: s-unizulu-cao-2027
@@ -387,6 +410,7 @@ programmes:
 
   - id: hcert_accountancy                               # ZU-R-AC2, CAO p52
     name: "Higher Certificate in Accountancy"
+    faculty: "Faculty of Commerce, Administration and Law"
     fields: [accounting, commerce]
     requirements:
       source: s-unizulu-cao-2027
@@ -402,6 +426,7 @@ programmes:
 
   - id: dip_cooperatives_management                     # ZU-R-CO3, CAO p129
     name: "Diploma in Co-Operatives Management"
+    faculty: "Faculty of Commerce, Administration and Law"
     fields: [management, commerce]
     requirements:
       source: s-unizulu-cao-2027
@@ -417,6 +442,7 @@ programmes:
 
   - id: dip_logistics_management                        # ZU-R-LM3, CAO p195
     name: "Diploma in Logistics Management"
+    faculty: "Faculty of Commerce, Administration and Law"
     fields: [management, commerce]
     requirements:
       source: s-unizulu-cao-2027
@@ -433,6 +459,7 @@ programmes:
 
   - id: dip_transport_management                        # ZU-R-TP3, CAO p195
     name: "Diploma in Transport Management"
+    faculty: "Faculty of Commerce, Administration and Law"
     fields: [management, commerce]
     requirements:
       source: s-unizulu-cao-2027
@@ -451,6 +478,7 @@ programmes:
 
   - id: ba_environmental_planning_development           # ZU-M-ARO, CAO p67
     name: "Bachelor of Arts (Environmental Planning & Development)"
+    faculty: "Faculty of Humanities and Social Sciences"
     fields: [earth_sciences, humanities]
     requirements:
       source: s-unizulu-cao-2027
@@ -462,6 +490,7 @@ programmes:
 
   - id: ba_intercultural_communication                  # ZU-M-BIC, CAO p72
     name: "Bachelor of Arts (Intercultural Communication)"
+    faculty: "Faculty of Humanities and Social Sciences"
     fields: [languages_and_communication, humanities]
     requirements:
       source: s-unizulu-cao-2027
@@ -474,6 +503,7 @@ programmes:
 
   - id: ba_correctional_studies                         # ZU-M-ARM, CAO p78
     name: "Bachelor of Arts (Correctional Studies)"
+    faculty: "Faculty of Humanities and Social Sciences"
     fields: [safety_and_justice, humanities]
     requirements:
       source: s-unizulu-cao-2027
@@ -486,6 +516,7 @@ programmes:
 
   - id: ba_industrial_sociology                         # ZU-M-ARI, CAO p104
     name: "Bachelor of Arts (Industrial Sociology)"
+    faculty: "Faculty of Humanities and Social Sciences"
     fields: [humanities]
     requirements:
       source: s-unizulu-cao-2027
@@ -498,6 +529,7 @@ programmes:
 
   - id: ba_anthropology_history                         # ZU-M-BNH, CAO p109
     name: "Bachelor of Arts (Anthropology & History)"
+    faculty: "Faculty of Humanities and Social Sciences"
     fields: [humanities]
     requirements:
       source: s-unizulu-cao-2027
@@ -510,6 +542,7 @@ programmes:
 
   - id: ba_geography_history                            # ZU-M-BGE, CAO p109
     name: "Bachelor of Arts (Geography & History)"
+    faculty: "Faculty of Humanities and Social Sciences"
     fields: [humanities, earth_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -522,6 +555,7 @@ programmes:
 
   - id: ba_geography_tourism                            # ZU-M-BGT, CAO p109
     name: "Bachelor of Arts (Geography & Tourism)"
+    faculty: "Faculty of Humanities and Social Sciences"
     fields: [earth_sciences, tourism_and_hospitality, humanities]
     requirements:
       source: s-unizulu-cao-2027
@@ -534,6 +568,7 @@ programmes:
 
   - id: ba_history_isizulu                              # ZU-M-BHI, CAO p109
     name: "Bachelor of Arts (History & IsiZulu)"
+    faculty: "Faculty of Humanities and Social Sciences"
     fields: [humanities, languages_and_communication]
     requirements:
       source: s-unizulu-cao-2027
@@ -546,6 +581,7 @@ programmes:
 
   - id: ba_linguistics_english                          # ZU-M-BLE, CAO p109
     name: "Bachelor of Arts (Linguistics & English)"
+    faculty: "Faculty of Humanities and Social Sciences"
     fields: [languages_and_communication, humanities]
     requirements:
       source: s-unizulu-cao-2027
@@ -558,6 +594,7 @@ programmes:
 
   - id: ba_philosophy_psychology                        # ZU-M-BPY, CAO p109
     name: "Bachelor of Arts (Philosophy & Psychology)"
+    faculty: "Faculty of Humanities and Social Sciences"
     fields: [humanities]
     requirements:
       source: s-unizulu-cao-2027
@@ -570,6 +607,7 @@ programmes:
 
   - id: ba_psychology                                   # ZU-M-PSY, CAO p109
     name: "Bachelor of Arts (Psychology)"
+    faculty: "Faculty of Humanities and Social Sciences"
     fields: [humanities]
     selective: true
     selection_note: "Selected candidates are interviewed for suitability."
@@ -588,6 +626,7 @@ programmes:
 
   - id: ba_drama_theatre_performance                    # ZU-M-BTP, CAO p158
     name: "Bachelor of Arts in Drama, Theatre and Performance"
+    faculty: "Faculty of Humanities and Social Sciences"
     fields: [performing_arts, arts_and_design]
     selective: true
     selection_note: "UNIZULU selects on auditions (music, drama, dance and visual art), then interviews successful applicants."
@@ -607,6 +646,7 @@ programmes:
 
   - id: ba_development_studies                          # ZU-M-ABS, CAO p180
     name: "Bachelor of Arts (Development Studies)"
+    faculty: "Faculty of Humanities and Social Sciences"
     fields: [humanities]
     requirements:
       source: s-unizulu-cao-2027
@@ -619,6 +659,7 @@ programmes:
 
   - id: ba_information_science                          # ZU-M-ARK, CAO p180
     name: "Bachelor of Arts (Information Science)"
+    faculty: "Faculty of Humanities and Social Sciences"
     fields: [humanities, computing]
     requirements:
       source: s-unizulu-cao-2027
@@ -632,6 +673,7 @@ programmes:
 
   - id: b_library_information_science                   # ZU-M-BLI, CAO p180
     name: "Bachelor of Library & Information Science"
+    faculty: "Faculty of Humanities and Social Sciences"
     fields: [humanities, computing]
     requirements:
       source: s-unizulu-cao-2027
@@ -645,6 +687,7 @@ programmes:
 
   - id: bsw                                             # ZU-M-BSX, CAO p181
     name: "Bachelor of Social Work"
+    faculty: "Faculty of Humanities and Social Sciences"
     fields: [humanities]
     selective: true
     selection_note: "Shortlisted applicants must attend selection interviews."
@@ -661,6 +704,7 @@ programmes:
 
   - id: ba_sociology                                    # ZU-M-ARD, CAO p183
     name: "Bachelor of Arts (Sociology)"
+    faculty: "Faculty of Humanities and Social Sciences"
     fields: [humanities]
     requirements:
       source: s-unizulu-cao-2027
@@ -673,6 +717,7 @@ programmes:
 
   - id: bsocsci_political_international_studies         # ZU-M-PIS, CAO p184
     name: "Bachelor of Social Sciences in Political and International Studies"
+    faculty: "Faculty of Humanities and Social Sciences"
     fields: [humanities, public_administration]
     requirements:
       source: s-unizulu-cao-2027
@@ -689,6 +734,7 @@ programmes:
 
   - id: b_tourism_studies                               # ZU-M-BTS, CAO p189
     name: "Bachelor of Tourism Studies"
+    faculty: "Faculty of Humanities and Social Sciences"
     fields: [tourism_and_hospitality]
     requirements:
       source: s-unizulu-cao-2027
@@ -706,6 +752,7 @@ programmes:
 
   - id: dip_media_studies                               # ZU-R-MD4, CAO p72
     name: "Diploma in Media Studies"
+    faculty: "Faculty of Humanities and Social Sciences"
     fields: [languages_and_communication]
     requirements:
       source: s-unizulu-cao-2027
@@ -719,6 +766,7 @@ programmes:
 
   - id: dip_public_relations_management                 # ZU-R-PR5, CAO p161
     name: "Diploma in Public Relations Management"
+    faculty: "Faculty of Humanities and Social Sciences"
     fields: [languages_and_communication, management]
     requirements:
       source: s-unizulu-cao-2027
@@ -732,6 +780,7 @@ programmes:
 
   - id: dip_tourism_management                          # ZU-R-TM1, CAO p191
     name: "Diploma in Tourism Management"
+    faculty: "Faculty of Humanities and Social Sciences"
     fields: [tourism_and_hospitality, management]
     requirements:
       source: s-unizulu-cao-2027
@@ -749,6 +798,7 @@ programmes:
 
   - id: bsc_agric_agronomy                              # ZU-M-SCA, CAO p68
     name: "Bachelor of Science in Agriculture: Agronomy"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [agriculture]
     requirements:
       source: s-unizulu-cao-2027
@@ -764,6 +814,7 @@ programmes:
 
   - id: bsc_agric_animal_science                        # ZU-M-SCK, CAO p68
     name: "Bachelor of Science in Agriculture: Animal Science"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [agriculture]
     requirements:
       source: s-unizulu-cao-2027
@@ -779,6 +830,7 @@ programmes:
 
   - id: bsc_agric_economics_agribusiness                # ZU-M-SCJ, CAO p68
     name: "Bachelor of Science in Agricultural Economics: Agribusiness Management"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [agriculture, economics, management]
     requirements:
       source: s-unizulu-cao-2027
@@ -794,6 +846,7 @@ programmes:
 
   - id: bconsumer_extension_rural_development           # ZU-M-BPE, CAO p102
     name: "Bachelor of Consumer Science: Extension & Rural Development"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [consumer_sciences, agriculture]
     requirements:
       source: s-unizulu-cao-2027
@@ -810,6 +863,7 @@ programmes:
 
   - id: bconsumer_hospitality_tourism                   # ZU-M-BPT, CAO p189
     name: "Bachelor of Consumer Science: Hospitality & Tourism"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [consumer_sciences, tourism_and_hospitality]
     requirements:
       source: s-unizulu-cao-2027
@@ -822,6 +876,7 @@ programmes:
 
   - id: b_nursing_science                               # ZU-M-BNS, CAO p156
     name: "Bachelor of Nursing Science"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [nursing, health_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -839,6 +894,7 @@ programmes:
 
   - id: bsc_appmaths_compsci                            # ZU-M-AMC, CAO p168
     name: "Bachelor of Science: Applied Mathematics with Computer Sciences as Major 2"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [mathematical_sciences, computing, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -850,6 +906,7 @@ programmes:
 
   - id: bsc_appmaths_hydro                              # ZU-M-AMH, CAO p168
     name: "Bachelor of Science: Applied Mathematics with Hydrology as Major 2"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [mathematical_sciences, earth_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -861,6 +918,7 @@ programmes:
 
   - id: bsc_appmaths_maths                              # ZU-M-AMM, CAO p168
     name: "Bachelor of Science: Applied Mathematics with Mathematics as Major 2"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [mathematical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -872,6 +930,7 @@ programmes:
 
   - id: bsc_appmaths_physics                            # ZU-M-APH, CAO p168
     name: "Bachelor of Science: Applied Mathematics with Physics as Major 2"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [mathematical_sciences, physical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -883,6 +942,7 @@ programmes:
 
   - id: bsc_appmaths_stats                              # ZU-M-AMS, CAO p168
     name: "Bachelor of Science: Applied Mathematics with Statistics as Major 2"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [mathematical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -894,6 +954,7 @@ programmes:
 
   - id: bsc_maths_physics                               # ZU-M-MPM, CAO p168
     name: "Bachelor of Science: Mathematics with Physics as Major 2"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [mathematical_sciences, physical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -905,6 +966,7 @@ programmes:
 
   - id: bsc_maths_stats                                 # ZU-M-MAS, CAO p168
     name: "Bachelor of Science: Mathematics with Statistics as Major 2"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [mathematical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -916,6 +978,7 @@ programmes:
 
   - id: bsc_micro_hms                                   # ZU-M-MIH, CAO p168
     name: "Bachelor of Science: Microbiology with Human Movement Science as Major 2"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [life_sciences, sport_science, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -932,6 +995,7 @@ programmes:
 
   - id: bsc_micro_zoology                               # ZU-M-MIZ, CAO p168
     name: "Bachelor of Science: Microbiology with Zoology as Major 2"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [life_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -947,6 +1011,7 @@ programmes:
 
   - id: bsc_biochem_botany                              # ZU-M-BBM, CAO p173
     name: "Bachelor of Science: Biochemistry with Botany as Major 2"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [life_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -962,6 +1027,7 @@ programmes:
 
   - id: bsc_biochem_chem                                # ZU-M-BC3, CAO p173
     name: "Bachelor of Science: Biochemistry with Chemistry as Major 2"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [life_sciences, physical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -977,6 +1043,7 @@ programmes:
 
   - id: bsc_biochem_hms                                 # ZU-M-BH3, CAO p173
     name: "Bachelor of Science: Biochemistry with Human Movement Science as Major 2"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [life_sciences, sport_science, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -993,6 +1060,7 @@ programmes:
 
   - id: bsc_biochem_micro                               # ZU-M-BIM, CAO p173
     name: "Bachelor of Science: Biochemistry with Microbiology as Major 2"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [life_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1008,6 +1076,7 @@ programmes:
 
   - id: bsc_biochem_zoology                             # ZU-M-BZ3, CAO p173
     name: "Bachelor of Science: Biochemistry with Zoology as Major 2"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [life_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1023,6 +1092,7 @@ programmes:
 
   - id: bsc_botany_geog                                 # ZU-M-BOG, CAO p174
     name: "Bachelor of Science: Botany with Geography as Major 2"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [life_sciences, earth_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1038,6 +1108,7 @@ programmes:
 
   - id: bsc_botany_hydro                                # ZU-M-BOH, CAO p174
     name: "Bachelor of Science: Botany with Hydrology as Major 2"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [life_sciences, earth_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1053,6 +1124,7 @@ programmes:
 
   - id: bsc_botany_micro                                # ZU-M-BOM, CAO p174
     name: "Bachelor of Science: Botany with Microbiology as Major 2"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [life_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1068,6 +1140,7 @@ programmes:
 
   - id: bsc_botany_zoology                              # ZU-M-BOZ, CAO p174
     name: "Bachelor of Science: Botany with Zoology as Major 2"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [life_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1083,6 +1156,7 @@ programmes:
 
   - id: bsc_chem_compsci                                # ZU-M-CHC, CAO p174
     name: "Bachelor of Science: Chemistry with Computer Science as Major 2"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [physical_sciences, computing, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1094,6 +1168,7 @@ programmes:
 
   - id: bsc_chem_hydro                                  # ZU-M-CHH, CAO p174
     name: "Bachelor of Science: Chemistry with Hydrology as Major 2"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [physical_sciences, earth_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1105,6 +1180,7 @@ programmes:
 
   - id: bsc_chem_maths                                  # ZU-M-CHM, CAO p174
     name: "Bachelor of Science: Chemistry with Mathematics as Major 2"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [physical_sciences, mathematical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1116,6 +1192,7 @@ programmes:
 
   - id: bsc_chem_physics                                # ZU-M-CHP, CAO p174
     name: "Bachelor of Science: Chemistry with Physics as Major 2"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [physical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1127,6 +1204,7 @@ programmes:
 
   - id: bsc_chem_zoology                                # ZU-M-CZM, CAO p174
     name: "Bachelor of Science: Chemistry with Zoology as Major 2"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [physical_sciences, life_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1142,6 +1220,7 @@ programmes:
 
   - id: bsc_compsci_hydro                               # ZU-M-CSH, CAO p175
     name: "Bachelor of Science: Computer Science with Hydrology as Major 2"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [computing, earth_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1153,6 +1232,7 @@ programmes:
 
   - id: bsc_compsci_maths                               # ZU-M-CSC, CAO p175
     name: "Bachelor of Science: Computer Science with Mathematics as Major 2"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [computing, mathematical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1164,6 +1244,7 @@ programmes:
 
   - id: bsc_compsci_physics                             # ZU-M-CPH, CAO p175
     name: "Bachelor of Science: Computer Science with Physics as Major 2"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [computing, physical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1175,6 +1256,7 @@ programmes:
 
   - id: bsc_compsci_stats                               # ZU-M-COS, CAO p175
     name: "Bachelor of Science: Computer Science with Statistics as Major 2"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [computing, mathematical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1186,6 +1268,7 @@ programmes:
 
   - id: bsc_geog_hydro                                  # ZU-M-GEH, CAO p175
     name: "Bachelor of Science: Geography with Hydrology as Major 2"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [earth_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1197,6 +1280,7 @@ programmes:
 
   - id: bsc_geog_physics                                # ZU-M-GEP, CAO p175
     name: "Bachelor of Science: Geography with Physics as Major 2"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [earth_sciences, physical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1208,6 +1292,7 @@ programmes:
 
   - id: bsc_geog_stats                                  # ZU-M-GES, CAO p175
     name: "Bachelor of Science: Geography with Statistics as Major 2"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [earth_sciences, mathematical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1219,6 +1304,7 @@ programmes:
 
   - id: bsc_geog_zoology                                # ZU-M-GEZ, CAO p175
     name: "Bachelor of Science: Geography with Zoology as Major 2"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [earth_sciences, life_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1234,6 +1320,7 @@ programmes:
 
   - id: bsc_hms_physics                                 # ZU-M-HMP, CAO p175
     name: "Bachelor of Science: Human Movement Science with Physics as Major 2"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [sport_science, physical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1249,6 +1336,7 @@ programmes:
 
   - id: bsc_hydro_micro                                 # ZU-M-HYM, CAO p176
     name: "Bachelor of Science: Hydrology with Microbiology as Major 2"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [earth_sciences, life_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1264,6 +1352,7 @@ programmes:
 
   - id: bsc_hydro_physics                               # ZU-M-HYP, CAO p176
     name: "Bachelor of Science: Hydrology with Physics as Major 2"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [earth_sciences, physical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1275,6 +1364,7 @@ programmes:
 
   - id: bsc_hydro_stats                                 # ZU-M-HYS, CAO p176
     name: "Bachelor of Science: Hydrology with Statistics as Major 2"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [earth_sciences, mathematical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1286,6 +1376,7 @@ programmes:
 
   - id: bsc_hydro_zoology                               # ZU-M-HYZ, CAO p176
     name: "Bachelor of Science: Hydrology with Zoology as Major 2"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [earth_sciences, life_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1303,6 +1394,7 @@ programmes:
 
   - id: bsc_aug_appmaths_compsci                        # ZU-A-AM8, CAO p170
     name: "Bachelor of Science Augmented (Applied Mathematics and Computer Science)"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [mathematical_sciences, computing, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1315,6 +1407,7 @@ programmes:
 
   - id: bsc_aug_appmaths_hydro                          # ZU-A-AM9, CAO p170
     name: "Bachelor of Science Augmented (Applied Mathematics and Hydrology)"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [mathematical_sciences, earth_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1327,6 +1420,7 @@ programmes:
 
   - id: bsc_aug_appmaths_maths                          # ZU-A-AM5, CAO p170
     name: "Bachelor of Science Augmented (Applied Mathematics and Mathematics)"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [mathematical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1339,6 +1433,7 @@ programmes:
 
   - id: bsc_aug_appmaths_physics                        # ZU-A-AM1, CAO p170
     name: "Bachelor of Science Augmented (Applied Mathematics and Physics)"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [mathematical_sciences, physical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1351,6 +1446,7 @@ programmes:
 
   - id: bsc_aug_biochem_botany                          # ZU-A-AB1, CAO p171
     name: "Bachelor of Science Augmented (Biochemistry and Botany)"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [life_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1363,6 +1459,7 @@ programmes:
 
   - id: bsc_aug_biochem_chem                            # ZU-A-AB5, CAO p171
     name: "Bachelor of Science Augmented (Biochemistry and Chemistry)"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [life_sciences, physical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1375,6 +1472,7 @@ programmes:
 
   - id: bsc_aug_biochem_hms                             # ZU-A-AB6, CAO p171
     name: "Bachelor of Science Augmented (Biochemistry and Human Movement Science)"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [life_sciences, sport_science, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1387,6 +1485,7 @@ programmes:
 
   - id: bsc_aug_biochem_micro                           # ZU-A-AB3, CAO p171
     name: "Bachelor of Science Augmented (Biochemistry and Microbiology)"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [life_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1399,6 +1498,7 @@ programmes:
 
   - id: bsc_aug_biochem_zoology                         # ZU-A-AM6, CAO p171
     name: "Bachelor of Science Augmented (Biochemistry and Zoology)"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [life_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1411,6 +1511,7 @@ programmes:
 
   - id: bsc_aug_botany_geog                             # ZU-A-ABG, CAO p171
     name: "Bachelor of Science Augmented (Botany and Geography)"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [life_sciences, earth_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1423,6 +1524,7 @@ programmes:
 
   - id: bsc_aug_botany_hydro                            # ZU-A-ABH, CAO p171
     name: "Bachelor of Science Augmented (Botany and Hydrology)"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [life_sciences, earth_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1435,6 +1537,7 @@ programmes:
 
   - id: bsc_aug_botany_micro                            # ZU-A-AB4, CAO p171
     name: "Bachelor of Science Augmented (Botany and Microbiology)"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [life_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1448,6 +1551,7 @@ programmes:
 
   - id: bsc_aug_botany_zoology                          # ZU-A-ABZ, CAO p171
     name: "Bachelor of Science Augmented (Botany and Zoology)"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [life_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1460,6 +1564,7 @@ programmes:
 
   - id: bsc_aug_chem_compsci                            # ZU-A-ACO, CAO p171
     name: "Bachelor of Science Augmented (Chemistry and Computer Science)"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [physical_sciences, computing, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1472,6 +1577,7 @@ programmes:
 
   - id: bsc_aug_chem_hydro                              # ZU-A-AC1, CAO p171
     name: "Bachelor of Science Augmented (Chemistry and Hydrology)"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [physical_sciences, earth_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1484,6 +1590,7 @@ programmes:
 
   - id: bsc_aug_chem_maths                              # ZU-A-ATC, CAO p171
     name: "Bachelor of Science Augmented (Chemistry and Mathematics)"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [physical_sciences, mathematical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1496,6 +1603,7 @@ programmes:
 
   - id: bsc_aug_chem_physics                            # ZU-A-APY, CAO p171
     name: "Bachelor of Science Augmented (Chemistry and Physics)"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [physical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1508,6 +1616,7 @@ programmes:
 
   - id: bsc_aug_chem_zoology                            # ZU-A-AZC, CAO p172
     name: "Bachelor of Science Augmented (Chemistry and Zoology)"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [physical_sciences, life_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1520,6 +1629,7 @@ programmes:
 
   - id: bsc_aug_compsci_hydro                           # ZU-A-AC8, CAO p172
     name: "Bachelor of Science Augmented (Computer Science and Hydrology)"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [computing, earth_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1532,6 +1642,7 @@ programmes:
 
   - id: bsc_aug_compsci_maths                           # ZU-A-AC9, CAO p172
     name: "Bachelor of Science Augmented (Computer Science and Mathematics)"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [computing, mathematical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1544,6 +1655,7 @@ programmes:
 
   - id: bsc_aug_compsci_physics                         # ZU-A-AC6, CAO p172
     name: "Bachelor of Science Augmented (Computer Science and Physics)"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [computing, physical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1556,6 +1668,7 @@ programmes:
 
   - id: bsc_aug_compsci_stats                           # ZU-A-ASI, CAO p172
     name: "Bachelor of Science Augmented (Computer Science and Statistics)"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [computing, mathematical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1568,6 +1681,7 @@ programmes:
 
   - id: bsc_aug_geog_hydro                              # ZU-A-AGH, CAO p172
     name: "Bachelor of Science Augmented (Geography and Hydrology)"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [earth_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1580,6 +1694,7 @@ programmes:
 
   - id: bsc_aug_geog_physics                            # ZU-A-AGP, CAO p172
     name: "Bachelor of Science Augmented (Geography and Physics)"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [earth_sciences, physical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1592,6 +1707,7 @@ programmes:
 
   - id: bsc_aug_geog_stats                              # ZU-A-AGS, CAO p172
     name: "Bachelor of Science Augmented (Geography and Statistics)"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [earth_sciences, mathematical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1604,6 +1720,7 @@ programmes:
 
   - id: bsc_aug_geog_zoology                            # ZU-A-AGZ, CAO p172
     name: "Bachelor of Science Augmented (Geography and Zoology)"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [earth_sciences, life_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1616,6 +1733,7 @@ programmes:
 
   - id: bsc_aug_hms_physics                             # ZU-A-AH1, CAO p172
     name: "Bachelor of Science Augmented (Human Movement Science and Physics)"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [sport_science, physical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1628,6 +1746,7 @@ programmes:
 
   - id: bsc_aug_hydro_micro                             # ZU-A-AHM, CAO p172
     name: "Bachelor of Science Augmented (Hydrology and Microbiology)"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [earth_sciences, life_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1640,6 +1759,7 @@ programmes:
 
   - id: bsc_aug_hydro_physics                           # ZU-A-AH2, CAO p172
     name: "Bachelor of Science Augmented (Hydrology and Physics)"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [earth_sciences, physical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1652,6 +1772,7 @@ programmes:
 
   - id: bsc_aug_hydro_stats                             # ZU-A-AHY, CAO p172
     name: "Bachelor of Science Augmented (Hydrology and Statistics)"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [earth_sciences, mathematical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1664,6 +1785,7 @@ programmes:
 
   - id: bsc_aug_hydro_zoology                           # ZU-A-AHZ, CAO p173
     name: "Bachelor of Science Augmented (Hydrology and Zoology)"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [earth_sciences, life_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1676,6 +1798,7 @@ programmes:
 
   - id: bsc_aug_maths_physics                           # ZU-A-AM2, CAO p173
     name: "Bachelor of Science Augmented (Mathematics and Physics)"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [mathematical_sciences, physical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1688,6 +1811,7 @@ programmes:
 
   - id: bsc_aug_maths_stats                             # ZU-A-AMT, CAO p173
     name: "Bachelor of Science Augmented (Mathematics and Statistics)"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [mathematical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1700,6 +1824,7 @@ programmes:
 
   - id: bsc_aug_micro_hms                               # ZU-A-AMO, CAO p173
     name: "Bachelor of Science Augmented (Microbiology and Human Movement Science)"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [life_sciences, sport_science, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1712,6 +1837,7 @@ programmes:
 
   - id: bsc_aug_micro_zoology                           # ZU-A-AM7, CAO p173
     name: "Bachelor of Science Augmented (Microbiology and Zoology)"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [life_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1726,6 +1852,7 @@ programmes:
 
   - id: bsc_foundation_appmaths_physics                 # ZU-A-B6M, CAO p177
     name: "Bachelor of Science Foundation: Applied Mathematics & Physics"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [mathematical_sciences, physical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1738,6 +1865,7 @@ programmes:
 
   - id: bsc_foundation_biochem_botany                   # ZU-A-B6B, CAO p177
     name: "Bachelor of Science Foundation: Biochemistry & Botany"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [life_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1750,6 +1878,7 @@ programmes:
 
   - id: bsc_foundation_biochem_micro                    # ZU-A-B6I, CAO p177
     name: "Bachelor of Science Foundation: Biochemistry & Microbiology"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [life_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1762,6 +1891,7 @@ programmes:
 
   - id: bsc_foundation_biochem_zoology                  # ZU-A-B6Z, CAO p177
     name: "Bachelor of Science Foundation: Biochemistry & Zoology"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [life_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1774,6 +1904,7 @@ programmes:
 
   - id: bsc_foundation_botany_micro                     # ZU-A-B6T, CAO p177
     name: "Bachelor of Science Foundation: Botany & Microbiology"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [life_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1791,6 +1922,7 @@ programmes:
 
   - id: bsc_foundation_botany_zoology                   # ZU-A-B6Y, CAO p177
     name: "Bachelor of Science Foundation: Botany & Zoology"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [life_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1803,6 +1935,7 @@ programmes:
 
   - id: bsc_foundation_chem_maths                       # ZU-A-B6E, CAO p177
     name: "Bachelor of Science Foundation: Chemistry & Mathematics"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [physical_sciences, mathematical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1815,6 +1948,7 @@ programmes:
 
   - id: bsc_foundation_chem_physics                     # ZU-A-B6P, CAO p177
     name: "Bachelor of Science Foundation: Chemistry & Physics"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [physical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1827,6 +1961,7 @@ programmes:
 
   - id: bsc_foundation_chem_zoology                     # ZU-A-B6O, CAO p177
     name: "Bachelor of Science Foundation: Chemistry & Zoology"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [physical_sciences, life_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1839,6 +1974,7 @@ programmes:
 
   - id: bsc_foundation_maths_physics                    # ZU-A-B6H, CAO p177
     name: "Bachelor of Science Foundation: Mathematics & Physics"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [mathematical_sciences, physical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1851,6 +1987,7 @@ programmes:
 
   - id: bsc_foundation_biochem_chem                     # ZU-A-B6C, CAO p177
     name: "Bachelor of Science Foundation: Biochemistry & Chemistry"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [life_sciences, physical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1863,6 +2000,7 @@ programmes:
 
   - id: bsc_foundation_micro_zoology                    # ZU-A-B6G, CAO p177
     name: "Bachelor of Science Foundation: Microbiology & Zoology"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [life_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-2027
@@ -1877,6 +2015,7 @@ programmes:
 
   - id: beng_electrical_computer                        # ZU-R-BOE, CAO p88
     name: "Bachelor of Engineering in Electrical Engineering and Computer Engineering"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [engineering, computing]
     requirements:
       source: s-unizulu-cao-2027
@@ -1891,6 +2030,7 @@ programmes:
 
   - id: beng_electrical                                 # ZU-R-BEZ, CAO p88
     name: "Bachelor of Engineering in Electrical Engineering"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [engineering]
     requirements:
       source: s-unizulu-cao-2027
@@ -1905,6 +2045,7 @@ programmes:
 
   - id: beng_mechanical                                 # ZU-R-BMZ, CAO p88
     name: "Bachelor of Engineering in Mechanical Engineering"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [engineering]
     requirements:
       source: s-unizulu-cao-2027
@@ -1919,6 +2060,7 @@ programmes:
 
   - id: beng_mechatronic                                # ZU-R-BM7, CAO p91
     name: "Bachelor of Engineering in Mechatronic Engineering"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [engineering]
     requirements:
       source: s-unizulu-cao-2027
@@ -1933,6 +2075,7 @@ programmes:
 
   - id: dip_sport_exercise_technology                   # ZU-R-SET, CAO p182
     name: "Diploma in Sport & Exercise Technology"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [sport_science]
     requirements:
       source: s-unizulu-cao-2027
@@ -1947,6 +2090,7 @@ programmes:
 
   - id: dip_hospitality_management                      # ZU-R-DHM, CAO p189
     name: "Diploma in Hospitality Management"
+    faculty: "Faculty of Science, Agriculture and Engineering"
     fields: [tourism_and_hospitality, management]
     requirements:
       source: s-unizulu-cao-2027
@@ -1964,6 +2108,7 @@ programmes:
 
   - id: bed_foundation_phase                            # ZU-M-FPT, CAO p80
     name: "Bachelor of Education in Foundation Phase Teaching"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-unizulu-cao-2027
@@ -1980,6 +2125,7 @@ programmes:
 
   - id: bed_spfet_ems_accounting_business_studies       # ZU-M-IEO, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: EMS, Accounting, Business Studies"
+    faculty: "Faculty of Education"
     fields: [education, commerce]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -1993,6 +2139,7 @@ programmes:
 
   - id: bed_spfet_ems_accounting_economics              # ZU-M-IEP, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: EMS, Accounting, Economics"
+    faculty: "Faculty of Education"
     fields: [education, commerce]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2006,6 +2153,7 @@ programmes:
 
   - id: bed_spfet_ems_economics_business_studies        # ZU-M-IEQ, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: EMS, Economics, Business Studies"
+    faculty: "Faculty of Education"
     fields: [education, commerce]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2019,6 +2167,7 @@ programmes:
 
   - id: bed_spfet_isizulu_fet_sp_geography              # ZU-M-ILK, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: IsiZulu HL FET, IsiZulu HL Senior Phase, Geography"
+    faculty: "Faculty of Education"
     fields: [education, languages_and_communication, humanities]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2033,6 +2182,7 @@ programmes:
 
   - id: bed_spfet_english_sp_fet_history                # ZU-M-ILV, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: English FAL Senior Phase, English FAL FET, History"
+    faculty: "Faculty of Education"
     fields: [education, languages_and_communication, humanities]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2046,6 +2196,7 @@ programmes:
 
   - id: bed_spfet_english_sp_fet_tourism                # ZU-M-ILX, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: English FAL Senior Phase, English FAL FET, Tourism"
+    faculty: "Faculty of Education"
     fields: [education, languages_and_communication]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2063,6 +2214,7 @@ programmes:
 
   - id: bed_spfet_english_geography_history             # ZU-M-ILQ, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: English FAL Senior Phase, Geography, History"
+    faculty: "Faculty of Education"
     fields: [education, languages_and_communication, humanities]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2076,6 +2228,7 @@ programmes:
 
   - id: bed_spfet_english_geography_tourism_ilf         # ZU-M-ILF, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: English FAL Senior Phase, Geography, Tourism (CAO code ZU-M-ILF)"
+    faculty: "Faculty of Education"
     fields: [education, languages_and_communication, humanities]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2094,6 +2247,7 @@ programmes:
 
   - id: bed_spfet_english_geography_tourism_ili         # ZU-M-ILI, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: English FAL Senior Phase, Geography, Tourism (CAO code ZU-M-ILI)"
+    faculty: "Faculty of Education"
     fields: [education, languages_and_communication, humanities]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2112,6 +2266,7 @@ programmes:
 
   - id: bed_spfet_english_history_tourism_ilz           # ZU-M-ILZ, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: English FAL Senior Phase, History, Tourism (CAO code ZU-M-ILZ)"
+    faculty: "Faculty of Education"
     fields: [education, languages_and_communication, humanities]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2130,6 +2285,7 @@ programmes:
 
   - id: bed_spfet_english_social_sciences_geography     # ZU-M-ILD, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: English FAL Senior Phase, Social Sciences, Geography"
+    faculty: "Faculty of Education"
     fields: [education, languages_and_communication, humanities]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2143,6 +2299,7 @@ programmes:
 
   - id: bed_spfet_english_social_sciences_history       # ZU-M-ILC, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: English FAL Senior Phase, Social Sciences, History"
+    faculty: "Faculty of Education"
     fields: [education, languages_and_communication, humanities]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2156,6 +2313,7 @@ programmes:
 
   - id: bed_spfet_english_tourism_history_iej           # ZU-M-IEJ, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: English FAL Senior Phase, Tourism, History"
+    faculty: "Faculty of Education"
     fields: [education, languages_and_communication, humanities]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2174,6 +2332,7 @@ programmes:
 
   - id: bed_spfet_isizulu_fet_english_sp_fet            # ZU-M-IEN, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: IsiZulu HL FET Phase, English FAL Senior Phase, English FAL FET"
+    faculty: "Faculty of Education"
     fields: [education, languages_and_communication]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2187,6 +2346,7 @@ programmes:
 
   - id: bed_spfet_isizulu_fet_english_sp_tourism        # ZU-M-IEC, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: IsiZulu HL FET, English FAL Senior Phase, Tourism"
+    faculty: "Faculty of Education"
     fields: [education, languages_and_communication]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2204,6 +2364,7 @@ programmes:
 
   - id: bed_spfet_isizulu_fet_english_sp_geography      # ZU-M-IEF, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: IsiZulu HL FET, English FAL Senior Phase, Geography"
+    faculty: "Faculty of Education"
     fields: [education, languages_and_communication, humanities]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2217,6 +2378,7 @@ programmes:
 
   - id: bed_spfet_english_history_tourism_ilw           # ZU-M-ILW, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: English FAL Senior Phase, History, Tourism (CAO code ZU-M-ILW)"
+    faculty: "Faculty of Education"
     fields: [education, languages_and_communication, humanities]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2235,6 +2397,7 @@ programmes:
 
   - id: bed_spfet_isizulu_sp_english_fet_geography      # ZU-M-IEE, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: IsiZulu HL Senior Phase, English FAL FET, Geography"
+    faculty: "Faculty of Education"
     fields: [education, languages_and_communication, humanities]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2248,6 +2411,7 @@ programmes:
 
   - id: bed_spfet_isizulu_sp_english_fet_history        # ZU-M-IEI, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: IsiZulu HL Senior Phase, English FAL FET, History"
+    faculty: "Faculty of Education"
     fields: [education, languages_and_communication, humanities]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2261,6 +2425,7 @@ programmes:
 
   - id: bed_spfet_isizulu_sp_english_fet_tourism        # ZU-M-IEA, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: IsiZulu HL Senior Phase, English FAL FET, Tourism"
+    faculty: "Faculty of Education"
     fields: [education, languages_and_communication]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2278,6 +2443,7 @@ programmes:
 
   - id: bed_spfet_isizulu_sp_english_sp_geography       # ZU-M-ILG, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: IsiZulu HL Senior Phase, English FAL Senior Phase, Geography"
+    faculty: "Faculty of Education"
     fields: [education, languages_and_communication, humanities]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2291,6 +2457,7 @@ programmes:
 
   - id: bed_spfet_isizulu_sp_english_sp_history         # ZU-M-ILS, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: IsiZulu HL Senior Phase, English FAL Senior Phase, History"
+    faculty: "Faculty of Education"
     fields: [education, languages_and_communication, humanities]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2304,6 +2471,7 @@ programmes:
 
   - id: bed_spfet_isizulu_sp_english_sp_tourism         # ZU-M-ILU, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: IsiZulu HL Senior Phase, English FAL Senior Phase, Tourism"
+    faculty: "Faculty of Education"
     fields: [education, languages_and_communication]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2321,6 +2489,7 @@ programmes:
 
   - id: bed_spfet_isizulu_sp_geography_history          # ZU-M-ILR, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: IsiZulu HL Senior Phase, Geography, History"
+    faculty: "Faculty of Education"
     fields: [education, languages_and_communication, humanities]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2334,6 +2503,7 @@ programmes:
 
   - id: bed_spfet_isizulu_sp_geography_tourism          # ZU-M-ILJ, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: IsiZulu HL Senior Phase, Geography, Tourism"
+    faculty: "Faculty of Education"
     fields: [education, languages_and_communication, humanities]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2351,6 +2521,7 @@ programmes:
 
   - id: bed_spfet_isizulu_sp_fet_english_fet            # ZU-M-IEL, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: IsiZulu HL Senior Phase, IsiZulu HL FET Phase, English FAL FET"
+    faculty: "Faculty of Education"
     fields: [education, languages_and_communication]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2364,6 +2535,7 @@ programmes:
 
   - id: bed_spfet_isizulu_sp_fet_history                # ZU-M-IEG, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: IsiZulu HL Senior Phase, IsiZulu HL FET, History"
+    faculty: "Faculty of Education"
     fields: [education, languages_and_communication, humanities]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2377,6 +2549,7 @@ programmes:
 
   - id: bed_spfet_isizulu_sp_fet_tourism                # ZU-M-IEB, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: IsiZulu HL Senior Phase, IsiZulu HL FET, Tourism"
+    faculty: "Faculty of Education"
     fields: [education, languages_and_communication]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2394,6 +2567,7 @@ programmes:
 
   - id: bed_spfet_isizulu_sp_social_sciences_geography  # ZU-M-ILA, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: IsiZulu HL Senior Phase, Social Sciences, Geography"
+    faculty: "Faculty of Education"
     fields: [education, languages_and_communication, humanities]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2407,6 +2581,7 @@ programmes:
 
   - id: bed_spfet_isizulu_sp_social_sciences_history    # ZU-M-ILB, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: IsiZulu HL Senior Phase, Social Sciences, History"
+    faculty: "Faculty of Education"
     fields: [education, languages_and_communication, humanities]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2420,6 +2595,7 @@ programmes:
 
   - id: bed_spfet_isizulu_sp_tourism_history            # ZU-M-IEK, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: IsiZulu HL Senior Phase, Tourism, History"
+    faculty: "Faculty of Education"
     fields: [education, languages_and_communication, humanities]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2437,6 +2613,7 @@ programmes:
 
   - id: bed_spfet_maths_cat                             # ZU-M-ILP, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: Maths Senior Phase, Maths FET & Computer Application and Technology"
+    faculty: "Faculty of Education"
     fields: [education, mathematical_sciences, computing]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2450,6 +2627,7 @@ programmes:
 
   - id: bed_spfet_maths_egd_technology                  # ZU-M-ILE, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: Maths Senior Phase, Maths FET & Engineering Graphic design, Technology"
+    faculty: "Faculty of Education"
     fields: [education, mathematical_sciences]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2463,6 +2641,7 @@ programmes:
 
   - id: bed_spfet_maths_life_sciences                   # ZU-M-ILN, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: Maths Senior Phase, Maths FET & Life Sciences"
+    faculty: "Faculty of Education"
     fields: [education, mathematical_sciences, life_sciences]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2476,6 +2655,7 @@ programmes:
 
   - id: bed_spfet_maths_maths_literacy                  # ZU-M-ILO, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: Maths Senior Phase, Maths FET & Mathematical Literacy"
+    faculty: "Faculty of Education"
     fields: [education, mathematical_sciences]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2493,6 +2673,7 @@ programmes:
 
   - id: bed_spfet_maths_natural_sciences                # ZU-M-ILL, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: Maths Senior Phase, Maths FET & Natural Sciences"
+    faculty: "Faculty of Education"
     fields: [education, mathematical_sciences, natural_sciences]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2506,6 +2687,7 @@ programmes:
 
   - id: bed_spfet_maths_physical_sciences               # ZU-M-ILT, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: Maths Senior Phase, Maths FET & Physical Sciences"
+    faculty: "Faculty of Education"
     fields: [education, mathematical_sciences, physical_sciences]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2519,6 +2701,7 @@ programmes:
 
   - id: bed_spfet_social_sciences_geography_history     # ZU-M-ILY, CAO new programmes
     name: "Bachelor of Education in Senior & FET Phase Teaching: Social Sciences, Geography, History"
+    faculty: "Faculty of Education"
     fields: [education, humanities]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2532,6 +2715,7 @@ programmes:
 
   - id: bed_ip_languages_humanities                     # ZU-M-ILH, CAO new programmes
     name: "Bachelor of Education in Intermediate Phase Teaching: Languages and Humanities"
+    faculty: "Faculty of Education"
     fields: [education, languages_and_communication, humanities]
     requirements:
       source: s-unizulu-cao-new-2027
@@ -2545,6 +2729,7 @@ programmes:
 
   - id: bed_ip_languages_maths_science_technology       # ZU-M-ILM, CAO new programmes
     name: "Bachelor of Education in Intermediate Phase Teaching: Languages, Maths, Natural Science & Technology"
+    faculty: "Faculty of Education"
     fields: [education, languages_and_communication, mathematical_sciences]
     requirements:
       source: s-unizulu-cao-new-2027
