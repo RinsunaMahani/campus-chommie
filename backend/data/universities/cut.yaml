@@ -3,6 +3,9 @@
 # Agent draft, read on 13 Oct 2026 (docs/research/universities.md). CUT's points table doesn't say how
 # many subjects count, so there's no points rule yet. Nobody has checked these values yet: release stays
 # false until a person has compared every one with its source.
+#
+# The 42 programmes (agent draft, 15 Oct 2026) come from CUT's own programme pages on www.cut.ac.za, one
+# source per page; docs/research/cut.md says what was read, what was blocked and what to check first.
 
 university: cut
 name: Central University of Technology
@@ -27,7 +30,592 @@ applications:
       no_late_applications: true
       note: "Applications opened in April 2026. Some programmes closed earlier when they had many applications."
 
-programmes: []
+programmes:
+
+  # Engineering, Built Environment and Information Technology
+
+  - id: hcert_construction
+    name: "Higher Certificate in Construction"
+    fields: [built_environment]
+    requirements:
+      source: s-cut-prog-hcert-construction
+      min_points: 27
+      subject_minimums: {mathematics: 4, physical_sciences: 4}
+      extras:
+        - "CUT asks for an NSC with a higher certificate pass or better."
+        - "Mathematical Literacy is not accepted."
+        - "CUT may consider applicants with 23 to 26 points through a selection process, which could include a selection test."
+        - "Campus: Bloemfontein."
+
+  - id: hcert_information_technology
+    name: "Higher Certificate in Information Technology"
+    fields: [computing]
+    requirements:
+      source: s-cut-prog-hcert-it
+      min_points: 27
+      extras:
+        - "CUT asks for an NSC with a higher certificate pass or better, with \"language proficiency in English at NQF level 4\"."
+        - "Applicants with 22 to 26 points must pass CUT's selection process, which may include a selection test."
+        - "Graduates with an average of 60% or more may be considered for the Diploma in Computer Networking."
+        - "Campuses: Bloemfontein and Welkom."
+
+  - id: hcert_maths_engineering_technology
+    name: "Higher Certificate in Mathematics for Engineering Technology"
+    fields: [engineering, mathematical_sciences]
+    requirements:
+      source: s-cut-prog-hcert-maths-eng
+      min_points: null
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {technical_mathematics: 2}
+      extras:
+        - "This programme's page states no points minimum; CUT's course calculator lists 27 points for it."
+        - "CUT asks for 50% in English, 50% in Physical Sciences or Technical Sciences, and 30% in Mathematics or Technical Mathematics."
+        - "Graduates must then apply for a Diploma or Bachelor of Engineering Technology (Mechanical, Civil or Electrical)."
+        - "Campus: Bloemfontein."
+
+  - id: hcert_renewable_energy
+    name: "Higher Certificate in Renewable Energy Technologies"
+    fields: [engineering]
+    requirements:
+      source: s-cut-prog-hcert-renewable
+      min_points: 27
+      subject_minimums: {mathematics: 4, physical_sciences: 4}
+      extras:
+        - "CUT asks for an NSC with a higher certificate pass or better."
+        - "Mathematical Literacy is not accepted."
+        - "CUT may consider applicants with 23 to 26 points through a selection process, which could include a selection test."
+        - "Campus: Bloemfontein."
+
+  - id: dip_computer_networking
+    name: "Diploma in Computer Networking"
+    fields: [computing]
+    selective: true
+    selection_note: "Admission is strictly subject to a selection process."
+    requirements:
+      source: s-cut-prog-dip-networking
+      min_points: 27
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+      extras:
+        - "CUT also accepts Computer Science at 40% (level 3) in place of Mathematics."
+        - "If you narrowly miss, CUT may place you in the extended (ECP) stream: 22 to 26 points, with 40% in Mathematics or Computer Studies, or 60% in Mathematical Literacy."
+        - "Campus: Bloemfontein."
+
+  - id: dip_information_technology
+    name: "Diploma in Information Technology"
+    fields: [computing]
+    selective: true
+    selection_note: "Admission is strictly subject to a selection process."
+    requirements:
+      source: s-cut-prog-dip-it
+      min_points: 27
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+      extras:
+        - "CUT also accepts Computer Science at 40% (level 3) in place of Mathematics."
+        - "If you narrowly miss, CUT may place you in the extended (ECP) stream: 22 to 26 points, with 40% in Mathematics or Information Technology, or 60% in Mathematical Literacy."
+        - "Campuses: Bloemfontein and Welkom."
+
+  - id: dip_engtech_civil
+    name: "Diploma in Engineering Technology in Civil Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-cut-prog-dip-civil
+      min_points: 27
+      subject_minimums: {mathematics: 4, physical_sciences: 4, english: 4}
+      extras:
+        - "CUT asks for an NSC with a diploma pass or better."
+        - "Mathematical Literacy is not accepted for any engineering programme."
+        - "Two years full-time, one intake a year in January. Campus: Bloemfontein."
+
+  - id: dip_engtech_electrical
+    name: "Diploma in Engineering Technology in Electrical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-cut-prog-dip-electrical
+      min_points: 27
+      subject_minimums: {mathematics: 4, physical_sciences: 4, english: 4}
+      extras:
+        - "CUT asks for an NSC with a diploma pass or better."
+        - "Mathematical Literacy is not accepted for any engineering programme."
+        - "Two years full-time, one intake a year in January. Campus: Bloemfontein."
+
+  - id: dip_engtech_mechanical
+    name: "Diploma in Engineering Technology in Mechanical Engineering"
+    fields: [engineering]
+    selective: true
+    selection_note: "Admission to this programme is subject to selection."
+    requirements:
+      source: s-cut-prog-dip-mechanical
+      min_points: 27
+      subject_minimums: {mathematics: 4, physical_sciences: 4, english: 4}
+      extras:
+        - "CUT asks for an NSC with a diploma pass or better."
+        - "Mathematical Literacy is not accepted for any engineering programme."
+        - "Two years full-time, one intake a year in January. Campus: Bloemfontein."
+
+  - id: bengtech_civil
+    name: "Bachelor of Engineering Technology in Civil Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-cut-prog-beng-civil
+      min_points: 32
+      subject_minimums: {mathematics: 5, physical_sciences: 4, english: 4}
+      extras:
+        - "CUT asks for an NSC with a bachelor's pass."
+        - "Mathematical Literacy is not accepted."
+        - "Campus: Bloemfontein."
+
+  - id: bengtech_electrical
+    name: "Bachelor of Engineering Technology in Electrical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-cut-prog-beng-electrical
+      min_points: 32
+      subject_minimums: {mathematics: 5, physical_sciences: 4, english: 4}
+      extras:
+        - "CUT asks for an NSC with a bachelor's pass."
+        - "Mathematical Literacy is not accepted."
+        - "Campus: Bloemfontein."
+
+  - id: bengtech_mechanical
+    name: "Bachelor of Engineering Technology in Mechanical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-cut-prog-beng-mechanical
+      min_points: 32
+      subject_minimums: {mathematics: 5, physical_sciences: 4, english: 4}
+      extras:
+        - "CUT asks for an NSC with a bachelor's pass."
+        - "Mathematical Literacy is not accepted."
+        - "Campus: Bloemfontein."
+
+  - id: bconst_construction_management
+    name: "Bachelor of Construction in Construction Management"
+    fields: [built_environment, management]
+    requirements:
+      source: s-cut-prog-bconst-cm
+      min_points: 32
+      subject_minimums: {mathematics: 4, physical_sciences: 4, english: 4}
+      extras:
+        - "CUT's ECP page lists an extended (ECP) stream for this degree; you can't apply for it directly, CUT may place you in it."
+        - "Campus: Bloemfontein."
+
+  - id: bconst_health_safety
+    name: "Bachelor of Construction in Health and Safety Management"
+    fields: [built_environment, management]
+    requirements:
+      source: s-cut-prog-bconst-hs
+      min_points: 32
+      subject_minimums: {mathematics: 4, physical_sciences: 4, english: 4}
+      extras:
+        - "Campus: Bloemfontein."
+
+  - id: bconst_quantity_surveying
+    name: "Bachelor of Construction in Quantity Surveying"
+    fields: [built_environment]
+    selective: true
+    selection_note: "Admission is subject to a formal selection process."
+    requirements:
+      source: s-cut-prog-bconst-qs
+      min_points: 32
+      subject_minimums: {mathematics: 4, english: 4}
+      choices:
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {life_sciences: 4}
+      extras:
+        - "CUT asks for an NSC with a bachelor's pass."
+        - "CUT's ECP page lists an extended (ECP) stream for this degree; you can't apply for it directly, CUT may place you in it."
+        - "Campus: Bloemfontein."
+
+  # Health and Environmental Sciences
+
+  - id: hcert_dental_assisting
+    name: "Higher Certificate in Dental Assisting"
+    fields: [dentistry, health_sciences]
+    selective: true
+    selection_note: "Places are limited: when there are more applicants than places, selection is on academic merit; some candidates may write an aptitude test."
+    requirements:
+      source: s-cut-prog-dental-assisting
+      min_points: null
+      subject_minimums: {life_sciences: 4, english: 4, physical_sciences: 1}
+      extras:
+        - "This programme's page states no points minimum; CUT's course calculator lists 27 points for it."
+        - "You must have taken Physical Sciences in Grade 12; CUT sets no minimum mark for it."
+        - "English at 50% may be your home or additional language."
+        - "Campus: Bloemfontein."
+
+  - id: dip_agricultural_management
+    name: "Diploma in Agricultural Management"
+    fields: [agriculture, management]
+    selective: true
+    selection_note: "Demand is high: selection is on academic merit and available places, through the faculty's selection process."
+    requirements:
+      source: s-cut-prog-dip-agric
+      min_points: null
+      extras:
+        - "CUT's page says no applicant with fewer than 23 points will be considered for selection; its course calculator lists 27 points. Check with CUT."
+        - "Recommended: 50% in one of Accounting, Mathematics, Business Economics, Economics, Mercantile Law, Hotel-keeping and Catering, or Home Economics (CUT's own list)."
+        - "Campus: Bloemfontein."
+
+  - id: dip_somatology
+    name: "Diploma in Somatology"
+    fields: [health_sciences]
+    selective: true
+    selection_note: "All applicants go through a formal selection process, which may include an aptitude test and an interview."
+    requirements:
+      source: s-cut-prog-dip-somatology
+      min_points: null
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - "This programme's page states no points minimum; CUT's course calculator lists 27 points for it."
+        - "If you narrowly miss (one level short in one subject, or one level short on points), CUT may consider you for the extended (ECP) stream."
+        - "Campus: Bloemfontein."
+
+  - id: bhsc_clinical_technology
+    name: "Bachelor of Health Sciences in Clinical Technology"
+    fields: [health_sciences, medical_sciences]
+    selective: true
+    selection_note: "All applicants go through a formal selection process, which may include a psychometric evaluation, a selection test and an interview; a second round follows final NSC results."
+    requirements:
+      source: s-cut-prog-bhsc-clinical
+      min_points: 30
+      subject_minimums: {life_sciences: 4, physical_sciences: 4, mathematics: 4, english: 4}
+      extras:
+        - "CUT asks for an NSC with a bachelor's pass."
+        - "If you narrowly miss (one level short in one subject, or one level short on points), CUT may consider you for the extended (ECP) stream."
+        - "Campus: Bloemfontein."
+
+  - id: bhsc_medical_laboratory_science
+    name: "Bachelor of Health Sciences in Medical Laboratory Science"
+    fields: [medical_sciences, health_sciences]
+    selective: true
+    selection_note: "Places are limited and all applicants go through a formal selection process; meeting the minimums doesn't guarantee a place."
+    requirements:
+      source: s-cut-prog-bhsc-medlab
+      min_points: 30
+      subject_minimums: {life_sciences: 4, physical_sciences: 4, mathematics: 4, english: 4, life_orientation: 3}
+      extras:
+        - "CUT asks for an NSC with a bachelor's pass."
+        - "Mathematical Literacy is not accepted."
+        - "CUT says applicants with 35 points or more may qualify for direct admission, and those with 30 to 34 may be referred for a psychometric evaluation."
+        - "If you narrowly miss (one level short in one subject, or one level short on points), CUT may consider you for the extended (ECP) stream."
+        - "Campus: Bloemfontein."
+
+  - id: brad_diagnostics
+    name: "Bachelor of Radiography in Diagnostics"
+    fields: [radiography]
+    selective: true
+    selection_note: "All applicants go through a formal selection process; a second round, which may include a test or interview, follows final NSC results."
+    requirements:
+      source: s-cut-prog-radiography
+      min_points: 30
+      subject_minimums: {life_sciences: 4, physical_sciences: 4, mathematics: 4, life_orientation: 3}
+      extras:
+        - "CUT asks for an NSC with a bachelor's pass."
+        - "If you narrowly miss (one level short in one subject, or one level short on points), CUT may consider you for its few extended (ECP) places."
+        - "Campus: Bloemfontein."
+
+  - id: bsc_environmental_health
+    name: "Bachelor of Science in Environmental Health"
+    fields: [environmental_health]
+    selective: true
+    selection_note: "Candidates must complete a formal selection process."
+    requirements:
+      source: s-cut-prog-bsc-envhealth
+      min_points: null
+      subject_minimums: {life_sciences: 4, physical_sciences: 4, mathematics: 4}
+      extras:
+        - "This programme's page states no points minimum; CUT's course calculator lists 30 points for it."
+        - "CUT asks for an NSC with a bachelor's pass."
+        - "If you narrowly miss (one level short in one subject, or one level short on points), CUT may consider you for the extended (ECP) stream."
+        - "Campus: Bloemfontein."
+
+  # Humanities
+
+  - id: dip_design_studio_art
+    name: "Diploma in Design and Studio Art"
+    fields: [arts_and_design]
+    selective: true
+    selection_note: "You submit a portfolio and attend an interview."
+    requirements:
+      source: s-cut-prog-dip-design
+      min_points: null
+      extras:
+        - "This programme's page states no points minimum; CUT's course calculator lists 27 points for it."
+        - "Visual Arts is highly recommended."
+        - "CUT also offers this diploma as an extended (ECP) programme."
+        - "Campus: Bloemfontein."
+
+  - id: dip_language_practice_media
+    name: "Diploma in Language Practice and Media Studies"
+    fields: [languages_and_communication]
+    selective: true
+    selection_note: "Places are limited: every applicant writes a selection test, and selection uses Grade 12 results with the test."
+    requirements:
+      source: s-cut-prog-dip-language
+      min_points: null
+      extras:
+        - "You need 60% or more in any two official regional languages."
+        - "This programme's page states no points minimum; CUT's course calculator lists 27 points for it."
+        - "Campuses: Bloemfontein and Welkom."
+
+  - id: bed_foundation_phase
+    name: "Bachelor of Education in Foundation Phase Teaching"
+    fields: [education]
+    requirements:
+      source: s-cut-prog-bed-foundation
+      min_points: null
+      subject_minimums: {english: 4, other_language: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+            - subjects: {mathematical_literacy: 5}
+      extras:
+        - "Your other language at 50% must be one of Sesotho, Afrikaans, Setswana, isiXhosa or isiZulu."
+        - "CUT asks for an NSC with a bachelor's pass."
+        - "This programme's page states no points minimum; CUT's course calculator lists 27 points for it."
+        - "Campuses: Bloemfontein and Welkom."
+
+  - id: bed_sp_fet_computer_science
+    name: "Bachelor of Education in Senior Phase and FET Teaching: Computer Science"
+    fields: [education, computing]
+    requirements:
+      source: s-cut-prog-bed-cs
+      min_points: null
+      subject_minimums: {mathematics: 4}
+      extras:
+        - "CUT asks for an NSC with a bachelor's pass."
+        - "This programme's page states no points minimum; CUT's course calculator lists 27 points for it."
+        - "Campuses: Bloemfontein and Welkom."
+
+  - id: bed_sp_fet_ems
+    name: "Bachelor of Education in Senior Phase and FET Teaching: Economic and Management Sciences"
+    fields: [education, commerce]
+    requirements:
+      source: s-cut-prog-bed-ems
+      min_points: null
+      subject_minimums: {accounting: 4}
+      extras:
+        - "CUT asks for an NSC with a bachelor's pass."
+        - "This programme's page states no points minimum; CUT's course calculator lists 27 points for it."
+        - "Campuses: Bloemfontein and Welkom."
+
+  - id: bed_sp_fet_language
+    name: "Bachelor of Education in Senior Phase and FET Teaching: Language Education"
+    fields: [education, languages_and_communication]
+    requirements:
+      source: s-cut-prog-bed-language
+      min_points: null
+      subject_minimums: {english: 4, other_language: 4}
+      extras:
+        - "Your other language at 50% must be one of Sesotho, Afrikaans, Setswana, isiXhosa or isiZulu."
+        - "CUT asks for an NSC with a bachelor's pass."
+        - "This programme's page states no points minimum; CUT's course calculator lists 27 points for it."
+        - "Campuses: Bloemfontein and Welkom."
+
+  - id: bed_sp_fet_mathematics
+    name: "Bachelor of Education in Senior Phase and FET Teaching: Mathematics"
+    fields: [education, mathematical_sciences]
+    requirements:
+      source: s-cut-prog-bed-maths
+      min_points: null
+      subject_minimums: {mathematics: 4, physical_sciences: 4}
+      extras:
+        - "CUT asks for an NSC with a bachelor's pass."
+        - "This programme's page states no points minimum; CUT's course calculator lists 27 points for it."
+        - "Campuses: Bloemfontein and Welkom."
+
+  - id: bed_sp_fet_natural_sciences
+    name: "Bachelor of Education in Senior Phase and FET Teaching: Natural Sciences"
+    fields: [education, natural_sciences]
+    requirements:
+      source: s-cut-prog-bed-natsci
+      min_points: null
+      subject_minimums: {mathematics: 4, physical_sciences: 4, life_sciences: 4}
+      extras:
+        - "CUT asks for an NSC with a bachelor's pass."
+        - "This programme's page states no points minimum; CUT's course calculator lists 27 points for it."
+        - "Campuses: Bloemfontein and Welkom."
+
+  - id: bed_sp_fet_technology
+    name: "Bachelor of Education in Senior Phase and FET Teaching: Technology"
+    fields: [education]
+    requirements:
+      source: s-cut-prog-bed-technology
+      min_points: null
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+      extras:
+        - "A pass in Engineering Graphics and Design is highly recommended."
+        - "CUT asks for an NSC with a bachelor's pass."
+        - "This programme's page states no points minimum; CUT's course calculator lists 27 points for it."
+        - "Campus: Bloemfontein."
+
+  # Management Sciences
+
+  - id: hcert_community_development
+    name: "Higher Certificate: Community Development Work"
+    fields: [public_administration, humanities]
+    requirements:
+      source: s-cut-prog-hcert-cdw
+      min_points: 26
+      extras:
+        - "CUT calls 26 points a recommended minimum; candidates with fewer may go through a selection process."
+        - "One year full-time or two years part-time. Campus: Bloemfontein."
+
+  - id: hcert_retail_management
+    name: "Higher Certificate in Retail Management"
+    fields: [management, commerce]
+    requirements:
+      source: s-cut-prog-hcert-retail
+      min_points: 27
+      subject_minimums: {english: 4}
+      extras:
+        - "Campus: Welkom."
+
+  - id: dip_public_management
+    name: "Diploma in Public Management"
+    fields: [public_administration]
+    requirements:
+      source: s-cut-prog-dip-public
+      min_points: null
+      subject_minimums: {english: 4}
+      extras:
+        - "CUT's page says a minimum score is required and that candidates with fewer than 27 points may go through a selection process; its course calculator lists 27 points."
+        - "Full-time or part-time over three years. Campuses: Bloemfontein and Welkom."
+
+  - id: dip_hospitality_management
+    name: "Diploma in Hospitality Management"
+    fields: [tourism_and_hospitality]
+    selective: true
+    selection_note: "Applicants with 27 points or more attend a selection test and an interview at the Hotel School in Bloemfontein."
+    requirements:
+      source: s-cut-prog-dip-hospitality
+      min_points: 27
+      subject_minimums: {english: 4}
+      extras:
+        - "Recommended: Consumer Studies, Hospitality Studies, Accounting or Business Studies."
+        - "If you narrowly miss, CUT may consider you for the extended (ECP) stream: 23 to 26 points and 50% in English."
+        - "Campus: Bloemfontein."
+
+  - id: dip_tourism_management
+    name: "Diploma in Tourism Management"
+    fields: [tourism_and_hospitality]
+    selective: true
+    selection_note: "Every applicant writes a psychometric and/or scholastic aptitude test and has an interview."
+    requirements:
+      source: s-cut-prog-dip-tourism
+      min_points: 28
+      extras:
+        - "CUT says demand is high and candidates with fewer than 27 points will not be considered."
+        - "Campus: Bloemfontein."
+
+  - id: dip_human_resources_management
+    name: "Diploma in Human Resources Management"
+    fields: [management]
+    requirements:
+      source: s-cut-prog-dip-hrm
+      min_points: 27
+      subject_minimums: {english: 4}
+      extras:
+        - "Candidates with 22 to 26 points may be asked to write a selection test."
+        - "Day classes only. Campuses: Bloemfontein and Welkom."
+
+  - id: dip_management
+    name: "Diploma in Management"
+    fields: [management]
+    requirements:
+      source: s-cut-prog-dip-management
+      min_points: 27
+      subject_minimums: {english: 4}
+      extras:
+        - "CUT gives preference to applicants with more than 30 points."
+        - "A good pass in Mathematics or a quantitative subject (CUT names Physics and Accounting) is an advantage."
+        - "Full-time only. Campuses: Bloemfontein and Welkom."
+
+  - id: dip_marketing_management
+    name: "Diploma in Marketing Management"
+    fields: [management, commerce]
+    selective: true
+    selection_note: "Candidates may be asked to write a selection test."
+    requirements:
+      source: s-cut-prog-dip-marketing
+      min_points: 27
+      subject_minimums: {english: 4}
+      extras:
+        - "Mathematics, Accounting and other commercial subjects are highly recommended."
+        - "Day classes only. Campuses: Bloemfontein and Welkom (the International direction only in Bloemfontein)."
+
+  - id: dip_office_management_technology
+    name: "Diploma in Office Management and Technology"
+    fields: [management]
+    requirements:
+      source: s-cut-prog-dip-omt
+      min_points: 27
+      subject_minimums: {english: 4}
+      extras:
+        - "CUT says only candidates with 27 points or more are eligible for selection."
+        - "Full-time only. Campuses: Bloemfontein and Welkom."
+
+  - id: bms_accountancy
+    name: "Bachelor of Management Sciences in Accountancy"
+    fields: [accounting]
+    selective: true
+    selection_note: "Selection tests, which may include psychometric testing, may be required."
+    requirements:
+      source: s-cut-prog-bms-accountancy
+      min_points: 27
+      subject_minimums: {accounting: 5, english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+      extras:
+        - "CUT asks for an NSC with a bachelor's pass (its page says \"degree exemption\") and calls the points minimum an M-score of 27."
+        - "If you narrowly miss, CUT may consider you for the five-year extended (ECP) stream: 27 points, Accounting 50%, Mathematical Literacy 50% or Mathematics 30%, and English 50%."
+        - "You need a laptop that meets the department's specifications."
+        - "Campuses: Bloemfontein and Welkom."
+
+  - id: bms_internal_auditing
+    name: "Bachelor of Management Sciences in Internal Auditing"
+    fields: [accounting, finance]
+    selective: true
+    selection_note: "Selection tests, which may include psychometric testing, may be required."
+    requirements:
+      source: s-cut-prog-bms-auditing
+      min_points: 27
+      subject_minimums: {accounting: 5, english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+      extras:
+        - "CUT asks for an NSC with a bachelor's pass (its page says \"degree exemption\") and calls the points minimum an M-score of 27."
+        - "If you narrowly miss, CUT may consider you for the five-year extended (ECP) stream: 27 points, Accounting 50%, Mathematical Literacy 50% or Mathematics 30%, and English 50%."
+        - "You need a laptop that meets the department's specifications."
+        - "Campus: Bloemfontein."
 
 sources:
   - id: s-cut-apply
@@ -49,5 +637,320 @@ sources:
     publisher: "Central University of Technology"
     title: "Admission points (AP)"
     retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-programmes-offered
+    url: "https://www.cut.ac.za/programmes-offered"
+    publisher: "Central University of Technology"
+    title: "Programmes offered (the undergraduate list)"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-course-calculator
+    url: "https://www.cut.ac.za/Course-calculator"
+    publisher: "Central University of Technology"
+    title: "Course calculator (minimum points for each programme)"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-ecp
+    url: "https://www.cut.ac.za/extended-curriculum-programme-ecp"
+    publisher: "Central University of Technology"
+    title: "Extended Curriculum Programmes (ECPs)"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-hcert-construction
+    url: "https://www.cut.ac.za/programmes/hcert-construction"
+    publisher: "Central University of Technology"
+    title: "Programme page: Higher Certificate in Construction"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-hcert-it
+    url: "https://www.cut.ac.za/programmes/hcert-information-technology"
+    publisher: "Central University of Technology"
+    title: "Programme page: Higher Certificate in Information Technology"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-hcert-maths-eng
+    url: "https://www.cut.ac.za/programmes/hc-mathematics-for-engineering-technology"
+    publisher: "Central University of Technology"
+    title: "Programme page: Higher Certificate in Mathematics for Engineering Technology"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-hcert-renewable
+    url: "https://www.cut.ac.za/programmes/hcert-renewable-energy-technologies"
+    publisher: "Central University of Technology"
+    title: "Programme page: Higher Certificate in Renewable Energy Technologies"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-dip-networking
+    url: "https://www.cut.ac.za/programmes/dip-computer-networking"
+    publisher: "Central University of Technology"
+    title: "Programme page: Diploma in Computer Networking"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-dip-it
+    url: "https://www.cut.ac.za/programmes/dp-information-technology"
+    publisher: "Central University of Technology"
+    title: "Programme page: Diploma in Information Technology"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-dip-civil
+    url: "https://www.cut.ac.za/programmes/dip-eng-tech-civil-engineering"
+    publisher: "Central University of Technology"
+    title: "Programme page: Diploma in Engineering Technology in Civil Engineering"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-dip-electrical
+    url: "https://www.cut.ac.za/programmes/dp-engineering-technology-in-electrical-engineer"
+    publisher: "Central University of Technology"
+    title: "Programme page: Diploma in Engineering Technology in Electrical Engineering"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-dip-mechanical
+    url: "https://www.cut.ac.za/programmes/dip-eng-tech-mechanical-engineering"
+    publisher: "Central University of Technology"
+    title: "Programme page: Diploma in Engineering Technology in Mechanical Engineering"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-beng-civil
+    url: "https://www.cut.ac.za/programmes/bachelor-eng-tech-civil-engineering"
+    publisher: "Central University of Technology"
+    title: "Programme page: Bachelor of Engineering Technology in Civil Engineering"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-beng-electrical
+    url: "https://www.cut.ac.za/programmes/bachelor-eng-tech-electrical-engineer"
+    publisher: "Central University of Technology"
+    title: "Programme page: Bachelor of Engineering Technology in Electrical Engineering"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-beng-mechanical
+    url: "https://www.cut.ac.za/programmes/bachelor-eng-tech-mechanical-engineering"
+    publisher: "Central University of Technology"
+    title: "Programme page: Bachelor of Engineering Technology in Mechanical Engineering"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-bconst-cm
+    url: "https://www.cut.ac.za/programmes/bachelors-construction-management"
+    publisher: "Central University of Technology"
+    title: "Programme page: Bachelor of Construction in Construction Management"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-bconst-hs
+    url: "https://www.cut.ac.za/programmes/bachelor-health-and-safety-management"
+    publisher: "Central University of Technology"
+    title: "Programme page: Bachelor of Construction in Health and Safety Management"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-bconst-qs
+    url: "https://www.cut.ac.za/programmes/bachelor-quantity-surveying"
+    publisher: "Central University of Technology"
+    title: "Programme page: Bachelor of Construction in Quantity Surveying"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-dental-assisting
+    url: "https://www.cut.ac.za/programmes/dental-assisting"
+    publisher: "Central University of Technology"
+    title: "Programme page: Higher Certificate in Dental Assisting"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-dip-agric
+    url: "https://www.cut.ac.za/programmes/dip-agricultural-management"
+    publisher: "Central University of Technology"
+    title: "Programme page: Diploma in Agricultural Management"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-dip-somatology
+    url: "https://www.cut.ac.za/programmes/dip-somatology"
+    publisher: "Central University of Technology"
+    title: "Programme page: Diploma in Somatology"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-bhsc-clinical
+    url: "https://www.cut.ac.za/programmes/bachelor-health-sciences-clinical-tech"
+    publisher: "Central University of Technology"
+    title: "Programme page: Bachelor of Health Sciences in Clinical Technology"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-bhsc-medlab
+    url: "https://www.cut.ac.za/programmes/bachelor-health-sciences-medical-lab-science"
+    publisher: "Central University of Technology"
+    title: "Programme page: Bachelor of Health Sciences in Medical Laboratory Science"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-radiography
+    url: "https://www.cut.ac.za/programmes/radiography-in-diagnostics"
+    publisher: "Central University of Technology"
+    title: "Programme page: Bachelor of Radiography in Diagnostics"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-bsc-envhealth
+    url: "https://www.cut.ac.za/programmes/bachelor-environmental-health"
+    publisher: "Central University of Technology"
+    title: "Programme page: Bachelor of Science in Environmental Health"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-dip-design
+    url: "https://www.cut.ac.za/programmes/design-and-studio-art"
+    publisher: "Central University of Technology"
+    title: "Programme page: Diploma in Design and Studio Art"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-dip-language
+    url: "https://www.cut.ac.za/programmes/dip-language-practice-and-media-studies"
+    publisher: "Central University of Technology"
+    title: "Programme page: Diploma in Language Practice and Media Studies"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-bed-foundation
+    url: "https://www.cut.ac.za/programmes/foundation-phase-teaching"
+    publisher: "Central University of Technology"
+    title: "Programme page: Bachelor of Education in Foundation Phase Teaching"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-bed-cs
+    url: "https://www.cut.ac.za/programmes/computer-science"
+    publisher: "Central University of Technology"
+    title: "Programme page: BEd Senior Phase and FET Teaching: Computer Science"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-bed-ems
+    url: "https://www.cut.ac.za/programmes/economic-and-management-sciences"
+    publisher: "Central University of Technology"
+    title: "Programme page: BEd Senior Phase and FET Teaching: Economic and Management Sciences"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-bed-language
+    url: "https://www.cut.ac.za/programmes/language-education"
+    publisher: "Central University of Technology"
+    title: "Programme page: BEd Senior Phase and FET Teaching: Language Education"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-bed-maths
+    url: "https://www.cut.ac.za/programmes/mathematics"
+    publisher: "Central University of Technology"
+    title: "Programme page: BEd Senior Phase and FET Teaching: Mathematics"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-bed-natsci
+    url: "https://www.cut.ac.za/programmes/natural-sciences"
+    publisher: "Central University of Technology"
+    title: "Programme page: BEd Senior Phase and FET Teaching: Natural Sciences"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-bed-technology
+    url: "https://www.cut.ac.za/programmes/BEd-technology"
+    publisher: "Central University of Technology"
+    title: "Programme page: BEd Senior Phase and FET Teaching: Technology"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-hcert-cdw
+    url: "https://www.cut.ac.za/programmes/hcert-community-development-work"
+    publisher: "Central University of Technology"
+    title: "Programme page: Higher Certificate: Community Development Work"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-hcert-retail
+    url: "https://www.cut.ac.za/programmes/hcert-retail-management"
+    publisher: "Central University of Technology"
+    title: "Programme page: Higher Certificate in Retail Management"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-dip-public
+    url: "https://www.cut.ac.za/programmes/dip-public-management"
+    publisher: "Central University of Technology"
+    title: "Programme page: Diploma in Public Management"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-dip-hospitality
+    url: "https://www.cut.ac.za/programmes/dip-hospitality-management"
+    publisher: "Central University of Technology"
+    title: "Programme page: Diploma in Hospitality Management"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-dip-tourism
+    url: "https://www.cut.ac.za/programmes/dip-tourism-management"
+    publisher: "Central University of Technology"
+    title: "Programme page: Diploma in Tourism Management"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-dip-hrm
+    url: "https://www.cut.ac.za/programmes/dip-human-resources-management"
+    publisher: "Central University of Technology"
+    title: "Programme page: Diploma in Human Resources Management"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-dip-management
+    url: "https://www.cut.ac.za/programmes/diploma-management"
+    publisher: "Central University of Technology"
+    title: "Programme page: Diploma in Management"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-dip-marketing
+    url: "https://www.cut.ac.za/programmes/dip-marketing-management"
+    publisher: "Central University of Technology"
+    title: "Programme page: Diploma in Marketing Management"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-dip-omt
+    url: "https://www.cut.ac.za/programmes/dip-office-management-and-technology"
+    publisher: "Central University of Technology"
+    title: "Programme page: Diploma in Office Management and Technology"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-bms-accountancy
+    url: "https://www.cut.ac.za/programmes/bachelor-management-sciences-in-accountancy"
+    publisher: "Central University of Technology"
+    title: "Programme page: Bachelor of Management Sciences in Accountancy"
+    retrieved: 2026-10-15
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-prog-bms-auditing
+    url: "https://www.cut.ac.za/programmes/bachelor-internal-auditing"
+    publisher: "Central University of Technology"
+    title: "Programme page: Bachelor of Management Sciences in Internal Auditing"
+    retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
