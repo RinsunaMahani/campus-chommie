@@ -72,6 +72,7 @@ programmes:
 
   - id: bcom_general
     name: "Bachelor of Commerce (General)"
+    faculty: "Faculty of Commerce, Law and Management"
     fields: [commerce]
     requirements:
       source: s-wits-clm-bcom
@@ -83,6 +84,7 @@ programmes:
 
   - id: bcom_accounting
     name: "BCom: Accounting"
+    faculty: "Faculty of Commerce, Law and Management"
     fields: [accounting, commerce]
     requirements:
       source: s-wits-clm-accounting
@@ -93,6 +95,7 @@ programmes:
 
   - id: baccsc
     name: "Bachelor of Accounting Science (BAccSc)"
+    faculty: "Faculty of Commerce, Law and Management"
     fields: [accounting, commerce]
     requirements:
       source: s-wits-clm-baccsc
@@ -103,6 +106,7 @@ programmes:
 
   - id: bcom_financial_sciences
     name: "BCom in the field of Financial Sciences"
+    faculty: "Faculty of Commerce, Law and Management"
     fields: [finance, commerce]
     requirements:
       source: s-wits-clm-financial-sciences
@@ -113,6 +117,7 @@ programmes:
 
   - id: beconsc
     name: "BEconSc: Economic Science"
+    faculty: "Faculty of Commerce, Law and Management"
     fields: [economics, commerce]
     requirements:
       source: s-wits-clm-beconsc
@@ -123,6 +128,7 @@ programmes:
 
   - id: bcom_economics
     name: "BCom: Economics"
+    faculty: "Faculty of Commerce, Law and Management"
     fields: [economics, commerce]
     requirements:
       source: s-wits-clm-economics
@@ -134,6 +140,7 @@ programmes:
 
   - id: bcom_finance
     name: "BCom: Finance"
+    faculty: "Faculty of Commerce, Law and Management"
     fields: [finance, commerce]
     requirements:
       source: s-wits-clm-finance
@@ -145,6 +152,7 @@ programmes:
 
   - id: bcom_hrm
     name: "BCom: Human Resource Management"
+    faculty: "Faculty of Commerce, Law and Management"
     fields: [management, commerce]
     requirements:
       source: s-wits-clm-hrm
@@ -156,6 +164,7 @@ programmes:
 
   - id: bcom_information_systems
     name: "BCom: Information Systems"
+    faculty: "Faculty of Commerce, Law and Management"
     fields: [computing, commerce]
     requirements:
       source: s-wits-clm-information-systems
@@ -166,6 +175,7 @@ programmes:
 
   - id: bcom_insurance_risk
     name: "BCom: Insurance and Risk Management"
+    faculty: "Faculty of Commerce, Law and Management"
     fields: [finance, commerce]
     requirements:
       source: s-wits-clm-irm
@@ -177,6 +187,7 @@ programmes:
 
   - id: bcom_management
     name: "BCom: Management"
+    faculty: "Faculty of Commerce, Law and Management"
     fields: [management, commerce]
     requirements:
       source: s-wits-clm-management
@@ -188,6 +199,7 @@ programmes:
 
   - id: bcom_marketing
     name: "BCom: Marketing"
+    faculty: "Faculty of Commerce, Law and Management"
     fields: [management, commerce]
     requirements:
       source: s-wits-clm-marketing
@@ -199,6 +211,7 @@ programmes:
 
   - id: bcom_ppe
     name: "BCom: Politics, Philosophy and Economics (PPE)"
+    faculty: "Faculty of Commerce, Law and Management"
     fields: [economics, humanities, commerce]
     requirements:
       source: s-wits-clm-ppe
@@ -209,6 +222,7 @@ programmes:
 
   - id: bcom_law
     name: "BCom with Law"
+    faculty: "Faculty of Commerce, Law and Management"
     fields: [law, commerce]
     requirements:
       source: s-wits-clm-bcom-law
@@ -219,6 +233,7 @@ programmes:
 
   - id: llb
     name: "Bachelor of Laws (LLB), four-year stream"
+    faculty: "Faculty of Commerce, Law and Management"
     fields: [law]
     requirements:
       source: s-wits-clm-llb
@@ -234,6 +249,7 @@ programmes:
 
   - id: bcom_part_time
     name: "BCom part-time"
+    faculty: "Faculty of Commerce, Law and Management"
     fields: [commerce]
     requirements:
       source: s-wits-clm-bcom-part-time
@@ -247,6 +263,7 @@ programmes:
 
   - id: bcom_part_time_law
     name: "BCom part-time with Law"
+    faculty: "Faculty of Commerce, Law and Management"
     fields: [commerce, law]
     requirements:
       source: s-wits-clm-bcom-part-time-law
@@ -260,6 +277,7 @@ programmes:
 
   - id: bsc_eng_aeronautical
     name: "BSc (Eng): Aeronautical Engineering"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
     requirements:
       source: s-wits-ebe-aeronautical
@@ -270,6 +288,7 @@ programmes:
 
   - id: bsc_eng_chemical
     name: "BSc (Eng): Chemical Engineering"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
     requirements:
       source: s-wits-ebe-chemical
@@ -280,6 +299,7 @@ programmes:
 
   - id: bsc_eng_civil
     name: "BSc (Eng): Civil Engineering"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
     requirements:
       source: s-wits-ebe-civil
@@ -290,6 +310,7 @@ programmes:
 
   - id: bsc_eng_electrical
     name: "BSc (Eng): Electrical Engineering"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
     requirements:
       source: s-wits-ebe-electrical
@@ -301,6 +322,7 @@ programmes:
 
   - id: bsc_eng_industrial
     name: "BSc (Eng): Industrial Engineering"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
     requirements:
       source: s-wits-ebe-industrial
@@ -311,6 +333,7 @@ programmes:
 
   - id: bsc_eng_information
     name: "BSc (Eng): Information Engineering"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering, computing]
     requirements:
       source: s-wits-ebe-information
@@ -321,6 +344,7 @@ programmes:
 
   - id: bsc_eng_mechanical
     name: "BSc (Eng): Mechanical Engineering"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
     requirements:
       source: s-wits-ebe-mechanical
@@ -331,6 +355,7 @@ programmes:
 
   - id: bsc_eng_metallurgy
     name: "BSc (Eng): Metallurgy and Materials Engineering"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
     requirements:
       source: s-wits-ebe-metallurgy
@@ -341,6 +366,7 @@ programmes:
 
   - id: bsc_eng_mining
     name: "BSc (Eng): Mining Engineering"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
     requirements:
       source: s-wits-ebe-mining
@@ -351,6 +377,7 @@ programmes:
 
   - id: bengsc_biomedical
     name: "Bachelor of Engineering Science in Biomedical Engineering (BEngSc (BME))"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering, medical_sciences]
     requirements:
       source: s-wits-ebe-biomedical
@@ -371,6 +398,7 @@ programmes:
 
   - id: bengsc_digital_arts
     name: "Bachelor of Engineering Science in Digital Arts"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [computing, arts_and_design, engineering]
     requirements:
       source: s-wits-ebe-digital-arts
@@ -386,6 +414,7 @@ programmes:
 
   - id: bsc_eng_part_time
     name: "BSc Engineering part-time"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
     requirements:
       source: s-wits-ebe-part-time
@@ -397,6 +426,7 @@ programmes:
 
   - id: bas
     name: "Bachelor of Architectural Studies (BAS)"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [built_environment, arts_and_design]
     selective: true
     selection_note: "Complete a written and graphic exercise; applicants who do well are invited to an interview. The exercise, the interview and your APS count equally, places are limited, and offers go by rank."
@@ -409,6 +439,7 @@ programmes:
 
   - id: bsc_construction_studies
     name: "Bachelor of Science in Construction Studies"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [built_environment]
     requirements:
       source: s-wits-ebe-construction
@@ -419,6 +450,7 @@ programmes:
 
   - id: bsc_property_studies
     name: "BSc (PS): Property Studies"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [built_environment]
     requirements:
       source: s-wits-ebe-property
@@ -429,6 +461,7 @@ programmes:
 
   - id: bsc_urp
     name: "Bachelor of Science in Urban and Regional Planning"
+    faculty: "Faculty of Engineering and the Built Environment"
     fields: [built_environment]
     requirements:
       source: s-wits-ebe-urp
@@ -441,6 +474,7 @@ programmes:
 
   - id: bhsc_biokinetics
     name: "Bachelor of Health Sciences in the field of Biokinetics"
+    faculty: "Faculty of Health Sciences"
     fields: [health_sciences, sport_science]
     selective: true
     selection_note: &wits_ci "Wits ranks applicants by a Composite Index: 75% is the average of your percentages in English, Mathematics, the better of Physical Sciences or Life Sciences, and your best two other subjects; 25% is your National Benchmark Test (NBT) scores."
@@ -457,6 +491,7 @@ programmes:
 
   - id: bhsc_biomedical_sciences
     name: "Bachelor of Health Sciences in the field of Biomedical Sciences"
+    faculty: "Faculty of Health Sciences"
     fields: [medical_sciences, life_sciences]
     selective: true
     selection_note: *wits_ci
@@ -473,6 +508,7 @@ programmes:
 
   - id: bhsc_health_systems
     name: "Bachelor of Health Sciences in the field of Health Systems Sciences"
+    faculty: "Faculty of Health Sciences"
     fields: [health_sciences]
     selective: true
     selection_note: *wits_ci
@@ -489,6 +525,7 @@ programmes:
 
   - id: bcmp
     name: "BCMP: Clinical Medical Practice"
+    faculty: "Faculty of Health Sciences"
     fields: [health_sciences, medicine]
     selective: true
     selection_note: *wits_ci
@@ -509,6 +546,7 @@ programmes:
 
   - id: bds
     name: "Bachelor of Dental Science (BDS)"
+    faculty: "Faculty of Health Sciences"
     fields: [dentistry]
     selective: true
     selection_note: *wits_ci
@@ -522,6 +560,7 @@ programmes:
 
   - id: mbbch
     name: "MBBCh: Medicine and Surgery"
+    faculty: "Faculty of Health Sciences"
     fields: [medicine]
     selective: true
     selection_note: *wits_ci
@@ -539,6 +578,7 @@ programmes:
 
   - id: bnurs
     name: "BNurs: Nursing"
+    faculty: "Faculty of Health Sciences"
     fields: [nursing]
     selective: true
     selection_note: *wits_ci
@@ -555,6 +595,7 @@ programmes:
 
   - id: bsc_ot
     name: "BSc (OT): Occupational Therapy"
+    faculty: "Faculty of Health Sciences"
     fields: [rehabilitation, health_sciences]
     selective: true
     selection_note: *wits_ci
@@ -572,6 +613,7 @@ programmes:
 
   - id: bohsc
     name: "BOHSc: Oral Health Sciences"
+    faculty: "Faculty of Health Sciences"
     fields: [dentistry]
     selective: true
     selection_note: *wits_ci
@@ -592,6 +634,7 @@ programmes:
 
   - id: bpharm
     name: "BPharm: Pharmacy"
+    faculty: "Faculty of Health Sciences"
     fields: [pharmacy]
     selective: true
     selection_note: *wits_ci
@@ -608,6 +651,7 @@ programmes:
 
   - id: bsc_physiotherapy
     name: "BSc (Physiotherapy)"
+    faculty: "Faculty of Health Sciences"
     fields: [rehabilitation, health_sciences]
     selective: true
     selection_note: *wits_ci
@@ -627,6 +671,7 @@ programmes:
 
   - id: ba
     name: "Bachelor of Arts"
+    faculty: "Faculty of Humanities"
     fields: [humanities]
     requirements:
       source: s-wits-hum-ba
@@ -638,6 +683,7 @@ programmes:
 
   - id: ba_part_time
     name: "BA part-time"
+    faculty: "Faculty of Humanities"
     fields: [humanities]
     requirements:
       source: s-wits-hum-ba-part-time
@@ -650,6 +696,7 @@ programmes:
 
   - id: ba_part_time_law
     name: "BA part-time with Law"
+    faculty: "Faculty of Humanities"
     fields: [humanities, law]
     requirements:
       source: s-wits-hum-ba-part-time-law
@@ -665,6 +712,7 @@ programmes:
 
   - id: ba_law
     name: "BA with Law"
+    faculty: "Faculty of Humanities"
     fields: [law, humanities]
     requirements:
       source: s-wits-hum-ba-law
@@ -679,6 +727,7 @@ programmes:
 
   - id: ba_digital_arts
     name: "Bachelor of Arts in Digital Arts"
+    faculty: "Faculty of Humanities"
     fields: [arts_and_design, computing]
     selective: true
     selection_note: "You'll attend a digital arts workshop and/or complete a questionnaire; Wits's additional-requirements page also asks for a portfolio."
@@ -691,6 +740,7 @@ programmes:
 
   - id: baft
     name: "Bachelor of Arts in Film and Television (BAFT)"
+    faculty: "Faculty of Humanities"
     fields: [arts_and_design, performing_arts]
     selective: true
     selection_note: "Submit a portfolio; you may have to attend an interview."
@@ -703,6 +753,7 @@ programmes:
 
   - id: bafa
     name: "Bachelor of Arts in Fine Arts (BAFA)"
+    faculty: "Faculty of Humanities"
     fields: [arts_and_design]
     selective: true
     selection_note: "Complete an online questionnaire and upload a portfolio of artworks and a CV."
@@ -715,6 +766,7 @@ programmes:
 
   - id: bmus
     name: "Bachelor of Music"
+    faculty: "Faculty of Humanities"
     fields: [music, performing_arts]
     selective: true
     selection_note: "Attend an interview and audition at the Wits School of Arts."
@@ -728,6 +780,7 @@ programmes:
 
   - id: ba_theatre_performance
     name: "Bachelor of Arts in Theatre and Performance"
+    faculty: "Faculty of Humanities"
     fields: [performing_arts]
     selective: true
     selection_note: "Departmental selection, including auditions or interviews; bookings for auditions close in October 2026."
@@ -740,6 +793,7 @@ programmes:
 
   - id: bsw
     name: "Bachelor of Social Work"
+    faculty: "Faculty of Humanities"
     fields: [humanities]
     selective: true
     places: 60
@@ -753,6 +807,7 @@ programmes:
 
   - id: b_audiology
     name: "Bachelor of Audiology"
+    faculty: "Faculty of Humanities"
     fields: [health_sciences, rehabilitation]
     selective: true
     places: 30
@@ -768,6 +823,7 @@ programmes:
 
   - id: b_slp
     name: "Bachelor of Speech-Language Pathology"
+    faculty: "Faculty of Humanities"
     fields: [health_sciences, rehabilitation]
     selective: true
     places: 30
@@ -783,6 +839,7 @@ programmes:
 
   - id: bed_foundation
     name: "Bachelor of Education: Foundation Phase Teaching"
+    faculty: "Faculty of Humanities"
     fields: [education]
     requirements:
       source: s-wits-hum-bed-foundation
@@ -799,6 +856,7 @@ programmes:
 
   - id: bed_intermediate
     name: "Bachelor of Education in Intermediate Phase Teaching"
+    faculty: "Faculty of Humanities"
     fields: [education]
     requirements:
       source: s-wits-hum-bed-intermediate
@@ -815,6 +873,7 @@ programmes:
 
   - id: bed_senior_fet
     name: "Bachelor of Education in Senior Phase and Further Education and Training"
+    faculty: "Faculty of Humanities"
     fields: [education]
     requirements:
       source: s-wits-hum-bed-senior
@@ -829,6 +888,7 @@ programmes:
 
   - id: bsc_general
     name: "Bachelor of Science (BSc General)"
+    faculty: "Faculty of Science"
     fields: [natural_sciences]
     requirements:
       source: s-wits-sci-bsc
@@ -841,6 +901,7 @@ programmes:
 
   - id: bsc_actuarial_science
     name: "BSc: Actuarial Science"
+    faculty: "Faculty of Science"
     fields: [mathematical_sciences, finance]
     requirements:
       source: s-wits-sci-actuarial
@@ -852,6 +913,7 @@ programmes:
 
   - id: bsc_applied_bioinformatics
     name: "BSc in the field of Biological Sciences: Applied Bioinformatics"
+    faculty: "Faculty of Science"
     fields: [life_sciences, computing]
     requirements:
       source: s-wits-sci-applied-bioinformatics
@@ -864,6 +926,7 @@ programmes:
 
   - id: bsc_applied_chemistry
     name: "BSc: Applied Chemistry"
+    faculty: "Faculty of Science"
     fields: [physical_sciences]
     requirements:
       source: s-wits-sci-chemistry
@@ -876,6 +939,7 @@ programmes:
 
   - id: bsc_applied_ecology
     name: "BSc in the field of Biological Sciences: Applied Ecology and Global Change"
+    faculty: "Faculty of Science"
     fields: [life_sciences, earth_sciences]
     requirements:
       source: s-wits-sci-applied-ecology
@@ -888,6 +952,7 @@ programmes:
 
   - id: bsc_archaeology
     name: "BSc: Archaeology"
+    faculty: "Faculty of Science"
     fields: [earth_sciences, humanities]
     requirements:
       source: s-wits-sci-bsc
@@ -900,6 +965,7 @@ programmes:
 
   - id: bsc_astronomy
     name: "BSc: Astronomy and Astrophysics"
+    faculty: "Faculty of Science"
     fields: [physical_sciences]
     requirements:
       source: s-wits-sci-astronomy
@@ -910,6 +976,7 @@ programmes:
 
   - id: bsc_biochemistry
     name: "BSc in the field of Biological Sciences: Biochemistry and Cell Biology"
+    faculty: "Faculty of Science"
     fields: [life_sciences]
     requirements:
       source: s-wits-sci-biochemistry
@@ -922,6 +989,7 @@ programmes:
 
   - id: bsc_biodiversity
     name: "BSc in the field of Biological Sciences: Biodiversity in a Changing World"
+    faculty: "Faculty of Science"
     fields: [life_sciences]
     requirements:
       source: s-wits-sci-biodiversity
@@ -934,6 +1002,7 @@ programmes:
 
   - id: bsc_chemistry
     name: "BSc: Chemistry"
+    faculty: "Faculty of Science"
     fields: [physical_sciences]
     requirements:
       source: s-wits-sci-chemistry
@@ -945,6 +1014,7 @@ programmes:
 
   - id: bsc_chemistry_chem_eng
     name: "BSc: Chemistry with Chemical Engineering"
+    faculty: "Faculty of Science"
     fields: [physical_sciences, engineering]
     requirements:
       source: s-wits-sci-chem-eng
@@ -956,6 +1026,7 @@ programmes:
 
   - id: bsc_cam
     name: "BSc: Computational and Applied Mathematics"
+    faculty: "Faculty of Science"
     fields: [mathematical_sciences, computing]
     requirements:
       source: s-wits-sci-cam
@@ -967,6 +1038,7 @@ programmes:
 
   - id: bsc_computer_science
     name: "BSc: Computer Science"
+    faculty: "Faculty of Science"
     fields: [computing]
     requirements:
       source: s-wits-sci-computer-science
@@ -978,6 +1050,7 @@ programmes:
 
   - id: bsc_environmental_studies
     name: "BSc: Environmental Studies"
+    faculty: "Faculty of Science"
     fields: [earth_sciences]
     requirements:
       source: s-wits-sci-environmental-studies
@@ -989,6 +1062,7 @@ programmes:
 
   - id: bsc_genetics
     name: "BSc in the field of Biological Sciences: Genetics and Developmental Biology"
+    faculty: "Faculty of Science"
     fields: [life_sciences]
     requirements:
       source: s-wits-sci-genetics
@@ -1001,6 +1075,7 @@ programmes:
 
   - id: bsc_geographical_archaeological
     name: "BSc: Geographical and Archaeological Studies"
+    faculty: "Faculty of Science"
     fields: [earth_sciences]
     requirements:
       source: s-wits-sci-geographical-archaeological
@@ -1012,6 +1087,7 @@ programmes:
 
   - id: bsc_geography
     name: "BSc: Geography"
+    faculty: "Faculty of Science"
     fields: [earth_sciences]
     requirements:
       source: s-wits-sci-bsc
@@ -1024,6 +1100,7 @@ programmes:
 
   - id: bsc_geological_sciences
     name: "BSc: Geological Sciences"
+    faculty: "Faculty of Science"
     fields: [earth_sciences]
     requirements:
       source: s-wits-sci-geological
@@ -1035,6 +1112,7 @@ programmes:
 
   - id: bsc_geospatial_sciences
     name: "BSc: Geospatial Sciences"
+    faculty: "Faculty of Science"
     fields: [earth_sciences, computing]
     requirements:
       source: s-wits-sci-geospatial
@@ -1046,6 +1124,7 @@ programmes:
 
   - id: bsc_mathematical_sciences
     name: "BSc: Mathematical Sciences"
+    faculty: "Faculty of Science"
     fields: [mathematical_sciences]
     requirements:
       source: s-wits-sci-mathematical-sciences
@@ -1057,6 +1136,7 @@ programmes:
 
   - id: bsc_mathematics
     name: "BSc: Mathematics"
+    faculty: "Faculty of Science"
     fields: [mathematical_sciences]
     requirements:
       source: s-wits-sci-bsc
@@ -1069,6 +1149,7 @@ programmes:
 
   - id: bsc_microbiology
     name: "BSc in the field of Biological Sciences: Microbiology and Biotechnology"
+    faculty: "Faculty of Science"
     fields: [life_sciences]
     requirements:
       source: s-wits-sci-microbiology
@@ -1081,6 +1162,7 @@ programmes:
 
   - id: bsc_physics
     name: "BSc: Physics"
+    faculty: "Faculty of Science"
     fields: [physical_sciences]
     requirements:
       source: s-wits-sci-physics
@@ -1092,6 +1174,7 @@ programmes:
 
   - id: bsc_physics_finance
     name: "BSc in the field of Physics and Finance"
+    faculty: "Faculty of Science"
     fields: [physical_sciences, finance]
     requirements:
       source: s-wits-sci-physics-finance
@@ -1104,6 +1187,7 @@ programmes:
 
   - id: bsc_physics_philosophy
     name: "BSc in the field of Physics and Philosophy"
+    faculty: "Faculty of Science"
     fields: [physical_sciences, humanities]
     requirements:
       source: s-wits-sci-physics-philosophy
@@ -1116,6 +1200,7 @@ programmes:
 
   - id: bsc_physics_ecology
     name: "BSc in the field of Physics, Ecology and Sustainability"
+    faculty: "Faculty of Science"
     fields: [physical_sciences, earth_sciences]
     requirements:
       source: s-wits-sci-physics-ecology
