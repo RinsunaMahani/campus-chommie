@@ -245,6 +245,9 @@ class Programme(_Strict):
     selective: bool = False
     places: int | None = None
     selection_note: str | None = None
+    # The university's own name for the faculty, school or college that offers it, from the pack's source.
+    # None where the source doesn't say: the app groups those under "Other programmes".
+    faculty: str | None = Field(default=None, min_length=1)
     requirements: Requirements | None = None  # None means not verified yet
     # Only set when this programme counts points differently from the rest of the university.
     points_rules: PointsRule | None = None
