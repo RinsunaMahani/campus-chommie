@@ -9,6 +9,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { Card } from '@/shared/components/Parts';
 import { Overline } from '@/shared/components/Text';
+import { UniMonogram } from '@/shared/components/UniMonogram';
 import { t } from '@/shared/i18n';
 import { PressScale } from '@/shared/motion/PressScale';
 import { colors, fonts, radius } from '@/shared/theme/tokens';
@@ -54,6 +55,7 @@ export function UniversityRow({ u, onPress }: { u: UniversityPoints; onPress: ()
   const sub = total ? t('courseFinder.meetsOf', { met, total }) : t('courseFinder.noProgrammesYet');
   return (
     <PressScale accessibilityRole="button" accessibilityLabel={`${u.university_name}: ${aps(u)}. ${sub}`} onPress={onPress} style={styles.row}>
+      <UniMonogram id={u.university} />
       <View style={{ flex: 1, gap: 3 }}>
         <Text style={styles.name}>{u.university_name}</Text>
         <Text style={styles.sub}>{sub}</Text>
