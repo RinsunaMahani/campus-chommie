@@ -4,7 +4,7 @@ import { Pressable, Text, View } from 'react-native';
 
 import { Button } from '@/shared/components/Button';
 import { HeroScreen } from '@/shared/components/HeroScreen';
-import { InfoNote } from '@/shared/components/Parts';
+import { Card, InfoNote } from '@/shared/components/Parts';
 import { Overline, Title } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
 import { colors, fonts } from '@/shared/theme/tokens';
@@ -58,6 +58,21 @@ export default function PlanScreen() {
       <PlanSlot title={t('courseFinder.slotGoal')} slot={plan.goal} empty={t('courseFinder.slotEmptyGoal')} planUniversity={university.id} />
       <PlanSlot title={t('courseFinder.slotBridge')} slot={plan.bridge} empty={t('courseFinder.slotEmptyBridge')} planUniversity={university.id} />
       <PlanSlot title={t('courseFinder.slotSafe')} slot={plan.safe} empty={t('courseFinder.slotEmptySafe')} planUniversity={university.id} />
+
+      <Card style={{ gap: 10, padding: 16 }}>
+        <Title style={{ fontSize: 18, lineHeight: 24 }}>
+          {t('courseFinder.acceptedCardTitle', { university: university.name })}
+        </Title>
+        <Text style={{ fontFamily: fonts.body, fontSize: 13.5, lineHeight: 20, color: colors.text }}>
+          {t('courseFinder.acceptedCardSub')}
+        </Text>
+        <Button
+          title={t('courseFinder.seeWhatHappensNext')}
+          variant="secondary"
+          icon="arrow-right"
+          onPress={() => router.push(`/course-finder/next/${university.id}`)}
+        />
+      </Card>
 
       {plan.other_routes.length ? (
         <View style={{ gap: 8 }}>

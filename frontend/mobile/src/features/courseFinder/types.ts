@@ -303,3 +303,28 @@ export type Plan = {
 /** One row the learner sends. Subject keys are in subjects.ts. */
 export type Mark = { subject: string; percent: number };
 
+export type FirstStep = {
+  key: string;
+  title: string;
+  status: string;
+  label: string;
+  starts: string | null;
+  ends: string | null;
+  days: number | null;
+  lines: string[];
+  source_urls: string[];
+};
+
+export type FirstStepsIntake = {
+  intake: number;
+  notes: string[];
+  steps: FirstStep[];
+};
+
+export type FirstStepsAnswer = Confirmation & {
+  university: UniversitySummary;
+  today: string;
+  first_steps: FirstStepsIntake[];
+};
+
+

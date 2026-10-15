@@ -1,3 +1,4 @@
+import { useLocalSearchParams } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 
@@ -18,6 +19,7 @@ import { Campus, UniversityChoice } from '../types';
  * signed-in layout then opens the tabs by itself.
  */
 export default function CampusScreen() {
+  const { university: universityParam } = useLocalSearchParams<{ university?: string }>();
   const { setProfile } = useProfile();
   const [universities, setUniversities] = useState<UniversityChoice[] | null>(null);
   const [university, setUniversity] = useState<string | null>(null);
@@ -29,9 +31,14 @@ export default function CampusScreen() {
   useEffect(() => {
     profileApi
       .universities()
-      .then(setUniversities)
+      .then((list) => {
+        setUniversities(list);
+        if (universityParam && list.some((u) => u.id === universityParam)) {
+          chooseUniversity(universityParam);
+        }
+      })
       .catch((e) => setError(errorText(e, t('common.error'))));
-  }, []);
+  }, [universityParam]);
 
   function chooseUniversity(id: string) {
     setUniversity(id);

@@ -1,0 +1,85 @@
+{
+  "data": {
+    "first_steps": [
+      {
+        "intake": 2027,
+        "notes": [],
+        "steps": [
+          {
+            "days": null,
+            "ends": null,
+            "key": "accept",
+            "label": "Not verified yet",
+            "lines": [
+              "How to accept an offer: not verified yet."
+            ],
+            "source_urls": [],
+            "starts": null,
+            "status": "not_verified",
+            "title": "Accept your offer"
+          },
+          {
+            "days": 127,
+            "ends": "2027-02-19",
+            "key": "register",
+            "label": "Coming up",
+            "lines": [
+              "Last day of registration for semester 1: Fri 19 Feb 2027 (in 127 days).",
+              "No student may register for a module after the first two weeks of lectures, except with the Registrar's approval.",
+              "If NSFAS finds you eligible, your funding is confirmed once you register at a public university or TVET college."
+            ],
+            "source_urls": [
+              "https://linus.up.ac.za/calendars/2027_MAINDATES.pdf",
+              "https://nsfas.org.za/content/how-to-apply.html"
+            ],
+            "starts": "2027-02-19",
+            "status": "ahead",
+            "title": "Register"
+          },
+          {
+            "days": 109,
+            "ends": "2027-02-05",
+            "key": "orientation",
+            "label": "Coming up",
+            "lines": [
+              "Orientation for first-year students (Hatfield and Groenkloof): Mon 1 to Fri 5 Feb 2027 (in 109 days)."
+            ],
+            "source_urls": [
+              "https://linus.up.ac.za/calendars/2027_MAINDATES.pdf"
+            ],
+            "starts": "2027-02-01",
+            "status": "ahead",
+            "title": "Orientation"
+          },
+          {
+            "days": 116,
+            "ends": "2027-02-08",
+            "key": "first_lecture",
+            "label": "Coming up",
+            "lines": [
+              "Lectures start on Mon 8 Feb 2027 (in 116 days)."
+            ],
+            "source_urls": [
+              "https://linus.up.ac.za/calendars/2027_MAINDATES.pdf"
+            ],
+            "starts": "2027-02-08",
+            "status": "ahead",
+            "title": "First lecture"
+          }
+        ]
+      }
+    ],
+    "today": "2026-10-15",
+    "university": {
+      "academic_year": 2027,
+      "city": "Pretoria",
+      "confirmed": false,
+      "id": "up",
+      "name": "University of Pretoria",
+      "notice": "Not yet confirmed by the team.",
+      "programmes": 120
+    }
+  },
+  "message": "Success",
+  "success": true
+}
