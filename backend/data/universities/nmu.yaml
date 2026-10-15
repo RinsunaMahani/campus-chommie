@@ -3,6 +3,9 @@
 # Agent draft, read on 13 Oct 2026 (docs/research/universities.md). NMU's Applicant Score adds six
 # subjects' percentages, out of 600. Nobody has checked these values yet: release stays false until a
 # person has compared every one with its source.
+#
+# The 124 programmes (agent draft, 15 Oct 2026) and their Applicant Score and subject minimums come from NMU's
+# 2027 Undergraduate Guide; docs/research/nmu.md says what was read, what was left out and what to check first.
 
 university: nmu
 name: Nelson Mandela University
@@ -38,7 +41,2166 @@ applications:
       closes: 2026-09-30
       note: "MBChB, Pharmacy, Radiography and Nursing closed on 30 June 2026, and early applications on 3 August; the rest closed on 30 September."
 
-programmes: []
+programmes:
+
+  # Faculty of Business and Economic Sciences (2027 Undergraduate Guide, pages 22 to 43).
+  # NMU publishes three Applicant Scores per programme: with Mathematics, Technical Mathematics or Mathematical Literacy.
+
+  # page 22
+  - id: hcert_accountancy
+    name: "Higher Certificate in Accountancy"
+    fields: [accounting, finance]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 290
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {technical_mathematics: 2}
+            - subjects: {mathematical_literacy: 5}
+              min_points: 305
+      extras:
+        - "Applicant Score needed: 290 with Mathematics or Technical Mathematics; 305 with Mathematical Literacy."
+        - "Mathematics rule: Mathematics or Technical Mathematics 35%, or Mathematical Literacy 60%."
+        - "The app checks either/or subjects by NSC level: here it accepts Mathematics or Technical Mathematics from 30% (NMU asks 35%), so make sure your mark reaches NMU's own figure."
+        - "Graduates who finish in one year with more than 50% in every module may be considered for the Diploma in Accountancy."
+
+  # page 22
+  - id: hcert_business_studies
+    name: "Higher Certificate in Business Studies"
+    fields: [commerce, management]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 290
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {technical_mathematics: 2}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 305
+      extras:
+        - "Applicant Score needed: 290 with Mathematics or Technical Mathematics; 305 with Mathematical Literacy."
+        - "Mathematics rule: Mathematics or Technical Mathematics 30%, or Mathematical Literacy 50%."
+        - "Also offered on the George Campus."
+        - "Leads on to some diplomas: Economics, Marketing, Logistics, Management or Tourism Management, if you meet their requirements."
+
+  # page 23
+  - id: dip_accountancy
+    name: "Diploma in Accountancy"
+    fields: [accounting, finance]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 350
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+              min_points: 365
+      extras:
+        - "Applicant Score needed: 350 with Mathematics or Technical Mathematics; 365 with Mathematical Literacy."
+        - "Mathematics rule: Mathematics or Technical Mathematics 45%, or Mathematical Literacy 65%."
+        - "The app checks either/or subjects by NSC level: here it accepts Mathematics or Technical Mathematics from 40% (NMU asks 45%) and Mathematical Literacy from 60% (NMU asks 65%), so make sure your mark reaches NMU's own figure."
+        - "Alternatively, NMU's Higher Certificate in Accountancy (or an equivalent), finished in one year with more than 50% in every module."
+        - "Full-time over 3 years or part-time over 5 years."
+
+  # page 23
+  - id: dip_economics
+    name: "Diploma in Economics"
+    fields: [economics, commerce]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 330
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+              min_points: 345
+      extras:
+        - "Applicant Score needed: 330 with Mathematics or Technical Mathematics; 345 with Mathematical Literacy."
+        - "Mathematics rule: Mathematics or Technical Mathematics 40%, or Mathematical Literacy 60%."
+        - "Alternatively, NMU considers graduates of its Higher Certificate in Business Studies (or an equivalent) who finished it in one year of full-time study with more than 50% in every module."
+
+  # page 24
+  - id: dip_economics_ecp
+    name: "Diploma in Economics (Extended Curriculum)"
+    fields: [economics, commerce]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 310
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {technical_mathematics: 2}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 325
+      extras:
+        - "Applicant Score needed: 310 with Mathematics or Technical Mathematics; 325 with Mathematical Literacy."
+        - "Mathematics rule: Mathematics or Technical Mathematics 35%, or Mathematical Literacy 55%."
+        - "The app checks either/or subjects by NSC level: here it accepts Mathematics or Technical Mathematics from 30% (NMU asks 35%) and Mathematical Literacy from 50% (NMU asks 55%), so make sure your mark reaches NMU's own figure."
+        - "Extended curriculum: the same qualification with an extra year of academic support, for applicants with the potential to succeed who don't meet the mainstream requirements."
+        - "Alternatively, NMU considers graduates of its Higher Certificate in Business Studies (or an equivalent) who finished it in one year of full-time study with more than 50% in every module."
+
+  # page 24
+  - id: dip_human_resource_management
+    name: "Diploma in Human Resource Management"
+    fields: [management, commerce]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 330
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {technical_mathematics: 2}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 345
+      extras:
+        - "Applicant Score needed: 330 with Mathematics or Technical Mathematics; 345 with Mathematical Literacy."
+        - "Mathematics rule: Mathematics or Technical Mathematics 35%, or Mathematical Literacy 55%."
+        - "The app checks either/or subjects by NSC level: here it accepts Mathematics or Technical Mathematics from 30% (NMU asks 35%) and Mathematical Literacy from 50% (NMU asks 55%), so make sure your mark reaches NMU's own figure."
+        - "Full-time over 3 years or part-time over 4 years."
+
+  # page 24
+  - id: dip_human_resource_management_ecp
+    name: "Diploma in Human Resource Management (Extended Curriculum)"
+    fields: [management, commerce]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 310
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {technical_mathematics: 2}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 325
+      extras:
+        - "Applicant Score needed: 310 with Mathematics or Technical Mathematics; 325 with Mathematical Literacy."
+        - "Mathematics rule: Mathematics or Technical Mathematics 30%, or Mathematical Literacy 50%."
+        - "Extended curriculum: the same qualification with an extra year of academic support, for applicants with the potential to succeed who don't meet the mainstream requirements."
+
+  # page 25
+  - id: dip_inventory_stores_management
+    name: "Diploma in Inventory and Stores Management"
+    fields: [management, commerce]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 290
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {technical_mathematics: 2}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 305
+      extras:
+        - "Applicant Score needed: 290 with Mathematics or Technical Mathematics; 305 with Mathematical Literacy."
+        - "Mathematics rule: Mathematics or Technical Mathematics 30%, or Mathematical Literacy 50%."
+        - "Students with an average of 60% for all first-year subjects may move to the Diploma in Logistics."
+
+  # page 25
+  - id: dip_logistics
+    name: "Diploma in Logistics"
+    fields: [management, commerce]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 330
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+              min_points: 345
+      extras:
+        - "Applicant Score needed: 330 with Mathematics or Technical Mathematics; 345 with Mathematical Literacy."
+        - "Mathematics rule: Mathematics or Technical Mathematics 40%, or Mathematical Literacy 60%."
+        - "Alternatively, NMU considers graduates of its Higher Certificate in Business Studies (or an equivalent) who finished it in one year of full-time study with more than 50% in every module."
+        - "Full-time over 3 years or part-time over 4 years."
+
+  # page 25
+  - id: dip_logistics_ecp
+    name: "Diploma in Logistics (Extended Curriculum)"
+    fields: [management, commerce]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 310
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {technical_mathematics: 2}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 325
+      extras:
+        - "Applicant Score needed: 310 with Mathematics or Technical Mathematics; 325 with Mathematical Literacy."
+        - "Mathematics rule: Mathematics or Technical Mathematics 35%, or Mathematical Literacy 55%."
+        - "The app checks either/or subjects by NSC level: here it accepts Mathematics or Technical Mathematics from 30% (NMU asks 35%) and Mathematical Literacy from 50% (NMU asks 55%), so make sure your mark reaches NMU's own figure."
+        - "Extended curriculum: the same qualification with an extra year of academic support, for applicants with the potential to succeed who don't meet the mainstream requirements."
+        - "Alternatively, NMU considers graduates of its Higher Certificate in Business Studies (or an equivalent) who finished it in one year of full-time study with more than 50% in every module."
+
+  # page 26
+  - id: dip_management
+    name: "Diploma in Management"
+    fields: [management, commerce]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 330
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+              min_points: 345
+      extras:
+        - "Applicant Score needed: 330 with Mathematics or Technical Mathematics; 345 with Mathematical Literacy."
+        - "Mathematics rule: Mathematics or Technical Mathematics 40%, or Mathematical Literacy 60%."
+        - "Also offered on the George Campus."
+        - "Alternatively, NMU considers graduates of its Higher Certificate in Business Studies (or an equivalent) who finished it in one year of full-time study with more than 50% in every module."
+        - "Full-time over 3 years or part-time over 4 years (part-time in Gqeberha)."
+
+  # page 26
+  - id: dip_management_ecp
+    name: "Diploma in Management (Extended Curriculum)"
+    fields: [management, commerce]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 310
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {technical_mathematics: 2}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 325
+      extras:
+        - "Applicant Score needed: 310 with Mathematics or Technical Mathematics; 325 with Mathematical Literacy."
+        - "Mathematics rule: Mathematics or Technical Mathematics 35%, or Mathematical Literacy 55%."
+        - "The app checks either/or subjects by NSC level: here it accepts Mathematics or Technical Mathematics from 30% (NMU asks 35%) and Mathematical Literacy from 50% (NMU asks 55%), so make sure your mark reaches NMU's own figure."
+        - "Extended curriculum: the same qualification with an extra year of academic support, for applicants with the potential to succeed who don't meet the mainstream requirements."
+        - "Also offered on the George Campus."
+        - "Alternatively, NMU considers graduates of its Higher Certificate in Business Studies (or an equivalent) who finished it in one year of full-time study with more than 50% in every module."
+
+  # page 27
+  - id: dip_marketing
+    name: "Diploma in Marketing"
+    fields: [management, commerce]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 330
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+              min_points: 345
+      extras:
+        - "Applicant Score needed: 330 with Mathematics or Technical Mathematics; 345 with Mathematical Literacy."
+        - "Mathematics rule: Mathematics or Technical Mathematics 40%, or Mathematical Literacy 60%."
+        - "Also offered on the George Campus."
+        - "Alternatively, NMU considers graduates of its Higher Certificate in Business Studies (or an equivalent) who finished it in one year of full-time study with more than 50% in every module."
+
+  # page 27
+  - id: dip_marketing_ecp
+    name: "Diploma in Marketing (Extended Curriculum)"
+    fields: [management, commerce]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 310
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {technical_mathematics: 2}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 325
+      extras:
+        - "Applicant Score needed: 310 with Mathematics or Technical Mathematics; 325 with Mathematical Literacy."
+        - "Mathematics rule: Mathematics or Technical Mathematics 35%, or Mathematical Literacy 55%."
+        - "The app checks either/or subjects by NSC level: here it accepts Mathematics or Technical Mathematics from 30% (NMU asks 35%) and Mathematical Literacy from 50% (NMU asks 55%), so make sure your mark reaches NMU's own figure."
+        - "Extended curriculum: the same qualification with an extra year of academic support, for applicants with the potential to succeed who don't meet the mainstream requirements."
+        - "Also offered on the George Campus."
+        - "Alternatively, NMU considers graduates of its Higher Certificate in Business Studies (or an equivalent) who finished it in one year of full-time study with more than 50% in every module."
+
+  # page 28
+  - id: dip_tourism_management
+    name: "Diploma in Tourism Management"
+    fields: [tourism_and_hospitality, management]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 330
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+              min_points: 345
+      extras:
+        - "Applicant Score needed: 330 with Mathematics or Technical Mathematics; 345 with Mathematical Literacy."
+        - "Mathematics rule: Mathematics or Technical Mathematics 40%, or Mathematical Literacy 60%."
+        - "Also offered on the George Campus."
+        - "Alternatively, NMU considers graduates of its Higher Certificate in Business Studies (or an equivalent) who finished it in one year of full-time study with more than 50% in every module."
+
+  # page 28
+  - id: dip_tourism_management_ecp
+    name: "Diploma in Tourism Management (Extended Curriculum)"
+    fields: [tourism_and_hospitality, management]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 310
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {technical_mathematics: 2}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 325
+      extras:
+        - "Applicant Score needed: 310 with Mathematics or Technical Mathematics; 325 with Mathematical Literacy."
+        - "Mathematics rule: Mathematics or Technical Mathematics 35%, or Mathematical Literacy 55%."
+        - "The app checks either/or subjects by NSC level: here it accepts Mathematics or Technical Mathematics from 30% (NMU asks 35%) and Mathematical Literacy from 50% (NMU asks 55%), so make sure your mark reaches NMU's own figure."
+        - "Extended curriculum: the same qualification with an extra year of academic support, for applicants with the potential to succeed who don't meet the mainstream requirements."
+        - "Also offered on the George Campus."
+        - "Alternatively, NMU considers graduates of its Higher Certificate in Business Studies (or an equivalent) who finished it in one year of full-time study with more than 50% in every module."
+
+  # page 32
+  - id: bcom_general_economics
+    name: "Bachelor of Commerce: General (Economics)"
+    fields: [economics, commerce]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 390
+      subject_min_percents: {mathematics: 50}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+
+  # page 32
+  - id: bcom_general_economics_ecp
+    name: "Bachelor of Commerce: General (Economics) (Extended Curriculum)"
+    fields: [economics, commerce]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 370
+      subject_min_percents: {mathematics: 45}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+        - "Extended curriculum: the same qualification with an extra year of academic support, for applicants with the potential to succeed who don't meet the mainstream requirements."
+        - "Also offered on the George Campus."
+
+  # page 33
+  - id: bcom_general_accounting
+    name: "Bachelor of Commerce: General (Accounting)"
+    fields: [accounting, commerce]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 390
+      subject_min_percents: {mathematics: 50}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+        - "For students who want accounting majors without becoming chartered accountants."
+        - "Also offered full-time on the George Campus. Part-time in Gqeberha over 5 years, if enough students register."
+
+  # page 33
+  - id: bcom_general_accounting_ecp
+    name: "Bachelor of Commerce: General (Accounting) (Extended Curriculum)"
+    fields: [accounting, commerce]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 370
+      subject_min_percents: {mathematics: 45}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+        - "Extended curriculum: the same qualification with an extra year of academic support, for applicants with the potential to succeed who don't meet the mainstream requirements."
+        - "Also offered on the George Campus."
+
+  # page 34
+  - id: bcom_general_business_management
+    name: "Bachelor of Commerce: General (Business Management)"
+    fields: [management, commerce]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 390
+      subject_min_percents: {mathematics: 50}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+        - "Also offered on the George Campus."
+
+  # page 34
+  - id: bcom_general_business_management_ecp
+    name: "Bachelor of Commerce: General (Business Management) (Extended Curriculum)"
+    fields: [management, commerce]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 370
+      subject_min_percents: {mathematics: 45}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+        - "Extended curriculum: the same qualification with an extra year of academic support, for applicants with the potential to succeed who don't meet the mainstream requirements."
+        - "The George Campus pages also list an extended BCom in Business Management (2027 Undergraduate Guide, page 131)."
+
+  # page 34
+  - id: bcom_financial_planning
+    name: "Bachelor of Commerce (Financial Planning)"
+    fields: [finance, commerce]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 390
+      subject_min_percents: {mathematics: 50}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+
+  # page 35
+  - id: bcom_financial_planning_ecp
+    name: "Bachelor of Commerce (Financial Planning) (Extended Curriculum)"
+    fields: [finance, commerce]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 370
+      subject_min_percents: {mathematics: 45}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+        - "Extended curriculum: the same qualification with an extra year of academic support, for applicants with the potential to succeed who don't meet the mainstream requirements."
+
+  # page 36
+  - id: bcom_general_tourism
+    name: "Bachelor of Commerce: General (Tourism)"
+    fields: [tourism_and_hospitality, commerce]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 390
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+            - subjects: {mathematical_literacy: 6}
+              min_points: 405
+      extras:
+        - "Applicant Score needed: 390 with Mathematics or Technical Mathematics; 405 with Mathematical Literacy."
+        - "Mathematics rule: Mathematics or Technical Mathematics 50%, or Mathematical Literacy 70%."
+
+  # page 36
+  - id: bcom_general_tourism_ecp
+    name: "Bachelor of Commerce: General (Tourism) (Extended Curriculum)"
+    fields: [tourism_and_hospitality, commerce]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 370
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+              min_points: 385
+      extras:
+        - "Applicant Score needed: 370 with Mathematics or Technical Mathematics; 385 with Mathematical Literacy."
+        - "Mathematics rule: Mathematics or Technical Mathematics 45%, or Mathematical Literacy 65%."
+        - "The app checks either/or subjects by NSC level: here it accepts Mathematics or Technical Mathematics from 40% (NMU asks 45%) and Mathematical Literacy from 60% (NMU asks 65%), so make sure your mark reaches NMU's own figure."
+        - "Extended curriculum: the same qualification with an extra year of academic support, for applicants with the potential to succeed who don't meet the mainstream requirements."
+
+  # page 36
+  - id: bcom_marketing_business_management
+    name: "Bachelor of Commerce (Marketing and Business Management)"
+    fields: [management, commerce]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 390
+      subject_min_percents: {mathematics: 50}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+
+  # page 37
+  - id: bcom_hospitality_management
+    name: "Bachelor of Commerce (Hospitality Management)"
+    fields: [tourism_and_hospitality, management]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 390
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+            - subjects: {mathematical_literacy: 6}
+              min_points: 405
+      extras:
+        - "Applicant Score needed: 390 with Mathematics or Technical Mathematics; 405 with Mathematical Literacy."
+        - "Mathematics rule: Mathematics or Technical Mathematics 50%, or Mathematical Literacy 70%."
+
+  # page 37
+  - id: bcom_general_statistics
+    name: "Bachelor of Commerce: General (Statistics)"
+    fields: [mathematical_sciences, commerce]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 390
+      subject_min_percents: {mathematics: 60}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+
+  # page 38
+  - id: bcom_accounting
+    name: "Bachelor of Commerce (Accounting)"
+    fields: [accounting, finance]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 410
+      subject_min_percents: {mathematics: 60}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+        - "The route to becoming a chartered accountant, followed by a Postgraduate Diploma in Accounting."
+        - "Also offered full-time on the George Campus. Part-time in Gqeberha over 5 years, if enough students register."
+
+  # page 38
+  - id: bcom_computer_science_information_systems
+    name: "Bachelor of Commerce (Computer Science and Information Systems)"
+    fields: [computing, commerce]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 390
+      subject_min_percents: {mathematics: 60}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+
+  # page 38
+  - id: bcom_economics_statistics
+    name: "Bachelor of Commerce (Economics and Statistics)"
+    fields: [economics, mathematical_sciences]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 390
+      subject_min_percents: {mathematics: 60}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+
+  # page 39
+  - id: bcom_industrial_psychology_hrm
+    name: "Bachelor of Commerce (Industrial Psychology and Human Resource Management)"
+    fields: [management, commerce]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 390
+      subject_min_percents: {mathematics: 50}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+
+  # page 39
+  - id: bcom_information_systems_business_management
+    name: "Bachelor of Commerce: Information Systems (Business Management)"
+    fields: [computing, management]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 390
+      subject_min_percents: {mathematics: 60}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+
+  # page 39
+  - id: bcom_logistics_transport_economics
+    name: "Bachelor of Commerce (Logistics and Transport Economics)"
+    fields: [economics, management]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 390
+      subject_min_percents: {mathematics: 50}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+
+  # page 40
+  - id: bcom_food_service_management
+    name: "Bachelor of Commerce (Food Service Management)"
+    fields: [management, food_science]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 390
+      subject_min_percents: {mathematics: 50}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+
+  # page 40
+  - id: bcom_accounting_science_economics_business_management
+    name: "Bachelor of Commerce: Accounting Science (Economics or Business Management)"
+    fields: [accounting, finance]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 410
+      subject_min_percents: {mathematics: 65}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+        - "Takes four years full-time."
+
+  # page 41
+  - id: bcom_accounting_science_law
+    name: "Bachelor of Commerce: Accounting Science (Law)"
+    fields: [accounting, law]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 410
+      subject_min_percents: {mathematics: 65, english: 65}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+        - "English Home Language at 65% or more, or English First Additional Language at 70% or more."
+        - "Takes four years full-time."
+
+  # page 41
+  - id: bcom_accounting_science_computer_science
+    name: "Bachelor of Commerce: Accounting Science (Computer Science and Information Systems)"
+    fields: [accounting, computing]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 410
+      subject_min_percents: {mathematics: 65}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+        - "Takes four years full-time."
+
+  # page 42
+  - id: ba_human_resource_management
+    name: "Bachelor of Arts (Human Resource Management)"
+    fields: [management, humanities]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 350
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 6}
+              min_points: 365
+      extras:
+        - "Applicant Score needed: 350 with Mathematics or Technical Mathematics; 365 with Mathematical Literacy."
+        - "Mathematics rule: Mathematics or Technical Mathematics 40%, or Mathematical Literacy 70%."
+
+  # page 43
+  - id: ba_development_studies
+    name: "Bachelor of Arts (Development Studies)"
+    fields: [economics, humanities]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 350
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 6}
+              min_points: 365
+      extras:
+        - "Applicant Score needed: 350 with Mathematics or Technical Mathematics; 365 with Mathematical Literacy."
+        - "Mathematics rule: Mathematics or Technical Mathematics 40%, or Mathematical Literacy 70%."
+        - "NMU offers this programme only if at least 25 applicants are admitted: check with the Student Access and Enrolment Office before applying."
+
+  # Faculty of Education (pages 46 to 49). Every BEd asks for English at 50% and Afrikaans or isiXhosa at 50%.
+
+  # page 46
+  - id: bed_foundation_phase
+    name: "Bachelor of Education: Foundation Phase (Grades R to 3)"
+    fields: [education]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 350
+      subject_min_percents: {english: 50, other_language: 50}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 5}
+              min_points: 365
+            - subjects: {mathematical_literacy: 5}
+              min_points: 365
+      extras:
+        - "Applicant Score needed: 350 with Mathematics; 365 with Technical Mathematics or Mathematical Literacy."
+        - "Mathematics rule: Mathematics 45%, or Technical Mathematics or Mathematical Literacy 60%."
+        - "The app checks either/or subjects by NSC level: here it accepts Mathematics from 40% (NMU asks 45%), so make sure your mark reaches NMU's own figure."
+        - "Both languages count at Home Language or First Additional Language level, and the second language must be Afrikaans or isiXhosa: the app checks your other language, whichever it is."
+
+  # page 46
+  - id: bed_intermediate_phase
+    name: "Bachelor of Education: Intermediate Phase (Grades 4 to 6)"
+    fields: [education]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 370
+      subject_min_percents: {english: 50, other_language: 50}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 5}
+              min_points: 385
+            - subjects: {mathematical_literacy: 5}
+              min_points: 385
+      extras:
+        - "Applicant Score needed: 370 with Mathematics; 385 with Technical Mathematics or Mathematical Literacy."
+        - "Mathematics rule: Mathematics 45%, or Technical Mathematics or Mathematical Literacy 60%."
+        - "The app checks either/or subjects by NSC level: here it accepts Mathematics from 40% (NMU asks 45%), so make sure your mark reaches NMU's own figure."
+        - "Both languages count at Home Language or First Additional Language level, and the second language must be Afrikaans or isiXhosa: the app checks your other language, whichever it is."
+
+  # page 47
+  - id: bed_sp_fet_commerce
+    name: "Bachelor of Education: Senior Phase and Further Education and Training (Commerce stream)"
+    fields: [education, commerce]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 390
+      subject_min_percents: {english: 50, other_language: 50, mathematics: 60}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+        - "Both languages count at Home Language or First Additional Language level, and the second language must be Afrikaans or isiXhosa: the app checks your other language, whichever it is."
+        - "To specialise in Accounting, Business Studies or Economics for FET, you need that subject in Grade 12 at 60% or more."
+        - "To specialise in Mathematical Literacy you must have taken Mathematics at school."
+
+  # page 48
+  - id: bed_sp_fet_science
+    name: "Bachelor of Education: Senior Phase and Further Education and Training (Science stream)"
+    fields: [education, natural_sciences]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 390
+      subject_min_percents: {english: 50, other_language: 50, mathematics: 60}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+        - "Both languages count at Home Language or First Additional Language level, and the second language must be Afrikaans or isiXhosa: the app checks your other language, whichever it is."
+        - "To specialise for FET you need the subject in Grade 12: Physical Sciences 60%, Life Sciences 60%, Geography 55%."
+        - "Students who choose Physical Science must take Mathematics as their second FET specialisation."
+
+  # page 48
+  - id: bed_sp_fet_humanities
+    name: "Bachelor of Education: Senior Phase and Further Education and Training (Humanities stream)"
+    fields: [education, humanities]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 390
+      subject_min_percents: {english: 50, other_language: 50}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+              min_points: 405
+            - subjects: {mathematical_literacy: 5}
+              min_points: 405
+      extras:
+        - "Applicant Score needed: 390 with Mathematics; 405 with Technical Mathematics or Mathematical Literacy."
+        - "Mathematics rule: Mathematics or Technical Mathematics 45%, or Mathematical Literacy 60%."
+        - "The app checks either/or subjects by NSC level: here it accepts Mathematics or Technical Mathematics from 40% (NMU asks 45%), so make sure your mark reaches NMU's own figure."
+        - "Both languages count at Home Language or First Additional Language level, and the second language must be Afrikaans or isiXhosa: the app checks your other language, whichever it is."
+        - "If you choose Geography, you need Mathematics at 60% (Technical Mathematics and Mathematical Literacy aren't accepted then)."
+        - "To specialise for FET you need the subject in Grade 12: English, Afrikaans or isiXhosa 55% (Home or First Additional Language), History 55%, Geography 55%."
+
+  # Faculty of Engineering, the Built Environment and Technology (pages 54 to 73).
+  # Left out: the part-time Diploma in Operations Management and the Higher Certificate in Human Settlement Development,
+  # which are only for people already employed in the field.
+
+  # page 54
+  - id: hcert_mechatronic_engineering
+    name: "Higher Certificate in Mechatronic Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 330
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+      extras:
+        - "Applicant Score needed: 330 with Mathematics or Technical Mathematics."
+        - "Mathematics rule: Mathematics or Technical Mathematics 50%."
+        - "Mathematical Literacy isn't accepted."
+        - "Science rule: Physical Sciences 50% or Technical Sciences 50%."
+        - "Graduates who meet NMU's criteria may apply for BEngTech, BEng and other degrees."
+
+  # page 54
+  - id: hcert_renewable_energy_engineering
+    name: "Higher Certificate in Renewable Energy Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 330
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+      extras:
+        - "Applicant Score needed: 330 with Mathematics or Technical Mathematics."
+        - "Mathematics rule: Mathematics or Technical Mathematics 50%."
+        - "Mathematical Literacy isn't accepted."
+        - "Science rule: Physical Sciences 50% or Technical Sciences 50%."
+        - "Graduates who meet NMU's criteria may apply for BEngTech, BEng and other degrees."
+
+  # page 57
+  - id: beng_mechatronics
+    name: "Bachelor of Engineering (Mechatronics)"
+    fields: [engineering]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 410
+      subject_min_percents: {physical_sciences: 65, mathematics: 60}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+        - "Alternatively, NMU's Higher Certificate in Mechatronic or Renewable Energy Engineering with an average of 75% or more and at least 75% for Mathematics may be considered."
+        - "Recommended: Engineering Graphics and Design and/or Information Technology."
+
+  # page 58
+  - id: bengtech_electrical
+    name: "Bachelor of Engineering Technology (Electrical Engineering)"
+    fields: [engineering]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 370
+      choices:
+        - one_of:
+            - subjects: {mathematics: 5}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+      extras:
+        - "Applicant Score needed: 370 with Mathematics or Technical Mathematics."
+        - "Mathematics rule: Mathematics or Technical Mathematics 60%."
+        - "Mathematical Literacy isn't accepted."
+        - "Science rule: Physical Sciences 50% or Technical Sciences 50%."
+        - "Alternatively, NMU's Higher Certificate in Mechatronics Engineering or in Renewable Energy Engineering, with an average of 60% or more and at least 60% for Mathematics."
+
+  # page 59
+  - id: bengtech_industrial
+    name: "Bachelor of Engineering Technology (Industrial Engineering)"
+    fields: [engineering]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 370
+      choices:
+        - one_of:
+            - subjects: {mathematics: 5}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+      extras:
+        - "Applicant Score needed: 370 with Mathematics or Technical Mathematics."
+        - "Mathematics rule: Mathematics or Technical Mathematics 60%."
+        - "Mathematical Literacy isn't accepted."
+        - "Science rule: Physical Sciences 50% or Technical Sciences 50%."
+        - "Alternatively, NMU's Higher Certificate in Mechatronics Engineering or in Renewable Energy Engineering, with an average of 60% or more and at least 60% for Mathematics."
+
+  # page 59
+  - id: bengtech_mechanical
+    name: "Bachelor of Engineering Technology (Mechanical Engineering)"
+    fields: [engineering]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 370
+      choices:
+        - one_of:
+            - subjects: {mathematics: 5}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+      extras:
+        - "Applicant Score needed: 370 with Mathematics or Technical Mathematics."
+        - "Mathematics rule: Mathematics or Technical Mathematics 60%."
+        - "Mathematical Literacy isn't accepted."
+        - "Science rule: Physical Sciences 50% or Technical Sciences 50%."
+        - "Alternatively, NMU's Higher Certificate in Mechatronics Engineering or in Renewable Energy Engineering, with an average of 60% or more and at least 60% for Mathematics."
+
+  # page 60
+  - id: bengtech_marine
+    name: "Bachelor of Engineering Technology (Marine Engineering)"
+    fields: [engineering]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 370
+      choices:
+        - one_of:
+            - subjects: {mathematics: 5}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+      extras:
+        - "Applicant Score needed: 370 with Mathematics or Technical Mathematics."
+        - "Mathematics rule: Mathematics or Technical Mathematics 60%."
+        - "Mathematical Literacy isn't accepted."
+        - "Science rule: Physical Sciences 50% or Technical Sciences 50%."
+        - "Alternatively, NMU's Higher Certificate in Mechatronics Engineering or in Renewable Energy Engineering, with an average of 60% or more and at least 60% for Mathematics."
+
+  # page 61
+  - id: dip_architectural_technology
+    name: "Diploma in Architectural Technology"
+    fields: [built_environment, arts_and_design]
+    selective: true
+    selection_note: "Qualifying applicants prepare a prescribed portfolio and attend an interview."
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 330
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+              min_points: 345
+      extras:
+        - "Applicant Score needed: 330 with Mathematics or Technical Mathematics; 345 with Mathematical Literacy."
+        - "Mathematics rule: Mathematics or Technical Mathematics 45%, or Mathematical Literacy 60%."
+        - "The app checks either/or subjects by NSC level: here it accepts Mathematics or Technical Mathematics from 40% (NMU asks 45%), so make sure your mark reaches NMU's own figure."
+        - "Some applicants may have to attend a three-week preparation course before registration."
+
+  # page 62
+  - id: dip_interior_design
+    name: "Diploma in Interior Design"
+    fields: [arts_and_design, built_environment]
+    selective: true
+    selection_note: "Departmental selection: a creative portfolio (drawings, sketches and other creative or technical projects) and an interview about it."
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 315
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {technical_mathematics: 2}
+            - subjects: {mathematical_literacy: 3}
+              min_points: 330
+      extras:
+        - "Applicant Score needed: 315 with Mathematics or Technical Mathematics; 330 with Mathematical Literacy."
+        - "Mathematics rule: Mathematics or Technical Mathematics 30%, or Mathematical Literacy 45%."
+        - "The app checks either/or subjects by NSC level: here it accepts Mathematical Literacy from 40% (NMU asks 45%), so make sure your mark reaches NMU's own figure."
+        - "Recommended, not required: Visual Arts and Design."
+
+  # page 66
+  - id: bas_architecture
+    name: "Bachelor of Architectural Studies"
+    fields: [built_environment, arts_and_design]
+    selective: true
+    selection_note: "Selection is based on a creative portfolio, an interview with the department's selection committee and a discussion of the portfolio."
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 370
+      subject_min_percents: {mathematics: 55}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+        - "The BAS takes three years; becoming an architect also needs the one-year BAS Honours and the one-year MArch (Professional)."
+
+  # page 67
+  - id: dip_building
+    name: "Diploma in Building"
+    fields: [built_environment]
+    selective: true
+    selection_note: "Limited places: departmental selection based on academic merit."
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 330
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+      extras:
+        - "Applicant Score needed: 330 with Mathematics or Technical Mathematics."
+        - "Mathematics rule: Mathematics or Technical Mathematics 45%."
+        - "Mathematical Literacy isn't accepted."
+        - "The app checks either/or subjects by NSC level: here it accepts Mathematics or Technical Mathematics from 40% (NMU asks 45%), so make sure your mark reaches NMU's own figure."
+        - "Recommended: Physical Sciences, Business Economics, Accounting and Civil Technology."
+        - "Two years of full-time study and one year of experiential learning in industry."
+
+  # page 69
+  - id: bsc_construction_economics
+    name: "Bachelor of Science in Construction Economics"
+    fields: [built_environment, economics]
+    selective: true
+    selection_note: "Limited places: departmental selection based on academic merit."
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 370
+      subject_min_percents: {mathematics: 55}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+        - "Recommended: Engineering Graphics and Design and Physical Science."
+        - "Followed by the BSc Honours (Quantity Surveying) to register as a candidate quantity surveyor."
+
+  # page 69
+  - id: bsc_construction_management
+    name: "Bachelor of Science (Construction Management)"
+    fields: [built_environment, management]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 370
+      subject_min_percents: {mathematics: 55}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+        - "Recommended: Engineering Graphics and Design and Physical Science."
+
+  # page 70
+  - id: bhsd_human_settlement_development
+    name: "Bachelor of Human Settlement Development"
+    fields: [built_environment, public_administration]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 370
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+            - subjects: {mathematical_literacy: 6}
+              min_points: 385
+      extras:
+        - "Applicant Score needed: 370 with Mathematics or Technical Mathematics; 385 with Mathematical Literacy."
+        - "Mathematics rule: Mathematics or Technical Mathematics 50%, or Mathematical Literacy 70%."
+        - "Full-time over 4 years or part-time over 6 years, with one month a year of work-integrated learning."
+
+  # page 70
+  - id: bengtech_civil
+    name: "Bachelor of Engineering Technology (Civil Engineering)"
+    fields: [engineering, built_environment]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 370
+      choices:
+        - one_of:
+            - subjects: {mathematics: 5}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+      extras:
+        - "Applicant Score needed: 370 with Mathematics or Technical Mathematics."
+        - "Mathematics rule: Mathematics or Technical Mathematics 60%."
+        - "Mathematical Literacy isn't accepted."
+        - "Science rule: Physical Sciences 50% or Technical Sciences 50%."
+        - "Alternatively, NMU's Higher Certificate in Mechatronics Engineering or in Renewable Energy Engineering, with an average of 60% or more and at least 60% for Mathematics."
+
+  # page 71
+  - id: hcert_it_user_support_services
+    name: "Higher Certificate in Information Technology (User Support Services)"
+    fields: [computing]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 290
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {technical_mathematics: 2}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 305
+      extras:
+        - "Applicant Score needed: 290 with Mathematics or Technical Mathematics; 305 with Mathematical Literacy."
+        - "Mathematics rule: Mathematics or Technical Mathematics 35%, or Mathematical Literacy 55%."
+        - "The app checks either/or subjects by NSC level: here it accepts Mathematics or Technical Mathematics from 30% (NMU asks 35%) and Mathematical Literacy from 50% (NMU asks 55%), so make sure your mark reaches NMU's own figure."
+        - "Also offered on the George Campus."
+        - "Graduates with an average of 60% for all exit-level modules may be admitted to the Diploma in IT (Support Services)."
+
+  # page 71
+  - id: dip_it_software_development
+    name: "Diploma in Information Technology (Software Development)"
+    fields: [computing]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 330
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+              min_points: 345
+      extras:
+        - "Applicant Score needed: 330 with Mathematics or Technical Mathematics; 345 with Mathematical Literacy."
+        - "Mathematics rule: Mathematics or Technical Mathematics 40%, or Mathematical Literacy 60%."
+        - "Recommended: Computer Applications Technology and/or Information Technology."
+
+  # page 71
+  - id: dip_it_communication_networks
+    name: "Diploma in Information Technology (Communication Networks)"
+    fields: [computing]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 330
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+      extras:
+        - "Applicant Score needed: 330 with Mathematics or Technical Mathematics."
+        - "Mathematics rule: Mathematics or Technical Mathematics 45%."
+        - "Mathematical Literacy isn't accepted."
+        - "The app checks either/or subjects by NSC level: here it accepts Mathematics or Technical Mathematics from 40% (NMU asks 45%), so make sure your mark reaches NMU's own figure."
+        - "Recommended: Computer Applications Technology and/or Information Technology."
+
+  # page 72
+  - id: dip_it_support_services
+    name: "Diploma in Information Technology (Support Services)"
+    fields: [computing]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 330
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+              min_points: 345
+      extras:
+        - "Applicant Score needed: 330 with Mathematics or Technical Mathematics; 345 with Mathematical Literacy."
+        - "Mathematics rule: Mathematics or Technical Mathematics 40%, or Mathematical Literacy 60%."
+        - "Alternatively, NMU's Higher Certificate in IT (User Support Services) with an average of 60% or more."
+        - "Recommended: Computer Applications Technology and/or Information Technology."
+
+  # page 72
+  - id: bit
+    name: "Bachelor of Information Technology"
+    fields: [computing]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 370
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+      extras:
+        - "Applicant Score needed: 370 with Mathematics or Technical Mathematics."
+        - "Mathematics rule: Mathematics or Technical Mathematics 50%."
+        - "Mathematical Literacy isn't accepted."
+
+  # Faculty of Health Sciences (pages 76 to 87).
+
+  # page 76
+  - id: b_environmental_health
+    name: "Bachelor of Environmental Health"
+    fields: [environmental_health]
+    selective: true
+    selection_note: "Admission is subject to departmental selection."
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 390
+      subject_min_percents: {life_sciences: 50, physical_sciences: 50, mathematics: 50}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+
+  # page 77
+  - id: ba_psychology
+    name: "Bachelor of Arts in Psychology"
+    fields: [humanities, health_sciences]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 350
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 5}
+              min_points: 365
+            - subjects: {mathematical_literacy: 5}
+              min_points: 365
+      extras:
+        - "Applicant Score needed: 350 with Mathematics; 365 with Technical Mathematics or Mathematical Literacy."
+        - "Mathematics rule: Mathematics 45%, or Technical Mathematics or Mathematical Literacy 65%."
+        - "The app checks either/or subjects by NSC level: here it accepts Mathematics from 40% (NMU asks 45%) and Technical Mathematics or Mathematical Literacy from 60% (NMU asks 65%), so make sure your mark reaches NMU's own figure."
+
+  # page 78
+  - id: bsw_social_work
+    name: "Bachelor of Social Work"
+    fields: [humanities, health_sciences]
+    selective: true
+    selection_note: "Admission is subject to departmental selection."
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 350
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 5}
+              min_points: 365
+            - subjects: {mathematical_literacy: 5}
+              min_points: 365
+      extras:
+        - "Applicant Score needed: 350 with Mathematics; 365 with Technical Mathematics or Mathematical Literacy."
+        - "Mathematics rule: Mathematics 40%, or Technical Mathematics or Mathematical Literacy 65%."
+        - "The app checks either/or subjects by NSC level: here it accepts Technical Mathematics or Mathematical Literacy from 60% (NMU asks 65%), so make sure your mark reaches NMU's own figure."
+        - "You must register as a student social worker with the South African Council for Social Service Professions, and submit a clean police clearance certificate before your second year."
+
+  # page 79
+  - id: bsc_dietetics
+    name: "Bachelor of Science (Dietetics)"
+    fields: [nutrition, health_sciences]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 390
+      subject_min_percents: {physical_sciences: 60, mathematics: 60}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+
+  # page 80
+  - id: dip_sport_management
+    name: "Diploma in Sport Management"
+    fields: [sport_science, management]
+    selective: true
+    selection_note: "Active participation in competitive sport approved by the department; preference goes to applicants who have excelled in sport or are extensively involved in it."
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 330
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 5}
+              min_points: 345
+            - subjects: {mathematical_literacy: 5}
+              min_points: 345
+      extras:
+        - "Applicant Score needed: 330 with Mathematics; 345 with Technical Mathematics or Mathematical Literacy."
+        - "Mathematics rule: Mathematics 40%, or Technical Mathematics or Mathematical Literacy 60%."
+        - "Upload with your application: a sport playing and sport involvement CV, and a dated, signed letter on school or club letterhead showing the sport you play this year and at what level."
+
+  # page 80
+  - id: bhms_human_movement_science
+    name: "Bachelor of Human Movement Science"
+    fields: [sport_science]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 350
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 5}
+              min_points: 365
+            - subjects: {mathematical_literacy: 5}
+              min_points: 365
+      extras:
+        - "Applicant Score needed: 350 with Mathematics; 365 with Technical Mathematics or Mathematical Literacy."
+        - "Mathematics rule: Mathematics 45%, or Technical Mathematics or Mathematical Literacy 65%."
+        - "The app checks either/or subjects by NSC level: here it accepts Mathematics from 40% (NMU asks 45%) and Technical Mathematics or Mathematical Literacy from 60% (NMU asks 65%), so make sure your mark reaches NMU's own figure."
+        - "You must pass a medical examination required by the Department of Human Movement Science."
+
+  # page 81
+  - id: bhsc_biokinetics
+    name: "Bachelor of Health Sciences in Biokinetics"
+    fields: [sport_science, rehabilitation]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 370
+      subject_min_percents: {life_sciences: 50}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+              min_points: 385
+            - subjects: {mathematical_literacy: 5}
+              min_points: 385
+      extras:
+        - "Applicant Score needed: 370 with Mathematics; 385 with Technical Mathematics or Mathematical Literacy."
+        - "Mathematics rule: Mathematics 50%, or Technical Mathematics or Mathematical Literacy 65%."
+        - "The app checks either/or subjects by NSC level: here it accepts Technical Mathematics or Mathematical Literacy from 60% (NMU asks 65%), so make sure your mark reaches NMU's own figure."
+        - "A satisfactory medical report is required."
+
+  # page 82
+  - id: bachelor_of_nursing_ecp
+    name: "Bachelor of Nursing (Extended Curriculum)"
+    fields: [nursing]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 330
+      subject_min_percents: {life_sciences: 50, physical_sciences: 40}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {technical_mathematics: 4}
+              min_points: 345
+            - subjects: {mathematical_literacy: 4}
+              min_points: 345
+      extras:
+        - "Applicant Score needed: 330 with Mathematics; 345 with Technical Mathematics or Mathematical Literacy."
+        - "Mathematics rule: Mathematics 35%, or Technical Mathematics or Mathematical Literacy 55%."
+        - "The app checks either/or subjects by NSC level: here it accepts Mathematics from 30% (NMU asks 35%) and Technical Mathematics or Mathematical Literacy from 50% (NMU asks 55%), so make sure your mark reaches NMU's own figure."
+        - "Extended curriculum: the same qualification with an extra year of academic support, for applicants with the potential to succeed who don't meet the mainstream requirements."
+        - "Takes five years full-time."
+        - "You must register as a student nurse with the South African Nursing Council, hand in a satisfactory medical report before registration, and show proof of professional indemnity insurance every year."
+
+  # page 82
+  - id: bachelor_of_nursing
+    name: "Bachelor of Nursing"
+    fields: [nursing]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 370
+      subject_min_percents: {life_sciences: 60, physical_sciences: 50}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+              min_points: 385
+            - subjects: {mathematical_literacy: 5}
+              min_points: 385
+      extras:
+        - "Applicant Score needed: 370 with Mathematics; 385 with Technical Mathematics or Mathematical Literacy."
+        - "Mathematics rule: Mathematics 50%, or Technical Mathematics or Mathematical Literacy 65%."
+        - "The app checks either/or subjects by NSC level: here it accepts Technical Mathematics or Mathematical Literacy from 60% (NMU asks 65%), so make sure your mark reaches NMU's own figure."
+        - "You must register as a student nurse with the South African Nursing Council, hand in a satisfactory medical report before registration, and show proof of professional indemnity insurance every year."
+
+  # page 83
+  - id: brad_diagnostic
+    name: "Bachelor of Radiography in Diagnostic"
+    fields: [radiography]
+    selective: true
+    selection_note: "Departmental selection; applicants referred for selection submit a satisfactory medical report. Final selection takes place in September."
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 390
+      subject_min_percents: {life_sciences: 50, physical_sciences: 50, mathematics: 50}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+        - "Applicants must be physically fit."
+        - "Applications closed on 30 June 2026."
+        - "Successful applicants must visit an X-ray department."
+
+  # page 84
+  - id: bemc_emergency_medical_care
+    name: "Bachelor of Emergency Medical Care"
+    fields: [emergency_care]
+    selective: true
+    selection_note: "Departmental selection, including an interview, a medical fitness report and a satisfactory physical assessment."
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 370
+      subject_min_percents: {life_sciences: 60, physical_sciences: 50}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+              min_points: 385
+            - subjects: {mathematical_literacy: 5}
+              min_points: 385
+      extras:
+        - "Applicant Score needed: 370 with Mathematics; 385 with Technical Mathematics or Mathematical Literacy."
+        - "Mathematics rule: Mathematics 50%, or Technical Mathematics or Mathematical Literacy 65%."
+        - "The app checks either/or subjects by NSC level: here it accepts Technical Mathematics or Mathematical Literacy from 60% (NMU asks 65%), so make sure your mark reaches NMU's own figure."
+
+  # page 84
+  - id: bhsc_medical_laboratory_science
+    name: "Bachelor of Health Sciences in Medical Laboratory Science"
+    fields: [medical_sciences, health_sciences]
+    selective: true
+    selection_note: "Limited laboratory space: departmental selection based on academic merit, which may include an interview and/or a practical assessment."
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 390
+      subject_min_percents: {life_sciences: 50, physical_sciences: 50, mathematics: 60}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+        - "Successful applicants must visit a pathology laboratory."
+
+  # page 85
+  - id: bpharm
+    name: "Bachelor of Pharmacy"
+    fields: [pharmacy]
+    selective: true
+    selection_note: "Limited places: departmental selection on merit, in the year before first year."
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 410
+      subject_min_percents: {physical_sciences: 60, mathematics: 60}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+        - "NMU also asks for 'an NSC achievement rating of at least 50% for Home language or English First Additional Language'. The guide doesn't say which home language, so the app doesn't check this one: ask NMU."
+        - "Applications closed on 30 June 2026."
+
+  # page 86
+  - id: mbchb
+    name: "Bachelor of Medicine and Bachelor of Surgery"
+    fields: [medicine]
+    selective: true
+    selection_note: "Limited places: the Medical Programme Selection Committee selects on academic and non-academic merit, considering applicants from non-fee-paying schools; meeting the minimums doesn't guarantee a place."
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 430
+      subject_min_percents: {english: 60, physical_sciences: 60, life_sciences: 60, mathematics: 60}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+        - "English at Home Language or First Additional Language level."
+        - "Applications closed on 30 June 2026."
+        - "Takes six years full-time."
+
+  # Faculty of Humanities (pages 90 to 103).
+
+  # page 90
+  - id: bva_visual_art
+    name: "Bachelor of Visual Art"
+    fields: [arts_and_design]
+    selective: true
+    selection_note: "Departmental selection: a prescribed portfolio (the leading indicator) and an interview; numbers are limited."
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 350
+      choices:
+        - one_of:
+            - subjects: {mathematics: 1}
+            - subjects: {technical_mathematics: 1}
+              min_points: 365
+            - subjects: {mathematical_literacy: 1}
+              min_points: 365
+      extras:
+        - "Applicant Score needed: 350 with Mathematics; 365 with Technical Mathematics or Mathematical Literacy."
+        - "NMU sets no minimum mark for Mathematics, Technical Mathematics or Mathematical Literacy here; the one you took decides your Applicant Score."
+        - "A generic first year, then selection by interview and portfolio into a Design stream (Fashion and Textiles, Graphic Design, Photography) or Fine Art (two of Drawing, Ceramics, Painting, Printmaking and Sculpture). Your preferred stream isn't guaranteed."
+        - "Recommended, not required: Visual Arts and Design."
+
+  # page 93
+  - id: dipmus_curriculum_1
+    name: "Diploma in Music (Curriculum 1)"
+    fields: [music, performing_arts]
+    selective: true
+    selection_note: "Departmental selection based on an audition on your chosen First Instrument."
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 290
+      choices:
+        - one_of:
+            - subjects: {mathematics: 1}
+            - subjects: {technical_mathematics: 1}
+              min_points: 305
+            - subjects: {mathematical_literacy: 1}
+              min_points: 305
+      extras:
+        - "Applicant Score needed: 290 with Mathematics; 305 with Technical Mathematics or Mathematical Literacy."
+        - "NMU sets no minimum mark for Mathematics, Technical Mathematics or Mathematical Literacy here; the one you took decides your Applicant Score."
+        - "For adult beginners: no prior formal music training is needed. Specialise in western art music or jazz."
+
+  # page 93
+  - id: dipmus_curriculum_2
+    name: "Diploma in Music (Curriculum 2)"
+    fields: [music, performing_arts]
+    selective: true
+    selection_note: "An audition on your chosen First Instrument."
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 290
+      choices:
+        - one_of:
+            - subjects: {mathematics: 1}
+            - subjects: {technical_mathematics: 1}
+              min_points: 305
+            - subjects: {mathematical_literacy: 1}
+              min_points: 305
+      extras:
+        - "Applicant Score needed: 290 with Mathematics; 305 with Technical Mathematics or Mathematical Literacy."
+        - "NMU sets no minimum mark for Mathematics, Technical Mathematics or Mathematical Literacy here; the one you took decides your Applicant Score."
+        - "For students with some music training: Grade 2 standard for First Instrument Intermediate, Grade 6 for First Instrument Advanced (Unisa, ABRSM or Trinity Guildhall)."
+
+  # page 94
+  - id: bmus_school_music
+    name: "Bachelor of Music (School Music)"
+    fields: [music, education]
+    selective: true
+    selection_note: "An audition on your chosen First Instrument and a music theory entrance test."
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 350
+      choices:
+        - one_of:
+            - subjects: {mathematics: 1}
+            - subjects: {technical_mathematics: 1}
+              min_points: 365
+            - subjects: {mathematical_literacy: 1}
+              min_points: 365
+      extras:
+        - "Applicant Score needed: 350 with Mathematics; 365 with Technical Mathematics or Mathematical Literacy."
+        - "NMU sets no minimum mark for Mathematics, Technical Mathematics or Mathematical Literacy here; the one you took decides your Applicant Score."
+        - "NMU asks for a practical music standard equivalent to Grade 6, and a music theory standard equivalent to Grade 5, of the external music examining bodies."
+
+  # page 94
+  - id: bmus_school_music_ecp
+    name: "Bachelor of Music (School Music) (Extended Curriculum)"
+    fields: [music, education]
+    selective: true
+    selection_note: "Admission is subject to departmental selection."
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 330
+      choices:
+        - one_of:
+            - subjects: {mathematics: 1}
+            - subjects: {technical_mathematics: 1}
+              min_points: 345
+            - subjects: {mathematical_literacy: 1}
+              min_points: 345
+      extras:
+        - "Applicant Score needed: 330 with Mathematics; 345 with Technical Mathematics or Mathematical Literacy."
+        - "NMU sets no minimum mark for Mathematics, Technical Mathematics or Mathematical Literacy here; the one you took decides your Applicant Score."
+        - "Extended curriculum: the same qualification with an extra year of academic support, for applicants with the potential to succeed who don't meet the mainstream requirements."
+        - "Takes five years full-time."
+
+  # page 95
+  - id: bmus_performing_arts
+    name: "Bachelor of Music (Performing Arts)"
+    fields: [music, performing_arts]
+    selective: true
+    selection_note: "An audition on your chosen First Instrument and a music theory entrance test."
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 350
+      choices:
+        - one_of:
+            - subjects: {mathematics: 1}
+            - subjects: {technical_mathematics: 1}
+              min_points: 365
+            - subjects: {mathematical_literacy: 1}
+              min_points: 365
+      extras:
+        - "Applicant Score needed: 350 with Mathematics; 365 with Technical Mathematics or Mathematical Literacy."
+        - "NMU sets no minimum mark for Mathematics, Technical Mathematics or Mathematical Literacy here; the one you took decides your Applicant Score."
+        - "NMU asks for a practical music standard equivalent to Grade 6, and a music theory standard equivalent to Grade 5, of the external music examining bodies."
+
+  # page 95
+  - id: bmus_performing_arts_ecp
+    name: "Bachelor of Music (Performing Arts) (Extended Curriculum)"
+    fields: [music, performing_arts]
+    selective: true
+    selection_note: "Admission is subject to departmental selection."
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 330
+      choices:
+        - one_of:
+            - subjects: {mathematics: 1}
+            - subjects: {technical_mathematics: 1}
+              min_points: 345
+            - subjects: {mathematical_literacy: 1}
+              min_points: 345
+      extras:
+        - "Applicant Score needed: 330 with Mathematics; 345 with Technical Mathematics or Mathematical Literacy."
+        - "NMU sets no minimum mark for Mathematics, Technical Mathematics or Mathematical Literacy here; the one you took decides your Applicant Score."
+        - "Extended curriculum: the same qualification with an extra year of academic support, for applicants with the potential to succeed who don't meet the mainstream requirements."
+        - "Takes five years full-time."
+
+  # page 96
+  - id: bmus_music_technology
+    name: "Bachelor of Music (Music Technology)"
+    fields: [music]
+    selective: true
+    selection_note: "An audition on your chosen First Instrument and a music theory entrance test."
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 350
+      choices:
+        - one_of:
+            - subjects: {mathematics: 1}
+            - subjects: {technical_mathematics: 1}
+              min_points: 365
+            - subjects: {mathematical_literacy: 1}
+              min_points: 365
+      extras:
+        - "Applicant Score needed: 350 with Mathematics; 365 with Technical Mathematics or Mathematical Literacy."
+        - "NMU sets no minimum mark for Mathematics, Technical Mathematics or Mathematical Literacy here; the one you took decides your Applicant Score."
+        - "NMU asks for a practical music standard equivalent to Grade 6, and a music theory standard equivalent to Grade 5, of the external music examining bodies."
+
+  # page 96
+  - id: bmus_music_technology_ecp
+    name: "Bachelor of Music (Music Technology) (Extended Curriculum)"
+    fields: [music]
+    selective: true
+    selection_note: "Admission is subject to departmental selection."
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 330
+      choices:
+        - one_of:
+            - subjects: {mathematics: 1}
+            - subjects: {technical_mathematics: 1}
+              min_points: 345
+            - subjects: {mathematical_literacy: 1}
+              min_points: 345
+      extras:
+        - "Applicant Score needed: 330 with Mathematics; 345 with Technical Mathematics or Mathematical Literacy."
+        - "NMU sets no minimum mark for Mathematics, Technical Mathematics or Mathematical Literacy here; the one you took decides your Applicant Score."
+        - "Extended curriculum: the same qualification with an extra year of academic support, for applicants with the potential to succeed who don't meet the mainstream requirements."
+        - "Takes five years full-time."
+
+  # page 96
+  - id: bmus_general
+    name: "Bachelor of Music (General)"
+    fields: [music]
+    selective: true
+    selection_note: "An audition on your chosen First Instrument and a music theory entrance test."
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 350
+      choices:
+        - one_of:
+            - subjects: {mathematics: 1}
+            - subjects: {technical_mathematics: 1}
+              min_points: 365
+            - subjects: {mathematical_literacy: 1}
+              min_points: 365
+      extras:
+        - "Applicant Score needed: 350 with Mathematics; 365 with Technical Mathematics or Mathematical Literacy."
+        - "NMU sets no minimum mark for Mathematics, Technical Mathematics or Mathematical Literacy here; the one you took decides your Applicant Score."
+        - "NMU asks for a practical music standard equivalent to Grade 6, and a music theory standard equivalent to Grade 5, of the external music examining bodies."
+
+  # page 97
+  - id: bmus_general_ecp
+    name: "Bachelor of Music (General) (Extended Curriculum)"
+    fields: [music]
+    selective: true
+    selection_note: "Admission is subject to departmental selection."
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 330
+      choices:
+        - one_of:
+            - subjects: {mathematics: 1}
+            - subjects: {technical_mathematics: 1}
+              min_points: 345
+            - subjects: {mathematical_literacy: 1}
+              min_points: 345
+      extras:
+        - "Applicant Score needed: 330 with Mathematics; 345 with Technical Mathematics or Mathematical Literacy."
+        - "NMU sets no minimum mark for Mathematics, Technical Mathematics or Mathematical Literacy here; the one you took decides your Applicant Score."
+        - "Extended curriculum: the same qualification with an extra year of academic support, for applicants with the potential to succeed who don't meet the mainstream requirements."
+        - "Takes five years full-time."
+
+  # page 98
+  - id: dip_public_relations_management
+    name: "Diploma in Public Relations Management"
+    fields: [languages_and_communication, management]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 330
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {technical_mathematics: 4}
+              min_points: 345
+            - subjects: {mathematical_literacy: 4}
+              min_points: 345
+      extras:
+        - "Applicant Score needed: 330 with Mathematics; 345 with Technical Mathematics or Mathematical Literacy."
+        - "Mathematics rule: Mathematics 30%, or Technical Mathematics or Mathematical Literacy 50%."
+        - "Includes one year of in-service training."
+        - "The Head of Department may also admit applicants provisionally on work experience, age and maturity."
+
+  # pages 99, 100 and 102
+  - id: ba
+    name: "Bachelor of Arts"
+    fields: [humanities, languages_and_communication]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 350
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {technical_mathematics: 4}
+              min_points: 365
+            - subjects: {mathematical_literacy: 4}
+              min_points: 365
+      extras:
+        - "Applicant Score needed: 350 with Mathematics; 365 with Technical Mathematics or Mathematical Literacy."
+        - "Mathematics rule: Mathematics 35%, or Technical Mathematics or Mathematical Literacy 55%."
+        - "The app checks either/or subjects by NSC level: here it accepts Mathematics from 30% (NMU asks 35%) and Technical Mathematics or Mathematical Literacy from 50% (NMU asks 55%), so make sure your mark reaches NMU's own figure."
+        - "You also need 60% or more in any NSC language, at Home Language or First Additional Language level."
+        - "Choose two majors: two languages, a language and a social science, or two social sciences (for example Anthropology, Afrikaans, Business Management, Economics, English, History, French, Geography, Industrial Psychology, isiXhosa, Philosophy, Political Studies, Psychology, Public Administration, Sociology)."
+
+  # page 100
+  - id: ba_media_communication_culture
+    name: "Bachelor of Arts (Media, Communication and Culture)"
+    fields: [languages_and_communication, humanities]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 350
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {technical_mathematics: 4}
+              min_points: 365
+            - subjects: {mathematical_literacy: 4}
+              min_points: 365
+      extras:
+        - "Applicant Score needed: 350 with Mathematics; 365 with Technical Mathematics or Mathematical Literacy."
+        - "Mathematics rule: Mathematics 35%, or Technical Mathematics or Mathematical Literacy 55%."
+        - "The app checks either/or subjects by NSC level: here it accepts Mathematics from 30% (NMU asks 35%) and Technical Mathematics or Mathematical Literacy from 50% (NMU asks 55%), so make sure your mark reaches NMU's own figure."
+        - "You also need 60% or more in any NSC language, at Home Language or First Additional Language level."
+
+  # page 101
+  - id: dip_public_management
+    name: "Diploma in Public Management"
+    fields: [public_administration]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 310
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {technical_mathematics: 4}
+              min_points: 325
+            - subjects: {mathematical_literacy: 4}
+              min_points: 325
+      extras:
+        - "Applicant Score needed: 310 with Mathematics; 325 with Technical Mathematics or Mathematical Literacy."
+        - "Mathematics rule: Mathematics 35%, or Technical Mathematics or Mathematical Literacy 55%."
+        - "The app checks either/or subjects by NSC level: here it accepts Mathematics from 30% (NMU asks 35%) and Technical Mathematics or Mathematical Literacy from 50% (NMU asks 55%), so make sure your mark reaches NMU's own figure."
+
+  # page 101
+  - id: dip_public_management_ecp
+    name: "Diploma in Public Management (Extended Curriculum)"
+    fields: [public_administration]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 290
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {technical_mathematics: 4}
+              min_points: 305
+            - subjects: {mathematical_literacy: 4}
+              min_points: 305
+      extras:
+        - "Applicant Score needed: 290 with Mathematics; 305 with Technical Mathematics or Mathematical Literacy."
+        - "Mathematics rule: Mathematics 30%, or Technical Mathematics or Mathematical Literacy 50%."
+        - "Extended curriculum: the same qualification with an extra year of academic support, for applicants with the potential to succeed who don't meet the mainstream requirements."
+
+  # page 103
+  - id: ba_politics_economics
+    name: "Bachelor of Arts (Politics and Economics)"
+    fields: [humanities, economics]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 350
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 6}
+              min_points: 365
+            - subjects: {mathematical_literacy: 6}
+              min_points: 365
+      extras:
+        - "Applicant Score needed: 350 with Mathematics; 365 with Technical Mathematics or Mathematical Literacy."
+        - "Mathematics rule: Mathematics 40%, or Technical Mathematics or Mathematical Literacy 70%."
+        - "You also need 60% or more in any NSC language, at Home Language or First Additional Language level."
+
+  # page 103
+  - id: badmin_public_administration
+    name: "Bachelor of Administration (Public Administration)"
+    fields: [public_administration]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 350
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {technical_mathematics: 4}
+              min_points: 365
+            - subjects: {mathematical_literacy: 4}
+              min_points: 365
+      extras:
+        - "Applicant Score needed: 350 with Mathematics; 365 with Technical Mathematics or Mathematical Literacy."
+        - "Mathematics rule: Mathematics 35%, or Technical Mathematics or Mathematical Literacy 55%."
+        - "The app checks either/or subjects by NSC level: here it accepts Mathematics from 30% (NMU asks 35%) and Technical Mathematics or Mathematical Literacy from 50% (NMU asks 55%), so make sure your mark reaches NMU's own figure."
+        - "Public Administration plus one of Industrial Psychology, Sociology, Business Management or Political Studies."
+
+  # Faculty of Law (pages 106 to 109).
+
+  # page 106
+  - id: hcert_law_enforcement
+    name: "Higher Certificate in Law Enforcement"
+    fields: [safety_and_justice, law]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 310
+      subject_min_percents: {english: 50}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 1}
+            - subjects: {technical_mathematics: 1}
+              min_points: 325
+            - subjects: {mathematical_literacy: 1}
+              min_points: 325
+      extras:
+        - "Applicant Score needed: 310 with Mathematics; 325 with Technical Mathematics or Mathematical Literacy."
+        - "NMU sets no minimum mark for Mathematics, Technical Mathematics or Mathematical Literacy here; the one you took decides your Applicant Score."
+        - "English Home Language at 50% or more, or English First Additional Language at 55% or more."
+        - "Doesn't give direct access to the LLB, BA (Law) or BCom (Law)."
+
+  # page 106
+  - id: dip_law_enforcement
+    name: "Diploma in Law Enforcement"
+    fields: [safety_and_justice, law]
+    selective: true
+    selection_note: "Departmental selection according to the Faculty Management Committee's criteria."
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 330
+      subject_min_percents: {english: 55}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 1}
+            - subjects: {technical_mathematics: 1}
+              min_points: 345
+            - subjects: {mathematical_literacy: 1}
+              min_points: 345
+      extras:
+        - "Applicant Score needed: 330 with Mathematics; 345 with Technical Mathematics or Mathematical Literacy."
+        - "NMU sets no minimum mark for Mathematics, Technical Mathematics or Mathematical Literacy here; the one you took decides your Applicant Score."
+        - "English Home Language at 55% or more, or English First Additional Language at 60% or more."
+        - "Alternatively, an average of at least 60% for NMU's Higher Certificate in Law Enforcement."
+        - "Focuses on law enforcement in the marine and coastal environment. Doesn't give direct access to the LLB, BA (Law) or BCom (Law)."
+
+  # page 107
+  - id: ba_law
+    name: "Bachelor of Arts (Law)"
+    fields: [law, humanities]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 390
+      subject_min_percents: {english: 65}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 6}
+              min_points: 405
+            - subjects: {mathematical_literacy: 6}
+              min_points: 405
+      extras:
+        - "Applicant Score needed: 390 with Mathematics; 405 with Technical Mathematics or Mathematical Literacy."
+        - "Mathematics rule: Mathematics 50%, or Technical Mathematics or Mathematical Literacy 75%."
+        - "English Home Language at 65% or more, or English First Additional Language at 70% or more."
+        - "The app checks either/or subjects by NSC level: here it accepts Technical Mathematics or Mathematical Literacy from 70% (NMU asks 75%), so make sure your mark reaches NMU's own figure."
+        - "Followed by a two-year LLB to enter the legal profession."
+
+  # page 107
+  - id: bcom_law
+    name: "Bachelor of Commerce (Law)"
+    fields: [law, commerce]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 390
+      subject_min_percents: {mathematics: 60, english: 65}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+        - "English Home Language at 65% or more, or English First Additional Language at 70% or more."
+        - "Followed by a two-year LLB to enter the legal profession."
+
+  # page 108
+  - id: llb
+    name: "Bachelor of Laws (LLB)"
+    fields: [law]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 390
+      subject_min_percents: {mathematics: 50, english: 65}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+        - "English Home Language at 65% or more, or English First Additional Language at 70% or more."
+
+  # page 109
+  - id: llb_ecp
+    name: "Bachelor of Laws (LLB) (Extended Curriculum)"
+    fields: [law]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 370
+      subject_min_percents: {english: 60}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 6}
+              min_points: 385
+            - subjects: {mathematical_literacy: 6}
+              min_points: 385
+      extras:
+        - "Applicant Score needed: 370 with Mathematics; 385 with Technical Mathematics or Mathematical Literacy."
+        - "Mathematics rule: Mathematics 45%, or Technical Mathematics or Mathematical Literacy 70%."
+        - "English Home Language at 60% or more, or English First Additional Language at 65% or more."
+        - "The app checks either/or subjects by NSC level: here it accepts Mathematics from 40% (NMU asks 45%), so make sure your mark reaches NMU's own figure."
+        - "Extended curriculum: the same qualification with an extra year of academic support, for applicants with the potential to succeed who don't meet the mainstream requirements."
+        - "Takes five years full-time."
+
+  # Faculty of Science (pages 112 to 119). Advanced diplomas are left out: they need a diploma first.
+
+  # pages 112 and 122
+  - id: dip_agricultural_management
+    name: "Diploma in Agricultural Management"
+    fields: [agriculture, management]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 330
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+              min_points: 345
+        - one_of:
+            - subjects: {physical_sciences: 3}
+            - subjects: {technical_sciences: 3}
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+      extras:
+        - "Applicant Score needed: 330 with Mathematics or Technical Mathematics; 345 with Mathematical Literacy."
+        - "Mathematics rule: Mathematics or Technical Mathematics 40%, or Mathematical Literacy 60%."
+        - "Science rule: Physical Sciences 40%, Technical Sciences 40%, Life Sciences 50% or Agricultural Sciences 55%."
+        - "The app checks either/or subjects by NSC level: here it accepts Agricultural Sciences from 50% (NMU asks 55%), so make sure your mark reaches NMU's own figure."
+        - "Also offered on the George Campus. There, admission is subject to departmental selection."
+        - "Includes one year of in-service training."
+
+  # page 112
+  - id: dip_analytical_chemistry
+    name: "Diploma in Analytical Chemistry"
+    fields: [physical_sciences]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 350
+      subject_min_percents: {physical_sciences: 50, mathematics: 55}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+        - "Two years at NMU and at least 11 months of work-integrated learning in a laboratory."
+
+  # page 112
+  - id: dip_game_ranch_management
+    name: "Diploma in Game Ranch Management"
+    fields: [agriculture, earth_sciences]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 330
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+              min_points: 345
+      extras:
+        - "Applicant Score needed: 330 with Mathematics or Technical Mathematics; 345 with Mathematical Literacy."
+        - "Mathematics rule: Mathematics or Technical Mathematics 40%, or Mathematical Literacy 60%."
+        - "Two years at NMU and one year of experiential training."
+
+  # page 113
+  - id: dip_polymer_technology
+    name: "Diploma in Polymer Technology"
+    fields: [physical_sciences, engineering]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 350
+      subject_min_percents: {physical_sciences: 50, mathematics: 55}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+        - "Includes at least 11 months of work-integrated learning."
+
+  # page 113
+  - id: dip_chemical_process_technology
+    name: "Diploma in Chemical Process Technology"
+    fields: [physical_sciences, engineering]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 350
+      subject_min_percents: {physical_sciences: 50, mathematics: 55}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+        - "NMU's guide says not to consider this qualification if you've had asthma or lung disease: the chemical industry screens employees for them."
+        - "Includes 6 to 12 months of work-integrated learning."
+
+  # page 115
+  - id: bsc_biological_sciences
+    name: "Bachelor of Science (Biological Sciences)"
+    fields: [life_sciences, natural_sciences]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 410
+      subject_min_percents: {mathematics: 60}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+
+  # page 115
+  - id: bsc_biological_sciences_ecp
+    name: "Bachelor of Science (Biological Sciences) (Extended Curriculum)"
+    fields: [life_sciences, natural_sciences]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 370
+      subject_min_percents: {mathematics: 50}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+        - "Extended curriculum: the same qualification with an extra year of academic support, for applicants with the potential to succeed who don't meet the mainstream requirements."
+
+  # page 116
+  - id: bsc_biochem_chem_micro_physiology
+    name: "Bachelor of Science (Biochemistry, Chemistry, Microbiology and Physiology)"
+    fields: [life_sciences, physical_sciences]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 410
+      subject_min_percents: {mathematics: 60}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+
+  # page 116
+  - id: bsc_biochem_chem_micro_physiology_ecp
+    name: "Bachelor of Science (Biochemistry, Chemistry, Microbiology and Physiology) (Extended Curriculum)"
+    fields: [life_sciences, physical_sciences]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 370
+      subject_min_percents: {mathematics: 50}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+        - "Extended curriculum: the same qualification with an extra year of academic support, for applicants with the potential to succeed who don't meet the mainstream requirements."
+
+  # page 116
+  - id: bsc_environmental_sciences
+    name: "Bachelor of Science (Environmental Sciences)"
+    fields: [earth_sciences, natural_sciences]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 410
+      subject_min_percents: {mathematics: 60}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+
+  # page 116
+  - id: bsc_environmental_sciences_ecp
+    name: "Bachelor of Science (Environmental Sciences) (Extended Curriculum)"
+    fields: [earth_sciences, natural_sciences]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 370
+      subject_min_percents: {mathematics: 50}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+        - "Extended curriculum: the same qualification with an extra year of academic support, for applicants with the potential to succeed who don't meet the mainstream requirements."
+
+  # page 117
+  - id: bsc_geosciences
+    name: "Bachelor of Science (Geosciences: Geology and Geography)"
+    fields: [earth_sciences]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 410
+      subject_min_percents: {mathematics: 60}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+
+  # page 117
+  - id: bsc_geosciences_ecp
+    name: "Bachelor of Science (Geosciences: Geology and Geography) (Extended Curriculum)"
+    fields: [earth_sciences]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 370
+      subject_min_percents: {mathematics: 50}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+        - "Extended curriculum: the same qualification with an extra year of academic support, for applicants with the potential to succeed who don't meet the mainstream requirements."
+
+  # pages 117 and 118
+  - id: bsc_computer_science
+    name: "Bachelor of Science (Computer Science)"
+    fields: [computing, mathematical_sciences]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 410
+      subject_min_percents: {mathematics: 65}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+        - "Five combinations of majors from Applied Mathematics, Computer Science, Mathematics, Mathematical Statistics, Physics and Computer Fundamentals, including a Data Science combination (Computer Science, Mathematics and Statistics)."
+
+  # page 119
+  - id: bsc_physical_science_mathematics
+    name: "Bachelor of Science (Physical Science and Mathematics)"
+    fields: [physical_sciences, mathematical_sciences]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 410
+      subject_min_percents: {mathematics: 65}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+
+  # George Campus only (pages 122 to 133). Programmes offered on both campuses are listed once, above.
+
+  # page 122
+  - id: dip_forestry
+    name: "Diploma in Forestry"
+    fields: [agriculture, earth_sciences]
+    selective: true
+    selection_note: "Admission is subject to departmental selection."
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 330
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+              min_points: 345
+        - one_of:
+            - subjects: {physical_sciences: 3}
+            - subjects: {technical_sciences: 3}
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+      extras:
+        - "Applicant Score needed: 330 with Mathematics or Technical Mathematics; 345 with Mathematical Literacy."
+        - "Mathematics rule: Mathematics or Technical Mathematics 40%, or Mathematical Literacy 60%."
+        - "Science rule: Physical Sciences 40%, Technical Sciences 40%, Life Sciences 50% or Agricultural Sciences 55%."
+        - "The app checks either/or subjects by NSC level: here it accepts Agricultural Sciences from 50% (NMU asks 55%), so make sure your mark reaches NMU's own figure."
+        - "George Campus. Two years of study and one year of experiential training."
+
+  # page 123
+  - id: dip_nature_conservation
+    name: "Diploma in Nature Conservation"
+    fields: [earth_sciences, life_sciences]
+    selective: true
+    selection_note: "Admission is subject to departmental selection."
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 330
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+              min_points: 345
+        - one_of:
+            - subjects: {physical_sciences: 3}
+            - subjects: {technical_sciences: 3}
+            - subjects: {life_sciences: 4}
+      extras:
+        - "Applicant Score needed: 330 with Mathematics or Technical Mathematics; 345 with Mathematical Literacy."
+        - "Mathematics rule: Mathematics or Technical Mathematics 40%, or Mathematical Literacy 60%."
+        - "Science rule: Physical Sciences 40%, Technical Sciences 40% or Life Sciences 50%."
+        - "George Campus. Two years of study and one year of experiential training."
+
+  # page 123
+  - id: dip_wood_technology
+    name: "Diploma in Wood Technology"
+    fields: [agriculture, engineering]
+    selective: true
+    selection_note: "Admission is subject to departmental selection."
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 330
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+              min_points: 345
+        - one_of:
+            - subjects: {physical_sciences: 3}
+            - subjects: {technical_sciences: 3}
+      extras:
+        - "Applicant Score needed: 330 with Mathematics or Technical Mathematics; 345 with Mathematical Literacy."
+        - "Mathematics rule: Mathematics or Technical Mathematics 40%, or Mathematical Literacy 60%."
+        - "Science rule: Physical Sciences 40% or Technical Sciences 40%."
+        - "George Campus. Two years of study and one year of experiential training."
+
+  # page 130
+  - id: bcom_general_george
+    name: "Bachelor of Commerce: General (George Campus)"
+    fields: [commerce, economics, accounting]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 390
+      subject_min_percents: {mathematics: 50}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+        - "George Campus majors: Economics and Business Management, Economics and Accounting (or General Accounting), or Business Management and Accounting (or General Accounting)."
+
+  # page 133
+  - id: bcom_general_business_management_iop
+    name: "Bachelor of Commerce: General (Business Management and Industrial and Organisational Psychology)"
+    fields: [management, commerce]
+    requirements:
+      source: s-nmu-ug-guide-2027
+      min_points: 390
+      subject_min_percents: {mathematics: 50}
+      extras:
+        - "Only Mathematics is accepted here, not Technical Mathematics or Mathematical Literacy."
+        - "Only offered on the George Campus."
 
 sources:
   - id: s-nmu-as
@@ -53,5 +2215,12 @@ sources:
     publisher: "Nelson Mandela University"
     title: "Closing dates"
     retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-nmu-ug-guide-2027
+    url: "https://www.mandela.ac.za/getmedia/c574ec69-1adc-42c0-9075-04525b58202e/MandelaUni-Undergraduate-Guide"
+    publisher: "Nelson Mandela University"
+    title: "2027 Undergraduate Guide (admission pages 8 to 12; qualifications pages 18 to 133; information correct as of April 2026)"
+    retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
