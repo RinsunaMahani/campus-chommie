@@ -38,8 +38,9 @@ def test_universities_without_programmes_still_count_points_their_own_way(catalo
     assert by_id["uct"].points is None
     assert by_id["uct"].lines[0] == "We don't have this university's points rule yet."
     assert "Faculty Points Score" in by_id["uct"].lines[1]
-    # No programmes yet: points, and the summary says why there's nothing to meet.
-    assert by_id["wits"].summary == "We haven't added this university's programmes yet."
+    # No programmes yet (UJ waits for its prospectus): points, and the summary says why there's nothing to meet.
+    assert by_id["uj"].summary == "We haven't added this university's programmes yet."
+    assert by_id["wits"].summary.startswith("You meet the minimum for")
     assert sum(by_id["wits"].subjects[i].points for i in range(len(strong_marks))) == 47
 
 

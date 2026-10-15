@@ -42,7 +42,8 @@ def test_the_list_needs_no_account_and_flags_unchecked_packs(client):
     assert smu["name"] == "Sefako Makgatho Health Sciences University"
     assert smu["programmes"] == 17
     # A university whose programmes aren't added yet is still listed, with none.
-    assert universities["wits"]["programmes"] == 0
+    assert universities["uj"]["programmes"] == 0
+    assert universities["wits"]["programmes"] > 0
     assert all(u["confirmed"] is False and u["notice"] == "Not yet confirmed by the team." for u in universities.values())
 
 
