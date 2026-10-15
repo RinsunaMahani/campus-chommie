@@ -82,8 +82,8 @@ programmes and the PGCE; and the Senior Certificate, N-certificate, NC(V) and ma
    Applying to Study guide (p4), the FCAL (p37) and FEDU (PDF p20) 2026 handbooks and the brochure's example (p1:
    an additional language at 90% = 8 points, though its own table puts 80-100% at level 7) all give **8 points for
    90-100%**; the CAO's default does too. Only the FSAE handbook
-   (p12) stops at 7. Suggest adding `{min_percent: 90, level: 8}`; FSAE would then be the one faculty whose own table
-   differs. Until then, learners with 90%+ marks get a point less per subject than UNIZULU gives.
+   (p12) stops at 7. Done on 15 Oct: the scale now has `{min_percent: 90, level: 8}`, so FSAE is the one faculty
+   whose own table differs.
 2. **Duplicate B Ed codes** on the new-programmes page: ZU-M-ILF and ZU-M-ILI share a name (English FAL Senior
    Phase, Geography, Tourism), but ILF also asks for IsiZulu HL 4; ZU-M-ILZ, ZU-M-ILW and ZU-M-IEJ are all English
    FAL, History and Tourism, and ILW asks for no History. ZU-M-ILK (IsiZulu HL FET and Senior Phase, Geography) names no
@@ -102,8 +102,9 @@ programmes and the PGCE; and the Senior Certificate, N-certificate, NC(V) and ma
 
 ## For the coordinator
 
-- Not changed (outside this task): the CAO's dates page (printed p13) says all UNIZULU on-time applications for 2027
-  close on 31 Oct 2026; the 40 new B Eds close on 30 Nov 2026. `windows` could take that, with `programme_closes`.
+- Added on 15 Oct: the CAO's dates page (printed p13) says all UNIZULU on-time applications for 2027 close on 31 Oct
+  2026, and its new-programmes list gives the 40 new B Eds 30 Nov 2026: the pack's 2027 window now has both. No
+  opening date is published, so the app says to check.
 - Richards Bay programmes say so in extras; the pack has no campuses yet.
 - Not added as bridges: the FSAE handbook's route from the Diploma in Sport and Exercise Technology to the BSc in
   Human Movement Science (p16), and from B Sc (Augmented) modules into the B Eng (p19-20).

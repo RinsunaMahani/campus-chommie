@@ -13,14 +13,15 @@ academic_year: 2027
 release: false
 max_choices: null
 
-# Check first (docs/research/unizulu.md): this scale stops at 7 points from 80%, but the policy it cites
-# (section 5.4) and UNIZULU's 2026 Commerce and Education handbooks give 8 points for 90-100%.
+# The scale gives 8 points for 90-100%, as the policy it cites (section 5.4) and UNIZULU's 2026 Commerce and
+# Education handbooks do; only the Science and Agriculture handbook stops at 7 (docs/research/unizulu.md).
 points_rules:
   source: s-unizulu-policy
   subjects_counted: 6
   life_orientation: exclude
   note: "UNIZULU also asks for Life Orientation at 40% or more, though it doesn't count it. From its admissions policy, the newest found."
-  scale:
+  scale:                       # policy 5.4: 90-100% gives 8 points
+    - {min_percent: 90, level: 8}
     - {min_percent: 80, level: 7}
     - {min_percent: 70, level: 6}
     - {min_percent: 60, level: 5}
@@ -35,7 +36,14 @@ applications:
   how: "Apply through the Central Applications Office (CAO), at cao.ac.za."
   fee_cents: 25000
   fee_note: "The CAO's fee: R250 if it reaches the CAO by 31 October 2026, R470 from 1 November."
-  windows: []               # 2027 dates not found on the pages read
+  windows:
+    - intake: 2027
+      source: s-unizulu-cao-2027      # important dates: "All UNIZULU programmes for on-time applications close" 31 Oct
+      closes: 2026-10-31
+      programme_closes:
+        - closes: 2026-11-30
+          source: s-unizulu-cao-new-2027   # the CAO's programmes added after the handbook
+          programmes: [bed_spfet_ems_accounting_business_studies, bed_spfet_ems_accounting_economics, bed_spfet_ems_economics_business_studies, bed_spfet_isizulu_fet_sp_geography, bed_spfet_english_sp_fet_history, bed_spfet_english_sp_fet_tourism, bed_spfet_english_geography_history, bed_spfet_english_geography_tourism_ilf, bed_spfet_english_geography_tourism_ili, bed_spfet_english_history_tourism_ilz, bed_spfet_english_social_sciences_geography, bed_spfet_english_social_sciences_history, bed_spfet_english_tourism_history_iej, bed_spfet_isizulu_fet_english_sp_fet, bed_spfet_isizulu_fet_english_sp_tourism, bed_spfet_isizulu_fet_english_sp_geography, bed_spfet_english_history_tourism_ilw, bed_spfet_isizulu_sp_english_fet_geography, bed_spfet_isizulu_sp_english_fet_history, bed_spfet_isizulu_sp_english_fet_tourism, bed_spfet_isizulu_sp_english_sp_geography, bed_spfet_isizulu_sp_english_sp_history, bed_spfet_isizulu_sp_english_sp_tourism, bed_spfet_isizulu_sp_geography_history, bed_spfet_isizulu_sp_geography_tourism, bed_spfet_isizulu_sp_fet_english_fet, bed_spfet_isizulu_sp_fet_history, bed_spfet_isizulu_sp_fet_tourism, bed_spfet_isizulu_sp_social_sciences_geography, bed_spfet_isizulu_sp_social_sciences_history, bed_spfet_isizulu_sp_tourism_history, bed_spfet_maths_cat, bed_spfet_maths_egd_technology, bed_spfet_maths_life_sciences, bed_spfet_maths_maths_literacy, bed_spfet_maths_natural_sciences, bed_spfet_maths_physical_sciences, bed_spfet_social_sciences_geography_history, bed_ip_languages_humanities, bed_ip_languages_maths_science_technology]
 
 # Requirements from the CAO's 2027 handbook (UNIZULU's rows, printed pages 45 to 195) and, for 40 Bachelor of
 # Education programmes, the CAO's list of programmes added after the handbook. No 2027 document of UNIZULU's
