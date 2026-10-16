@@ -14,7 +14,7 @@ repo folder but is kept out of git; the parts the screens need are quoted below.
 
 ## Where things stand
 
-`main` holds only the empty first commit. All work sits in thirty-six stacked pull requests:
+`main` holds only the empty first commit. All work sits in thirty-eight stacked pull requests:
 
 | PR | Branch | What |
 |---|---|---|
@@ -27,6 +27,8 @@ repo folder but is kept out of git; the parts the screens need are quoted below.
 | #7 | `rinsuna/m1-after-acceptance` | your points at every university; campuses, calendars, money dates and support in the packs; first steps from acceptance to the first lecture |
 | #8 | `rinsuna/m3-profile-and-money` | M3's backend: the student's profile (university and campus) and My money (settings, income, expected payments, spending, summary) |
 | #9 | `rinsuna/m1-cheap-things` | cheap things to do near campus, each priced from the place's own page |
+| #38 | `rinsuna/ag-accepted-step` | "If you're accepted at <university>" card on the plan and the next-steps screen (`GET /universities/<id>/first-steps`): timeline from accepting an offer to the first lecture with sources, Support and Money note, and in-memory university hand-off to account sign-up and onboarding (never marks) |
+| #37 | `rinsuna/ag-funding-button` | Funding button on the plan footer (with "Start again" under the subtitle), the Funding screen (NSFAS and the filterable list of 23 other bursaries, merit awards and loans, goal fields first) and the funder detail screen (`GET /funding`, `GET /funding/<id>`) |
 | #36 | `rinsuna/courses-by-faculty` | Find my course step 3 grouped by faculty: every programme at the 21 universities with programmes names its faculty, school or college from the pack's own sources (1,828 of 1,833); the Courses tab opens in one section per faculty with its counts in words; each university's short name on a text monogram tile (no logos, per the brief) |
 | #35 | `rinsuna/courses-wave-5` | full course lists, wave 5: Wits (85 programmes), UCT (34), UNISA (167), Stellenbosch (73, from its 2026 prospectus), Nelson Mandela (124), CPUT (119) and CUT (42), each from the university's own pages read with robots.txt respected; UWC refuses honest requests, so it has a download list only. (A local `rinsuna/courses-wave-4` from another session is untrusted and is never pushed.) |
 | #34 | `rinsuna/courses-wave-3` | full course lists, wave 3: UNIVEN (80 programmes), UL (54 programmes), Rhodes (16 programmes) and NWU (81 programmes) across 4 universities (231 programmes total), each from its official 2026/2027 prospectus with closing dates and selection criteria, and a research note per university (agent drafts, `release: false`) |
@@ -61,7 +63,7 @@ new-phone code, and #13 deletes accounts.
 
 **How to merge:**
 - Each PR targets the branch below it, so its diff shows only its own work.
-- Merge in order: #1 into `main`, then #2 to #36, retargeting each to `main` once the one below has merged.
+- Merge in order: #1 into `main`, then #2 to #38, retargeting each to `main` once the one below has merged.
 - Use **Create a merge commit**, not squash or rebase, so every commit stays in `main`'s history (CLAUDE.md: never
   rewrite history).
 
