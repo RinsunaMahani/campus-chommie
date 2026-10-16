@@ -15,7 +15,7 @@ import { SkeletonCards } from '@/shared/motion/Shimmer';
 import { colors, fonts } from '@/shared/theme/tokens';
 
 import { courseFinderApi } from '../api/courseFinderApi';
-import { FirstStepsAnswer } from '../types';
+import { CampusMapView, FirstStepsAnswer } from '../types';
 import { errorText } from '../words';
 
 type TagTone = NonNullable<ComponentProps<typeof Tag>['tone']>;
@@ -31,12 +31,14 @@ function tagTone(status: string): TagTone {
  * NextStepsScreen: What happens from accepting an offer to your first lecture.
  * 1. Title: "If you're accepted at <university name>"
  * 2. Timeline of first_steps[0].steps with status, dates, lines, source links
- * 3. Note: "After you sign up, Support and Money show your campus's..."
- * 4. Pinned primary button: "Create my student account"
+ * 3. Optional campus map link when the university has a mapped campus
+ * 4. Note: "After you sign up, Support and Money show your campus's..."
+ * 5. Pinned primary button: "Create my student account"
  */
 export default function NextStepsScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const [data, setData] = useState<FirstStepsAnswer | null>(null);
+  const [mappedCampuses, setMappedCampuses] = useState<CampusMapView[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -47,6 +49,10 @@ export default function NextStepsScreen() {
       .then(setData)
       .catch((e) => setError(errorText(e)))
       .finally(() => setLoading(false));
+    courseFinderApi
+      .universityMap?.(id)
+      ?.then((m) => setMappedCampuses(m.campuses.filter((c) => c.mapped)))
+      .catch(() => undefined);
   }, [id]);
 
   function load() {
@@ -148,6 +154,24 @@ export default function NextStepsScreen() {
               })}
             </View>
           )}
+
+          {mappedCampuses.length > 0 && id ? (
+            <Card style={{ gap: 10, padding: 16 }}>
+              <Title style={{ fontSize: 17, lineHeight: 22 }}>{t('courseFinder.campusMapTitle')}</Title>
+              {mappedCampuses.map((c) => (
+                <Button
+                  key={c.id}
+                  title={`${c.name} · ${t('courseFinder.openCampusMap')}`}
+                  variant="secondary"
+                  compact
+                  icon="map-pin"
+                  onPress={() =>
+                    router.push({ pathname: '/course-finder/map/[id]', params: { id, campus: c.id } })
+                  }
+                />
+              ))}
+            </Card>
+          ) : null}
 
           <InfoNote icon="info">{t('courseFinder.nextStepsSupportMoney')}</InfoNote>
         </View>

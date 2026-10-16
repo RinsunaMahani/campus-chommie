@@ -5,7 +5,7 @@
  */
 import { api } from '@/shared/api/client';
 
-import { AssessAnswer, FirstStepsAnswer, FunderAnswer, FunderDetail, FundingCard, FundingFilters, FundingListAnswer, Mark, Plan, PointsAnswer, SavedFundingCard, SavedFundingListAnswer } from '../types';
+import { AssessAnswer, FirstStepsAnswer, FunderAnswer, FunderDetail, FundingCard, FundingFilters, FundingListAnswer, Mark, Plan, PointsAnswer, SavedFundingCard, SavedFundingListAnswer, UniversityMapAnswer } from '../types';
 
 function toQuery(filters?: FundingFilters): string {
   if (!filters) return '';
@@ -52,6 +52,12 @@ export const courseFinderApi = {
   /** Steps from accepting an offer to your first lecture. */
   firstSteps: (universityId: string): Promise<FirstStepsAnswer> =>
     api<FirstStepsAnswer>('GET', `/universities/${universityId}/first-steps`),
+
+  /** A university's campus maps from OpenStreetMap, with attribution and ODbL licence. */
+  universityMap: (universityId: string, campus?: string): Promise<UniversityMapAnswer> => {
+    const qs = campus ? `?campus=${encodeURIComponent(campus)}` : '';
+    return api<UniversityMapAnswer>('GET', `/universities/${universityId}/map${qs}`);
+  },
 };
 
 /** Every message in a 422's field errors (marshmallow's nested shape), flattened. */

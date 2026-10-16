@@ -6,6 +6,7 @@
  */
 import { StyleSheet, Text, View } from 'react-native';
 
+import { Button } from '@/shared/components/Button';
 import { SourceLink } from '@/shared/components/SourceLink';
 import { Card } from '@/shared/components/Parts';
 import { Muted, Overline, Strong } from '@/shared/components/Text';
@@ -21,7 +22,13 @@ export function kindLabel(kind: string): string {
   return label === key ? kind.replace(/_/g, ' ') : label;
 }
 
-export function ServiceCard({ service }: { service: Service }) {
+export function ServiceCard({
+  service,
+  onShowOnMap,
+}: {
+  service: Service;
+  onShowOnMap?: () => void;
+}) {
   return (
     <Card style={{ gap: 4 }}>
       <Strong>{service.name}</Strong>
@@ -32,6 +39,15 @@ export function ServiceCard({ service }: { service: Service }) {
       ) : null}
       {service.hours ? <Muted>{t('support.hours', { hours: service.hours })}</Muted> : null}
       {service.note ? <Text style={styles.note}>{service.note}</Text> : null}
+      {onShowOnMap ? (
+        <Button
+          title={t('support.showOnMap')}
+          variant="secondary"
+          compact
+          icon="map-pin"
+          onPress={onShowOnMap}
+        />
+      ) : null}
       <SourceLink url={service.source_url} />
       {service.last_verified ? (
         <Muted>{t('support.checked', { date: formatDay(service.last_verified) })}</Muted>
@@ -44,15 +60,30 @@ export function ServiceCard({ service }: { service: Service }) {
   );
 }
 
-export function SupportSections({ kinds }: { kinds: SupportKind[] }) {
+export function SupportSections({
+  kinds,
+  placeByService,
+  onShowOnMap,
+}: {
+  kinds: SupportKind[];
+  placeByService?: Record<string, string>;
+  onShowOnMap?: (placeId: string) => void;
+}) {
   return (
     <View style={{ gap: 16 }}>
       {kinds.map((k) => (
         <View key={k.kind} style={{ gap: 8 }}>
           <Overline>{kindLabel(k.kind)}</Overline>
-          {k.services.map((s, i) => (
-            <ServiceCard key={`${k.kind}-${i}`} service={s} />
-          ))}
+          {k.services.map((s, i) => {
+            const placeId = placeByService?.[s.name];
+            return (
+              <ServiceCard
+                key={`${k.kind}-${i}`}
+                service={s}
+                onShowOnMap={placeId && onShowOnMap ? () => onShowOnMap(placeId) : undefined}
+              />
+            );
+          })}
           {k.line ? <Text style={styles.line}>{k.line}</Text> : null}
         </View>
       ))}
