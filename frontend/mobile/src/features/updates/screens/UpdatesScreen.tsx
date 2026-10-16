@@ -43,6 +43,7 @@ export default function UpdatesScreen() {
       setUpdates((list) => (list ?? []).map((x) => (x.id === u.id ? { ...x, read_at: new Date().toISOString() } : x)));
     }
     if (u.link?.type === 'class') router.push({ pathname: '/classes/[id]', params: { id: u.link.id } });
+    if (u.link?.type === 'funding') router.push({ pathname: '/course-finder/funding/[id]', params: { id: u.link.id } });
   }
 
   async function readAll() {

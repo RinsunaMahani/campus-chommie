@@ -121,6 +121,17 @@ export type FundingListAnswer = Confirmation & {
   funders: FundingCard[];
 };
 
+export type SavedFundingCard = FundingCard & {
+  saved_on: string;
+};
+
+export type SavedFundingListAnswer = Confirmation & {
+  today: string;
+  summary: string;
+  counts: FundingCounts;
+  funders: SavedFundingCard[];
+};
+
 export type FundingFilters = {
   field?: string;
   status?: string;

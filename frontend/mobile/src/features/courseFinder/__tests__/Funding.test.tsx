@@ -10,11 +10,14 @@
 import { beforeEach, expect, jest, test } from '@jest/globals';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react-native';
 
+import { updatesApi } from '@/features/updates/api/updatesApi';
+import UpdatesScreen from '@/features/updates/screens/UpdatesScreen';
+
 import { courseFinderApi } from '../api/courseFinderApi';
 import FunderDetailScreen from '../screens/FunderDetailScreen';
 import FundingScreen from '../screens/FundingScreen';
 import PlanScreen from '../screens/PlanScreen';
-import { FunderDetail, FundingListAnswer, Plan } from '../types';
+import { FunderDetail, FundingListAnswer, Plan, SavedFundingCard, SavedFundingListAnswer } from '../types';
 import fundingListFixture from './fixtures/fundingList.json';
 import nsfasFixture from './fixtures/fundingFunder.json';
 import planFixture from './fixtures/plan.json';
@@ -32,6 +35,18 @@ jest.mock('expo-router', () => ({
   },
   Redirect: () => null,
   useLocalSearchParams: () => mockParams,
+  useFocusEffect: (cb: () => void) => {
+    const React = jest.requireActual<typeof import('react')>('react');
+    React.useEffect(() => {
+      cb();
+    }, [cb]);
+  },
+}));
+
+let mockSessionStatus: 'signedOut' | 'unverified' | 'active' = 'signedOut';
+
+jest.mock('@/features/auth/session/SessionProvider', () => ({
+  useSession: () => ({ status: mockSessionStatus }),
 }));
 
 jest.mock('react-native-safe-area-context', () => {
@@ -68,6 +83,7 @@ const nsfasData = (nsfasFixture as unknown as { data: { funder: FunderDetail } }
 beforeEach(() => {
   jest.clearAllMocks();
   mockParams = { id: 'nsfas' };
+  mockSessionStatus = 'signedOut';
   mockCourseFinderState = {
     plan: mockPlan,
     university: { id: 'smu', name: 'Sefako Makgatho Health Sciences University' },
@@ -244,3 +260,170 @@ test('FunderDetailScreen: fee formatting (15000 is "R150", null is "No fee publi
     expect(screen.getByText('No fee published')).toBeTruthy();
   });
 });
+
+test('Saved funding (signed out): tapping Save asks the learner to sign in', async () => {
+  mockSessionStatus = 'signedOut';
+  jest.spyOn(courseFinderApi, 'fundingList').mockResolvedValue(fundingListData);
+
+  render(<FundingScreen />);
+
+  await waitFor(() => {
+    expect(screen.getByText('24 funding options: 5 open now.')).toBeTruthy();
+  });
+
+  const saveNsfasBtn = screen.getByRole('button', {
+    name: 'Save National Student Financial Aid Scheme (NSFAS)',
+  });
+  fireEvent.press(saveNsfasBtn);
+
+  expect(
+    screen.getByText('Sign in to save funding and get reminders when it opens and before it closes.'),
+  ).toBeTruthy();
+
+  const signInBtn = screen.getByRole('button', { name: 'Sign in' });
+  fireEvent.press(signInBtn);
+  expect(mockPush).toHaveBeenCalledWith('/(auth)/sign-in');
+});
+
+test('Saved funding (signed in): saves, unsaves, and shows the Saved list with saved_on date', async () => {
+  mockSessionStatus = 'active';
+  const clicksCard = fundingListData.funders.find((f) => f.id === 'clicks_foundation')!;
+  const savedClicks: SavedFundingCard = {
+    ...clicksCard,
+    saved_on: '2026-10-15',
+  };
+  const savedListAnswer: SavedFundingListAnswer = {
+    today: '2026-10-15',
+    summary: '1 funding option: 0 open now.',
+    counts: { total: 1, open_now: 0, closing_soon: 0 },
+    funders: [savedClicks],
+    confirmed: false,
+    notice: fundingListData.notice,
+  };
+
+  jest.spyOn(courseFinderApi, 'fundingList').mockResolvedValue(fundingListData);
+  jest.spyOn(courseFinderApi, 'savedFundingList').mockResolvedValue(savedListAnswer);
+  const saveSpy = jest.spyOn(courseFinderApi, 'saveFunder').mockImplementation(async (id) => ({
+    ...fundingListData.funders.find((f) => f.id === id)!,
+    saved_on: '2026-10-16',
+  }));
+  const unsaveSpy = jest.spyOn(courseFinderApi, 'unsaveFunder').mockResolvedValue({} as Record<string, never>);
+
+  render(<FundingScreen />);
+
+  await waitFor(() => {
+    expect(screen.getByText('Saved on Thu 15 Oct 2026')).toBeTruthy();
+  });
+
+  // Filter by "Saved" chip
+  const savedChip = screen.getByLabelText('Saved');
+  fireEvent.press(savedChip);
+
+  // Shows saved Clicks Foundation, not Sasol
+  expect(screen.getByText('Clicks Foundation Bursary Fund')).toBeTruthy();
+  expect(screen.queryByText('Sasol Foundation Bursary Programme')).toBeNull();
+
+  // Save NSFAS via its bookmark button
+  const saveNsfasBtn = screen.getByRole('button', {
+    name: 'Save National Student Financial Aid Scheme (NSFAS)',
+  });
+  fireEvent.press(saveNsfasBtn);
+
+  await waitFor(() => {
+    expect(saveSpy).toHaveBeenCalledWith('nsfas');
+    expect(screen.getAllByText('Saved on Fri 16 Oct 2026').length).toBeGreaterThan(0);
+  });
+
+  // Unsave Clicks Foundation
+  const unsaveClicksBtn = screen.getByRole('button', {
+    name: 'Remove Clicks Foundation Bursary Fund from saved',
+  });
+  fireEvent.press(unsaveClicksBtn);
+
+  await waitFor(() => {
+    expect(unsaveSpy).toHaveBeenCalledWith('clicks_foundation');
+  });
+});
+
+test('FunderDetailScreen (signed in): bookmark saves and unsaves the funder', async () => {
+  mockSessionStatus = 'active';
+  mockParams = { id: 'nsfas' };
+  jest.spyOn(courseFinderApi, 'funder').mockResolvedValue(nsfasData);
+  jest.spyOn(courseFinderApi, 'savedFundingList').mockResolvedValue({
+    today: '2026-10-15',
+    summary: '0 funding options: 0 open now.',
+    counts: { total: 0, open_now: 0, closing_soon: 0 },
+    funders: [],
+    confirmed: false,
+    notice: null,
+  });
+  const saveSpy = jest.spyOn(courseFinderApi, 'saveFunder').mockResolvedValue({
+    ...nsfasData,
+    saved_on: '2026-10-16',
+  });
+  const unsaveSpy = jest.spyOn(courseFinderApi, 'unsaveFunder').mockResolvedValue({} as Record<string, never>);
+
+  render(<FunderDetailScreen />);
+
+  await waitFor(() => {
+    expect(screen.getByText('National Student Financial Aid Scheme (NSFAS)')).toBeTruthy();
+  });
+
+  const saveBtn = screen.getByRole('button', {
+    name: 'Save National Student Financial Aid Scheme (NSFAS)',
+  });
+  fireEvent.press(saveBtn);
+
+  await waitFor(() => {
+    expect(saveSpy).toHaveBeenCalledWith('nsfas');
+    expect(screen.getByText('Saved on Fri 16 Oct 2026')).toBeTruthy();
+  });
+
+  const unsaveBtn = screen.getByRole('button', {
+    name: 'Remove National Student Financial Aid Scheme (NSFAS) from saved',
+  });
+  fireEvent.press(unsaveBtn);
+
+  await waitFor(() => {
+    expect(unsaveSpy).toHaveBeenCalledWith('nsfas');
+  });
+});
+
+test('UpdatesScreen: tapping a funding reminder opens that funder detail screen', async () => {
+  jest.spyOn(updatesApi, 'list').mockResolvedValue([
+    {
+      id: 'u1',
+      kind: 'funding.closing',
+      title: 'NSFAS closes in 7 days',
+      body: 'Applications for 2027 close on Sat 31 Oct 2026.',
+      icon: 'bell',
+      link: { type: 'funding', id: 'nsfas' },
+      created_at: '2026-10-15T08:00:00Z',
+      read_at: null,
+    },
+  ]);
+  jest.spyOn(updatesApi, 'switches').mockResolvedValue([
+    {
+      topic: 'funding_reminders',
+      label: 'Funding you saved: when it opens, and before it closes',
+      on: true,
+    },
+  ]);
+  jest.spyOn(updatesApi, 'read').mockResolvedValue(undefined);
+
+  render(<UpdatesScreen />);
+
+  await waitFor(() => {
+    expect(screen.getByText('NSFAS closes in 7 days')).toBeTruthy();
+  });
+
+  expect(screen.getByText('Funding you saved: when it opens, and before it closes')).toBeTruthy();
+
+  fireEvent.press(screen.getByText('NSFAS closes in 7 days'));
+
+  expect(mockPush).toHaveBeenCalledWith({
+    pathname: '/course-finder/funding/[id]',
+    params: { id: 'nsfas' },
+  });
+});
+

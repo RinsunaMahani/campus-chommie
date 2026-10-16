@@ -5,7 +5,7 @@
  */
 import { api } from '@/shared/api/client';
 
-import { AssessAnswer, FirstStepsAnswer, FunderAnswer, FunderDetail, FundingCard, FundingFilters, FundingListAnswer, Mark, Plan, PointsAnswer } from '../types';
+import { AssessAnswer, FirstStepsAnswer, FunderAnswer, FunderDetail, FundingCard, FundingFilters, FundingListAnswer, Mark, Plan, PointsAnswer, SavedFundingCard, SavedFundingListAnswer } from '../types';
 
 function toQuery(filters?: FundingFilters): string {
   if (!filters) return '';
@@ -38,6 +38,16 @@ export const courseFinderApi = {
       confirmed: d.confirmed,
       notice: d.notice,
     })),
+
+  /** The signed-in student's saved funding list, open first, each with saved_on. */
+  savedFundingList: () => api<SavedFundingListAnswer>('GET', '/me/funding', undefined, { auth: true }),
+
+  /** Save a funder to the signed-in student's list. */
+  saveFunder: (id: string) =>
+    api<{ funder: SavedFundingCard }>('PUT', `/me/funding/${id}`, undefined, { auth: true }).then((d) => d.funder),
+
+  /** Remove a funder from the signed-in student's saved list. */
+  unsaveFunder: (id: string) => api<Record<string, never>>('DELETE', `/me/funding/${id}`, undefined, { auth: true }),
 
   /** Steps from accepting an offer to your first lecture. */
   firstSteps: (universityId: string): Promise<FirstStepsAnswer> =>
