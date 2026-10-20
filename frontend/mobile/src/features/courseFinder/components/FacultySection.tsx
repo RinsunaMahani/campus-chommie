@@ -42,9 +42,17 @@ export function facultyCounts(g: FacultyGroup): string {
   return parts.join(' · ');
 }
 
-type Props = { group: FacultyGroup; startOpen: boolean; children: ReactNode };
+type Props = {
+  /** The faculty's name and picture; with marks, its matches too (for the counts in words). */
+  group: Pick<FacultyGroup, 'faculty' | 'art'> & Partial<FacultyGroup>;
+  /** The counts line when there are no marks ("12 programmes"). */
+  counts?: string;
+  startOpen: boolean;
+  children: ReactNode;
+};
 
-export function FacultySection({ group, startOpen, children }: Props) {
+export function FacultySection({ group, counts, startOpen, children }: Props) {
+  const line = counts ?? facultyCounts(group as FacultyGroup);
   const [open, setOpen] = useState(startOpen);
   const name = group.faculty ?? t('courseFinder.otherFaculty');
   const photo = PHOTOS[group.art];
@@ -58,7 +66,7 @@ export function FacultySection({ group, startOpen, children }: Props) {
       )}
       <View style={{ flex: 1 }}>
         <Text style={styles.name}>{name}</Text>
-        <Text style={styles.counts}>{facultyCounts(group)}</Text>
+        <Text style={styles.counts}>{line}</Text>
       </View>
       <Feather name={open ? 'chevron-up' : 'chevron-down'} size={20} color={colors.ink} />
     </View>
@@ -69,7 +77,7 @@ export function FacultySection({ group, startOpen, children }: Props) {
       <Pressable
         accessibilityRole="button"
         accessibilityState={{ expanded: open }}
-        accessibilityLabel={`${name}. ${facultyCounts(group)}`}
+        accessibilityLabel={`${name}. ${line}`}
         onPress={() => setOpen((o) => !o)}>
         {photo ? (
           <ImageBackground source={photo.image} style={styles.photo} imageStyle={styles.photoImage} accessibilityIgnoresInvertColors>

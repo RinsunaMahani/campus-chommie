@@ -1,100 +1,59 @@
-import { Redirect, router, useLocalSearchParams } from 'expo-router';
-import { useEffect, useMemo, useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+/**
+ * One university, as a short overview: its campus photo, your points there (once your marks are in), its
+ * application fee and where applications stand today, then two clear ways on: Courses (by faculty, on their
+ * own screen) and How to apply (on its own screen). Works without marks too.
+ */
+import { Feather } from '@expo/vector-icons';
+import { router, useLocalSearchParams } from 'expo-router';
+import { ComponentProps, useEffect, useMemo, useState } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
 import { BandChip, HeroScreen } from '@/shared/components/HeroScreen';
-import { Card } from '@/shared/components/Parts';
+import { Card, Tag } from '@/shared/components/Parts';
 import { ErrorBox } from '@/shared/components/Status';
-import { Body, Overline } from '@/shared/components/Text';
+import { Muted, Overline, Strong } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
-import { FadeIn } from '@/shared/motion/FadeIn';
 import { SkeletonCards } from '@/shared/motion/Shimmer';
-import { SlidingTabs } from '@/shared/motion/SlidingTabs';
 import { colors, fonts, radius } from '@/shared/theme/tokens';
 
 import { courseFinderApi } from '../api/courseFinderApi';
-import { ApplyWindows, GuideCard } from '../components/ApplyBox';
 import { ApsCard } from '../components/ApsCard';
 import { CampusPhotoCard } from '../components/CampusPhotoCard';
-import { FacultySection } from '../components/FacultySection';
-import { TestDateNote } from '../components/StillOpen';
-import { TierCard } from '../components/TierCard';
-import { groupByFaculty, hasFaculties } from '../faculties';
+import { feeLabel, statusTone } from '../components/UniversityCard';
 import { checkRows } from '../marks';
 import { useCourseFinder } from '../state';
-import { Match, Tier } from '../types';
+import { ApplyInfoAnswer } from '../types';
 import { errorText } from '../words';
 
-/**
- * Step 3: one university. Your points there, opening to each subject; then
- * its programmes grouped by faculty (best first), and how to apply there
- * today, on two sliding tabs.
- * Choosing a programme as the goal builds the three-choice plan.
- */
 export default function UniversityScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const cf = useCourseFinder();
   const sent = useMemo(() => checkRows(cf.rows), [cf.rows]);
-  const valid = sent.marks.length > 0 && !Object.keys(sent.errors).length;
-  const [tab, setTab] = useState(0);
-  const [filter, setFilter] = useState<Tier | 'all'>('all');
+  const points = cf.points?.universities.find((u) => u.university === id) ?? null;
+  const [info, setInfo] = useState<ApplyInfoAnswer | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [attempt, setAttempt] = useState(0);
-  const [picking, setPicking] = useState<string | null>(null);
-  const { answer, setAnswer, setPlan } = cf;
-  const here = answer && answer.university.id === id ? answer : null;
-  const points = cf.points?.universities.find((u) => u.university === id) ?? null;
 
   useEffect(() => {
-    if (!valid || !id || here) return;
+    if (!id) return;
     courseFinderApi
-      .assess(id, sent.marks)
-      .then(setAnswer)
+      .applyInfo(id)
+      .then(setInfo)
       .catch((e) => setError(errorText(e)));
-  }, [valid, id, here, setAnswer, sent.marks, attempt]);
+  }, [id, attempt]);
 
-  const matches = useMemo(() => here?.matches ?? [], [here]);
-  // One chip per tier the learner actually has, named as the server names it.
-  const tiers = useMemo(() => {
-    const seen = new Map<Tier, string>();
-    for (const m of matches) if (!seen.has(m.tier)) seen.set(m.tier, m.label);
-    return [...seen.entries()];
-  }, [matches]);
-
-  if (!valid || !id) return <Redirect href="/course-finder" />;
-  const shown = filter === 'all' ? matches : matches.filter((m) => m.tier === filter);
-  const groups = hasFaculties(shown) ? groupByFaculty(shown) : null;
-
-  async function pick(match: Match) {
-    setPicking(match.programme);
-    setError(null);
-    try {
-      setPlan(await courseFinderApi.plan(id, match.programme, sent.marks));
-      router.push('/course-finder/plan');
-    } catch (e) {
-      setError(errorText(e));
-    } finally {
-      setPicking(null);
-    }
-  }
+  const uni = info?.university;
+  const guide = info?.apply.guide;
+  const window = guide?.windows[0] ?? null;
 
   return (
     <HeroScreen
       back
-      overline={t('courseFinder.step', { n: 3 })}
-      title={here?.university.name ?? points?.university_name ?? ''}
-      subtitle={here?.university.city ?? undefined}
-      band={
-        here ? (
-          <View style={styles.bandChips}>
-            <BandChip label={t('courseFinder.programmesChip', { n: matches.length })} />
-            {!here.university.confirmed && here.university.notice ? <BandChip label={here.university.notice} /> : null}
-          </View>
-        ) : null
-      }>
-      <CampusPhotoCard university={id} />
+      title={uni?.name ?? points?.university_name ?? ''}
+      subtitle={uni?.city ?? undefined}
+      band={uni && !uni.confirmed && uni.notice ? <BandChip label={uni.notice} /> : null}>
+      {id ? <CampusPhotoCard university={id} /> : null}
       {points ? <ApsCard points={points} sent={sent} rows={cf.rows} /> : null}
-      <SlidingTabs tabs={[t('courseFinder.tabCourses'), t('courseFinder.tabApply')]} index={tab} onChange={setTab} />
 
       {error ? (
         <ErrorBox
@@ -105,73 +64,74 @@ export default function UniversityScreen() {
           }}
         />
       ) : null}
-      {!here && !error ? <SkeletonCards count={3} /> : null}
+      {!info && !error ? <SkeletonCards count={2} /> : null}
 
-      {here && tab === 0 ? (
-        <View style={{ gap: 12 }}>
-          {tiers.length > 1 ? (
-            <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.chips}>
-              {[['all', t('courseFinder.filterAll')] as const, ...tiers].map(([value, label]) => {
-                const on = filter === value;
-                return (
-                  <Pressable
-                    key={value}
-                    accessibilityRole="button"
-                    accessibilityState={{ selected: on }}
-                    onPress={() => setFilter(value)}
-                    style={[styles.chip, on && styles.chipOn]}>
-                    <Text style={[styles.chipText, on && styles.chipTextOn]}>{label}</Text>
-                  </Pressable>
-                );
-              })}
-            </ScrollView>
+      {info && guide ? (
+        <Card style={styles.card}>
+          <Overline>{t('university.glance')}</Overline>
+          <View style={styles.row}>
+            <Muted style={{ flex: 1 }}>{t('university.fee')}</Muted>
+            <Tag label={feeLabel(guide.fee_cents)} tone={guide.fee_cents === 0 ? 'jade' : 'muted'} />
+          </View>
+          {window ? (
+            <View style={{ gap: 6 }}>
+              <View style={styles.row}>
+                <Muted style={{ flex: 1 }}>{window.heading}</Muted>
+                <Tag label={window.label} tone={statusTone(window.status)} />
+              </View>
+              {window.lines[0] ? <Text style={styles.line}>{window.lines[0]}</Text> : null}
+            </View>
           ) : null}
-          {!matches.length ? <Body>{t('courseFinder.programmesNotAdded')}</Body> : null}
-          {matches.length > 0 && !shown.length ? <Body>{t('courseFinder.noMatches')}</Body> : null}
-          {groups
-            ? groups.map((g, i) => (
-                <FadeIn key={g.faculty ?? '-'} delay={Math.min(i, 6) * 40}>
-                  <FacultySection group={g} startOpen={i === 0}>
-                    {g.matches.map((m) => (
-                      <TierCard key={m.programme} match={m} onPick={() => pick(m)} picking={picking === m.programme} />
-                    ))}
-                  </FacultySection>
-                </FadeIn>
-              ))
-            : shown.map((m, i) => (
-                <FadeIn key={m.programme} delay={Math.min(i, 6) * 40}>
-                  <TierCard match={m} onPick={() => pick(m)} picking={picking === m.programme} />
-                </FadeIn>
-              ))}
-        </View>
+        </Card>
       ) : null}
 
-      {here && tab === 1 ? (
-        <View style={{ gap: 12 }}>
-          <TestDateNote apply={here.apply} />
-          <Card style={{ gap: 12 }}>
-            <Overline>{t('courseFinder.applyDates')}</Overline>
-            <ApplyWindows windows={here.apply.guide.windows} />
-          </Card>
-          <GuideCard guide={here.apply.guide} />
+      {id ? (
+        <View style={{ gap: 10 }}>
+          <BigLink
+            icon="book-open"
+            title={t('university.courses')}
+            sub={t('university.coursesSub', { n: uni?.programmes ?? '…' })}
+            onPress={() => router.push(`/course-finder/university/${id}/courses`)}
+          />
+          <BigLink
+            icon="send"
+            title={t('university.apply')}
+            sub={t('university.applySub')}
+            onPress={() => router.push(`/course-finder/university/${id}/apply`)}
+          />
         </View>
       ) : null}
     </HeroScreen>
   );
 }
 
+function BigLink({ icon, title, sub, onPress }: { icon: ComponentProps<typeof Feather>['name']; title: string; sub: string; onPress: () => void }) {
+  return (
+    <Card onPress={onPress} style={styles.link}>
+      <View style={styles.icon}>
+        <Feather name={icon} size={20} color={colors.ink} />
+      </View>
+      <View style={{ flex: 1, gap: 2 }}>
+        <Strong style={styles.linkTitle}>{title}</Strong>
+        <Muted>{sub}</Muted>
+      </View>
+      <Feather name="chevron-right" size={18} color={colors.accentDeep} />
+    </Card>
+  );
+}
+
 const styles = StyleSheet.create({
-  bandChips: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
-  chips: { gap: 8, paddingRight: 8 },
-  chip: {
-    paddingHorizontal: 14,
-    paddingVertical: 8,
-    borderRadius: radius.pill,
-    borderWidth: 1,
-    borderColor: colors.line,
-    backgroundColor: colors.white,
+  card: { gap: 12, padding: 16 },
+  row: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  line: { fontFamily: fonts.body, fontSize: 13.5, lineHeight: 20, color: colors.text },
+  link: { flexDirection: 'row', alignItems: 'center', gap: 12, padding: 16 },
+  icon: {
+    width: 42,
+    height: 42,
+    borderRadius: radius.sm,
+    backgroundColor: colors.iconTile,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  chipOn: { backgroundColor: colors.ink, borderColor: colors.ink },
-  chipText: { fontFamily: fonts.semibold, fontSize: 13, color: colors.ink },
-  chipTextOn: { color: colors.pillText },
+  linkTitle: { fontSize: 16, color: colors.text },
 });

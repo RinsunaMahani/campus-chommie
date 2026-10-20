@@ -380,3 +380,51 @@ export type UniversityMapAnswer = Confirmation & {
 
 
 
+
+/** A university in the Institutions list: its fee and where its applications stand today. */
+export type UniversityCardInfo = UniversitySummary & {
+  /** Null while the pack holds no verified fee; 0 means free to apply. */
+  fee_cents: number | null;
+  applications: {
+    intake: number;
+    status: WindowStatus;
+    label: string;
+    opens: string | null;
+    closes: string | null;
+    days: number | null;
+    lines: string[];
+  } | null;
+};
+
+/** One programme, without marks: as its university publishes it. */
+export type ProgrammeRow = {
+  university: string;
+  university_name: string;
+  programme: string;
+  name: string;
+  faculty: string | null;
+  fields: string[];
+  min_points: number | null;
+  selective: boolean;
+  /** False while the pack holds no checked requirements for it. */
+  verified: boolean;
+};
+
+export type ProgrammeListAnswer = { summary: string; total: number; page: number; pages: number; programmes: ProgrammeRow[] };
+
+/** Something that closes soon, on the course finder's home. */
+export type UpcomingDeadline = {
+  kind: 'university' | 'funding';
+  id: string;
+  name: string;
+  status: string;
+  label: string;
+  closes: string;
+  days: number;
+  line: string;
+};
+
+export type DeadlinesAnswer = { today: string; deadlines: UpcomingDeadline[] };
+
+/** How to apply to one university, without marks. */
+export type ApplyInfoAnswer = { university: UniversitySummary; apply: AssessAnswer['apply'] };

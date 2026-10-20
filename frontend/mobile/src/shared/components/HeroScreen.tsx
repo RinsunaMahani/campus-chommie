@@ -11,6 +11,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { FadeIn } from '@/shared/motion/FadeIn';
 
+import { DOCK_ROOM } from './Screen';
 import { Wallpaper } from './Wallpaper';
 import { colors, fonts, radius, space } from '@/shared/theme/tokens';
 
@@ -22,18 +23,21 @@ type Props = {
   /** Under the title, on the band: chips, say. */
   band?: ReactNode;
   footer?: ReactNode;
+  /** On a tab: leave room for the floating dock under the content and the footer. */
+  tab?: boolean;
   children: ReactNode;
 };
 
-export function HeroScreen({ title, subtitle, overline, back, band, footer, children }: Props) {
+export function HeroScreen({ title, subtitle, overline, back, band, footer, tab, children }: Props) {
   const insets = useSafeAreaInsets();
+  const under = tab ? DOCK_ROOM : insets.bottom + space.md;
   return (
     <View style={styles.root}>
       <Wallpaper />
       <KeyboardAvoidingView style={styles.flex} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         <ScrollView
           style={styles.flex}
-          contentContainerStyle={{ paddingBottom: footer ? space.xl : insets.bottom + space.xl }}
+          contentContainerStyle={{ paddingBottom: footer ? space.xl : tab ? DOCK_ROOM : insets.bottom + space.xl }}
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}>
           <View style={[styles.band, { paddingTop: insets.top + space.md }]}>
@@ -49,7 +53,7 @@ export function HeroScreen({ title, subtitle, overline, back, band, footer, chil
           </View>
           <FadeIn style={styles.content}>{children}</FadeIn>
         </ScrollView>
-        {footer ? <View style={[styles.footer, { paddingBottom: insets.bottom + space.md }]}>{footer}</View> : null}
+        {footer ? <View style={[styles.footer, { paddingBottom: under }]}>{footer}</View> : null}
       </KeyboardAvoidingView>
     </View>
   );

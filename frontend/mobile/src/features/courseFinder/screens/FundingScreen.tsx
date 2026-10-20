@@ -46,7 +46,8 @@ function useSignedIn(): boolean {
  * Funding options: Choice between NSFAS and other bursaries and loans, plus
  * saving funding when signed in.
  */
-export default function FundingScreen() {
+/** `tab`: shown as Find my course's Funding tab (no back button; room for the dock). */
+export default function FundingScreen({ tab = false }: { tab?: boolean }) {
   const cf = useCourseFinder();
   const signedIn = useSignedIn();
   const [data, setData] = useState<FundingListAnswer | null>(null);
@@ -143,7 +144,8 @@ export default function FundingScreen() {
 
   return (
     <HeroScreen
-      back
+      back={!tab}
+      tab={tab}
       title={t('courseFinder.fundingTitle')}
       subtitle={t('courseFinder.fundingSub')}>
       {loading ? <SkeletonCards count={3} /> : null}

@@ -435,6 +435,12 @@ draft: `release: false` until a person compares the pack with the registers.
 - [ ] **Entry requirements**: colleges don't publish points scales, so the app says "check with the college" and
   links its site. TVET admission rules (NC(V), Report 191) could come later, each from its own source.
 
+## Find my course tabs
+
+- [ ] **Province and type of each university** (traditional, comprehensive, university of technology): asked of
+  Argon from DHET's official list on 20 Oct 2026. Until a sourced value is in each pack, Explore shows the city only.
+- [ ] **NCV marks** (UniApplyForMe takes NC(V) results too): only NSC marks for now.
+
 ## Reminders for later milestones
 
 - [x] M3: the first endpoint that takes numbers (money) gets the NaN/Infinity hostile-input test again: done on

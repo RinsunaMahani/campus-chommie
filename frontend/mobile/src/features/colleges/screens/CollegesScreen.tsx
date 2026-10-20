@@ -29,6 +29,15 @@ const MIN_CHARS = 3;
 const WAIT_MS = 350;
 
 export default function CollegesScreen() {
+  return (
+    <HeroScreen back title={t('colleges.title')} subtitle={t('colleges.sub')}>
+      <CollegesBody />
+    </HeroScreen>
+  );
+}
+
+/** The colleges list itself: the registration check on top, search, filters and the list. Also Explore's Colleges side. */
+export function CollegesBody() {
   const [typed, setTyped] = useState('');
   const [q, setQ] = useState('');
   const [kind, setKind] = useState<CollegeKind | undefined>(undefined);
@@ -81,7 +90,7 @@ export default function CollegesScreen() {
   ];
 
   return (
-    <HeroScreen back title={t('colleges.title')} subtitle={t('colleges.sub')}>
+    <View style={{ gap: 16 }}>
       <Card onPress={() => router.push('/course-finder/colleges/check')} style={styles.checkCard}>
         <View style={styles.checkIcon}>
           <Feather name="shield" size={20} color={colors.ink} />
@@ -135,7 +144,7 @@ export default function CollegesScreen() {
           {answer.page < answer.pages ? <Button title={t('colleges.more')} variant="secondary" icon="chevron-down" onPress={more} /> : null}
         </View>
       ) : null}
-    </HeroScreen>
+    </View>
   );
 }
 

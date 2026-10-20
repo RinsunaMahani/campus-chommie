@@ -5,7 +5,7 @@ import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 
 import { Button } from '@/shared/components/Button';
 import { HeroScreen } from '@/shared/components/HeroScreen';
-import { Card, InfoNote, ListRow } from '@/shared/components/Parts';
+import { Card, InfoNote, ToggleRow } from '@/shared/components/Parts';
 import { ErrorBox } from '@/shared/components/Status';
 import { Body } from '@/shared/components/Text';
 import { MessageKey, t } from '@/shared/i18n';
@@ -16,8 +16,12 @@ import { checkRows, cleanPercent, rowsFor } from '../marks';
 import { useCourseFinder } from '../state';
 import { SUBJECTS, subjectName } from '../subjects';
 
-/** Step 1: the learner's subjects, picked in one go, and a mark for each. Never saved and never logged. */
-export default function MarksScreen() {
+/**
+ * Step 1: the learner's subjects, picked in one go, and a mark for each. Never sent to our server except to
+ * work out an answer, never logged, and kept on the phone only if the learner switches "Remember my marks" on.
+ * `tab`: shown as Find my course's My marks tab (no back button; room for the dock).
+ */
+export default function MarksScreen({ tab = false }: { tab?: boolean }) {
   const cf = useCourseFinder();
   const [picking, setPicking] = useState(false);
   const [errors, setErrors] = useState<Record<string, MessageKey>>({});
@@ -65,7 +69,8 @@ export default function MarksScreen() {
 
   return (
     <HeroScreen
-      back
+      back={!tab}
+      tab={tab}
       overline={t('courseFinder.step', { n: 1 })}
       title={t('courseFinder.marksHeading')}
       subtitle={t('courseFinder.marksHelp')}
@@ -124,11 +129,14 @@ export default function MarksScreen() {
       />
 
       {formError ? <ErrorBox message={formError} /> : null}
+      <ToggleRow
+        icon="smartphone"
+        title={t('courseFinder.rememberTitle')}
+        subtitle={cf.remember ? t('courseFinder.rememberOn') : t('courseFinder.rememberOff')}
+        value={cf.remember}
+        onChange={cf.setRemember}
+      />
       <InfoNote icon="lock">{t('courseFinder.nothingStored')}</InfoNote>
-
-      <Card style={{ paddingVertical: 4 }}>
-        <ListRow icon="tool" title={t('colleges.entry')} subtitle={t('colleges.entrySub')} onPress={() => router.push('/course-finder/colleges')} last />
-      </Card>
 
       {picking ? <SubjectPicker chosen={rows.map((r) => r.subject)} onDone={choose} onClose={() => setPicking(false)} /> : null}
     </HeroScreen>

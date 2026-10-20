@@ -25,7 +25,9 @@ what came from our earlier project in [REUSE.md](REUSE.md).
 
 ## Rules that always apply
 
-- **POPIA and minors.** The course finder needs no account and stores nothing (never store or log marks typed there).
+- **POPIA and minors.** The course finder needs no account and keeps nothing on our servers (never store or log marks
+  typed there). A learner may switch on "Remember my marks on this phone" (off by default): only subjects and marks,
+  in the phone's secure storage, deleted when switched off.
   Student accounts require confirming 18 or older (sign-up enforces it). Show a plain privacy notice and record
   consent at sign-up.
 - **Collect the minimum.** No ID numbers, bank or account numbers, NSFAS or bank credentials, and no religion, race or

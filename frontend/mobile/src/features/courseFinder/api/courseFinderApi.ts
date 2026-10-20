@@ -5,7 +5,7 @@
  */
 import { api } from '@/shared/api/client';
 
-import { AssessAnswer, FirstStepsAnswer, FunderAnswer, FunderDetail, FundingCard, FundingFilters, FundingListAnswer, Mark, Plan, PointsAnswer, SavedFundingCard, SavedFundingListAnswer, UniversityMapAnswer } from '../types';
+import { ApplyInfoAnswer, AssessAnswer, DeadlinesAnswer, FirstStepsAnswer, FunderAnswer, FunderDetail, FundingCard, FundingFilters, FundingListAnswer, Mark, Plan, PointsAnswer, ProgrammeListAnswer, SavedFundingCard, SavedFundingListAnswer, UniversityCardInfo, UniversityMapAnswer } from '../types';
 
 function toQuery(filters?: FundingFilters): string {
   if (!filters) return '';
@@ -16,6 +16,22 @@ function toQuery(filters?: FundingFilters): string {
 }
 
 export const courseFinderApi = {
+  /** Every university, A to Z, with its fee and where its applications stand today. */
+  universities: () => api<{ universities: UniversityCardInfo[] }>('GET', '/universities').then((d) => d.universities),
+
+  /** Every programme, without marks: one university's, or a search across all of them. */
+  programmes: (filters: { q?: string; university?: string; page?: number }) => {
+    const entries = Object.entries(filters).filter(([, v]) => v !== undefined && v !== '');
+    const qs = entries.map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(String(v))}`).join('&');
+    return api<ProgrammeListAnswer>('GET', `/programmes${qs ? `?${qs}` : ''}`);
+  },
+
+  /** What closes soonest across universities and funders. */
+  deadlines: () => api<DeadlinesAnswer>('GET', '/deadlines'),
+
+  /** How to apply to one university, without marks. */
+  applyInfo: (university: string) => api<ApplyInfoAnswer>('GET', `/pathways/apply/${encodeURIComponent(university)}`),
+
   /** Your points at every university we cover, each by its own rule, and how many programmes you meet. */
   points: (marks: Mark[]) => api<PointsAnswer>('POST', '/pathways/points', { marks }),
 

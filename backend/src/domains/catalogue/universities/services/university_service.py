@@ -76,8 +76,9 @@ def _card(uni: University, today: date) -> dict:
 
 
 def programme_list(*, q: str | None = None, university: str | None = None, page: int = 1) -> dict:
-    """Every programme we hold, by university and faculty, searchable by name or faculty, a page at a time.
-    No marks: minimum points are shown as each university publishes them."""
+    """Every programme we hold, by university and faculty, searchable by name or faculty, a page at a time;
+    one university's all at once (its faculty sections need the whole set). No marks: minimum points are
+    shown as each university publishes them."""
     least = load_config()["colleges"]["min_query_chars"]
     if q is not None and len(q.strip()) < least:
         raise ApiValidationError("Please check the highlighted fields.",
@@ -86,7 +87,7 @@ def programme_list(*, q: str | None = None, university: str | None = None, page:
     if university is not None and university not in packs:
         raise NotFoundError("We don't have that university.", code="UNIVERSITY_NOT_FOUND")
     rows = browse.programmes(packs, query=q.strip() if q else None, university=university)
-    size = load_config()["browse"]["page_size"]
+    size = max(1, len(rows)) if university else load_config()["browse"]["page_size"]
     return {
         "summary": browse.summary(rows),
         "total": len(rows),

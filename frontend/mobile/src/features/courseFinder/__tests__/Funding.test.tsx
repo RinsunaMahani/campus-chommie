@@ -112,7 +112,7 @@ test('PlanScreen footer shows Funding and not "Change goal", and Start again is 
   // Pressing Start again resets and dismisses to course finder root
   fireEvent.press(startAgain);
   expect(mockReset).toHaveBeenCalled();
-  expect(mockDismissTo).toHaveBeenCalledWith('/course-finder');
+  expect(mockDismissTo).toHaveBeenCalledWith('/course-finder/marks');
 });
 
 test('FundingScreen: NSFAS opens its page', async () => {

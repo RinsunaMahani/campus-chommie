@@ -33,6 +33,7 @@ export const PRIVACY_POLICY: LegalDocument = {
         'Your agreement: which version of this policy and of the Terms of Use you accepted, your confirmation that you are 18 or older, when you did so, and the IP address and app details at that moment. Why: POPIA requires us to be able to show what you agreed to, and when.',
         'Sign-in security: the phones you sign in on (the kind of phone and a name for it), when each was last used, and a security key your phone creates (we only ever receive its public part). Why: to ask for an email code on a new phone, and to let you see and sign out your other phones.',
         'Security records: sign-ups, sign-ins, failed attempts and password changes, with the time, the email address used and the IP address. Why: to protect accounts and to investigate misuse.',
+        "Find my course needs no account. The subjects and marks you type are sent to us only to work out your points and what you qualify for; we never keep them or write them to our logs. If you switch on \"Remember my marks on this phone\", your subjects and marks are kept in your phone's secure storage only, never on our servers; switching it off deletes them.",
       ],
     },
     {

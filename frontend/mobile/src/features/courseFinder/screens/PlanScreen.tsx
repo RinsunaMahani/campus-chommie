@@ -17,12 +17,12 @@ import { useCourseFinder } from '../state';
 /** The three-choice plan: the goal, a route into it and a safer related choice, then how to apply for them. */
 export default function PlanScreen() {
   const cf = useCourseFinder();
-  if (!cf.plan || !cf.university) return <Redirect href="/course-finder" />;
+  if (!cf.plan || !cf.university) return <Redirect href="/course-finder/marks" />;
   const { plan, university } = cf;
 
   function startOver() {
     cf.reset();
-    router.dismissTo('/course-finder');
+    router.dismissTo('/course-finder/marks');
   }
 
   return (

@@ -50,7 +50,7 @@ export default function QualifyScreen() {
       .catch(() => undefined);
   }, []);
 
-  if (!valid) return <Redirect href="/course-finder" />;
+  if (!valid) return <Redirect href="/course-finder/marks" />;
 
   return (
     <HeroScreen back overline={t('courseFinder.step', { n: 2 })} title={t('courseFinder.qualifyTitle')} subtitle={t('courseFinder.qualifySub')}>

@@ -55,6 +55,7 @@ def test_programmes_page_through_every_university(client):
 def test_programmes_narrow_to_one_university_and_a_search(client):
     up = client.get("/api/v1/programmes", query_string={"university": "up"}).get_json()["data"]
     assert up["programmes"] and all(p["university"] == "up" for p in up["programmes"])
+    assert up["pages"] == 1 and len(up["programmes"]) == up["total"]  # one university: all at once
     found = client.get("/api/v1/programmes", query_string={"q": "nursing"}).get_json()["data"]
     assert found["total"] > 0
     assert client.get("/api/v1/programmes", query_string={"university": "hogwarts"}).status_code == 404
