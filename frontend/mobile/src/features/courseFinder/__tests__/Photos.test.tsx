@@ -17,24 +17,25 @@ const LICENCE = /, (CC0|Public domain|CC BY(-SA)? \d\.\d), Wikimedia Commons \(c
 
 test('every photo names its author and licence and links its Commons page', () => {
   const all = [...Object.values(CAMPUS_PHOTOS), ...Object.values(PHOTOS)];
-  expect(all).toHaveLength(32);
+  expect(all).toHaveLength(37);
   for (const p of all) {
     expect(p!.credit).toMatch(LICENCE);
     expect(p!.source).toMatch(COMMONS);
   }
 });
 
-test('the six universities without a logo-free photo keep their monogram', () => {
-  for (const id of ['smu', 'dut', 'mut', 'vut', 'ump', 'spu']) expect(CAMPUS_PHOTOS[id]).toBeUndefined();
+test('SMU, with no logo-free photo on Commons, keeps its monogram; the other 25 have one', () => {
+  expect(CAMPUS_PHOTOS.smu).toBeUndefined();
+  expect(Object.keys(CAMPUS_PHOTOS)).toHaveLength(25);
 });
 
 test('the campus card shows what the photo is, and its credit opens the Commons page', () => {
   const open = jest.spyOn(Linking, 'openURL').mockResolvedValue(true);
   render(<CampusPhotoCard university="up" />);
-  expect(screen.getByText('Old Arts Building, Hatfield campus')).toBeTruthy();
-  fireEvent.press(screen.getByText('Photo: Markovic94, CC BY-SA 4.0, Wikimedia Commons (cropped)'));
+  expect(screen.getByText('The Old Arts Building, Hatfield campus, at dusk')).toBeTruthy();
+  fireEvent.press(screen.getByText('Photo: Sian Tiley-Nel, CC BY-SA 4.0, Wikimedia Commons (cropped)'));
   expect(open).toHaveBeenCalledWith(
-    'https://commons.wikimedia.org/wiki/File:Old_Arts_Building,_Hatfield_Campus,_University_of_Pretoria.jpg',
+    'https://commons.wikimedia.org/wiki/File:Old_Arts_Building_of_the_University_of_Pretoria_Museums,_South_Africa.jpg',
   );
 });
 
