@@ -15,6 +15,7 @@ import { colors, fonts, radius } from '@/shared/theme/tokens';
 import { courseFinderApi } from '../api/courseFinderApi';
 import { ApplyWindows, GuideCard } from '../components/ApplyBox';
 import { ApsCard } from '../components/ApsCard';
+import { CampusPhotoCard } from '../components/CampusPhotoCard';
 import { FacultySection } from '../components/FacultySection';
 import { TestDateNote } from '../components/StillOpen';
 import { TierCard } from '../components/TierCard';
@@ -91,6 +92,7 @@ export default function UniversityScreen() {
           </View>
         ) : null
       }>
+      <CampusPhotoCard university={id} />
       {points ? <ApsCard points={points} sent={sent} rows={cf.rows} /> : null}
       <SlidingTabs tabs={[t('courseFinder.tabCourses'), t('courseFinder.tabApply')]} index={tab} onChange={setTab} />
 
