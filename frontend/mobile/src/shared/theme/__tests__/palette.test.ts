@@ -29,6 +29,10 @@ test.each(TEXT.flatMap((text) => SURFACES.map((surface) => [text, surface] as co
   },
 );
 
+test.each([...night.classColours])('night: class colour %s reads on the cards', (colour) => {
+  expect(contrast(colour, night.white)).toBeGreaterThanOrEqual(4.5);
+});
+
 test('the words on the mint pill and on coral are readable', () => {
   expect(contrast(night.pillText, night.accent)).toBeGreaterThanOrEqual(4.5);
   expect(contrast(night.pillText, night.garnet)).toBeGreaterThanOrEqual(4.5);

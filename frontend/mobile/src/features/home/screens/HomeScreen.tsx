@@ -2,6 +2,9 @@ import { router, useFocusEffect } from 'expo-router';
 import { useCallback, useState } from 'react';
 import { View } from 'react-native';
 
+import { CAMPUS_PHOTOS } from '@/features/courseFinder/campusPhotos';
+import { PhotoCredit } from '@/features/courseFinder/components/CampusPhotoCard';
+
 import { HomeAlerts } from '@/features/alerts/components/HomeAlerts';
 import { useSession } from '@/features/auth/session/SessionProvider';
 import { DemoBanner } from '@/features/profile/components/DemoBanner';
@@ -13,10 +16,14 @@ import { Screen } from '@/shared/components/Screen';
 import { Muted, Overline, Title } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
 
-/** Home tab: today's alerts first, then updates and the course finder, and the way to account security and out. */
+/**
+ * Home tab: the student's campus photo behind the top (where we have one, with its credit at the foot),
+ * today's alerts first, then updates and the course finder, and the way to account security and out.
+ */
 export default function HomeScreen() {
   const { profile, signOut } = useSession();
-  const { mock } = useProfile();
+  const { mock, profile: student } = useProfile();
+  const photo = student?.university ? CAMPUS_PHOTOS[student.university] : undefined;
   const [unread, setUnread] = useState(0);
 
   useFocusEffect(
@@ -30,12 +37,15 @@ export default function HomeScreen() {
   );
 
   return (
-    <Screen tab>
+    <Screen tab backdrop={photo?.image}>
       <View style={{ gap: 6 }}>
         <Title>Home</Title>
+        {student?.university_name ? <Muted>{student.university_name}</Muted> : null}
         <Muted>Signed in as {profile.email}</Muted>
         <DemoBanner />
       </View>
+      {/* Room for the campus photo to show before the cards rise over it. */}
+      {photo ? <View style={{ height: 110 }} /> : null}
 
       <HomeAlerts />
 
@@ -58,6 +68,7 @@ export default function HomeScreen() {
       </Card>
 
       <Button title="Sign out" variant="secondary" icon="log-out" onPress={signOut} />
+      {photo ? <PhotoCredit credit={`${photo.caption}. ${photo.credit}`} source={photo.source} /> : null}
     </Screen>
   );
 }
