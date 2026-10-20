@@ -57,8 +57,10 @@ flask seed
 ## Check it
 
 - **`GET /api/v1/health`** answers 200 with `{"status": "ok", "database": "ok"}` when the API and the database both
-  answer; 503 when the database doesn't. Point the host's health check, or an uptime monitor, at it. Docker's own
-  health check uses it too.
+  answer; 503 when the database doesn't. Use it to check a deploy by hand.
+- **`GET /api/v1/ping`** answers 200 without touching the database. Docker's own health check uses it, and so should
+  an uptime pinger that keeps a free host awake: pinging `/health` every few minutes would keep a free database
+  awake all month and use up its compute hours.
 - **The log** shows `master scheduler: started` in exactly one process. Every other process logs
   `another process runs the jobs`.
 
@@ -89,8 +91,38 @@ one process either way.
   followed by a new build.
 - **The web build:** if it's hosted, add its https address to `CORS_ORIGINS`.
 
+## Free hosting: Render and Neon (chosen 20 Oct 2026)
+
+Rinsuna doesn't qualify for Azure for Students, so the hackathon build runs on two free tiers, no card needed. Their
+terms, read on their own sites on 20 Oct 2026, are below; free tiers change, so check them again before relying on
+them.
+
+- **Neon (the database):** free, no time limit. 1 GB of storage and 100 compute-hours a month per project; the
+  database sleeps after 5 minutes idle and wakes on the next query.
+  - Create a project in **Frankfurt** (AWS eu-central-1) on **Postgres 16**.
+  - Copy the **direct** connection string (connection pooling off), with `?sslmode=require`. That's `DATABASE_URL`.
+- **Render (the API):** a free web service from this repo: language **Docker**, root directory `backend`, region
+  **Frankfurt**, instance type **Free**. It sleeps after 15 minutes without a request and takes about a minute to
+  wake; 750 free hours a month is enough for this one service to run all month. Free services have no shell, no
+  one-off jobs and no pre-deploy command, and can't send on ports 25, 465 or 587.
+  - Settings (Environment, typed in by Rinsuna; never committed): `FLASK_ENV=production`, `DATABASE_URL`,
+    `SECRET_KEY`, `JWT_SECRET_KEY` (Render's **Generate** button makes each), `APP_BASE_URL` (the service's
+    `https://….onrender.com` address), `DEMO_PASSWORD`, `SEED_DEMO_ON_START=true`, and the email settings below.
+  - **The demo accounts:** with no shell, `flask seed` can't run as a one-off. `SEED_DEMO_ON_START=true` makes the
+    container run it after the migrations each time it starts (safe to repeat; it also re-bases the demo data). A
+    failed seed is logged and the API still starts.
+  - **Keep it awake:** a free pinger (UptimeRobot or cron-job.org) on `GET /api/v1/ping` every 10 minutes. Not
+    `/health`: that would keep Neon awake too.
+- **Email (Brevo, Rinsuna's OK on 20 Oct 2026):** Render free blocks the ports Gmail needs, so the sign-up codes go
+  through Brevo's free SMTP relay (300 emails a day) on port 2525, which Render doesn't block: `MAIL_SERVER` =
+  `smtp-relay.brevo.com`, `MAIL_PORT` = `2525`, `MAIL_USE_TLS` = `true`, `MAIL_USERNAME` = the Brevo login it shows,
+  `MAIL_PASSWORD` = a Brevo **SMTP key** (not the API key), `MAIL_DEFAULT_SENDER` = a sender address verified in
+  Brevo. Without these, production refuses to start; judges still sign in with the demo accounts, which need no code.
+- **The app:** the APK's `EXPO_PUBLIC_API_URL` is `https://….onrender.com/api/v1` (README, "An installable Android
+  app"), then a new preview build.
+
 ## Still Rinsuna's to decide
 
-- **The host and the managed PostgreSQL.**
+- **A paid host,** if the app outlives the hackathon (the free tiers above sleep and have monthly limits).
 - **Error monitoring.** An external service, so Rinsuna agrees to it first (CLAUDE.md).
 - **The email sender address**, which needs a domain we don't have yet.
