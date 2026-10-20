@@ -1,4 +1,4 @@
-"""Load and validate university data packs and the national funding pack."""
+"""Load and validate university data packs and the national funding and colleges packs."""
 from __future__ import annotations
 
 from pathlib import Path
@@ -7,11 +7,12 @@ from typing import TypeVar
 import yaml
 from pydantic import BaseModel, ValidationError
 
-from .schemas import FundingPack, University, UniversityMap
+from .schemas import CollegesPack, FundingPack, University, UniversityMap
 
 ROOT = Path(__file__).resolve().parents[1]
 UNIVERSITIES_DIR = ROOT / "data" / "universities"
 FUNDING_PATH = ROOT / "data" / "national" / "funding.yaml"
+COLLEGES_PATH = ROOT / "data" / "national" / "colleges.yaml"
 MAPS_DIR = ROOT / "data" / "maps"
 #: In the maps folder but not a map: which OpenStreetMap outline is which campus (scripts/fetch_osm_maps.py).
 MAPS_CONFIG = "osm_campuses.yaml"
@@ -40,6 +41,11 @@ def load_university(path: str | Path) -> University:
 def load_funding(path: str | Path = FUNDING_PATH) -> FundingPack:
     """The national funders (NSFAS), which every plan shows beside its universities."""
     return _load(path, FundingPack)
+
+
+def load_colleges(path: str | Path = COLLEGES_PATH) -> CollegesPack:
+    """Public TVET colleges and DHET's registers of private colleges and higher education institutions."""
+    return _load(path, CollegesPack)
 
 
 def load_map(path: str | Path) -> UniversityMap:

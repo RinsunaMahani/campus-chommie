@@ -40,6 +40,7 @@ def ping():
 
 
 # Each feature's routes attach to api_bp by being imported here.
+from src.domains.catalogue.colleges.api import routes as _colleges_routes  # noqa: E402,F401
 from src.domains.catalogue.funding.api import routes as _funding_routes  # noqa: E402,F401
 from src.domains.catalogue.maps.api import routes as _maps_routes  # noqa: E402,F401
 from src.domains.catalogue.universities.api import routes as _universities_routes  # noqa: E402,F401
