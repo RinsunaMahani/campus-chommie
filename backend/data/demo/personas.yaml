@@ -25,6 +25,16 @@ personas:
     payments:
       - {label: Living allowance (demo amount), expected_on: 2026-10-30, amount_cents: 150000}
     spending: [3800, 5200, 4100, 6900, 3500, 4400, 5800, 2900, 4700, 6100, 3900, 4300, 5600, 4800]  # last 14 days, oldest first
+    timetable:  # FICTIONAL classes for the demo; venues are made up and labelled so
+      - {module: ANA201, kind: lecture, weekday: 0, starts: "08:00", ends: "09:40", venue: Demo lecture hall A}
+      - {module: BCH111, kind: lecture, weekday: 0, starts: "10:00", ends: "11:40", venue: Demo lecture hall B}
+      - {module: PHY121, kind: practical, weekday: 0, starts: "14:00", ends: "16:40", venue: Demo lab 2}
+      - {module: ANA201, kind: tutorial, weekday: 1, starts: "09:00", ends: "09:50", venue: Demo room 12}
+      - {module: PHY121, kind: lecture, weekday: 1, starts: "11:00", ends: "12:40", venue: Demo lecture hall A}
+      - {module: BCH111, kind: practical, weekday: 2, starts: "13:00", ends: "15:50", venue: Demo lab 1}
+      - {module: ANA201, kind: lecture, weekday: 3, starts: "08:00", ends: "09:40", venue: Demo lecture hall A}
+      - {module: PHY121, kind: tutorial, weekday: 3, starts: "10:00", ends: "10:50", venue: Demo room 7}
+      - {module: BCH111, kind: tutorial, weekday: 4, starts: "09:00", ends: "09:50", venue: Demo room 12}
     events:
       - {title: Quiz 3, kind: quiz, starts: "2026-10-14 10:00", module: BCH111, weighting: 5}
       - {title: Test 2, kind: test, starts: "2026-10-20 08:00", module: ANA201, weighting: 20}

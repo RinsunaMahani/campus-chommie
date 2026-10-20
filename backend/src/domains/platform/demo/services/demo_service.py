@@ -9,7 +9,7 @@ now, and a classmate's message waiting for the rep.
 from __future__ import annotations
 
 import uuid
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, time, timedelta
 from functools import lru_cache
 from zoneinfo import ZoneInfo
 
@@ -23,6 +23,7 @@ from src.domains.student.academics.services import academics_service
 from src.domains.student.money.services import money_service
 from src.domains.student.profile.services import profile_service
 from src.domains.student.saved_funding.services import saved_funding_service
+from src.domains.student.timetable.services import timetable_service
 from src.extensions import db
 
 from ..constants import PERSONAS_PATH, TIMEZONE
@@ -84,6 +85,7 @@ def rebase(today: date) -> int:
         money_service.erase_all_for(user)
         academics_service.erase_all_for(user)
         saved_funding_service.erase_all_for(user)
+        timetable_service.erase_all_for(user)
         events_service.erase_all_for(user)
         left += class_service.leave_all(user)
         profile_service.erase_for(user)
@@ -126,6 +128,11 @@ def _student(user, p: dict, today: date, shift: timedelta) -> None:
         days = len(p.get("spending", []))
         for i, cents in enumerate(p.get("spending", [])):  # oldest first, ending yesterday
             money_service.put_spending(user, (today - timedelta(days=days - i)).isoformat(), cents)
+    for c in p.get("timetable", []):
+        timetable_service.add(user, {
+            "module": c["module"], "kind": c["kind"], "weekday": c["weekday"], "title": c.get("title"),
+            "starts": _time(c["starts"]), "ends": _time(c["ends"]), "venue": c.get("venue"),
+        })
     for m in p.get("modules", []):
         module = academics_service.add_module(user, {"code": m["code"], "name": m.get("name"), "target": float(m["target"])})
         for a in m["assessments"]:
@@ -133,6 +140,11 @@ def _student(user, p: dict, today: date, shift: timedelta) -> None:
             academics_service.add_assessment(user, uuid.UUID(module["module"]["id"]), {
                 "name": a["name"], "weight": float(a["weight"]), "mark": float(mark) if mark is not None else None,
             })
+
+
+def _time(value: str):
+    hours, minutes = value.split(":")
+    return time(int(hours), int(minutes))
 
 
 def _classes(users: dict, p: dict, today: date, shift: timedelta, classes: dict) -> None:
