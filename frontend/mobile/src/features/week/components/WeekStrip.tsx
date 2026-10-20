@@ -9,20 +9,23 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { t } from '@/shared/i18n';
 import { formatShortDay } from '@/shared/lib/dates';
-import { colors, fonts, radius } from '@/shared/theme/tokens';
+import { fonts, radius } from '@/shared/theme/tokens';
 
 import { Week } from '../types';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
 
 type IconName = ComponentProps<typeof Feather>['name'];
 
-const LOOK: Record<Week['colour'], { icon: IconName; bg: string; fg: string; bar: string }> = {
+const lookOf = (colors: Palette): Record<Week['colour'], { icon: IconName; bg: string; fg: string; bar: string }> => ({
   green: { icon: 'smile', bg: colors.jadeTint, fg: colors.jade, bar: colors.jade },
   amber: { icon: 'alert-circle', bg: colors.marigoldTint, fg: colors.marigoldDeep, bar: colors.marigold },
   red: { icon: 'alert-triangle', bg: colors.garnetTint, fg: colors.garnet, bar: colors.garnet },
-};
+});
 
 /** The load in words, with its colour and icon. */
 export function LoadBadge({ week }: { week: Pick<Week, 'colour' | 'load'> }) {
+  const styles = useStyles(makeStyles);
+  const LOOK = lookOf(usePalette());
   const look = LOOK[week.colour] ?? LOOK.amber;
   return (
     <View style={[styles.badge, { backgroundColor: look.bg }]}>
@@ -38,6 +41,9 @@ export function weekLabel(week: Pick<Week, 'week_start' | 'week_end' | 'this_wee
 }
 
 export function WeekStrip({ weeks, onOpen }: { weeks: Week[]; onOpen: (week: Week) => void }) {
+  const LOOK = lookOf(usePalette());
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   return (
     <View style={{ gap: 10 }}>
       {weeks.map((week) => {
@@ -65,7 +71,7 @@ export function WeekStrip({ weeks, onOpen }: { weeks: Week[]; onOpen: (week: Wee
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   row: {
     flexDirection: 'row',
     alignItems: 'center',

@@ -8,11 +8,14 @@ import { Animated, DimensionValue, Easing, StyleSheet, View } from 'react-native
 
 import { Card } from '@/shared/components/Parts';
 import { t } from '@/shared/i18n';
-import { colors, radius } from '@/shared/theme/tokens';
+import { radius } from '@/shared/theme/tokens';
 
 import { motionOff, NATIVE } from './motion';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
 
 export function Shimmer({ width = '100%', height = 14, rounded = 8 }: { width?: DimensionValue; height?: number; rounded?: number }) {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   const [sweep] = useState(() => new Animated.Value(0));
   const [boxWidth, setBoxWidth] = useState(0);
   useEffect(() => {
@@ -53,6 +56,6 @@ export function SkeletonCards({ count = 3 }: { count?: number }) {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   block: { backgroundColor: colors.iconTile, overflow: 'hidden', borderRadius: radius.sm },
 });

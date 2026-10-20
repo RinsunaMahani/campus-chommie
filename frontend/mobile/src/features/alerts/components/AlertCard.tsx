@@ -11,9 +11,10 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { Card } from '@/shared/components/Parts';
 import { Muted, Strong } from '@/shared/components/Text';
 import { MessageKey, t } from '@/shared/i18n';
-import { colors, fonts, radius } from '@/shared/theme/tokens';
+import { fonts, radius } from '@/shared/theme/tokens';
 
 import { ActionTarget, Alert } from '../types';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
 
 type IconName = ComponentProps<typeof Feather>['name'];
 
@@ -25,6 +26,8 @@ const ICON: Record<string, IconName> = {
 };
 
 export function AlertCard({ alert, onOpen }: { alert: Alert; onOpen: (target: ActionTarget) => void }) {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   return (
     <Card style={styles.card}>
       <View style={styles.head}>
@@ -58,7 +61,7 @@ export function AlertCard({ alert, onOpen }: { alert: Alert; onOpen: (target: Ac
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   card: { gap: 10, borderColor: colors.marigold },
   head: { flexDirection: 'row', alignItems: 'center', gap: 10 },
   icon: { width: 30, height: 30, borderRadius: radius.sm, backgroundColor: colors.marigoldTint, alignItems: 'center', justifyContent: 'center' },

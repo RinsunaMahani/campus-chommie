@@ -5,9 +5,11 @@
  */
 import { StyleSheet, Text, View } from 'react-native';
 
-import { brand, colors, fonts, radius } from '@/shared/theme/tokens';
+import { brand, fonts, radius } from '@/shared/theme/tokens';
+import { Palette, useStyles } from '@/shared/theme/palette';
 
 export function UniMonogram({ id, size = 46 }: { id: string; size?: number }) {
+  const styles = useStyles(makeStyles);
   const label = id.toUpperCase();
   // Longer names (UNIZULU, UNIVEN) get smaller letters so they fit the tile.
   const fontSize = Math.round(size * (label.length <= 3 ? 0.34 : label.length <= 4 ? 0.28 : label.length <= 5 ? 0.23 : 0.19));
@@ -23,7 +25,7 @@ export function UniMonogram({ id, size = 46 }: { id: string; size?: number }) {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   tile: {
     borderRadius: radius.md,
     borderWidth: 1,

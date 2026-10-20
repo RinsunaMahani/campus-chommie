@@ -61,7 +61,7 @@ what came from our earlier project in [REUSE.md](REUSE.md).
 - Keep the API conventions in `src/core/`: the response envelope and stable error codes. Every new table comes with a
   migration (`flask db migrate`, then read it: autogenerate misses schemas, functions and triggers).
 - App: Expo Router in `frontend/mobile/src/app`, one route group per stage (`(auth)`, `(app)`, `(legal)`); screens in
-  `src/features/<feature>`, shared UI in `src/shared`. Colours and type only from `src/shared/theme/tokens.ts`.
+  `src/features/<feature>`, shared UI in `src/shared`. Colours and type only from `src/shared/theme/tokens.ts` and `palette.tsx` (the student side uses the black `night` palette; Find my course and sign-in the `forest` one; components read colours with `usePalette()`/`useStyles()`).
 
 ## Scope
 

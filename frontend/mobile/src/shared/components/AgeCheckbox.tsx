@@ -1,7 +1,8 @@
 import { StyleSheet, Text } from 'react-native';
 
 import { Checkbox } from './Choice';
-import { colors, fonts } from '@/shared/theme/tokens';
+import { fonts } from '@/shared/theme/tokens';
+import { Palette, useStyles } from '@/shared/theme/palette';
 
 /**
  * "I'm 18 or older". Mandatory: accounts are for adults only (POPIA), so
@@ -9,6 +10,7 @@ import { colors, fonts } from '@/shared/theme/tokens';
  * it with the consent records.
  */
 export function AgeCheckbox({ checked, onChange, error }: { checked: boolean; onChange: (v: boolean) => void; error?: boolean }) {
+  const styles = useStyles(makeStyles);
   return (
     <Checkbox checked={checked} onChange={onChange} error={error} label="I'm 18 or older">
       <Text style={styles.text} onPress={() => onChange(!checked)}>
@@ -19,7 +21,7 @@ export function AgeCheckbox({ checked, onChange, error }: { checked: boolean; on
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   text: { fontFamily: fonts.medium, fontSize: 13.5, lineHeight: 20, color: colors.text },
   error: { fontFamily: fonts.body, fontSize: 12, color: colors.garnet, marginTop: 4 },
 });

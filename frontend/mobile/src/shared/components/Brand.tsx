@@ -9,7 +9,8 @@
 import { StyleSheet, Text, View } from 'react-native';
 import Svg, { Defs, LinearGradient, Path, Rect, Stop } from 'react-native-svg';
 
-import { brand, colors, fonts } from '@/shared/theme/tokens';
+import { brand, fonts } from '@/shared/theme/tokens';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
 
 /** The CC monogram's two strokes, on a 64-unit square. */
 function Cs({ stroke = 7 }: { stroke?: number }) {
@@ -39,6 +40,8 @@ export function BrandMark({ size = 56 }: { size?: number }) {
 
 /** The wordmark: "Campus" in white and "Chommie" in cream, for the wallpaper and glass. */
 export function Wordmark({ size = 26 }: { size?: number }) {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   return (
     <Text style={[styles.word, { fontSize: size, letterSpacing: -size * 0.02 }]}>
       <Text style={{ color: colors.ink }}>Campus </Text>
@@ -48,6 +51,7 @@ export function Wordmark({ size = 26 }: { size?: number }) {
 }
 
 export function BrandLockup() {
+  const styles = useStyles(makeStyles);
   return (
     <View style={styles.lockup}>
       <BrandMark size={44} />
@@ -56,7 +60,7 @@ export function BrandLockup() {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   // Centred, so it still looks right if large system text makes it wrap.
   word: { fontFamily: fonts.extrabold, textAlign: 'center' },
   lockup: { flexDirection: 'row', alignItems: 'center', gap: 12 },

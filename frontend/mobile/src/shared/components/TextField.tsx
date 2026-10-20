@@ -2,7 +2,8 @@ import { Feather } from '@expo/vector-icons';
 import { ComponentProps, forwardRef, useState } from 'react';
 import { Pressable, StyleSheet, Text, TextInput, TextInputProps, View } from 'react-native';
 
-import { colors, fonts, radius, sizes } from '@/shared/theme/tokens';
+import { fonts, radius, sizes } from '@/shared/theme/tokens';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
 
 type Props = TextInputProps & {
   label: string;
@@ -18,6 +19,8 @@ export const TextField = forwardRef<TextInput, Props>(function TextField(
   { label, icon, hint, error, ok, password, optional, style, ...input },
   ref,
 ) {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   const [focused, setFocused] = useState(false);
   const [hidden, setHidden] = useState(true);
   return (
@@ -67,7 +70,7 @@ export const TextField = forwardRef<TextInput, Props>(function TextField(
   );
 });
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   wrap: { gap: 6 },
   label: { fontFamily: fonts.semibold, fontSize: 13.5, color: colors.text },
   optional: { fontFamily: fonts.medium, color: colors.textMuted },

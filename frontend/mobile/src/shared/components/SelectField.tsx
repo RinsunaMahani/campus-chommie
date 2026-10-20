@@ -11,7 +11,8 @@ import { Modal, Pressable, ScrollView, StyleSheet, Text, View } from 'react-nati
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Button } from './Button';
-import { colors, fonts, radius, sizes } from '@/shared/theme/tokens';
+import { fonts, radius, sizes } from '@/shared/theme/tokens';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
 
 type IconName = ComponentProps<typeof Feather>['name'];
 
@@ -31,6 +32,8 @@ type Single<T extends string> = Common<T> & { multiple?: false; value: T | null;
 type Multiple<T extends string> = Common<T> & { multiple: true; value: T[]; onChange: (v: T[]) => void };
 
 export function SelectField<T extends string>(props: Single<T> | Multiple<T>) {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   const { label, sheetTitle, placeholder = 'Tap to choose', options, optional, error } = props;
   const [open, setOpen] = useState(false);
   // Multi-select edits a draft and commits on Done, so closing the sheet
@@ -137,7 +140,7 @@ export function SelectField<T extends string>(props: Single<T> | Multiple<T>) {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   label: { fontFamily: fonts.semibold, fontSize: 13.5, color: colors.text },
   optional: { fontFamily: fonts.medium, color: colors.textMuted },
   box: {

@@ -3,10 +3,12 @@ import { Modal, Pressable, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Button } from './Button';
-import { colors, fonts } from '@/shared/theme/tokens';
+import { fonts } from '@/shared/theme/tokens';
+import { Palette, useStyles } from '@/shared/theme/palette';
 
 /** A sheet that slides up from the bottom; tap outside to close. */
 export function Sheet({ visible, onClose, children }: { visible: boolean; onClose: () => void; children: ReactNode }) {
+  const styles = useStyles(makeStyles);
   return (
     <Modal visible={visible} transparent animationType="fade" onRequestClose={onClose}>
       <View style={styles.backdrop}>
@@ -38,6 +40,7 @@ export function ConfirmSheet({
   onConfirm: () => void;
   onCancel: () => void;
 }) {
+  const styles = useStyles(makeStyles);
   return (
     <Sheet visible={visible} onClose={onCancel}>
       <Text style={styles.title}>{title}</Text>
@@ -48,7 +51,7 @@ export function ConfirmSheet({
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   backdrop: { flex: 1, backgroundColor: colors.overlay },
   sheet: {
     backgroundColor: colors.white,

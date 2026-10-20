@@ -15,14 +15,16 @@ import { Muted, Overline } from '@/shared/components/Text';
 import { TextField } from '@/shared/components/TextField';
 import { t } from '@/shared/i18n';
 import { dayInMonth, formatMonth, monthsFrom } from '@/shared/lib/dates';
-import { colors, fonts, radius } from '@/shared/theme/tokens';
+import { fonts, radius } from '@/shared/theme/tokens';
 
 import { Candidate, Change, ConfirmBody } from '../types';
+import { Palette, useStyles } from '@/shared/theme/palette';
 
 const CLOCK = /^([01]\d|2[0-3]):[0-5]\d$/;
 
 /** A field the engine wasn't sure of: marked, with words, so colour never stands alone. */
 function Check({ on, children }: { on: boolean; children: ReactNode }) {
+  const styles = useStyles(makeStyles);
   if (!on) return <>{children}</>;
   return (
     <View style={styles.check}>
@@ -42,6 +44,7 @@ type Props = {
 };
 
 export function CandidateForm({ candidate, events, busy, onConfirm, onDiscard }: Props) {
+  const styles = useStyles(makeStyles);
   const p = candidate.proposed;
   const months = useMemo(() => monthsFrom(-1, 13), []);
   const [change, setChange] = useState<Change | 'new'>(p.change ?? 'new');
@@ -160,7 +163,7 @@ export function CandidateForm({ candidate, events, busy, onConfirm, onDiscard }:
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   quote: { fontFamily: fonts.medium, fontSize: 14.5, lineHeight: 21, color: colors.text, fontStyle: 'italic' },
   row: { flexDirection: 'row', gap: 10, alignItems: 'flex-start' },
   check: { gap: 6, padding: 10, borderRadius: radius.sm, borderWidth: 1.5, borderColor: colors.marigold, backgroundColor: colors.marigoldTint },

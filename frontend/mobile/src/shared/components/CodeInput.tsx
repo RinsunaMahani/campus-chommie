@@ -1,7 +1,8 @@
 import { forwardRef, useImperativeHandle, useRef } from 'react';
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 
-import { colors, fonts, radius } from '@/shared/theme/tokens';
+import { fonts, radius } from '@/shared/theme/tokens';
+import { Palette, useStyles } from '@/shared/theme/palette';
 
 export const CODE_LENGTH = 6;
 
@@ -16,6 +17,7 @@ type Props = {
 
 /** Six boxes over one hidden input: the phone's keyboard can autofill the code from SMS/email. */
 export const CodeInput = forwardRef<CodeInputHandle, Props>(function CodeInput({ value, onChange, error, label = 'Verification code' }, ref) {
+  const styles = useStyles(makeStyles);
   const input = useRef<TextInput>(null);
   useImperativeHandle(ref, () => ({ focus: () => input.current?.focus() }));
 
@@ -46,7 +48,7 @@ export const CodeInput = forwardRef<CodeInputHandle, Props>(function CodeInput({
   );
 });
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   boxes: { flexDirection: 'row', gap: 8 },
   box: {
     flex: 1,

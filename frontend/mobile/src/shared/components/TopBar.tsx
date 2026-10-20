@@ -2,7 +2,8 @@ import { Feather } from '@expo/vector-icons';
 import { ComponentProps } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import { colors, fonts, radius, sizes } from '@/shared/theme/tokens';
+import { fonts, radius, sizes } from '@/shared/theme/tokens';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
 
 type Props = {
   initial: string;
@@ -15,6 +16,8 @@ type Props = {
 
 /** Tab screens' top bar: who is signed in, and one action (usually the bell). */
 export function TopBar({ initial, title, subtitle, action, onAvatarPress }: Props) {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   return (
     <View style={styles.row}>
       <Pressable
@@ -47,7 +50,7 @@ export function TopBar({ initial, title, subtitle, action, onAvatarPress }: Prop
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   row: { flexDirection: 'row', alignItems: 'center', gap: 12 },
   avatar: { width: 38, height: 38, borderRadius: radius.sm, backgroundColor: colors.ink, alignItems: 'center', justifyContent: 'center' },
   initial: { fontFamily: fonts.display, fontSize: 16, color: colors.pillText },

@@ -12,7 +12,8 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { FadeIn } from '@/shared/motion/FadeIn';
 
 import { Wallpaper } from './Wallpaper';
-import { colors, fonts, radius, space } from '@/shared/theme/tokens';
+import { fonts, radius, space } from '@/shared/theme/tokens';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
 
 type Props = {
   title: string;
@@ -26,6 +27,7 @@ type Props = {
 };
 
 export function HeroScreen({ title, subtitle, overline, back, band, footer, children }: Props) {
+  const styles = useStyles(makeStyles);
   const insets = useSafeAreaInsets();
   return (
     <View style={styles.root}>
@@ -56,6 +58,8 @@ export function HeroScreen({ title, subtitle, overline, back, band, footer, chil
 }
 
 function BandBack() {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   return (
     <Pressable
       accessibilityRole="button"
@@ -70,6 +74,7 @@ function BandBack() {
 
 /** A small rounded label on the band. */
 export function BandChip({ label }: { label: string }) {
+  const styles = useStyles(makeStyles);
   return (
     <View style={styles.chip}>
       <Text style={styles.chipText}>{label}</Text>
@@ -77,7 +82,7 @@ export function BandChip({ label }: { label: string }) {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   root: { flex: 1, backgroundColor: colors.porcelain },
   flex: { flex: 1 },
   band: { paddingHorizontal: 20, paddingBottom: space.sm, gap: space.md },

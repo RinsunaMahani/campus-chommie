@@ -2,7 +2,8 @@ import { Feather } from '@expo/vector-icons';
 import { ComponentProps, ReactNode } from 'react';
 import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-native';
 
-import { colors, fonts, radius, sizes } from '@/shared/theme/tokens';
+import { fonts, radius, sizes } from '@/shared/theme/tokens';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
 
 type Variant = 'primary' | 'secondary' | 'accent' | 'danger';
 
@@ -18,7 +19,8 @@ type Props = {
 };
 
 export function Button({ title, onPress, variant = 'primary', icon, leading, loading, disabled, compact }: Props) {
-  const v = variants[variant];
+  const styles = useStyles(makeStyles);
+  const v = variantsOf(usePalette())[variant];
   const inactive = disabled || loading;
   return (
     <Pressable
@@ -46,14 +48,17 @@ export function Button({ title, onPress, variant = 'primary', icon, leading, loa
   );
 }
 
-const variants: Record<Variant, { bg: string; fg: string; border: string }> = {
-  primary: { bg: colors.ink, fg: colors.pillText, border: colors.ink },
+const variantsOf = (colors: Palette): Record<Variant, { bg: string; fg: string; border: string }> => ({
+  // On the black student side the main action is the mint pill; on the wallpaper, the white one.
+  primary: colors.wallpaper
+    ? { bg: colors.ink, fg: colors.pillText, border: colors.ink }
+    : { bg: colors.accent, fg: colors.pillText, border: colors.accent },
   secondary: { bg: colors.white, fg: colors.ink, border: colors.line },
   accent: { bg: colors.accent, fg: colors.pillText, border: colors.accent },
   danger: { bg: colors.garnet, fg: colors.pillText, border: colors.garnet },
-};
+});
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   base: {
     height: sizes.button,
     borderRadius: radius.md,

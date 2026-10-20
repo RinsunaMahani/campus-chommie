@@ -1,9 +1,11 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import { colors, fonts, radius } from '@/shared/theme/tokens';
+import { fonts, radius } from '@/shared/theme/tokens';
+import { Palette, useStyles } from '@/shared/theme/palette';
 
 /** A bar of tabs under a title ([ New order | Queue | Today ], [ Orders | Inbox ]): big targets, one selected, an optional count. */
 export function Tabs<T extends string>({ tabs, value, onChange }: { tabs: { key: T; label: string; badge?: number }[]; value: T; onChange: (t: T) => void }) {
+  const styles = useStyles(makeStyles);
   return (
     <View style={styles.bar} accessibilityRole="tablist">
       {tabs.map((t) => {
@@ -23,7 +25,7 @@ export function Tabs<T extends string>({ tabs, value, onChange }: { tabs: { key:
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   bar: { flexDirection: 'row', backgroundColor: colors.iconTile, borderRadius: radius.md, padding: 4, gap: 4 },
   tab: { flex: 1, minHeight: 44, borderRadius: radius.sm, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', gap: 6 },
   on: { backgroundColor: colors.white, shadowColor: colors.ink, shadowOpacity: 0.08, shadowRadius: 4, shadowOffset: { width: 0, height: 1 }, elevation: 1 },

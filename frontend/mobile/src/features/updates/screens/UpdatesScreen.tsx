@@ -10,10 +10,11 @@ import { ErrorBox, Loading } from '@/shared/components/Status';
 import { Body, Muted, Overline, Title } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
 import { formatDay } from '@/shared/lib/dates';
-import { colors, fonts, radius } from '@/shared/theme/tokens';
+import { fonts, radius } from '@/shared/theme/tokens';
 
 import { updatesApi } from '../api/updatesApi';
 import { Switch, Update } from '../types';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
 
 /**
  * Updates: a rep's confirmed changes to a class, reminders for funding the
@@ -21,6 +22,8 @@ import { Switch, Update } from '../types';
  * The switches turn topics off; security alerts always come.
  */
 export default function UpdatesScreen() {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   const [updates, setUpdates] = useState<Update[] | null>(null);
   const [switches, setSwitches] = useState<Switch[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -98,7 +101,7 @@ export default function UpdatesScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   head: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   dot: { width: 8, height: 8, borderRadius: radius.pill, backgroundColor: colors.accent },
   title: { flex: 1, fontFamily: fonts.bold, fontSize: 14.5, color: colors.text },
