@@ -18,6 +18,10 @@ class _Strict(Schema):
         unknown = RAISE
 
 
+class NoQuerySchema(_Strict):
+    """How to apply takes no query parameters; any is refused."""
+
+
 class MarkSchema(_Strict):
     subject = fields.String(required=True, validate=validate.OneOf(sorted(SUBJECT_KEYS), error="We don't know that subject."))
     percent = fields.Float(

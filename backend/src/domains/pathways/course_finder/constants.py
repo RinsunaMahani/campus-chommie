@@ -8,6 +8,8 @@ from campus_engine.schemas import SUBJECTS
 ASSESS_LIMIT = "120 per minute"
 PLAN_LIMIT = "120 per minute"
 POINTS_LIMIT = "120 per minute"
+#: How to apply (no marks): the same room as the rest of the course finder.
+APPLY_LIMIT = "120 per minute"
 
 #: The most subjects a learner can enter: the NSC has seven, and some learners take more.
 MAX_SUBJECTS = 9

@@ -46,17 +46,27 @@ def assess(university_id: str, rows: list[dict]) -> dict:
     on today's date."""
     uni = catalogue.get(university_id)
     packs = catalogue.packs()
+    return {
+        "university": catalogue.summary(uni),
+        "matches": [_match(m, packs) for m in assess_all(uni, _marks(rows))],
+        "apply": _how_to_apply(uni),
+    }
+
+
+def apply_info(university_id: str) -> dict:
+    """How to apply to one university on today's date, without any marks."""
+    uni = catalogue.get(university_id)
+    return {"university": catalogue.summary(uni), "apply": _how_to_apply(uni)}
+
+
+def _how_to_apply(uni: University) -> dict:
     today = _today()
     guide = university_guide(uni)
     guide.windows = university_windows(uni, today)
     return {
-        "university": catalogue.summary(uni),
-        "matches": [_match(m, packs) for m in assess_all(uni, _marks(rows))],
-        "apply": {
-            "today": today.isoformat(),
-            "test_date": preview_date() is not None,
-            "guide": _guide(guide, catalogue.confirmation(uni)),
-        },
+        "today": today.isoformat(),
+        "test_date": preview_date() is not None,
+        "guide": _guide(guide, catalogue.confirmation(uni)),
     }
 
 

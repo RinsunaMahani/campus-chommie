@@ -1,7 +1,10 @@
 """
 /api/v1/universities -- what the data packs say, for anyone (no account).
 
-  GET /universities                     {universities: [{id, name, city, academic_year, programmes, confirmed, notice}]}
+  GET /universities                     {universities: [{id, name, city, academic_year, programmes, fee_cents,
+                                         applications: {intake, status, label, opens, closes, days, lines}, confirmed, notice}]}
+  GET /programmes                       ?q= &university= &page=   {summary, total, page, pages, programmes}
+  GET /deadlines                        {today, deadlines: [{kind, id, name, status, label, closes, days, line}]}
   GET /universities/<id>                {university: the pack, with confirmed and notice}
   GET /universities/<id>/first-steps    {university, today, first_steps: [{intake, steps, notes}]}
 
@@ -16,7 +19,7 @@ from src.core.responses import success_response
 from src.shared.rate_limit.limiter import limiter
 
 from ..constants import READ_LIMIT
-from ..schemas.university_schemas import NoQuerySchema, load
+from ..schemas.university_schemas import NoQuerySchema, ProgrammeListSchema, load, query
 from ..services import university_service as service
 
 BASE = "/universities"
@@ -41,3 +44,17 @@ def get_university(university_id: str):
 def get_first_steps(university_id: str):
     load(NoQuerySchema(), request.args.to_dict())
     return success_response(service.first_steps(university_id))
+
+
+@api_bp.get("/programmes")
+@limiter.limit(READ_LIMIT)
+def list_programmes():
+    f = load(ProgrammeListSchema(), query(request.args))
+    return success_response(service.programme_list(q=f.get("q"), university=f.get("university"), page=f.get("page", 1)))
+
+
+@api_bp.get("/deadlines")
+@limiter.limit(READ_LIMIT)
+def list_deadlines():
+    load(NoQuerySchema(), query(request.args))
+    return success_response(service.deadlines())

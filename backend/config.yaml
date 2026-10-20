@@ -37,5 +37,9 @@ colleges:
   min_query_chars: 3      # a shorter search or registration check is refused: it would match nearly everything
   max_matches: 8          # a registration check shows at most this many institutions whose names match
 
+browse:
+  deadlines: 10           # "closing soon" cards on the course finder's home: the nearest this many
+  page_size: 50           # programmes in one page of the course list
+
 alerts:
   lookahead_weeks: 3      # a heavy week this many weeks ahead (this one included) raises an alert

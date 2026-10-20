@@ -114,6 +114,11 @@ def _headline(windows: list[WindowStatus]) -> WindowStatus:
     return windows[0]
 
 
+def headline(windows: list[WindowStatus]) -> WindowStatus:
+    """The intake that matters most today (open first): for a funder, and for a university as a whole."""
+    return _headline(windows)
+
+
 def card(pack: FundingPack, funder: Funder, today: date, cfg: dict | None = None) -> Card:
     """Where one funder's applications stand today, in plain words."""
     cfg = cfg or load_config()

@@ -9,10 +9,16 @@ from __future__ import annotations
 
 from datetime import date
 
+import math
+
+from campus_engine import browse
+from campus_engine.config import load_config
+from campus_engine.funding import cards as funding_cards
 from campus_engine.journey import FirstSteps
 from campus_engine.journey import first_steps as build_first_steps
 from campus_engine.schemas import University
 from src.core.exceptions import NotFoundError
+from src.core.exceptions import ValidationError as ApiValidationError
 from src.domains.catalogue.funding.services import funding_service as funding
 from src.shared.clock.clock import today_sast
 
@@ -49,7 +55,64 @@ def summary(uni: University) -> dict:
 
 
 def summaries() -> list[dict]:
-    return [summary(uni) for uni in sorted(all_packs().values(), key=lambda u: u.name)]
+    """Every university, A to Z, with its application fee and where its applications stand today."""
+    today = _today()
+    return [_card(uni, today) for uni in sorted(all_packs().values(), key=lambda u: u.name)]
+
+
+def _card(uni: University, today: date) -> dict:
+    apps = uni.applications
+    w = browse.application_headline(uni, today)
+    return {
+        **summary(uni),
+        "fee_cents": apps.fee_cents if apps else None,
+        "applications": None if w is None else {
+            "intake": w.intake, "status": w.status, "label": w.label,
+            "opens": w.opens.isoformat() if w.opens else None,
+            "closes": w.closes.isoformat() if w.closes else None,
+            "days": w.days, "lines": w.lines,
+        },
+    }
+
+
+def programme_list(*, q: str | None = None, university: str | None = None, page: int = 1) -> dict:
+    """Every programme we hold, by university and faculty, searchable by name or faculty, a page at a time.
+    No marks: minimum points are shown as each university publishes them."""
+    least = load_config()["colleges"]["min_query_chars"]
+    if q is not None and len(q.strip()) < least:
+        raise ApiValidationError("Please check the highlighted fields.",
+                                 errors=[{"q": [f"Type at least {least} letters or numbers."]}])
+    packs = all_packs()
+    if university is not None and university not in packs:
+        raise NotFoundError("We don't have that university.", code="UNIVERSITY_NOT_FOUND")
+    rows = browse.programmes(packs, query=q.strip() if q else None, university=university)
+    size = load_config()["browse"]["page_size"]
+    return {
+        "summary": browse.summary(rows),
+        "total": len(rows),
+        "page": page,
+        "pages": max(1, math.ceil(len(rows) / size)),
+        "programmes": [
+            {"university": r.university, "university_name": r.university_name, "programme": r.programme,
+             "name": r.name, "faculty": r.faculty, "fields": r.fields, "min_points": r.min_points,
+             "selective": r.selective, "verified": r.verified}
+            for r in rows[(page - 1) * size: page * size]
+        ],
+    }
+
+
+def deadlines() -> dict:
+    """What closes soonest across universities and funders, on today's date in South Africa."""
+    today = _today()
+    found = browse.deadlines(all_packs(), funding_cards(funding.pack(), today), today)
+    return {
+        "today": today.isoformat(),
+        "deadlines": [
+            {"kind": d.kind, "id": d.id, "name": d.name, "status": d.status, "label": d.label,
+             "closes": d.closes.isoformat(), "days": d.days, "line": d.line}
+            for d in found
+        ],
+    }
 
 
 def detail(university_id: str) -> dict:
