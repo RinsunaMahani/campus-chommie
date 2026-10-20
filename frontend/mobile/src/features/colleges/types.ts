@@ -1,0 +1,59 @@
+/** What the colleges routes answer (backend domains/catalogue/colleges). */
+export type CollegeKind = 'tvet' | 'private_higher_education' | 'private_college';
+export type CollegeStatus = 'public' | 'registered' | 'provisionally_registered' | 'cancelled';
+export type Verdict = CollegeStatus | 'bogus' | 'not_found' | 'several';
+
+export type CollegeCard = {
+  id: string;
+  name: string;
+  kind: CollegeKind;
+  kind_label: string;
+  status: CollegeStatus;
+  label: string;
+  registration_number: string | null;
+  provinces: string[];
+  /** As DHET prints it: "www.example.co.za". */
+  website: string | null;
+  lines: string[];
+};
+
+export type Source = { url: string; publisher: string; title: string | null; retrieved: string | null };
+export type WarningSigns = { items: string[]; source_url: string | null };
+
+export type CollegeListAnswer = {
+  summary: string;
+  total: number;
+  page: number;
+  pages: number;
+  colleges: CollegeCard[];
+  confirmed: boolean;
+  notice: string | null;
+};
+
+export type Occupational = { saqa_id: string; name: string; nsfas_allowances: boolean; centre_of_specialisation: boolean };
+
+export type CollegeDetail = CollegeCard & {
+  phone: string | null;
+  head_office: [number, number] | null;
+  sites: string[];
+  qualifications: string[];
+  notes: string[];
+  occupational: Occupational[];
+  sources: Source[];
+};
+
+export type CollegeAnswer = { college: CollegeDetail; warning_signs: WarningSigns | null; confirmed: boolean; notice: string | null };
+
+export type CheckAnswer = {
+  verdict: Verdict;
+  label: string;
+  lines: string[];
+  colleges: CollegeCard[];
+  unregistered: { id: string; name: string; where: string | null; label: string }[];
+  warning_signs: WarningSigns | null;
+  sources: Source[];
+  confirmed: boolean;
+  notice: string | null;
+};
+
+export type CollegeFilters = { q?: string; kind?: CollegeKind; province?: string; page?: number };

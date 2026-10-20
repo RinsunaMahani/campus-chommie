@@ -48,7 +48,8 @@ export default function HomeScreen() {
             onPress={() => router.push('/updates')}
           />
         )}
-        <ListRow icon="compass" title={t('courseFinder.title')} subtitle={t('courseFinder.entrySub')} onPress={() => router.push('/course-finder')} last />
+        <ListRow icon="compass" title={t('courseFinder.title')} subtitle={t('courseFinder.entrySub')} onPress={() => router.push('/course-finder')} />
+        <ListRow icon="tool" title={t('colleges.entry')} subtitle={t('colleges.entrySub')} onPress={() => router.push('/course-finder/colleges')} last />
       </Card>
 
       <Overline>Your account</Overline>
