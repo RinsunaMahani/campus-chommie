@@ -9,6 +9,8 @@ university: ru
 name: Rhodes University
 city: Makhanda
 academic_year: 2027
+province: Eastern Cape
+province_source: s-ru-where
 release: false
 max_choices: null
 
@@ -292,6 +294,13 @@ programmes:
         - "Offers provisional acceptance from 45 points, and considers 40 to 44 points at the Dean's discretion. Duration is 3 years."
 
 sources:
+  - id: s-ru-where
+    url: "https://www.ru.ac.za/introducingrhodes/"
+    publisher: "Rhodes University"
+    title: "Read for its province"
+    retrieved: 2026-10-20
+    last_verified: null
+    verified_by: "agent draft, needs human check"
   - id: s-ru-prospectus
     url: "https://www.ru.ac.za/media/rhodesuniversity/content/registrar/documents/information/studentrecruitment/RU_READY_Undergraduate_Prospectus_2026_DIGITAL_A5_Landscape_24pp_18Mar2026.pdf"
     publisher: "Rhodes University"

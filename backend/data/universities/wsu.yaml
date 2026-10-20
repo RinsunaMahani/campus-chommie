@@ -10,6 +10,10 @@ university: wsu
 name: Walter Sisulu University
 city: Mthatha, East London, Butterworth and Komani
 academic_year: 2027
+province: Eastern Cape
+province_source: s-wsu-where
+institution_type: comprehensive   # "one of six South African comprehensive universities" (DHET now counts nine)
+institution_type_source: s-wsu-where
 release: false
 max_choices: null
 
@@ -1608,6 +1612,13 @@ programmes:
       subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
 
 sources:
+  - id: s-wsu-where
+    url: "https://www.wsu.ac.za/en/home-wsu/discovery-wsu/important-facts"
+    publisher: "Walter Sisulu University"
+    title: "Read for its province"
+    retrieved: 2026-10-20
+    last_verified: null
+    verified_by: "agent draft, needs human check"
   - id: s-wsu-brochure
     url: "https://wsu.ac.za/media/attachments/2026/05/27/2027-information-brochure-admission-requirements.pdf"
     publisher: "Walter Sisulu University"

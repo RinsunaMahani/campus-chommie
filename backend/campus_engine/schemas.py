@@ -474,12 +474,26 @@ class CheapThing(_Strict):
     source: str
 
 
+Province = Literal[
+    "Eastern Cape", "Free State", "Gauteng", "KwaZulu-Natal", "Limpopo", "Mpumalanga", "North West",
+    "Northern Cape", "Western Cape",
+]
+#: As a university's own page states its type (DHET groups public universities into general academic,
+#: comprehensive and universities of technology). Only set where the university's page says it.
+InstitutionType = Literal["university_of_technology", "comprehensive"]
+
+
 class University(_Strict):
     university: str
     name: str
     city: str
     academic_year: int
     release: bool = False
+    # Where its main campus is, and its type, each only as a cited page states it; None until then.
+    province: Province | None = None
+    province_source: str | None = None
+    institution_type: InstitutionType | None = None
+    institution_type_source: str | None = None
     max_choices: int | None = None
     points_rules: PointsRule | None = None
     # Why there's no points rule, when there isn't one: shown to the learner instead of a number.
@@ -504,6 +518,12 @@ class University(_Strict):
             problems.append("programme ids must be unique")
         if self.points_rules and self.points_rules.source not in source_ids:
             problems.append(f"points_rules cites unknown source '{self.points_rules.source}'")
+        for value, source, what in ((self.province, self.province_source, "province"),
+                                    (self.institution_type, self.institution_type_source, "institution_type")):
+            if value is not None and (source is None or source not in source_ids):
+                problems.append(f"{what} needs a source from this pack's sources")
+            if value is None and source is not None:
+                problems.append(f"{what}_source given without a {what}")
         for p in self.programmes:
             if p.requirements and p.requirements.source not in source_ids:
                 problems.append(f"{p.id}: requirements cite unknown source '{p.requirements.source}'")
@@ -743,10 +763,6 @@ class UniversityMap(_Strict):
 CollegeKind = Literal["tvet", "private_higher_education", "private_college"]
 #: "public" is a public TVET college; the others are a private institution's place in DHET's registers.
 CollegeStatus = Literal["public", "registered", "provisionally_registered", "cancelled"]
-Province = Literal[
-    "Eastern Cape", "Free State", "Gauteng", "KwaZulu-Natal", "Limpopo", "Mpumalanga", "North West",
-    "Northern Cape", "Western Cape",
-]
 
 
 class WebsiteCheck(_Strict):

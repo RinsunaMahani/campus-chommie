@@ -10,6 +10,10 @@ university: unizulu
 name: University of Zululand
 city: KwaDlangezwa
 academic_year: 2027
+province: KwaZulu-Natal
+province_source: s-unizulu-where
+institution_type: comprehensive   # "Vision: A leading comprehensive African university"
+institution_type_source: s-unizulu-where
 release: false
 max_choices: null
 
@@ -2746,6 +2750,13 @@ programmes:
         - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
 
 sources:
+  - id: s-unizulu-where
+    url: "https://www.unizulu.ac.za/overview/"
+    publisher: "University of Zululand"
+    title: "Read for its province"
+    retrieved: 2026-10-20
+    last_verified: null
+    verified_by: "agent draft, needs human check"
   - id: s-unizulu-policy
     url: "https://www.unizulu.ac.za/wp-content/uploads/2018/07/Policy-and-Procedures-on-Admissions.pdf"
     publisher: "University of Zululand"

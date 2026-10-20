@@ -14,6 +14,10 @@ university: cput
 name: Cape Peninsula University of Technology
 city: Cape Town
 academic_year: 2027
+province: Western Cape
+province_source: s-cput-where
+institution_type: university_of_technology   # its official name, and its own page, say it is a university of technology
+institution_type_source: s-cput-where
 release: false
 max_choices: null
 
@@ -1789,6 +1793,13 @@ programmes:
     requirements: null
 
 sources:
+  - id: s-cput-where
+    url: "https://www.cput.ac.za/about-cput"
+    publisher: "Cape Peninsula University of Technology"
+    title: "Read for its province"
+    retrieved: 2026-10-20
+    last_verified: null
+    verified_by: "agent draft, needs human check"
   - id: s-cput-apply
     url: "https://www.cput.ac.za/study-at-cput/undergraduate/apply"
     publisher: "Cape Peninsula University of Technology"

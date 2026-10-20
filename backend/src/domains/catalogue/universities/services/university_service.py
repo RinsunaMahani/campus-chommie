@@ -37,11 +37,18 @@ def confirmation(uni: University) -> dict:
     return {"confirmed": uni.release, "notice": None if uni.release else UNCONFIRMED_NOTICE}
 
 
+#: How a university's type reads, where its own page states it.
+TYPE_LABELS = {"university_of_technology": "University of technology", "comprehensive": "Comprehensive university"}
+
+
 def summary(uni: University) -> dict:
     return {
         "id": uni.university,
         "name": uni.name,
         "city": uni.city,
+        "province": uni.province,
+        "institution_type": uni.institution_type,
+        "institution_type_label": TYPE_LABELS.get(uni.institution_type) if uni.institution_type else None,
         "academic_year": uni.academic_year,
         "programmes": len(uni.programmes),
         **confirmation(uni),

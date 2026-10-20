@@ -9,6 +9,10 @@ university: univen
 name: University of Venda
 city: Thohoyandou
 academic_year: 2027
+province: Limpopo
+province_source: s-univen-where
+institution_type: comprehensive   # "The University of Venda is a comprehensive university"
+institution_type_source: s-univen-where
 release: false
 max_choices: null
 
@@ -988,6 +992,13 @@ programmes:
         - "NSC 26 with a bachelor's endorsement and level 3 (40-49%) in English, Mathematics, Physical Sciences. Duration is 4 years."
 
 sources:
+  - id: s-univen-where
+    url: "https://www.univen.ac.za/about/"
+    publisher: "University of Venda"
+    title: "Read for its province"
+    retrieved: 2026-10-20
+    last_verified: null
+    verified_by: "agent draft, needs human check"
   - id: s-univen-prospectus
     url: "https://www.univen.ac.za/wp-content/uploads/2026/09/2027-Univen-Undergraduate-Prospectus.pdf"
     publisher: "University of Venda"

@@ -11,6 +11,8 @@ university: spu
 name: Sol Plaatje University
 city: Kimberley
 academic_year: 2027
+province: Northern Cape
+province_source: s-spu-where
 release: false
 max_choices: null
 
@@ -449,6 +451,13 @@ programmes:
         - "Your NSC must show admission to bachelor's degree study."
 
 sources:
+  - id: s-spu-where
+    url: "https://www.spu.ac.za/index.php/about-spu/"
+    publisher: "Sol Plaatje University"
+    title: "Read for its province"
+    retrieved: 2026-10-20
+    last_verified: null
+    verified_by: "agent draft, needs human check"
   - id: s-spu-apply
     url: "https://www.spu.ac.za/index.php/how-to-apply/"
     publisher: "Sol Plaatje University"

@@ -7,6 +7,13 @@ import { t } from '@/shared/i18n';
 
 export { formatDay } from '@/shared/lib/dates';
 
+/** "Bloemfontein and Welkom, Free State · University of technology": only the parts a source states. */
+export function placeLine(u: { city?: string | null; province?: string | null; institution_type_label?: string | null }): string | undefined {
+  const where = [u.city, u.province].filter(Boolean).join(', ');
+  const line = [where, u.institution_type_label].filter(Boolean).join(' · ');
+  return line || undefined;
+}
+
 /** "18 days left", "1 day left", "Last day". */
 export function daysLeft(days: number): string {
   if (days <= 0) return t('courseFinder.lastDay');

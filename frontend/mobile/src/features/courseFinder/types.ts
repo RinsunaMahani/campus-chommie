@@ -18,6 +18,11 @@ export type UniversitySummary = Confirmation & {
   id: string;
   name: string;
   city: string | null;
+  /** Only where a cited page states it; null until then. */
+  province?: string | null;
+  institution_type?: 'university_of_technology' | 'comprehensive' | null;
+  /** "University of technology", "Comprehensive university"; null where no page states the type. */
+  institution_type_label?: string | null;
   academic_year: number | null;
   programmes: number;
 };

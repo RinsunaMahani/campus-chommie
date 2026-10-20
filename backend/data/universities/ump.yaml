@@ -9,6 +9,8 @@ university: ump
 name: University of Mpumalanga
 city: Mbombela
 academic_year: 2027
+province: Mpumalanga
+province_source: s-ump-where
 release: false
 max_choices: 2                 # "maximum of two choices"
 
@@ -434,6 +436,13 @@ programmes:
         - "UMP admits you provisionally on your final Grade 11 results; final admission rests on your final Grade 12 results."
 
 sources:
+  - id: s-ump-where
+    url: "https://www.ump.ac.za/About-us/UMP-at-a-Glance"
+    publisher: "University of Mpumalanga"
+    title: "Read for its province"
+    retrieved: 2026-10-20
+    last_verified: null
+    verified_by: "agent draft, needs human check"
   - id: s-ump-aps
     url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Education/School-of-Early-Childhood-Education/Bachelor-of-Education-in-Foundation-Phase-Teaching.aspx"
     publisher: "University of Mpumalanga"

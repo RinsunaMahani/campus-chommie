@@ -12,6 +12,8 @@ university: ufs
 name: University of the Free State
 city: Bloemfontein and QwaQwa
 academic_year: 2027
+province: Free State
+province_source: s-ufs-where
 release: false
 max_choices: null
 
@@ -2080,6 +2082,13 @@ programmes:
         - "You can't apply for this directly: apply for the mainstream programme, and UFS places you here if you qualify and space allows, higher scores first (2027 prospectus)."
 
 sources:
+  - id: s-ufs-where
+    url: "https://www.ufs.ac.za/about-the-ufs"
+    publisher: "University of the Free State"
+    title: "Read for its province"
+    retrieved: 2026-10-20
+    last_verified: null
+    verified_by: "agent draft, needs human check"
   - id: s-ufs-rules
     url: "https://www.ufs.ac.za/docs/librariesprovider25/default-document-library/2027-mbchb-selection-rules.pdf?sfvrsn=34af520_0"
     publisher: "University of the Free State"

@@ -9,6 +9,8 @@ university: ul
 name: University of Limpopo
 city: Polokwane
 academic_year: 2027
+province: Limpopo
+province_source: s-ul-where
 release: false
 max_choices: null
 
@@ -774,6 +776,13 @@ programmes:
         - "Duration is 4 years."
 
 sources:
+  - id: s-ul-where
+    url: "https://www.ul.ac.za/about-us/"
+    publisher: "University of Limpopo"
+    title: "Read for its province"
+    retrieved: 2026-10-20
+    last_verified: null
+    verified_by: "agent draft, needs human check"
   - id: s-ul-prospectus-2027
     url: "https://www.ul.ac.za/wp-content/uploads/2025/03/Undergraduate-Prospectus-2027.pdf"
     publisher: "University of Limpopo"

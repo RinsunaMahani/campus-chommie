@@ -8,6 +8,8 @@ university: ufh
 name: University of Fort Hare
 city: Alice and East London
 academic_year: 2027
+province: Eastern Cape
+province_source: s-ufh-where
 release: false
 max_choices: null
 
@@ -28,6 +30,13 @@ applications:
 programmes: []
 
 sources:
+  - id: s-ufh-where
+    url: "https://www.ufh.ac.za/student/our-campuses"
+    publisher: "University of Fort Hare"
+    title: "Read for its province"
+    retrieved: 2026-10-20
+    last_verified: null
+    verified_by: "agent draft, needs human check"
   - id: s-ufh-apply
     url: "https://www.ufh.ac.za/apply/apply-undergraduate"
     publisher: "University of Fort Hare"
