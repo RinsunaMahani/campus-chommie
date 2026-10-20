@@ -436,6 +436,7 @@ draft: `release: false` until a person compares the pack with the registers.
   parked, suspended, empty or under construction), so the app shows no link for them. Argon found newer sites for
   most (for example `ksdcollege.edu.za`, `malutitvet.co.za`, `coastalkzn.co.za`; Argon's `argon-round3/task4-tvet-dates`
   in Rinsuna's Downloads). A person must confirm each is the college's own (the college's or DHET's page
+  linking to it) before it replaces DHET's address in the pack.
 - [ ] **Entry requirements**: colleges don't publish points scales, so the app says "check with the college" and
   links its site. TVET admission rules (NC(V), Report 191) could come later, each from its own source.
 
