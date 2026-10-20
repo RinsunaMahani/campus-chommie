@@ -27,7 +27,7 @@ applications:
   windows:
     - intake: 2027
       source: s-su-howto
-      opens: null
+      opens: 2026-04-01              # the 2027-intake guide (published March 2026): "apply ... from 1 April" (checked 20 Oct 2026)
       closes: 2026-07-31
       note: "The Diploma in Public Accountability closes on 15 December 2026."
 

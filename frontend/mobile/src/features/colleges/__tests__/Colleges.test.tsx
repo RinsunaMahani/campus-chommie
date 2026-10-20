@@ -36,6 +36,7 @@ const acme: CollegeCard = {
   registration_number: '2010/FE07/001',
   provinces: ['Gauteng'],
   website: 'www.acme.co.za',
+  website_problem: null,
   lines: ['Acme College (Pty) Ltd is registered with the Department of Higher Education and Training (registration number 2010/FE07/001).'],
 };
 const list = (colleges: CollegeCard[], page = 1, pages = 1): CollegeListAnswer => ({
@@ -154,4 +155,18 @@ test('the check answers in words and lists what matched', async () => {
   expect(screen.getByText('Where DHET says it operates: Global')).toBeTruthy();
   expect(screen.getByText('The absence of a physical address.')).toBeTruthy();
   expect(screen.getByText('Register of Private Higher Education Institutions')).toBeTruthy();
+});
+
+
+test('a dead or parked website is described, never linked', async () => {
+  jest.spyOn(collegesApi, 'college').mockResolvedValue({
+    college: {
+      ...acme, website: null, phone: null, head_office: null, sites: [], qualifications: [], notes: [], occupational: [], sources: [],
+      website_problem: { listed: 'www.parked.co.za', note: 'The address is a parked domain.', checked: '2026-10-20' },
+    },
+    warning_signs: null, confirmed: false, notice: null,
+  });
+  render(<CollegeScreen />);
+  expect(await screen.findByText(/DHET lists www\.parked\.co\.za, but it isn't the college's working site/)).toBeTruthy();
+  expect(screen.queryByRole('link', { name: /parked/ })).toBeNull();
 });

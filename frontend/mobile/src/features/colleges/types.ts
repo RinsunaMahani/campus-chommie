@@ -12,8 +12,10 @@ export type CollegeCard = {
   label: string;
   registration_number: string | null;
   provinces: string[];
-  /** As DHET prints it: "www.example.co.za". */
+  /** As DHET prints it ("www.example.co.za"), only when it opened as the college's own site. */
   website: string | null;
+  /** DHET's listed address when it doesn't work (gone, parked, suspended): never a link. */
+  website_problem: { listed: string; note: string; checked: string } | null;
   lines: string[];
 };
 

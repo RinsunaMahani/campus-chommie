@@ -41,7 +41,7 @@ def test_the_list_needs_no_account_and_counts_every_status(client):
     assert (data["confirmed"], data["notice"]) == (False, "Not yet confirmed by the team.")
     first = data["colleges"][0]
     assert set(first) == {"id", "name", "kind", "kind_label", "status", "label", "registration_number",
-                          "provinces", "website", "lines"}
+                          "provinces", "website", "website_problem", "lines"}
 
 
 def test_a_search_finds_tvet_colleges_by_the_trade_they_teach(client):
@@ -186,3 +186,16 @@ def test_colleges_are_limited_per_ip(client, limits_on):
     for path, query in ((BASE, {}), (f"{BASE}/check", {"name": "acme"}), (f"{BASE}/port-elizabeth-tvet-college", {})):
         codes = [client.get(path, query_string=query).status_code for _ in range(121)]
         assert codes[:120] == [200] * 120 and codes[120] == 429
+
+
+def test_a_dead_or_parked_tvet_website_is_never_a_link(client):
+    """DHET still lists addresses that no longer work; some are parked domains anyone could buy."""
+    lovedale = client.get(f"{BASE}/lovedale-tvet-college").get_json()["data"]["college"]
+    assert lovedale["website"] is None
+    assert lovedale["website_problem"] == {
+        "listed": "www.lovedalecollege.co.za",
+        "note": "The address is a parked domain (a page with only the domain's name), not the college's site.",
+        "checked": "2026-10-20",
+    }
+    buffalo = client.get(f"{BASE}/buffalo-city-tvet-college").get_json()["data"]["college"]
+    assert buffalo["website"] == "www.bccollege.co.za" and buffalo["website_problem"] is None

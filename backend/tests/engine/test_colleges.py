@@ -132,3 +132,10 @@ def test_the_real_pack_loads_and_counts_dhets_lists():
     assert len(pack.warning_signs.items) == 11
     # Contact persons' names never become part of a college's name.
     assert not any(" Mr " in c.name or " Mrs " in c.name or " Ms " in c.name for c in pack.colleges)
+
+
+def test_every_public_tvet_website_has_been_checked():
+    pack = load_colleges()
+    tvet = [c for c in pack.colleges if c.kind == "tvet" and c.website]
+    assert tvet and all(c.website_check is not None for c in tvet)
+    assert sum(not c.website_check.works for c in tvet) == 25

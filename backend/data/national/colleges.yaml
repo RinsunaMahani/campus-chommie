@@ -18,6 +18,11 @@
 # Gaps for the team (docs/OPEN_QUESTIONS.md): the IIE's number read from the register's plain text (its
 # table cell is garbled); Empilweni Education and Adu Dlamini Business and Engineering Academy have no
 # registration number in the register; three numbers appear on two entries each.
+#
+# website_check (20 Oct 2026): we opened each public TVET college's website as DHET lists it. 25 of the 50 no
+# longer work (gone, parked, suspended, empty or under construction): the app shows no link for those, because
+# anyone could buy a parked address. Argon found newer sites for many; a person must confirm each is the
+# college's own before it replaces DHET's (docs/OPEN_QUESTIONS.md).
 
 release: false
 warning_signs:
@@ -46,6 +51,10 @@ colleges:
   provinces:
   - Eastern Cape
   website: www.bccollege.co.za
+  website_check:
+    checked: 2026-10-20
+    works: true
+    note: "Opened as the college's own site."
   phone: 043 704 9201
   head_office:
   - -32.99622
@@ -58,6 +67,10 @@ colleges:
   provinces:
   - Eastern Cape
   website: www.emcol.co.za
+  website_check:
+    checked: 2026-10-20
+    works: false
+    note: "The address opens an error page (404)."
   phone: 086 038 8879
   head_office:
   - -33.7898
@@ -70,6 +83,10 @@ colleges:
   provinces:
   - Eastern Cape
   website: www.ikhalacollege.co.za
+  website_check:
+    checked: 2026-10-20
+    works: true
+    note: "The site answered but was busy (too many requests) when we checked."
   phone: 047 873 8843
   head_office:
   - -31.909785
@@ -82,6 +99,10 @@ colleges:
   provinces:
   - Eastern Cape
   website: www.ingwecollege.co.za
+  website_check:
+    checked: 2026-10-20
+    works: false
+    note: "The address doesn't open: there is no website there now."
   phone: 039 255 0346/1204
   head_office:
   - -30.899758
@@ -94,6 +115,10 @@ colleges:
   provinces:
   - Eastern Cape
   website: www.kinghintsacollege.edu.za
+  website_check:
+    checked: 2026-10-20
+    works: true
+    note: "Opened as the college's own site."
   phone: 047 401 6400
   head_office:
   - -32.327206
@@ -118,6 +143,10 @@ colleges:
   provinces:
   - Eastern Cape
   website: www.lovedalecollege.co.za
+  website_check:
+    checked: 2026-10-20
+    works: false
+    note: "The address is a parked domain (a page with only the domain's name), not the college's site."
   phone: 043 642 1331
   head_office:
   - -32.872
@@ -130,6 +159,10 @@ colleges:
   provinces:
   - Eastern Cape
   website: www.pecollege.edu.za
+  website_check:
+    checked: 2026-10-20
+    works: true
+    note: "Opened as the college's own site."
   phone: 041 585 7771
   head_office:
   - -33.96098
@@ -142,6 +175,10 @@ colleges:
   provinces:
   - Free State
   website: www.flaviusmareka.net
+  website_check:
+    checked: 2026-10-20
+    works: true
+    note: "Opened as the college's own site."
   phone: 016 976 0815/0829
   head_office:
   - -26.82456
@@ -154,6 +191,10 @@ colleges:
   provinces:
   - Free State
   website: www.goldfieldsfet.edu.za
+  website_check:
+    checked: 2026-10-20
+    works: false
+    note: "The address doesn't open: there is no website there now."
   phone: 057 392 1027
   head_office:
   - -27.983566
@@ -166,6 +207,10 @@ colleges:
   provinces:
   - Free State
   website: www.malutifet.org.za
+  website_check:
+    checked: 2026-10-20
+    works: false
+    note: "The address doesn't open: there is no website there now."
   phone: 058 713 3048/6100
   head_office:
   - -28.52702
@@ -178,6 +223,10 @@ colleges:
   provinces:
   - Free State
   website: www.motheofet.co.za
+  website_check:
+    checked: 2026-10-20
+    works: false
+    note: "The address is a parked domain (a page with only the domain's name), not the college's site."
   phone: 051 406 9300/1
   head_office:
   - -29.123384
@@ -190,6 +239,10 @@ colleges:
   provinces:
   - Gauteng
   website: www.cjc.co.za
+  website_check:
+    checked: 2026-10-20
+    works: false
+    note: "The address is a parked domain (a page with only the domain's name), not the college's site."
   phone: 011 484 1388/351 6000
   head_office:
   - -26.1749
@@ -202,6 +255,10 @@ colleges:
   provinces:
   - Gauteng
   website: www.eec.edu.za
+  website_check:
+    checked: 2026-10-20
+    works: true
+    note: "Opened as the college's own site."
   phone: 011 736 4400/730 6600
   head_office:
   - -26.28894
@@ -214,6 +271,10 @@ colleges:
   provinces:
   - Gauteng
   website: www.ewc.edu.za
+  website_check:
+    checked: 2026-10-20
+    works: true
+    note: "Opened as the college's own site."
   phone: 011 323 1600
   head_office:
   - -26.28864167
@@ -226,6 +287,10 @@ colleges:
   provinces:
   - Gauteng
   website: www.sedcol.co.za
+  website_check:
+    checked: 2026-10-20
+    works: true
+    note: "Opened as the college's own site."
   phone: 016 422 6645
   head_office:
   - -26.186935
@@ -238,6 +303,10 @@ colleges:
   provinces:
   - Gauteng
   website: www.swgc.co.za
+  website_check:
+    checked: 2026-10-20
+    works: true
+    note: "Opened as the college's own site."
   phone: 011 984 1260
   head_office:
   - -26.67825333
@@ -250,6 +319,10 @@ colleges:
   provinces:
   - Gauteng
   website: www.tnc4fet.co.za
+  website_check:
+    checked: 2026-10-20
+    works: false
+    note: "The address doesn't open: there is no website there now."
   phone: 012 401 1950
   head_office:
   - -26.21410667
@@ -262,6 +335,10 @@ colleges:
   provinces:
   - Gauteng
   website: www.tsc.edu.za
+  website_check:
+    checked: 2026-10-20
+    works: true
+    note: "Opened as the college's own site."
   phone: 012 401 5000/6/73
   head_office:
   - -25.75030667
@@ -274,6 +351,10 @@ colleges:
   provinces:
   - Gauteng
   website: www.westcol.co.za
+  website_check:
+    checked: 2026-10-20
+    works: true
+    note: "Opened as the college's own site."
   phone: 011 693 3608
   head_office:
   - -27.423622
@@ -286,6 +367,10 @@ colleges:
   provinces:
   - KwaZulu-Natal
   website: www.coastalkzn.cao.za
+  website_check:
+    checked: 2026-10-20
+    works: false
+    note: "The address doesn't open: there is no website there now."
   phone: 031 905 7000
   head_office:
   - -30.512409
@@ -298,6 +383,10 @@ colleges:
   provinces:
   - KwaZulu-Natal
   website: www.efet.co.za
+  website_check:
+    checked: 2026-10-20
+    works: false
+    note: "The address is a parked domain (a page with only the domain's name), not the college's site."
   phone: 031 716 6700
   head_office:
   - -29.823295
@@ -310,6 +399,10 @@ colleges:
   provinces:
   - KwaZulu-Natal
   website: www.esayidifet.co.za
+  website_check:
+    checked: 2026-10-20
+    works: true
+    note: "Opened as the college's own site."
   phone: 039 684 0110
   head_office:
   - -30.271051
@@ -322,6 +415,10 @@ colleges:
   provinces:
   - KwaZulu-Natal
   website: www.majuba.edu.za
+  website_check:
+    checked: 2026-10-20
+    works: true
+    note: "Opened as the college's own site."
   phone: 034 326 4888
   head_office:
   - -29.56385
@@ -346,6 +443,10 @@ colleges:
   provinces:
   - KwaZulu-Natal
   website: www.mthashanafet.co.za
+  website_check:
+    checked: 2026-10-20
+    works: false
+    note: "The address doesn't open: there is no website there now."
   phone: 034 980 1010
   head_office:
   - -30.48376
@@ -358,6 +459,10 @@ colleges:
   provinces:
   - KwaZulu-Natal
   website: www.thekwinicollege.co.za
+  website_check:
+    checked: 2026-10-20
+    works: false
+    note: "The address is a parked domain (a page with only the domain's name), not the college's site."
   phone: 031 250 8400
   head_office:
   - -30.591159195
@@ -370,6 +475,10 @@ colleges:
   provinces:
   - KwaZulu-Natal
   website: www.umfolozicollege.co.za
+  website_check:
+    checked: 2026-10-20
+    works: false
+    note: "The site's hosting account is suspended."
   phone: 035 902 9503
   head_office:
   - -32.076087
@@ -382,6 +491,10 @@ colleges:
   provinces:
   - KwaZulu-Natal
   website: www.ufetc.edu.za
+  website_check:
+    checked: 2026-10-20
+    works: false
+    note: "The address sends you to a web-hosting company's page, not the college's site."
   phone: 033 341 2102
   head_office:
   - -30.22546
@@ -394,6 +507,10 @@ colleges:
   provinces:
   - Limpopo
   website: www.capricorncollege.edu.za
+  website_check:
+    checked: 2026-10-20
+    works: true
+    note: "Opened as the college's own site."
   phone: 015 291 3118/5
   head_office:
   - -23.533024
@@ -406,6 +523,10 @@ colleges:
   provinces:
   - Limpopo
   website: www.lephalalefetcollege.co.za
+  website_check:
+    checked: 2026-10-20
+    works: false
+    note: "The address is a parked domain (a page with only the domain's name), not the college's site."
   phone: 014 763 2252/1014
   head_office:
   - -23.68407
@@ -418,6 +539,10 @@ colleges:
   provinces:
   - Limpopo
   website: www.letabafet.co.za
+  website_check:
+    checked: 2026-10-20
+    works: false
+    note: "The address doesn't open: there is no website there now."
   phone: 015 307 5440
   head_office:
   - -23.835698
@@ -430,6 +555,10 @@ colleges:
   provinces:
   - Limpopo
   website: www.mopanicollege.edu.za
+  website_check:
+    checked: 2026-10-20
+    works: false
+    note: "The site says it is under construction or 'back soon'."
   phone: 015 781 5721/ 5
   head_office:
   - -23.946732
@@ -442,6 +571,10 @@ colleges:
   provinces:
   - Limpopo
   website: www.sekfetcol.co.za
+  website_check:
+    checked: 2026-10-20
+    works: false
+    note: "The address doesn't open: there is no website there now."
   phone: 013 269 0278/9000
   head_office:
   - -25.094191
@@ -454,6 +587,10 @@ colleges:
   provinces:
   - Limpopo
   website: www.vhembefet.co.za
+  website_check:
+    checked: 2026-10-20
+    works: false
+    note: "The address doesn't open: there is no website there now."
   phone: 015 963 3156
   head_office:
   - -23.03779
@@ -466,6 +603,10 @@ colleges:
   provinces:
   - Limpopo
   website: www.waterbergcollege.co.za
+  website_check:
+    checked: 2026-10-20
+    works: true
+    note: "Opened as the college's own site."
   phone: 015 491 8581/8602
   head_office:
   - -24.179973
@@ -478,6 +619,10 @@ colleges:
   provinces:
   - Mpumalanga
   website: www.ehlanzenicollege.co.za
+  website_check:
+    checked: 2026-10-20
+    works: true
+    note: "Opened as the college's own site."
   phone: 013 752 7105
   head_office:
   - -25.47313
@@ -490,6 +635,10 @@ colleges:
   provinces:
   - Mpumalanga
   website: www.gscollege.co.za
+  website_check:
+    checked: 2026-10-20
+    works: false
+    note: "The address doesn't open: there is no website there now."
   phone: 017 712 9040/1458
   head_office:
   - -26.565954
@@ -502,6 +651,10 @@ colleges:
   provinces:
   - Mpumalanga
   website: www.nkangalafet.edu.za
+  website_check:
+    checked: 2026-10-20
+    works: false
+    note: "The address opens an empty page."
   phone: 013 690 1430 /3824
   head_office:
   - -25.877663
@@ -514,6 +667,10 @@ colleges:
   provinces:
   - Northern Cape
   website: www.ncrfet.edu.za
+  website_check:
+    checked: 2026-10-20
+    works: false
+    note: "The address doesn't open: there is no website there now."
   phone: 054 331 3836
   head_office:
   - -28.43616
@@ -526,6 +683,10 @@ colleges:
   provinces:
   - Northern Cape
   website: www.ncufetcollege.edu.za
+  website_check:
+    checked: 2026-10-20
+    works: false
+    note: "The address doesn't open: there is no website there now."
   phone: 053 839 2000/2061
   head_office:
   - -28.74503
@@ -538,6 +699,10 @@ colleges:
   provinces:
   - North West
   website: www.orbitcollege.co.za
+  website_check:
+    checked: 2026-10-20
+    works: true
+    note: "Opened as the college's own site."
   phone: 014 592 7014
   head_office:
   - -25.63787
@@ -550,6 +715,10 @@ colleges:
   provinces:
   - North West
   website: www.taletsofetcollege.co.za
+  website_check:
+    checked: 2026-10-20
+    works: false
+    note: "The address shows an empty folder listing, not a website."
   phone: 018 384 2346/7/9
   head_office:
   - -25.828351
@@ -562,6 +731,10 @@ colleges:
   provinces:
   - North West
   website: www.vuselelacollege.co.za
+  website_check:
+    checked: 2026-10-20
+    works: true
+    note: "Opened as the college's own site."
   phone: 018 406 7800
   head_office:
   - -26.86347
@@ -574,6 +747,10 @@ colleges:
   provinces:
   - Western Cape
   website: www.bolandcollege.com
+  website_check:
+    checked: 2026-10-20
+    works: true
+    note: "Opened as the college's own site."
   phone: 021 886 7111/2
   head_office:
   - -33.92666666
@@ -586,6 +763,10 @@ colleges:
   provinces:
   - Western Cape
   website: www.cct.edu.za
+  website_check:
+    checked: 2026-10-20
+    works: false
+    note: "The site says it is under construction or 'back soon'."
   phone: 021 404 6700
   head_office:
   - -33.55421
@@ -598,6 +779,10 @@ colleges:
   provinces:
   - Western Cape
   website: www.falsebaycollege.co.za
+  website_check:
+    checked: 2026-10-20
+    works: true
+    note: "Opened as the college's own site."
   phone: 021 003 0600
   head_office:
   - -34.62674
@@ -610,6 +795,10 @@ colleges:
   provinces:
   - Western Cape
   website: www.northlink.co.za
+  website_check:
+    checked: 2026-10-20
+    works: true
+    note: "Opened as the college's own site."
   phone: 021 970 9000/18
   head_office:
   - -33.553627
@@ -622,6 +811,10 @@ colleges:
   provinces:
   - Western Cape
   website: www.sccollege.co.za
+  website_check:
+    checked: 2026-10-20
+    works: true
+    note: "Opened as the college's own site."
   phone: 044 884 0359
   head_office:
   - -33.57562
@@ -634,6 +827,10 @@ colleges:
   provinces:
   - Western Cape
   website: www.westcoastcollege.co.za
+  website_check:
+    checked: 2026-10-20
+    works: true
+    note: "Opened as the college's own site."
   phone: 022 482 1143
   head_office:
   - -33.4621
