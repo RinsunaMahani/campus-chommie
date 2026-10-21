@@ -100,6 +100,7 @@ def _register_models() -> None:
     from src.domains.student.money import models as _money  # noqa: F401
     from src.domains.student.profile import models as _profile  # noqa: F401
     from src.domains.student.saved_funding import models as _saved_funding  # noqa: F401
+    from src.domains.student.timetable import models as _timetable  # noqa: F401
     # classes schema: classes, members, reps, announcements and verified events
     from src.domains.classes.classes import models as _classes  # noqa: F401
     from src.domains.classes.events import models as _events  # noqa: F401
@@ -131,6 +132,7 @@ def _register_exporters() -> None:
     from src.domains.student.money.services import money_service
     from src.domains.student.profile.services import profile_service
     from src.domains.student.saved_funding.services import saved_funding_service
+    from src.domains.student.timetable.services import timetable_service
     from src.shared.privacy import privacy
 
     privacy.register_exporter("profile", profile_service.export_for)
@@ -141,6 +143,7 @@ def _register_exporters() -> None:
     privacy.register_exporter("alerts", notification_service.export_for)
     privacy.register_exporter("alert_switches", notification_service.export_switches)
     privacy.register_exporter("saved_funding", saved_funding_service.export_for)
+    privacy.register_exporter("timetable", timetable_service.export_for)
 
 
 def _register_daily_checks() -> None:

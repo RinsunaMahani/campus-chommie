@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from datetime import date
 
-_PLURALS = {"quiz": "quizzes"}
+_PLURALS = {"quiz": "quizzes", "class": "classes", "clash": "clashes"}
 
 
 def rand(cents: int) -> str:

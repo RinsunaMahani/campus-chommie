@@ -41,7 +41,7 @@ export default function TabsLayout() {
         tabBarActiveTintColor: colors.accentDeep,
         tabBarInactiveTintColor: colors.textFaint,
         // A line height, or a label with a descender ('Money') loses its tail.
-        tabBarLabelStyle: { fontFamily: fonts.bold, fontSize: 12.5, lineHeight: 18, marginTop: 2 },
+        tabBarLabelStyle: { fontFamily: fonts.bold, fontSize: 11.5, lineHeight: 18, marginTop: 2 }, // five tabs: "Timetable" fits
         // Each tab stacks 5 + 28 (icon) + 20 (label) + 5 = 58 under this padding. The dock's 76 holds that with
         // the same gap above the pill as under the words; any less and the label's bottom is cut off.
         tabBarItemStyle: { paddingTop: 11 },
@@ -64,6 +64,7 @@ export default function TabsLayout() {
         sceneStyle: { backgroundColor: colors.porcelain },
       }}>
       <Tabs.Screen name="home" options={tab('Home', 'home')} />
+      <Tabs.Screen name="timetable" options={tab('Timetable', 'clock')} />
       <Tabs.Screen name="week" options={tab('Week', 'calendar')} />
       <Tabs.Screen name="money" options={tab('Money', 'credit-card')} />
       <Tabs.Screen name="support" options={tab('Support', 'life-buoy')} />

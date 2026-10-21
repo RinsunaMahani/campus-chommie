@@ -20,9 +20,13 @@ export type Palette = { [K in keyof typeof forestColors]: string } & {
   page: string;
   /** Whether screens draw the forest wallpaper behind themselves. */
   wallpaper: boolean;
+  /** One colour per module in the timetable and calendar, readable on the cards (as text and as a bar). */
+  classColours: readonly string[];
 };
 
-export const forest: Palette = { ...forestColors, page: forestColors.porcelain, wallpaper: true };
+const CLASS_COLOURS = ['#7FD99A', '#7CC4FF', '#C9A7FF', '#FFC266', '#FF9CCB', '#5ED6C8', '#C6E77A', '#FFA97A'] as const;
+
+export const forest: Palette = { ...forestColors, page: forestColors.porcelain, wallpaper: true, classColours: CLASS_COLOURS };
 
 export const night: Palette = {
   ink: '#FFFFFF', // titles, icons, the main text on cards
@@ -54,6 +58,7 @@ export const night: Palette = {
   onAccentTint: 'rgba(255, 255, 255, 0.14)',
   page: '#000000',
   wallpaper: false,
+  classColours: CLASS_COLOURS,
 };
 
 const PaletteContext = createContext<Palette>(forest);
