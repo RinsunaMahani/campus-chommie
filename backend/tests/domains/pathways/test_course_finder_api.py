@@ -69,6 +69,8 @@ def test_assess_lists_every_programme_best_tiers_first(client):
     mbchb = next(m for m in data["matches"] if m["programme"] == "mbchb")
     assert mbchb["points"] == 47
     assert mbchb["explanation"][0] == "Your points: 47 (minimum 38)."
+    # Each programme names its faculty (or null) and its fields, so the app can group them.
+    assert "faculty" in mbchb and "medicine" in mbchb["fields"]
 
 
 def test_a_weak_subject_explains_what_is_missing(client):

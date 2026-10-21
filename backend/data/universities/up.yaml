@@ -244,6 +244,7 @@ programmes:
 
   - id: badmin_public_admin
     name: "Bachelor of Administration in Public Administration and International Relations"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [public_administration, humanities]
     requirements:
       source: s-up-req-2027
@@ -256,6 +257,7 @@ programmes:
 
   - id: bcom_accounting_sciences
     name: "BCom in Accounting Sciences"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [commerce, accounting]
     requirements:
       source: s-up-req-2027
@@ -264,6 +266,7 @@ programmes:
 
   - id: bcom
     name: "BCom (three-year programme)"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [commerce]
     requirements:
       source: s-up-req-2027
@@ -272,6 +275,7 @@ programmes:
 
   - id: bcom_extended
     name: "BCom (four-year programme)"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [commerce]
     selective: true
     selection_note: "UP marks this as a selection programme: additional selection criteria apply."
@@ -282,6 +286,7 @@ programmes:
 
   - id: bcom_investment_management
     name: "BCom specialising in Investment Management"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [commerce, finance]
     requirements:
       source: s-up-req-2027
@@ -290,6 +295,7 @@ programmes:
 
   - id: bcom_econometrics
     name: "BCom specialising in Econometrics"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [commerce, economics]
     requirements:
       source: s-up-req-2027
@@ -298,6 +304,7 @@ programmes:
 
   - id: bcom_economics
     name: "BCom specialising in Economics"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [commerce, economics]
     requirements:
       source: s-up-req-2027
@@ -306,6 +313,7 @@ programmes:
 
   - id: bcom_financial_management
     name: "BCom specialising in Financial Management Sciences"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [commerce, finance]
     requirements:
       source: s-up-req-2027
@@ -314,6 +322,7 @@ programmes:
 
   - id: bcom_law
     name: "BCom specialising in Law"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [commerce, law]
     requirements:
       source: s-up-req-2027
@@ -322,6 +331,7 @@ programmes:
 
   - id: bcom_statistics_data_science
     name: "BCom specialising in Statistics and Data Science"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [commerce, mathematical_sciences]
     requirements:
       source: s-up-req-2027
@@ -330,6 +340,7 @@ programmes:
 
   - id: bcom_agribusiness
     name: "BCom specialising in Agribusiness Management"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [commerce, agriculture]
     requirements:
       source: s-up-req-2027
@@ -346,6 +357,7 @@ programmes:
 
   - id: bcom_business_management
     name: "BCom specialising in Business Management"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [commerce, management]
     requirements:
       source: s-up-req-2027
@@ -354,6 +366,7 @@ programmes:
 
   - id: bcom_supply_chain
     name: "BCom specialising in Supply Chain Management"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [commerce, management]
     requirements:
       source: s-up-req-2027
@@ -362,6 +375,7 @@ programmes:
 
   - id: bcom_marketing
     name: "BCom specialising in Marketing Management"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [commerce, management]
     requirements:
       source: s-up-req-2027
@@ -370,6 +384,7 @@ programmes:
 
   - id: bcom_human_resources
     name: "BCom specialising in Human Resource Management"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [commerce, management]
     requirements:
       source: s-up-req-2027
@@ -378,6 +393,7 @@ programmes:
 
   - id: bed_early_childhood
     name: "BEd in Early Childhood Care and Education"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-up-req-2027
@@ -386,6 +402,7 @@ programmes:
 
   - id: bed_foundation_phase
     name: "BEd in Foundation Phase Teaching (Grade R to 3)"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-up-req-2027
@@ -394,6 +411,7 @@ programmes:
 
   - id: bed_intermediate_phase
     name: "BEd in Intermediate Phase Teaching (Grades 4 to 6)"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-up-req-2027
@@ -402,6 +420,7 @@ programmes:
 
   - id: bed_senior_fet
     name: "BEd in Senior Phase and FET Teaching (Grades 7 to 12)"
+    faculty: "Faculty of Education"
     fields: [education]
     selective: true
     selection_note: "UP marks this as a selection programme: additional selection criteria apply."
@@ -412,6 +431,7 @@ programmes:
 
   - id: hcert_sports_sciences
     name: "Higher Certificate in Sports Sciences (one-year)"
+    faculty: "Faculty of Education"
     fields: [sport_science, education]
     selective: true
     selection_note: "UP marks this as a selection programme: additional selection criteria apply."
@@ -422,6 +442,7 @@ programmes:
 
   - id: hcert_sports_sciences_online
     name: "Higher Certificate in Sports Sciences (two-year, part-time online)"
+    faculty: "Faculty of Education"
     fields: [sport_science, education]
     selective: true
     selection_note: "UP marks this as a selection programme: additional selection criteria apply."
@@ -432,6 +453,7 @@ programmes:
 
   - id: llb
     name: "Bachelor of Laws (LLB)"
+    faculty: "Faculty of Law"
     fields: [law]
     requirements:
       source: s-up-req-2027
@@ -440,6 +462,7 @@ programmes:
 
   - id: beng_chemical
     name: "BEng in Chemical Engineering"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [engineering]
     requirements:
       source: s-up-req-2027
@@ -448,6 +471,7 @@ programmes:
 
   - id: beng_civil
     name: "BEng in Civil Engineering"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [engineering]
     requirements:
       source: s-up-req-2027
@@ -456,6 +480,7 @@ programmes:
 
   - id: beng_computer
     name: "BEng in Computer Engineering"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [engineering, computing]
     requirements:
       source: s-up-req-2027
@@ -464,6 +489,7 @@ programmes:
 
   - id: beng_electrical
     name: "BEng in Electrical Engineering"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [engineering]
     requirements:
       source: s-up-req-2027
@@ -472,6 +498,7 @@ programmes:
 
   - id: beng_electronic
     name: "BEng in Electronic Engineering"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [engineering]
     requirements:
       source: s-up-req-2027
@@ -480,6 +507,7 @@ programmes:
 
   - id: beng_industrial
     name: "BEng in Industrial Engineering"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [engineering]
     requirements:
       source: s-up-req-2027
@@ -488,6 +516,7 @@ programmes:
 
   - id: beng_mechanical
     name: "BEng in Mechanical Engineering"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [engineering]
     requirements:
       source: s-up-req-2027
@@ -496,6 +525,7 @@ programmes:
 
   - id: beng_metallurgical
     name: "BEng in Metallurgical Engineering"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [engineering]
     requirements:
       source: s-up-req-2027
@@ -504,6 +534,7 @@ programmes:
 
   - id: beng_mining
     name: "BEng in Mining Engineering"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [engineering]
     requirements:
       source: s-up-req-2027
@@ -512,6 +543,7 @@ programmes:
 
   - id: beng_extended
     name: "BEng, five-year programme (all disciplines)"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [engineering]
     requirements:
       source: s-up-req-2027
@@ -522,6 +554,7 @@ programmes:
 
   - id: bsc_architecture
     name: "BSc in Architecture"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [built_environment]
     selective: true
     selection_note: "UP marks this as a selection programme: additional selection criteria apply."
@@ -532,6 +565,7 @@ programmes:
 
   - id: bsc_construction_management
     name: "BSc in Construction Management"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [built_environment]
     requirements:
       source: s-up-req-2027
@@ -545,6 +579,7 @@ programmes:
   # Check: UP's footnote allowing Accounting marks only Construction Management, but the table row covers all three.
   - id: bsc_real_estate
     name: "BSc in Real Estate"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [built_environment]
     requirements:
       source: s-up-req-2027
@@ -558,6 +593,7 @@ programmes:
   # Check: as for Real Estate.
   - id: bsc_quantity_surveying
     name: "BSc in Quantity Surveying"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [built_environment]
     requirements:
       source: s-up-req-2027
@@ -570,6 +606,7 @@ programmes:
 
   - id: btrp
     name: "Bachelor of Town and Regional Planning"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [built_environment]
     requirements:
       source: s-up-req-2027
@@ -578,6 +615,7 @@ programmes:
 
   - id: bsc_computer_science
     name: "BSc in Computer Science"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [computing]
     requirements:
       source: s-up-req-2027
@@ -586,6 +624,7 @@ programmes:
 
   - id: bsc_it_information_knowledge
     name: "BSc in IT in Information and Knowledge Systems"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [computing]
     requirements:
       source: s-up-req-2027
@@ -594,6 +633,7 @@ programmes:
 
   - id: bit_information_systems
     name: "Bachelor of IT in Information Systems"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [computing]
     requirements:
       source: s-up-req-2027
@@ -602,6 +642,7 @@ programmes:
 
   - id: bis
     name: "Bachelor of Information Science"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [computing, languages_and_communication]
     requirements:
       source: s-up-req-2027
@@ -610,6 +651,7 @@ programmes:
 
   - id: bis_multimedia
     name: "Bachelor of Information Science specialising in Multimedia"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [computing, arts_and_design]
     requirements:
       source: s-up-req-2027
@@ -618,6 +660,7 @@ programmes:
 
   - id: bis_publishing
     name: "Bachelor of Information Science specialising in Publishing"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [languages_and_communication]
     requirements:
       source: s-up-req-2027
@@ -626,6 +669,7 @@ programmes:
 
   - id: bds
     name: "Bachelor of Dental Surgery (BDS)"
+    faculty: "Faculty of Health Sciences"
     fields: [health_sciences, dentistry]
     selective: true
     selection_note: "UP marks this as a selection programme: additional selection criteria apply."
@@ -636,6 +680,7 @@ programmes:
 
   - id: b_oral_hygiene
     name: "Bachelor of Oral Hygiene"
+    faculty: "Faculty of Health Sciences"
     fields: [health_sciences, dentistry]
     selective: true
     selection_note: "UP marks this as a selection programme: additional selection criteria apply."
@@ -646,6 +691,7 @@ programmes:
 
   - id: b_occupational_therapy
     name: "Bachelor of Occupational Therapy"
+    faculty: "Faculty of Health Sciences"
     fields: [health_sciences, rehabilitation]
     selective: true
     selection_note: "UP marks this as a selection programme: additional selection criteria apply."
@@ -656,6 +702,7 @@ programmes:
 
   - id: b_physiotherapy
     name: "Bachelor of Physiotherapy"
+    faculty: "Faculty of Health Sciences"
     fields: [health_sciences, rehabilitation]
     selective: true
     selection_note: "UP marks this as a selection programme: additional selection criteria apply."
@@ -666,6 +713,7 @@ programmes:
 
   - id: b_radiography
     name: "Bachelor of Radiography in Diagnostics"
+    faculty: "Faculty of Health Sciences"
     fields: [health_sciences, radiography]
     selective: true
     selection_note: "UP marks this as a selection programme: additional selection criteria apply."
@@ -676,6 +724,7 @@ programmes:
 
   - id: b_dietetics
     name: "Bachelor of Dietetics"
+    faculty: "Faculty of Health Sciences"
     fields: [health_sciences, nutrition]
     selective: true
     selection_note: "UP marks this as a selection programme: additional selection criteria apply."
@@ -686,6 +735,7 @@ programmes:
 
   - id: b_nursing
     name: "Bachelor of Nursing Science"
+    faculty: "Faculty of Health Sciences"
     fields: [health_sciences, nursing]
     selective: true
     selection_note: "UP marks this as a selection programme: additional selection criteria apply."
@@ -696,6 +746,7 @@ programmes:
 
   - id: mbchb
     name: "Bachelor of Medicine and Surgery (MBChB)"
+    faculty: "Faculty of Health Sciences"
     fields: [health_sciences, medicine, medical_sciences]
     selective: true
     places: 300
@@ -707,6 +758,7 @@ programmes:
 
   - id: b_sports_science
     name: "Bachelor of Sports Science"
+    faculty: "Faculty of Health Sciences"
     fields: [health_sciences, sport_science]
     selective: true
     selection_note: "UP marks this as a selection programme: additional selection criteria apply."
@@ -721,6 +773,7 @@ programmes:
 
   - id: bcmp
     name: "Bachelor of Clinical Medical Practice (BCMP)"
+    faculty: "Faculty of Health Sciences"
     fields: [health_sciences, medicine]
     selective: true
     selection_note: "UP marks this as a selection programme: additional selection criteria apply."
@@ -731,6 +784,7 @@ programmes:
 
   - id: ba
     name: "Bachelor of Arts"
+    faculty: "Faculty of Humanities"
     fields: [humanities]
     requirements:
       source: s-up-req-2027
@@ -739,6 +793,7 @@ programmes:
 
   - id: ba_audiology
     name: "BA in Audiology"
+    faculty: "Faculty of Humanities"
     fields: [health_sciences, rehabilitation]
     selective: true
     selection_note: "UP marks this as a selection programme: additional selection criteria apply."
@@ -749,6 +804,7 @@ programmes:
 
   - id: ba_speech_language_pathology
     name: "BA in Speech-Language Pathology"
+    faculty: "Faculty of Humanities"
     fields: [health_sciences, rehabilitation]
     selective: true
     selection_note: "UP marks this as a selection programme: additional selection criteria apply."
@@ -759,6 +815,7 @@ programmes:
 
   - id: ba_fine_arts
     name: "BA in Fine Arts (four-year programme)"
+    faculty: "Faculty of Humanities"
     fields: [arts_and_design]
     requirements:
       source: s-up-req-2027
@@ -767,6 +824,7 @@ programmes:
 
   - id: ba_fine_arts_extended
     name: "BA in Fine Arts (five-year programme)"
+    faculty: "Faculty of Humanities"
     fields: [arts_and_design]
     requirements:
       source: s-up-req-2027
@@ -775,6 +833,7 @@ programmes:
 
   - id: ba_information_design
     name: "BA in Information Design"
+    faculty: "Faculty of Humanities"
     fields: [arts_and_design]
     selective: true
     selection_note: "UP marks this as a selection programme: additional selection criteria apply."
@@ -785,6 +844,7 @@ programmes:
 
   - id: ba_languages
     name: "BA specialising in Languages"
+    faculty: "Faculty of Humanities"
     fields: [humanities, languages_and_communication]
     requirements:
       source: s-up-req-2027
@@ -793,6 +853,7 @@ programmes:
 
   - id: ba_law
     name: "BA specialising in Law"
+    faculty: "Faculty of Humanities"
     fields: [humanities, law]
     requirements:
       source: s-up-req-2027
@@ -801,6 +862,7 @@ programmes:
 
   - id: ba_ppe
     name: "BA specialising in Philosophy, Politics and Economics"
+    faculty: "Faculty of Humanities"
     fields: [humanities, economics]
     requirements:
       source: s-up-req-2027
@@ -809,6 +871,7 @@ programmes:
 
   - id: ba_visual_studies
     name: "BA specialising in Visual Studies"
+    faculty: "Faculty of Humanities"
     fields: [arts_and_design, humanities]
     requirements:
       source: s-up-req-2027
@@ -817,6 +880,7 @@ programmes:
 
   - id: bdrama
     name: "Bachelor of Drama (three-year programme)"
+    faculty: "Faculty of Humanities"
     fields: [performing_arts]
     requirements:
       source: s-up-req-2027
@@ -825,6 +889,7 @@ programmes:
 
   - id: bdrama_extended
     name: "Bachelor of Drama (four-year programme)"
+    faculty: "Faculty of Humanities"
     fields: [performing_arts]
     requirements:
       source: s-up-req-2027
@@ -833,6 +898,7 @@ programmes:
 
   - id: bpolsci_international_studies
     name: "Bachelor of Political Science specialising in International Studies"
+    faculty: "Faculty of Humanities"
     fields: [humanities]
     requirements:
       source: s-up-req-2027
@@ -841,6 +907,7 @@ programmes:
 
   - id: bpolsci_political_studies
     name: "Bachelor of Political Science specialising in Political Studies"
+    faculty: "Faculty of Humanities"
     fields: [humanities]
     requirements:
       source: s-up-req-2027
@@ -849,6 +916,7 @@ programmes:
 
   - id: bsocsci_heritage
     name: "Bachelor of Social Science in Heritage and Cultural Sciences"
+    faculty: "Faculty of Humanities"
     fields: [humanities, tourism_and_hospitality]
     requirements:
       source: s-up-req-2027
@@ -857,6 +925,7 @@ programmes:
 
   - id: bsocsci_industrial_sociology
     name: "Bachelor of Social Science specialising in Industrial Sociology and Labour Studies"
+    faculty: "Faculty of Humanities"
     fields: [humanities]
     requirements:
       source: s-up-req-2027
@@ -865,6 +934,7 @@ programmes:
 
   - id: bsw
     name: "Bachelor of Social Work"
+    faculty: "Faculty of Humanities"
     fields: [humanities]
     requirements:
       source: s-up-req-2027
@@ -873,18 +943,21 @@ programmes:
 
   - id: bmus
     name: "Bachelor of Music (four-year programme)"
+    faculty: "Faculty of Humanities"
     fields: [music, performing_arts]
     selection_note: "UP asks for English 5 and 30 points, and Music at level 4 (50-59%) or Grade VII Practical and Grade V Theory (Unisa, Royal Schools or Trinity) or a comparable standard, plus a practical audition and theory test passed with 60%."
     requirements: null       # needs Music 4 or external music grades and an audition, which the schema can't hold yet
 
   - id: bmus_extended
     name: "Bachelor of Music (five-year programme)"
+    faculty: "Faculty of Humanities"
     fields: [music, performing_arts]
     selection_note: "UP asks for English 4 and 26 points, and Music at level 4 (50-59%) or Grade V Practical and Grade III Theory (Unisa, Royal Schools or Trinity) or a comparable standard, plus a practical audition and theory test passed with 50%."
     requirements: null       # needs Music 4 or external music grades and an audition, which the schema can't hold yet
 
   - id: bth
     name: "Bachelor of Theology"
+    faculty: "Faculty of Theology and Religion"
     fields: [theology]
     requirements:
       source: s-up-req-2027
@@ -893,6 +966,7 @@ programmes:
 
   - id: bdiv
     name: "Bachelor of Divinity"
+    faculty: "Faculty of Theology and Religion"
     fields: [theology]
     requirements:
       source: s-up-req-2027
@@ -901,6 +975,7 @@ programmes:
 
   - id: dip_theology
     name: "Diploma in Theology"
+    faculty: "Faculty of Theology and Religion"
     fields: [theology]
     requirements:
       source: s-up-req-2027
@@ -909,6 +984,7 @@ programmes:
 
   - id: bvsc
     name: "Bachelor of Veterinary Science (BVSc)"
+    faculty: "Faculty of Veterinary Science"
     fields: [veterinary]
     selective: true
     selection_note: "UP marks this as a selection programme: additional selection criteria apply."
@@ -919,6 +995,7 @@ programmes:
 
   - id: b_veterinary_nursing
     name: "Bachelor of Veterinary Nursing"
+    faculty: "Faculty of Veterinary Science"
     fields: [veterinary]
     selective: true
     selection_note: "UP marks this as a selection programme: additional selection criteria apply."
@@ -933,6 +1010,7 @@ programmes:
 
   - id: bsc_biochemistry
     name: "BSc in Biochemistry"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-up-req-2027
@@ -941,6 +1019,7 @@ programmes:
 
   - id: bsc_biotechnology
     name: "BSc in Biotechnology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-up-req-2027
@@ -949,6 +1028,7 @@ programmes:
 
   - id: bsc_ecology
     name: "BSc in Ecology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-up-req-2027
@@ -957,6 +1037,7 @@ programmes:
 
   - id: bsc_entomology
     name: "BSc in Entomology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-up-req-2027
@@ -965,6 +1046,7 @@ programmes:
 
   - id: bsc_genetics
     name: "BSc in Genetics"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-up-req-2027
@@ -973,6 +1055,7 @@ programmes:
 
   - id: bsc_human_genetics
     name: "BSc in Human Genetics"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences, medical_sciences]
     requirements:
       source: s-up-req-2027
@@ -981,6 +1064,7 @@ programmes:
 
   - id: bsc_human_physiology
     name: "BSc in Human Physiology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences, medical_sciences]
     requirements:
       source: s-up-req-2027
@@ -997,6 +1081,7 @@ programmes:
 
   - id: bsc_human_physiology_genetics_psychology
     name: "BSc in Human Physiology, Genetics and Psychology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences, medical_sciences]
     requirements:
       source: s-up-req-2027
@@ -1013,6 +1098,7 @@ programmes:
 
   - id: bsc_medical_sciences
     name: "BSc in Medical Sciences"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, health_sciences, medical_sciences]
     requirements:
       source: s-up-req-2027
@@ -1029,6 +1115,7 @@ programmes:
 
   - id: bsc_microbiology
     name: "BSc in Microbiology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-up-req-2027
@@ -1037,6 +1124,7 @@ programmes:
 
   - id: bsc_plant_science
     name: "BSc in Plant Science"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-up-req-2027
@@ -1045,6 +1133,7 @@ programmes:
 
   - id: bsc_zoology
     name: "BSc in Zoology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-up-req-2027
@@ -1053,6 +1142,7 @@ programmes:
 
   - id: bsc_ecology_extended
     name: "BSc in Ecology (four-year programme)"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-up-req-2027
@@ -1063,6 +1153,7 @@ programmes:
 
   - id: bsc_human_physiology_extended
     name: "BSc in Human Physiology (four-year programme)"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences, medical_sciences]
     requirements:
       source: s-up-req-2027
@@ -1073,6 +1164,7 @@ programmes:
 
   - id: bsc_agricultural_economics
     name: "BSc in Agriculture in Agricultural Economics in Agribusiness Management"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [agriculture, commerce]
     requirements:
       source: s-up-req-2027
@@ -1081,6 +1173,7 @@ programmes:
 
   - id: bsc_animal_science
     name: "BSc in Agriculture in Animal Science"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [agriculture]
     requirements:
       source: s-up-req-2027
@@ -1089,6 +1182,7 @@ programmes:
 
   - id: bsc_plant_soil_sciences
     name: "BSc in Agriculture in Applied Plant and Soil Sciences"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [agriculture]
     requirements:
       source: s-up-req-2027
@@ -1097,6 +1191,7 @@ programmes:
 
   - id: bsc_plant_pathology
     name: "BSc in Agriculture in Plant Pathology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [agriculture]
     requirements:
       source: s-up-req-2027
@@ -1121,6 +1216,7 @@ programmes:
 
   - id: bsc_food_science
     name: "BSc in Food Science"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [food_science]
     requirements:
       source: s-up-req-2027
@@ -1129,6 +1225,7 @@ programmes:
 
   - id: bsc_plant_soil_sciences_extended
     name: "BSc in Agriculture in Applied Plant and Soil Sciences (four-year programme)"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [agriculture]
     requirements:
       source: s-up-req-2027
@@ -1139,6 +1236,7 @@ programmes:
 
   - id: bsc_plant_pathology_extended
     name: "BSc in Agriculture in Plant Pathology (four-year programme)"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [agriculture]
     requirements:
       source: s-up-req-2027
@@ -1149,6 +1247,7 @@ programmes:
 
   - id: bsc_chemistry
     name: "BSc in Chemistry"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, physical_sciences]
     requirements:
       source: s-up-req-2027
@@ -1157,6 +1256,7 @@ programmes:
 
   - id: bsc_physics
     name: "BSc in Physics"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, physical_sciences]
     requirements:
       source: s-up-req-2027
@@ -1165,6 +1265,7 @@ programmes:
 
   - id: bsc_geography
     name: "BSc in Geography (option: Geography and Environmental Science)"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, earth_sciences]
     requirements:
       source: s-up-req-2027
@@ -1173,6 +1274,7 @@ programmes:
 
   - id: bsc_geoinformatics
     name: "BSc in Geoinformatics"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, earth_sciences]
     requirements:
       source: s-up-req-2027
@@ -1181,6 +1283,7 @@ programmes:
 
   - id: bsc_geology
     name: "BSc in Geology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, earth_sciences]
     requirements:
       source: s-up-req-2027
@@ -1189,6 +1292,7 @@ programmes:
 
   - id: bsc_meteorology
     name: "BSc in Meteorology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, physical_sciences]
     requirements:
       source: s-up-req-2027
@@ -1197,6 +1301,7 @@ programmes:
 
   - id: bsc_environmental_engineering_geology
     name: "BSc in Environmental and Engineering Geology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, earth_sciences]
     requirements:
       source: s-up-req-2027
@@ -1205,6 +1310,7 @@ programmes:
 
   - id: bsc_chemistry_extended
     name: "BSc in Chemistry (four-year programme)"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, physical_sciences]
     requirements:
       source: s-up-req-2027
@@ -1215,6 +1321,7 @@ programmes:
 
   - id: bsc_geoinformatics_extended
     name: "BSc in Geoinformatics (four-year programme)"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, earth_sciences]
     requirements:
       source: s-up-req-2027
@@ -1225,6 +1332,7 @@ programmes:
 
   - id: bsc_geology_extended
     name: "BSc in Geology (four-year programme)"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, earth_sciences]
     requirements:
       source: s-up-req-2027
@@ -1235,6 +1343,7 @@ programmes:
 
   - id: bsc_meteorology_extended
     name: "BSc in Meteorology (four-year programme)"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, physical_sciences]
     requirements:
       source: s-up-req-2027
@@ -1245,6 +1354,7 @@ programmes:
 
   - id: bsc_physics_extended
     name: "BSc in Physics (four-year programme)"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, physical_sciences]
     requirements:
       source: s-up-req-2027
@@ -1255,6 +1365,7 @@ programmes:
 
   - id: bsc_actuarial_financial_mathematics
     name: "BSc in Actuarial and Financial Mathematics"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [mathematical_sciences, finance]
     requirements:
       source: s-up-req-2027
@@ -1263,6 +1374,7 @@ programmes:
 
   - id: bsc_mathematics
     name: "BSc in Mathematics (three-year programme)"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [mathematical_sciences]
     requirements:
       source: s-up-req-2027
@@ -1271,6 +1383,7 @@ programmes:
 
   - id: bsc_applied_mathematics
     name: "BSc in Applied Mathematics"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [mathematical_sciences]
     requirements:
       source: s-up-req-2027
@@ -1279,6 +1392,7 @@ programmes:
 
   - id: bsc_mathematical_statistics
     name: "BSc in Mathematical Statistics"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [mathematical_sciences]
     requirements:
       source: s-up-req-2027
@@ -1288,6 +1402,7 @@ programmes:
   # Check: UP's table marks this row with * but the footnote isn't in the PDF.
   - id: bsc_mathematics_extended
     name: "BSc in Mathematics (four-year programme)"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [mathematical_sciences]
     requirements:
       source: s-up-req-2027
@@ -1296,6 +1411,7 @@ programmes:
 
   - id: bconsumer_clothing_retail
     name: "Bachelor of Consumer Science specialising in Clothing Retail Management"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [consumer_sciences]
     requirements:
       source: s-up-req-2027
@@ -1304,6 +1420,7 @@ programmes:
 
   - id: bconsumer_food_management
     name: "Bachelor of Consumer Science specialising in Food Management"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [consumer_sciences, food_science]
     requirements: null       # UP's table ends after this row's name, so its values are missing
 

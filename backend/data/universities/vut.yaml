@@ -47,6 +47,7 @@ programmes:
   # Faculty of Applied and Computer Sciences (poster page 1)
   - id: dip_analytical_chemistry
     name: "Diploma in Analytical Chemistry"
+    faculty: "Faculty of Applied and Computer Sciences"
     fields: [natural_sciences, physical_sciences]
     requirements:
       source: s-vut-requirements
@@ -61,6 +62,7 @@ programmes:
 
   - id: dip_agricultural_management
     name: "Diploma in Agricultural Management"
+    faculty: "Faculty of Applied and Computer Sciences"
     fields: [agriculture, management]
     requirements:
       source: s-vut-requirements
@@ -81,6 +83,7 @@ programmes:
 
   - id: dip_biotechnology
     name: "Diploma in Biotechnology"
+    faculty: "Faculty of Applied and Computer Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-vut-requirements
@@ -89,6 +92,7 @@ programmes:
 
   - id: dip_environmental_science
     name: "Diploma in Environmental Science"
+    faculty: "Faculty of Applied and Computer Sciences"
     fields: [natural_sciences, earth_sciences]
     requirements:
       source: s-vut-requirements
@@ -97,6 +101,7 @@ programmes:
 
   - id: dip_non_destructive_testing
     name: "Diploma in Non-Destructive Testing"
+    faculty: "Faculty of Applied and Computer Sciences"
     fields: [physical_sciences, engineering]
     requirements:
       source: s-vut-requirements
@@ -112,6 +117,7 @@ programmes:
 
   - id: dip_information_technology
     name: "Diploma in Information Technology"
+    faculty: "Faculty of Applied and Computer Sciences"
     fields: [computing]
     requirements:
       source: s-vut-requirements
@@ -128,6 +134,7 @@ programmes:
 
   - id: dip_information_technology_extended
     name: "Diploma in Information Technology (extended programme)"
+    faculty: "Faculty of Applied and Computer Sciences"
     fields: [computing]
     requirements:
       source: s-vut-requirements
@@ -144,6 +151,7 @@ programmes:
 
   - id: bhsc_medical_laboratory_science
     name: "Bachelor of Health Sciences in Medical Laboratory Science"
+    faculty: "Faculty of Applied and Computer Sciences"
     fields: [medical_sciences, health_sciences]
     selective: true
     selection_note: "Applicants may be required to have industrial knowledge (job shadowing) and may undergo placement testing."
@@ -157,6 +165,7 @@ programmes:
   # Faculty of Management Sciences (poster page 1)
   - id: dip_cost_management_accounting
     name: "Diploma in Cost and Management Accounting"
+    faculty: "Faculty of Management Sciences"
     fields: [commerce, accounting]
     requirements:
       source: s-vut-requirements
@@ -171,6 +180,7 @@ programmes:
 
   - id: dip_financial_information_systems
     name: "Diploma in Financial Information Systems"
+    faculty: "Faculty of Management Sciences"
     fields: [commerce, accounting]
     requirements:
       source: s-vut-requirements
@@ -186,6 +196,7 @@ programmes:
   # The poster and the 2026 faculty prospectus ask for Mathematical Literacy 6 here; VUT's web page shows 5. Check.
   - id: dip_internal_auditing
     name: "Diploma in Internal Auditing"
+    faculty: "Faculty of Management Sciences"
     fields: [commerce, accounting]
     requirements:
       source: s-vut-requirements
@@ -200,6 +211,7 @@ programmes:
 
   - id: dip_human_resource_management
     name: "Diploma in Human Resource Management"
+    faculty: "Faculty of Management Sciences"
     fields: [management]
     requirements:
       source: s-vut-requirements
@@ -216,6 +228,7 @@ programmes:
   # The poster calls it "Logistics and Supply Chain Management"; the 2026 faculty prospectus "Diploma in Logistics". Check.
   - id: dip_logistics
     name: "Diploma in Logistics"
+    faculty: "Faculty of Management Sciences"
     fields: [management, commerce]
     requirements:
       source: s-vut-requirements
@@ -231,6 +244,7 @@ programmes:
 
   - id: dip_marketing
     name: "Diploma in Marketing"
+    faculty: "Faculty of Management Sciences"
     fields: [management, commerce]
     requirements:
       source: s-vut-requirements
@@ -246,6 +260,7 @@ programmes:
 
   - id: dip_retail_business_management
     name: "Diploma in Retail Business Management"
+    faculty: "Faculty of Management Sciences"
     fields: [management, commerce]
     requirements:
       source: s-vut-requirements
@@ -261,6 +276,7 @@ programmes:
 
   - id: dip_sport_management
     name: "Diploma in Sport Management"
+    faculty: "Faculty of Management Sciences"
     fields: [management, sport_science]
     requirements:
       source: s-vut-requirements
@@ -277,6 +293,7 @@ programmes:
   # Faculty of Human Sciences (poster page 2). One box covers Fashion, Photography, Graphic Design and Fine Art.
   - id: dip_fashion
     name: "Diploma in Fashion"
+    faculty: "Faculty of Human Sciences"
     fields: [arts_and_design]
     selective: true
     selection_note: "VUT adds a practical interview and a portfolio submission."
@@ -293,6 +310,7 @@ programmes:
 
   - id: dip_fine_art
     name: "Diploma in Fine Art"
+    faculty: "Faculty of Human Sciences"
     fields: [arts_and_design]
     selective: true
     selection_note: "VUT adds a practical interview and a portfolio submission; its faculty prospectus also names a fine art drawing competence test."
@@ -309,6 +327,7 @@ programmes:
 
   - id: dip_graphic_design
     name: "Diploma in Graphic Design"
+    faculty: "Faculty of Human Sciences"
     fields: [arts_and_design]
     selective: true
     selection_note: "VUT adds a practical interview and a portfolio submission."
@@ -325,6 +344,7 @@ programmes:
 
   - id: dip_photography
     name: "Diploma in Photography"
+    faculty: "Faculty of Human Sciences"
     fields: [arts_and_design]
     selective: true
     selection_note: "VUT adds a practical interview and a portfolio submission."
@@ -341,6 +361,7 @@ programmes:
 
   - id: dip_food_service_management
     name: "Diploma in Food Service Management"
+    faculty: "Faculty of Human Sciences"
     fields: [tourism_and_hospitality, food_science]
     requirements:
       source: s-vut-requirements
@@ -364,6 +385,7 @@ programmes:
 
   - id: dip_public_relations_management
     name: "Diploma in Public Relations Management"
+    faculty: "Faculty of Human Sciences"
     fields: [languages_and_communication, management]
     requirements:
       source: s-vut-requirements
@@ -378,6 +400,7 @@ programmes:
 
   - id: dip_tourism_management
     name: "Diploma in Tourism Management"
+    faculty: "Faculty of Human Sciences"
     fields: [tourism_and_hospitality]
     requirements:
       source: s-vut-requirements
@@ -397,6 +420,7 @@ programmes:
 
   - id: dip_ecotourism_management
     name: "Diploma in Ecotourism Management"
+    faculty: "Faculty of Human Sciences"
     fields: [tourism_and_hospitality]
     requirements:
       source: s-vut-requirements
@@ -411,6 +435,7 @@ programmes:
 
   - id: dip_legal_assistance
     name: "Diploma in Legal Assistance"
+    faculty: "Faculty of Human Sciences"
     fields: [law]
     requirements:
       source: s-vut-requirements
@@ -425,6 +450,7 @@ programmes:
 
   - id: dip_labour_law
     name: "Diploma in Labour Law"
+    faculty: "Faculty of Human Sciences"
     fields: [law]
     requirements:
       source: s-vut-requirements
@@ -439,6 +465,7 @@ programmes:
 
   - id: dip_safety_management
     name: "Diploma in Safety Management"
+    faculty: "Faculty of Human Sciences"
     fields: [safety_and_justice, management]
     requirements:
       source: s-vut-requirements
@@ -453,6 +480,7 @@ programmes:
 
   - id: dip_policing
     name: "Diploma in Policing"
+    faculty: "Faculty of Human Sciences"
     fields: [safety_and_justice]
     requirements:
       source: s-vut-requirements
@@ -468,6 +496,7 @@ programmes:
   # "Language of Teaching & Learning 4" on the poster; the faculty prospectus (printed page 8) names English.
   - id: bed_senior_phase_fet
     name: "Bachelor of Education in Senior Phase and FET Teaching"
+    faculty: "Faculty of Human Sciences"
     fields: [education]
     requirements:
       source: s-vut-requirements
@@ -488,6 +517,7 @@ programmes:
 
   - id: b_communication_studies
     name: "Bachelor of Communication Studies"
+    faculty: "Faculty of Human Sciences"
     fields: [languages_and_communication, humanities]
     selective: true
     selection_note: "VUT's faculty prospectus says applicants likely to succeed are interviewed, face to face or by phone."
@@ -510,6 +540,7 @@ programmes:
   # Technical Sciences for Electrical Engineering.
   - id: dip_chemical_engineering
     name: "Diploma in Chemical Engineering"
+    faculty: "Faculty of Engineering and Technology"
     fields: [engineering]
     requirements:
       source: s-vut-requirements
@@ -520,6 +551,7 @@ programmes:
 
   - id: dip_civil_engineering
     name: "Diploma in Civil Engineering"
+    faculty: "Faculty of Engineering and Technology"
     fields: [engineering, built_environment]
     requirements:
       source: s-vut-requirements
@@ -530,6 +562,7 @@ programmes:
 
   - id: dip_electrical_computer_systems
     name: "Diploma in Electrical Engineering: Computer Systems Engineering"
+    faculty: "Faculty of Engineering and Technology"
     fields: [engineering, computing]
     requirements:
       source: s-vut-requirements
@@ -540,6 +573,7 @@ programmes:
 
   - id: dip_electrical_electronic
     name: "Diploma in Electrical Engineering: Electronic Engineering"
+    faculty: "Faculty of Engineering and Technology"
     fields: [engineering]
     requirements:
       source: s-vut-requirements
@@ -550,6 +584,7 @@ programmes:
 
   - id: dip_electrical_power
     name: "Diploma in Electrical Engineering: Power Engineering"
+    faculty: "Faculty of Engineering and Technology"
     fields: [engineering]
     requirements:
       source: s-vut-requirements
@@ -560,6 +595,7 @@ programmes:
 
   - id: dip_electrical_process_control
     name: "Diploma in Electrical Engineering: Process Control Engineering"
+    faculty: "Faculty of Engineering and Technology"
     fields: [engineering]
     requirements:
       source: s-vut-requirements
@@ -570,6 +606,7 @@ programmes:
 
   - id: dip_industrial_engineering
     name: "Diploma in Industrial Engineering"
+    faculty: "Faculty of Engineering and Technology"
     fields: [engineering]
     requirements:
       source: s-vut-requirements
@@ -580,6 +617,7 @@ programmes:
 
   - id: dip_mechanical_engineering
     name: "Diploma in Mechanical Engineering"
+    faculty: "Faculty of Engineering and Technology"
     fields: [engineering]
     requirements:
       source: s-vut-requirements
@@ -590,6 +628,7 @@ programmes:
 
   - id: dip_metallurgical_engineering
     name: "Diploma in Metallurgical Engineering"
+    faculty: "Faculty of Engineering and Technology"
     fields: [engineering]
     requirements:
       source: s-vut-requirements
@@ -600,6 +639,7 @@ programmes:
 
   - id: dip_operations_management
     name: "Diploma in Operations Management"
+    faculty: "Faculty of Engineering and Technology"
     fields: [management, engineering]
     requirements:
       source: s-vut-requirements
@@ -610,6 +650,7 @@ programmes:
   # table; the poster and the 2026 faculty prospectus list only these nine, so it isn't added.
   - id: dip_chemical_engineering_extended
     name: "Diploma in Chemical Engineering (extended programme)"
+    faculty: "Faculty of Engineering and Technology"
     fields: [engineering]
     requirements:
       source: s-vut-requirements
@@ -620,6 +661,7 @@ programmes:
 
   - id: dip_civil_engineering_extended
     name: "Diploma in Civil Engineering (extended programme)"
+    faculty: "Faculty of Engineering and Technology"
     fields: [engineering, built_environment]
     requirements:
       source: s-vut-requirements
@@ -630,6 +672,7 @@ programmes:
 
   - id: dip_electrical_computer_systems_extended
     name: "Diploma in Electrical Engineering: Computer Systems Engineering (extended programme)"
+    faculty: "Faculty of Engineering and Technology"
     fields: [engineering, computing]
     requirements:
       source: s-vut-requirements
@@ -640,6 +683,7 @@ programmes:
 
   - id: dip_electrical_electronic_extended
     name: "Diploma in Electrical Engineering: Electronic Engineering (extended programme)"
+    faculty: "Faculty of Engineering and Technology"
     fields: [engineering]
     requirements:
       source: s-vut-requirements
@@ -650,6 +694,7 @@ programmes:
 
   - id: dip_electrical_power_extended
     name: "Diploma in Electrical Engineering: Power Engineering (extended programme)"
+    faculty: "Faculty of Engineering and Technology"
     fields: [engineering]
     requirements:
       source: s-vut-requirements
@@ -660,6 +705,7 @@ programmes:
 
   - id: dip_electrical_process_control_extended
     name: "Diploma in Electrical Engineering: Process Control Engineering (extended programme)"
+    faculty: "Faculty of Engineering and Technology"
     fields: [engineering]
     requirements:
       source: s-vut-requirements
@@ -670,6 +716,7 @@ programmes:
 
   - id: dip_industrial_engineering_extended
     name: "Diploma in Industrial Engineering (extended programme)"
+    faculty: "Faculty of Engineering and Technology"
     fields: [engineering]
     requirements:
       source: s-vut-requirements
@@ -680,6 +727,7 @@ programmes:
 
   - id: dip_mechanical_engineering_extended
     name: "Diploma in Mechanical Engineering (extended programme)"
+    faculty: "Faculty of Engineering and Technology"
     fields: [engineering]
     requirements:
       source: s-vut-requirements
@@ -690,6 +738,7 @@ programmes:
 
   - id: dip_metallurgical_engineering_extended
     name: "Diploma in Metallurgical Engineering (extended programme)"
+    faculty: "Faculty of Engineering and Technology"
     fields: [engineering]
     requirements:
       source: s-vut-requirements

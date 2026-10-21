@@ -47,6 +47,7 @@ programmes:
 
   - id: dip_accountancy
     name: "Diploma in Accountancy"
+    faculty: "Faculty of Economic and Financial Sciences"
     fields: [accounting, commerce]
     requirements:
       source: s-wsu-brochure-2027
@@ -56,6 +57,7 @@ programmes:
 
   - id: dip_financial_information_systems
     name: "Diploma in Financial Information Systems"
+    faculty: "Faculty of Economic and Financial Sciences"
     fields: [accounting, computing]
     requirements:
       source: s-wsu-brochure-2027
@@ -65,6 +67,7 @@ programmes:
 
   - id: dip_internal_auditing
     name: "Diploma in Internal Auditing"
+    faculty: "Faculty of Economic and Financial Sciences"
     fields: [accounting, commerce]
     requirements:
       source: s-wsu-brochure-2027
@@ -78,6 +81,7 @@ programmes:
 
   - id: dip_internal_auditing_ecp
     name: "Diploma in Internal Auditing Extended Curriculum Programme (ECP)"
+    faculty: "Faculty of Economic and Financial Sciences"
     fields: [accounting, commerce]
     requirements:
       source: s-wsu-brochure-2027
@@ -91,6 +95,7 @@ programmes:
 
   - id: bacc
     name: "Bachelor of Accounting"
+    faculty: "Faculty of Economic and Financial Sciences"
     fields: [accounting, commerce]
     requirements:
       source: s-wsu-brochure-2027
@@ -99,6 +104,7 @@ programmes:
 
   - id: bacc_science
     name: "Bachelor of Accounting Science"
+    faculty: "Faculty of Economic and Financial Sciences"
     fields: [accounting, commerce]
     requirements:
       source: s-wsu-brochure-2027
@@ -107,6 +113,7 @@ programmes:
 
   - id: bcom
     name: "Bachelor of Commerce"
+    faculty: "Faculty of Economic and Financial Sciences"
     fields: [commerce]
     requirements:
       source: s-wsu-brochure-2027
@@ -119,6 +126,7 @@ programmes:
 
   - id: bcom_business_management
     name: "Bachelor of Commerce in Business Management"
+    faculty: "Faculty of Economic and Financial Sciences"
     fields: [commerce, management]
     requirements:
       source: s-wsu-brochure-2027
@@ -131,6 +139,7 @@ programmes:
 
   - id: bcom_economics
     name: "Bachelor of Commerce in Economics"
+    faculty: "Faculty of Economic and Financial Sciences"
     fields: [commerce, economics]
     requirements:
       source: s-wsu-brochure-2027
@@ -149,6 +158,7 @@ programmes:
 
   - id: bed_foundation_phase
     name: "Bachelor of Education in Foundation Phase Teaching"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-wsu-brochure-2027
@@ -178,6 +188,7 @@ programmes:
 
   - id: bed_sp_fet_creative_arts_history
     name: "Bachelor of Education in Senior Phase & FET Teaching (Creative Arts History)"
+    faculty: "Faculty of Education"
     fields: [education, arts_and_design, humanities]
     requirements:
       source: s-wsu-brochure-2027
@@ -210,6 +221,7 @@ programmes:
 
   - id: bed_sp_fet_creative_arts_english
     name: "Bachelor of Education in Senior Phase & FET Teaching (Creative Arts English)"
+    faculty: "Faculty of Education"
     fields: [education, arts_and_design, languages_and_communication]
     requirements:
       source: s-wsu-brochure-2027
@@ -244,6 +256,7 @@ programmes:
   # W62023 is on page 9 but not in the faculty's list of qualifications on page 8.
   - id: bed_sp_fet_creative_arts_english_ecp
     name: "Bachelor of Education in Senior Phase & FET Teaching (Creative Arts English) - ECP"
+    faculty: "Faculty of Education"
     fields: [education, arts_and_design, languages_and_communication]
     requirements:
       source: s-wsu-brochure-2027
@@ -277,6 +290,7 @@ programmes:
 
   - id: bed_sp_fet_consumer_management
     name: "Bachelor of Education in Senior Phase & FET Teaching (Consumer & Management Science)"
+    faculty: "Faculty of Education"
     fields: [education, consumer_sciences, management]
     requirements:
       source: s-wsu-brochure-2027
@@ -310,6 +324,7 @@ programmes:
 
   - id: bed_sp_fet_economic_management
     name: "Bachelor of Education in Senior Phase & FET Teaching (Economic & Management Science)"
+    faculty: "Faculty of Education"
     fields: [education, commerce, economics]
     requirements:
       source: s-wsu-brochure-2027
@@ -343,6 +358,7 @@ programmes:
 
   - id: bed_sp_fet_humanities
     name: "Bachelor of Education in Senior Phase & FET Teaching (Humanities)"
+    faculty: "Faculty of Education"
     fields: [education, humanities]
     requirements:
       source: s-wsu-brochure-2027
@@ -368,6 +384,7 @@ programmes:
 
   - id: bed_sp_fet_languages
     name: "Bachelor of Education in Senior Phase & FET Teaching (Languages)"
+    faculty: "Faculty of Education"
     fields: [education, languages_and_communication]
     requirements:
       source: s-wsu-brochure-2027
@@ -394,6 +411,7 @@ programmes:
 
   - id: bed_sp_fet_maths_science_technology
     name: "Bachelor of Education in Senior Phase & FET Teaching (Maths, Science & Technology)"
+    faculty: "Faculty of Education"
     fields: [education, mathematical_sciences, natural_sciences]
     requirements:
       source: s-wsu-brochure-2027
@@ -424,6 +442,7 @@ programmes:
   # "Any two technical subjects at 4 from the list": every pair from WSU's list of eight, in its order.
   - id: bed_sp_fet_technical_vocational
     name: "Bachelor of Education in Senior Phase & FET Teaching (Technical and Vocational Education)"
+    faculty: "Faculty of Education"
     fields: [education, engineering]
     requirements:
       source: s-wsu-brochure-2027
@@ -484,6 +503,7 @@ programmes:
 
   - id: dip_building_technology
     name: "Diploma in Building Technology"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [built_environment]
     requirements:
       source: s-wsu-brochure-2027
@@ -502,6 +522,7 @@ programmes:
   # Sciences not lowered).
   - id: dip_building_technology_ecp
     name: "Diploma in Building Technology Extended Curriculum Programme (ECP)"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [built_environment]
     requirements:
       source: s-wsu-brochure-2027
@@ -523,6 +544,7 @@ programmes:
 
   - id: dip_civil_engineering
     name: "Diploma in Civil Engineering"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [engineering]
     requirements:
       source: s-wsu-brochure-2027
@@ -531,6 +553,7 @@ programmes:
 
   - id: dip_civil_engineering_ecp
     name: "Diploma in Civil Engineering Extended Curriculum Programme (ECP)"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [engineering]
     requirements:
       source: s-wsu-brochure-2027
@@ -545,6 +568,7 @@ programmes:
 
   - id: dip_electrical_engineering
     name: "Diploma in Electrical Engineering"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [engineering]
     requirements:
       source: s-wsu-brochure-2027
@@ -553,6 +577,7 @@ programmes:
 
   - id: dip_electrical_engineering_ecp
     name: "Diploma in Electrical Engineering Extended Curriculum Programme (ECP)"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [engineering]
     requirements:
       source: s-wsu-brochure-2027
@@ -567,6 +592,7 @@ programmes:
 
   - id: dip_mechanical_engineering
     name: "Diploma in Mechanical Engineering"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [engineering]
     requirements:
       source: s-wsu-brochure-2027
@@ -582,6 +608,7 @@ programmes:
 
   - id: dip_mechanical_engineering_ecp
     name: "Diploma in Mechanical Engineering Extended Curriculum Programme (ECP)"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [engineering]
     requirements:
       source: s-wsu-brochure-2027
@@ -605,6 +632,7 @@ programmes:
 
   - id: dip_ict_applications_development
     name: "Diploma in Information and Communications Technology in Applications Development"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [computing]
     requirements:
       source: s-wsu-brochure-2027
@@ -618,6 +646,7 @@ programmes:
 
   - id: dip_ict_applications_development_ecp
     name: "Diploma in Information and Communications Technology in Applications Development Extended Curriculum Programme (ECP)"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [computing]
     requirements:
       source: s-wsu-brochure-2027
@@ -635,6 +664,7 @@ programmes:
 
   - id: dip_ict_business_analysis
     name: "Diploma in Information and Communications Technology in Business Analysis"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [computing]
     requirements:
       source: s-wsu-brochure-2027
@@ -648,6 +678,7 @@ programmes:
 
   - id: dip_ict_business_analysis_ecp
     name: "Diploma in Information and Communications Technology in Business Analysis Extended Curriculum Programme (ECP)"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [computing]
     requirements:
       source: s-wsu-brochure-2027
@@ -665,6 +696,7 @@ programmes:
 
   - id: dip_ict_communication_networks
     name: "Diploma in Information and Communications Technology in Communication Networks"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [computing]
     requirements:
       source: s-wsu-brochure-2027
@@ -678,6 +710,7 @@ programmes:
 
   - id: dip_ict_communication_networks_ecp
     name: "Diploma in Information and Communications Technology in Communication Networks Extended Curriculum Programme (ECP)"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [computing]
     requirements:
       source: s-wsu-brochure-2027
@@ -695,6 +728,7 @@ programmes:
 
   - id: dip_ict_support_services
     name: "Diploma in Information and Communications Technology in Support Services"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [computing]
     requirements:
       source: s-wsu-brochure-2027
@@ -708,6 +742,7 @@ programmes:
 
   - id: dip_ict_support_services_ecp
     name: "Diploma in Information and Communications Technology in Support Services Extended Curriculum Programme (ECP)"
+    faculty: "Faculty of Engineering, Built Environment and Information Technology"
     fields: [computing]
     requirements:
       source: s-wsu-brochure-2027
@@ -728,6 +763,7 @@ programmes:
 
   - id: dip_fashion
     name: "Diploma in Fashion"
+    faculty: "Faculty of Law, Humanities and Social Sciences"
     fields: [arts_and_design]
     selective: true
     selection_note: "Students who meet the minimum requirements are evaluated to confirm their final placement."
@@ -743,6 +779,7 @@ programmes:
 
   - id: dip_fine_art
     name: "Diploma in Fine Art"
+    faculty: "Faculty of Law, Humanities and Social Sciences"
     fields: [arts_and_design]
     selective: true
     selection_note: "Students who meet the minimum requirements are evaluated to confirm their final placement."
@@ -755,6 +792,7 @@ programmes:
 
   - id: ba
     name: "Bachelor of Arts"
+    faculty: "Faculty of Law, Humanities and Social Sciences"
     fields: [humanities]
     requirements:
       source: s-wsu-brochure-2027
@@ -771,6 +809,7 @@ programmes:
   # The brochure asks for English "5 (50-59%)": level 5 is 60-69%, so we check the level both readings share (4).
   - id: ba_english
     name: "Bachelor of Arts (English)"
+    faculty: "Faculty of Law, Humanities and Social Sciences"
     fields: [humanities, languages_and_communication]
     requirements:
       source: s-wsu-brochure-2027
@@ -787,6 +826,7 @@ programmes:
 
   - id: bsocsc_anthropology
     name: "Bachelor of Social Science (Anthropology)"
+    faculty: "Faculty of Law, Humanities and Social Sciences"
     fields: [humanities]
     requirements:
       source: s-wsu-brochure-2027
@@ -796,6 +836,7 @@ programmes:
 
   - id: bsocsc_anthropology_ecp
     name: "Bachelor of Social Science (Anthropology) Extended Curriculum Programme (ECP)"
+    faculty: "Faculty of Law, Humanities and Social Sciences"
     fields: [humanities]
     requirements:
       source: s-wsu-brochure-2027
@@ -805,6 +846,7 @@ programmes:
 
   - id: bsocsc_criminology
     name: "Bachelor of Social Science (Criminology)"
+    faculty: "Faculty of Law, Humanities and Social Sciences"
     fields: [humanities, safety_and_justice]
     requirements:
       source: s-wsu-brochure-2027
@@ -814,6 +856,7 @@ programmes:
 
   - id: bsocsc_criminology_ecp
     name: "Bachelor of Social Science (Criminology) Extended Curriculum Programme (ECP)"
+    faculty: "Faculty of Law, Humanities and Social Sciences"
     fields: [humanities, safety_and_justice]
     requirements:
       source: s-wsu-brochure-2027
@@ -823,6 +866,7 @@ programmes:
 
   - id: bsocsc_philosophy
     name: "Bachelor of Social Science (Philosophy)"
+    faculty: "Faculty of Law, Humanities and Social Sciences"
     fields: [humanities]
     requirements:
       source: s-wsu-brochure-2027
@@ -832,6 +876,7 @@ programmes:
 
   - id: bsocsc_philosophy_ecp
     name: "Bachelor of Social Science (Philosophy) Extended Curriculum Programme (ECP)"
+    faculty: "Faculty of Law, Humanities and Social Sciences"
     fields: [humanities]
     requirements:
       source: s-wsu-brochure-2027
@@ -841,6 +886,7 @@ programmes:
 
   - id: bsocsc_political_studies
     name: "Bachelor of Social Science (Political Studies)"
+    faculty: "Faculty of Law, Humanities and Social Sciences"
     fields: [humanities]
     requirements:
       source: s-wsu-brochure-2027
@@ -850,6 +896,7 @@ programmes:
 
   - id: bsocsc_political_studies_ecp
     name: "Bachelor of Social Science (Political Studies) Extended Curriculum Programme (ECP)"
+    faculty: "Faculty of Law, Humanities and Social Sciences"
     fields: [humanities]
     requirements:
       source: s-wsu-brochure-2027
@@ -859,6 +906,7 @@ programmes:
 
   - id: bsocsc_population_studies
     name: "Bachelor of Social Science (Population Studies)"
+    faculty: "Faculty of Law, Humanities and Social Sciences"
     fields: [humanities]
     requirements:
       source: s-wsu-brochure-2027
@@ -868,6 +916,7 @@ programmes:
 
   - id: bsocsc_population_studies_ecp
     name: "Bachelor of Social Science (Population Studies) Extended Curriculum Programme (ECP)"
+    faculty: "Faculty of Law, Humanities and Social Sciences"
     fields: [humanities]
     requirements:
       source: s-wsu-brochure-2027
@@ -877,6 +926,7 @@ programmes:
 
   - id: bsocsc_psychology
     name: "Bachelor of Social Science (Psychology)"
+    faculty: "Faculty of Law, Humanities and Social Sciences"
     fields: [humanities]
     requirements:
       source: s-wsu-brochure-2027
@@ -886,6 +936,7 @@ programmes:
 
   - id: bsocsc_psychology_ecp
     name: "Bachelor of Social Science (Psychology) Extended Curriculum Programme (ECP)"
+    faculty: "Faculty of Law, Humanities and Social Sciences"
     fields: [humanities]
     requirements:
       source: s-wsu-brochure-2027
@@ -895,6 +946,7 @@ programmes:
 
   - id: bsocsc_sociology
     name: "Bachelor of Social Science (Sociology)"
+    faculty: "Faculty of Law, Humanities and Social Sciences"
     fields: [humanities]
     requirements:
       source: s-wsu-brochure-2027
@@ -904,6 +956,7 @@ programmes:
 
   - id: bsocsc_sociology_ecp
     name: "Bachelor of Social Science (Sociology) Extended Curriculum Programme (ECP)"
+    faculty: "Faculty of Law, Humanities and Social Sciences"
     fields: [humanities]
     requirements:
       source: s-wsu-brochure-2027
@@ -913,6 +966,7 @@ programmes:
 
   - id: llb
     name: "Bachelor of Laws"
+    faculty: "Faculty of Law, Humanities and Social Sciences"
     fields: [law]
     requirements:
       source: s-wsu-brochure-2027
@@ -926,6 +980,7 @@ programmes:
   # "An achievement in any two subjects as follows": we read it as any two of the three it lists.
   - id: bpsych
     name: "Bachelor of Psychology"
+    faculty: "Faculty of Law, Humanities and Social Sciences"
     fields: [humanities, health_sciences]
     requirements:
       source: s-wsu-brochure-2027
@@ -942,6 +997,7 @@ programmes:
   # we read it as any two of the first three, plus three other subjects at level 4. Check with WSU.
   - id: bsw
     name: "Bachelor of Social Work"
+    faculty: "Faculty of Law, Humanities and Social Sciences"
     fields: [humanities]
     requirements:
       source: s-wsu-brochure-2027
@@ -962,6 +1018,7 @@ programmes:
 
   - id: hcert_versatile_broadcasting
     name: "Higher Certificate in Versatile Broadcasting"
+    faculty: "Faculty of Management and Public Administration Sciences"
     fields: [languages_and_communication]
     requirements:
       source: s-wsu-brochure-2027
@@ -973,6 +1030,7 @@ programmes:
 
   - id: dip_administrative_management
     name: "Diploma in Administrative Management"
+    faculty: "Faculty of Management and Public Administration Sciences"
     fields: [management]
     requirements:
       source: s-wsu-brochure-2027
@@ -986,6 +1044,7 @@ programmes:
 
   - id: dip_hospitality_management
     name: "Diploma in Hospitality Management"
+    faculty: "Faculty of Management and Public Administration Sciences"
     fields: [tourism_and_hospitality, management]
     requirements:
       source: s-wsu-brochure-2027
@@ -1001,6 +1060,7 @@ programmes:
 
   - id: dip_human_resources_management
     name: "Diploma in Human Resources Management"
+    faculty: "Faculty of Management and Public Administration Sciences"
     fields: [management]
     requirements:
       source: s-wsu-brochure-2027
@@ -1014,6 +1074,7 @@ programmes:
 
   - id: dip_human_resources_management_ecp
     name: "Diploma in Human Resources Management Extended Curriculum Programme (ECP)"
+    faculty: "Faculty of Management and Public Administration Sciences"
     fields: [management]
     requirements:
       source: s-wsu-brochure-2027
@@ -1027,6 +1088,7 @@ programmes:
 
   - id: dip_journalism
     name: "Diploma in Journalism"
+    faculty: "Faculty of Management and Public Administration Sciences"
     fields: [languages_and_communication]
     requirements:
       source: s-wsu-brochure-2027
@@ -1039,6 +1101,7 @@ programmes:
   # Page 20 says "one of the three options below" but lists two (Accounting or Mathematics).
   - id: dip_local_government_finance
     name: "Diploma in Local Government Finance"
+    faculty: "Faculty of Management and Public Administration Sciences"
     fields: [public_administration, finance]
     requirements:
       source: s-wsu-brochure-2027
@@ -1051,6 +1114,7 @@ programmes:
 
   - id: dip_local_government_finance_ecp
     name: "Diploma in Local Government Finance Extended Curriculum Programme (ECP)"
+    faculty: "Faculty of Management and Public Administration Sciences"
     fields: [public_administration, finance]
     requirements:
       source: s-wsu-brochure-2027
@@ -1063,6 +1127,7 @@ programmes:
 
   - id: dip_management
     name: "Diploma in Management"
+    faculty: "Faculty of Management and Public Administration Sciences"
     fields: [management]
     requirements:
       source: s-wsu-brochure-2027
@@ -1076,6 +1141,7 @@ programmes:
 
   - id: dip_management_ecp
     name: "Diploma in Management Extended Curriculum Programme (ECP)"
+    faculty: "Faculty of Management and Public Administration Sciences"
     fields: [management]
     requirements:
       source: s-wsu-brochure-2027
@@ -1089,6 +1155,7 @@ programmes:
 
   - id: dip_marketing_management
     name: "Diploma in Marketing Management"
+    faculty: "Faculty of Management and Public Administration Sciences"
     fields: [management, commerce]
     requirements:
       source: s-wsu-brochure-2027
@@ -1102,6 +1169,7 @@ programmes:
 
   - id: dip_policing
     name: "Diploma in Policing"
+    faculty: "Faculty of Management and Public Administration Sciences"
     fields: [safety_and_justice]
     requirements:
       source: s-wsu-brochure-2027
@@ -1111,6 +1179,7 @@ programmes:
 
   - id: dip_office_management_technology
     name: "Diploma in Office Management & Technology"
+    faculty: "Faculty of Management and Public Administration Sciences"
     fields: [management]
     requirements:
       source: s-wsu-brochure-2027
@@ -1124,6 +1193,7 @@ programmes:
 
   - id: dip_office_management_technology_ecp
     name: "Diploma in Office Management & Technology Extended Curriculum Programme (ECP)"
+    faculty: "Faculty of Management and Public Administration Sciences"
     fields: [management]
     requirements:
       source: s-wsu-brochure-2027
@@ -1137,6 +1207,7 @@ programmes:
 
   - id: dip_public_management
     name: "Diploma in Public Management"
+    faculty: "Faculty of Management and Public Administration Sciences"
     fields: [public_administration, management]
     requirements:
       source: s-wsu-brochure-2027
@@ -1146,6 +1217,7 @@ programmes:
 
   - id: dip_public_relations_management
     name: "Diploma in Public Relations Management"
+    faculty: "Faculty of Management and Public Administration Sciences"
     fields: [languages_and_communication, management]
     requirements:
       source: s-wsu-brochure-2027
@@ -1157,6 +1229,7 @@ programmes:
 
   - id: dip_public_relations_management_ecp
     name: "Diploma in Public Relations Management Extended Curriculum Programme (ECP)"
+    faculty: "Faculty of Management and Public Administration Sciences"
     fields: [languages_and_communication, management]
     requirements:
       source: s-wsu-brochure-2027
@@ -1168,6 +1241,7 @@ programmes:
 
   - id: dip_small_business_management
     name: "Diploma in Small Business Management"
+    faculty: "Faculty of Management and Public Administration Sciences"
     fields: [management, commerce]
     requirements:
       source: s-wsu-brochure-2027
@@ -1182,6 +1256,7 @@ programmes:
 
   - id: dip_sport_management
     name: "Diploma in Sport Management"
+    faculty: "Faculty of Management and Public Administration Sciences"
     fields: [sport_science, management]
     requirements:
       source: s-wsu-brochure-2027
@@ -1191,6 +1266,7 @@ programmes:
 
   - id: dip_tourism_management
     name: "Diploma in Tourism Management"
+    faculty: "Faculty of Management and Public Administration Sciences"
     fields: [tourism_and_hospitality, management]
     requirements:
       source: s-wsu-brochure-2027
@@ -1206,6 +1282,7 @@ programmes:
 
   - id: badmin
     name: "Bachelor of Administration"
+    faculty: "Faculty of Management and Public Administration Sciences"
     fields: [public_administration, management]
     requirements:
       source: s-wsu-brochure-2027
@@ -1218,6 +1295,7 @@ programmes:
 
   - id: bmedsc
     name: "Bachelor of Medical Sciences"
+    faculty: "Faculty of Medicine and Health Sciences"
     fields: [medical_sciences, life_sciences]
     selective: true
     selection_note: "Additional selection criteria apply when final selections are made: WSU's faculty prospectus has the details."
@@ -1231,6 +1309,7 @@ programmes:
 
   - id: bmed_clinical_practice
     name: "Bachelor of Medicine in Clinical Practice"
+    faculty: "Faculty of Medicine and Health Sciences"
     fields: [health_sciences, medicine]
     selective: true
     selection_note: "Additional selection criteria apply when final selections are made: WSU's faculty prospectus has the details."
@@ -1244,6 +1323,7 @@ programmes:
 
   - id: bnursing
     name: "Bachelor of Nursing"
+    faculty: "Faculty of Medicine and Health Sciences"
     fields: [nursing]
     selective: true
     selection_note: "Additional selection criteria apply when final selections are made: WSU's faculty prospectus has the details."
@@ -1257,6 +1337,7 @@ programmes:
 
   - id: bhsc_orthotics_prosthetics
     name: "Bachelor of Health Sciences in Medical Orthotics and Prosthetics"
+    faculty: "Faculty of Medicine and Health Sciences"
     fields: [health_sciences, rehabilitation]
     selective: true
     selection_note: "Additional selection criteria apply when final selections are made: WSU's faculty prospectus has the details."
@@ -1271,6 +1352,7 @@ programmes:
   # Page 23 labels this row W65005 (the orthotics code); the faculty's list on page 22 gives W65006.
   - id: mbchb
     name: "Bachelor of Medicine and Bachelor of Surgery"
+    faculty: "Faculty of Medicine and Health Sciences"
     fields: [medicine]
     selective: true
     selection_note: "Additional selection criteria apply when final selections are made: WSU's faculty prospectus has the details."
@@ -1288,6 +1370,7 @@ programmes:
 
   - id: dip_analytical_chemistry
     name: "Diploma in Analytical Chemistry"
+    faculty: "Faculty of Natural Sciences"
     fields: [physical_sciences, natural_sciences]
     requirements:
       source: s-wsu-brochure-2027
@@ -1297,6 +1380,7 @@ programmes:
   # The extended stream lists English at 3 and also says "as for main-stream" (English 4): we use the 3 it lists.
   - id: dip_analytical_chemistry_ecp
     name: "Diploma in Analytical Chemistry Extended Curriculum Programme (ECP)"
+    faculty: "Faculty of Natural Sciences"
     fields: [physical_sciences, natural_sciences]
     requirements:
       source: s-wsu-brochure-2027
@@ -1308,6 +1392,7 @@ programmes:
   # Page 26 asks Physical Sciences "4 (40-49%)": level 4 is 50-59%, so we check the level both readings share (3).
   - id: dip_consumer_science_food_nutrition
     name: "Diploma in Consumer Science in Food and Nutrition"
+    faculty: "Faculty of Natural Sciences"
     fields: [consumer_sciences, food_science, nutrition]
     requirements:
       source: s-wsu-brochure-2027
@@ -1318,6 +1403,7 @@ programmes:
 
   - id: dip_consumer_science_food_nutrition_ecp
     name: "Diploma in Consumer Science in Food and Nutrition Extended Curriculum Programme (ECP)"
+    faculty: "Faculty of Natural Sciences"
     fields: [consumer_sciences, food_science, nutrition]
     requirements:
       source: s-wsu-brochure-2027
@@ -1327,6 +1413,7 @@ programmes:
   # Page 26 asks Physical Sciences "3 (30-39%)": level 3 is 40-49%, so we check the level both readings share (2).
   - id: dip_pest_management
     name: "Diploma in Pest Management"
+    faculty: "Faculty of Natural Sciences"
     fields: [agriculture, life_sciences]
     requirements:
       source: s-wsu-brochure-2027
@@ -1337,6 +1424,7 @@ programmes:
 
   - id: bsc_applied_mathematics
     name: "Bachelor of Science in Applied Mathematics"
+    faculty: "Faculty of Natural Sciences"
     fields: [mathematical_sciences, natural_sciences]
     requirements:
       source: s-wsu-brochure-2027
@@ -1345,6 +1433,7 @@ programmes:
 
   - id: bsc_applied_mathematics_ecp
     name: "Bachelor of Science in Applied Mathematics Extended Curriculum Programme (ECP)"
+    faculty: "Faculty of Natural Sciences"
     fields: [mathematical_sciences, natural_sciences]
     requirements:
       source: s-wsu-brochure-2027
@@ -1353,6 +1442,7 @@ programmes:
 
   - id: bsc_applied_statistical_sciences
     name: "Bachelor of Science in Applied Statistical Sciences"
+    faculty: "Faculty of Natural Sciences"
     fields: [mathematical_sciences, natural_sciences]
     requirements:
       source: s-wsu-brochure-2027
@@ -1361,6 +1451,7 @@ programmes:
 
   - id: bsc_applied_statistical_sciences_ecp
     name: "Bachelor of Science in Applied Statistical Sciences Extended Curriculum Programme (ECP)"
+    faculty: "Faculty of Natural Sciences"
     fields: [mathematical_sciences, natural_sciences]
     requirements:
       source: s-wsu-brochure-2027
@@ -1369,6 +1460,7 @@ programmes:
 
   - id: bsc_biological_sciences
     name: "Bachelor of Science in Biological Sciences"
+    faculty: "Faculty of Natural Sciences"
     fields: [life_sciences, natural_sciences]
     requirements:
       source: s-wsu-brochure-2027
@@ -1377,6 +1469,7 @@ programmes:
 
   - id: bsc_biological_sciences_ecp
     name: "Bachelor of Science in Biological Sciences Extended Curriculum Programme (ECP)"
+    faculty: "Faculty of Natural Sciences"
     fields: [life_sciences, natural_sciences]
     requirements:
       source: s-wsu-brochure-2027
@@ -1390,6 +1483,7 @@ programmes:
 
   - id: bsc_chemistry
     name: "Bachelor of Science in Chemistry"
+    faculty: "Faculty of Natural Sciences"
     fields: [physical_sciences, natural_sciences]
     requirements:
       source: s-wsu-brochure-2027
@@ -1398,6 +1492,7 @@ programmes:
 
   - id: bsc_chemistry_ecp
     name: "Bachelor of Science in Chemistry Extended Curriculum Programme (ECP)"
+    faculty: "Faculty of Natural Sciences"
     fields: [physical_sciences, natural_sciences]
     requirements:
       source: s-wsu-brochure-2027
@@ -1406,6 +1501,7 @@ programmes:
 
   - id: bsc_computer_science
     name: "Bachelor of Science in Computer Science"
+    faculty: "Faculty of Natural Sciences"
     fields: [computing, natural_sciences]
     requirements:
       source: s-wsu-brochure-2027
@@ -1414,6 +1510,7 @@ programmes:
 
   - id: bsc_computer_science_ecp
     name: "Bachelor of Science in Computer Science Extended Curriculum Programme (ECP)"
+    faculty: "Faculty of Natural Sciences"
     fields: [computing, natural_sciences]
     requirements:
       source: s-wsu-brochure-2027
@@ -1422,6 +1519,7 @@ programmes:
 
   - id: bsc_environmental_studies
     name: "Bachelor of Science in Environmental Studies"
+    faculty: "Faculty of Natural Sciences"
     fields: [earth_sciences, natural_sciences]
     requirements:
       source: s-wsu-brochure-2027
@@ -1438,6 +1536,7 @@ programmes:
   # The brochure gives no English minimum for this extended stream.
   - id: bsc_environmental_studies_ecp
     name: "Bachelor of Science in Environmental Studies Extended Curriculum Programme (ECP)"
+    faculty: "Faculty of Natural Sciences"
     fields: [earth_sciences, natural_sciences]
     requirements:
       source: s-wsu-brochure-2027
@@ -1450,6 +1549,7 @@ programmes:
 
   - id: bsc_mathematics
     name: "Bachelor of Science in Mathematics"
+    faculty: "Faculty of Natural Sciences"
     fields: [mathematical_sciences, natural_sciences]
     requirements:
       source: s-wsu-brochure-2027
@@ -1458,6 +1558,7 @@ programmes:
 
   - id: bsc_mathematics_ecp
     name: "Bachelor of Science in Mathematics Extended Curriculum Programme (ECP)"
+    faculty: "Faculty of Natural Sciences"
     fields: [mathematical_sciences, natural_sciences]
     requirements:
       source: s-wsu-brochure-2027
@@ -1467,6 +1568,7 @@ programmes:
   # The main stream's list runs from page 27 onto page 28.
   - id: bsc_pest_management
     name: "Bachelor of Science in Pest Management"
+    faculty: "Faculty of Natural Sciences"
     fields: [life_sciences, agriculture, natural_sciences]
     requirements:
       source: s-wsu-brochure-2027
@@ -1475,6 +1577,7 @@ programmes:
 
   - id: bsc_pest_management_ecp
     name: "Bachelor of Science in Pest Management Extended Curriculum Programme (ECP)"
+    faculty: "Faculty of Natural Sciences"
     fields: [life_sciences, agriculture, natural_sciences]
     requirements:
       source: s-wsu-brochure-2027
@@ -1488,6 +1591,7 @@ programmes:
 
   - id: bsc_physics
     name: "Bachelor of Science in Physics"
+    faculty: "Faculty of Natural Sciences"
     fields: [physical_sciences, natural_sciences]
     requirements:
       source: s-wsu-brochure-2027
@@ -1496,6 +1600,7 @@ programmes:
 
   - id: bsc_physics_ecp
     name: "Bachelor of Science in Physics Extended Curriculum Programme (ECP)"
+    faculty: "Faculty of Natural Sciences"
     fields: [physical_sciences, natural_sciences]
     requirements:
       source: s-wsu-brochure-2027

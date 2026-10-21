@@ -43,6 +43,7 @@ programmes:
 
   - id: bagric_agribusiness_management
     name: "BAgric in Agribusiness Management"
+    faculty: "Faculty of AgriSciences"
     fields: [agriculture, management, economics]
     selective: true
     selection_note: &su_sel "SU selects among applicants who meet the minimums, by each faculty's selection guidelines; meeting them doesn't guarantee a place."
@@ -62,6 +63,7 @@ programmes:
 
   - id: bscagric_agricultural_economics
     name: "BScAgric in Agricultural Economics"
+    faculty: "Faculty of AgriSciences"
     fields: [agriculture, economics]
     selective: true
     selection_note: *su_sel
@@ -78,6 +80,7 @@ programmes:
 
   - id: bagric_agricultural_production_management_elsenburg
     name: "BAgric in Agricultural Production and Management: Elsenburg"
+    faculty: "Faculty of AgriSciences"
     fields: [agriculture]
     selective: true
     selection_note: *su_sel
@@ -104,6 +107,7 @@ programmes:
 
   - id: bscfor_forestry_natural_resources
     name: "BSc in Forestry (Forestry and Wood Sciences): Forestry and Natural Resources Sciences"
+    faculty: "Faculty of AgriSciences"
     fields: [agriculture, natural_sciences]
     selective: true
     selection_note: *su_sel
@@ -120,6 +124,7 @@ programmes:
 
   - id: bscfor_wood_products
     name: "BSc in Forestry (Forestry and Wood Sciences): Wood and Wood Products Sciences"
+    faculty: "Faculty of AgriSciences"
     fields: [agriculture, natural_sciences]
     selective: true
     selection_note: *su_sel
@@ -136,6 +141,7 @@ programmes:
 
   - id: bscagric_plant_soil_science
     name: "BScAgric in Plant and Soil Science"
+    faculty: "Faculty of AgriSciences"
     fields: [agriculture, natural_sciences]
     selective: true
     selection_note: *su_sel
@@ -153,6 +159,7 @@ programmes:
 
   - id: bscagric_viticulture_oenology
     name: "BScAgric in Viticulture and Oenology"
+    faculty: "Faculty of AgriSciences"
     fields: [agriculture, food_science]
     selective: true
     selection_note: *su_sel
@@ -169,6 +176,7 @@ programmes:
 
   - id: bscagric_animal_production_systems
     name: "BScAgric in Animal Production Systems"
+    faculty: "Faculty of AgriSciences"
     fields: [agriculture, life_sciences]
     selective: true
     selection_note: *su_sel
@@ -185,6 +193,7 @@ programmes:
 
   - id: bsc_conservation_ecology
     name: "BSc in Conservation Ecology"
+    faculty: "Faculty of AgriSciences"
     fields: [natural_sciences, life_sciences, agriculture]
     selective: true
     selection_note: *su_sel
@@ -201,6 +210,7 @@ programmes:
 
   - id: bsc_food_science
     name: "BSc in Food Science"
+    faculty: "Faculty of AgriSciences"
     fields: [food_science, natural_sciences]
     selective: true
     selection_note: *su_sel
@@ -217,6 +227,7 @@ programmes:
 
   - id: agrisciences_extended
     name: "AgriSciences extended curriculum programmes (one extra year)"
+    faculty: "Faculty of AgriSciences"
     fields: [agriculture]
     selective: true
     selection_note: *su_sel
@@ -258,6 +269,7 @@ programmes:
 
   - id: ba_humanities
     name: "BA in Humanities"
+    faculty: "Faculty of Arts and Social Sciences"
     fields: [humanities]
     selective: true
     selection_note: *su_sel
@@ -278,6 +290,7 @@ programmes:
 
   - id: ba_language_culture
     name: "BA in Language and Culture"
+    faculty: "Faculty of Arts and Social Sciences"
     fields: [humanities, languages_and_communication]
     selective: true
     selection_note: *su_sel
@@ -294,6 +307,7 @@ programmes:
 
   - id: ba_development_environment
     name: "BA in Development and the Environment"
+    faculty: "Faculty of Arts and Social Sciences"
     fields: [humanities, earth_sciences]
     selective: true
     selection_note: *su_sel
@@ -311,6 +325,7 @@ programmes:
 
   - id: ba_human_resource_management
     name: "BA in Human Resource Management"
+    faculty: "Faculty of Arts and Social Sciences"
     fields: [humanities, management]
     selective: true
     selection_note: *su_sel
@@ -334,6 +349,7 @@ programmes:
 
   - id: ba_international_studies
     name: "BA in International Studies"
+    faculty: "Faculty of Arts and Social Sciences"
     fields: [humanities]
     selective: true
     selection_note: *su_sel
@@ -350,6 +366,7 @@ programmes:
 
   - id: ba_ppe
     name: "BA in Political, Philosophical and Economic Studies (PPE)"
+    faculty: "Faculty of Arts and Social Sciences"
     fields: [humanities, economics]
     selective: true
     selection_note: *su_sel
@@ -367,6 +384,7 @@ programmes:
 
   - id: ba_drama_theatre
     name: "BA in Drama and Theatre Studies"
+    faculty: "Faculty of Arts and Social Sciences"
     fields: [performing_arts]
     selective: true
     selection_note: "Auditions and/or interviews at the Drama Department in Stellenbosch during August."
@@ -386,6 +404,7 @@ programmes:
 
   - id: ba_music
     name: "BA in Music"
+    faculty: "Faculty of Arts and Social Sciences"
     fields: [music]
     selective: true
     selection_note: &su_audition "An audition and a theory test at the Department of Music in Stellenbosch."
@@ -404,6 +423,7 @@ programmes:
 
   - id: bmus
     name: "Bachelor of Music (BMus)"
+    faculty: "Faculty of Arts and Social Sciences"
     fields: [music]
     selective: true
     selection_note: *su_audition
@@ -422,6 +442,7 @@ programmes:
 
   - id: dip_practical_music
     name: "Diploma in Practical Music"
+    faculty: "Faculty of Arts and Social Sciences"
     fields: [music]
     selective: true
     selection_note: *su_audition
@@ -437,6 +458,7 @@ programmes:
 
   - id: hc_music
     name: "Higher Certificate in Music"
+    faculty: "Faculty of Arts and Social Sciences"
     fields: [music]
     selective: true
     selection_note: "An audition."
@@ -451,6 +473,7 @@ programmes:
 
   - id: bsw
     name: "Bachelor of Social Work"
+    faculty: "Faculty of Arts and Social Sciences"
     fields: [humanities]
     selective: true
     places: 100
@@ -468,6 +491,7 @@ programmes:
 
   - id: ba_visual_arts
     name: "BA in Visual Arts"
+    faculty: "Faculty of Arts and Social Sciences"
     fields: [arts_and_design]
     selective: true
     places: 60
@@ -485,6 +509,7 @@ programmes:
 
   - id: ba_extended
     name: "BA extended curriculum programmes (four years)"
+    faculty: "Faculty of Arts and Social Sciences"
     fields: [humanities]
     selective: true
     selection_note: "Available for the BA in Humanities, Language and Culture, Development and the Environment, Human Resource Management and International Studies. SU selects students for them at the faculty's discretion."
@@ -492,6 +517,7 @@ programmes:
 
   - id: dip_sustainable_development
     name: "Diploma in Sustainable Development"
+    faculty: "Faculty of Arts and Social Sciences"
     fields: [management, earth_sciences]
     selective: true
     selection_note: "A committee selects on a combined score: your NSC average and the interest and experience you show in the departmental application form."
@@ -520,6 +546,7 @@ programmes:
 
   - id: bcom_economic_sciences
     name: "BCom (Economic Sciences)"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [commerce, economics]
     selective: true
     selection_note: *su_sel
@@ -537,6 +564,7 @@ programmes:
 
   - id: bcom_management_sciences
     name: "BCom (Management Sciences)"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [commerce, management]
     selective: true
     selection_note: *su_sel
@@ -553,6 +581,7 @@ programmes:
 
   - id: bcom_management_sciences_extended
     name: "BCom (Management Sciences) Extended Curriculum Programme"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [commerce, management]
     selective: true
     places: 100
@@ -570,6 +599,7 @@ programmes:
 
   - id: bcom_mathematical_sciences
     name: "BCom (Mathematical Sciences)"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [commerce, mathematical_sciences]
     selective: true
     selection_note: *su_sel
@@ -586,6 +616,7 @@ programmes:
 
   - id: bcom_international_business
     name: "BCom (International Business)"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [commerce, management]
     selective: true
     selection_note: "A limited number of students are chosen by a special selection process; you must meet set criteria to move on each year. The third year includes an international exchange semester."
@@ -601,6 +632,7 @@ programmes:
 
   - id: bcom_actuarial_science
     name: "BCom (Actuarial Science)"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [finance, mathematical_sciences]
     selective: true
     selection_note: *su_sel
@@ -617,6 +649,7 @@ programmes:
 
   - id: bcom_industrial_psychology
     name: "BCom (Industrial Psychology)"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [commerce, management]
     selective: true
     selection_note: *su_sel
@@ -633,6 +666,7 @@ programmes:
 
   - id: bacc
     name: "BAcc"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [accounting]
     selective: true
     selection_note: *su_sel
@@ -655,6 +689,7 @@ programmes:
 
   - id: bcom_management_accounting
     name: "BCom (Management Accounting)"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [accounting, commerce]
     selective: true
     selection_note: *su_sel
@@ -671,6 +706,7 @@ programmes:
 
   - id: bcom_financial_accounting
     name: "BCom (Financial Accounting)"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [accounting, commerce]
     selective: true
     selection_note: *su_sel
@@ -687,6 +723,7 @@ programmes:
 
   - id: dip_public_accountability
     name: "Diploma in Public Accountability"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [public_administration]
     selective: false
     requirements: null
@@ -695,6 +732,7 @@ programmes:
 
   - id: bed_foundation_phase
     name: "BEd (Foundation Phase Education)"
+    faculty: "Faculty of Education"
     fields: [education]
     selective: true
     places: 125
@@ -718,6 +756,7 @@ programmes:
 
   - id: bed_intermediate_phase
     name: "BEd (Intermediate Phase Education)"
+    faculty: "Faculty of Education"
     fields: [education]
     selective: true
     places: 125
@@ -738,6 +777,7 @@ programmes:
 
   - id: beng_chemical
     name: "BEng (Chemical)"
+    faculty: "Faculty of Engineering"
     fields: [engineering]
     selective: true
     selection_note: &su_beng_sel "Selection mark = Mathematics % + Physical Sciences % + 6 × your average of the six best subjects (without Life Orientation), out of 800, from Grade 11 marks for a conditional offer and Grade 12 for the final one. In recent years 600 or more gave a good chance for some programmes; others needed 620 or more."
@@ -753,6 +793,7 @@ programmes:
 
   - id: beng_civil
     name: "BEng (Civil)"
+    faculty: "Faculty of Engineering"
     fields: [engineering, built_environment]
     selective: true
     selection_note: *su_beng_sel
@@ -764,6 +805,7 @@ programmes:
 
   - id: beng_electrical_electronic
     name: "BEng (Electrical and Electronic)"
+    faculty: "Faculty of Engineering"
     fields: [engineering]
     selective: true
     selection_note: *su_beng_sel
@@ -775,6 +817,7 @@ programmes:
 
   - id: beng_electrical_electronic_data
     name: "BEng (Electrical and Electronic) (Data Engineering)"
+    faculty: "Faculty of Engineering"
     fields: [engineering, computing]
     selective: true
     selection_note: *su_beng_sel
@@ -786,6 +829,7 @@ programmes:
 
   - id: beng_industrial
     name: "BEng (Industrial)"
+    faculty: "Faculty of Engineering"
     fields: [engineering]
     selective: true
     selection_note: *su_beng_sel
@@ -797,6 +841,7 @@ programmes:
 
   - id: beng_mechanical
     name: "BEng (Mechanical)"
+    faculty: "Faculty of Engineering"
     fields: [engineering]
     selective: true
     selection_note: *su_beng_sel
@@ -808,6 +853,7 @@ programmes:
 
   - id: beng_mechatronic
     name: "BEng (Mechatronic)"
+    faculty: "Faculty of Engineering"
     fields: [engineering]
     selective: true
     selection_note: *su_beng_sel
@@ -819,6 +865,7 @@ programmes:
 
   - id: beng_extended
     name: "BEng extended curriculum programmes (five years)"
+    faculty: "Faculty of Engineering"
     fields: [engineering]
     selective: true
     selection_note: "You can't apply for these directly: applicants to a four-year BEng who aren't admitted are considered, with preference to students from underserved educational backgrounds."
@@ -836,6 +883,7 @@ programmes:
 
   - id: llb
     name: "LLB (four-year)"
+    faculty: "Faculty of Law"
     fields: [law]
     selective: true
     places: 120
@@ -856,6 +904,7 @@ programmes:
 
   - id: ba_law
     name: "BA (Law)"
+    faculty: "Faculty of Arts and Social Sciences"
     fields: [law, humanities]
     selective: true
     places: 55
@@ -874,6 +923,7 @@ programmes:
 
   - id: bcom_law
     name: "BCom (Law)"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [law, commerce]
     selective: true
     places: 80
@@ -918,6 +968,7 @@ programmes:
 
   - id: mbchb
     name: "MBChB"
+    faculty: "Faculty of Medicine and Health Sciences"
     fields: [medicine]
     selective: true
     selection_note: &su_fmhs_sel "Selected by the faculty's selection guidelines; current learners and recent school-leavers on academic merit."
@@ -932,6 +983,7 @@ programmes:
 
   - id: bnursing
     name: "Bachelor of Nursing"
+    faculty: "Faculty of Medicine and Health Sciences"
     fields: [nursing]
     selective: true
     selection_note: *su_fmhs_sel
@@ -951,6 +1003,7 @@ programmes:
 
   - id: bsc_dietetics
     name: "BSc in Dietetics"
+    faculty: "Faculty of Medicine and Health Sciences"
     fields: [nutrition, health_sciences]
     selective: true
     selection_note: *su_fmhs_sel
@@ -965,6 +1018,7 @@ programmes:
 
   - id: bot
     name: "Bachelor of Occupational Therapy"
+    faculty: "Faculty of Medicine and Health Sciences"
     fields: [rehabilitation, health_sciences]
     selective: true
     selection_note: *su_fmhs_sel
@@ -980,6 +1034,7 @@ programmes:
 
   - id: bsc_physiotherapy
     name: "BSc in Physiotherapy"
+    faculty: "Faculty of Medicine and Health Sciences"
     fields: [rehabilitation, health_sciences]
     selective: true
     selection_note: *su_fmhs_sel
@@ -994,6 +1049,7 @@ programmes:
 
   - id: bslht
     name: "Bachelor of Speech-Language and Hearing Therapy"
+    faculty: "Faculty of Medicine and Health Sciences"
     fields: [rehabilitation, health_sciences]
     selective: true
     selection_note: *su_fmhs_sel
@@ -1017,6 +1073,7 @@ programmes:
 
   - id: bsc_biodiversity_ecology
     name: "BSc Biodiversity and Ecology"
+    faculty: "Faculty of Science"
     fields: [life_sciences, natural_sciences]
     selective: true
     selection_note: &su_sci_sel "Selection mark = (Mathematics % × 2 + five other subjects, at least one of them English or Afrikaans, without Life Orientation) ÷ 7, from final Grade 11 marks if you're in Grade 12. The selection threshold is higher than the minimums."
@@ -1033,6 +1090,7 @@ programmes:
 
   - id: bsc_human_life_sciences
     name: "BSc Human Life Sciences"
+    faculty: "Faculty of Science"
     fields: [life_sciences, health_sciences]
     selective: true
     selection_note: *su_sci_sel
@@ -1050,6 +1108,7 @@ programmes:
 
   - id: bsc_molecular_biology_biotechnology
     name: "BSc Molecular Biology and Biotechnology"
+    faculty: "Faculty of Science"
     fields: [life_sciences]
     selective: true
     selection_note: *su_sci_sel
@@ -1067,6 +1126,7 @@ programmes:
 
   - id: bsc_sport_science
     name: "BSc Sport Science"
+    faculty: "Faculty of Science"
     fields: [sport_science]
     selective: true
     selection_note: *su_sci_sel
@@ -1083,6 +1143,7 @@ programmes:
 
   - id: bsc_chemistry
     name: "BSc Chemistry"
+    faculty: "Faculty of Science"
     fields: [physical_sciences]
     selective: true
     selection_note: *su_sci_sel
@@ -1099,6 +1160,7 @@ programmes:
 
   - id: bsc_earth_science
     name: "BSc Earth Science"
+    faculty: "Faculty of Science"
     fields: [earth_sciences]
     selective: true
     selection_note: *su_sci_sel
@@ -1116,6 +1178,7 @@ programmes:
 
   - id: bsc_geoinformatics
     name: "BSc GeoInformatics"
+    faculty: "Faculty of Science"
     fields: [earth_sciences, computing]
     selective: true
     selection_note: *su_sci_sel
@@ -1132,6 +1195,7 @@ programmes:
 
   - id: bsc_physics
     name: "BSc Physics"
+    faculty: "Faculty of Science"
     fields: [physical_sciences]
     selective: true
     selection_note: *su_sci_sel
@@ -1148,6 +1212,7 @@ programmes:
 
   - id: bsc_mathematical_sciences
     name: "BSc Mathematical Sciences"
+    faculty: "Faculty of Science"
     fields: [mathematical_sciences]
     selective: true
     selection_note: *su_sci_sel
@@ -1165,6 +1230,7 @@ programmes:
 
   - id: bsc_computer_science
     name: "BSc Computer Science"
+    faculty: "Faculty of Science"
     fields: [computing, mathematical_sciences]
     selective: true
     selection_note: *su_sci_sel
@@ -1182,6 +1248,7 @@ programmes:
 
   - id: bsc_interdisciplinary
     name: "BSc (interdisciplinary programmes)"
+    faculty: "Faculty of Science"
     fields: [natural_sciences, mathematical_sciences]
     selective: true
     selection_note: *su_sci_sel
@@ -1198,6 +1265,7 @@ programmes:
 
   - id: bsc_extended
     name: "BSc extended curriculum programmes (four years)"
+    faculty: "Faculty of Science"
     fields: [natural_sciences]
     selective: true
     selection_note: "A foundation year, then a mainstream BSc. SU offers these places in October, or on request in January, to applicants in its designated diversity and socio-economic categories who don't meet a BSc's selection requirements."
@@ -1207,6 +1275,7 @@ programmes:
 
   - id: bth
     name: "BTh (Bachelor of Theology)"
+    faculty: "Faculty of Theology"
     fields: [theology]
     selective: true
     selection_note: *su_sel
@@ -1220,6 +1289,7 @@ programmes:
 
   - id: bdiv
     name: "BDiv (Bachelor of Divinity)"
+    faculty: "Faculty of Theology"
     fields: [theology]
     selective: true
     selection_note: *su_sel
@@ -1233,6 +1303,7 @@ programmes:
 
   - id: theology_extended
     name: "BTh and BDiv extended curriculum programme (one extra year)"
+    faculty: "Faculty of Theology"
     fields: [theology]
     selective: true
     selection_note: "Limited places; an interview with the Dean or a representative if required."

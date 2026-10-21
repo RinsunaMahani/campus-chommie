@@ -45,6 +45,8 @@ class Match:
     programme_name: str
     tier: str
     selective: bool = False
+    faculty: str | None = None
+    fields: list[str] = field(default_factory=list)
     points: float | None = None
     min_points: float | None = None
     gap: float | None = None
@@ -110,6 +112,8 @@ def assess(uni: University, programme: Programme, marks: dict[str, float]) -> Ma
         programme_name=programme.name,
         tier=NOT_YET,
         selective=programme.selective,
+        faculty=programme.faculty,
+        fields=list(programme.fields),
     )
     req = programme.requirements
     rule = programme.points_rules or uni.points_rules

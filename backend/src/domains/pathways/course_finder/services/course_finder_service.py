@@ -80,6 +80,8 @@ def _match(m: Match, packs: dict[str, University]) -> dict:
         "tier": m.tier,
         "label": m.label,
         "selective": m.selective,
+        "faculty": m.faculty,
+        "fields": m.fields,
         "points": m.points,
         "min_points": m.min_points,
         "gap": m.gap,

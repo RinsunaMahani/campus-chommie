@@ -15,8 +15,10 @@ import { colors, fonts, radius } from '@/shared/theme/tokens';
 import { courseFinderApi } from '../api/courseFinderApi';
 import { ApplyWindows, GuideCard } from '../components/ApplyBox';
 import { ApsCard } from '../components/ApsCard';
+import { FacultySection } from '../components/FacultySection';
 import { TestDateNote } from '../components/StillOpen';
 import { TierCard } from '../components/TierCard';
+import { groupByFaculty, hasFaculties } from '../faculties';
 import { checkRows } from '../marks';
 import { useCourseFinder } from '../state';
 import { Match, Tier } from '../types';
@@ -24,7 +26,8 @@ import { errorText } from '../words';
 
 /**
  * Step 3: one university. Your points there, opening to each subject; then
- * its programmes by tier, and how to apply there today, on two sliding tabs.
+ * its programmes grouped by faculty (best first), and how to apply there
+ * today, on two sliding tabs.
  * Choosing a programme as the goal builds the three-choice plan.
  */
 export default function UniversityScreen() {
@@ -59,6 +62,7 @@ export default function UniversityScreen() {
 
   if (!valid || !id) return <Redirect href="/course-finder" />;
   const shown = filter === 'all' ? matches : matches.filter((m) => m.tier === filter);
+  const groups = hasFaculties(shown) ? groupByFaculty(shown) : null;
 
   async function pick(match: Match) {
     setPicking(match.programme);
@@ -122,11 +126,21 @@ export default function UniversityScreen() {
           ) : null}
           {!matches.length ? <Body>{t('courseFinder.programmesNotAdded')}</Body> : null}
           {matches.length > 0 && !shown.length ? <Body>{t('courseFinder.noMatches')}</Body> : null}
-          {shown.map((m, i) => (
-            <FadeIn key={m.programme} delay={Math.min(i, 6) * 40}>
-              <TierCard match={m} onPick={() => pick(m)} picking={picking === m.programme} />
-            </FadeIn>
-          ))}
+          {groups
+            ? groups.map((g, i) => (
+                <FadeIn key={g.faculty ?? '-'} delay={Math.min(i, 6) * 40}>
+                  <FacultySection group={g} startOpen={i === 0}>
+                    {g.matches.map((m) => (
+                      <TierCard key={m.programme} match={m} onPick={() => pick(m)} picking={picking === m.programme} />
+                    ))}
+                  </FacultySection>
+                </FadeIn>
+              ))
+            : shown.map((m, i) => (
+                <FadeIn key={m.programme} delay={Math.min(i, 6) * 40}>
+                  <TierCard match={m} onPick={() => pick(m)} picking={picking === m.programme} />
+                </FadeIn>
+              ))}
         </View>
       ) : null}
 

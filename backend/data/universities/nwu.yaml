@@ -61,6 +61,7 @@ programmes:
 
   - id: beng_chemical
     name: "Bachelor of Engineering in Chemical Engineering"
+    faculty: "Faculty of Engineering"
     fields: [engineering]
     requirements:
       source: s-nwu-prospectus
@@ -72,6 +73,7 @@ programmes:
 
   - id: beng_electrical_electronic
     name: "Bachelor of Engineering in Electrical and Electronic Engineering"
+    faculty: "Faculty of Engineering"
     fields: [engineering]
     requirements:
       source: s-nwu-prospectus
@@ -82,6 +84,7 @@ programmes:
 
   - id: beng_computer_electronic
     name: "Bachelor of Engineering in Computer and Electronic Engineering"
+    faculty: "Faculty of Engineering"
     fields: [engineering, computing]
     requirements:
       source: s-nwu-prospectus
@@ -92,6 +95,7 @@ programmes:
 
   - id: beng_electromechanical
     name: "Bachelor of Engineering in Electromechanical Engineering"
+    faculty: "Faculty of Engineering"
     fields: [engineering]
     requirements:
       source: s-nwu-prospectus
@@ -102,6 +106,7 @@ programmes:
 
   - id: beng_mechanical
     name: "Bachelor of Engineering in Mechanical Engineering"
+    faculty: "Faculty of Engineering"
     fields: [engineering]
     requirements:
       source: s-nwu-prospectus
@@ -112,6 +117,7 @@ programmes:
 
   - id: beng_industrial
     name: "Bachelor of Engineering in Industrial Engineering"
+    faculty: "Faculty of Engineering"
     fields: [engineering]
     requirements:
       source: s-nwu-prospectus
@@ -122,6 +128,7 @@ programmes:
 
   - id: beng_mechatronic
     name: "Bachelor of Engineering in Mechatronic Engineering"
+    faculty: "Faculty of Engineering"
     fields: [engineering]
     requirements:
       source: s-nwu-prospectus
@@ -134,6 +141,7 @@ programmes:
 
   - id: ba_law
     name: "Bachelor of Arts in Law (BA in Law)"
+    faculty: "Faculty of Law"
     fields: [law, humanities]
     selective: true
     selection_note: "Placement process based on academic performance and limited capacity."
@@ -146,6 +154,7 @@ programmes:
 
   - id: bcom_law
     name: "Bachelor of Commerce in Law (BCom in Law)"
+    faculty: "Faculty of Law"
     fields: [law, commerce]
     selective: true
     selection_note: "Placement process based on academic performance and limited capacity."
@@ -158,6 +167,7 @@ programmes:
 
   - id: llb
     name: "Bachelor of Laws (LLB)"
+    faculty: "Faculty of Law"
     fields: [law]
     selective: true
     selection_note: "Placement process based on academic performance and limited capacity."
@@ -170,6 +180,7 @@ programmes:
 
   - id: llb_extended
     name: "Extended Bachelor of Laws (LLB)"
+    faculty: "Faculty of Law"
     fields: [law]
     selective: true
     selection_note: "Placement process based on academic performance and limited capacity."
@@ -188,6 +199,7 @@ programmes:
 
   - id: ba_ancient_languages
     name: "BA in Ancient Languages"
+    faculty: "Faculty of Theology"
     fields: [theology, humanities, languages_and_communication]
     requirements:
       source: s-nwu-prospectus
@@ -198,6 +210,7 @@ programmes:
 
   - id: ba_pastoral_psychology
     name: "BA in Pastoral Psychology"
+    faculty: "Faculty of Theology"
     fields: [theology, humanities]
     requirements:
       source: s-nwu-prospectus
@@ -208,6 +221,7 @@ programmes:
 
   - id: bth
     name: "Bachelor of Theology (BTh)"
+    faculty: "Faculty of Theology"
     fields: [theology]
     requirements:
       source: s-nwu-prospectus
@@ -218,6 +232,7 @@ programmes:
 
   - id: bdiv
     name: "Bachelor of Divinity (BDiv)"
+    faculty: "Faculty of Theology"
     fields: [theology]
     requirements:
       source: s-nwu-prospectus
@@ -230,6 +245,7 @@ programmes:
 
   - id: bed_ecce
     name: "Bachelor of Education in Early Childhood Care and Education (ECCE)"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-nwu-prospectus
@@ -240,6 +256,7 @@ programmes:
 
   - id: bed_foundation_phase
     name: "Bachelor of Education in Foundation Phase Teaching (Grade R - 3)"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-nwu-prospectus
@@ -250,6 +267,7 @@ programmes:
 
   - id: bed_intermediate_phase_mst
     name: "Bachelor of Education in Intermediate Phase Teaching (Mathematics, Science and Technology)"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-nwu-prospectus
@@ -264,6 +282,7 @@ programmes:
 
   - id: bed_intermediate_phase_life_skills
     name: "Bachelor of Education in Intermediate Phase Teaching (Life Skills and Social Sciences)"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-nwu-prospectus
@@ -274,6 +293,7 @@ programmes:
 
   - id: bed_senior_fet
     name: "Bachelor of Education in Senior Phase and FET Teaching (Grade 7 - 12)"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-nwu-prospectus
@@ -286,6 +306,7 @@ programmes:
 
   - id: dip_animal_health
     name: "Diploma in Animal Health"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [agriculture, veterinary]
     requirements:
       source: s-nwu-prospectus
@@ -303,6 +324,7 @@ programmes:
 
   - id: dip_animal_science
     name: "Diploma in Animal Science"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [agriculture]
     requirements:
       source: s-nwu-prospectus
@@ -322,6 +344,7 @@ programmes:
 
   - id: dip_plant_science
     name: "Diploma in Plant Science"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [agriculture]
     requirements:
       source: s-nwu-prospectus
@@ -341,6 +364,7 @@ programmes:
 
   - id: bsc_chemistry_physics
     name: "Bachelor of Science in Chemistry and Physics"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [physical_sciences, natural_sciences]
     requirements:
       source: s-nwu-prospectus
@@ -351,6 +375,7 @@ programmes:
 
   - id: bsc_physics_mathematics
     name: "Bachelor of Science in Physics and Mathematics"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [physical_sciences, mathematical_sciences, natural_sciences]
     requirements:
       source: s-nwu-prospectus
@@ -361,6 +386,7 @@ programmes:
 
   - id: bsc_computer_science_mathematics
     name: "Bachelor of Science in Computer Science and Mathematics"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [computing, mathematical_sciences, natural_sciences]
     requirements:
       source: s-nwu-prospectus
@@ -371,6 +397,7 @@ programmes:
 
   - id: bsc_biochemistry_chemistry
     name: "Bachelor of Science in Biochemistry and Chemistry"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [life_sciences, physical_sciences, natural_sciences]
     requirements:
       source: s-nwu-prospectus
@@ -385,6 +412,7 @@ programmes:
 
   - id: bsc_it
     name: "Bachelor of Science in Information Technology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [computing, natural_sciences]
     requirements:
       source: s-nwu-prospectus
@@ -398,6 +426,7 @@ programmes:
 
   - id: bsc_it_extended
     name: "Extended Bachelor of Science in Information Technology"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [computing, natural_sciences]
     requirements:
       source: s-nwu-prospectus
@@ -411,6 +440,7 @@ programmes:
 
   - id: bsc_biological_sciences
     name: "Bachelor of Science in Biological Sciences"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [life_sciences, natural_sciences]
     requirements:
       source: s-nwu-prospectus
@@ -425,6 +455,7 @@ programmes:
 
   - id: bsc_environmental_sciences
     name: "Bachelor of Science in Environmental Sciences"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, life_sciences]
     requirements:
       source: s-nwu-prospectus
@@ -439,6 +470,7 @@ programmes:
 
   - id: bsc_financial_mathematics
     name: "Bachelor of Science in Financial Mathematics"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [finance, mathematical_sciences, natural_sciences]
     requirements:
       source: s-nwu-prospectus
@@ -449,6 +481,7 @@ programmes:
 
   - id: bsc_financial_mathematics_extended
     name: "Extended Bachelor of Science in Financial Mathematics"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [finance, mathematical_sciences, natural_sciences]
     requirements:
       source: s-nwu-prospectus
@@ -462,6 +495,7 @@ programmes:
 
   - id: bsc_business_analytics
     name: "Bachelor of Science in Business Analytics"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [commerce, computing, mathematical_sciences]
     requirements:
       source: s-nwu-prospectus
@@ -472,6 +506,7 @@ programmes:
 
   - id: bsc_quantitative_risk_management
     name: "Bachelor of Science in Quantitative Risk Management"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [finance, mathematical_sciences]
     requirements:
       source: s-nwu-prospectus
@@ -482,6 +517,7 @@ programmes:
 
   - id: bsc_actuarial_sciences
     name: "Bachelor of Science in Actuarial Sciences"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [finance, mathematical_sciences]
     requirements:
       source: s-nwu-prospectus
@@ -492,6 +528,7 @@ programmes:
 
   - id: bsc_urban_regional_planning
     name: "Bachelor of Science in Urban and Regional Planning"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [built_environment, natural_sciences]
     selective: true
     selection_note: "Departmental selection test required."
@@ -507,6 +544,7 @@ programmes:
 
   - id: bsc_agriculture
     name: "Bachelor of Science in Agricultural Sciences"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [agriculture, natural_sciences]
     requirements:
       source: s-nwu-prospectus
@@ -524,6 +562,7 @@ programmes:
 
   - id: bsc_iks
     name: "Bachelor of Science in Indigenous Knowledge Systems"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences, humanities]
     requirements:
       source: s-nwu-prospectus
@@ -534,6 +573,7 @@ programmes:
 
   - id: bsc_extended
     name: "Extended Bachelor of Science (General Science Streams)"
+    faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [natural_sciences]
     requirements:
       source: s-nwu-prospectus
@@ -550,6 +590,7 @@ programmes:
 
   - id: bcom_accounting
     name: "Bachelor of Commerce in Accounting"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [accounting, commerce]
     requirements:
       source: s-nwu-prospectus
@@ -560,6 +601,7 @@ programmes:
 
   - id: bcom_chartered_accountancy
     name: "Bachelor of Commerce in Chartered Accountancy (CA stream)"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [accounting, commerce, finance]
     requirements:
       source: s-nwu-prospectus
@@ -573,6 +615,7 @@ programmes:
 
   - id: bcom_ca_extended
     name: "Bachelor of Commerce in Chartered Accountancy (Extended Programme)"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [accounting, commerce, finance]
     requirements:
       source: s-nwu-prospectus
@@ -583,6 +626,7 @@ programmes:
 
   - id: bcom_financial_accountancy
     name: "Bachelor of Commerce in Financial Accountancy"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [accounting, commerce]
     requirements:
       source: s-nwu-prospectus
@@ -593,6 +637,7 @@ programmes:
 
   - id: bcom_financial_accountancy_extended
     name: "Bachelor of Commerce in Financial Accountancy (Extended Programme)"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [accounting, commerce]
     requirements:
       source: s-nwu-prospectus
@@ -606,6 +651,7 @@ programmes:
 
   - id: bcom_forensic_accountancy
     name: "Bachelor of Commerce in Forensic Accountancy"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [accounting, commerce, law]
     requirements:
       source: s-nwu-prospectus
@@ -620,6 +666,7 @@ programmes:
 
   - id: bcom_management_accountancy
     name: "Bachelor of Commerce in Management Accountancy"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [accounting, commerce, management]
     requirements:
       source: s-nwu-prospectus
@@ -630,6 +677,7 @@ programmes:
 
   - id: bcom_economics
     name: "Bachelor of Commerce in Economic Sciences"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [economics, commerce]
     requirements:
       source: s-nwu-prospectus
@@ -640,6 +688,7 @@ programmes:
 
   - id: bcom_economics_extended
     name: "Bachelor of Commerce in Economic Sciences (Extended Programme)"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [economics, commerce]
     requirements:
       source: s-nwu-prospectus
@@ -653,6 +702,7 @@ programmes:
 
   - id: bcom_logistics_management
     name: "Bachelor of Commerce in Business Operations (Logistics Management)"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [management, commerce]
     requirements:
       source: s-nwu-prospectus
@@ -663,6 +713,7 @@ programmes:
 
   - id: bcom_logistics_extended
     name: "Bachelor of Commerce in Business Operations (Logistics Extended)"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [management, commerce]
     requirements:
       source: s-nwu-prospectus
@@ -676,6 +727,7 @@ programmes:
 
   - id: badmin
     name: "Bachelor of Administration (BAdmin)"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [public_administration, management]
     requirements:
       source: s-nwu-prospectus
@@ -689,6 +741,7 @@ programmes:
 
   - id: badmin_extended
     name: "Bachelor of Administration (Extended Programme)"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [public_administration, management]
     requirements:
       source: s-nwu-prospectus
@@ -702,6 +755,7 @@ programmes:
 
   - id: bcom_human_resource_management
     name: "Bachelor of Commerce in Human Resource Management"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [management, commerce]
     requirements:
       source: s-nwu-prospectus
@@ -712,6 +766,7 @@ programmes:
 
   - id: bcom_industrial_psychology
     name: "Bachelor of Commerce in Industrial and Organisational Psychology"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [management, commerce, humanities]
     requirements:
       source: s-nwu-prospectus
@@ -722,6 +777,7 @@ programmes:
 
   - id: bcom_management_sciences
     name: "Bachelor of Commerce in Management Sciences"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [management, commerce]
     requirements:
       source: s-nwu-prospectus
@@ -735,6 +791,7 @@ programmes:
 
   - id: bcom_marketing_extended
     name: "Bachelor of Commerce in Management Sciences (Marketing Extended)"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [management, commerce]
     requirements:
       source: s-nwu-prospectus
@@ -750,6 +807,7 @@ programmes:
 
   - id: dip_coaching_science
     name: "Diploma in Coaching Science"
+    faculty: "Faculty of Health Sciences"
     fields: [sport_science]
     requirements:
       source: s-nwu-prospectus
@@ -760,6 +818,7 @@ programmes:
 
   - id: bhsc_sport_coaching
     name: "Bachelor of Health Sciences with Sport Coaching and Human Movement Sciences"
+    faculty: "Faculty of Health Sciences"
     fields: [sport_science, health_sciences]
     requirements:
       source: s-nwu-prospectus
@@ -770,6 +829,7 @@ programmes:
 
   - id: bhsc_recreation_tourism
     name: "Bachelor of Health Sciences with Recreation Science and Tourism Management"
+    faculty: "Faculty of Health Sciences"
     fields: [sport_science, tourism_and_hospitality, health_sciences]
     requirements:
       source: s-nwu-prospectus
@@ -780,6 +840,7 @@ programmes:
 
   - id: b_biokinetics
     name: "Bachelor of Health Sciences in Biokinetics"
+    faculty: "Faculty of Health Sciences"
     fields: [health_sciences, sport_science, rehabilitation]
     selective: true
     selection_note: "Strict selection based on academic performance and physical fitness. Closed 30 June 2026."
@@ -799,6 +860,7 @@ programmes:
 
   - id: bpharm
     name: "Bachelor of Pharmacy (BPharm)"
+    faculty: "Faculty of Health Sciences"
     fields: [pharmacy, health_sciences]
     selective: true
     selection_note: "Strictly competitive selection due to high volume of applications and limited capacity. Closed 30 June 2026."
@@ -811,6 +873,7 @@ programmes:
 
   - id: bhsc_physiology_biochemistry
     name: "Bachelor of Health Sciences (Physiology and Biochemistry)"
+    faculty: "Faculty of Health Sciences"
     fields: [health_sciences, life_sciences]
     requirements:
       source: s-nwu-prospectus
@@ -821,6 +884,7 @@ programmes:
 
   - id: bhsc_physiology_psychology
     name: "Bachelor of Health Sciences with Physiology and Psychology"
+    faculty: "Faculty of Health Sciences"
     fields: [health_sciences, humanities]
     requirements:
       source: s-nwu-prospectus
@@ -831,6 +895,7 @@ programmes:
 
   - id: b_consumer_studies
     name: "Bachelor of Consumer Studies"
+    faculty: "Faculty of Health Sciences"
     fields: [consumer_sciences]
     requirements:
       source: s-nwu-prospectus
@@ -848,6 +913,7 @@ programmes:
 
   - id: b_consumer_sciences_food
     name: "Bachelor of Consumer Sciences with Food Product Management"
+    faculty: "Faculty of Health Sciences"
     fields: [consumer_sciences, food_science]
     requirements:
       source: s-nwu-prospectus
@@ -861,6 +927,7 @@ programmes:
 
   - id: bsc_dietetics
     name: "Bachelor of Science in Dietetics"
+    faculty: "Faculty of Health Sciences"
     fields: [nutrition, health_sciences]
     selective: true
     selection_note: "Strictly competitive selection based on academic performance and limited capacity. Closed 30 June 2026."
@@ -873,6 +940,7 @@ programmes:
 
   - id: bhsc_occupational_hygiene
     name: "Bachelor of Health Sciences in Occupational Hygiene"
+    faculty: "Faculty of Health Sciences"
     fields: [health_sciences, environmental_health]
     requirements:
       source: s-nwu-prospectus
@@ -883,6 +951,7 @@ programmes:
 
   - id: bsw
     name: "Bachelor of Social Work (BSW)"
+    faculty: "Faculty of Health Sciences"
     fields: [humanities]
     selective: true
     selection_note: "Strictly competitive selection based on academic performance and limited capacity. Closed 30 June 2026."
@@ -895,6 +964,7 @@ programmes:
 
   - id: bnurs
     name: "Bachelor of Nursing"
+    faculty: "Faculty of Health Sciences"
     fields: [nursing, health_sciences]
     selective: true
     selection_note: "Strictly competitive selection due to high volume of applications and clinical training quotas. Closed 30 June 2026."
@@ -914,6 +984,7 @@ programmes:
 
   - id: ba_communication
     name: "Bachelor of Arts in Communication"
+    faculty: "Faculty of Humanities"
     fields: [humanities, languages_and_communication]
     requirements:
       source: s-nwu-prospectus
@@ -924,6 +995,7 @@ programmes:
 
   - id: ba_graphic_design
     name: "Bachelor of Arts in Graphic Design"
+    faculty: "Faculty of Humanities"
     fields: [arts_and_design]
     selective: true
     selection_note: "Selection phase includes photo portfolio of graphics/art, academic record, and interview. Closed 30 June 2026."
@@ -936,6 +1008,7 @@ programmes:
 
   - id: ba_public_governance
     name: "Bachelor of Arts in Public Governance"
+    faculty: "Faculty of Humanities"
     fields: [public_administration, humanities]
     requirements:
       source: s-nwu-prospectus
@@ -945,6 +1018,7 @@ programmes:
 
   - id: bsocsc
     name: "Bachelor of Social Sciences (BSocSc)"
+    faculty: "Faculty of Humanities"
     fields: [humanities]
     requirements:
       source: s-nwu-prospectus
@@ -954,6 +1028,7 @@ programmes:
 
   - id: ba_language_literary_studies
     name: "Bachelor of Arts in Language and Literary Studies"
+    faculty: "Faculty of Humanities"
     fields: [humanities, languages_and_communication]
     requirements:
       source: s-nwu-prospectus
@@ -967,6 +1042,7 @@ programmes:
 
   - id: ba_language_technology
     name: "Bachelor of Arts in Language Technology"
+    faculty: "Faculty of Humanities"
     fields: [humanities, computing, languages_and_communication]
     requirements:
       source: s-nwu-prospectus
@@ -985,6 +1061,7 @@ programmes:
 
   - id: dip_music
     name: "Diploma in Music"
+    faculty: "Faculty of Humanities"
     fields: [music]
     selective: true
     selection_note: "Language proficiency test, musical aptitude test, and audition required."
@@ -997,6 +1074,7 @@ programmes:
 
   - id: ba_music_society
     name: "Bachelor of Arts in Music and Society"
+    faculty: "Faculty of Humanities"
     fields: [music, humanities]
     selective: true
     selection_note: "Practical audition (Grade 3 standard), theoretical placement test (Grade 2), and language test."
@@ -1009,6 +1087,7 @@ programmes:
 
   - id: bmus
     name: "Baccalaureus Musicae (BMus)"
+    faculty: "Faculty of Humanities"
     fields: [music]
     selective: true
     selection_note: "Practical audition (Grade 6 standard), theoretical placement test (Grade 5), and language test. Closed 30 June 2026."
@@ -1020,6 +1099,7 @@ programmes:
 
   - id: bphil
     name: "Bachelor of Philosophy (BPhil in PPE)"
+    faculty: "Faculty of Humanities"
     fields: [humanities, economics]
     requirements:
       source: s-nwu-prospectus
@@ -1029,6 +1109,7 @@ programmes:
 
   - id: ba_humanities
     name: "Bachelor of Arts in Humanities"
+    faculty: "Faculty of Humanities"
     fields: [humanities]
     requirements:
       source: s-nwu-prospectus

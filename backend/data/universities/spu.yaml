@@ -35,6 +35,7 @@ programmes:
 
   - id: bed_foundation_phase
     name: "B.Ed. Foundation Phase Teaching (Grade R-3)"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-spu-prospectus-2027       # page 7
@@ -51,6 +52,7 @@ programmes:
 
   - id: bed_intermediate_maths_science
     name: "B.Ed. Intermediate Phase Teaching (Grades 4-6): Languages, Mathematics, Natural Science and Technology"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-spu-prospectus-2027       # page 7
@@ -63,6 +65,7 @@ programmes:
 
   - id: bed_intermediate_social_sciences
     name: "B.Ed. Intermediate Phase Teaching (Grades 4-6): Languages, Social Sciences and Life Skills"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-spu-prospectus-2027       # page 7
@@ -79,6 +82,7 @@ programmes:
 
   - id: bed_sp_fet_science_maths
     name: "B.Ed. Senior and FET Phase Teaching (Grades 7-12): Life Sciences, Natural Sciences and Mathematics"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-spu-prospectus-2027       # page 8
@@ -90,6 +94,7 @@ programmes:
 
   - id: bed_sp_fet_languages
     name: "B.Ed. Senior and FET Phase Teaching (Grades 7-12): Languages, or Language and History"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-spu-prospectus-2027       # page 8
@@ -103,6 +108,7 @@ programmes:
 
   - id: bed_sp_fet_history_geography
     name: "B.Ed. Senior and FET Phase Teaching (Grades 7-12): History, Social Sciences and Language"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-spu-prospectus-2027       # page 8
@@ -115,6 +121,7 @@ programmes:
 
   - id: bed_sp_fet_commerce
     name: "B.Ed. Senior and FET Phase Teaching (Grades 7-12): Accounting, Economics, Business Studies plus Economic and Management Sciences"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-spu-prospectus-2027       # page 9
@@ -133,6 +140,7 @@ programmes:
 
   - id: hcert_entrepreneurship
     name: "Higher Certificate in Entrepreneurship"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [management, commerce]
     requirements:
       source: s-spu-prospectus-2027       # page 13
@@ -152,6 +160,7 @@ programmes:
 
   - id: dip_retail_business_management
     name: "Diploma in Retail Business Management"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [management, commerce]
     requirements:
       source: s-spu-prospectus-2027       # page 14
@@ -171,6 +180,7 @@ programmes:
 
   - id: bcom_accounting
     name: "Bachelor of Commerce in Accounting"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [commerce, accounting]
     requirements:
       source: s-spu-prospectus-2027       # page 15
@@ -186,6 +196,7 @@ programmes:
 
   - id: bcom_economics
     name: "Bachelor of Commerce in Economics"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [commerce, economics]
     requirements:
       source: s-spu-prospectus-2027       # page 16
@@ -202,6 +213,7 @@ programmes:
 
   - id: bcom_tourism_management
     name: "Bachelor of Commerce in Tourism Management"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [commerce, tourism_and_hospitality, management]
     requirements:
       source: s-spu-ems-programmes
@@ -218,6 +230,7 @@ programmes:
 
   - id: b_public_administration
     name: "Bachelor of Public Administration"
+    faculty: "Faculty of Economic and Management Sciences"
     fields: [public_administration]
     requirements:
       source: s-spu-ems-programmes
@@ -236,6 +249,7 @@ programmes:
 
   - id: hcert_heritage_studies
     name: "Higher Certificate in Heritage Studies"
+    faculty: "Faculty of Humanities"
     fields: [humanities]
     requirements:
       source: s-spu-prospectus-2027       # page 18
@@ -256,6 +270,7 @@ programmes:
 
   - id: hcert_court_interpreting
     name: "Higher Certificate in Court Interpreting"
+    faculty: "Faculty of Humanities"
     fields: [languages_and_communication, humanities]
     requirements:
       source: s-spu-prospectus-2027       # page 19
@@ -274,6 +289,7 @@ programmes:
 
   - id: ba
     name: "Bachelor of Arts"
+    faculty: "Faculty of Humanities"
     fields: [humanities, languages_and_communication]
     requirements:
       source: s-spu-prospectus-2027       # page 20
@@ -294,6 +310,7 @@ programmes:
 
   - id: dip_agriculture
     name: "Diploma in Agriculture"
+    faculty: "Faculty of Natural and Applied Sciences"
     fields: [agriculture]
     requirements:
       source: s-spu-prospectus-2027       # page 22
@@ -312,6 +329,7 @@ programmes:
 
   - id: dip_ict_applications_development
     name: "Diploma in Information and Communication Technology in Applications Development"
+    faculty: "Faculty of Natural and Applied Sciences"
     fields: [computing]
     requirements:
       source: s-spu-prospectus-2027       # page 24
@@ -328,6 +346,7 @@ programmes:
 
   - id: b_environmental_science
     name: "Bachelor of Environmental Science"
+    faculty: "Faculty of Natural and Applied Sciences"
     fields: [earth_sciences, natural_sciences]
     requirements:
       source: s-spu-prospectus-2027       # page 26
@@ -340,6 +359,7 @@ programmes:
 
   - id: bsc_biological_sciences
     name: "Bachelor of Science: Biological Sciences"
+    faculty: "Faculty of Natural and Applied Sciences"
     fields: [life_sciences, natural_sciences]
     requirements:
       source: s-spu-prospectus-2027       # page 27
@@ -352,6 +372,7 @@ programmes:
 
   - id: bsc_mathematical_computer_sciences
     name: "Bachelor of Science: Mathematical and Computer Sciences"
+    faculty: "Faculty of Natural and Applied Sciences"
     fields: [mathematical_sciences, computing, natural_sciences]
     requirements:
       source: s-spu-prospectus-2027       # page 27
@@ -364,6 +385,7 @@ programmes:
 
   - id: bsc_chemistry
     name: "Bachelor of Science: Physical Sciences (Chemistry)"
+    faculty: "Faculty of Natural and Applied Sciences"
     fields: [physical_sciences, natural_sciences]
     requirements:
       source: s-spu-prospectus-2027       # page 27
@@ -376,6 +398,7 @@ programmes:
 
   - id: bsc_geography
     name: "Bachelor of Science: Physical Sciences (Geography)"
+    faculty: "Faculty of Natural and Applied Sciences"
     fields: [earth_sciences, natural_sciences]
     requirements:
       source: s-spu-prospectus-2027       # page 27
@@ -388,6 +411,7 @@ programmes:
 
   - id: bsc_physics
     name: "Bachelor of Science: Physical Sciences (Physics)"
+    faculty: "Faculty of Natural and Applied Sciences"
     fields: [physical_sciences, natural_sciences]
     requirements:
       source: s-spu-prospectus-2027       # page 27
@@ -400,6 +424,7 @@ programmes:
 
   - id: bsc_geology
     name: "Bachelor of Science: Physical Sciences (Geology)"
+    faculty: "Faculty of Natural and Applied Sciences"
     fields: [earth_sciences, natural_sciences]
     requirements:
       source: s-spu-nas-programmes
@@ -412,6 +437,7 @@ programmes:
 
   - id: bsc_data_science
     name: "Bachelor of Science in Data Science"
+    faculty: "Faculty of Natural and Applied Sciences"
     fields: [mathematical_sciences, computing]
     requirements:
       source: s-spu-prospectus-2027       # page 28

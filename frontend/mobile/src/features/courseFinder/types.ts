@@ -30,6 +30,10 @@ export type Match = Confirmation & {
   tier: Tier;
   label: string;
   selective: boolean;
+  /** The faculty, school or college that offers it, as the university names it; null where the source doesn't say. */
+  faculty: string | null;
+  /** Field tags (backend FIELDS): they choose the faculty's picture. */
+  fields: string[];
   points: number | null;
   min_points: number | null;
   gap: number | null;

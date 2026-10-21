@@ -90,6 +90,7 @@ programmes:
     fields: [commerce]       # tags from FIELDS in campus_engine/schemas.py: they link related programmes for
                              # the safe-choice slot, and funders of those fields
     selective: false
+    faculty: "Faculty of Commerce"   # the university's own name, from its source; leave out if none says
     requirements:
       source: s-prospectus
       min_points: 30           # null only when the university publishes no points minimum for this programme

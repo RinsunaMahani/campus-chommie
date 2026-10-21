@@ -97,7 +97,7 @@ can't change their password; `GET /me` says `demo: true`, and the app shows "Dem
 | `GET /universities/<id>` | none | the whole pack: programmes, requirements, routes, application dates, campuses, calendar, money dates, support and sources |
 | `GET /universities/<id>/first-steps` | none | from accepting an offer to the first lecture, on today's date (SAST) |
 | `POST /pathways/points` | `{marks: [{subject, percent}]}` | the learner's points at every university, each by its own rule, with each subject's level and the points it adds there (`subjects`), and how many programmes they meet |
-| `POST /pathways/assess` | `{university, marks: [{subject, percent}]}` | every programme at that university, best tiers first, each with its reasons and source; and how to apply there on today's date (`apply.guide`: fee, documents, link, and each intake's usual dates in `windows`) |
+| `POST /pathways/assess` | `{university, marks: [{subject, percent}]}` | every programme at that university, best tiers first, each with its reasons, source, faculty and fields; and how to apply there on today's date (`apply.guide`: fee, documents, link, and each intake's usual dates in `windows`) |
 | `POST /pathways/plan` | `{university, goal, marks: [...]}` | the three-choice plan: the goal, a route into it and a safer related choice, and how to apply (below) |
 
 A learner sends 1 to 9 subjects, each once, with marks from 0 to 100. Subject keys are those in

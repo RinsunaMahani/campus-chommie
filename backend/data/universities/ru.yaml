@@ -60,6 +60,7 @@ programmes:
 
   - id: bbussc
     name: "Bachelor of Business Science (BBusSc)"
+    faculty: "Faculty of Commerce"
     fields: [commerce, management, economics]
     requirements:
       source: s-ru-prospectus
@@ -72,6 +73,7 @@ programmes:
 
   - id: bcom
     name: "Bachelor of Commerce (BCom)"
+    faculty: "Faculty of Commerce"
     fields: [commerce, accounting]
     requirements:
       source: s-ru-prospectus
@@ -84,6 +86,7 @@ programmes:
 
   - id: becon
     name: "Bachelor of Economics (BEcon)"
+    faculty: "Faculty of Commerce"
     fields: [economics, commerce]
     requirements:
       source: s-ru-prospectus
@@ -96,6 +99,7 @@ programmes:
 
   - id: bcom_extended
     name: "Bachelor of Commerce (Extended Studies Programme)"
+    faculty: "Faculty of Commerce"
     fields: [commerce, accounting]
     requirements:
       source: s-ru-prospectus
@@ -108,6 +112,7 @@ programmes:
 
   - id: ba
     name: "Bachelor of Arts (BA)"
+    faculty: "Faculty of Humanities"
     fields: [humanities, languages_and_communication]
     requirements:
       source: s-ru-prospectus
@@ -121,6 +126,7 @@ programmes:
 
   - id: bss
     name: "Bachelor of Social Science (BSocSc)"
+    faculty: "Faculty of Humanities"
     fields: [humanities, public_administration]
     requirements:
       source: s-ru-prospectus
@@ -134,6 +140,7 @@ programmes:
 
   - id: bfa
     name: "Bachelor of Fine Arts (BFA)"
+    faculty: "Faculty of Humanities"
     fields: [arts_and_design]
     selective: true
     selection_note: "Portfolio submission required."
@@ -148,6 +155,7 @@ programmes:
 
   - id: bmus
     name: "Bachelor of Music (BMus)"
+    faculty: "Faculty of Humanities"
     fields: [music]
     selective: true
     selection_note: "Departmental audition required."
@@ -162,6 +170,7 @@ programmes:
 
   - id: bjourn
     name: "Bachelor of Journalism (BJourn)"
+    faculty: "Faculty of Humanities"
     fields: [humanities, languages_and_communication]
     selective: true
     selection_note: "Limited places; competitive selection."
@@ -176,6 +185,7 @@ programmes:
 
   - id: ba_bss_extended
     name: "Bachelor of Arts / Social Science (Extended Studies Programme)"
+    faculty: "Faculty of Humanities"
     fields: [humanities]
     requirements:
       source: s-ru-prospectus
@@ -188,6 +198,7 @@ programmes:
 
   - id: bed_foundation_phase
     name: "Bachelor of Education in Foundation Phase Teaching"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements:
       source: s-ru-prospectus
@@ -204,6 +215,7 @@ programmes:
 
   - id: pgce
     name: "Postgraduate Certificate in Education (PGCE)"
+    faculty: "Faculty of Education"
     fields: [education]
     requirements: null
 
@@ -211,6 +223,7 @@ programmes:
 
   - id: llb
     name: "Bachelor of Laws (LLB)"
+    faculty: "Faculty of Law"
     fields: [law]
     selective: true
     selection_note: "The Faculty admits a limited number of students directly into LLB1. Most students complete a general degree first."
@@ -231,6 +244,7 @@ programmes:
 
   - id: bpharm
     name: "Bachelor of Pharmacy (BPharm)"
+    faculty: "Faculty of Pharmacy"
     fields: [pharmacy, health_sciences]
     selective: true
     selection_note: "Strictly limited places; competitive selection."
@@ -248,6 +262,7 @@ programmes:
 
   - id: bsc
     name: "Bachelor of Science (BSc)"
+    faculty: "Faculty of Science"
     fields: [natural_sciences, life_sciences, physical_sciences]
     requirements:
       source: s-ru-prospectus
@@ -265,6 +280,7 @@ programmes:
 
   - id: bsc_infosys
     name: "Bachelor of Science in Information Systems (BSc InfoSys)"
+    faculty: "Faculty of Science"
     fields: [computing, commerce]
     requirements:
       source: s-ru-prospectus

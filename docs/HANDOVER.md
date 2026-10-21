@@ -14,7 +14,7 @@ repo folder but is kept out of git; the parts the screens need are quoted below.
 
 ## Where things stand
 
-`main` holds only the empty first commit. All work sits in thirty-five stacked pull requests:
+`main` holds only the empty first commit. All work sits in thirty-six stacked pull requests:
 
 | PR | Branch | What |
 |---|---|---|
@@ -27,6 +27,7 @@ repo folder but is kept out of git; the parts the screens need are quoted below.
 | #7 | `rinsuna/m1-after-acceptance` | your points at every university; campuses, calendars, money dates and support in the packs; first steps from acceptance to the first lecture |
 | #8 | `rinsuna/m3-profile-and-money` | M3's backend: the student's profile (university and campus) and My money (settings, income, expected payments, spending, summary) |
 | #9 | `rinsuna/m1-cheap-things` | cheap things to do near campus, each priced from the place's own page |
+| #36 | `rinsuna/courses-by-faculty` | Find my course step 3 grouped by faculty: every programme at the 21 universities with programmes names its faculty, school or college from the pack's own sources (1,828 of 1,833); the Courses tab opens in one section per faculty with its counts in words; each university's short name on a text monogram tile (no logos, per the brief) |
 | #35 | `rinsuna/courses-wave-5` | full course lists, wave 5: Wits (85 programmes), UCT (34), UNISA (167), Stellenbosch (73, from its 2026 prospectus), Nelson Mandela (124), CPUT (119) and CUT (42), each from the university's own pages read with robots.txt respected; UWC refuses honest requests, so it has a download list only. (A local `rinsuna/courses-wave-4` from another session is untrusted and is never pushed.) |
 | #34 | `rinsuna/courses-wave-3` | full course lists, wave 3: UNIVEN (80 programmes), UL (54 programmes), Rhodes (16 programmes) and NWU (81 programmes) across 4 universities (231 programmes total), each from its official 2026/2027 prospectus with closing dates and selection criteria, and a research note per university (agent drafts, `release: false`) |
 | #33 | `rinsuna/courses-wave-2` | full course lists, wave 2: UFS (172 programmes) from its 2027 prospectus with closing dates, and UNIZULU (185 programmes) from the CAO's 2027 handbook, each with a research note per university (agent drafts, `release: false`) |
@@ -60,7 +61,7 @@ new-phone code, and #13 deletes accounts.
 
 **How to merge:**
 - Each PR targets the branch below it, so its diff shows only its own work.
-- Merge in order: #1 into `main`, then #2 to #35, retargeting each to `main` once the one below has merged.
+- Merge in order: #1 into `main`, then #2 to #36, retargeting each to `main` once the one below has merged.
 - Use **Create a merge commit**, not squash or rebase, so every commit stays in `main`'s history (CLAUDE.md: never
   rewrite history).
 
@@ -178,7 +179,7 @@ The API is in #4, with details in the [README](../README.md), "Course finder":
 | Screen | Call | Use |
 |---|---|---|
 | Where you qualify (#29) | `POST /pathways/points` with `{marks}` | per university: `points`, `tiers`, `subjects` (each subject's level and points there), `lines`, `confirmed` and `notice` |
-| A university (#29) | `POST /pathways/assess` with `{university, marks: [{subject, percent}]}` | `matches`, best tiers first; `apply.guide` for the How to apply tab |
+| A university (#29) | `POST /pathways/assess` with `{university, marks: [{subject, percent}]}` | `matches`, best tiers first, each with `faculty` (null where no source names one) and `fields` (#36); `apply.guide` for the How to apply tab |
 | Plan | `POST /pathways/plan` with `{university, goal, marks}` | `plan.goal`, `plan.bridge`, `plan.safe`, `plan.other_routes`, `plan.notes` |
 | How to apply | the same plan answer | each slot's `apply`, and `plan.apply`: `deadlines`, `universities`, `funding`, `notes` |
 | Points everywhere (#7) | `POST /pathways/points` with `{marks}` | `universities`: each with `points`, `summary`, `lines` (how it counts), `tiers` |

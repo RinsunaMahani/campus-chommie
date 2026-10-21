@@ -12,7 +12,7 @@ from campus_engine.matching import (
     assess,
     assess_all,
 )
-from campus_engine.schemas import Choice, Requirements, University
+from campus_engine.schemas import Choice, Programme, Requirements, University
 
 SCALE = [
     {"min_percent": 80, "level": 7},
@@ -146,3 +146,16 @@ def test_a_route_can_publish_a_minimum_the_programme_doesnt(open_uni):
     m = assess(open_uni, programme, marks)  # 5 + 4 x 4 = 21 points: one short of the route's 22
     assert (m.tier, m.min_points, m.gap) == (NOT_YET, 22, 1)
     assert "With Mathematical literacy level 5, the minimum is 22 points." in m.explanation
+
+
+def test_a_result_names_its_faculty_and_fields(open_uni):
+    bcom = open_uni.programme("bcom").model_copy(update={"faculty": "Faculty of Commerce"})
+    m = assess(open_uni, bcom, {"mathematics": 65, "english": 65})
+    assert (m.faculty, m.fields) == ("Faculty of Commerce", ["commerce"])
+    assert assess(open_uni, open_uni.programme("bcom"), {"mathematics": 65}).faculty is None
+
+
+def test_a_faculty_name_is_never_empty():
+    with pytest.raises(ValidationError):
+        Programme.model_validate({"id": "x", "name": "X", "faculty": ""})
+
