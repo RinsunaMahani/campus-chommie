@@ -615,3 +615,86 @@ class FundingPack(_Strict):
 
     def source(self, source_id: str) -> Source | None:
         return next((s for s in self.sources if s.id == source_id), None)
+
+
+# ---------------------------------------------------------------------------------------------- campus maps
+
+Lat = Annotated[float, Field(ge=-90, le=90)]
+Lon = Annotated[float, Field(ge=-180, le=180)]
+LatLon = tuple[Lat, Lon]
+Ring = Annotated[list[LatLon], Field(min_length=3)]
+PlaceKind = Literal["academic", "library", "admin", "residence", "health", "sport", "food", "parking", "services", "other"]
+
+#: Every campus we map is in South Africa: a point outside this box is a mistake, not a place.
+SOUTH_AFRICA = ((-35.0, 16.0), (-22.0, 33.0))
+
+
+class Place(_Strict):
+    """A building (with its outline) or a named point on a campus map. A name nobody has given stays None:
+    the map shows the shape and never guesses what it is."""
+
+    id: str = Field(pattern=r"^[nwr]\d+$")  # its OpenStreetMap node, way or relation
+    name: str | None = None
+    kind: PlaceKind = "other"
+    centre: LatLon
+    outline: list[LatLon] = Field(default_factory=list)  # empty for a point
+    name_source: str | None = None  # set when a person named it on campus: their source
+
+
+class CampusMap(_Strict):
+    """One campus: its outline (one or more parts) and the places inside it."""
+
+    campus: str
+    source: str
+    outline: list[Ring] = Field(min_length=1)
+    places: list[Place] = Field(default_factory=list)
+
+    @property
+    def bounds(self) -> tuple[LatLon, LatLon]:
+        """(south-west, north-east) around every part of the outline."""
+        points = [p for ring in self.outline for p in ring]
+        return (min(p[0] for p in points), min(p[1] for p in points)), (max(p[0] for p in points), max(p[1] for p in points))
+
+
+class UniversityMap(_Strict):
+    """A university's campus maps (backend/data/maps/<university>.yaml), from OpenStreetMap."""
+
+    university: str
+    release: bool = False
+    campuses: list[CampusMap] = Field(min_length=1)
+    sources: list[Source] = Field(default_factory=list)
+
+    @model_validator(mode="after")
+    def _check(self):
+        source_ids = [s.id for s in self.sources]
+        problems: list[str] = []
+        if len(set(source_ids)) != len(source_ids):
+            problems.append("source ids must be unique")
+        campus_ids = [c.campus for c in self.campuses]
+        if len(set(campus_ids)) != len(campus_ids):
+            problems.append("campus ids must be unique")
+        (south, west), (north, east) = SOUTH_AFRICA
+        for c in self.campuses:
+            cited = [(f"campus '{c.campus}'", c.source)]
+            cited += [(f"{c.campus}/{p.id} name", p.name_source) for p in c.places if p.name_source]
+            problems += _unknown_sources(cited, source_ids)
+            ids = [p.id for p in c.places]
+            if len(set(ids)) != len(ids):
+                problems.append(f"{c.campus}: place ids must be unique")
+            points = [pt for ring in c.outline for pt in ring] + [p.centre for p in c.places]
+            if any(not (south <= lat <= north and west <= lon <= east) for lat, lon in points):
+                problems.append(f"{c.campus}: a point lies outside South Africa")
+            (s, w), (n, e) = c.bounds
+            pad = 0.002  # about 200 m: a building on the outline's edge
+            for p in c.places:
+                if not (s - pad <= p.centre[0] <= n + pad and w - pad <= p.centre[1] <= e + pad):
+                    problems.append(f"{c.campus}/{p.id}: its centre lies outside the campus")
+        if problems:
+            raise ValueError("; ".join(problems))
+        return self
+
+    def campus(self, campus_id: str) -> CampusMap | None:
+        return next((c for c in self.campuses if c.campus == campus_id), None)
+
+    def source(self, source_id: str) -> Source | None:
+        return next((s for s in self.sources if s.id == source_id), None)

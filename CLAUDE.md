@@ -66,10 +66,11 @@ what came from our earlier project in [REUSE.md](REUSE.md).
 ## Scope
 
 Build the five features in the brief (F1 university profile, F2 find my course, F3 my week, F4 my money, F5 alerts and
-support) and F6 fund and apply: funding and how to apply (agreed by Rinsuna on 9 Oct 2026). **Do not build:**
-study-partner matching, an interactive map, the skills-demand outlook, peer tutors, any payment or money movement,
-bank or NSFAS account linking, or any commerce, supplier or trader feature. M6 (the WhatsApp bot) must not start
-before Fri 23 Oct 2026 08:30 SAST.
+support), F6 fund and apply: funding and how to apply (agreed by Rinsuna on 9 Oct 2026), and campus maps from
+OpenStreetMap (her scope change of 12 Oct 2026; a student's location never leaves the phone). **Do not build:**
+study-partner matching, the skills-demand outlook, peer tutors, any payment or money movement, bank or NSFAS account
+linking, or any commerce, supplier or trader feature. M6 (the WhatsApp bot) must not start before Fri 23 Oct 2026
+08:30 SAST.
 
 ## Workflow
 

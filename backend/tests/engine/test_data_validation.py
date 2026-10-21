@@ -4,7 +4,7 @@ import pytest
 
 from campus_engine.catalogue import FUNDING_PATH, DataPackError, load_catalogue, load_university
 from campus_engine.i18n import t
-from scripts.validate_data import check, check_funding, main
+from scripts.validate_data import _campus_ids, check, check_funding, check_maps, main
 
 TODAY = date(2026, 10, 9)
 
@@ -153,3 +153,30 @@ def test_a_broken_funding_pack_fails_the_run(tmp_path, capsys):
 def test_unknown_language_falls_back_to_english():
     assert t("title", "zu") == t("title", "en") == "Find my course"
     assert "Physical sciences" in t("duplicate", subject="Physical sciences")
+
+
+MAP = """
+university: UNI
+campuses:
+  - campus: CAMPUS
+    source: s-osm
+    outline: [[[-25.75, 28.22], [-25.75, 28.23], [-25.76, 28.23]]]
+sources:
+  - {id: s-osm, url: "https://www.openstreetmap.org/way/1", publisher: OpenStreetMap contributors}
+"""
+
+
+def test_shipped_maps_have_no_errors():
+    from campus_engine.catalogue import MAPS_DIR, UNIVERSITIES_DIR
+
+    errors, warnings = check_maps(MAPS_DIR, TODAY, _campus_ids(UNIVERSITIES_DIR))
+    assert errors == [], errors
+    assert any("never verified" in w for w in warnings)  # a draft until a person checks it
+
+
+def test_a_map_names_only_universities_and_campuses_we_have(tmp_path):
+    (tmp_path / "osm_campuses.yaml").write_text("smu: {}")  # the fetch config is not a map
+    (tmp_path / "smu.yaml").write_text(MAP.replace("UNI", "smu").replace("CAMPUS", "atlantis"))
+    (tmp_path / "zz.yaml").write_text(MAP.replace("UNI", "hogwarts").replace("CAMPUS", "main"))
+    errors, _ = check_maps(tmp_path, TODAY, {"smu": {"ga_rankuwa"}})
+    assert errors == ["maps/smu: unknown campus 'atlantis'", "maps/zz.yaml: no pack for university 'hogwarts'"]

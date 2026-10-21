@@ -14,7 +14,7 @@ repo folder but is kept out of git; the parts the screens need are quoted below.
 
 ## Where things stand
 
-`main` holds only the empty first commit. All work sits in twenty-one stacked pull requests:
+`main` holds only the empty first commit. All work sits in twenty-two stacked pull requests:
 
 | PR | Branch | What |
 |---|---|---|
@@ -27,6 +27,7 @@ repo folder but is kept out of git; the parts the screens need are quoted below.
 | #7 | `rinsuna/m1-after-acceptance` | your points at every university; campuses, calendars, money dates and support in the packs; first steps from acceptance to the first lecture |
 | #8 | `rinsuna/m3-profile-and-money` | M3's backend: the student's profile (university and campus) and My money (settings, income, expected payments, spending, summary) |
 | #9 | `rinsuna/m1-cheap-things` | cheap things to do near campus, each priced from the place's own page |
+| #22 | `rinsuna/campus-maps` | campus maps from OpenStreetMap: each campus's outline, buildings and named places, `GET /universities/<id>/map` with the credit and the licence, the fetch script, and the validator's map checks |
 | #21 | `rinsuna/solo-team` | the rules and docs for a team of one: CLAUDE.md, this file, OPEN_QUESTIONS, and the README's status |
 | #20 | `rinsuna/more-funders` | five more funders from their own pages (24 in all; 5 open on 12 Oct) |
 | #19 | `rinsuna/smu-gaps` | SMU's financial aid office, food support and Religious Desk on the Support screen; cheap things in northern Tshwane for SMU and TUT's nearby campuses |
@@ -46,7 +47,7 @@ new-phone code, and #13 deletes accounts.
 
 **How to merge:**
 - Each PR targets the branch below it, so its diff shows only its own work.
-- Merge in order: #1 into `main`, then #2 to #21, retargeting each to `main` once the one below has merged.
+- Merge in order: #1 into `main`, then #2 to #22, retargeting each to `main` once the one below has merged.
 - Use **Create a merge commit**, not squash or rebase, so every commit stays in `main`'s history (CLAUDE.md: never
   rewrite history).
 
@@ -78,6 +79,9 @@ Everything is recorded, with who and when, in [OPEN_QUESTIONS.md](OPEN_QUESTIONS
   delivers most of F6 inside the course finder, without a new feature.
 - **Funding (#17, 11 Oct):** Rinsuna asked for funding like UniApplyForMe's, reversing "no bursary list". The list now
   has 24 funders, each read on its own page (#20), and saving one brings reminders (#18).
+- **Campus maps (#22, 12 Oct):** a scope change Rinsuna made. Each campus's outline and buildings come from
+  OpenStreetMap and are served with its credit and licence (the ODbL); she names SMU's buildings herself. The
+  map's background and "you are here" are hers to decide (OPEN_QUESTIONS, "Campus maps").
 - **Proposed, waiting for Rinsuna** (OPEN_QUESTIONS, "App and accounts"): which intakes a plan shows, and links to
   opportunity sites such as Graduates24. An application directory for all 26 public universities was proposed and
   then paused, because UniApplyForMe already does it well; the time goes to support after acceptance.
@@ -112,7 +116,10 @@ Everything is recorded, with who and when, in [OPEN_QUESTIONS.md](OPEN_QUESTIONS
    confirmations in REUSE.md are still unsigned. Before the submission, get his written OK or replace the reused
    files. LICENSE still names "Team PR (Mandla and Rinsuna)". Agents don't change REUSE.md's permissions or
    LICENSE: they're Rinsuna's call.
-4. **Decisions that were Mandla's** (OPEN_QUESTIONS, "App and accounts"):
+4. **Name SMU's buildings** on campus, the Clinpath and Natural Science buildings first (OPEN_QUESTIONS, "Campus
+   maps").
+5. **Decisions waiting for her** (OPEN_QUESTIONS, "App and accounts" and "Campus maps"):
+   - the map's background, and "you are here"
    - which intakes a plan shows, and "Add these dates to my calendar"
    - flag counts for reps, and module alerts
    - links to opportunity sites
@@ -121,7 +128,7 @@ Everything is recorded, with who and when, in [OPEN_QUESTIONS.md](OPEN_QUESTIONS
    - Google sign-in
    - hosting
    - the email sender
-5. **Human deadlines:**
+6. **Human deadlines:**
    - **Sonke:** create the team by Tue 20 Oct.
    - **WhatsApp:** set up WhatsApp Business (Meta app, test number) before Fri 23 Oct.
    - **Hackathon:** Fri 23 Oct 08:30 to Sun 25 Oct 17:00 SAST. M6 doesn't start before 08:30 on the Friday.
@@ -174,6 +181,17 @@ events"); the screen notes are in OPEN_QUESTIONS, "My week's screens":
 
 **Class updates (#14)** arrive in the alerts inbox the app already has. A `class` link opens that class's events, and
 `GET` / `PUT /me/notifications/switches` is the "Class updates" switch for the settings screen.
+
+**A Map screen (#22; README, "Campus maps"):** `GET /universities/<id>/map`, open to anyone.
+- A campus picker from `campuses`; one not mapped yet shows its line.
+- Fit the first view to `south_west` and `north_east`. Draw `outline`, then each place's `outline` (a pin when it
+  has none). Label the named ones; the rest stay plain shapes, never guessed. `kind` picks the icon.
+- A tap shows the place's name, or "No name yet".
+- Each `support` entry's `place` lets the Support screen offer "Show on map".
+- Always show `attribution` linked to `attribution_url`, and the licence (`licence`, `licence_url`) in the map's
+  info. While `confirmed` is false, show `notice`.
+- `react-native-svg` (already in the app) can draw the shapes with no external service. A background map is
+  Rinsuna's call, and the phone's location never goes to the API (OPEN_QUESTIONS, "Campus maps").
 
 **The Security screen's "Delete my account and data"** can stop saying "Coming soon": `DELETE /me` with
 `{password}` (#13) deletes everything, and `GET /me/export` now holds every feature's data.
@@ -248,7 +266,7 @@ events"); the screen notes are in OPEN_QUESTIONS, "My week's screens":
 
 1. **Read first:** [CLAUDE.md](../CLAUDE.md) (AGENTS.md points every agent there), then this file.
 2. **Branch:**
-   - Start from the newest PR's branch (the first row after #9 above; today `rinsuna/solo-team`): `git fetch origin`,
+   - Start from the newest PR's branch (the first row after #9 above; today `rinsuna/campus-maps`): `git fetch origin`,
      then check it out.
    - Branch `rinsuna/<topic>` from there, for example `rinsuna/money-screens`. Once the stack is merged, branch from
      `main` instead.
@@ -287,5 +305,7 @@ events"); the screen notes are in OPEN_QUESTIONS, "My week's screens":
 - **Ready to host:** #15 and [DEPLOY.md](DEPLOY.md). Choosing the host is still Rinsuna's decision (OPEN_QUESTIONS).
 - **Funding:** #17 (`backend/data/national/funding.yaml`, `campus_engine/funding.py`, `GET /funding`), with the
   leads still to check in [research/funding.md](research/funding.md). Saving funding and its reminders: #18.
+- **Campus maps:** #22 (`backend/data/maps/`, `campus_engine/maps.py`, `GET /universities/<id>/map`,
+  `scripts/fetch_osm_maps.py`), with what's mapped and the licence in [research/maps.md](research/maps.md).
 - **Next:** a person checks the packs (crisis lines first) and the funding pack; M6 (the WhatsApp bot) only from Fri
   23 Oct 08:30 SAST.

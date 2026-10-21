@@ -302,6 +302,28 @@ cents, documents and next steps, each with its source. `funding.yaml` holds nati
   to choose: the host, the managed PostgreSQL (a direct connection, not a transaction pooler), and whether to add
   error monitoring (an external service).
 
+## Campus maps
+
+- [x] **Campus maps** (a scope change by Rinsuna, 12 Oct 2026: the brief had an interactive map on the roadmap only).
+  She chose OpenStreetMap for the data, buildings as well as campus outlines, and to name SMU's buildings herself.
+  Built on `rinsuna/campus-maps`: `GET /universities/<id>/map` (README, "Campus maps"), with what's mapped and
+  the licence in [maps](research/maps.md).
+- [ ] **SMU's building names** (Rinsuna, on campus): OpenStreetMap names only 6 of the shapes on SMU's campus, all
+  sewage works. Rinsuna types names on a numbered map page the agent made (13 Oct); the agent copies them into
+  `backend/data/maps/names/smu.yaml`, credited to her, and runs `python scripts/fetch_osm_maps.py --names-only smu`.
+  First the two the Support screen already names: the Clinpath Building (Student Support Referral Unit, room
+  3L003) and the Natural Science Building (Religious Desk).
+- [ ] **Campuses not mapped yet** ([maps](research/maps.md)): six have no outline in OpenStreetMap (UP Hillcrest and
+  GIBS; TUT Soshanguve North, eMalahleni, Mbombela and Polokwane), and two have an outline with almost no buildings
+  in it (UP Onderstepoort has 2, TUT Ga-Rankuwa none). A person could draw them in OpenStreetMap.
+- [ ] **The map's background** (an external service, so it's Rinsuna's call): our shapes on a plain background (no
+  service at all), OpenStreetMap's own tiles (free but best-effort, with rules for apps: its tile usage policy), or
+  a tile provider built on OpenStreetMap (usually an account and a key).
+- [ ] **"You are here"** (Rinsuna's call): a dot from the phone's own location. It would stay on the phone: the
+  API takes no location and refuses one. It needs a location permission and a package the reused app removed.
+- [ ] **The ODbL** (with the legal check above): our map files and the names we add stay under the ODbL, never "all
+  rights reserved"; the public API is the free, machine-readable copy the licence asks us to offer (ODbL 4.6).
+
 ## Reminders for later milestones
 
 - [x] M3: the first endpoint that takes numbers (money) gets the NaN/Infinity hostile-input test again: done on
