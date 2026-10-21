@@ -188,7 +188,9 @@ class Choice(_Strict):
 
 class Requirements(_Strict):
     source: str
-    min_points: float = Field(ge=0)
+    # null when the university publishes no points minimum for this programme: only the subjects are checked.
+    # The key is still required, so a pack says so on purpose.
+    min_points: float | None = Field(ge=0)
     subject_minimums: dict[str, Level] = Field(default_factory=dict)
     # Minimum percentages, for universities that set them instead of levels.
     subject_min_percents: dict[str, Percent] = Field(default_factory=dict)
@@ -217,7 +219,7 @@ class Requirements(_Strict):
         for subject in sorted({s for s in named if named.count(s) > 1}):
             places = [where for where, subjects in rules if subject in subjects]
             problems.append(f"'{subject}' appears in more than one rule ({', '.join(places)})")
-        if self.competitive_points is not None and self.competitive_points < self.min_points:
+        if self.competitive_points is not None and self.min_points is not None and self.competitive_points < self.min_points:
             problems.append("competitive_points is below min_points")
         if problems:
             raise ValueError("; ".join(problems))

@@ -1,8 +1,9 @@
 # Mangosuthu University of Technology (MUT)
 #
-# Agent draft, read on 13 Oct 2026 (docs/research/universities.md). MUT doesn't say on its pages how it
-# counts points, so there's no points rule yet. Nobody has checked these values yet: release stays false
-# until a person has compared every one with its source.
+# Agent draft, read on 13 Oct 2026 (docs/research/universities.md). The points rule is the one on MUT's
+# admission page (the best five subjects), added on 14 Oct 2026. Nobody has checked these values yet: release
+# stays false until a person has compared every one with its source. The 40 programmes come from the CAO's
+# 2027 handbook, checked against MUT's 2026 faculty handbooks and its prospectus (docs/research/mut.md).
 
 university: mut
 name: Mangosuthu University of Technology
@@ -11,8 +12,24 @@ academic_year: 2027
 release: false
 max_choices: null
 
-points_rules: null
-points_note: "MUT's pages don't say how it counts points."
+# MUT's own rule, from its admission page. MUT's other documents, and the CAO's default, count six subjects:
+# the first thing to check (docs/research/mut.md). The two IT diplomas say six in so many words, so they
+# carry their own rule.
+points_rules:
+  source: s-mut-admission
+  subjects_counted: 5          # "calculated from the best five subjects presented by the prospective student"
+  life_orientation: exclude    # not on that page; MUT's handbooks, its rule G.14 and the CAO leave it out
+  count_from_level: 3          # MUT's matrix starts at 40-49% = 3 points: nothing under 40%
+  note: "MUT's admission page counts your best five subjects; we leave out Life Orientation, as MUT's handbooks do. The CAO's handbook counts six subjects by default, so check with MUT."
+  scale:                       # MUT's matrix: 90-100% = 8 points down to 40-49% = 3; levels 1 and 2 are the NSC's own
+    - {min_percent: 90, level: 8}
+    - {min_percent: 80, level: 7}
+    - {min_percent: 70, level: 6}
+    - {min_percent: 60, level: 5}
+    - {min_percent: 50, level: 4}
+    - {min_percent: 40, level: 3}
+    - {min_percent: 30, level: 2}
+    - {min_percent: 0, level: 1}
 
 applications:
   source: s-mut-apply
@@ -27,7 +44,794 @@ applications:
       closes: 2026-11-30
       note: "Applications opened in January 2026 and closed on 30 September; MUT accepts late applications until 30 November, at the CAO's late fee."
 
-programmes: []
+# Requirements from the CAO's 2027 handbook (MUT's rows), which its 2026 faculty handbooks repeat, unless a
+# programme says otherwise. Where the CAO gives no points, the faculty handbook's minimum is used; where neither
+# gives one, min_points is null (MUT publishes none, so only the subjects are checked) and extras say so. Agent draft, 14 Oct 2026.
+programmes:
+
+  # Faculty of Management Sciences
+
+  - id: dip_accounting
+    name: "Diploma in Accounting"
+    fields: [accounting, commerce]
+    requirements:
+      source: s-mut-cao-2027
+      min_points: 25
+      subject_minimums: {english: 4, accounting: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+      additional_minimums: [3, 3, 3]        # "any 3 subjects level 3 excluding LO"
+      extras:
+        - "MUT's prospectus asks for more: English First Additional Language at level 5 and Mathematical Literacy at level 6. Check with MUT."
+
+  - id: dip_accounting_ecp
+    name: "Diploma in Accounting (Extended Curriculum Programme)"
+    fields: [accounting, commerce]
+    requirements:
+      source: s-mut-cao-2027
+      min_points: 25
+      subject_minimums: {english: 4, accounting: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+      additional_minimums: [3, 3, 3]
+      extras:
+        - "The extended curriculum programme takes four years instead of three."
+        - "MUT's prospectus asks for more: English First Additional Language at level 5 and Mathematical Literacy at level 6. Check with MUT."
+
+  - id: dip_cost_management_accounting
+    name: "Diploma in Cost and Management Accounting"
+    fields: [accounting, commerce]
+    requirements:
+      source: s-mut-cao-2027
+      min_points: 25
+      subject_minimums: {english: 4, accounting: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+      additional_minimums: [3, 3, 3]
+      extras:
+        - "MUT's prospectus asks for Mathematical Literacy at level 6. Check with MUT."
+
+  - id: dip_local_government_finance
+    name: "Diploma in Local Government Finance"
+    fields: [public_administration, finance]
+    requirements:
+      source: s-mut-cao-2027
+      min_points: 25
+      subject_minimums: {english: 4, accounting: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+      additional_minimums: [3, 3, 3]
+      extras:
+        - "MUT's prospectus asks for Mathematical Literacy at level 6. Check with MUT."
+
+  - id: dip_public_finance_accounting
+    name: "Diploma in Public Finance and Accounting"
+    fields: [finance, accounting, public_administration]
+    requirements:
+      source: s-mut-cao-2027
+      min_points: 25
+      subject_minimums: {english: 4, accounting: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+      additional_minimums: [3, 3, 3]
+
+  - id: dip_public_finance_accounting_ecp
+    name: "Diploma in Public Finance and Accounting (Extended Curriculum Programme)"
+    fields: [finance, accounting, public_administration]
+    requirements:
+      source: s-mut-cao-2027
+      min_points: 25
+      subject_minimums: {english: 4, accounting: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+      additional_minimums: [3, 3, 3]
+      extras:
+        - "The extended curriculum programme takes four years instead of three."
+        - "MUT's prospectus asks for more: English First Additional Language at level 5 and Mathematical Literacy at level 6. Check with MUT."
+
+  - id: dip_human_resource_management
+    name: "Diploma in Human Resource Management"
+    fields: [management]
+    requirements:
+      source: s-mut-cao-2027
+      min_points: 25
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {accounting: 3}
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 3}
+      additional_minimums: [3, 3, 3, 3]     # "any other four subjects 3"
+      extras:
+        - "English Home Language at level 3, or English First Additional Language at level 4."
+
+  - id: dip_marketing
+    name: "Diploma in Marketing"
+    fields: [management, commerce]
+    requirements:
+      source: s-mut-cao-2027
+      min_points: 25
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+            - subjects: {accounting: 4}
+      additional_minimums: [3, 3, 3, 3]     # "four other subjects 3"
+      extras:
+        - "English Home Language at level 3, or English First Additional Language at level 4."
+        - "Life Orientation, and any subject at level 1 or 2, isn't considered for selection."
+        - "MUT's prospectus asks for English Home Language at level 4 or First Additional Language at level 5. Check with MUT."
+
+  - id: dip_office_management_technology
+    name: "Diploma in Office Management and Technology"
+    fields: [management]
+    requirements:
+      source: s-mut-cao-2027
+      min_points: 25
+      subject_minimums: {english: 3}
+      additional_minimums: [3, 3, 3, 3, 3]  # "five other subjects at level 3 (excl LO)"
+      extras:
+        - "English Home Language at level 3, or English First Additional Language at level 4."
+        - "Life Orientation, and any subject at level 1 or 2, isn't considered for selection."
+
+  - id: dip_public_management
+    name: "Diploma in Public Management"
+    fields: [public_administration, management]
+    requirements:
+      source: s-mut-cao-2027
+      min_points: 25
+      subject_minimums: {english: 3}
+      extras:
+        - "English Home Language at level 3, or English First Additional Language at level 4."
+
+  # Faculty of Engineering
+
+  - id: dip_building
+    name: "Diploma in Building"
+    fields: [built_environment, management]
+    selective: true
+    selection_note: "MUT's construction department says admission rests on an entrance test, merit and the places available."
+    requirements:
+      source: s-mut-cmqs-2026
+      min_points: 25                         # "a minimum total of 25 points excluding Life Orientation"
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+      extras:
+        - "MUT's construction department calls this course Construction Management and Quantity Surveying: students specialise in one of the two."
+
+  - id: dip_building_ecp
+    name: "Diploma in Building (Extended Curriculum Programme)"
+    fields: [built_environment, management]
+    selective: true
+    selection_note: "MUT's construction department says admission rests on an entrance test, merit and the places available."
+    requirements:
+      source: s-mut-cmqs-2026
+      min_points: 25
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+      extras:
+        - "The extended curriculum programme takes four years instead of three."
+        - "MUT's construction department calls this course Construction Management and Quantity Surveying: students specialise in one of the two."
+
+  - id: dip_surveying
+    name: "Diploma in Surveying"
+    fields: [built_environment, earth_sciences]
+    requirements:
+      source: s-mut-eng-2026
+      min_points: 20                         # "In addition the minimum total points must be 20."
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+      extras:
+        - "MUT's 2026 engineering handbook sets 20 points for this diploma; its prospectus asks applicants for 25."
+        - "MUT also takes first-years into the second semester (July or August 2027): apply through the CAO by 31 May 2027."
+
+  - id: dip_surveying_ecp
+    name: "Diploma in Surveying (Extended Curriculum Programme)"
+    fields: [built_environment, earth_sciences]
+    requirements:
+      source: s-mut-eng-2026
+      min_points: 20
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+      extras:
+        - "The extended curriculum programme takes four years instead of three."
+        - "MUT's 2026 engineering handbook sets 20 points for this diploma; its prospectus asks applicants for 25."
+
+  - id: dip_chemical_engineering
+    name: "Diploma in Chemical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-mut-cao-2027
+      min_points: null
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+      extras:
+        - "MUT publishes no points minimum for this diploma (nor does the CAO's 2027 handbook), so only your subjects are checked. MUT's prospectus says applicants generally need 25 points."
+        - "MUT also takes first-years into the second semester (July or August 2027): apply through the CAO by 31 May 2027."
+
+  - id: dip_civil_engineering
+    name: "Diploma in Civil Engineering"
+    fields: [engineering, built_environment]
+    requirements:
+      source: s-mut-eng-2026
+      min_points: 20                         # "In addition the minimum total points must be 20."
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+      extras:
+        - "MUT's 2026 engineering handbook sets 20 points for this diploma; its prospectus asks applicants for 25."
+        - "MUT also takes first-years into the second semester (July or August 2027): apply through the CAO by 31 May 2027."
+
+  - id: dip_civil_engineering_ecp
+    name: "Diploma in Civil Engineering (Extended Curriculum Programme)"
+    fields: [engineering, built_environment]
+    selective: true
+    selection_note: "MUT holds a selection test for this programme."
+    requirements:
+      source: s-mut-eng-2026
+      min_points: 20
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+      extras:
+        - "The extended curriculum programme takes four years instead of three."
+        - "MUT's 2026 engineering handbook sets 20 points for this diploma; its prospectus asks applicants for 25."
+
+  - id: dip_electrical_engineering
+    name: "Diploma in Electrical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-mut-cao-2027
+      min_points: null
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+      extras:
+        - "MUT publishes no points minimum for this diploma (nor does the CAO's 2027 handbook), so only your subjects are checked. MUT's prospectus says applicants generally need 25 points."
+        - "MUT also takes first-years into the second semester (July or August 2027): apply through the CAO by 31 May 2027."
+
+  - id: dip_electrical_engineering_ecp
+    name: "Diploma in Electrical Engineering (Extended Curriculum Programme)"
+    fields: [engineering]
+    requirements:
+      source: s-mut-cao-2027
+      min_points: null
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+      extras:
+        - "The extended curriculum programme takes four years instead of three."
+        - "MUT publishes no points minimum for this diploma (nor does the CAO's 2027 handbook), so only your subjects are checked. MUT's prospectus says applicants generally need 25 points."
+
+  - id: dip_mechanical_engineering
+    name: "Diploma in Mechanical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-mut-cao-2027
+      min_points: null
+      subject_minimums: {english: 4, engineering_graphics_and_design: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+      extras:
+        - "Mechanical Technology at level 4 is recommended."
+        - "MUT publishes no points minimum for this diploma (nor does the CAO's 2027 handbook), so only your subjects are checked. MUT's prospectus says applicants generally need 25 points."
+        - "MUT also takes first-years into the second semester (July or August 2027): apply through the CAO by 31 May 2027."
+
+  - id: dip_mechanical_engineering_ecp
+    name: "Diploma in Mechanical Engineering (Extended Curriculum Programme)"
+    fields: [engineering]
+    requirements:
+      source: s-mut-cao-2027
+      min_points: null
+      subject_minimums: {english: 4, engineering_graphics_and_design: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+      extras:
+        - "The extended curriculum programme takes four years instead of three."
+        - "Mechanical Technology at level 4 is recommended."
+        - "MUT publishes no points minimum for this diploma (nor does the CAO's 2027 handbook), so only your subjects are checked. MUT's prospectus says applicants generally need 25 points."
+
+  # Access courses: bridging courses for applicants who don't meet all of a diploma's requirements (the CAO's
+  # "alternative access route programmes"). MUT gives them no points minimum, so min_points is null.
+
+  - id: access_building
+    name: "Access Course: Building"
+    fields: [built_environment, management]
+    requirements:
+      source: s-mut-cao-2027
+      min_points: null
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+        - one_of:
+            - subjects: {physical_sciences: 3}
+            - subjects: {technical_sciences: 3}
+      extras:
+        - "A one-year bridging course for applicants who don't meet all of the Diploma in Building's requirements. It can't be repeated."
+        - "MUT also asks for your home language at level 4."
+        - "MUT publishes no points minimum for this course, so only your subjects are checked."
+    bridges_to:
+      - to: dip_building
+        guarantee: considered
+        conditions: "Pass every subject of the bridging course with at least 50%."
+        added_years: 1
+        source: s-mut-cmqs-2026
+
+  - id: access_surveying
+    name: "Access Course: Surveying"
+    fields: [built_environment, earth_sciences]
+    requirements:
+      source: s-mut-cao-2027
+      min_points: null
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+        - one_of:
+            - subjects: {physical_sciences: 3}
+            - subjects: {technical_sciences: 3}
+      extras:
+        - "A six-month bridging course for applicants who don't meet all of the Diploma in Surveying's requirements. It can't be repeated."
+        - "MUT's 2026 engineering handbook also asks for your home language at level 4."
+        - "MUT publishes no points minimum for this course, so only your subjects are checked."
+        - "MUT also starts this course in the second semester (July or August 2027): apply through the CAO by 31 May 2027."
+    bridges_to:
+      - to: dip_surveying
+        guarantee: considered
+        conditions: "After the six-month course, pass every subject with at least 50%."
+        source: s-mut-eng-2026
+
+  - id: access_chemical_engineering
+    name: "Access Course: Chemical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-mut-cao-2027
+      min_points: null
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+        - one_of:
+            - subjects: {physical_sciences: 3}
+            - subjects: {technical_sciences: 3}
+      extras:
+        - "A six-month bridging course for applicants who don't meet all of the Diploma in Chemical Engineering's requirements. It can't be repeated."
+        - "MUT's 2026 engineering handbook also asks for your home language at level 4."
+        - "MUT publishes no points minimum for this course, so only your subjects are checked."
+        - "MUT also starts this course in the second semester (July or August 2027): apply through the CAO by 31 May 2027."
+    bridges_to:
+      - to: dip_chemical_engineering
+        guarantee: considered
+        conditions: "After the six-month course, pass all six subjects with at least 50%."
+        source: s-mut-eng-2026
+      - to: dip_analytical_chemistry
+        guarantee: considered
+        conditions: "After the six-month course, pass all six subjects with at least 50%."
+        source: s-mut-eng-2026
+
+  - id: access_civil_engineering
+    name: "Access Course: Civil Engineering"
+    fields: [engineering, built_environment]
+    requirements:
+      source: s-mut-cao-2027
+      min_points: null
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+        - one_of:
+            - subjects: {physical_sciences: 3}
+            - subjects: {technical_sciences: 3}
+      extras:
+        - "A six-month bridging course for applicants who don't meet all of the Diploma in Civil Engineering's requirements. It can't be repeated."
+        - "MUT's 2026 engineering handbook also asks for your home language at level 4."
+        - "MUT publishes no points minimum for this course, so only your subjects are checked."
+        - "MUT also starts this course in the second semester (July or August 2027): apply through the CAO by 31 May 2027."
+    bridges_to:
+      - to: dip_civil_engineering
+        guarantee: considered
+        conditions: "After the six-month course, pass every subject with at least 50%."
+        source: s-mut-eng-2026
+
+  - id: access_electrical_engineering
+    name: "Access Course: Electrical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-mut-cao-2027
+      min_points: null
+      subject_minimums: {english: 3, other_language: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+        - one_of:
+            - subjects: {physical_sciences: 3}
+            - subjects: {technical_sciences: 3}
+      extras:
+        - "MUT asks for your home language at level 4 and your first additional language at level 3."
+        - "A six-month bridging course for applicants who don't meet all of the Diploma in Electrical Engineering's requirements. It can't be repeated."
+        - "MUT publishes no points minimum for this course, so only your subjects are checked."
+        - "MUT also starts this course in the second semester (July or August 2027): apply through the CAO by 31 May 2027."
+    bridges_to:
+      - to: dip_electrical_engineering
+        guarantee: considered
+        conditions: "After the six-month course, pass every subject."
+        source: s-mut-eng-2026
+
+  - id: access_mechanical_engineering
+    name: "Access Course: Mechanical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-mut-cao-2027
+      min_points: null
+      subject_minimums: {english: 3, other_language: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+        - one_of:
+            - subjects: {physical_sciences: 3}
+            - subjects: {technical_sciences: 3}
+      extras:
+        - "MUT asks for your home language at level 4 and your first additional language at level 3."
+        - "A six-month bridging course for applicants who don't meet all of the Diploma in Mechanical Engineering's requirements. It can't be repeated."
+        - "MUT publishes no points minimum for this course, so only your subjects are checked."
+        - "MUT also starts this course in the second semester (July or August 2027): apply through the CAO by 31 May 2027."
+    bridges_to:
+      - to: dip_mechanical_engineering
+        guarantee: considered
+        conditions: "After the six-month course, pass all six subjects with at least 50% each, in one exam session."
+        source: s-mut-eng-2026
+
+  # Faculty of Applied and Health Sciences
+
+  - id: bas_nature_conservation
+    name: "Bachelor of Applied Science in Nature Conservation"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-mut-cao-2027
+      min_points: 32
+      subject_minimums: {english: 5, life_sciences: 5}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "MUT's prospectus asks for Mathematics at level 4 and calls Physical Sciences an advantage. Check with MUT."
+
+  - id: dip_animal_production
+    name: "Diploma in Agriculture: Animal Production"
+    fields: [agriculture]
+    selective: true
+    selection_note: "Applicants have to undergo a placement test."
+    requirements:
+      source: s-mut-cao-2027
+      min_points: 25
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+        - one_of:
+            - subjects: {physical_sciences: 3}
+            - subjects: {technical_sciences: 3}
+        - one_of:
+            - subjects: {agricultural_sciences: 4}
+            - subjects: {life_sciences: 4}
+
+  - id: dip_animal_production_ecp
+    name: "Diploma in Agriculture: Animal Production (Extended Curriculum Programme)"
+    fields: [agriculture]
+    selective: true
+    selection_note: "Applicants have to undergo a placement test."
+    requirements:
+      source: s-mut-cao-2027
+      min_points: 25
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+        - one_of:
+            - subjects: {physical_sciences: 3}
+            - subjects: {technical_sciences: 3}
+        - one_of:
+            - subjects: {agricultural_sciences: 4}
+            - subjects: {life_sciences: 4}
+      extras:
+        - "The extended curriculum programme takes four years instead of three."
+
+  - id: dip_crop_production
+    name: "Diploma in Agriculture: Crop Production"
+    fields: [agriculture]
+    selective: true
+    selection_note: "Applicants have to undergo a placement test."
+    requirements:
+      source: s-mut-cao-2027
+      min_points: 25
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+        - one_of:
+            - subjects: {physical_sciences: 3}
+            - subjects: {technical_sciences: 3}
+        - one_of:
+            - subjects: {agricultural_sciences: 4}
+            - subjects: {life_sciences: 4}
+
+  - id: dip_crop_production_ecp
+    name: "Diploma in Agriculture: Crop Production (Extended Curriculum Programme)"
+    fields: [agriculture]
+    selective: true
+    selection_note: "Applicants have to undergo a placement test."
+    requirements:
+      source: s-mut-cao-2027               # the CAO's row shares Crop Production's cells; MUT's 2026 handbook gives the same
+      min_points: 25
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+        - one_of:
+            - subjects: {physical_sciences: 3}
+            - subjects: {technical_sciences: 3}
+        - one_of:
+            - subjects: {agricultural_sciences: 4}
+            - subjects: {life_sciences: 4}
+      extras:
+        - "The extended curriculum programme takes four years instead of three."
+
+  - id: dip_community_extension
+    name: "Diploma in Community Extension"
+    fields: [agriculture, consumer_sciences]
+    requirements: null       # the CAO, MUT's handbook and its prospectus word the subject rule three different ways; ask MUT
+
+  - id: dip_nature_conservation
+    name: "Diploma in Nature Conservation"
+    fields: [natural_sciences, life_sciences]
+    selective: true
+    selection_note: "MUT selects on results and field experience: its 2026 handbook asks for a CV with your interests, hobbies, field experience and references."
+    requirements:
+      source: s-mut-cao-2027
+      min_points: 28
+      subject_minimums: {english: 5, life_sciences: 5}
+      extras:
+        - "A pass in Mathematics, Physical Sciences, or History or Geography is recommended."
+
+  - id: dip_information_technology
+    name: "Diploma in Information Technology"
+    fields: [computing]
+    selective: true
+    selection_note: "Final selection uses an entrance test and/or a ranking, and MUT prefers learners who take Physical Sciences."
+    requirements:
+      source: s-mut-cao-2027
+      min_points: 24
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+      extras:
+        - "MUT's prospectus asks for more: 25 points, English at level 4 and Mathematics at level 4. Check with MUT."
+    points_rules:              # MUT says so for this diploma: "the best six subjects excluding Life Orientation"
+      source: s-mut-prospectus
+      subjects_counted: 6
+      life_orientation: exclude
+      count_from_level: 3
+      note: "For this diploma MUT counts your best six subjects without Life Orientation, English and Mathematics or Mathematical Literacy among them."
+      scale:
+        - {min_percent: 90, level: 8}
+        - {min_percent: 80, level: 7}
+        - {min_percent: 70, level: 6}
+        - {min_percent: 60, level: 5}
+        - {min_percent: 50, level: 4}
+        - {min_percent: 40, level: 3}
+        - {min_percent: 30, level: 2}
+        - {min_percent: 0, level: 1}
+
+  - id: dip_information_technology_ecp
+    name: "Diploma in Information Technology (Extended Curriculum Programme)"
+    fields: [computing]
+    selective: true
+    selection_note: "Final selection uses an entrance test and/or a ranking."
+    requirements:
+      source: s-mut-cao-2027
+      min_points: 23
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {technical_mathematics: 2}
+            - subjects: {mathematical_literacy: 3}
+      extras:
+        - "The extended curriculum programme takes four years instead of three."
+        - "MUT's prospectus asks for Mathematics at level 3 or Mathematical Literacy at level 4. Check with MUT."
+    points_rules:              # "A minimum of 23 points in the best six subjects (excluding Life Orientation)"
+      source: s-mut-prospectus
+      subjects_counted: 6
+      life_orientation: exclude
+      count_from_level: 3
+      note: "For this diploma MUT counts your best six subjects without Life Orientation, English and Mathematics or Mathematical Literacy among them."
+      scale:
+        - {min_percent: 90, level: 8}
+        - {min_percent: 80, level: 7}
+        - {min_percent: 70, level: 6}
+        - {min_percent: 60, level: 5}
+        - {min_percent: 50, level: 4}
+        - {min_percent: 40, level: 3}
+        - {min_percent: 30, level: 2}
+        - {min_percent: 0, level: 1}
+
+  - id: bhsc_medical_laboratory_science
+    name: "Bachelor of Health Sciences in Medical Laboratory Science"
+    fields: [health_sciences, medical_sciences]
+    selective: true
+    selection_note: "MUT adds an interview and placement tests."
+    requirements:
+      source: s-mut-cao-2027
+      min_points: 30
+      subject_minimums: {english: 4, life_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Geography or Agricultural Sciences at level 4 is recommended."
+
+  - id: dip_analytical_chemistry
+    name: "Diploma in Analytical Chemistry"
+    fields: [physical_sciences, natural_sciences]
+    requirements:
+      source: s-mut-cao-2027
+      min_points: null
+      subject_minimums: {english: 4, physical_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+      extras:
+        - "MUT publishes no points minimum for this diploma (nor does the CAO's 2027 handbook), so only your subjects are checked. MUT's prospectus says applicants generally need 25 points."
+        - "MUT also takes first-years into the second semester (July or August 2027): apply through the CAO by 31 May 2027."
+
+  - id: access_analytical_chemistry
+    name: "Access Course: Analytical Chemistry"
+    fields: [physical_sciences, natural_sciences]
+    requirements:
+      source: s-mut-cao-2027
+      min_points: null
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+        - one_of:
+            - subjects: {physical_sciences: 3}
+            - subjects: {technical_sciences: 3}
+      extras:
+        - "A six-month bridging course for applicants who don't meet all of the Diploma in Analytical Chemistry's requirements. It can't be repeated."
+        - "MUT publishes no points minimum for this course, so only your subjects are checked."
+        - "MUT also starts this course in the second semester (July or August 2027): apply through the CAO by 31 May 2027."
+    bridges_to:
+      - to: dip_analytical_chemistry
+        guarantee: considered
+        conditions: "After the six-month course, pass Chemistry, Physics, Mathematics, Lab Practice and Communications with at least 50% each."
+        source: s-mut-ahs-2026
+
+  - id: bsc_environmental_health
+    name: "Bachelor of Science in Environmental Health"
+    fields: [health_sciences, environmental_health]
+    requirements:
+      source: s-mut-cao-2027
+      min_points: 32
+      subject_minimums: {english: 4, life_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Geography and Agricultural Sciences at level 4 are recommended."
+        - "Every student registers with the Health Professions Council of South Africa (HPCSA)."
 
 sources:
   - id: s-mut-apply
@@ -49,5 +853,61 @@ sources:
     publisher: "Central Applications Office"
     title: "2027 entry FAQs (fees)"
     retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-mut-admission
+    url: "https://www.mut.ac.za/admission-requirements/"
+    publisher: "Mangosuthu University of Technology"
+    title: "Admission Requirements (the best five subjects, and the point calculation matrix)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-mut-cao-2027
+    url: "https://www.cao.ac.za/Download/CAO%20HANDBOOK%202027%20Entry%20web.pdf"
+    publisher: "Central Applications Office"
+    title: "CAO Handbook 2027 Entry (MUT's rows on printed pages 47 to 181; access routes on pages 204 to 206)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-mut-prospectus
+    url: "https://www.mut.ac.za/wp-content/uploads/2026/05/MUT-First-Year-Prospectus-2026.pdf"
+    publisher: "Mangosuthu University of Technology"
+    title: "Undergraduate prospectus, uploaded May 2026 (points on page 7, requirements on pages 12 to 25)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-mut-ms-2026
+    url: "https://www.mut.ac.za/wp-content/uploads/2025/12/2026-Management-Sciences-Prospectus.pdf"
+    publisher: "Mangosuthu University of Technology"
+    title: "Faculty of Management Sciences Prospectus 2026 (admission on pages 12, 13, 56, 78, 92 and 105)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-mut-ahs-2026
+    url: "https://www.mut.ac.za/wp-content/uploads/2025/12/2026-Applied-and-Health-Sciences-Handbook.pdf"
+    publisher: "Mangosuthu University of Technology"
+    title: "Faculty of Applied and Health Sciences Prospectus 2026 (admission on pages 4 to 84)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-mut-eng-2026
+    url: "https://www.mut.ac.za/wp-content/uploads/2025/12/2026-Engineering-Faculty-Prospectus_.pdf"
+    publisher: "Mangosuthu University of Technology"
+    title: "Faculty of Engineering Prospectus 2026 (admission on pages 8, 20, 21, 27 to 44, 50 to 65, 78 and 83 to 96)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-mut-cmqs-2026
+    url: "https://www.mut.ac.za/wp-content/uploads/2026/05/2026-CM-AND-QS-Prospectus.pdf"
+    publisher: "Mangosuthu University of Technology"
+    title: "Construction Management and Quantity Surveying Departmental Prospectus 2026 (pages 4, 15, 16 and 23)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-mut-rules-2026
+    url: "https://www.mut.ac.za/wp-content/uploads/2026/01/2026-General-Rules-and-Regulation-Handbook-14-Jan-2026.pdf"
+    publisher: "Mangosuthu University of Technology"
+    title: "General Information and Regulations 2026 (rule G.14 on page 52: Life Orientation not included)"
+    retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"

@@ -158,8 +158,8 @@ cents, documents and next steps, each with its source. `funding.yaml` holds nati
 ## All 26 universities
 
 Every public university now has a pack (#30, 13 Oct 2026, [research/universities.md](research/universities.md)):
-its points rule where it publishes one the engine can follow, and how and when to apply. Programmes are still only
-at UP, TUT and SMU. All are agent drafts.
+its points rule where it publishes one the engine can follow, and how and when to apply. Programmes are at UP, TUT
+and SMU and, since #32, at VUT, WSU, UMP, MUT and SPU; the rest follow in waves. All are agent drafts.
 
 - [ ] **Check the 23 new packs** against their sources, in a browser: UJ, UKZN, DUT and CPUT were read through a
   search engine's copy (bot checks, an unreachable site, expired or broken certificates).
@@ -169,7 +169,30 @@ at UP, TUT and SMU. All are agent drafts.
   always count certain subjects; the engine counts the best ones, which is the same for a learner with seven
   subjects. NMU's 7 points for quintile 1 to 3 schools and SPU's home-language bonus need questions we don't ask.
 - [ ] **Two closing dates** at VUT (30 Sep and 30 Oct 2026): both kept until VUT says which.
-- [ ] **Which universities get programmes next?** Rinsuna to choose.
+- [x] **Which universities get programmes next?** All of them, Rinsuna chose (13 Oct): agents draft them in waves,
+  those still taking applications first. Wave 1 is #32; UJ, UKZN and DUT need prospectuses downloaded in a browser.
+- [ ] **Check wave 1's course lists** (#32): each university's note in [research/](research/) starts with what to
+  check first. The ones that change what learners see:
+  - **WSU's Education programmes count seven subjects, Life Orientation included.** WSU says so for Foundation Phase;
+    six of the other nine programmes list seven subjects whose minimums add up to the points asked, so all ten count
+    seven, and their extras ask learners to confirm with WSU. Keep seven, or go back to six?
+  - **MUT: five subjects or six?** MUT's admission page counts "the best five subjects"; the CAO's default and most of
+    MUT's programme rows point to six. The pack follows the page, which gives fewer points (the IT diplomas count
+    six, as they say).
+  - **MUT's access courses** (seven bridging courses into its diplomas): keep them in the list?
+  - **SPU** doesn't say how many subjects its points count, so its 26 programmes say they can't be checked yet.
+  - Smaller ones in the notes: VUT's Internal Auditing (Mathematical Literacy 6 or 5), Technical Mathematics for its
+    engineering diplomas, points under 30%; UMP's Hospitality Management page repeating Culinary Arts' points.
+- [ ] **Sites that ask AI agents not to fetch them** (their `robots.txt`, checked 14 Oct 2026):
+  - **Fort Hare** disallows ClaudeBot and anthropic-ai on its whole site. Its course list (81 programmes, from its
+    2027 study guide) was drafted before the agent read that file, so it's held out of the repo. The clean way: Rinsuna
+    downloads the guide in her browser, and we check the draft against her copy before it goes in.
+  - **The funding pack:** the Gauteng City Region Academy bursary pages and the Reserve Bank's bursary PDF disallow
+    every bot. The same fix: Rinsuna's own downloads, checked against the pack.
+  - **Couldn't tell:** UP's file server, UJ, UKZN's applications site, DUT, Rhodes, UWC, CPUT, ISFAP, the City of
+    Tshwane and VTM refuse their `robots.txt` to an honest user agent.
+  - Until 14 Oct the agents' brief told them to send a browser's user agent. That was wrong: they now read
+    `robots.txt` first and use their own (HANDOVER, "For a coding agent").
 
 ## Subjects in Find my course
 

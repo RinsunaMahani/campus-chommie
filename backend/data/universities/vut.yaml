@@ -3,7 +3,8 @@
 # Agent draft, from VUT's own pages read on 13 Oct 2026 (docs/research/universities.md). Nobody has
 # checked these values yet: release stays false until a person has compared every one with its source.
 # VUT gives two closing dates for 2027; both are kept, and the app asks the learner to check. Bank
-# details in VUT's documents are left out on purpose. Programmes aren't added yet.
+# details in VUT's documents are left out on purpose. All 49 programmes take their requirements from
+# VUT's 2027 minimum admission requirements and their names from its faculty prospectuses (docs/research/vut.md).
 
 university: vut
 name: Vaal University of Technology
@@ -38,7 +39,664 @@ applications:
       closes_one_of: [2026-09-30, 2026-10-30]
       note: "VUT gives two closing dates: 30 September (academic programmes, in its 2027 requirements) and 30 October 2026 (South African applicants, on its How to apply page). Some programmes closed on 31 July 2026."
 
-programmes: []
+# Programmes: agent draft, 14 Oct 2026. Every requirement is from VUT's two-page 2027 poster (s-vut-requirements),
+# whose page 2 boxes were matched to their programmes on the page itself and on VUT's faculty web pages. Points
+# exclude Life Orientation; where a Mathematical Literacy route asks for more points, its option says so.
+programmes:
+
+  # Faculty of Applied and Computer Sciences (poster page 1)
+  - id: dip_analytical_chemistry
+    name: "Diploma in Analytical Chemistry"
+    fields: [natural_sciences, physical_sciences]
+    requirements:
+      source: s-vut-requirements
+      min_points: 21
+      subject_minimums: {english: 4, physical_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+      extras:
+        - "VUT's table also asks for 9 points from any 3 other subjects."
+
+  - id: dip_agricultural_management
+    name: "Diploma in Agricultural Management"
+    fields: [agriculture, management]
+    requirements:
+      source: s-vut-requirements
+      min_points: 21
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 22
+        - one_of:
+            - subjects: {agricultural_sciences: 3}
+            - subjects: {life_sciences: 3}
+      extras:
+        - "VUT writes \"Agriculture/Life Science\" at level 3. We read Agriculture as Agricultural Sciences: ask VUT if you take another agriculture subject."
+        - "Recommended: Business Studies, Economics, Computer Studies and Geography."
+
+  - id: dip_biotechnology
+    name: "Diploma in Biotechnology"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-vut-requirements
+      min_points: 23
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+
+  - id: dip_environmental_science
+    name: "Diploma in Environmental Science"
+    fields: [natural_sciences, earth_sciences]
+    requirements:
+      source: s-vut-requirements
+      min_points: 21
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+
+  - id: dip_non_destructive_testing
+    name: "Diploma in Non-Destructive Testing"
+    fields: [physical_sciences, engineering]
+    requirements:
+      source: s-vut-requirements
+      min_points: 19
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+
+  - id: dip_information_technology
+    name: "Diploma in Information Technology"
+    fields: [computing]
+    requirements:
+      source: s-vut-requirements
+      min_points: 26
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+            - subjects: {mathematical_literacy: 6}
+              min_points: 28
+      extras:
+        - "VUT's 2026 faculty prospectus says you need your own computer, a laptop or a desktop; the department gives the minimum specifications."
+
+  - id: dip_information_technology_extended
+    name: "Diploma in Information Technology (extended programme)"
+    fields: [computing]
+    requirements:
+      source: s-vut-requirements
+      min_points: 24
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+            - subjects: {mathematical_literacy: 6}
+              min_points: 26
+      extras:
+        - "VUT's 2026 faculty prospectus says you need your own computer, a laptop or a desktop; the department gives the minimum specifications."
+
+  - id: bhsc_medical_laboratory_science
+    name: "Bachelor of Health Sciences in Medical Laboratory Science"
+    fields: [medical_sciences, health_sciences]
+    selective: true
+    selection_note: "Applicants may be required to have industrial knowledge (job shadowing) and may undergo placement testing."
+    requirements:
+      source: s-vut-requirements
+      min_points: 27
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 5}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+
+  # Faculty of Management Sciences (poster page 1)
+  - id: dip_cost_management_accounting
+    name: "Diploma in Cost and Management Accounting"
+    fields: [commerce, accounting]
+    requirements:
+      source: s-vut-requirements
+      min_points: 20
+      subject_minimums: {english: 4, accounting: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+              min_points: 22
+
+  - id: dip_financial_information_systems
+    name: "Diploma in Financial Information Systems"
+    fields: [commerce, accounting]
+    requirements:
+      source: s-vut-requirements
+      min_points: 20
+      subject_minimums: {english: 4, accounting: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+              min_points: 22
+
+  # The poster and the 2026 faculty prospectus ask for Mathematical Literacy 6 here; VUT's web page shows 5. Check.
+  - id: dip_internal_auditing
+    name: "Diploma in Internal Auditing"
+    fields: [commerce, accounting]
+    requirements:
+      source: s-vut-requirements
+      min_points: 20
+      subject_minimums: {english: 4, accounting: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 6}
+              min_points: 23
+
+  - id: dip_human_resource_management
+    name: "Diploma in Human Resource Management"
+    fields: [management]
+    requirements:
+      source: s-vut-requirements
+      min_points: 20
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 21
+      additional_minimums: [4]       # "One other subject 4"
+
+  # The poster calls it "Logistics and Supply Chain Management"; the 2026 faculty prospectus "Diploma in Logistics". Check.
+  - id: dip_logistics
+    name: "Diploma in Logistics"
+    fields: [management, commerce]
+    requirements:
+      source: s-vut-requirements
+      min_points: 20
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 21
+      additional_minimums: [4]       # "One other subject 4"
+
+  - id: dip_marketing
+    name: "Diploma in Marketing"
+    fields: [management, commerce]
+    requirements:
+      source: s-vut-requirements
+      min_points: 20
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 21
+      additional_minimums: [4]       # "One other subject 4"
+
+  - id: dip_retail_business_management
+    name: "Diploma in Retail Business Management"
+    fields: [management, commerce]
+    requirements:
+      source: s-vut-requirements
+      min_points: 20
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 21
+      additional_minimums: [4]       # "One other subject 4"
+
+  - id: dip_sport_management
+    name: "Diploma in Sport Management"
+    fields: [management, sport_science]
+    requirements:
+      source: s-vut-requirements
+      min_points: 20
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 21
+      additional_minimums: [4]       # "One other subject 4"
+
+  # Faculty of Human Sciences (poster page 2). One box covers Fashion, Photography, Graphic Design and Fine Art.
+  - id: dip_fashion
+    name: "Diploma in Fashion"
+    fields: [arts_and_design]
+    selective: true
+    selection_note: "VUT adds a practical interview and a portfolio submission."
+    requirements:
+      source: s-vut-requirements
+      min_points: 21
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {technical_mathematics: 2}
+            - subjects: {mathematical_literacy: 3}
+              min_points: 22
+
+  - id: dip_fine_art
+    name: "Diploma in Fine Art"
+    fields: [arts_and_design]
+    selective: true
+    selection_note: "VUT adds a practical interview and a portfolio submission; its faculty prospectus also names a fine art drawing competence test."
+    requirements:
+      source: s-vut-requirements
+      min_points: 21
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {technical_mathematics: 2}
+            - subjects: {mathematical_literacy: 3}
+              min_points: 22
+
+  - id: dip_graphic_design
+    name: "Diploma in Graphic Design"
+    fields: [arts_and_design]
+    selective: true
+    selection_note: "VUT adds a practical interview and a portfolio submission."
+    requirements:
+      source: s-vut-requirements
+      min_points: 21
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {technical_mathematics: 2}
+            - subjects: {mathematical_literacy: 3}
+              min_points: 22
+
+  - id: dip_photography
+    name: "Diploma in Photography"
+    fields: [arts_and_design]
+    selective: true
+    selection_note: "VUT adds a practical interview and a portfolio submission."
+    requirements:
+      source: s-vut-requirements
+      min_points: 21
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {technical_mathematics: 2}
+            - subjects: {mathematical_literacy: 3}
+              min_points: 22
+
+  - id: dip_food_service_management
+    name: "Diploma in Food Service Management"
+    fields: [tourism_and_hospitality, food_science]
+    requirements:
+      source: s-vut-requirements
+      min_points: 20
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 21
+        - one_of:
+            - subjects: {hospitality_studies: 4}
+            - subjects: {tourism: 4}
+            - subjects: {accounting: 4}
+            - subjects: {business_studies: 4}
+            - subjects: {consumer_studies: 4}
+      extras:
+        - "VUT's list for the other subject: Hospitality, Hotel, Tourism, Catering, Accounting, Business Studies and Consumer Studies."
+        - "Chef uniforms are compulsory; the department gives the specifications."
+
+  - id: dip_public_relations_management
+    name: "Diploma in Public Relations Management"
+    fields: [languages_and_communication, management]
+    requirements:
+      source: s-vut-requirements
+      min_points: 20
+      subject_minimums: {english: 4, other_language: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 21
+
+  - id: dip_tourism_management
+    name: "Diploma in Tourism Management"
+    fields: [tourism_and_hospitality]
+    requirements:
+      source: s-vut-requirements
+      min_points: 20
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 21
+        - one_of:
+            - subjects: {tourism: 4}
+            - subjects: {geography: 4}
+            - subjects: {business_studies: 4}
+            - subjects: {history: 4}
+
+  - id: dip_ecotourism_management
+    name: "Diploma in Ecotourism Management"
+    fields: [tourism_and_hospitality]
+    requirements:
+      source: s-vut-requirements
+      min_points: 20
+      subject_minimums: {english: 4, life_sciences: 4}      # "Biology / Life Science 4"
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 21
+
+  - id: dip_legal_assistance
+    name: "Diploma in Legal Assistance"
+    fields: [law]
+    requirements:
+      source: s-vut-requirements
+      min_points: 23
+      subject_minimums: {english: 5, other_language: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 24
+
+  - id: dip_labour_law
+    name: "Diploma in Labour Law"
+    fields: [law]
+    requirements:
+      source: s-vut-requirements
+      min_points: 23
+      subject_minimums: {english: 5, other_language: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 24
+
+  - id: dip_safety_management
+    name: "Diploma in Safety Management"
+    fields: [safety_and_justice, management]
+    requirements:
+      source: s-vut-requirements
+      min_points: 21
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 22
+
+  - id: dip_policing
+    name: "Diploma in Policing"
+    fields: [safety_and_justice]
+    requirements:
+      source: s-vut-requirements
+      min_points: 20
+      subject_minimums: {english: 4, other_language: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 21
+
+  # "Language of Teaching & Learning 4" on the poster; the faculty prospectus (printed page 8) names English.
+  - id: bed_senior_phase_fet
+    name: "Bachelor of Education in Senior Phase and FET Teaching"
+    fields: [education]
+    requirements:
+      source: s-vut-requirements
+      min_points: 22
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+            - subjects: {mathematical_literacy: 6}
+              min_points: 24
+        - one_of:
+            - subjects: {physical_sciences: 3}
+            - subjects: {technical_sciences: 3}
+      extras:
+        - "VUT asks for the language of teaching and learning at level 4; its faculty prospectus names English."
+        - "Your NSC must show admission to bachelor's degree study."
+
+  - id: b_communication_studies
+    name: "Bachelor of Communication Studies"
+    fields: [languages_and_communication, humanities]
+    selective: true
+    selection_note: "VUT's faculty prospectus says applicants likely to succeed are interviewed, face to face or by phone."
+    requirements:
+      source: s-vut-requirements
+      min_points: 20
+      subject_minimums: {english: 5, other_language: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 21
+      extras:
+        - "VUT asks for an \"additional language\" at level 4: we read it as your other official language."
+        - "Your NSC must show admission to bachelor's degree study."
+
+  # Faculty of Engineering and Technology (poster page 2, Tables 1 to 3). For NSC learners the tables name
+  # Mathematics and Physical Sciences only; Table 4, for NC(V) applicants, also names Technical Mathematics, and
+  # Technical Sciences for Electrical Engineering.
+  - id: dip_chemical_engineering
+    name: "Diploma in Chemical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-vut-requirements
+      min_points: 24
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+      extras:
+        - "VUT's table for NC(V) applicants also names Technical Mathematics: ask VUT whether it counts for NSC learners."
+
+  - id: dip_civil_engineering
+    name: "Diploma in Civil Engineering"
+    fields: [engineering, built_environment]
+    requirements:
+      source: s-vut-requirements
+      min_points: 24
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+      extras:
+        - "VUT's table for NC(V) applicants also names Technical Mathematics: ask VUT whether it counts for NSC learners."
+
+  - id: dip_electrical_computer_systems
+    name: "Diploma in Electrical Engineering: Computer Systems Engineering"
+    fields: [engineering, computing]
+    requirements:
+      source: s-vut-requirements
+      min_points: 24
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+      extras:
+        - "VUT's table for NC(V) applicants also names Technical Mathematics and Technical Sciences: ask VUT whether they count for NSC learners."
+
+  - id: dip_electrical_electronic
+    name: "Diploma in Electrical Engineering: Electronic Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-vut-requirements
+      min_points: 24
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+      extras:
+        - "VUT's table for NC(V) applicants also names Technical Mathematics and Technical Sciences: ask VUT whether they count for NSC learners."
+
+  - id: dip_electrical_power
+    name: "Diploma in Electrical Engineering: Power Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-vut-requirements
+      min_points: 24
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+      extras:
+        - "VUT's table for NC(V) applicants also names Technical Mathematics and Technical Sciences: ask VUT whether they count for NSC learners."
+
+  - id: dip_electrical_process_control
+    name: "Diploma in Electrical Engineering: Process Control Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-vut-requirements
+      min_points: 24
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+      extras:
+        - "VUT's table for NC(V) applicants also names Technical Mathematics and Technical Sciences: ask VUT whether they count for NSC learners."
+
+  - id: dip_industrial_engineering
+    name: "Diploma in Industrial Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-vut-requirements
+      min_points: 24
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+      extras:
+        - "VUT's table for NC(V) applicants also names Technical Mathematics: ask VUT whether it counts for NSC learners."
+
+  - id: dip_mechanical_engineering
+    name: "Diploma in Mechanical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-vut-requirements
+      min_points: 24
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+      extras:
+        - "VUT's table for NC(V) applicants also names Technical Mathematics: ask VUT whether it counts for NSC learners."
+
+  - id: dip_metallurgical_engineering
+    name: "Diploma in Metallurgical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-vut-requirements
+      min_points: 24
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+      extras:
+        - "VUT's table for NC(V) applicants also names Technical Mathematics: ask VUT whether it counts for NSC learners."
+
+  - id: dip_operations_management
+    name: "Diploma in Operations Management"
+    fields: [management, engineering]
+    requirements:
+      source: s-vut-requirements
+      min_points: 23
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 3}
+
+  # Extended (4-year) diplomas, Table 3. VUT's engineering web page also lists Operations Management under this
+  # table; the poster and the 2026 faculty prospectus list only these nine, so it isn't added.
+  - id: dip_chemical_engineering_extended
+    name: "Diploma in Chemical Engineering (extended programme)"
+    fields: [engineering]
+    requirements:
+      source: s-vut-requirements
+      min_points: 22
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3}
+      extras:
+        - "The extended programme takes four years instead of three."
+
+  - id: dip_civil_engineering_extended
+    name: "Diploma in Civil Engineering (extended programme)"
+    fields: [engineering, built_environment]
+    requirements:
+      source: s-vut-requirements
+      min_points: 22
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3}
+      extras:
+        - "The extended programme takes four years instead of three."
+
+  - id: dip_electrical_computer_systems_extended
+    name: "Diploma in Electrical Engineering: Computer Systems Engineering (extended programme)"
+    fields: [engineering, computing]
+    requirements:
+      source: s-vut-requirements
+      min_points: 22
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3}
+      extras:
+        - "The extended programme takes four years instead of three."
+
+  - id: dip_electrical_electronic_extended
+    name: "Diploma in Electrical Engineering: Electronic Engineering (extended programme)"
+    fields: [engineering]
+    requirements:
+      source: s-vut-requirements
+      min_points: 22
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3}
+      extras:
+        - "The extended programme takes four years instead of three."
+
+  - id: dip_electrical_power_extended
+    name: "Diploma in Electrical Engineering: Power Engineering (extended programme)"
+    fields: [engineering]
+    requirements:
+      source: s-vut-requirements
+      min_points: 22
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3}
+      extras:
+        - "The extended programme takes four years instead of three."
+
+  - id: dip_electrical_process_control_extended
+    name: "Diploma in Electrical Engineering: Process Control Engineering (extended programme)"
+    fields: [engineering]
+    requirements:
+      source: s-vut-requirements
+      min_points: 22
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3}
+      extras:
+        - "The extended programme takes four years instead of three."
+
+  - id: dip_industrial_engineering_extended
+    name: "Diploma in Industrial Engineering (extended programme)"
+    fields: [engineering]
+    requirements:
+      source: s-vut-requirements
+      min_points: 22
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3}
+      extras:
+        - "The extended programme takes four years instead of three."
+
+  - id: dip_mechanical_engineering_extended
+    name: "Diploma in Mechanical Engineering (extended programme)"
+    fields: [engineering]
+    requirements:
+      source: s-vut-requirements
+      min_points: 22
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3}
+      extras:
+        - "The extended programme takes four years instead of three."
+
+  - id: dip_metallurgical_engineering_extended
+    name: "Diploma in Metallurgical Engineering (extended programme)"
+    fields: [engineering]
+    requirements:
+      source: s-vut-requirements
+      min_points: 22
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3}
+      extras:
+        - "The extended programme takes four years instead of three."
 
 sources:
   - id: s-vut-requirements
@@ -53,5 +711,19 @@ sources:
     publisher: "Vaal University of Technology"
     title: "How to apply"
     retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-vut-facs-prospectus-2026
+    url: "https://vut.ac.za/wp-content/uploads/2026/01/Faculty-of-Applied-and-Computer-Sciences-Prospectus-info-2026.pdf"
+    publisher: "Vaal University of Technology"
+    title: "Faculty of Applied and Computer Sciences Prospectus 2026 (printed pages 15 and 17: your own computer for IT)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-vut-fhs-prospectus-2026
+    url: "https://vut.ac.za/wp-content/uploads/2026/03/Prospectus-Faculty-of-Human-Sciences-2025.pdf"
+    publisher: "Vaal University of Technology"
+    title: "Faculty of Human Sciences Prospectus, 2026 edition, file named 2025 (printed pages 8, 53 and 94)"
+    retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
