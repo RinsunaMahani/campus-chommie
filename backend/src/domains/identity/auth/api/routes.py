@@ -71,8 +71,12 @@ def resend_code():
 
 
 @api_bp.post("/auth/login")
-@limiter.limit(policies.LOGIN, key_func=policies.login_key_func)
-@limiter.limit(policies.DEMO_LOGIN, key_func=policies.login_key_func, exempt_when=policies.not_a_demo_login)
+@limiter.limit(policies.LOGIN, key_func=policies.login_key_func, exempt_when=policies.a_demo_login)
+@limiter.limit(
+    policies.DEMO_LOGIN, key_func=policies.login_key_func, exempt_when=policies.not_a_demo_login,
+    deduct_when=policies.wrong_password,
+)
+@limiter.limit(policies.DEMO_SIGN_INS, key_func=policies.login_key_func, exempt_when=policies.not_a_demo_login)
 def login():
     data = load(LoginSchema(), request.get_json(silent=True))
     result = auth_service.login(data["email"], data["password"], _device(data), data["trusted_phone_token"], _phone(data))

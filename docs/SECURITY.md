@@ -188,6 +188,10 @@ in the email link's address by design (one use, 30 minutes, no referrer, not cac
   `CF-Connecting-IP`, which Cloudflare sets itself. It's a hosting change, so Rinsuna decides. Afterwards, check that
   the header can't be forged: a few `GET /ping` calls, each with a different made-up `CF-Connecting-IP`, must count
   down one shared `X-RateLimit-Remaining` rather than each starting fresh.
+  **Decided (Rinsuna, 21 Oct 2026): yes, the judges should have as much access as possible.** Argon turns it on
+  with the next deploy. In the same spirit, a demo persona's right password no longer counts towards any limit:
+  only wrong ones count (20 an hour per address and persona), plus a flood guard of 60 sign-ins a minute, since
+  each one writes a session row (`test_judges_can_sign_in_as_often_as_they_need`).
 - MobSF on the signed APK, once it's built.
 
 ## Accepted dependency risks

@@ -17,8 +17,12 @@ from src.shared.net.client_ip import client_ip_key
 
 LOGIN = "5 per minute"
 #: Demo accounts can't be locked by wrong passwords (anyone could lock the
-#: judges out), so each IP gets fewer tries on them instead.
+#: judges out), so each IP gets fewer WRONG tries on them instead. Right ones
+#: don't count: judges sharing one office network can sign in as often as
+#: they need (Rinsuna, 21 Oct 2026). LOGIN's 5 a minute doesn't apply to them.
 DEMO_LOGIN = "20 per hour"
+#: Every demo sign-in, right or wrong: each right one writes a session row.
+DEMO_SIGN_INS = "60 per minute"
 REGISTER = "5 per hour"
 VERIFY_EMAIL = "10 per 15 minutes"
 VERIFY_SIGN_IN = "10 per 15 minutes"  # each code also dies after 5 wrong tries
@@ -62,6 +66,16 @@ def not_a_demo_login() -> bool:
     email = payload.get("email")
     user = account_service.find_by_email(email) if isinstance(email, str) and email.strip() else None
     return user is None or not user.is_demo
+
+
+def a_demo_login() -> bool:
+    """LOGIN's exemption: demo emails have their own two limits."""
+    return not not_a_demo_login()
+
+
+def wrong_password(response) -> bool:
+    """DEMO_LOGIN counts a try only when it was refused."""
+    return response.status_code == 401
 
 
 # Which audit event a tripped limit records. Keys are Flask endpoint names
