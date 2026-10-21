@@ -16,7 +16,8 @@ import { ErrorBox } from '@/shared/components/Status';
 import { Muted, Overline, Strong } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
 import { FadeIn } from '@/shared/motion/FadeIn';
-import { colors, fonts, radius } from '@/shared/theme/tokens';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
+import { fonts, radius } from '@/shared/theme/tokens';
 
 import { collegesApi } from '../api/collegesApi';
 import { CollegeRow, statusTone } from '../CollegeRow';
@@ -26,6 +27,8 @@ import { Signs } from './CollegeScreen';
 const MIN_CHARS = 3;
 
 export default function CheckCollegeScreen() {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   const [name, setName] = useState('');
   const [answer, setAnswer] = useState<CheckAnswer | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -107,7 +110,8 @@ export default function CheckCollegeScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   input: {
     height: 50,
     paddingHorizontal: 14,

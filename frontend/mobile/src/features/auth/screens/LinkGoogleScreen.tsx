@@ -9,10 +9,12 @@ import { Body, Title } from '@/shared/components/Text';
 import { TextField } from '@/shared/components/TextField';
 import { AuthError, authApi } from '@/features/auth/api/authApi';
 import { useSession } from '@/features/auth/session/SessionProvider';
-import { colors, fonts } from '@/shared/theme/tokens';
+import { Palette, useStyles } from '@/shared/theme/palette';
+import { fonts } from '@/shared/theme/tokens';
 
 /** The Google email already has a password account: prove it once, then either way works. */
 export default function LinkGoogle() {
+  const styles = useStyles(makeStyles);
   const { email = '' } = useLocalSearchParams<{ email: string }>();
   const { signedIn } = useSession();
   const [password, setPassword] = useState('');
@@ -50,7 +52,8 @@ export default function LinkGoogle() {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   email: { fontFamily: fonts.bold, color: colors.ink },
   link: { fontFamily: fonts.bold, fontSize: 14, color: colors.ink },
 });

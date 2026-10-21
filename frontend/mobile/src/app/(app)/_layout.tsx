@@ -2,7 +2,7 @@ import { Stack } from 'expo-router';
 import { ActivityIndicator, View } from 'react-native';
 
 import { ProfileProvider, useProfile } from '@/features/profile/state';
-import { night, PaletteProvider, usePalette } from '@/shared/theme/palette';
+import { PaletteProvider, paper, usePalette } from '@/shared/theme/palette';
 
 export const unstable_settings = {
   // Deep links into a screen still get the tabs underneath for Back.
@@ -12,12 +12,12 @@ export const unstable_settings = {
 /**
  * Signed in: the tabs, plus the screens opened from them (account security,
  * My money's settings, ...). Until the student has chosen a university, only
- * onboarding is reachable; choosing one opens the tabs by itself. The student's side is black (the night
- * palette): one colour per job, so the content stands out.
+ * onboarding is reachable; choosing one opens the tabs by itself. The student's side is Daylight paper,
+ * like the rest of the app (21 Oct 2026).
  */
 export default function AppLayout() {
   return (
-    <PaletteProvider palette={night}>
+    <PaletteProvider palette={paper}>
       <ProfileProvider>
         <AppStack />
       </ProfileProvider>

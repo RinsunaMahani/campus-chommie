@@ -7,11 +7,13 @@
 import { Image, Linking, Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { t } from '@/shared/i18n';
-import { colors, fonts, radius } from '@/shared/theme/tokens';
+import { Palette, useStyles } from '@/shared/theme/palette';
+import { fonts, radius } from '@/shared/theme/tokens';
 
 import { CAMPUS_PHOTOS } from '../campusPhotos';
 
 export function CampusPhotoCard({ university }: { university: string }) {
+  const styles = useStyles(makeStyles);
   const photo = CAMPUS_PHOTOS[university];
   if (!photo) return null;
   return (
@@ -34,6 +36,7 @@ export function CampusPhotoCard({ university }: { university: string }) {
 
 /** "Photo: author, licence, Wikimedia Commons", opening the photo's page. */
 export function PhotoCredit({ credit, source }: { credit: string; source: string }) {
+  const styles = useStyles(makeStyles);
   return (
     <Pressable
       accessibilityRole="link"
@@ -45,7 +48,8 @@ export function PhotoCredit({ credit, source }: { credit: string; source: string
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   card: {
     borderRadius: radius.lg,
     borderWidth: 1,

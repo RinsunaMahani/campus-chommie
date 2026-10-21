@@ -10,7 +10,8 @@ import { ImageBackground, Pressable, StyleSheet, Text, View } from 'react-native
 
 import { t } from '@/shared/i18n';
 import { FadeIn } from '@/shared/motion/FadeIn';
-import { colors, fonts, radius } from '@/shared/theme/tokens';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
+import { fonts, radius } from '@/shared/theme/tokens';
 
 import { Art, FacultyGroup } from '../faculties';
 import { PHOTOS } from '../facultyPhotos';
@@ -45,6 +46,8 @@ export function facultyCounts(g: FacultyGroup): string {
 type Props = { group: FacultyGroup; startOpen: boolean; children: ReactNode };
 
 export function FacultySection({ group, startOpen, children }: Props) {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   const [open, setOpen] = useState(startOpen);
   const name = group.faculty ?? t('courseFinder.otherFaculty');
   const photo = PHOTOS[group.art];
@@ -92,7 +95,8 @@ export function FacultySection({ group, startOpen, children }: Props) {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   card: {
     borderRadius: radius.lg,
     borderWidth: 1,

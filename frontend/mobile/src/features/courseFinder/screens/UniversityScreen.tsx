@@ -10,7 +10,8 @@ import { t } from '@/shared/i18n';
 import { FadeIn } from '@/shared/motion/FadeIn';
 import { SkeletonCards } from '@/shared/motion/Shimmer';
 import { SlidingTabs } from '@/shared/motion/SlidingTabs';
-import { colors, fonts, radius } from '@/shared/theme/tokens';
+import { Palette, useStyles } from '@/shared/theme/palette';
+import { fonts, radius } from '@/shared/theme/tokens';
 
 import { courseFinderApi } from '../api/courseFinderApi';
 import { ApplyWindows, GuideCard } from '../components/ApplyBox';
@@ -32,6 +33,7 @@ import { errorText, placeLine } from '../words';
  * Choosing a programme as the goal builds the three-choice plan.
  */
 export default function UniversityScreen() {
+  const styles = useStyles(makeStyles);
   const { id } = useLocalSearchParams<{ id: string }>();
   const cf = useCourseFinder();
   const sent = useMemo(() => checkRows(cf.rows), [cf.rows]);
@@ -160,7 +162,8 @@ export default function UniversityScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   bandChips: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
   chips: { gap: 8, paddingRight: 8 },
   chip: {

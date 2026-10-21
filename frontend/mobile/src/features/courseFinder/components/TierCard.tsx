@@ -12,23 +12,26 @@ import { Card } from '@/shared/components/Parts';
 import { Muted, Overline, Strong } from '@/shared/components/Text';
 import { UniMonogram } from '@/shared/components/UniMonogram';
 import { t } from '@/shared/i18n';
-import { colors, fonts, radius } from '@/shared/theme/tokens';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
+import { fonts, radius } from '@/shared/theme/tokens';
 
 import { Match, Tier } from '../types';
 import { SourceLink } from '@/shared/components/SourceLink';
 
 type IconName = ComponentProps<typeof Feather>['name'];
 
-const LOOK: Record<Tier, { icon: IconName; bg: string; fg: string }> = {
+const looks = (colors: Palette): Record<Tier, { icon: IconName; bg: string; fg: string }> => ({
   competitive: { icon: 'check-circle', bg: colors.jadeTint, fg: colors.jade },
   meets_minimum: { icon: 'check', bg: colors.accentTint, fg: colors.accentDeep },
   reach: { icon: 'trending-up', bg: colors.marigoldTint, fg: colors.marigoldDeep },
   not_yet: { icon: 'x-circle', bg: colors.garnetTint, fg: colors.garnet },
   unverified: { icon: 'help-circle', bg: colors.iconTile, fg: colors.textMuted },
-};
+});
 
 /** The tier's label, as the server words it. */
 export function TierBadge({ tier, label }: { tier: Tier; label: string }) {
+  const styles = useStyles(makeStyles);
+  const LOOK = looks(usePalette());
   const look = LOOK[tier] ?? LOOK.unverified;
   return (
     <View style={[styles.badge, { backgroundColor: look.bg }]}>
@@ -40,6 +43,7 @@ export function TierBadge({ tier, label }: { tier: Tier; label: string }) {
 
 /** The plain-words reasons, one per line. */
 export function WhyLines({ lines }: { lines: string[] }) {
+  const styles = useStyles(makeStyles);
   if (!lines.length) return null;
   return (
     <View style={{ gap: 4 }}>
@@ -63,6 +67,7 @@ type Props = {
 };
 
 export function TierCard({ match, showUniversity, onPick, picking }: Props) {
+  const styles = useStyles(makeStyles);
   return (
     <Card style={{ gap: 10 }}>
       <TierBadge tier={match.tier} label={match.label} />
@@ -81,7 +86,8 @@ export function TierCard({ match, showUniversity, onPick, picking }: Props) {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   badge: {
     flexDirection: 'row',
     alignItems: 'center',

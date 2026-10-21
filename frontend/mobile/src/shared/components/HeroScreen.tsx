@@ -1,5 +1,5 @@
 /**
- * A screen that opens with its title on the wallpaper: where you are and
+ * A screen that opens with its title on the wallpaper (a hero band on the paper page): where you are and
  * what the screen is for, in white, then the content rising into place. The
  * main action stays pinned at the bottom, as on every screen.
  */
@@ -13,7 +13,7 @@ import { FadeIn } from '@/shared/motion/FadeIn';
 
 import { Wallpaper } from './Wallpaper';
 import { fonts, radius, space } from '@/shared/theme/tokens';
-import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
+import { forest, Palette, PaletteProvider, usePalette, useStyles } from '@/shared/theme/palette';
 
 type Props = {
   title: string;
@@ -38,17 +38,20 @@ export function HeroScreen({ title, subtitle, overline, back, band, footer, chil
           contentContainerStyle={{ paddingBottom: footer ? space.xl : insets.bottom + space.xl }}
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}>
-          <View style={[styles.band, { paddingTop: insets.top + space.md }]}>
-            {back ? <BandBack /> : null}
-            <View style={{ gap: 6 }}>
-              {overline ? <Text style={styles.overline}>{overline}</Text> : null}
-              <Text accessibilityRole="header" style={styles.title}>
-                {title}
-              </Text>
-              {subtitle ? <Text style={styles.subtitle}>{subtitle}</Text> : null}
+          <PaletteProvider palette={forest}>
+            <View style={[styles.band, styles.hero, { paddingTop: insets.top + space.md }]}>
+              <Wallpaper />
+              {back ? <BandBack /> : null}
+              <View style={{ gap: 6 }}>
+                {overline ? <Text style={styles.overline}>{overline}</Text> : null}
+                <Text accessibilityRole="header" style={styles.title}>
+                  {title}
+                </Text>
+                {subtitle ? <Text style={styles.subtitle}>{subtitle}</Text> : null}
+              </View>
+              {band}
             </View>
-            {band}
-          </View>
+          </PaletteProvider>
           <FadeIn style={styles.content}>{children}</FadeIn>
         </ScrollView>
         {footer ? <View style={[styles.footer, { paddingBottom: insets.bottom + space.md }]}>{footer}</View> : null}
@@ -102,6 +105,8 @@ const makeStyles = (colors: Palette) => StyleSheet.create({
   subtitle: { fontFamily: fonts.medium, fontSize: 15.5, lineHeight: 21, color: colors.onAccentSoft },
   chip: { paddingHorizontal: 12, paddingVertical: 6, borderRadius: radius.pill, backgroundColor: colors.onAccentTint, alignSelf: 'flex-start' },
   chipText: { fontFamily: fonts.semibold, fontSize: 13.5, color: colors.onAccent },
+  // Daylight paper: the band is a hero area, so it carries Rinsuna's wallpaper (and the forest palette inside it).
+  hero: { overflow: 'hidden', borderBottomLeftRadius: 30, borderBottomRightRadius: 30, paddingBottom: space.xl },
   content: { paddingHorizontal: 20, paddingTop: space.lg, gap: space.lg },
   footer: { paddingHorizontal: 20, paddingTop: space.sm, gap: space.md },
 });

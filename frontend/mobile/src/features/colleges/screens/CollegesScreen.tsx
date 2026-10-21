@@ -18,7 +18,8 @@ import { Body, Muted, Strong } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
 import { FadeIn } from '@/shared/motion/FadeIn';
 import { SkeletonCards } from '@/shared/motion/Shimmer';
-import { colors, fonts, radius } from '@/shared/theme/tokens';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
+import { fonts, radius } from '@/shared/theme/tokens';
 
 import { collegesApi } from '../api/collegesApi';
 import { CollegeRow } from '../CollegeRow';
@@ -29,6 +30,8 @@ const MIN_CHARS = 3;
 const WAIT_MS = 350;
 
 export default function CollegesScreen() {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   const [typed, setTyped] = useState('');
   const [q, setQ] = useState('');
   const [kind, setKind] = useState<CollegeKind | undefined>(undefined);
@@ -140,6 +143,7 @@ export default function CollegesScreen() {
 }
 
 function Chips<T extends string | undefined>({ items, value, onChange }: { items: [T, string][]; value: T; onChange: (v: T) => void }) {
+  const styles = useStyles(makeStyles);
   return (
     <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.chips}>
       {items.map(([v, label]) => {
@@ -159,7 +163,8 @@ function Chips<T extends string | undefined>({ items, value, onChange }: { items
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   checkCard: { flexDirection: 'row', alignItems: 'center', gap: 12, padding: 14 },
   checkIcon: {
     width: 40,

@@ -4,10 +4,12 @@ import { LegalDocument } from '@/content/legal/types';
 import { InfoNote } from '@/shared/components/Parts';
 import { BackButton, Screen } from '@/shared/components/Screen';
 import { Muted, Title } from '@/shared/components/Text';
-import { colors, fonts } from '@/shared/theme/tokens';
+import { Palette, useStyles } from '@/shared/theme/palette';
+import { fonts } from '@/shared/theme/tokens';
 
 /** Renders a Privacy Policy / Terms document. Readable before and after sign-in. */
 export function LegalDocumentScreen({ doc }: { doc: LegalDocument }) {
+  const styles = useStyles(makeStyles);
   return (
     <Screen>
       <BackButton />
@@ -32,7 +34,8 @@ export function LegalDocumentScreen({ doc }: { doc: LegalDocument }) {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   heading: { fontFamily: fonts.bold, fontSize: 16, color: colors.text },
   body: { fontFamily: fonts.body, fontSize: 15.5, lineHeight: 22, color: colors.text },
 });

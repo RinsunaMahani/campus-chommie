@@ -8,7 +8,8 @@ import { Screen } from '@/shared/components/Screen';
 import { Body, Title } from '@/shared/components/Text';
 import { TextField } from '@/shared/components/TextField';
 import { isStrongPassword } from '@/shared/lib/validation';
-import { colors, fonts } from '@/shared/theme/tokens';
+import { Palette, useStyles } from '@/shared/theme/palette';
+import { fonts } from '@/shared/theme/tokens';
 
 /**
  * Opened by the link in the reset email (campuschommie://reset-password?token=...).
@@ -16,6 +17,7 @@ import { colors, fonts } from '@/shared/theme/tokens';
  * signs the account out everywhere.
  */
 export default function ResetPasswordScreen() {
+  const styles = useStyles(makeStyles);
   const { token = '' } = useLocalSearchParams<{ token: string }>();
   const [password, setPassword] = useState('');
   const [confirm, setConfirm] = useState('');
@@ -75,6 +77,7 @@ export default function ResetPasswordScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   error: { fontFamily: fonts.medium, fontSize: 14, color: colors.garnet },
 });

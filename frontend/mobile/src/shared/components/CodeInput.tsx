@@ -62,6 +62,6 @@ const makeStyles = (colors: Palette) => StyleSheet.create({
   },
   boxActive: { borderColor: colors.ink, borderWidth: 1.5 },
   boxError: { borderColor: colors.garnet },
-  digit: { fontFamily: fonts.display, fontSize: 24, color: colors.ink },
+  digit: { fontFamily: fonts.extrabold, fontSize: 24, color: colors.ink },
   hidden: { position: 'absolute', opacity: 0, height: 1, width: 1 },
 });

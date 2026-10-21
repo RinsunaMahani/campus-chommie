@@ -8,12 +8,14 @@ import { Screen } from '@/shared/components/Screen';
 import { Body, Title } from '@/shared/components/Text';
 import { TextField } from '@/shared/components/TextField';
 import { isStrongPassword } from '@/shared/lib/validation';
-import { colors, fonts } from '@/shared/theme/tokens';
+import { Palette, useStyles } from '@/shared/theme/palette';
+import { fonts } from '@/shared/theme/tokens';
 
 import { securityApi } from '../api/securityApi';
 
 /** Needs the current password; signs out every other phone. */
 export default function ChangePasswordScreen() {
+  const styles = useStyles(makeStyles);
   const [current, setCurrent] = useState('');
   const [next, setNext] = useState('');
   const [confirm, setConfirm] = useState('');
@@ -64,6 +66,7 @@ export default function ChangePasswordScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   error: { fontFamily: fonts.medium, fontSize: 14, color: colors.garnet },
 });

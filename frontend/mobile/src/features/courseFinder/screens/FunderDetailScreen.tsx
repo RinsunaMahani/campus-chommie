@@ -15,7 +15,8 @@ import { Monogram } from '@/shared/components/UniMonogram';
 import { t } from '@/shared/i18n';
 import { formatRand } from '@/shared/lib/money';
 import { SkeletonCards } from '@/shared/motion/Shimmer';
-import { colors, fonts, radius } from '@/shared/theme/tokens';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
+import { fonts, radius } from '@/shared/theme/tokens';
 
 import { courseFinderApi } from '../api/courseFinderApi';
 import { ApplyWindows } from '../components/ApplyBox';
@@ -51,6 +52,8 @@ function useSignedIn(): boolean {
  * 6. Sources with retrieval date
  */
 export default function FunderDetailScreen() {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   const { id } = useLocalSearchParams<{ id: string }>();
   const signedIn = useSignedIn();
   const [funder, setFunder] = useState<FunderDetail | null>(null);
@@ -314,7 +317,8 @@ export default function FunderDetailScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   card: { gap: 10, padding: 14 },
   headCard: { padding: 0, overflow: 'hidden' },
   photo: { width: '100%', height: 170 },

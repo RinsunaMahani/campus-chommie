@@ -12,7 +12,8 @@ import { ErrorBox } from '@/shared/components/Status';
 import { Body, Muted, Overline, Strong, Title } from '@/shared/components/Text';
 import { MessageKey, t } from '@/shared/i18n';
 import { SkeletonCards } from '@/shared/motion/Shimmer';
-import { colors, fonts, radius } from '@/shared/theme/tokens';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
+import { fonts, radius } from '@/shared/theme/tokens';
 
 import { courseFinderApi } from '../api/courseFinderApi';
 import { CampusMapView, LatLon, MapPlace, UniversityMapAnswer } from '../types';
@@ -90,6 +91,8 @@ function toPoints(ring: LatLon[], project: (pt: LatLon) => [number, number]): st
  * - Shows `notice` when `confirmed` is false.
  */
 export default function CampusMapScreen() {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   const { id, campus: campusParam, place: placeParam } = useLocalSearchParams<{
     id: string;
     campus?: string;
@@ -375,7 +378,8 @@ export default function CampusMapScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   chips: { gap: 8, paddingRight: 8 },
   chip: {
     paddingHorizontal: 14,

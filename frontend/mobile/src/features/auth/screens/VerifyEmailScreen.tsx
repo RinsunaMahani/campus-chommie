@@ -10,12 +10,15 @@ import { BackButton, Screen } from '@/shared/components/Screen';
 import { Body, Title } from '@/shared/components/Text';
 import { AuthError, authApi } from '@/features/auth/api/authApi';
 import { useSession } from '@/features/auth/session/SessionProvider';
-import { colors, fonts } from '@/shared/theme/tokens';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
+import { fonts } from '@/shared/theme/tokens';
 
 const RESEND_AFTER = 45;
 
 /** Step 2 of 4: a 6-digit code by email. Nothing else happens until it's confirmed. */
 export default function VerifyEmail() {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   const { profile, emailVerified, signOut } = useSession();
   const [code, setCode] = useState('');
   const [error, setError] = useState('');
@@ -101,7 +104,8 @@ export default function VerifyEmail() {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   email: { fontFamily: fonts.bold, color: colors.ink },
   error: { fontFamily: fonts.medium, fontSize: 14, color: colors.garnet },
   resendRow: { flexDirection: 'row', alignItems: 'center', gap: 6 },

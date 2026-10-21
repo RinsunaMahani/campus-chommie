@@ -9,7 +9,8 @@ import { Card, IconTile, ListRow, Tag } from '@/shared/components/Parts';
 import { Screen } from '@/shared/components/Screen';
 import { t } from '@/shared/i18n';
 import { Overline, Title } from '@/shared/components/Text';
-import { colors, fonts } from '@/shared/theme/tokens';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
+import { fonts } from '@/shared/theme/tokens';
 
 import { securityApi, SignedInPhone } from '../api/securityApi';
 
@@ -20,6 +21,8 @@ function when(iso: string): string {
 
 /** Home -> Account security: where you're signed in, your password, your data, your account. */
 export default function SecurityScreen() {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   const [phones, setPhones] = useState<SignedInPhone[] | null>(null);
   const [message, setMessage] = useState('');
   const [busy, setBusy] = useState(false);
@@ -87,7 +90,8 @@ export default function SecurityScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   phone: { flexDirection: 'row', alignItems: 'center', gap: 12 },
   phoneName: { fontFamily: fonts.bold, fontSize: 15.5, color: colors.text },
   phoneSub: { fontFamily: fonts.body, fontSize: 13.5, color: colors.textMuted, marginTop: 2 },

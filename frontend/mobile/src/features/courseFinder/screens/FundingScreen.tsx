@@ -14,7 +14,8 @@ import { Monogram } from '@/shared/components/UniMonogram';
 import { t } from '@/shared/i18n';
 import { FadeIn } from '@/shared/motion/FadeIn';
 import { SkeletonCards } from '@/shared/motion/Shimmer';
-import { colors, fonts, radius } from '@/shared/theme/tokens';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
+import { fonts, radius } from '@/shared/theme/tokens';
 
 import { courseFinderApi } from '../api/courseFinderApi';
 import { funderMonogram } from '../funderPhotos';
@@ -46,6 +47,7 @@ function useSignedIn(): boolean {
 
 /** "Bursary · Government": what kind of funding and who runs it. */
 function Meta({ funder }: { funder: FundingCard }) {
+  const styles = useStyles(makeStyles);
   return (
     <View style={styles.metaRow}>
       <Muted>{funder.kind_label}</Muted>
@@ -60,6 +62,8 @@ function Meta({ funder }: { funder: FundingCard }) {
 }
 
 function SaveButton({ funder, saved, onPress }: { funder: FundingCard; saved: boolean; onPress: () => void }) {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   return (
     <Pressable
       accessibilityRole="button"
@@ -82,6 +86,8 @@ function SaveButton({ funder, saved, onPress }: { funder: FundingCard; saved: bo
  * saving funding when signed in.
  */
 export default function FundingScreen() {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   const cf = useCourseFinder();
   const signedIn = useSignedIn();
   const [data, setData] = useState<FundingListAnswer | null>(null);
@@ -333,7 +339,8 @@ export default function FundingScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   summary: { fontFamily: fonts.medium, fontSize: 15, color: colors.text },
   signInCard: { gap: 10, padding: 14 },
   choiceCard: { gap: 8, padding: 16 },

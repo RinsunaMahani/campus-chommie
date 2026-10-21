@@ -212,10 +212,12 @@ const makeStyles = (colors: Palette) => StyleSheet.create({
   googleText: { fontFamily: fonts.bold, fontSize: 16, color: colors.ink },
   card: {
     backgroundColor: colors.white,
-    borderRadius: radius.md,
+    borderRadius: radius.lg,
     borderWidth: 1,
     borderColor: colors.line,
-    padding: 14,
+    padding: 16,
+    // Daylight paper: a soft lift off the cream page instead of a hard outline.
+    boxShadow: '0 6px 18px rgba(28, 43, 30, 0.08)',
   },
   rowCard: { flexDirection: 'row', alignItems: 'center', gap: 12 },
   rowTitle: { fontFamily: fonts.bold, fontSize: 15.5, color: colors.text },
