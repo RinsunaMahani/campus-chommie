@@ -1,7 +1,7 @@
 # SSDLC answers for Sonke (draft)
 
 Draft answers for the SSDLC form on the team page, from [SECURITY.md](../SECURITY.md), which holds the full threat
-model and test evidence. Rinsuna fits these into the form's own questions. Numbers were true on 20 Oct 2026; re-check
+model and test evidence. Rinsuna fits these into the form's own questions. Numbers were true on 21 Oct 2026; re-check
 the test counts the day you submit.
 
 ## 1. Requirements: what we protect and why
@@ -26,7 +26,7 @@ We listed each threat and its control (full table in SECURITY.md). The main ones
 
 | Threat | Control |
 |---|---|
-| Stolen or guessed password | bcrypt; lockout after 5 wrong tries for 15 minutes; rate limits per IP and per IP + email; a new phone needs a 6-digit email code (two factors) |
+| Stolen or guessed password | bcrypt; lockout after 5 wrong tries for 15 minutes, during which a right password gets the same answer as a wrong one (no hint to a guesser); rate limits per IP and per IP + email; a new phone needs a 6-digit email code (two factors) |
 | Stolen token | 15-minute access tokens tied to a live session; rotating refresh tokens; a reused refresh token revokes the session |
 | Reading someone else's data (IDOR) | every query takes the user from the token; another user's record answers 404, the same as a missing one |
 | Account enumeration | sign-up, resend and forgot-password give the same answer for any email |
@@ -38,6 +38,8 @@ We listed each threat and its control (full table in SECURITY.md). The main ones
 | Tracking a student through the map | the map takes no location; a "you are here" dot would stay on the phone |
 | Secrets leaking | secrets only in environment settings; the app refuses to start with missing or short keys; codes and links never logged |
 | Tampering with the audit trail | the database refuses to change or delete audit rows (trigger) |
+| A web page or script abusing an API answer | Content-Security-Policy that loads nothing, no framing, no sniffing, no caching; cross-origin isolation |
+| A lost or shared phone | sign-in tokens and wallet cards in the phone's secure store; app data left out of phone backups |
 
 ## 3. Implementation: secure coding
 
@@ -53,12 +55,22 @@ We listed each threat and its control (full table in SECURITY.md). The main ones
 
 ## 4. Testing
 
-- **Automated tests on every pull request** (GitHub Actions): about 1,180 backend tests on PostgreSQL 16, including
+- **Automated tests on every pull request** (GitHub Actions): 1,416 backend tests on PostgreSQL 16, including
   hostile-input tests for every endpoint, rate-limit tests, IDOR tests (404 for someone else's data), privacy
-  export and deletion tests, and audit-trail tamper tests. Over 380 engine and architecture tests, with 99% engine
-  coverage. The app: TypeScript check, ESLint and over 90 Jest tests.
-- **Security scanning in CI:** `pip-audit` and an npm audit gate (a high or critical advisory fails the build), and a
-  gitleaks secrets scan on every pull request.
+  export and deletion tests, and audit-trail tamper tests, with 99% engine coverage. The app: TypeScript check,
+  ESLint and 175 Jest tests.
+- **Security scanning in CI:** Bandit (code; a medium or high finding fails the build), `pip-audit` and an npm audit
+  gate (a high or critical advisory fails the build), and a gitleaks secrets scan of every branch's history.
+- **Our own pen test (21 Oct 2026):** a script of 105 attacks on a copy of the API running with the production config
+  on our own computer: forged and replayed tokens, reading or changing another student's data by id, extra fields
+  (`user_id`, `is_demo`), hostile bodies (50,000-deep JSON, 2 MB, 10^30 cents, NUL bytes, SQL), booby-trapped PDFs
+  (400 pages, cut off, not a PDF), account enumeration, lockout, code guessing and rate limits. It found three
+  problems, all fixed the same day with tests: the lock told a guesser when a password was right; deleting a module
+  with marks crashed; no Content-Security-Policy. 105 of 105 now pass. The script is in the repository
+  (`backend/scripts/security/pentest_local.py`) and refuses to run against any other computer.
+- **Scanners run by hand the same day:** Semgrep (698 files: false positives only), OWASP ZAP baseline on the API and
+  the reset page (no failures; three header gaps fixed), and MobSF on the signed APK (no trackers, no secrets in the
+  app; backups and five unused permissions removed).
 - **Manual checks:** every screen walked at 360 px wide; data spot-checked against official sources.
 
 ## 5. Deployment
@@ -68,7 +80,23 @@ We listed each threat and its control (full table in SECURITY.md). The main ones
 - **Hosting:** Render (API, HTTPS) and Neon (PostgreSQL, TLS required) free tiers, both in Frankfurt. Settings
   typed into the host by the owner, never committed.
 - **CORS:** only named https origins in production; `*` and plain http are refused at start-up.
+- **Behind Cloudflare:** the live API reads the visitor's address from Cloudflare's own header, so rate limits
+  count each visitor separately (to be set with the next deploy: confirm from Argon's report before submitting).
+- **Headers:** HSTS for a year, Content-Security-Policy, no framing, no caching, cross-origin isolation.
 - **Health:** `/api/v1/ping` for uptime (no database), `/api/v1/health` for a full check.
+
+## 5b. The Android app
+
+- **Permissions:** internet, network state, vibrate and camera (only to scan a store card's barcode, nothing
+  recorded). Permissions that libraries add but no feature uses (draw over other apps, storage, fingerprint and face
+  unlock) are stripped from the build.
+- **Data on the phone:** sign-in tokens and wallet cards in the secure store (Android Keystore); app data excluded
+  from phone backups; nothing in the app holds a secret (the demo password, mail and database settings appear nowhere
+  in it, checked in the built APK).
+- **No trackers, no analytics, no ads** (MobSF found none).
+- **Signed** by EAS with a key kept in our Expo account; from the next build, built for phone processors only.
+- **Old phones:** it installs from Android 7 on purpose, because many students' phones are old. The server checks
+  everything, and the phone only ever holds the student's own data.
 
 ## 6. Maintenance and response
 

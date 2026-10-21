@@ -16,12 +16,19 @@ login goes on slide 9.
    "What you can still do now".
 5. **Funding.** NSFAS and 23 funders: what each covers, who can apply, dates; saved funders and reminders.
    Screenshot of a funder page.
-6. **If you're accepted, then the student side.** The steps to the first lecture, then My week (eight weeks, each in
-   words) and My money (runway, safe to spend, "two weeks late").
+6. **If you're accepted, then the student side.** The steps to the first lecture. Home opens on **Do this next**: the
+   app looks at the week, the money and what's due, and picks the three things that matter most today, saying why.
+   My week: the whole year as month, week, 3-day or day, with classes read from the university's own timetable PDF,
+   tests, exams and the student's own plans ("Find a time" spots the gaps). My money: runway, safe to spend, "can I
+   afford this?", payday plan, goals with fee dates, "two weeks late". The store-card wallet keeps loyalty cards on
+   the phone.
 7. **Alerts and support.** The combined alert (heavy week and short money) pointing to campus counselling and
    financial aid; crisis lines only once verified.
 8. **Built honestly and securely.** Every fact cites its official source; no ID, bank or NSFAS details; marks and
-   money owner-only; the course finder stores nothing. 1,180 backend tests, CI with security scans.
+   money owner-only; the course finder stores nothing. 1,416 backend tests and 175 app tests on every change, with
+   code, dependency and secrets scans. We attacked it ourselves: 105 attacks (forged tokens, other students' data,
+   hostile input, booby-trapped PDFs), three problems found and fixed the same day, 105 of 105 now blocked. The APK:
+   no trackers, no secrets, only the permissions it needs.
 9. **Demo.** APK link; demo login: `naledi.demo@example.com` (or Sipho, Thabo) and the demo password; the demo video
    link. "Demo data: fictional student."
 10. **Architecture and what's next.** Expo app (Android and web), Flask API, Python decision engine, PostgreSQL;
@@ -41,6 +48,14 @@ login goes on slide 9.
 
 ## Pitch video (20 seconds, Sat 24 Oct)
 
-"Choosing a course means 26 websites, 26 ways of counting points, and funding deadlines you hear about too late.
-Campus Chommie puts it in one honest app: your marks, where you qualify, how to apply and what funds it, and once
-you're in, your week and your money together. From choosing a course to graduating."
+About 50 words, spoken calmly (2.5 words a second). Film the phone screen; no faces needed. Text on screen in the
+app's own type, large enough to read on a phone.
+
+| Time | Show | Say |
+|---|---|---|
+| 0 to 5 s | The 26 universities list scrolling fast | "Twenty-six universities. Twenty-six ways of counting points." |
+| 5 to 10 s | Type marks, "Where you qualify" fills in | "Type your marks once: see where you qualify, and what funds it." |
+| 10 to 16 s | Sign in as Naledi: Home's "Do this next", then Money's runway | "Once you're in, it thinks ahead: a heavy week, an allowance running late, what to do first." |
+| 16 to 20 s | End card: Campus Chommie, the tagline, Team Blue Tag | "Campus Chommie. From choosing a course to graduating." |
+
+On screen at the end: "Demo data: fictional student."
