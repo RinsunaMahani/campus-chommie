@@ -2,6 +2,7 @@
   "expo": {
     "name": "Campus Chommie",
     "slug": "campus-chommie",
+    "owner": "rinsunamahani",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -44,7 +45,10 @@
       "typedRoutes": true
     },
     "extra": {
-      "router": {}
+      "router": {},
+      "eas": {
+        "projectId": "603ccf9f-02bb-403a-916c-c17d2d34a31e"
+      }
     }
   }
 }

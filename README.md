@@ -170,6 +170,17 @@ npx expo start --go                # on a phone with Expo Go; or a development b
 npx expo export --platform web     # the web build, into dist/
 ```
 
+**An installable Android app (preview APK)**, for people who aren't near the PC. The Expo project is
+`@rinsunamahani/campus-chommie`; sign in to Expo with access to it (`npx eas-cli login`), then:
+
+```bash
+npx eas-cli build --profile preview --platform android   # built on Expo's servers, 10 to 30 minutes
+```
+
+The build page gives an install link to send to anyone with an Android phone (their phone asks to allow installs from
+that source). The preview signs in against the built-in mock (`eas.json`), so it works anywhere with no server, until
+the backend is hosted. It holds the app as it was when built: build again to share new screens.
+
 ## Checks (CI runs all of these)
 
 ```bash
