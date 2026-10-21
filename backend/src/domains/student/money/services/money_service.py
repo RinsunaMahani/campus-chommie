@@ -21,6 +21,7 @@ from zoneinfo import ZoneInfo
 from campus_engine.config import load_config
 from campus_engine.forecast import forecast_runway, spending_pace
 from campus_engine.lifefund import life_fund_signal
+from campus_engine.money_plan import Goal, afford, goal_pace, payday_plan
 from campus_engine.runway import ExpectedPayment as Arrival
 from campus_engine.runway import RunwayResult, project_runway, safe_to_spend
 from campus_engine.text import long_day, rand
@@ -30,8 +31,10 @@ from src.domains.classes.events.services import week_service
 from src.domains.student.profile.services import profile_service as profile
 from src.extensions import db
 
-from ..constants import MAX_DAYS_BACK, MAX_SOURCES, PACE_DAYS, PAST_DAYS, TIMEZONE
-from ..models import ExpectedPayment, IncomeSource, MoneySettings, SpendingEntry
+from ..constants import (
+    GOAL_DAYS_AHEAD, MAX_DAYS_BACK, MAX_GOALS, MAX_SOURCES, PACE_DAYS, PAST_DAYS, TIMEZONE, UNIVERSITY_DATES_AHEAD,
+)
+from ..models import ExpectedPayment, IncomeSource, MoneyGoal, MoneySettings, SpendingEntry
 from ..repositories import money_repository as repo
 
 ISO_DAY = re.compile(r"^\d{4}-\d{2}-\d{2}$")
@@ -382,6 +385,143 @@ def summary(user, late: bool) -> dict:
     }
 
 
+# ------------------------------------------------------------ looking ahead
+
+NO_SETTINGS = "Add your balance and what you spend on essentials each day first."
+
+
+def _need_settings(user) -> MoneySettings:
+    settings = repo.settings_for(user.id)
+    if settings is None:
+        raise _field_error("money", NO_SETTINGS)
+    return settings
+
+
+def can_i_afford(user, amount_cents: int) -> dict:
+    """What buying something for `amount_cents` today does to how long the money lasts. Nothing is stored or
+    logged: the price is used once and dropped."""
+    today = _today()
+    cfg = load_config()
+    settings = _need_settings(user)
+    p = _project(user, settings, today, 0, cfg)
+    a = afford(amount_cents, p.balance, today, p.arrivals, p.runway.daily_spend_cents,
+               settings.essentials_per_day_cents, settings.life_fund_reserve_cents, cfg["runway"]["horizon_days"])
+    return {
+        "verdict": a.verdict,
+        "days_before": a.days_before,
+        "days_after": a.days_after,
+        "wait_until": a.wait_until.isoformat() if a.wait_until else None,
+        "lines": a.lines,
+    }
+
+
+def _goal(g: MoneyGoal, today: date) -> dict:
+    left = max(0, g.amount_cents - g.saved_cents)
+    per_week, line = goal_pace(left, g.due_on, today)
+    return {
+        "id": str(g.id),
+        "label": g.label,
+        "amount_cents": g.amount_cents,
+        "saved_cents": g.saved_cents,
+        "due_on": g.due_on.isoformat(),
+        "due_day": long_day(g.due_on),
+        "from_university": g.from_university,
+        "per_week_cents": per_week,
+        "lines": [line],
+    }
+
+
+def university_dates(user, today: date) -> list[dict]:
+    """The student's university's own fee dates coming up (dates only: amounts always come from the student)."""
+    university, _campus = profile.place_of(user)
+    uni = catalogue.packs().get(university) if university else None
+    if uni is None:
+        return []
+    sources = {s.id: s for s in uni.sources}
+    ahead = today + timedelta(days=UNIVERSITY_DATES_AHEAD)
+    out = []
+    for f in sorted(uni.funding_cycles, key=lambda f: f.when):
+        if f.funder == "university" and f.kind in ("fee_due", "discount_deadline") and today <= f.when <= ahead:
+            source = sources.get(f.source)
+            out.append({"name": f.name, "kind": f.kind, "on": f.when.isoformat(), "day": long_day(f.when),
+                        "source_url": source.url if source else None})
+    return out
+
+
+def plan(user) -> dict:
+    """Looking ahead: the payday plan for the next payment, the student's goals, and their university's fee dates
+    coming up (to turn into goals)."""
+    today = _today()
+    settings = repo.settings_for(user.id)
+    goals = repo.goals_for(user.id)
+    out = {"goals": [_goal(g, today) for g in goals], "university_dates": university_dates(user, today), "payday": None}
+    if settings is None:
+        return out | {"lines": [NO_SETTINGS]}
+    rows = _payments(user.id, today)
+    arrivals = [Arrival(p.source.label, p.expected_on, p.amount_cents, p.received_on is not None) for p in rows]
+    pp = payday_plan(arrivals, today, settings.essentials_per_day_cents,
+                     [Goal(g.label, max(0, g.amount_cents - g.saved_cents), g.due_on) for g in goals])
+    if pp is None:
+        return out | {"lines": ["Add the money you expect (an allowance, a transfer, a wage) to plan your next payday."]}
+    out["payday"] = {
+        "lands_on": pp.lands_on.isoformat(),
+        "day": long_day(pp.lands_on),
+        "amount_cents": pp.amount_cents,
+        "pots": [{"label": x.label, "cents": x.cents, "why": x.why} for x in pp.pots],
+        "free_cents": pp.free_cents,
+    }
+    return out | {"lines": pp.lines}
+
+
+def _check_goal_day(due_on: date, today: date) -> None:
+    if not today <= due_on <= today + timedelta(days=GOAL_DAYS_AHEAD):
+        raise _field_error("due_on", "Choose a date from today up to two years ahead.")
+
+
+def _my_goal(user, goal_id: uuid.UUID) -> MoneyGoal:
+    row = repo.goal(user.id, goal_id)
+    if row is None:
+        raise NotFoundError("That goal isn't one of yours.", code="MONEY_GOAL_NOT_FOUND")
+    return row
+
+
+def _clean_goal(fields: dict) -> dict:
+    out = dict(fields)
+    if "label" in out:
+        out["label"] = " ".join(out["label"].split())
+    return out
+
+
+def add_goal(user, body: dict) -> dict:
+    today = _today()
+    _check_goal_day(body["due_on"], today)
+    if repo.count_goals(user.id) >= MAX_GOALS:
+        raise _field_error("goals", f"You can keep up to {MAX_GOALS} goals.")
+    row = repo.add_goal(user.id, _clean_goal(body))
+    db.session.commit()
+    return {"goal": _goal(row, today)}
+
+
+def change_goal(user, goal_id: uuid.UUID, body: dict) -> dict:
+    today = _today()
+    row = _my_goal(user, goal_id)
+    if "due_on" in body:
+        _check_goal_day(body["due_on"], today)
+    for key, value in _clean_goal(body).items():
+        setattr(row, key, value)
+    if row.saved_cents > row.amount_cents:
+        db.session.rollback()
+        raise _field_error("saved_cents", "That's more than the goal itself.")
+    db.session.commit()
+    return {"goal": _goal(row, today)}
+
+
+def delete_goal(user, goal_id: uuid.UUID) -> dict:
+    db.session.delete(_my_goal(user, goal_id))
+    db.session.commit()
+    return {}
+
+
 # ------------------------------------------------------------ cheap things
 
 
@@ -427,6 +567,7 @@ def export_for(user) -> dict:
         "income_sources": [_source(s) for s in repo.sources_for(user.id)],
         "payments": [_payment(p, today) for p in repo.all_payments(user.id)],
         "spending": [_spending(e) for e in repo.all_spending(user.id)],
+        "goals": [_goal(g, today) for g in repo.goals_for(user.id)],
     }
 
 

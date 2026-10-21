@@ -14,6 +14,11 @@
   DELETE /money/spending/<YYYY-MM-DD>
   GET    /money/summary?late=true              balance, pace, runway, safe to spend, life fund, next payment
   GET    /money/cheap-things                   the data pack's cheap things to do near the student's campus
+  POST   /money/afford                         {amount_cents}: what buying it today does (nothing stored)
+  GET    /money/plan                           {payday, goals, university_dates, lines}
+  POST   /money/goals                          {label, amount_cents, due_on, saved_cents?, from_university?}
+  PATCH  /money/goals/<id>                     any of the same fields
+  DELETE /money/goals/<id>
 
 Amounts are integer cents. Thin: validate -> service -> answer. Rate-limited
 per student; another student's row is the same 404 as one that doesn't exist.
@@ -32,6 +37,9 @@ from src.shared.rate_limit.limiter import limiter
 
 from ..constants import CHANGE_LIMIT, READ_LIMIT
 from ..schemas.money_schemas import (
+    AffordSchema,
+    GoalChangeSchema,
+    GoalSchema,
     NoQuerySchema,
     PaymentUpdateSchema,
     SettingsSchema,
@@ -146,3 +154,46 @@ def my_money_summary():
 def cheap_things_near_me():
     load(NoQuerySchema(), request.args.to_dict())
     return success_response(service.cheap_things(current_user()))
+
+
+@api_bp.post(f"{BASE}/afford")
+@limiter.limit(CHANGE_LIMIT, key_func=per_user)
+@auth_required
+def can_i_afford():
+    load(NoQuerySchema(), request.args.to_dict())
+    body = load(AffordSchema(), request.get_json(silent=True))
+    return success_response(service.can_i_afford(current_user(), body["amount_cents"]))
+
+
+@api_bp.get(f"{BASE}/plan")
+@limiter.limit(READ_LIMIT, key_func=per_user)
+@auth_required
+def my_money_plan():
+    load(NoQuerySchema(), request.args.to_dict())
+    return success_response(service.plan(current_user()))
+
+
+@api_bp.post(f"{BASE}/goals")
+@limiter.limit(CHANGE_LIMIT, key_func=per_user)
+@auth_required
+def add_money_goal():
+    load(NoQuerySchema(), request.args.to_dict())
+    body = load(GoalSchema(), request.get_json(silent=True))
+    return success_response(service.add_goal(current_user(), body), status_code=201)
+
+
+@api_bp.patch(f"{BASE}/goals/<uuid:goal_id>")
+@limiter.limit(CHANGE_LIMIT, key_func=per_user)
+@auth_required
+def change_money_goal(goal_id: uuid.UUID):
+    load(NoQuerySchema(), request.args.to_dict())
+    body = load(GoalChangeSchema(), request.get_json(silent=True))
+    return success_response(service.change_goal(current_user(), goal_id, body))
+
+
+@api_bp.delete(f"{BASE}/goals/<uuid:goal_id>")
+@limiter.limit(CHANGE_LIMIT, key_func=per_user)
+@auth_required
+def delete_money_goal(goal_id: uuid.UUID):
+    load(NoQuerySchema(), request.args.to_dict())
+    return success_response(service.delete_goal(current_user(), goal_id))

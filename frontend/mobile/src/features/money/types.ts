@@ -80,3 +80,38 @@ export type CheapThing = {
   read_on: string | null;
   last_verified: string | null;
 };
+
+/** "Can I afford this?": nothing is stored. */
+export type AffordAnswer = {
+  verdict: 'yes' | 'tight' | 'not_now';
+  /** How many days the money lasts without it, and with it (null: past the horizon). */
+  days_before: number | null;
+  days_after: number | null;
+  /** A payday it would be fine to buy on instead. */
+  wait_until: string | null;
+  lines: string[];
+};
+
+export type MoneyGoal = {
+  id: string;
+  label: string;
+  amount_cents: number;
+  saved_cents: number;
+  due_on: string;
+  due_day: string;
+  from_university: boolean;
+  per_week_cents: number;
+  lines: string[];
+};
+
+export type GoalInput = { label: string; amount_cents: number; saved_cents: number; due_on: string; from_university: boolean };
+
+/** A fee date from the student's university's own page: never an amount. */
+export type UniversityDate = { name: string; kind: string; on: string; day: string; source_url: string | null };
+
+export type MoneyPlan = {
+  payday: { lands_on: string; day: string; amount_cents: number; pots: { label: string; cents: number; why: string }[]; free_cents: number } | null;
+  goals: MoneyGoal[];
+  university_dates: UniversityDate[];
+  lines: string[];
+};

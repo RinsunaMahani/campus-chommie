@@ -37,6 +37,7 @@ EXPORTED_TABLES = {
     "platform.notifications": "alerts",
     "platform.notification_switches": "alert_switches",
     "student.saved_funders": "saved_funding",
+    "student.money_goals": "money",
     "student.timetable_entries": "timetable",
     "student.exam_entries": "timetable",
     # Not a student's own data: who confirmed or changed an event (cleared when they go), and which
@@ -134,7 +135,7 @@ def test_the_export_holds_nothing_about_anyone_else(client, me, other):
 def test_a_new_student_exports_empty_sections(client, me):
     data = export(client, me)
     assert data["profile"] is None and data["marks"] == [] and data["classes"] == []
-    assert data["money"] == {"settings": None, "income_sources": [], "payments": [], "spending": []}
+    assert data["money"] == {"settings": None, "income_sources": [], "payments": [], "spending": [], "goals": []}
     assert data["class_messages"] == {"announcements": [], "flags": []}
     assert data["saved_funding"] == {"saved": []}
 
