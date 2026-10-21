@@ -7,7 +7,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { GOOGLE_READY, USE_MOCK_AUTH } from '@/constants/config';
 import { authApi } from '@/features/auth/api/authApi';
 import { useSession } from '@/features/auth/session/SessionProvider';
-import { colors, fonts, radius } from '@/shared/theme/tokens';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
+import { fonts, radius } from '@/shared/theme/tokens';
 
 /**
  * MOCK of Android's own Google account picker. The real one comes from
@@ -15,11 +16,13 @@ import { colors, fonts, radius } from '@/shared/theme/tokens';
  * gets name, email and photo, never the password.
  */
 const accounts = [
-  { name: 'Lindiwe Mokoena', email: 'lindiwe.student@gmail.com', tint: colors.ink },
+  { name: 'Lindiwe Mokoena', email: 'lindiwe.student@gmail.com', tint: '#1C2B1E' },
   { name: 'Lindiwe M', email: 'lmokoena.study@gmail.com', tint: '#6B6456' },
 ];
 
 export default function GooglePicker() {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   const { startGoogleSignUp } = useSession();
   // Set when coming from Create account, where the box was ticked.
   const { consent } = useLocalSearchParams<{ consent?: string }>();
@@ -98,7 +101,8 @@ export default function GooglePicker() {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   backdrop: { flex: 1, backgroundColor: colors.overlay },
   sheet: {
     backgroundColor: colors.porcelain,

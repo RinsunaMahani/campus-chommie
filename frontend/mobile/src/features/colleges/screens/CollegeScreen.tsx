@@ -18,7 +18,8 @@ import { ErrorBox } from '@/shared/components/Status';
 import { Muted, Overline } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
 import { SkeletonCards } from '@/shared/motion/Shimmer';
-import { colors, fonts } from '@/shared/theme/tokens';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
+import { fonts } from '@/shared/theme/tokens';
 
 import { collegesApi } from '../api/collegesApi';
 import { statusTone } from '../CollegeRow';
@@ -27,6 +28,7 @@ import { CollegeAnswer, WarningSigns } from '../types';
 const FIRST = 8;
 
 export default function CollegeScreen() {
+  const styles = useStyles(makeStyles);
   const { id } = useLocalSearchParams<{ id: string }>();
   const [answer, setAnswer] = useState<CollegeAnswer | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -131,6 +133,8 @@ export default function CollegeScreen() {
 }
 
 function Fact({ label, value, onPress }: { label: string; value: string; onPress?: () => void }) {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   const body = (
     <View style={styles.fact}>
       <Muted>{label}</Muted>
@@ -150,6 +154,7 @@ function Fact({ label, value, onPress }: { label: string; value: string; onPress
 }
 
 function ListCard({ title, note, items }: { title: string; note?: string; items: string[] }) {
+  const styles = useStyles(makeStyles);
   const [all, setAll] = useState(false);
   const shown = all ? items : items.slice(0, FIRST);
   return (
@@ -173,6 +178,7 @@ function ListCard({ title, note, items }: { title: string; note?: string; items:
 
 /** DHET's own warning signs of a bogus college, in its words, with its source. */
 export function Signs({ signs }: { signs: WarningSigns }) {
+  const styles = useStyles(makeStyles);
   return (
     <Card style={styles.card}>
       <Overline>{t('colleges.signsTitle')}</Overline>
@@ -187,7 +193,8 @@ export function Signs({ signs }: { signs: WarningSigns }) {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   card: { gap: 10, padding: 14 },
   line: { fontFamily: fonts.body, fontSize: 15, lineHeight: 21, color: colors.text },
   fact: { gap: 2, paddingVertical: 2 },

@@ -13,7 +13,8 @@ import { Card, Tag } from '@/shared/components/Parts';
 import { Body, Muted, Overline, Strong } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
 import { formatRand } from '@/shared/lib/money';
-import { colors, fonts } from '@/shared/theme/tokens';
+import { Palette, useStyles } from '@/shared/theme/palette';
+import { fonts } from '@/shared/theme/tokens';
 
 import { ApplyWindow, Deadline, Group, Guide, PlanApply, SlotFunding, WindowStatus } from '../types';
 import { daysLeft, formatDay } from '../words';
@@ -35,6 +36,7 @@ const WINDOW_TONE: Record<WindowStatus, Tone> = {
 const OPEN_NOW: WindowStatus[] = ['open', 'closing_soon', 'late_open'];
 
 function Lines({ lines }: { lines: string[] }) {
+  const styles = useStyles(makeStyles);
   return (
     <>
       {lines.map((line, i) => (
@@ -48,6 +50,7 @@ function Lines({ lines }: { lines: string[] }) {
 
 /** Each intake: "To start in 2027", its status in words, and its dates. */
 export function ApplyWindows({ windows }: { windows: ApplyWindow[] }) {
+  const styles = useStyles(makeStyles);
   return (
     <View style={{ gap: 12 }}>
       {windows.map((w) => (
@@ -67,6 +70,7 @@ export function ApplyWindows({ windows }: { windows: ApplyWindow[] }) {
 
 /** Funders whose fields match this choice: how many, how many open now, and the first few. */
 export function SlotFundingBox({ funding }: { funding: SlotFunding }) {
+  const styles = useStyles(makeStyles);
   return (
     <View style={{ gap: 8 }}>
       <Overline>{t('courseFinder.fundingForChoice')}</Overline>
@@ -85,6 +89,7 @@ export function SlotFundingBox({ funding }: { funding: SlotFunding }) {
 }
 
 function GroupBlock({ title, group }: { title: string; group: Group }) {
+  const styles = useStyles(makeStyles);
   if (!group || !group.items.length) return null;
   return (
     <View style={{ gap: 4 }}>
@@ -101,6 +106,7 @@ function GroupBlock({ title, group }: { title: string; group: Group }) {
 
 /** One university's or funder's own steps: fee, documents, what happens next, its page. */
 export function GuideCard({ guide }: { guide: Guide }) {
+  const styles = useStyles(makeStyles);
   const url = guide.url;
   return (
     <Card style={{ gap: 12 }}>
@@ -138,6 +144,7 @@ export function GuideCard({ guide }: { guide: Guide }) {
 }
 
 function DeadlineRow({ d }: { d: Deadline }) {
+  const styles = useStyles(makeStyles);
   return (
     <View style={styles.deadline}>
       <View style={styles.headRow}>
@@ -175,7 +182,8 @@ export function ApplyGuide({ apply }: { apply: PlanApply }) {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   headRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 8, flexWrap: 'wrap' },
   line: { fontFamily: fonts.body, fontSize: 14.5, lineHeight: 20, color: colors.text },
   countdown: { fontFamily: fonts.bold, fontSize: 13.5, color: colors.marigoldDeep },

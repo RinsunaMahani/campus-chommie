@@ -14,13 +14,15 @@ import { AuthError, authApi } from '@/features/auth/api/authApi';
 import { consentNow } from '@/features/auth/profile';
 import { useSession } from '@/features/auth/session/SessionProvider';
 import { isEmail, isStrongPassword } from '@/shared/lib/validation';
-import { colors, fonts } from '@/shared/theme/tokens';
+import { Palette, useStyles } from '@/shared/theme/palette';
+import { fonts } from '@/shared/theme/tokens';
 
 /**
  * Account stage: email, password, confirming you're 18 or older, and
  * agreeing to the Privacy Policy and Terms. Nothing else is asked here.
  */
 export default function CreateAccount() {
+  const styles = useStyles(makeStyles);
   const { startEmailSignUp } = useSession();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -168,7 +170,8 @@ export default function CreateAccount() {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   alt: { alignItems: 'center', paddingVertical: 4 },
   formError: { fontFamily: fonts.medium, fontSize: 14, color: colors.garnet, textAlign: 'center' },
   altText: { fontFamily: fonts.body, fontSize: 14, color: colors.textMuted },

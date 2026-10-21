@@ -7,7 +7,8 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { t } from '@/shared/i18n';
 import { Expandable } from '@/shared/motion/Expandable';
-import { colors, fonts, radius } from '@/shared/theme/tokens';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
+import { fonts, radius } from '@/shared/theme/tokens';
 
 import { MarkRow, Sent } from '../marks';
 import { subjectName } from '../subjects';
@@ -17,6 +18,8 @@ import { fmt } from './Qualify';
 type Props = { points: UniversityPoints; sent: Sent; rows: MarkRow[] };
 
 export function ApsCard({ points, sent, rows }: Props) {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   const percent = new Map(rows.map((r) => [r.subject, r.percent]));
   return (
     <View style={styles.card}>
@@ -57,7 +60,8 @@ export function ApsCard({ points, sent, rows }: Props) {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   card: { borderRadius: radius.lg, padding: 18, gap: 6, borderWidth: 1, borderColor: colors.line, backgroundColor: colors.glassElevated },
   overline: { fontFamily: fonts.bold, fontSize: 11.5, letterSpacing: 0.8, textTransform: 'uppercase', color: colors.onAccentSoft },
   big: { fontFamily: fonts.display, fontSize: 40, lineHeight: 46, letterSpacing: -1, color: colors.onAccent },

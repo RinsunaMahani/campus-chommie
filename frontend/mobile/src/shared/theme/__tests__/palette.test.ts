@@ -4,7 +4,7 @@
  */
 import { expect, test } from '@jest/globals';
 
-import { forest, night } from '../palette';
+import { forest, night, paper } from '../palette';
 
 function rgb(hex: string): [number, number, number] {
   const h = hex.replace('#', '');
@@ -42,4 +42,23 @@ test('both palettes have the same keys, so a screen looks right under either', (
   expect(Object.keys(night).sort()).toEqual(Object.keys(forest).sort());
   expect(night.wallpaper).toBe(false);
   expect(forest.wallpaper).toBe(true);
+});
+
+test.each(TEXT.flatMap((text) => SURFACES.map((surface) => [text, surface] as const)))(
+  'paper: %s on %s meets 4.5:1',
+  (text, surface) => {
+    expect(contrast(paper[text], paper[surface])).toBeGreaterThanOrEqual(4.5);
+  },
+);
+
+test.each([...paper.classColours])('paper: class colour %s reads on the cards and the sand notes', (colour) => {
+  expect(contrast(colour, paper.white)).toBeGreaterThanOrEqual(4.5);
+  expect(contrast(colour, paper.infoTint)).toBeGreaterThanOrEqual(4.4);
+});
+
+test('paper: cream words read on the forest pill and on rose', () => {
+  expect(contrast(paper.pillText, paper.accent)).toBeGreaterThanOrEqual(4.5);
+  expect(contrast(paper.pillText, paper.garnet)).toBeGreaterThanOrEqual(4.5);
+  expect(Object.keys(paper).sort()).toEqual(Object.keys(forest).sort());
+  expect(paper.wallpaper).toBe(false);
 });

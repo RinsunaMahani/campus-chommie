@@ -11,7 +11,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Card, InfoNote, Tag } from '@/shared/components/Parts';
 import { Overline, Strong } from '@/shared/components/Text';
 import { MessageKey, t } from '@/shared/i18n';
-import { colors, fonts } from '@/shared/theme/tokens';
+import { Palette, useStyles } from '@/shared/theme/palette';
+import { fonts } from '@/shared/theme/tokens';
 
 import { ApplyWindow, Plan, PlanApply, Slot, WindowStatus } from '../types';
 import { daysLeft, formatDay, inDays } from '../words';
@@ -99,6 +100,7 @@ export function stillOpen(plan: Plan): Section[] {
 }
 
 export function StillOpen({ plan }: { plan: Plan }) {
+  const styles = useStyles(makeStyles);
   const sections = stillOpen(plan);
   if (!sections.length) return null;
   return (
@@ -125,6 +127,7 @@ export function TestDateNote({ apply }: { apply: Pick<PlanApply, 'today' | 'test
   return <InfoNote icon="clock">{t('courseFinder.testDate', { date: formatDay(apply.today) })}</InfoNote>;
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   detail: { fontFamily: fonts.body, fontSize: 14.5, lineHeight: 20, color: colors.textMuted },
 });

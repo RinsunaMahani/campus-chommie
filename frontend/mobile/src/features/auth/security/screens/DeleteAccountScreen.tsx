@@ -9,7 +9,8 @@ import { Screen } from '@/shared/components/Screen';
 import { Title } from '@/shared/components/Text';
 import { TextField } from '@/shared/components/TextField';
 import { t } from '@/shared/i18n';
-import { colors, fonts, radius } from '@/shared/theme/tokens';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
+import { fonts, radius } from '@/shared/theme/tokens';
 
 import { securityApi } from '../api/securityApi';
 
@@ -19,6 +20,8 @@ import { securityApi } from '../api/securityApi';
  * can't. Demo accounts are refused by the server, which says so.
  */
 export default function DeleteAccountScreen() {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   const { signOut } = useSession();
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -53,7 +56,8 @@ export default function DeleteAccountScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   box: { backgroundColor: colors.garnetTint, borderRadius: radius.md, padding: 14, gap: 10 },
   row: { flexDirection: 'row', gap: 10 },
   text: { flex: 1, fontFamily: fonts.medium, fontSize: 14.5, lineHeight: 19, color: colors.text },

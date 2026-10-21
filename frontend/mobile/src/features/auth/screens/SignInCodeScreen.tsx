@@ -11,12 +11,15 @@ import { CODE_LENGTH, CodeInput, CodeInputHandle } from '@/shared/components/Cod
 import { IconTile } from '@/shared/components/Parts';
 import { Screen } from '@/shared/components/Screen';
 import { Body, Title } from '@/shared/components/Text';
-import { colors, fonts } from '@/shared/theme/tokens';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
+import { fonts } from '@/shared/theme/tokens';
 
 const RESEND_AFTER = 45;
 
 /** Two-factor, step two on a new phone: the code we emailed. */
 export default function SignInCodeScreen() {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   const { signedIn } = useSession();
   const [pending] = useState(getPendingSignIn);
   const [code, setCode] = useState('');
@@ -105,7 +108,8 @@ export default function SignInCodeScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   email: { fontFamily: fonts.bold, color: colors.ink },
   error: { fontFamily: fonts.medium, fontSize: 14, color: colors.garnet },
   resendRow: { flexDirection: 'row', alignItems: 'center', gap: 6 },

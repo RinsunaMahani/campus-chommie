@@ -6,9 +6,11 @@ import { StyleSheet, View } from 'react-native';
 import { Button } from '@/shared/components/Button';
 import { Screen } from '@/shared/components/Screen';
 import { Body, Title } from '@/shared/components/Text';
-import { colors } from '@/shared/theme/tokens';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
 
 export default function ResetSent() {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   const { email = '' } = useLocalSearchParams<{ email: string }>();
   return (
     <Screen
@@ -31,7 +33,8 @@ export default function ResetSent() {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   center: { alignItems: 'center', gap: 14, paddingTop: 90, paddingHorizontal: 8 },
   circle: {
     width: 76,

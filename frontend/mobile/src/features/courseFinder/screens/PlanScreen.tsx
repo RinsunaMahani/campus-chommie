@@ -7,7 +7,8 @@ import { HeroScreen } from '@/shared/components/HeroScreen';
 import { Card, InfoNote } from '@/shared/components/Parts';
 import { Overline, Title } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
-import { colors, fonts } from '@/shared/theme/tokens';
+import { usePalette } from '@/shared/theme/palette';
+import { fonts } from '@/shared/theme/tokens';
 
 import { ApplyGuide } from '../components/ApplyBox';
 import { PlanSlot } from '../components/PlanSlot';
@@ -16,6 +17,7 @@ import { useCourseFinder } from '../state';
 
 /** The three-choice plan: the goal, a route into it and a safer related choice, then how to apply for them. */
 export default function PlanScreen() {
+  const colors = usePalette();
   const cf = useCourseFinder();
   if (!cf.plan || !cf.university) return <Redirect href="/course-finder" />;
   const { plan, university } = cf;

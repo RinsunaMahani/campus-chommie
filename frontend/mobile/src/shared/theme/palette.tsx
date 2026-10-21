@@ -1,8 +1,9 @@
 /**
- * Two palettes with the same keys, so a screen looks right under either:
+ * Palettes with the same keys, so a screen looks right under any of them:
  *
- *  - forest: Rinsuna's homescreen wallpaper with forest glass (Find my course, sign-in, welcome);
- *  - night: the registered student's side (Home, Week, Money, Support and what opens from them). A
+ *  - paper: the whole app since 21 Oct 2026 (Daylight paper, below);
+ *  - forest: Rinsuna's homescreen wallpaper with forest glass, now for hero areas only (the welcome screen);
+ *  - night: the black student side used until 21 Oct 2026, kept for comparison. A
  *    black page with dark grey cards, so the content stands out, and one colour per job: titles white,
  *    body text light grey, secondary text and small labels mid grey, actions and what's on track in
  *    mint, attention in amber, what's urgent or late in coral.
@@ -61,7 +62,47 @@ export const night: Palette = {
   classColours: CLASS_COLOURS,
 };
 
-const PaletteContext = createContext<Palette>(forest);
+/**
+ * Daylight paper (chosen by Rinsuna, 21 Oct 2026): the whole app on warm cream paper with white cards and
+ * forest ink, readable in sunlight on any screen. Her wallpaper stays for hero areas (the welcome screen and
+ * the summary cards at the top of a screen), the main button is a forest pill with cream words, and signals
+ * are forest (on track), amber (attention) and rose (urgent). Module colours are deep earth tones that read
+ * on white.
+ */
+export const paper: Palette = {
+  ink: '#1C2B1E', // titles, icons, the main text on cards
+  inkSoft: '#4A5A4C',
+  accent: '#2F6B3A', // the main action: a forest pill with cream words
+  accentDeep: '#2F6B3A', // links and selected words
+  accentTint: '#E3EFDF',
+  marigold: '#8A5300', // attention: busy, due soon, pending
+  marigoldDeep: '#8A5300',
+  marigoldTint: '#FBEBCF',
+  jade: '#2F6B3A', // on track, done
+  jadeTint: '#E3EFDF',
+  garnet: '#A3332A', // urgent, late, errors
+  garnetTint: '#FBE3DE',
+  porcelain: '#F4EFE3',
+  line: 'rgba(28, 49, 30, 0.10)',
+  white: '#FFFDF8', // cards, fields, sheets: white on cream
+  text: '#1C2B1E',
+  textMuted: '#4A5A4C', // secondary text
+  textFaint: '#56645A', // small labels, hints
+  iconTile: '#ECE6D8',
+  infoTint: '#ECE6D8',
+  overlay: 'rgba(28, 43, 30, 0.45)',
+  pillText: '#F4EFE3',
+  glassElevated: '#FFFFFF',
+  dock: '#FFFDF8',
+  onAccent: '#FFFFFF', // words on the wallpaper
+  onAccentSoft: 'rgba(255, 255, 255, 0.86)',
+  onAccentTint: 'rgba(255, 255, 255, 0.18)',
+  page: '#F4EFE3',
+  wallpaper: false,
+  classColours: ['#2F6B3A', '#3B5B8C', '#86506D', '#8A5300', '#A1405A', '#2F5F5C', '#56652F', '#94462B'],
+};
+
+const PaletteContext = createContext<Palette>(paper);
 
 export function PaletteProvider({ palette, children }: { palette: Palette; children: ReactNode }) {
   return <PaletteContext.Provider value={palette}>{children}</PaletteContext.Provider>;

@@ -11,7 +11,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Button } from '@/shared/components/Button';
 import { t } from '@/shared/i18n';
-import { colors, fonts, radius } from '@/shared/theme/tokens';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
+import { fonts, radius } from '@/shared/theme/tokens';
 
 import {
   Blocked,
@@ -30,6 +31,8 @@ import {
 type Props = { chosen: string[]; onDone: (chosen: string[]) => void; onClose: () => void };
 
 export function SubjectPicker({ chosen, onDone, onClose }: Props) {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   const { height } = useWindowDimensions();
   const [draft, setDraft] = useState<string[]>(chosen);
   const [open, setOpen] = useState<FolderId | null>('languages');
@@ -151,7 +154,8 @@ export function SubjectPicker({ chosen, onDone, onClose }: Props) {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   backdrop: { flex: 1, backgroundColor: colors.overlay },
   sheet: {
     backgroundColor: colors.white,

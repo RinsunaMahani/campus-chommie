@@ -12,7 +12,8 @@ import { Overline } from '@/shared/components/Text';
 import { UniMonogram } from '@/shared/components/UniMonogram';
 import { t } from '@/shared/i18n';
 import { PressScale } from '@/shared/motion/PressScale';
-import { colors, fonts, radius } from '@/shared/theme/tokens';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
+import { fonts, radius } from '@/shared/theme/tokens';
 
 import { PointsAnswer, Tier, UniversityPoints } from '../types';
 
@@ -31,6 +32,7 @@ export function qualifyCounts(points: PointsAnswer): { programmes: number; unive
 }
 
 export function QualifyStats({ points }: { points: PointsAnswer }) {
+  const styles = useStyles(makeStyles);
   const { programmes, universities } = qualifyCounts(points);
   return (
     <Card style={{ gap: 12 }}>
@@ -51,6 +53,8 @@ export function QualifyStats({ points }: { points: PointsAnswer }) {
 }
 
 export function UniversityRow({ u, onPress }: { u: UniversityPoints; onPress: () => void }) {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   const { met, total } = metAt(u);
   const sub = total ? t('courseFinder.meetsOf', { met, total }) : t('courseFinder.noProgrammesYet');
   return (
@@ -79,7 +83,8 @@ function aps(u: UniversityPoints): string {
   return u.points == null ? t('courseFinder.noApsRule') : `${fmt(u.points)} ${t('courseFinder.apsLabel')}`;
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   stats: { flexDirection: 'row', gap: 16 },
   stat: { flex: 1 },
   big: { fontFamily: fonts.display, fontSize: 38, lineHeight: 44, letterSpacing: -1, color: colors.accent },

@@ -12,7 +12,8 @@ import { Overline } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
 import { PressScale } from '@/shared/motion/PressScale';
 import { SnapCarousel } from '@/shared/motion/SnapCarousel';
-import { colors, fonts, radius } from '@/shared/theme/tokens';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
+import { fonts, radius } from '@/shared/theme/tokens';
 
 import { FundingCard } from '../types';
 import { daysLeft, formatDay, inDays } from '../words';
@@ -42,6 +43,8 @@ function when(f: FundingCard, open: boolean): string | null {
 }
 
 export function ClosingSoon({ row }: { row: FundingRow }) {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   const { open, funders } = row;
   if (!funders.length) return null;
   const title = open ? t('courseFinder.fundingNow') : t('courseFinder.fundingNext');
@@ -77,7 +80,8 @@ export function ClosingSoon({ row }: { row: FundingRow }) {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   card: {
     minHeight: 132,
     gap: 6,

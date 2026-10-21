@@ -12,7 +12,8 @@ import { isEmail } from '@/shared/lib/validation';
 import { AuthError, authApi } from '@/features/auth/api/authApi';
 import { setPendingSignIn } from '@/features/auth/session/pendingSignIn';
 import { useSession } from '@/features/auth/session/SessionProvider';
-import { colors, fonts, radius } from '@/shared/theme/tokens';
+import { Palette, useStyles } from '@/shared/theme/palette';
+import { fonts, radius } from '@/shared/theme/tokens';
 
 // The fictional demo students (backend/data/demo/personas.yaml). Tapping one fills in the email only: the shared
 // password is in the judges' notes, never in the app, because anything in the app ships inside the APK.
@@ -23,6 +24,7 @@ const DEMO_STUDENTS = [
 ];
 
 export default function SignIn() {
+  const styles = useStyles(makeStyles);
   const { signedIn, startEmailSignUp } = useSession();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -134,7 +136,8 @@ export default function SignIn() {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   link: { fontFamily: fonts.bold, fontSize: 14, color: colors.ink },
   alt: { alignItems: 'center', paddingVertical: 4 },
   altText: { fontFamily: fonts.body, fontSize: 14, color: colors.textMuted },

@@ -8,7 +8,8 @@ import { Button } from '@/shared/components/Button';
 import { Screen } from '@/shared/components/Screen';
 import { Title } from '@/shared/components/Text';
 import { TextField } from '@/shared/components/TextField';
-import { colors, fonts, radius } from '@/shared/theme/tokens';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
+import { fonts, radius } from '@/shared/theme/tokens';
 
 import { securityApi } from '../api/securityApi';
 
@@ -20,6 +21,8 @@ const WHAT_HAPPENS = [
 
 /** Password required: closing an account can't be done by someone who just picked up the phone. */
 export default function CloseAccountScreen() {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   const { signOut } = useSession();
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -54,7 +57,8 @@ export default function CloseAccountScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   box: { backgroundColor: colors.garnetTint, borderRadius: radius.md, padding: 14, gap: 10 },
   row: { flexDirection: 'row', gap: 10 },
   text: { flex: 1, fontFamily: fonts.medium, fontSize: 14.5, lineHeight: 19, color: colors.text },

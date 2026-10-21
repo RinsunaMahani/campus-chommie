@@ -9,10 +9,21 @@ import { BrandMark, Wordmark } from '@/shared/components/Brand';
 import { Wallpaper } from '@/shared/components/Wallpaper';
 import { Button } from '@/shared/components/Button';
 import { t } from '@/shared/i18n';
-import { colors, fonts } from '@/shared/theme/tokens';
+import { forest, Palette, PaletteProvider, useStyles } from '@/shared/theme/palette';
+import { fonts } from '@/shared/theme/tokens';
 
 /** Landing: the logo, the slogan, two ways in, the course finder (no account needed), and the legal links. */
+/** The welcome screen is a hero area: it keeps Rinsuna's wallpaper (the forest palette) on the paper app. */
 export default function WelcomeScreen() {
+  return (
+    <PaletteProvider palette={forest}>
+      <Welcome />
+    </PaletteProvider>
+  );
+}
+
+function Welcome() {
+  const styles = useStyles(makeStyles);
   const { status } = useSession();
   // Closed the app before typing the email code: carry on from there.
   if (status === 'unverified') return <Redirect href="/verify-email" />;
@@ -52,7 +63,8 @@ export default function WelcomeScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   fill: { flex: 1 },
   safe: { flex: 1, paddingHorizontal: 22 },
   center: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: 14 },

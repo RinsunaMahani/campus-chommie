@@ -54,8 +54,9 @@ export const wallpaper = {
 };
 
 export const fonts = {
-  // Titles and money: the wordmark's heavy sans, so text matches the logo.
-  display: 'PlusJakartaSans_800ExtraBold',
+  // Titles and big numbers: Fraunces, a warm serif (Daylight paper, 21 Oct 2026). The wordmark keeps the sans.
+  display: 'Fraunces_700Bold',
+  displaySemi: 'Fraunces_600SemiBold',
   body: 'PlusJakartaSans_400Regular',
   medium: 'PlusJakartaSans_500Medium',
   semibold: 'PlusJakartaSans_600SemiBold',

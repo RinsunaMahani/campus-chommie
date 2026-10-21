@@ -12,7 +12,8 @@ import { t } from '@/shared/i18n';
 import { rememberUniversity } from '@/shared/lib/chosenUniversity';
 import { formatDay } from '@/shared/lib/dates';
 import { SkeletonCards } from '@/shared/motion/Shimmer';
-import { colors, fonts } from '@/shared/theme/tokens';
+import { usePalette } from '@/shared/theme/palette';
+import { fonts } from '@/shared/theme/tokens';
 
 import { courseFinderApi } from '../api/courseFinderApi';
 import { CampusMapView, FirstStepsAnswer } from '../types';
@@ -36,6 +37,7 @@ function tagTone(status: string): TagTone {
  * 5. Pinned primary button: "Create my student account"
  */
 export default function NextStepsScreen() {
+  const colors = usePalette();
   const { id } = useLocalSearchParams<{ id: string }>();
   const [data, setData] = useState<FirstStepsAnswer | null>(null);
   const [mappedCampuses, setMappedCampuses] = useState<CampusMapView[]>([]);

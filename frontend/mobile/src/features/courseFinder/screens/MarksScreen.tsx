@@ -9,7 +9,8 @@ import { Card, InfoNote, ListRow } from '@/shared/components/Parts';
 import { ErrorBox } from '@/shared/components/Status';
 import { Body } from '@/shared/components/Text';
 import { MessageKey, t } from '@/shared/i18n';
-import { colors, fonts, radius } from '@/shared/theme/tokens';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
+import { fonts, radius } from '@/shared/theme/tokens';
 
 import { SubjectPicker } from '../components/SubjectPicker';
 import { checkRows, cleanPercent, rowsFor } from '../marks';
@@ -18,6 +19,8 @@ import { SUBJECTS, subjectName } from '../subjects';
 
 /** Step 1: the learner's subjects, picked in one go, and a mark for each. Never saved and never logged. */
 export default function MarksScreen() {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   const cf = useCourseFinder();
   const [picking, setPicking] = useState(false);
   const [errors, setErrors] = useState<Record<string, MessageKey>>({});
@@ -139,7 +142,8 @@ export default function MarksScreen() {
 const MARK = 72;
 const REMOVE = 36;
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   card: { paddingVertical: 6 },
   head: { flexDirection: 'row', alignItems: 'center', gap: 8, paddingTop: 4, paddingBottom: 6 },
   headText: { fontFamily: fonts.semibold, fontSize: 13.5, color: colors.textMuted },

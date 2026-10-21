@@ -11,7 +11,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Card, Tag } from '@/shared/components/Parts';
 import { Muted, Strong } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
-import { colors, fonts } from '@/shared/theme/tokens';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
+import { fonts } from '@/shared/theme/tokens';
 
 import { CollegeCard, Verdict } from './types';
 
@@ -25,6 +26,8 @@ export function statusTone(status: Verdict): Tone {
 }
 
 export function CollegeRow({ college }: { college: CollegeCard }) {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   const where = college.provinces.join(', ');
   return (
     <Card onPress={() => router.push(`/course-finder/colleges/${college.id}`)} style={styles.card}>
@@ -47,7 +50,8 @@ export function CollegeRow({ college }: { college: CollegeCard }) {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) =>
+  StyleSheet.create({
   card: { gap: 6, padding: 14 },
   head: { flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', gap: 8 },
   name: { flex: 1, fontSize: 15.5, color: colors.text },
