@@ -32,12 +32,18 @@ class PointsResult:
     notes: list[str] = field(default_factory=list)
 
 
+def points_for(level: int, rule: PointsRule) -> int:
+    """Points one subject adds: its level, or nothing below the rule's lowest counted level."""
+    return level if level >= rule.count_from_level else 0
+
+
 def compute_points(marks: dict[str, float], rule: PointsRule) -> PointsResult:
     """Total points for one learner.
 
     `marks` maps a subject key (for example 'mathematics') to a percentage.
     Life Orientation counts fully, as half, or not at all, as the rule says.
-    The remaining places go to the learner's best other subjects.
+    The remaining places go to the learner's best other subjects. A subject below the
+    rule's lowest counted level takes a place but adds no points.
     """
     levels = {subject: level_for(pct, rule) for subject, pct in marks.items()}
     notes: list[str] = []
@@ -46,9 +52,9 @@ def compute_points(marks: dict[str, float], rule: PointsRule) -> PointsResult:
     lo_points = 0.0
     if has_lo:
         if rule.life_orientation == "full":
-            lo_points = float(levels[LIFE_ORIENTATION])
+            lo_points = float(points_for(levels[LIFE_ORIENTATION], rule))
         elif rule.life_orientation == "half":
-            lo_points = levels[LIFE_ORIENTATION] / 2
+            lo_points = points_for(levels[LIFE_ORIENTATION], rule) / 2
             notes.append("Life Orientation counts for half its points here.")
         else:
             notes.append("Life Orientation is not counted here.")
@@ -59,8 +65,10 @@ def compute_points(marks: dict[str, float], rule: PointsRule) -> PointsResult:
         reverse=True,
     )
     best = others[:places]
-    total = sum(lvl for _, lvl in best) + lo_points
+    total = sum(points_for(lvl, rule) for _, lvl in best) + lo_points
     counted = [s for s, _ in best] + ([LIFE_ORIENTATION] if lo_counts else [])
+    if any(levels[s] < rule.count_from_level for s in counted):
+        notes.append(f"Subjects below level {rule.count_from_level} add no points here.")
     if len(marks) < rule.subjects_counted:
         notes.append(
             f"Only {plural(len(marks), 'subject')} entered; this university counts {rule.subjects_counted}."

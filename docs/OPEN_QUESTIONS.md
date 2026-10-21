@@ -47,7 +47,15 @@ Research notes from official documents, read on 9 Oct 2026 and not yet checked b
 ## Data-pack schema (Rinsuna)
 
 Today's `Requirements` holds a fixed list of subjects and one APS. About 100 of UP's 120 programmes fit, about 18 of
-TUT's 125, and most of SMU's. Decisions:
+TUT's 125, and most of SMU's.
+
+Built on `rinsuna/engine-requirements` (not merged yet):
+
+- **Decisions 1, 2, 6, 7 and 8:** `choices` (each option may set its own `min_points`), `subject_min_percents`, a
+  programme's own `points_rules`, `count_from_level`, and the `SUBJECTS` list of known keys.
+- **Plan tests:** they now run on SMU's data only, plus one cross-university test with a fictional university.
+
+Decisions 3, 4, 5 and 9 are about the data and come with the packs. Decisions:
 
 1. **Either/or subjects, each route with its own APS.** TUT almost everywhere ("Maths or Technical Maths 5, or Maths
    Literacy 7"; APS 26 or 28); UP in 6 programmes; SMU Oral Hygiene (28 or 31) and emergency care.

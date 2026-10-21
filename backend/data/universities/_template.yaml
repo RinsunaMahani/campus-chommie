@@ -6,6 +6,7 @@
 # - Leave a field out, or set it to null, rather than guess.
 # - Keep release: false until a second person has checked every value.
 # - Files starting with "_" are skipped by the app, so this template never shows up.
+# - Subject keys come from SUBJECTS in campus_engine/schemas.py; an unknown key fails validation.
 
 university: example          # short lowercase id, e.g. up, tut
 name: Example University
@@ -18,6 +19,7 @@ points_rules:
   source: s-prospectus
   subjects_counted: 6        # how many subjects count towards the points score
   life_orientation: exclude  # full | half | exclude
+  count_from_level: 1        # subjects below this level add no points (TUT counts from 2)
   scale:                     # replace with the university's own table if it differs
     - {min_percent: 80, level: 7}
     - {min_percent: 70, level: 6}
@@ -38,6 +40,22 @@ programmes:
       subject_minimums: {english: 4, mathematics: 4}
       additional_minimums: []
     bridges_to: []           # published routes into other programmes, with guarantee by_rule or considered
+
+  - id: example-either-or
+    name: Example programme with an either/or subject
+    fields: [example_field]
+    requirements:
+      source: s-prospectus
+      min_points: 26
+      subject_minimums: {english: 4}
+      subject_min_percents: {}   # percentages instead of levels, for example {english: 65}
+      choices:                   # the learner meets one option in every choice
+        - one_of:
+            - subjects: {mathematics: 5}
+            - subjects: {technical_mathematics: 5}
+            - subjects: {mathematical_literacy: 7}
+              min_points: 28     # this route needs more points
+    points_rules: null           # set only when this programme counts points its own way
 
 sources:
   - id: s-prospectus
