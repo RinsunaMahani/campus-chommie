@@ -26,8 +26,10 @@ type Props = {
   title?: string;
   /** One short line under the title. */
   subtitle?: string;
-  /** Beside the title on the right: one small action (a tag, a help button). */
+  /** Above the title on the right: a tag (the demo tag). */
   headerRight?: ReactNode;
+  /** On the title's line, at the right: one small action (the Help button). */
+  titleAside?: ReactNode;
 };
 
 /** How far the page scrolls before the slim title bar has fully faded in. */
@@ -39,7 +41,7 @@ const COLLAPSE_AT = 44;
  * bottom where the thumb is. A tab screen leaves room under its content for
  * the floating dock.
  */
-export function Screen({ children, footer, back, tab, onRefresh, refreshing = false, backdrop, title, subtitle, headerRight }: Props) {
+export function Screen({ children, footer, back, tab, onRefresh, refreshing = false, backdrop, title, subtitle, headerRight, titleAside }: Props) {
   const colors = usePalette();
   const styles = useStyles(makeStyles);
   const [scrollY] = useState(() => new Animated.Value(0));
@@ -79,9 +81,12 @@ export function Screen({ children, footer, back, tab, onRefresh, refreshing = fa
                   {headerRight}
                 </View>
               ) : null}
-              <Text style={styles.largeTitle} accessibilityRole="header">
-                {title}
-              </Text>
+              <View style={styles.titleRow}>
+                <Text style={[styles.largeTitle, { flex: 1 }]} accessibilityRole="header">
+                  {title}
+                </Text>
+                {titleAside}
+              </View>
               {subtitle ? <Text style={styles.subtitle}>{subtitle}</Text> : null}
             </View>
           ) : null}
@@ -129,6 +134,7 @@ const makeStyles = (colors: Palette) => StyleSheet.create({
   flex: { flex: 1 },
   head: { gap: space.xs },
   headRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: space.sm },
+  titleRow: { flexDirection: 'row', alignItems: 'center', gap: space.md },
   largeTitle: { fontFamily: fonts.display, ...type.largeTitle, letterSpacing: -0.6, color: colors.ink },
   subtitle: { fontFamily: fonts.medium, ...type.callout, color: colors.textMuted },
   // The slim bar: the title again, once the large one has scrolled away.

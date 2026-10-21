@@ -31,6 +31,7 @@ jest.mock('react-native-safe-area-context', () => {
 });
 jest.mock('@expo/vector-icons', () => ({ Feather: () => null }));
 jest.mock('expo-document-picker', () => ({ getDocumentAsync: jest.fn() }));
+jest.mock('@/features/profile/state', () => ({ useProfile: () => ({ demo: false, mock: false, profile: null }) }));
 
 const entry = (over: Partial<TimetableEntry>): TimetableEntry => ({
   id: 'a', module: 'ANA201', title: null, kind: 'lecture', weekday: 0, day: 'Monday', starts: '08:00', ends: '09:40',

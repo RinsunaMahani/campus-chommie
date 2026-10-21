@@ -3,7 +3,7 @@ import { useCallback, useState } from 'react';
 import { View } from 'react-native';
 
 import { courseFinderApi } from '@/features/courseFinder/api/courseFinderApi';
-import { DemoBanner } from '@/features/profile/components/DemoBanner';
+import { studentHeader } from '@/features/profile/components/HeaderTools';
 import { useProfile } from '@/features/profile/state';
 import { errorText } from '@/shared/api/errors';
 import { InfoNote } from '@/shared/components/Parts';
@@ -52,7 +52,7 @@ export default function SupportScreen() {
   );
 
   return (
-    <Screen tab title={t('support.title')} subtitle={t('support.intro')} headerRight={<DemoBanner />}>
+    <Screen tab title={t('support.title')} subtitle={t('support.intro')} {...studentHeader(false)}>
       <View style={{ gap: 6 }}>
         {answer?.campus_name && answer.university ? <Muted>{`${answer.university.name} · ${answer.campus_name}`}</Muted> : null}
       </View>
