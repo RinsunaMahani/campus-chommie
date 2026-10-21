@@ -192,8 +192,8 @@ keys and local addresses each appear 0 times in it (it holds only the public API
 | Installs on Android 7 (minSdk 24), which no longer gets security updates | Accepted: many students' phones are old, and access is the point of the app. The server checks everything; the phone holds only the student's own data |
 | WebView debugging, file access in a WebView, MD5, "hardcoded" strings, `taskAffinity`, the profile installer's receiver | Library code (Expo's error screen and WebView, its file cache, React Native, AndroidX), none of it ours; the "secrets" are byte tables and compiled C++ names |
 
-The fixes take effect from the next build. The APK is 140 MB because it carries every processor type and the campus
-photos; a smaller build is a later job.
+The fixes take effect from the next build. The first APK was 140 MB, 58 MB of it native code for x86 processors
+(PC emulators); from the next build it carries phone processors only (64-bit and 32-bit ARM).
 
 ### Open, for the team
 
