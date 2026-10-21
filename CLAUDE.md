@@ -2,9 +2,9 @@
 
 Campus Chommie takes a South African student from choosing a course to graduating: course finder, the student's
 week (calendar, class deadlines, workload, marks), their money (runway, safe to spend, life fund), alerts and campus
-support. Our entry for the FNB App of the Year Hackathon 2026, challenge "Access to higher education", by Team PR:
-Mandla Baloyi (app lead, reviews app and API changes) and Rinsuna Mahani (engine and data lead, reviews engine and
-data changes).
+support. Our entry for the FNB App of the Year Hackathon 2026, challenge "Access to higher education", by Team PR,
+which since 13 Oct 2026 is Rinsuna Mahani alone (Mandla Baloyi is no longer on the team): she builds the app, the
+API, the engine and the data, and reviews every change.
 
 Shape: one Expo app (Android + web build) in `frontend/mobile`, a Flask API with PostgreSQL in `backend/src`, and a
 pure Python engine in `backend/campus_engine` that does the thinking. Gaps and decisions for the team are in
@@ -39,7 +39,7 @@ what came from our earlier project in [REUSE.md](REUSE.md).
   endpoint gets hostile-input tests.
 - **Secrets.** Never commit, print or log `.env` values, tokens, OTPs, passwords or links that sign people in. Demo
   passwords come from environment variables, never the repo. Use only your own sandbox database; never connect to
-  Mandla's or any production database.
+  anyone else's or any production database.
 - **Money** is integer cents everywhere; nothing in the app moves money. **Dates and times** are Africa/Johannesburg
   (SAST).
 - **WhatsApp (M6).** Verify the `hub.verify_token` handshake. Check `X-Hub-Signature-256` (HMAC-SHA256 of the raw body
@@ -66,24 +66,25 @@ what came from our earlier project in [REUSE.md](REUSE.md).
 ## Scope
 
 Build the five features in the brief (F1 university profile, F2 find my course, F3 my week, F4 my money, F5 alerts and
-support). **Do not build:** study-partner matching, an interactive map, the skills-demand outlook, peer tutors, any
-payment or money movement, bank or NSFAS account linking, or any commerce, supplier or trader feature. M6 (the
-WhatsApp bot) must not start before Fri 23 Oct 2026 08:30 SAST.
+support) and F6 fund and apply: funding and how to apply (agreed by Rinsuna on 9 Oct 2026). **Do not build:**
+study-partner matching, an interactive map, the skills-demand outlook, peer tutors, any payment or money movement,
+bank or NSFAS account linking, or any commerce, supplier or trader feature. M6 (the WhatsApp bot) must not start
+before Fri 23 Oct 2026 08:30 SAST.
 
 ## Workflow
 
 - Picking up work? Read [docs/HANDOVER.md](docs/HANDOVER.md) first: where the pull requests stand, what was decided,
   and what comes next.
-- Branches are `<person>/<topic>` (`mandla/money-screens`, `rinsuna/engine-schema`). Merge into `main` only with CI
-  green and the reviewer's approval.
+- Branches are `rinsuna/<topic>` (`rinsuna/money-screens`, `rinsuna/engine-schema`). Merge into `main` only with CI
+  green and Rinsuna's approval.
 - Commits are small and name the feature or milestone (`F4: late-payment toggle`). **Never force-push or rewrite
   history:** the git log is the honest record of what was built before and during the hackathon.
 - Before a commit: backend `python -m pytest -q tests` (engine and architecture tests run without a database),
   `python scripts/validate_data.py`, and in `frontend/mobile` `npx tsc --noEmit`, `npx jest`, `npx expo lint`.
-- Local servers: the team's own run on ports 5000 (API) and 8081 (Expo). Agents use other ports (e.g. 5090 and 8090)
+- Local servers: Rinsuna's own run on ports 5000 (API) and 8081 (Expo). Agents use other ports (e.g. 5090 and 8090)
   and never stop someone else's server.
 
-## Ask the team first
+## Ask Rinsuna first
 
 Before adding an external service or paid API; changing a fact in a data pack; making a language visible; collecting
 any new personal data; deleting files outside the brief's strip list; changing hosting or deployment.

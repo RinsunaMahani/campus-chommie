@@ -1,52 +1,62 @@
-# Handover: start here, Mandla
+# Handover: start here
 
-Written on 9 Oct 2026 and updated on 10 Oct by Rinsuna's coding agent, for Mandla and for Mandla's coding agent. It
-covers:
+First written on 9 Oct 2026 for Mandla Baloyi, and kept current by Rinsuna's coding agents. Since 13 Oct 2026 Rinsuna
+Mahani works alone: Mandla is no longer on the team, so the app, the API, the engine and the data are all hers, and so
+is every review and decision. This file is for her and for any coding agent picking up the work. It covers:
 - where the build stands
-- what was decided while you were away
-- what we need from you
-- how your agent picks up M2
+- what was decided
+- what only Rinsuna can do
+- the app screens to build next (M2 to M5)
+- how an agent picks up work
 
-The rules are still in [CLAUDE.md](../CLAUDE.md); this file doesn't change them. The brief (`BUILD_BRIEF.md`) isn't in
-git, so Mandla has his own copy; the M2 part is quoted below.
+The rules are in [CLAUDE.md](../CLAUDE.md); this file doesn't change them. The brief (`BUILD_BRIEF.md`) sits in the
+repo folder but is kept out of git; the parts the screens need are quoted below.
 
 ## Where things stand
 
-`main` holds only the empty first commit. All work sits in twenty stacked pull requests:
+`main` holds only the empty first commit. All work sits in twenty-one stacked pull requests:
 
-| PR | Branch | What | Reviewer |
-|---|---|---|---|
-| #1 | `rinsuna/m0-foundation` | M0: accounts, sign-in, security, notifications, audit, the app shell, the engine starter, CI | Mandla |
-| #2 | `rinsuna/university-research` | research notes for UP, TUT and SMU, and the open questions they raise | Rinsuna; Mandla for the F6 and vac-work items |
-| #3 | `rinsuna/engine-requirements` | engine: either/or subjects, percentage minimums, per-programme points tables | Rinsuna |
-| #4 | `rinsuna/m1-course-finder-api` | the course-finder API and this file | Mandla |
-| #5 | `rinsuna/m1-data-packs` | draft UP and TUT packs, the approved SMU changes, and how the plan picks its third choice | Rinsuna; Mandla for the changed M1 check |
-| #6 | `rinsuna/m1-how-to-apply` | how to apply, on today's date: each choice's application dates, NSFAS, fees, documents and next steps; notes on NSFAS and on other apps | Rinsuna for the engine and data; Mandla for the plan's new `apply` fields |
-| #7 | `rinsuna/m1-after-acceptance` | your points at every university; campuses, calendars, money dates and support in the packs; first steps from acceptance to the first lecture | Rinsuna for the engine and data; Mandla for the two new endpoints |
-| #8 | `rinsuna/m3-profile-and-money` | M3's backend: the student's profile (university and campus) and My money (settings, income, expected payments, spending, summary) | Mandla (API); Rinsuna for the migration |
-| #9 | `rinsuna/m1-cheap-things` | cheap things to do near campus, each priced from the place's own page | Rinsuna (data) |
-| #20 | `rinsuna/more-funders` | five more funders from their own pages (24 in all; 5 open on 12 Oct) | Rinsuna (data) |
-| #19 | `rinsuna/smu-gaps` | SMU's financial aid office, food support and Religious Desk on the Support screen; cheap things in northern Tshwane for SMU and TUT's nearby campuses | Rinsuna (data) |
-| #18 | `rinsuna/saved-funding` | saving funding (UniApplyForMe's bookmark) with reminders when it opens and a week and a day before it closes; a switch for them; migration 0006 | Mandla (API, alerts, migration); Rinsuna for the engine |
-| #17 | `rinsuna/funding-list` | funding like UniApplyForMe's: 19 funders from their own pages (NSFAS, bursaries, UP's merit awards, a loan scheme), `GET /funding` with "N open now, N closing soon" and filters, `GET /funding/<id>`, and each plan choice's funding | Rinsuna for the engine and data; Mandla for the API and the screens |
-| #16 | `rinsuna/extraction-50` | the engine reads every date in a message (the new one in a "moved" message, ranges, bare hours) and asks the rep to check; 57 labelled class messages | Rinsuna (engine) |
-| #15 | `rinsuna/ready-to-host` | the backend ready for any host: a container, gunicorn, one process running the background jobs, production CORS for the web build, and DEPLOY.md | Mandla (deploy and CI) |
-| #14 | `rinsuna/class-update-alerts` | class updates as alerts (a rep's confirmation tells the rest of the class), with a switch to turn them off | Mandla (notifications) |
-| #13 | `rinsuna/privacy-export-delete` | POPIA: `GET /me/export` holds everything we keep about a student, and `DELETE /me` deletes the account and all of it | Mandla (identity) |
-| #12 | `rinsuna/android-preview` | the installable Android app (EAS preview APK, built-in mock sign-in), under Rinsuna's Expo account | Mandla (app config) |
-| #11 | `rinsuna/m5-alerts-support-demo` | M5's backend: alerts, the Support screen's data, cheap things for the campus, and the judges' demo accounts (`flask seed`, re-based daily) | Mandla (API and the identity change); Rinsuna for the engine, data and migration |
-| #10 | `rinsuna/m4-my-week` | M4's backend: classes, invite codes and reps, announcements to verified events (changes and flags), the week strip, My marks; the life fund reads the week; 44 labelled class messages | Mandla (API); Rinsuna for the engine and the migration |
+| PR | Branch | What |
+|---|---|---|
+| #1 | `rinsuna/m0-foundation` | M0: accounts, sign-in, security, notifications, audit, the app shell, the engine starter, CI |
+| #2 | `rinsuna/university-research` | research notes for UP, TUT and SMU, and the open questions they raise |
+| #3 | `rinsuna/engine-requirements` | engine: either/or subjects, percentage minimums, per-programme points tables |
+| #4 | `rinsuna/m1-course-finder-api` | the course-finder API and this file |
+| #5 | `rinsuna/m1-data-packs` | draft UP and TUT packs, the approved SMU changes, and how the plan picks its third choice |
+| #6 | `rinsuna/m1-how-to-apply` | how to apply, on today's date: each choice's application dates, NSFAS, fees, documents and next steps; notes on NSFAS and on other apps |
+| #7 | `rinsuna/m1-after-acceptance` | your points at every university; campuses, calendars, money dates and support in the packs; first steps from acceptance to the first lecture |
+| #8 | `rinsuna/m3-profile-and-money` | M3's backend: the student's profile (university and campus) and My money (settings, income, expected payments, spending, summary) |
+| #9 | `rinsuna/m1-cheap-things` | cheap things to do near campus, each priced from the place's own page |
+| #21 | `rinsuna/solo-team` | the rules and docs for a team of one: CLAUDE.md, this file, OPEN_QUESTIONS, and the README's status |
+| #20 | `rinsuna/more-funders` | five more funders from their own pages (24 in all; 5 open on 12 Oct) |
+| #19 | `rinsuna/smu-gaps` | SMU's financial aid office, food support and Religious Desk on the Support screen; cheap things in northern Tshwane for SMU and TUT's nearby campuses |
+| #18 | `rinsuna/saved-funding` | saving funding (UniApplyForMe's bookmark) with reminders when it opens and a week and a day before it closes; a switch for them; migration 0006 |
+| #17 | `rinsuna/funding-list` | funding like UniApplyForMe's: 19 funders from their own pages (NSFAS, bursaries, UP's merit awards, a loan scheme), `GET /funding` with "N open now, N closing soon" and filters, `GET /funding/<id>`, and each plan choice's funding |
+| #16 | `rinsuna/extraction-50` | the engine reads every date in a message (the new one in a "moved" message, ranges, bare hours) and asks the rep to check; 57 labelled class messages |
+| #15 | `rinsuna/ready-to-host` | the backend ready for any host: a container, gunicorn, one process running the background jobs, production CORS for the web build, and DEPLOY.md |
+| #14 | `rinsuna/class-update-alerts` | class updates as alerts (a rep's confirmation tells the rest of the class), with a switch to turn them off |
+| #13 | `rinsuna/privacy-export-delete` | POPIA: `GET /me/export` holds everything we keep about a student, and `DELETE /me` deletes the account and all of it |
+| #12 | `rinsuna/android-preview` | the installable Android app (EAS preview APK, built-in mock sign-in), under Rinsuna's Expo account |
+| #11 | `rinsuna/m5-alerts-support-demo` | M5's backend: alerts, the Support screen's data, cheap things for the campus, and the judges' demo accounts (`flask seed`, re-based daily) |
+| #10 | `rinsuna/m4-my-week` | M4's backend: classes, invite codes and reps, announcements to verified events (changes and flags), the week strip, My marks; the life fund reads the week; 44 labelled class messages |
+
+**Review:** Rinsuna reviews and merges every PR; agents open them but never merge. Look hardest at the ones that touch
+accounts or the database: #1, #8, #10, #11, #14 and #18 add migrations, #11 also lets demo accounts skip the
+new-phone code, and #13 deletes accounts.
 
 **How to merge:**
 - Each PR targets the branch below it, so its diff shows only its own work.
-- Merge in order: #1 into `main`, then #2 to #20, retargeting each to `main` once the one below has merged.
+- Merge in order: #1 into `main`, then #2 to #21, retargeting each to `main` once the one below has merged.
 - Use **Create a merge commit**, not squash or rebase, so every commit stays in `main`'s history (CLAUDE.md: never
   rewrite history).
 
-## Decided while you were away
+## Decided so far
 
 Everything is recorded, with who and when, in [OPEN_QUESTIONS.md](OPEN_QUESTIONS.md).
 
+- **The team (13 Oct):** Rinsuna works alone from now on. The app screens, which were Mandla's, are ours to build.
+  Everything that waited for Mandla in OPEN_QUESTIONS now waits for Rinsuna, and F6 (fund and apply), which she agreed
+  on 9 Oct, is in CLAUDE.md's Scope.
 - **M1 started early** (Fri 9 Oct) as stacked PRs, because the brief gives it only Mon 12 to Tue 13 Oct.
 - **Research:** facts for UP, TUT and SMU were read from their official documents ([research/](research/)). No
   person has checked them yet.
@@ -66,7 +76,9 @@ Everything is recorded, with who and when, in [OPEN_QUESTIONS.md](OPEN_QUESTIONS
   Every plan now says, for each choice, whether applications are open, closing soon, closed or not published yet,
   every date still ahead, each university's fee, documents and next steps, and NSFAS (open until 31 Oct 2026). This
   delivers most of F6 inside the course finder, without a new feature.
-- **Proposed, waiting for you** (OPEN_QUESTIONS, "App and accounts"): which intakes a plan shows, and links to
+- **Funding (#17, 11 Oct):** Rinsuna asked for funding like UniApplyForMe's, reversing "no bursary list". The list now
+  has 24 funders, each read on its own page (#20), and saving one brings reminders (#18).
+- **Proposed, waiting for Rinsuna** (OPEN_QUESTIONS, "App and accounts"): which intakes a plan shows, and links to
   opportunity sites such as Graduates24. An application directory for all 26 public universities was proposed and
   then paused, because UniApplyForMe already does it well; the time goes to support after acceptance.
 - **Other apps:** [research/competitors.md](research/competitors.md) compares UniApplyForMe, UniAPS and others, and
@@ -76,44 +88,54 @@ Everything is recorded, with who and when, in [OPEN_QUESTIONS.md](OPEN_QUESTIONS
   - **Your points at every university,** as UniApplyForMe does well.
   - **The packs' calendars, money dates and support,** which My week, My money and Support run on.
   - **First steps from acceptance to the first lecture.**
-  - Three screen decisions for you are in OPEN_QUESTIONS.
+  - Three screen decisions are in OPEN_QUESTIONS.
 - **My week (#10, 10 Oct):**
   - A rep's confirmation is the only way an event becomes verified; a student's announcement waits for one.
   - Members are never listed, not even to reps, so a rep brings in the next rep with a one-time code.
-  - Reps see how many students flagged an event, never who (yours to confirm: OPEN_QUESTIONS, "Flag counts").
+  - Reps see how many students flagged an event, never who (Rinsuna to confirm: OPEN_QUESTIONS, "Flag counts").
   - The engine also reads Afrikaans words in announcements; a fluent speaker is to check the list.
   - The brief's M3 check that waited for M4 passes: Sipho's heavy week makes his life fund amber.
 - **Alerts, support and demo (#11, 10 Oct):**
   - Demo accounts skip the new-phone code, can't be locked by wrong passwords and can't change their password
-    (Rinsuna's decision on your open item; the identity change is yours to review).
+    (Rinsuna's decision; the identity change in #11 needs her review).
   - Crisis lines stay hidden on Support until a person checks them; every pack's are still agent drafts.
-  - Besides the brief's three alerts, a module out of reach gets one (yours to keep or drop).
+  - Besides the brief's three alerts, a module out of reach gets one (Rinsuna's to keep or drop).
 
-## What we need from you
+## Only Rinsuna can do these
 
-1. **Review #1, then #4** (app and API are yours). Also read #2's changes to OPEN_QUESTIONS.
-2. **Decide F6 "Fund and apply" and the vac-work nudge for M1** (OPEN_QUESTIONS, "App and accounts"): yes, no or
-   change. Also there: which intakes a plan shows, "Add these dates to my calendar" and links to opportunity sites.
-3. **Your open items in OPEN_QUESTIONS:**
-   - the Expo project is now under Rinsuna's account (OPEN_QUESTIONS, "Expo and EAS"): ask her to move it to her team
-     account and invite you, so you can build too
+1. **Review and merge the stack,** #1 first (above).
+2. **Check the facts by Thu 22 Oct:** the packs (crisis lines first: Support hides them until then) and the funding
+   pack. Compare every value with its source, then set `last_verified`, `verified_by` and `release: true`
+   (OPEN_QUESTIONS, "Facts for the data packs").
+3. **The reused foundation** (REUSE.md; OPEN_QUESTIONS, "Privacy and legal"). #1 copies code from our earlier project
+   (© Team PR: Mandla and Rinsuna) and, through it, from TruConnect, an earlier project of Mandla's. Mandla's
+   confirmations in REUSE.md are still unsigned. Before the submission, get his written OK or replace the reused
+   files. LICENSE still names "Team PR (Mandla and Rinsuna)". Agents don't change REUSE.md's permissions or
+   LICENSE: they're Rinsuna's call.
+4. **Decisions that were Mandla's** (OPEN_QUESTIONS, "App and accounts"):
+   - which intakes a plan shows, and "Add these dates to my calendar"
+   - flag counts for reps, and module alerts
+   - links to opportunity sites
    - the package name `za.campuschommie.app` (it can't change after the first Play Store upload)
    - app icon, colours and slogan
    - Google sign-in
    - hosting
    - the email sender
-4. **REUSE.md:** confirm the rows that came from TruConnect.
 5. **Human deadlines:**
    - **Sonke:** create the team by Tue 20 Oct.
    - **WhatsApp:** set up WhatsApp Business (Meta app, test number) before Fri 23 Oct.
    - **Hackathon:** Fri 23 Oct 08:30 to Sun 25 Oct 17:00 SAST. M6 doesn't start before 08:30 on the Friday.
    - **Submission:** Mon 26 Oct 23:59 SAST.
 
-## Your next build: M2, the Find my course screens (brief: Wed 14 to Thu 15 Oct)
+## Next build: the app screens, M2 to M5
 
-From the brief: "University, then marks (add or remove rows, up to 9), then tier cards, then the three-choice plan and
-sources. Add i18n plumbing with English only visible. Acceptance: works at 360 px wide on Android and web. Tier labels
-are words, not colour alone. Every card shows its 'why' lines and source. Jest tests cover the tier card and the plan."
+The screens were Mandla's; since 13 Oct they're ours. The brief gives M2 Wed 14 to Thu 15 Oct, M3 Fri 16 to Sat 17,
+M4 Sun 18 to Mon 19 and M5 Tue 20 to Wed 21. M2 is under way on `rinsuna/m2-course-finder-screens` (13 Oct).
+
+**M2, the Find my course screens.** From the brief: "University, then marks (add or remove rows, up to 9), then tier
+cards, then the three-choice plan and sources. Add i18n plumbing with English only visible. Acceptance: works at 360
+px wide on Android and web. Tier labels are words, not colour alone. Every card shows its 'why' lines and source. Jest
+tests cover the tier card and the plan."
 
 The course finder works signed out: the M5 judge flow ends with "use the course finder without an account". So its
 route sits outside the protected `(app)` group, reachable from the welcome screen as well as from Home.
@@ -130,7 +152,7 @@ The API is in #4, with details in the [README](../README.md), "Course finder":
 | Funding (#17) | `GET /funding?field=&status=&kind=&stage=`, `GET /funding/<id>` | `summary`, `counts`, `fields` (filter chips) and `funders` (cards); one funder's `who_can_apply`, `covers`, `obligations`, `apply` and `sources` |
 | First steps (#7) | `GET /universities/<id>/first-steps` | `first_steps`: per intake, `steps` (accept, register, orientation, first lecture) with `status`, `label`, dates, `days`, `lines`, `source_urls` |
 
-**Your M3 screens (Fri 16 to Sat 17 Oct) have their API in #8** (README, "A student's own profile and money"):
+**The M3 screens (Fri 16 to Sat 17 Oct) have their API in #8** (README, "A student's own profile and money"):
 - **Onboarding:** the 18-or-older confirmation and consent are already recorded at sign-up; add the privacy notice,
   then university and campus (`PUT /me/profile`).
 - **My money:** settings, income sources, the "received?" tap on each payment, one spending number per day, and the
@@ -139,7 +161,7 @@ The API is in #4, with details in the [README](../README.md), "Course finder":
   `paused`; amounts are integer cents (format as rand).
 - **Demo personas:** `tests/domains/student/student_helpers.py` shows them set up through the API.
 
-**Your M4 screens (Sun 18 to Mon 19 Oct) have their API in #10** (README, "My marks" and "Classes, reps and verified
+**The M4 screens (Sun 18 to Mon 19 Oct) have their API in #10** (README, "My marks" and "Classes, reps and verified
 events"); the screen notes are in OPEN_QUESTIONS, "My week's screens":
 - **Classes:** `POST /classes`, `POST /classes/join` (an invite code or a rep code), `GET /classes/mine`, and
   `POST /classes/<id>/reps` for a rep's one-time code.
@@ -150,13 +172,13 @@ events"); the screen notes are in OPEN_QUESTIONS, "My week's screens":
 - **My marks:** `/academics/modules` and its assessments; every answer carries `standing`, `projection` and `lines`.
 - **Test helpers:** `tests/domains/classes/class_helpers.py` shows a rep making a class and confirming events.
 
-**Class updates (#14)** arrive in the alerts list you already show. A `class` link opens that class's events, and
-`GET` / `PUT /me/notifications/switches` is the "Class updates" switch for your settings screen.
+**Class updates (#14)** arrive in the alerts inbox the app already has. A `class` link opens that class's events, and
+`GET` / `PUT /me/notifications/switches` is the "Class updates" switch for the settings screen.
 
 **The Security screen's "Delete my account and data"** can stop saying "Coming soon": `DELETE /me` with
 `{password}` (#13) deletes everything, and `GET /me/export` now holds every feature's data.
 
-**Your M5 screens (Tue 20 to Wed 21 Oct) have their API in #11** (README, "Alerts, support and cheap things"):
+**The M5 screens (Tue 20 to Wed 21 Oct) have their API in #11** (README, "Alerts, support and cheap things"):
 - **Home:** `GET /alerts`. Show each alert's `title`, `message` and `actions`; an action opens its `target` (Week,
   Money, cheap things, My marks or Support), and a support action may already carry the campus's `service` (name,
   contact, hours). `notes` say what's missing (no classes yet, no money entered).
@@ -191,7 +213,7 @@ events"); the screen notes are in OPEN_QUESTIONS, "My week's screens":
     2027"), its `label` in words, and its `lines`. `status` is one of `open`, `closing_soon`, `check`,
     `opens_later`, `late_open`, `late_ahead`, `closed`, `not_published`; `days` and `next_date` drive a countdown.
   - **Dates to remember:** `plan.apply.deadlines`, soonest first, each with `date`, `days`, `text` and `source_url`.
-    "Add these dates to my calendar" is your call (OPEN_QUESTIONS).
+    "Add these dates to my calendar" is Rinsuna's call (OPEN_QUESTIONS).
   - **Each university:** `plan.apply.universities`, with `url`, `fee_cents` (format as rand), `documents.items`,
     `after` and `lines`. Missing facts come as `null` and a "not verified yet" line: show that line, never a blank.
   - **Funding:** `plan.apply.funding` (NSFAS): its `windows` (the 2027 countdown), `who_can_apply`, `documents`,
@@ -200,7 +222,7 @@ events"); the screen notes are in OPEN_QUESTIONS, "My week's screens":
     `open_now` and a line. A "See all" can open the Funding list filtered by the slot's `fields`
     (`GET /funding?field=a,b`).
   - The app never asks about income, disability or family: it shows NSFAS's own words and links to it.
-- **A Funding screen (#17; F6, your call):** like UniApplyForMe's, open to anyone. The top line is `summary`
+- **A Funding screen (#17; F6):** like UniApplyForMe's, open to anyone. The top line is `summary`
   ("24 funding options: 5 open now."); chips from `fields`; tabs or a picker for `kind` (bursaries, merit awards,
   loans) and `stage`. Each card: `name`, `label` in words with the `days` count, `lines[0]`, the fields, and
   "Checked on" (`checked`). The detail screen shows `who_can_apply`, `covers` and `obligations` (work-back
@@ -211,31 +233,35 @@ events"); the screen notes are in OPEN_QUESTIONS, "My week's screens":
   `DELETE /me/funding/<id>`), and a "Saved" list (`GET /me/funding`: the same cards, each with `saved_on`). Signed
   out, the bookmark can ask the learner to sign in. The reminders arrive as ordinary alerts (`funding.open`,
   `funding.closing`) whose link is `{type: "funding", id}`: open that funder's detail screen. The alert switches
-  screen gains "Funding you saved: when it opens, and before it closes" (`funding_reminders`) with no change on your
-  side, because it lists `GET /me/notifications/switches`.
+  screen gains "Funding you saved: when it opens, and before it closes" (`funding_reminders`) with no change in the
+  app, because the screen lists `GET /me/notifications/switches`.
   - Each university and funder has `confirmed` and `notice`, as on the cards.
-- **Ideas from UniApplyForMe**, which Rinsuna tried on 10 Oct (your call): one topic per onboarding screen with a
-  review step, deadline cards with a day count, and the level shown as a mark is typed.
+- **Ideas from UniApplyForMe**, which Rinsuna tried on 10 Oct (Rinsuna's call): one topic per onboarding screen with
+  a review step, deadline cards with a day count, and the level shown as a mark is typed.
   [research/competitors.md](research/competitors.md) lists them, and what we won't copy (race questions, logos,
   paywalls).
 - **English text to reuse:** `backend/campus_engine/i18n.py` has the course finder's English strings: the title,
   slot titles, "Nothing you enter here is saved.", the `duplicate` text and the how-to-apply headings. English is the
   only visible language until a fluent speaker signs one off.
 
-## For your agent: how to pick this up
+## For a coding agent: how to pick this up
 
 1. **Read first:** [CLAUDE.md](../CLAUDE.md) (AGENTS.md points every agent there), then this file.
 2. **Branch:**
-   - Start from the top of the stack: `git fetch origin`, then `git checkout rinsuna/m5-alerts-support-demo`.
-   - Branch `mandla/<topic>` from there, for example `mandla/course-finder-screens`.
-   - Once #1 to #11 are merged, branch from `main` instead.
+   - Start from the newest PR's branch (the first row after #9 above; today `rinsuna/solo-team`): `git fetch origin`,
+     then check it out.
+   - Branch `rinsuna/<topic>` from there, for example `rinsuna/money-screens`. Once the stack is merged, branch from
+     `main` instead.
+   - Another session may have uncommitted work in the main checkout: work in a git worktree, and never use a bare
+     `git stash` or `git stash pop` (the stash is shared by every worktree).
 3. **Run the API** (README, "Backend"):
-   - Use your own PostgreSQL, or Docker (option B uses port 5434).
-   - Then `python scripts/make_env.py`, `flask db upgrade` and `python app.py`.
-   - Agents use ports 5090 (API) and 8090 (Expo), and never stop someone else's server on 5000 or 8081.
-   - Never connect to Rinsuna's or any production database.
-4. **Point the app at the API:** in `frontend/mobile/.env`, set `EXPO_PUBLIC_API_URL` (for example
-   `http://localhost:5090/api/v1`, or the PC's address from a phone) and `EXPO_PUBLIC_USE_MOCK_API=false`.
+   - Use your own sandbox database: a Docker PostgreSQL 16 on a spare port, removed when you're done. Never Rinsuna's
+     own database or a production one.
+   - Leave `backend/.env` alone (it's Rinsuna's): give your process the sandbox's settings as environment variables,
+     which win over the file. Then `flask db upgrade` and `python app.py`.
+   - Agents use ports 5090 (API) and 8090 (Expo), and never stop Rinsuna's servers on 5000 or 8081.
+4. **Point the app at the API:** set `EXPO_PUBLIC_API_URL` (for example `http://localhost:5090/api/v1`, or the PC's
+   address from a phone) and `EXPO_PUBLIC_USE_MOCK_API=false` for your Expo process, as with the API.
 5. **Where code goes:**
    - Screens in `frontend/mobile/src/features/<feature>`, routes in `src/app`.
    - Colours and type only from `src/shared/theme/tokens.ts`.
@@ -244,11 +270,12 @@ events"); the screen notes are in OPEN_QUESTIONS, "My week's screens":
    - In `backend`: `python -m pytest -q tests` and `python scripts/validate_data.py`.
    - In `frontend/mobile`: `npx tsc --noEmit`, `npx jest` and `npx expo lint`.
    - Commits are small and named, for example `M2: tier card`.
-7. **Ask the humans before:** adding an external service, changing a fact in a data pack, making a language visible,
-   collecting new personal data, or changing hosting.
-8. **Never:** invent facts, start M6 before Fri 23 Oct 08:30 SAST, force-push or rewrite history, or commit secrets.
+7. **Ask Rinsuna before:** adding an external service, changing a fact in a data pack, making a language visible,
+   collecting new personal data, deleting files outside the brief's strip list, or changing hosting.
+8. **Never:** invent facts, start M6 before Fri 23 Oct 08:30 SAST, merge a PR, force-push or rewrite history, or
+   commit secrets.
 
-## Rinsuna's next work, so you don't collide
+## Backend and data: done, and what's left
 
 - **Data packs:** done in #5 (`backend/data/universities/`), with how to apply in #6. A person still has to check
   every value before any pack is released.
@@ -257,10 +284,8 @@ events"); the screen notes are in OPEN_QUESTIONS, "My week's screens":
 - **M3 backend:** done in #8 (profile and My money).
 - **M4 backend:** done in #10 (classes, reps, verified events, the week, My marks).
 - **M5 backend:** done in #11 (alerts, support, cheap things, demo accounts).
-- **Ready to host:** #15 and [DEPLOY.md](DEPLOY.md). Choosing the host is still the team's decision (OPEN_QUESTIONS).
+- **Ready to host:** #15 and [DEPLOY.md](DEPLOY.md). Choosing the host is still Rinsuna's decision (OPEN_QUESTIONS).
 - **Funding:** #17 (`backend/data/national/funding.yaml`, `campus_engine/funding.py`, `GET /funding`), with the
   leads still to check in [research/funding.md](research/funding.md). Saving funding and its reminders: #18.
 - **Next:** a person checks the packs (crisis lines first) and the funding pack; M6 (the WhatsApp bot) only from Fri
   23 Oct 08:30 SAST.
-
-All of this is in `backend/` and `docs/`; the app is yours.

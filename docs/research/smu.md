@@ -1,8 +1,8 @@
 # Sefako Makgatho Health Sciences University (SMU): research notes
 
 Agent draft, read from SMU's own pages and documents on 9 Oct 2026. Nobody has checked these values yet. A person
-compares each one with its source before it changes `backend/data/universities/smu.yaml` (the team approves fact
-changes in a data pack first; CLAUDE.md, "Ask the team first"). Anything missing stays `null` and the app shows "Not
+compares each one with its source before it changes `backend/data/universities/smu.yaml` (Rinsuna approves fact
+changes in a data pack first; CLAUDE.md, "Ask Rinsuna first"). Anything missing stays `null` and the app shows "Not
 verified yet".
 
 - **Source** gives a source id from the table below. `s-smu-med` is the id `smu.yaml` already uses.
