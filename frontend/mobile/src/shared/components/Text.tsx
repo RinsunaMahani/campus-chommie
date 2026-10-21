@@ -1,6 +1,6 @@
 import { StyleSheet, Text, TextProps } from 'react-native';
 
-import { fonts } from '@/shared/theme/tokens';
+import { fonts, type } from '@/shared/theme/tokens';
 import { Palette, useStyles } from '@/shared/theme/palette';
 
 /** Screen title: "Create your account". */
@@ -37,15 +37,17 @@ export function Overline({ style, ...props }: TextProps) {
 }
 
 export const makeStyles = (colors: Palette) => StyleSheet.create({
-  title: { fontFamily: fonts.display, fontSize: 26, lineHeight: 32, letterSpacing: -0.5, color: colors.ink },
-  money: { fontFamily: fonts.display, fontSize: 40, lineHeight: 46, letterSpacing: -1, color: colors.ink },
-  body: { fontFamily: fonts.body, fontSize: 15, lineHeight: 22, color: colors.textMuted },
-  strong: { fontFamily: fonts.bold, fontSize: 15, lineHeight: 20, color: colors.text },
-  muted: { fontFamily: fonts.body, fontSize: 12.5, lineHeight: 17, color: colors.textMuted },
+  title: { fontFamily: fonts.display, ...type.largeTitle, letterSpacing: -0.6, color: colors.ink },
+  // Figures line up in columns and don't jump as they change.
+  money: { fontFamily: fonts.display, fontSize: 44, lineHeight: 50, letterSpacing: -1, color: colors.ink, fontVariant: ['tabular-nums'] },
+  body: { fontFamily: fonts.body, ...type.body, color: colors.textMuted },
+  strong: { fontFamily: fonts.bold, ...type.body, lineHeight: 22, color: colors.text },
+  muted: { fontFamily: fonts.body, ...type.label, color: colors.textMuted },
   overline: {
     fontFamily: fonts.bold,
-    fontSize: 12,
-    letterSpacing: 0.8,
+    fontSize: 12.5,
+    lineHeight: 18,
+    letterSpacing: 0.9,
     color: colors.textMuted,
     textTransform: 'uppercase',
   },

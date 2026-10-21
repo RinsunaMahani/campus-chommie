@@ -91,9 +91,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 4,
   },
-  badgeText: { fontFamily: fonts.bold, fontSize: 12 },
+  badgeText: { fontFamily: fonts.bold, fontSize: 13 },
   title: { flexDirection: 'row', alignItems: 'center', gap: 10 },
   line: { flexDirection: 'row', gap: 8 },
-  bullet: { fontFamily: fonts.bold, fontSize: 14, lineHeight: 20, color: colors.textFaint },
-  lineText: { flex: 1, fontFamily: fonts.body, fontSize: 13.5, lineHeight: 20, color: colors.text },
+  bullet: { fontFamily: fonts.bold, fontSize: 15, lineHeight: 20, color: colors.textFaint },
+  lineText: { flex: 1, fontFamily: fonts.body, fontSize: 14.5, lineHeight: 20, color: colors.text },
 });

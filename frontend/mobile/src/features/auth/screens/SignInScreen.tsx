@@ -135,12 +135,12 @@ export default function SignIn() {
 }
 
 const styles = StyleSheet.create({
-  link: { fontFamily: fonts.bold, fontSize: 13, color: colors.ink },
+  link: { fontFamily: fonts.bold, fontSize: 14, color: colors.ink },
   alt: { alignItems: 'center', paddingVertical: 4 },
-  altText: { fontFamily: fonts.body, fontSize: 13, color: colors.textMuted },
+  altText: { fontFamily: fonts.body, fontSize: 14, color: colors.textMuted },
   altLink: { fontFamily: fonts.bold, color: colors.ink },
   demo: { gap: 8, paddingTop: 8 },
-  demoTitle: { fontFamily: fonts.semibold, fontSize: 13, color: colors.textMuted },
+  demoTitle: { fontFamily: fonts.semibold, fontSize: 14, color: colors.textMuted },
   demoRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
   demoChip: {
     paddingHorizontal: 12,
@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
     borderColor: colors.line,
     backgroundColor: colors.white,
   },
-  demoName: { fontFamily: fonts.bold, fontSize: 13.5, color: colors.ink },
+  demoName: { fontFamily: fonts.bold, fontSize: 14.5, color: colors.ink },
   demoNote: { fontFamily: fonts.body, fontSize: 11.5, color: colors.textMuted },
-  demoHint: { fontFamily: fonts.body, fontSize: 12, color: colors.textMuted },
+  demoHint: { fontFamily: fonts.body, fontSize: 13, color: colors.textMuted },
 });

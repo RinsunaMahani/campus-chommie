@@ -35,8 +35,8 @@ export function ErrorBox({ message, onRetry }: { message: string; onRetry?: () =
 
 const makeStyles = (colors: Palette) => StyleSheet.create({
   loading: { flexDirection: 'row', alignItems: 'center', gap: 10, paddingVertical: 16 },
-  loadingText: { fontFamily: fonts.medium, fontSize: 14, color: colors.textMuted },
+  loadingText: { fontFamily: fonts.medium, fontSize: 15, color: colors.textMuted },
   error: { gap: 12, padding: 14, borderRadius: radius.md, backgroundColor: colors.garnetTint },
   row: { flexDirection: 'row', gap: 10 },
-  errorText: { flex: 1, fontFamily: fonts.medium, fontSize: 14, lineHeight: 20, color: colors.text },
+  errorText: { flex: 1, fontFamily: fonts.medium, fontSize: 15, lineHeight: 20, color: colors.text },
 });

@@ -89,8 +89,8 @@ export default function SecurityScreen() {
 
 const styles = StyleSheet.create({
   phone: { flexDirection: 'row', alignItems: 'center', gap: 12 },
-  phoneName: { fontFamily: fonts.bold, fontSize: 14.5, color: colors.text },
-  phoneSub: { fontFamily: fonts.body, fontSize: 12.5, color: colors.textMuted, marginTop: 2 },
+  phoneName: { fontFamily: fonts.bold, fontSize: 15.5, color: colors.text },
+  phoneSub: { fontFamily: fonts.body, fontSize: 13.5, color: colors.textMuted, marginTop: 2 },
   note: { flexDirection: 'row', gap: 8, backgroundColor: colors.iconTile, borderRadius: 10, padding: 12 },
-  noteText: { flex: 1, fontFamily: fonts.medium, fontSize: 13, color: colors.text },
+  noteText: { flex: 1, fontFamily: fonts.medium, fontSize: 14, color: colors.text },
 });

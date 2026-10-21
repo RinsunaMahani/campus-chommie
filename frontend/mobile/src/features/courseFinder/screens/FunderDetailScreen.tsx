@@ -298,7 +298,7 @@ export default function FunderDetailScreen() {
                 <View key={`${s.url}-${i}`} style={{ gap: 2 }}>
                   <SourceLink url={s.url} />
                   {s.retrieved ? (
-                    <Muted style={{ fontSize: 12 }}>
+                    <Muted style={{ fontSize: 13 }}>
                       {t('courseFinder.readOn', { date: formatDay(s.retrieved) })}
                     </Muted>
                   ) : null}
@@ -334,12 +334,12 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   saveBtnOn: { backgroundColor: colors.ink, borderColor: colors.ink },
-  saveText: { fontFamily: fonts.semibold, fontSize: 12, color: colors.ink },
+  saveText: { fontFamily: fonts.semibold, fontSize: 13, color: colors.ink },
   saveTextOn: { color: colors.pillText },
-  countdown: { fontFamily: fonts.bold, fontSize: 12.5, color: colors.marigoldDeep },
-  line: { fontFamily: fonts.body, fontSize: 13.5, lineHeight: 20, color: colors.text },
-  noteLine: { fontFamily: fonts.body, fontSize: 13, lineHeight: 19, color: colors.textMuted },
+  countdown: { fontFamily: fonts.bold, fontSize: 13.5, color: colors.marigoldDeep },
+  line: { fontFamily: fonts.body, fontSize: 14.5, lineHeight: 20, color: colors.text },
+  noteLine: { fontFamily: fonts.body, fontSize: 14, lineHeight: 19, color: colors.textMuted },
   item: { flexDirection: 'row', gap: 8 },
-  bullet: { fontFamily: fonts.bold, fontSize: 14, lineHeight: 20, color: colors.textFaint },
-  itemText: { flex: 1, fontFamily: fonts.body, fontSize: 13.5, lineHeight: 20, color: colors.text },
+  bullet: { fontFamily: fonts.bold, fontSize: 15, lineHeight: 20, color: colors.textFaint },
+  itemText: { flex: 1, fontFamily: fonts.body, fontSize: 14.5, lineHeight: 20, color: colors.text },
 });

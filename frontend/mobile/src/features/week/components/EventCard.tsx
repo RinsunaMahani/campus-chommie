@@ -115,17 +115,17 @@ function FlagButton({ onPick, busy }: { onPick: (reason: FlagReason) => void; bu
 
 const makeStyles = (colors: Palette) => StyleSheet.create({
   head: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 8 },
-  when: { fontFamily: fonts.semibold, fontSize: 14, color: colors.text },
+  when: { fontFamily: fonts.semibold, fontSize: 15, color: colors.text },
   struck: { textDecorationLine: 'line-through', color: colors.textMuted },
-  change: { fontFamily: fonts.medium, fontSize: 12.5, lineHeight: 18, color: colors.accentDeep },
+  change: { fontFamily: fonts.medium, fontSize: 13.5, lineHeight: 18, color: colors.accentDeep },
   flagLink: { flexDirection: 'row', alignItems: 'center', gap: 6, alignSelf: 'flex-start', paddingTop: 4 },
-  flagText: { fontFamily: fonts.semibold, fontSize: 12.5, color: colors.textMuted, textDecorationLine: 'underline' },
+  flagText: { fontFamily: fonts.semibold, fontSize: 13.5, color: colors.textMuted, textDecorationLine: 'underline' },
   backdrop: { flex: 1, backgroundColor: colors.overlay },
   sheet: { backgroundColor: colors.white, borderTopLeftRadius: 22, borderTopRightRadius: 22, paddingHorizontal: 20, paddingBottom: 14, gap: 4 },
   handle: { alignSelf: 'center', width: 40, height: 4, borderRadius: 2, backgroundColor: colors.line, marginTop: 10, marginBottom: 6 },
   sheetTitle: { fontFamily: fonts.display, fontSize: 20, color: colors.ink },
-  sheetHint: { fontFamily: fonts.body, fontSize: 13, lineHeight: 18, color: colors.textMuted, marginBottom: 6 },
+  sheetHint: { fontFamily: fonts.body, fontSize: 14, lineHeight: 18, color: colors.textMuted, marginBottom: 6 },
   option: { paddingVertical: 14 },
   optionRule: { borderBottomWidth: 1, borderBottomColor: colors.line },
-  optionText: { fontFamily: fonts.semibold, fontSize: 15, color: colors.text },
+  optionText: { fontFamily: fonts.semibold, fontSize: 16, color: colors.text },
 });

@@ -83,8 +83,8 @@ const styles = StyleSheet.create({
   stats: { flexDirection: 'row', gap: 16 },
   stat: { flex: 1 },
   big: { fontFamily: fonts.display, fontSize: 38, lineHeight: 44, letterSpacing: -1, color: colors.accent },
-  statLabel: { fontFamily: fonts.bold, fontSize: 12, letterSpacing: 0.6, textTransform: 'uppercase', color: colors.text },
-  note: { fontFamily: fonts.body, fontSize: 13, lineHeight: 19, color: colors.textMuted },
+  statLabel: { fontFamily: fonts.bold, fontSize: 13, letterSpacing: 0.6, textTransform: 'uppercase', color: colors.text },
+  note: { fontFamily: fonts.body, fontSize: 14, lineHeight: 19, color: colors.textMuted },
   row: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -95,9 +95,9 @@ const styles = StyleSheet.create({
     borderColor: colors.line,
     backgroundColor: colors.white,
   },
-  name: { fontFamily: fonts.bold, fontSize: 15, lineHeight: 20, color: colors.text },
-  sub: { fontFamily: fonts.medium, fontSize: 13, color: colors.textMuted },
-  notice: { fontFamily: fonts.body, fontSize: 12, color: colors.textFaint },
+  name: { fontFamily: fonts.bold, fontSize: 16, lineHeight: 20, color: colors.text },
+  sub: { fontFamily: fonts.medium, fontSize: 14, color: colors.textMuted },
+  notice: { fontFamily: fonts.body, fontSize: 13, color: colors.textFaint },
   // Narrow, so the university's name keeps the room: "No points rule yet" wraps onto two lines.
   score: { alignItems: 'flex-end', minWidth: 48, maxWidth: 64 },
   points: { fontFamily: fonts.display, fontSize: 26, lineHeight: 30, color: colors.accent },

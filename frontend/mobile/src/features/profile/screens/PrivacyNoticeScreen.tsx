@@ -32,5 +32,5 @@ export default function PrivacyNoticeScreen() {
 }
 
 const makeStyles = (colors: Palette) => StyleSheet.create({
-  link: { fontFamily: fonts.bold, fontSize: 14, color: colors.accentDeep, textDecorationLine: 'underline' },
+  link: { fontFamily: fonts.bold, fontSize: 15, color: colors.accentDeep, textDecorationLine: 'underline' },
 });

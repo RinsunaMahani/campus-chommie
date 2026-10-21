@@ -64,5 +64,5 @@ const makeStyles = (colors: Palette) => StyleSheet.create({
   },
   handle: { alignSelf: 'center', width: 40, height: 4, borderRadius: 2, backgroundColor: colors.line, marginTop: 10 },
   title: { fontFamily: fonts.display, fontSize: 19, color: colors.ink },
-  body: { fontFamily: fonts.body, fontSize: 14.5, lineHeight: 21, color: colors.text },
+  body: { fontFamily: fonts.body, fontSize: 15.5, lineHeight: 21, color: colors.text },
 });

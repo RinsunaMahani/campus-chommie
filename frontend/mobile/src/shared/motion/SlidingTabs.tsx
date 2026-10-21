@@ -57,6 +57,6 @@ const makeStyles = (colors: Palette) => StyleSheet.create({
   },
   highlight: { position: 'absolute', top: PAD, bottom: PAD, left: PAD, borderRadius: radius.pill, backgroundColor: colors.ink },
   tab: { flex: 1, alignItems: 'center', paddingVertical: 10, paddingHorizontal: 6 },
-  label: { fontFamily: fonts.semibold, fontSize: 14, color: colors.textMuted },
+  label: { fontFamily: fonts.semibold, fontSize: 15, color: colors.textMuted },
   labelOn: { color: colors.pillText },
 });

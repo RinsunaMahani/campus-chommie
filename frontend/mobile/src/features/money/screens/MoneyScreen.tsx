@@ -1,6 +1,5 @@
 import { router, useFocusEffect } from 'expo-router';
 import { useCallback, useState } from 'react';
-import { View } from 'react-native';
 
 import { DemoBanner } from '@/features/profile/components/DemoBanner';
 import { useProfile } from '@/features/profile/state';
@@ -9,7 +8,7 @@ import { Button } from '@/shared/components/Button';
 import { Card, InfoNote, ListRow } from '@/shared/components/Parts';
 import { Screen } from '@/shared/components/Screen';
 import { ErrorBox, Loading } from '@/shared/components/Status';
-import { Body, Strong, Title } from '@/shared/components/Text';
+import { Body, Strong } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
 
 import { moneyApi } from '../api/moneyApi';
@@ -47,8 +46,7 @@ export default function MoneyScreen() {
 
   if (mock) {
     return (
-      <Screen tab>
-        <Title>{t('money.title')}</Title>
+      <Screen tab title={t('money.title')}>
         <InfoNote icon="info">{t('money.mockNotice')}</InfoNote>
       </Screen>
     );
@@ -61,11 +59,9 @@ export default function MoneyScreen() {
         setRefreshing(true);
         load(late);
       }}
-      refreshing={refreshing}>
-      <View style={{ gap: 8 }}>
-        <Title>{t('money.title')}</Title>
-        <DemoBanner />
-      </View>
+      refreshing={refreshing}
+      title={t('money.title')}
+      headerRight={<DemoBanner />}>
 
       {error ? <ErrorBox message={error} onRetry={() => load(late)} /> : null}
       {!error && !summary ? <Loading /> : null}

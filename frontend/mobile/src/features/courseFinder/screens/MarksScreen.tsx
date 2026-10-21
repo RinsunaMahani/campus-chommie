@@ -142,12 +142,12 @@ const REMOVE = 36;
 const styles = StyleSheet.create({
   card: { paddingVertical: 6 },
   head: { flexDirection: 'row', alignItems: 'center', gap: 8, paddingTop: 4, paddingBottom: 6 },
-  headText: { fontFamily: fonts.semibold, fontSize: 12.5, color: colors.textMuted },
+  headText: { fontFamily: fonts.semibold, fontSize: 13.5, color: colors.textMuted },
   headMark: { width: MARK, textAlign: 'center', marginRight: REMOVE + 8 },
   line: { borderTopWidth: 1, borderTopColor: colors.line, paddingVertical: 8, gap: 4 },
   row: { flexDirection: 'row', alignItems: 'center', gap: 8 },
-  name: { fontFamily: fonts.semibold, fontSize: 15, color: colors.text },
-  level: { fontFamily: fonts.body, fontSize: 12.5, color: colors.textMuted, marginTop: 1 },
+  name: { fontFamily: fonts.semibold, fontSize: 16, color: colors.text },
+  level: { fontFamily: fonts.body, fontSize: 13.5, color: colors.textMuted, marginTop: 1 },
   markBox: {
     width: MARK,
     height: 44,
@@ -162,5 +162,5 @@ const styles = StyleSheet.create({
     color: colors.text,
   },
   remove: { width: REMOVE, height: 44, borderRadius: radius.sm, alignItems: 'center', justifyContent: 'center' },
-  error: { fontFamily: fonts.body, fontSize: 12, color: colors.garnet },
+  error: { fontFamily: fonts.body, fontSize: 13, color: colors.garnet },
 });

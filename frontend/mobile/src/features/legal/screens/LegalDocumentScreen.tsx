@@ -34,5 +34,5 @@ export function LegalDocumentScreen({ doc }: { doc: LegalDocument }) {
 
 const styles = StyleSheet.create({
   heading: { fontFamily: fonts.bold, fontSize: 16, color: colors.text },
-  body: { fontFamily: fonts.body, fontSize: 14.5, lineHeight: 22, color: colors.text },
+  body: { fontFamily: fonts.body, fontSize: 15.5, lineHeight: 22, color: colors.text },
 });

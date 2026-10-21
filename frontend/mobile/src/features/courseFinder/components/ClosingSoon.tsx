@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     borderColor: colors.line,
     backgroundColor: colors.white,
   },
-  name: { fontFamily: fonts.bold, fontSize: 15, lineHeight: 20, color: colors.text },
-  heading: { fontFamily: fonts.medium, fontSize: 13, color: colors.textMuted },
-  days: { fontFamily: fonts.bold, fontSize: 13, color: colors.jade, marginTop: 'auto' },
+  name: { fontFamily: fonts.bold, fontSize: 16, lineHeight: 20, color: colors.text },
+  heading: { fontFamily: fonts.medium, fontSize: 14, color: colors.textMuted },
+  days: { fontFamily: fonts.bold, fontSize: 14, color: colors.jade, marginTop: 'auto' },
 });

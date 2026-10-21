@@ -13,7 +13,7 @@ import { updatesApi } from '@/features/updates/api/updatesApi';
 import { Button } from '@/shared/components/Button';
 import { Card, ListRow } from '@/shared/components/Parts';
 import { Screen } from '@/shared/components/Screen';
-import { Muted, Overline, Strong, Title } from '@/shared/components/Text';
+import { Overline, Strong } from '@/shared/components/Text';
 import { UniMonogram } from '@/shared/components/UniMonogram';
 import { t } from '@/shared/i18n';
 
@@ -22,7 +22,7 @@ import { t } from '@/shared/i18n';
  * today's alerts first, then updates and the course finder, and the way to account security and out.
  */
 export default function HomeScreen() {
-  const { profile, signOut } = useSession();
+  const { signOut } = useSession();
   const { mock, profile: student } = useProfile();
   const photo = student?.university ? CAMPUS_PHOTOS[student.university] : undefined;
   const [unread, setUnread] = useState(0);
@@ -38,17 +38,14 @@ export default function HomeScreen() {
   );
 
   return (
-    <Screen tab backdrop={photo?.image}>
+    <Screen tab backdrop={photo?.image} title="Home" headerRight={<DemoBanner />}>
       <View style={{ gap: 6 }}>
-        <Title>Home</Title>
         {student?.university_name && student.university ? (
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
             <UniMonogram id={student.university} size={36} />
             <Strong style={{ flex: 1 }}>{student.university_name}</Strong>
           </View>
         ) : null}
-        <Muted>Signed in as {profile.email}</Muted>
-        <DemoBanner />
       </View>
       {/* Room for the campus photo to show before the cards rise over it. */}
       {photo ? <View style={{ height: 110 }} /> : null}

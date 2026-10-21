@@ -12,7 +12,7 @@ import { Button } from '@/shared/components/Button';
 import { Card } from '@/shared/components/Parts';
 import { Screen } from '@/shared/components/Screen';
 import { ErrorBox } from '@/shared/components/Status';
-import { Body, Muted, Overline, Title } from '@/shared/components/Text';
+import { Body, Overline, Title } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
 import { SkeletonCards } from '@/shared/motion/Shimmer';
 
@@ -50,11 +50,7 @@ export default function TimetableScreen() {
   }
 
   return (
-    <Screen tab>
-      <View style={{ gap: 6 }}>
-        <Title>{t('timetable.title')}</Title>
-        <Muted>{t('timetable.sub')}</Muted>
-      </View>
+    <Screen tab title={t('timetable.title')} subtitle={t('timetable.sub')}>
       <View style={{ flexDirection: 'row', gap: 10 }}>
         <View style={{ flex: 1 }}>
           <Button title={t('timetable.add')} variant="primary" icon="plus" compact onPress={() => router.push('/timetable/new')} />

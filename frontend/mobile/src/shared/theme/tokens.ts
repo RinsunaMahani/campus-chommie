@@ -74,6 +74,22 @@ export const brand = {
   white: '#FFFFFF',
 } as const;
 
+/**
+ * The type scale. Platform guidance and readability studies agree on 16 for body text on a phone (Material: 14 at
+ * the least), a line height about 1.5 times the size, and a large title at the top of a screen that shrinks to a
+ * bar as you scroll (iOS uses 34). Captions and labels never go under 13, except inside dense grids (the calendar,
+ * the tab bar) where space is the point.
+ */
+export const type = {
+  largeTitle: { fontSize: 32, lineHeight: 38 }, // the screen's name, top left
+  title: { fontSize: 22, lineHeight: 28 }, // a section that heads its own cards
+  headline: { fontSize: 17, lineHeight: 23 }, // a card's title; the compact header bar
+  body: { fontSize: 16, lineHeight: 24 },
+  callout: { fontSize: 15, lineHeight: 22 }, // secondary lines in a card
+  label: { fontSize: 14, lineHeight: 20 }, // meta lines, field hints
+  caption: { fontSize: 13, lineHeight: 18 }, // sources, credits, timestamps
+} as const;
+
 export const space = { xs: 4, sm: 8, md: 12, lg: 16, xl: 24, xxl: 32 } as const;
 
 export const radius = { sm: 10, md: 14, lg: 18, xl: 24, pill: 999 } as const;

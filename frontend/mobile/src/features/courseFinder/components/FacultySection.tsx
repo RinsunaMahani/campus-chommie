@@ -115,6 +115,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   name: { fontFamily: fonts.bold, fontSize: 15.5, lineHeight: 21, color: colors.ink },
-  counts: { fontFamily: fonts.medium, fontSize: 12.5, lineHeight: 18, color: colors.textMuted, marginTop: 2 },
+  counts: { fontFamily: fonts.medium, fontSize: 13.5, lineHeight: 18, color: colors.textMuted, marginTop: 2 },
   body: { gap: 12, padding: 12, paddingTop: 4 },
 });

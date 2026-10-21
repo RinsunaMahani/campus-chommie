@@ -53,9 +53,9 @@ const makeStyles = (colors: Palette) =>
     bar: { width: 5, borderTopLeftRadius: radius.lg, borderBottomLeftRadius: radius.lg },
     body: { flex: 1, gap: 4, padding: 12 },
     head: { flexDirection: 'row', alignItems: 'center', gap: 8, flexWrap: 'wrap' },
-    module: { fontFamily: fonts.bold, fontSize: 15 },
-    kind: { fontFamily: fonts.medium, fontSize: 13, color: colors.textMuted },
-    title: { fontFamily: fonts.medium, fontSize: 13.5, color: colors.text },
+    module: { fontFamily: fonts.bold, fontSize: 16 },
+    kind: { fontFamily: fonts.medium, fontSize: 14, color: colors.textMuted },
+    title: { fontFamily: fonts.medium, fontSize: 14.5, color: colors.text },
     meta: { flexDirection: 'row', alignItems: 'center', gap: 6 },
-    metaText: { flexShrink: 1, fontFamily: fonts.medium, fontSize: 13, color: colors.textMuted },
+    metaText: { flexShrink: 1, fontFamily: fonts.medium, fontSize: 14, color: colors.textMuted },
   });

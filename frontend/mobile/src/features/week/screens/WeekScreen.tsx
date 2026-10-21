@@ -12,7 +12,6 @@ import { errorText } from '@/shared/api/errors';
 import { Card, InfoNote, ListRow } from '@/shared/components/Parts';
 import { Screen } from '@/shared/components/Screen';
 import { ErrorBox, Loading } from '@/shared/components/Status';
-import { Title } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
 import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
 import { fonts, radius } from '@/shared/theme/tokens';
@@ -99,8 +98,7 @@ export default function WeekScreen() {
 
   if (mock) {
     return (
-      <Screen tab>
-        <Title>{t('week.title')}</Title>
+      <Screen tab title={t('week.title')}>
         <InfoNote icon="info">{t('money.mockNotice')}</InfoNote>
       </Screen>
     );
@@ -119,11 +117,9 @@ export default function WeekScreen() {
         setRefreshing(true);
         load();
       }}
-      refreshing={refreshing}>
-      <View style={{ gap: 8 }}>
-        <Title>{t('week.title')}</Title>
-        <DemoBanner />
-      </View>
+      refreshing={refreshing}
+      title={t('week.title')}
+      headerRight={<DemoBanner />}>
       <View style={styles.switchRow}>
         {chip(view === 'calendar', t('week.calendarView'), () => setView('calendar'), 'cal')}
         {chip(view === 'load', t('week.load'), () => setView('load'), 'load')}
@@ -197,6 +193,6 @@ const makeStyles = (colors: Palette) =>
       backgroundColor: colors.white,
     },
     chipOn: { backgroundColor: colors.accent, borderColor: colors.accent },
-    chipText: { fontFamily: fonts.semibold, fontSize: 13, color: colors.ink },
+    chipText: { fontFamily: fonts.semibold, fontSize: 14, color: colors.ink },
     chipTextOn: { color: colors.pillText },
   });

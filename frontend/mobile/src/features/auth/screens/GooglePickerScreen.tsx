@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
   handle: { alignSelf: 'center', width: 40, height: 4, borderRadius: 2, backgroundColor: colors.line, marginTop: 10 },
   header: { flexDirection: 'row', alignItems: 'center', gap: 10, marginVertical: 6 },
   title: { fontFamily: fonts.bold, fontSize: 16, color: colors.text },
-  sub: { fontFamily: fonts.body, fontSize: 12.5, color: colors.textMuted },
+  sub: { fontFamily: fonts.body, fontSize: 13.5, color: colors.textMuted },
   account: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -125,6 +125,6 @@ const styles = StyleSheet.create({
   accountPicked: { borderColor: colors.ink, borderWidth: 1.5 },
   avatar: { width: 38, height: 38, borderRadius: radius.sm, alignItems: 'center', justifyContent: 'center' },
   avatarText: { fontFamily: fonts.display, fontSize: 16, color: colors.pillText },
-  name: { fontFamily: fonts.bold, fontSize: 14.5, color: colors.text },
-  foot: { fontFamily: fonts.body, fontSize: 12, lineHeight: 17, color: colors.textMuted, marginTop: 4 },
+  name: { fontFamily: fonts.bold, fontSize: 15.5, color: colors.text },
+  foot: { fontFamily: fonts.body, fontSize: 13, lineHeight: 17, color: colors.textMuted, marginTop: 4 },
 });

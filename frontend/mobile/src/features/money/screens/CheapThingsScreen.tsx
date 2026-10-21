@@ -68,5 +68,5 @@ export default function CheapThingsScreen() {
 }
 
 const makeStyles = (colors: Palette) => StyleSheet.create({
-  cost: { fontFamily: fonts.medium, fontSize: 14, lineHeight: 20, color: colors.text },
+  cost: { fontFamily: fonts.medium, fontSize: 15, lineHeight: 20, color: colors.text },
 });

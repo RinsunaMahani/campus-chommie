@@ -57,5 +57,5 @@ export default function CloseAccountScreen() {
 const styles = StyleSheet.create({
   box: { backgroundColor: colors.garnetTint, borderRadius: radius.md, padding: 14, gap: 10 },
   row: { flexDirection: 'row', gap: 10 },
-  text: { flex: 1, fontFamily: fonts.medium, fontSize: 13.5, lineHeight: 19, color: colors.text },
+  text: { flex: 1, fontFamily: fonts.medium, fontSize: 14.5, lineHeight: 19, color: colors.text },
 });

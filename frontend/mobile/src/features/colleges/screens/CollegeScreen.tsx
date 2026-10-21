@@ -189,15 +189,15 @@ export function Signs({ signs }: { signs: WarningSigns }) {
 
 const styles = StyleSheet.create({
   card: { gap: 10, padding: 14 },
-  line: { fontFamily: fonts.body, fontSize: 14, lineHeight: 21, color: colors.text },
+  line: { fontFamily: fonts.body, fontSize: 15, lineHeight: 21, color: colors.text },
   fact: { gap: 2, paddingVertical: 2 },
   factValue: { flexDirection: 'row', alignItems: 'center', gap: 6 },
-  factText: { fontFamily: fonts.semibold, fontSize: 14.5, color: colors.text },
+  factText: { fontFamily: fonts.semibold, fontSize: 15.5, color: colors.text },
   factLink: { color: colors.accentDeep, textDecorationLine: 'underline' },
   qual: { gap: 6, paddingTop: 8, borderTopWidth: 1, borderTopColor: colors.line },
   tags: { flexDirection: 'row', flexWrap: 'wrap', gap: 6 },
   item: { flexDirection: 'row', gap: 8 },
-  bullet: { fontFamily: fonts.bold, fontSize: 14, lineHeight: 20, color: colors.accentDeep },
-  itemText: { flex: 1, fontFamily: fonts.body, fontSize: 13.5, lineHeight: 20, color: colors.text },
-  more: { fontFamily: fonts.semibold, fontSize: 13, color: colors.accentDeep },
+  bullet: { fontFamily: fonts.bold, fontSize: 15, lineHeight: 20, color: colors.accentDeep },
+  itemText: { flex: 1, fontFamily: fonts.body, fontSize: 14.5, lineHeight: 20, color: colors.text },
+  more: { fontFamily: fonts.semibold, fontSize: 14, color: colors.accentDeep },
 });

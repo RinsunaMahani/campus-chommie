@@ -76,5 +76,5 @@ export default function ResetPasswordScreen() {
 }
 
 const styles = StyleSheet.create({
-  error: { fontFamily: fonts.medium, fontSize: 13, color: colors.garnet },
+  error: { fontFamily: fonts.medium, fontSize: 14, color: colors.garnet },
 });

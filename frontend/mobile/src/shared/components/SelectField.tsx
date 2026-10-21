@@ -141,7 +141,7 @@ export function SelectField<T extends string>(props: Single<T> | Multiple<T>) {
 }
 
 const makeStyles = (colors: Palette) => StyleSheet.create({
-  label: { fontFamily: fonts.semibold, fontSize: 13.5, color: colors.text },
+  label: { fontFamily: fonts.semibold, fontSize: 14.5, color: colors.text },
   optional: { fontFamily: fonts.medium, color: colors.textMuted },
   box: {
     height: sizes.input,
@@ -154,9 +154,9 @@ const makeStyles = (colors: Palette) => StyleSheet.create({
     borderColor: colors.line,
     backgroundColor: colors.white,
   },
-  value: { flex: 1, fontFamily: fonts.medium, fontSize: 15, color: colors.text },
+  value: { flex: 1, fontFamily: fonts.medium, fontSize: 16, color: colors.text },
   placeholder: { color: colors.textFaint },
-  error: { fontFamily: fonts.body, fontSize: 12, color: colors.garnet },
+  error: { fontFamily: fonts.body, fontSize: 13, color: colors.garnet },
   backdrop: { flex: 1, backgroundColor: colors.overlay },
   sheet: {
     backgroundColor: colors.white,
@@ -168,12 +168,12 @@ const makeStyles = (colors: Palette) => StyleSheet.create({
   },
   handle: { alignSelf: 'center', width: 40, height: 4, borderRadius: 2, backgroundColor: colors.line, marginTop: 10, marginBottom: 4 },
   sheetTitle: { fontFamily: fonts.display, fontSize: 20, letterSpacing: -0.3, color: colors.ink },
-  sheetHint: { fontFamily: fonts.body, fontSize: 13, color: colors.textMuted, marginTop: -4 },
+  sheetHint: { fontFamily: fonts.body, fontSize: 14, color: colors.textMuted, marginTop: -4 },
   option: { flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 14 },
   optionRule: { borderBottomWidth: 1, borderBottomColor: colors.line },
   optIcon: { width: 36, height: 36, borderRadius: 10, backgroundColor: colors.iconTile, alignItems: 'center', justifyContent: 'center' },
-  optLabel: { fontFamily: fonts.semibold, fontSize: 15, color: colors.text },
-  optSub: { fontFamily: fonts.body, fontSize: 12.5, color: colors.textMuted, marginTop: 2 },
+  optLabel: { fontFamily: fonts.semibold, fontSize: 16, color: colors.text },
+  optSub: { fontFamily: fonts.body, fontSize: 13.5, color: colors.textMuted, marginTop: 2 },
   radio: { width: 22, height: 22, borderRadius: 11, borderWidth: 2, borderColor: colors.line, alignItems: 'center', justifyContent: 'center' },
   dot: { width: 10, height: 10, borderRadius: 5, backgroundColor: colors.accent },
   check: { width: 22, height: 22, borderRadius: 6, borderWidth: 2, borderColor: colors.line, alignItems: 'center', justifyContent: 'center' },

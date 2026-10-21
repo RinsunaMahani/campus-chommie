@@ -135,10 +135,10 @@ const makeStyles = (colors: Palette) => StyleSheet.create({
   chips: { flexDirection: 'row', gap: 8 },
   chip: { paddingHorizontal: 16, paddingVertical: 9, borderRadius: radius.pill, borderWidth: 1, borderColor: colors.line, backgroundColor: colors.white },
   chipOn: { backgroundColor: colors.ink, borderColor: colors.ink },
-  chipText: { fontFamily: fonts.semibold, fontSize: 13.5, color: colors.ink },
+  chipText: { fontFamily: fonts.semibold, fontSize: 14.5, color: colors.ink },
   chipTextOn: { color: colors.pillText },
   row: { flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 11 },
   rule: { borderBottomWidth: 1, borderBottomColor: colors.line },
-  day: { flex: 1, fontFamily: fonts.medium, fontSize: 14, color: colors.text },
-  amount: { fontFamily: fonts.bold, fontSize: 14, color: colors.ink, fontVariant: ['tabular-nums'] },
+  day: { flex: 1, fontFamily: fonts.medium, fontSize: 15, color: colors.text },
+  amount: { fontFamily: fonts.bold, fontSize: 15, color: colors.ink, fontVariant: ['tabular-nums'] },
 });

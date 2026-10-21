@@ -103,8 +103,8 @@ export default function VerifyEmail() {
 
 const styles = StyleSheet.create({
   email: { fontFamily: fonts.bold, color: colors.ink },
-  error: { fontFamily: fonts.medium, fontSize: 13, color: colors.garnet },
+  error: { fontFamily: fonts.medium, fontSize: 14, color: colors.garnet },
   resendRow: { flexDirection: 'row', alignItems: 'center', gap: 6 },
-  small: { fontFamily: fonts.body, fontSize: 12.5, color: colors.textMuted },
+  small: { fontFamily: fonts.body, fontSize: 13.5, color: colors.textMuted },
   link: { textDecorationLine: 'underline', color: colors.ink },
 });
