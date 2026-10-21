@@ -146,6 +146,7 @@ export const en = {
   'courseFinder.facultyMeets': '{n} meet the minimum',
   'courseFinder.facultyReach': '{n} reach',
   'courseFinder.photoCredit': 'Photo: {credit}',
+  'courseFinder.photoSourceHint': "Opens the photo's page on Wikimedia Commons: its author, licence and the original.",
   'courseFinder.fee': 'Application fee',
   'courseFinder.noFee': 'No application fee',
   'courseFinder.warnings': 'Be careful',

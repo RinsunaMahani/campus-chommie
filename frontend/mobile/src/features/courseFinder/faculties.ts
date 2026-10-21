@@ -79,12 +79,15 @@ const ART_OF_FIELD: Record<string, Art> = {
 
 /** The picture for a set of programmes: the art most of their fields share. */
 export function artFor(matches: Match[]): Art {
+  return artOfFields(matches.flatMap((m) => m.fields ?? []));
+}
+
+/** The picture most of these fields share (a funder's fields, a faculty's programmes'). */
+export function artOfFields(fields: string[]): Art {
   const votes = new Map<Art, number>();
-  for (const m of matches) {
-    for (const f of m.fields ?? []) {
-      const art = ART_OF_FIELD[f];
-      if (art) votes.set(art, (votes.get(art) ?? 0) + 1);
-    }
+  for (const f of fields) {
+    const art = ART_OF_FIELD[f];
+    if (art) votes.set(art, (votes.get(art) ?? 0) + 1);
   }
   let best: Art = 'other';
   let most = 0;

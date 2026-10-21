@@ -1,7 +1,7 @@
 import { Feather } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import { ComponentProps, useCallback, useEffect, useMemo, useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { useSession } from '@/features/auth/session/SessionProvider';
 import { Button } from '@/shared/components/Button';
@@ -15,6 +15,7 @@ import { SkeletonCards } from '@/shared/motion/Shimmer';
 import { colors, fonts, radius } from '@/shared/theme/tokens';
 
 import { courseFinderApi } from '../api/courseFinderApi';
+import { funderPhoto } from '../funderPhotos';
 import { useCourseFinder } from '../state';
 import { FundingCard, FundingListAnswer, SavedFundingCard } from '../types';
 import { errorText, formatDay } from '../words';
@@ -288,6 +289,12 @@ export default function FundingScreen() {
                       onPress={() => router.push(`/course-finder/funding/${funder.id}`)}
                       style={styles.funderCard}>
                       <View style={styles.funderRow}>
+                        <Image
+                          source={funderPhoto(funder).image}
+                          style={styles.funderThumb}
+                          accessible={false}
+                          accessibilityIgnoresInvertColors
+                        />
                         <Strong style={styles.funderName}>{funder.name}</Strong>
                         <View style={styles.actionsRow}>
                           <Tag label={funder.label} tone={tagTone(funder.status)} />
@@ -376,6 +383,7 @@ const styles = StyleSheet.create({
   chipTextOn: { color: colors.pillText },
   funderCard: { gap: 6, padding: 14 },
   funderRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 8, flexWrap: 'wrap' },
+  funderThumb: { width: 44, height: 44, borderRadius: radius.sm },
   funderName: { flex: 1, fontSize: 14.5, color: colors.text },
   whyLine: { fontFamily: fonts.body, fontSize: 12.5, color: colors.textMuted },
 });

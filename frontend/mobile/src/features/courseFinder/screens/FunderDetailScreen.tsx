@@ -2,7 +2,7 @@ import { Feather } from '@expo/vector-icons';
 import * as WebBrowser from 'expo-web-browser';
 import { router, useLocalSearchParams } from 'expo-router';
 import { ComponentProps, useCallback, useEffect, useState } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { useSession } from '@/features/auth/session/SessionProvider';
 import { Button } from '@/shared/components/Button';
@@ -18,6 +18,8 @@ import { colors, fonts, radius } from '@/shared/theme/tokens';
 
 import { courseFinderApi } from '../api/courseFinderApi';
 import { ApplyWindows } from '../components/ApplyBox';
+import { PhotoCredit } from '../components/CampusPhotoCard';
+import { funderPhoto } from '../funderPhotos';
 import { ApplyWindow, FunderDetail } from '../types';
 import { daysLeft, errorText, formatDay } from '../words';
 
@@ -140,43 +142,52 @@ export default function FunderDetailScreen() {
             </Card>
           ) : null}
 
-          {/* 1. Header card: status, dates, lines, save bookmark */}
-          <Card style={styles.card}>
-            <View style={styles.headRow}>
-              <Strong style={styles.funderHeading}>{funder.heading ?? funder.name}</Strong>
-              <View style={styles.actionsRow}>
-                <Tag label={funder.label} tone={tagTone(funder.status)} />
-                <Pressable
-                  accessibilityRole="button"
-                  accessibilityLabel={
-                    activeSavedOn
-                      ? t('courseFinder.unsaveFunder', { name: funder.name })
-                      : t('courseFinder.saveFunder', { name: funder.name })
-                  }
-                  onPress={toggleSave}
-                  style={[styles.saveBtn, !!activeSavedOn && styles.saveBtnOn]}>
-                  <Feather
-                    name="bookmark"
-                    size={13}
-                    color={activeSavedOn ? colors.pillText : colors.ink}
-                  />
-                  <Text style={[styles.saveText, !!activeSavedOn && styles.saveTextOn]}>
-                    {activeSavedOn ? t('courseFinder.saved') : t('courseFinder.save')}
-                  </Text>
-                </Pressable>
+          {/* 1. Header card: the field's photo, status, dates, lines, save bookmark */}
+          <Card style={styles.headCard}>
+            <Image
+              source={funderPhoto(funder).image}
+              style={styles.photo}
+              accessible={false}
+              accessibilityIgnoresInvertColors
+            />
+            <View style={styles.headBody}>
+              <View style={styles.headRow}>
+                <Strong style={styles.funderHeading}>{funder.heading ?? funder.name}</Strong>
+                <View style={styles.actionsRow}>
+                  <Tag label={funder.label} tone={tagTone(funder.status)} />
+                  <Pressable
+                    accessibilityRole="button"
+                    accessibilityLabel={
+                      activeSavedOn
+                        ? t('courseFinder.unsaveFunder', { name: funder.name })
+                        : t('courseFinder.saveFunder', { name: funder.name })
+                    }
+                    onPress={toggleSave}
+                    style={[styles.saveBtn, !!activeSavedOn && styles.saveBtnOn]}>
+                    <Feather
+                      name="bookmark"
+                      size={13}
+                      color={activeSavedOn ? colors.pillText : colors.ink}
+                    />
+                    <Text style={[styles.saveText, !!activeSavedOn && styles.saveTextOn]}>
+                      {activeSavedOn ? t('courseFinder.saved') : t('courseFinder.save')}
+                    </Text>
+                  </Pressable>
+                </View>
               </View>
+              {activeSavedOn ? (
+                <Muted>{t('courseFinder.savedOn', { date: formatDay(activeSavedOn) })}</Muted>
+              ) : null}
+              {funder.days != null ? (
+                <Text style={styles.countdown}>{daysLeft(funder.days)}</Text>
+              ) : null}
+              {funder.lines?.map((line, i) => (
+                <Text key={i} style={styles.line}>
+                  {line}
+                </Text>
+              ))}
+              <PhotoCredit credit={funderPhoto(funder).credit} source={funderPhoto(funder).source} />
             </View>
-            {activeSavedOn ? (
-              <Muted>{t('courseFinder.savedOn', { date: formatDay(activeSavedOn) })}</Muted>
-            ) : null}
-            {funder.days != null ? (
-              <Text style={styles.countdown}>{daysLeft(funder.days)}</Text>
-            ) : null}
-            {funder.lines?.map((line, i) => (
-              <Text key={i} style={styles.line}>
-                {line}
-              </Text>
-            ))}
           </Card>
 
           {/* 2. What it covers */}
@@ -304,6 +315,9 @@ export default function FunderDetailScreen() {
 
 const styles = StyleSheet.create({
   card: { gap: 10, padding: 14 },
+  headCard: { padding: 0, overflow: 'hidden' },
+  photo: { width: '100%', aspectRatio: 16 / 9 },
+  headBody: { gap: 10, padding: 14 },
   headRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 8, flexWrap: 'wrap' },
   funderHeading: { flex: 1, fontSize: 15, color: colors.text },
   actionsRow: { flexDirection: 'row', alignItems: 'center', gap: 6, flexWrap: 'wrap' },

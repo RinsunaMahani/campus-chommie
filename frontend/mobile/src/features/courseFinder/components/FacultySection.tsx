@@ -14,6 +14,7 @@ import { colors, fonts, radius } from '@/shared/theme/tokens';
 
 import { Art, FacultyGroup } from '../faculties';
 import { PHOTOS } from '../facultyPhotos';
+import { PhotoCredit } from './CampusPhotoCard';
 
 const ICONS: Record<Art, ComponentProps<typeof Feather>['name']> = {
   health: 'heart',
@@ -83,7 +84,7 @@ export function FacultySection({ group, startOpen, children }: Props) {
         <FadeIn>
           <View style={styles.body}>
             {children}
-            {photo ? <Text style={styles.credit}>{t('courseFinder.photoCredit', { credit: photo.credit })}</Text> : null}
+            {photo ? <PhotoCredit credit={photo.credit} source={photo.source} /> : null}
           </View>
         </FadeIn>
       ) : null}
@@ -116,5 +117,4 @@ const styles = StyleSheet.create({
   name: { fontFamily: fonts.bold, fontSize: 15.5, lineHeight: 21, color: colors.ink },
   counts: { fontFamily: fonts.medium, fontSize: 12.5, lineHeight: 18, color: colors.textMuted, marginTop: 2 },
   body: { gap: 12, padding: 12, paddingTop: 4 },
-  credit: { fontFamily: fonts.body, fontSize: 11, color: colors.textFaint },
 });

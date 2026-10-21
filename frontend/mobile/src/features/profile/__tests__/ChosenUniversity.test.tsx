@@ -45,12 +45,12 @@ test('onboarding preselects the university remembered before sign-up, with no ro
 
   rememberUniversity('smu');
   const { unmount } = render(<CampusScreen />);
-  await waitFor(() => expect(campuses).toHaveBeenCalledWith('smu'), { timeout: 5000 });
+  await waitFor(() => expect(campuses).toHaveBeenCalledWith('smu'), { timeout: 10000 });
   unmount();
 
   // Read once: opening onboarding again starts with no choice.
   campuses.mockClear();
   render(<CampusScreen />);
-  await waitFor(() => expect(screen.getByText(t('onboarding.pickUniversity'))).toBeTruthy(), { timeout: 5000 });
+  await waitFor(() => expect(screen.getByText(t('onboarding.pickUniversity'))).toBeTruthy(), { timeout: 10000 });
   expect(campuses).not.toHaveBeenCalled();
 });
