@@ -29,6 +29,16 @@ def health():
         return error_response(message="Database unavailable", status_code=503, code="DB_UNAVAILABLE")
 
 
+@api_bp.get("/ping")
+@limiter.limit(HEALTH_LIMIT)
+def ping():
+    """Public. Answers without touching the database: for an uptime pinger
+    that keeps a free host awake, and the container's own check. Pinging
+    /health instead would keep a free database awake all month and use up
+    its compute hours."""
+    return success_response({"status": "ok"}, message="Campus Chommie API is up")
+
+
 # Each feature's routes attach to api_bp by being imported here.
 from src.domains.catalogue.funding.api import routes as _funding_routes  # noqa: E402,F401
 from src.domains.catalogue.maps.api import routes as _maps_routes  # noqa: E402,F401

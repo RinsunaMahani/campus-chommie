@@ -24,9 +24,12 @@ USER campus
 
 EXPOSE 8000
 
-# The host's own check can use GET /api/v1/health too; this one is for Docker itself.
+# Docker's own check: is the process up? /ping never touches the database, so a free database can sleep.
+# GET /api/v1/health also checks the database, for monitoring.
 HEALTHCHECK --interval=30s --timeout=5s --start-period=40s --retries=3 \
-  CMD python -c "import os, urllib.request; urllib.request.urlopen('http://127.0.0.1:' + os.environ.get('PORT', '8000') + '/api/v1/health', timeout=4)"
+  CMD python -c "import os, urllib.request; urllib.request.urlopen('http://127.0.0.1:' + os.environ.get('PORT', '8000') + '/api/v1/ping', timeout=4)"
 
-# Migrations first (safe to repeat), then the API. Start one instance at a time (DEPLOY.md).
-CMD ["sh", "-c", "flask db upgrade && exec gunicorn -c gunicorn.conf.py app:app"]
+# Migrations first (safe to repeat); then, where the host has no shell for one-off commands (Render's free tier),
+# the demo accounts when SEED_DEMO_ON_START=true (also safe to repeat; a failure is logged and the API still starts);
+# then the API. Start one instance at a time (DEPLOY.md).
+CMD ["sh", "-c", "flask db upgrade && { [ \"$SEED_DEMO_ON_START\" != true ] || flask seed || echo 'Demo seed failed: see above.'; } && exec gunicorn -c gunicorn.conf.py app:app"]

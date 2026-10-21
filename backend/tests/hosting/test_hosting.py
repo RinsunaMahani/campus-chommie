@@ -123,7 +123,8 @@ def test_the_container_runs_as_a_normal_user_with_a_health_check():
     lines = [line.strip() for line in dockerfile.splitlines()]
     user_lines = [line for line in lines if line.startswith("USER ")]
     assert user_lines and user_lines[-1] != "USER root"
-    assert any(line.startswith("HEALTHCHECK") for line in lines) and "/api/v1/health" in dockerfile
+    # Docker's check uses /ping, which never touches the database, so a free database can sleep.
+    assert any(line.startswith("HEALTHCHECK") for line in lines) and "/api/v1/ping" in dockerfile
     assert "gunicorn -c gunicorn.conf.py app:app" in dockerfile and "flask db upgrade" in dockerfile
     assert "FLASK_ENV=production" in dockerfile  # production settings: they refuse weak secrets and fake email
 
@@ -164,3 +165,23 @@ def test_production_allows_browsers_only_from_named_https_addresses(monkeypatch,
     else:
         with pytest.raises(RuntimeError, match="CORS_ORIGINS"):
             get_config("production")
+
+
+# --------------------------------------------------------------- free hosts
+
+
+def test_ping_answers_without_the_database(client, monkeypatch):
+    def no_database(*_args, **_kwargs):
+        raise AssertionError("ping touched the database")
+
+    monkeypatch.setattr(db.session, "execute", no_database)
+    r = client.get("/api/v1/ping")
+    assert r.status_code == 200 and r.get_json()["data"] == {"status": "ok"}
+
+
+def test_the_container_seeds_the_demo_only_when_asked():
+    dockerfile = (BACKEND / "Dockerfile").read_text(encoding="utf-8")
+    assert '[ \\"$SEED_DEMO_ON_START\\" != true ] || flask seed' in dockerfile
+    # Migrations still come first, and the API still starts after a failed seed.
+    assert dockerfile.index("flask db upgrade") < dockerfile.index("flask seed") < dockerfile.index("exec gunicorn")
+
