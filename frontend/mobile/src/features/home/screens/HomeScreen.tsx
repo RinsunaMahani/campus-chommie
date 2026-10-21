@@ -7,9 +7,11 @@ import { PhotoCredit } from '@/features/courseFinder/components/CampusPhotoCard'
 
 import { HomeAlerts } from '@/features/alerts/components/HomeAlerts';
 import { useSession } from '@/features/auth/session/SessionProvider';
-import { DemoBanner } from '@/features/profile/components/DemoBanner';
+import { studentHeader } from '@/features/profile/components/HeaderTools';
 import { useProfile } from '@/features/profile/state';
 import { updatesApi } from '@/features/updates/api/updatesApi';
+
+import { TodayTiles } from '../components/TodayTiles';
 import { Button } from '@/shared/components/Button';
 import { Card, ListRow } from '@/shared/components/Parts';
 import { Screen } from '@/shared/components/Screen';
@@ -38,7 +40,7 @@ export default function HomeScreen() {
   );
 
   return (
-    <Screen tab backdrop={photo?.image} title="Home" headerRight={<DemoBanner />}>
+    <Screen tab backdrop={photo?.image} title="Home" {...studentHeader()}>
       <View style={{ gap: 6 }}>
         {student?.university_name && student.university ? (
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
@@ -48,9 +50,13 @@ export default function HomeScreen() {
         ) : null}
       </View>
       {/* Room for the campus photo to show before the cards rise over it. */}
-      {photo ? <View style={{ height: 110 }} /> : null}
+      {photo ? <View style={{ height: 70 }} /> : null}
 
+      <Overline>{t('home.todayTitle')}</Overline>
+      {mock ? null : <TodayTiles />}
       <HomeAlerts />
+
+      <Overline>{t('home.more')}</Overline>
 
       <Card style={{ paddingVertical: 4 }}>
         {mock ? null : (

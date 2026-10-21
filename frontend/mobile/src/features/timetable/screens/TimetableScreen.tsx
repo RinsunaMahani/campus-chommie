@@ -7,6 +7,7 @@ import { router, useFocusEffect } from 'expo-router';
 import { useCallback, useState } from 'react';
 import { View } from 'react-native';
 
+import { studentHeader } from '@/features/profile/components/HeaderTools';
 import { errorText } from '@/shared/api/errors';
 import { Button } from '@/shared/components/Button';
 import { Card } from '@/shared/components/Parts';
@@ -50,7 +51,7 @@ export default function TimetableScreen() {
   }
 
   return (
-    <Screen tab title={t('timetable.title')} subtitle={t('timetable.sub')}>
+    <Screen tab title={t('timetable.title')} subtitle={t('timetable.sub')} {...studentHeader()}>
       <View style={{ flexDirection: 'row', gap: 10 }}>
         <View style={{ flex: 1 }}>
           <Button title={t('timetable.add')} variant="primary" icon="plus" compact onPress={() => router.push('/timetable/new')} />

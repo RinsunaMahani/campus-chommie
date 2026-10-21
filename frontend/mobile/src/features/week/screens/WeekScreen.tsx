@@ -3,7 +3,7 @@ import { router, useFocusEffect } from 'expo-router';
 import { useCallback, useMemo, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
-import { DemoBanner } from '@/features/profile/components/DemoBanner';
+import { studentHeader } from '@/features/profile/components/HeaderTools';
 import { useProfile } from '@/features/profile/state';
 import { examsApi, timetableApi } from '@/features/timetable/api/timetableApi';
 import { rememberModules } from '@/features/timetable/colours';
@@ -119,7 +119,7 @@ export default function WeekScreen() {
       }}
       refreshing={refreshing}
       title={t('week.title')}
-      headerRight={<DemoBanner />}>
+      {...studentHeader()}>
       <View style={styles.switchRow}>
         {chip(view === 'calendar', t('week.calendarView'), () => setView('calendar'), 'cal')}
         {chip(view === 'load', t('week.load'), () => setView('load'), 'load')}

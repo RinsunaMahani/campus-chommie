@@ -23,12 +23,15 @@ jest.mock('expo-router', () => ({ router: { push: jest.fn() }, useFocusEffect: j
 const alert = (alerts as unknown as { data: AlertsAnswer }).data.alerts[0];
 const answer = (support as unknown as { data: SupportAnswer }).data;
 
-test('the combined alert: its title, message and every action, with the campus office to call', () => {
+test('the combined alert: its title and message at a glance, and a tap opens every action with the campus office to call', () => {
   const onOpen = jest.fn();
   render(<AlertCard alert={alert} onOpen={onOpen} />);
   expect(alert.kind).toBe('combined');
   expect(screen.getByText(alert.title)).toBeTruthy();
   expect(screen.getByText(alert.message)).toBeTruthy();
+  expect(screen.queryByText(alert.actions[0].text)).toBeNull();
+  expect(screen.getByText(`${alert.actions.length} things you can do · tap to see`)).toBeTruthy();
+  fireEvent.press(screen.getByText(alert.title));
   for (const a of alert.actions) expect(screen.getByText(a.text)).toBeTruthy();
   expect(screen.getByText('Financial Aid Office: fee blocks and financial clearance')).toBeTruthy();
   expect(screen.getByText('012 521 4614 / 4500 / 4317; financialaid@smu.ac.za')).toBeTruthy();

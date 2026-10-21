@@ -1,7 +1,7 @@
 import { router, useFocusEffect } from 'expo-router';
 import { useCallback, useState } from 'react';
 
-import { DemoBanner } from '@/features/profile/components/DemoBanner';
+import { studentHeader } from '@/features/profile/components/HeaderTools';
 import { useProfile } from '@/features/profile/state';
 import { errorText } from '@/shared/api/errors';
 import { Button } from '@/shared/components/Button';
@@ -61,7 +61,7 @@ export default function MoneyScreen() {
       }}
       refreshing={refreshing}
       title={t('money.title')}
-      headerRight={<DemoBanner />}>
+      {...studentHeader()}>
 
       {error ? <ErrorBox message={error} onRetry={() => load(late)} /> : null}
       {!error && !summary ? <Loading /> : null}
