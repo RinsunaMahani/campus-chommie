@@ -179,6 +179,22 @@ ZAP warnings we accept: the version in the `Server` header comes from the local 
 removes it; live, Cloudflare puts its own); "non-storable content" is our `no-store`, on purpose; the reset ticket is
 in the email link's address by design (one use, 30 minutes, no referrer, not cached, not in gunicorn's logs).
 
+### The APK (MobSF 4.5.3, 21 Oct 2026)
+
+The signed preview APK (EAS build of `7a0e134`, the code merged as #62) was scanned with MobSF, run in Docker on our
+own computer. No trackers. Our own JavaScript holds no secret: the demo password, mail and database settings, API
+keys and local addresses each appear 0 times in it (it holds only the public API address).
+
+| MobSF finding | Verdict |
+|---|---|
+| Backups allowed (`allowBackup=true`) | **Fixed**: `allowBackup: false`. Tokens and wallet cards are in SecureStore anyway |
+| Permissions no feature uses: draw over other apps, storage, fingerprint and face unlock (added by libraries) | **Fixed**: `blockedPermissions` strips them; the app keeps camera (the wallet's barcode scan), internet, network state and vibrate |
+| Installs on Android 7 (minSdk 24), which no longer gets security updates | Accepted: many students' phones are old, and access is the point of the app. The server checks everything; the phone holds only the student's own data |
+| WebView debugging, file access in a WebView, MD5, "hardcoded" strings, `taskAffinity`, the profile installer's receiver | Library code (Expo's error screen and WebView, its file cache, React Native, AndroidX), none of it ours; the "secrets" are byte tables and compiled C++ names |
+
+The fixes take effect from the next build. The APK is 140 MB because it carries every processor type and the campus
+photos; a smaller build is a later job.
+
 ### Open, for the team
 
 - **Rate limits on Render may count every visitor as one.** The live API sits behind Render's proxy and Cloudflare
@@ -192,7 +208,6 @@ in the email link's address by design (one use, 30 minutes, no referrer, not cac
   with the next deploy. In the same spirit, a demo persona's right password no longer counts towards any limit:
   only wrong ones count (20 an hour per address and persona), plus a flood guard of 60 sign-ins a minute, since
   each one writes a session row (`test_judges_can_sign_in_as_often_as_they_need`).
-- MobSF on the signed APK, once it's built.
 
 ## Accepted dependency risks
 
