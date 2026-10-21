@@ -6,16 +6,66 @@ settled.
 
 ## Facts for the data packs (Rinsuna)
 
+Research notes from official documents, read on 9 Oct 2026 and not yet checked by a person: [UP](research/up.md),
+[TUT](research/tut.md), [SMU](research/smu.md). Each lists its sources, gaps and inconsistencies.
+
 - [ ] **SMU admissions:** re-check every value in `backend/data/universities/smu.yaml` against the current prospectus
   (copied from SMU's medicine admissions page on 30 Sep 2026; `verified_by` still says it needs the team's check).
-- [ ] **SMU BSc first year:** admission requirements (the pack has `requirements: null`).
-- [ ] **SMU maximum choices** per application (`max_choices: null`).
+  SMU's medicine page still matched the pack on 9 Oct.
+- [ ] **SMU BSc first year:** admission requirements (the pack has `requirements: null`). Found on SMU's Science and
+  Technology page: APS 25; English 4, Mathematics 5, Life Sciences 4, Physical Sciences 4, two more at 4. Open: those
+  add up to 25 without Life Orientation, so does it count?
+- [ ] **SMU maximum choices** per application (`max_choices: null`). Found: two (SMU's 2027 application page).
 - [ ] **SMU calendar, allowance dates and support contacts** (counselling, crisis lines, financial aid, food support,
   tutoring, chaplaincy, health), each from an official source. Crisis contacts must be verified by a person before
-  release.
-- [ ] **UP and TUT packs**, from official sources.
-- [ ] **Campuses** for each university (needed for F1 and the support screen).
+  release. Found: the 2026 calendar, health, counselling, the referral unit (it refers to tutoring and financial aid)
+  and 2026 fees. Still missing: the 2027 calendar, a 24-hour line, food support, chaplaincy and allowance dates.
+- [ ] **Changes to `smu.yaml`** that the research supports, for the team's OK: `max_choices: 2`; the BSc first-year
+  requirements above; MBChB `places: 250`; the other SMU programmes; a considered route from SMU's first year into
+  BDS (2 places); and the medicine foundation year's eligibility note, which leaves out SMU's population-group
+  restriction (details in [smu.md](research/smu.md), "Notes for the data pack").
+- [ ] **UP and TUT packs**, from official sources. Research done; the packs wait for the schema decisions below.
+- [ ] **Campuses** for each university (needed for F1 and the support screen). Found for all three; a person still
+  checks them with the rest.
 - [ ] **Course finder languages:** which 2 or 3, and the fluent reviewers who sign them off in `docs/translation_review.md`.
+
+### Gaps the research left
+
+- [ ] **Need a browser:** UP's application fee and waiver, documents, offer deadline, registration payment and tuition
+  per programme appeared only in search snippets. UP's web pages refuse automated reading; open them and save as PDF.
+- [ ] **Programmes per application** at UP and TUT: not published in the documents read.
+- [ ] **TUT's APS:** how many subjects count (TUT says only "a minimum of six subjects", Life Orientation excluded).
+- [ ] **Tuition per programme** at TUT (charged per module; TUT has an online quotation page).
+- [ ] **SMU 2027 calendar**, and **2028 entry dates** for UP and SMU (TUT's are published).
+- [ ] **NSFAS:** the 2027 application window and allowance dates (not researched yet).
+- [ ] **Crisis lines** for a person to verify: UP crisis line 0800 006 428 and the UP Careline 0800 747 747 (with
+  SADAG); TUT's 24-hour counselling line 0800 68 78 88. SMU publishes no 24-hour line; its clinic page sends students
+  to campus control or 079 417 9546 / 6278 after hours.
+- [ ] **Smaller inconsistencies** are listed at the end of each research note (for example, two closing dates for TUT's
+  Bachelor of Geomatics, and a UP table that ends mid-row).
+
+## Data-pack schema (Rinsuna)
+
+Today's `Requirements` holds a fixed list of subjects and one APS. About 100 of UP's 120 programmes fit, about 18 of
+TUT's 125, and most of SMU's. Decisions:
+
+1. **Either/or subjects, each route with its own APS.** TUT almost everywhere ("Maths or Technical Maths 5, or Maths
+   Literacy 7"; APS 26 or 28); UP in 6 programmes; SMU Oral Hygiene (28 or 31) and emergency care.
+2. **Percentage minimums.** UP's extended programmes: 65% each for the five-year BEng, 58% for the four-year BSc.
+3. **Fields** decide the cross-university safe choice (slot 3). Tagging UP's BSc Medical Sciences `health_sciences`
+   makes it the safe choice for an SMU MBChB goal, which changes the current plan tests. Proposal: run those tests on
+   SMU's data only and add a cross-university test.
+4. **UP's MBChB route after a degree year:** a considered bridge with 36 places open to all; the 66 places for
+   designated groups go in its eligibility note only.
+5. **FLY@UP awards** can be worked out from course-finder marks. Show the 2026 amounts labelled "2026", or wait for
+   2027's? Other awards keep UP's own eligibility wording, and we never ask.
+6. **A points rule per programme.** SMU Pharmacy scores 90-100% as 8; SMU's BSc and emergency care tables leave Life
+   Orientation out.
+7. **TUT: a level-1 subject scores zero.**
+8. **More subject keys:** technical mathematics, technical sciences, mathematical literacy, accounting, agricultural
+   sciences, and "another language".
+9. **TUT ranks every programme.** Proposal: `selective: true` only where TUT adds a test, interview, portfolio or
+   audition or calls it highly competitive; published "admitted from" levels become `competitive_points`.
 
 ## Privacy and legal (both)
 
@@ -35,6 +85,18 @@ settled.
 
 ## App and accounts (Mandla)
 
+- [ ] **F6 "Fund and apply"** (agreed by Rinsuna on 9 Oct 2026 for M1; Mandla to confirm). The challenge asks us to
+  help learners "compare funding options" and "complete applications". F6 shows funding routes for each choice in
+  the plan, fees, and an application checklist. Like the course finder, it needs no account and stores nothing. Its
+  facts come from the research notes. It should show TUT's late applications (14-22 January 2027, online, for
+  programmes with space): the only way still open to apply for 2027 at our three universities. F6 goes beyond the
+  brief's five features, so if confirmed, CLAUDE.md's Scope section gains it.
+- [ ] **Vac work, light version** (agreed for M1 the same day; Mandla to confirm):
+  - In F6, a sourced "includes vac work" note on bursaries that offer it.
+  - In My week, a nudge before each recess ("Recess from [date]: look for vac work in your field"). It links to the
+    careers office: UP Career Services, TUT career counselling, or SMU's counselling centre, which offers career
+    counselling.
+  - A full opportunities board goes on the roadmap slide, not into the build.
 - [ ] **Demo accounts and the email code.** Signing in on a new phone or browser asks for a code sent to the account's
   email, and judges can't read the demo inbox. Decide before M5, for example: the team keeps the demo inbox and
   pre-trusts nothing, or demo accounts (and only they) skip the new-phone code, with tighter rate limits.
