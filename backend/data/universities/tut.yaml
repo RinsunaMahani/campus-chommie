@@ -28,6 +28,68 @@ points_rules:
     - {min_percent: 30, level: 2}
     - {min_percent: 0, level: 1}
 
+# How to apply (agent draft, 10 Oct 2026). TUT's bank account numbers are left out on purpose: the app never
+# handles payments. TUT also has a July intake for selected programmes (applications close 15 May 2027,
+# s-tut-cal-2027) without saying which programmes, so it isn't modelled.
+applications:
+  source: s-tut-guide-2027     # p7, and p106 for the contact
+  url: "https://www.tut.ac.za/"
+  how: "Apply online at www.tut.ac.za with an email address of your own, not someone else's, and have every document ready before you start. Apply as soon as you can: a programme may close before its closing date once it's full."
+  fee_cents: 24000
+  fee_note: "Paid once, by first-time applicants, and not refundable. Use your ID number as the payment reference. TUT takes no cash on any campus."
+  contact: "012 382 5750 or 012 382 5780, admission@tut.ac.za"
+  documents:
+    source: s-tut-guide-2027
+    items:
+      - "Proof of payment of the application fee"
+      - "A certified copy of your ID document or card"
+      - "A certified copy of your National Senior Certificate, or your final Grade 11 results if you're in Grade 12"
+  after:
+    - text: "Check your status at www.tut.ac.za: choose Study@TUT, then Check Your Status, and enter your ID number."
+      source: s-tut-guide-2027
+    - text: "TUT can admit you provisionally on your Grade 11 or mid-year Grade 12 results."
+      source: s-tut-guide-2027
+    - text: "If TUT accepts you, pay R1 500 and register within three days of the acceptance letter, or the place is cancelled. TUT refunds it, less R220, only if a valid reason stops you registering, such as failing Grade 12."
+      source: s-tut-fees-2026
+  windows:
+    - intake: 2027
+      source: s-tut-cal-2026   # "30 September 2026: closing date ... for January 2027 (excluding ... specified programmes)"
+      opens: 2026-04-01
+      closes: 2026-09-30
+      programme_closes:
+        - closes: 2026-06-15
+          source: s-tut-courses-2027
+          programmes: [bhsc_medical_laboratory, bhsc_orthotics_prosthetics, b_nursing, b_pharmacy, b_radiography,
+                       dip_correctional_rehabilitation, dip_traffic_safety]
+        - closes: 2026-07-31
+          source: s-tut-courses-2027
+          # bgeomatics: the course list says 31 July, its programme page 30 September. Check.
+          programmes: [barch, barch_extended, bed_foundation_phase, bed_intermediate_phase, bed_sp_fet_agriculture,
+                       bed_sp_fet_consumer_sciences, bed_sp_fet_ems, bed_sp_fet_it, bed_sp_fet_mathematics,
+                       bed_sp_fet_physical_education, bed_sp_fet_sciences, bed_sp_fet_technology, b_environmental_health,
+                       bgeomatics, bhsc_biokinetics, bhsc_clinical_technology, bhsc_veterinary_technology,
+                       bsc_industrial_chemistry, dip_acet_civil_technology, dip_acet_consumer_sciences,
+                       dip_acet_electrical_mechanical, dip_analytical_chemistry, dip_animal_sciences, dip_biotechnology,
+                       dip_commercial_photography, dip_crop_production, dip_economics, dip_fashion_design,
+                       dip_fine_applied_arts, dip_geology, dip_industrial_design, dip_integrated_communication_design,
+                       dip_integrated_communication, dip_interior_design, dip_jewellery_design, dip_journalism,
+                       dip_kinesiology, dip_language_practice, dip_law, dip_legal_support, dip_motion_picture,
+                       dip_nature_conservation, dip_performing_arts_dance, dip_performing_arts_jazz,
+                       dip_performing_arts_opera, dip_performing_arts_technical_theatre, dip_performing_arts_theatre,
+                       dip_policing, dip_public_affairs_state, dip_public_affairs_local_government, dip_somatic_therapy,
+                       dip_wildlife_management, hcert_dental_assisting, hcert_music]
+      late:
+        opens: 2027-01-14
+        closes: 2027-01-22
+        note: "Online only (no walk-ins), for programmes that still have space."
+        source: s-tut-cal-2027
+    - intake: 2028
+      source: s-tut-cal-2027
+      opens: 2027-04-01
+      # The 2027 calendar closes "specific programmes" on 15 June or 31 July 2027 and the rest on 30 September
+      # 2027, without naming them: TUT's 2028 guide will. 31 July is also the date for all international applicants.
+      closes_one_of: [2027-06-15, 2027-07-31, 2027-09-30]
+
 programmes:
 
   - id: dip_commercial_photography
@@ -1822,6 +1884,27 @@ sources:
     url: "https://www.tut.ac.za/media/tshwane-interim/site-content/images/prospectus/Part1_Students_Rules_and_Regulations.pdf"
     publisher: "Tshwane University of Technology"
     title: "2026 Prospectus, Part 1: Students' Rules and Regulations"
+    retrieved: 2026-10-09
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-tut-cal-2026
+    url: "https://www.tut.ac.za/media/tshwane-interim/site-content/documents/2026-AcademicCore-Calendar.pdf"
+    publisher: "Tshwane University of Technology"
+    title: "2026 Academic Core Calendar"
+    retrieved: 2026-10-09
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-tut-cal-2027
+    url: "https://www.tut.ac.za/media/tshwane-interim/site-content/documents/2027-Academic-Core-Calendar.pdf"
+    publisher: "Tshwane University of Technology"
+    title: "2027 Academic Core Calendar"
+    retrieved: 2026-10-09
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-tut-fees-2026
+    url: "https://www.tut.ac.za/media/tshwane-interim/site-content/images/prospectus/PART_9_-Student_Fees.pdf"
+    publisher: "Tshwane University of Technology"
+    title: "2026 Prospectus, Part 9: Student Fees"
     retrieved: 2026-10-09
     last_verified: null
     verified_by: "agent draft, needs human check"

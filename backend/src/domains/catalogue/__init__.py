@@ -1,1 +1,1 @@
-"""Catalogue: what the data packs say about each university, read-only."""
+"""Catalogue: what the data packs say about each university and national funder, read-only."""

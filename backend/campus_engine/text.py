@@ -19,6 +19,20 @@ def day(d: date) -> str:
     return f"{d:%a} {d.day} {d:%b}"
 
 
+def long_day(d: date) -> str:
+    """Format a date as 'Mon 19 Oct 2026', for dates that may fall in another year."""
+    return f"{day(d)} {d.year}"
+
+
+def in_days(n: int) -> str:
+    """'today', 'tomorrow' or 'in 12 days'."""
+    if n == 0:
+        return "today"
+    if n == 1:
+        return "tomorrow"
+    return f"in {plural(n, 'day')}"
+
+
 def plural(n: int, word: str) -> str:
     return f"{n} {word if n == 1 else _PLURALS.get(word, word + 's')}"
 

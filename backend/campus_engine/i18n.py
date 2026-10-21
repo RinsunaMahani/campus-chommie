@@ -31,6 +31,13 @@ STRINGS: dict[str, dict[str, str]] = {
         "source": "Source",
         "duplicate": "You picked {subject} more than once. Only the last mark counts.",
         "no_plan": "Pick the programme you want most to see a plan.",
+        "apply": "How to apply",
+        "apply_dates": "Dates to remember",
+        "apply_documents": "Documents to get ready",
+        "apply_after": "After you apply",
+        "apply_funding": "Funding",
+        "apply_calendar": "Add these dates to my calendar",
+        "not_verified": "Not verified yet",
     }
 }
 

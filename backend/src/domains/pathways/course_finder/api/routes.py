@@ -2,7 +2,7 @@
 /api/v1/pathways -- the course finder. Anyone can use it; no account.
 
   POST /pathways/assess   {university, marks: [{subject, percent}]}         -> {university, matches}
-  POST /pathways/plan     {university, goal, marks: [{subject, percent}]}   -> {plan}
+  POST /pathways/plan     {university, goal, marks: [{subject, percent}]}   -> {plan}, with how to apply
 
 Marks are used for the answer and forgotten: nothing is stored or logged.
 Thin: validate -> service -> answer. Rate-limited per IP.

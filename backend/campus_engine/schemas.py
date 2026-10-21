@@ -168,6 +168,123 @@ class Programme(_Strict):
     bridges_to: list[Bridge] = Field(default_factory=list)
 
 
+class SourcedText(_Strict):
+    """One line of text and the source that says it."""
+
+    text: str = Field(min_length=1)
+    source: str
+
+
+class SourcedList(_Strict):
+    """Lines of text from one source, such as the documents an application needs."""
+
+    items: list[str] = Field(min_length=1)
+    source: str
+
+
+class ProgrammeClosing(_Strict):
+    """Programmes that close on their own date instead of the window's usual one."""
+
+    closes: date
+    programmes: list[str] = Field(min_length=1)
+    source: str | None = None  # the window's source when not set
+
+
+class LateWindow(_Strict):
+    """Late applications after the closing date, only when the university publishes them."""
+
+    opens: date
+    closes: date
+    note: str | None = None
+    source: str
+
+    @model_validator(mode="after")
+    def _in_order(self):
+        if self.closes < self.opens:
+            raise ValueError("the late window closes before it opens")
+        return self
+
+
+class Window(_Strict):
+    """When people who want to start in `intake` can apply. A date nobody has published stays None."""
+
+    intake: int = Field(ge=2000, le=2100)
+    source: str
+    opens: date | None = None
+    closes: date | None = None  # the usual closing date
+    closing_time: str | None = Field(default=None, pattern=r"^([01]\d|2[0-3]):[0-5]\d$")  # SAST, e.g. "23:59"
+    programme_closes: list[ProgrammeClosing] = Field(default_factory=list)
+    # Closing dates a university names without saying which programme closes when.
+    closes_one_of: list[date] = Field(default_factory=list)
+    late: LateWindow | None = None
+    no_late_applications: bool = False  # only when the university says so
+    note: str | None = None
+
+    @model_validator(mode="after")
+    def _check_dates(self):
+        problems: list[str] = []
+        closings = [d for d in (self.closes, *self.closes_one_of) if d] + [g.closes for g in self.programme_closes]
+        if self.opens and any(d < self.opens for d in closings):
+            problems.append(f"{self.intake}: a closing date is before the opening date")
+        listed = [p for g in self.programme_closes for p in g.programmes]
+        for pid in sorted({p for p in listed if listed.count(p) > 1}):
+            problems.append(f"{self.intake}: '{pid}' has more than one closing date")
+        if self.late and self.no_late_applications:
+            problems.append(f"{self.intake}: late applications are both published and ruled out")
+        if self.late and closings and self.late.opens <= max(closings):
+            problems.append(f"{self.intake}: late applications open before the last closing date")
+        if problems:
+            raise ValueError("; ".join(problems))
+        self.closes_one_of = sorted(set(self.closes_one_of))
+        return self
+
+
+class Applications(_Strict):
+    """How to apply: where, what it costs, what to send, what happens next, and when."""
+
+    source: str | None = None  # cites url, how, fee and contact
+    url: str | None = None  # the official page about applying
+    how: str | None = None
+    fee_cents: int | None = Field(default=None, ge=0)  # None: not verified yet
+    fee_note: str | None = None
+    contact: str | None = None
+    documents: SourcedList | None = None  # None: not verified yet
+    after: list[SourcedText] = Field(default_factory=list)
+    windows: list[Window] = Field(default_factory=list)
+
+    @model_validator(mode="after")
+    def _check(self):
+        problems: list[str] = []
+        own = (self.url, self.how, self.fee_cents, self.fee_note, self.contact)
+        if self.source is None and any(v is not None for v in own):
+            problems.append("applications: url, how, fee and contact need a source")
+        if self.url is not None and not self.url.startswith("https://"):
+            problems.append("applications: url must start with https://")
+        intakes = [w.intake for w in self.windows]
+        if len(set(intakes)) != len(intakes):
+            problems.append("applications: one window per intake")
+        if problems:
+            raise ValueError("; ".join(problems))
+        return self
+
+    def citations(self) -> list[tuple[str, str]]:
+        """(what, source id) for every fact here, so a pack can check its sources exist."""
+        cited = [("applications", self.source)] if self.source else []
+        if self.documents:
+            cited.append(("applications documents", self.documents.source))
+        cited += [("applications after", a.source) for a in self.after]
+        for w in self.windows:
+            cited.append((f"window {w.intake}", w.source))
+            cited += [(f"window {w.intake}", g.source) for g in w.programme_closes if g.source]
+            if w.late:
+                cited.append((f"window {w.intake} late", w.late.source))
+        return cited
+
+
+def _unknown_sources(cited: list[tuple[str, str]], source_ids: list[str]) -> list[str]:
+    return [f"{what} cites unknown source '{sid}'" for what, sid in cited if sid not in source_ids]
+
+
 class University(_Strict):
     university: str
     name: str
@@ -176,6 +293,7 @@ class University(_Strict):
     release: bool = False
     max_choices: int | None = None
     points_rules: PointsRule | None = None
+    applications: Applications | None = None  # None: not verified yet
     programmes: list[Programme] = Field(default_factory=list)
     sources: list[Source] = Field(default_factory=list)
 
@@ -202,6 +320,12 @@ class University(_Strict):
                     problems.append(f"{p.id}: bridge points to unknown programme '{b.to}'")
                 if b.source not in source_ids:
                     problems.append(f"{p.id}: bridge cites unknown source '{b.source}'")
+        if self.applications:
+            problems += _unknown_sources(self.applications.citations(), source_ids)
+            for w in self.applications.windows:
+                listed = {pid for g in w.programme_closes for pid in g.programmes}
+                for pid in sorted(listed - set(programme_ids)):
+                    problems.append(f"window {w.intake}: closing date for unknown programme '{pid}'")
         if problems:
             raise ValueError("; ".join(problems))
         return self
@@ -211,6 +335,56 @@ class University(_Strict):
             if p.id == programme_id:
                 return p
         raise KeyError(f"{self.university} has no programme '{programme_id}'")
+
+    def source(self, source_id: str) -> Source | None:
+        return next((s for s in self.sources if s.id == source_id), None)
+
+
+class Funder(_Strict):
+    """A national funder learners apply to separately from their university, such as NSFAS."""
+
+    id: str
+    name: str
+    short_name: str
+    who_can_apply: SourcedList | None = None  # shown as the funder words it; we never ask
+    tips: SourcedList | None = None  # e.g. the funder's own list of common document mistakes
+    warnings: SourcedList | None = None  # e.g. "never pay anyone to apply"
+    applications: Applications
+
+
+class FundingPack(_Strict):
+    """National funding (backend/data/national/funding.yaml): the same rules as a university pack."""
+
+    release: bool = False
+    funders: list[Funder] = Field(min_length=1)
+    sources: list[Source] = Field(default_factory=list)
+
+    @model_validator(mode="after")
+    def _check_references(self):
+        source_ids = [s.id for s in self.sources]
+        funder_ids = [f.id for f in self.funders]
+        problems: list[str] = []
+        if len(set(source_ids)) != len(source_ids):
+            problems.append("source ids must be unique")
+        if len(set(funder_ids)) != len(funder_ids):
+            problems.append("funder ids must be unique")
+        for f in self.funders:
+            cited = [(f"{f.id}: {what}", sid) for what, sid in f.applications.citations()]
+            for what, group in (("who_can_apply", f.who_can_apply), ("tips", f.tips), ("warnings", f.warnings)):
+                if group:
+                    cited.append((f"{f.id}: {what}", group.source))
+            problems += _unknown_sources(cited, source_ids)
+            if any(w.programme_closes or w.closes_one_of for w in f.applications.windows):
+                problems.append(f"{f.id}: a funder has one closing date per window, with no programmes to close separately")
+        if problems:
+            raise ValueError("; ".join(problems))
+        return self
+
+    def funder(self, funder_id: str) -> Funder:
+        for f in self.funders:
+            if f.id == funder_id:
+                return f
+        raise KeyError(f"no funder '{funder_id}'")
 
     def source(self, source_id: str) -> Source | None:
         return next((s for s in self.sources if s.id == source_id), None)
