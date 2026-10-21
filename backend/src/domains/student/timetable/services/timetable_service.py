@@ -4,9 +4,10 @@ clashes (campus_engine.timetable).
 
   mine(user)                    every class, Monday first, with the week in words
   add(user, fields)             at most MAX_ENTRIES classes
+  add_many(user, entries, replace)  classes checked after an import, all or none; replace clears the week first
   change(user, id, fields)      a class that isn't theirs is a 404, the same as one that doesn't exist
   remove(user, id)
-  export_for / erase_all_for    POPIA's export, and the demo's daily reset
+  export_for / erase_all_for    POPIA's export, and the demo's daily reset (exams included)
 
 Every call acts on the signed-in student only.
 """
@@ -21,6 +22,7 @@ from src.extensions import db
 from ..constants import MAX_ENTRIES
 from ..models import TimetableEntry
 from ..repositories import timetable_repository as repo
+from . import exam_service
 
 
 def _slot(row: TimetableEntry) -> engine.Slot:
@@ -83,6 +85,19 @@ def add(user, fields: dict) -> dict:
     return {"entry": _entry(row, set()), **mine(user)}
 
 
+def add_many(user, entries: list[dict], replace: bool) -> dict:
+    if replace:
+        repo.erase_all(user.id)
+    if (0 if replace else repo.count(user.id)) + len(entries) > MAX_ENTRIES:
+        db.session.rollback()
+        raise ValidationError("Please check the highlighted fields.",
+                              errors=[{"timetable": [f"You can keep up to {MAX_ENTRIES} classes."]}])
+    for fields in entries:
+        repo.add(user.id, _clean(fields))
+    db.session.commit()
+    return mine(user)
+
+
 def change(user, entry_id: str, fields: dict) -> dict:
     row = _row(user, entry_id)
     for key, value in _clean(fields).items():
@@ -101,11 +116,12 @@ def remove(user, entry_id: str) -> dict:
 
 
 def export_for(user) -> dict:
-    """POPIA export: every class in the student's timetable."""
-    return {"classes": [{k: v for k, v in _entry(r, set()).items() if k not in ("id", "clashes")} for r in repo.for_user(user.id)]}
+    """POPIA export: every class in the student's timetable, and every exam they keep."""
+    return {"classes": [{k: v for k, v in _entry(r, set()).items() if k not in ("id", "clashes")} for r in repo.for_user(user.id)],
+            "exams": exam_service.export_for(user)}
 
 
 def erase_all_for(user) -> None:
-    """Every class of this student, deleted for real: the demo's daily reset."""
+    """Every class and exam of this student, deleted for real: the demo's daily reset."""
     repo.erase_all(user.id)
-    db.session.commit()
+    exam_service.erase_all_for(user)

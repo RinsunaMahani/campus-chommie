@@ -34,6 +34,8 @@ export const PRIVACY_POLICY: LegalDocument = {
         'Sign-in security: the phones you sign in on (the kind of phone and a name for it), when each was last used, and a security key your phone creates (we only ever receive its public part). Why: to ask for an email code on a new phone, and to let you see and sign out your other phones.',
         'Security records: sign-ups, sign-ins, failed attempts and password changes, with the time, the email address used and the IP address. Why: to protect accounts and to investigate misuse.',
         "Your timetable, if you add one: each class's module code, kind (lecture, tutorial or practical), day, start and end time, and the venue and name if you type them. Why: to show your week as a calendar. Only you can see it; it is in your data export and is deleted with your account.",
+        "Your exams, if you add them: each paper's module code, name, date, start time and length. Why: to show them in your week. Only you can see them; they are in your data export and are deleted with your account.",
+        "A timetable PDF you choose to import is read on our server to list its classes or exams, then dropped: we never store or log the file. Only the rows you check and save are kept.",
       ],
     },
     {

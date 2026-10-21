@@ -2,14 +2,16 @@
  * The week as a calendar, the way Outlook shows a day: a time grid with the student's classes as blocks
  * (each module in its own colour) and their classes' tests and deadlines on top (coral for tests, quizzes
  * and exams, amber for assignments, blue for practicals). Deadlines without a time, or late at night, sit
- * in a "Due" row above the grid. One day or three days side by side; a line marks the time now on today.
+ * in a "Due" row above the grid. The student's own exams sit on their dates as coral blocks as long as the
+ * paper (or a marker where the list doesn't say). One day or three days side by side; a line marks the time
+ * now on today.
  * Nothing here is worked out about the student: it only places what they and their reps entered.
  */
 import { router } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { moduleColour, tint } from '@/features/timetable/colours';
-import { TimetableEntry } from '@/features/timetable/types';
+import { ExamEntry, TimetableEntry } from '@/features/timetable/types';
 import { t } from '@/shared/i18n';
 import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
 import { fonts, radius } from '@/shared/theme/tokens';
@@ -45,9 +47,9 @@ function eventColour(colors: Palette, e: ClassEvent): string {
   return colors.garnet;
 }
 
-type Props = { days: Day[]; classes: TimetableEntry[]; events: ClassEvent[]; nowMinutes: number | null };
+type Props = { days: Day[]; classes: TimetableEntry[]; events: ClassEvent[]; exams?: ExamEntry[]; nowMinutes: number | null };
 
-export function CalendarGrid({ days, classes, events, nowMinutes }: Props) {
+export function CalendarGrid({ days, classes, events, exams = [], nowMinutes }: Props) {
   const colors = usePalette();
   const styles = useStyles(makeStyles);
   const hours = Array.from({ length: LAST_HOUR - FIRST_HOUR }, (_, i) => FIRST_HOUR + i);
@@ -131,6 +133,29 @@ export function CalendarGrid({ days, classes, events, nowMinutes }: Props) {
                     </Text>
                     <Text style={styles.blockText} numberOfLines={1}>
                       {e.module}
+                    </Text>
+                  </Pressable>
+                );
+              })}
+            {exams
+              .filter((x) => x.on === d.date)
+              .map((x) => {
+                const start = Math.max(minutesOf(x.starts), FIRST_HOUR * 60);
+                const end = Math.min(start + (x.minutes ?? EVENT_MINUTES), LAST_HOUR * 60);
+                if (end <= start) return null;
+                return (
+                  <Pressable
+                    key={x.id}
+                    accessibilityRole="button"
+                    accessibilityLabel={`${t('timetable.exam')} ${x.module}${x.paper ? ` ${x.paper}` : ''}, ${x.day} ${x.starts}`}
+                    onPress={() => router.push('/timetable')}
+                    style={[styles.block, { top: top(start), height: Math.max(((end - start) / 60) * HOUR - 2, 22), backgroundColor: tint(colors.garnet), borderLeftColor: colors.garnet }]}>
+                    <Text style={[styles.blockTitle, { color: colors.garnet }]} numberOfLines={1}>
+                      {t('timetable.exam')} · {x.module}
+                    </Text>
+                    <Text style={styles.blockText} numberOfLines={2}>
+                      {x.starts}
+                      {x.paper ? ` · ${x.paper}` : ''}
                     </Text>
                   </Pressable>
                 );

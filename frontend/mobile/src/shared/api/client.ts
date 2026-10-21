@@ -9,6 +9,7 @@
  *    phone, stolen token detected), tells the app to sign out.
  *  - Times out instead of hanging on a bad network.
  *  - Extra headers per call (e.g. Idempotency-Key), kept on the retry.
+ *  - A FormData body (a file upload) goes as multipart: fetch sets its content type and boundary.
  */
 import { API_BASE_URL } from '@/constants/config';
 
@@ -42,17 +43,18 @@ type Headers = Record<string, string>;
 async function raw<T>(method: string, path: string, body?: unknown, token?: string, extra: Headers = {}): Promise<{ status: number; json: Envelope<T> }> {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
+  const form = typeof FormData !== 'undefined' && body instanceof FormData;
   try {
     const res = await fetch(`${API_BASE_URL}${path}`, {
       method,
       headers: {
         // The caller's extras first: they can never replace the token or content type.
         ...extra,
-        'Content-Type': 'application/json',
+        ...(form ? {} : { 'Content-Type': 'application/json' }),
         Accept: 'application/json',
         ...(token ? { Authorization: `Bearer ${token}` } : {}),
       },
-      body: body === undefined ? undefined : JSON.stringify(body),
+      body: body === undefined ? undefined : form ? (body as FormData) : JSON.stringify(body),
       signal: controller.signal,
     });
     let json: Envelope<T>;

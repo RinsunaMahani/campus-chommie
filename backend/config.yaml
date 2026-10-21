@@ -39,3 +39,9 @@ colleges:
 
 alerts:
   lookahead_weeks: 3      # a heavy week this many weeks ahead (this one included) raises an alert
+
+timetable_import:
+  line_tolerance: 2.0     # words this close in height (PDF points) are on one line of a timetable cell
+  merge_gap_minutes: 10   # the same class in periods this close together is one class (a 5-minute changeover)
+  max_rows: 2000          # classes or exam papers read from one PDF, at most
+  max_exam_minutes: 480   # a longer "duration" on an exam list is a misread, so it is left out

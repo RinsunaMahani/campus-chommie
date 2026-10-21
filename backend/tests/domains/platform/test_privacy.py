@@ -38,6 +38,7 @@ EXPORTED_TABLES = {
     "platform.notification_switches": "alert_switches",
     "student.saved_funders": "saved_funding",
     "student.timetable_entries": "timetable",
+    "student.exam_entries": "timetable",
     # Not a student's own data: who confirmed or changed an event (cleared when they go), and which
     # account plays a demo persona.
     "classes.class_events": None,
