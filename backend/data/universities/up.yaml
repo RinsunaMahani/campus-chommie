@@ -1,0 +1,1109 @@
+# University of Pretoria (UP)
+#
+# Agent draft, from UP's own documents read on 9 Oct 2026 (docs/research/up.md lists them with
+# page numbers). Nobody has checked these values yet: release stays false until a person has
+# compared every one with its source. Programmes the schema can't hold yet (music auditions, a
+# row missing from UP's table) have requirements: null with the reason beside them.
+
+university: up
+name: University of Pretoria
+city: Pretoria
+academic_year: 2027          # the intake these rules apply to
+release: false
+max_choices: null            # not found in UP's documents
+
+points_rules:
+  source: s-up-mbchb-2027
+  subjects_counted: 6        # six 20-credit subjects: the highest APS is 42
+  life_orientation: exclude
+  scale:
+    - {min_percent: 80, level: 7}
+    - {min_percent: 70, level: 6}
+    - {min_percent: 60, level: 5}
+    - {min_percent: 50, level: 4}
+    - {min_percent: 40, level: 3}
+    - {min_percent: 30, level: 2}
+    - {min_percent: 0, level: 1}
+
+programmes:
+
+  - id: badmin_public_admin
+    name: "Bachelor of Administration in Public Administration and International Relations"
+    fields: [public_administration, humanities]
+    requirements:
+      source: s-up-req-2027
+      min_points: 28
+      subject_minimums: {english: 5}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+
+  - id: bcom_accounting_sciences
+    name: "BCom in Accounting Sciences"
+    fields: [commerce, accounting]
+    requirements:
+      source: s-up-req-2027
+      min_points: 34
+      subject_minimums: {english: 5, mathematics: 6}
+
+  - id: bcom
+    name: "BCom (three-year programme)"
+    fields: [commerce]
+    requirements:
+      source: s-up-req-2027
+      min_points: 30
+      subject_minimums: {english: 5, mathematics: 4}
+
+  - id: bcom_extended
+    name: "BCom (four-year programme)"
+    fields: [commerce]
+    selective: true
+    selection_note: "UP marks this as a selection programme: additional selection criteria apply."
+    requirements:
+      source: s-up-req-2027
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 3}
+
+  - id: bcom_investment_management
+    name: "BCom specialising in Investment Management"
+    fields: [commerce, finance]
+    requirements:
+      source: s-up-req-2027
+      min_points: 34
+      subject_minimums: {english: 5, mathematics: 6}
+
+  - id: bcom_econometrics
+    name: "BCom specialising in Econometrics"
+    fields: [commerce, economics]
+    requirements:
+      source: s-up-req-2027
+      min_points: 32
+      subject_minimums: {english: 5, mathematics: 6}
+
+  - id: bcom_economics
+    name: "BCom specialising in Economics"
+    fields: [commerce, economics]
+    requirements:
+      source: s-up-req-2027
+      min_points: 32
+      subject_minimums: {english: 5, mathematics: 5}
+
+  - id: bcom_financial_management
+    name: "BCom specialising in Financial Management Sciences"
+    fields: [commerce, finance]
+    requirements:
+      source: s-up-req-2027
+      min_points: 32
+      subject_minimums: {english: 5, mathematics: 5}
+
+  - id: bcom_law
+    name: "BCom specialising in Law"
+    fields: [commerce, law]
+    requirements:
+      source: s-up-req-2027
+      min_points: 32
+      subject_minimums: {english: 5, mathematics: 5}
+
+  - id: bcom_statistics_data_science
+    name: "BCom specialising in Statistics and Data Science"
+    fields: [commerce, mathematical_sciences]
+    requirements:
+      source: s-up-req-2027
+      min_points: 32
+      subject_minimums: {english: 5, mathematics: 5}
+
+  - id: bcom_agribusiness
+    name: "BCom specialising in Agribusiness Management"
+    fields: [commerce, agriculture]
+    requirements:
+      source: s-up-req-2027
+      min_points: 30
+      subject_minimums: {english: 5, mathematics: 5}
+
+  - id: bcom_information_systems
+    name: "BCom specialising in Information Systems"
+    fields: [commerce, computing]
+    requirements:
+      source: s-up-req-2027
+      min_points: 30
+      subject_minimums: {english: 5, mathematics: 5}
+
+  - id: bcom_business_management
+    name: "BCom specialising in Business Management"
+    fields: [commerce, management]
+    requirements:
+      source: s-up-req-2027
+      min_points: 30
+      subject_minimums: {english: 5, mathematics: 4}
+
+  - id: bcom_supply_chain
+    name: "BCom specialising in Supply Chain Management"
+    fields: [commerce, management]
+    requirements:
+      source: s-up-req-2027
+      min_points: 30
+      subject_minimums: {english: 5, mathematics: 4}
+
+  - id: bcom_marketing
+    name: "BCom specialising in Marketing Management"
+    fields: [commerce, management]
+    requirements:
+      source: s-up-req-2027
+      min_points: 30
+      subject_minimums: {english: 5, mathematics: 4}
+
+  - id: bcom_human_resources
+    name: "BCom specialising in Human Resource Management"
+    fields: [commerce, management]
+    requirements:
+      source: s-up-req-2027
+      min_points: 30
+      subject_minimums: {english: 5, mathematics: 4}
+
+  - id: bed_early_childhood
+    name: "BEd in Early Childhood Care and Education"
+    fields: [education]
+    requirements:
+      source: s-up-req-2027
+      min_points: 28
+      subject_minimums: {english: 4}
+
+  - id: bed_foundation_phase
+    name: "BEd in Foundation Phase Teaching (Grade R to 3)"
+    fields: [education]
+    requirements:
+      source: s-up-req-2027
+      min_points: 28
+      subject_minimums: {english: 4}
+
+  - id: bed_intermediate_phase
+    name: "BEd in Intermediate Phase Teaching (Grades 4 to 6)"
+    fields: [education]
+    requirements:
+      source: s-up-req-2027
+      min_points: 28
+      subject_minimums: {english: 4}
+
+  - id: bed_senior_fet
+    name: "BEd in Senior Phase and FET Teaching (Grades 7 to 12)"
+    fields: [education]
+    selective: true
+    selection_note: "UP marks this as a selection programme: additional selection criteria apply."
+    requirements:
+      source: s-up-req-2027
+      min_points: 28
+      subject_minimums: {english: 4}
+
+  - id: hcert_sports_sciences
+    name: "Higher Certificate in Sports Sciences (one-year)"
+    fields: [sport_science, education]
+    selective: true
+    selection_note: "UP marks this as a selection programme: additional selection criteria apply."
+    requirements:
+      source: s-up-req-2027
+      min_points: 20
+      subject_minimums: {english: 4}
+
+  - id: hcert_sports_sciences_online
+    name: "Higher Certificate in Sports Sciences (two-year, part-time online)"
+    fields: [sport_science, education]
+    selective: true
+    selection_note: "UP marks this as a selection programme: additional selection criteria apply."
+    requirements:
+      source: s-up-req-2027
+      min_points: 20
+      subject_minimums: {english: 4}
+
+  - id: llb
+    name: "Bachelor of Laws (LLB)"
+    fields: [law]
+    requirements:
+      source: s-up-req-2027
+      min_points: 35
+      subject_minimums: {english: 6}
+
+  - id: beng_chemical
+    name: "BEng in Chemical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-up-req-2027
+      min_points: 35
+      subject_minimums: {english: 5, mathematics: 6, physical_sciences: 6}
+
+  - id: beng_civil
+    name: "BEng in Civil Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-up-req-2027
+      min_points: 35
+      subject_minimums: {english: 5, mathematics: 6, physical_sciences: 6}
+
+  - id: beng_computer
+    name: "BEng in Computer Engineering"
+    fields: [engineering, computing]
+    requirements:
+      source: s-up-req-2027
+      min_points: 35
+      subject_minimums: {english: 5, mathematics: 6, physical_sciences: 6}
+
+  - id: beng_electrical
+    name: "BEng in Electrical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-up-req-2027
+      min_points: 35
+      subject_minimums: {english: 5, mathematics: 6, physical_sciences: 6}
+
+  - id: beng_electronic
+    name: "BEng in Electronic Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-up-req-2027
+      min_points: 35
+      subject_minimums: {english: 5, mathematics: 6, physical_sciences: 6}
+
+  - id: beng_industrial
+    name: "BEng in Industrial Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-up-req-2027
+      min_points: 35
+      subject_minimums: {english: 5, mathematics: 6, physical_sciences: 6}
+
+  - id: beng_mechanical
+    name: "BEng in Mechanical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-up-req-2027
+      min_points: 35
+      subject_minimums: {english: 5, mathematics: 6, physical_sciences: 6}
+
+  - id: beng_metallurgical
+    name: "BEng in Metallurgical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-up-req-2027
+      min_points: 35
+      subject_minimums: {english: 5, mathematics: 6, physical_sciences: 6}
+
+  - id: beng_mining
+    name: "BEng in Mining Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-up-req-2027
+      min_points: 35
+      subject_minimums: {english: 5, mathematics: 6, physical_sciences: 6}
+
+  - id: beng_extended
+    name: "BEng, five-year programme (all disciplines)"
+    fields: [engineering]
+    requirements:
+      source: s-up-req-2027
+      min_points: 33
+      subject_min_percents: {english: 65, mathematics: 65, physical_sciences: 65}
+      extras:
+        - "The first year offers foundation modules."
+
+  - id: bsc_architecture
+    name: "BSc in Architecture"
+    fields: [built_environment]
+    selective: true
+    selection_note: "UP marks this as a selection programme: additional selection criteria apply."
+    requirements:
+      source: s-up-req-2027
+      min_points: 30
+      subject_minimums: {english: 5, mathematics: 4, physical_sciences: 4}
+
+  - id: bsc_construction_management
+    name: "BSc in Construction Management"
+    fields: [built_environment]
+    requirements:
+      source: s-up-req-2027
+      min_points: 30
+      subject_minimums: {english: 5, mathematics: 5}
+      choices:
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {accounting: 4}
+
+  # Check: UP's footnote allowing Accounting marks only Construction Management, but the table row covers all three.
+  - id: bsc_real_estate
+    name: "BSc in Real Estate"
+    fields: [built_environment]
+    requirements:
+      source: s-up-req-2027
+      min_points: 30
+      subject_minimums: {english: 5, mathematics: 5}
+      choices:
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {accounting: 4}
+
+  # Check: as for Real Estate.
+  - id: bsc_quantity_surveying
+    name: "BSc in Quantity Surveying"
+    fields: [built_environment]
+    requirements:
+      source: s-up-req-2027
+      min_points: 30
+      subject_minimums: {english: 5, mathematics: 5}
+      choices:
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {accounting: 4}
+
+  - id: btrp
+    name: "Bachelor of Town and Regional Planning"
+    fields: [built_environment]
+    requirements:
+      source: s-up-req-2027
+      min_points: 30
+      subject_minimums: {english: 5, mathematics: 4}
+
+  - id: bsc_computer_science
+    name: "BSc in Computer Science"
+    fields: [computing]
+    requirements:
+      source: s-up-req-2027
+      min_points: 30
+      subject_minimums: {english: 5, mathematics: 6}
+
+  - id: bsc_it_information_knowledge
+    name: "BSc in IT in Information and Knowledge Systems"
+    fields: [computing]
+    requirements:
+      source: s-up-req-2027
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 6}
+
+  - id: bit_information_systems
+    name: "Bachelor of IT in Information Systems"
+    fields: [computing]
+    requirements:
+      source: s-up-req-2027
+      min_points: 30
+      subject_minimums: {english: 5, mathematics: 5}
+
+  - id: bis
+    name: "Bachelor of Information Science"
+    fields: [computing, languages_and_communication]
+    requirements:
+      source: s-up-req-2027
+      min_points: 28
+      subject_minimums: {english: 4}
+
+  - id: bis_multimedia
+    name: "Bachelor of Information Science specialising in Multimedia"
+    fields: [computing, arts_and_design]
+    requirements:
+      source: s-up-req-2027
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 5}
+
+  - id: bis_publishing
+    name: "Bachelor of Information Science specialising in Publishing"
+    fields: [languages_and_communication]
+    requirements:
+      source: s-up-req-2027
+      min_points: 28
+      subject_minimums: {english: 5}
+
+  - id: bds
+    name: "Bachelor of Dental Surgery (BDS)"
+    fields: [health_sciences, dentistry]
+    selective: true
+    selection_note: "UP marks this as a selection programme: additional selection criteria apply."
+    requirements:
+      source: s-up-req-2027
+      min_points: 35
+      subject_minimums: {english: 5, mathematics: 6, physical_sciences: 5}
+
+  - id: b_oral_hygiene
+    name: "Bachelor of Oral Hygiene"
+    fields: [health_sciences, dentistry]
+    selective: true
+    selection_note: "UP marks this as a selection programme: additional selection criteria apply."
+    requirements:
+      source: s-up-req-2027
+      min_points: 25
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+
+  - id: b_occupational_therapy
+    name: "Bachelor of Occupational Therapy"
+    fields: [health_sciences, rehabilitation]
+    selective: true
+    selection_note: "UP marks this as a selection programme: additional selection criteria apply."
+    requirements:
+      source: s-up-req-2027
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+
+  - id: b_physiotherapy
+    name: "Bachelor of Physiotherapy"
+    fields: [health_sciences, rehabilitation]
+    selective: true
+    selection_note: "UP marks this as a selection programme: additional selection criteria apply."
+    requirements:
+      source: s-up-req-2027
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+
+  - id: b_radiography
+    name: "Bachelor of Radiography in Diagnostics"
+    fields: [health_sciences, radiography]
+    selective: true
+    selection_note: "UP marks this as a selection programme: additional selection criteria apply."
+    requirements:
+      source: s-up-req-2027
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+
+  - id: b_dietetics
+    name: "Bachelor of Dietetics"
+    fields: [health_sciences, nutrition]
+    selective: true
+    selection_note: "UP marks this as a selection programme: additional selection criteria apply."
+    requirements:
+      source: s-up-req-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+
+  - id: b_nursing
+    name: "Bachelor of Nursing Science"
+    fields: [health_sciences, nursing]
+    selective: true
+    selection_note: "UP marks this as a selection programme: additional selection criteria apply."
+    requirements:
+      source: s-up-req-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4, life_sciences: 4}
+
+  - id: mbchb
+    name: "Bachelor of Medicine and Surgery (MBChB)"
+    fields: [health_sciences, medicine, medical_sciences]
+    selective: true
+    places: 300
+    selection_note: "UP ranks applicants by a Merit Point Score from final Grade 11 results: English, Mathematics and Physical Sciences plus the next three best subjects (not Life Orientation, Mathematical Literacy or Mathematics Paper 3). Offers are provisional and stand if the Grade 12 score drops no more than five points. Applications open 1 April and close 30 June; UP takes no late applications. UP considers MBChB as a first or second choice."
+    requirements:
+      source: s-up-mbchb-2027
+      min_points: 35
+      subject_minimums: {english: 5, mathematics: 6, physical_sciences: 5}
+
+  - id: b_sports_science
+    name: "Bachelor of Sports Science"
+    fields: [health_sciences, sport_science]
+    selective: true
+    selection_note: "UP marks this as a selection programme: additional selection criteria apply."
+    requirements:
+      source: s-up-req-2027
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 4}
+      choices:
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {life_sciences: 4}
+
+  - id: bcmp
+    name: "Bachelor of Clinical Medical Practice (BCMP)"
+    fields: [health_sciences, medicine]
+    selective: true
+    selection_note: "UP marks this as a selection programme: additional selection criteria apply."
+    requirements:
+      source: s-up-req-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+
+  - id: ba
+    name: "Bachelor of Arts"
+    fields: [humanities]
+    requirements:
+      source: s-up-req-2027
+      min_points: 30
+      subject_minimums: {english: 5}
+
+  - id: ba_audiology
+    name: "BA in Audiology"
+    fields: [health_sciences, rehabilitation]
+    selective: true
+    selection_note: "UP marks this as a selection programme: additional selection criteria apply."
+    requirements:
+      source: s-up-req-2027
+      min_points: 32
+      subject_minimums: {english: 5, mathematics: 4}
+
+  - id: ba_speech_language_pathology
+    name: "BA in Speech-Language Pathology"
+    fields: [health_sciences, rehabilitation]
+    selective: true
+    selection_note: "UP marks this as a selection programme: additional selection criteria apply."
+    requirements:
+      source: s-up-req-2027
+      min_points: 32
+      subject_minimums: {english: 5, mathematics: 4}
+
+  - id: ba_fine_arts
+    name: "BA in Fine Arts (four-year programme)"
+    fields: [arts_and_design]
+    requirements:
+      source: s-up-req-2027
+      min_points: 30
+      subject_minimums: {english: 5}
+
+  - id: ba_fine_arts_extended
+    name: "BA in Fine Arts (five-year programme)"
+    fields: [arts_and_design]
+    requirements:
+      source: s-up-req-2027
+      min_points: 26
+      subject_minimums: {english: 4}
+
+  - id: ba_information_design
+    name: "BA in Information Design"
+    fields: [arts_and_design]
+    selective: true
+    selection_note: "UP marks this as a selection programme: additional selection criteria apply."
+    requirements:
+      source: s-up-req-2027
+      min_points: 30
+      subject_minimums: {english: 5}
+
+  - id: ba_languages
+    name: "BA specialising in Languages"
+    fields: [humanities, languages_and_communication]
+    requirements:
+      source: s-up-req-2027
+      min_points: 30
+      subject_minimums: {english: 5}
+
+  - id: ba_law
+    name: "BA specialising in Law"
+    fields: [humanities, law]
+    requirements:
+      source: s-up-req-2027
+      min_points: 34
+      subject_minimums: {english: 5}
+
+  - id: ba_ppe
+    name: "BA specialising in Philosophy, Politics and Economics"
+    fields: [humanities, economics]
+    requirements:
+      source: s-up-req-2027
+      min_points: 32
+      subject_minimums: {english: 5, mathematics: 5}
+
+  - id: ba_visual_studies
+    name: "BA specialising in Visual Studies"
+    fields: [arts_and_design, humanities]
+    requirements:
+      source: s-up-req-2027
+      min_points: 30
+      subject_minimums: {english: 5}
+
+  - id: bdrama
+    name: "Bachelor of Drama (three-year programme)"
+    fields: [performing_arts]
+    requirements:
+      source: s-up-req-2027
+      min_points: 30
+      subject_minimums: {english: 5}
+
+  - id: bdrama_extended
+    name: "Bachelor of Drama (four-year programme)"
+    fields: [performing_arts]
+    requirements:
+      source: s-up-req-2027
+      min_points: 26
+      subject_minimums: {english: 4}
+
+  - id: bpolsci_international_studies
+    name: "Bachelor of Political Science specialising in International Studies"
+    fields: [humanities]
+    requirements:
+      source: s-up-req-2027
+      min_points: 30
+      subject_minimums: {english: 5}
+
+  - id: bpolsci_political_studies
+    name: "Bachelor of Political Science specialising in Political Studies"
+    fields: [humanities]
+    requirements:
+      source: s-up-req-2027
+      min_points: 30
+      subject_minimums: {english: 5}
+
+  - id: bsocsci_heritage
+    name: "Bachelor of Social Science in Heritage and Cultural Sciences"
+    fields: [humanities, tourism_and_hospitality]
+    requirements:
+      source: s-up-req-2027
+      min_points: 30
+      subject_minimums: {english: 5}
+
+  - id: bsocsci_industrial_sociology
+    name: "Bachelor of Social Science specialising in Industrial Sociology and Labour Studies"
+    fields: [humanities]
+    requirements:
+      source: s-up-req-2027
+      min_points: 30
+      subject_minimums: {english: 5}
+
+  - id: bsw
+    name: "Bachelor of Social Work"
+    fields: [humanities]
+    requirements:
+      source: s-up-req-2027
+      min_points: 30
+      subject_minimums: {english: 5}
+
+  - id: bmus
+    name: "Bachelor of Music (four-year programme)"
+    fields: [music, performing_arts]
+    selection_note: "UP asks for English 5 and 30 points, and Music at level 4 (50-59%) or Grade VII Practical and Grade V Theory (Unisa, Royal Schools or Trinity) or a comparable standard, plus a practical audition and theory test passed with 60%."
+    requirements: null       # needs Music 4 or external music grades and an audition, which the schema can't hold yet
+
+  - id: bmus_extended
+    name: "Bachelor of Music (five-year programme)"
+    fields: [music, performing_arts]
+    selection_note: "UP asks for English 4 and 26 points, and Music at level 4 (50-59%) or Grade V Practical and Grade III Theory (Unisa, Royal Schools or Trinity) or a comparable standard, plus a practical audition and theory test passed with 50%."
+    requirements: null       # needs Music 4 or external music grades and an audition, which the schema can't hold yet
+
+  - id: bth
+    name: "Bachelor of Theology"
+    fields: [theology]
+    requirements:
+      source: s-up-req-2027
+      min_points: 28
+      subject_minimums: {english: 4}
+
+  - id: bdiv
+    name: "Bachelor of Divinity"
+    fields: [theology]
+    requirements:
+      source: s-up-req-2027
+      min_points: 28
+      subject_minimums: {english: 4}
+
+  - id: dip_theology
+    name: "Diploma in Theology"
+    fields: [theology]
+    requirements:
+      source: s-up-req-2027
+      min_points: 24
+      subject_minimums: {english: 4}
+
+  - id: bvsc
+    name: "Bachelor of Veterinary Science (BVSc)"
+    fields: [veterinary]
+    selective: true
+    selection_note: "UP marks this as a selection programme: additional selection criteria apply."
+    requirements:
+      source: s-up-req-2027
+      min_points: 35
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+
+  - id: b_veterinary_nursing
+    name: "Bachelor of Veterinary Nursing"
+    fields: [veterinary]
+    selective: true
+    selection_note: "UP marks this as a selection programme: additional selection criteria apply."
+    requirements:
+      source: s-up-req-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4}
+      choices:
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {life_sciences: 4}
+
+  - id: bsc_biochemistry
+    name: "BSc in Biochemistry"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-up-req-2027
+      min_points: 32
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+
+  - id: bsc_biotechnology
+    name: "BSc in Biotechnology"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-up-req-2027
+      min_points: 32
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+
+  - id: bsc_ecology
+    name: "BSc in Ecology"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-up-req-2027
+      min_points: 32
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+
+  - id: bsc_entomology
+    name: "BSc in Entomology"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-up-req-2027
+      min_points: 32
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+
+  - id: bsc_genetics
+    name: "BSc in Genetics"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-up-req-2027
+      min_points: 32
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+
+  - id: bsc_human_genetics
+    name: "BSc in Human Genetics"
+    fields: [natural_sciences, life_sciences, medical_sciences]
+    requirements:
+      source: s-up-req-2027
+      min_points: 32
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+
+  - id: bsc_human_physiology
+    name: "BSc in Human Physiology"
+    fields: [natural_sciences, life_sciences, medical_sciences]
+    requirements:
+      source: s-up-req-2027
+      min_points: 32
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+    bridges_to:
+      - to: mbchb
+        guarantee: considered
+        max_places: 36
+        added_years: 1
+        conditions: "After at least one year of degree study with every module passed at the first attempt (at least four modules with marks), and at least 50% or level 4 in Mathematics and Physical Sciences in the NSC. UP ranks these applicants by a University Module Achievement Score."
+        eligibility_note: "UP keeps 36 places on this route open to all and 66 more for designated groups, as UP defines them in its MBChB selection document."
+        source: s-up-mbchb-2027
+
+  - id: bsc_human_physiology_genetics_psychology
+    name: "BSc in Human Physiology, Genetics and Psychology"
+    fields: [natural_sciences, life_sciences, medical_sciences]
+    requirements:
+      source: s-up-req-2027
+      min_points: 32
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+    bridges_to:
+      - to: mbchb
+        guarantee: considered
+        max_places: 36
+        added_years: 1
+        conditions: "After at least one year of degree study with every module passed at the first attempt (at least four modules with marks), and at least 50% or level 4 in Mathematics and Physical Sciences in the NSC. UP ranks these applicants by a University Module Achievement Score."
+        eligibility_note: "UP keeps 36 places on this route open to all and 66 more for designated groups, as UP defines them in its MBChB selection document."
+        source: s-up-mbchb-2027
+
+  - id: bsc_medical_sciences
+    name: "BSc in Medical Sciences"
+    fields: [natural_sciences, health_sciences, medical_sciences]
+    requirements:
+      source: s-up-req-2027
+      min_points: 32
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+    bridges_to:
+      - to: mbchb
+        guarantee: considered
+        max_places: 36
+        added_years: 1
+        conditions: "After at least one year of degree study with every module passed at the first attempt (at least four modules with marks), and at least 50% or level 4 in Mathematics and Physical Sciences in the NSC. UP ranks these applicants by a University Module Achievement Score."
+        eligibility_note: "UP keeps 36 places on this route open to all and 66 more for designated groups, as UP defines them in its MBChB selection document."
+        source: s-up-mbchb-2027
+
+  - id: bsc_microbiology
+    name: "BSc in Microbiology"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-up-req-2027
+      min_points: 32
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+
+  - id: bsc_plant_science
+    name: "BSc in Plant Science"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-up-req-2027
+      min_points: 32
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+
+  - id: bsc_zoology
+    name: "BSc in Zoology"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-up-req-2027
+      min_points: 32
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+
+  - id: bsc_ecology_extended
+    name: "BSc in Ecology (four-year programme)"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-up-req-2027
+      min_points: 30
+      subject_min_percents: {english: 58, mathematics: 58, physical_sciences: 58}
+      extras:
+        - "The first year offers foundation modules."
+
+  - id: bsc_human_physiology_extended
+    name: "BSc in Human Physiology (four-year programme)"
+    fields: [natural_sciences, life_sciences, medical_sciences]
+    requirements:
+      source: s-up-req-2027
+      min_points: 30
+      subject_min_percents: {english: 58, mathematics: 58, physical_sciences: 58}
+      extras:
+        - "The first year offers foundation modules."
+
+  - id: bsc_agricultural_economics
+    name: "BSc in Agriculture in Agricultural Economics in Agribusiness Management"
+    fields: [agriculture, commerce]
+    requirements:
+      source: s-up-req-2027
+      min_points: 32
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+
+  - id: bsc_animal_science
+    name: "BSc in Agriculture in Animal Science"
+    fields: [agriculture]
+    requirements:
+      source: s-up-req-2027
+      min_points: 32
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+
+  - id: bsc_plant_soil_sciences
+    name: "BSc in Agriculture in Applied Plant and Soil Sciences"
+    fields: [agriculture]
+    requirements:
+      source: s-up-req-2027
+      min_points: 32
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+
+  - id: bsc_plant_pathology
+    name: "BSc in Agriculture in Plant Pathology"
+    fields: [agriculture]
+    requirements:
+      source: s-up-req-2027
+      min_points: 32
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+
+  - id: bsc_food_management_culinary
+    name: "BSc in Food Management (Culinary Science)"
+    fields: [food_science, consumer_sciences]
+    requirements:
+      source: s-up-req-2027
+      min_points: 32
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+
+  - id: bsc_food_management_nutrition
+    name: "BSc in Food Management (Nutritional Science)"
+    fields: [food_science, nutrition]
+    requirements:
+      source: s-up-req-2027
+      min_points: 32
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+
+  - id: bsc_food_science
+    name: "BSc in Food Science"
+    fields: [food_science]
+    requirements:
+      source: s-up-req-2027
+      min_points: 32
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+
+  - id: bsc_plant_soil_sciences_extended
+    name: "BSc in Agriculture in Applied Plant and Soil Sciences (four-year programme)"
+    fields: [agriculture]
+    requirements:
+      source: s-up-req-2027
+      min_points: 30
+      subject_min_percents: {english: 58, mathematics: 58, physical_sciences: 58}
+      extras:
+        - "The first year offers foundation modules."
+
+  - id: bsc_plant_pathology_extended
+    name: "BSc in Agriculture in Plant Pathology (four-year programme)"
+    fields: [agriculture]
+    requirements:
+      source: s-up-req-2027
+      min_points: 30
+      subject_min_percents: {english: 58, mathematics: 58, physical_sciences: 58}
+      extras:
+        - "The first year offers foundation modules."
+
+  - id: bsc_chemistry
+    name: "BSc in Chemistry"
+    fields: [natural_sciences, physical_sciences]
+    requirements:
+      source: s-up-req-2027
+      min_points: 34
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+
+  - id: bsc_physics
+    name: "BSc in Physics"
+    fields: [natural_sciences, physical_sciences]
+    requirements:
+      source: s-up-req-2027
+      min_points: 34
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+
+  - id: bsc_geography
+    name: "BSc in Geography (option: Geography and Environmental Science)"
+    fields: [natural_sciences, earth_sciences]
+    requirements:
+      source: s-up-req-2027
+      min_points: 34
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+
+  - id: bsc_geoinformatics
+    name: "BSc in Geoinformatics"
+    fields: [natural_sciences, earth_sciences]
+    requirements:
+      source: s-up-req-2027
+      min_points: 34
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+
+  - id: bsc_geology
+    name: "BSc in Geology"
+    fields: [natural_sciences, earth_sciences]
+    requirements:
+      source: s-up-req-2027
+      min_points: 34
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+
+  - id: bsc_meteorology
+    name: "BSc in Meteorology"
+    fields: [natural_sciences, physical_sciences]
+    requirements:
+      source: s-up-req-2027
+      min_points: 34
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+
+  - id: bsc_environmental_engineering_geology
+    name: "BSc in Environmental and Engineering Geology"
+    fields: [natural_sciences, earth_sciences]
+    requirements:
+      source: s-up-req-2027
+      min_points: 34
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+
+  - id: bsc_chemistry_extended
+    name: "BSc in Chemistry (four-year programme)"
+    fields: [natural_sciences, physical_sciences]
+    requirements:
+      source: s-up-req-2027
+      min_points: 32
+      subject_min_percents: {english: 58, mathematics: 58, physical_sciences: 58}
+      extras:
+        - "The first year offers foundation modules."
+
+  - id: bsc_geoinformatics_extended
+    name: "BSc in Geoinformatics (four-year programme)"
+    fields: [natural_sciences, earth_sciences]
+    requirements:
+      source: s-up-req-2027
+      min_points: 32
+      subject_min_percents: {english: 58, mathematics: 58, physical_sciences: 58}
+      extras:
+        - "The first year offers foundation modules."
+
+  - id: bsc_geology_extended
+    name: "BSc in Geology (four-year programme)"
+    fields: [natural_sciences, earth_sciences]
+    requirements:
+      source: s-up-req-2027
+      min_points: 32
+      subject_min_percents: {english: 58, mathematics: 58, physical_sciences: 58}
+      extras:
+        - "The first year offers foundation modules."
+
+  - id: bsc_meteorology_extended
+    name: "BSc in Meteorology (four-year programme)"
+    fields: [natural_sciences, physical_sciences]
+    requirements:
+      source: s-up-req-2027
+      min_points: 32
+      subject_min_percents: {english: 58, mathematics: 58, physical_sciences: 58}
+      extras:
+        - "The first year offers foundation modules."
+
+  - id: bsc_physics_extended
+    name: "BSc in Physics (four-year programme)"
+    fields: [natural_sciences, physical_sciences]
+    requirements:
+      source: s-up-req-2027
+      min_points: 32
+      subject_min_percents: {english: 58, mathematics: 58, physical_sciences: 58}
+      extras:
+        - "The first year offers foundation modules."
+
+  - id: bsc_actuarial_financial_mathematics
+    name: "BSc in Actuarial and Financial Mathematics"
+    fields: [mathematical_sciences, finance]
+    requirements:
+      source: s-up-req-2027
+      min_points: 36
+      subject_minimums: {english: 5, mathematics: 7}
+
+  - id: bsc_mathematics
+    name: "BSc in Mathematics (three-year programme)"
+    fields: [mathematical_sciences]
+    requirements:
+      source: s-up-req-2027
+      min_points: 34
+      subject_minimums: {english: 5, mathematics: 6}
+
+  - id: bsc_applied_mathematics
+    name: "BSc in Applied Mathematics"
+    fields: [mathematical_sciences]
+    requirements:
+      source: s-up-req-2027
+      min_points: 34
+      subject_minimums: {english: 5, mathematics: 6}
+
+  - id: bsc_mathematical_statistics
+    name: "BSc in Mathematical Statistics"
+    fields: [mathematical_sciences]
+    requirements:
+      source: s-up-req-2027
+      min_points: 34
+      subject_minimums: {english: 5, mathematics: 6}
+
+  # Check: UP's table marks this row with * but the footnote isn't in the PDF.
+  - id: bsc_mathematics_extended
+    name: "BSc in Mathematics (four-year programme)"
+    fields: [mathematical_sciences]
+    requirements:
+      source: s-up-req-2027
+      min_points: 32
+      subject_min_percents: {english: 58, mathematics: 65}
+
+  - id: bconsumer_clothing_retail
+    name: "Bachelor of Consumer Science specialising in Clothing Retail Management"
+    fields: [consumer_sciences]
+    requirements:
+      source: s-up-req-2027
+      min_points: 28
+      subject_minimums: {english: 5, mathematics: 4}
+
+  - id: bconsumer_food_management
+    name: "Bachelor of Consumer Science specialising in Food Management"
+    fields: [consumer_sciences, food_science]
+    requirements: null       # UP's table ends after this row's name, so its values are missing
+
+sources:
+  - id: s-up-req-2027
+    url: "https://drupalwebprod-files.up.ac.za/Public/2026-03/UP_DESA_Application%20requirements%20tables_2027_web.pdf?VersionId=vw30gCBk2BMAXzOhFSBflmkFOHOMFOoa"
+    publisher: "University of Pretoria"
+    title: "2027 Application requirements for undergraduate programmes"
+    retrieved: 2026-10-09
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-up-mbchb-2027
+    url: "https://drupalwebprod-files.up.ac.za/Public/2026-04/2026%20for%202027%20Selection%20of%20MBChB%20students_13April%202026%20(2).pdf?VersionId=Zhz6Br5WLsS8ahAYQXZ3RDGUkfIq_RNy"
+    publisher: "University of Pretoria"
+    title: "Faculty of Health Sciences: Selection criteria of MBChB students, 2026 for 2027"
+    retrieved: 2026-10-09
+    last_verified: null
+    verified_by: "agent draft, needs human check"

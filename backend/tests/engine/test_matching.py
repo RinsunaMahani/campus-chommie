@@ -6,6 +6,7 @@ from campus_engine.matching import (
     NO_GUARANTEE,
     NOT_YET,
     REACH,
+    TIER_RANK,
     UNVERIFIED,
     assess,
     assess_all,
@@ -74,9 +75,12 @@ def test_missing_required_subject_is_named(smu, strong_marks):
 
 
 def test_unverified_programme(smu, strong_marks):
-    m = assess(smu, smu.programme("bsc_y1"), strong_marks)
+    unchecked = smu.programme("brad").model_copy(update={"requirements": None, "selection_note": "Ask about auditions."})
+    m = assess(smu, unchecked, strong_marks)
     assert m.tier == UNVERIFIED
     assert m.points is None
+    assert m.explanation[0].startswith("We can't check this programme's requirements against your marks yet.")
+    assert m.explanation[1] == "Ask about auditions."
 
 
 def test_gap_in_points_is_reported(open_uni):
@@ -95,6 +99,7 @@ def test_meets_minimum_and_competitive(open_uni):
 
 
 def test_assess_all_puts_best_tiers_first(smu, strong_marks):
-    tiers = [m.tier for m in assess_all(smu, strong_marks)]
-    assert tiers[-1] == UNVERIFIED
-    assert tiers[0] == REACH
+    weaker = dict(strong_marks, mathematics=55)  # level 4: below MBChB's 6, enough for others
+    ranks = [TIER_RANK[m.tier] for m in assess_all(smu, weaker)]
+    assert ranks == sorted(ranks)
+    assert ranks[0] == TIER_RANK[REACH] and ranks[-1] == TIER_RANK[NOT_YET]

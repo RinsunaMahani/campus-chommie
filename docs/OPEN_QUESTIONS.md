@@ -20,12 +20,18 @@ Research notes from official documents, read on 9 Oct 2026 and not yet checked b
   tutoring, chaplaincy, health), each from an official source. Crisis contacts must be verified by a person before
   release. Found: the 2026 calendar, health, counselling, the referral unit (it refers to tutoring and financial aid)
   and 2026 fees. Still missing: the 2027 calendar, a 24-hour line, food support, chaplaincy and allowance dates.
-- [ ] **Changes to `smu.yaml`** that the research supports, for the team's OK: `max_choices: 2`; the BSc first-year
+- [x] **Changes to `smu.yaml`** that the research supports, for the team's OK: `max_choices: 2`; the BSc first-year
   requirements above; MBChB `places: 250`; the other SMU programmes; a considered route from SMU's first year into
   BDS (2 places); and the medicine foundation year's eligibility note, which leaves out SMU's population-group
   restriction (details in [smu.md](research/smu.md), "Notes for the data pack"). Approved by Rinsuna on 9 Oct 2026;
-  applied with the packs.
-- [ ] **UP and TUT packs**, from official sources. Research done; the packs wait for the schema decisions below.
+  applied on 10 Oct (`rinsuna/m1-data-packs`). Also marked BSc first year `selective: true`, because every SMU
+  school page says selection is competitive: check.
+- [x] **UP and TUT packs**, from official sources. Drafted on 10 Oct 2026: `up.yaml` (120 programmes) and `tut.yaml`
+  (124; the Diploma in Fire Technology is left out, as it's only for people already in fire services). Both
+  `release: false`, every source `verified_by: "agent draft, needs human check"`.
+- [ ] **A person checks the packs** against their sources before any is released: every value in `up.yaml` and
+  `tut.yaml`, the SMU values added on 10 Oct, and the lines marked "Check" in the packs and research notes. Then set
+  `release: true` and fill in each source's `last_verified` and `verified_by`.
 - [ ] **Campuses** for each university (needed for F1 and the support screen). Found for all three; a person still
   checks them with the rest.
 - [ ] **Course finder languages:** which 2 or 3, and the fluent reviewers who sign them off in `docs/translation_review.md`.
@@ -66,7 +72,12 @@ Decisions 3, 4 and 9 were taken by Rinsuna on 9 Oct 2026 (below). Decision 5 is 
 3. **Fields** decide the cross-university safe choice (slot 3). Tagging UP's BSc Medical Sciences `health_sciences`
    makes it the safe choice for an SMU MBChB goal, which changes the current plan tests. Proposal: run those tests on
    SMU's data only and add a cross-university test. **Decided:** tag honestly. Once UP's pack lands, the brief's M1
-   check (B Rad in slot 3 for the strong SMU learner) changes with it.
+   check (B Rad in slot 3 for the strong SMU learner) changes with it. **Built** (10 Oct):
+   - **Ranking:** the third choice is a programme the learner meets without competitive selection, the closest by
+     the share of fields in common, and never one already shown as a route.
+   - **The M1 check now:** for the strong SMU learner, the third choice is UP's BSc Medical Sciences.
+   - **Known weakness:** where fields tie (every engineering degree shares only `engineering`), the pick is
+     alphabetical. More specific fields would fix it.
 4. **UP's MBChB route after a degree year:** a considered bridge with 36 places open to all; the 66 places for
    designated groups go in its eligibility note only. **Decided:** as proposed.
 5. **FLY@UP awards** can be worked out from course-finder marks. Show the 2026 amounts labelled "2026", or wait for

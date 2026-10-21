@@ -8,8 +8,9 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-from .matching import NOT_YET, REACH, TIER_RANK, UNVERIFIED, Match, assess
+from .matching import MEETS_MINIMUM, NOT_YET, REACH, TIER_RANK, UNVERIFIED, Match, assess
 from .schemas import Bridge, University
+from .text import join
 
 GUARANTEE_RANK = {"by_rule": 0, "considered": 1}
 GUARANTEE_LABELS = {
@@ -89,26 +90,31 @@ def build_plan(
     else:
         plan_notes.append(f"No published route into {goal.name} is in our data yet.")
 
-    # Slot 3: the related programme where the learner stands best, across all universities.
-    used = {(uni.university, goal.id)}
-    if bridge_slot:
-        used.add((uni.university, bridge_slot.match.programme_id))
+    # Slot 3: a related programme the learner can count on, across all universities. Programmes
+    # the learner meets without competitive selection come first; among them the closest to the
+    # goal wins (the share of their fields in common), then the better tier. Programmes already
+    # shown as routes into the goal are left out.
+    used = {(uni.university, goal.id)} | {(uni.university, m.programme_id) for _, m, _ in candidates}
     goal_fields = set(goal.fields)
     safe_candidates = []
     for u in catalogue.values():
         for p in u.programmes:
-            if (u.university, p.id) in used or not goal_fields & set(p.fields):
+            shared = goal_fields & set(p.fields)
+            if (u.university, p.id) in used or not shared:
                 continue
             m = assess(u, p, marks)
             if m.tier == NOT_YET:
                 continue
-            safe_candidates.append(((TIER_RANK[m.tier], p.selective, u.university, p.id), m))
+            closeness = len(shared) / len(goal_fields | set(p.fields))
+            key = (TIER_RANK[m.tier] > TIER_RANK[MEETS_MINIMUM], -closeness, TIER_RANK[m.tier], p.selective, u.university, p.id)
+            safe_candidates.append((key, m, shared))
     safe_candidates.sort(key=lambda c: c[0])
 
     safe_slot = None
     if safe_candidates:
-        m = safe_candidates[0][1]
-        notes = list(m.explanation)
+        _, m, shared = safe_candidates[0]
+        related = join(sorted(f.replace("_", " ") for f in shared))
+        notes = [f"Related to {goal.name} through {related}."] + list(m.explanation)
         if m.tier in (REACH, UNVERIFIED):
             notes.append(
                 "This is not a safe choice yet. Add a less selective option once more universities are verified."

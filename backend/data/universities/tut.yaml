@@ -1,0 +1,1827 @@
+# Tshwane University of Technology (TUT)
+#
+# Agent draft, from TUT's own documents read on 9 Oct 2026 (docs/research/tut.md lists them with
+# page numbers). Nobody has checked these values yet: release stays false until a person has
+# compared every one with its source. Requirements cite the 2027 course list, or TUT's 2027
+# programme pages where those publish a lower band with a test or waiting list. The Diploma in
+# Fire Technology is left out: it is only for people already working in fire and rescue services.
+
+university: tut
+name: Tshwane University of Technology
+city: Pretoria
+academic_year: 2027          # the intake these rules apply to
+release: false
+max_choices: null            # not stated in TUT's documents
+
+points_rules:
+  source: s-tut-rules-2026
+  subjects_counted: 6        # decided 9 Oct 2026 until TUT confirms (docs/OPEN_QUESTIONS.md)
+  life_orientation: exclude
+  count_from_level: 2
+  note: "TUT doesn't say how many subjects count, so we count the six besides Life Orientation until TUT confirms."
+  scale:
+    - {min_percent: 80, level: 7}
+    - {min_percent: 70, level: 6}
+    - {min_percent: 60, level: 5}
+    - {min_percent: 50, level: 4}
+    - {min_percent: 40, level: 3}
+    - {min_percent: 30, level: 2}
+    - {min_percent: 0, level: 1}
+
+programmes:
+
+  - id: dip_commercial_photography
+    name: "Diploma in Commercial Photography"
+    fields: [arts_and_design]
+    selective: true
+    selection_note: "TUT adds a portfolio and a questionnaire."
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 22
+      subject_minimums: {english: 3}
+
+  - id: dip_fashion_design
+    name: "Diploma in Fashion Design and Technology"
+    fields: [arts_and_design]
+    selective: true
+    selection_note: "From 20 points, TUT invites applicants to a practical selection project and an interview."
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 20
+      subject_minimums: {english: 3}
+
+  - id: dip_fine_applied_arts
+    name: "Diploma in Fine and Applied Arts"
+    fields: [arts_and_design]
+    selective: true
+    selection_note: "TUT adds a portfolio and a questionnaire."
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 20
+      subject_minimums: {english: 3}
+
+  - id: dip_integrated_communication_design
+    name: "Diploma in Integrated Communication Design"
+    fields: [arts_and_design]
+    selective: true
+    selection_note: "TUT adds a departmental assessment."
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 24
+      subject_minimums: {english: 4}
+
+  - id: dip_interior_design
+    name: "Diploma in Interior Design"
+    fields: [arts_and_design, built_environment]
+    selective: true
+    selection_note: "TUT adds a departmental assessment. Recommended subjects: Civil Technology, Design Studies, Engineering Graphics and Design, and Visual Arts."
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 22
+      subject_minimums: {english: 4}
+
+  - id: dip_jewellery_design
+    name: "Diploma in Jewellery Design and Manufacture"
+    fields: [arts_and_design]
+    selective: true
+    selection_note: "TUT adds a portfolio, a practical selection and an interview."
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 20
+      subject_minimums: {english: 3}
+
+  - id: dip_motion_picture
+    name: "Diploma in Motion Picture Production"
+    fields: [arts_and_design, performing_arts]
+    selective: true
+    selection_note: "TUT scores an artistic submission (40%), an interview (20%) and the APS (40%)."
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 22
+      subject_minimums: {english: 4}
+
+  - id: dip_performing_arts_dance
+    name: "Diploma in Performing Arts (Dance)"
+    fields: [performing_arts]
+    selective: true
+    selection_note: "TUT holds an audition or interview for each stream."
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 20
+      subject_minimums: {english: 4}
+
+  - id: dip_performing_arts_jazz
+    name: "Diploma in Performing Arts (Jazz Music)"
+    fields: [performing_arts, music]
+    selective: true
+    selection_note: "TUT holds an audition or interview for each stream."
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 20
+      subject_minimums: {english: 4}
+
+  - id: dip_performing_arts_opera
+    name: "Diploma in Performing Arts (Opera)"
+    fields: [performing_arts, music]
+    selective: true
+    selection_note: "TUT holds an audition or interview for each stream."
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 20
+      subject_minimums: {english: 4}
+
+  - id: dip_performing_arts_technical_theatre
+    name: "Diploma in Performing Arts (Technical Theatre and Design)"
+    fields: [performing_arts]
+    selective: true
+    selection_note: "TUT holds an audition or interview for each stream."
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 20
+      subject_minimums: {english: 4}
+
+  - id: dip_performing_arts_theatre
+    name: "Diploma in Performing Arts (Theatre Arts and Performance)"
+    fields: [performing_arts]
+    selective: true
+    selection_note: "TUT holds an audition or interview for each stream."
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 20
+      subject_minimums: {english: 4}
+
+  - id: hcert_music
+    name: "Higher Certificate in Music"
+    fields: [music, performing_arts]
+    selective: true
+    selection_note: "TUT holds an audition and an interview."
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 18
+      subject_minimums: {english: 3}
+
+  - id: dip_accounting
+    name: "Diploma in Accounting"
+    fields: [commerce, accounting]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 22
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {accounting: 3}
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+              min_points: 24
+
+  - id: dip_economics
+    name: "Diploma in Economics"
+    fields: [commerce, economics]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 22
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 6}
+              min_points: 24
+
+  - id: dip_financial_management
+    name: "Diploma in Financial Management"
+    fields: [commerce, finance]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 22
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {accounting: 3}
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+              min_points: 24
+
+  - id: dip_financial_planning
+    name: "Diploma in Financial Planning"
+    fields: [commerce, finance]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 22
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {accounting: 3}
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+              min_points: 24
+
+  - id: dip_internal_auditing
+    name: "Diploma in Internal Auditing"
+    fields: [commerce, accounting]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 22
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {accounting: 3}
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+              min_points: 24
+
+  - id: dip_public_finance
+    name: "Diploma in Public Finance"
+    fields: [commerce, finance]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 22
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {accounting: 4}
+              min_points: 23
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+              min_points: 24
+
+  - id: hcert_accounting
+    name: "Higher Certificate in Accounting"
+    fields: [commerce, accounting]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 22
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 23
+
+  - id: barch
+    name: "Bachelor of Architecture"
+    fields: [built_environment]
+    selective: true
+    selection_note: "TUT adds a departmental assessment."
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 25
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+            - subjects: {mathematical_literacy: 5}
+
+  # Check: the guide describes the assessment on the Bachelor of Architecture page; we assume it covers
+  # the extended programme too.
+  - id: barch_extended
+    name: "Bachelor of Architecture (extended curriculum programme)"
+    fields: [built_environment]
+    selective: true
+    selection_note: "TUT adds a departmental assessment, as for the Bachelor of Architecture."
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 25
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+            - subjects: {mathematical_literacy: 5}
+
+  # Check: the course list gives 31 July as the closing date, the programme page 30 September.
+  - id: bgeomatics
+    name: "Bachelor of Geomatics"
+    fields: [built_environment, earth_sciences]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 25
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 5}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+
+  - id: beng_tech_chemical
+    name: "Bachelor of Engineering Technology in Chemical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 28
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 5}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 5}
+            - subjects: {technical_sciences: 5}
+
+  - id: beng_tech_civil
+    name: "Bachelor of Engineering Technology in Civil Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 30
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 5}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 5}
+            - subjects: {technical_sciences: 5}
+
+  - id: beng_tech_electrical
+    name: "Bachelor of Engineering Technology in Electrical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 30
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 5}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 5}
+            - subjects: {technical_sciences: 5}
+      additional_minimums: [4, 4, 4]
+
+  - id: beng_tech_industrial
+    name: "Bachelor of Engineering Technology in Industrial Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 28
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 5}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 5}
+            - subjects: {technical_sciences: 5}
+
+  - id: beng_tech_materials_polymer
+    name: "Bachelor of Engineering Technology in Materials Engineering in Polymer Technology"
+    fields: [engineering]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 28
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 5}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 5}
+            - subjects: {technical_sciences: 5}
+
+  - id: beng_tech_mechanical
+    name: "Bachelor of Engineering Technology in Mechanical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 28
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 5}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 5}
+            - subjects: {technical_sciences: 5}
+
+  - id: beng_tech_mechatronic
+    name: "Bachelor of Engineering Technology in Mechatronic Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 28
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 5}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 5}
+            - subjects: {technical_sciences: 5}
+
+  - id: beng_tech_metallurgical
+    name: "Bachelor of Engineering Technology in Metallurgical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 28
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 5}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 5}
+            - subjects: {technical_sciences: 5}
+
+  - id: dip_building_science
+    name: "Diploma in Building Science"
+    fields: [built_environment]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 26
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+        - one_of:
+            - subjects: {physical_sciences: 3}
+            - subjects: {technical_sciences: 3}
+
+  - id: dip_civil_engineering
+    name: "Diploma in Civil Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 26
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+
+  - id: dip_electrical_engineering
+    name: "Diploma in Electrical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 26
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+
+  - id: dip_geomatics
+    name: "Diploma in Geomatics"
+    fields: [built_environment, earth_sciences]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 23
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 3}
+            - subjects: {technical_sciences: 3}
+
+  - id: dip_industrial_design
+    name: "Diploma in Industrial Design"
+    fields: [arts_and_design, engineering]
+    selective: true
+    selection_note: "TUT asks for a prescribed portfolio."
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 21
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+
+  - id: hcert_construction_material_test
+    name: "Higher Certificate in Construction Engineering (Material Test)"
+    fields: [engineering]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 20
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 3}
+            - subjects: {technical_sciences: 3}
+
+  - id: hcert_construction_water_waste
+    name: "Higher Certificate in Construction Engineering (Water and Waste)"
+    fields: [engineering]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 20
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 3}
+            - subjects: {technical_sciences: 3}
+
+  - id: hcert_electrical_engineering
+    name: "Higher Certificate in Electrical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 20
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 3}
+            - subjects: {technical_sciences: 3}
+
+  - id: hcert_industrial_engineering
+    name: "Higher Certificate in Industrial Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 20
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 3}
+            - subjects: {technical_sciences: 3}
+
+  - id: hcert_mechanical_engineering
+    name: "Higher Certificate in Mechanical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 20
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 3}
+            - subjects: {technical_sciences: 3}
+
+  - id: bed_foundation_phase
+    name: "BEd in Foundation Phase Teaching"
+    fields: [education]
+    requirements: null       # needs a home language the programme offers at 5 and a first additional language at 4, which the schema can't hold yet
+
+  - id: bed_intermediate_phase
+    name: "BEd in Intermediate Phase Teaching"
+    fields: [education]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 25
+      subject_minimums: {english: 4, other_language: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {mathematical_literacy: 5}
+        - one_of:
+            - subjects: {life_sciences: 4, physical_sciences: 4}
+            - subjects: {history: 4, geography: 4}
+      extras:
+        - "Your other language must be a home language the programme offers."
+
+  - id: bed_sp_fet_agriculture
+    name: "BEd in Senior Phase and FET Teaching (Agriculture)"
+    fields: [education, agriculture]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 24
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+            - subjects: {mathematical_literacy: 4}
+        - one_of:
+            - subjects: {agricultural_sciences: 4}
+            - subjects: {life_sciences: 4}
+        - one_of:
+            - subjects: {agricultural_technology: 4}
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+
+  - id: bed_sp_fet_consumer_sciences
+    name: "BEd in Senior Phase and FET Teaching (Consumer Sciences)"
+    fields: [education, consumer_sciences]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 24
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+            - subjects: {mathematical_literacy: 4}
+        - one_of:
+            - subjects: {consumer_studies: 4}
+            - subjects: {hospitality_studies: 4}
+            - subjects: {tourism: 4}
+
+  - id: bed_sp_fet_ems
+    name: "BEd in Senior Phase and FET Teaching (Economic and Management Sciences)"
+    fields: [education, commerce]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 24
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+            - subjects: {mathematical_literacy: 4}
+        - one_of:
+            - subjects: {accounting: 4}
+            - subjects: {business_studies: 4}
+            - subjects: {economics: 4}
+
+  # Check: printed as "Mathematics or Technical Mathematics or Information Technology" at 4.
+  - id: bed_sp_fet_it
+    name: "BEd in Senior Phase and FET Teaching (Information Technology)"
+    fields: [education, computing]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 24
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+            - subjects: {information_technology: 4}
+
+  - id: bed_sp_fet_mathematics
+    name: "BEd in Senior Phase and FET Teaching (Mathematics)"
+    fields: [education, mathematical_sciences]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 24
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4, life_sciences: 4}
+            - subjects: {mathematics: 4, physical_sciences: 4}
+
+  - id: bed_sp_fet_physical_education
+    name: "BEd in Senior Phase and FET Teaching (Physical Education)"
+    fields: [education, sport_science]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 24
+      subject_minimums: {english: 4, life_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+            - subjects: {mathematical_literacy: 4}
+
+  - id: bed_sp_fet_sciences
+    name: "BEd in Senior Phase and FET Teaching (Sciences)"
+    fields: [education, natural_sciences]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 24
+      subject_minimums: {english: 4, mathematics: 4}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+
+  - id: bed_sp_fet_technology
+    name: "BEd in Senior Phase and FET Teaching (Technology)"
+    fields: [education, engineering]
+    requirements: null       # TUT's "and/or" list of technology subjects can't be read as a clear rule; ask TUT
+
+  - id: dip_acet_civil_technology
+    name: "Diploma in Adult and Community Education and Training (Civil Technology)"
+    fields: [education, engineering]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 22
+      subject_minimums: {english: 4, other_language: 3}
+      choices:
+        - one_of:
+            - subjects: {engineering_graphics_and_design: 3}
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+        - one_of:
+            - subjects: {civil_technology: 3}
+            - subjects: {physical_sciences: 3}
+            - subjects: {technical_sciences: 3}
+
+  - id: dip_acet_consumer_sciences
+    name: "Diploma in Adult and Community Education and Training (Consumer Sciences)"
+    fields: [education, consumer_sciences]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 22
+      subject_minimums: {english: 4, other_language: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+
+  - id: dip_acet_electrical_mechanical
+    name: "Diploma in Adult and Community Education and Training (Electrical and Mechanical)"
+    fields: [education, engineering]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 22
+      subject_minimums: {english: 4, other_language: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+        - one_of:
+            - subjects: {physical_sciences: 3}
+            - subjects: {technical_sciences: 3}
+
+  - id: dip_correctional_rehabilitation
+    name: "Diploma in Correctional and Rehabilitation Studies"
+    fields: [safety_and_justice]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 20
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 3}
+
+  - id: dip_integrated_communication
+    name: "Diploma in Integrated Communication"
+    fields: [languages_and_communication]
+    selective: true
+    selection_note: "TUT scores a selection test (50%), an interview (30%) and the APS (20%)."
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 20
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 21
+      extras:
+        - "Engineering Mathematics N3 at level 3 also counts."
+        - "TUT prefers English at level 5 or more."
+
+  - id: dip_journalism
+    name: "Diploma in Journalism"
+    fields: [languages_and_communication]
+    selective: true
+    selection_note: "TUT scores a selection test (30%), an interview (30%) and the APS (40%)."
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 24
+      subject_minimums: {english: 4}
+      extras:
+        - "TUT prefers English at level 5 or more."
+
+  - id: dip_language_practice
+    name: "Diploma in Language Practice"
+    fields: [languages_and_communication]
+    requirements:
+      source: s-tut-guide-2027
+      min_points: 20
+      subject_minimums: {english: 4, other_language: 5}
+      extras:
+        - "Your other language must be an official South African language the programme offers."
+        - "With exactly 20 points you write TUT's potential assessment."
+
+  - id: dip_law
+    name: "Diploma in Law"
+    fields: [law, safety_and_justice]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 20
+      subject_minimums: {english: 4}
+
+  - id: dip_legal_support
+    name: "Diploma in Legal Support"
+    fields: [law]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 20
+      subject_minimums: {english: 4, other_language: 3}
+
+  - id: dip_policing
+    name: "Diploma in Policing"
+    fields: [safety_and_justice]
+    selection_note: "People already working in law enforcement apply on another route: a Senior Certificate or NSC, a relevant NQF 5 or 6 law-enforcement qualification and five years' experience."
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 20
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 3}
+
+  - id: dip_public_affairs_state
+    name: "Diploma in Public Affairs (Administration of State)"
+    fields: [public_administration]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 20
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 3}
+
+  - id: dip_public_affairs_local_government
+    name: "Diploma in Public Affairs (Local Government)"
+    fields: [public_administration]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 20
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 3}
+
+  - id: dip_traffic_safety
+    name: "Diploma in Traffic Safety and Municipal Police Management"
+    fields: [safety_and_justice]
+    selection_note: "People already working in law enforcement apply on another route: a Senior Certificate or NSC, a relevant NQF 5 or 6 law-enforcement qualification and five years' experience."
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 20
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 3}
+
+  - id: dip_computer_science
+    name: "Diploma in Computer Science"
+    fields: [computing]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 26
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 5}
+            - subjects: {technical_mathematics: 5}
+            - subjects: {mathematical_literacy: 7}
+              min_points: 28
+
+  - id: dip_computer_science_extended
+    name: "Diploma in Computer Science (extended curriculum programme)"
+    fields: [computing]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 23
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+            - subjects: {mathematical_literacy: 6}
+              min_points: 25
+      extras:
+        - "TUT puts applicants with 21 points (Mathematics) or 24 (Mathematical Literacy) on a waiting list."
+
+  - id: dip_computer_systems_engineering
+    name: "Diploma in Computer Systems Engineering"
+    fields: [computing, engineering]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 26
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 5}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+
+  - id: dip_computer_systems_engineering_extended
+    name: "Diploma in Computer Systems Engineering (extended curriculum programme)"
+    fields: [computing, engineering]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 23
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 3}
+            - subjects: {technical_sciences: 3}
+
+  - id: dip_informatics
+    name: "Diploma in Informatics"
+    fields: [computing]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 26
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 5}
+            - subjects: {technical_mathematics: 5}
+            - subjects: {mathematical_literacy: 7}
+              min_points: 28
+
+  - id: dip_informatics_extended
+    name: "Diploma in Informatics (extended curriculum programme)"
+    fields: [computing]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 23
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+            - subjects: {mathematical_literacy: 6}
+              min_points: 25
+
+  - id: dip_information_technology
+    name: "Diploma in Information Technology"
+    fields: [computing]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 26
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 5}
+            - subjects: {technical_mathematics: 5}
+            - subjects: {mathematical_literacy: 7}
+              min_points: 28
+        - one_of:
+            - subjects: {physical_sciences: 3}
+            - subjects: {technical_sciences: 3}
+
+  - id: dip_information_technology_extended
+    name: "Diploma in Information Technology (extended curriculum programme)"
+    fields: [computing]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 23
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+            - subjects: {mathematical_literacy: 6}
+              min_points: 25
+        - one_of:
+            - subjects: {physical_sciences: 3}
+            - subjects: {technical_sciences: 3}
+      extras:
+        - "TUT puts applicants with 21 points (Mathematics) or 24 (Mathematical Literacy) on a waiting list."
+
+  - id: dip_multimedia_computing
+    name: "Diploma in Multimedia Computing"
+    fields: [computing, arts_and_design]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 26
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 5}
+            - subjects: {technical_mathematics: 5}
+            - subjects: {mathematical_literacy: 7}
+              min_points: 28
+
+  - id: dip_multimedia_computing_extended
+    name: "Diploma in Multimedia Computing (extended curriculum programme)"
+    fields: [computing, arts_and_design]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 23
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+            - subjects: {mathematical_literacy: 6}
+              min_points: 25
+      extras:
+        - "TUT puts applicants with 21 points (Mathematics) or 24 (Mathematical Literacy) on a waiting list."
+
+  - id: dip_administrative_information
+    name: "Diploma in Administrative Information Management"
+    fields: [management]
+    requirements:
+      source: s-tut-guide-2027
+      min_points: 20
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 3}
+      competitive_points: 24
+      extras:
+        - "TUT admits applicants with 24 points or more; with 20 to 23 you must write TUT's potential assessment."
+
+  - id: dip_adventure_tourism
+    name: "Diploma in Adventure Tourism Management (Mbombela campus only)"
+    fields: [tourism_and_hospitality]
+    requirements:
+      source: s-tut-guide-2027
+      min_points: 20
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      competitive_points: 24
+      extras:
+        - "TUT admits applicants with 24 points or more; with 20 to 23 you must write TUT's potential assessment."
+
+  - id: dip_casino_resort
+    name: "Diploma in Casino Resort Management"
+    fields: [tourism_and_hospitality, management]
+    requirements:
+      source: s-tut-guide-2027
+      min_points: 20
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      competitive_points: 24
+      extras:
+        - "TUT admits applicants with 24 points or more; with 20 to 23 you must write TUT's potential assessment."
+
+  - id: dip_contact_centre
+    name: "Diploma in Contact Centre Management"
+    fields: [management]
+    requirements:
+      source: s-tut-guide-2027
+      min_points: 20
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 3}
+      competitive_points: 24
+      extras:
+        - "TUT admits applicants with 24 points or more; with 20 to 23 you must write TUT's potential assessment."
+
+  - id: dip_credit_management
+    name: "Diploma in Credit Management"
+    fields: [commerce, management]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 24
+      subject_minimums: {english: 4, accounting: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+
+  - id: dip_ecotourism
+    name: "Diploma in Ecotourism Management (Mbombela campus only)"
+    fields: [tourism_and_hospitality]
+    requirements:
+      source: s-tut-guide-2027
+      min_points: 20
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      competitive_points: 24
+      extras:
+        - "TUT admits applicants with 24 points or more; with 20 to 23 TUT may invite you to its potential assessment."
+
+  - id: dip_entrepreneurship
+    name: "Diploma in Entrepreneurship"
+    fields: [management, commerce]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 24
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 3}
+
+  - id: dip_event_management
+    name: "Diploma in Event Management"
+    fields: [tourism_and_hospitality, management]
+    requirements:
+      source: s-tut-guide-2027
+      min_points: 20
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      competitive_points: 24
+      extras:
+        - "TUT admits applicants with 24 points or more; with 20 to 23 TUT may invite you to its potential assessment."
+
+  - id: dip_food_operations
+    name: "Diploma in Food Operations Management"
+    fields: [tourism_and_hospitality, food_science]
+    requirements:
+      source: s-tut-guide-2027
+      min_points: 20
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 3}
+      competitive_points: 24
+      extras:
+        - "TUT admits applicants with 24 points or more; with 20 to 23 you must write TUT's potential assessment."
+
+  - id: dip_hospitality
+    name: "Diploma in Hospitality Management"
+    fields: [tourism_and_hospitality]
+    requirements:
+      source: s-tut-guide-2027
+      min_points: 20
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 3}
+      competitive_points: 24
+      extras:
+        - "TUT admits applicants with 24 points or more; with 20 to 23 you must write TUT's potential assessment."
+
+  - id: dip_human_resources
+    name: "Diploma in Human Resource Management"
+    fields: [management]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 24
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 3}
+
+  - id: dip_marketing
+    name: "Diploma in Marketing"
+    fields: [management, commerce]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 24
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+
+  - id: dip_operations_management
+    name: "Diploma in Operations Management"
+    fields: [management]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 24
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+
+  - id: dip_retail_business
+    name: "Diploma in Retail Business Management"
+    fields: [management, commerce]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 24
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+
+  - id: dip_sport_management
+    name: "Diploma in Sport Management"
+    fields: [management, sport_science]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 24
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "Recommended subjects: Accounting, Business Studies and Economics."
+
+  - id: dip_supply_chain
+    name: "Diploma in Supply Chain Management"
+    fields: [management]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 24
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "Recommended subjects: commercial subjects."
+
+  - id: dip_tourism_management
+    name: "Diploma in Tourism Management"
+    fields: [tourism_and_hospitality]
+    requirements:
+      source: s-tut-guide-2027
+      min_points: 20
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      competitive_points: 24
+      extras:
+        - "TUT admits applicants with 24 points or more; with 20 to 23 TUT may invite you to its potential assessment."
+        - "Recommended subjects: Business Studies, Geography, Hospitality Studies, and Travel and Tourism."
+
+  - id: dip_work_study
+    name: "Diploma in Work Study"
+    fields: [management]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 24
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+
+  - id: hcert_administrative_information_online
+    name: "Higher Certificate in Administrative Information Management (online)"
+    fields: [management]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 20
+      subject_minimums: {english: 3}
+      extras:
+        - "An online programme."
+
+  - id: hcert_contact_centre_online
+    name: "Higher Certificate in Contact Centre Management (online)"
+    fields: [management]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 20
+      subject_minimums: {english: 3}
+      extras:
+        - "An online programme."
+
+  - id: dip_animal_sciences
+    name: "Diploma in Animal Sciences"
+    fields: [agriculture]
+    selective: true
+    selection_note: "TUT scores its potential assessment (40%) and the APS (60%)."
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 19
+      subject_minimums: {english: 4, physical_sciences: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+
+  - id: dip_crop_production
+    name: "Diploma in Crop Production"
+    fields: [agriculture]
+    requirements:
+      source: s-tut-guide-2027
+      min_points: 19
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 20
+      competitive_points: 23
+      extras:
+        - "TUT admits applicants with 23 points or more and keeps those with 19 (Mathematics) or 20 (Mathematical Literacy) to 22 on a waiting list."
+
+  - id: dip_equine_science
+    name: "Diploma in Equine Science"
+    fields: [agriculture]
+    selective: true
+    selection_note: "TUT scores its potential assessment (40%) and the APS (60%)."
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 19
+      subject_minimums: {english: 4, physical_sciences: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+
+  - id: dip_horticulture
+    name: "Diploma in Horticulture"
+    fields: [agriculture]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 25
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 26
+        - one_of:
+            - subjects: {life_sciences: 3}
+            - subjects: {physical_sciences: 3}
+            - subjects: {technical_sciences: 3}
+
+  - id: dip_landscape_technology
+    name: "Diploma in Landscape Technology"
+    fields: [agriculture, built_environment]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 25
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 26
+        - one_of:
+            - subjects: {life_sciences: 3}
+            - subjects: {physical_sciences: 3}
+            - subjects: {technical_sciences: 3}
+
+  - id: dip_nature_conservation
+    name: "Diploma in Nature Conservation"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 24
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 25
+
+  - id: dip_wildlife_management
+    name: "Diploma in Wildlife Management"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 24
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+              min_points: 25
+
+  - id: hcert_forestry
+    name: "Higher Certificate in Forestry Management (Mbombela campus only)"
+    fields: [agriculture]
+    selective: true
+    selection_note: "TUT selects by an academic proficiency test."
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 18
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 6}
+              min_points: 21
+
+  - id: b_environmental_health
+    name: "Bachelor of Environmental Health"
+    fields: [health_sciences, environmental_health]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 24
+      subject_minimums: {english: 4, life_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+      additional_minimums: [4, 4]
+
+  - id: b_nursing
+    name: "Bachelor of Nursing"
+    fields: [health_sciences, nursing]
+    requirements:
+      source: s-tut-guide-2027
+      min_points: 27
+      subject_minimums: {english: 4, life_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+      competitive_points: 30
+      extras:
+        - "With 27 to 29 points you write TUT's potential assessment and need 50%."
+
+  - id: b_pharmacy
+    name: "Bachelor of Pharmacy"
+    fields: [health_sciences, pharmacy]
+    selective: true
+    selection_note: "TUT adds its potential assessment and a panel interview."
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 24
+      subject_minimums: {english: 4, life_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+      additional_minimums: [4, 4]
+      extras:
+        - "TUT gives preference from 32 points."
+
+  - id: b_radiography
+    name: "Bachelor of Radiography in Diagnostics"
+    fields: [health_sciences, radiography]
+    selective: true
+    selection_note: "TUT scores the APS (60%), its potential assessment (20%) and an interview (20%), with a biographical questionnaire."
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 24
+      subject_minimums: {english: 4, life_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+
+  - id: bhsc_biokinetics
+    name: "Bachelor of Health Sciences in Biokinetics"
+    fields: [health_sciences, rehabilitation, sport_science]
+    selective: true
+    selection_note: "From 24 points, TUT adds a selection test worth half the score."
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 24
+      subject_minimums: {english: 4, life_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+
+  - id: bhsc_clinical_technology
+    name: "Bachelor of Health Sciences in Clinical Technology"
+    fields: [health_sciences, medical_sciences]
+    selective: true
+    selection_note: "TUT adds its potential assessment, then an interview."
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 24
+      subject_minimums: {english: 4, life_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+
+  - id: bhsc_medical_laboratory
+    name: "Bachelor of Health Sciences in Medical Laboratory Science"
+    fields: [health_sciences, medical_sciences]
+    selective: true
+    selection_note: "TUT adds its potential assessment, then an interview."
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 24
+      subject_minimums: {english: 4, life_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+
+  - id: bhsc_orthotics_prosthetics
+    name: "Bachelor of Health Sciences in Medical Orthotics and Prosthetics"
+    fields: [health_sciences, rehabilitation]
+    selective: true
+    selection_note: "Above 27 points, TUT adds an interview and a dexterity test."
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 24
+      subject_minimums: {english: 4, life_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+
+  - id: bhsc_veterinary_technology
+    name: "Bachelor of Health Sciences in Veterinary Technology"
+    fields: [veterinary]
+    selective: true
+    selection_note: "TUT scores its potential assessment (20%), a questionnaire (40%) and the APS (40%)."
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 24
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+
+  - id: dip_kinesiology
+    name: "Diploma in Kinesiology and Coaching Science"
+    fields: [sport_science]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 24
+      subject_minimums: {english: 3, life_sciences: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+
+  # Check: the course row prints "22 (with Mathematics or Technical Sciences)"; Technical Mathematics is
+  # probably meant.
+  - id: dip_somatic_therapy
+    name: "Diploma in Somatic Therapy"
+    fields: [health_sciences]
+    selective: true
+    selection_note: "TUT interviews every applicant; with 22 or 23 points you also write its potential assessment."
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 22
+      subject_minimums: {english: 4, life_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+            - subjects: {mathematical_literacy: 5}
+              min_points: 23
+
+  - id: hcert_dental_assisting
+    name: "Higher Certificate in Dental Assisting"
+    fields: [health_sciences, dentistry]
+    selective: true
+    selection_note: "TUT adds its potential assessment, then an interview."
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 20
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "TUT asks for level 3 in your other subjects."
+
+  - id: bsc_industrial_chemistry
+    name: "BSc in Industrial Chemistry"
+    fields: [natural_sciences, physical_sciences]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 24
+      subject_minimums: {english: 4, mathematics: 5, physical_sciences: 5}
+
+  - id: dip_analytical_chemistry
+    name: "Diploma in Analytical Chemistry"
+    fields: [natural_sciences, physical_sciences]
+    requirements:
+      source: s-tut-guide-2027
+      min_points: 21
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+      competitive_points: 27
+      extras:
+        - "TUT considers applicants from 27 points and keeps those with 21 to 26 on a waiting list."
+
+  - id: dip_biotechnology
+    name: "Diploma in Biotechnology"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 24
+      subject_minimums: {english: 4, life_sciences: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+
+  - id: dip_environmental_sciences
+    name: "Diploma in Environmental Sciences"
+    fields: [natural_sciences, earth_sciences]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 24
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+
+  - id: dip_food_technology
+    name: "Diploma in Food Technology"
+    fields: [food_science]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 24
+      subject_minimums: {english: 4, life_sciences: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+
+  - id: dip_geology
+    name: "Diploma in Geology"
+    fields: [natural_sciences, earth_sciences]
+    requirements:
+      source: s-tut-guide-2027
+      min_points: 21
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+      competitive_points: 24
+      extras:
+        - "With 21 to 23 points you write an academic proficiency test."
+
+  - id: dip_industrial_physics
+    name: "Diploma in Industrial Physics"
+    fields: [natural_sciences, physical_sciences]
+    requirements:
+      source: s-tut-guide-2027
+      min_points: 21
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+      competitive_points: 24
+      extras:
+        - "With 21 to 23 points you write an academic proficiency test."
+
+  - id: dip_water_science
+    name: "Diploma in Water Science and Technology"
+    fields: [natural_sciences, earth_sciences]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 21
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 4}
+
+  - id: hcert_resource_waste
+    name: "Higher Certificate in Resource and Waste Management"
+    fields: [natural_sciences]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 18
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 6}
+              min_points: 21
+
+  - id: hcert_water_treatment
+    name: "Higher Certificate in Water Treatment"
+    fields: [natural_sciences]
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 18
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {technical_mathematics: 3}
+            - subjects: {mathematical_literacy: 6}
+              min_points: 21
+        - one_of:
+            - subjects: {physical_sciences: 3}
+            - subjects: {technical_sciences: 3}
+
+sources:
+  - id: s-tut-courses-2027
+    url: "https://www.tut.ac.za/media/tshwane-interim/site-content/documents/First-Year-Course_Information.pdf"
+    publisher: "Tshwane University of Technology"
+    title: "2027 First Year Course Information"
+    retrieved: 2026-10-09
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-tut-guide-2027
+    url: "https://www.tut.ac.za/media/tshwane-interim/site-content/documents/General-Information-First-Year-Enrolment.pdf"
+    publisher: "Tshwane University of Technology"
+    title: "2027 General Information for First Year Enrolment"
+    retrieved: 2026-10-09
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-tut-rules-2026
+    url: "https://www.tut.ac.za/media/tshwane-interim/site-content/images/prospectus/Part1_Students_Rules_and_Regulations.pdf"
+    publisher: "Tshwane University of Technology"
+    title: "2026 Prospectus, Part 1: Students' Rules and Regulations"
+    retrieved: 2026-10-09
+    last_verified: null
+    verified_by: "agent draft, needs human check"

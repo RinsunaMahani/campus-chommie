@@ -79,6 +79,8 @@ class PointsRule(_Strict):
     life_orientation: Literal["full", "half", "exclude"] = "full"
     # Subjects below this level add no points (TUT: 2, because a level 1 isn't counted).
     count_from_level: int = Field(default=1, ge=1, le=8)
+    # Shown with every result counted this way, e.g. when a rule rests on an assumption.
+    note: str | None = None
     scale: list[ScaleBand]
 
     @model_validator(mode="after")

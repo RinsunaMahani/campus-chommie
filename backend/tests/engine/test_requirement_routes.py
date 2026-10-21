@@ -226,6 +226,11 @@ def test_a_programme_can_use_its_own_points_table(uni):
     assert "This programme uses its own points table, not the university's usual one." in m.explanation
 
 
+def test_a_points_rule_can_carry_a_note():
+    rule = PointsRule(source="s", subjects_counted=6, life_orientation="exclude", note="We assume six subjects.", scale=SCALE)
+    assert "We assume six subjects." in compute_points({"english": 80}, rule).notes
+
+
 def test_subjects_below_the_lowest_counted_level_add_nothing():
     rule = PointsRule(source="s", subjects_counted=3, life_orientation="exclude", count_from_level=2, scale=SCALE)
     result = compute_points({"english": 80, "history": 60, "mathematics": 25}, rule)

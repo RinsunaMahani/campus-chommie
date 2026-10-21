@@ -69,6 +69,8 @@ def compute_points(marks: dict[str, float], rule: PointsRule) -> PointsResult:
     counted = [s for s, _ in best] + ([LIFE_ORIENTATION] if lo_counts else [])
     if any(levels[s] < rule.count_from_level for s in counted):
         notes.append(f"Subjects below level {rule.count_from_level} add no points here.")
+    if rule.note:
+        notes.append(rule.note)
     if len(marks) < rule.subjects_counted:
         notes.append(
             f"Only {plural(len(marks), 'subject')} entered; this university counts {rule.subjects_counted}."
