@@ -124,6 +124,72 @@ Backend: **1168 tests pass** on PostgreSQL 16 (13 Oct 2026), including:
 
 App: TypeScript check, ESLint (no warnings) and Jest pass, including a test of the exact sign-up request.
 
+## Security sweep 1 (21 Oct 2026)
+
+Before the hackathon weekend we attacked our own system, only ever a copy on our own computer: the API run with the
+production config (HSTS, strict CORS, real-looking keys made up for the run, mail pointed at a closed port) on
+127.0.0.1, against our own sandbox database. The live server got one `GET /ping` to read its headers, nothing more.
+
+| Tool | What it covered | Result |
+|---|---|---|
+| Bandit 1.9.4 | the backend's code (`src`, `campus_engine`, `scripts`), 17,560 lines | 27 findings, all reviewed: 25 low (event names and rate limits containing the word "password" or "token"; two `assert`s that only narrow types), and two false positives (the plain-text email templates aren't HTML-escaped because they are never HTML; a data script opens fixed https addresses), which carry `# nosec` with the reason above them. **Now in CI**: any medium or high finding fails the build. |
+| Semgrep 1.140 (`p/python`, `p/flask`, `p/typescript`, `p/react`, `p/secrets`) | backend and app code, 698 files | 7 findings, all false positives: six log lines named after tokens or passwords that log only ids, a masked email and a reason; and the plain-text email templates again |
+| pip-audit, npm audit | the backend's and app's dependencies | none for the backend (PyJWT's PYSEC-2026-4146 is no longer reported, so CI ignores nothing now); for the app, the two accepted advisories below and nothing else high or critical |
+| gitleaks 8.28 | every commit on every branch | nothing beyond the three reviewed false positives in `.gitleaksignore` |
+| Our pen test, [`backend/scripts/security/pentest_local.py`](../backend/scripts/security/pentest_local.py) | 105 attacks on the running API (below) | **105 pass** after the fixes below (103 before) |
+| OWASP ZAP 2.16.1 baseline | the API and the password reset page | no failures; warnings below |
+
+What the pen test tries, signed in as two demo personas (A and B) and with one throwaway account per run:
+
+- **Tokens:** none, garbage, `alg: none`, signed with a guessed key, someone else's id or a later expiry in the
+  payload, a refresh token used as an access token and the other way round; refresh rotation (a used refresh token
+  shown again ends the whole session, and its access tokens stop); sign-out stops both tokens and leaves other
+  sessions working.
+- **Someone else's data (IDOR):** A creates a goal, income source, plan, exam, class, module and assessment; B tries to
+  change and delete each by its id (also A's assessment through B's own module, A's expected payment, and made-up
+  notification and candidate ids). Every try is a 404, nothing of A's changes, and none of it appears in B's lists or
+  data export. The owner then deletes everything.
+- **Mass assignment:** `user_id`, `is_demo`, `email`, a chosen `id` and unknown query fields are refused.
+- **Hostile input:** broken JSON, a list for an object, JSON nested 50,000 deep, a 2 MB body (413), the wrong content
+  type, amounts of 10^30, negative, fractional, text or `true`, 30 February, 25:99, a NUL byte, path traversal and SQL
+  in ids, SQL in a title (stored as plain text), SQL in a search, a script in the reset page's link (not echoed).
+- **PDF import:** not a PDF, a cut-off PDF, 400 pages, 2 MB, no layout, an extra field, no file, signed out.
+- **Accounts:** registering a taken email, a wrong password and an unknown email, and forgot-password for a real and an
+  unknown email each look the same; the 18-or-older box must be exactly `true`; 5 wrong passwords lock the account;
+  the login and email-code limits trigger; the judges' demo password can't be changed and demo accounts can't be
+  closed.
+- **Everywhere:** security headers on every answer, JSON 404 and 405 (never 500), a stranger's website refused by CORS,
+  `/ping` limited, and no answer ever showing a traceback, SQL or a driver name.
+
+To run it again, start the API as production on this computer, then
+`PENTEST_PASSWORD=<demo password> python scripts/security/pentest_local.py http://127.0.0.1:<port>` (it refuses any
+other host). Use a freshly started server: the per-hour limits on register and forgot-password rightly catch a
+second run.
+
+### Found and fixed
+
+| Finding | Severity | Fix |
+|---|---|---|
+| While an account was locked, the right password got `423 ACCOUNT_LOCKED` and a wrong one `401`, so a guesser learned each correct guess during the lock: 5 tries a minute instead of 5 per 15 minutes | Medium | every try during a lock gets the same generic answer, which now says sign-in pauses after several wrong tries; the owner learns of the lock from the in-app alert; the audit record notes whether the password was right, for investigation (`test_while_locked_the_right_password_looks_like_a_wrong_one`) |
+| Deleting a module that still had assessments was a 500 (SQLAlchemy blanked the assessments' `module_id` instead of letting the database cascade) | Low: a crash, no data exposed | the relationship leaves it to `ON DELETE CASCADE` (`test_deleting_a_module_takes_its_marks_with_it`) |
+| No Content-Security-Policy | Low (hardening) | API answers: `default-src 'none'; frame-ancestors 'none'; base-uri 'none'`. The reset page: only its own style and script, by a fresh nonce each time, and its form posts only to itself |
+| ZAP: no Permissions-Policy, no cross-origin isolation | Low (hardening) | `Permissions-Policy` turns off camera, microphone, location and payment; `Cross-Origin-Opener-Policy` and `Cross-Origin-Resource-Policy` are `same-origin` (the API serves no images, so nothing the app loads is blocked) |
+
+ZAP warnings we accept: the version in the `Server` header comes from the local development server only (the app
+removes it; live, Cloudflare puts its own); "non-storable content" is our `no-store`, on purpose; the reset ticket is
+in the email link's address by design (one use, 30 minutes, no referrer, not cached, not in gunicorn's logs).
+
+### Open, for the team
+
+- **Rate limits on Render may count every visitor as one.** The live API sits behind Render's proxy and Cloudflare
+  (`Server: cloudflare` and `CF-RAY` in its answers). With `BEHIND_CLOUDFLARE` off, the app reads the proxy's address
+  as the client's, so per-IP limits are probably shared by everyone: all the judges together would get 20 demo
+  sign-ins an hour. The fix is a setting, not code: `BEHIND_CLOUDFLARE=true` on Render, so the app reads
+  `CF-Connecting-IP`, which Cloudflare sets itself. It's a hosting change, so Rinsuna decides. Afterwards, check that
+  the header can't be forged: a few `GET /ping` calls, each with a different made-up `CF-Connecting-IP`, must count
+  down one shared `X-RateLimit-Remaining` rather than each starting fresh.
+- MobSF on the signed APK, once it's built.
+
 ## Accepted dependency risks
 
 Checked 9 Oct 2026. Werkzeug (3.1.9) and PyJWT (2.15.0) were upgraded and the Expo SDK 57 packages patched, which
@@ -132,11 +198,12 @@ once it passes.
 
 | Advisory | Package | Why it's accepted for now | Review by |
 |---|---|---|---|
-| PYSEC-2026-4146 | PyJWT | needs code that decodes with signature checks off while reusing an options dict; our code never calls PyJWT, and Flask-JWT-Extended builds a fresh dict with checks on every time | when PyJWT ships a fix |
-| GHSA-vfj7-8cjw-p6xm | braces | denial of service through nested glob patterns, reached only through build tooling (Metro, Jest) with our own patterns; not in the app or web bundle | 23 Oct 2026 |
-| GHSA-86w9-cpqp-85rv | node-forge | signature-check flaw in the Expo CLI's code-signing helper, which we don't use; not in the app or web bundle | 23 Oct 2026 |
+| GHSA-vfj7-8cjw-p6xm | braces | denial of service through nested glob patterns, reached only through build tooling (Metro, Jest) with our own patterns; not in the app or web bundle | 6 Nov 2026 |
+| GHSA-86w9-cpqp-85rv | node-forge | signature-check flaw in the Expo CLI's code-signing helper, which we don't use; not in the app or web bundle | 6 Nov 2026 |
 
-The `.gitleaksignore` file holds one reviewed false positive: the testing config's placeholder JWT key.
+The `.gitleaksignore` file holds three reviewed false positives: the testing config's placeholder JWT key, and a
+storage key's name in two files on the closed, unmerged tabs branch. PyJWT's PYSEC-2026-4146, accepted on 9 Oct,
+is no longer reported (21 Oct).
 
 ## Known gaps
 

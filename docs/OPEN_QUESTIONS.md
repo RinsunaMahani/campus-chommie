@@ -392,6 +392,11 @@ other official language, and the results say which; second additional languages 
   to choose: the host, the managed PostgreSQL (a direct connection, not a transaction pooler), and whether to add
   error monitoring (an external service).
 
+- [ ] **`BEHIND_CLOUDFLARE` on Render** (security sweep 1, 21 Oct 2026; [SECURITY.md](SECURITY.md)): the live API sits
+  behind Cloudflare, so without this setting every visitor's rate limits probably count as one (all the judges
+  together: 20 demo sign-ins an hour). Turning it on is a hosting change, so it's Rinsuna's call; afterwards, check
+  with a few `GET /ping` calls carrying different made-up `CF-Connecting-IP` values that the header can't be forged.
+
 ## Campus maps
 
 - [x] **Campus maps** (a scope change by Rinsuna, 12 Oct 2026: the brief had an interactive map on the roadmap only).
