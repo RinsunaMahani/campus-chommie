@@ -10,6 +10,7 @@ import { View } from 'react-native';
 import { studentHeader } from '@/features/profile/components/HeaderTools';
 import { errorText } from '@/shared/api/errors';
 import { Button } from '@/shared/components/Button';
+import { EmptyState } from '@/shared/components/EmptyState';
 import { Card } from '@/shared/components/Parts';
 import { Screen } from '@/shared/components/Screen';
 import { ErrorBox } from '@/shared/components/Status';
@@ -68,6 +69,9 @@ export default function TimetableScreen() {
             <Body key={i}>{line}</Body>
           ))}
         </Card>
+      ) : null}
+      {answer && !answer.entries.length ? (
+        <EmptyState icon="calendar" title={t('timetable.emptyTitle')} body={t('timetable.emptyBody')} />
       ) : null}
       {answer
         ? DAY_NAMES.map((day, weekday) => {

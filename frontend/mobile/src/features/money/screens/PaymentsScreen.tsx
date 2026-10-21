@@ -1,9 +1,10 @@
-import { useFocusEffect } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
 import { useCallback, useState } from 'react';
 import { View } from 'react-native';
 
 import { errorText } from '@/shared/api/errors';
 import { Button } from '@/shared/components/Button';
+import { EmptyState } from '@/shared/components/EmptyState';
 import { Card, Tag } from '@/shared/components/Parts';
 import { Screen } from '@/shared/components/Screen';
 import { ErrorBox, Loading } from '@/shared/components/Status';
@@ -54,7 +55,14 @@ export default function PaymentsScreen() {
       </View>
       {error ? <ErrorBox message={error} /> : null}
       {!error && !payments ? <Loading /> : null}
-      {payments && !payments.length ? <Body>{t('money.paymentsEmpty')}</Body> : null}
+      {payments && !payments.length ? (
+        <EmptyState
+          icon="calendar"
+          title={t('money.paymentsEmptyTitle')}
+          body={t('money.paymentsEmpty')}
+          action={{ label: t('money.incomeAdd'), onPress: () => router.push('/money/income-edit') }}
+        />
+      ) : null}
       {payments?.map((p) => (
         <Card key={p.id} style={{ gap: 8 }}>
           <Strong>{p.label}</Strong>

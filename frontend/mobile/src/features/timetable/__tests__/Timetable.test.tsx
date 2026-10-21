@@ -75,6 +75,14 @@ test('the timetable lists classes by day, says the week in words and flags clash
   expect(screen.getByText('Practical')).toBeTruthy();
 });
 
+test('with no classes yet, the timetable says what goes here and how to fill it', async () => {
+  jest.spyOn(timetableApi, 'mine').mockResolvedValue({ entries: [], lines: ['No classes yet.'] });
+  render(<TimetableScreen />);
+  expect(await screen.findByText('No classes yet')).toBeTruthy();
+  expect(screen.getByText(/Import your university's timetable PDF/)).toBeTruthy();
+  expect(screen.queryByText('Monday')).toBeNull();
+});
+
 test('the calendar places classes on their weekday, timed tests in the grid and late deadlines in Due', async () => {
   const days: Day[] = [{ date: '2026-10-19', weekday: 0, label: 'Mon 19', today: false }];
   const event = (over: Partial<ClassEvent>): ClassEvent => ({

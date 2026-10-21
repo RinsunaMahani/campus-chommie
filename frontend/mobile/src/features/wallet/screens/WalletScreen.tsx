@@ -8,6 +8,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { useSession } from '@/features/auth/session/SessionProvider';
 import { Button } from '@/shared/components/Button';
+import { EmptyState } from '@/shared/components/EmptyState';
 import { InfoNote } from '@/shared/components/Parts';
 import { Screen } from '@/shared/components/Screen';
 import { t } from '@/shared/i18n';
@@ -38,7 +39,7 @@ export default function WalletScreen() {
           <Button title={t('wallet.add')} variant="primary" icon="plus" onPress={() => router.push('/wallet/add')} />
         ) : undefined
       }>
-      {cards && !cards.length ? <InfoNote icon="credit-card">{t('wallet.empty')}</InfoNote> : null}
+      {cards && !cards.length ? <EmptyState icon="credit-card" title={t('wallet.emptyTitle')} body={t('wallet.empty')} /> : null}
       <View style={styles.grid}>
         {cards?.map((c) => {
           const tint = colors.classColours[c.colour % colors.classColours.length];

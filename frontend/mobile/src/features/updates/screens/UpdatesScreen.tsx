@@ -4,10 +4,11 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { errorText } from '@/shared/api/errors';
 import { Button } from '@/shared/components/Button';
+import { EmptyState } from '@/shared/components/EmptyState';
 import { Card, ToggleRow } from '@/shared/components/Parts';
 import { Screen } from '@/shared/components/Screen';
 import { ErrorBox, Loading } from '@/shared/components/Status';
-import { Body, Muted, Overline, Title } from '@/shared/components/Text';
+import { Muted, Overline, Title } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
 import { formatDay } from '@/shared/lib/dates';
 import { fonts, radius } from '@/shared/theme/tokens';
@@ -73,7 +74,7 @@ export default function UpdatesScreen() {
       <Title>{t('updates.title')}</Title>
       {error ? <ErrorBox message={error} /> : null}
       {!error && !updates ? <Loading /> : null}
-      {updates && !updates.length ? <Body>{t('updates.none')}</Body> : null}
+      {updates && !updates.length ? <EmptyState icon="bell" title={t('updates.noneTitle')} body={t('updates.none')} /> : null}
       {unread > 0 ? <Button title={t('updates.readAll')} variant="secondary" icon="check" onPress={readAll} /> : null}
       {updates?.map((u) => (
         <Pressable key={u.id} accessibilityRole="button" onPress={() => open(u)}>

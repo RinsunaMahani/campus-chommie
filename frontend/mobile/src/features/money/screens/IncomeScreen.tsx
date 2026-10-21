@@ -5,6 +5,7 @@ import { StyleSheet, View } from 'react-native';
 
 import { errorText } from '@/shared/api/errors';
 import { Button } from '@/shared/components/Button';
+import { EmptyState } from '@/shared/components/EmptyState';
 import { Card, Tag } from '@/shared/components/Parts';
 import { Screen } from '@/shared/components/Screen';
 import { ErrorBox, Loading } from '@/shared/components/Status';
@@ -44,7 +45,9 @@ export default function IncomeScreen() {
       </View>
       {error ? <ErrorBox message={error} /> : null}
       {!error && !sources ? <Loading /> : null}
-      {sources && !sources.length ? <Body>{t('money.incomeEmpty')}</Body> : null}
+      {sources && !sources.length ? (
+        <EmptyState icon="arrow-down-circle" title={t('money.incomeEmptyTitle')} body={t('money.incomeEmpty')} />
+      ) : null}
       {sources?.map((s) => (
         <Card key={s.id} onPress={() => router.push({ pathname: '/money/income-edit', params: { id: s.id } })} style={styles.card}>
           <View style={{ flex: 1, gap: 4 }}>
