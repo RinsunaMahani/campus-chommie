@@ -3,6 +3,11 @@
 Rule-based on purpose: predictable, testable and cheap. Every field carries a
 confidence, anything uncertain is flagged for the rep, and nothing goes live
 without the rep's confirmation.
+
+Reads English, and the Afrikaans words students use for the same things
+(toets, eksamen, vasvra, opdrag, verskuif, gekanselleer, the months and the
+days). Greetings and asides in any language are simply passed over. "Môre"
+is left out on purpose: it means "tomorrow" and "good morning".
 """
 from __future__ import annotations
 
@@ -10,36 +15,56 @@ import re
 from dataclasses import dataclass, field
 from datetime import date, datetime, time, timedelta
 
+from .text import join, long_day, num
 from .workload import AcademicEvent
 
 CHECK_BELOW = 0.7
 
+#: How the fields are named to a rep.
+FIELD_WORDS = {"kind": "type", "module": "module", "on": "date", "at": "time", "venue": "venue"}
+
+# A kind's word can run straight into its number ("test1"): each ends where letters end, not at a word boundary.
 STRONG_KINDS = [
-    ("exam", r"\bexam(?:ination)?s?\b"),
-    ("test", r"\btests?\b"),
-    ("quiz", r"\bquiz(?:zes)?\b"),
-    ("practical", r"\b(?:practicals?|pracs?)\b"),
-    ("assignment", r"\b(?:assignments?|essays?|projects?|reports?)\b"),
+    ("exam", r"\b(?:exam(?:ination)?s?|eksamens?)(?![a-z])"),
+    ("test", r"\b(?:tests?|(?:klas|semester)?toetse?)(?![a-z])"),
+    ("quiz", r"\b(?:quiz(?:zes)?|vasvrae?)(?![a-z])"),
+    ("practical", r"\b(?:practicals?|pracs?|praktika|praks?)(?![a-z])"),
+    ("assignment", r"\b(?:assignments?|essays?|projects?|reports?|(?:werk)?opdrag(?:te)?|werkstuk(?:ke)?)(?![a-z])"),
 ]
-WEAK_ASSIGNMENT = re.compile(r"\b(?:due|submit|submission)\b", re.I)
+WEAK_ASSIGNMENT = re.compile(r"\b(?:due|submit|submission|inhandig|ingehandig)\b", re.I)
 
 _MONTH = (
-    r"(jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|june?|july?|aug(?:ust)?|"
-    r"sep(?:t(?:ember)?)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)\.?"
+    r"(jan(?:uary|uarie)?|feb(?:ruary|ruarie)?|mar(?:ch)?|maart|mrt|apr(?:il)?|may|mei|jun(?:e|ie)?|jul(?:y|ie)?|"
+    r"aug(?:ust(?:us)?)?|sep(?:t(?:ember)?)?|oct(?:ober)?|okt(?:ober)?|nov(?:ember)?|dec(?:ember)?|des(?:ember)?)\.?"
 )
-MONTHS = {"jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6, "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12}
+MONTHS = {
+    "jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6, "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12,
+    "maa": 3, "mrt": 3, "mei": 5, "okt": 10, "des": 12,  # Afrikaans
+}
 
 TITLE = re.compile(
-    r"\b(exam|test|quiz|practical|prac|assignment|essay|project|report)\s*(?:no\.?\s*|number\s*|#\s*)?(\d{1,2})\b"
+    r"\b(exam|test|quiz|practical|prac|assignment|essay|project|report|eksamen|toets|vasvra|werkopdrag|opdrag|praktika|prak)"
+    r"\s*(?:no\.?\s*|nr\.?\s*|number\s*|nommer\s*|#\s*)?(\d{1,2})\b"
     rf"(?!\s*%)(?![/.]\d)(?!\s*(?:st|nd|rd|th)?\s+(?:of\s+)?{_MONTH})",
     re.I,
 )
+#: A title's word as the app says it.
+TITLE_WORDS = {
+    "prac": "practical", "prak": "practical", "praktika": "practical", "toets": "test", "eksamen": "exam",
+    "vasvra": "quiz", "opdrag": "assignment", "werkopdrag": "assignment",
+}
 QUALIFIED = re.compile(r"\b(semester|class|mid[- ]?term|final|main|practical)\s+(test|exam)\b", re.I)
 
 CANCELLED = re.compile(
-    r"\b(?:cancel(?:l)?ed|called off|won'?t take place|will not take place|no longer taking place)\b", re.I
+    r"\b(?:cancel(?:l)?ed|called off|won'?t take place|will not take place|no longer taking place|"
+    r"(?:ge)?kanselleer|afgelas|sal nie plaasvind nie)\b",
+    re.I,
 )
-MOVED = re.compile(r"\b(?:moved|postponed|rescheduled|shifted|changed to|new date|brought forward|now on)\b", re.I)
+MOVED = re.compile(
+    r"\b(?:moved|moves? to|postponed|rescheduled|shifted|changed to|has been changed|venue change[ds]?|"
+    r"new (?:date|time|venue)|brought forward|now on|verskuif|uitgestel|nuwe datum)\b",
+    re.I,
+)
 
 PERCENT = re.compile(r"\b(\d{1,3}(?:\.\d+)?)\s?%")
 TIME_12 = re.compile(r"\b(1[0-2]|0?[1-9])(?:[:h.]([0-5]\d))?\s*(am|pm)\b", re.I)
@@ -49,10 +74,17 @@ ISO_DATE = re.compile(r"\b(\d{4})-(\d{1,2})-(\d{1,2})\b")
 DAY_MONTH = re.compile(rf"\b(\d{{1,2}})(?:st|nd|rd|th)?\s+(?:of\s+)?{_MONTH}(?:,?\s+(\d{{4}}))?\b", re.I)
 MONTH_DAY = re.compile(rf"\b{_MONTH}\s+(\d{{1,2}})(?:st|nd|rd|th)?(?:,?\s+(\d{{4}}))?\b", re.I)
 NUMERIC_DATE = re.compile(r"\b(\d{1,2})[/.](\d{1,2})(?:[/.](\d{4}|\d{2}))?\b")
-RELATIVE = re.compile(r"\b(today|tonight|tomorrow)\b", re.I)
-WEEKDAY_LONG = re.compile(r"\b(next\s+)?(monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b", re.I)
+RELATIVE = re.compile(r"\b(today|tonight|tomorrow|vandag|vanaand)\b", re.I)
+WEEKDAY_LONG = re.compile(
+    r"\b(next\s+|volgende\s+)?(monday|tuesday|wednesday|thursday|friday|saturday|sunday|"
+    r"maandag|dinsdag|woensdag|donderdag|vrydag|saterdag|sondag)\b",
+    re.I,
+)
 WEEKDAY_SHORT = re.compile(r"\b(next\s+)?(Mon|Tues|Tue|Wed|Thurs|Thur|Thu|Fri|Sat|Sun)\b")
-WEEKDAYS = {"mon": 0, "tue": 1, "wed": 2, "thu": 3, "fri": 4, "sat": 5, "sun": 6}
+WEEKDAYS = {
+    "mon": 0, "tue": 1, "wed": 2, "thu": 3, "fri": 4, "sat": 5, "sun": 6,
+    "maa": 0, "din": 1, "woe": 2, "don": 3, "vry": 4, "son": 6,  # Afrikaans (Saterdag is "sat")
+}
 
 VENUE_KEYED = re.compile(
     r"\b(lecture hall|room|hall|lab|lt|auditorium|venue)\s*[:#-]?\s*([A-Za-z]{0,2}\s?\d{1,4}[A-Za-z]?)\b", re.I
@@ -139,7 +171,7 @@ def _find_title(text: str, kind: str | None) -> str | None:
     m = TITLE.search(text)
     if m:
         word = m.group(1).lower()
-        word = {"prac": "practical"}.get(word, word)
+        word = TITLE_WORDS.get(word, word)
         return f"{word.capitalize()} {int(m.group(2))}"
     m = QUALIFIED.search(text)
     if m:
@@ -296,3 +328,52 @@ def apply_change(candidate: Candidate, event: AcademicEvent) -> list[str]:
         changes.append(f"venue {event.venue or 'not set'} to {candidate.venue}")
         event.venue = candidate.venue
     return changes
+
+
+def _clock(t: time | None) -> str:
+    return f"{t:%H:%M}" if t else "no time set"
+
+
+def reading(c: Candidate, target_title: str | None = None, target_on: date | None = None) -> list[str]:
+    """What we read from an announcement, and what the rep should check, in plain words. For a
+    change message, `target_title` and `target_on` name the event it most likely changes."""
+    if c.change == "cancelled":
+        lines = [
+            f"We read this as: {target_title} on {long_day(target_on)} is cancelled."
+            if target_title and target_on
+            else "We read this as a cancellation, but couldn't tell which event: choose it before confirming."
+        ]
+    elif c.change == "moved":
+        if target_title and target_on:
+            new = (f" to {long_day(c.on)}" if c.on else "") + (f" at {c.at:%H:%M}" if c.at else "")
+            new += f", {c.venue}" if c.venue else ""
+            lines = [f"We read this as: {target_title} on {long_day(target_on)} moves{new or ', but not where to'}."]
+        else:
+            lines = ["We read this as a change to an event, but couldn't tell which one: choose it before confirming."]
+    else:
+        what = c.title or (c.kind.capitalize() if c.kind else None)
+        if what is None and c.on is None:
+            lines = ["We couldn't find a test, assignment or date in this message: fill in the event before confirming."]
+        else:
+            text = f"We read this as: {what or 'An event'}" + (f" for {c.module}" if c.module else "")
+            text += (f" on {long_day(c.on)}" if c.on else "") + (f" at {c.at:%H:%M}" if c.at else "")
+            text += (f", {c.venue}" if c.venue else "") + (f", worth {num(c.weighting)}% of the mark" if c.weighting else "")
+            lines = [text + "."]
+    checks = c.needs_check()
+    if checks:
+        lines.append(f"Check the {join([FIELD_WORDS[f] for f in checks])} before confirming.")
+    return lines + c.notes
+
+
+def change_line(field: str, old, new) -> str:
+    """One recorded change to a verified event, in plain words: `old` and `new` are a date (on),
+    a time or None (at), text or None (venue), or True and False (cancelled)."""
+    if field == "on":
+        return f"Moved from {long_day(old)} to {long_day(new)}."
+    if field == "at":
+        return f"Time changed from {_clock(old)} to {_clock(new)}."
+    if field == "venue":
+        return f"Venue changed from {old or 'not set'} to {new or 'not set'}."
+    if field == "cancelled":
+        return "Cancelled." if new else "Back on: no longer cancelled."
+    raise ValueError(f"unknown field {field!r}")

@@ -24,6 +24,12 @@ def university_of(user) -> str | None:
     return profile.university if profile else None
 
 
+def place_of(user) -> tuple[str | None, str | None]:
+    """The student's university and campus ids: (None, None) before they've chosen."""
+    profile = repo.for_user(user.id)
+    return (profile.university, profile.campus) if profile else (None, None)
+
+
 def view(user) -> dict:
     profile = repo.for_user(user.id)
     consents = account_service.consents_view(user)

@@ -26,7 +26,8 @@ DB_SCHEMAS = (
     "identity",   # accounts, credentials, device keys
     "audit",      # security and audit events
     "platform",   # infrastructure no domain owns: idempotency keys, notifications
-    "student",    # a student's own records: profile, money (owner-only)
+    "student",    # a student's own records: profile, money, marks (owner-only)
+    "classes",    # classes, members, reps, announcements, verified events
 )
 
 

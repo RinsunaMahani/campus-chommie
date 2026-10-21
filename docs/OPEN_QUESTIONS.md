@@ -136,6 +136,17 @@ per intake (the year a learner would start), with programmes that close on their
 university names without saying which programme closes when, a late window or "no late applications", the fee in
 cents, documents and next steps, each with its source. `funding.yaml` holds national funders the same way.
 
+## Reading class announcements (Rinsuna)
+
+- [ ] **Afrikaans words the engine reads** (added by Rinsuna's agent, 10 Oct 2026; a fluent speaker to check): toets,
+  eksamen, vasvra, opdrag, werkopdrag, werkstuk, praktika, prak, verskuif, uitgestel, nuwe datum, gekanselleer,
+  afgelas, "sal nie plaasvind nie", the months (Okt, Mrt, Mei, Des and the full names), the days, vandag and
+  vanaand. They only read what a rep pastes; nothing is shown in Afrikaans. "Môre" is left out on purpose: it means
+  "tomorrow" and "good morning".
+- [ ] **Other languages' words** for test, exam, moved and cancelled (isiZulu, Sepedi, Setswana, Xitsonga and the
+  others): not added, because we don't guess. A fluent speaker can list the words students really use. Messages that
+  mix languages already work when the facts are in English (they're in the labelled set).
+
 ## Privacy and legal (both)
 
 - [ ] **Privacy Policy and Terms of Use** are drafts (`0.1-draft`, in `frontend/mobile/src/content/legal/`). They need
@@ -193,7 +204,24 @@ cents, documents and next steps, each with its source. `funding.yaml` holds nati
   - **Onboarding:** a university and campus picker for `PUT /me/profile`.
 - [ ] **The university's own deadlines in My week** (agreed by Rinsuna on 10 Oct 2026; Mandla to confirm): calendar
   entries with `period: deadline` (re-marks, exclusion appeals, module changes, graduation applications) shown with
-  the class deadlines in M4's week view.
+  the class deadlines in M4's week view. **Built** on `rinsuna/m4-my-week`: each week of `GET /week` lists the
+  calendar entries for the student's campus (deadlines, test weeks, exams, recess) beside its verified events.
+- [ ] **My week's screens** (M4, Mandla), on the API in `rinsuna/m4-my-week` (README, "My marks" and "Classes, reps
+  and verified events"):
+  - **Classes:** create one (you become its rep), join with a code (an invite code or a rep code, in the same box),
+    and a rep's "add a rep" button that shows a one-time code to pass on.
+  - **Rep panel:** paste an announcement; show `lines` and the `read_as` fields with the `needs_check` ones
+    highlighted; the form starts from `proposed`; confirm or discard. For a "moved" or "cancelled" message,
+    `changes_event` is the event it changes (the rep can choose another).
+  - **Students:** their own announcements show "A class rep checks this before it goes live"; each event has a
+    flag button with the six reasons.
+  - **Week strip:** eight weeks with the `load` word (never colour alone), the `reason` line, and a tap to see the
+    week's events and calendar entries.
+  - **My marks:** modules with their assessments, the standing message, and the projection with its range.
+- [ ] **Flag counts for reps** (decided by Rinsuna's agent while building, 10 Oct 2026; Mandla to confirm): a rep sees
+  how many students flagged an event and why, from the first flag, never who. We read CLAUDE.md's "aggregates only
+  when at least 5 students contribute" as covering marks and money. If the team reads it as covering flags too,
+  reps would see counts only from 5 flags, and small classes would rarely see any.
 - [x] **Every public university, and private colleges** (proposed by Rinsuna's agent and agreed by Rinsuna on 10 Oct
   2026): a directory of all 26 public universities with each one's application page, dates and fee, but not their
   admission rules; private colleges only as a link to DHET's register of private higher education institutions, so a
@@ -230,7 +258,10 @@ cents, documents and next steps, each with its source. `funding.yaml` holds nati
 - M3: onboarding brings back an `(onboarding)` route group: 18-or-older confirmation (already recorded at sign-up),
   privacy notice, consent, university and campus. The student profile can read the 18-or-older date from the consent
   records.
-- M4: class updates are the first alerts a student could switch off; notification switches come back with them.
-- M4: the money summary's life fund can't see the student's week yet, so the brief's M3 check "the self-funded
-  persona shows an amber life fund because of a heavy week" passes only once classes and the week exist. Until
-  then the summary says "Your week isn't part of this yet". The allowance-funded persona's check passes now.
+- M5: class updates (a new or changed event) are the first alerts a student could switch off; notification switches
+  come back with them.
+- [x] M4: the money summary's life fund reads the student's week: done on `rinsuna/m4-my-week` (10 Oct 2026). The
+  self-funded persona's heavy week now gives an amber life fund (the brief's M3 check); a student in no classes yet
+  still sees "Your week isn't part of this yet".
+- M5: when a module's standing is out of reach, the alert should point to the campus's academic support from the
+  pack (wellbeing wording: never "at risk").
