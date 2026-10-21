@@ -1,0 +1,12 @@
+[project]
+name = "campus-chommie"
+version = "0.1.0"
+description = "Campus Chommie backend: the Flask API and campus_engine (matching, planning, workload, money runway and predictions, pure Python)."
+requires-python = ">=3.11"
+
+[tool.ruff]
+line-length = 140
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]

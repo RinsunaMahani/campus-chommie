@@ -1,0 +1,82 @@
+import { Feather } from '@expo/vector-icons';
+import { ComponentProps } from 'react';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
+
+import { colors, fonts, radius, sizes } from '@/shared/theme/tokens';
+
+type Props = {
+  initial: string;
+  title: string;
+  subtitle?: string;
+  action?: { icon: ComponentProps<typeof Feather>['name']; label: string; onPress: () => void; dot?: boolean; badge?: number };
+  /** Tapping the avatar opens the student's account. */
+  onAvatarPress?: () => void;
+};
+
+/** Tab screens' top bar: who is signed in, and one action (usually the bell). */
+export function TopBar({ initial, title, subtitle, action, onAvatarPress }: Props) {
+  return (
+    <View style={styles.row}>
+      <Pressable
+        onPress={onAvatarPress}
+        disabled={!onAvatarPress}
+        accessibilityRole={onAvatarPress ? 'button' : undefined}
+        accessibilityLabel="Your account"
+        style={styles.avatar}>
+        <Text style={styles.initial}>{initial.toUpperCase()}</Text>
+      </Pressable>
+      <View style={{ flex: 1 }}>
+        <Text style={styles.title} numberOfLines={1}>
+          {title}
+        </Text>
+        {subtitle ? <Text style={styles.subtitle}>{subtitle}</Text> : null}
+      </View>
+      {action ? (
+        <Pressable accessibilityRole="button" accessibilityLabel={action.label} onPress={action.onPress} style={styles.action}>
+          <Feather name={action.icon} size={17} color={colors.ink} />
+          {action.badge ? (
+            <View style={styles.badge}>
+              <Text style={styles.badgeText}>{action.badge > 99 ? '99+' : action.badge}</Text>
+            </View>
+          ) : action.dot ? (
+            <View style={styles.dot} />
+          ) : null}
+        </Pressable>
+      ) : null}
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  row: { flexDirection: 'row', alignItems: 'center', gap: 12 },
+  avatar: { width: 38, height: 38, borderRadius: radius.sm, backgroundColor: colors.ink, alignItems: 'center', justifyContent: 'center' },
+  initial: { fontFamily: fonts.display, fontSize: 16, color: colors.white },
+  title: { fontFamily: fonts.display, fontSize: 19, color: colors.ink },
+  subtitle: { fontFamily: fonts.body, fontSize: 12, color: colors.textMuted },
+  action: {
+    width: sizes.iconButton,
+    height: sizes.iconButton,
+    borderRadius: radius.sm,
+    borderWidth: 1,
+    borderColor: colors.line,
+    backgroundColor: colors.white,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  dot: { position: 'absolute', top: 7, right: 8, width: 7, height: 7, borderRadius: 4, backgroundColor: colors.marigold },
+  badge: {
+    position: 'absolute',
+    top: -6,
+    right: -6,
+    minWidth: 20,
+    height: 20,
+    borderRadius: 10,
+    paddingHorizontal: 5,
+    backgroundColor: colors.accent,
+    borderWidth: 2,
+    borderColor: colors.porcelain,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  badgeText: { fontFamily: fonts.bold, fontSize: 10.5, color: colors.white },
+});

@@ -1,0 +1,47 @@
+# Campus Chommie backend -- Python 3.12
+# Versions follow our earlier, production-tested stack (see REUSE.md).
+
+Flask==3.1.3
+Werkzeug==3.1.9
+Flask-SQLAlchemy==3.1.1
+SQLAlchemy==2.0.51
+Flask-Migrate==4.1.0
+alembic==1.18.5
+psycopg2-binary==2.9.12
+Flask-JWT-Extended==4.7.4
+PyJWT==2.15.0
+Flask-Bcrypt==1.0.1
+bcrypt==5.0.0
+marshmallow==4.3.0
+Flask-Marshmallow==1.4.0
+marshmallow-sqlalchemy==1.0.0
+email-validator==2.3.0
+python-dotenv==1.2.2
+Flask-Limiter==4.1.1
+limits==5.8.0
+
+# Ed25519 public keys a signed-in phone registers (identity/devices)
+cryptography==50.0.1
+
+# campus_engine: data-pack schemas and YAML loading (pure Python)
+pydantic==2.13.5
+PyYAML==6.0.3
+
+# Tests (pytest-cov: the engine must stay at 80% coverage or more)
+pytest==9.1.1
+pytest-cov==7.1.0
+
+# Master scheduler (background jobs)
+APScheduler==3.11.3
+tzlocal==5.4.4
+tzdata==2026.3
+
+# Validation helpers
+phonenumbers==8.13.55
+
+# Continue with Google: verifies Google ID tokens on the server
+google-auth==2.58.1
+requests==2.34.2
+
+# Browser preview of the app (development only; phones don't use CORS)
+Flask-Cors==6.0.5

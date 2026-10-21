@@ -1,0 +1,17 @@
+{
+  "_about": "Advisories CI accepts for now, each with the reason and a date to look again. scripts/check-audit.mjs fails on any other high or critical advisory, and on any entry past its review date.",
+  "advisories": [
+    {
+      "id": "GHSA-vfj7-8cjw-p6xm",
+      "package": "braces",
+      "reason": "Denial of service through deeply nested glob patterns. Reached only through build tooling (Metro and Jest file watching via micromatch) with patterns we write ourselves; nothing in the app or the web bundle uses it. No fixed release exists (latest braces is 3.0.3) on 9 Oct 2026.",
+      "review_by": "2026-10-23"
+    },
+    {
+      "id": "GHSA-86w9-cpqp-85rv",
+      "package": "node-forge",
+      "reason": "RSA signature verification flaw. Reached only through the Expo CLI's code-signing helper (@expo/code-signing-certificates), which we don't use; nothing in the app or the web bundle includes it. No fixed release exists (latest node-forge is 1.4.0) on 9 Oct 2026.",
+      "review_by": "2026-10-23"
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+# Every pull request and every push to main: the backend suite on a real
+# PostgreSQL (engine and architecture tests included, engine coverage at
+# least 80%), the data packs, the migrations against the models, the app's
+# type check, tests, lint and web build, a dependency audit, a secrets scan
+# and the repository's own rules. The same checks we run by hand before a merge.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  backend:
+    name: Backend, engine and data (PostgreSQL 16)
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: campus_chommie
+          POSTGRES_PASSWORD: ci-only-password
+          POSTGRES_DB: campus_chommie_test
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U campus_chommie"
+          --health-interval 5s --health-timeout 5s --health-retries 20
+    env:
+      # Made-up values for CI only; no real secret is used or needed.
+      POSTGRES_USER: campus_chommie
+      POSTGRES_PASSWORD: ci-only-password
+      POSTGRES_HOST: localhost
+      POSTGRES_DB: campus_chommie_dev
+      POSTGRES_TEST_DB: campus_chommie_test
+      MAIL_PROVIDER: fake
+      SECRET_KEY: ci-only-secret-key-used-nowhere-else-000000
+      JWT_SECRET_KEY: ci-only-jwt-secret-key-used-nowhere-else-00
+      TZ: Africa/Johannesburg
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+      - run: pip install -r requirements.txt
+      - name: Data packs (broken references or an incomplete release pack fail)
+        run: python scripts/validate_data.py
+      - name: Migrations build the database and match the models
+        env:
+          FLASK_APP: app.py
+          FLASK_ENV: testing
+        run: flask db upgrade && flask db check
+      - name: Backend tests, with the engine's coverage
+        run: python -m pytest -q -p no:warnings tests --cov=campus_engine --cov-report=term --cov-fail-under=80
+
+  app:
+    name: App (tsc, jest, lint, web build)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: frontend/mobile
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: frontend/mobile/package-lock.json
+      - run: npm ci
+      # Expo writes this file on first start; it's gitignored.
+      - run: printf '/// <reference types="expo/types" />\n' > expo-env.d.ts
+      - run: npx tsc --noEmit
+      - run: npx jest --silent
+      - run: npx eslint . --max-warnings=0
+      - name: Web build
+        run: npx expo export --platform web --output-dir dist
+
+  audit:
+    name: Dependency audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # PYSEC-2026-4146 (PyJWT): no fixed release yet. It needs code that calls
+      # jwt.decode with signature checks off while reusing an options dict; our
+      # code never calls PyJWT, and Flask-JWT-Extended builds a fresh dict with
+      # checks on every time (checked 9 Oct 2026; see docs/SECURITY.md).
+      - run: pip install pip-audit && pip-audit -r backend/requirements.txt --ignore-vuln PYSEC-2026-4146
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # What the app depends on: fail on any high or critical advisory except
+      # the ones accepted, with reasons and review dates, in audit-allowlist.json.
+      - run: |
+          npm audit --omit=dev --json > audit.json || true
+          node scripts/check-audit.mjs audit.json
+        working-directory: frontend/mobile
+
+  secrets:
+    name: Secrets scan (gitleaks)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: |
+          curl -sSL https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz | tar -xz gitleaks
+          ./gitleaks git --redact --no-banner .
+
+  repo:
+    name: Repository rules
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      # Only REUSE.md may name the project this one reuses (brief section 4).
+      # The name is split in two so this file doesn't match itself.
+      - run: |
+          found="$(git grep -il "akay""za" || true)"
+          if [ "$found" != "REUSE.md" ]; then
+            echo "Only REUSE.md may name it. Found in:"; echo "$found"; exit 1
+          fi

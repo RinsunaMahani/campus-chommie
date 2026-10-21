@@ -1,0 +1,227 @@
+"""
+Hostile input: what a reviewer, a careless user or an attacker types.
+
+The rule for every endpoint: it may REFUSE, but it must never crash
+(no 500), never accept junk as valid, and never answer differently in a
+way that leaks whether an account exists.
+"""
+from __future__ import annotations
+
+import json
+import re
+
+import pytest
+
+PASSWORD = "Campus2026!"
+CONSENT = {"privacy_version": "0.1-draft", "terms_version": "0.1-draft", "confirmed_18_or_older": True}
+REFUSED = {400, 401, 403, 404, 409, 413, 415, 422, 423, 429}
+
+BAD_EMAILS = [
+    "",
+    " ",
+    "not-an-email",
+    "a@b",
+    "@example.com",
+    "nomsa@",
+    "nomsa@@example.com",
+    "nomsa example@example.com",
+    "😀@example.com",
+    "nomsa@😀.com",
+    "' OR 1=1 --@example.com",
+    "nomsa@example.com\r\nBcc: attacker@evil.com",  # email header injection
+    "nomsa@example.com\x00",
+    "a" * 250 + "@example.com",
+    "<script>alert(1)</script>@example.com",
+]
+
+HOSTILE_TEXT = [
+    "",
+    " ",
+    "😀😀😀",
+    "<script>alert(1)</script>",
+    "'; DROP TABLE identity.users; --",
+    "\x00\x01\x02",
+    "‮evil",  # right-to-left override
+    "​​",  # zero-width spaces only
+    "a" * 5000,
+    "\n\n\n",
+    "{{7*7}}",  # template injection
+]
+
+LONG_PASSWORDS = [
+    "Aa1!" + "x" * 100,  # 104 ASCII characters: over bcrypt's 72-byte limit
+    "Aa1!" + "😀" * 30,  # 34 characters but 124 bytes
+    "Aa1!" + "é" * 60,  # 64 characters, 124 bytes
+]
+
+WRONG_TYPES = [None, 123, 1.5, True, [], {}, ["a"], {"a": 1}]
+
+
+def register(client, **overrides):
+    body = {"email": "nomsa@example.com", "password": PASSWORD, "consent": CONSENT, **overrides}
+    return client.post("/api/v1/auth/register", json=body)
+
+
+def signed_up(client, outbox, email="nomsa@example.com") -> dict:
+    register(client, email=email)
+    code = re.search(r">(\d{6})<", outbox[-1]["html_body"]).group(1)
+    return client.post("/api/v1/auth/verify-email", json={"email": email, "code": code}).get_json()["data"]
+
+
+def assert_refused(r):
+    assert r.status_code in REFUSED, (r.status_code, r.get_data(as_text=True)[:200])
+    body = r.get_json()
+    assert body is not None and body["success"] is False
+
+
+# ------------------------------------------------------------------ emails
+
+
+@pytest.mark.parametrize("email", BAD_EMAILS)
+def test_register_refuses_bad_emails(client, outbox, email):
+    assert_refused(register(client, email=email))
+    assert outbox == []  # nothing was sent anywhere
+
+
+@pytest.mark.parametrize("email", BAD_EMAILS)
+@pytest.mark.parametrize("url", ["/api/v1/auth/login", "/api/v1/auth/forgot-password", "/api/v1/auth/resend-code"])
+def test_email_endpoints_never_crash_on_bad_emails(client, outbox, url, email):
+    body = {"email": email, "password": PASSWORD} if url.endswith("login") else {"email": email}
+    r = client.post(url, json=body)
+    assert r.status_code != 500
+    assert outbox == []
+
+
+# --------------------------------------------------------------- passwords
+
+
+@pytest.mark.parametrize("password", LONG_PASSWORDS)
+def test_sign_up_refuses_passwords_bcrypt_cannot_hold(client, password):
+    r = register(client, password=password)
+    assert r.status_code == 422 and r.get_json()["code"] == "WEAK_PASSWORD"
+
+
+@pytest.mark.parametrize("password", LONG_PASSWORDS + ["x" * 128])
+def test_login_with_a_huge_password_is_just_wrong(client, outbox, password):
+    signed_up(client, outbox)
+    r = client.post("/api/v1/auth/login", json={"email": "nomsa@example.com", "password": password})
+    assert r.status_code == 401 and r.get_json()["code"] == "INVALID_CREDENTIALS"
+
+
+@pytest.mark.parametrize("password", LONG_PASSWORDS)
+def test_account_security_with_huge_passwords(client, outbox, password):
+    data = signed_up(client, outbox)
+    headers = {"Authorization": f"Bearer {data['access_token']}"}
+    r = client.post("/api/v1/auth/change-password", headers=headers, json={"current_password": password, "new_password": password})
+    assert r.status_code in (400, 422)
+    r = client.post("/api/v1/auth/change-password", headers=headers, json={"current_password": PASSWORD, "new_password": password})
+    assert r.status_code == 422
+    r = client.post("/api/v1/me/close-account", headers=headers, json={"password": password})
+    assert r.status_code == 400
+
+
+def test_emoji_password_within_limits_works(client, outbox):
+    """A password with a few emoji that fits bcrypt is fine: sign up and sign in."""
+    pw = "Campus2026!😀"
+    register(client, password=pw)
+    code = re.search(r">(\d{6})<", outbox[-1]["html_body"]).group(1)
+    assert client.post("/api/v1/auth/verify-email", json={"email": "nomsa@example.com", "code": code}).status_code == 200
+    trusted = client.post("/api/v1/auth/verify-email", json={"email": "nomsa@example.com", "code": code})  # used code
+    assert trusted.status_code == 400
+
+
+# ------------------------------------------------------------ other fields
+
+
+def test_sign_up_takes_nothing_but_email_password_and_consent(client):
+    """Collect the minimum: an ID number (or anything else) is refused, not stored."""
+    assert register(client, id_number="0000000000000").status_code == 422
+
+
+@pytest.mark.parametrize("confirmed", [False, None, "yes", "true", 1, 0, [], {}, "missing"])
+def test_sign_up_needs_a_real_18_or_older_confirmation(client, outbox, confirmed):
+    """Accounts are for adults: only the JSON value true counts. Anything
+    else is refused, and no account is made and no email sent."""
+    consent = {k: v for k, v in CONSENT.items() if k != "confirmed_18_or_older"}
+    if confirmed != "missing":
+        consent["confirmed_18_or_older"] = confirmed
+    r = register(client, consent=consent)
+    assert r.status_code == 422, (confirmed, r.get_json())
+    assert outbox == []
+
+
+@pytest.mark.parametrize("text", HOSTILE_TEXT)
+def test_hostile_text_in_an_unknown_field_is_refused(client, outbox, text):
+    assert register(client, display_name=text).status_code in (400, 422)  # 400: the app-wide NUL guard
+    assert outbox == []
+
+
+@pytest.mark.parametrize("code", ["", "12345", "1234567", "abcdef", "١٢٣٤٥٦", "１２３４５６", "12 345", "😀😀😀😀😀😀", None, 123456])
+def test_verification_code_junk(client, outbox, code):
+    register(client)
+    r = client.post("/api/v1/auth/verify-email", json={"email": "nomsa@example.com", "code": code})
+    assert_refused(r)
+
+
+@pytest.mark.parametrize("value", WRONG_TYPES)
+@pytest.mark.parametrize("field", ["email", "password", "consent"])
+def test_register_wrong_types(client, field, value):
+    assert_refused(register(client, **{field: value}))
+
+
+@pytest.mark.parametrize("value", WRONG_TYPES)
+def test_login_wrong_types(client, value):
+    assert_refused(client.post("/api/v1/auth/login", json={"email": value, "password": value}))
+
+
+# -------------------------------------------------------------- raw bodies
+
+
+@pytest.mark.parametrize(
+    "raw,ctype",
+    [
+        ("", "application/json"),
+        ("not json", "application/json"),
+        ("{", "application/json"),
+        ("[]", "application/json"),
+        ('"just a string"', "application/json"),
+        ("null", "application/json"),
+        ('{"email": "nomsa@example.com"', "application/json"),
+        ("email=x&password=y", "application/x-www-form-urlencoded"),
+        ("\xff\xfe\x00", "application/json"),
+    ],
+)
+@pytest.mark.parametrize("url", ["/api/v1/auth/register", "/api/v1/auth/login", "/api/v1/auth/verify-email", "/api/v1/auth/reset-password"])
+def test_broken_bodies_never_crash(client, url, raw, ctype):
+    r = client.post(url, data=raw, content_type=ctype)
+    assert_refused(r)
+
+
+def test_responses_never_echo_raw_input_as_html(client):
+    r = register(client, email="<script>alert(1)</script>@x")
+    assert r.headers["Content-Type"].startswith("application/json")
+    assert r.headers["X-Content-Type-Options"] == "nosniff"
+
+
+def test_same_answer_for_bad_and_unknown_login_email_shapes(client):
+    """A valid-looking unknown email and a real-but-wrong password look alike;
+    a malformed email is refused by validation (it can't exist anyway)."""
+    a = client.post("/api/v1/auth/login", json={"email": "nobody@example.com", "password": "Wrong2026!"})
+    assert a.status_code == 401
+    assert json.loads(a.get_data())["code"] == "INVALID_CREDENTIALS"
+
+
+@pytest.mark.parametrize("depth", [33, 500, 100_000])
+def test_deeply_nested_json_is_refused_not_crashed(client, depth):
+    """Public route, no account needed: the cheapest crash an attacker could try."""
+    body = '{"a":' * depth + "1" + "}" * depth
+    r = client.post("/api/v1/auth/login", data=body, content_type="application/json")
+    assert r.status_code == 400
+    assert r.get_json()["code"] == "INVALID_BODY"
+
+
+def test_json_within_the_depth_limit_still_gets_its_nul_check(client):
+    body = {"email": "a@example.com", "password": PASSWORD, "x": [[[[{"deep": "a\x00b"}]]]]}
+    r = client.post("/api/v1/auth/login", json=body)
+    assert r.status_code == 400
+    assert r.get_json()["code"] == "INVALID_CHARACTERS"

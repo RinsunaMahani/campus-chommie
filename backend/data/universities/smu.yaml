@@ -1,0 +1,119 @@
+# Sefako Makgatho Health Sciences University (SMU)
+#
+# Every value below was copied from SMU's official medicine admissions page on 2026-09-30
+# (source s-smu-med). Re-check each one against the current prospectus before release.
+# Anything not on that page is left out or marked null, never guessed.
+
+university: smu
+name: Sefako Makgatho Health Sciences University
+city: Pretoria
+academic_year: 2027          # intake these rules apply to: verify with SMU
+release: false
+max_choices: null            # not verified yet
+
+points_rules:
+  source: s-smu-med
+  subjects_counted: 7        # SMU's table counts seven subjects, Life Orientation included
+  life_orientation: full
+  scale:                     # NSC column of SMU's APS equivalency table
+    - {min_percent: 80, level: 7}
+    - {min_percent: 70, level: 6}
+    - {min_percent: 60, level: 5}
+    - {min_percent: 50, level: 4}
+    - {min_percent: 40, level: 3}
+    - {min_percent: 30, level: 2}
+    - {min_percent: 0, level: 1}
+
+programmes:
+  - id: mbchb
+    name: MBChB (Bachelor of Medicine and Bachelor of Surgery)
+    fields: [health_sciences, medicine]
+    selective: true
+    selection_note: >-
+      SMU pre-selects on final Grade 11 results and makes final decisions on Grade 12 results,
+      ranking applicants by their actual percentages in Mathematics, Physical Science,
+      Life Sciences, Life Orientation and English. First-time applicants who score well but
+      are not selected may be placed on a waiting list.
+    requirements:
+      source: s-smu-med
+      min_points: 38
+      subject_minimums:
+        english: 6
+        mathematics: 6
+        physical_sciences: 6
+        life_sciences: 6
+        life_orientation: 5
+      additional_minimums: [5, 4]
+
+  - id: mbchb_ecp
+    name: MBChB Extended Curriculum Programme I (medicine foundation year)
+    fields: [health_sciences, medicine]
+    selective: true
+    places: 50
+    requirements:
+      source: s-smu-med
+      min_points: 32
+      subject_minimums:
+        physical_sciences: 5
+        life_sciences: 5
+        mathematics: 5
+        english: 5
+        life_orientation: 4
+      additional_minimums: [4, 4]
+      extras:
+        - SMU may accept a level 4 in English if the learner's overall points stay competitive.
+    bridges_to:
+      - to: mbchb
+        guarantee: by_rule
+        conditions: >-
+          Pass all six foundation modules with at least 50% to progress into MBChB I.
+          A failed foundation module cannot be repeated.
+        added_years: 1
+        eligibility_note: >-
+          SMU restricts this programme to specific applicants, including learners from
+          quintile 1 and 2 schools who have not studied at a tertiary institution before.
+          Read the full eligibility rules on SMU's page before choosing it.
+        source: s-smu-med
+
+  - id: bsc_y1
+    name: BSc first year at SMU
+    fields: [health_sciences, natural_sciences]
+    requirements: null       # BSc admission requirements not verified yet
+    bridges_to:
+      - to: mbchb
+        guarantee: considered
+        max_places: 5
+        added_years: 1
+        conditions: >-
+          At least three distinctions and an overall average of 75% or above for the year.
+          SMU offers places to the top five applicants by combined average, so the real bar
+          may be higher.
+        source: s-smu-med
+
+  - id: brad
+    name: Bachelor of Radiography (B Rad)
+    fields: [health_sciences, radiography]
+    selective: true
+    places: 40
+    selection_note: >-
+      Final selection uses English, Mathematics, Physical Science and Life Sciences.
+      SMU describes selection as highly competitive.
+    requirements:
+      source: s-smu-med
+      min_points: 25
+      subject_minimums:
+        english: 4
+        mathematics: 4
+        physical_sciences: 4
+        life_sciences: 4
+        life_orientation: 3
+      additional_minimums: [3, 3]
+
+sources:
+  - id: s-smu-med
+    url: https://www.smu.ac.za/schools/medicine/medicine-undergraduate-admission-requirements/
+    publisher: Sefako Makgatho Health Sciences University
+    title: Medicine Undergraduate Admission Requirements
+    retrieved: 2026-09-30
+    last_verified: 2026-09-30
+    verified_by: Copied by Claude; to be re-checked by the team

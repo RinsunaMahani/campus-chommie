@@ -1,0 +1,41 @@
+# --- secrets: never commit ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.jks
+*.keystore
+credentials.json
+google-services.json
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.coverage
+htmlcov/
+*.egg-info/
+
+# --- Node / Expo ---
+node_modules/
+.expo/
+dist/
+web-build/
+*.tsbuildinfo
+frontend/mobile/android/
+frontend/mobile/ios/
+
+# --- OS / editors ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# --- local tooling ---
+.claude/
+
+# Mandla's private notes (never committed)
+docs/mandla/
