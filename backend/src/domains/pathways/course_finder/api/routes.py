@@ -1,6 +1,7 @@
 """
 /api/v1/pathways -- the course finder. Anyone can use it; no account.
 
+  POST /pathways/points   {marks: [{subject, percent}]}                     -> {universities}: points at each
   POST /pathways/assess   {university, marks: [{subject, percent}]}         -> {university, matches}
   POST /pathways/plan     {university, goal, marks: [{subject, percent}]}   -> {plan}, with how to apply
 
@@ -15,11 +16,18 @@ from src.api import api_bp
 from src.core.responses import success_response
 from src.shared.rate_limit.limiter import limiter
 
-from ..constants import ASSESS_LIMIT, PLAN_LIMIT
-from ..schemas.course_finder_schemas import AssessSchema, PlanSchema, load
+from ..constants import ASSESS_LIMIT, PLAN_LIMIT, POINTS_LIMIT
+from ..schemas.course_finder_schemas import AssessSchema, PlanSchema, PointsSchema, load
 from ..services import course_finder_service as service
 
 BASE = "/pathways"
+
+
+@api_bp.post(f"{BASE}/points")
+@limiter.limit(POINTS_LIMIT)
+def points_everywhere():
+    body = load(PointsSchema(), request.get_json(silent=True))
+    return success_response(service.points(body["marks"]))
 
 
 @api_bp.post(f"{BASE}/assess")

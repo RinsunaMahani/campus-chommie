@@ -160,6 +160,10 @@ differ. SMU's 2027 calendar is not published; the 2026 calendar says SMU resumes
 
 During the hackathon (from 23 Oct 2026), SMU students are in end-of-year exams.
 
+Also in the 2026 calendar (read on 10 Oct 2026 for the pack): semester 1 runs 5 Jan to 17 Jul and semester 2 runs
+20 Jul to 15 Dec; late registration and course changes close on 13 Feb; courses can be cancelled, and studies
+interrupted, until 15 May; graduation ceremonies on 13-15 May and 18 Sep.
+
 ## Campus (F1)
 
 One campus: Molotlegi Street, Ga-Rankuwa, Pretoria. Registrar: registrar@smu.ac.za, +27 (0)12 521 4979/4203.

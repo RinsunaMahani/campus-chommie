@@ -14,7 +14,7 @@ university catalogue, which need no account and store nothing. Update it wheneve
 | Alerts | `platform.notifications` | owner-only; templates can't carry personal details |
 | Audit trail | `audit.audit_events` | append-only (see the open question on the personal data it holds) |
 | Marks typed into the course finder | memory, for one request only | never stored or logged; learners using it may be under 18 |
-| University data packs | `backend/data/universities/*.yaml` | public facts, each citing its source; served read-only; changed only by pull request |
+| University data packs | `backend/data/universities/*.yaml` | public facts, each citing its source: admission rules, application dates, campuses, calendars, money dates (never amounts) and support contacts; served read-only; changed only by pull request. Crisis lines are verified by a person before any pack is released |
 | National funding pack | `backend/data/national/funding.yaml` | NSFAS's public facts, under the same rules as a university pack |
 | Later milestones | students' marks, money, spending (owner-only); classes and announcements | the threat model grows with them |
 
@@ -27,9 +27,9 @@ university catalogue, which need no account and store nothing. Update it wheneve
 | Fishing for which emails have accounts | sign-up, resend and forgot-password give the same answer whatever the email; an existing account's owner gets an email instead | `auth_service.register`, `forgot_password` |
 | Reading someone else's data (IDOR) | every query takes the signed-in user from the token; another user's row is the same 404 as a missing one | `core/decorators.py`, each feature's repository |
 | Junk or hostile input | strict schemas refuse unknown fields (422); requests over 1 MB refused (413); JSON deeper than 32 levels refused (400); NUL characters refused anywhere (400). The course finder takes 1 to 9 known subjects, each once, with marks from 0 to 100 (NaN and infinity refused). A plan's "today" is the server's date in SAST; a client can't send a date | `domains/*/schemas`, `src/__init__.py` (`_register_input_guard`), `config.py` |
-| Flooding | a rate limit on every route: per user for signed-in routes, per IP for public ones (the course finder and catalogue allow 120 a minute, because a school computer lab shares one address) | `@limiter.limit` on each route; `shared/rate_limit/` |
-| A learner's marks kept or leaked (POPIA; learners may be under 18) | the course finder needs no account, runs no database statement and never logs a mark; refusals never repeat a mark; its rate-limit refusals aren't audited, so no IP address is kept either | `domains/pathways/course_finder/` |
-| Wrong facts shown as true | every pack is validated as it loads: each fact's source must exist, subject keys must be known, levels 1 to 8, percentages 0 to 100; application windows must close after they open, late windows must follow the last closing date, and closing dates may name only programmes that exist; a date nobody has published shows as not published, never guessed; a pack nobody has checked yet is served with "Not yet confirmed by the team" | `campus_engine/schemas.py`, `campus_engine/applications.py`, `domains/catalogue/` |
+| Flooding | a rate limit on every route: per user for signed-in routes, per IP for public ones (the course finder, the points list, the catalogue and first steps allow 120 a minute, because a school computer lab shares one address) | `@limiter.limit` on each route; `shared/rate_limit/` |
+| A learner's marks kept or leaked (POPIA; learners may be under 18) | the course finder (points, tiers and plan) needs no account, runs no database statement and never logs a mark; refusals never repeat a mark; its rate-limit refusals aren't audited, so no IP address is kept either | `domains/pathways/course_finder/` |
+| Wrong facts shown as true | every pack is validated as it loads: each fact's source must exist, subject keys must be known, levels 1 to 8, percentages 0 to 100; application windows must close after they open, late windows must follow the last closing date, and closing dates may name only programmes that exist; calendar periods must end after they start and name only campuses that exist; a date nobody has published shows as not published, never guessed; a pack nobody has checked yet is served with "Not yet confirmed by the team" | `campus_engine/schemas.py`, `campus_engine/applications.py`, `domains/catalogue/` |
 | Learners sent to fake application or payment pages | packs link only to official pages, over https (validation refuses anything else); NSFAS's own warnings are shown ("Never pay anyone to apply"); bank account numbers are left out of the packs, and the app never takes a payment or asks for bank details | `campus_engine/schemas.py` (`Applications`), `backend/data/` |
 | Children's personal information (POPIA) | accounts require confirming 18 or older; only the JSON value `true` is accepted; recorded with the consent | `auth/schemas/auth_schemas.py`, `accounts/services/account_service.py` |
 | Collecting too much | sign-up takes email, password, consent and the age confirmation only; any other field is refused | `RegisterSchema` |
@@ -42,7 +42,7 @@ university catalogue, which need no account and store nothing. Update it wheneve
 
 ## Test evidence (M1)
 
-Backend: **552 tests pass** on PostgreSQL 16 (10 Oct 2026), including:
+Backend: **605 tests pass** on PostgreSQL 16 (10 Oct 2026), including:
 
 | Tests | What they prove |
 |---|---|
@@ -54,10 +54,11 @@ Backend: **552 tests pass** on PostgreSQL 16 (10 Oct 2026), including:
 | `tests/shared/test_email.py` | sign-in codes never reach the logs; production refuses fake email |
 | `tests/domains/catalogue/test_universities_api.py` | the catalogue is public and read-only, labels unchecked packs, answers 404 for unknown universities, refuses query parameters and is limited per IP |
 | `tests/domains/pathways/test_course_finder_api.py` | the brief's M1 check (the strong SMU learner's plan), with reasons, a source and the check status on every card |
-| `tests/domains/pathways/test_course_finder_api.py` (how to apply) | on a fixed date, each choice's application status, the dates still ahead (NSFAS first), each university's fee and documents, and NSFAS, all with sources and the check status |
-| `tests/domains/pathways/test_course_finder_hostile.py` | odd bodies, impossible marks (out of range, NaN, infinity, text), repeated or unknown subjects, ten subjects, unknown fields (including an ID number, a date or a grade), huge and deeply nested bodies are refused; no database statement runs and no mark reaches a log during a request; limited per IP |
+| `tests/domains/pathways/test_course_finder_api.py` (how to apply, points) | on a fixed date, each choice's application status, the dates still ahead (NSFAS first), each university's fee and documents, and NSFAS, all with sources and the check status; the points at every university in name order |
+| `tests/domains/catalogue/test_universities_api.py` (first steps) | on a fixed date, a new student's steps from accepting an offer to the first lecture, dates not yet published said to be so, 404 for an unknown university, no query parameters, limited per IP |
+| `tests/domains/pathways/test_course_finder_hostile.py` | odd bodies, impossible marks (out of range, NaN, infinity, text), repeated or unknown subjects, ten subjects, unknown fields (including an ID number, a date or a grade), huge and deeply nested bodies are refused, for the points list too; no database statement runs and no mark reaches a log during a request; limited per IP |
 | `tests/architecture/` | the boundaries above, including every route having a rate limit and routes never calling the engine |
-| `tests/engine/` | 195 engine tests, 98.3% coverage (the floor is 80%), including data-pack validation, spot checks of the shipped packs against their sources, and every application status on either side of each date |
+| `tests/engine/` | 232 engine tests, 98.5% coverage (the floor is 80%), including data-pack validation, spot checks of the shipped packs against their sources, every application status on either side of each date, and every first step's status either side of its dates |
 
 App: TypeScript check, ESLint (no warnings) and Jest pass, including a test of the exact sign-up request.
 

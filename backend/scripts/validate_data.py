@@ -42,6 +42,12 @@ def check(path: Path, today: date) -> tuple[list[str], list[str]]:
     for p in uni.programmes:
         if p.requirements is None:
             problem(f"{uni.university}/{p.id}: requirements not verified yet")
+    for section, label in (
+        (uni.campuses, "campuses"), (uni.calendar, "calendar"), (uni.support_services, "support services"),
+        (uni.cheap_things, "cheap things to do"),
+    ):
+        if not section:
+            problem(f"{uni.university}: no {label} yet")
     _check_applications(uni.university, uni.applications, problem)
     _check_sources(uni.university, uni.sources, today, problem, warnings)
     return errors, warnings

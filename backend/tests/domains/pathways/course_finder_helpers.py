@@ -1,6 +1,7 @@
 """Shared by the course-finder tests: the endpoints and the strong SMU learner."""
 from __future__ import annotations
 
+POINTS = "/api/v1/pathways/points"
 ASSESS = "/api/v1/pathways/assess"
 PLAN = "/api/v1/pathways/plan"
 

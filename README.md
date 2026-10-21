@@ -71,7 +71,9 @@ fake mail provider and need none of this.
 | Endpoint | Body | Answer |
 |---|---|---|
 | `GET /universities` | none | each data pack: id, name, and whether a person has checked it (`confirmed`, `notice`) |
-| `GET /universities/<id>` | none | the whole pack: programmes, requirements, routes and sources |
+| `GET /universities/<id>` | none | the whole pack: programmes, requirements, routes, application dates, campuses, calendar, money dates, support and sources |
+| `GET /universities/<id>/first-steps` | none | from accepting an offer to the first lecture, on today's date (SAST) |
+| `POST /pathways/points` | `{marks: [{subject, percent}]}` | the learner's points at every university, each by its own rule, and how many programmes they meet |
 | `POST /pathways/assess` | `{university, marks: [{subject, percent}]}` | every programme at that university, best tiers first, each with its reasons and source |
 | `POST /pathways/plan` | `{university, goal, marks: [...]}` | the three-choice plan: the goal, a route into it and a safer related choice, and how to apply (below) |
 

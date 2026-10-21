@@ -24,6 +24,15 @@ def long_day(d: date) -> str:
     return f"{day(d)} {d.year}"
 
 
+def span(first: date, last: date) -> str:
+    """'Thu 14 to Fri 22 Jan 2027', 'Wed 1 Apr to Fri 31 Jul 2026', or both dates in full."""
+    if (first.year, first.month) == (last.year, last.month):
+        return f"{first:%a} {first.day} to {long_day(last)}"
+    if first.year == last.year:
+        return f"{day(first)} to {long_day(last)}"
+    return f"{long_day(first)} to {long_day(last)}"
+
+
 def in_days(n: int) -> str:
     """'today', 'tomorrow' or 'in 12 days'."""
     if n == 0:

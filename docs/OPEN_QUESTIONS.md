@@ -19,8 +19,9 @@ sources, gaps and inconsistencies. Other apps and services, for the deck: [compe
 - [ ] **SMU maximum choices** per application (`max_choices: null`). Found: two (SMU's 2027 application page).
 - [ ] **SMU calendar, allowance dates and support contacts** (counselling, crisis lines, financial aid, food support,
   tutoring, chaplaincy, health), each from an official source. Crisis contacts must be verified by a person before
-  release. Found: the 2026 calendar, health, counselling, the referral unit (it refers to tutoring and financial aid)
-  and 2026 fees. Still missing: the 2027 calendar, a 24-hour line, food support, chaplaincy and allowance dates.
+  release. In `smu.yaml` since 10 Oct: the 2026 calendar, health, counselling, the referral unit (it refers to
+  tutoring and financial aid) and the 2026 early-payment date. Still missing: the 2027 calendar, a 24-hour line, food
+  support, chaplaincy, a financial aid contact and allowance dates.
 - [x] **Changes to `smu.yaml`** that the research supports, for the team's OK: `max_choices: 2`; the BSc first-year
   requirements above; MBChB `places: 250`; the other SMU programmes; a considered route from SMU's first year into
   BDS (2 places); and the medicine foundation year's eligibility note, which leaves out SMU's population-group
@@ -34,12 +35,23 @@ sources, gaps and inconsistencies. Other apps and services, for the deck: [compe
   Drafted on 10 Oct 2026 (`rinsuna/m1-how-to-apply`): each pack's `applications` section (dates per intake,
   programmes with their own closing date, late windows, fee, documents, next steps) and NSFAS's 2027 window, documents
   and warnings. UP's application page can't be read automatically, so UP has dates only (see "Need a browser").
+- [x] **Campuses, calendars, money dates and support** in all three packs. Drafted on 10 Oct 2026
+  (`rinsuna/m1-after-acceptance`) from the research notes and the calendars:
+  - UP: 2026 and 2027
+  - TUT: 2026 and 2027, with the deadlines students miss at a cost (re-marks, exclusion appeals, module changes and
+    cancellations, graduation applications), matched to their dates by position on the page
+  - SMU: 2026
+  - money dates: dates only, never amounts
+  - support contacts: per campus where the source gives them
 - [ ] **A person checks the packs** against their sources before any is released: every value in `up.yaml` and
-  `tut.yaml`, the SMU values added on 10 Oct, the `applications` sections, `funding.yaml`, and the lines marked
-  "Check" in the packs and research notes. Then set `release: true` and fill in each source's `last_verified` and
-  `verified_by`.
-- [ ] **Campuses** for each university (needed for F1 and the support screen). Found for all three; a person still
-  checks them with the rest.
+  `tut.yaml`, the SMU values added on 10 Oct, the `applications` sections, `funding.yaml`, the calendars, money dates
+  and support contacts (**every crisis line first**), and the lines marked "Check" in the packs and research notes.
+  Then set `release: true` and fill in each source's `last_verified` and `verified_by`.
+- [ ] **Campuses** for each university (needed for F1 and the support screen). In all three packs since 10 Oct; a
+  person still checks them with the rest.
+- [ ] **Cheap things to do near campus** (F4): not researched yet, so every pack has an empty list. Each place needs
+  its own official page with a price or "free", and a last-verified date. Places the team knows near each campus are
+  a good start, checked against those pages.
 - [ ] **Course finder languages:** which 2 or 3, and the fluent reviewers who sign them off in `docs/translation_review.md`.
 
 ### Gaps the research left
@@ -106,6 +118,14 @@ Decisions 3, 4 and 9 were taken by Rinsuna on 9 Oct 2026 (below). Decision 5 is 
    audition or calls it highly competitive; published "admitted from" levels become `competitive_points`.
    **Decided:** as proposed.
 
+**The brief's M1 sections** (built on `rinsuna/m1-after-acceptance`, 10 Oct 2026), refined from the brief's sketch:
+- a calendar entry can name several campuses (none means every campus) and say who it's for (everyone,
+  first-years or returning students); `step` marks the dates "first steps" come from
+- more calendar kinds: revision, results, deadline, graduation, closed
+- support kinds add careers and disability
+- a money date can be a university's (fees), and its date key is `when`, because YAML reads `on` as true
+- an applications section can say how to accept an offer; a funder can say what happens at registration
+
 **How to apply** (built on `rinsuna/m1-how-to-apply`, 10 Oct 2026): a pack's `applications` section holds one window
 per intake (the year a learner would start), with programmes that close on their own date, closing dates a
 university names without saying which programme closes when, a late window or "no late applications", the fee in
@@ -152,6 +172,16 @@ cents, documents and next steps, each with its source. `funding.yaml` holds nati
   with the plan and never stored.
 - [ ] **"Add these dates to my calendar":** the plan's `deadlines` list is ready for it. How (the phone's calendar or
   an .ics file) is Mandla's call; nothing goes to our server.
+- [ ] **Your points at every university** (agreed by Rinsuna on 10 Oct 2026, after trying UniApplyForMe; Mandla to
+  confirm the screen): `POST /pathways/points` gives the learner's points at UP, TUT and SMU, each by its own rule,
+  and how many programmes they meet. It could open the course finder, before the learner picks a university.
+- [ ] **Accepted: your first steps** (agreed by Rinsuna on 10 Oct 2026; Mandla to confirm the screen):
+  `GET /universities/<id>/first-steps` gives accepting the offer, registering, orientation and the first lecture, on
+  today's date, with what NSFAS does at registration. It could follow the plan, and greet a new student on Home
+  before term. It's the "from acceptance" in the challenge.
+- [ ] **The university's own deadlines in My week** (agreed by Rinsuna on 10 Oct 2026; Mandla to confirm): calendar
+  entries with `period: deadline` (re-marks, exclusion appeals, module changes, graduation applications) shown with
+  the class deadlines in M4's week view.
 - [x] **Every public university, and private colleges** (proposed by Rinsuna's agent and agreed by Rinsuna on 10 Oct
   2026): a directory of all 26 public universities with each one's application page, dates and fee, but not their
   admission rules; private colleges only as a link to DHET's register of private higher education institutions, so a

@@ -261,6 +261,21 @@ Semesters run in two terms each. Exams for semester modules; year modules' class
 
 TUT's recesses are short (four days in autumn and spring); December to January is the main window for vac work.
 
+**Deadlines that cost students marks, money or a place if missed** (read on 10 Oct 2026 for the packs' calendars).
+On TUT's calendars a date sits vertically centred among its items, so each item was matched to its date by its
+position on the page, not by reading order. **Check** each against the PDF.
+
+| Deadline | 2026 (s-tut-cal-2026) | 2027 (s-tut-cal-2027) |
+|---|---|---|
+| Academic exclusion appeals close | 16 Jan; 24 Jul | 15 Jan; 23 Jul (undergraduate) |
+| Exam enquiries, re-mark applications and viewing scripts close (not some block-based programmes) | 30 Jan; 31 Jul; 22 Jan 2027 | 22 Jan; 30 Jul; 29 Jan 2028 |
+| Registration closes | 1 Feb; 31 Jul (semester 2) | 31 Jan; 30 Jul (semester 2) |
+| Registration changes and adding modules close | 28 Feb (semester 1); 7 Aug (semester 2) | 28 Feb; 6 Aug |
+| Last day to cancel modules without owing tuition for them | 28 Feb (year and semester 1); 31 Jul (semester 2) | 28 Feb; 30 Jul |
+| Graduation applications close | 28 Feb (autumn); 31 Aug (spring) | 28 Feb; 31 Aug |
+| Graduation ceremonies | not read | 1 Apr - 28 May; 2 - 22 Oct |
+| Residence orientation for first-years | not read | 18 Jan |
+
 ## Campuses (F1)
 
 From s-tut-guide-2027 p106.

@@ -8,3 +8,6 @@ READ_LIMIT = "120 per minute"
 #: Shown with every pack nobody has checked yet (`release: false`), which is
 #: every pack today. Served anyway so the demo works (decided 9 Oct 2026).
 UNCONFIRMED_NOTICE = "Not yet confirmed by the team."
+
+#: First steps are worked out on today's date in South Africa.
+TIMEZONE = "Africa/Johannesburg"

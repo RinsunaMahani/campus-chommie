@@ -18,6 +18,7 @@ from zoneinfo import ZoneInfo
 from campus_engine.applications import ApplyGuide, Group, Guide, WindowStatus, apply_guide
 from campus_engine.bridges import GUARANTEE_LABELS, Plan, Slot, build_plan
 from campus_engine.matching import Match, assess_all
+from campus_engine.overview import UniversityPoints, points_everywhere
 from campus_engine.schemas import University
 from src.core.exceptions import NotFoundError
 from src.domains.catalogue.funding.services import funding_service as funding
@@ -33,6 +34,12 @@ def _today() -> date:
 
 def _marks(rows: list[dict]) -> dict[str, float]:
     return {row["subject"]: row["percent"] for row in rows}
+
+
+def points(rows: list[dict]) -> dict:
+    """The learner's points at every university we cover, each by its own rule, in name order."""
+    packs = catalogue.packs()
+    return {"universities": [_points(u, packs) for u in points_everywhere(packs, _marks(rows))]}
 
 
 def assess(university_id: str, rows: list[dict]) -> dict:
@@ -69,6 +76,20 @@ def _match(m: Match, packs: dict[str, University]) -> dict:
         "explanation": m.explanation,
         "source_url": m.source_url,
         **catalogue.confirmation(packs[m.university]),
+    }
+
+
+def _points(u: UniversityPoints, packs: dict[str, University]) -> dict:
+    return {
+        "university": u.university,
+        "university_name": u.name,
+        "points": u.points,
+        "counted": u.counted,
+        "tiers": u.tiers,
+        "summary": u.summary,
+        "lines": u.lines,
+        "source_url": u.source_url,
+        **catalogue.confirmation(packs[u.university]),
     }
 
 

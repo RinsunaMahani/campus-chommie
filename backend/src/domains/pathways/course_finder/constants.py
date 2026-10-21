@@ -7,6 +7,7 @@ from campus_engine.schemas import SUBJECTS
 #: one address, so this leaves room for a class asking at the same time.
 ASSESS_LIMIT = "120 per minute"
 PLAN_LIMIT = "120 per minute"
+POINTS_LIMIT = "120 per minute"
 
 #: The most subjects a learner can enter: the NSC has seven, and some learners take more.
 MAX_SUBJECTS = 9

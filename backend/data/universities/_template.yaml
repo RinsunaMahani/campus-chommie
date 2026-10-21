@@ -63,6 +63,26 @@ applications:                # how to apply; leave out anything not published (t
       late: null             # {opens, closes, note, source} when late applications are published
       no_late_applications: false   # true only when the university says so
     # an intake with no window is shown as "not published yet"
+  accepting: {text: "Pay the confirmation fee within three days of the offer letter.", source: s-apply}
+
+campuses:
+  - {id: main, name: "Main campus", note: "Which faculties it houses", source: s-calendar}
+
+calendar:                    # term | registration | orientation | test_week | revision | exam | recess | results
+                             # | deadline | graduation | closed
+  - {period: registration, name: "First-year registration", start: 2027-01-18, end: 2027-01-29, who: first_years,
+     step: register, source: s-calendar}        # step: register | orientation | first_lecture (first steps)
+  - {period: deadline, name: "Last day to cancel modules without paying for them", start: 2027-02-26,
+     campuses: [main], source: s-calendar}     # campuses: empty means every campus
+
+funding_cycles:              # dates only, never amounts; the key is "when" because YAML reads "on" as true
+  - {funder: university, kind: fee_due, name: "First tuition instalment due", when: 2027-03-31, source: s-calendar}
+
+support_services:            # counselling | crisis | financial_aid | food_support | tutoring | chaplaincy | health
+                             # | careers | disability; a person verifies every crisis line before release
+  - {kind: counselling, name: "Student counselling", contact: "012 000 0000", hours: "08:00-16:00", source: s-calendar}
+
+cheap_things: []             # [{name, category, cost_note, near_campus, source}]
 
 programmes:
   - id: example-programme
@@ -97,6 +117,13 @@ sources:
     url: https://example.org/prospectus
     publisher: Example University
     title: Undergraduate prospectus
+    retrieved: 2026-10-01
+    last_verified: 2026-10-01
+    verified_by: Name of the person who checked it
+  - id: s-calendar
+    url: https://example.org/calendar
+    publisher: Example University
+    title: Academic calendar
     retrieved: 2026-10-01
     last_verified: 2026-10-01
     verified_by: Name of the person who checked it

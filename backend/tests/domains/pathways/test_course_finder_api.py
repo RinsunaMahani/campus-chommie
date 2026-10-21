@@ -8,7 +8,7 @@ from __future__ import annotations
 from datetime import date
 
 import pytest
-from course_finder_helpers import ASSESS, PLAN, STRONG, marks
+from course_finder_helpers import ASSESS, PLAN, POINTS, STRONG, marks
 
 from src.domains.pathways.course_finder.services import course_finder_service
 
@@ -136,3 +136,16 @@ def test_a_tut_plan_shows_the_january_late_window(client, on_10_october):
     assert (late["status"], late["late_opens"], late["late_closes"]) == ("late_ahead", "2027-01-14", "2027-01-22")
     assert (next_year["status"], next_year["opens"], next_year["closes"]) == ("opens_later", "2027-04-01", None)
     assert next_year["closes_one_of"] == ["2027-06-15", "2027-07-31", "2027-09-30"]
+
+
+def test_points_at_every_university_before_picking_one(client):
+    r = client.post(POINTS, json={"marks": STRONG})
+    assert r.status_code == 200
+    universities = r.get_json()["data"]["universities"]
+    assert [(u["university"], u["points"]) for u in universities] == [("smu", 47), ("tut", 40), ("up", 40)]
+    for u in universities:
+        assert u["summary"].startswith("You meet the minimum for ")
+        assert u["lines"] and u["source_url"].startswith("https://")
+        assert u["confirmed"] is False and u["notice"] == "Not yet confirmed by the team."
+        assert set(u["tiers"]) == {"competitive", "meets_minimum", "reach", "not_yet", "unverified"}
+    assert sum(universities[0]["tiers"].values()) == 17

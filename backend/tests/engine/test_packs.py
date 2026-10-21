@@ -5,6 +5,7 @@ wrong, with the source in hand, never the test alone.
 """
 from __future__ import annotations
 
+import re
 from datetime import date
 
 import pytest
@@ -243,3 +244,57 @@ def test_on_10_october_2026_the_smu_learner_should_apply_to_nsfas_first(catalogu
     goal_2027 = guide.windows[("smu", "mbchb")][0]
     assert (goal_2027.intake, goal_2027.status) == (2027, CLOSED)
     assert goal_2027.lines == ["Closed on Fri 31 Jul 2026.", "No late applications."]
+
+
+# Calendars, money dates and support: s-up-cal-2026, s-up-cal-2027, s-up-infoguide-2026, s-tut-cal-2026,
+# s-tut-cal-2027, s-tut-guide-2027, s-tut-fees-2026, s-smu-cal-2026 and SMU's student affairs pages
+
+
+def _entry(uni, name, start):
+    return next(e for e in uni.calendar if e.name == name and e.start == start)
+
+
+def test_tut_deadlines_follow_each_items_place_on_the_page(tut):
+    # A date sits among its items on TUT's calendar: graduation applications close with the module
+    # changes on 28 February, not with exit-exam registration on the 16th or 17th.
+    assert _entry(tut, "Closing date for autumn graduation applications", date(2027, 2, 28)).period == "deadline"
+    assert _entry(tut, "Closing date for academic exclusion appeals", date(2026, 7, 24)).period == "deadline"
+    remarks = sorted(e.start for e in tut.calendar if e.name.startswith("Closing date for exam enquiries"))
+    assert remarks == [date(2026, 1, 30), date(2026, 7, 31), date(2027, 1, 22), date(2027, 7, 30), date(2028, 1, 29)]
+
+
+def test_first_steps_dates_for_2027(up, tut):
+    steps = {u.university: {e.step: e for e in u.calendar if e.step and e.start.year == 2027} for u in (up, tut)}
+    assert (steps["tut"]["register"].start, steps["tut"]["register"].end) == (date(2027, 1, 14), date(2027, 1, 31))
+    assert steps["tut"]["first_lecture"].start == date(2027, 2, 1)
+    assert steps["up"]["register"].start == date(2027, 2, 19)  # UP gives only the last day
+    assert steps["up"]["orientation"].campuses == ["hatfield", "groenkloof"]
+    assert steps["up"]["first_lecture"].start == date(2027, 2, 8)
+    assert _entry(up, "Last day to change or cancel modules for semester 1", date(2027, 3, 8)).period == "deadline"
+
+
+def test_smus_2027_calendar_isnt_published_yet(smu):
+    assert not any(e.step and e.start.year == 2027 for e in smu.calendar)
+    first = {e.step: e for e in smu.calendar if e.step}
+    assert (first["register"].start, first["register"].end) == (date(2026, 1, 21), date(2026, 1, 30))
+    assert first["first_lecture"].start == date(2026, 2, 2)
+
+
+def test_crisis_lines_wait_for_a_person_to_verify_them(up, tut, smu):
+    crisis = {u.university: [s.contact for s in u.support_services if s.kind == "crisis"] for u in (up, tut, smu)}
+    assert "0800 006 428" in crisis["up"] and "0800 68 78 88" in crisis["tut"]
+    assert crisis["smu"] == ["Campus control for ambulance services, or 079 417 9546 / 6278"]
+    assert not any(u.release for u in (up, tut, smu))  # nobody has checked them yet
+
+
+def test_tut_has_a_financial_aid_office_at_every_campus(tut):
+    offices = [s for s in tut.support_services if s.kind == "financial_aid"]
+    assert len(offices) == 9 and {c for s in offices for c in s.campuses} == {c.id for c in tut.campuses}
+
+
+def test_money_dates_carry_no_amounts(up, tut, smu):
+    for u in (up, tut, smu):
+        for f in u.funding_cycles:
+            assert not re.search(r"\bR\s?\d", f"{f.name} {f.note or ''}"), f.name
+    october = sorted((f.when, f.name) for f in tut.funding_cycles if f.when.month == 10)
+    assert [d for d, _ in october] == [date(2026, 10, 30), date(2026, 10, 30), date(2026, 10, 31), date(2026, 10, 31)]
