@@ -323,6 +323,13 @@ cheap_things:
   - {name: "Lowveld National Botanical Garden", category: outdoors,
      cost_note: "Students R50 in peak season (September to March); adults R80; children 6 to 17 R30; under 6 free. The ticket page shows no off-peak prices.",
      campuses: [mbombela], source: s-sanbi-lowveld-tickets}
+  - {name: "Wonderboom Nature Reserve: a fig tree over 1 000 years old, and walks on the Magaliesberg", category: outdoors,
+     cost_note: "Adults R47 a day; pensioners and people with disabilities R31.50; a guided day hike (about four hours) R100 a person. No student price.",
+     campuses: [ga_rankuwa, soshanguve_north, soshanguve_south], address: "Northern Tshwane, on the Magaliesberg",
+     hours: "Every day, 07:00-17:00; last entry 16:00", source: s-tshwane-wonderboom}
+  - {name: "DITSONG: Tswaing Meteorite Crater", category: museum,
+     cost_note: "Adults R60 for a self tour, R70 guided (no separate student price); children and learners R40; pensioners R40; a picnic on the lawn R60 for adults. Fees for 1 April 2026 to 31 March 2027.",
+     campuses: [ga_rankuwa, soshanguve_north, soshanguve_south], address: "Plot 149 JR Soutpan, Soshanguve", source: s-ditsong-tswaing-fees}
 
 
 programmes:
@@ -2176,5 +2183,19 @@ sources:
     publisher: "South African National Biodiversity Institute (SANBI)"
     title: "Lowveld National Botanical Garden: buy tickets"
     retrieved: 2026-10-10
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-tshwane-wonderboom
+    url: "https://www.tshwane.gov.za/?page_id=5481"
+    publisher: "City of Tshwane"
+    title: "Wonderboom Nature Reserve: tariffs and visiting hours"
+    retrieved: 2026-10-12
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ditsong-tswaing-fees
+    url: "https://ditsong.org.za/en/wp-content/uploads/2019/09/Tswaing-Meteorite-Crater-Admission-Fees.pdf"
+    publisher: "DITSONG Museums of South Africa"
+    title: "DITSONG: Tswaing Meteorite Crater admission fees, 1 April 2026 to 31 March 2027"
+    retrieved: 2026-10-12
     last_verified: null
     verified_by: "agent draft, needs human check"

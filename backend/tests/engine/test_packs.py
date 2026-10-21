@@ -377,7 +377,7 @@ def test_money_dates_carry_no_amounts(up, tut, smu):
 
 
 def test_cheap_things_have_a_price_from_their_own_page(up, tut, smu):
-    for uni in (up, tut):
+    for uni in (up, tut, smu):
         for thing in uni.cheap_things:
             assert re.search(r"R\d+|free", thing.cost_note), thing.name
             assert uni.source(thing.source).url.startswith("https://"), thing.name
@@ -386,4 +386,17 @@ def test_cheap_things_have_a_price_from_their_own_page(up, tut, smu):
     lowveld = next(t for t in tut.cheap_things if t.name == "Lowveld National Botanical Garden")
     assert lowveld.campuses == ["mbombela"]
     assert "gibs" not in pnbg.campuses  # Sandton, not Pretoria
-    assert smu.cheap_things == []  # nothing sourced near Ga-Rankuwa yet
+    # Northern Tshwane, for SMU and TUT's campuses near it: s-tshwane-wonderboom, s-ditsong-tswaing-fees
+    wonderboom, tswaing = smu.cheap_things
+    assert wonderboom.cost_note.startswith("Adults R47 a day") and wonderboom.hours == "Every day, 07:00-17:00; last entry 16:00"
+    assert tswaing.cost_note.startswith("Adults R60 for a self tour, R70 guided") and tswaing.hours is None  # two sets of hours
+    near = [t for t in tut.cheap_things if t.source in ("s-tshwane-wonderboom", "s-ditsong-tswaing-fees")]
+    assert [t.campuses for t in near] == [["ga_rankuwa", "soshanguve_north", "soshanguve_south"]] * 2
+
+
+def test_smu_support_from_its_own_pages(smu):  # s-smu-reg-2026, s-smu-garden-2026, s-smu-life-gov
+    kinds = {s.kind: s for s in smu.support_services}
+    assert kinds["financial_aid"].contact == "012 521 4614 / 4500 / 4317; financialaid@smu.ac.za"
+    assert kinds["food_support"].note == "SMU doesn't publish how students ask for vegetables."
+    assert kinds["chaplaincy"].name.startswith("Religious Desk") and kinds["chaplaincy"].hours == "Mon-Fri 07:30-16:00"
+    assert "careers" not in kinds  # the counselling centre offers career counselling
