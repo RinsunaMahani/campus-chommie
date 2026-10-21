@@ -35,6 +35,11 @@ function top(minutes: number): number {
   return ((minutes - FIRST_HOUR * 60) / 60) * HOUR;
 }
 
+/** "ANA201" as "ANA" over "201", so a module code fits a seventh of a phone's width. */
+export function splitCode(code: string): string {
+  return code.replace(/^([A-Za-z]+)\s?(\d.*)$/, '$1\n$2');
+}
+
 /** Events with no time, or outside the grid's hours, go in the "Due" row. */
 export function inGrid(e: ClassEvent): boolean {
   if (!e.at) return false;
@@ -54,6 +59,10 @@ type Props = {
   events: ClassEvent[];
   exams?: ExamEntry[];
   activities?: Activity[];
+  /** Dates in the university's recess or closure: classes don't show on them. */
+  off?: Set<string>;
+  /** Seven narrow days: just the code, smaller, no second line. */
+  compact?: boolean;
   nowMinutes: number | null;
 };
 
@@ -66,7 +75,7 @@ function inHours(a: Activity): boolean {
   return minutesOf(a.starts) >= FIRST_HOUR * 60 && minutesOf(a.ends) <= LAST_HOUR * 60;
 }
 
-export function CalendarGrid({ days, classes, events, exams = [], activities = [], nowMinutes }: Props) {
+export function CalendarGrid({ days, classes, events, exams = [], activities = [], off, compact, nowMinutes }: Props) {
   const colors = usePalette();
   const styles = useStyles(makeStyles);
   const hours = Array.from({ length: LAST_HOUR - FIRST_HOUR }, (_, i) => FIRST_HOUR + i);
@@ -126,7 +135,7 @@ export function CalendarGrid({ days, classes, events, exams = [], activities = [
               <View key={h} style={[styles.line, { top: top(h * 60) }]} />
             ))}
             {classes
-              .filter((c) => c.weekday === d.weekday)
+              .filter((c) => c.weekday === d.weekday && !off?.has(d.date))
               .map((c) => {
                 const colour = moduleColour(colors, c.module);
                 const start = Math.max(minutesOf(c.starts), FIRST_HOUR * 60);
@@ -138,11 +147,11 @@ export function CalendarGrid({ days, classes, events, exams = [], activities = [
                     accessibilityRole="button"
                     accessibilityLabel={`${c.module} ${t(`timetable.kind.${c.kind}`)}, ${c.starts} to ${c.ends}${c.venue ? `, ${c.venue}` : ''}`}
                     onPress={() => router.push(`/timetable/${c.id}`)}
-                    style={[styles.block, { top: top(start), height: Math.max(((end - start) / 60) * HOUR - 2, 22), backgroundColor: tint(colour), borderLeftColor: colour }]}>
-                    <Text style={[styles.blockTitle, { color: colour }]} numberOfLines={1}>
-                      {c.module}
+                    style={[styles.block, compact && styles.blockCompact, { top: top(start), height: Math.max(((end - start) / 60) * HOUR - 2, 22), backgroundColor: tint(colour), borderLeftColor: colour }]}>
+                    <Text style={[styles.blockTitle, compact && styles.titleCompact, { color: colour }]} numberOfLines={compact ? 2 : 1}>
+                      {compact ? splitCode(c.module) : c.module}
                     </Text>
-                    <Text style={styles.blockText} numberOfLines={2}>
+                    <Text style={[styles.blockText, compact && styles.hidden]} numberOfLines={2}>
                       {t(`timetable.kind.${c.kind}`)} · {c.starts}
                       {c.venue ? ` · ${c.venue}` : ''}
                     </Text>
@@ -160,10 +169,10 @@ export function CalendarGrid({ days, classes, events, exams = [], activities = [
                     accessibilityLabel={`${e.module} ${e.title ?? e.kind}, ${e.when}`}
                     onPress={() => router.push('/classes')}
                     style={[styles.event, { top: top(minutesOf(e.at as string)), height: (EVENT_MINUTES / 60) * HOUR, borderColor: colour, backgroundColor: colors.white }]}>
-                    <Text style={[styles.blockTitle, { color: colour }]} numberOfLines={1}>
-                      {e.at} {e.title ?? t(`week.kind.${e.kind}`)}
+                    <Text style={[styles.blockTitle, compact && styles.titleCompact, { color: colour }]} numberOfLines={compact ? 2 : 1}>
+                      {compact ? splitCode(e.module) : `${e.at} ${e.title ?? t(`week.kind.${e.kind}`)}`}
                     </Text>
-                    <Text style={styles.blockText} numberOfLines={1}>
+                    <Text style={[styles.blockText, compact && styles.hidden]} numberOfLines={1}>
                       {e.module}
                     </Text>
                   </Pressable>
@@ -182,10 +191,10 @@ export function CalendarGrid({ days, classes, events, exams = [], activities = [
                     accessibilityLabel={`${a.title}, ${a.starts} to ${a.ends}${a.place ? `, ${a.place}` : ''}`}
                     onPress={() => router.push({ pathname: '/activity/[id]', params: { id: a.id } })}
                     style={[styles.block, styles.plan, { top: top(start), height: Math.max(((end - start) / 60) * HOUR - 2, 22), borderColor: colour, backgroundColor: colors.white }]}>
-                    <Text style={[styles.blockTitle, { color: colour }]} numberOfLines={1}>
+                    <Text style={[styles.blockTitle, compact && styles.titleCompact, { color: colour }]} numberOfLines={1}>
                       {a.title}
                     </Text>
-                    <Text style={styles.blockText} numberOfLines={2}>
+                    <Text style={[styles.blockText, compact && styles.hidden]} numberOfLines={2}>
                       {a.starts}
                       {a.place ? ` · ${a.place}` : ''}
                     </Text>
@@ -205,10 +214,10 @@ export function CalendarGrid({ days, classes, events, exams = [], activities = [
                     accessibilityLabel={`${t('timetable.exam')} ${x.module}${x.paper ? ` ${x.paper}` : ''}, ${x.day} ${x.starts}`}
                     onPress={() => router.push('/timetable')}
                     style={[styles.block, { top: top(start), height: Math.max(((end - start) / 60) * HOUR - 2, 22), backgroundColor: tint(colors.garnet), borderLeftColor: colors.garnet }]}>
-                    <Text style={[styles.blockTitle, { color: colors.garnet }]} numberOfLines={1}>
-                      {t('timetable.exam')} · {x.module}
+                    <Text style={[styles.blockTitle, compact && styles.titleCompact, { color: colors.garnet }]} numberOfLines={compact ? 2 : 1}>
+                      {compact ? splitCode(x.module) : `${t('timetable.exam')} · ${x.module}`}
                     </Text>
-                    <Text style={styles.blockText} numberOfLines={2}>
+                    <Text style={[styles.blockText, compact && styles.hidden]} numberOfLines={2}>
                       {x.starts}
                       {x.paper ? ` · ${x.paper}` : ''}
                     </Text>
@@ -259,6 +268,9 @@ const makeStyles = (colors: Palette) =>
       overflow: 'hidden',
     },
     blockTitle: { fontFamily: fonts.bold, fontSize: 12.5 },
+    titleCompact: { fontSize: 10, lineHeight: 12, letterSpacing: -0.2 },
+    blockCompact: { paddingHorizontal: 2, borderLeftWidth: 3 },
+    hidden: { display: 'none' },
     blockText: { fontFamily: fonts.medium, fontSize: 11, color: colors.text },
     now: { position: 'absolute', left: 0, right: 0, height: 2, backgroundColor: colors.garnet },
     // A plan of the student's own: outlined and dashed, so it never looks like a class.
