@@ -414,6 +414,27 @@ other official language, and the results say which; second additional languages 
 - [ ] **The ODbL** (with the legal check above): our map files and the names we add stay under the ODbL, never "all
   rights reserved"; the public API is the free, machine-readable copy the licence asks us to offer (ODbL 4.6).
 
+## Colleges (TVET and private)
+
+From DHET's four publications (`backend/data/national/colleges.yaml`, read with a script on 20 Oct 2026). An agent
+draft: `release: false` until a person compares the pack with the registers.
+
+- [ ] **Check the pack against the registers**: every name, registration number and status, especially where the
+  script had to work around the PDFs: the IIE's number (2007/HE07/002) was read from the register's plain text
+  because its table cell is garbled; six bogus-list names were split across lines in the PDF and joined by hand.
+- [ ] **No registration number in the register**: Empilweni Education (Pty) Ltd (listed as registered, with no
+  number, sites or qualifications) and Adu Dlamini Business and Engineering Academy (Pty) Ltd. Ask DHET, or leave
+  "not shown in the register".
+- [ ] **One number, two entries**: 2008/HE07/008 (IHT Hotel School, both registered and cancelled), 2018/FE07/043
+  (Mahikeng City College, cancelled; Easy Business Academic Centre, registered) and 2025/FE07/003 (Kitso Training
+  and Moripe Business Training, both registered). Printed as DHET prints them; the check shows every match.
+- [ ] **Numbers printed with typos** (kept as printed): 2008/SFE07/108, 2023/FE07/006F, 2019/FE007/031.
+- [ ] **Conference and Events Organiser**: DHET's 2026 occupational list names no college for it.
+- [ ] **Registers change** (DHET updates them every few months): who re-reads them, and how often? The last
+  versions we used: private higher education 12 August 2026, private colleges 15 July 2026.
+- [ ] **Entry requirements**: colleges don't publish points scales, so the app says "check with the college" and
+  links its site. TVET admission rules (NC(V), Report 191) could come later, each from its own source.
+
 ## Reminders for later milestones
 
 - [x] M3: the first endpoint that takes numbers (money) gets the NaN/Infinity hostile-input test again: done on

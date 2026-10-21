@@ -736,3 +736,107 @@ class UniversityMap(_Strict):
 
     def source(self, source_id: str) -> Source | None:
         return next((s for s in self.sources if s.id == source_id), None)
+
+
+# ---------------------------------------------------------------------------------------------- colleges
+
+CollegeKind = Literal["tvet", "private_higher_education", "private_college"]
+#: "public" is a public TVET college; the others are a private institution's place in DHET's registers.
+CollegeStatus = Literal["public", "registered", "provisionally_registered", "cancelled"]
+Province = Literal[
+    "Eastern Cape", "Free State", "Gauteng", "KwaZulu-Natal", "Limpopo", "Mpumalanga", "North West",
+    "Northern Cape", "Western Cape",
+]
+
+
+class College(_Strict):
+    """A college as DHET lists it: a public TVET college, or a private institution in one of its registers,
+    with the registration number, sites and registered qualifications exactly as printed there."""
+
+    id: str = Field(pattern=r"^[a-z0-9]+(-[a-z0-9]+)*$")
+    name: str = Field(min_length=2)
+    kind: CollegeKind
+    status: CollegeStatus
+    registration_number: str | None = None  # as printed, typos included; None where the register shows none
+    provinces: list[Province] = Field(default_factory=list)
+    website: str | None = Field(default=None, pattern=r"^(https?://)?www\.[a-z0-9.\-]+\.[a-z]{2,}(/\S*)?$")
+    phone: str | None = None  # a public college's office line (never a person's)
+    head_office: LatLon | None = None
+    sites: list[str] = Field(default_factory=list)
+    qualifications: list[str] = Field(default_factory=list)
+    notes: list[str] = Field(default_factory=list)  # the register's own notes, e.g. "registered until ..."
+    source: str
+
+    @model_validator(mode="after")
+    def _status_fits_kind(self):
+        if (self.kind == "tvet") != (self.status == "public"):
+            raise ValueError(f"{self.id}: only a public TVET college has status 'public'")
+        if self.kind == "tvet" and self.registration_number:
+            raise ValueError(f"{self.id}: public TVET colleges are not in the private registers")
+        return self
+
+
+class OccupationalQualification(_Strict):
+    """A QCTO occupational qualification that public TVET colleges offer (DHET's list for the year)."""
+
+    saqa_id: str = Field(pattern=r"^\d{4,6}$")
+    code: str | None = None
+    name: str
+    nsfas_allowances: bool  # DHET's "NSFAS allowances" column
+    colleges: list[str] = Field(default_factory=list)  # TVET college ids; empty where DHET names none
+    centre_of_specialisation: list[str] = Field(default_factory=list)  # colleges where it is a Centre of Specialisation trade
+    source: str
+
+
+class UnregisteredCollege(_Strict):
+    """An institution DHET names as illegal ("bogus"): not registered, so its qualifications aren't recognised."""
+
+    id: str = Field(pattern=r"^[a-z0-9]+(-[a-z0-9]+)*$")
+    name: str = Field(min_length=2)
+    where: str | None = None  # as DHET puts it ("Gauteng", "Western Cape, Global")
+    source: str
+
+
+class CollegesPack(_Strict):
+    """Colleges (backend/data/national/colleges.yaml): DHET's public TVET colleges and its registers of
+    private institutions, with its warning about bogus colleges. The same rules as every pack."""
+
+    release: bool = False
+    colleges: list[College] = Field(min_length=1)
+    occupational: list[OccupationalQualification] = Field(default_factory=list)
+    unregistered: list[UnregisteredCollege] = Field(default_factory=list)
+    warning_signs: SourcedList | None = None  # DHET's signs of a bogus college
+    sources: list[Source] = Field(default_factory=list)
+
+    @model_validator(mode="after")
+    def _check(self):
+        source_ids = [s.id for s in self.sources]
+        problems: list[str] = []
+        if len(set(source_ids)) != len(source_ids):
+            problems.append("source ids must be unique")
+        ids = [c.id for c in self.colleges] + [u.id for u in self.unregistered]
+        if len(set(ids)) != len(ids):
+            problems.append("college ids must be unique")
+        tvet = {c.id for c in self.colleges if c.kind == "tvet"}
+        cited = [(c.id, c.source) for c in self.colleges] + [(u.id, u.source) for u in self.unregistered]
+        cited += [(f"occupational {q.saqa_id}", q.source) for q in self.occupational]
+        if self.warning_signs:
+            cited.append(("warning_signs", self.warning_signs.source))
+        problems += _unknown_sources(cited, source_ids)
+        for q in self.occupational:
+            unknown = [c for c in q.colleges + q.centre_of_specialisation if c not in tvet]
+            if unknown:
+                problems.append(f"occupational {q.saqa_id}: unknown TVET colleges {unknown}")
+        (south, west), (north, east) = SOUTH_AFRICA
+        for c in self.colleges:
+            if c.head_office and not (south <= c.head_office[0] <= north and west <= c.head_office[1] <= east):
+                problems.append(f"{c.id}: its head office lies outside South Africa")
+        if problems:
+            raise ValueError("; ".join(problems))
+        return self
+
+    def college(self, college_id: str) -> College | None:
+        return next((c for c in self.colleges if c.id == college_id), None)
+
+    def source(self, source_id: str) -> Source | None:
+        return next((s for s in self.sources if s.id == source_id), None)

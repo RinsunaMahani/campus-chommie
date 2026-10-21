@@ -1,11 +1,12 @@
-"""Validate every university data pack, the national funding pack (NSFAS and bursaries) and the campus maps.
+"""Validate every university data pack, the national funding pack (NSFAS and bursaries), the colleges pack
+(public TVET colleges and DHET's registers) and the campus maps.
 
 Errors (exit code 1, so CI fails): schema problems and broken references, plus
 anything incomplete in a pack marked release: true.
 Warnings: unverified programmes and application facts, and stale or missing
 verification dates.
 
-Usage: python scripts/validate_data.py [folder] [--funding path] [--maps folder]
+Usage: python scripts/validate_data.py [folder] [--funding path] [--colleges path] [--maps folder]
 """
 from __future__ import annotations
 
@@ -19,10 +20,12 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from campus_engine.catalogue import (  # noqa: E402
+    COLLEGES_PATH,
     FUNDING_PATH,
     MAPS_CONFIG,
     MAPS_DIR,
     DataPackError,
+    load_colleges,
     load_funding,
     load_map,
     load_university,
@@ -81,6 +84,25 @@ def check_funding(path: Path, today: date, universities: set[str] | None = None)
         if universities is not None and f.study_at != "any":
             errors += [f"funding/{f.id}: study_at names unknown university '{u}'" for u in f.study_at if u not in universities]
     _check_sources("funding", pack.sources, today, problem, warnings)
+    return errors, warnings
+
+
+def check_colleges(path: Path, today: date) -> tuple[list[str], list[str]]:
+    """The colleges pack loads (sources cited, TVET colleges known), and says what nobody has checked yet."""
+    errors: list[str] = []
+    warnings: list[str] = []
+    try:
+        pack = load_colleges(path)
+    except DataPackError as exc:
+        return [str(exc)], warnings
+
+    def problem(message: str) -> None:
+        (errors if pack.release else warnings).append(message)
+
+    for c in pack.colleges:
+        if c.kind != "tvet" and not c.registration_number:
+            problem(f"colleges/{c.id}: the register shows no registration number")
+    _check_sources("colleges", pack.sources, today, problem, warnings)
     return errors, warnings
 
 
@@ -159,12 +181,14 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Validate university data packs and the national funding pack.")
     parser.add_argument("folder", nargs="?", default=str(ROOT / "data" / "universities"))
     parser.add_argument("--funding", default=str(FUNDING_PATH))
+    parser.add_argument("--colleges", default=str(COLLEGES_PATH))
     parser.add_argument("--maps", default=str(MAPS_DIR))
     args = parser.parse_args(argv)
     today = date.today()
     all_errors: list[str] = []
     results = [check(path, today) for path in sorted(Path(args.folder).glob("*.yaml"))]
     results.append(check_funding(Path(args.funding), today, _university_ids(Path(args.folder))))
+    results.append(check_colleges(Path(args.colleges), today))
     results.append(check_maps(Path(args.maps), today, _campus_ids(Path(args.folder))))
     for errors, warnings in results:
         for w in warnings:

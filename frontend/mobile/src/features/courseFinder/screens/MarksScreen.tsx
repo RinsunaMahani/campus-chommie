@@ -5,7 +5,7 @@ import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 
 import { Button } from '@/shared/components/Button';
 import { HeroScreen } from '@/shared/components/HeroScreen';
-import { Card, InfoNote } from '@/shared/components/Parts';
+import { Card, InfoNote, ListRow } from '@/shared/components/Parts';
 import { ErrorBox } from '@/shared/components/Status';
 import { Body } from '@/shared/components/Text';
 import { MessageKey, t } from '@/shared/i18n';
@@ -125,6 +125,10 @@ export default function MarksScreen() {
 
       {formError ? <ErrorBox message={formError} /> : null}
       <InfoNote icon="lock">{t('courseFinder.nothingStored')}</InfoNote>
+
+      <Card style={{ paddingVertical: 4 }}>
+        <ListRow icon="tool" title={t('colleges.entry')} subtitle={t('colleges.entrySub')} onPress={() => router.push('/course-finder/colleges')} last />
+      </Card>
 
       {picking ? <SubjectPicker chosen={rows.map((r) => r.subject)} onDone={choose} onClose={() => setPicking(false)} /> : null}
     </HeroScreen>
