@@ -8,9 +8,10 @@ import { SLOGAN } from '@/constants/config';
 import { useSession } from '@/features/auth/session/SessionProvider';
 import { BrandMark, Wordmark } from '@/shared/components/Brand';
 import { Button } from '@/shared/components/Button';
+import { t } from '@/shared/i18n';
 import { colors, fonts } from '@/shared/theme/tokens';
 
-/** Landing: the logo, the slogan, two ways in, and the legal links. Nothing else. */
+/** Landing: the logo, the slogan, two ways in, the course finder (no account needed), and the legal links. */
 export default function WelcomeScreen() {
   const { status } = useSession();
   // Closed the app before typing the email code: carry on from there.
@@ -36,6 +37,8 @@ export default function WelcomeScreen() {
           <Pressable accessibilityRole="button" onPress={() => router.push('/sign-in')} style={styles.link}>
             <Text style={styles.linkText}>I already have an account</Text>
           </Pressable>
+          <Button title={t('courseFinder.title')} variant="secondary" icon="compass" onPress={() => router.push('/course-finder')} />
+          <Text style={styles.finderNote}>{t('courseFinder.noAccount')}</Text>
         </View>
 
         <View style={styles.legal}>
@@ -60,6 +63,7 @@ const styles = StyleSheet.create({
   actions: { gap: 4 },
   link: { alignItems: 'center', paddingVertical: 16 },
   linkText: { fontFamily: fonts.bold, fontSize: 14.5, color: colors.ink },
+  finderNote: { fontFamily: fonts.medium, fontSize: 12.5, color: colors.textMuted, textAlign: 'center', paddingTop: 6, paddingBottom: 10 },
   legal: { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: 10, paddingBottom: 14 },
   legalText: { fontFamily: fonts.medium, fontSize: 12.5, color: colors.textMuted, textDecorationLine: 'underline' },
   legalDot: { color: colors.textFaint },

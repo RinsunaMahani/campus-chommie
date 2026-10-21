@@ -14,7 +14,7 @@ repo folder but is kept out of git; the parts the screens need are quoted below.
 
 ## Where things stand
 
-`main` holds only the empty first commit. All work sits in twenty-two stacked pull requests:
+`main` holds only the empty first commit. All work sits in twenty-three stacked pull requests:
 
 | PR | Branch | What |
 |---|---|---|
@@ -27,6 +27,7 @@ repo folder but is kept out of git; the parts the screens need are quoted below.
 | #7 | `rinsuna/m1-after-acceptance` | your points at every university; campuses, calendars, money dates and support in the packs; first steps from acceptance to the first lecture |
 | #8 | `rinsuna/m3-profile-and-money` | M3's backend: the student's profile (university and campus) and My money (settings, income, expected payments, spending, summary) |
 | #9 | `rinsuna/m1-cheap-things` | cheap things to do near campus, each priced from the place's own page |
+| #23 | `rinsuna/course-finder-screens` | M2: the Find my course screens (university, marks, tier cards, the three-choice plan with how to apply), from the welcome screen and Home; Jest tests for the tier card, the plan and the marks |
 | #22 | `rinsuna/campus-maps` | campus maps from OpenStreetMap: each campus's outline, buildings and named places, `GET /universities/<id>/map` with the credit and the licence, the fetch script, and the validator's map checks |
 | #21 | `rinsuna/solo-team` | the rules and docs for a team of one: CLAUDE.md, this file, OPEN_QUESTIONS, and the README's status |
 | #20 | `rinsuna/more-funders` | five more funders from their own pages (24 in all; 5 open on 12 Oct) |
@@ -47,7 +48,7 @@ new-phone code, and #13 deletes accounts.
 
 **How to merge:**
 - Each PR targets the branch below it, so its diff shows only its own work.
-- Merge in order: #1 into `main`, then #2 to #22, retargeting each to `main` once the one below has merged.
+- Merge in order: #1 into `main`, then #2 to #23, retargeting each to `main` once the one below has merged.
 - Use **Create a merge commit**, not squash or rebase, so every commit stays in `main`'s history (CLAUDE.md: never
   rewrite history).
 
@@ -137,7 +138,7 @@ Everything is recorded, with who and when, in [OPEN_QUESTIONS.md](OPEN_QUESTIONS
 ## Next build: the app screens, M2 to M5
 
 The screens were Mandla's; since 13 Oct they're ours. The brief gives M2 Wed 14 to Thu 15 Oct, M3 Fri 16 to Sat 17,
-M4 Sun 18 to Mon 19 and M5 Tue 20 to Wed 21. M2 is under way on `rinsuna/m2-course-finder-screens` (13 Oct).
+M4 Sun 18 to Mon 19 and M5 Tue 20 to Wed 21. M2 is built (#23, 13 Oct): M3 is next.
 
 **M2, the Find my course screens.** From the brief: "University, then marks (add or remove rows, up to 9), then tier
 cards, then the three-choice plan and sources. Add i18n plumbing with English only visible. Acceptance: works at 360
@@ -266,7 +267,7 @@ events"); the screen notes are in OPEN_QUESTIONS, "My week's screens":
 
 1. **Read first:** [CLAUDE.md](../CLAUDE.md) (AGENTS.md points every agent there), then this file.
 2. **Branch:**
-   - Start from the newest PR's branch (the first row after #9 above; today `rinsuna/campus-maps`): `git fetch origin`,
+   - Start from the newest PR's branch (the first row after #9 above; today `rinsuna/course-finder-screens`): `git fetch origin`,
      then check it out.
    - Branch `rinsuna/<topic>` from there, for example `rinsuna/money-screens`. Once the stack is merged, branch from
      `main` instead.
@@ -278,19 +279,22 @@ events"); the screen notes are in OPEN_QUESTIONS, "My week's screens":
    - Leave `backend/.env` alone (it's Rinsuna's): give your process the sandbox's settings as environment variables,
      which win over the file. Then `flask db upgrade` and `python app.py`.
    - Agents use ports 5090 (API) and 8090 (Expo), and never stop Rinsuna's servers on 5000 or 8081.
-4. **Point the app at the API:** set `EXPO_PUBLIC_API_URL` (for example `http://localhost:5090/api/v1`, or the PC's
+4. **Seeing it on a phone:** with the phone on the PC's Wi-Fi, Expo Go opens `exp://<the PC's address>:8090`. The
+   app's `EXPO_PUBLIC_API_URL` must be an address the phone can reach, through a program Windows' firewall lets in
+   (on 13 Oct, Node was allowed and the preview's Python wasn't, so a small Node relay forwarded to the API).
+5. **Point the app at the API:** set `EXPO_PUBLIC_API_URL` (for example `http://localhost:5090/api/v1`, or the PC's
    address from a phone) and `EXPO_PUBLIC_USE_MOCK_API=false` for your Expo process, as with the API.
-5. **Where code goes:**
+6. **Where code goes:**
    - Screens in `frontend/mobile/src/features/<feature>`, routes in `src/app`.
    - Colours and type only from `src/shared/theme/tokens.ts`.
    - University names in text only, no logos.
-6. **Before each commit:**
+7. **Before each commit:**
    - In `backend`: `python -m pytest -q tests` and `python scripts/validate_data.py`.
    - In `frontend/mobile`: `npx tsc --noEmit`, `npx jest` and `npx expo lint`.
    - Commits are small and named, for example `M2: tier card`.
-7. **Ask Rinsuna before:** adding an external service, changing a fact in a data pack, making a language visible,
+8. **Ask Rinsuna before:** adding an external service, changing a fact in a data pack, making a language visible,
    collecting new personal data, deleting files outside the brief's strip list, or changing hosting.
-8. **Never:** invent facts, start M6 before Fri 23 Oct 08:30 SAST, merge a PR, force-push or rewrite history, or
+9. **Never:** invent facts, start M6 before Fri 23 Oct 08:30 SAST, merge a PR, force-push or rewrite history, or
    commit secrets.
 
 ## Backend and data: done, and what's left
