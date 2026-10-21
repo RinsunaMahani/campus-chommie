@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
   chip: { paddingHorizontal: 16, paddingVertical: 9, borderRadius: radius.pill, borderWidth: 1, borderColor: colors.line, backgroundColor: colors.white },
   chipOn: { backgroundColor: colors.ink, borderColor: colors.ink },
   chipText: { fontFamily: fonts.semibold, fontSize: 13.5, color: colors.ink },
-  chipTextOn: { color: colors.white },
+  chipTextOn: { color: colors.pillText },
   row: { flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 11 },
   rule: { borderBottomWidth: 1, borderBottomColor: colors.line },
   day: { flex: 1, fontFamily: fonts.medium, fontSize: 14, color: colors.text },

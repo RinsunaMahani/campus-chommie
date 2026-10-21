@@ -50,7 +50,7 @@ export function TopBar({ initial, title, subtitle, action, onAvatarPress }: Prop
 const styles = StyleSheet.create({
   row: { flexDirection: 'row', alignItems: 'center', gap: 12 },
   avatar: { width: 38, height: 38, borderRadius: radius.sm, backgroundColor: colors.ink, alignItems: 'center', justifyContent: 'center' },
-  initial: { fontFamily: fonts.display, fontSize: 16, color: colors.white },
+  initial: { fontFamily: fonts.display, fontSize: 16, color: colors.pillText },
   title: { fontFamily: fonts.display, fontSize: 19, color: colors.ink },
   subtitle: { fontFamily: fonts.body, fontSize: 12, color: colors.textMuted },
   action: {
@@ -78,5 +78,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  badgeText: { fontFamily: fonts.bold, fontSize: 10.5, color: colors.white },
+  badgeText: { fontFamily: fonts.bold, fontSize: 10.5, color: colors.pillText },
 });

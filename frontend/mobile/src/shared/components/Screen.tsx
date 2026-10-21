@@ -4,6 +4,8 @@ import { ReactNode } from 'react';
 import { KeyboardAvoidingView, Platform, Pressable, RefreshControl, ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { Wallpaper } from './Wallpaper';
+
 import { colors, radius, space } from '@/shared/theme/tokens';
 
 type Props = {
@@ -19,17 +21,20 @@ type Props = {
 };
 
 /**
- * The page every screen sits on: porcelain background, safe areas, keyboard
- * that never hides the field you're typing in, and an action pinned at the
- * bottom where the thumb is.
+ * The page every screen sits on: the wallpaper, safe areas, keyboard that
+ * never hides the field you're typing in, and an action pinned at the
+ * bottom where the thumb is. A tab screen leaves room under its content for
+ * the floating dock.
  */
 export function Screen({ children, footer, back, tab, onRefresh, refreshing = false }: Props) {
   return (
-    <SafeAreaView style={styles.safe} edges={tab ? ['top'] : ['top', 'bottom']}>
+    <View style={styles.root}>
+      <Wallpaper />
+      <SafeAreaView style={styles.safe} edges={tab ? ['top'] : ['top', 'bottom']}>
       <KeyboardAvoidingView style={styles.flex} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         <ScrollView
           style={styles.flex}
-          contentContainerStyle={styles.content}
+          contentContainerStyle={[styles.content, tab && { paddingBottom: DOCK_ROOM }]}
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}
           refreshControl={onRefresh ? <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={colors.ink} /> : undefined}>
@@ -38,7 +43,8 @@ export function Screen({ children, footer, back, tab, onRefresh, refreshing = fa
         </ScrollView>
         {footer ? <View style={styles.footer}>{footer}</View> : null}
       </KeyboardAvoidingView>
-    </SafeAreaView>
+      </SafeAreaView>
+    </View>
   );
 }
 
@@ -55,8 +61,12 @@ export function BackButton({ onPress }: { onPress?: () => void }) {
   );
 }
 
+// The floating dock's height and the gap under it, so the last card isn't hidden behind it.
+export const DOCK_ROOM = 112;
+
 const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: colors.porcelain },
+  root: { flex: 1, backgroundColor: colors.porcelain },
+  safe: { flex: 1 },
   flex: { flex: 1 },
   content: { paddingHorizontal: 20, paddingTop: space.md, paddingBottom: space.xl, gap: space.lg },
   footer: { paddingHorizontal: 20, paddingTop: space.sm, paddingBottom: space.md, gap: space.md },

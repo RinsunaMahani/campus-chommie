@@ -3,51 +3,55 @@
  * at any size. The same shapes are in the app icon and splash
  * (assets/images); change both together.
  *
- * The mark: a graduation cap on a violet tile, from choosing a course to
- * graduating. Never a university's logo or colours.
+ * The mark: two interlocking Cs, white and cream, on a forest-glass tile.
+ * Never a university's logo or colours.
  */
 import { StyleSheet, Text, View } from 'react-native';
-import Svg, { Circle, Defs, LinearGradient, Path, Polygon, Rect, Stop } from 'react-native-svg';
+import Svg, { Defs, LinearGradient, Path, Rect, Stop } from 'react-native-svg';
 
 import { brand, colors, fonts } from '@/shared/theme/tokens';
 
-/** The app-icon tile with the cap inside. */
+/** The CC monogram's two strokes, on a 64-unit square. */
+function Cs({ stroke = 7 }: { stroke?: number }) {
+  return (
+    <>
+      <Path d="M29 15C18.5 15 11 22.4 11 32C11 41.6 18.5 49 29 49" stroke={brand.white} strokeWidth={stroke} strokeLinecap="round" fill="none" />
+      <Path d="M49 15C38.5 15 31 22.4 31 32C31 41.6 38.5 49 49 49" stroke={brand.cream} strokeWidth={stroke} strokeLinecap="round" fill="none" />
+    </>
+  );
+}
+
+/** The app-icon tile with the CC inside. */
 export function BrandMark({ size = 56 }: { size?: number }) {
   return (
-    <Svg width={size} height={size} viewBox="0 0 512 512" accessibilityLabel="Campus Chommie">
+    <Svg width={size} height={size} viewBox="0 0 64 64" accessibilityLabel="Campus Chommie">
       <Defs>
-        <LinearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-          <Stop offset="0" stopColor={brand.violetLight} />
-          <Stop offset="1" stopColor={brand.violetDeep} />
+        <LinearGradient id="tile" x1="0" y1="0" x2="1" y2="1">
+          <Stop offset="0" stopColor={brand.glassFrom} />
+          <Stop offset="1" stopColor={brand.glassTo} />
         </LinearGradient>
       </Defs>
-      <Rect width="512" height="512" rx="112" fill="url(#bg)" />
-      {/* the cap's band, under the board */}
-      <Rect x="150" y="250" width="212" height="96" rx="32" fill={brand.lavender} />
-      {/* the board */}
-      <Polygon points="256,136 450,224 256,312 62,224" fill={brand.white} />
-      {/* the tassel */}
-      <Path d="M256 224 L400 262 L400 330" stroke={brand.gold} strokeWidth="14" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-      <Circle cx="400" cy="348" r="18" fill={brand.gold} />
+      <Rect x="0.5" y="0.5" width="63" height="63" rx="18" fill="url(#tile)" stroke={brand.rim} strokeWidth="1" />
+      <Cs />
     </Svg>
   );
 }
 
-/** The wordmark: "Campus" + "Chommie" in the accent colour. Pass onDark on violet backgrounds. */
-export function Wordmark({ size = 26, onDark = false }: { size?: number; onDark?: boolean }) {
+/** The wordmark: "Campus" in white and "Chommie" in cream, for the wallpaper and glass. */
+export function Wordmark({ size = 26 }: { size?: number }) {
   return (
     <Text style={[styles.word, { fontSize: size, letterSpacing: -size * 0.02 }]}>
-      <Text style={{ color: onDark ? brand.white : colors.ink }}>Campus </Text>
-      <Text style={{ color: onDark ? brand.lavender : colors.accent }}>Chommie</Text>
+      <Text style={{ color: colors.ink }}>Campus </Text>
+      <Text style={{ color: brand.cream }}>Chommie</Text>
     </Text>
   );
 }
 
-export function BrandLockup({ onDark = false }: { onDark?: boolean }) {
+export function BrandLockup() {
   return (
     <View style={styles.lockup}>
       <BrandMark size={44} />
-      <Wordmark size={26} onDark={onDark} />
+      <Wordmark size={26} />
     </View>
   );
 }

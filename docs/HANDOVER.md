@@ -14,7 +14,7 @@ repo folder but is kept out of git; the parts the screens need are quoted below.
 
 ## Where things stand
 
-`main` holds only the empty first commit. All work sits in thirty stacked pull requests:
+`main` holds only the empty first commit. All work sits in thirty-one stacked pull requests:
 
 | PR | Branch | What |
 |---|---|---|
@@ -27,6 +27,7 @@ repo folder but is kept out of git; the parts the screens need are quoted below.
 | #7 | `rinsuna/m1-after-acceptance` | your points at every university; campuses, calendars, money dates and support in the packs; first steps from acceptance to the first lecture |
 | #8 | `rinsuna/m3-profile-and-money` | M3's backend: the student's profile (university and campus) and My money (settings, income, expected payments, spending, summary) |
 | #9 | `rinsuna/m1-cheap-things` | cheap things to do near campus, each priced from the place's own page |
+| #31 | `rinsuna/forest-theme` | the whole app in Rinsuna's forest theme, from her homescreen: every screen on her wallpaper (forest moss down to terracotta rose), dark forest-glass cards, the white pill for the main action, a floating glass dock, and her CC monogram as the mark, app icon, adaptive icon and splash; every text colour meets WCAG AA on every band of the wallpaper |
 | #30 | `rinsuna/all-universities` | all 26 public universities: each one's points rule where it publishes one the engine can follow, and how and when to apply (dates, fee, link, choices), from its own pages; agent drafts; two new ways of counting (a subject's own table, points from the percentage) and a general table; a university without a rule says why |
 | #29 | `rinsuna/qualify-first` | Find my course marks first: your marks, then where you qualify (every university with your points there and how many programmes you meet, funding open now), then one university (points card opening per subject, courses and how to apply on sliding tabs), then the plan; a violet header and movement from the HTML Rinsuna chose (press, shimmer, sliding tabs, swipe rows, opening sections), in the app's own colours; the points answer gives each subject's points, and the assess answer how to apply there |
 | #28 | `rinsuna/apply-preview` | "What you can still do now" at the top of the plan (open now, coming up, not published, closed), from the plan's own dates; a test date for previews only (`CAMPUS_PREVIEW_TODAY`, which production refuses), which the plan says it's using; tests for both |
@@ -66,6 +67,8 @@ Everything is recorded, with who and when, in [OPEN_QUESTIONS.md](OPEN_QUESTIONS
 - **The team (13 Oct):** Rinsuna works alone from now on. The app screens, which were Mandla's, are ours to build.
   Everything that waited for Mandla in OPEN_QUESTIONS now waits for Rinsuna, and F6 (fund and apply), which she agreed
   on 9 Oct, is in CLAUDE.md's Scope.
+- **The look (13 Oct, #31):** Rinsuna's forest theme for the whole app, sampled from her homescreen, and her CC
+  monogram as the icon. The colours are in `src/shared/theme/tokens.ts`, the six icon images in `assets/images`.
 - **M1 started early** (Fri 9 Oct) as stacked PRs, because the brief gives it only Mon 12 to Tue 13 Oct.
 - **Research:** facts for UP, TUT and SMU were read from their official documents ([research/](research/)). No
   person has checked them yet.
@@ -132,7 +135,7 @@ Everything is recorded, with who and when, in [OPEN_QUESTIONS.md](OPEN_QUESTIONS
    - flag counts for reps, and module alerts
    - links to opportunity sites
    - the package name `za.campuschommie.app` (it can't change after the first Play Store upload)
-   - app icon, colours and slogan
+   - the slogan
    - Google sign-in
    - hosting
    - the email sender
@@ -145,7 +148,7 @@ Everything is recorded, with who and when, in [OPEN_QUESTIONS.md](OPEN_QUESTIONS
 ## Next build: the app screens, M2 to M5
 
 The screens were Mandla's; since 13 Oct they're ours. The brief gives M2 Wed 14 to Thu 15 Oct, M3 Fri 16 to Sat 17,
-M4 Sun 18 to Mon 19 and M5 Tue 20 to Wed 21. M2 to M5 are built (#23 to #26, 13 Oct), and the judge flow runs end to end. #27 (13 Oct) replaces the marks screen's one-subject-at-a-time rows with a picker in folders, #28 puts what a learner can still do at the top of the plan, #29 puts the marks first, and #30 covers all 26 universities. Next: hosting (Azure for Students, once Rinsuna activates it), a preview APK on the hosted API, polish (the plan screen is long), and M6 from Fri 23 Oct.
+M4 Sun 18 to Mon 19 and M5 Tue 20 to Wed 21. M2 to M5 are built (#23 to #26, 13 Oct), and the judge flow runs end to end. #27 (13 Oct) replaces the marks screen's one-subject-at-a-time rows with a picker in folders, #28 puts what a learner can still do at the top of the plan, #29 puts the marks first, #30 covers all 26 universities, and #31 puts the whole app in Rinsuna's forest theme. Next: hosting (Azure for Students, once Rinsuna activates it), a preview APK on the hosted API, polish (the plan screen is long), and M6 from Fri 23 Oct.
 
 **M2, the Find my course screens.** From the brief: "University, then marks (add or remove rows, up to 9), then tier
 cards, then the three-choice plan and sources. Add i18n plumbing with English only visible. Acceptance: works at 360
@@ -157,7 +160,7 @@ route sits outside the protected `(app)` group, reachable from the welcome scree
 
 **The order since 13 Oct (#29), Rinsuna's choice:** marks first, then where you qualify, then a university, then the
 plan. The brief's "University, then marks" came first in #23. Routes: `course-finder` (marks), `course-finder/qualify`,
-`course-finder/university/[id]`, `course-finder/plan`. The screens open on a violet band (`shared/components/HeroScreen`),
+`course-finder/university/[id]`, `course-finder/plan`. The screens open with their title on the wallpaper (`shared/components/HeroScreen`),
 and the moving parts live in `shared/motion` (press, shimmer, sliding tabs, swipe rows, opening sections, rising
 content); each changes at once when the phone asks for reduced motion.
 

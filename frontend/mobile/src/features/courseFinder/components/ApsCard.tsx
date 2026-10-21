@@ -1,5 +1,5 @@
 /**
- * Your points at one university, big, on violet: how that university counts
+ * Your points at one university, big, on raised glass: how that university counts
  * them, then each of your subjects with its mark, its level on that
  * university's scale and the points it adds, named as you chose them.
  */
@@ -58,7 +58,7 @@ export function ApsCard({ points, sent, rows }: Props) {
 }
 
 const styles = StyleSheet.create({
-  card: { borderRadius: radius.lg, padding: 18, gap: 6, backgroundColor: colors.accent },
+  card: { borderRadius: radius.lg, padding: 18, gap: 6, borderWidth: 1, borderColor: colors.line, backgroundColor: colors.glassElevated },
   overline: { fontFamily: fonts.bold, fontSize: 11.5, letterSpacing: 0.8, textTransform: 'uppercase', color: colors.onAccentSoft },
   big: { fontFamily: fonts.display, fontSize: 40, lineHeight: 46, letterSpacing: -1, color: colors.onAccent },
   unit: { fontFamily: fonts.medium, fontSize: 15, letterSpacing: 0, color: colors.onAccentSoft },

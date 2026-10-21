@@ -20,7 +20,7 @@ export default function ResetSent() {
       }>
       <View style={styles.center}>
         <View style={styles.circle}>
-          <Feather name="mail" size={30} color={colors.white} />
+          <Feather name="mail" size={30} color={colors.pillText} />
         </View>
         <Title style={{ textAlign: 'center' }}>Check your email</Title>
         <Body style={{ textAlign: 'center' }}>
