@@ -2,16 +2,12 @@
  * Rand as students type it becomes integer cents (CLAUDE.md: money is integer
  * cents everywhere), never through a float; and the words for when money comes in.
  */
-import { expect, jest, test } from '@jest/globals';
+import { expect, test } from '@jest/globals';
 
-import { addDays, formatMonth, todaySast } from '@/shared/lib/dates';
+import { addDays, dayInMonth, formatMonth, monthsFrom, todaySast } from '@/shared/lib/dates';
 import { centsToInput, formatRand, MAX_CENTS, parseRand } from '@/shared/lib/money';
 
-import { dayInMonth } from '../screens/IncomeEditScreen';
 import { ordinal, scheduleText } from '../words';
-
-// The edit screen's module imports the router and the API; only its date helper is under test here.
-jest.mock('expo-router', () => ({ router: { back: jest.fn() }, useLocalSearchParams: () => ({}) }));
 
 test('rand as typed becomes whole cents', () => {
   expect(parseRand('1500')).toBe(150000);
@@ -57,4 +53,5 @@ test('days are South African days', () => {
   expect(addDays('2026-10-31', 1)).toBe('2026-11-01');
   expect(addDays('2026-03-01', -1)).toBe('2026-02-28');
   expect(formatMonth('2026-11')).toBe('Nov 2026');
+  expect(monthsFrom(-1, 3, '2026-01-15')).toEqual(['2025-12', '2026-01', '2026-02']);
 });

@@ -256,6 +256,9 @@ cents, documents and next steps, each with its source. `funding.yaml` holds nati
   - **Week strip:** eight weeks with the `load` word (never colour alone), the `reason` line, and a tap to see the
     week's events and calendar entries.
   - **My marks:** modules with their assessments, the standing message, and the projection with its range.
+  - **Built** on `rinsuna/week-screens` (#25, 13 Oct 2026). Words chosen, for Rinsuna to confirm: the flag reasons as
+    "Wrong date", "Wrong time", "Wrong venue", "Not happening", "Listed twice" and "Something else"; a field the
+    engine was unsure of is marked "Check this"; My week and My marks sit on the Week tab, between Home and Money.
 - [ ] **Flag counts for reps** (decided by Rinsuna's agent while building, 10 Oct 2026; Rinsuna to confirm): a rep sees
   how many students flagged an event and why, from the first flag, never who. We read CLAUDE.md's "aggregates only
   when at least 5 students contribute" as covering marks and money. If the team reads it as covering flags too,

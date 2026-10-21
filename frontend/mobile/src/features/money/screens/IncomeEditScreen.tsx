@@ -10,7 +10,7 @@ import { ErrorBox, Loading } from '@/shared/components/Status';
 import { Title } from '@/shared/components/Text';
 import { TextField } from '@/shared/components/TextField';
 import { t } from '@/shared/i18n';
-import { formatMonth, todaySast } from '@/shared/lib/dates';
+import { dayInMonth, formatMonth, monthsFrom } from '@/shared/lib/dates';
 import { centsToInput, parseRand } from '@/shared/lib/money';
 
 import { moneyApi } from '../api/moneyApi';
@@ -20,27 +20,10 @@ import { RELIABILITY, reliabilityLabel } from '../words';
 
 type Schedule = 'monthly' | 'once';
 
-/** "2026-10", "2026-11", ... from this month on: the months a once-off payment can be in. */
-function nextMonths(count: number): string[] {
-  const [y, m] = todaySast().split('-').map(Number);
-  return Array.from({ length: count }, (_, i) => {
-    const d = new Date(Date.UTC(y, m - 1 + i, 1));
-    return `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}`;
-  });
-}
-
-/** A real day in that month ("2026-02-30" is not), as "2026-02-28" style text, or null. */
-export function dayInMonth(yearMonth: string, day: number): string | null {
-  const [y, m] = yearMonth.split('-').map(Number);
-  const d = new Date(Date.UTC(y, m - 1, day));
-  if (d.getUTCMonth() !== m - 1 || day < 1) return null;
-  return `${yearMonth}-${String(day).padStart(2, '0')}`;
-}
-
 /** Add or change money coming in: what it is, how much, when, and how reliable. */
 export default function IncomeEditScreen() {
   const { id } = useLocalSearchParams<{ id?: string }>();
-  const months = useMemo(() => nextMonths(12), []);
+  const months = useMemo(() => monthsFrom(0, 12), []);
   const [loaded, setLoaded] = useState(!id);
   const [label, setLabel] = useState('');
   const [amount, setAmount] = useState('');

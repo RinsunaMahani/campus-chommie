@@ -12,7 +12,7 @@ import { t } from '@/shared/i18n';
 
 import { Slot } from '../types';
 import { ApplyWindows, SlotFundingBox } from './ApplyBox';
-import { SourceLink } from './SourceLink';
+import { SourceLink } from '@/shared/components/SourceLink';
 import { TierBadge, WhyLines } from './TierCard';
 
 type Props = {

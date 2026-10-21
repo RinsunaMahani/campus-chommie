@@ -17,7 +17,7 @@ import { colors, fonts } from '@/shared/theme/tokens';
 
 import { ApplyWindow, Deadline, Group, Guide, PlanApply, SlotFunding, WindowStatus } from '../types';
 import { daysLeft, formatDay } from '../words';
-import { SourceLink } from './SourceLink';
+import { SourceLink } from '@/shared/components/SourceLink';
 
 type Tone = NonNullable<ComponentProps<typeof Tag>['tone']>;
 

@@ -7,7 +7,7 @@
 import { expect, jest, test } from '@jest/globals';
 import { fireEvent, render, screen } from '@testing-library/react-native';
 
-import { host, SourceLink } from '../components/SourceLink';
+import { host, SourceLink } from '@/shared/components/SourceLink';
 import { TierCard } from '../components/TierCard';
 import { AssessAnswer, Match } from '../types';
 import recorded from './fixtures/assess.json';

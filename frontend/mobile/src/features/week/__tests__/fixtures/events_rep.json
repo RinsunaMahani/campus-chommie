@@ -1,0 +1,53 @@
+{
+ "data": {
+  "class_id": "1c6c85cb-1f61-43f1-9d84-4ef23db1b61d",
+  "events": [
+   {
+    "at": "10:00",
+    "cancelled": false,
+    "changes": [],
+    "class_id": "1c6c85cb-1f61-43f1-9d84-4ef23db1b61d",
+    "flags": {
+     "count": 0,
+     "reasons": {}
+    },
+    "id": "0b2455a7-8f6a-4774-958a-699b93e79687",
+    "kind": "quiz",
+    "module": "BCH111",
+    "on": "2026-10-15",
+    "title": "Quiz 3",
+    "venue": null,
+    "verified": true,
+    "version": 1,
+    "weighting": 5.0,
+    "when": "Thu 15 Oct 2026 at 10:00",
+    "your_flag": null
+   },
+   {
+    "at": "10:00",
+    "cancelled": false,
+    "changes": [],
+    "class_id": "1c6c85cb-1f61-43f1-9d84-4ef23db1b61d",
+    "flags": {
+     "count": 0,
+     "reasons": {}
+    },
+    "id": "eccb86bc-abf0-47cc-8fd7-3a7f69fbee5c",
+    "kind": "quiz",
+    "module": "BCH111",
+    "on": "2026-10-23",
+    "title": "Quiz 4",
+    "venue": null,
+    "verified": true,
+    "version": 1,
+    "weighting": 10.0,
+    "when": "Fri 23 Oct 2026 at 10:00",
+    "your_flag": null
+   }
+  ],
+  "from": "2026-10-06",
+  "to": "2027-02-10"
+ },
+ "message": "Success",
+ "success": true
+}
