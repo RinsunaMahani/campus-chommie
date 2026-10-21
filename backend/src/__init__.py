@@ -241,7 +241,8 @@ def _register_input_guard(app: Flask) -> None:
 
 def _register_security_headers(app: Flask) -> None:
     """Headers on every response. The API returns JSON with tokens and
-    personal data: nothing may be cached, sniffed as another type, or framed."""
+    personal data: nothing may be cached, sniffed as another type, or framed. In production (always behind
+    https) browsers are also told to use https only, for a year (HSTS)."""
 
     @app.after_request
     def _headers(response):
@@ -251,6 +252,8 @@ def _register_security_headers(app: Flask) -> None:
         response.headers["Cache-Control"] = "no-store"
         response.headers["Pragma"] = "no-cache"
         response.headers.pop("Server", None)
+        if app.config.get("HSTS"):
+            response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
         return response
 
 
