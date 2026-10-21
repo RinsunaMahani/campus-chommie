@@ -1,28 +1,33 @@
 """
 Application startup hook. Starts the Master Scheduler exactly once.
 
-Two things this guards against:
+Three things this guards against:
   1. Calling start() twice in the same process (accidental double-init).
   2. Flask's debug-mode reloader, which runs the app in TWO processes --
      without the guard below, both would start their own scheduler,
      silently double-executing every job.
+  3. Several web processes (gunicorn workers, containers): only the one
+     holding the database lock (lock.py) runs the jobs.
 """
 
 from __future__ import annotations
 
 import logging
 import os
-from typing import Optional
 
 from flask import Flask
+from sqlalchemy.engine import Connection
 
+from src.extensions import db
+from src.master_scheduler import lock
 from src.master_scheduler.engine import APSchedulerEngine
 from src.master_scheduler.interfaces import SchedulerEngine
 from src.master_scheduler.registry import register_all
 
 logger = logging.getLogger(__name__)
 
-_engine: Optional[SchedulerEngine] = None
+_engine: SchedulerEngine | None = None
+_lock: Connection | None = None
 
 
 def start(app: Flask) -> None:
@@ -30,7 +35,7 @@ def start(app: Flask) -> None:
     Call once, from create_app(), AFTER db.init_app(app) and after all
     domain modules are otherwise importable -- right before `return app`.
     """
-    global _engine
+    global _engine, _lock
 
     if not _should_start_in_this_process(app):
         logger.info("master scheduler: skipping start in reloader watcher process")
@@ -39,6 +44,13 @@ def start(app: Flask) -> None:
     if _engine is not None:
         logger.warning("master scheduler: start() called but already running -- ignoring")
         return
+
+    with app.app_context():
+        held = lock.hold(db.engine)
+    if held is None:
+        logger.info("master scheduler: another process runs the jobs; not starting one here")
+        return
+    _lock = held
 
     # security.schedulers.monitor self-registers as a runner listener on
     # import -- imported here, not at this module's top level, so
@@ -54,10 +66,13 @@ def start(app: Flask) -> None:
 
 
 def stop() -> None:
-    global _engine
+    global _engine, _lock
     if _engine is not None:
         _engine.stop()
         _engine = None
+    if _lock is not None:
+        lock.release(_lock)
+        _lock = None
 
 
 def is_running() -> bool:

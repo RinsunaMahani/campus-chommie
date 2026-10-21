@@ -14,6 +14,7 @@ change one line in trigger.py. Nothing else in the codebase changes.
 from __future__ import annotations
 
 import logging
+from datetime import UTC, datetime
 from typing import Callable
 
 from apscheduler.schedulers.background import BackgroundScheduler
@@ -29,7 +30,9 @@ class APSchedulerEngine(SchedulerEngine):
     def __init__(self) -> None:
         self._scheduler = BackgroundScheduler(daemon=True)
 
-    def add_job(self, job_id: str, func: Callable[[], None], interval_seconds: float) -> None:
+    def add_job(self, job_id: str, func: Callable[[], None], interval_seconds: float, run_at_start: bool = False) -> None:
+        # APScheduler's first run is one interval after start, unless told otherwise (never None: that pauses it).
+        first = {"next_run_time": datetime.now(UTC)} if run_at_start else {}
         self._scheduler.add_job(
             func,
             "interval",
@@ -37,6 +40,7 @@ class APSchedulerEngine(SchedulerEngine):
             id=job_id,
             replace_existing=True,
             max_instances=1,
+            **first,
         )
         logger.info("master scheduler: registered job '%s' every %ss", job_id, interval_seconds)
 

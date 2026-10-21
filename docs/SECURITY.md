@@ -58,13 +58,15 @@ request and never stored; and the judges' demo accounts. Update it whenever a mi
 | Secrets leaking | secrets only in git-ignored `.env`; the app refuses to start with missing or short (< 32 characters) keys; codes and reset links are never logged; production refuses the fake mail provider and requires an https base address | `config.py`, `shared/email/` |
 | Tampering with history | the database refuses UPDATE, DELETE and TRUNCATE on the audit trail (trigger) | `migrations/versions/0001_baseline.py` |
 | Spoofed client IP | forwarding headers are ignored unless the server sits behind Cloudflare alone (`BEHIND_CLOUDFLARE`) | `shared/net/client_ip.py` |
-| Browser attacks on API responses | `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy: no-referrer`, `Cache-Control: no-store`; CORS only in development | `src/__init__.py` |
+| Browser attacks on API responses | `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy: no-referrer`, `Cache-Control: no-store`; CORS in development, and in production only for the https addresses in `CORS_ORIGINS` (none by default; `*` and plain http refused at start-up) | `src/__init__.py`, `src/config.py` |
+| Background jobs running twice, or racing a migration | only the process holding a PostgreSQL advisory lock runs the jobs, across every worker and instance; a one-off command (`flask db upgrade`, `flask seed`) never starts them | `src/master_scheduler/lock.py`, `trigger.py`, `src/__init__.py` (`_one_off_command`) |
+| A container that leaks or can do too much | the image runs as a normal user, holds no `.env` and no tests, and starts in production mode (which refuses weak secrets and fake email); the access log has no IP address and no query string | `backend/Dockerfile`, `.dockerignore`, `gunicorn.conf.py` |
 | Design rot | architecture tests: the engine imports no app, web or database code; routes never call the engine (services do); `shared/` never imports a domain; identity stays sealed; finance stays a leaf; every route has a rate limit | `backend/tests/architecture/` |
 | Vulnerable dependencies, committed secrets | CI runs `pip-audit` and an npm audit gate (any high or critical advisory fails, except the accepted ones below), and a gitleaks scan, on every pull request | `.github/workflows/ci.yml`, `frontend/mobile/scripts/check-audit.mjs` |
 
 ## Test evidence (M5)
 
-Backend: **990 tests pass** on PostgreSQL 16 (10 Oct 2026), including:
+Backend: **1008 tests pass** on PostgreSQL 16 (10 Oct 2026), including:
 
 | Tests | What they prove |
 |---|---|
@@ -85,6 +87,7 @@ Backend: **990 tests pass** on PostgreSQL 16 (10 Oct 2026), including:
 | `tests/domains/student/test_academics.py` | My marks: the engine's standing and projection for a persona's module, weights short of 100% counted as still to come, weights never past 100%, odd numbers (text, booleans, NaN, a 400-digit integer) and unknown fields refused, another student's modules and assessments (404), per-student limits |
 | `tests/domains/classes/test_classes.py` | classes and invite codes, rep codes bringing in up to 3 reps (used once, expiring, hashed, never a fourth), only a rep makes rep codes, nobody ever listed, odd input refused, joining slowed to 20 tries an hour, old classes and expired codes deleted |
 | `tests/domains/classes/test_events.py` | the brief's M4 checks: a student's announcement stays unverified until a rep confirms it; a change message updates the event and writes `event_changes` rows; flags show reps counts, never who; the week strip with the university calendar; and the brief's M3 check that needed the week: the self-funded persona's heavy week makes his life fund amber |
+| `tests/hosting/test_hosting.py` | one process holds the scheduler's lock, the scheduler starts only with it and gives it back, one-off commands never start it, the demo's re-base runs at start; gunicorn runs one process and logs no IP or query string; the container runs as a normal user and keeps secrets out; production allows browsers only from named https addresses. The image itself was also built and run twice against an empty database: migrations ran, both answered the health check, and only one ran the jobs |
 | `tests/domains/classes/test_class_alerts.py` | classmates told once about a new, moved, changed or cancelled event, the rep and outsiders never; no names, titles or venues in the words; switches off and on, each student's own; odd switch changes refused; the export has the switches; the database allows every template |
 | `tests/domains/classes/test_events_hostile.py` | odd announcements and confirmations (a "verified" flag, impossible times, dates a year out), a rep's role not carried into another class, other classes' candidates and events (404), floods, and old announcement text and flags deleted |
 | `tests/domains/student/test_alerts_support.py` | the personas' alerts (a combined alert for short money and a heavy week ahead, a heavy-week alert with the campus's own tutoring and counselling), a module out of reach, another student's alerts never shown; every kind of support for a campus, "Not verified yet" where the pack has none, crisis lines held back until a person checks them; cheap things for the campus only |
@@ -124,5 +127,6 @@ Tracked with options in [OPEN_QUESTIONS.md](OPEN_QUESTIONS.md):
 - A student's announcement text is seen by the class's reps by design: it's how they check it.
 - The demo accounts' password is shared with the judges by design, so those accounts hold fictional data only.
 - Crisis lines stay hidden until a person checks them: every pack's are still agent drafts (OPEN_QUESTIONS).
-- Rate-limit counters live in memory: correct for one server process only.
+- Rate-limit counters live in memory: correct for one server process only, which is what the container runs
+  (`gunicorn.conf.py`). More processes need Redis first (DEPLOY.md).
 - The Privacy Policy and Terms are drafts awaiting legal review.

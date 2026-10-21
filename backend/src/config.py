@@ -118,8 +118,9 @@ class BaseConfig:
     # issued to one of these. Empty = Google sign-in switched off.
     GOOGLE_CLIENT_IDS = [c.strip() for c in os.environ.get("GOOGLE_CLIENT_IDS", "").split(",") if c.strip()]
 
-    # Background jobs (clean-ups). Off in tests, which call jobs directly.
-    SCHEDULER_ENABLED = True
+    # Background jobs (clean-ups, the demo's re-base). Off in tests, which call jobs directly. A host may
+    # switch them off (SCHEDULER_ENABLED=false); either way only one process runs them (master_scheduler/lock.py).
+    SCHEDULER_ENABLED = _bool("SCHEDULER_ENABLED", "true")
 
     # Rate limiting (in-memory for dev; Redis in production).
     RATELIMIT_STORAGE_URI = os.environ.get("RATELIMIT_STORAGE_URI", "memory://")
@@ -154,6 +155,10 @@ class ProductionConfig(BaseConfig):
     ENV_NAME = "production"
     DEBUG = False
     SQLALCHEMY_DATABASE_URI = _database_uri()
+    # The web build's own https address(es), comma-separated, so a browser may
+    # call the API. Empty (the default): no browser origin at all. Phones don't
+    # need CORS.
+    CORS_ORIGINS = [o.strip() for o in os.environ.get("CORS_ORIGINS", "").split(",") if o.strip()]
 
 
 CONFIG_MAP = {
@@ -185,4 +190,9 @@ def get_config(env_name: str | None = None):
             raise RuntimeError(f"Missing email settings for production: {', '.join(mail_missing)}.")
         if not os.environ.get("APP_BASE_URL", "").startswith("https://"):
             raise RuntimeError("APP_BASE_URL must be the https address of this backend in production.")
+        # Only named https origins: never "*", never plain http.
+        origins = [o.strip() for o in os.environ.get("CORS_ORIGINS", "").split(",") if o.strip()]
+        bad = [o for o in origins if not o.startswith("https://") or "*" in o]
+        if bad:
+            raise RuntimeError(f"CORS_ORIGINS must list https addresses only (no *): {', '.join(bad)}")
     return config

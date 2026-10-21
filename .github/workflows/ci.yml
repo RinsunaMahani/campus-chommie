@@ -65,6 +65,47 @@ jobs:
       - name: Backend tests, with the engine's coverage
         run: python -m pytest -q -p no:warnings tests --cov=campus_engine --cov-report=term --cov-fail-under=80
 
+  container:
+    name: Backend container (build, migrate, health)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: campus_chommie
+          POSTGRES_PASSWORD: ci-only-password
+          POSTGRES_DB: campus_chommie_container
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U campus_chommie"
+          --health-interval 5s --health-timeout 5s --health-retries 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build the image
+        run: docker build -t campus-chommie-api backend
+      - name: Start it as a host would, against an empty database
+        # Made-up values for CI only; no real secret is used or needed.
+        run: >-
+          docker run -d --name api --network host
+          -e DATABASE_URL=postgresql://campus_chommie:ci-only-password@localhost:5432/campus_chommie_container
+          -e SECRET_KEY=ci-only-secret-key-used-nowhere-else-000000
+          -e JWT_SECRET_KEY=ci-only-jwt-secret-key-used-nowhere-else-00
+          -e MAIL_SERVER=smtp.invalid -e MAIL_USERNAME=ci -e MAIL_PASSWORD=ci-only
+          -e "MAIL_DEFAULT_SENDER=Campus Chommie <ci@example.com>"
+          -e APP_BASE_URL=https://api.example.com
+          campus-chommie-api
+      - name: The migrations ran, it answers its health check, and it runs the jobs as a normal user
+        run: |
+          for i in $(seq 1 60); do curl -fsS http://127.0.0.1:8000/api/v1/health && break; sleep 2; done
+          curl -fsS http://127.0.0.1:8000/api/v1/health
+          docker logs api 2>&1 | grep -q "Running upgrade"
+          test "$(docker logs api 2>&1 | grep -c 'master scheduler: started')" = 1
+          test "$(docker exec api id -un)" = campus
+      - name: The container's log, if anything failed
+        if: failure()
+        run: docker logs api
+
   app:
     name: App (tsc, jest, lint, web build)
     runs-on: ubuntu-latest
