@@ -6,6 +6,7 @@
  * - a funder whose covers name no amount shows the "doesn't publish an amount" line
  * - fee formatting (15000 is "R150", null is "No fee published")
  * - the list filters by field
+ * - "All" opens in groups (who offers it, and the missing middle) instead of one long list
  */
 import { beforeEach, expect, jest, test } from '@jest/globals';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react-native';
@@ -141,7 +142,9 @@ test('FundingScreen: the list filters by field', async () => {
     expect(screen.getByText('24 funding options: 5 open now.')).toBeTruthy();
   });
 
-  // Initially shows other funders, including pharmacy-only Clicks Foundation
+  // Initially the other funders sit in closed groups; Companies opens to pharmacy-only Clicks Foundation
+  expect(screen.queryByText('Clicks Foundation Bursary Fund')).toBeNull();
+  fireEvent.press(screen.getByRole('button', { name: 'Companies. 6 funders: 1 open now.' }));
   expect(screen.getByText('Clicks Foundation Bursary Fund')).toBeTruthy();
 
   // Filter by Agriculture (which has Sasol Foundation)
@@ -152,6 +155,25 @@ test('FundingScreen: the list filters by field', async () => {
   expect(screen.getByText('Sasol Foundation Bursary Programme')).toBeTruthy();
   // Clicks Foundation (pharmacy only) is NOT shown
   expect(screen.queryByText('Clicks Foundation Bursary Fund')).toBeNull();
+});
+
+test("FundingScreen: the missing middle has its own group, in the funders' own words", async () => {
+  jest.spyOn(courseFinderApi, 'fundingList').mockResolvedValue(fundingListData);
+
+  render(<FundingScreen />);
+
+  const group = await screen.findByRole('button', { name: 'If your family earns too much for NSFAS. 5 funders: 0 open now.' });
+  expect(screen.getByRole('button', { name: 'Government. 11 funders: 3 open now.' })).toBeTruthy();
+  expect(screen.getByRole('button', { name: 'Through your university. 3 funders: 0 open now.' })).toBeTruthy();
+  fireEvent.press(group);
+
+  expect(screen.getByText(/we never ask what your family earns/)).toBeTruthy();
+  expect(screen.getByText('Sasol Foundation Bursary Programme')).toBeTruthy();
+  expect(
+    screen.getByText('In their words: "A combined household income under R800 000 a year, and under 25 when you apply"'),
+  ).toBeTruthy();
+  // NSFAS's own limit is on its card, never in this group
+  expect(screen.queryByText(/In their words: "Students from households/)).toBeNull();
 });
 
 test('FunderDetailScreen: a funder without covers shows "Not published by the funder."', async () => {
@@ -311,6 +333,8 @@ test('Saved funding (signed in): saves, unsaves, and shows the Saved list with s
 
   render(<FundingScreen />);
 
+  // Clicks Foundation sits in the Companies group, closed until opened
+  fireEvent.press(await screen.findByRole('button', { name: 'Companies. 6 funders: 1 open now.' }));
   await waitFor(() => {
     expect(screen.getByText('Saved on Thu 15 Oct 2026')).toBeTruthy();
   });

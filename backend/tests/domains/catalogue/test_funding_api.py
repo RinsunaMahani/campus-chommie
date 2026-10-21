@@ -109,6 +109,34 @@ def test_postgraduates_and_students_already_studying_have_their_own_lists(client
     assert senior[0] == "clicks_foundation" and "sarb" not in senior
 
 
+def test_the_list_comes_grouped_by_who_offers_it_and_for_the_missing_middle(client, on_11_october):
+    data = client.get(BASE).get_json()["data"]
+    groups = data["sections"]
+    assert [g["id"] for g in groups] == ["government", "company", "non_profit", "university"]
+    assert sorted(i for g in groups for i in g["funder_ids"]) == sorted(_ids_of(data))  # each funder once
+    assert groups[0]["title"] == "Government" and groups[0]["line"].startswith("11 funders:")
+
+    mm = data["missing_middle"]
+    assert mm["title"] == "If your family earns too much for NSFAS"
+    assert {"nsfas_loans", "allan_gray_fellowship", "sasol_foundation"} <= set(mm["funder_ids"])
+    assert "nsfas" not in mm["funder_ids"] and "thuthuka" not in mm["funder_ids"]  # the same R350 000 limit
+
+    funders = {f["id"]: f for f in data["funders"]}
+    assert funders["sasol_foundation"]["income_says"].startswith("A combined household income under R800 000")
+    assert funders["isfap"]["income_says"] is None
+
+
+def test_a_filtered_list_groups_only_what_it_found(client, on_11_october):
+    data = client.get(BASE, query_string={"field": "pharmacy", "status": "open"}).get_json()["data"]
+    assert [(g["id"], g["funder_ids"]) for g in data["sections"]] == [
+        ("government", ["nsfas"]), ("company", ["clicks_foundation"]),
+    ]
+
+
+def _ids_of(data: dict) -> list[str]:
+    return [f["id"] for f in data["funders"]]
+
+
 # ---------------------------------------------------------------------- one funder
 
 

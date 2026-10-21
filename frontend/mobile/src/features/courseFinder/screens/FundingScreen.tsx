@@ -8,6 +8,7 @@ import { Button } from '@/shared/components/Button';
 import { EmptyState } from '@/shared/components/EmptyState';
 import { HeroScreen } from '@/shared/components/HeroScreen';
 import { Card, InfoNote, Tag } from '@/shared/components/Parts';
+import { Section } from '@/shared/components/Section';
 import { ErrorBox } from '@/shared/components/Status';
 import { Body, Muted, Overline, Strong, Title } from '@/shared/components/Text';
 import { Monogram } from '@/shared/components/UniMonogram';
@@ -20,7 +21,7 @@ import { fonts, radius } from '@/shared/theme/tokens';
 import { courseFinderApi } from '../api/courseFinderApi';
 import { funderMonogram } from '../funderPhotos';
 import { useCourseFinder } from '../state';
-import { FundingCard, FundingListAnswer, SavedFundingCard } from '../types';
+import { FundingCard, FundingListAnswer, FundingSection, SavedFundingCard } from '../types';
 import { errorText, formatDay } from '../words';
 
 type TagTone = NonNullable<ComponentProps<typeof Tag>['tone']>;
@@ -81,9 +82,58 @@ function SaveButton({ funder, saved, onPress }: { funder: FundingCard; saved: bo
   );
 }
 
+type FeatherName = ComponentProps<typeof Feather>['name'];
+
+/** Each group's icon: who offers the funding. */
+const SECTION_ICONS: Record<string, FeatherName> = {
+  missing_middle: 'trending-up',
+  government: 'flag',
+  company: 'briefcase',
+  non_profit: 'heart',
+  university: 'book-open',
+};
+
+/** One funder: its tile, name, kind, status with Save on one line, then why it's here. */
+function FunderRow({
+  funder,
+  saved,
+  savedOn,
+  onSave,
+  showIncome,
+}: {
+  funder: FundingCard;
+  saved: boolean;
+  savedOn?: string;
+  onSave: () => void;
+  showIncome?: boolean;
+}) {
+  const styles = useStyles(makeStyles);
+  return (
+    <Card onPress={() => router.push(`/course-finder/funding/${funder.id}`)} style={styles.funderCard}>
+      <View style={styles.cardRow}>
+        <Monogram label={funderMonogram(funder)} size={44} />
+        <View style={styles.cardBody}>
+          <Strong style={styles.funderName}>{funder.name}</Strong>
+          <Meta funder={funder} />
+          <View style={styles.statusRow}>
+            <Tag label={funder.label} tone={tagTone(funder.status)} />
+            <SaveButton funder={funder} saved={saved} onPress={onSave} />
+          </View>
+          {savedOn ? <Muted>{t('courseFinder.savedOn', { date: formatDay(savedOn) })}</Muted> : null}
+          {funder.why ? <Text style={styles.whyLine}>{funder.why}</Text> : null}
+          {showIncome && funder.income_says ? (
+            <Text style={styles.whyLine}>{t('courseFinder.incomeRule', { says: funder.income_says })}</Text>
+          ) : null}
+        </View>
+      </View>
+    </Card>
+  );
+}
+
 /**
  * Funding options: Choice between NSFAS and other bursaries and loans, plus
- * saving funding when signed in.
+ * saving funding when signed in. "All" shows the list in groups (who offers it, and the
+ * missing middle), so it never scrolls on and on; Saved and a field show one short list.
  */
 export default function FundingScreen() {
   const colors = usePalette();
@@ -176,6 +226,17 @@ export default function FundingScreen() {
       (f) => f.any_field || f.fields?.some((field) => field.id === filter),
     );
   }, [filter, activeSavedList, sortedOthers, otherFunders]);
+
+  /** A group's funders, in the list's order; the goal's field first, as in the flat list. */
+  const byId = useMemo(() => new Map((data?.funders ?? []).map((f) => [f.id, f])), [data]);
+  const groupFunders = useCallback(
+    (section: FundingSection) => {
+      const list = section.funder_ids.map((id) => byId.get(id)).filter((f): f is FundingCard => !!f);
+      if (!goalFields.length) return list;
+      return [...list.filter((f) => matchesGoalField(f, goalFields)), ...list.filter((f) => !matchesGoalField(f, goalFields))];
+    },
+    [byId, goalFields],
+  );
 
   const hasGoalMatches = useMemo(
     () => goalFields.length > 0 && otherFunders.some((f) => matchesGoalField(f, goalFields)),
@@ -302,36 +363,43 @@ export default function FundingScreen() {
               />
             ) : null}
 
-            <View style={{ gap: 10 }}>
-              {displayedFunders.map((funder, i) => {
-                const savedEntry = savedById[funder.id];
-                const isSaved = !!savedEntry;
-                const savedOnDate = (funder as SavedFundingCard).saved_on ?? savedEntry?.saved_on;
-                return (
+            {filter === 'all' && data.sections?.length ? (
+              <View>
+                {[...(data.missing_middle ? [data.missing_middle] : []), ...data.sections].map((section, i) => (
+                  <Section
+                    key={section.id}
+                    first={i === 0}
+                    title={section.title}
+                    summary={section.line}
+                    icon={SECTION_ICONS[section.id] ?? 'folder'}>
+                    {section.id === 'missing_middle' ? <Muted>{t('courseFinder.missingMiddleNote')}</Muted> : null}
+                    {groupFunders(section).map((funder) => (
+                      <FunderRow
+                        key={funder.id}
+                        funder={funder}
+                        saved={!!savedById[funder.id]}
+                        savedOn={savedById[funder.id]?.saved_on}
+                        onSave={() => toggleSave(funder)}
+                        showIncome={section.id === 'missing_middle'}
+                      />
+                    ))}
+                  </Section>
+                ))}
+              </View>
+            ) : (
+              <View style={{ gap: 10 }}>
+                {displayedFunders.map((funder, i) => (
                   <FadeIn key={funder.id} delay={Math.min(i, 8) * 30}>
-                    <Card
-                      onPress={() => router.push(`/course-finder/funding/${funder.id}`)}
-                      style={styles.funderCard}>
-                      <View style={styles.cardRow}>
-                        <Monogram label={funderMonogram(funder)} size={44} />
-                        <View style={styles.cardBody}>
-                          <Strong style={styles.funderName}>{funder.name}</Strong>
-                          <Meta funder={funder} />
-                          <View style={styles.statusRow}>
-                            <Tag label={funder.label} tone={tagTone(funder.status)} />
-                            <SaveButton funder={funder} saved={isSaved} onPress={() => toggleSave(funder)} />
-                          </View>
-                          {savedOnDate ? (
-                            <Muted>{t('courseFinder.savedOn', { date: formatDay(savedOnDate) })}</Muted>
-                          ) : null}
-                          {funder.why ? <Text style={styles.whyLine}>{funder.why}</Text> : null}
-                        </View>
-                      </View>
-                    </Card>
+                    <FunderRow
+                      funder={funder}
+                      saved={!!savedById[funder.id]}
+                      savedOn={(funder as SavedFundingCard).saved_on ?? savedById[funder.id]?.saved_on}
+                      onSave={() => toggleSave(funder)}
+                    />
                   </FadeIn>
-                );
-              })}
-            </View>
+                ))}
+              </View>
+            )}
           </View>
         </View>
       ) : null}

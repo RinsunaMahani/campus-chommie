@@ -103,6 +103,8 @@ export type FundingCard = {
   next_date?: string | null;
   lines?: string[];
   why?: string | null;
+  /** The funder's own words on household income, when it says any. */
+  income_says?: string | null;
   checked?: string | null;
 };
 
@@ -118,12 +120,23 @@ export type FundingCounts = {
   closing_soon: number;
 };
 
+/** One group of the funding list; its ids point into `funders`, in the list's order. */
+export type FundingSection = {
+  id: string;
+  title: string;
+  line: string;
+  funder_ids: string[];
+};
+
 export type FundingListAnswer = Confirmation & {
   today: string;
   summary: string;
   counts: FundingCounts;
   fields: FundingField[];
   funders: FundingCard[];
+  /** Absent from an API older than 22 Oct 2026: the screen then shows one list. */
+  sections?: FundingSection[];
+  missing_middle?: FundingSection | null;
 };
 
 export type SavedFundingCard = FundingCard & {

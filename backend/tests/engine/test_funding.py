@@ -22,7 +22,9 @@ from campus_engine.funding import (
     field_counts,
     group,
     matches,
+    missing_middle,
     reminders,
+    sections,
 )
 from campus_engine.matching import MEETS_MINIMUM, Match
 from campus_engine.schemas import FIELDS, FundingPack, Programme, University, Window
@@ -210,6 +212,61 @@ def test_the_counts_a_list_starts_with():
     assert (c.total, c.open_now, c.closing_soon) == (8, 2, 1)
     assert c.line == "8 funding options: 2 open now, 1 closing soon."
     assert counts([]).line == "0 funding options: 0 open now."
+
+
+# ------------------------------------------------- groups, so a long list never scrolls on
+
+
+def test_sections_group_by_who_offers_it_in_a_fixed_order_and_skip_empty_groups():
+    funding = pack(
+        funder("co", applications=windows({"intake": 2027, "opens": "2026-09-01", "closes": "2026-10-15"})),
+        funder("gov", sector="government"),
+        funder("np", sector="non_profit"),
+        funder("co2"),
+    )
+    got = sections(cards(funding, TODAY))
+    assert [(s.id, s.title) for s in got] == [
+        ("government", "Government"), ("company", "Companies"), ("non_profit", "Non-profits and foundations"),
+    ]
+    assert [c.funder.id for c in got[1].cards] == ["co", "co2"]  # the list's own order: open first
+    assert got[1].line == "2 funders: 1 open now, 1 closing soon."
+    assert got[0].line == "1 funder: 0 open now."
+    assert sections([]) == []
+
+
+def _income(says: str, *, limit: int | None = None, mm: bool = False) -> dict:
+    return {"says": says, "source": "f", "limit_cents": limit, "missing_middle": mm}
+
+
+def test_the_missing_middle_is_only_what_a_funders_own_words_say():
+    funding = pack(
+        funder("nsfas", sector="government", income=_income("Up to R350 000 a year", limit=35000000)),
+        funder("loan", income=_income("Above the NSFAS threshold", mm=True)),
+        funder("higher", income=_income("Under R800 000 a year", limit=80000000)),
+        funder("same", income=_income("R350 000 a year or less", limit=35000000)),
+        funder("silent"),  # says nothing about income, so it isn't guessed into the group
+    )
+    mm = missing_middle(funding, cards(funding, TODAY))
+    assert mm is not None and mm.title == "If your family earns too much for NSFAS"
+    assert sorted(c.funder.id for c in mm.cards) == ["higher", "loan"]
+    assert missing_middle(pack(funder("silent")), cards(pack(funder("silent")), TODAY)) is None
+
+
+def test_without_nsfas_own_limit_only_a_named_missing_middle_counts():
+    funding = pack(
+        funder("higher", income=_income("Under R800 000 a year", limit=80000000)),
+        funder("loan", income=_income("Above the NSFAS threshold", mm=True)),
+    )
+    assert [c.funder.id for c in missing_middle(funding, cards(funding, TODAY)).cards] == ["loan"]
+
+
+def test_income_words_cite_a_known_source_and_a_limit_is_never_negative():
+    with pytest.raises(ValidationError, match="a: income cites unknown source 'missing'"):
+        pack(funder("a", income={"says": "Under R1 million", "source": "missing"}))
+    with pytest.raises(ValidationError):
+        pack(funder("a", income=_income("Under R1 million", limit=-1)))
+    with pytest.raises(ValidationError):
+        pack(funder("a", income=_income("Under R1 million") | {"band": "middle"}))
 
 
 def test_filters_by_field_status_kind_stage_and_university():

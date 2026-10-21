@@ -192,6 +192,68 @@ def counts(found: list[Card]) -> Counts:
     return Counts(len(found), open_now, soon, line)
 
 
+#: The funding list's groups, in this order, so a long list never scrolls on and on (Rinsuna, 21 Oct 2026).
+SECTION_TITLES = {
+    "government": "Government",
+    "company": "Companies",
+    "non_profit": "Non-profits and foundations",
+    "university": "Through your university",
+}
+NSFAS_ID = "nsfas"
+
+
+@dataclass
+class Section:
+    """One group of the funding list: who offers it, how many, and how many are open."""
+
+    id: str
+    title: str
+    cards: list[Card]
+    line: str
+
+
+def _section_line(found: list[Card]) -> str:
+    """'9 funders: 2 open now, 1 closing soon.'"""
+    c = counts(found)
+    line = f"{plural(c.total, 'funder')}: {c.open_now} open now"
+    return line + (f", {c.closing_soon} closing soon." if c.closing_soon else ".")
+
+
+def sections(found: list[Card]) -> list[Section]:
+    """The list grouped by who offers the funding, in SECTION_TITLES' order; each keeps the list's order (open ones
+    first, the soonest to close first). Empty groups are left out."""
+    out = []
+    for sector, title in SECTION_TITLES.items():
+        mine = [c for c in found if c.funder.sector == sector]
+        if mine:
+            out.append(Section(sector, title, mine, _section_line(mine)))
+    return out
+
+
+def above_nsfas(pack: FundingPack, funder: Funder) -> bool:
+    """Whether the funder's own words place it above NSFAS's household-income limit: it names the missing middle
+    (or any household income), or a limit higher than NSFAS's own. Never a guess: a funder that says nothing
+    about income isn't counted."""
+    if funder.id == NSFAS_ID or funder.income is None:
+        return False
+    if funder.income.missing_middle:
+        return True
+    try:
+        nsfas = pack.funder(NSFAS_ID).income
+    except KeyError:
+        return False
+    limit = nsfas.limit_cents if nsfas else None
+    return limit is not None and funder.income.limit_cents is not None and funder.income.limit_cents > limit
+
+
+def missing_middle(pack: FundingPack, found: list[Card]) -> Section | None:
+    """'If your family earns too much for NSFAS': the funders whose own words say so, in the list's order."""
+    mine = [c for c in found if above_nsfas(pack, c.funder)]
+    if not mine:
+        return None
+    return Section("missing_middle", "If your family earns too much for NSFAS", mine, _section_line(mine))
+
+
 def detail(pack: FundingPack, funder: Funder, today: date, cfg: dict | None = None) -> tuple[Card, Guide]:
     """One funder in full: its card, and how to apply with every intake's dates. A merit award paid
     without an application has no dates, fee or documents to show."""

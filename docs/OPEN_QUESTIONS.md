@@ -19,6 +19,12 @@ Research notes from official documents, read on 9 and 10 Oct 2026 and not yet ch
   closed, CSIR as postgraduate only, the Reserve Bank's online form, UP's 2026 amounts and no commercial lenders.
   Added 12 Oct: Limpopo Public Works counts as open because its page offers the 2027 form (its rule: closes 31 October
   every year), and Old Mutual's 2027 round opened "in April", with no day given.
+- [ ] **Household income in the funding pack** (added 22 Oct 2026, `income` on seven funders): each is the funder's own
+  words from a page the pack already cites, and decides who appears under "If your family earns too much for NSFAS"
+  (a funder that names the missing middle, or a limit above NSFAS's R350 000). Check each against its source: NSFAS
+  R350 000 (R600 000 with a disability), Thuthuka R350 000, Sasol Foundation R800 000, Allan Gray R1 million / R1.5
+  million, and "missing middle" for NSFAS's loan scheme, TUT's Bursary Fund and UP's funding database. Funders whose
+  pages say nothing about income stay out of that group; the app never asks what a family earns.
 - [ ] **NSFAS's 2027 closing date:** NSFAS's own page says 31 Oct 2026 at 23:59; the Minister's launch speech (18 Sep
   2026) and SAnews say 18 Nov 2026. The pack keeps 31 October, the earlier date, until a person checks with NSFAS.
 - [ ] **SMU admissions:** re-check every value in `backend/data/universities/smu.yaml` against the current prospectus

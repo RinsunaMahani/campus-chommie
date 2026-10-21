@@ -51,8 +51,15 @@ def funding_list(*, fields: list[str] | None = None, status: str | None = None, 
         "counts": {"total": counts.total, "open_now": counts.open_now, "closing_soon": counts.closing_soon},
         "fields": [{"id": tag, "label": label, "funders": n} for tag, label, n in engine.field_counts(funding)],
         "funders": [_card(c) for c in found],
+        # The same funders grouped, so the app never shows one endless list (ids point into "funders").
+        "sections": [_section(s) for s in engine.sections(found)],
+        "missing_middle": _section(mm) if (mm := engine.missing_middle(funding, found)) else None,
         **confirmation(funding),
     }
+
+
+def _section(s: engine.Section) -> dict:
+    return {"id": s.id, "title": s.title, "line": s.line, "funder_ids": [c.funder.id for c in s.cards]}
 
 
 def detail(funder_id: str) -> dict:
@@ -134,7 +141,8 @@ def _iso(d: date | None) -> str | None:
 
 
 def _cited(funder: Funder) -> set[str]:
-    groups = (funder.who_can_apply, funder.covers, funder.obligations, funder.tips, funder.warnings, funder.at_registration)
+    groups = (funder.who_can_apply, funder.covers, funder.obligations, funder.tips, funder.warnings, funder.at_registration,
+              funder.income)
     return {g.source for g in groups if g} | {sid for _, sid in funder.applications.citations()}
 
 
@@ -164,6 +172,7 @@ def _card(c: engine.Card) -> dict:
         "days": c.days,
         "lines": c.lines,
         "why": c.why,
+        "income_says": f.income.says if f.income else None,  # the funder's own words; never asked of the learner
         "url": c.url,
         "source_url": c.source_url,
         "checked": _iso(c.checked),
