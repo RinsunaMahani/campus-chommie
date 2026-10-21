@@ -15,7 +15,7 @@ import { examsApi, timetableApi } from '../api/timetableApi';
 import { cleanTime, timeProblem } from '../screens/ClassEditScreen';
 import ImportScreen, { matching, parseCodes } from '../screens/ImportScreen';
 import TimetableScreen from '../screens/TimetableScreen';
-import { ExamEntry, ImportAnswer, TimetableEntry } from '../types';
+import { Activity, ExamEntry, ImportAnswer, TimetableEntry } from '../types';
 
 jest.mock('expo-router', () => {
   const React = jest.requireActual<typeof import('react')>('react');
@@ -156,4 +156,27 @@ test('importing a PDF shows only your modules and saves the rows you keep', asyn
       false,
     ),
   );
+});
+
+test("plans of the student's own sit on their weekday or date, late ones in the row above", async () => {
+  const { dayTimeProblem } = jest.requireActual<typeof import('../screens/ActivityEditScreen')>('../screens/ActivityEditScreen');
+  expect(dayTimeProblem('22:30')).toBeNull();
+  expect(dayTimeProblem('22:33')).toBe('Use 5-minute steps, like 08:30 or 08:35.');
+  const days: Day[] = [{ date: '2026-10-31', weekday: 5, label: 'Sat 31', today: false }];
+  const plan = (over: Partial<Activity>): Activity => ({
+    id: 'p', title: 'Groceries', kind: 'errands', weekday: 5, on: null, day: 'Saturday', starts: '09:00', ends: '10:00',
+    place: null, clashes: false, ...over,
+  });
+  render(
+    <CalendarGrid
+      days={days}
+      classes={[]}
+      events={[]}
+      activities={[plan({}), plan({ id: 'late', title: 'Night out', weekday: null, on: '2026-10-31', starts: '22:30', ends: '23:30' }), plan({ id: 'tue', title: 'Gym', weekday: 1 })]}
+      nowMinutes={null}
+    />,
+  );
+  expect(await screen.findByText('Groceries')).toBeTruthy();
+  expect(screen.getByText('22:30 Night out')).toBeTruthy();
+  expect(screen.queryByText('Gym')).toBeNull();
 });

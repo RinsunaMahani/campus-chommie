@@ -22,7 +22,7 @@ from src.extensions import db
 from ..constants import MAX_ENTRIES
 from ..models import TimetableEntry
 from ..repositories import timetable_repository as repo
-from . import exam_service
+from . import activity_service, exam_service
 
 
 def _slot(row: TimetableEntry) -> engine.Slot:
@@ -118,10 +118,11 @@ def remove(user, entry_id: str) -> dict:
 def export_for(user) -> dict:
     """POPIA export: every class in the student's timetable, and every exam they keep."""
     return {"classes": [{k: v for k, v in _entry(r, set()).items() if k not in ("id", "clashes")} for r in repo.for_user(user.id)],
-            "exams": exam_service.export_for(user)}
+            "exams": exam_service.export_for(user), "activities": activity_service.export_for(user)}
 
 
 def erase_all_for(user) -> None:
     """Every class and exam of this student, deleted for real: the demo's daily reset."""
     repo.erase_all(user.id)
     exam_service.erase_all_for(user)
+    activity_service.erase_all_for(user)

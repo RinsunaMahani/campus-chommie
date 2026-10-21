@@ -14,6 +14,12 @@
   POST   /me/exams/batch        {exams: [...], replace?} -> {exams, lines}
   DELETE /me/exams/<id>         -> {exams, lines}
 
+  GET    /me/activities         {activities: [{id, title, kind, weekday, on, day, starts, ends, place, clashes}], lines}
+  POST   /me/activities         {title, kind, weekday | on, starts, ends, place?} -> {activity, activities, lines}
+  PATCH  /me/activities/<id>    any of the same fields -> {activity, activities, lines}
+  DELETE /me/activities/<id>    -> {activities, lines}
+  POST   /me/activities/find-time  {minutes, start?, days?} -> {minutes, slots, lines}
+
 A class or exam that isn't the student's is a 404, the same as one that doesn't exist. Strict bodies and
 forms, no query parameters. Thin: validate -> service -> answer. Rate-limited per student; reading a PDF has
 its own, tighter limit. The PDF is never stored (services/import_service.py).
@@ -32,14 +38,15 @@ from src.core.exceptions import ValidationError
 
 from ..constants import CHANGE_LIMIT, IMPORT_LIMIT, READ_LIMIT
 from ..schemas.timetable_schemas import (
-    EntryBatchSchema, EntryChangeSchema, EntrySchema, ExamBatchSchema, ExamSchema, ImportFormSchema, NothingSchema,
-    load,
+    ActivityChangeSchema, ActivitySchema, EntryBatchSchema, EntryChangeSchema, EntrySchema, ExamBatchSchema, ExamSchema,
+    FindTimeSchema, ImportFormSchema, NothingSchema, load,
 )
-from ..services import exam_service, import_service
+from ..services import activity_service, exam_service, import_service
 from ..services import timetable_service as service
 
 BASE = "/me/timetable"
 EXAMS = "/me/exams"
+ACTIVITIES = "/me/activities"
 
 
 def _no_query() -> None:
@@ -132,3 +139,46 @@ def add_exams():
 def remove_exam(exam_id: str):
     _no_query()
     return success_response(exam_service.remove(current_user(), exam_id))
+
+
+@api_bp.get(ACTIVITIES)
+@limiter.limit(READ_LIMIT, key_func=per_user)
+@auth_required
+def my_activities():
+    _no_query()
+    return success_response(activity_service.mine(current_user()))
+
+
+@api_bp.post(ACTIVITIES)
+@limiter.limit(CHANGE_LIMIT, key_func=per_user)
+@auth_required
+def add_activity():
+    _no_query()
+    fields = load(ActivitySchema(), request.get_json(silent=True))
+    return success_response(activity_service.add(current_user(), fields), status_code=201)
+
+
+@api_bp.post(f"{ACTIVITIES}/find-time")
+@limiter.limit(CHANGE_LIMIT, key_func=per_user)
+@auth_required
+def find_a_time():
+    _no_query()
+    body = load(FindTimeSchema(), request.get_json(silent=True))
+    return success_response(activity_service.find_time(current_user(), body["minutes"], body["start"], body["days"]))
+
+
+@api_bp.patch(f"{ACTIVITIES}/<activity_id>")
+@limiter.limit(CHANGE_LIMIT, key_func=per_user)
+@auth_required
+def change_activity(activity_id: str):
+    _no_query()
+    fields = load(ActivityChangeSchema(), request.get_json(silent=True))
+    return success_response(activity_service.change(current_user(), activity_id, fields))
+
+
+@api_bp.delete(f"{ACTIVITIES}/<activity_id>")
+@limiter.limit(CHANGE_LIMIT, key_func=per_user)
+@auth_required
+def remove_activity(activity_id: str):
+    _no_query()
+    return success_response(activity_service.remove(current_user(), activity_id))

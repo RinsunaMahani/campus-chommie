@@ -122,3 +122,68 @@ def exam_summary(exams: list[Exam], today: date) -> list[str]:
         lines.append(f"{a.module} and {b.module} are both on {long_day(a.on)} at the same time: "
                      "check your exam list or ask your faculty.")
     return lines
+
+
+@dataclass(frozen=True)
+class Busy:
+    """Something already in a day: a class, a test, an activity."""
+
+    starts: time
+    ends: time
+
+
+@dataclass(frozen=True)
+class FreeSlot:
+    on: date
+    starts: time
+    ends: time
+
+    @property
+    def line(self) -> str:
+        return f"{long_day(self.on)}, {hhmm(self.starts)} to {hhmm(self.ends)}"
+
+
+def _mins(t: time) -> int:
+    return t.hour * 60 + t.minute
+
+
+def _clock(m: int) -> time:
+    return time(m // 60, m % 60)
+
+
+def find_time(busy: dict[date, list[Busy]], days: list[date], minutes: int, cfg: dict,
+              not_before: tuple[date, int] | None = None) -> list[FreeSlot]:
+    """The earliest free stretches long enough for `minutes`, between the day's start and end (config.yaml), with a
+    buffer either side of whatever is already there, at most `per_day` a day so the suggestions spread over the
+    week. `not_before` (today, minutes now) skips what's already past."""
+    start, end = _mins(_parse(cfg["day_starts"])), _mins(_parse(cfg["day_ends"]))
+    gap, step = cfg["buffer_minutes"], cfg["step_minutes"]
+    found: list[FreeSlot] = []
+    for d in days:
+        floor = start
+        if not_before and d == not_before[0]:
+            floor = max(floor, not_before[1])
+        elif not_before and d < not_before[0]:
+            continue
+        taken = sorted((max(0, _mins(b.starts) - gap), min(24 * 60, _mins(b.ends) + gap)) for b in busy.get(d, []))
+        cursor, today_count = floor, 0
+        for b_start, b_end in [*taken, (end, end)]:
+            cursor = -(-cursor // step) * step  # up to the next step: 10:47 -> 11:00
+            if b_start - cursor >= minutes and cursor + minutes <= end and today_count < cfg["per_day"]:
+                found.append(FreeSlot(d, _clock(cursor), _clock(cursor + minutes)))
+                today_count += 1
+            cursor = max(cursor, b_end)
+            if len(found) >= cfg["suggestions"]:
+                return found
+    return found
+
+
+def _parse(hh_mm: str) -> time:
+    h, m = hh_mm.split(":")
+    return time(int(h), int(m))
+
+
+def find_time_lines(slots: list[FreeSlot], minutes: int) -> list[str]:
+    if not slots:
+        return [f"No free {_hours(minutes)} this week between your classes and plans. Try a shorter time or next week."]
+    return [f"Free for {_hours(minutes)}: " + "; ".join(s.line for s in slots) + "."]

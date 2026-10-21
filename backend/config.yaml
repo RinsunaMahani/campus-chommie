@@ -45,3 +45,11 @@ timetable_import:
   merge_gap_minutes: 10   # the same class in periods this close together is one class (a 5-minute changeover)
   max_rows: 2000          # classes or exam papers read from one PDF, at most
   max_exam_minutes: 480   # a longer "duration" on an exam list is a misread, so it is left out
+
+timetable:
+  day_starts: "07:00"     # "Find a time" looks for free time from here...
+  day_ends: "21:00"       # ...to here, the student's own hours being theirs to change in the form
+  buffer_minutes: 15      # left free before and after a class or plan, to get from one to the next
+  step_minutes: 15        # suggested times start on the quarter hour
+  per_day: 2              # at most this many suggestions on one day, so they spread over the week
+  suggestions: 5          # at most this many suggestions in all
