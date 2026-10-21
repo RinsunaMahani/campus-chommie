@@ -104,7 +104,7 @@ already does well.
 - **A plan, not a list:** a goal, a published route in and a safer related choice, with reasons and sources.
 - **Applications on today's date,** with NSFAS's countdown.
 - **Funding matched to each choice** (built 11 Oct 2026): every choice in a plan shows the bursaries for its fields,
-  and the funding list counts "N open now, N closing soon" like UniApplyForMe's. Fewer funders (19 to start), each
+  and the funding list counts "N open now, N closing soon" like UniApplyForMe's. Fewer funders (24 so far), each
   from the funder's own page, with who can apply in the funder's words and nothing asked of the learner.
 
 **After acceptance is the real gap,** and the challenge says it in its own words: "remain supported from acceptance
@@ -128,7 +128,7 @@ additions marked *new*:
 **Our honest weaknesses**, to answer before a judge asks:
 - **Three universities in depth, not 27:** a pack per university, so coverage grows by adding data, not code.
 - **No person has checked our packs yet:** every unchecked pack says so in the app.
-- **19 funders, not 280:** each is read on the funder's own page before it goes in, so the list grows slowly
+- **24 funders, not 280:** each is read on the funder's own page before it goes in, so the list grows slowly
   ([funding](funding.md) lists the leads still to check).
 
 ## Graduates24 and bursary websites

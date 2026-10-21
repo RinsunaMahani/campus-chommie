@@ -671,6 +671,184 @@ funders:
       url: "https://www.up.ac.za/article/2894107/financial-aid"
       how: "Register on the database through the UP student portal or UP's financial aid page."
 
+  - id: feenix_fref
+    name: "FirstRand Empowerment Foundation postgraduate bursary (through Feenix)"
+    short_name: FirstRand Foundation
+    sector: non_profit
+    fields: [mathematical_sciences, computing, engineering, physical_sciences]
+    stages: [postgraduate]
+    who_can_apply:
+      source: s-feenix-fref-2027
+      items:
+        - "Aged 18 to 35 on 31 December 2027"
+        - "Studying, or graduated, at a South African public university"
+        - "Applied for a one-year Honours degree at a South African public university for 2027"
+        - "Approved fields include actuarial science, data science, engineering, mathematics, physics and statistics, among others; psychology only as a BA Honours in Psychology"
+        - "Household income is one of the minimum requirements (the page gives no limit)"
+    applications:
+      source: s-feenix-fref-2027
+      url: "https://bursaries.feenix.org/fref/apply-now/"
+      how: "Apply online in four steps: check that you're eligible, give your details, add your study plans and upload your documents. You can save a draft and come back."
+      documents:
+        source: s-feenix-fref-2027
+        items:
+          - "A certified copy of your ID, certified within the last 6 months"
+          - "Your matric certificate, with all subjects and marks"
+          - "Your full academic transcript"
+          - "Your provisional or acceptance letter for your 2027 Honours degree, if you have it"
+          - "Students with disabilities: a completed EEA1 form and a recent medical letter"
+      windows:
+        - intake: 2027
+          source: s-feenix-fref-2027
+          opens: 2026-09-28
+          closes: 2026-12-31
+          note: "Feenix calls 31 December 2026 a provisional closing date."
+
+  - id: limpopo_public_works
+    name: "Limpopo Department of Public Works, Roads and Infrastructure bursary"
+    short_name: Limpopo Public Works
+    sector: government
+    fields: [built_environment, engineering, computing, management]
+    stages: [first_year, senior]
+    who_can_apply:
+      source: s-limpopo-dpw-bursary
+      items:
+        - "South African citizens"
+        - "Studying, or about to study, building, mechanical or electrical engineering, quantity surveying, architectural science, landscaping, asset management or information technology, at a recognised South African institution that has accepted you"
+        - "Grade 12 with Mathematics and Science, or NTC 3"
+        - "Not if you failed before, unless you repeat or rewrite at your own cost"
+        - "Final-year students may apply; preference goes to designated groups"
+    covers:
+      source: s-limpopo-dpw-bursary
+      items:
+        - "Registration and tuition"
+        - "Meals and accommodation"
+        - "Books"
+    obligations:
+      source: s-limpopo-dpw-bursary
+      items:
+        - "Work for the department for as many years as it paid for."
+        - "If you break the agreement, you repay everything at once, with interest."
+    applications:
+      source: s-limpopo-dpw-bursary
+      url: "https://www.dpw.limpopo.gov.za/pages/def_bursary.php"
+      how: "Fill in the department's full-time application form for 2027 (linked on its bursary page) and send it with proof of registration at your institution."
+      contact: "015 284 7001 / 7002; newsroom@dpw.limpopo.gov.za; 43 Church Street, Polokwane"
+      windows:
+        - intake: 2027
+          source: s-limpopo-dpw-bursary
+          closes: 2026-10-31
+          seen: {status: open, checked: 2026-10-12}   # its page offers the 2027 application form
+          note: "Limpopo Public Works says applications close on 31 October every year."
+
+  - id: dffe
+    name: "Department of Forestry, Fisheries and the Environment (DFFE) student bursary"
+    short_name: DFFE
+    sector: government
+    fields: [earth_sciences, life_sciences, natural_sciences]
+    stages: [first_year, senior]
+    who_can_apply:
+      source: s-dffe-bursaries-2027
+      items:
+        - "Full-time students at a higher education institution, or Grade 12 learners"
+        - "Not employed, and not a former public service intern"
+        - "Studying in one of its fields: biodiversity and conservation, chemicals and waste management, climate change and air quality, environmental programmes, fisheries, forestry, oceans and coasts, or regulatory compliance (its page lists the qualifying degrees and diplomas)"
+    covers:
+      source: s-dffe-bursaries-2027
+      items:
+        - "Up to R80 000"
+    obligations:
+      source: s-dffe-bursaries-2027
+      items:
+        - "Sign a bursary contract."
+        - "After you graduate, the department's internship programme is compulsory."
+    applications:
+      source: s-dffe-bursaries-2027
+      url: "https://www.dffe.gov.za/bursaries"
+      how: "Fill in the prescribed form and send it by hand, courier or post, not by fax or email. Incomplete applications aren't considered."
+      contact: "012 399 9000; callcentre@dffe.gov.za"
+      documents:
+        source: s-dffe-bursaries-2027
+        items:
+          - "A motivation letter"
+          - "Your qualifications and academic records"
+          - "Copies of your ID and your parents' or guardians' IDs"
+          - "Proof of registration, or your latest Grade 12 results"
+          - "Proof of your parents' income"
+      after:
+        - text: "If the department hasn't contacted you by the end of January 2027, your application was unsuccessful."
+          source: s-dffe-bursaries-2027
+      windows:
+        - intake: 2027
+          source: s-dffe-bursaries-2027
+          closes: 2026-10-02
+          no_late_applications: true
+
+  - id: sasol_foundation
+    name: "Sasol Foundation Bursary Programme"
+    short_name: Sasol Foundation
+    sector: company
+    fields: [engineering, physical_sciences, computing, mathematical_sciences, health_sciences, agriculture, finance, education]
+    stages: [first_year, senior]
+    who_can_apply:
+      source: s-sasol-foundation
+      items:
+        - "South African citizens by birth, with a valid ID"
+        - "A first full-time undergraduate degree at a South African university or university of technology that has accepted you"
+        - "A combined household income under R800 000 a year, and under 25 when you apply"
+        - "Matric in the past year, or in Grade 12 now (apply with your Grade 11 results)"
+        - "BEng, BSc and BSc Eng: at least 70% for Mathematics and Physical Sciences, and 60% for English; BEng Tech: 60% for each"
+        - "Reserved for children of Sasol employees, Khanyisa or Inzalo shareholders, and people from Sasol's fence-line communities"
+        - "Its fields: agricultural science, chemistry, computer and data science, education (STEM subjects), engineering, financial science, health science, mathematical science, technology and others"
+    covers:
+      source: s-sasol-foundation
+      items:
+        - "Registration and tuition fees (not repeated modules)"
+        - "A book allowance and a monthly stipend"
+        - "A meal and accommodation allowance"
+        - "A once-off computer and calculator allowance"
+        - "Psycho-social support"
+    applications:
+      source: s-sasol-foundation
+      url: "https://www.sasolbursaries.com/welcome/sasol-foundation-bursaries/"
+      how: "Register on sasolbursaries.com, then choose South African Bursary Application and Undergraduate Applications. Emailed, incomplete or late applications aren't considered. Shortlisted applicants do an online psychometric test."
+      contact: "0860 106 235"
+      documents:
+        source: s-sasol-foundation
+        items:
+          - "Your valid South African ID"
+          - "Your full academic record"
+          - "Proof of your household's income"
+      windows:
+        - intake: 2027
+          source: s-sasol-welcome
+          seen: {status: closed, checked: 2026-10-12}
+
+  - id: old_mutual
+    name: "Old Mutual bursaries for accountants and actuaries"
+    short_name: Old Mutual
+    sector: company
+    fields: [accounting, finance, mathematical_sciences]
+    stages: [first_year]
+    who_can_apply:
+      source: s-oldmutual-bursaries
+      items:
+        - "South African citizens"
+        - "Learners who did exceptionally well at school and want to become accountants or actuaries"
+    covers:
+      source: s-oldmutual-bursaries
+      items:
+        - "Most of the costs of study, Old Mutual says"
+    applications:
+      source: s-oldmutual-bursaries
+      url: "https://www.oldmutual.co.za/careers/bursaries/"
+      how: "An online screening form (your details, a short CV and your results in key subjects), then online gamified assessments, then a digital application form."
+      windows:
+        - intake: 2027
+          source: s-oldmutual-bursaries
+          closes: 2026-06-30
+          note: "Old Mutual says applications open in April."
+
 sources:
   - id: s-nsfas-apply-2027
     url: "https://nsfas.org.za/content/how-to-apply.html"
@@ -859,5 +1037,47 @@ sources:
     publisher: "University of Pretoria"
     title: "InfoGuide 2026 (pp. 13-15: financial aid, the funding database and FLY@UP awards)"
     retrieved: 2026-10-11
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-feenix-fref-2027
+    url: "https://bursaries.feenix.org/fref/apply-now/"
+    publisher: "Feenix, for the FirstRand Empowerment Foundation"
+    title: "Apply now: the FREF bursary (2027 postgraduate)"
+    retrieved: 2026-10-12
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-limpopo-dpw-bursary
+    url: "https://www.dpw.limpopo.gov.za/pages/def_bursary.php"
+    publisher: "Limpopo Department of Public Works, Roads and Infrastructure"
+    title: "Bursary (with the full-time application form for 2027)"
+    retrieved: 2026-10-12
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-dffe-bursaries-2027
+    url: "https://www.dffe.gov.za/bursaries"
+    publisher: "Department of Forestry, Fisheries and the Environment"
+    title: "The DFFE student bursary programme: 2027 full-time bursaries"
+    retrieved: 2026-10-12
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-sasol-foundation
+    url: "https://www.sasolbursaries.com/welcome/sasol-foundation-bursaries/"
+    publisher: "Sasol"
+    title: "Sasol Foundation Bursaries"
+    retrieved: 2026-10-12
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-sasol-welcome
+    url: "https://www.sasolbursaries.com/welcome/"
+    publisher: "Sasol"
+    title: "Sasol Bursaries: each programme's status (Sasol Foundation: application currently closed)"
+    retrieved: 2026-10-12
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-oldmutual-bursaries
+    url: "https://www.oldmutual.co.za/careers/bursaries/"
+    publisher: "Old Mutual"
+    title: "Bursaries: 2027 bursary applications"
+    retrieved: 2026-10-12
     last_verified: null
     verified_by: "agent draft, needs human check"

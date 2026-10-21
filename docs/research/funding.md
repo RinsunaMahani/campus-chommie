@@ -40,6 +40,13 @@ no dates, when we read it on 11 Oct 2026.
 | TUT Bursary and Scholarship Fund | Bursary | TUT students, especially the missing middle | Contact the fund | The fund's page |
 | UP FLY@UP Assist | Merit award | First-time UP first-years with an 80%+ average | Automatic: no application | InfoGuide 2026, pp. 14-15 |
 | UP funding database | Bursaries through UP | Any UP student | Register through UP | InfoGuide 2026, p. 13 |
+| FirstRand Empowerment Foundation (through Feenix) | Bursary | One-year Honours in 2027, aged 18 to 35; actuarial science, data science, engineering, mathematics, physics, statistics and others | Open: 28 Sep to 31 Dec 2026 (the closing date is provisional) | Feenix's FREF apply page |
+| Limpopo Public Works, Roads and Infrastructure | Bursary | Building, mechanical and electrical engineering, quantity surveying, architecture, landscaping, asset management, IT; work back | Open (its page offers the 2027 form); closes 31 October every year | The department's bursary page |
+| DFFE | Bursary | Environmental fields (biodiversity, forestry, fisheries, oceans, climate, waste); up to R80 000; internship afterwards | Closed 2 Oct 2026, no late applications | The department's bursaries page |
+| Sasol Foundation | Bursary | STEM and other first degrees; household income under R800 000; reserved for Sasol employees' children, Khanyisa and Inzalo shareholders and fence-line communities | Seen closed ("Application currently closed") | sasolbursaries.com |
+| Old Mutual | Bursary | Future accountants and actuaries who did exceptionally well at school | Closed: April to 30 Jun 2026 | Old Mutual's bursaries page |
+
+The last five were added on 12 Oct 2026, read that day.
 
 ## Choices made while building (for Rinsuna to confirm)
 
@@ -80,11 +87,14 @@ Readable pages not found, or no 2027 round published, on 11 Oct 2026:
   wouldn't download), MISA (2026 advert only), the Department of Agriculture, provincial health departments
   (Limpopo's nursing college intake is a college route, not a university bursary), City of Tshwane.
 - **SETAs:** MICT SETA, BANKSETA, MERSETA and others fund through institutions and employers, like HWSETA.
-- **Companies:** Sasol (its site loads only in a browser; its 2027 rounds closed in August and September),
-  Anglo American, Sibanye-Stillwater, Exxaro, Implats, Investec (its page refused automated reading), Liberty, Old
-  Mutual (its page wouldn't load), PwC, KPMG, Deloitte, Shoprite, Tiger Brands.
-- **Foundations:** Studietrust, Moshal, Feenix (a crowdfunding platform for fees, not a loan), the Mastercard
-  Foundation Scholars at UP.
+- **Companies:** Anglo American, Sibanye-Stillwater, Exxaro, Implats, Investec (its page refused automated reading),
+  Liberty, PwC, KPMG, Deloitte, Shoprite, Tiger Brands. Sasol's other programmes (mainstream, mining, energy) all say
+  "currently closed" with no dates.
+- **Foundations:** Studietrust (its site didn't answer on 12 Oct), Moshal (its South African site names engineering,
+  medicine, mathematics, commerce and computer science, but its application page wasn't found), Feenix's own
+  crowdfunding for fees, the Mastercard Foundation Scholars at UP.
+- **Older pages only:** SANRAL (its notice is from 2021); Gauteng Health's Nelson Mandela Fidel Castro programme
+  (medicine in Cuba: its portal still shows the 2025 round); Limpopo's provincial bursary page (2019 and 2021 rounds).
 - **Universities:** SMU's own bursary page lists only rounds from 2023 and 2024, some through listing sites. Its
   financial aid office is the place to ask; its contact details appeared only in a search result, so check them on
   SMU's registration notices. TUT's undergraduate funding page loads only in a browser.

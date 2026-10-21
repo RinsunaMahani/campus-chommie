@@ -109,7 +109,7 @@ A learner sends 1 to 9 subjects, each once, with marks from 0 to 100. Subject ke
 
 | Endpoint | Body | Answer |
 |---|---|---|
-| `GET /funding?field=&status=&kind=&stage=` | none | every funder, open ones first and the soonest to close first, with `summary` ("19 funding options: 3 open now."), `counts` and the `fields` to filter by. Filters are optional: `field` takes field ids, comma-separated (`engineering,computing`); `status` is `open`, `closing_soon`, `upcoming`, `check`, `automatic`, `via_university`, `not_published` or `closed`; `kind` is `bursary`, `merit_award` or `loan`; `stage` is `first_year`, `senior` or `postgraduate` |
+| `GET /funding?field=&status=&kind=&stage=` | none | every funder, open ones first and the soonest to close first, with `summary` ("24 funding options: 5 open now."), `counts` and the `fields` to filter by. Filters are optional: `field` takes field ids, comma-separated (`engineering,computing`); `status` is `open`, `closing_soon`, `upcoming`, `check`, `automatic`, `via_university`, `not_published` or `closed`; `kind` is `bursary`, `merit_award` or `loan`; `stage` is `first_year`, `senior` or `postgraduate` |
 | `GET /funding/<id>` | none | one funder in full: who can apply (in its words), what it covers, its obligations (such as working a year for every year funded), how to apply with every intake's dates, and its sources |
 
 - Each funder card says its status today (`status`, `label`, `days`, `lines`), what it funds (`fields`, or

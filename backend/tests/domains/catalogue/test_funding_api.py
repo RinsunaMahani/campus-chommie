@@ -47,10 +47,10 @@ def test_the_list_needs_no_account_and_counts_whats_open(client, on_11_october):
     assert r.status_code == 200
     data = r.get_json()["data"]
     assert data["today"] == "2026-10-11"
-    assert data["summary"] == "19 funding options: 3 open now."
-    assert data["counts"] == {"total": 19, "open_now": 3, "closing_soon": 0}
+    assert data["summary"] == "24 funding options: 4 open now."
+    assert data["counts"] == {"total": 24, "open_now": 4, "closing_soon": 0}
     assert (data["confirmed"], data["notice"]) == (False, "Not yet confirmed by the team.")
-    assert _ids(r)[:3] == ["clicks_foundation", "nsfas", "funza_lushaka"]
+    assert _ids(r)[:4] == ["clicks_foundation", "nsfas", "feenix_fref", "funza_lushaka"]
 
     clicks = data["funders"][0]
     assert (clicks["status"], clicks["label"], clicks["days"], clicks["closes"]) == ("open", "Open", 20, "2026-10-31")
@@ -62,8 +62,8 @@ def test_the_list_needs_no_account_and_counts_whats_open(client, on_11_october):
     assert clicks["source_url"].startswith("https://careers.clicksgroup.co.za/") and clicks["why"] is None
 
     fields = {f["id"]: f for f in data["fields"]}
-    assert fields["accounting"] == {"id": "accounting", "label": "Accounting", "funders": 3}
-    assert fields["education"]["funders"] == 1
+    assert fields["accounting"] == {"id": "accounting", "label": "Accounting", "funders": 4}
+    assert fields["education"]["funders"] == 2
 
 
 def test_closed_funding_says_so_and_what_comes_next(client, on_11_october):
@@ -79,7 +79,7 @@ def test_closed_funding_says_so_and_what_comes_next(client, on_11_october):
 @pytest.mark.parametrize(
     "query, expected",
     [
-        ({"status": "open"}, ["clicks_foundation", "nsfas", "funza_lushaka"]),
+        ({"status": "open"}, ["clicks_foundation", "nsfas", "feenix_fref", "funza_lushaka"]),
         ({"kind": "loan"}, ["nsfas_loans"]),
         ({"kind": "merit_award"}, ["up_flyup_awards"]),
         ({"field": "pharmacy", "status": "open"}, ["clicks_foundation", "nsfas"]),
@@ -97,7 +97,7 @@ def test_a_field_search_puts_that_fields_own_funders_first_and_says_why(client, 
     r = client.get(BASE, query_string={"field": "accounting,law"})
     funders = r.get_json()["data"]["funders"]
     closed = [f for f in funders if f["status"] == "closed"]
-    assert [f["id"] for f in closed[:4]] == ["allan_gray_fellowship", "ey_ca_bursary", "national_treasury", "thuthuka"]
+    assert [f["id"] for f in closed[:4]] == ["allan_gray_fellowship", "ey_ca_bursary", "national_treasury", "old_mutual"]
     assert (closed[0]["why"], closed[2]["why"]) == ("Funds law.", "Funds accounting and law.")
     assert {f["why"] for f in funders if f["any_field"]} == {"Open to any field."}
 

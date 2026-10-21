@@ -10,10 +10,12 @@ Research notes from official documents, read on 9 and 10 Oct 2026 and not yet ch
 [UP](research/up.md), [TUT](research/tut.md), [SMU](research/smu.md), [NSFAS](research/nsfas.md) and
 [funding](research/funding.md) (bursaries, read on 11 Oct). Each lists its sources, gaps and inconsistencies. Other apps and services, for the deck: [competitors](research/competitors.md).
 
-- [ ] **The funding pack** (`backend/data/national/funding.yaml`, 19 funders): a person compares every value with its
+- [ ] **The funding pack** (`backend/data/national/funding.yaml`, 24 funders since 12 Oct): a person compares every value with its
   source by Thu 22 Oct, then sets `last_verified`, `verified_by` and `release: true`. Also confirm the choices listed
   in [funding](research/funding.md), "Choices made while building": the field tags, Clicks's year, ISFAP shown as
   closed, CSIR as postgraduate only, the Reserve Bank's online form, UP's 2026 amounts and no commercial lenders.
+  Added 12 Oct: Limpopo Public Works counts as open because its page offers the 2027 form (its rule: closes 31 October
+  every year), and Old Mutual's 2027 round opened "in April", with no day given.
 - [ ] **NSFAS's 2027 closing date:** NSFAS's own page says 31 Oct 2026 at 23:59; the Minister's launch speech (18 Sep
   2026) and SAnews say 18 Nov 2026. The pack keeps 31 October, the earlier date, until a person checks with NSFAS.
 - [ ] **SMU admissions:** re-check every value in `backend/data/universities/smu.yaml` against the current prospectus
