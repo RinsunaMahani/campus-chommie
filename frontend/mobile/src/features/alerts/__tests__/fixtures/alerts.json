@@ -1,0 +1,57 @@
+{
+ "data": {
+  "alerts": [
+   {
+    "actions": [
+     {
+      "service": null,
+      "support_kind": null,
+      "target": "money",
+      "text": "Keep spending to essentials until the payment lands. Your life fund is paused, not gone."
+     },
+     {
+      "service": null,
+      "support_kind": null,
+      "target": "week",
+      "text": "Plan the heavy days now, starting with whatever carries the most weight."
+     },
+     {
+      "service": {
+       "contact": "012 521 4614 / 4500 / 4317; financialaid@smu.ac.za",
+       "hours": null,
+       "last_verified": null,
+       "name": "Financial Aid Office: fee blocks and financial clearance",
+       "note": null,
+       "read_on": "2026-10-11",
+       "source_url": "https://www.smu.ac.za/students/apply/registrations/registration-guidelines/"
+      },
+      "support_kind": "financial_aid",
+      "target": "support",
+      "text": "Ask your campus financial aid office about the payment date."
+     },
+     {
+      "service": {
+       "contact": "012 521 3786; administrator 012 521 4225",
+       "hours": "Mon-Fri 08:00-12:00 and 13:00-16:00",
+       "last_verified": null,
+       "name": "Centre for Student Counselling and Development: relationships, careers, stress, anger and grief; help for first-years settling in",
+       "note": null,
+       "read_on": "2026-10-09",
+       "source_url": "https://www.smu.ac.za/students/student-affairs/centre-for-student-counselling-and-development/"
+      },
+      "support_kind": "counselling",
+      "target": "support",
+      "text": "If it all feels like too much, campus counselling is there for you."
+     }
+    ],
+    "kind": "combined",
+    "message": "Heavy: 1 test, 1 assignment and 1 quiz, with 3 within 48 hours of another. Your money may run out around Sun 25 Oct, before your next payment lands.",
+    "title": "Heavy week from Mon 19 Oct, and money running short"
+   }
+  ],
+  "notes": [],
+  "today": "2026-10-13"
+ },
+ "message": "Success",
+ "success": true
+}

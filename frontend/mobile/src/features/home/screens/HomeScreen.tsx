@@ -1,17 +1,33 @@
-import { router } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
+import { useCallback, useState } from 'react';
 import { View } from 'react-native';
 
+import { HomeAlerts } from '@/features/alerts/components/HomeAlerts';
 import { useSession } from '@/features/auth/session/SessionProvider';
 import { DemoBanner } from '@/features/profile/components/DemoBanner';
+import { useProfile } from '@/features/profile/state';
+import { updatesApi } from '@/features/updates/api/updatesApi';
 import { Button } from '@/shared/components/Button';
 import { Card, ListRow } from '@/shared/components/Parts';
 import { Screen } from '@/shared/components/Screen';
 import { Muted, Overline, Title } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
 
-/** Home tab: who is signed in, the course finder, and the way to account security and out. */
+/** Home tab: today's alerts first, then updates and the course finder, and the way to account security and out. */
 export default function HomeScreen() {
   const { profile, signOut } = useSession();
+  const { mock } = useProfile();
+  const [unread, setUnread] = useState(0);
+
+  useFocusEffect(
+    useCallback(() => {
+      if (mock) return;
+      updatesApi
+        .list()
+        .then((list) => setUnread(list.filter((u) => !u.read_at).length))
+        .catch(() => undefined);
+    }, [mock]),
+  );
 
   return (
     <Screen tab>
@@ -21,7 +37,17 @@ export default function HomeScreen() {
         <DemoBanner />
       </View>
 
+      <HomeAlerts />
+
       <Card style={{ paddingVertical: 4 }}>
+        {mock ? null : (
+          <ListRow
+            icon="bell"
+            title={unread ? `${t('alerts.updates')} · ${t('alerts.unread', { n: unread })}` : t('alerts.updates')}
+            subtitle={t('alerts.updatesSub')}
+            onPress={() => router.push('/updates')}
+          />
+        )}
         <ListRow icon="compass" title={t('courseFinder.title')} subtitle={t('courseFinder.entrySub')} onPress={() => router.push('/course-finder')} last />
       </Card>
 

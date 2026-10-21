@@ -1,7 +1,7 @@
 /** My money's calls: signed in, and only ever the student's own (the server scopes every one). */
 import { api } from '@/shared/api/client';
 
-import { IncomeInput, IncomeSource, Payment, Settings, SpendingDay, Summary } from '../types';
+import { CheapThing, IncomeInput, IncomeSource, Payment, Settings, SpendingDay, Summary } from '../types';
 
 const auth = { auth: true };
 
@@ -29,4 +29,7 @@ export const moneyApi = {
   setSpending: (day: string, amountCents: number) =>
     api<{ spending: SpendingDay }>('PUT', `/money/spending/${day}`, { amount_cents: amountCents }, auth).then((d) => d.spending),
   removeSpending: (day: string) => api<Record<string, never>>('DELETE', `/money/spending/${day}`, undefined, auth),
+
+  cheapThings: () =>
+    api<{ cheap_things: CheapThing[]; lines: string[] }>('GET', '/money/cheap-things', undefined, auth),
 };

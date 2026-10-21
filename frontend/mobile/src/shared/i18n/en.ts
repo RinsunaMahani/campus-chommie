@@ -293,6 +293,64 @@ export const en = {
   'marks.codeMissing': 'Enter the module code, like ANA201.',
   'marks.nameMissing': 'Name the assessment.',
 
+  // Alerts on Home (M5)
+  'alerts.today': 'Today',
+  'alerts.none': 'Nothing needs you today.',
+  'alerts.open.week': 'Open My week',
+  'alerts.open.money': 'Open My money',
+  'alerts.open.cheap_things': 'See cheap things nearby',
+  'alerts.open.marks': 'Open My marks',
+  'alerts.open.support': 'Open Support',
+  'alerts.updates': 'Updates',
+  'alerts.updatesSub': 'From your classes, funding you saved, and your account',
+  'alerts.unread': '{n} new',
+
+  // Support (M5)
+  'support.title': 'Support',
+  'support.intro': 'Help on your campus, each from the university\'s own page.',
+  'support.kind.counselling': 'Counselling',
+  'support.kind.crisis': 'Crisis lines',
+  'support.kind.financial_aid': 'Financial aid',
+  'support.kind.food_support': 'Food support',
+  'support.kind.tutoring': 'Tutoring',
+  'support.kind.chaplaincy': 'Chaplaincy and faith',
+  'support.kind.health': 'Campus health',
+  'support.kind.careers': 'Careers',
+  'support.kind.disability': 'Disability support',
+  'support.hours': 'Hours: {hours}',
+  'support.readOn': 'Read on the university\'s page on {date}',
+  'support.checked': 'Checked by a person on {date}',
+  'support.notVerified': 'Not verified yet',
+
+  // Cheap things (M5)
+  'cheap.title': 'Cheap things nearby',
+  'cheap.intro': 'Places near your campus, each priced from its own page.',
+  'cheap.none': 'Nothing listed near your campus yet.',
+  'cheap.category.outdoors': 'Outdoors',
+  'cheap.category.heritage': 'Heritage',
+  'cheap.category.museum': 'Museum',
+  'cheap.priced': 'Price read on its page on {date}',
+  'money.cheapThings': 'Cheap things nearby',
+  'money.cheapThingsSub': 'Places to go that cost little, with prices',
+
+  // Updates (M5)
+  'updates.title': 'Updates',
+  'updates.none': 'No updates yet.',
+  'updates.readAll': 'Mark all as read',
+  'updates.switches': 'What to tell me about',
+  'updates.switchesHint': 'Security alerts always come: they protect your account.',
+
+  // Deleting an account (POPIA)
+  'delete.title': 'Delete my account and data',
+  'delete.sub': 'Removes everything we keep about you',
+  'delete.what1': 'Your account goes, with everything we keep about you: your profile, money, marks, classes and saved funding.',
+  'delete.what2': 'Tests and deadlines you confirmed as a rep stay for your class, without your name.',
+  'delete.what3': 'Records of past sign-ins stay in the security log.',
+  'delete.what4': 'You are signed out everywhere, and this can\'t be undone.',
+  'delete.password': 'Your password',
+  'delete.passwordMissing': 'Enter your password to confirm.',
+  'delete.button': 'Delete everything',
+
   // Dates, in the words the app shows (Africa/Johannesburg)
   'date.weekdays': 'Sun Mon Tue Wed Thu Fri Sat',
   'date.months': 'Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec',
