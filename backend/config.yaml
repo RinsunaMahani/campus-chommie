@@ -53,3 +53,11 @@ timetable:
   step_minutes: 15        # suggested times start on the quarter hour
   per_day: 2              # at most this many suggestions on one day, so they spread over the week
   suggestions: 5          # at most this many suggestions in all
+
+next_steps:
+  max_steps: 3            # "Do this next" on Home shows at most this many
+  due_days: 3             # a test or deadline this many days away (or nearer) becomes a step
+  exam_days: 7            # an exam this many days away (or nearer) becomes a step
+  funding_days: 14        # a saved bursary closing this many days away (or nearer)
+  goal_days: 30           # a money goal falling due this many days away (or nearer)
+  heavy_weeks_ahead: 2    # a heavy week this many weeks ahead (this one included)
