@@ -5,12 +5,12 @@ import { View } from 'react-native';
 import { CAMPUS_PHOTOS } from '@/features/courseFinder/campusPhotos';
 import { PhotoCredit } from '@/features/courseFinder/components/CampusPhotoCard';
 
-import { HomeAlerts } from '@/features/alerts/components/HomeAlerts';
 import { useSession } from '@/features/auth/session/SessionProvider';
 import { studentHeader } from '@/features/profile/components/HeaderTools';
 import { useProfile } from '@/features/profile/state';
 import { updatesApi } from '@/features/updates/api/updatesApi';
 
+import { NextSteps } from '../components/NextSteps';
 import { TodayTiles } from '../components/TodayTiles';
 import { Button } from '@/shared/components/Button';
 import { Card, ListRow } from '@/shared/components/Parts';
@@ -54,7 +54,7 @@ export default function HomeScreen() {
 
       <Overline>{t('home.todayTitle')}</Overline>
       {mock ? null : <TodayTiles />}
-      <HomeAlerts />
+      {mock ? null : <NextSteps />}
 
       <Overline>{t('home.more')}</Overline>
 
