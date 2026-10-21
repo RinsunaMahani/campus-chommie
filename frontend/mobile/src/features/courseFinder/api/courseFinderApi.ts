@@ -5,7 +5,7 @@
  */
 import { api } from '@/shared/api/client';
 
-import { AssessAnswer, FunderAnswer, FunderDetail, FundingCard, FundingFilters, FundingListAnswer, Mark, Plan, PointsAnswer } from '../types';
+import { AssessAnswer, FirstStepsAnswer, FunderAnswer, FunderDetail, FundingCard, FundingFilters, FundingListAnswer, Mark, Plan, PointsAnswer } from '../types';
 
 function toQuery(filters?: FundingFilters): string {
   if (!filters) return '';
@@ -38,6 +38,10 @@ export const courseFinderApi = {
       confirmed: d.confirmed,
       notice: d.notice,
     })),
+
+  /** Steps from accepting an offer to your first lecture. */
+  firstSteps: (universityId: string): Promise<FirstStepsAnswer> =>
+    api<FirstStepsAnswer>('GET', `/universities/${universityId}/first-steps`),
 };
 
 /** Every message in a 422's field errors (marshmallow's nested shape), flattened. */

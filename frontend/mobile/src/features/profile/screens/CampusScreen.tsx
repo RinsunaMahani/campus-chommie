@@ -1,3 +1,4 @@
+import { useLocalSearchParams } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 
@@ -7,6 +8,7 @@ import { Screen } from '@/shared/components/Screen';
 import { SelectField } from '@/shared/components/SelectField';
 import { Body, Muted, Overline, Title } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
+import { takeUniversity } from '@/shared/lib/chosenUniversity';
 import { colors } from '@/shared/theme/tokens';
 
 import { profileApi } from '../api/profileApi';
@@ -18,6 +20,7 @@ import { Campus, UniversityChoice } from '../types';
  * signed-in layout then opens the tabs by itself.
  */
 export default function CampusScreen() {
+  const { university: universityParam } = useLocalSearchParams<{ university?: string }>();
   const { setProfile } = useProfile();
   const [universities, setUniversities] = useState<UniversityChoice[] | null>(null);
   const [university, setUniversity] = useState<string | null>(null);
@@ -29,9 +32,16 @@ export default function CampusScreen() {
   useEffect(() => {
     profileApi
       .universities()
-      .then(setUniversities)
+      .then((list) => {
+        setUniversities(list);
+        // From the course finder: a route parameter, or the id it remembered before sign-up.
+        const wanted = universityParam ?? takeUniversity();
+        if (wanted && list.some((u) => u.id === wanted)) {
+          chooseUniversity(wanted);
+        }
+      })
       .catch((e) => setError(errorText(e, t('common.error'))));
-  }, []);
+  }, [universityParam]);
 
   function chooseUniversity(id: string) {
     setUniversity(id);

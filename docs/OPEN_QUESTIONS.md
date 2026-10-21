@@ -287,7 +287,9 @@ other official language, and the results say which; second additional languages 
   NSFAS. **Bursaries added on 11 Oct 2026:** Rinsuna asked for funding like UniApplyForMe's, reversing "no bursary
   list". `GET /funding` lists 19 funders (NSFAS, bursaries, UP's merit awards, a government loan scheme) with
   "N open now, N closing soon" and filters, `GET /funding/<id>` gives one in full, and each plan choice shows the
-  funding its fields point to (README, "Funding"; [funding](research/funding.md)). The screens are in HANDOVER.
+  funding its fields point to (README, "Funding"; [funding](research/funding.md)). **App screens built on 15 Oct 2026**
+  (`rinsuna/ag-funding-button`, #37): the plan's footer opens the Funding screen (NSFAS and the filterable list of
+  other bursaries, merit awards and loans, goal fields first) and the funder detail screen.
 - [x] **Saving funding, with reminders** (new personal data: approved by Rinsuna on 11 Oct 2026). A
   signed-in student saves funders (UniApplyForMe's bookmark) and gets an alert when one opens after
   they saved it, and a week and a day before it closes; a switch turns the reminders off. We keep only the funder's
@@ -300,13 +302,15 @@ other official language, and the results say which; second additional languages 
   with the plan and never stored.
 - [ ] **"Add these dates to my calendar":** the plan's `deadlines` list is ready for it. How (the phone's calendar or
   an .ics file) is Rinsuna's call; nothing goes to our server.
-- [ ] **Your points at every university** (agreed by Rinsuna on 10 Oct 2026, after trying UniApplyForMe; Rinsuna to
+- [x] **Your points at every university** (agreed by Rinsuna on 10 Oct 2026, after trying UniApplyForMe; Rinsuna to
   confirm the screen): `POST /pathways/points` gives the learner's points at UP, TUT and SMU, each by its own rule,
-  and how many programmes they meet. It could open the course finder, before the learner picks a university.
-- [ ] **Accepted: your first steps** (agreed by Rinsuna on 10 Oct 2026; Rinsuna to confirm the screen):
+  and how many programmes they meet. Built on `rinsuna/qualify-first` (#29) and `rinsuna/all-universities` (#30) across
+  all 26 public universities.
+- [x] **Accepted: your first steps** (agreed by Rinsuna on 10 Oct 2026; Rinsuna to confirm the screen):
   `GET /universities/<id>/first-steps` gives accepting the offer, registering, orientation and the first lecture, on
-  today's date, with what NSFAS does at registration. It could follow the plan, and greet a new student on Home
-  before term. It's the "from acceptance" in the challenge.
+  today's date, with what NSFAS does at registration. **Built on 15 Oct 2026** (`rinsuna/ag-accepted-step`, #38): the
+  plan's "If you're accepted" card opens the next-steps timeline, and "Create my student account" hands the university
+  id (in memory only, never marks) to onboarding.
 - [ ] **My money's screens** (M3), on the API in `rinsuna/m3-profile-and-money` (README, "A student's own
   profile and money"):
   - **Reliability:** income sources say how reliable they are (`on_time`, `sometimes_late`, `often_late`,
