@@ -13,7 +13,8 @@ import { updatesApi } from '@/features/updates/api/updatesApi';
 import { Button } from '@/shared/components/Button';
 import { Card, ListRow } from '@/shared/components/Parts';
 import { Screen } from '@/shared/components/Screen';
-import { Muted, Overline, Title } from '@/shared/components/Text';
+import { Muted, Overline, Strong, Title } from '@/shared/components/Text';
+import { UniMonogram } from '@/shared/components/UniMonogram';
 import { t } from '@/shared/i18n';
 
 /**
@@ -40,7 +41,12 @@ export default function HomeScreen() {
     <Screen tab backdrop={photo?.image}>
       <View style={{ gap: 6 }}>
         <Title>Home</Title>
-        {student?.university_name ? <Muted>{student.university_name}</Muted> : null}
+        {student?.university_name && student.university ? (
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <UniMonogram id={student.university} size={36} />
+            <Strong style={{ flex: 1 }}>{student.university_name}</Strong>
+          </View>
+        ) : null}
         <Muted>Signed in as {profile.email}</Muted>
         <DemoBanner />
       </View>

@@ -11,6 +11,7 @@ import { Card, Tag } from '@/shared/components/Parts';
 import { SourceLink } from '@/shared/components/SourceLink';
 import { ErrorBox } from '@/shared/components/Status';
 import { Body, Muted, Overline, Strong } from '@/shared/components/Text';
+import { Monogram } from '@/shared/components/UniMonogram';
 import { t } from '@/shared/i18n';
 import { formatRand } from '@/shared/lib/money';
 import { SkeletonCards } from '@/shared/motion/Shimmer';
@@ -19,7 +20,7 @@ import { colors, fonts, radius } from '@/shared/theme/tokens';
 import { courseFinderApi } from '../api/courseFinderApi';
 import { ApplyWindows } from '../components/ApplyBox';
 import { PhotoCredit } from '../components/CampusPhotoCard';
-import { funderPhoto } from '../funderPhotos';
+import { funderMonogram, funderPhoto } from '../funderPhotos';
 import { ApplyWindow, FunderDetail } from '../types';
 import { daysLeft, errorText, formatDay } from '../words';
 
@@ -104,6 +105,8 @@ export default function FunderDetailScreen() {
     }
   }, [funder, signedIn, activeSavedOn]);
 
+  const photo = funder ? funderPhoto(funder) : null;
+
   return (
     <HeroScreen
       back
@@ -144,16 +147,15 @@ export default function FunderDetailScreen() {
 
           {/* 1. Header card: the field's photo, status, dates, lines, save bookmark */}
           <Card style={styles.headCard}>
-            <Image
-              source={funderPhoto(funder).image}
-              style={styles.photo}
-              accessible={false}
-              accessibilityIgnoresInvertColors
-            />
+            {photo ? (
+              <Image source={photo.image} style={styles.photo} accessible={false} accessibilityIgnoresInvertColors />
+            ) : null}
             <View style={styles.headBody}>
               <View style={styles.headRow}>
+                <Monogram label={funderMonogram(funder)} size={48} />
                 <Strong style={styles.funderHeading}>{funder.heading ?? funder.name}</Strong>
-                <View style={styles.actionsRow}>
+              </View>
+              <View style={styles.statusRow}>
                   <Tag label={funder.label} tone={tagTone(funder.status)} />
                   <Pressable
                     accessibilityRole="button"
@@ -173,7 +175,6 @@ export default function FunderDetailScreen() {
                       {activeSavedOn ? t('courseFinder.saved') : t('courseFinder.save')}
                     </Text>
                   </Pressable>
-                </View>
               </View>
               {activeSavedOn ? (
                 <Muted>{t('courseFinder.savedOn', { date: formatDay(activeSavedOn) })}</Muted>
@@ -186,7 +187,7 @@ export default function FunderDetailScreen() {
                   {line}
                 </Text>
               ))}
-              <PhotoCredit credit={funderPhoto(funder).credit} source={funderPhoto(funder).source} />
+              {photo ? <PhotoCredit credit={photo.credit} source={photo.source} /> : null}
             </View>
           </Card>
 
@@ -316,11 +317,11 @@ export default function FunderDetailScreen() {
 const styles = StyleSheet.create({
   card: { gap: 10, padding: 14 },
   headCard: { padding: 0, overflow: 'hidden' },
-  photo: { width: '100%', aspectRatio: 16 / 9 },
+  photo: { width: '100%', height: 170 },
   headBody: { gap: 10, padding: 14 },
-  headRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 8, flexWrap: 'wrap' },
-  funderHeading: { flex: 1, fontSize: 15, color: colors.text },
-  actionsRow: { flexDirection: 'row', alignItems: 'center', gap: 6, flexWrap: 'wrap' },
+  headRow: { flexDirection: 'row', alignItems: 'center', gap: 12 },
+  statusRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 8 },
+  funderHeading: { flex: 1, fontSize: 16, lineHeight: 21, color: colors.text },
   saveBtn: {
     flexDirection: 'row',
     alignItems: 'center',

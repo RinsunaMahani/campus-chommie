@@ -1,28 +1,32 @@
 /**
- * A university's short name on a forest-glass tile ("UJ", "WITS", "UKZN").
- * Text only, by the brief's rule: never a university's logo, crest or colours.
- * Hidden from screen readers: the row beside it says the full name.
+ * A short name on a forest-glass tile: a university's ("UJ", "WITS", "UKZN") or a funder's ("NSFAS", "CSIR").
+ * Text only, by the brief's rule: never a logo, crest or brand colours, which are their owners' trademarks
+ * and would read as an endorsement. Hidden from screen readers: the row beside it says the full name.
  */
 import { StyleSheet, Text, View } from 'react-native';
 
 import { brand, fonts, radius } from '@/shared/theme/tokens';
 import { Palette, useStyles } from '@/shared/theme/palette';
 
-export function UniMonogram({ id, size = 46 }: { id: string; size?: number }) {
+export function Monogram({ label, size = 46 }: { label: string; size?: number }) {
   const styles = useStyles(makeStyles);
-  const label = id.toUpperCase();
-  // Longer names (UNIZULU, UNIVEN) get smaller letters so they fit the tile.
-  const fontSize = Math.round(size * (label.length <= 3 ? 0.34 : label.length <= 4 ? 0.28 : label.length <= 5 ? 0.23 : 0.19));
+  const text = label.toUpperCase();
+  // Longer names (UNIZULU, NEDBANK) get smaller letters so they fit the tile.
+  const scale = text.length <= 3 ? 0.34 : text.length <= 4 ? 0.28 : text.length <= 5 ? 0.23 : text.length <= 6 ? 0.19 : 0.17;
   return (
     <View
       style={[styles.tile, { width: size, height: size }]}
       accessibilityElementsHidden
       importantForAccessibility="no-hide-descendants">
-      <Text style={[styles.text, { fontSize }]} numberOfLines={1}>
-        {label}
+      <Text style={[styles.text, { fontSize: Math.round(size * scale) }]} numberOfLines={1}>
+        {text}
       </Text>
     </View>
   );
+}
+
+export function UniMonogram({ id, size = 46 }: { id: string; size?: number }) {
+  return <Monogram label={id} size={size} />;
 }
 
 const makeStyles = (colors: Palette) => StyleSheet.create({

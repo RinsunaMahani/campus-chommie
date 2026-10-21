@@ -8,6 +8,7 @@ import { View } from 'react-native';
 
 import { Card } from '@/shared/components/Parts';
 import { Body, Muted, Overline, Strong } from '@/shared/components/Text';
+import { UniMonogram } from '@/shared/components/UniMonogram';
 import { t } from '@/shared/i18n';
 
 import { Slot } from '../types';
@@ -37,11 +38,14 @@ export function PlanSlot({ title, slot, empty, planUniversity }: Props) {
       ) : (
         <Card style={{ gap: 12 }}>
           <TierBadge tier={slot.match.tier} label={slot.match.label} />
-          <View style={{ gap: 2 }}>
-            <Strong>{slot.match.programme_name}</Strong>
-            {planUniversity && slot.match.university !== planUniversity ? (
-              <Muted>{t('courseFinder.atUniversity', { university: slot.match.university_name })}</Muted>
-            ) : null}
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <UniMonogram id={slot.match.university} size={36} />
+            <View style={{ flex: 1, gap: 2 }}>
+              <Strong>{slot.match.programme_name}</Strong>
+              {planUniversity && slot.match.university !== planUniversity ? (
+                <Muted>{t('courseFinder.atUniversity', { university: slot.match.university_name })}</Muted>
+              ) : null}
+            </View>
           </View>
           <WhyLines lines={slot.notes.length ? slot.notes : slot.match.explanation} />
           <SourceLink url={slot.match.source_url} />

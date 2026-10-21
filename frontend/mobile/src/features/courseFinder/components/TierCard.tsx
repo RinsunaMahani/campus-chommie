@@ -10,6 +10,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Button } from '@/shared/components/Button';
 import { Card } from '@/shared/components/Parts';
 import { Muted, Overline, Strong } from '@/shared/components/Text';
+import { UniMonogram } from '@/shared/components/UniMonogram';
 import { t } from '@/shared/i18n';
 import { colors, fonts, radius } from '@/shared/theme/tokens';
 
@@ -65,9 +66,12 @@ export function TierCard({ match, showUniversity, onPick, picking }: Props) {
   return (
     <Card style={{ gap: 10 }}>
       <TierBadge tier={match.tier} label={match.label} />
-      <View style={{ gap: 2 }}>
-        <Strong>{match.programme_name}</Strong>
-        {showUniversity ? <Muted>{match.university_name}</Muted> : null}
+      <View style={styles.title}>
+        {showUniversity ? <UniMonogram id={match.university} size={36} /> : null}
+        <View style={{ flex: 1, gap: 2 }}>
+          <Strong>{match.programme_name}</Strong>
+          {showUniversity ? <Muted>{match.university_name}</Muted> : null}
+        </View>
       </View>
       <WhyLines lines={match.explanation} />
       <SourceLink url={match.source_url} />
@@ -88,6 +92,7 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
   },
   badgeText: { fontFamily: fonts.bold, fontSize: 12 },
+  title: { flexDirection: 'row', alignItems: 'center', gap: 10 },
   line: { flexDirection: 'row', gap: 8 },
   bullet: { fontFamily: fonts.bold, fontSize: 14, lineHeight: 20, color: colors.textFaint },
   lineText: { flex: 1, fontFamily: fonts.body, fontSize: 13.5, lineHeight: 20, color: colors.text },

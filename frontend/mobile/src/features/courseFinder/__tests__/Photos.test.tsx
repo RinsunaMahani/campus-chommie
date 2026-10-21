@@ -10,7 +10,7 @@ import { Linking } from 'react-native';
 import { CAMPUS_PHOTOS } from '../campusPhotos';
 import { CampusPhotoCard } from '../components/CampusPhotoCard';
 import { PHOTOS } from '../facultyPhotos';
-import { funderPhoto } from '../funderPhotos';
+import { funderMonogram, funderPhoto } from '../funderPhotos';
 
 const COMMONS = /^https:\/\/commons\.wikimedia\.org\/wiki\/File:/;
 const LICENCE = /, (CC0|Public domain|CC BY(-SA)? \d\.\d), Wikimedia Commons \(cropped\)$/;
@@ -44,10 +44,24 @@ test('a university without a photo shows no card', () => {
   expect(screen.toJSON()).toBeNull();
 });
 
-test("a funder's picture is its field's photo, the library for any field, never a logo", () => {
+test("a funder's picture is its field's photo, none for any field, never a logo", () => {
   expect(funderPhoto({ any_field: false, fields: [{ id: 'engineering' }, { id: 'built_environment' }, { id: 'commerce' }] })).toBe(
     PHOTOS.engineering,
   );
-  expect(funderPhoto({ any_field: true, fields: [] })).toBe(PHOTOS.humanities);
-  expect(funderPhoto({ fields: [{ id: 'no_such_field' }] })).toBe(PHOTOS.humanities);
+  expect(funderPhoto({ any_field: true, fields: [] })).toBeNull();
+  expect(funderPhoto({ fields: [{ id: 'no_such_field' }] })).toBeNull();
+});
+
+test("a funder's tile shows letters from its own names, never a logo", () => {
+  const tile = (name: string, short_name: string | null) => funderMonogram({ name, short_name });
+  expect(tile('National Student Financial Aid Scheme (NSFAS)', 'NSFAS')).toBe('NSFAS');
+  expect(tile('NSFAS loan scheme for the missing middle', 'NSFAS loans')).toBe('NSFAS');
+  expect(tile('Thuthuka Bursary Fund (SAICA)', 'Thuthuka')).toBe('SAICA');
+  expect(tile('Nedbank External Bursary Programme', 'Nedbank')).toBe('NEDBANK');
+  expect(tile('Clicks Foundation Bursary Fund', 'Clicks Foundation')).toBe('CLICKS');
+  expect(tile('Old Mutual bursaries for accountants and actuaries', 'Old Mutual')).toBe('OM');
+  expect(tile('FirstRand Empowerment Foundation postgraduate bursary (through Feenix)', 'FirstRand Foundation')).toBe('FR');
+  expect(tile('UP FLY@UP Assist First-Year Awards', 'FLY@UP Assist')).toBe('FLY@UP');
+  expect(tile('Limpopo Department of Public Works, Roads and Infrastructure bursary', 'Limpopo Public Works')).toBe('LPW');
+  expect(tile('Example Mining Bursary', null)).toBe('EM');
 });
