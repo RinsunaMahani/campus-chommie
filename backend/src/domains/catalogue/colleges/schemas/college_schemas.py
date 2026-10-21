@@ -6,6 +6,7 @@ from typing import get_args
 
 from marshmallow import RAISE, Schema, ValidationError, fields, validate, validates
 
+from campus_engine.colleges import NO_PROVINCE
 from campus_engine.schemas import CollegeKind, CollegeStatus, Province
 from src.core.exceptions import ValidationError as ApiValidationError
 
@@ -31,7 +32,7 @@ class CollegeListSchema(_Strict):
 
     q = fields.String(validate=validate.Length(min=1, max=MAX_QUERY))
     kind = fields.String(validate=validate.OneOf(get_args(CollegeKind)))
-    province = fields.String(validate=validate.OneOf(get_args(Province)))
+    province = fields.String(validate=validate.OneOf([*get_args(Province), NO_PROVINCE]))
     status = fields.String(validate=validate.OneOf(get_args(CollegeStatus)))
     page = fields.Integer(validate=validate.Range(min=1, max=100), strict=False)
 

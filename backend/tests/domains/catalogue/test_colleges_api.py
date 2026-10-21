@@ -44,6 +44,17 @@ def test_the_list_needs_no_account_and_counts_every_status(client):
                           "provinces", "website", "website_problem", "lines"}
 
 
+def test_the_list_says_how_many_colleges_each_province_has(client):
+    data = client.get(BASE).get_json()["data"]
+    groups = {g["id"]: g for g in data["provinces"]}
+    assert list(groups)[0] == "Eastern Cape" and list(groups)[-1] == "not_listed"
+    assert groups["Gauteng"]["total"] == 158 and groups["Gauteng"]["line"].startswith("158 colleges:")
+    assert groups["not_listed"] == {"id": "not_listed", "title": "Province not listed", "total": 29,
+                                    "line": groups["not_listed"]["line"]}
+    unlisted = client.get(BASE, query_string={"province": "not_listed"}).get_json()["data"]
+    assert unlisted["total"] == 29 and all(c["provinces"] == [] for c in unlisted["colleges"])
+
+
 def test_a_search_finds_tvet_colleges_by_the_trade_they_teach(client):
     data = client.get(BASE, query_string={"q": "electrician"}).get_json()["data"]
     assert data["total"] == 35 and data["summary"] == "35 colleges: 35 public."

@@ -13,9 +13,10 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass, field
+from typing import get_args
 
 from .config import load_config
-from .schemas import College, CollegesPack, OccupationalQualification, UnregisteredCollege
+from .schemas import College, CollegesPack, OccupationalQualification, Province, UnregisteredCollege
 from .text import plural
 
 PUBLIC, REGISTERED, PROVISIONAL, CANCELLED = "public", "registered", "provisionally_registered", "cancelled"
@@ -37,6 +38,10 @@ STATUS_LABELS = {
 }
 #: The order a check's matches come in: what a learner most needs to see first.
 _STATUS_ORDER = {BOGUS: 0, CANCELLED: 1, PROVISIONAL: 2, REGISTERED: 3, PUBLIC: 3}
+
+#: A filter for the colleges DHET's lists give no province for, so every college sits in one group.
+NO_PROVINCE = "not_listed"
+NO_PROVINCE_TITLE = "Province not listed"
 
 # Words that don't tell one college from another ("Damelin (Pty) Ltd" is "damelin").
 _FILLER = {"pty", "ltd", "limited", "npc", "the", "of", "and", "t", "a", "rf", "inc", "incorporated"}
@@ -137,7 +142,9 @@ def search(pack: CollegesPack, *, query: str | None = None, kind: str | None = N
     offered = occupational_by_college(pack)
     found: list[tuple[int, College]] = []
     for c in pack.colleges:
-        if kind and c.kind != kind or province and province not in c.provinces or status and c.status != status:
+        if kind and c.kind != kind or status and c.status != status:
+            continue
+        if province and (c.provinces if province == NO_PROVINCE else province not in c.provinces):
             continue
         if not query:
             rank = 0
@@ -155,6 +162,29 @@ def search(pack: CollegesPack, *, query: str | None = None, kind: str | None = N
     cards = [card(pack, c) for _, c in found]
     counts = {s: sum(1 for x in cards if x.college.status == s) for s in (PUBLIC, REGISTERED, PROVISIONAL, CANCELLED)}
     return Results(cards, len(cards), [_summary(len(cards), counts, query)], counts)
+
+
+@dataclass
+class ProvinceGroup:
+    """One province's share of a list: how many colleges, in the list's summary words."""
+
+    id: str
+    title: str
+    total: int
+    line: str
+
+
+def by_province(found: Results) -> list[ProvinceGroup]:
+    """The list grouped by province, A to Z, then the colleges with no province listed, so a long list opens one
+    province at a time (Rinsuna, 21 Oct 2026). A college in several provinces counts in each; empty ones are left out."""
+    groups = [(p, p, [c for c in found.cards if p in c.college.provinces]) for p in get_args(Province)]
+    groups.append((NO_PROVINCE, NO_PROVINCE_TITLE, [c for c in found.cards if not c.college.provinces]))
+    out = []
+    for gid, title, cards in groups:
+        if cards:
+            counts = {s: sum(1 for x in cards if x.college.status == s) for s in (PUBLIC, REGISTERED, PROVISIONAL, CANCELLED)}
+            out.append(ProvinceGroup(gid, title, len(cards), _summary(len(cards), counts, None)))
+    return out
 
 
 def _summary(total: int, counts: dict[str, int], query: str | None) -> str:

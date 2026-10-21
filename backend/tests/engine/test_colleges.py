@@ -55,6 +55,17 @@ def test_filters_narrow_the_list():
     assert e.search(_pack(), query="hogwarts").lines == ["No college in DHET's lists matches “hogwarts”."]
 
 
+def test_the_list_opens_one_province_at_a_time_and_none_is_left_out():
+    groups = e.by_province(e.search(_pack()))
+    assert [(g.id, g.title, g.total) for g in groups] == [
+        ("Gauteng", "Gauteng", 2), (e.NO_PROVINCE, "Province not listed", 3),
+    ]
+    assert groups[0].line == "2 colleges: 1 public, 1 registered."
+    no_province = e.search(_pack(), province=e.NO_PROVINCE)
+    assert {c.college.id for c in no_province.cards} == {"tshwane-commerce", "beta-institute", "gamma-school"}
+    assert e.by_province(e.search(_pack(), query="hogwarts")) == []
+
+
 def test_each_status_reads_in_plain_words():
     p = _pack()
     lines = {c.college.id: c.lines for c in e.search(p).cards}
