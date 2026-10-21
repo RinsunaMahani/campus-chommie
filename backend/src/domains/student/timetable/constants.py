@@ -18,6 +18,13 @@ MAX_PAGES = 30
 
 KINDS = ("lecture", "tutorial", "practical", "other")
 
+#: A student's own activities: broad kinds only (never religion or anything sensitive; the name is theirs).
+ACTIVITY_KINDS = ("personal", "social", "errands", "exercise", "work", "other")
+MAX_ACTIVITIES = 60
+#: How far ahead a one-off activity may be, and how far back it's still shown.
+ACTIVITY_DAYS_AHEAD = 366
+ACTIVITY_DAYS_BACK = 31
+
 #: Classes run between these times (SAST); anything outside is a typing mistake.
 EARLIEST = "06:00"
 LATEST = "22:00"

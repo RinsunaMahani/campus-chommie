@@ -67,3 +67,36 @@ export type ImportAnswer = { layout: ImportLayout; modules: string[]; classes: F
 
 /** A file the student picked: a uri on a phone, a File in a browser. */
 export type PickedPdf = { uri: string; name: string; mimeType?: string; file?: Blob };
+
+/** Something in the student's own week besides classes: weekly on `weekday`, or once `on`. */
+export type ActivityKind = 'personal' | 'social' | 'errands' | 'exercise' | 'work' | 'other';
+export const ACTIVITY_KINDS: ActivityKind[] = ['personal', 'social', 'errands', 'exercise', 'work', 'other'];
+
+export type Activity = {
+  id: string;
+  title: string;
+  kind: ActivityKind;
+  weekday: number | null;
+  on: string | null;
+  /** "Saturday" for a weekly one, "Fri 30 Oct 2026" for a one-off. */
+  day: string;
+  starts: string;
+  ends: string;
+  place: string | null;
+  clashes: boolean;
+};
+
+export type ActivitiesAnswer = { activities: Activity[]; lines: string[] };
+
+export type ActivityInput = {
+  title: string;
+  kind: ActivityKind;
+  weekday: number | null;
+  on: string | null;
+  starts: string;
+  ends: string;
+  place?: string | null;
+};
+
+export type FreeSlot = { on: string; weekday: number; day: string; starts: string; ends: string };
+export type FindTimeAnswer = { minutes: number; slots: FreeSlot[]; lines: string[] };

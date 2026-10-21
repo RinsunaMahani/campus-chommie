@@ -4,14 +4,15 @@
  * and exams, amber for assignments, blue for practicals). Deadlines without a time, or late at night, sit
  * in a "Due" row above the grid. The student's own exams sit on their dates as coral blocks as long as the
  * paper (or a marker where the list doesn't say). One day or three days side by side; a line marks the time
- * now on today.
+ * now on today. The student's own plans (groceries, the gym, a shift) sit there too, outlined in their kind's
+ * colour so they read apart from classes; any outside the grid's hours go in the row above.
  * Nothing here is worked out about the student: it only places what they and their reps entered.
  */
 import { router } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { moduleColour, tint } from '@/features/timetable/colours';
-import { ExamEntry, TimetableEntry } from '@/features/timetable/types';
+import { Activity, ACTIVITY_KINDS, ExamEntry, TimetableEntry } from '@/features/timetable/types';
 import { t } from '@/shared/i18n';
 import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
 import { fonts, radius } from '@/shared/theme/tokens';
@@ -19,7 +20,7 @@ import { fonts, radius } from '@/shared/theme/tokens';
 import { ClassEvent } from '../types';
 
 export const FIRST_HOUR = 7;
-export const LAST_HOUR = 20; // the grid ends at 20:00
+export const LAST_HOUR = 22; // the grid ends at 22:00: plans run into the evening
 const HOUR = 56; // px per hour
 const EVENT_MINUTES = 45; // how tall an event marker is: its length isn't known, so it never claims one
 
@@ -47,13 +48,30 @@ function eventColour(colors: Palette, e: ClassEvent): string {
   return colors.garnet;
 }
 
-type Props = { days: Day[]; classes: TimetableEntry[]; events: ClassEvent[]; exams?: ExamEntry[]; nowMinutes: number | null };
+type Props = {
+  days: Day[];
+  classes: TimetableEntry[];
+  events: ClassEvent[];
+  exams?: ExamEntry[];
+  activities?: Activity[];
+  nowMinutes: number | null;
+};
 
-export function CalendarGrid({ days, classes, events, exams = [], nowMinutes }: Props) {
+/** The plans on this day: weekly ones on its weekday, one-offs on its date. */
+function plansOn(activities: Activity[], d: Day): Activity[] {
+  return activities.filter((a) => (a.weekday != null ? a.weekday === d.weekday : a.on === d.date));
+}
+
+function inHours(a: Activity): boolean {
+  return minutesOf(a.starts) >= FIRST_HOUR * 60 && minutesOf(a.ends) <= LAST_HOUR * 60;
+}
+
+export function CalendarGrid({ days, classes, events, exams = [], activities = [], nowMinutes }: Props) {
   const colors = usePalette();
   const styles = useStyles(makeStyles);
   const hours = Array.from({ length: LAST_HOUR - FIRST_HOUR }, (_, i) => FIRST_HOUR + i);
   const due = (d: Day) => events.filter((e) => e.on === d.date && !inGrid(e) && !e.cancelled);
+  const planColour = (a: Activity) => colors.classColours[(ACTIVITY_KINDS.indexOf(a.kind) + 2) % colors.classColours.length];
 
   return (
     <View style={styles.wrap}>
@@ -75,6 +93,20 @@ export function CalendarGrid({ days, classes, events, exams = [], nowMinutes }: 
                 </Text>
               </Pressable>
             ))}
+            {plansOn(activities, d)
+              .filter((a) => !inHours(a))
+              .map((a) => (
+                <Pressable
+                  key={a.id}
+                  accessibilityRole="button"
+                  accessibilityLabel={`${a.title}, ${a.starts} to ${a.ends}`}
+                  onPress={() => router.push({ pathname: '/activity/[id]', params: { id: a.id } })}
+                  style={[styles.due, styles.plan, { borderColor: planColour(a) }]}>
+                  <Text style={[styles.dueText, { color: planColour(a) }]} numberOfLines={2}>
+                    {a.starts} {a.title}
+                  </Text>
+                </Pressable>
+              ))}
           </View>
         ))}
       </View>
@@ -133,6 +165,29 @@ export function CalendarGrid({ days, classes, events, exams = [], nowMinutes }: 
                     </Text>
                     <Text style={styles.blockText} numberOfLines={1}>
                       {e.module}
+                    </Text>
+                  </Pressable>
+                );
+              })}
+            {plansOn(activities, d)
+              .filter(inHours)
+              .map((a) => {
+                const colour = planColour(a);
+                const start = minutesOf(a.starts);
+                const end = minutesOf(a.ends);
+                return (
+                  <Pressable
+                    key={a.id}
+                    accessibilityRole="button"
+                    accessibilityLabel={`${a.title}, ${a.starts} to ${a.ends}${a.place ? `, ${a.place}` : ''}`}
+                    onPress={() => router.push({ pathname: '/activity/[id]', params: { id: a.id } })}
+                    style={[styles.block, styles.plan, { top: top(start), height: Math.max(((end - start) / 60) * HOUR - 2, 22), borderColor: colour, backgroundColor: colors.white }]}>
+                    <Text style={[styles.blockTitle, { color: colour }]} numberOfLines={1}>
+                      {a.title}
+                    </Text>
+                    <Text style={styles.blockText} numberOfLines={2}>
+                      {a.starts}
+                      {a.place ? ` · ${a.place}` : ''}
                     </Text>
                   </Pressable>
                 );
@@ -206,4 +261,6 @@ const makeStyles = (colors: Palette) =>
     blockTitle: { fontFamily: fonts.bold, fontSize: 12.5 },
     blockText: { fontFamily: fonts.medium, fontSize: 11, color: colors.text },
     now: { position: 'absolute', left: 0, right: 0, height: 2, backgroundColor: colors.garnet },
+    // A plan of the student's own: outlined and dashed, so it never looks like a class.
+    plan: { borderWidth: 1.5, borderStyle: 'dashed', borderLeftWidth: 1.5 },
   });

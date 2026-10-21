@@ -5,10 +5,11 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { studentHeader } from '@/features/profile/components/HeaderTools';
 import { useProfile } from '@/features/profile/state';
-import { examsApi, timetableApi } from '@/features/timetable/api/timetableApi';
+import { activitiesApi, examsApi, timetableApi } from '@/features/timetable/api/timetableApi';
 import { rememberModules } from '@/features/timetable/colours';
-import { ExamEntry, TimetableEntry } from '@/features/timetable/types';
+import { Activity, ExamEntry, TimetableEntry } from '@/features/timetable/types';
 import { errorText } from '@/shared/api/errors';
+import { Button } from '@/shared/components/Button';
 import { Card, InfoNote, ListRow } from '@/shared/components/Parts';
 import { Screen } from '@/shared/components/Screen';
 import { ErrorBox, Loading } from '@/shared/components/Status';
@@ -53,6 +54,7 @@ export default function WeekScreen() {
   const [answer, setAnswer] = useState<WeekAnswer | null>(null);
   const [classes, setClasses] = useState<TimetableEntry[]>([]);
   const [exams, setExams] = useState<ExamEntry[]>([]);
+  const [plans, setPlans] = useState<Activity[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [refreshing, setRefreshing] = useState(false);
   const [view, setView] = useState<View_>('calendar');
@@ -61,8 +63,9 @@ export default function WeekScreen() {
   const [picked, setPicked] = useState<string | null>(null);
 
   const load = useCallback(() => {
-    Promise.all([weekApi.weeks(8), timetableApi.mine(), examsApi.mine()])
-      .then(([w, tt, x]) => {
+    Promise.all([weekApi.weeks(8), timetableApi.mine(), examsApi.mine(), activitiesApi.mine()])
+      .then(([w, tt, x, a]) => {
+        setPlans(a.activities);
         rememberModules(tt.entries.map((e) => e.module));
         setAnswer(w);
         setClasses(tt.entries);
@@ -120,6 +123,7 @@ export default function WeekScreen() {
       refreshing={refreshing}
       title={t('week.title')}
       {...studentHeader()}>
+      <Button title={t('activity.add')} variant="primary" icon="plus" onPress={() => router.push({ pathname: '/activity/[id]', params: { id: 'new' } })} />
       <View style={styles.switchRow}>
         {chip(view === 'calendar', t('week.calendarView'), () => setView('calendar'), 'cal')}
         {chip(view === 'load', t('week.load'), () => setView('load'), 'load')}
@@ -154,7 +158,7 @@ export default function WeekScreen() {
             </Pressable>
           ) : null}
           <Card style={{ padding: 10 }}>
-            <CalendarGrid days={days} classes={classes} events={week.events} exams={exams} nowMinutes={days.some((d) => d.today) ? nowInSast() : null} />
+            <CalendarGrid days={days} classes={classes} events={week.events} exams={exams} activities={plans} nowMinutes={days.some((d) => d.today) ? nowInSast() : null} />
           </Card>
         </View>
       ) : null}

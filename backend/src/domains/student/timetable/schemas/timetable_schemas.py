@@ -12,7 +12,7 @@ from marshmallow import RAISE, Schema, ValidationError, fields, validate, valida
 
 from src.core.exceptions import ValidationError as ApiValidationError
 
-from ..constants import EARLIEST, KINDS, LATEST, MAX_ENTRIES, MAX_EXAMS
+from ..constants import ACTIVITY_KINDS, EARLIEST, KINDS, LATEST, MAX_ENTRIES, MAX_EXAMS
 
 _TIME = re.compile(r"^([01]\d|2[0-3]):([0-5]\d)$")
 
@@ -133,6 +133,73 @@ class ImportFormSchema(_Strict):
     """POST /me/timetable/import's form fields besides the file: which layout the PDF is."""
 
     layout = fields.String(required=True, validate=validate.OneOf(("classes", "exams")))
+
+
+class DayTimeField(fields.Field):
+    """Any time of day in 5-minute steps: a plan can be early or late ("22:30")."""
+
+    def _deserialize(self, value, attr, data, **kwargs):
+        if not isinstance(value, str) or not _TIME.match(value):
+            raise ValidationError('Use 24-hour time, like "18:30".')
+        t = time(int(value[:2]), int(value[3:]))
+        if t.minute % 5:
+            raise ValidationError("Use 5-minute steps, like 18:30 or 18:35.")
+        return t
+
+
+class ActivitySchema(_Strict):
+    """POST /me/activities: every week on `weekday`, or once `on`: one or the other."""
+
+    title = fields.String(required=True, validate=validate.Length(min=1, max=60))
+    kind = fields.String(required=True, validate=validate.OneOf(ACTIVITY_KINDS))
+    weekday = fields.Integer(load_default=None, allow_none=True, strict=True, validate=validate.Range(min=0, max=6))
+    on = fields.Date(load_default=None, allow_none=True)
+    starts = DayTimeField(required=True)
+    ends = DayTimeField(required=True)
+    place = fields.String(allow_none=True, validate=validate.Length(max=80))
+
+    @validates("title")
+    def _title(self, value, **_kwargs):
+        _plain_text(value)
+
+    @validates("place")
+    def _place(self, value, **_kwargs):
+        if value is not None:
+            _plain_text(value)
+
+    @validates_schema
+    def _shape(self, data, **_kwargs):
+        if "weekday" in data or "on" in data:
+            if (data.get("weekday") is None) == (data.get("on") is None):
+                raise ValidationError({"weekday": ["Choose a day of the week, or one date: not both."]})
+        if "starts" in data and "ends" in data and data["ends"] <= data["starts"]:
+            raise ValidationError({"ends": ["It must end after it starts."]})
+
+
+class ActivityChangeSchema(ActivitySchema):
+    """PATCH /me/activities/<id>: any of the same fields, at least one. Moving between weekly and once sends both
+    weekday and on (one of them null)."""
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, partial=True, **kwargs)
+
+    @validates_schema
+    def _something(self, data, **_kwargs):
+        if not data:
+            raise ValidationError({"_schema": ["Send at least one change."]})
+
+
+class FindTimeSchema(_Strict):
+    """POST /me/activities/find-time: how long, from which day, over how many days."""
+
+    minutes = fields.Integer(required=True, strict=True, validate=[validate.Range(min=15, max=480)])
+    start = fields.Date(load_default=None, allow_none=True)
+    days = fields.Integer(load_default=7, strict=True, validate=validate.Range(min=1, max=14))
+
+    @validates("minutes")
+    def _steps(self, value, **_kwargs):
+        if value % 5:
+            raise ValidationError("Use 5-minute steps.")
 
 
 class NothingSchema(_Strict):
