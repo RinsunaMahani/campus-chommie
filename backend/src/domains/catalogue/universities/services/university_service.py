@@ -7,16 +7,16 @@ notice the app shows next to it.
 """
 from __future__ import annotations
 
-from datetime import date, datetime
-from zoneinfo import ZoneInfo
+from datetime import date
 
 from campus_engine.journey import FirstSteps
 from campus_engine.journey import first_steps as build_first_steps
 from campus_engine.schemas import University
 from src.core.exceptions import NotFoundError
 from src.domains.catalogue.funding.services import funding_service as funding
+from src.shared.clock.clock import today_sast
 
-from ..constants import TIMEZONE, UNCONFIRMED_NOTICE
+from ..constants import UNCONFIRMED_NOTICE
 from ..repositories.pack_repository import all_packs
 
 
@@ -60,8 +60,8 @@ def detail(university_id: str) -> dict:
 
 
 def _today() -> date:
-    """Today in South Africa: calendar dates are SAST."""
-    return datetime.now(ZoneInfo(TIMEZONE)).date()
+    """Today in South Africa, or a preview's test date (src/shared/clock)."""
+    return today_sast()
 
 
 def first_steps(university_id: str) -> dict:

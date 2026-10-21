@@ -9,6 +9,7 @@ import { t } from '@/shared/i18n';
 
 import { ApplyGuide } from '../components/ApplyBox';
 import { PlanSlot } from '../components/PlanSlot';
+import { StillOpen, TestDateNote } from '../components/StillOpen';
 import { useCourseFinder } from '../state';
 
 /** The three-choice plan: the goal, a route into it and a safer related choice, then how to apply for them. */
@@ -35,6 +36,8 @@ export default function PlanScreen() {
         <Title>{t('courseFinder.plan')}</Title>
         <Body>{t('courseFinder.planIntro')}</Body>
       </View>
+      <TestDateNote apply={plan.apply} />
+      <StillOpen plan={plan} />
 
       <PlanSlot title={t('courseFinder.slotGoal')} slot={plan.goal} empty={t('courseFinder.slotEmptyGoal')} planUniversity={university.id} />
       <PlanSlot title={t('courseFinder.slotBridge')} slot={plan.bridge} empty={t('courseFinder.slotEmptyBridge')} planUniversity={university.id} />

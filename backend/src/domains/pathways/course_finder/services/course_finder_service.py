@@ -13,8 +13,7 @@ bursaries and other funding its fields point to.
 """
 from __future__ import annotations
 
-from datetime import date, datetime
-from zoneinfo import ZoneInfo
+from datetime import date
 
 from campus_engine.applications import ApplyGuide, Group, Guide, WindowStatus, apply_guide
 from campus_engine.bridges import GUARANTEE_LABELS, Plan, Slot, build_plan
@@ -24,13 +23,12 @@ from campus_engine.schemas import University
 from src.core.exceptions import NotFoundError
 from src.domains.catalogue.funding.services import funding_service as funding
 from src.domains.catalogue.universities.services import university_service as catalogue
-
-from ..constants import TIMEZONE
+from src.shared.clock.clock import preview_date, today_sast
 
 
 def _today() -> date:
-    """Today in South Africa: every application date is SAST."""
-    return datetime.now(ZoneInfo(TIMEZONE)).date()
+    """Today in South Africa, or a preview's test date (src/shared/clock)."""
+    return today_sast()
 
 
 def _marks(rows: list[dict]) -> dict[str, float]:
@@ -187,6 +185,7 @@ def _apply(guide: ApplyGuide, packs: dict[str, University]) -> dict:
     funding_confirmation = funding.confirmation(funding.pack())
     return {
         "today": guide.today.isoformat(),
+        "test_date": preview_date() is not None,
         "universities": [_guide(g, catalogue.confirmation(packs[g.id])) for g in guide.universities],
         "funding": [_guide(g, funding_confirmation) for g in guide.funding],
         "deadlines": [

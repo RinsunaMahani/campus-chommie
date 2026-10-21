@@ -90,11 +90,21 @@ def test_decimal_marks_are_fine(client):
     assert r.status_code == 200
 
 
+def test_a_preview_on_a_test_date_finds_applications_open_and_says_so(client, app, monkeypatch):
+    """CAMPUS_PREVIEW_TODAY (development only, shared/clock) moves "today" for a preview: on Mon 1 Jun 2026 SMU's
+    applications to start in 2027 are open, and the plan says its dates come from a test date."""
+    monkeypatch.setitem(app.config, "PREVIEW_TODAY", date(2026, 6, 1))
+    plan = client.post(PLAN, json={"university": "smu", "goal": "mbchb", "marks": STRONG}).get_json()["data"]["plan"]
+    assert (plan["apply"]["today"], plan["apply"]["test_date"]) == ("2026-06-01", True)
+    goal = plan["goal"]["apply"][0]
+    assert (goal["intake"], goal["status"], goal["closes"]) == (2027, "open", "2026-07-31")
+
+
 def test_a_plan_says_how_to_apply_on_todays_date(client, on_10_october):
     r = client.post(PLAN, json={"university": "smu", "goal": "mbchb", "marks": STRONG})
     plan = r.get_json()["data"]["plan"]
     apply = plan["apply"]
-    assert apply["today"] == "2026-10-10"
+    assert (apply["today"], apply["test_date"]) == ("2026-10-10", False)
 
     goal = plan["goal"]["apply"]
     assert [(w["intake"], w["status"], w["label"]) for w in goal] == [
