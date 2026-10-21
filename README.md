@@ -101,6 +101,13 @@ A learner sends 1 to 9 subjects, each once, with marks from 0 to 100. Subject ke
 - Dates come from each pack's `applications` section and from `backend/data/national/funding.yaml`. A date nobody
   has published shows as not published, never guessed.
 
+**A student's own data, to see and to delete (signed in; POPIA):**
+
+| Endpoint | Body | Answer |
+|---|---|---|
+| `GET /me/export` | none | everything we hold about the student: the account, consents and phones, then `profile`, `money`, `marks`, `classes` (their memberships), `class_messages` (the announcements they sent and the flags they raised) and `alerts`. Nothing about anyone else, and no secrets |
+| `DELETE /me` | `{password}` | deletes the account and everything it holds, for good; the events a rep confirmed stay with the class, with no name on them. Demo accounts can't be deleted |
+
 **A student's own profile and money (signed in; owner-only).** Amounts are integer cents:
 
 | Endpoint | Body | Answer |

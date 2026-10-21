@@ -45,6 +45,7 @@ request and never stored; and the judges' demo accounts. Update it whenever a mi
 | Marks gone wrong through bad input | percentages from 0 to 100 (a weight above 0); text, booleans, NaN, infinity and huge integers refused; a module's weights can't pass 100% | `domains/student/academics/schemas/`, `services/` |
 | Money gone wrong through rounding or bad input | amounts are whole cents, built as shared/finance's `Money`: floats (even 1250.0), text, booleans, NaN and infinity are refused; at most R1 000 000; dates checked against today (no future spending, nothing more than a year back) | `domains/student/money/schemas/`, `services/` |
 | Keeping money records longer than needed | the student deletes any record for real (no soft delete); spending older than a year is deleted daily | `money_repository.py`, `jobs/forget_old_spending.py` |
+| A student can't see or remove what we hold (POPIA) | `GET /me/export` gives everything we hold about the signed-in student: identity's part, then every feature's own section, registered at start-up (`shared/privacy`); nothing about anyone else and no secrets. `DELETE /me`, after the password, deletes the account, and every feature's rows go with it (`ON DELETE CASCADE`). A test fails if a new table points at an account without an export section | `identity/auth/services/auth_service.py` (`export_my_data`, `delete_account`), `src/__init__.py` (`_register_exporters`), `tests/domains/platform/test_privacy.py` |
 | Keeping class data longer than needed | daily jobs: announcement text 30 days after a decision, undecided announcements after 60 days, flags after 12 months, expired rep codes, and classes after their academic year and one more (with their members, announcements and events) | `classes/events/jobs/forget_old_announcements.py`, `classes/classes/jobs/forget_old_classes.py` |
 | Junk or hostile input | strict schemas refuse unknown fields (422); requests over 1 MB refused (413); JSON deeper than 32 levels refused (400); NUL characters refused anywhere (400). The course finder takes 1 to 9 known subjects, each once, with marks from 0 to 100 (NaN and infinity refused). A plan's "today" is the server's date in SAST; a client can't send a date | `domains/*/schemas`, `src/__init__.py` (`_register_input_guard`), `config.py` |
 | Flooding | a rate limit on every route: per user for signed-in routes (money and marks changes 60 a minute, profile and class changes 30, new classes 10 an hour, joining 20 an hour, announcements 60 an hour), per IP for public ones (the course finder, the points list, the catalogue and first steps allow 120 a minute, because a school computer lab shares one address) | `@limiter.limit` on each route; `shared/rate_limit/` |
@@ -62,7 +63,7 @@ request and never stored; and the judges' demo accounts. Update it whenever a mi
 
 ## Test evidence (M5)
 
-Backend: **954 tests pass** on PostgreSQL 16 (10 Oct 2026), including:
+Backend: **967 tests pass** on PostgreSQL 16 (10 Oct 2026), including:
 
 | Tests | What they prove |
 |---|---|
@@ -85,6 +86,7 @@ Backend: **954 tests pass** on PostgreSQL 16 (10 Oct 2026), including:
 | `tests/domains/classes/test_events.py` | the brief's M4 checks: a student's announcement stays unverified until a rep confirms it; a change message updates the event and writes `event_changes` rows; flags show reps counts, never who; the week strip with the university calendar; and the brief's M3 check that needed the week: the self-funded persona's heavy week makes his life fund amber |
 | `tests/domains/classes/test_events_hostile.py` | odd announcements and confirmations (a "verified" flag, impossible times, dates a year out), a rep's role not carried into another class, other classes' candidates and events (404), floods, and old announcement text and flags deleted |
 | `tests/domains/student/test_alerts_support.py` | the personas' alerts (a combined alert for short money and a heavy week ahead, a heavy-week alert with the campus's own tutoring and counselling), a module out of reach, another student's alerts never shown; every kind of support for a campus, "Not verified yet" where the pack has none, crisis lines held back until a person checks them; cheap things for the campus only |
+| `tests/domains/platform/test_privacy.py` | the export holds every feature's data and nothing of anyone else's; `DELETE /me` needs the password, leaves no row behind in any table, signs the student out everywhere, keeps the class's events nameless and touches no one else; demo accounts refused; odd requests refused; limited; every table that points at an account has an export section |
 | `tests/domains/platform/test_demo.py` | `flask seed` (a strong password from the environment, never echoed; a real account never converted), demo sign-in without the code, no lockout, no password change, reset or closing, the stricter demo limit, the personas built as written, and the daily re-base moving every date and undoing what visitors changed |
 | `tests/architecture/` | the boundaries above, including every route having a rate limit and routes never calling the engine |
 | `tests/engine/` | 279 engine tests, 99% coverage from the engine and architecture tests alone (the floor is 80%), including data-pack validation, spot checks of the shipped packs against their sources, every application status on either side of each date, every first step's status either side of its dates, and 44 labelled class messages (new events, moved and cancelled, mixed languages, dates to check) |
@@ -110,11 +112,11 @@ The `.gitleaksignore` file holds one reviewed false positive: the testing config
 Tracked with options in [OPEN_QUESTIONS.md](OPEN_QUESTIONS.md):
 
 - The audit trail (inherited) stores full email addresses and IP addresses with no deletion rule.
-- No removal of a closed account's data yet, and `DELETE /me` isn't built. Once it is, the profile, money, marks,
-  class memberships, announcements and flags go with the account (`ON DELETE CASCADE`); verified events and their
-  changes stay with the class, with no name on them (`SET NULL`).
-- `GET /me/export` covers what identity holds. The profile, money, marks, classes and the student's own
-  announcements are readable through their own endpoints; one combined export comes with `DELETE /me`.
+- `DELETE /me` deletes an account and everything it holds, but "Close my account" only deactivates one, and nothing
+  removes a closed account's data yet (OPEN_QUESTIONS, "Retention").
+- Neither the export nor deleting reaches the audit trail's security records, which nothing may change; they keep
+  the email and IP address of past sign-ins (OPEN_QUESTIONS). The record of a deletion keeps no email.
+- A Google-only account has no password, so it can't confirm `DELETE /me` yet (Google sign-in is switched off).
 - Reps see how many students flagged an event from the first flag (never who). We read CLAUDE.md's 5-student rule
   as covering aggregates of marks and money; the team confirms or changes this in OPEN_QUESTIONS.
 - A student's announcement text is seen by the class's reps by design: it's how they check it.

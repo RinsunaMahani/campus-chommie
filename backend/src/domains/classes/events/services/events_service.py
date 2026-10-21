@@ -323,6 +323,28 @@ def my_flags(user, event_ids: list[uuid.UUID]) -> dict[uuid.UUID, str]:
     return repo.my_flags(user.id, event_ids)
 
 
+def export_for(user) -> dict:
+    """POPIA export: the announcements the student sent (their text while it's kept) and the flags they
+    raised. Events a rep confirmed belong to the class, not to one student."""
+    return {
+        "announcements": [
+            {
+                "module": module,
+                "sent_on": a.sent_on.isoformat(),
+                "status": a.status,
+                "text": a.raw_text,
+                "decided_at": a.decided_at.isoformat() if a.decided_at else None,
+            }
+            for a, module in repo.announcements_by(user.id)
+        ],
+        "flags": [
+            {"event": e.title, "module": e.module, "on": e.on_date.isoformat(), "reason": f.reason,
+             "flagged_at": f.updated_at.isoformat()}
+            for f, e in repo.flags_by(user.id)
+        ],
+    }
+
+
 def erase_all_for(user) -> None:
     """The announcements this student sent and the flags they raised, deleted for real: the demo's daily
     reset (and DELETE /me's later). Verified events stay with their class."""

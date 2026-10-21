@@ -415,7 +415,19 @@ def _cheap_thing(c, source) -> dict:
     }
 
 
-# ----------------------------------------------------------------- erasing
+# --------------------------------------------------------- export, erasing
+
+
+def export_for(user) -> dict:
+    """POPIA export: every money record the student entered, history included."""
+    settings = repo.settings_for(user.id)
+    today = _today()
+    return {
+        "settings": _settings(settings) if settings else None,
+        "income_sources": [_source(s) for s in repo.sources_for(user.id)],
+        "payments": [_payment(p, today) for p in repo.all_payments(user.id)],
+        "spending": [_spending(e) for e in repo.all_spending(user.id)],
+    }
 
 
 def erase_all_for(user) -> None:

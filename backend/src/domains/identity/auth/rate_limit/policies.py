@@ -30,6 +30,7 @@ CHANGE_PASSWORD = "5 per hour"
 GOOGLE = "10 per minute"
 GOOGLE_LINK = "5 per minute"
 CLOSE_ACCOUNT = "3 per hour"
+DELETE_ACCOUNT = "3 per hour"
 EXPORT_DATA = "5 per hour"
 # Signed-in routes still get a limit (every route does: brief section 10),
 # counted per user and generous enough that a real person never meets it.

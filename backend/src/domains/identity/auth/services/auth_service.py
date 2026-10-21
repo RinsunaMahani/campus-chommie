@@ -49,6 +49,7 @@ from src.extensions import db
 from src.shared.audit.event_types.auth import AuthAuditEvent as E
 from src.shared.email.email import EmailService
 from src.shared.net.client_ip import client_ip
+from src.shared.privacy import privacy
 from src.shared.security.security import hash_password, validate_password_complexity, verify_password
 
 from ..models import CodePurpose, EmailCode, GoogleIdentity, PasswordCredential, PasswordReset
@@ -633,8 +634,23 @@ def close_account(user, current_sid: str, password: str) -> None:
     auth_audit.record(E.ACCOUNT_DISABLED, user_id=user.id, email=user.email, session_id=current_sid, sessions_ended=ended, device_keys_revoked=keys)
 
 
+def delete_account(user, current_sid: str, password: str) -> None:
+    """POPIA: the account and everything it holds, deleted for real, after the password. Every
+    feature's rows go with it (ON DELETE CASCADE): profile, money, marks, class memberships,
+    announcements, flags, alerts, sessions and consents. Events a rep confirmed stay with their class,
+    with no name on them. Not the audit trail's security records, which nothing may change
+    (OPEN_QUESTIONS); the record of this deletion keeps no email."""
+    _refuse_demo(user)
+    _require_password(user, password, E.ACCOUNT_DELETED)
+    user_id = user.id
+    account_service.delete_account(user)
+    db.session.commit()
+    auth_audit.record(E.ACCOUNT_DELETED, user_id=user_id, session_id=current_sid)
+
+
 def export_my_data(user, current_sid: str) -> dict:
-    """POPIA: everything identity holds about the signed-in user."""
+    """POPIA: everything we hold about the signed-in user: identity's part, then every feature's
+    (shared/privacy). Not the audit trail's security records (OPEN_QUESTIONS)."""
     data = {
         "account": account_service.public_view(user)
         | {"created_at": user.created_at.isoformat(), "last_login_at": user.last_login_at.isoformat() if user.last_login_at else None},
@@ -643,6 +659,7 @@ def export_my_data(user, current_sid: str) -> dict:
         "phone_keys": [device_service.public_view(d) for d in device_service.list_for(user.id)],
         "trusted_phones": [trusted_phones.public_view(p) for p in trusted_phones.list_live(user.id)],
         "google_linked": db.session.get(GoogleIdentity, user.id) is not None,
+        **privacy.export_all(user),
     }
     auth_audit.record(E.DATA_EXPORTED, user_id=user.id, email=user.email, session_id=current_sid)
     return data

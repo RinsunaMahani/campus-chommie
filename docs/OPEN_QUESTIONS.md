@@ -160,8 +160,10 @@ cents, documents and next steps, each with its source. `funding.yaml` holds nati
   (b) keep them for security with a stated retention period and say so in the Privacy Policy, (c) something else.
   Sessions and consent records also keep the IP address and app details.
 - [ ] **Retention** for security records and for closed accounts. "Close my account" deactivates it; nothing removes
-  a closed account's data yet, and the brief's `DELETE /me` (delete the account and its data) isn't built. The
-  Security screen shows "Delete my account and data: Coming soon" until it is.
+  a closed account's data yet. The brief's `DELETE /me` (delete the account and its data) and a complete
+  `GET /me/export` are built on `rinsuna/privacy-export-delete` (10 Oct 2026), so the Security screen's "Delete my
+  account and data: Coming soon" can become real (Mandla). Still open: how long a closed account is kept, and the
+  audit trail's records, which neither the export nor deleting touches.
 - [ ] **Email sender.** Placeholders use `example.com` (we own no domain). Which address and inbox send the codes in
   production (`MAIL_DEFAULT_SENDER`, `MAIL_REPLY_TO`)?
 

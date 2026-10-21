@@ -152,3 +152,11 @@ def erase_all(user_id: uuid.UUID) -> None:
     ExpectedPayment.query.filter_by(user_id=user_id).delete(synchronize_session=False)
     IncomeSource.query.filter_by(user_id=user_id).delete(synchronize_session=False)
     MoneySettings.query.filter_by(user_id=user_id).delete(synchronize_session=False)
+
+
+def all_payments(user_id: uuid.UUID) -> list[ExpectedPayment]:
+    return ExpectedPayment.query.filter_by(user_id=user_id).order_by(ExpectedPayment.expected_on).all()
+
+
+def all_spending(user_id: uuid.UUID) -> list[SpendingEntry]:
+    return SpendingEntry.query.filter_by(user_id=user_id).order_by(SpendingEntry.spent_on).all()
