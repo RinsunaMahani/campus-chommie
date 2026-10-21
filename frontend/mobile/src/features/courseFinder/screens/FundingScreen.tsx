@@ -5,6 +5,7 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { useSession } from '@/features/auth/session/SessionProvider';
 import { Button } from '@/shared/components/Button';
+import { EmptyState } from '@/shared/components/EmptyState';
 import { HeroScreen } from '@/shared/components/HeroScreen';
 import { Card, InfoNote, Tag } from '@/shared/components/Parts';
 import { ErrorBox } from '@/shared/components/Status';
@@ -287,7 +288,12 @@ export default function FundingScreen() {
             ) : null}
 
             {filter === 'saved' && signedIn && displayedFunders.length === 0 ? (
-              <InfoNote icon="bookmark">{t('courseFinder.savedEmpty')}</InfoNote>
+              <EmptyState
+                icon="bookmark"
+                title={t('courseFinder.savedEmptyTitle')}
+                body={t('courseFinder.savedEmpty')}
+                action={{ label: t('courseFinder.browseAll'), icon: 'search', onPress: () => setFilter('all') }}
+              />
             ) : null}
 
             <View style={{ gap: 10 }}>

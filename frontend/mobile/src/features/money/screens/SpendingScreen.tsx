@@ -4,10 +4,11 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { errorText } from '@/shared/api/errors';
 import { Button } from '@/shared/components/Button';
+import { EmptyState } from '@/shared/components/EmptyState';
 import { Card, InfoNote } from '@/shared/components/Parts';
 import { Screen } from '@/shared/components/Screen';
 import { ErrorBox, Loading } from '@/shared/components/Status';
-import { Body, Muted, Overline, Title } from '@/shared/components/Text';
+import { Muted, Overline, Title } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
 import { addDays, formatDay, todaySast } from '@/shared/lib/dates';
 import { centsToInput, formatRand, parseRand } from '@/shared/lib/money';
@@ -113,7 +114,7 @@ export default function SpendingScreen() {
 
       <Overline>{t('money.spendingRecent')}</Overline>
       {!days && !error ? <Loading /> : null}
-      {days && !days.length ? <Body>{t('money.spendingEmpty')}</Body> : null}
+      {days && !days.length ? <EmptyState icon="edit-3" title={t('money.spendingEmptyTitle')} body={t('money.spendingEmpty')} /> : null}
       {days && days.length ? (
         <Card style={{ paddingVertical: 4 }}>
           {days.map((d, i) => (

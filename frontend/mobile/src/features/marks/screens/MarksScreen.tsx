@@ -5,10 +5,11 @@ import { StyleSheet, View } from 'react-native';
 
 import { errorText } from '@/shared/api/errors';
 import { Button } from '@/shared/components/Button';
+import { EmptyState } from '@/shared/components/EmptyState';
 import { Card } from '@/shared/components/Parts';
 import { Screen } from '@/shared/components/Screen';
 import { ErrorBox, Loading } from '@/shared/components/Status';
-import { Body, Muted, Overline, Strong, Title } from '@/shared/components/Text';
+import { Muted, Overline, Strong, Title } from '@/shared/components/Text';
 import { TextField } from '@/shared/components/TextField';
 import { t } from '@/shared/i18n';
 
@@ -64,7 +65,7 @@ export default function MarksScreen() {
       <Title>{t('marks.title')}</Title>
       {error ? <ErrorBox message={error} /> : null}
       {!error && !modules ? <Loading /> : null}
-      {modules && !modules.length ? <Body>{t('marks.empty')}</Body> : null}
+      {modules && !modules.length ? <EmptyState icon="bar-chart-2" title={t('marks.emptyTitle')} body={t('marks.empty')} /> : null}
       {modules?.map((m) => (
         <Card key={m.id} onPress={() => router.push({ pathname: '/marks/[id]', params: { id: m.id } })} style={styles.card}>
           <View style={{ flex: 1, gap: 4 }}>
