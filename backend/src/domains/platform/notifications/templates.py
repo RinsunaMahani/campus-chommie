@@ -18,12 +18,16 @@ from __future__ import annotations
 import string
 from typing import Any, NamedTuple
 
-#: What tapping an alert opens (the app maps each to a screen): "class" opens that class's events.
-LINK_TYPES = ("security", "class")
+#: What tapping an alert opens (the app maps each to a screen): "class" opens that class's events,
+#: "funding" that funder (link_id is its id in the funding pack).
+LINK_TYPES = ("security", "class", "funding")
 
 #: Alerts a student may switch off, by topic, with what the switch covers. Security alerts have no
 #: topic: they're always on.
-TOPICS = {"class_updates": "New, moved and cancelled tests and deadlines from your class reps"}
+TOPICS = {
+    "class_updates": "New, moved and cancelled tests and deadlines from your class reps",
+    "funding_reminders": "Funding you saved: when it opens, and before it closes",
+}
 
 
 class Template(NamedTuple):
@@ -46,6 +50,14 @@ TEMPLATES: dict[str, Template] = {
     "class.event_moved": Template("calendar", "A class date moved", "{module}: the {kind} {was} is now {when}.", "class_updates"),
     "class.event_changed": Template("calendar", "A class date changed", "{module}: the {kind} {when} has a change. Check where and when.", "class_updates"),
     "class.event_cancelled": Template("x-circle", "A class date was cancelled", "{module}: the {kind} {when} is cancelled.", "class_updates"),
+    # Funding the student saved: the funder's short name from the funding pack, the year it funds and the
+    # closing date. Never anything about the student. {when} reads "in 7 days, on Sat 31 Oct 2026 at 23:59".
+    "funding.open": Template(
+        "award", "Funding you saved is open", "{funder}: applications for {intake} funding are open now.", "funding_reminders"
+    ),
+    "funding.closing": Template(
+        "clock", "Funding you saved closes soon", "{funder}: applications for {intake} funding close {when}.", "funding_reminders"
+    ),
 }
 
 

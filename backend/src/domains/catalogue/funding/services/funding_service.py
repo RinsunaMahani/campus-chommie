@@ -82,6 +82,40 @@ def detail(funder_id: str) -> dict:
     }
 
 
+def has(funder_id: str) -> bool:
+    """Whether the pack lists this funder."""
+    return any(f.id == funder_id for f in pack().funders)
+
+
+def saved_list(saved: dict[str, date], today: date) -> dict:
+    """The funders a student saved (id -> the day they saved it) that the pack still lists, open first,
+    each card with the day it was saved, and the line the list starts with."""
+    found = [c for c in engine.cards(pack(), today) if c.funder.id in saved]
+    counts = engine.counts(found)
+    return {
+        "today": today.isoformat(),
+        "summary": counts.line,
+        "counts": {"total": counts.total, "open_now": counts.open_now, "closing_soon": counts.closing_soon},
+        "funders": [{**_card(c), "saved_on": saved[c.funder.id].isoformat()} for c in found],
+        **confirmation(pack()),
+    }
+
+
+def saved_card(funder_id: str, saved_on: date, today: date) -> dict:
+    """One saved funder's card, with the day it was saved."""
+    funding = pack()
+    return {**_card(engine.card(funding, funding.funder(funder_id), today)), "saved_on": saved_on.isoformat()}
+
+
+def reminders(saved: dict[str, date], today: date) -> list[engine.Reminder]:
+    """What to tell a student today about the funders they saved."""
+    return engine.reminders(pack(), saved, today)
+
+
+def short_name(funder_id: str) -> str | None:
+    return next((f.short_name for f in pack().funders if f.id == funder_id), None)
+
+
 def for_programme(fields: list[str], university: str, today: date) -> dict:
     """The funding a course-finder choice could look at: the best few, how many there are in all,
     and the fields to search the full list by."""

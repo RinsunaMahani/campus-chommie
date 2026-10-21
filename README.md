@@ -122,11 +122,25 @@ A learner sends 1 to 9 subjects, each once, with marks from 0 to 100. Subject ke
 - A page that says "applications are open" or "closed" without dates is recorded as `seen`, with the day we read it.
   "Open" counts for 14 days after that (`backend/config.yaml`), then asks the learner to check.
 
+**Saved funding (signed in; owner-only):**
+
+| Endpoint | Body | Answer |
+|---|---|---|
+| `GET /me/funding` | none | the funders the student saved, open first, each card with `saved_on`, and `summary` |
+| `PUT /me/funding/<id>` | none | save a funder the pack lists (saving again is fine; at most 50) |
+| `DELETE /me/funding/<id>` | none | unsave it |
+
+On a student's first alert poll of the day, each saved funder may raise one alert: `funding.open` when it opened
+after they saved it, and `funding.closing` a week and a day before it closes (`backend/config.yaml`,
+`funding.remind_days`), each once, linking to the funder (`{type: "funding", id}`). The student can switch them off
+(`PUT /me/notifications/switches` with `{funding_reminders: false}`). Only the funder's id and the day it was saved are
+kept.
+
 **A student's own data, to see and to delete (signed in; POPIA):**
 
 | Endpoint | Body | Answer |
 |---|---|---|
-| `GET /me/export` | none | everything we hold about the student: the account, consents and phones, then `profile`, `money`, `marks`, `classes` (their memberships), `class_messages` (the announcements they sent and the flags they raised) and `alerts`. Nothing about anyone else, and no secrets |
+| `GET /me/export` | none | everything we hold about the student: the account, consents and phones, then `profile`, `money`, `marks`, `classes` (their memberships), `class_messages` (the announcements they sent and the flags they raised), `alerts`, `alert_switches` and `saved_funding`. Nothing about anyone else, and no secrets |
 | `DELETE /me` | `{password}` | deletes the account and everything it holds, for good; the events a rep confirmed stay with the class, with no name on them. Demo accounts can't be deleted |
 
 **A student's own profile and money (signed in; owner-only).** Amounts are integer cents:

@@ -195,6 +195,12 @@ cents, documents and next steps, each with its source. `funding.yaml` holds nati
   "N open now, N closing soon" and filters, `GET /funding/<id>` gives one in full, and each plan choice shows the
   funding its fields point to (README, "Funding"; [funding](research/funding.md)). Mandla: the screens are in
   HANDOVER.
+- [x] **Saving funding, with reminders** (new personal data: approved by Rinsuna on 11 Oct 2026; Mandla to confirm
+  the screens). A signed-in student saves funders (UniApplyForMe's bookmark) and gets an alert when one opens after
+  they saved it, and a week and a day before it closes; a switch turns the reminders off. We keep only the funder's
+  id and the day, owner-only, in the export and deleted with the account. A saved list can hint at a funder's
+  criteria (a population group, a disability), so no rep or admin view reads it and it's never counted. Built on
+  `rinsuna/saved-funding` (README, "Saved funding").
 - [ ] **Which intakes a plan shows** (decided by Rinsuna's agent while building, 10 Oct 2026; Mandla to confirm): the
   dates to start next year and the year after, plus this year's while a late window is still ahead, so the app asks
   nothing about the learner's grade. The alternative is one optional question ("When do you want to start?"), sent
