@@ -14,11 +14,16 @@
         "buildType": "apk"
       },
       "env": {
-        "EXPO_PUBLIC_USE_MOCK_API": "true"
+        "EXPO_PUBLIC_API_URL": "https://campus-chommie.onrender.com/api/v1",
+        "EXPO_PUBLIC_USE_MOCK_API": "false"
       }
     },
     "production": {
-      "autoIncrement": true
+      "autoIncrement": true,
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://campus-chommie.onrender.com/api/v1",
+        "EXPO_PUBLIC_USE_MOCK_API": "false"
+      }
     }
   },
   "submit": {

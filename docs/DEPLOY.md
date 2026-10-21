@@ -121,6 +121,22 @@ them.
 - **The app:** the APK's `EXPO_PUBLIC_API_URL` is `https://….onrender.com/api/v1` (README, "An installable Android
   app"), then a new preview build.
 
+### Live since 21 Oct 2026
+
+Set up by Rinsuna as above; every secret is in Render's Environment only.
+
+- **API:** `https://campus-chommie.onrender.com` (Render service `campus-chommie`, Docker, root `backend`, Frankfurt,
+  Free). It deploys branch **`rinsuna/free-hosting`**, so a feature reaches the live API only once that branch has it.
+  Each start runs the migrations, then the demo seed. Checked 21 Oct: `/api/v1/ping` and `/api/v1/health` answer 200,
+  database ok.
+- **Database:** Neon project `campus-chommie`, Frankfurt, direct connection with `sslmode=require`.
+- **Email:** Brevo SMTP relay on port 2525. The sender is Rinsuna's own verified Gmail address for now: mail that says
+  it's from a Gmail address but is sent by another service can land in spam, so send a sign-up code to a Gmail and an
+  Outlook inbox to check, and move to a domain sender when there is one.
+- **Keep-awake:** cron-job.org job "Campus Chommie Ping", `GET /api/v1/ping` every 10 minutes (SAST).
+- **The app:** `eas.json`'s `preview` (the APK) and `production` profiles point at
+  `https://campus-chommie.onrender.com/api/v1` with the mock off. That address is public, not a secret.
+
 ## Still Rinsuna's to decide
 
 - **A paid host,** if the app outlives the hackathon (the free tiers above sleep and have monthly limits).

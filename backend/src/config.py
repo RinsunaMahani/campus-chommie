@@ -168,6 +168,8 @@ class TestingConfig(BaseConfig):
 class ProductionConfig(BaseConfig):
     ENV_NAME = "production"
     DEBUG = False
+    # Served over https only (Render): browsers must never fall back to http.
+    HSTS = True
     SQLALCHEMY_DATABASE_URI = _database_uri()
     # The web build's own https address(es), comma-separated, so a browser may
     # call the API. Empty (the default): no browser origin at all. Phones don't

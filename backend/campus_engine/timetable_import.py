@@ -28,10 +28,20 @@ _EDGES = re.compile(r"^[\s\-\u2013\u2014\ufffd]+|[\s\-\u2013\u2014\ufffd]+$")
 _TIME = re.compile(r"\b(\d{1,2})[:hH.](\d{2})\b")
 _WEEKDAYS = {"MONDAY": 0, "TUESDAY": 1, "WEDNESDAY": 2, "THURSDAY": 3, "FRIDAY": 4, "SATURDAY": 5, "SUNDAY": 6}
 _MONTHS = {m: i for i, m in enumerate(("JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"), 1)}
-#: Estimating a piece's width: letters average about CHAR_EM of the font size, and pieces closer than GAP_EM
-#: of it are touching (a space is about a quarter of it).
-CHAR_EM = 0.55
-GAP_EM = 0.2
+#: Estimating a piece's width from its font size, per character as in Helvetica/Arial (bold): capitals about
+#: 0.7 of it, digits 0.56, small letters 0.5, a space 0.28, punctuation 0.33. Pieces closer than GAP_EM of the font
+#: size are touching (a space is about 0.28).
+GAP_EM = 0.08
+
+
+def _em(ch: str) -> float:
+    if ch.isupper():
+        return 0.7
+    if ch.isdigit():
+        return 0.556
+    if ch.islower():
+        return 0.5
+    return 0.28 if ch.isspace() else 0.33
 _PRACTICAL = re.compile(r"\(?\bPRAC(TICAL)?S?\b\)?", re.I)
 _TUTORIAL = re.compile(r"\(?\bTUT(ORIAL)?S?\b\)?", re.I)
 
@@ -113,13 +123,13 @@ def _group(words: list[Word], tol: float) -> list[list[Word]]:
 
 def _joined(words: list[Word]) -> str:
     """One line's pieces left to right. Pieces that touch are one word: a PDF often draws "CP2L001" as "CP",
-    "2", "L001". A piece's width isn't known, so it's estimated from its font size (CHAR_EM per letter)."""
+    "2", "L001". A piece's width isn't known, so it's estimated from its font size (_em per character)."""
     out = ""
     end = None
     for w in sorted(words, key=lambda w: w.x):
         touching = end is not None and w.size > 0 and w.x - end < GAP_EM * w.size and not w.text[:1].isspace()
         out += w.text if touching or not out or out.endswith(" ") else " " + w.text
-        end = w.x + len(w.text) * CHAR_EM * w.size if w.size > 0 else None
+        end = w.x + sum(_em(c) for c in w.text) * w.size if w.size > 0 else None
     return " ".join(out.split())
 
 

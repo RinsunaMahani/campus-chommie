@@ -203,6 +203,15 @@ def test_responses_never_echo_raw_input_as_html(client):
     assert r.headers["X-Content-Type-Options"] == "nosniff"
 
 
+def test_https_only_is_asked_for_in_production_and_not_on_a_local_preview(app, client):
+    assert "Strict-Transport-Security" not in client.get("/api/v1/ping").headers
+    app.config["HSTS"] = True
+    try:
+        assert client.get("/api/v1/ping").headers["Strict-Transport-Security"] == "max-age=31536000; includeSubDomains"
+    finally:
+        app.config["HSTS"] = False
+
+
 def test_same_answer_for_bad_and_unknown_login_email_shapes(client):
     """A valid-looking unknown email and a real-but-wrong password look alike;
     a malformed email is refused by validation (it can't exist anyway)."""

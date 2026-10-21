@@ -59,7 +59,7 @@ def test_touching_pieces_are_one_word_and_a_spaced_piece_is_not():
     # "CP" "2" "L001" drawn edge to edge at 8 pt, as a highlighted venue often is.
     page = grid([
         Word(MON, P1 + 5, "MPHS000 –", 8.0), Word(MON + 40, P1 + 5, "CP", 8.0),
-        Word(MON + 40 + 2 * 0.55 * 8, P1 + 5, "2", 8.0), Word(MON + 40 + 3 * 0.55 * 8, P1 + 5, "L001", 8.0),
+        Word(MON + 40 + 2 * 0.7 * 8, P1 + 5, "2", 8.0), Word(MON + 40 + (1.4 + 0.556) * 8, P1 + 5, "L001", 8.0),
         Word(TUE, P1 + 5, "MPHB000 – PH", 8.0), Word(TUE + 65, P1 + 5, "LAB", 8.0),
     ])
     venues = {c.module: c.venue for c in read_class_grid([page]).classes}
