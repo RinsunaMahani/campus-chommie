@@ -7,7 +7,7 @@ Team PR (Rinsuna Mahani).
 
 **Status: the backend and the app's screens are built, in pull requests that wait for review**
 ([docs/HANDOVER.md](docs/HANDOVER.md)). The app has sign-up (with the 18-or-older confirmation and consent), email
-verification, two-factor sign-in and account security; Find my course with how to apply, open without an account (M2);
+verification, two-factor sign-in and account security; Find my course, marks first, with how to apply, open without an account (M2);
 onboarding and My money (M3); My week with classes, reps and My marks (M4); and Home's alerts, Support, cheap things,
 updates and deleting an account (M5). The brief's judge flow runs end to end. Still to come: hosting, the WhatsApp bot
 during the hackathon (M6), and a person's check of the data packs and the funding list.
@@ -95,8 +95,8 @@ can't change their password; `GET /me` says `demo: true`, and the app shows "Dem
 | `GET /universities` | none | each data pack: id, name, and whether a person has checked it (`confirmed`, `notice`) |
 | `GET /universities/<id>` | none | the whole pack: programmes, requirements, routes, application dates, campuses, calendar, money dates, support and sources |
 | `GET /universities/<id>/first-steps` | none | from accepting an offer to the first lecture, on today's date (SAST) |
-| `POST /pathways/points` | `{marks: [{subject, percent}]}` | the learner's points at every university, each by its own rule, and how many programmes they meet |
-| `POST /pathways/assess` | `{university, marks: [{subject, percent}]}` | every programme at that university, best tiers first, each with its reasons and source |
+| `POST /pathways/points` | `{marks: [{subject, percent}]}` | the learner's points at every university, each by its own rule, with each subject's level and the points it adds there (`subjects`), and how many programmes they meet |
+| `POST /pathways/assess` | `{university, marks: [{subject, percent}]}` | every programme at that university, best tiers first, each with its reasons and source; and how to apply there on today's date (`apply.guide`: fee, documents, link, and each intake's usual dates in `windows`) |
 | `POST /pathways/plan` | `{university, goal, marks: [...]}` | the three-choice plan: the goal, a route into it and a safer related choice, and how to apply (below) |
 
 A learner sends 1 to 9 subjects, each once, with marks from 0 to 100. Subject keys are those in

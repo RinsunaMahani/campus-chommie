@@ -1,1 +1,1 @@
-export { default } from '@/features/courseFinder/screens/UniversityScreen';
+export { default } from '@/features/courseFinder/screens/MarksScreen';

@@ -15,7 +15,7 @@ from __future__ import annotations
 
 from datetime import date
 
-from campus_engine.applications import ApplyGuide, Group, Guide, WindowStatus, apply_guide
+from campus_engine.applications import ApplyGuide, Group, Guide, WindowStatus, apply_guide, university_guide, university_windows
 from campus_engine.bridges import GUARANTEE_LABELS, Plan, Slot, build_plan
 from campus_engine.matching import Match, assess_all
 from campus_engine.overview import UniversityPoints, points_everywhere
@@ -42,10 +42,22 @@ def points(rows: list[dict]) -> dict:
 
 
 def assess(university_id: str, rows: list[dict]) -> dict:
-    """Every programme at one university for these marks, best tiers first."""
+    """Every programme at one university for these marks, best tiers first, and how to apply there
+    on today's date."""
     uni = catalogue.get(university_id)
     packs = catalogue.packs()
-    return {"university": catalogue.summary(uni), "matches": [_match(m, packs) for m in assess_all(uni, _marks(rows))]}
+    today = _today()
+    guide = university_guide(uni)
+    guide.windows = university_windows(uni, today)
+    return {
+        "university": catalogue.summary(uni),
+        "matches": [_match(m, packs) for m in assess_all(uni, _marks(rows))],
+        "apply": {
+            "today": today.isoformat(),
+            "test_date": preview_date() is not None,
+            "guide": _guide(guide, catalogue.confirmation(uni)),
+        },
+    }
 
 
 def plan(university_id: str, goal: str, rows: list[dict]) -> dict:
@@ -84,6 +96,9 @@ def _points(u: UniversityPoints, packs: dict[str, University]) -> dict:
         "university_name": u.name,
         "points": u.points,
         "counted": u.counted,
+        "subjects": [
+            {"subject": s.subject, "level": s.level, "points": s.points, "counted": s.counted} for s in u.subjects
+        ],
         "tiers": u.tiers,
         "summary": u.summary,
         "lines": u.lines,

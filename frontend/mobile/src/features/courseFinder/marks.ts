@@ -32,6 +32,8 @@ type Entered = { subject: string; percent: number };
 
 export type Sent = {
   marks: Mark[];
+  /** Which of the learner's subjects each API key carries (other_language: 'sepedi', say). */
+  names: Record<string, string>;
   /** The language that went as the other official language, when there were several to choose from. */
   otherLanguage: string | null;
   /** Points-only subjects beyond the three the API takes (the picker never allows them). */
@@ -48,15 +50,21 @@ export function toApiMarks(entered: Entered[]): Sent {
   const languages = entered.filter((e) => SUBJECTS[e.subject]?.kind === 'language');
   const best = languages.reduce<Entered | null>((top, e) => (!top || e.percent > top.percent ? e : top), null);
   const marks: Mark[] = [];
+  const names: Record<string, string> = {};
+  const send = (key: string, e: Entered) => {
+    marks.push({ subject: key, percent: e.percent });
+    names[key] = e.subject;
+  };
   const pointsOnly: Entered[] = [];
   for (const e of entered) {
-    if (SUBJECTS[e.subject]?.kind === 'rule') marks.push({ subject: e.subject, percent: e.percent });
-    else if (e === best) marks.push({ subject: 'other_language', percent: e.percent });
+    if (SUBJECTS[e.subject]?.kind === 'rule') send(e.subject, e);
+    else if (e === best) send('other_language', e);
     else pointsOnly.push(e);
   }
-  pointsOnly.slice(0, ANOTHER_SUBJECT_KEYS.length).forEach((e, i) => marks.push({ subject: ANOTHER_SUBJECT_KEYS[i], percent: e.percent }));
+  pointsOnly.slice(0, ANOTHER_SUBJECT_KEYS.length).forEach((e, i) => send(ANOTHER_SUBJECT_KEYS[i], e));
   return {
     marks,
+    names,
     otherLanguage: languages.length > 1 && best ? best.subject : null,
     overflow: pointsOnly.slice(ANOTHER_SUBJECT_KEYS.length).map((e) => e.subject),
   };

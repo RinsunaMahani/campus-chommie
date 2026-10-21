@@ -176,3 +176,21 @@ def test_points_at_every_university_before_picking_one(client):
         assert u["confirmed"] is False and u["notice"] == "Not yet confirmed by the team."
         assert set(u["tiers"]) == {"competitive", "meets_minimum", "reach", "not_yet", "unverified"}
     assert sum(universities[0]["tiers"].values()) == 17
+    # Each subject's level and points there, in the order sent: together they make the total.
+    for u in universities:
+        assert [s["subject"] for s in u["subjects"]] == [m["subject"] for m in STRONG]
+        assert sum(s["points"] for s in u["subjects"]) == u["points"]
+    tut_lo = next(s for s in universities[1]["subjects"] if s["subject"] == "life_orientation")
+    assert (tut_lo["level"], tut_lo["points"], tut_lo["counted"]) == (7, 0.0, False)
+
+
+def test_assess_says_how_to_apply_there_on_todays_date(client, on_10_october):
+    """A university's How to apply tab: its fee, documents and link, and each intake's usual dates."""
+    apply = client.post(ASSESS, json={"university": "tut", "marks": STRONG}).get_json()["data"]["apply"]
+    assert (apply["today"], apply["test_date"]) == ("2026-10-10", False)
+    guide = apply["guide"]
+    assert (guide["id"], guide["kind"], guide["confirmed"]) == ("tut", "university", False)
+    late, later = guide["windows"]
+    assert (late["intake"], late["status"], late["late_opens"], late["late_closes"]) == (2027, "late_ahead", "2027-01-14", "2027-01-22")
+    assert (later["intake"], later["status"], later["opens"]) == (2028, "opens_later", "2027-04-01")
+    assert guide["lines"] and guide["source_url"].startswith("https://")

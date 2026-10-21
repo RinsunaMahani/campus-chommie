@@ -24,6 +24,7 @@ from campus_engine.applications import (
     intakes,
     programme_windows,
     university_guide,
+    university_windows,
     window_status,
 )
 from campus_engine.bridges import Plan, Slot
@@ -407,3 +408,19 @@ def test_asking_for_an_unknown_funder_is_a_key_error():
     assert pack.funder("fund").short_name == "Fund"
     with pytest.raises(KeyError):
         pack.funder("nope")
+
+
+def test_a_university_as_a_whole_is_worded_for_all_its_programmes(catalogue):
+    """The How to apply tab: TUT's usual dates, not one programme's, and a pointer to the plan
+    for a programme's own closing date while dates are still ahead."""
+    late, later = university_windows(catalogue["tut"], date(2026, 10, 10))
+    assert (late.intake, late.status, late.late_opens, late.late_closes) == (2027, LATE_AHEAD, date(2027, 1, 14), date(2027, 1, 22))
+    assert late.lines[-1] == "Some programmes have their own closing dates: plan with one to see its date."
+    assert (later.intake, later.status) == (2028, OPENS_LATER)
+    assert later.lines[1] == (
+        "Programmes close on Tue 15 Jun, Sat 31 Jul or Thu 30 Sep 2027, depending on the programme: "
+        "apply by Tue 15 Jun 2027 to be safe."
+    )
+    # Closed: nothing more to say about programmes' own dates.
+    closed = university_windows(catalogue["up"], date(2026, 10, 10))[0]
+    assert closed.status == CLOSED and not any("own closing dates" in line for line in closed.lines)
