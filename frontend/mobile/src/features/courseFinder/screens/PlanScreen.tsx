@@ -1,11 +1,13 @@
+import { Feather } from '@expo/vector-icons';
 import { Redirect, router } from 'expo-router';
-import { View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 
 import { Button } from '@/shared/components/Button';
 import { HeroScreen } from '@/shared/components/HeroScreen';
 import { InfoNote } from '@/shared/components/Parts';
 import { Overline, Title } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
+import { colors, fonts } from '@/shared/theme/tokens';
 
 import { ApplyGuide } from '../components/ApplyBox';
 import { PlanSlot } from '../components/PlanSlot';
@@ -28,11 +30,27 @@ export default function PlanScreen() {
       back
       title={t('courseFinder.plan')}
       subtitle={t('courseFinder.planIntro')}
+      band={
+        <Pressable
+          accessibilityRole="button"
+          onPress={startOver}
+          hitSlop={8}
+          style={({ pressed }) => [
+            { flexDirection: 'row', alignItems: 'center', gap: 6, alignSelf: 'flex-start', opacity: pressed ? 0.7 : 1 },
+          ]}>
+          <Feather name="rotate-ccw" size={13} color={colors.onAccentSoft} />
+          <Text style={{ fontFamily: fonts.medium, fontSize: 13, color: colors.onAccentSoft }}>
+            {t('courseFinder.startOver')}
+          </Text>
+        </Pressable>
+      }
       footer={
-        <View style={{ flexDirection: 'row', gap: 10 }}>
-          <Button compact title={t('courseFinder.changeGoal')} variant="secondary" onPress={() => router.back()} />
-          <Button compact title={t('courseFinder.startOver')} variant="secondary" icon="rotate-ccw" onPress={startOver} />
-        </View>
+        <Button
+          title={t('courseFinder.fundingButton')}
+          variant="primary"
+          icon="dollar-sign"
+          onPress={() => router.push('/course-finder/funding')}
+        />
       }>
       <TestDateNote apply={plan.apply} />
       <StillOpen plan={plan} />
