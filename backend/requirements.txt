@@ -28,7 +28,7 @@ pydantic==2.13.5
 PyYAML==6.0.3
 
 # Timetable import: reads a student's timetable PDF in memory (pure Python, never stored)
-pypdf==6.19.0
+pypdf==6.21.1
 
 # Tests (pytest-cov: the engine must stay at 80% coverage or more)
 pytest==9.1.1
