@@ -3,3 +3,8 @@
 # used only when FLASK_ENV=testing; outside tests the app refuses to start without
 # real keys of 32+ characters from the environment (src/config.py get_config).
 83c31996f4cb0d3d43294979770e869e6658328d:backend/src/config.py:generic-api-key:163
+
+# 21 Oct 2026, Rinsuna with Claude: the closed, unmerged tabs PR (#45, branch rinsuna/finder-tabs) stores marks on the
+# phone under the key name 'campus-chommie.marks.v1'; gitleaks' generic-api-key rule reads that name as a key. No secret.
+c420de27f71cd8b00d36f0de04b31d0fbb9ae2c6:frontend/mobile/src/features/courseFinder/rememberMarks.ts:generic-api-key:11
+c420de27f71cd8b00d36f0de04b31d0fbb9ae2c6:frontend/mobile/src/features/courseFinder/__tests__/FinderTabs.test.tsx:generic-api-key:46
