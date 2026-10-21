@@ -10,7 +10,7 @@ import * as WebBrowser from 'expo-web-browser';
 import { useEffect, useState } from 'react';
 import { Linking, Pressable, StyleSheet, Text, View } from 'react-native';
 
-import { errorText } from '@/features/courseFinder/words';
+import { errorText, formatDay } from '@/features/courseFinder/words';
 import { HeroScreen } from '@/shared/components/HeroScreen';
 import { Card, InfoNote, Tag } from '@/shared/components/Parts';
 import { SourceLink } from '@/shared/components/SourceLink';
@@ -75,6 +75,18 @@ export default function CollegeScreen() {
             ) : null}
             {c.website ? (
               <Fact label={t('colleges.website')} value={c.website} onPress={() => WebBrowser.openBrowserAsync(`https://${c.website}`)} />
+            ) : null}
+            {c.website_problem ? (
+              <View style={styles.fact}>
+                <Muted>{t('colleges.website')}</Muted>
+                <Text style={styles.line}>
+                  {t('colleges.websiteProblem', {
+                    site: c.website_problem.listed,
+                    note: c.website_problem.note.replace(/\.$/, ''),
+                    date: formatDay(c.website_problem.checked),
+                  })}
+                </Text>
+              </View>
             ) : null}
             {c.phone ? <Fact label={t('colleges.phone')} value={c.phone} onPress={() => Linking.openURL(`tel:${c.phone!.split('/')[0].replace(/\s/g, '')}`)} /> : null}
           </Card>

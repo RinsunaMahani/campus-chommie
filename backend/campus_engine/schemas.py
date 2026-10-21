@@ -749,6 +749,15 @@ Province = Literal[
 ]
 
 
+class WebsiteCheck(_Strict):
+    """When we last opened the website DHET lists for a college, and whether it was the college's own working
+    site. A dead, parked, suspended or placeholder address is never shown as a link: anyone could buy it."""
+
+    checked: date
+    works: bool
+    note: str = Field(min_length=3)  # what we found, in plain words
+
+
 class College(_Strict):
     """A college as DHET lists it: a public TVET college, or a private institution in one of its registers,
     with the registration number, sites and registered qualifications exactly as printed there."""
@@ -760,6 +769,7 @@ class College(_Strict):
     registration_number: str | None = None  # as printed, typos included; None where the register shows none
     provinces: list[Province] = Field(default_factory=list)
     website: str | None = Field(default=None, pattern=r"^(https?://)?www\.[a-z0-9.\-]+\.[a-z]{2,}(/\S*)?$")
+    website_check: WebsiteCheck | None = None
     phone: str | None = None  # a public college's office line (never a person's)
     head_office: LatLon | None = None
     sites: list[str] = Field(default_factory=list)

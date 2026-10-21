@@ -41,6 +41,7 @@ applications:
   windows:
     - intake: 2027
       source: s-ufs-prospectus-2027   # page 51, "Important application closing dates"
+      opens: 2026-04-01               # page 51: "1 April 2026 ... application opening date" (checked 20 Oct 2026)
       closes: 2026-09-30              # every non-selection programme and the remaining selection programmes
       programme_closes:
         - closes: 2026-05-31

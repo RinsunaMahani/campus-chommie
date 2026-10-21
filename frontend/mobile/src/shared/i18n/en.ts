@@ -551,6 +551,7 @@ export const en = {
   'colleges.registration': 'Registration number',
   'colleges.noNumber': 'Not shown in the register',
   'colleges.website': 'Website',
+  'colleges.websiteProblem': "DHET lists {site}, but it isn't the college's working site: {note} (checked {date}). Ask the college or DHET for its current website.",
   'colleges.phone': 'Office phone',
   'colleges.provinces': 'Province',
   'colleges.sites': 'Where it may teach',

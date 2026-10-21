@@ -132,6 +132,10 @@ def _card(card: engine.Card) -> dict:
         "label": card.label,
         "registration_number": c.registration_number,
         "provinces": c.provinces,
-        "website": c.website,
+        # Only a website that opened as the college's own: a dead or parked address is never a link.
+        "website": c.website if not (c.website_check and not c.website_check.works) else None,
+        "website_problem": None if not (c.website_check and not c.website_check.works) else {
+            "listed": c.website, "note": c.website_check.note, "checked": c.website_check.checked.isoformat(),
+        },
         "lines": card.lines,
     }

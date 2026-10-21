@@ -28,7 +28,7 @@ applications:
   windows:
     - intake: 2027
       source: s-uct-directions
-      opens: null
+      opens: 2026-04-01              # the directions' timeline: "01 APR: All applications open" (checked 20 Oct 2026)
       closes: 2026-07-31
       note: "Fine Art portfolios were due by 31 August 2026."
 

@@ -28,7 +28,7 @@ applications:
   windows:
     - intake: 2027
       source: s-cput-apply
-      opens: null
+      opens: 2026-05-11              # "Applications for the 2027 intake opens Monday, 11 May 2026" (checked 20 Oct 2026)
       closes_one_of: [2026-06-30, 2026-07-31, 2026-08-31, 2026-09-30]
       note: "Each CPUT programme has its own closing date."
 
