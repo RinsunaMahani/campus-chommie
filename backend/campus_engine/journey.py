@@ -153,7 +153,7 @@ def _for_intake(uni: University, year: int, today: date, funding: FundingPack | 
                 step.source_urls = list(dict.fromkeys(u for u in (_url(uni, e.source) for e in earlier) if u))
         if key == REGISTER and funding:
             for funder in funding.funders:
-                if funder.at_registration:
+                if funder.every_plan and funder.at_registration:
                     step.lines.append(funder.at_registration.text)
                     source = funding.source(funder.at_registration.source)
                     if source:

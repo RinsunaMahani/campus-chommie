@@ -62,7 +62,8 @@ FUNDING = FundingPack.model_validate(
     {
         "funders": [
             {
-                "id": "fund", "name": "Example Fund", "short_name": "Fund",
+                "id": "fund", "name": "Example Fund", "short_name": "Fund", "sector": "government",
+                "every_plan": True, "fields": "any", "stages": ["first_year"],
                 "at_registration": {"text": "If Fund finds you eligible, it confirms your funding once you register.", "source": "f"},
                 "applications": {"windows": []},
             }
@@ -122,6 +123,19 @@ def test_a_steps_status_either_side_of_its_dates(today, expected):
 def test_registering_says_what_national_funders_do_then():
     register = steps(date(2026, 10, 10))[0]["register"]
     assert register.lines[-1] == "If Fund finds you eligible, it confirms your funding once you register."
+
+
+def test_only_funding_shown_with_every_plan_speaks_at_registration():
+    bursary = {
+        "id": "bursary", "name": "A bursary", "short_name": "Bursary", "sector": "company", "fields": ["law"],
+        "stages": ["first_year"], "applications": {"windows": []},
+        "at_registration": {"text": "Bursary pays once you register.", "source": "f"},
+    }
+    data = FUNDING.model_dump(mode="json")
+    funding = FundingPack.model_validate(dict(data, funders=[*data["funders"], bursary]))
+    found = next(fs for fs in first_steps(make(), date(2026, 10, 10), funding) if fs.intake == 2027)
+    register = {s.key: s for s in found.steps}["register"]
+    assert "Bursary pays once you register." not in register.lines
 
 
 def test_accepting_an_offer():

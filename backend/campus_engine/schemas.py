@@ -51,6 +51,56 @@ SUBJECTS = frozenset(
     }
 )
 
+# Field tags, with the words the app shows. A programme's tags link it to related programmes and to the
+# funders of its fields, so a misspelt tag would quietly link nothing; validation rejects unknown ones.
+FIELDS: dict[str, str] = {
+    "accounting": "Accounting",
+    "agriculture": "Agriculture",
+    "arts_and_design": "Arts and design",
+    "built_environment": "Built environment",
+    "commerce": "Commerce",
+    "computing": "Computing and IT",
+    "consumer_sciences": "Consumer sciences",
+    "dentistry": "Dentistry and oral health",
+    "disaster_and_fire": "Disaster management and fire",
+    "earth_sciences": "Earth and environmental sciences",
+    "economics": "Economics",
+    "education": "Education and teaching",
+    "emergency_care": "Emergency medical care",
+    "engineering": "Engineering",
+    "environmental_health": "Environmental health",
+    "finance": "Finance",
+    "food_science": "Food science",
+    "health_sciences": "Health sciences",
+    "humanities": "Humanities",
+    "languages_and_communication": "Languages and communication",
+    "law": "Law",
+    "life_sciences": "Life sciences",
+    "management": "Management",
+    "mathematical_sciences": "Mathematics and statistics",
+    "medical_sciences": "Medical sciences",
+    "medicine": "Medicine",
+    "music": "Music",
+    "natural_sciences": "Natural sciences",
+    "nursing": "Nursing",
+    "nutrition": "Nutrition and dietetics",
+    "performing_arts": "Performing arts",
+    "pharmacy": "Pharmacy",
+    "physical_sciences": "Physical sciences",
+    "public_administration": "Public administration",
+    "radiography": "Radiography",
+    "rehabilitation": "Rehabilitation and therapy",
+    "safety_and_justice": "Safety and justice",
+    "sport_science": "Sport science",
+    "theology": "Theology",
+    "tourism_and_hospitality": "Tourism and hospitality",
+    "veterinary": "Veterinary science",
+}
+
+
+def _unknown_fields(tags: list[str]) -> list[str]:
+    return [f"unknown field '{tag}'" for tag in tags if tag not in FIELDS]
+
 
 class _Strict(BaseModel):
     model_config = ConfigDict(extra="forbid")
@@ -167,6 +217,13 @@ class Programme(_Strict):
     points_rules: PointsRule | None = None
     bridges_to: list[Bridge] = Field(default_factory=list)
 
+    @model_validator(mode="after")
+    def _known_fields(self):
+        problems = _unknown_fields(self.fields)
+        if problems:
+            raise ValueError(f"{self.id}: " + "; ".join(problems))
+        return self
+
 
 class SourcedText(_Strict):
     """One line of text and the source that says it."""
@@ -205,6 +262,14 @@ class LateWindow(_Strict):
         return self
 
 
+class Seen(_Strict):
+    """What a page said when we read it, for a page that says applications are open, or closed,
+    without giving the dates. Cited by its window's source."""
+
+    status: Literal["open", "closed"]
+    checked: date  # the day we read it
+
+
 class Window(_Strict):
     """When people who want to start in `intake` can apply. A date nobody has published stays None."""
 
@@ -218,6 +283,7 @@ class Window(_Strict):
     closes_one_of: list[date] = Field(default_factory=list)
     late: LateWindow | None = None
     no_late_applications: bool = False  # only when the university says so
+    seen: Seen | None = None  # only when the page gives no opening date
     note: str | None = None
 
     @model_validator(mode="after")
@@ -226,6 +292,10 @@ class Window(_Strict):
         closings = [d for d in (self.closes, *self.closes_one_of) if d] + [g.closes for g in self.programme_closes]
         if self.opens and any(d < self.opens for d in closings):
             problems.append(f"{self.intake}: a closing date is before the opening date")
+        if self.seen and self.opens:
+            problems.append(f"{self.intake}: 'seen' is only for a page that gives no opening date")
+        if self.seen and self.seen.status == "open" and any(d < self.seen.checked for d in closings):
+            problems.append(f"{self.intake}: seen open after its closing date")
         listed = [p for g in self.programme_closes for p in g.programmes]
         for pid in sorted({p for p in listed if listed.count(p) > 1}):
             problems.append(f"{self.intake}: '{pid}' has more than one closing date")
@@ -445,17 +515,65 @@ class University(_Strict):
         return next((s for s in self.sources if s.id == source_id), None)
 
 
+FunderKind = Literal["bursary", "merit_award", "loan"]  # a merit award is paid without an application
+Sector = Literal["government", "university", "company", "non_profit"]
+Stage = Literal["first_year", "senior", "postgraduate"]  # starting university, already studying, postgraduate
+Applying = Literal["direct", "automatic", "via_university"]
+
+
 class Funder(_Strict):
-    """A national funder learners apply to separately from their university, such as NSFAS."""
+    """A funder learners apply to separately from their university, such as NSFAS or a bursary.
+
+    The tags say what the funder's own pages say, so the app can sort and match: the fields it funds,
+    who it's for and where it can be used. Eligibility in the funder's words (`who_can_apply`) is
+    shown, never asked: the learner decides."""
 
     id: str
     name: str
     short_name: str
+    kind: FunderKind = "bursary"
+    sector: Sector
+    every_plan: bool = False  # shown with every course-finder plan, whatever its fields (NSFAS)
+    fields: Literal["any"] | list[str]  # field tags it funds, or "any"
+    not_fields: list[str] = Field(default_factory=list)  # tags it rules out, e.g. medicine
+    stages: list[Stage] = Field(min_length=1)
+    study_at: Literal["any"] | list[str] = "any"  # our university ids when it names some; [] when none of ours
+    applying: Applying = "direct"
     who_can_apply: SourcedList | None = None  # shown as the funder words it; we never ask
+    covers: SourcedList | None = None  # what it pays for, as the funder lists it
+    obligations: SourcedList | None = None  # e.g. working for the funder a year for every year funded
     tips: SourcedList | None = None  # e.g. the funder's own list of common document mistakes
     warnings: SourcedList | None = None  # e.g. "never pay anyone to apply"
     at_registration: SourcedText | None = None  # what happens to the funding when a student registers
     applications: Applications
+
+    @model_validator(mode="after")
+    def _check_tags(self):
+        problems: list[str] = []
+        if isinstance(self.fields, list):
+            if not self.fields:
+                problems.append('fields: name at least one, or "any"')
+            problems += _unknown_fields(self.fields)
+        problems += _unknown_fields(self.not_fields)
+        if len(set(self.stages)) != len(self.stages):
+            problems.append("stages: each once")
+        if self.every_plan and self.applying != "direct":
+            problems.append("a funder in every plan takes applications directly")
+        if self.applying == "automatic" and self.applications.windows:
+            problems.append("an automatic award has no application windows")
+        if problems:
+            raise ValueError(f"{self.id}: " + "; ".join(problems))
+        return self
+
+    def funds(self, fields: list[str]) -> bool:
+        """Whether it funds a programme with these field tags: one shared tag is enough, and "any"
+        funds them all, unless the programme has a tag the funder rules out."""
+        if set(fields) & set(self.not_fields):
+            return False
+        return self.fields == "any" or bool(set(fields) & set(self.fields))
+
+    def usable_at(self, university: str) -> bool:
+        return self.study_at == "any" or university in self.study_at
 
 
 class FundingPack(_Strict):
@@ -477,8 +595,8 @@ class FundingPack(_Strict):
         for f in self.funders:
             cited = [(f"{f.id}: {what}", sid) for what, sid in f.applications.citations()]
             for what, group in (
-                ("who_can_apply", f.who_can_apply), ("tips", f.tips), ("warnings", f.warnings),
-                ("at_registration", f.at_registration),
+                ("who_can_apply", f.who_can_apply), ("covers", f.covers), ("obligations", f.obligations),
+                ("tips", f.tips), ("warnings", f.warnings), ("at_registration", f.at_registration),
             ):
                 if group:
                     cited.append((f"{f.id}: {what}", group.source))

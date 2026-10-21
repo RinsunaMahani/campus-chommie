@@ -255,6 +255,10 @@ FUNDING = {
             "id": "fund",
             "name": "Example Fund",
             "short_name": "Fund",
+            "sector": "government",
+            "every_plan": True,
+            "fields": "any",
+            "stages": ["first_year", "senior"],
             "who_can_apply": {"items": ["South African citizens"], "source": "f"},
             "warnings": {"items": ["Never pay anyone to apply."], "source": "f"},
             "applications": {

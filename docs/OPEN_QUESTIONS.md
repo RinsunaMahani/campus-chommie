@@ -7,9 +7,15 @@ settled.
 ## Facts for the data packs (Rinsuna)
 
 Research notes from official documents, read on 9 and 10 Oct 2026 and not yet checked by a person:
-[UP](research/up.md), [TUT](research/tut.md), [SMU](research/smu.md), [NSFAS](research/nsfas.md). Each lists its
-sources, gaps and inconsistencies. Other apps and services, for the deck: [competitors](research/competitors.md).
+[UP](research/up.md), [TUT](research/tut.md), [SMU](research/smu.md), [NSFAS](research/nsfas.md) and
+[funding](research/funding.md) (bursaries, read on 11 Oct). Each lists its sources, gaps and inconsistencies. Other apps and services, for the deck: [competitors](research/competitors.md).
 
+- [ ] **The funding pack** (`backend/data/national/funding.yaml`, 19 funders): a person compares every value with its
+  source by Thu 22 Oct, then sets `last_verified`, `verified_by` and `release: true`. Also confirm the choices listed
+  in [funding](research/funding.md), "Choices made while building": the field tags, Clicks's year, ISFAP shown as
+  closed, CSIR as postgraduate only, the Reserve Bank's online form, UP's 2026 amounts and no commercial lenders.
+- [ ] **NSFAS's 2027 closing date:** NSFAS's own page says 31 Oct 2026 at 23:59; the Minister's launch speech (18 Sep
+  2026) and SAnews say 18 Nov 2026. The pack keeps 31 October, the earlier date, until a person checks with NSFAS.
 - [ ] **SMU admissions:** re-check every value in `backend/data/universities/smu.yaml` against the current prospectus
   (copied from SMU's medicine admissions page on 30 Sep 2026; `verified_by` still says it needs the team's check).
   SMU's medicine page still matched the pack on 9 Oct.
@@ -184,8 +190,11 @@ cents, documents and next steps, each with its source. `funding.yaml` holds nati
   brief's five features, so if confirmed, CLAUDE.md's Scope section gains it. **Built in part on 10 Oct 2026** as
   "how to apply" inside the course finder's plan (`rinsuna/m1-how-to-apply`; README, "How to apply"): each
   choice's application status today, the dates still ahead, each university's fee, documents and next steps, and
-  NSFAS. No bursary list: we point to NSFAS and to funders' own pages instead
-  ([competitors](research/competitors.md)). Mandla: the M2 screens for it are in HANDOVER.
+  NSFAS. **Bursaries added on 11 Oct 2026:** Rinsuna asked for funding like UniApplyForMe's, reversing "no bursary
+  list". `GET /funding` lists 19 funders (NSFAS, bursaries, UP's merit awards, a government loan scheme) with
+  "N open now, N closing soon" and filters, `GET /funding/<id>` gives one in full, and each plan choice shows the
+  funding its fields point to (README, "Funding"; [funding](research/funding.md)). Mandla: the screens are in
+  HANDOVER.
 - [ ] **Which intakes a plan shows** (decided by Rinsuna's agent while building, 10 Oct 2026; Mandla to confirm): the
   dates to start next year and the year after, plus this year's while a late window is still ahead, so the app asks
   nothing about the learner's grade. The alternative is one optional question ("When do you want to start?"), sent

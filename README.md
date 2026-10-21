@@ -104,6 +104,24 @@ A learner sends 1 to 9 subjects, each once, with marks from 0 to 100. Subject ke
 - Dates come from each pack's `applications` section and from `backend/data/national/funding.yaml`. A date nobody
   has published shows as not published, never guessed.
 
+**Funding (no account; nothing stored or asked).** NSFAS, bursaries, merit awards and loans, from
+`backend/data/national/funding.yaml`, each fact from the funder's own page (`docs/research/funding.md`):
+
+| Endpoint | Body | Answer |
+|---|---|---|
+| `GET /funding?field=&status=&kind=&stage=` | none | every funder, open ones first and the soonest to close first, with `summary` ("19 funding options: 3 open now."), `counts` and the `fields` to filter by. Filters are optional: `field` takes field ids, comma-separated (`engineering,computing`); `status` is `open`, `closing_soon`, `upcoming`, `check`, `automatic`, `via_university`, `not_published` or `closed`; `kind` is `bursary`, `merit_award` or `loan`; `stage` is `first_year`, `senior` or `postgraduate` |
+| `GET /funding/<id>` | none | one funder in full: who can apply (in its words), what it covers, its obligations (such as working a year for every year funded), how to apply with every intake's dates, and its sources |
+
+- Each funder card says its status today (`status`, `label`, `days`, `lines`), what it funds (`fields`, or
+  `any_field`), who it's for (`stages`), where it can be used (`study_at`: `any` or our university ids) and when we
+  read its page (`checked`). A merit award paid without an application says `automatic`; funding students reach
+  through their university says `via_university`.
+- Each slot in a plan has `funding`: up to five funders for the programme's fields, for first-years, usable at that
+  university, with how many there are in all (`count`), how many are open now and a plain-words line. NSFAS stays
+  in `plan.apply.funding`, once for the whole plan.
+- A page that says "applications are open" or "closed" without dates is recorded as `seen`, with the day we read it.
+  "Open" counts for 14 days after that (`backend/config.yaml`), then asks the learner to check.
+
 **A student's own data, to see and to delete (signed in; POPIA):**
 
 | Endpoint | Body | Answer |
