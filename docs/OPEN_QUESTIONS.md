@@ -179,6 +179,13 @@ cents, documents and next steps, each with its source. `funding.yaml` holds nati
   `GET /universities/<id>/first-steps` gives accepting the offer, registering, orientation and the first lecture, on
   today's date, with what NSFAS does at registration. It could follow the plan, and greet a new student on Home
   before term. It's the "from acceptance" in the challenge.
+- [ ] **My money's screens** (M3, Mandla), on the API in `rinsuna/m3-profile-and-money` (README, "A student's own
+  profile and money"):
+  - **Reliability:** income sources say how reliable they are (`on_time`, `sometimes_late`, `often_late`,
+    `not_sure`); the wording is yours. A late-prone next payment adds a note suggesting the "late" view.
+  - **Balance:** the student enters it once, with the day it was true. It then stays current from the spending
+    they log and the payments they mark received, so the screen never has to ask again.
+  - **Onboarding:** a university and campus picker for `PUT /me/profile`.
 - [ ] **The university's own deadlines in My week** (agreed by Rinsuna on 10 Oct 2026; Mandla to confirm): calendar
   entries with `period: deadline` (re-marks, exclusion appeals, module changes, graduation applications) shown with
   the class deadlines in M4's week view.
@@ -213,9 +220,12 @@ cents, documents and next steps, each with its source. `funding.yaml` holds nati
 
 ## Reminders for later milestones
 
-- M3: the first endpoint that takes numbers (money) gets the NaN/Infinity hostile-input test again (it went with
-  the reused business-profile tests).
+- [x] M3: the first endpoint that takes numbers (money) gets the NaN/Infinity hostile-input test again: done on
+  `rinsuna/m3-profile-and-money` (10 Oct 2026), with floats, text and booleans refused for cents too.
 - M3: onboarding brings back an `(onboarding)` route group: 18-or-older confirmation (already recorded at sign-up),
   privacy notice, consent, university and campus. The student profile can read the 18-or-older date from the consent
   records.
 - M4: class updates are the first alerts a student could switch off; notification switches come back with them.
+- M4: the money summary's life fund can't see the student's week yet, so the brief's M3 check "the self-funded
+  persona shows an amber life fund because of a heavy week" passes only once classes and the week exist. Until
+  then the summary says "Your week isn't part of this yet". The allowance-funded persona's check passes now.

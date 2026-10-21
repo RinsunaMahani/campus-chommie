@@ -89,6 +89,17 @@ A learner sends 1 to 9 subjects, each once, with marks from 0 to 100. Subject ke
 - Dates come from each pack's `applications` section and from `backend/data/national/funding.yaml`. A date nobody
   has published shows as not published, never guessed.
 
+**A student's own profile and money (signed in; owner-only).** Amounts are integer cents:
+
+| Endpoint | Body | Answer |
+|---|---|---|
+| `GET` / `PUT /me/profile` | `{university, campus}` | university and campus (checked against the packs), and the 18-or-older confirmation from sign-up |
+| `GET` / `PUT /money/settings` | `{balance_cents, balance_on, essentials_per_day_cents, life_fund_reserve_cents}` | the balance and the day it was true, essentials a day, the life-fund reserve |
+| `GET` / `POST /money/income-sources`, `PUT` / `DELETE /money/income-sources/<id>` | `{label, amount_cents, day_of_month or expected_on, reliability}` | money the student expects, monthly or once |
+| `GET /money/payments`, `PATCH /money/payments/<id>` | `{expected_on?, amount_cents?, received?}` | expected payments from a month back to 120 days ahead; move one, change it, or tap "received" |
+| `GET /money/spending?days=30`, `PUT` / `DELETE /money/spending/<YYYY-MM-DD>` | `{amount_cents}` | one spending number per day |
+| `GET /money/summary?late=true` | none | the balance now, the spending pace, the runway (with its range), safe to spend, the life fund, the next payment; `late` plans for it arriving two weeks late |
+
 ## App
 
 Needs Node 22 or newer.
