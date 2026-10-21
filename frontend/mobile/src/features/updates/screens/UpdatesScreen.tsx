@@ -104,6 +104,6 @@ export default function UpdatesScreen() {
 const makeStyles = (colors: Palette) => StyleSheet.create({
   head: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   dot: { width: 8, height: 8, borderRadius: radius.pill, backgroundColor: colors.accent },
-  title: { flex: 1, fontFamily: fonts.bold, fontSize: 14.5, color: colors.text },
-  body: { fontFamily: fonts.body, fontSize: 13.5, lineHeight: 20, color: colors.text },
+  title: { flex: 1, fontFamily: fonts.bold, fontSize: 15.5, color: colors.text },
+  body: { fontFamily: fonts.body, fontSize: 14.5, lineHeight: 20, color: colors.text },
 });

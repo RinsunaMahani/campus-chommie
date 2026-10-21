@@ -177,12 +177,12 @@ export function ApplyGuide({ apply }: { apply: PlanApply }) {
 
 const styles = StyleSheet.create({
   headRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 8, flexWrap: 'wrap' },
-  line: { fontFamily: fonts.body, fontSize: 13.5, lineHeight: 20, color: colors.text },
-  countdown: { fontFamily: fonts.bold, fontSize: 12.5, color: colors.marigoldDeep },
+  line: { fontFamily: fonts.body, fontSize: 14.5, lineHeight: 20, color: colors.text },
+  countdown: { fontFamily: fonts.bold, fontSize: 13.5, color: colors.marigoldDeep },
   funder: { gap: 4, paddingTop: 8, borderTopWidth: 1, borderTopColor: colors.line },
-  funderName: { flex: 1, fontFamily: fonts.semibold, fontSize: 14, color: colors.text },
+  funderName: { flex: 1, fontFamily: fonts.semibold, fontSize: 15, color: colors.text },
   item: { flexDirection: 'row', gap: 8 },
-  bullet: { fontFamily: fonts.bold, fontSize: 14, lineHeight: 20, color: colors.textFaint },
-  itemText: { flex: 1, fontFamily: fonts.body, fontSize: 13.5, lineHeight: 20, color: colors.text },
+  bullet: { fontFamily: fonts.bold, fontSize: 15, lineHeight: 20, color: colors.textFaint },
+  itemText: { flex: 1, fontFamily: fonts.body, fontSize: 14.5, lineHeight: 20, color: colors.text },
   deadline: { gap: 4, paddingTop: 10, borderTopWidth: 1, borderTopColor: colors.line },
 });

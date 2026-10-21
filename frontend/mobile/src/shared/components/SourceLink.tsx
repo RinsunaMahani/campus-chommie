@@ -30,6 +30,6 @@ export function SourceLink({ url }: { url: string | null }) {
 
 const makeStyles = (colors: Palette) => StyleSheet.create({
   row: { flexDirection: 'row', alignItems: 'center', gap: 6, alignSelf: 'flex-start' },
-  link: { fontFamily: fonts.semibold, fontSize: 12.5, color: colors.accentDeep, textDecorationLine: 'underline' },
-  none: { fontFamily: fonts.medium, fontSize: 12.5, color: colors.textMuted },
+  link: { fontFamily: fonts.semibold, fontSize: 13.5, color: colors.accentDeep, textDecorationLine: 'underline' },
+  none: { fontFamily: fonts.medium, fontSize: 13.5, color: colors.textMuted },
 });

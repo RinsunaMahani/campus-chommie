@@ -52,5 +52,5 @@ export default function LinkGoogle() {
 
 const styles = StyleSheet.create({
   email: { fontFamily: fonts.bold, color: colors.ink },
-  link: { fontFamily: fonts.bold, fontSize: 13, color: colors.ink },
+  link: { fontFamily: fonts.bold, fontSize: 14, color: colors.ink },
 });

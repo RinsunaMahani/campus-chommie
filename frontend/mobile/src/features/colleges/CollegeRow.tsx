@@ -50,7 +50,7 @@ export function CollegeRow({ college }: { college: CollegeCard }) {
 const styles = StyleSheet.create({
   card: { gap: 6, padding: 14 },
   head: { flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', gap: 8 },
-  name: { flex: 1, fontSize: 14.5, color: colors.text },
-  line: { fontFamily: fonts.body, fontSize: 13, lineHeight: 19, color: colors.textMuted },
+  name: { flex: 1, fontSize: 15.5, color: colors.text },
+  line: { fontFamily: fonts.body, fontSize: 14, lineHeight: 19, color: colors.textMuted },
   tap: { position: 'absolute', right: 10, bottom: 10 },
 });

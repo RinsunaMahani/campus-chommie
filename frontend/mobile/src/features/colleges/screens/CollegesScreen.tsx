@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  checkTitle: { fontSize: 15, color: colors.text },
+  checkTitle: { fontSize: 16, color: colors.text },
   searchBox: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -181,8 +181,8 @@ const styles = StyleSheet.create({
     borderColor: colors.line,
     backgroundColor: colors.white,
   },
-  searchInput: { flex: 1, height: 46, fontFamily: fonts.medium, fontSize: 15, color: colors.text },
-  summary: { fontFamily: fonts.medium, fontSize: 14, color: colors.text },
+  searchInput: { flex: 1, height: 46, fontFamily: fonts.medium, fontSize: 16, color: colors.text },
+  summary: { fontFamily: fonts.medium, fontSize: 15, color: colors.text },
   chips: { gap: 8, paddingRight: 8 },
   chip: {
     paddingHorizontal: 14,
@@ -193,6 +193,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   chipOn: { backgroundColor: colors.ink, borderColor: colors.ink },
-  chipText: { fontFamily: fonts.semibold, fontSize: 13, color: colors.ink },
+  chipText: { fontFamily: fonts.semibold, fontSize: 14, color: colors.ink },
   chipTextOn: { color: colors.pillText },
 });

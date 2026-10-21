@@ -31,7 +31,7 @@ export function ConsentCheckbox({ checked, onChange, error }: { checked: boolean
 }
 
 const makeStyles = (colors: Palette) => StyleSheet.create({
-  text: { fontFamily: fonts.medium, fontSize: 13.5, lineHeight: 20, color: colors.text },
+  text: { fontFamily: fonts.medium, fontSize: 14.5, lineHeight: 20, color: colors.text },
   link: { fontFamily: fonts.bold, color: colors.ink, textDecorationLine: 'underline' },
-  error: { fontFamily: fonts.body, fontSize: 12, color: colors.garnet, marginTop: 4 },
+  error: { fontFamily: fonts.body, fontSize: 13, color: colors.garnet, marginTop: 4 },
 });

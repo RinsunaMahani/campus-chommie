@@ -99,7 +99,7 @@ export default function NextStepsScreen() {
 
           {empty ? (
             <Card style={{ gap: 12, padding: 16 }}>
-              <Text style={{ fontFamily: fonts.body, fontSize: 14, color: colors.textMuted }}>
+              <Text style={{ fontFamily: fonts.body, fontSize: 15, color: colors.textMuted }}>
                 {t('courseFinder.nextStepsNotPublished')}
               </Text>
               {data.university ? (
@@ -133,12 +133,12 @@ export default function NextStepsScreen() {
                       <Tag label={step.label} tone={tagTone(step.status)} />
                     </View>
                     {dateText ? (
-                      <Muted style={{ fontFamily: fonts.medium, fontSize: 13, color: colors.textMuted }}>
+                      <Muted style={{ fontFamily: fonts.medium, fontSize: 14, color: colors.textMuted }}>
                         {dateText}
                       </Muted>
                     ) : null}
                     {step.lines.map((line, idx) => (
-                      <Text key={idx} style={{ fontFamily: fonts.body, fontSize: 13.5, lineHeight: 20, color: colors.text }}>
+                      <Text key={idx} style={{ fontFamily: fonts.body, fontSize: 14.5, lineHeight: 20, color: colors.text }}>
                         {line}
                       </Text>
                     ))}

@@ -22,6 +22,6 @@ export function AgeCheckbox({ checked, onChange, error }: { checked: boolean; on
 }
 
 const makeStyles = (colors: Palette) => StyleSheet.create({
-  text: { fontFamily: fonts.medium, fontSize: 13.5, lineHeight: 20, color: colors.text },
-  error: { fontFamily: fonts.body, fontSize: 12, color: colors.garnet, marginTop: 4 },
+  text: { fontFamily: fonts.medium, fontSize: 14.5, lineHeight: 20, color: colors.text },
+  error: { fontFamily: fonts.body, fontSize: 13, color: colors.garnet, marginTop: 4 },
 });

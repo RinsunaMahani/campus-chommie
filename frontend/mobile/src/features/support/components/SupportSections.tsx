@@ -95,7 +95,7 @@ export function SupportSections({
 }
 
 const makeStyles = (colors: Palette) => StyleSheet.create({
-  contact: { fontFamily: fonts.bold, fontSize: 14, color: colors.ink },
-  note: { fontFamily: fonts.body, fontSize: 13, lineHeight: 19, color: colors.text },
-  line: { fontFamily: fonts.medium, fontSize: 13.5, lineHeight: 20, color: colors.textMuted },
+  contact: { fontFamily: fonts.bold, fontSize: 15, color: colors.ink },
+  note: { fontFamily: fonts.body, fontSize: 14, lineHeight: 19, color: colors.text },
+  line: { fontFamily: fonts.medium, fontSize: 14.5, lineHeight: 20, color: colors.textMuted },
 });

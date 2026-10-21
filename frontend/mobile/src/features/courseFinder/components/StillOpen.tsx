@@ -126,5 +126,5 @@ export function TestDateNote({ apply }: { apply: Pick<PlanApply, 'today' | 'test
 }
 
 const styles = StyleSheet.create({
-  detail: { fontFamily: fonts.body, fontSize: 13.5, lineHeight: 20, color: colors.textMuted },
+  detail: { fontFamily: fonts.body, fontSize: 14.5, lineHeight: 20, color: colors.textMuted },
 });

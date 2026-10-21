@@ -170,7 +170,7 @@ export default function CreateAccount() {
 
 const styles = StyleSheet.create({
   alt: { alignItems: 'center', paddingVertical: 4 },
-  formError: { fontFamily: fonts.medium, fontSize: 13, color: colors.garnet, textAlign: 'center' },
-  altText: { fontFamily: fonts.body, fontSize: 13, color: colors.textMuted },
+  formError: { fontFamily: fonts.medium, fontSize: 14, color: colors.garnet, textAlign: 'center' },
+  altText: { fontFamily: fonts.body, fontSize: 14, color: colors.textMuted },
   altLink: { fontFamily: fonts.bold, color: colors.ink },
 });

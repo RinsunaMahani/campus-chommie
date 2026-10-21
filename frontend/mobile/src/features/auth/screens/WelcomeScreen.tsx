@@ -59,9 +59,9 @@ const styles = StyleSheet.create({
   slogan: { fontFamily: fonts.medium, fontSize: 16, color: colors.textMuted, textAlign: 'center' },
   actions: { gap: 4 },
   link: { alignItems: 'center', paddingVertical: 16 },
-  linkText: { fontFamily: fonts.bold, fontSize: 14.5, color: colors.ink },
-  finderNote: { fontFamily: fonts.medium, fontSize: 12.5, color: colors.textMuted, textAlign: 'center', paddingTop: 6, paddingBottom: 10 },
+  linkText: { fontFamily: fonts.bold, fontSize: 15.5, color: colors.ink },
+  finderNote: { fontFamily: fonts.medium, fontSize: 13.5, color: colors.textMuted, textAlign: 'center', paddingTop: 6, paddingBottom: 10 },
   legal: { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: 10, paddingBottom: 14 },
-  legalText: { fontFamily: fonts.medium, fontSize: 12.5, color: colors.textMuted, textDecorationLine: 'underline' },
+  legalText: { fontFamily: fonts.medium, fontSize: 13.5, color: colors.textMuted, textDecorationLine: 'underline' },
   legalDot: { color: colors.textFaint },
 });

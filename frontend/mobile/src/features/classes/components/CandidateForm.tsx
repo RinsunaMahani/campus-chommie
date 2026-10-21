@@ -164,8 +164,8 @@ export function CandidateForm({ candidate, events, busy, onConfirm, onDiscard }:
 }
 
 const makeStyles = (colors: Palette) => StyleSheet.create({
-  quote: { fontFamily: fonts.medium, fontSize: 14.5, lineHeight: 21, color: colors.text, fontStyle: 'italic' },
+  quote: { fontFamily: fonts.medium, fontSize: 15.5, lineHeight: 21, color: colors.text, fontStyle: 'italic' },
   row: { flexDirection: 'row', gap: 10, alignItems: 'flex-start' },
   check: { gap: 6, padding: 10, borderRadius: radius.sm, borderWidth: 1.5, borderColor: colors.marigold, backgroundColor: colors.marigoldTint },
-  checkText: { fontFamily: fonts.bold, fontSize: 12, letterSpacing: 0.4, color: colors.marigoldDeep, textTransform: 'uppercase' },
+  checkText: { fontFamily: fonts.bold, fontSize: 13, letterSpacing: 0.4, color: colors.marigoldDeep, textTransform: 'uppercase' },
 });

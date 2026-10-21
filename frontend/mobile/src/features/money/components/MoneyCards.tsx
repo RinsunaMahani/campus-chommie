@@ -131,8 +131,8 @@ export function NextPaymentCard({
 const makeStyles = (colors: Palette) => StyleSheet.create({
   warn: { borderColor: colors.marigold, backgroundColor: colors.marigoldTint },
   rule: { height: 1, backgroundColor: colors.line },
-  line: { fontFamily: fonts.body, fontSize: 14, lineHeight: 21, color: colors.text },
-  muted: { fontSize: 12.5, lineHeight: 18, color: colors.textMuted },
+  line: { fontFamily: fonts.body, fontSize: 15, lineHeight: 21, color: colors.text },
+  muted: { fontSize: 13.5, lineHeight: 18, color: colors.textMuted },
   big: { fontFamily: fonts.display, fontSize: 22, lineHeight: 28 },
   amount: { fontFamily: fonts.display, fontSize: 20, color: colors.ink },
   badge: {
@@ -144,5 +144,5 @@ const makeStyles = (colors: Palette) => StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 4,
   },
-  badgeText: { fontFamily: fonts.bold, fontSize: 12.5 },
+  badgeText: { fontFamily: fonts.bold, fontSize: 13.5 },
 });

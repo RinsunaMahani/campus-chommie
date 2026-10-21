@@ -32,5 +32,5 @@ const makeStyles = (colors: Palette) => StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 6,
   },
-  text: { fontFamily: fonts.bold, fontSize: 12.5, color: colors.marigoldDeep },
+  text: { fontFamily: fonts.bold, fontSize: 13.5, color: colors.marigoldDeep },
 });

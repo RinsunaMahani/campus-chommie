@@ -29,7 +29,7 @@ const makeStyles = (colors: Palette) => StyleSheet.create({
   bar: { flexDirection: 'row', backgroundColor: colors.iconTile, borderRadius: radius.md, padding: 4, gap: 4 },
   tab: { flex: 1, minHeight: 44, borderRadius: radius.sm, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', gap: 6 },
   on: { backgroundColor: colors.white, shadowColor: colors.ink, shadowOpacity: 0.08, shadowRadius: 4, shadowOffset: { width: 0, height: 1 }, elevation: 1 },
-  label: { fontFamily: fonts.semibold, fontSize: 14, color: colors.textMuted },
+  label: { fontFamily: fonts.semibold, fontSize: 15, color: colors.textMuted },
   labelOn: { fontFamily: fonts.bold, color: colors.ink },
   badge: { minWidth: 20, height: 20, borderRadius: 10, paddingHorizontal: 5, backgroundColor: colors.marigold, alignItems: 'center', justifyContent: 'center' },
   badgeText: { fontFamily: fonts.bold, fontSize: 11.5, color: colors.ink },

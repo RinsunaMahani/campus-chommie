@@ -58,5 +58,5 @@ const styles = StyleSheet.create({
   // Laid out at its full height even while the box around it is closed, so the height is known.
   measure: { position: 'absolute', left: 0, right: 0 },
   toggle: { flexDirection: 'row', alignItems: 'center', gap: 6, paddingTop: 10, alignSelf: 'flex-start' },
-  toggleText: { fontFamily: fonts.bold, fontSize: 13.5 },
+  toggleText: { fontFamily: fonts.bold, fontSize: 14.5 },
 });

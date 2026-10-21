@@ -328,7 +328,7 @@ export default function FundingScreen() {
 }
 
 const styles = StyleSheet.create({
-  summary: { fontFamily: fonts.medium, fontSize: 14, color: colors.text },
+  summary: { fontFamily: fonts.medium, fontSize: 15, color: colors.text },
   signInCard: { gap: 10, padding: 14 },
   choiceCard: { gap: 8, padding: 16 },
   choiceTitle: { fontSize: 17, lineHeight: 22, color: colors.text },
@@ -337,6 +337,7 @@ const styles = StyleSheet.create({
   cardBody: { flex: 1, gap: 6 },
   statusRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 8 },
   saveBtn: {
+    flexShrink: 0,
     flexDirection: 'row',
     alignItems: 'center',
     gap: 4,
@@ -348,12 +349,12 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   saveBtnOn: { backgroundColor: colors.ink, borderColor: colors.ink },
-  saveText: { fontFamily: fonts.semibold, fontSize: 12, color: colors.ink },
+  saveText: { fontFamily: fonts.semibold, fontSize: 13, color: colors.ink },
   saveTextOn: { color: colors.pillText },
   metaRow: { flexDirection: 'row', alignItems: 'center', gap: 6 },
-  line: { fontFamily: fonts.body, fontSize: 13.5, lineHeight: 20, color: colors.text },
+  line: { fontFamily: fonts.body, fontSize: 14.5, lineHeight: 20, color: colors.text },
   tapRow: { flexDirection: 'row', alignItems: 'center', gap: 4, marginTop: 4 },
-  tapText: { fontFamily: fonts.semibold, fontSize: 13, color: colors.accentDeep },
+  tapText: { fontFamily: fonts.semibold, fontSize: 14, color: colors.accentDeep },
   sectionTitle: { fontSize: 20, color: colors.text, marginTop: 4 },
   chips: { gap: 8, paddingRight: 8 },
   chip: {
@@ -365,9 +366,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   chipOn: { backgroundColor: colors.ink, borderColor: colors.ink },
-  chipText: { fontFamily: fonts.semibold, fontSize: 13, color: colors.ink },
+  chipText: { fontFamily: fonts.semibold, fontSize: 14, color: colors.ink },
   chipTextOn: { color: colors.pillText },
   funderCard: { gap: 6, padding: 14 },
-  funderName: { fontSize: 15, lineHeight: 20, color: colors.text },
-  whyLine: { fontFamily: fonts.body, fontSize: 12.5, color: colors.textMuted },
+  funderName: { fontSize: 16, lineHeight: 20, color: colors.text },
+  whyLine: { fontFamily: fonts.body, fontSize: 13.5, color: colors.textMuted },
 });

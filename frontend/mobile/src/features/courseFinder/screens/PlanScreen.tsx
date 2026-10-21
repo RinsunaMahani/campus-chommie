@@ -39,7 +39,7 @@ export default function PlanScreen() {
             { flexDirection: 'row', alignItems: 'center', gap: 6, alignSelf: 'flex-start', opacity: pressed ? 0.7 : 1 },
           ]}>
           <Feather name="rotate-ccw" size={13} color={colors.onAccentSoft} />
-          <Text style={{ fontFamily: fonts.medium, fontSize: 13, color: colors.onAccentSoft }}>
+          <Text style={{ fontFamily: fonts.medium, fontSize: 14, color: colors.onAccentSoft }}>
             {t('courseFinder.startOver')}
           </Text>
         </Pressable>
@@ -63,7 +63,7 @@ export default function PlanScreen() {
         <Title style={{ fontSize: 18, lineHeight: 24 }}>
           {t('courseFinder.acceptedCardTitle', { university: university.name })}
         </Title>
-        <Text style={{ fontFamily: fonts.body, fontSize: 13.5, lineHeight: 20, color: colors.text }}>
+        <Text style={{ fontFamily: fonts.body, fontSize: 14.5, lineHeight: 20, color: colors.text }}>
           {t('courseFinder.acceptedCardSub')}
         </Text>
         <Button

@@ -39,6 +39,6 @@ export function ProjectionCard({ module }: { module: Module }) {
 
 const makeStyles = (colors: Palette) => StyleSheet.create({
   big: { fontFamily: fonts.display, fontSize: 28, lineHeight: 34, color: colors.ink },
-  line: { fontFamily: fonts.body, fontSize: 14, lineHeight: 21, color: colors.text },
+  line: { fontFamily: fonts.body, fontSize: 15, lineHeight: 21, color: colors.text },
   below: { color: colors.marigoldDeep },
 });

@@ -55,6 +55,6 @@ const styles = StyleSheet.create({
   },
   image: { width: '100%', aspectRatio: 16 / 9 },
   words: { gap: 2, paddingHorizontal: 14, paddingVertical: 10 },
-  caption: { fontFamily: fonts.semibold, fontSize: 13.5, lineHeight: 19, color: colors.ink },
+  caption: { fontFamily: fonts.semibold, fontSize: 14.5, lineHeight: 19, color: colors.ink },
   credit: { fontFamily: fonts.body, fontSize: 11, lineHeight: 16, color: colors.textFaint, textDecorationLine: 'underline' },
 });

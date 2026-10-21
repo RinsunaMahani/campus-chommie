@@ -9,7 +9,7 @@ import { errorText } from '@/shared/api/errors';
 import { InfoNote } from '@/shared/components/Parts';
 import { Screen } from '@/shared/components/Screen';
 import { ErrorBox, Loading } from '@/shared/components/Status';
-import { Body, Muted, Title } from '@/shared/components/Text';
+import { Muted } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
 
 import { supportApi } from '../api/supportApi';
@@ -52,11 +52,8 @@ export default function SupportScreen() {
   );
 
   return (
-    <Screen tab>
+    <Screen tab title={t('support.title')} subtitle={t('support.intro')} headerRight={<DemoBanner />}>
       <View style={{ gap: 6 }}>
-        <Title>{t('support.title')}</Title>
-        <DemoBanner />
-        <Body>{t('support.intro')}</Body>
         {answer?.campus_name && answer.university ? <Muted>{`${answer.university.name} · ${answer.campus_name}`}</Muted> : null}
       </View>
       {mock ? <InfoNote icon="info">{t('money.mockNotice')}</InfoNote> : null}

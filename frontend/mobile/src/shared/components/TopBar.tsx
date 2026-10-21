@@ -55,7 +55,7 @@ const makeStyles = (colors: Palette) => StyleSheet.create({
   avatar: { width: 38, height: 38, borderRadius: radius.sm, backgroundColor: colors.ink, alignItems: 'center', justifyContent: 'center' },
   initial: { fontFamily: fonts.display, fontSize: 16, color: colors.pillText },
   title: { fontFamily: fonts.display, fontSize: 19, color: colors.ink },
-  subtitle: { fontFamily: fonts.body, fontSize: 12, color: colors.textMuted },
+  subtitle: { fontFamily: fonts.body, fontSize: 13, color: colors.textMuted },
   action: {
     width: sizes.iconButton,
     height: sizes.iconButton,

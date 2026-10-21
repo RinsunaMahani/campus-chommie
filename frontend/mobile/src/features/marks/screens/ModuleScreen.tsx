@@ -139,8 +139,8 @@ export default function ModuleScreen() {
 const makeStyles = (colors: Palette) => StyleSheet.create({
   row: { flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 11 },
   rule: { borderBottomWidth: 1, borderBottomColor: colors.line },
-  name: { fontFamily: fonts.semibold, fontSize: 14.5, color: colors.text },
-  mark: { fontFamily: fonts.bold, fontSize: 15, color: colors.ink },
-  toCome: { fontFamily: fonts.medium, fontSize: 13, color: colors.textMuted },
+  name: { fontFamily: fonts.semibold, fontSize: 15.5, color: colors.text },
+  mark: { fontFamily: fonts.bold, fontSize: 16, color: colors.ink },
+  toCome: { fontFamily: fonts.medium, fontSize: 14, color: colors.textMuted },
   pair: { flexDirection: 'row', gap: 10 },
 });

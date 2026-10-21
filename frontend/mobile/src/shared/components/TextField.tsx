@@ -72,7 +72,7 @@ export const TextField = forwardRef<TextInput, Props>(function TextField(
 
 const makeStyles = (colors: Palette) => StyleSheet.create({
   wrap: { gap: 6 },
-  label: { fontFamily: fonts.semibold, fontSize: 13.5, color: colors.text },
+  label: { fontFamily: fonts.semibold, fontSize: 14.5, color: colors.text },
   optional: { fontFamily: fonts.medium, color: colors.textMuted },
   box: {
     height: sizes.input,
@@ -87,6 +87,6 @@ const makeStyles = (colors: Palette) => StyleSheet.create({
   },
   focused: { borderColor: colors.ink, borderWidth: 1.5 },
   errored: { borderColor: colors.garnet },
-  input: { flex: 1, height: '100%', fontFamily: fonts.medium, fontSize: 15, color: colors.text, outlineWidth: 0 },
-  hint: { fontFamily: fonts.body, fontSize: 12, lineHeight: 16, color: colors.textMuted },
+  input: { flex: 1, height: '100%', fontFamily: fonts.medium, fontSize: 16, color: colors.text, outlineWidth: 0 },
+  hint: { fontFamily: fonts.body, fontSize: 13, lineHeight: 16, color: colors.textMuted },
 });
