@@ -10,6 +10,10 @@ university: vut
 name: Vaal University of Technology
 city: Vanderbijlpark
 academic_year: 2027
+province: Gauteng
+province_source: s-vut-where
+institution_type: university_of_technology   # its official name, and its own page, say it is a university of technology
+institution_type_source: s-vut-where
 release: false
 max_choices: null
 
@@ -748,6 +752,13 @@ programmes:
         - "The extended programme takes four years instead of three."
 
 sources:
+  - id: s-vut-where
+    url: "https://vut.ac.za/history/"
+    publisher: "Vaal University of Technology"
+    title: "Read for its province"
+    retrieved: 2026-10-20
+    last_verified: null
+    verified_by: "agent draft, needs human check"
   - id: s-vut-requirements
     url: "https://vut.ac.za/wp-content/uploads/2026/03/2027-Undergraduate-Minimum-Admission-Requirements.pdf"
     publisher: "Vaal University of Technology"

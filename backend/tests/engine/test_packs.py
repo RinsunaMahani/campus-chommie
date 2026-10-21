@@ -419,3 +419,16 @@ def test_smu_support_from_its_own_pages(smu):  # s-smu-reg-2026, s-smu-garden-20
     assert kinds["food_support"].note == "SMU doesn't publish how students ask for vegetables."
     assert kinds["chaplaincy"].name.startswith("Religious Desk") and kinds["chaplaincy"].hours == "Mon-Fri 07:30-16:00"
     assert "careers" not in kinds  # the counselling centre offers career counselling
+
+
+def test_a_province_or_type_must_cite_a_source_in_the_same_pack():
+    import pytest
+    from campus_engine.catalogue import load_university
+    from campus_engine.schemas import University
+    uni = load_university("data/universities/cut.yaml").model_dump()
+    uni["province_source"] = "s-nowhere"
+    with pytest.raises(ValueError, match="province needs a source"):
+        University.model_validate(uni)
+    uni["province_source"], uni["institution_type"] = "s-cut-where", None
+    with pytest.raises(ValueError, match="institution_type_source given without"):
+        University.model_validate(uni)

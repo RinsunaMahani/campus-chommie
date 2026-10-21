@@ -10,6 +10,8 @@ university: dut
 name: Durban University of Technology
 city: Durban and Pietermaritzburg
 academic_year: 2027
+institution_type: university_of_technology   # its official name, and its own page, say it is a university of technology
+institution_type_source: s-dut-type
 release: false
 max_choices: null
 
@@ -32,6 +34,13 @@ applications:
 programmes: []
 
 sources:
+  - id: s-dut-type
+    url: "https://www.dut.ac.za/about-dut/"
+    publisher: "Durban University of Technology"
+    title: "Read for its type"
+    retrieved: 2026-10-20
+    last_verified: null
+    verified_by: "agent draft, needs human check"
   - id: s-dut-opportunities
     url: "https://www.dut.ac.za/wp-content/uploads/2026/06/Study-Opportunities-2027.pdf"
     publisher: "Durban University of Technology"

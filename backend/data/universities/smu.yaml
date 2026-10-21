@@ -10,6 +10,8 @@ university: smu
 name: Sefako Makgatho Health Sciences University
 city: Pretoria
 academic_year: 2027          # intake these rules apply to: verify with SMU
+province: Gauteng
+province_source: s-smu-where
 release: false
 max_choices: 2               # "You are allowed to apply for only two study choices" (s-smu-apply-2027)
 
@@ -514,6 +516,13 @@ programmes:
         - "You must pass SMU's medical and physical fitness evaluations."
 
 sources:
+  - id: s-smu-where
+    url: "https://www.smu.ac.za/contacts/"
+    publisher: "Sefako Makgatho Health Sciences University"
+    title: "Read for its province"
+    retrieved: 2026-10-20
+    last_verified: null
+    verified_by: "agent draft, needs human check"
   - id: s-smu-med
     url: https://www.smu.ac.za/schools/medicine/medicine-undergraduate-admission-requirements/
     publisher: Sefako Makgatho Health Sciences University

@@ -114,3 +114,11 @@ def test_first_steps_for_an_unknown_university_is_a_404(client):
 def test_first_steps_are_limited_per_ip(client, limits_on):
     codes = [client.get(f"{BASE}/up/first-steps").status_code for _ in range(121)]
     assert codes[:120] == [200] * 120 and codes[120] == 429
+
+
+def test_province_and_type_show_only_where_a_cited_page_states_them(client):
+    unis = {u["id"]: u for u in client.get("/api/v1/universities").get_json()["data"]["universities"]}
+    assert (unis["cut"]["province"], unis["cut"]["institution_type_label"]) == ("Free State", "University of technology")
+    assert (unis["univen"]["province"], unis["univen"]["institution_type_label"]) == ("Limpopo", "Comprehensive university")
+    assert (unis["ufs"]["province"], unis["ufs"]["institution_type"]) == ("Free State", None)  # its page states no type
+    assert (unis["up"]["province"], unis["up"]["institution_type"]) == (None, None)  # not confirmed on a source yet

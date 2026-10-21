@@ -440,6 +440,20 @@ draft: `release: false` until a person compares the pack with the registers.
 - [ ] **Entry requirements**: colleges don't publish points scales, so the app says "check with the college" and
   links its site. TVET admission rules (NC(V), Report 191) could come later, each from its own source.
 
+## Province and type of each university
+
+Added on 20 Oct 2026 only where the university's own page prints it (Argon's Round 5, every page re-read):
+province for 16 universities, type for 9 (the six universities of technology; UNIVEN, UNIZULU and WSU as
+comprehensive). The app shows only these.
+
+- [ ] **Province not confirmed on a source** (a person can confirm each from the university's contact page):
+  DUT, NMU, NWU, SU, UCT, UJ, UNISA, UP, UWC, Wits. SU, UJ, UP and UWC block automated requests.
+- [ ] **Type not stated by the university**: the 11 DHET calls "general academic" and the comprehensive ones
+  that don't say so on their pages (UJ, NMU, SMU, SPU). DHET's per-university master list needs a login
+  (`dhet.gov.za/MasterLists`). UMP's "comprehensive university" page redirects to a login; UNISA's page calls its
+  teaching model "comprehensive", not the university.
+- [ ] **WSU** says it is "one of six" comprehensive universities; DHET's 2022 statistics count nine.
+
 ## Reminders for later milestones
 
 - [x] M3: the first endpoint that takes numbers (money) gets the NaN/Infinity hostile-input test again: done on

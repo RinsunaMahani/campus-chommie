@@ -12,7 +12,7 @@ import { resolve } from 'path';
 
 import { checkRows, cleanPercent, MarkRow, rowsFor, toApiMarks } from '../marks';
 import { ANOTHER_SUBJECT_KEYS, blocked, FOLDERS, folderName, MAX_SUBJECTS, pointsOnlyCount, SUBJECTS, subjectName } from '../subjects';
-import { daysLeft, formatDay } from '../words';
+import { daysLeft, formatDay, placeLine } from '../words';
 
 const BACKEND = resolve(__dirname, '../../../../../../backend');
 const row = (subject: string, percent: string): MarkRow => ({ subject, percent });
@@ -136,4 +136,12 @@ test('dates and day counts read as the app says them', () => {
   expect(daysLeft(18)).toBe('18 days left');
   expect(daysLeft(1)).toBe('1 day left');
   expect(daysLeft(0)).toBe('Last day');
+});
+
+test('the place line shows only what a source states', () => {
+  expect(placeLine({ city: 'Bloemfontein and Welkom', province: 'Free State', institution_type_label: 'University of technology' })).toBe(
+    'Bloemfontein and Welkom, Free State · University of technology',
+  );
+  expect(placeLine({ city: 'Pretoria', province: null, institution_type_label: null })).toBe('Pretoria');
+  expect(placeLine({ city: null })).toBeUndefined();
 });

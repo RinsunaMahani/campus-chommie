@@ -9,6 +9,10 @@ university: mut
 name: Mangosuthu University of Technology
 city: Umlazi, Durban
 academic_year: 2027
+province: KwaZulu-Natal
+province_source: s-mut-where
+institution_type: university_of_technology   # its official name, and its own page, say it is a university of technology
+institution_type_source: s-mut-type
 release: false
 max_choices: null
 
@@ -879,6 +883,20 @@ programmes:
         - "Every student registers with the Health Professions Council of South Africa (HPCSA)."
 
 sources:
+  - id: s-mut-where
+    url: "https://www.mut.ac.za/contact-us/"
+    publisher: "Mangosuthu University of Technology"
+    title: "Read for its province"
+    retrieved: 2026-10-20
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-mut-type
+    url: "https://www.mut.ac.za/about-mut/our-story/"
+    publisher: "Mangosuthu University of Technology"
+    title: "Read for its type"
+    retrieved: 2026-10-20
+    last_verified: null
+    verified_by: "agent draft, needs human check"
   - id: s-mut-apply
     url: "https://www.mut.ac.za/prospective-students/apply/"
     publisher: "Mangosuthu University of Technology"

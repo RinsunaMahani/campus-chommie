@@ -11,6 +11,10 @@ university: cut
 name: Central University of Technology
 city: Bloemfontein and Welkom
 academic_year: 2027
+province: Free State
+province_source: s-cut-where
+institution_type: university_of_technology   # its official name, and its own page, say it is a university of technology
+institution_type_source: s-cut-where
 release: false
 max_choices: 2
 
@@ -660,6 +664,13 @@ programmes:
         - "Campus: Bloemfontein."
 
 sources:
+  - id: s-cut-where
+    url: "https://www.cut.ac.za/cut-at-a-glance"
+    publisher: "Central University of Technology"
+    title: "Read for its province"
+    retrieved: 2026-10-20
+    last_verified: null
+    verified_by: "agent draft, needs human check"
   - id: s-cut-apply
     url: "https://www.cut.ac.za/application-process/"
     publisher: "Central University of Technology"

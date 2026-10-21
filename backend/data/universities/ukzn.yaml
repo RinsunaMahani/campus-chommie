@@ -10,6 +10,8 @@ university: ukzn
 name: University of KwaZulu-Natal
 city: Durban and Pietermaritzburg
 academic_year: 2027
+province: KwaZulu-Natal
+province_source: s-ukzn-where
 release: false
 max_choices: null
 
@@ -44,6 +46,13 @@ applications:
 programmes: []
 
 sources:
+  - id: s-ukzn-where
+    url: "https://ukzn.ac.za/history/"
+    publisher: "University of KwaZulu-Natal"
+    title: "Read for its province"
+    retrieved: 2026-10-20
+    last_verified: null
+    verified_by: "agent draft, needs human check"
   - id: s-ukzn-selection
     url: "https://applications.ukzn.ac.za/selection-procedure/undergraduate-selection-procedure/"
     publisher: "University of KwaZulu-Natal"

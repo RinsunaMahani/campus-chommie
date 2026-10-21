@@ -10,6 +10,10 @@ university: tut
 name: Tshwane University of Technology
 city: Pretoria
 academic_year: 2027          # the intake these rules apply to
+province: Gauteng
+province_source: s-tut-where
+institution_type: university_of_technology   # its official name, and its own page, say it is a university of technology
+institution_type_source: s-tut-where
 release: false
 max_choices: null            # not stated in TUT's documents
 
@@ -2232,6 +2236,13 @@ programmes:
             - subjects: {technical_sciences: 3}
 
 sources:
+  - id: s-tut-where
+    url: "https://www.tut.ac.za/about/"
+    publisher: "Tshwane University of Technology"
+    title: "Read for its province"
+    retrieved: 2026-10-20
+    last_verified: null
+    verified_by: "agent draft, needs human check"
   - id: s-tut-courses-2027
     url: "https://www.tut.ac.za/media/tshwane-interim/site-content/documents/First-Year-Course_Information.pdf"
     publisher: "Tshwane University of Technology"

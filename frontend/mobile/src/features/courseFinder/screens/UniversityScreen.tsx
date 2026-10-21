@@ -23,7 +23,7 @@ import { groupByFaculty, hasFaculties } from '../faculties';
 import { checkRows } from '../marks';
 import { useCourseFinder } from '../state';
 import { Match, Tier } from '../types';
-import { errorText } from '../words';
+import { errorText, placeLine } from '../words';
 
 /**
  * Step 3: one university. Your points there, opening to each subject; then
@@ -83,7 +83,7 @@ export default function UniversityScreen() {
       back
       overline={t('courseFinder.step', { n: 3 })}
       title={here?.university.name ?? points?.university_name ?? ''}
-      subtitle={here?.university.city ?? undefined}
+      subtitle={here ? placeLine(here.university) : undefined}
       band={
         here ? (
           <View style={styles.bandChips}>
