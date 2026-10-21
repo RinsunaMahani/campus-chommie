@@ -16,7 +16,7 @@ from sqlalchemy.dialects.postgresql import insert
 
 from src.extensions import db
 
-from ..models import ExpectedPayment, IncomeSource, MoneySettings, SpendingEntry
+from ..models import ExpectedPayment, IncomeSource, MoneyGoal, MoneySettings, SpendingEntry
 
 # ------------------------------------------------------------------ settings
 
@@ -147,7 +147,8 @@ def delete_spending_before(cutoff: date) -> int:
 
 
 def erase_all(user_id: uuid.UUID) -> None:
-    """Everything the student entered: spending, payments, income sources and settings."""
+    """Everything the student entered: spending, payments, income sources, goals and settings."""
+    MoneyGoal.query.filter_by(user_id=user_id).delete(synchronize_session=False)
     SpendingEntry.query.filter_by(user_id=user_id).delete(synchronize_session=False)
     ExpectedPayment.query.filter_by(user_id=user_id).delete(synchronize_session=False)
     IncomeSource.query.filter_by(user_id=user_id).delete(synchronize_session=False)
@@ -160,3 +161,21 @@ def all_payments(user_id: uuid.UUID) -> list[ExpectedPayment]:
 
 def all_spending(user_id: uuid.UUID) -> list[SpendingEntry]:
     return SpendingEntry.query.filter_by(user_id=user_id).order_by(SpendingEntry.spent_on).all()
+
+
+def goals_for(user_id: uuid.UUID) -> list[MoneyGoal]:
+    return MoneyGoal.query.filter_by(user_id=user_id).order_by(MoneyGoal.due_on, MoneyGoal.label).all()
+
+
+def goal(user_id: uuid.UUID, goal_id: uuid.UUID) -> MoneyGoal | None:
+    return MoneyGoal.query.filter_by(user_id=user_id, id=goal_id).first()
+
+
+def count_goals(user_id: uuid.UUID) -> int:
+    return db.session.query(func.count(MoneyGoal.id)).filter(MoneyGoal.user_id == user_id).scalar()
+
+
+def add_goal(user_id: uuid.UUID, fields: dict) -> MoneyGoal:
+    row = MoneyGoal(user_id=user_id, **fields)
+    db.session.add(row)
+    return row

@@ -7,13 +7,13 @@ or ahead they may be is checked against today by the service.
 """
 from __future__ import annotations
 
-from marshmallow import RAISE, Schema, fields, validate, validates_schema
+from marshmallow import RAISE, Schema, fields, validate, validates, validates_schema
 from marshmallow import ValidationError as MarshmallowError
 
 from src.core.exceptions import ValidationError
 from src.shared.finance import FinanceError, Money, format_amount, validate_non_negative, validate_positive
 
-from ..constants import LABEL_MAX, MAX_CENTS, RELIABILITY
+from ..constants import GOAL_LABEL_MAX, LABEL_MAX, MAX_CENTS, RELIABILITY
 
 
 class _Strict(Schema):
@@ -101,6 +101,45 @@ class SpendingQuerySchema(_Strict):
 class SummaryQuerySchema(_Strict):
     #: Plan for the next payment arriving two weeks late.
     late = fields.Boolean(load_default=False)
+
+
+class AffordSchema(_Strict):
+    """POST /money/afford: the price of one thing. Nothing is stored."""
+
+    amount_cents = Cents(required=True, positive=True)
+
+
+class GoalSchema(_Strict):
+    """POST /money/goals: what it's for, how much, by when; how much is already aside; whether the date came from
+    the university's fee dates."""
+
+    label = fields.String(required=True, validate=validate.Length(min=1, max=GOAL_LABEL_MAX))
+    amount_cents = Cents(required=True, positive=True)
+    saved_cents = Cents(load_default=0)
+    due_on = fields.Date(required=True)
+    from_university = StrictBoolean(load_default=False)
+
+    @validates("label")
+    def _plain(self, value, **kwargs):
+        if not value.strip() or any(ord(c) < 32 or ord(c) == 127 for c in value):
+            raise MarshmallowError("Use letters, numbers and punctuation only.")
+
+    @validates_schema
+    def _not_more_than(self, data, **kwargs):
+        if "saved_cents" in data and "amount_cents" in data and data["saved_cents"] > data["amount_cents"]:
+            raise MarshmallowError({"saved_cents": ["That's more than the goal itself."]})
+
+
+class GoalChangeSchema(GoalSchema):
+    """PATCH /money/goals/<id>: any of the same fields, at least one."""
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, partial=True, **kwargs)
+
+    @validates_schema
+    def _something(self, data, **kwargs):
+        if not data:
+            raise MarshmallowError({"_schema": ["Send what changed."]})
 
 
 class NoQuerySchema(_Strict):

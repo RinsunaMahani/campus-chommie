@@ -1,7 +1,7 @@
 /** My money's calls: signed in, and only ever the student's own (the server scopes every one). */
 import { api } from '@/shared/api/client';
 
-import { CheapThing, IncomeInput, IncomeSource, Payment, Settings, SpendingDay, Summary } from '../types';
+import { AffordAnswer, CheapThing, GoalInput, IncomeInput, IncomeSource, MoneyGoal, MoneyPlan, Payment, Settings, SpendingDay, Summary } from '../types';
 
 const auth = { auth: true };
 
@@ -29,6 +29,14 @@ export const moneyApi = {
   setSpending: (day: string, amountCents: number) =>
     api<{ spending: SpendingDay }>('PUT', `/money/spending/${day}`, { amount_cents: amountCents }, auth).then((d) => d.spending),
   removeSpending: (day: string) => api<Record<string, never>>('DELETE', `/money/spending/${day}`, undefined, auth),
+
+  /** Nothing is stored: the price is used once on the server and dropped. */
+  afford: (amountCents: number) => api<AffordAnswer>('POST', '/money/afford', { amount_cents: amountCents }, auth),
+  plan: () => api<MoneyPlan>('GET', '/money/plan', undefined, auth),
+  addGoal: (input: GoalInput) => api<{ goal: MoneyGoal }>('POST', '/money/goals', input, auth).then((d) => d.goal),
+  changeGoal: (id: string, input: Partial<GoalInput>) =>
+    api<{ goal: MoneyGoal }>('PATCH', `/money/goals/${encodeURIComponent(id)}`, input, auth).then((d) => d.goal),
+  removeGoal: (id: string) => api<Record<string, never>>('DELETE', `/money/goals/${encodeURIComponent(id)}`, undefined, auth),
 
   cheapThings: () =>
     api<{ cheap_things: CheapThing[]; lines: string[] }>('GET', '/money/cheap-things', undefined, auth),
