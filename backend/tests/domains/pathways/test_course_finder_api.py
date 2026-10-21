@@ -186,7 +186,8 @@ def test_points_at_every_university_before_picking_one(client):
     assert sum(by_id["smu"]["tiers"].values()) == 17
     # A university whose programmes aren't added yet: its points, and why there's nothing to meet.
     assert by_id["wits"]["points"] == 47
-    assert by_id["wits"]["summary"] == "We haven't added this university's programmes yet."
+    assert by_id["wits"]["summary"].startswith("You meet the minimum for")
+    assert by_id["uj"]["summary"] == "We haven't added this university's programmes yet."
     # Each subject's level and points there, in the order sent: together they make the total.
     for u in (u for u in universities if u["points"] is not None):
         assert [s["subject"] for s in u["subjects"]] == [m["subject"] for m in STRONG]

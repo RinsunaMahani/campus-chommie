@@ -4,6 +4,10 @@
 # Points Score its faculties work out their own way, which marks alone don't give us: no points rule yet.
 # Nobody has checked these values yet: release stays false until a person has compared every one with its
 # source.
+#
+# The 34 programmes (agent draft, 15 Oct 2026) follow the qualification codes in UCT's 2027 directions for
+# applicants, with each one's subject minimums and Faculty Points Score bands from the 2027 Undergraduate Prospectus;
+# docs/research/uct.md says what was read, what was left out and what to check first.
 
 university: uct
 name: University of Cape Town
@@ -28,7 +32,560 @@ applications:
       closes: 2026-07-31
       note: "Fine Art portfolios were due by 31 August 2026."
 
-programmes: []
+programmes:
+
+  # Commerce (prospectus pages 23 to 31). Applicants choose one of four codes (directions, page 17): Actuarial
+  # Science, or all other specialisations, each mainstream or Academic Development. The BCom or BBusSc and the
+  # specialisation are chosen at the end of Orientation, provided the final marks meet that specialisation's criteria.
+
+  - id: bcom_bbussc_general
+    name: "Bachelor of Commerce or Bachelor of Business Science: all specialisations other than Actuarial Science"
+    fields: [commerce, accounting, economics]
+    requirements:
+      source: s-uct-prospectus-2027
+      min_points: null
+      subject_min_percents: {mathematics: 60, english: 50}
+      extras:
+        - &uct_com_fps "UCT ranks Commerce applicants by a Faculty Points Score (FPS): six subjects' percentages, out of 600: English, any subject the programme requires and your best other subjects, without Life Orientation (UCT's 2027 prospectus, pages 15 and 16). The app can't work this out for you yet."
+        - &uct_com_bands "Guaranteed admission with an FPS of 435 or more; likely admission with a Weighted Points Score (your FPS raised by UCT's disadvantage factor of up to 10%, South African applicants only) of 470 or more. An FPS of 430 to 434 may lead to an offer in the Education Development Unit only, for South African applicants in UCT's redress categories."
+        - &uct_com_eng "English Home Language at 50% or more, or English First Additional Language at 60% or more."
+        - &uct_com_nbt "Every Commerce applicant must write the National Benchmark Tests: Academic Literacy and Quantitative Literacy at Upper Intermediate or above. The Mathematics test isn't needed for Commerce."
+        - "Specialisations named in the prospectus: BBusSc in Economics, Economics with Law, Finance, Investment and Banking, Finance with Accounting, Information Systems, Marketing, and Industrial and Organisational Psychology; BCom in Financial Accounting (General or Chartered Accountant), Economics with Law, Economics with Finance, Economics and Statistics, Information Systems, Information Systems and Finance, Management Studies, and Philosophy, Politics and Economics. Computer Science and Statistics and Data Science need Mathematics at 70% (listed separately)."
+        - "The BCom takes three years and the BBusSc four."
+
+  - id: bcom_bbussc_computing_data_science
+    name: "Bachelor of Commerce or Bachelor of Business Science: Computer Science, or Statistics and Data Science"
+    fields: [computing, mathematical_sciences, commerce]
+    requirements:
+      source: s-uct-prospectus-2027
+      min_points: null
+      subject_min_percents: {mathematics: 70, english: 50}
+      extras:
+        - "You apply under 'all specialisations other than Actuarial Science' and choose this specialisation at the end of Orientation, if your final marks meet its criteria (UCT's 2027 directions for applicants, page 17)."
+        - *uct_com_fps
+        - *uct_com_bands
+        - *uct_com_eng
+        - *uct_com_nbt
+        - "The prospectus gives Mathematics 70% for the Computer Science and Statistics and Data Science specialisation. It doesn't say whether the BCom in Information Systems and Computer Science is included: check with UCT."
+
+  - id: bcom_bbussc_actuarial_science
+    name: "Bachelor of Commerce or Bachelor of Business Science: Actuarial Science"
+    fields: [finance, mathematical_sciences, commerce]
+    requirements:
+      source: s-uct-prospectus-2027
+      min_points: null
+      subject_min_percents: {mathematics: 80, english: 60}
+      extras:
+        - *uct_com_fps
+        - "Guaranteed admission with an FPS of 500 or more; likely admission with a Weighted Points Score (your FPS raised by UCT's disadvantage factor of up to 10%, South African applicants only) of 525 or more. An FPS of 475 to 479 may lead to an offer in the Education Development Unit only, for South African applicants in UCT's redress categories."
+        - &uct_act_eng "English Home Language at 60% or more, or English First Additional Language at 80% or more (and then Proficient in the NBT Academic and Quantitative Literacy tests)."
+        - "Every Commerce applicant must write the National Benchmark Tests: Academic Literacy and Quantitative Literacy at Upper Intermediate or above."
+        - "Includes the Quantitative Finance stream. If you don't meet the Actuarial Science criteria but do meet the other Commerce criteria, UCT automatically offers you a place in those programmes instead (UCT's 2027 directions for applicants, page 17)."
+
+  - id: bcom_bbussc_general_adp
+    name: "Bachelor of Commerce or Bachelor of Business Science: Academic Development Programme (all specialisations other than Actuarial Science)"
+    fields: [commerce, accounting, economics]
+    requirements:
+      source: s-uct-prospectus-2027
+      min_points: null
+      subject_min_percents: {mathematics: 60, english: 50}
+      extras:
+        - &uct_adp "The Education Development Unit offers the same degrees with extra support, over the standard time or one year longer. UCT says South African applicants with a disadvantage factor above 1.0 may apply, and it may also offer places to applicants who don't meet the mainstream requirements but whose NBT results show potential."
+        - *uct_com_fps
+        - "The prospectus's figure for an Education Development Unit offer: an FPS of 430 to 434 (Band C, South African applicants in UCT's redress categories only)."
+        - *uct_com_eng
+        - *uct_com_nbt
+
+  - id: bcom_bbussc_actuarial_science_adp
+    name: "Bachelor of Commerce or Bachelor of Business Science: Academic Development Programme (Actuarial Science)"
+    fields: [finance, mathematical_sciences, commerce]
+    requirements:
+      source: s-uct-prospectus-2027
+      min_points: null
+      subject_min_percents: {mathematics: 80, english: 60}
+      extras:
+        - *uct_adp
+        - *uct_com_fps
+        - "The prospectus's figure for an Education Development Unit offer: an FPS of 475 to 479 (Band C, South African applicants in UCT's redress categories only)."
+        - *uct_act_eng
+        - "Every Commerce applicant must write the National Benchmark Tests: Academic Literacy and Quantitative Literacy at Upper Intermediate or above."
+
+  # Engineering and the Built Environment (prospectus pages 32 to 38). NBT results aren't used for admission here.
+
+  - id: bas
+    name: "Bachelor of Architectural Studies"
+    fields: [built_environment, arts_and_design]
+    selective: true
+    selection_note: "All applicants must submit a written motivation and a portfolio of creative work; the Architecture Portfolio Score counts towards admission."
+    requirements:
+      source: s-uct-prospectus-2027
+      min_points: null
+      subject_min_percents: {mathematics: 50, english: 50}
+      extras:
+        - &uct_ebe_fps "UCT ranks Engineering and the Built Environment applicants by a Faculty Points Score (FPS): six subjects' percentages, out of 600: English, any subject the programme requires and your best other subjects, without Life Orientation (UCT's 2027 prospectus, pages 15 and 16). The app can't work this out for you yet."
+        - "Guaranteed admission with an FPS of 450 or more and a portfolio score of 75% or more; likely admission with a Weighted Points Score (your FPS raised by UCT's disadvantage factor, South African applicants only) of 408 or more and a portfolio score of 68%; possible admission with an FPS of 348 or more and a portfolio score of 50%, for South African applicants in UCT's redress categories only."
+        - &uct_ebe_nbt "Write the National Benchmark Tests (Academic and Quantitative Literacy, and Mathematics), although this faculty doesn't use their results for admission."
+
+  - id: bsc_construction_studies
+    name: "Bachelor of Science in Construction Studies"
+    fields: [built_environment]
+    requirements:
+      source: s-uct-prospectus-2027
+      min_points: null
+      subject_min_percents: {mathematics: 65, physical_sciences: 55}
+      extras:
+        - *uct_ebe_fps
+        - "Guaranteed admission with an FPS of 450 or more and Physical Sciences at 60% or more; likely admission with a Weighted Points Score (your FPS raised by UCT's disadvantage factor, South African applicants only) of 420 or more; possible admission with an FPS of 390 or more, for South African applicants in UCT's redress categories only."
+        - &uct_ebe_subs "Mathematical Literacy or Technical Mathematics can't replace Mathematics, and Technical Sciences can't replace Physical Sciences."
+        - *uct_ebe_nbt
+
+  - id: bsc_property_studies
+    name: "Bachelor of Science in Property Studies"
+    fields: [built_environment, finance]
+    requirements:
+      source: s-uct-prospectus-2027
+      min_points: null
+      subject_min_percents: {mathematics: 65}
+      extras:
+        - *uct_ebe_fps
+        - "Guaranteed admission with an FPS of 450 or more; likely admission with a Weighted Points Score (your FPS raised by UCT's disadvantage factor, South African applicants only) of 420 or more; possible admission with an FPS of 390 or more, for South African applicants in UCT's redress categories only."
+        - *uct_ebe_subs
+        - *uct_ebe_nbt
+
+  - id: bsc_eng_chemical
+    name: "Bachelor of Science in Engineering in Chemical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-uct-prospectus-2027
+      min_points: null
+      subject_min_percents: {mathematics: 80, physical_sciences: 70}
+      extras:
+        - *uct_ebe_fps
+        - "Guaranteed admission with an FPS of 500 or more and Physical Sciences at 75% or more; likely admission with a Weighted Points Score (your FPS raised by UCT's disadvantage factor, South African applicants only) of 480 or more; possible admission with an FPS of 420 or more, for South African applicants in UCT's redress categories only."
+        - *uct_ebe_subs
+        - *uct_ebe_nbt
+
+  - id: bsc_eng_civil
+    name: "Bachelor of Science in Engineering in Civil Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-uct-prospectus-2027
+      min_points: null
+      subject_min_percents: {mathematics: 80, physical_sciences: 70}
+      extras:
+        - *uct_ebe_fps
+        - &uct_eng_bands "Guaranteed admission with an FPS of 500 or more; likely admission with a Weighted Points Score (your FPS raised by UCT's disadvantage factor, South African applicants only) of 480 or more; possible admission with an FPS of 420 or more, for South African applicants in UCT's redress categories only."
+        - *uct_ebe_subs
+        - *uct_ebe_nbt
+        - &uct_eng_extended "Every engineering student starts on the four-year curriculum; in the first five weeks UCT identifies students who would benefit from the five-year extended curriculum (ASPECT), and students may also choose it."
+
+  - id: bsc_eng_electrical
+    name: "Bachelor of Science in Engineering in Electrical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-uct-prospectus-2027
+      min_points: null
+      subject_min_percents: {mathematics: 80, physical_sciences: 75}
+      extras:
+        - *uct_ebe_fps
+        - *uct_eng_bands
+        - *uct_ebe_subs
+        - *uct_ebe_nbt
+        - *uct_eng_extended
+
+  - id: bsc_eng_electrical_computer
+    name: "Bachelor of Science in Engineering in Electrical & Computer Engineering"
+    fields: [engineering, computing]
+    requirements:
+      source: s-uct-prospectus-2027
+      min_points: null
+      subject_min_percents: {mathematics: 80, physical_sciences: 75}
+      extras:
+        - *uct_ebe_fps
+        - *uct_eng_bands
+        - *uct_ebe_subs
+        - *uct_ebe_nbt
+        - *uct_eng_extended
+
+  - id: bsc_eng_mechatronics
+    name: "Bachelor of Science in Engineering in Mechatronics"
+    fields: [engineering]
+    requirements:
+      source: s-uct-prospectus-2027
+      min_points: null
+      subject_min_percents: {mathematics: 80, physical_sciences: 75}
+      extras:
+        - *uct_ebe_fps
+        - *uct_eng_bands
+        - *uct_ebe_subs
+        - *uct_ebe_nbt
+        - *uct_eng_extended
+
+  - id: bsc_eng_mechanical
+    name: "Bachelor of Science in Engineering in Mechanical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-uct-prospectus-2027
+      min_points: null
+      subject_min_percents: {mathematics: 80, physical_sciences: 75}
+      extras:
+        - *uct_ebe_fps
+        - *uct_eng_bands
+        - *uct_ebe_subs
+        - *uct_ebe_nbt
+        - *uct_eng_extended
+
+  - id: bsc_eng_mechanical_mechatronic
+    name: "Bachelor of Science in Engineering in Mechanical & Mechatronic Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-uct-prospectus-2027
+      min_points: null
+      subject_min_percents: {mathematics: 80, physical_sciences: 75}
+      extras:
+        - *uct_ebe_fps
+        - *uct_eng_bands
+        - *uct_ebe_subs
+        - *uct_ebe_nbt
+        - *uct_eng_extended
+
+  - id: bsc_geomatics
+    name: "Bachelor of Science in Geomatics"
+    fields: [built_environment, earth_sciences]
+    requirements:
+      source: s-uct-prospectus-2027
+      min_points: null
+      subject_min_percents: {mathematics: 65, physical_sciences: 60}
+      extras:
+        - *uct_ebe_fps
+        - "Guaranteed admission with an FPS of 450 or more, Mathematics at 75% and Physical Sciences at 70%; probable admission with a Weighted Points Score (your FPS raised by UCT's disadvantage factor, South African applicants only) of 420 or more; possible admission with an FPS of 390 or more, for South African applicants in UCT's redress categories only."
+        - *uct_ebe_subs
+        - *uct_ebe_nbt
+        - "A four-year degree; the 2027 directions for applicants list two streams, Surveying and Geoinformatics."
+
+  # Health Sciences (prospectus pages 39 to 47). Places are from page 41.
+
+  - id: mbchb
+    name: "Bachelor of Medicine and Bachelor of Surgery (MBChB)"
+    fields: [medicine]
+    selective: true
+    places: 240
+    selection_note: &uct_hs_sel "UCT's Health Sciences faculty receives far more applications than it has places, and competition is significant. It ranks applicants by a Faculty Points Score out of 900: your Admission Points Score (English, Mathematics, Physical Sciences and your next three best subjects' percentages, without Life Orientation) plus your three NBT scores. First-choice applicants are prioritised."
+    requirements:
+      source: s-uct-prospectus-2027
+      min_points: null
+      subject_min_percents: {mathematics: 70, physical_sciences: 70, english: 65}
+      additional_minimums: [6, 6, 6]
+      extras:
+        - "English Home Language or First Additional Language at 65% or more, and at least 70% in each of your next three best subjects other than Life Orientation."
+        - "Your Admission Points Score (out of 600) must be at least 450."
+        - "Guaranteed admission with an FPS of 810 or more and Proficient in all three NBTs; likely admission with a Weighted Points Score (your FPS raised by UCT's disadvantage factor of up to 20%, South African applicants only) of 807 or more and Intermediate or above in the NBTs; possible admission with an FPS of 644 or more, for South African applicants in UCT's redress categories only."
+        - &uct_hs_nbt "Write the National Benchmark Tests (Academic and Quantitative Literacy, and Mathematics) by 31 July 2026 to be considered for a conditional offer; the last date for UCT is 3 October 2026."
+        - &uct_hs_res "Open to South African citizens and permanent residents, and to applicants from some SADC countries only (prospectus, page 41)."
+
+  - id: bsc_physiotherapy
+    name: "Bachelor of Science in Physiotherapy"
+    fields: [rehabilitation, health_sciences]
+    selective: true
+    places: 70
+    selection_note: *uct_hs_sel
+    requirements:
+      source: s-uct-prospectus-2027
+      min_points: null
+      subject_min_percents: {mathematics: 60, english: 65}
+      choices:
+        - one_of:
+            - subjects: {physical_sciences: 5}
+            - subjects: {life_sciences: 5}
+      additional_minimums: [5, 5, 5]
+      extras:
+        - &uct_hs_pslsc "Physical Sciences or Life Sciences at 65% or more: level 5 starts at 60%, so check your percentage."
+        - "English Home Language or First Additional Language at 65% or more, and at least 60% in each of your next three best subjects other than Life Orientation."
+        - "Your Admission Points Score (out of 600) must be at least 360."
+        - "Guaranteed admission with an FPS of 730 or more; likely admission with a Weighted Points Score (your FPS raised by UCT's disadvantage factor of up to 20%, South African applicants only) of 797 or more; possible admission for South African applicants in UCT's redress categories with an FPS of 580, 610 or 680 or more depending on the category. All bands need Intermediate or above in the three NBTs."
+        - *uct_hs_nbt
+        - *uct_hs_res
+
+  - id: bsc_occupational_therapy
+    name: "Bachelor of Science in Occupational Therapy"
+    fields: [rehabilitation, health_sciences]
+    selective: true
+    places: 70
+    selection_note: *uct_hs_sel
+    requirements:
+      source: s-uct-prospectus-2027
+      min_points: null
+      subject_min_percents: {english: 65}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 5}
+            - subjects: {mathematical_literacy: 6}
+        - one_of:
+            - subjects: {physical_sciences: 5}
+            - subjects: {life_sciences: 5}
+      additional_minimums: [5, 5, 5]
+      extras:
+        - &uct_hs_maths "Mathematics at 60% or more, or Mathematical Literacy at 70% or more."
+        - *uct_hs_pslsc
+        - &uct_hs_rest "English Home Language or First Additional Language at 65% or more, at least 60% in each of your next three best subjects other than Life Orientation, and an Admission Points Score (out of 600) of at least 340."
+        - "Guaranteed admission with an FPS of 730 or more; likely admission with a Weighted Points Score (your FPS raised by UCT's disadvantage factor of up to 20%, South African applicants only) of 782 or more; possible admission for South African applicants in UCT's redress categories with an FPS of 565, 580 or 670 or more depending on the category. All bands need Intermediate or above in the NBTs."
+        - &uct_hs_ml "With Mathematical Literacy above 75% you needn't write the NBT Mathematics test: UCT works out an equivalent score as your Quantitative Literacy score minus 20."
+        - *uct_hs_nbt
+        - *uct_hs_res
+
+  - id: bsc_audiology
+    name: "Bachelor of Science in Audiology"
+    fields: [rehabilitation, health_sciences]
+    selective: true
+    places: 37
+    selection_note: *uct_hs_sel
+    requirements:
+      source: s-uct-prospectus-2027
+      min_points: null
+      subject_min_percents: {english: 65}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 5}
+            - subjects: {mathematical_literacy: 6}
+        - one_of:
+            - subjects: {physical_sciences: 5}
+            - subjects: {life_sciences: 5}
+      additional_minimums: [5, 5, 5]
+      extras:
+        - *uct_hs_maths
+        - *uct_hs_pslsc
+        - *uct_hs_rest
+        - "Guaranteed admission with an FPS of 720 or more; likely admission with a Weighted Points Score (your FPS raised by UCT's disadvantage factor of up to 20%, South African applicants only) of 710 or more; possible admission for South African applicants in UCT's redress categories with an FPS of 550, 565 or 610 or more depending on the category. All bands need Intermediate or above in the NBTs."
+        - *uct_hs_ml
+        - *uct_hs_nbt
+        - *uct_hs_res
+
+  - id: bsc_speech_language_pathology
+    name: "Bachelor of Science in Speech-Language Pathology"
+    fields: [rehabilitation, health_sciences]
+    selective: true
+    places: 40
+    selection_note: *uct_hs_sel
+    requirements:
+      source: s-uct-prospectus-2027
+      min_points: null
+      subject_min_percents: {english: 65}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 5}
+            - subjects: {mathematical_literacy: 6}
+        - one_of:
+            - subjects: {physical_sciences: 5}
+            - subjects: {life_sciences: 5}
+      additional_minimums: [5, 5, 5]
+      extras:
+        - *uct_hs_maths
+        - *uct_hs_pslsc
+        - *uct_hs_rest
+        - "Guaranteed admission with an FPS of 715 or more; likely admission with a Weighted Points Score (your FPS raised by UCT's disadvantage factor of up to 20%, South African applicants only) of 670 or more; possible admission for South African applicants in UCT's redress categories with an FPS of 510, 515 or 600 or more depending on the category. All bands need Intermediate or above in the NBTs."
+        - "Applicants with Mathematical Literacy are considered individually, and not at all with any NBT result in the Basic range."
+        - *uct_hs_ml
+        - *uct_hs_nbt
+        - *uct_hs_res
+
+  - id: hc_disability_practice
+    name: "Higher Certificate in Disability Practice"
+    fields: [rehabilitation, health_sciences]
+    selective: true
+    places: 30
+    selection_note: "UCT's Health Sciences faculty has a limited number of places and competition is significant. This one-year certificate runs only if enough people apply."
+    requirements:
+      source: s-uct-prospectus-2027
+      min_points: null
+      extras:
+        - "A National Senior Certificate (or an approved level 4 school-leaving qualification); UCT names no subject minimums."
+        - "National Benchmark Tests: Academic and Quantitative Literacy at Upper Intermediate to Proficient. You needn't write the Mathematics test."
+        - "For home-based carers and school-leavers interested in community-based disability practice."
+
+  # Humanities (prospectus pages 48 to 58). Life Orientation must be passed at 50% (page 54).
+
+  - id: ba
+    name: "Bachelor of Arts (BA)"
+    fields: [humanities, languages_and_communication]
+    requirements:
+      source: s-uct-prospectus-2027
+      min_points: null
+      subject_min_percents: {english: 50, life_orientation: 50}
+      extras:
+        - &uct_hum_fps "UCT ranks Humanities applicants by a Faculty Points Score (FPS): six subjects' percentages, out of 600: English, any subject the programme requires and your best other subjects, without Life Orientation (UCT's 2027 prospectus, pages 15 and 16). The app can't work this out for you yet."
+        - &uct_hum_bands "Minimum: an FPS of 380 and Intermediate in the NBT Academic Literacy test. Guaranteed admission with an FPS of 450 or more and Proficient Academic Literacy; likely admission with a Weighted Points Score (your FPS raised by UCT's disadvantage factor, South African applicants only) of 450 or more and Upper Intermediate; an FPS of 380 or more with Intermediate is possible admission for South African applicants in UCT's redress categories only."
+        - &uct_hum_eng "English Home Language at 50% or more, or English First Additional Language at 60% or more."
+        - &uct_hum_nbt "Write the NBT Academic and Quantitative Literacy test (the Mathematics test only if you plan to take Mathematics courses). A Lower Intermediate or Basic Academic Literacy score usually rules out degree study in Humanities."
+        - &uct_hum_majors "You're accepted for the degree, not a major. Economics needs Mathematics at 60%; Psychology needs Mathematics at 50% or Proficient in NBT Quantitative Literacy; Law, and majors from the Commerce and Science faculties, have their own requirements. Film and Media Production is a BA specialisation selected in the second year."
+        - &uct_hum_ext "UCT may place South African applicants who show potential in a four-year extended programme with extra support, based on their NBT results, FPS and educational background."
+
+  - id: bsocsc
+    name: "Bachelor of Social Science (BSocSc)"
+    fields: [humanities]
+    requirements:
+      source: s-uct-prospectus-2027
+      min_points: null
+      subject_min_percents: {english: 50, life_orientation: 50}
+      extras:
+        - *uct_hum_fps
+        - *uct_hum_bands
+        - *uct_hum_eng
+        - *uct_hum_nbt
+        - *uct_hum_majors
+        - *uct_hum_ext
+        - "UCT treats the BA and the BSocSc as one qualification for admission: don't choose both as your first and second choices (UCT's 2027 directions for applicants, page 19)."
+
+  - id: bsocsc_ppe
+    name: "Bachelor of Social Science in Philosophy, Politics and Economics"
+    fields: [humanities, economics]
+    requirements:
+      source: s-uct-prospectus-2027
+      min_points: null
+      subject_min_percents: {mathematics: 60, english: 50, life_orientation: 50}
+      extras:
+        - *uct_hum_fps
+        - "Minimum: an FPS of 450, with Upper Intermediate in both NBT Academic Literacy and Quantitative Literacy. Guaranteed admission with an FPS of 450 or more, Proficient Academic Literacy and Upper Intermediate or above in Quantitative Literacy."
+        - *uct_hum_eng
+        - "A three-year structured degree."
+
+  - id: bsw
+    name: "Bachelor of Social Work"
+    fields: [humanities]
+    selective: true
+    places: 80
+    selection_note: "Applicants may be asked to attend an admissions interview and show that they will meet the professional requirements of the South African Council for Social Service Professions. UCT accepts at most 80 students a year."
+    requirements:
+      source: s-uct-prospectus-2027
+      min_points: null
+      subject_min_percents: {english: 50, life_orientation: 50}
+      extras:
+        - *uct_hum_fps
+        - *uct_hum_bands
+        - *uct_hum_eng
+        - *uct_hum_nbt
+        - "A four-year structured degree; first-year Psychology is part of it."
+
+  - id: ba_fine_art
+    name: "Bachelor of Arts in Fine Art"
+    fields: [arts_and_design]
+    selective: true
+    selection_note: "A portfolio evaluation and a supplementary questionnaire: the portfolio is the leading indicator for admission, and places are awarded on merit."
+    requirements:
+      source: s-uct-prospectus-2027
+      min_points: null
+      subject_min_percents: {english: 50, life_orientation: 50}
+      extras:
+        - *uct_hum_fps
+        - "Minimum: an FPS of 380 and Intermediate in the NBT Academic Literacy test. South African applicants in UCT's redress categories who excel in the portfolio may be considered below these minimums."
+        - *uct_hum_eng
+
+  - id: ba_theatre_performance
+    name: "Bachelor of Arts in Theatre & Performance"
+    fields: [performing_arts]
+    selective: true
+    selection_note: &uct_audition "An audition is the leading indicator for admission, and places are awarded on merit."
+    requirements:
+      source: s-uct-prospectus-2027
+      min_points: null
+      subject_min_percents: {english: 50, life_orientation: 50}
+      extras:
+        - *uct_hum_fps
+        - "Minimum: an FPS of 380 and Intermediate in the NBT Academic Literacy test. South African applicants in UCT's redress categories who excel in the audition may be considered for the Diploma in Theatre & Performance instead."
+        - *uct_hum_eng
+        - "A four-year degree in Dance or Theatre."
+
+  - id: bmus
+    name: "Bachelor of Music"
+    fields: [music, performing_arts]
+    selective: true
+    selection_note: "An audition, an interview and a music theory test: the audition is the leading indicator for admission, and places are awarded on merit."
+    requirements:
+      source: s-uct-prospectus-2027
+      min_points: null
+      subject_min_percents: {music: 60, english: 50, life_orientation: 50}
+      extras:
+        - *uct_hum_fps
+        - "Minimum: an FPS of 380 and Intermediate in the NBT Academic Literacy test. South African applicants in UCT's redress categories who excel in the audition may be considered for the Diploma in Music Performance instead."
+        - *uct_hum_eng
+        - "Also Unisa Music Theory Grade V and Unisa Music Practical Grade VII or above. UCT's NSC guidelines say NSC Music at 60% 'or equivalent'."
+        - "A four-year degree; the 2027 directions for applicants list the General, African Music Performance and Jazz Studies streams."
+
+  - id: dip_music_performance
+    name: "Diploma in Music Performance"
+    fields: [music, performing_arts]
+    selective: true
+    selection_note: "An audition, an interview and a music theory test: the audition is the leading indicator for admission, and places are awarded on merit."
+    requirements:
+      source: s-uct-prospectus-2027
+      min_points: null
+      subject_min_percents: {english: 50, life_orientation: 50}
+      extras:
+        - "A National Senior Certificate endorsed for diploma study, and Intermediate in the NBT Academic Literacy test."
+        - *uct_hum_eng
+        - "A three-year diploma in African Music, Classical, Jazz Studies, Opera or World Music."
+
+  - id: dip_theatre_performance
+    name: "Diploma in Theatre & Performance"
+    fields: [performing_arts]
+    selective: true
+    selection_note: *uct_audition
+    requirements:
+      source: s-uct-prospectus-2027
+      min_points: null
+      subject_min_percents: {english: 50, life_orientation: 50}
+      extras:
+        - "A National Senior Certificate endorsed for diploma study, and Intermediate in the NBT Academic Literacy test."
+        - *uct_hum_eng
+        - "A three-year diploma in Dance or Theatre."
+
+  # Law (prospectus pages 59 to 63): only the four-year LLB takes school-leavers.
+
+  - id: llb
+    name: "Bachelor of Laws (LLB), four years"
+    fields: [law]
+    selective: true
+    selection_note: "Applications far exceed the places: if more applicants meet the criteria than there are places, only the best get offers. UCT considers your school results and your NBT Academic and Quantitative Literacy scores."
+    requirements:
+      source: s-uct-prospectus-2027
+      min_points: null
+      extras:
+        - "UCT ranks Law applicants by a Faculty Points Score (FPS): six subjects' percentages, out of 600: English, any subject the programme requires and your best other subjects, without Life Orientation (UCT's 2027 prospectus, pages 15 and 16). The app can't work this out for you yet. UCT names no subject minimums for the LLB."
+        - "Guaranteed admission with an FPS of 500 or more, Proficient in NBT Academic Literacy and Intermediate or above in Quantitative Literacy; likely admission with a Weighted Points Score (your FPS raised by UCT's disadvantage factor, South African applicants only) of 500 or more and the same NBT scores; possible admission with an FPS of 470 or more and Proficient in both, for South African applicants in UCT's redress categories only. International applicants need an FPS of 510."
+        - "Other routes to an LLB: a BA, BSocSc, BCom or BBusSc with Law courses, then a two-year graduate LLB."
+
+  # Science (prospectus pages 64 to 70): one degree, the BSc, with two majors chosen when you apply.
+
+  - id: bsc
+    name: "Bachelor of Science (BSc)"
+    fields: [natural_sciences, physical_sciences, life_sciences]
+    requirements:
+      source: s-uct-prospectus-2027
+      min_points: null
+      subject_min_percents: {mathematics: 70}
+      choices:
+        - one_of:
+            - subjects: {physical_sciences: 5}
+            - subjects: {information_technology: 5}
+      extras:
+        - &uct_sci_fps "UCT ranks Science applicants by a Faculty Points Score (FPS) out of 800: your best six subjects' percentages, including English and without Life Orientation, with Mathematics and Physical Sciences counted twice (UCT's 2027 prospectus, page 69). The app can't work this out for you yet."
+        - &uct_sci_bands "Minimum FPS 550. Guaranteed admission with an FPS of 660 or more; likely admission with a Weighted Points Score (your FPS raised by UCT's disadvantage factor, South African applicants only) of 640 or more; an FPS of 550 or more is possible admission for South African applicants in UCT's redress categories. Most offers go to applicants in the guaranteed band."
+        - "Physical Sciences at 60% or more. Information Technology at 60% can replace it only for the Computer Science and Business Computing majors, where you didn't take Physical Sciences."
+        - &uct_sci_nbt "Write all three National Benchmark Tests: they aren't used for admission, but they help decide who moves to the four-year Extended Degree Programme."
+        - "Majors: Applied Mathematics, Applied Statistics, Archaeology, Artificial Intelligence, Astrophysics, Biochemistry, Biology, Business Computing, Chemistry, Computer Engineering, Computer Science, Environmental & Geographical Science, Genetics, Geology, Human Anatomy & Physiology, Marine Biology, Mathematical Statistics, Mathematics, Ocean & Atmosphere Science, Physics, Quantitative Biology, and Statistics & Data Science. Biochemistry, Computer Science (and related majors), Genetics, and Human Anatomy & Physiology have limited places, given on academic criteria during the first year."
+
+  - id: bsc_archaeology_egs
+    name: "Bachelor of Science (BSc) without Physical Sciences: Archaeology, or Environmental & Geographical Science"
+    fields: [earth_sciences, natural_sciences]
+    requirements:
+      source: s-uct-prospectus-2027
+      min_points: null
+      subject_min_percents: {mathematics: 70}
+      extras:
+        - "Without Physical Sciences or Information Technology, UCT restricts your majors to Archaeology and Environmental & Geographical Science."
+        - *uct_sci_fps
+        - "Without Physical Sciences, UCT may count Information Technology or Life Sciences twice instead, in specific cases only."
+        - *uct_sci_bands
+        - *uct_sci_nbt
 
 sources:
   - id: s-uct-apply
@@ -43,5 +600,12 @@ sources:
     publisher: "University of Cape Town"
     title: "2027 directions for undergraduate applicants"
     retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-uct-prospectus-2027
+    url: "https://uct.ac.za/sites/default/files/media/documents/2027-uct-undergraduate-prospectus-1-april-2026.pdf"
+    publisher: "University of Cape Town"
+    title: "2027 Undergraduate Prospectus (points scores pages 15 to 17; faculty admission requirements pages 27 to 28, 36 to 37, 41 to 45, 54 to 58, 62 and 69)"
+    retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"

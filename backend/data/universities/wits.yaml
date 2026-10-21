@@ -2,7 +2,9 @@
 #
 # Agent draft, from Wits's own pages read on 13 Oct 2026 (docs/research/universities.md). Nobody has
 # checked these values yet: release stays false until a person has compared every one with its source.
-# Programmes aren't added yet: only how Wits counts points, and how and when to apply.
+#
+# The 85 programmes (agent draft, 14 Oct 2026) come from Wits's own course-finder pages for the 2027 intake, one
+# source per page; docs/research/wits.md says what was read, what was left out and what to check first.
 
 university: wits
 name: University of the Witwatersrand
@@ -62,7 +64,1067 @@ applications:
       closes: 2026-09-30
       note: "Applications opened in March 2026. Every Health Sciences programme closed on 30 June 2026, as did Architectural Studies, Audiology, Speech-Language Pathology and BA Film and TV."
 
-programmes: []
+# Every programme below comes from its own page in Wits's course finder (read 14 Oct 2026), which gives the 2027
+# intake's closing dates. Where a page states a wait-list range, it's in extras: the minimum is the "APS nn+" figure.
+programmes:
+
+  # Commerce, Law and Management
+
+  - id: bcom_general
+    name: "Bachelor of Commerce (General)"
+    fields: [commerce]
+    requirements:
+      source: s-wits-clm-bcom
+      min_points: 38
+      subject_minimums: {english: 5, mathematics: 5}
+      extras:
+        - "Wits may wait-list applicants with an APS of 35 to 37 who have English and Mathematics at level 6, subject to place availability."
+        - "You choose your majors from second year: Economics, Finance, Information Systems, Insurance and Risk Management, Human Resource Management, Marketing and Management, the School of Accountancy's courses, or approved majors from other faculties."
+
+  - id: bcom_accounting
+    name: "BCom: Accounting"
+    fields: [accounting, commerce]
+    requirements:
+      source: s-wits-clm-accounting
+      min_points: 38
+      subject_minimums: {english: 5, mathematics: 5}
+      extras:
+        - "Wits may wait-list applicants with an APS of 35 to 37 who have English and Mathematics at level 6, subject to place availability."
+
+  - id: baccsc
+    name: "Bachelor of Accounting Science (BAccSc)"
+    fields: [accounting, commerce]
+    requirements:
+      source: s-wits-clm-baccsc
+      min_points: 44
+      subject_minimums: {english: 5, mathematics: 6}
+      extras:
+        - "Wits may wait-list applicants with an APS of 39 to 43 who have English and Mathematics at level 6, subject to place availability."
+
+  - id: bcom_financial_sciences
+    name: "BCom in the field of Financial Sciences"
+    fields: [finance, commerce]
+    requirements:
+      source: s-wits-clm-financial-sciences
+      min_points: 42
+      subject_minimums: {english: 5, mathematics: 7}
+      extras:
+        - "Wits may wait-list applicants with an APS of 39 to 41 who have English at level 5 and Mathematics at level 7, subject to place availability."
+
+  - id: beconsc
+    name: "BEconSc: Economic Science"
+    fields: [economics, commerce]
+    requirements:
+      source: s-wits-clm-beconsc
+      min_points: 42
+      subject_minimums: {english: 5, mathematics: 7}
+      extras:
+        - "Wits may wait-list applicants with an APS of 39 to 41 who have English at level 5 and Mathematics at level 7, subject to place availability."
+
+  - id: bcom_economics
+    name: "BCom: Economics"
+    fields: [economics, commerce]
+    requirements:
+      source: s-wits-clm-economics
+      min_points: 38
+      subject_minimums: {english: 5, mathematics: 5}
+      extras:
+        - "Wits wait-lists applicants with an APS of 35 to 37 who have English and Mathematics at level 5, subject to place availability."
+        - "This page gives no programme code: Wits's BCom (General) page lists Economics among the majors BCom General students choose from second year."
+
+  - id: bcom_finance
+    name: "BCom: Finance"
+    fields: [finance, commerce]
+    requirements:
+      source: s-wits-clm-finance
+      min_points: 38
+      subject_minimums: {english: 5, mathematics: 5}
+      extras:
+        - "Wits wait-lists applicants with an APS of 35 to 37 who have English and Mathematics at level 5, subject to place availability."
+        - "This page gives no programme code: Wits's BCom (General) page lists Finance among the majors BCom General students choose from second year."
+
+  - id: bcom_hrm
+    name: "BCom: Human Resource Management"
+    fields: [management, commerce]
+    requirements:
+      source: s-wits-clm-hrm
+      min_points: 38
+      subject_minimums: {english: 5, mathematics: 5}
+      extras:
+        - "Wits wait-lists applicants with an APS of 35 to 37 who have English and Mathematics at level 5, subject to place availability."
+        - "This page gives no programme code: Wits's BCom (General) page lists Human Resource Management among the majors BCom General students choose from second year."
+
+  - id: bcom_information_systems
+    name: "BCom: Information Systems"
+    fields: [computing, commerce]
+    requirements:
+      source: s-wits-clm-information-systems
+      min_points: 38
+      subject_minimums: {english: 5, mathematics: 5}
+      extras:
+        - "Wits wait-lists applicants with an APS of 35 to 37 who have English and Mathematics at level 5, subject to place availability."
+
+  - id: bcom_insurance_risk
+    name: "BCom: Insurance and Risk Management"
+    fields: [finance, commerce]
+    requirements:
+      source: s-wits-clm-irm
+      min_points: 38
+      subject_minimums: {english: 5, mathematics: 5}
+      extras:
+        - "Wits wait-lists applicants with an APS of 35 to 37 who have English and Mathematics at level 5, subject to place availability."
+        - "This page gives no programme code: Wits's BCom (General) page lists Insurance and Risk Management among the majors BCom General students choose from second year."
+
+  - id: bcom_management
+    name: "BCom: Management"
+    fields: [management, commerce]
+    requirements:
+      source: s-wits-clm-management
+      min_points: 38
+      subject_minimums: {english: 5, mathematics: 5}
+      extras:
+        - "Wits wait-lists applicants with an APS of 35 to 37 who have English and Mathematics at level 5, subject to place availability."
+        - "This page gives no programme code: Wits's BCom (General) page lists Management among the majors BCom General students choose from second year."
+
+  - id: bcom_marketing
+    name: "BCom: Marketing"
+    fields: [management, commerce]
+    requirements:
+      source: s-wits-clm-marketing
+      min_points: 38
+      subject_minimums: {english: 5, mathematics: 5}
+      extras:
+        - "Wits wait-lists applicants with an APS of 35 to 37 who have English and Mathematics at level 5, subject to place availability."
+        - "This page gives no programme code: Wits's BCom (General) page lists Marketing among the majors BCom General students choose from second year."
+
+  - id: bcom_ppe
+    name: "BCom: Politics, Philosophy and Economics (PPE)"
+    fields: [economics, humanities, commerce]
+    requirements:
+      source: s-wits-clm-ppe
+      min_points: 38
+      subject_minimums: {english: 5, mathematics: 5}
+      extras:
+        - "Wits may wait-list applicants with an APS of 35 to 37 who have English and Mathematics at level 5, subject to place availability."
+
+  - id: bcom_law
+    name: "BCom with Law"
+    fields: [law, commerce]
+    requirements:
+      source: s-wits-clm-bcom-law
+      min_points: 43
+      subject_minimums: {english: 5, mathematics: 5}
+      extras:
+        - "Wits may wait-list applicants with an APS of 35 to 42 who have English and Mathematics at level 6, subject to place availability."
+
+  - id: llb
+    name: "Bachelor of Laws (LLB), four-year stream"
+    fields: [law]
+    requirements:
+      source: s-wits-clm-llb
+      min_points: 46
+      subject_minimums: {english: 6}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 5}
+            - subjects: {mathematical_literacy: 6}
+      extras:
+        - "Wits may wait-list applicants with an APS of 40 to 45 who have English at level 6 and Mathematics at level 5 or Mathematical Literacy at level 6, subject to place availability."
+        - "The four-year stream is the one for students who come to Wits straight after matric; the two- and three-year streams are for students who already have a degree."
+
+  - id: bcom_part_time
+    name: "BCom part-time"
+    fields: [commerce]
+    requirements:
+      source: s-wits-clm-bcom-part-time
+      min_points: 38
+      subject_minimums: {english: 5, mathematics: 5}
+      extras:
+        - "Wits writes this programme's APS as 38-43, so 38 is the minimum."
+        - "Wits wait-lists applicants with an APS of 35 to 37 who have English and Mathematics at level 6, subject to place availability."
+        - "Part-time, over 4 to 6 years. Part-time students can't get NSFAS funding, University Entrance Scholarships or a campus residence place."
+        - "If you narrowly miss the Mathematics requirement, Wits Plus's Maths for Access certificate course is an option: pass it with an average of at least 70% and you can apply for the BCom."
+
+  - id: bcom_part_time_law
+    name: "BCom part-time with Law"
+    fields: [commerce, law]
+    requirements:
+      source: s-wits-clm-bcom-part-time-law
+      min_points: 43
+      subject_minimums: {english: 5, mathematics: 5}
+      extras:
+        - "Wits wait-lists applicants with an APS of 35 to 42 who have English and Mathematics at level 6, subject to place availability."
+        - "Part-time, over 4 to 6 years: lectures are usually on weekday evenings (17:30 to 21:00) on the Braamfontein West Campus, some on Saturday mornings. Part-time students can't get NSFAS funding, University Entrance Scholarships or a campus residence place."
+
+  # Engineering and the Built Environment
+
+  - id: bsc_eng_aeronautical
+    name: "BSc (Eng): Aeronautical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-wits-ebe-aeronautical
+      min_points: 42
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+      extras:
+        - "Wits wait-lists applicants with English, Mathematics and Physical Sciences at level 5, subject to place availability; level 6 in all three gives a greater chance of being accepted."
+
+  - id: bsc_eng_chemical
+    name: "BSc (Eng): Chemical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-wits-ebe-chemical
+      min_points: 42
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+      extras:
+        - "Wits wait-lists applicants with English, Mathematics and Physical Sciences at level 5, subject to place availability; level 6 in all three gives a greater chance of being accepted."
+
+  - id: bsc_eng_civil
+    name: "BSc (Eng): Civil Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-wits-ebe-civil
+      min_points: 42
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+      extras:
+        - "Wits wait-lists applicants with English, Mathematics and Physical Sciences at level 5, subject to place availability; level 6 in all three gives a greater chance of being accepted."
+
+  - id: bsc_eng_electrical
+    name: "BSc (Eng): Electrical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-wits-ebe-electrical
+      min_points: 42
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+      extras:
+        - "Wits wait-lists applicants with English, Mathematics and Physical Sciences at level 5, subject to place availability; level 6 in all three gives a greater chance of being accepted."
+        - "All Wits engineering degrees share one first-year curriculum, so you can change your choice at the end of first year."
+
+  - id: bsc_eng_industrial
+    name: "BSc (Eng): Industrial Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-wits-ebe-industrial
+      min_points: 42
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+      extras:
+        - "Wits wait-lists applicants with English, Mathematics and Physical Sciences at level 5, subject to place availability; level 6 in all three gives a greater chance of being accepted."
+
+  - id: bsc_eng_information
+    name: "BSc (Eng): Information Engineering"
+    fields: [engineering, computing]
+    requirements:
+      source: s-wits-ebe-information
+      min_points: 42
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+      extras:
+        - "Wits wait-lists applicants with English, Mathematics and Physical Sciences at level 5, subject to place availability; level 6 in all three gives a greater chance of being accepted."
+
+  - id: bsc_eng_mechanical
+    name: "BSc (Eng): Mechanical Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-wits-ebe-mechanical
+      min_points: 42
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+      extras:
+        - "Wits wait-lists applicants with English, Mathematics and Physical Sciences at level 5, subject to place availability; level 6 in all three gives a greater chance of being accepted."
+
+  - id: bsc_eng_metallurgy
+    name: "BSc (Eng): Metallurgy and Materials Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-wits-ebe-metallurgy
+      min_points: 42
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+      extras:
+        - "Wits wait-lists applicants with English, Mathematics and Physical Sciences at level 5, subject to place availability; level 6 in all three gives a greater chance of being accepted."
+
+  - id: bsc_eng_mining
+    name: "BSc (Eng): Mining Engineering"
+    fields: [engineering]
+    requirements:
+      source: s-wits-ebe-mining
+      min_points: 42
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+      extras:
+        - "Wits wait-lists applicants with English, Mathematics and Physical Sciences at level 5, subject to place availability; level 6 in all three gives a greater chance of being accepted."
+
+  - id: bengsc_biomedical
+    name: "Bachelor of Engineering Science in Biomedical Engineering (BEngSc (BME))"
+    fields: [engineering, medical_sciences]
+    requirements:
+      source: s-wits-ebe-biomedical
+      min_points: 42
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+      extras:
+        - "Wits wait-lists applicants with English, Mathematics and Physical Sciences at level 5, subject to place availability; level 6 in all three gives a greater chance of being accepted."
+        - "A three-year pre-professional degree: it doesn't lead to professional registration on its own."
+    bridges_to:
+      - to: bsc_eng_electrical
+        guarantee: considered
+        conditions: "After the BEngSc (BME), you can apply for admission into the third year of the BSc (Eng) in Electrical Engineering."
+        source: s-wits-ebe-biomedical
+      - to: bsc_eng_information
+        guarantee: considered
+        conditions: "After the BEngSc (BME), you can apply for admission into the third year of the BSc (Eng) in Information Engineering."
+        source: s-wits-ebe-biomedical
+
+  - id: bengsc_digital_arts
+    name: "Bachelor of Engineering Science in Digital Arts"
+    fields: [computing, arts_and_design, engineering]
+    requirements:
+      source: s-wits-ebe-digital-arts
+      min_points: 42
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+      extras:
+        - "Wits wait-lists applicants with English, Mathematics and Physical Sciences at level 5, subject to place availability; level 6 in all three gives a greater chance of being accepted."
+    bridges_to:
+      - to: bsc_eng_information
+        guarantee: considered
+        conditions: "After the BEngSc in Digital Arts, you may continue into the third year of the BSc (Eng) (Electrical), Information Engineering option."
+        source: s-wits-ebe-digital-arts
+
+  - id: bsc_eng_part_time
+    name: "BSc Engineering part-time"
+    fields: [engineering]
+    requirements:
+      source: s-wits-ebe-part-time
+      min_points: 42
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+      extras:
+        - "Applicants with level 6 in English, Mathematics and Physical Sciences stand a greater chance of being accepted."
+        - "Only the first year is part-time, taken over two years; after it you move to full-time study for the remaining three years. Part-time students can't get NSFAS funding, University Entrance Scholarships or a campus residence place."
+
+  - id: bas
+    name: "Bachelor of Architectural Studies (BAS)"
+    fields: [built_environment, arts_and_design]
+    selective: true
+    selection_note: "Complete a written and graphic exercise; applicants who do well are invited to an interview. The exercise, the interview and your APS count equally, places are limited, and offers go by rank."
+    requirements:
+      source: s-wits-ebe-bas
+      min_points: 29
+      subject_min_percents: {english: 50, mathematics: 50}
+      extras:
+        - "Mathematical Literacy is not accepted. No other subjects are required."
+
+  - id: bsc_construction_studies
+    name: "Bachelor of Science in Construction Studies"
+    fields: [built_environment]
+    requirements:
+      source: s-wits-ebe-construction
+      min_points: 36
+      subject_minimums: {english: 5, mathematics: 5}
+      extras:
+        - "Wits wait-lists applicants with an APS of 30 to 35, subject to place availability."
+
+  - id: bsc_property_studies
+    name: "BSc (PS): Property Studies"
+    fields: [built_environment]
+    requirements:
+      source: s-wits-ebe-property
+      min_points: 36
+      subject_minimums: {english: 5, mathematics: 5}
+      extras:
+        - "Wits wait-lists applicants with an APS of 30 to 35, subject to place availability."
+
+  - id: bsc_urp
+    name: "Bachelor of Science in Urban and Regional Planning"
+    fields: [built_environment]
+    requirements:
+      source: s-wits-ebe-urp
+      min_points: 36
+      subject_minimums: {english: 5, mathematics: 5}
+      extras:
+        - "Wits wait-lists applicants with an APS of 30 to 35, subject to place availability."
+
+  # Health Sciences: no APS minimum; selection by a Composite Index that includes the NBT
+
+  - id: bhsc_biokinetics
+    name: "Bachelor of Health Sciences in the field of Biokinetics"
+    fields: [health_sciences, sport_science]
+    selective: true
+    selection_note: &wits_ci "Wits ranks applicants by a Composite Index: 75% is the average of your percentages in English, Mathematics, the better of Physical Sciences or Life Sciences, and your best two other subjects; 25% is your National Benchmark Test (NBT) scores."
+    requirements:
+      source: s-wits-health-biokinetics
+      min_points: null
+      subject_minimums: {english: 5, mathematics: 5}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 5}
+            - subjects: {physical_sciences: 5}
+      extras:
+        - &wits_nbt "Write the NBT in person (pen and paper): online results aren't considered, and only your first attempt in the most recent year counts. Wits's programme page says by 17 August; its additional-requirements page says 15 August."
+
+  - id: bhsc_biomedical_sciences
+    name: "Bachelor of Health Sciences in the field of Biomedical Sciences"
+    fields: [medical_sciences, life_sciences]
+    selective: true
+    selection_note: *wits_ci
+    requirements:
+      source: s-wits-health-biomedical-sciences
+      min_points: null
+      subject_minimums: {english: 5, mathematics: 5}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 5}
+            - subjects: {physical_sciences: 5}
+      extras:
+        - *wits_nbt
+
+  - id: bhsc_health_systems
+    name: "Bachelor of Health Sciences in the field of Health Systems Sciences"
+    fields: [health_sciences]
+    selective: true
+    selection_note: *wits_ci
+    requirements:
+      source: s-wits-health-health-systems
+      min_points: null
+      subject_minimums: {english: 5, mathematics: 5}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 5}
+            - subjects: {physical_sciences: 5}
+      extras:
+        - *wits_nbt
+
+  - id: bcmp
+    name: "BCMP: Clinical Medical Practice"
+    fields: [health_sciences, medicine]
+    selective: true
+    selection_note: *wits_ci
+    requirements:
+      source: s-wits-health-bcmp
+      min_points: null
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {mathematical_literacy: 7}
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - *wits_nbt
+        - "Offered to South African citizens only. Completing it isn't enough to be considered for the Graduate Entry Medical Programme (GEMP)."
+
+  - id: bds
+    name: "Bachelor of Dental Science (BDS)"
+    fields: [dentistry]
+    selective: true
+    selection_note: *wits_ci
+    requirements:
+      source: s-wits-health-bds
+      min_points: null
+      subject_minimums: {english: 5, mathematics: 5, life_sciences: 5, physical_sciences: 5}
+      extras:
+        - *wits_nbt
+        - "Upload a job-shadowing certificate of attendance: at least 16 hours observing a dentist, dental therapist or oral hygienist, done between 1 July 2025 and 31 July 2026. Without it you won't be considered."
+
+  - id: mbbch
+    name: "MBBCh: Medicine and Surgery"
+    fields: [medicine]
+    selective: true
+    selection_note: *wits_ci
+    requirements:
+      source: s-wits-health-mbbch
+      min_points: null
+      subject_minimums: {english: 5, mathematics: 5}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 5}
+            - subjects: {physical_sciences: 5}
+      extras:
+        - *wits_nbt
+        - "Grade 12 learners enter in first year; graduates can apply to enter third year through the Graduate Entry Medical Programme (GEMP). Wits considers no transfer applications."
+
+  - id: bnurs
+    name: "BNurs: Nursing"
+    fields: [nursing]
+    selective: true
+    selection_note: *wits_ci
+    requirements:
+      source: s-wits-health-nursing
+      min_points: null
+      subject_minimums: {english: 4, mathematics: 4}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - *wits_nbt
+
+  - id: bsc_ot
+    name: "BSc (OT): Occupational Therapy"
+    fields: [rehabilitation, health_sciences]
+    selective: true
+    selection_note: *wits_ci
+    requirements:
+      source: s-wits-health-ot
+      min_points: null
+      subject_minimums: {english: 4, mathematics: 4}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - *wits_nbt
+        - "Upload a job-shadowing certificate of attendance: at least 16 hours observing an occupational therapist, done between 1 July 2025 and 31 July 2026. Without it you won't be considered."
+
+  - id: bohsc
+    name: "BOHSc: Oral Health Sciences"
+    fields: [dentistry]
+    selective: true
+    selection_note: *wits_ci
+    requirements:
+      source: s-wits-health-bohsc
+      min_points: null
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {mathematical_literacy: 7}
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - *wits_nbt
+        - "Upload a job-shadowing certificate of attendance: at least 16 hours observing a dentist, dental therapist or oral hygienist, done between 1 July 2025 and 31 July 2026. Without it you won't be considered."
+
+  - id: bpharm
+    name: "BPharm: Pharmacy"
+    fields: [pharmacy]
+    selective: true
+    selection_note: *wits_ci
+    requirements:
+      source: s-wits-health-pharmacy
+      min_points: null
+      subject_minimums: {english: 5, mathematics: 5}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 5}
+            - subjects: {physical_sciences: 5}
+      extras:
+        - *wits_nbt
+
+  - id: bsc_physiotherapy
+    name: "BSc (Physiotherapy)"
+    fields: [rehabilitation, health_sciences]
+    selective: true
+    selection_note: *wits_ci
+    requirements:
+      source: s-wits-health-physiotherapy
+      min_points: null
+      subject_minimums: {english: 5, mathematics: 5}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 5}
+            - subjects: {physical_sciences: 5}
+      extras:
+        - *wits_nbt
+        - "Upload a job-shadowing certificate of attendance: at least 16 hours observing a physiotherapist, done between 1 July 2025 and 31 July 2026. Without it you won't be considered."
+
+  # Humanities (Mathematical Literacy is considered, except for Speech-Language Pathology and Audiology)
+
+  - id: ba
+    name: "Bachelor of Arts"
+    fields: [humanities]
+    requirements:
+      source: s-wits-hum-ba
+      min_points: 36
+      subject_minimums: {english: 5}
+      extras:
+        - "Wits wait-lists applicants with an APS of 30 to 35, subject to place availability."
+        - "BA courses in Economics, Mathematics and Statistics need Grade 12 Mathematics."
+
+  - id: ba_part_time
+    name: "BA part-time"
+    fields: [humanities]
+    requirements:
+      source: s-wits-hum-ba-part-time
+      min_points: 36
+      subject_minimums: {english: 5}
+      extras:
+        - "Wits wait-lists applicants with an APS of 30 to 35, subject to place availability."
+        - "Part-time, over 4 to 6 years: lectures are usually on weekday evenings (17:30 to 21:00) on the Braamfontein West Campus, some on Saturday mornings. Part-time students can't get NSFAS funding, University Entrance Scholarships or a campus residence place."
+        - "There's also a July intake for the part-time BA (not the BA with Law)."
+
+  - id: ba_part_time_law
+    name: "BA part-time with Law"
+    fields: [humanities, law]
+    requirements:
+      source: s-wits-hum-ba-part-time-law
+      min_points: 43
+      subject_minimums: {english: 5}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "Wits wait-lists applicants with an APS of 40 to 42, subject to place availability."
+        - "Part-time, over 4 to 6 years: lectures are usually on weekday evenings (17:30 to 21:00) on the Braamfontein West Campus, some on Saturday mornings. Part-time students can't get NSFAS funding, University Entrance Scholarships or a campus residence place."
+
+  - id: ba_law
+    name: "BA with Law"
+    fields: [law, humanities]
+    requirements:
+      source: s-wits-hum-ba-law
+      min_points: 43
+      subject_minimums: {english: 5}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "Wits wait-lists applicants with an APS of 40 to 42, subject to place availability."
+
+  - id: ba_digital_arts
+    name: "Bachelor of Arts in Digital Arts"
+    fields: [arts_and_design, computing]
+    selective: true
+    selection_note: "You'll attend a digital arts workshop and/or complete a questionnaire; Wits's additional-requirements page also asks for a portfolio."
+    requirements:
+      source: s-wits-hum-digital-arts
+      min_points: 36
+      subject_minimums: {english: 5}
+      extras:
+        - "Wits wait-lists applicants with an APS of 30 to 35, subject to place availability."
+
+  - id: baft
+    name: "Bachelor of Arts in Film and Television (BAFT)"
+    fields: [arts_and_design, performing_arts]
+    selective: true
+    selection_note: "Submit a portfolio; you may have to attend an interview."
+    requirements:
+      source: s-wits-hum-film-tv
+      min_points: 34
+      subject_minimums: {english: 5}
+      extras:
+        - "Wits may wait-list applicants with an APS of 30 to 33, subject to place availability."
+
+  - id: bafa
+    name: "Bachelor of Arts in Fine Arts (BAFA)"
+    fields: [arts_and_design]
+    selective: true
+    selection_note: "Complete an online questionnaire and upload a portfolio of artworks and a CV."
+    requirements:
+      source: s-wits-hum-fine-arts
+      min_points: 34
+      subject_minimums: {english: 5}
+      extras:
+        - "Wits wait-lists applicants with an APS of 30 to 33, subject to place availability."
+
+  - id: bmus
+    name: "Bachelor of Music"
+    fields: [music, performing_arts]
+    selective: true
+    selection_note: "Attend an interview and audition at the Wits School of Arts."
+    requirements:
+      source: s-wits-hum-music
+      min_points: 34
+      subject_minimums: {english: 5}
+      extras:
+        - "Wits wait-lists applicants with an APS of 30 to 33, subject to place availability."
+        - "An extended curriculum is available for BMus students, decided by academic background and performance."
+
+  - id: ba_theatre_performance
+    name: "Bachelor of Arts in Theatre and Performance"
+    fields: [performing_arts]
+    selective: true
+    selection_note: "Departmental selection, including auditions or interviews; bookings for auditions close in October 2026."
+    requirements:
+      source: s-wits-hum-theatre
+      min_points: 34
+      subject_minimums: {english: 5}
+      extras:
+        - "Wits wait-lists applicants with an APS of 30 to 33, subject to place availability."
+
+  - id: bsw
+    name: "Bachelor of Social Work"
+    fields: [humanities]
+    selective: true
+    places: 60
+    selection_note: "Only 60 first-year places: Wits selects on academic merit within school quintiles, in line with its transformation policy."
+    requirements:
+      source: s-wits-hum-social-work
+      min_points: 36
+      subject_minimums: {english: 5}
+      extras:
+        - "Wits wait-lists applicants with an APS of 34 or 35, subject to place availability."
+
+  - id: b_audiology
+    name: "Bachelor of Audiology"
+    fields: [health_sciences, rehabilitation]
+    selective: true
+    places: 30
+    selection_note: "Only 30 first-year places: Wits selects on academic merit (school-leaving results and NBT scores), in line with its transformation policy."
+    requirements:
+      source: s-wits-hum-audiology
+      min_points: 34
+      subject_minimums: {english: 5, mathematics: 4}
+      extras:
+        - "Wits wait-lists applicants with an APS of 30 to 33, subject to place availability."
+        - "Write the National Benchmark Test (NBT) by 17 August (Wits's programme page; its additional-requirements page says 15 August)."
+        - "Mathematical Literacy isn't accepted. Wits encourages you to observe a speech pathology and audiology professional, preferably in a public hospital."
+
+  - id: b_slp
+    name: "Bachelor of Speech-Language Pathology"
+    fields: [health_sciences, rehabilitation]
+    selective: true
+    places: 30
+    selection_note: "Only 30 first-year places: Wits selects on academic merit (school-leaving results and NBT scores), in line with its transformation policy."
+    requirements:
+      source: s-wits-hum-slp
+      min_points: 34
+      subject_minimums: {english: 5, mathematics: 4}
+      extras:
+        - "Wits wait-lists applicants with an APS of 30 to 33, subject to place availability."
+        - "Write the National Benchmark Test (NBT) by 17 August (Wits's programme page; its additional-requirements page says 15 August)."
+        - "Mathematical Literacy isn't accepted. Wits encourages you to observe a speech-language pathology professional, preferably in a public hospital."
+
+  - id: bed_foundation
+    name: "Bachelor of Education: Foundation Phase Teaching"
+    fields: [education]
+    requirements:
+      source: s-wits-hum-bed-foundation
+      min_points: 37
+      subject_minimums: {english: 5}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {mathematical_literacy: 5}
+            - subjects: {technical_mathematics: 5}
+      extras:
+        - "Wits wait-lists applicants with an APS of 31 to 36, subject to place availability."
+        - "Preference is given to applicants with higher English results."
+
+  - id: bed_intermediate
+    name: "Bachelor of Education in Intermediate Phase Teaching"
+    fields: [education]
+    requirements:
+      source: s-wits-hum-bed-intermediate
+      min_points: 37
+      subject_minimums: {english: 5}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {mathematical_literacy: 5}
+            - subjects: {technical_mathematics: 5}
+      extras:
+        - "Wits wait-lists applicants with an APS of 31 to 36, subject to place availability."
+        - "Preference is given to applicants with higher English results."
+
+  - id: bed_senior_fet
+    name: "Bachelor of Education in Senior Phase and Further Education and Training"
+    fields: [education]
+    requirements:
+      source: s-wits-hum-bed-senior
+      min_points: 37
+      subject_minimums: {english: 5}
+      extras:
+        - "Wits wait-lists applicants with an APS of 31 to 36, subject to place availability."
+        - "Preference is given to applicants with higher English results. Wits also considers your Grade 12 subjects, and your levels in them, that match the two school subjects you'd teach (the first-year list on its page); it doesn't publish the levels."
+        - "Life Orientation isn't offered as a teaching major in 2027."
+
+  # Science: every applicant writes the National Benchmark Tests
+
+  - id: bsc_general
+    name: "Bachelor of Science (BSc General)"
+    fields: [natural_sciences]
+    requirements:
+      source: s-wits-sci-bsc
+      min_points: 42
+      subject_minimums: {english: 5, mathematics: 5}
+      extras:
+        - "Wits may wait-list applicants with 40 or 41 points, subject to place availability."
+        - "Apply for the field you want: if you apply for the BSc General, you can't change to a specialised BSc at registration, and Biological Sciences courses aren't open to BSc General students."
+        - &wits_sci_nbt "Write both National Benchmark Tests (Academic and Quantitative Literacy, and Mathematics) by 31 October 2026: Wits uses them, with your Grade 12 results, to see who may need extra support."
+
+  - id: bsc_actuarial_science
+    name: "BSc: Actuarial Science"
+    fields: [mathematical_sciences, finance]
+    requirements:
+      source: s-wits-sci-actuarial
+      min_points: 44
+      subject_minimums: {english: 7, mathematics: 7, physical_sciences: 7}
+      extras:
+        - "Wits may wait-list applicants with 44 or more points who have English at level 6 and Mathematics and Physical Sciences at level 7, subject to place availability."
+        - *wits_sci_nbt
+
+  - id: bsc_applied_bioinformatics
+    name: "BSc in the field of Biological Sciences: Applied Bioinformatics"
+    fields: [life_sciences, computing]
+    requirements:
+      source: s-wits-sci-applied-bioinformatics
+      min_points: 43
+      subject_minimums: {english: 5, mathematics: 5}
+      extras:
+        - &wits_bio_wait "Wits may wait-list applicants with 41 or 42 points, subject to place availability."
+        - &wits_bio "A stream of the BSc in the field of Biological Sciences (code SBA11): apply for that degree, as Biological Sciences courses aren't open to BSc General students."
+        - *wits_sci_nbt
+
+  - id: bsc_applied_chemistry
+    name: "BSc: Applied Chemistry"
+    fields: [physical_sciences]
+    requirements:
+      source: s-wits-sci-chemistry
+      min_points: 42
+      subject_minimums: {english: 5, mathematics: 6, physical_sciences: 5}
+      extras:
+        - "Wits's Applied Chemistry page points to the Chemistry entry for its requirements, which these are."
+        - "Wits may wait-list applicants with 40 or 41 points, subject to place availability."
+        - *wits_sci_nbt
+
+  - id: bsc_applied_ecology
+    name: "BSc in the field of Biological Sciences: Applied Ecology and Global Change"
+    fields: [life_sciences, earth_sciences]
+    requirements:
+      source: s-wits-sci-applied-ecology
+      min_points: 43
+      subject_minimums: {english: 5, mathematics: 5}
+      extras:
+        - *wits_bio_wait
+        - *wits_bio
+        - *wits_sci_nbt
+
+  - id: bsc_archaeology
+    name: "BSc: Archaeology"
+    fields: [earth_sciences, humanities]
+    requirements:
+      source: s-wits-sci-bsc
+      min_points: 42
+      subject_minimums: {english: 5, mathematics: 5}
+      extras:
+        - "Wits's Archaeology page sends BSc applicants to the BSc entry requirements: these are the BSc General's. You can also take Archaeology in a BA."
+        - "Wits may wait-list applicants with 40 or 41 points, subject to place availability."
+        - *wits_sci_nbt
+
+  - id: bsc_astronomy
+    name: "BSc: Astronomy and Astrophysics"
+    fields: [physical_sciences]
+    requirements:
+      source: s-wits-sci-astronomy
+      min_points: 43
+      subject_minimums: {english: 5, mathematics: 6, physical_sciences: 6}
+      extras:
+        - *wits_sci_nbt
+
+  - id: bsc_biochemistry
+    name: "BSc in the field of Biological Sciences: Biochemistry and Cell Biology"
+    fields: [life_sciences]
+    requirements:
+      source: s-wits-sci-biochemistry
+      min_points: 43
+      subject_minimums: {english: 5, mathematics: 5}
+      extras:
+        - *wits_bio_wait
+        - *wits_bio
+        - *wits_sci_nbt
+
+  - id: bsc_biodiversity
+    name: "BSc in the field of Biological Sciences: Biodiversity in a Changing World"
+    fields: [life_sciences]
+    requirements:
+      source: s-wits-sci-biodiversity
+      min_points: 43
+      subject_minimums: {english: 5, mathematics: 5}
+      extras:
+        - *wits_bio_wait
+        - *wits_bio
+        - *wits_sci_nbt
+
+  - id: bsc_chemistry
+    name: "BSc: Chemistry"
+    fields: [physical_sciences]
+    requirements:
+      source: s-wits-sci-chemistry
+      min_points: 42
+      subject_minimums: {english: 5, mathematics: 6, physical_sciences: 5}
+      extras:
+        - "Wits may wait-list applicants with 40 or 41 points, subject to place availability."
+        - *wits_sci_nbt
+
+  - id: bsc_chemistry_chem_eng
+    name: "BSc: Chemistry with Chemical Engineering"
+    fields: [physical_sciences, engineering]
+    requirements:
+      source: s-wits-sci-chem-eng
+      min_points: 43
+      subject_minimums: {english: 5, mathematics: 6, physical_sciences: 6}
+      extras:
+        - "Wits may wait-list applicants with 40 to 42 points, subject to place availability (the page also gives 40 to 41)."
+        - *wits_sci_nbt
+
+  - id: bsc_cam
+    name: "BSc: Computational and Applied Mathematics"
+    fields: [mathematical_sciences, computing]
+    requirements:
+      source: s-wits-sci-cam
+      min_points: 44
+      subject_minimums: {english: 5, mathematics: 6}
+      extras:
+        - "Wits may wait-list applicants with 41 to 43 points, subject to place availability."
+        - *wits_sci_nbt
+
+  - id: bsc_computer_science
+    name: "BSc: Computer Science"
+    fields: [computing]
+    requirements:
+      source: s-wits-sci-computer-science
+      min_points: 44
+      subject_minimums: {english: 5, mathematics: 6}
+      extras:
+        - "Wits may wait-list applicants with 41 to 43 points, subject to place availability."
+        - *wits_sci_nbt
+
+  - id: bsc_environmental_studies
+    name: "BSc: Environmental Studies"
+    fields: [earth_sciences]
+    requirements:
+      source: s-wits-sci-environmental-studies
+      min_points: 42
+      subject_minimums: {english: 5, mathematics: 5}
+      extras:
+        - "Wits may wait-list applicants with 40 or 41 points, subject to place availability."
+        - *wits_sci_nbt
+
+  - id: bsc_genetics
+    name: "BSc in the field of Biological Sciences: Genetics and Developmental Biology"
+    fields: [life_sciences]
+    requirements:
+      source: s-wits-sci-genetics
+      min_points: 43
+      subject_minimums: {english: 5, mathematics: 5}
+      extras:
+        - *wits_bio_wait
+        - *wits_bio
+        - *wits_sci_nbt
+
+  - id: bsc_geographical_archaeological
+    name: "BSc: Geographical and Archaeological Studies"
+    fields: [earth_sciences]
+    requirements:
+      source: s-wits-sci-geographical-archaeological
+      min_points: 42
+      subject_minimums: {english: 5, mathematics: 5}
+      extras:
+        - "Wits may wait-list applicants with 40 or 41 points, subject to place availability."
+        - *wits_sci_nbt
+
+  - id: bsc_geography
+    name: "BSc: Geography"
+    fields: [earth_sciences]
+    requirements:
+      source: s-wits-sci-bsc
+      min_points: 42
+      subject_minimums: {english: 5, mathematics: 5}
+      extras:
+        - "Wits's Geography page sends BSc applicants to the BSc entry requirements: these are the BSc General's. You can also take Geography in a BA."
+        - "Wits may wait-list applicants with 40 or 41 points, subject to place availability."
+        - *wits_sci_nbt
+
+  - id: bsc_geological_sciences
+    name: "BSc: Geological Sciences"
+    fields: [earth_sciences]
+    requirements:
+      source: s-wits-sci-geological
+      min_points: 42
+      subject_minimums: {english: 5, mathematics: 6, physical_sciences: 5}
+      extras:
+        - "Wits may wait-list applicants with 40 or 41 points, subject to place availability."
+        - *wits_sci_nbt
+
+  - id: bsc_geospatial_sciences
+    name: "BSc: Geospatial Sciences"
+    fields: [earth_sciences, computing]
+    requirements:
+      source: s-wits-sci-geospatial
+      min_points: 42
+      subject_minimums: {english: 5, mathematics: 5}
+      extras:
+        - "Wits may wait-list applicants with 40 or 41 points, subject to place availability."
+        - *wits_sci_nbt
+
+  - id: bsc_mathematical_sciences
+    name: "BSc: Mathematical Sciences"
+    fields: [mathematical_sciences]
+    requirements:
+      source: s-wits-sci-mathematical-sciences
+      min_points: 44
+      subject_minimums: {english: 7, mathematics: 7, physical_sciences: 7}
+      extras:
+        - "Wits may wait-list applicants with 44 or more points who have English at level 6 and Mathematics and Physical Sciences at level 7, subject to place availability."
+        - *wits_sci_nbt
+
+  - id: bsc_mathematics
+    name: "BSc: Mathematics"
+    fields: [mathematical_sciences]
+    requirements:
+      source: s-wits-sci-bsc
+      min_points: 42
+      subject_minimums: {english: 5, mathematics: 5}
+      extras:
+        - "Wits's Mathematics page sends BSc applicants to the BSc entry requirements: these are the BSc General's."
+        - "Wits may wait-list applicants with 40 or 41 points, subject to place availability."
+        - *wits_sci_nbt
+
+  - id: bsc_microbiology
+    name: "BSc in the field of Biological Sciences: Microbiology and Biotechnology"
+    fields: [life_sciences]
+    requirements:
+      source: s-wits-sci-microbiology
+      min_points: 43
+      subject_minimums: {english: 5, mathematics: 5}
+      extras:
+        - *wits_bio_wait
+        - *wits_bio
+        - *wits_sci_nbt
+
+  - id: bsc_physics
+    name: "BSc: Physics"
+    fields: [physical_sciences]
+    requirements:
+      source: s-wits-sci-physics
+      min_points: 42
+      subject_minimums: {english: 5, mathematics: 6, physical_sciences: 5}
+      extras:
+        - "Wits may wait-list applicants with 40 or 41 points, subject to place availability."
+        - *wits_sci_nbt
+
+  - id: bsc_physics_finance
+    name: "BSc in the field of Physics and Finance"
+    fields: [physical_sciences, finance]
+    requirements:
+      source: s-wits-sci-physics-finance
+      min_points: 43
+      subject_minimums: {english: 6}
+      subject_min_percents: {mathematics: 70, physical_sciences: 70}
+      extras:
+        - "Wits may wait-list applicants with 40 to 42 points, subject to place availability."
+        - *wits_sci_nbt
+
+  - id: bsc_physics_philosophy
+    name: "BSc in the field of Physics and Philosophy"
+    fields: [physical_sciences, humanities]
+    requirements:
+      source: s-wits-sci-physics-philosophy
+      min_points: 43
+      subject_minimums: {english: 6}
+      subject_min_percents: {mathematics: 70, physical_sciences: 70}
+      extras:
+        - "Wits may wait-list applicants with 40 to 42 points, subject to place availability."
+        - *wits_sci_nbt
+
+  - id: bsc_physics_ecology
+    name: "BSc in the field of Physics, Ecology and Sustainability"
+    fields: [physical_sciences, earth_sciences]
+    requirements:
+      source: s-wits-sci-physics-ecology
+      min_points: 43
+      subject_minimums: {english: 6}
+      subject_min_percents: {mathematics: 70, physical_sciences: 70}
+      extras:
+        - "Wits may wait-list applicants with 40 to 42 points, subject to place availability."
+        - *wits_sci_nbt
 
 sources:
   - id: s-wits-entry
@@ -84,5 +1146,572 @@ sources:
     publisher: "University of the Witwatersrand"
     title: "Timelines for the 2027 intake"
     retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-clm-bcom
+    url: "https://www.wits.ac.za/course-finder/undergraduate/clm/bcom/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: Bachelor of Commerce (General), CBA00 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-clm-accounting
+    url: "https://www.wits.ac.za/course-finder/undergraduate/clm/accounting/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BCom: Accounting, CBA14 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-clm-baccsc
+    url: "https://www.wits.ac.za/course-finder/undergraduate/clm/accounting-science-baccsc/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: Accounting Science (BAccSc), CBA08 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-clm-financial-sciences
+    url: "https://www.wits.ac.za/course-finder/undergraduate/clm/bcom-financial-sciences/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BCom in the field of Financial Sciences, CBA18 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-clm-beconsc
+    url: "https://www.wits.ac.za/course-finder/undergraduate/clm/economic-science/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: Economic Science (BEconSc), CBA17 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-clm-economics
+    url: "https://www.wits.ac.za/course-finder/undergraduate/clm/economics/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BCom: Economics (a major; no programme code) (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-clm-finance
+    url: "https://www.wits.ac.za/course-finder/undergraduate/clm/finance/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BCom: Finance (a major; no programme code) (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-clm-hrm
+    url: "https://www.wits.ac.za/course-finder/undergraduate/clm/human-resource-management/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BCom: Human Resource Management (a major; no programme code) (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-clm-information-systems
+    url: "https://www.wits.ac.za/course-finder/undergraduate/clm/information-systems/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BCom: Information Systems, CBA10 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-clm-irm
+    url: "https://www.wits.ac.za/course-finder/undergraduate/clm/insurance-and-risk-management/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BCom: Insurance and Risk Management (a major; no programme code) (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-clm-management
+    url: "https://www.wits.ac.za/course-finder/undergraduate/clm/management/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BCom: Management (a major; no programme code) (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-clm-marketing
+    url: "https://www.wits.ac.za/course-finder/undergraduate/clm/marketing/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BCom: Marketing (a major; no programme code) (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-clm-ppe
+    url: "https://www.wits.ac.za/course-finder/undergraduate/clm/ppe/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BCom: Politics, Philosophy and Economics, CBA12 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-clm-bcom-law
+    url: "https://www.wits.ac.za/course-finder/undergraduate/clm/law/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BCom with Law, CBA13 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-clm-llb
+    url: "https://www.wits.ac.za/course-finder/undergraduate/clm/llb-law/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: Bachelor of Laws (LLB), four-year stream LFA14 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-clm-bcom-part-time
+    url: "https://www.wits.ac.za/course-finder/undergraduate/clm/bcom-part-time/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BCom part-time, CBA01 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-clm-bcom-part-time-law
+    url: "https://www.wits.ac.za/course-finder/undergraduate/clm/bcom-part-time-with-law/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BCom part-time with Law, CBA15 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-ebe-aeronautical
+    url: "https://www.wits.ac.za/course-finder/undergraduate/ebe/aeronautical-engineering/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BSc (Eng) Aeronautical Engineering, EFA06 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-ebe-chemical
+    url: "https://www.wits.ac.za/course-finder/undergraduate/ebe/chemical-engineering/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BSc (Eng) Chemical Engineering, EFA00 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-ebe-civil
+    url: "https://www.wits.ac.za/course-finder/undergraduate/ebe/civil-engineering/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BSc (Eng) Civil Engineering, EFA01 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-ebe-electrical
+    url: "https://www.wits.ac.za/course-finder/undergraduate/ebe/electrical-engineering/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BSc (Eng) Electrical Engineering, EFA03 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-ebe-industrial
+    url: "https://www.wits.ac.za/course-finder/undergraduate/ebe/industrial-engineering/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BSc (Eng) Industrial Engineering, EFA07 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-ebe-information
+    url: "https://www.wits.ac.za/course-finder/undergraduate/ebe/information-engineering/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BSc (Eng) Information Engineering, EFA03 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-ebe-mechanical
+    url: "https://www.wits.ac.za/course-finder/undergraduate/ebe/mechanical-engineering/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BSc (Eng) Mechanical Engineering, EFA05 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-ebe-metallurgy
+    url: "https://www.wits.ac.za/course-finder/undergraduate/ebe/metallurgy-and-materials-engineering/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BSc (Eng) Metallurgy and Materials Engineering, EFA08 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-ebe-mining
+    url: "https://www.wits.ac.za/course-finder/undergraduate/ebe/mining-engineering/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BSc (Eng) Mining Engineering, EFA09 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-ebe-biomedical
+    url: "https://www.wits.ac.za/course-finder/undergraduate/ebe/biomedical-engineering/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BEngSc (BME) Biomedical Engineering, EBA00 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-ebe-digital-arts
+    url: "https://www.wits.ac.za/course-finder/undergraduate/ebe/digital-arts/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BEngSc in Digital Arts, EBA01 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-ebe-part-time
+    url: "https://www.wits.ac.za/course-finder/undergraduate/ebe/bsc-engineering-part-time/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BSc Engineering part-time (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-ebe-bas
+    url: "https://www.wits.ac.za/course-finder/undergraduate/ebe/architectural-studies/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: Architectural Studies (BAS), FBA00 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-ebe-construction
+    url: "https://www.wits.ac.za/course-finder/undergraduate/ebe/construction-studies/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BSc in Construction Studies, FBA04 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-ebe-property
+    url: "https://www.wits.ac.za/course-finder/undergraduate/ebe/property-studies/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BSc (PS) Property Studies, FBA07 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-ebe-urp
+    url: "https://www.wits.ac.za/course-finder/undergraduate/ebe/urban-and-regional-planning/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BSc in Urban and Regional Planning, FBA05 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-health-biokinetics
+    url: "https://www.wits.ac.za/course-finder/undergraduate/health/biokinetics/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BHSc Biokinetics, MBA05 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-health-biomedical-sciences
+    url: "https://www.wits.ac.za/course-finder/undergraduate/health/biomedical-sciences/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BHSc Biomedical Sciences, MBA05 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-health-health-systems
+    url: "https://www.wits.ac.za/course-finder/undergraduate/health/health-systems-science/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BHSc Health Systems Sciences, MBA05 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-health-bcmp
+    url: "https://www.wits.ac.za/course-finder/undergraduate/health/clinical-medical-practice/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BCMP Clinical Medical Practice, MBA01 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-health-bds
+    url: "https://www.wits.ac.za/course-finder/undergraduate/health/dental-science/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BDS Dental Science, MFA08 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-health-mbbch
+    url: "https://www.wits.ac.za/course-finder/undergraduate/health/medicine-and-surgery/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: MBBCh Medicine and Surgery, MFA00 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-health-nursing
+    url: "https://www.wits.ac.za/course-finder/undergraduate/health/nursing/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BNurs Nursing, MFA07 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-health-ot
+    url: "https://www.wits.ac.za/course-finder/undergraduate/health/occupational-therapy/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BSc (OT) Occupational Therapy, MFA03 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-health-bohsc
+    url: "https://www.wits.ac.za/course-finder/undergraduate/health/oral-health-sciences/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BOHSc Oral Health Sciences, MBA04 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-health-pharmacy
+    url: "https://www.wits.ac.za/course-finder/undergraduate/health/pharmacy/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BPharm Pharmacy, MFA04 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-health-physiotherapy
+    url: "https://www.wits.ac.za/course-finder/undergraduate/health/physiotherapy/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BSc (Physiotherapy), MFA02 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-hum-ba
+    url: "https://www.wits.ac.za/course-finder/undergraduate/humanities/ba/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: Bachelor of Arts, ABA00 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-hum-ba-part-time
+    url: "https://www.wits.ac.za/course-finder/undergraduate/humanities/ba-part-time/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BA part-time (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-hum-ba-part-time-law
+    url: "https://www.wits.ac.za/course-finder/undergraduate/humanities/ba-part-time-with-law/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BA part-time with Law (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-hum-ba-law
+    url: "https://www.wits.ac.za/course-finder/undergraduate/humanities/law/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BA with Law, ABA02 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-hum-digital-arts
+    url: "https://www.wits.ac.za/course-finder/undergraduate/humanities/digital-arts/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BA Digital Arts, AFA11 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-hum-film-tv
+    url: "https://www.wits.ac.za/course-finder/undergraduate/humanities/film-and-television/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BA in Film and Television (BAFT), AFA10 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-hum-fine-arts
+    url: "https://www.wits.ac.za/course-finder/undergraduate/humanities/fine-arts/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BA in Fine Arts (BAFA), AFA01 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-hum-music
+    url: "https://www.wits.ac.za/course-finder/undergraduate/humanities/music/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: Bachelor of Music, AFA02 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-hum-theatre
+    url: "https://www.wits.ac.za/course-finder/undergraduate/humanities/theatre-and-performance/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BA in Theatre and Performance, AFA14 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-hum-social-work
+    url: "https://www.wits.ac.za/course-finder/undergraduate/humanities/social-work/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: Bachelor of Social Work, AFA04 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-hum-audiology
+    url: "https://www.wits.ac.za/course-finder/undergraduate/humanities/audiology/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: Bachelor of Audiology, AFA13 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-hum-slp
+    url: "https://www.wits.ac.za/course-finder/undergraduate/humanities/speech-language-pathology/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: Bachelor of Speech-Language Pathology, AFA12 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-hum-bed-foundation
+    url: "https://www.wits.ac.za/course-finder/undergraduate/humanities/bed-foundation-phase-teaching/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BEd Foundation Phase Teaching, HFA00 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-hum-bed-intermediate
+    url: "https://www.wits.ac.za/course-finder/undergraduate/humanities/bed-intermediate-phase-teaching/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BEd Intermediate Phase Teaching, HFA01 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-hum-bed-senior
+    url: "https://www.wits.ac.za/course-finder/undergraduate/humanities/bed-senior-phase-teaching/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BEd Senior Phase and FET, HFA02 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-sci-bsc
+    url: "https://www.wits.ac.za/course-finder/undergraduate/science/bsc/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: Bachelor of Science (BSc General), SBA00 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-sci-actuarial
+    url: "https://www.wits.ac.za/course-finder/undergraduate/science/actuarial-science/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BSc Actuarial Science, SBA03 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-sci-applied-bioinformatics
+    url: "https://www.wits.ac.za/course-finder/undergraduate/science/applied-bioinformatics/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BSc Applied Bioinformatics, SBA11 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-sci-applied-ecology
+    url: "https://www.wits.ac.za/course-finder/undergraduate/science/applied-ecology-and-global-change/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BSc Applied Ecology and Global Change, SBA11 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-sci-astronomy
+    url: "https://www.wits.ac.za/course-finder/undergraduate/science/astronomy-and-astrophysics/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BSc Astronomy and Astrophysics, SBA15 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-sci-biochemistry
+    url: "https://www.wits.ac.za/course-finder/undergraduate/science/biochemistry-and-cell-biology/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BSc Biochemistry and Cell Biology, SBA11 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-sci-biodiversity
+    url: "https://www.wits.ac.za/course-finder/undergraduate/science/biodiversity/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BSc Biodiversity in a Changing World, SBA11 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-sci-chemistry
+    url: "https://www.wits.ac.za/course-finder/undergraduate/science/chemistry/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BSc Chemistry, SBA12 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-sci-chem-eng
+    url: "https://www.wits.ac.za/course-finder/undergraduate/science/chemistry-with-chemical-engineering/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BSc Chemistry with Chemical Engineering, SBA04 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-sci-cam
+    url: "https://www.wits.ac.za/course-finder/undergraduate/science/computational-and-applied-mathematics/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BSc Computational and Applied Mathematics, SBA21 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-sci-computer-science
+    url: "https://www.wits.ac.za/course-finder/undergraduate/science/computer-science/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BSc Computer Science, SBA13 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-sci-environmental-studies
+    url: "https://www.wits.ac.za/course-finder/undergraduate/science/environmental-studies/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BSc Environmental Studies, SBA22 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-sci-genetics
+    url: "https://www.wits.ac.za/course-finder/undergraduate/science/genetics-and-developmental-biology/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BSc Genetics and Developmental Biology, SBA11 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-sci-geographical-archaeological
+    url: "https://www.wits.ac.za/course-finder/undergraduate/science/geographical-and-archaeological-sciences/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BSc Geographical and Archaeological Studies, SBA10 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-sci-geological
+    url: "https://www.wits.ac.za/course-finder/undergraduate/science/geological-sciences/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BSc Geological Sciences, SBA09 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-sci-geospatial
+    url: "https://www.wits.ac.za/course-finder/undergraduate/science/geospatial-sciences/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BSc Geospatial Sciences, SBA20 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-sci-mathematical-sciences
+    url: "https://www.wits.ac.za/course-finder/undergraduate/science/mathematical-sciences/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BSc Mathematical Sciences, SBA08 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-sci-microbiology
+    url: "https://www.wits.ac.za/course-finder/undergraduate/science/microbiology-and-biotechnology/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BSc Microbiology and Biotechnology, SBA11 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-sci-physics
+    url: "https://www.wits.ac.za/course-finder/undergraduate/science/physics/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BSc Physics, SBA12 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-sci-physics-finance
+    url: "https://www.wits.ac.za/course-finder/undergraduate/science/physics-and-finance/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BSc Physics and Finance, SBA24 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-sci-physics-philosophy
+    url: "https://www.wits.ac.za/course-finder/undergraduate/science/physics-and-philosophy/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BSc Physics and Philosophy, SBA23 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-wits-sci-physics-ecology
+    url: "https://www.wits.ac.za/course-finder/undergraduate/science/physics-ecology-and-sustainability/"
+    publisher: "University of the Witwatersrand"
+    title: "Course finder: BSc Physics, Ecology and Sustainability, SBA25 (entry requirements, 2027 intake)"
+    retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"

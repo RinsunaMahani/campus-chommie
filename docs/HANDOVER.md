@@ -14,7 +14,7 @@ repo folder but is kept out of git; the parts the screens need are quoted below.
 
 ## Where things stand
 
-`main` holds only the empty first commit. All work sits in thirty-four stacked pull requests:
+`main` holds only the empty first commit. All work sits in thirty-five stacked pull requests:
 
 | PR | Branch | What |
 |---|---|---|
@@ -27,6 +27,7 @@ repo folder but is kept out of git; the parts the screens need are quoted below.
 | #7 | `rinsuna/m1-after-acceptance` | your points at every university; campuses, calendars, money dates and support in the packs; first steps from acceptance to the first lecture |
 | #8 | `rinsuna/m3-profile-and-money` | M3's backend: the student's profile (university and campus) and My money (settings, income, expected payments, spending, summary) |
 | #9 | `rinsuna/m1-cheap-things` | cheap things to do near campus, each priced from the place's own page |
+| #35 | `rinsuna/courses-wave-5` | full course lists, wave 5: Wits (85 programmes), UCT (34), UNISA (167), Stellenbosch (73, from its 2026 prospectus), Nelson Mandela (124), CPUT (119) and CUT (42), each from the university's own pages read with robots.txt respected; UWC refuses honest requests, so it has a download list only. (A local `rinsuna/courses-wave-4` from another session is untrusted and is never pushed.) |
 | #34 | `rinsuna/courses-wave-3` | full course lists, wave 3: UNIVEN (80 programmes), UL (54 programmes), Rhodes (16 programmes) and NWU (81 programmes) across 4 universities (231 programmes total), each from its official 2026/2027 prospectus with closing dates and selection criteria, and a research note per university (agent drafts, `release: false`) |
 | #33 | `rinsuna/courses-wave-2` | full course lists, wave 2: UFS (172 programmes) from its 2027 prospectus with closing dates, and UNIZULU (185 programmes) from the CAO's 2027 handbook, each with a research note per university (agent drafts, `release: false`) |
 | #32 | `rinsuna/courses-wave-1` | full course lists, wave 1: VUT (49 programmes), WSU (105), UMP (24), MUT (40) and SPU (26), each from the university's own 2027 documents, with a research note per university (agent drafts, `release: false`); a programme whose university publishes no points minimum checks the subjects only (`min_points: null`) |
@@ -59,7 +60,7 @@ new-phone code, and #13 deletes accounts.
 
 **How to merge:**
 - Each PR targets the branch below it, so its diff shows only its own work.
-- Merge in order: #1 into `main`, then #2 to #34, retargeting each to `main` once the one below has merged.
+- Merge in order: #1 into `main`, then #2 to #35, retargeting each to `main` once the one below has merged.
 - Use **Create a merge commit**, not squash or rebase, so every commit stays in `main`'s history (CLAUDE.md: never
   rewrite history).
 
@@ -133,8 +134,10 @@ Everything is recorded, with who and when, in [OPEN_QUESTIONS.md](OPEN_QUESTIONS
 4. **Name SMU's buildings** on campus, the Clinpath and Natural Science buildings first (OPEN_QUESTIONS, "Campus
    maps").
 5. **Download what agents may not fetch,** in a browser, into Downloads (OPEN_QUESTIONS, "All 26 universities"):
-   UJ's, UKZN's and DUT's prospectuses (UJ's closes 31 Oct, so first); Fort Hare's 2027 study guide; the Gauteng City
-   Region Academy bursary page and the Reserve Bank's bursary PDF.
+   UJ's, UKZN's and DUT's prospectuses (UJ's closes 31 Oct, so first); Fort Hare's 2027 study guide; UWC's 2027
+   General Admissions Criteria and faculty pages; Stellenbosch's 2027 admissions booklet; CPUT's 2027 prospectus
+   (Issuu); Wits's 2027 guide (Issuu, to check against the pack); CUT's Student Calendar; the Gauteng City Region
+   Academy bursary page and the Reserve Bank's bursary PDF. Each research note lists the exact addresses.
 6. **Decisions waiting for her** (OPEN_QUESTIONS, "App and accounts" and "Campus maps"):
    - the map's background, and "you are here"
    - which intakes a plan shows, and "Add these dates to my calendar"
