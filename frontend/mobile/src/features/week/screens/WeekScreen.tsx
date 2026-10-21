@@ -5,9 +5,9 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { DemoBanner } from '@/features/profile/components/DemoBanner';
 import { useProfile } from '@/features/profile/state';
-import { timetableApi } from '@/features/timetable/api/timetableApi';
+import { examsApi, timetableApi } from '@/features/timetable/api/timetableApi';
 import { rememberModules } from '@/features/timetable/colours';
-import { TimetableEntry } from '@/features/timetable/types';
+import { ExamEntry, TimetableEntry } from '@/features/timetable/types';
 import { errorText } from '@/shared/api/errors';
 import { Card, InfoNote, ListRow } from '@/shared/components/Parts';
 import { Screen } from '@/shared/components/Screen';
@@ -53,6 +53,7 @@ export default function WeekScreen() {
   const styles = useStyles(makeStyles);
   const [answer, setAnswer] = useState<WeekAnswer | null>(null);
   const [classes, setClasses] = useState<TimetableEntry[]>([]);
+  const [exams, setExams] = useState<ExamEntry[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [refreshing, setRefreshing] = useState(false);
   const [view, setView] = useState<View_>('calendar');
@@ -61,11 +62,12 @@ export default function WeekScreen() {
   const [picked, setPicked] = useState<string | null>(null);
 
   const load = useCallback(() => {
-    Promise.all([weekApi.weeks(8), timetableApi.mine()])
-      .then(([w, tt]) => {
+    Promise.all([weekApi.weeks(8), timetableApi.mine(), examsApi.mine()])
+      .then(([w, tt, x]) => {
         rememberModules(tt.entries.map((e) => e.module));
         setAnswer(w);
         setClasses(tt.entries);
+        setExams(x.exams);
         setError(null);
       })
       .catch((e) => setError(errorText(e, t('common.error'))))
@@ -156,7 +158,7 @@ export default function WeekScreen() {
             </Pressable>
           ) : null}
           <Card style={{ padding: 10 }}>
-            <CalendarGrid days={days} classes={classes} events={week.events} nowMinutes={days.some((d) => d.today) ? nowInSast() : null} />
+            <CalendarGrid days={days} classes={classes} events={week.events} exams={exams} nowMinutes={days.some((d) => d.today) ? nowInSast() : null} />
           </Card>
         </View>
       ) : null}

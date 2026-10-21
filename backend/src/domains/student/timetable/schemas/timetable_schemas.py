@@ -1,6 +1,8 @@
 """What adding or changing a class accepts: a module code, what kind of class, a weekday (0 = Monday), a
 start and end time as "HH:MM" between 06:00 and 22:00 in 5-minute steps, and optionally a title and a
-venue. Anything else is refused; nothing asked is about the student."""
+venue. An exam: a module code, a date, a start time, and optionally its length, name, paper and venue. Several
+of either can be saved at once (after an import), and an import names its layout. Anything else is refused;
+nothing asked is about the student."""
 from __future__ import annotations
 
 import re
@@ -10,7 +12,7 @@ from marshmallow import RAISE, Schema, ValidationError, fields, validate, valida
 
 from src.core.exceptions import ValidationError as ApiValidationError
 
-from ..constants import EARLIEST, KINDS, LATEST
+from ..constants import EARLIEST, KINDS, LATEST, MAX_ENTRIES, MAX_EXAMS
 
 _TIME = re.compile(r"^([01]\d|2[0-3]):([0-5]\d)$")
 
@@ -91,6 +93,46 @@ class EntryChangeSchema(EntrySchema):
     def _something(self, data, **_kwargs):
         if not data:
             raise ValidationError({"_schema": ["Send at least one change."]})
+
+
+_MODULE = [validate.Length(min=2, max=20), validate.Regexp(r"^[A-Za-z0-9 ]+$")]
+
+
+class ExamSchema(_Strict):
+    """POST /me/exams"""
+
+    module = fields.String(required=True, validate=_MODULE)
+    on = fields.Date(required=True)
+    starts = TimeField(required=True)
+    minutes = fields.Integer(allow_none=True, strict=True, validate=validate.Range(min=1, max=480))
+    title = fields.String(allow_none=True, validate=validate.Length(max=80))
+    paper = fields.String(allow_none=True, validate=validate.Length(max=80))
+    venue = fields.String(allow_none=True, validate=validate.Length(max=80))
+
+    @validates("title", "paper", "venue")
+    def _text(self, value, **_kwargs):
+        if value is not None:
+            _plain_text(value)
+
+
+class EntryBatchSchema(_Strict):
+    """POST /me/timetable/batch: classes checked after an import; replace=true clears the timetable first."""
+
+    entries = fields.List(fields.Nested(EntrySchema), required=True, validate=validate.Length(min=1, max=MAX_ENTRIES))
+    replace = fields.Boolean(load_default=False, truthy={True}, falsy={False})
+
+
+class ExamBatchSchema(_Strict):
+    """POST /me/exams/batch: exams checked after an import; replace=true clears the student's exams first."""
+
+    exams = fields.List(fields.Nested(ExamSchema), required=True, validate=validate.Length(min=1, max=MAX_EXAMS))
+    replace = fields.Boolean(load_default=False, truthy={True}, falsy={False})
+
+
+class ImportFormSchema(_Strict):
+    """POST /me/timetable/import's form fields besides the file: which layout the PDF is."""
+
+    layout = fields.String(required=True, validate=validate.OneOf(("classes", "exams")))
 
 
 class NothingSchema(_Strict):

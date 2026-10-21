@@ -5,9 +5,9 @@ week adds up to. Nothing here decides anything about the student; it only reads 
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import time
+from datetime import date, time
 
-from .text import join, plural
+from .text import in_days, join, long_day, plural, span
 
 DAYS = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
 KIND_WORDS = {"lecture": "lecture", "tutorial": "tutorial", "practical": "practical", "other": "class"}
@@ -80,4 +80,45 @@ def summary(slots: list[Slot]) -> list[str]:
     found = clashes(slots)
     if found:
         lines.append(f"{plural(len(found), 'clash')} to sort out: " + " ".join(c.line for c in found))
+    return lines
+
+
+@dataclass(frozen=True)
+class Exam:
+    id: str
+    module: str
+    on: date
+    starts: time
+    minutes: int | None  # None where the exam list doesn't say
+
+    def overlaps(self, other: "Exam") -> bool:
+        if self.on != other.on:
+            return False
+        a0, b0 = self.starts.hour * 60 + self.starts.minute, other.starts.hour * 60 + other.starts.minute
+        if self.minutes is None or other.minutes is None:
+            return a0 == b0  # without a length, only the same start is surely a clash
+        return a0 < b0 + other.minutes and b0 < a0 + self.minutes
+
+
+def exam_clashes(exams: list[Exam]) -> list[tuple[Exam, Exam]]:
+    ordered = sorted(exams, key=lambda e: (e.on, e.starts, e.module))
+    return [(a, b) for i, a in enumerate(ordered) for b in ordered[i + 1:] if a.overlaps(b)]
+
+
+def exam_summary(exams: list[Exam], today: date) -> list[str]:
+    """How many exams, over which days, the next one and how soon, and any two at the same time."""
+    if not exams:
+        return ["No exams yet. Add them from your university's exam list, or one at a time."]
+    ordered = sorted(exams, key=lambda e: (e.on, e.starts, e.module))
+    first, last = ordered[0].on, ordered[-1].on
+    lines = [f"{plural(len(exams), 'exam')}, {long_day(first) if first == last else span(first, last)}."]
+    ahead = [e for e in ordered if e.on >= today]
+    if ahead:
+        n = ahead[0]
+        lines.append(f"Next: {n.module} on {long_day(n.on)} at {hhmm(n.starts)}, {in_days((n.on - today).days)}.")
+    else:
+        lines.append("All your exams are behind you.")
+    for a, b in exam_clashes(ordered):
+        lines.append(f"{a.module} and {b.module} are both on {long_day(a.on)} at the same time: "
+                     "check your exam list or ask your faculty.")
     return lines

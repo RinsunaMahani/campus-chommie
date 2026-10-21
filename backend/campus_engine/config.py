@@ -23,6 +23,7 @@ DEFAULTS: dict[str, Any] = {
     "applications": {"closing_soon_days": 14, "seen_open_days": 14},
     "funding": {"per_choice": 5, "remind_days": [7, 1]},
     "alerts": {"lookahead_weeks": 3},
+    "timetable_import": {"line_tolerance": 2.0, "merge_gap_minutes": 10, "max_rows": 2000, "max_exam_minutes": 480},
 }
 
 
