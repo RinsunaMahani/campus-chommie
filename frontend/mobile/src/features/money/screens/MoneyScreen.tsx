@@ -1,4 +1,4 @@
-import { router, useFocusEffect } from 'expo-router';
+import { Href, router, useFocusEffect } from 'expo-router';
 import { useCallback, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
@@ -19,6 +19,9 @@ import { fonts, radius, space, type } from '@/shared/theme/tokens';
 import { moneyApi } from '../api/moneyApi';
 import { RunwayHero } from '../components/RunwayHero';
 import { MoneyPlan, Summary, SummaryReady } from '../types';
+
+// The wallet's index route; the generated route types list it as /wallet/index.
+const WALLET = '/wallet' as Href;
 
 /**
  * The Money tab, number first (research: Copilot, Nubank, the "left to spend" study): how many days the money
@@ -181,6 +184,7 @@ export default function MoneyScreen() {
         <ListRow icon="calendar" title={t('money.payments')} subtitle={t('money.paymentsSub')} onPress={() => router.push('/money/payments')} />
         <ListRow icon="bar-chart-2" title={t('money.spending')} subtitle={t('money.spendingSub')} onPress={() => router.push('/money/spending')} />
         <ListRow icon="award" title={t('courseFinder.fundingTitle')} subtitle={t('courseFinder.fundingSub')} onPress={() => router.push('/course-finder/funding')} />
+        <ListRow icon="credit-card" title={t('wallet.title')} subtitle={t('wallet.entrySub')} onPress={() => router.push(WALLET)} />
         <ListRow icon="map-pin" title={t('money.cheapThings')} subtitle={t('money.cheapThingsSub')} onPress={() => router.push('/money/cheap-things')} last />
       </Card>
     </Screen>

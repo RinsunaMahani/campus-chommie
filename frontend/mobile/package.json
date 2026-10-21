@@ -6,6 +6,7 @@
     "@expo-google-fonts/plus-jakarta-sans": "^0.4.2",
     "@expo/vector-icons": "^15.0.2",
     "expo": "~57.0.27",
+    "expo-camera": "~57.0.6",
     "expo-constants": "~57.0.19",
     "expo-dev-client": "~57.0.19",
     "expo-document-picker": "~57.0.3",
