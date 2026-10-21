@@ -66,7 +66,7 @@ request and never stored; and the judges' demo accounts. Update it whenever a mi
 
 ## Test evidence (M5)
 
-Backend: **1008 tests pass** on PostgreSQL 16 (10 Oct 2026), including:
+Backend: **1024 tests pass** on PostgreSQL 16 (10 Oct 2026), including:
 
 | Tests | What they prove |
 |---|---|
@@ -94,7 +94,7 @@ Backend: **1008 tests pass** on PostgreSQL 16 (10 Oct 2026), including:
 | `tests/domains/platform/test_privacy.py` | the export holds every feature's data and nothing of anyone else's; `DELETE /me` needs the password, leaves no row behind in any table, signs the student out everywhere, keeps the class's events nameless and touches no one else; demo accounts refused; odd requests refused; limited; every table that points at an account has an export section |
 | `tests/domains/platform/test_demo.py` | `flask seed` (a strong password from the environment, never echoed; a real account never converted), demo sign-in without the code, no lockout, no password change, reset or closing, the stricter demo limit, the personas built as written, and the daily re-base moving every date and undoing what visitors changed |
 | `tests/architecture/` | the boundaries above, including every route having a rate limit and routes never calling the engine |
-| `tests/engine/` | 279 engine tests, 99% coverage from the engine and architecture tests alone (the floor is 80%), including data-pack validation, spot checks of the shipped packs against their sources, every application status on either side of each date, every first step's status either side of its dates, and 44 labelled class messages (new events, moved and cancelled, mixed languages, dates to check) |
+| `tests/engine/` | 295 engine tests, 99% coverage from the engine and architecture tests alone (the floor is 80%), including data-pack validation, spot checks of the shipped packs against their sources, every application status on either side of each date, every first step's status either side of its dates, and 57 labelled class messages (new events, moved and cancelled, mixed languages, dates to check: several dates in one message, ranges, bare hours) |
 
 App: TypeScript check, ESLint (no warnings) and Jest pass, including a test of the exact sign-up request.
 

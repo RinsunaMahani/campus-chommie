@@ -8,6 +8,13 @@ Reads English, and the Afrikaans words students use for the same things
 (toets, eksamen, vasvra, opdrag, verskuif, gekanselleer, the months and the
 days). Greetings and asides in any language are simply passed over. "Môre"
 is left out on purpose: it means "tomorrow" and "good morning".
+
+Every date in a message is read, not only the first. When there's more than
+one, a "moved" message takes the new one (after "to", or the last) and any
+other takes the first, and the rep is asked to check. A range ("20-22 Oct")
+reads its first day, and a bare hour ("14h") reads as a time: both asked
+to be checked too. Week numbers ("week 9") aren't read: which week that is
+depends on the university's calendar.
 """
 from __future__ import annotations
 
@@ -69,11 +76,17 @@ MOVED = re.compile(
 PERCENT = re.compile(r"\b(\d{1,3}(?:\.\d+)?)\s?%")
 TIME_12 = re.compile(r"\b(1[0-2]|0?[1-9])(?:[:h.]([0-5]\d))?\s*(am|pm)\b", re.I)
 TIME_24 = re.compile(r"\b([01]?\d|2[0-3])[:hH]([0-5]\d)\b")
+#: "14h": an hour with no minutes. Could also be a length ("a 2h exam"), so it's asked to be checked.
+TIME_H = re.compile(r"\b([01]?\d|2[0-3])h\b", re.I)
 
 ISO_DATE = re.compile(r"\b(\d{4})-(\d{1,2})-(\d{1,2})\b")
 DAY_MONTH = re.compile(rf"\b(\d{{1,2}})(?:st|nd|rd|th)?\s+(?:of\s+)?{_MONTH}(?:,?\s+(\d{{4}}))?\b", re.I)
 MONTH_DAY = re.compile(rf"\b{_MONTH}\s+(\d{{1,2}})(?:st|nd|rd|th)?(?:,?\s+(\d{{4}}))?\b", re.I)
 NUMERIC_DATE = re.compile(r"\b(\d{1,2})[/.](\d{1,2})(?:[/.](\d{4}|\d{2}))?\b")
+#: "20-22 Oct". Not "20 to 22 Oct": in "moved from 20 to 22 Oct" that's the old day and the new one.
+RANGE = re.compile(rf"\b(\d{{1,2}})\s*[-–]\s*(\d{{1,2}})(?:st|nd|rd|th)?\s+(?:of\s+)?{_MONTH}(?:,?\s+(\d{{4}}))?\b", re.I)
+#: Just before the new date in a change: "moved to", "now until", "verskuif na".
+NEW_DATE_BEFORE = re.compile(r"\b(?:to|till|until|now on|na|tot)\s+(?:the\s+)?$", re.I)
 RELATIVE = re.compile(r"\b(today|tonight|tomorrow|vandag|vanaand)\b", re.I)
 WEEKDAY_LONG = re.compile(
     r"\b(next\s+|volgende\s+)?(monday|tuesday|wednesday|thursday|friday|saturday|sunday|"
@@ -192,6 +205,89 @@ def _weekday_date(match: re.Match, sent: date) -> tuple[date, float]:
     return sent + timedelta(days=delta), confidence
 
 
+def _with_year(year: str | None, month: int, dd: int, sent: date) -> date | None:
+    return _safe_date(int(year), month, dd) if year else _infer_year(month, dd, sent)
+
+
+def _read_range(m: re.Match, sent: date) -> tuple[date | None, float, str | None]:
+    day = _with_year(m.group(4), MONTHS[m.group(3)[:3].lower()], int(m.group(1)), sent)
+    return day, 0.6, "This message gives a range of days: we read the first. Check it."
+
+
+def _read_iso(m: re.Match, sent: date) -> tuple[date | None, float, str | None]:
+    return _safe_date(int(m.group(1)), int(m.group(2)), int(m.group(3))), 0.95, None
+
+
+def _read_day_month(m: re.Match, sent: date) -> tuple[date | None, float, str | None]:
+    day = _with_year(m.group(3), MONTHS[m.group(2)[:3].lower()], int(m.group(1)), sent)
+    return day, 0.95 if m.group(3) else 0.9, None
+
+
+def _read_month_day(m: re.Match, sent: date) -> tuple[date | None, float, str | None]:
+    day = _with_year(m.group(3), MONTHS[m.group(1)[:3].lower()], int(m.group(2)), sent)
+    return day, 0.95 if m.group(3) else 0.9, None
+
+
+def _read_numeric(m: re.Match, sent: date) -> tuple[date | None, float, str | None]:
+    dd, month, year = int(m.group(1)), int(m.group(2)), m.group(3)
+    if year:
+        return _safe_date(int(year) + (2000 if len(year) == 2 else 0), month, dd), 0.85, None
+    return _infer_year(month, dd, sent), 0.85, None
+
+
+#: Written-out dates, most specific first: each one found is blanked so a later pattern can't read it again.
+_WRITTEN = (
+    (RANGE, _read_range),
+    (ISO_DATE, _read_iso),
+    (DAY_MONTH, _read_day_month),
+    (MONTH_DAY, _read_month_day),
+    (NUMERIC_DATE, _read_numeric),
+)
+
+_Found = tuple[int, date, float, "str | None"]  # where in the message, the date, confidence, a note
+
+
+def _written_dates(work: str, sent: date) -> list[_Found]:
+    found: list[_Found] = []
+    text = work
+    for pattern, read in _WRITTEN:
+        for m in pattern.finditer(text):
+            day, conf, note = read(m, sent)
+            if day is not None:
+                found.append((m.start(), day, conf, note))
+            text = _blank(text, m)
+    return sorted(found, key=lambda f: f[0])
+
+
+def _spoken_dates(work: str, sent: date) -> list[_Found]:
+    """Today, tomorrow and weekdays: only read when nothing is written out."""
+    found: list[_Found] = [
+        (m.start(), sent + timedelta(days=1 if m.group(1).lower() == "tomorrow" else 0), 0.9, None)
+        for m in RELATIVE.finditer(work)
+    ]
+    for m in list(WEEKDAY_LONG.finditer(work)) or list(WEEKDAY_SHORT.finditer(work)):
+        day, conf = _weekday_date(m, sent)
+        found.append((m.start(), day, conf, None))
+    return sorted(found, key=lambda f: f[0])
+
+
+def _read_date(work: str, sent: date, change: str | None) -> tuple[date, float, str | None] | None:
+    """The message's date, its confidence and a note for the rep. With more than one date, a "moved" message
+    takes the new one (after "to", or else the last) and any other the first; either way, the rep checks."""
+    dates = _written_dates(work, sent) or _spoken_dates(work, sent)
+    if not dates:
+        return None
+    if len({d for _, d, _, _ in dates}) == 1:
+        _, day, conf, note = dates[0]
+        return day, conf, note
+    if change == "moved":
+        after_to = [f for f in dates if NEW_DATE_BEFORE.search(work[: f[0]])]
+        _, day, conf, _ = after_to[0] if after_to else dates[-1]
+        return day, min(conf, 0.6), "This message has more than one date: we read the new one. Check it."
+    _, day, conf, _ = dates[0]
+    return day, min(conf, 0.6), "This message has more than one date: we read the first. Check which one it's about."
+
+
 def extract(text: str, sent: date, modules: list[str] | tuple[str, ...] = ()) -> Candidate:
     """Read one announcement. `sent` is the date the message was sent."""
     c = Candidate(raw=text)
@@ -224,46 +320,19 @@ def extract(text: str, sent: date, modules: list[str] | tuple[str, ...] = ()) ->
         if m:
             c.at, c.confidence["at"] = time(int(m.group(1)), int(m.group(2))), 0.9
             work = _blank(work, m)
+        else:
+            m = TIME_H.search(work)
+            if m:
+                c.at, c.confidence["at"] = time(int(m.group(1)), 0), 0.6
+                work = _blank(work, m)
 
-    found: date | None = None
-    m = ISO_DATE.search(work)
-    if m:
-        found = _safe_date(int(m.group(1)), int(m.group(2)), int(m.group(3)))
-        conf = 0.95
-    if found is None:
-        m = DAY_MONTH.search(work)
-        if m:
-            month, dd = MONTHS[m.group(2)[:3].lower()], int(m.group(1))
-            found = _safe_date(int(m.group(3)), month, dd) if m.group(3) else _infer_year(month, dd, sent)
-            conf = 0.95 if m.group(3) else 0.9
-    if found is None:
-        m = MONTH_DAY.search(work)
-        if m:
-            month, dd = MONTHS[m.group(1)[:3].lower()], int(m.group(2))
-            found = _safe_date(int(m.group(3)), month, dd) if m.group(3) else _infer_year(month, dd, sent)
-            conf = 0.95 if m.group(3) else 0.9
-    if found is None:
-        m = NUMERIC_DATE.search(work)
-        if m:
-            dd, month = int(m.group(1)), int(m.group(2))
-            year = m.group(3)
-            if year:
-                found = _safe_date(int(year) + (2000 if len(year) == 2 else 0), month, dd)
-            else:
-                found = _infer_year(month, dd, sent)
-            conf = 0.85
-    if found is None:
-        m = RELATIVE.search(work)
-        if m:
-            found = sent + timedelta(days=1 if m.group(1).lower() == "tomorrow" else 0)
-            conf = 0.9
-    if found is None:
-        m = WEEKDAY_LONG.search(work) or WEEKDAY_SHORT.search(work)
-        if m:
-            found, conf = _weekday_date(m, sent)
+    found = _read_date(work, sent, c.change)
     if found is not None:
-        c.on, c.confidence["on"] = found, conf
-        if found < sent:
+        day, conf, note = found
+        c.on, c.confidence["on"] = day, conf
+        if note:
+            c.notes.append(note)
+        if day < sent:
             c.confidence["on"] = 0.5
             c.notes.append("This date is before the message was sent.")
 

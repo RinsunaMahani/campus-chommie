@@ -156,7 +156,9 @@ and never a title or venue someone typed.
 | `GET /week?weeks=8&from=YYYY-MM-DD` | none | the week strip: each week `Manageable`, `Busy` or `Heavy` (`colour` green, amber or red) with a one-line `reason` and its verified `events`, and beside it the university's `calendar` for the student's campus, which never adds to the score |
 
 The engine reads announcements in English and the Afrikaans words students use for the same things (toets, eksamen,
-verskuif, gekanselleer, the months and days); greetings in any language are passed over.
+verskuif, gekanselleer, the months and days); greetings in any language are passed over. When a message has more
+than one date, a "moved" message takes the new one and any other the first; a range ("20-22 Oct") reads its first
+day, and a bare hour ("14h") reads as a time. Each of these asks the rep to check, in the candidate's `lines`.
 
 **Alerts, support and cheap things (signed in; worked out on each request, nothing stored):**
 
