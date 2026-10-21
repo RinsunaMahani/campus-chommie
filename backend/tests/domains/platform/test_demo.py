@@ -20,6 +20,7 @@ from src.domains.classes.classes.models import ModuleClass
 from src.domains.identity.accounts.models import Consent, User
 from src.domains.identity.auth.rate_limit import policies
 from src.domains.platform.demo.jobs import rebase_demo
+from src.shared.rate_limit.limiter import limiter
 from src.domains.platform.demo.models import DemoAccount
 from src.domains.platform.demo.services import demo_service
 
@@ -135,6 +136,30 @@ def test_demo_sign_ins_have_their_own_limit(app, seeded):
         with app.test_request_context(json={"email": email}):
             assert policies.not_a_demo_login() is exempt
     assert policies.DEMO_LOGIN == "20 per hour"
+
+
+@pytest.fixture
+def limits_on(app):
+    was = limiter.enabled
+    limiter.enabled = True
+    with app.app_context():
+        limiter.reset()
+    yield
+    with app.app_context():
+        limiter.reset()
+    limiter.enabled = was
+
+
+def test_judges_can_sign_in_as_often_as_they_need(client, seeded, limits_on):
+    """From one address, right passwords never run out (only DEMO_SIGN_INS' flood guard); wrong ones still do."""
+    for _ in range(25):  # more than LOGIN's 5 a minute and DEMO_LOGIN's 20 an hour
+        r = client.post(f"{API}/auth/login", json={"email": EMAILS["naledi"], "password": seeded})
+        assert r.status_code == 200, r.get_json()
+    wrong = [client.post(f"{API}/auth/login", json={"email": EMAILS["naledi"], "password": "Wrong-2026!"}).status_code
+             for _ in range(21)]
+    assert wrong[:20] == [401] * 20 and wrong[20] == 429
+    r = client.post(f"{API}/auth/login", json={"email": "lerato@example.com", "password": "Wrong-2026!"})
+    assert r.status_code == 401  # anyone else's limits are their own
 
 
 # ------------------------------------------------------------------- data

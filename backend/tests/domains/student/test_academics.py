@@ -132,6 +132,17 @@ def test_editing_and_deleting(client, me):
     assert client.get(MARKS, headers=me.headers).get_json()["data"]["modules"] == []
 
 
+def test_deleting_a_module_takes_its_marks_with_it(client, me):
+    # Found by our pen test (scripts/security/pentest_local.py): this was a 500.
+    module = add_module(client, me)
+    add_assessment(client, me, module["id"], name="Test 1", weight=20, mark=70)
+    add_assessment(client, me, module["id"], name="Test 2", weight=30)
+    assert client.delete(f"{MARKS}/{module['id']}", headers=me.headers).status_code == 200
+    assert client.get(MARKS, headers=me.headers).get_json()["data"]["modules"] == []
+    again = add_module(client, me)
+    assert again["assessments"] == []
+
+
 def test_a_module_code_is_once_per_student(client, me, other):
     first = add_module(client, me, code="ANA201")
     r = client.post(MARKS, json={"code": "ana201"}, headers=me.headers)

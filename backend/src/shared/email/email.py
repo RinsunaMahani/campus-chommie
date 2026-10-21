@@ -46,7 +46,7 @@ logger = logging.getLogger("campus_chommie.email")
 _TEMPLATE_DIR = os.path.join(os.path.dirname(__file__), "templates")
 _jinja_env = Environment(loader=FileSystemLoader(_TEMPLATE_DIR), autoescape=select_autoescape(["html"]))
 # Plain-text twins are not HTML-escaped (they are never rendered as HTML).
-_text_env = Environment(loader=FileSystemLoader(_TEMPLATE_DIR), autoescape=False)
+_text_env = Environment(loader=FileSystemLoader(_TEMPLATE_DIR), autoescape=False)  # nosec B701
 
 
 # ------------------------------------------------------------------------

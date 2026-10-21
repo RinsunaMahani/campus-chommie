@@ -28,4 +28,9 @@ class Assessment(BaseModel):
     weight = db.Column(db.Float, nullable=False)
     mark = db.Column(db.Float, nullable=True)  # None until it's written
 
-    module = db.relationship(Module, backref=db.backref("assessments", order_by="Assessment.created_at", lazy="selectin"))
+    # passive_deletes: deleting a module leaves its assessments to the database's ON DELETE CASCADE, rather than
+    # SQLAlchemy blanking their module_id (NOT NULL, so that was a 500).
+    module = db.relationship(
+        Module,
+        backref=db.backref("assessments", order_by="Assessment.created_at", lazy="selectin", cascade="all, delete-orphan", passive_deletes=True),
+    )

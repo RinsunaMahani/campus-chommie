@@ -23,7 +23,9 @@ SECURITY
 """
 from __future__ import annotations
 
-from flask import Blueprint, render_template, request
+import secrets
+
+from flask import Blueprint, make_response, render_template, request
 
 from src.core.exceptions import AppError, ValidationError
 from src.shared.rate_limit.limiter import limiter
@@ -38,7 +40,15 @@ PAGE_LIMIT = "30 per hour"
 
 def _page(state: str, ticket: str = "", error: str = "", status: int = 200):
     app_link = f"{APP_LINK}?token={ticket}" if ticket and state in ("form", "invalid") else None
-    return render_template("reset_password_page.html", state=state, ticket=ticket, error=error, app_link=app_link), status
+    nonce = secrets.token_urlsafe(16)
+    html = render_template("reset_password_page.html", state=state, ticket=ticket, error=error, app_link=app_link, nonce=nonce)
+    response = make_response(html, status)
+    # Only this page's own style and script blocks run, and its form posts only back here.
+    response.headers["Content-Security-Policy"] = (
+        f"default-src 'none'; style-src 'nonce-{nonce}'; script-src 'nonce-{nonce}'; form-action 'self'; "
+        "frame-ancestors 'none'; base-uri 'none'"
+    )
+    return response
 
 
 @reset_page_bp.route("/reset-password", methods=["GET", "POST"])

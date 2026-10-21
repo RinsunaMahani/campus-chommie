@@ -251,6 +251,13 @@ def _register_security_headers(app: Flask) -> None:
         response.headers["Referrer-Policy"] = "no-referrer"
         response.headers["Cache-Control"] = "no-store"
         response.headers["Pragma"] = "no-cache"
+        # JSON loads nothing: a browser shown an API reply runs no script and frames nothing. A page that is HTML
+        # (the password reset page) sets its own, narrower policy first.
+        response.headers.setdefault("Content-Security-Policy", "default-src 'none'; frame-ancestors 'none'; base-uri 'none'")
+        # No camera, microphone or location for anything we serve; no other window can reach ours (ZAP, 21 Oct 2026).
+        response.headers["Permissions-Policy"] = "camera=(), microphone=(), geolocation=(), payment=()"
+        response.headers["Cross-Origin-Opener-Policy"] = "same-origin"
+        response.headers["Cross-Origin-Resource-Policy"] = "same-origin"
         response.headers.pop("Server", None)
         if app.config.get("HSTS"):
             response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"

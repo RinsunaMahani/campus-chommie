@@ -61,7 +61,7 @@ logger = logging.getLogger("campus_chommie.auth")
 # long as a wrong password (bcrypt is deliberately slow).
 _DUMMY_HASH = hash_password("dummy-password-for-timing-1!A")
 
-GENERIC_LOGIN_ERROR = "Email or password is incorrect."
+GENERIC_LOGIN_ERROR = "Email or password is incorrect. After several wrong tries, sign-in pauses for a few minutes."
 GENERIC_CODE_ERROR = "That code is wrong or has expired."
 GENERIC_RESET_ERROR = "This link is not valid any more. Ask for a new one."
 GENERIC_SIGN_IN_CODE_ERROR = "That code is wrong or has expired."
@@ -288,9 +288,9 @@ def login(
     correct = verify_password(password, credential.password_hash)
 
     if credential.locked_until and credential.locked_until > now:
-        if correct:  # only the real owner learns about the lock
-            auth_audit.record(E.LOGIN_BLOCKED, False, user_id=user.id, email=user.email, reason="account_locked")
-            raise AccountLockedError("Too many attempts. Try again in a few minutes, or reset your password.")
+        # Every try gets the generic answer, the right password too: answering it differently told a guesser each
+        # correct guess during the lock (our pen test, 21 Oct 2026). The owner hears of the lock from the alert.
+        auth_audit.record(E.LOGIN_BLOCKED, False, user_id=user.id, email=user.email, reason="account_locked", correct=correct)
         raise UnauthorizedError(GENERIC_LOGIN_ERROR, code="INVALID_CREDENTIALS")
 
     if not correct and user.is_demo:
