@@ -154,7 +154,8 @@ def _fetch(query: str) -> dict:
         for endpoint in ENDPOINTS:
             request = urllib.request.Request(endpoint, data=body, headers={"User-Agent": USER_AGENT})
             try:
-                with urllib.request.urlopen(request, timeout=150) as response:
+                # Bandit B310 (file:// and other schemes): the ENDPOINTS above are fixed https addresses.
+                with urllib.request.urlopen(request, timeout=150) as response:  # nosec B310
                     return json.loads(response.read())
             except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as exc:
                 last = f"{endpoint}: {exc}"

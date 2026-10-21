@@ -153,14 +153,31 @@ def test_wrong_password_and_unknown_email_get_the_same_error(client, outbox):
     assert a.get_json()["code"] == b.get_json()["code"] == "INVALID_CREDENTIALS"
 
 
-def test_lockout_after_five_failures_only_revealed_to_real_owner(client, outbox):
+def test_while_locked_the_right_password_looks_like_a_wrong_one(app, client, outbox):
+    # Our pen test (scripts/security/pentest_local.py) found the lock answering the RIGHT password with 423: a
+    # guesser learned each correct guess during the lock, at 5 tries a minute instead of 5 per 15 minutes. Now every
+    # try during the lock gets the generic answer; the owner hears of the lock from the in-app alert.
+    from datetime import timedelta
+
+    from src.domains.identity.auth.models import PasswordCredential
+    from src.core.base_model import utcnow
+    from src.extensions import db
+
     signed_up(client, outbox)
     for _ in range(5):
         client.post("/api/v1/auth/login", json={"email": EMAIL, "password": "Wrong2026!"})
     wrong = client.post("/api/v1/auth/login", json={"email": EMAIL, "password": "Wrong2026!"})
-    assert wrong.status_code == 401  # an attacker still sees the generic error
     right = client.post("/api/v1/auth/login", json={"email": EMAIL, "password": PASSWORD})
-    assert right.status_code == 423 and right.get_json()["code"] == "ACCOUNT_LOCKED"
+    nobody = client.post("/api/v1/auth/login", json={"email": "nobody@example.com", "password": PASSWORD})
+    assert wrong.status_code == right.status_code == nobody.status_code == 401
+    assert wrong.get_json() == right.get_json() == nobody.get_json()
+
+    with app.app_context():
+        cred = PasswordCredential.query.first()
+        cred.locked_until = utcnow() - timedelta(seconds=1)
+        db.session.commit()
+    after = client.post("/api/v1/auth/login", json={"email": EMAIL, "password": PASSWORD})
+    assert after.status_code == 202 and after.get_json()["data"]["code_required"]  # the lock is over: on to the code
 
 
 def test_unverified_login_resends_code(client, outbox):
@@ -286,6 +303,9 @@ def test_every_response_has_security_headers(client):
     assert r.headers["Cache-Control"] == "no-store"
     assert r.headers["X-Content-Type-Options"] == "nosniff"
     assert r.headers["X-Frame-Options"] == "DENY"
+    assert r.headers["Content-Security-Policy"] == "default-src 'none'; frame-ancestors 'none'; base-uri 'none'"
+    assert r.headers["Permissions-Policy"] == "camera=(), microphone=(), geolocation=(), payment=()"
+    assert r.headers["Cross-Origin-Opener-Policy"] == r.headers["Cross-Origin-Resource-Policy"] == "same-origin"
 
 
 def test_oversized_request_is_refused(client):

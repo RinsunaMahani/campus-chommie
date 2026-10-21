@@ -31,6 +31,18 @@ def test_email_button_opens_the_form(client, outbox):
     assert r.headers["Referrer-Policy"] == "no-referrer" and r.headers["Cache-Control"] == "no-store"
 
 
+def test_the_page_runs_only_its_own_style_and_script(client, outbox):
+    ticket = ticket_from_email(client, outbox)
+    r = client.get(f"/reset-password?ticket={ticket}")
+    policy = r.headers["Content-Security-Policy"]
+    nonce = re.search(r"'nonce-([^']+)'", policy).group(1)
+    assert f'<style nonce="{nonce}">'.encode() in r.data and f'<script nonce="{nonce}">'.encode() in r.data
+    assert "default-src 'none'" in policy and "form-action 'self'" in policy and "frame-ancestors 'none'" in policy
+    assert "unsafe-inline" not in policy
+    again = client.get(f"/reset-password?ticket={ticket}").headers["Content-Security-Policy"]
+    assert again != policy  # a fresh nonce every time
+
+
 def test_form_changes_the_password_once(client, outbox):
     ticket = ticket_from_email(client, outbox)
     r = client.post("/reset-password", data={"ticket": ticket, "password": NEW, "confirm": NEW})
