@@ -10,6 +10,7 @@ import { colors, fonts, radius } from '@/shared/theme/tokens';
 
 import { courseFinderApi } from '../api/courseFinderApi';
 import { checkRows } from '../marks';
+import { subjectName } from '../subjects';
 import { ErrorBox } from '@/shared/components/Status';
 import { TierCard } from '../components/TierCard';
 import { useCourseFinder } from '../state';
@@ -34,6 +35,8 @@ export default function ResultsScreen() {
   if (!cf.answer || !cf.university) return <Redirect href="/course-finder" />;
   const university = cf.university;
   const shown = filter === 'all' ? matches : matches.filter((m) => m.tier === filter);
+  // With several languages besides English, say which one the results count as the other official language.
+  const { otherLanguage } = checkRows(cf.rows);
 
   async function pick(match: Match) {
     setPicking(match.programme);
@@ -58,6 +61,9 @@ export default function ResultsScreen() {
       </View>
       {!cf.answer.university.confirmed && cf.answer.university.notice ? (
         <InfoNote icon="alert-circle">{cf.answer.university.notice}</InfoNote>
+      ) : null}
+      {otherLanguage ? (
+        <InfoNote icon="info">{t('courseFinder.otherLanguageCounted', { subject: subjectName(otherLanguage) })}</InfoNote>
       ) : null}
 
       {tiers.length > 1 ? (
