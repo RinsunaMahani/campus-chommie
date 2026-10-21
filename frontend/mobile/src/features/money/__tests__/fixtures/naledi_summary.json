@@ -1,0 +1,65 @@
+{
+ "data": {
+  "balance": {
+   "cents": 61000,
+   "entered_cents": 61000,
+   "entered_on": "2026-10-13",
+   "lines": [
+    "Your balance: about R610."
+   ]
+  },
+  "late": false,
+  "late_days": 14,
+  "life_fund": {
+   "reason": "Paused because your money may run out before the next payment.",
+   "reserve_cents": 10000,
+   "resume_hint": "Resumes when your next payment lands.",
+   "state": "paused"
+  },
+  "next_payment": {
+   "amount_cents": 150000,
+   "expected_on": "2026-10-31",
+   "label": "Living allowance (demo amount)",
+   "lands_on": "2026-10-31"
+  },
+  "notes": [],
+  "pace": {
+   "daily_cents": 4831,
+   "days_logged": 14,
+   "from": "spending",
+   "high_cents": 5233,
+   "lines": [
+    "Based on 14 days you logged, recent days counting most, you spend about R48.31 a day (usually R44.29 to R52.33)."
+   ],
+   "low_cents": 4429
+  },
+  "ready": true,
+  "runway": {
+   "days": 12,
+   "earliest_on": "2026-10-24",
+   "latest_on": "2026-10-26",
+   "lines": [
+    "At your recent pace, your money likely runs out around Sun 25 Oct (between Sat 24 Oct and Mon 26 Oct). That's before your next payment on Sat 31 Oct."
+   ],
+   "runs_out_on": "2026-10-25",
+   "scenario": "on time",
+   "short_before_next": true
+  },
+  "safe_to_spend": {
+   "days_until_next": 18,
+   "essentials_cents": 72000,
+   "lines": [
+    "Your money only covers essentials until Sat 31 Oct, so keep extras to zero for now."
+   ],
+   "per_day_cents": 0,
+   "reserve_cents": 10000
+  },
+  "this_week": {
+   "colour": "green",
+   "reason": "Manageable: 1 quiz."
+  },
+  "today": "2026-10-13"
+ },
+ "message": "Success",
+ "success": true
+}

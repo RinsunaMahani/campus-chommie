@@ -5,11 +5,12 @@ import { Button } from '@/shared/components/Button';
 import { t } from '@/shared/i18n';
 import { colors, fonts, radius } from '@/shared/theme/tokens';
 
-export function Loading() {
+/** A spinner with words, so a slow phone never shows a blank screen. */
+export function Loading({ label }: { label?: string }) {
   return (
     <View style={styles.loading} accessibilityLiveRegion="polite">
       <ActivityIndicator color={colors.ink} />
-      <Text style={styles.loadingText}>{t('courseFinder.loading')}</Text>
+      <Text style={styles.loadingText}>{label ?? t('common.loading')}</Text>
     </View>
   );
 }
@@ -22,7 +23,7 @@ export function ErrorBox({ message, onRetry }: { message: string; onRetry?: () =
         <Feather name="alert-circle" size={16} color={colors.garnet} style={{ marginTop: 2 }} />
         <Text style={styles.errorText}>{message}</Text>
       </View>
-      {onRetry ? <Button title={t('courseFinder.retry')} variant="secondary" icon="refresh-cw" onPress={onRetry} /> : null}
+      {onRetry ? <Button title={t('common.retry')} variant="secondary" icon="refresh-cw" onPress={onRetry} /> : null}
     </View>
   );
 }

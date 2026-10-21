@@ -2,6 +2,7 @@ import { router } from 'expo-router';
 import { View } from 'react-native';
 
 import { useSession } from '@/features/auth/session/SessionProvider';
+import { DemoBanner } from '@/features/profile/components/DemoBanner';
 import { Button } from '@/shared/components/Button';
 import { Card, ListRow } from '@/shared/components/Parts';
 import { Screen } from '@/shared/components/Screen';
@@ -17,6 +18,7 @@ export default function HomeScreen() {
       <View style={{ gap: 6 }}>
         <Title>Home</Title>
         <Muted>Signed in as {profile.email}</Muted>
+        <DemoBanner />
       </View>
 
       <Card style={{ paddingVertical: 4 }}>
