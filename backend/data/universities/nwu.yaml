@@ -1,0 +1,64 @@
+# North-West University (NWU)
+#
+# Agent draft, from NWU's own pages read on 13 Oct 2026 (docs/research/universities.md). Nobody has
+# checked these values yet: release stays false until a person has compared every one with its source.
+# The points rule comes from NWU's 2026 Grade 12 prospectus, the newest found. Programmes aren't added
+# yet: only how NWU counts points, and how and when to apply.
+
+university: nwu
+name: North-West University
+city: Potchefstroom, Mahikeng and Vanderbijlpark
+academic_year: 2027
+release: false
+max_choices: null
+
+points_rules:
+  source: s-nwu-prospectus
+  subjects_counted: 6
+  life_orientation: exclude    # "most faculties at the NWU recommend a 60% pass in Life Orientation"
+  scale:
+    - {min_percent: 90, level: 8}
+    - {min_percent: 80, level: 7}
+    - {min_percent: 70, level: 6}
+    - {min_percent: 60, level: 5}
+    - {min_percent: 50, level: 4}
+    - {min_percent: 40, level: 3}
+    - {min_percent: 30, level: 2}
+    - {min_percent: 0, level: 1}
+
+applications:
+  source: s-nwu-apply
+  url: https://studies.nwu.ac.za/studies/apply
+  fee_cents: 15000
+  fee_note: "Paid online before you submit. Not refunded."
+  windows:
+    - intake: 2027
+      source: s-nwu-apply
+      opens: 2026-06-01
+      closes: 2026-08-31
+      note: "Programmes with selection closed earlier, on 30 June 2026."
+
+programmes: []
+
+sources:
+  - id: s-nwu-prospectus
+    url: "https://studies.nwu.ac.za/sites/studies.nwu.ac.za/files/files/undergrad/2025-Grade-12-Prospectus.pdf"
+    publisher: "North-West University"
+    title: "2026 Grade 12 prospectus (the APS)"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-nwu-apply
+    url: "https://studies.nwu.ac.za/studies/apply"
+    publisher: "North-West University"
+    title: "How to apply"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-nwu-news
+    url: "https://news.nwu.ac.za/applications-and-admissions-north-west-university-2026"
+    publisher: "North-West University"
+    title: "Applications and admissions (selection programmes' closing date)"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"

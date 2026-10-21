@@ -1,0 +1,59 @@
+# University of Zululand (UNIZULU)
+#
+# Agent draft, read on 13 Oct 2026 (docs/research/universities.md). The points rule is from UNIZULU's
+# admissions policy, the newest found; its 2027 dates weren't found. Nobody has checked these values yet:
+# release stays false until a person has compared every one with its source.
+
+university: unizulu
+name: University of Zululand
+city: KwaDlangezwa
+academic_year: 2027
+release: false
+max_choices: null
+
+points_rules:
+  source: s-unizulu-policy
+  subjects_counted: 6
+  life_orientation: exclude
+  note: "UNIZULU also asks for Life Orientation at 40% or more, though it doesn't count it. From its admissions policy, the newest found."
+  scale:
+    - {min_percent: 80, level: 7}
+    - {min_percent: 70, level: 6}
+    - {min_percent: 60, level: 5}
+    - {min_percent: 50, level: 4}
+    - {min_percent: 40, level: 3}
+    - {min_percent: 30, level: 2}
+    - {min_percent: 0, level: 1}
+
+applications:
+  source: s-cao-faq
+  url: https://www.unizulu.ac.za/apply/
+  how: "Apply through the Central Applications Office (CAO), at cao.ac.za."
+  fee_cents: 25000
+  fee_note: "The CAO's fee: R250 if it reaches the CAO by 31 October 2026, R470 from 1 November."
+  windows: []               # 2027 dates not found on the pages read
+
+programmes: []
+
+sources:
+  - id: s-unizulu-policy
+    url: "https://www.unizulu.ac.za/wp-content/uploads/2018/07/Policy-and-Procedures-on-Admissions.pdf"
+    publisher: "University of Zululand"
+    title: "Policy and procedures on undergraduate admission (the APS)"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-unizulu-apply
+    url: "https://www.unizulu.ac.za/apply/"
+    publisher: "University of Zululand"
+    title: "Apply"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cao-faq
+    url: "https://cao.ac.za/2027%20Entry%20FAQs.html"
+    publisher: "Central Applications Office"
+    title: "2027 entry FAQs (fees)"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"

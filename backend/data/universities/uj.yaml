@@ -1,0 +1,57 @@
+# University of Johannesburg (UJ)
+#
+# Agent draft, 13 Oct 2026. UJ's site sits behind a bot check that stops automated readers, so these
+# values were read from a search engine's copy of UJ's own pages (docs/research/universities.md says
+# which). A person should open each page and check every value before release. Programmes aren't
+# added yet: only how UJ counts points, and how and when to apply.
+
+university: uj
+name: University of Johannesburg
+city: Johannesburg
+academic_year: 2027
+release: false
+max_choices: 2                 # two undergraduate study choices
+
+points_rules:
+  source: s-uj-yearbook
+  subjects_counted: 6
+  life_orientation: exclude
+  scale:
+    - {min_percent: 80, level: 7}
+    - {min_percent: 70, level: 6}
+    - {min_percent: 60, level: 5}
+    - {min_percent: 50, level: 4}
+    - {min_percent: 40, level: 3}
+    - {min_percent: 30, level: 2}
+    - {min_percent: 0, level: 1}
+
+applications:
+  source: s-uj-undergrad
+  url: https://www.uj.ac.za/admission-aid/new/
+  how: "Apply online. Once an application is submitted, it can't be changed."
+  fee_cents: 0
+  windows:
+    - intake: 2027
+      source: s-uj-undergrad
+      opens: 2026-04-01
+      closes: 2026-10-31
+      closing_time: "12:00"
+      no_late_applications: true
+
+programmes: []
+
+sources:
+  - id: s-uj-yearbook
+    url: "https://www.uj.ac.za/wp-content/uploads/2026/02/final-2026-science-apk-undergraduate-yearbook-jan2026.pdf"
+    publisher: "University of Johannesburg"
+    title: "2026 Faculty of Science undergraduate yearbook (the APS rule and scale)"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-uj-undergrad
+    url: "https://www.uj.ac.za/admission-aid/new/"
+    publisher: "University of Johannesburg"
+    title: "Undergraduate applications"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"

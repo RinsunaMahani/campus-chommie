@@ -1,0 +1,67 @@
+# University of KwaZulu-Natal (UKZN)
+#
+# Agent draft, read on 13 Oct 2026 (docs/research/universities.md). UKZN's sites didn't answer from our
+# network that day, so these values came from a search engine's copy of UKZN's own pages; a person should
+# open each and check it. Nobody has checked these values yet: release stays false until a person has
+# compared every one with its source. Programmes aren't added yet: only how UKZN counts points, and how
+# and when to apply.
+
+university: ukzn
+name: University of KwaZulu-Natal
+city: Durban and Pietermaritzburg
+academic_year: 2027
+release: false
+max_choices: null
+
+points_rules:
+  source: s-ukzn-selection
+  subjects_counted: 6
+  life_orientation: exclude
+  note: "UKZN always counts English and Mathematics or Mathematical Literacy, then your best others. Mathematics Paper 3 never counts."
+  scale:
+    - {min_percent: 90, level: 8}
+    - {min_percent: 80, level: 7}
+    - {min_percent: 70, level: 6}
+    - {min_percent: 60, level: 5}
+    - {min_percent: 50, level: 4}
+    - {min_percent: 40, level: 3}
+    - {min_percent: 30, level: 2}
+    - {min_percent: 0, level: 1}
+
+applications:
+  source: s-ukzn-2027
+  url: https://applications.ukzn.ac.za/
+  how: "South Africans applying for the first time apply through the Central Applications Office (CAO), at cao.ac.za."
+  fee_cents: 25000
+  fee_note: "The CAO's fee: R250 if it reaches the CAO by 31 October 2026, R470 from 1 November."
+  windows:
+    - intake: 2027
+      source: s-ukzn-2027
+      opens: null
+      closes: 2026-09-30
+      note: "Medicine closed on 30 June 2026, with no late applications."
+
+programmes: []
+
+sources:
+  - id: s-ukzn-selection
+    url: "https://applications.ukzn.ac.za/selection-procedure/undergraduate-selection-procedure/"
+    publisher: "University of KwaZulu-Natal"
+    title: "Undergraduate selection procedure (the APS)"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ukzn-2027
+    url: "https://applications.ukzn.ac.za/uncategorized/2026-applications/"
+    publisher: "University of KwaZulu-Natal"
+    title: "2027 applications"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cao-faq
+    url: "https://cao.ac.za/2027%20Entry%20FAQs.html"
+    publisher: "Central Applications Office"
+    title: "2027 entry FAQs (fees)"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"

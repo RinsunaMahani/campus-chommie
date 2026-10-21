@@ -1,0 +1,57 @@
+# Vaal University of Technology (VUT)
+#
+# Agent draft, from VUT's own pages read on 13 Oct 2026 (docs/research/universities.md). Nobody has
+# checked these values yet: release stays false until a person has compared every one with its source.
+# VUT gives two closing dates for 2027; both are kept, and the app asks the learner to check. Bank
+# details in VUT's documents are left out on purpose. Programmes aren't added yet.
+
+university: vut
+name: Vaal University of Technology
+city: Vanderbijlpark
+academic_year: 2027
+release: false
+max_choices: null
+
+points_rules:
+  source: s-vut-requirements
+  subjects_counted: 6          # "A maximum of 6 subjects ... excluding Life Orientation"
+  life_orientation: exclude
+  scale:                       # VUT's notes: 3 = 40-49% up to 8 = 90-99%; 2 is 30%
+    - {min_percent: 90, level: 8}
+    - {min_percent: 80, level: 7}
+    - {min_percent: 70, level: 6}
+    - {min_percent: 60, level: 5}
+    - {min_percent: 50, level: 4}
+    - {min_percent: 40, level: 3}
+    - {min_percent: 30, level: 2}
+    - {min_percent: 0, level: 1}
+
+applications:
+  source: s-vut-apply
+  url: https://vut.ac.za/how-to-apply/
+  how: "Apply online on VUT's application portal, after paying the application fee there."
+  fee_cents: 11000
+  windows:
+    - intake: 2027
+      source: s-vut-apply
+      opens: 2026-05-21
+      closes_one_of: [2026-09-30, 2026-10-30]
+      note: "VUT gives two closing dates: 30 September (academic programmes, in its 2027 requirements) and 30 October 2026 (South African applicants, on its How to apply page). Some programmes closed on 31 July 2026."
+
+programmes: []
+
+sources:
+  - id: s-vut-requirements
+    url: "https://vut.ac.za/wp-content/uploads/2026/03/2027-Undergraduate-Minimum-Admission-Requirements.pdf"
+    publisher: "Vaal University of Technology"
+    title: "2027 Undergraduate Minimum Admission Requirements"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-vut-apply
+    url: "https://vut.ac.za/how-to-apply/"
+    publisher: "Vaal University of Technology"
+    title: "How to apply"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"

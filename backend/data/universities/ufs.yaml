@@ -1,0 +1,63 @@
+# University of the Free State (UFS)
+#
+# Agent draft, read on 13 Oct 2026 (docs/research/universities.md). Which subjects count comes from the
+# UFS's 2027 MBChB selection rules; the scale from its conversion table, read through a search engine. Its
+# 2027 closing date wasn't found. Nobody has checked these values yet: release stays false until a person
+# has compared every one with its source.
+
+university: ufs
+name: University of the Free State
+city: Bloemfontein and QwaQwa
+academic_year: 2027
+release: false
+max_choices: null
+
+points_rules:
+  source: s-ufs-rules
+  subjects_counted: 7
+  life_orientation: full
+  count_from_level: 2
+  note: "The UFS counts your four compulsory subjects and your two best others, and gives Life Orientation 1 point from 60%. We count your best six besides Life Orientation, which is the same when you take seven subjects."
+  scale:
+    - {min_percent: 90, level: 8}
+    - {min_percent: 80, level: 7}
+    - {min_percent: 70, level: 6}
+    - {min_percent: 60, level: 5}
+    - {min_percent: 50, level: 4}
+    - {min_percent: 40, level: 3}
+    - {min_percent: 30, level: 2}
+    - {min_percent: 0, level: 1}
+  subject_points:
+    life_orientation:
+      - {min_percent: 60, points: 1}
+      - {min_percent: 0, points: 0}
+
+applications:
+  source: s-ufs-prospective
+  url: https://www.ufs.ac.za/prospective
+  windows: []               # 2027 dates not found on the pages read
+
+programmes: []
+
+sources:
+  - id: s-ufs-rules
+    url: "https://www.ufs.ac.za/docs/librariesprovider25/default-document-library/2027-mbchb-selection-rules.pdf?sfvrsn=34af520_0"
+    publisher: "University of the Free State"
+    title: "2027 MBChB selection rules (section 2.2: the AP score)"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ufs-scale
+    url: "https://www.ufs.ac.za/docs/librariesprovider44/default-document-library/conversion-table.pdf?sfvrsn=50268d21_2"
+    publisher: "University of the Free State"
+    title: "Conversion table (the AP scale)"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ufs-prospective
+    url: "https://www.ufs.ac.za/prospective"
+    publisher: "University of the Free State"
+    title: "Prospective students"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"

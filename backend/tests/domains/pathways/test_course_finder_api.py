@@ -169,18 +169,29 @@ def test_points_at_every_university_before_picking_one(client):
     r = client.post(POINTS, json={"marks": STRONG})
     assert r.status_code == 200
     universities = r.get_json()["data"]["universities"]
-    assert [(u["university"], u["points"]) for u in universities] == [("smu", 47), ("tut", 40), ("up", 40)]
+    by_id = {u["university"]: u for u in universities}
+    # In name order: none is ranked above another.
+    names = [u["university_name"] for u in universities]
+    assert names == sorted(names)
+    assert {k: by_id[k]["points"] for k in ("smu", "tut", "up")} == {"smu": 47, "tut": 40, "up": 40}
     for u in universities:
-        assert u["summary"].startswith("You meet the minimum for ")
-        assert u["lines"] and u["source_url"].startswith("https://")
-        assert u["confirmed"] is False and u["notice"] == "Not yet confirmed by the team."
+        assert u["lines"] and u["confirmed"] is False and u["notice"] == "Not yet confirmed by the team."
+        if u["points"] is None:  # no points rule yet: said, with why
+            assert u["lines"][0] == "We don't have this university's points rule yet." and u["subjects"] == []
+        else:
+            assert u["source_url"].startswith("https://")
         assert set(u["tiers"]) == {"competitive", "meets_minimum", "reach", "not_yet", "unverified"}
-    assert sum(universities[0]["tiers"].values()) == 17
+    for k in ("smu", "tut", "up"):
+        assert by_id[k]["summary"].startswith("You meet the minimum for ")
+    assert sum(by_id["smu"]["tiers"].values()) == 17
+    # A university whose programmes aren't added yet: its points, and why there's nothing to meet.
+    assert by_id["wits"]["points"] == 47
+    assert by_id["wits"]["summary"] == "We haven't added this university's programmes yet."
     # Each subject's level and points there, in the order sent: together they make the total.
-    for u in universities:
+    for u in (u for u in universities if u["points"] is not None):
         assert [s["subject"] for s in u["subjects"]] == [m["subject"] for m in STRONG]
-        assert sum(s["points"] for s in u["subjects"]) == u["points"]
-    tut_lo = next(s for s in universities[1]["subjects"] if s["subject"] == "life_orientation")
+        assert sum(s["points"] for s in u["subjects"]) == pytest.approx(u["points"])
+    tut_lo = next(s for s in by_id["tut"]["subjects"] if s["subject"] == "life_orientation")
     assert (tut_lo["level"], tut_lo["points"], tut_lo["counted"]) == (7, 0.0, False)
 
 

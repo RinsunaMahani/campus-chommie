@@ -1,0 +1,57 @@
+# University of Limpopo (UL)
+#
+# Agent draft, from UL's own pages read on 13 Oct 2026 (docs/research/universities.md). Nobody has
+# checked these values yet: release stays false until a person has compared every one with its source.
+# Programmes aren't added yet: only how UL counts points, and how and when to apply.
+
+university: ul
+name: University of Limpopo
+city: Polokwane
+academic_year: 2027
+release: false
+max_choices: null
+
+points_rules:
+  source: s-ul-undergrad
+  subjects_counted: 6          # six recognised 20-credit subjects
+  life_orientation: exclude
+  note: "UL also asks for Life Orientation at level 3 or more, though it doesn't count it."
+  scale:
+    - {min_percent: 80, level: 7}
+    - {min_percent: 70, level: 6}
+    - {min_percent: 60, level: 5}
+    - {min_percent: 50, level: 4}
+    - {min_percent: 40, level: 3}
+    - {min_percent: 30, level: 2}
+    - {min_percent: 0, level: 1}
+
+applications:
+  source: s-ul-2027
+  url: https://www.ul.ac.za/study-with-us-university-of-limpopo-2027-application-now-open/
+  how: "Apply online, with a valid email address of your own."
+  fee_cents: 20000
+  fee_note: "Not refunded."
+  windows:
+    - intake: 2027
+      source: s-ul-2027
+      opens: 2026-04-01
+      closes: 2026-09-30
+      note: "MBChB (Medicine), and applicants from outside South Africa, closed on 30 July 2026."
+
+programmes: []
+
+sources:
+  - id: s-ul-undergrad
+    url: "https://www.ul.ac.za/admissions/undergraduate-studies/"
+    publisher: "University of Limpopo"
+    title: "Undergraduate studies (the APS)"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ul-2027
+    url: "https://www.ul.ac.za/study-with-us-university-of-limpopo-2027-application-now-open/"
+    publisher: "University of Limpopo"
+    title: "Study with us: University of Limpopo 2027 applications now open"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"

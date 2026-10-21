@@ -1,0 +1,47 @@
+# University of Cape Town (UCT)
+#
+# Agent draft, read on 13 Oct 2026 (docs/research/universities.md). UCT ranks applicants by a Faculty
+# Points Score its faculties work out their own way, which marks alone don't give us: no points rule yet.
+# Nobody has checked these values yet: release stays false until a person has compared every one with its
+# source.
+
+university: uct
+name: University of Cape Town
+city: Cape Town
+academic_year: 2027
+release: false
+max_choices: null
+
+points_rules: null
+points_note: "UCT ranks applicants by a Faculty Points Score that each faculty works out its own way."
+
+applications:
+  source: s-uct-apply
+  url: https://uct.ac.za/students/applications-apply-undergraduate-qualifications/application-procedure
+  how: "Apply online, then pay the fee once UCT acknowledges your application, and send the proof of payment to the Admissions Office."
+  fee_cents: 10000
+  fee_note: "For South African and SADC applicants."
+  windows:
+    - intake: 2027
+      source: s-uct-directions
+      opens: null
+      closes: 2026-07-31
+      note: "Fine Art portfolios were due by 31 August 2026."
+
+programmes: []
+
+sources:
+  - id: s-uct-apply
+    url: "https://uct.ac.za/students/applications-apply-undergraduate-qualifications/application-procedure"
+    publisher: "University of Cape Town"
+    title: "Application procedure"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-uct-directions
+    url: "https://uct.ac.za/sites/default/files/media/documents/ug-directions-for-applicants-2027.pdf"
+    publisher: "University of Cape Town"
+    title: "2027 directions for undergraduate applicants"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"

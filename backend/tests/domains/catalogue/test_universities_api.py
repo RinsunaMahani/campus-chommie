@@ -37,10 +37,12 @@ def test_the_list_needs_no_account_and_flags_unchecked_packs(client):
     r = client.get(BASE)
     assert r.status_code == 200
     universities = {u["id"]: u for u in r.get_json()["data"]["universities"]}
-    assert set(universities) == {"smu", "tut", "up"}
+    assert {"smu", "tut", "up", "wits", "uj", "unisa"} <= set(universities)
     smu = universities["smu"]
     assert smu["name"] == "Sefako Makgatho Health Sciences University"
     assert smu["programmes"] == 17
+    # A university whose programmes aren't added yet is still listed, with none.
+    assert universities["wits"]["programmes"] == 0
     assert all(u["confirmed"] is False and u["notice"] == "Not yet confirmed by the team." for u in universities.values())
 
 

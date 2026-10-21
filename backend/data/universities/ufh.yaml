@@ -1,0 +1,44 @@
+# University of Fort Hare (UFH)
+#
+# Agent draft, read on 13 Oct 2026 (docs/research/universities.md). UFH doesn't publish its points table
+# on the pages read: no points rule yet. Nobody has checked these values yet: release stays false until a
+# person has compared every one with its source.
+
+university: ufh
+name: University of Fort Hare
+city: Alice and East London
+academic_year: 2027
+release: false
+max_choices: null
+
+points_rules: null
+points_note: "UFH's points table wasn't found on its pages."
+
+applications:
+  source: s-ufh-apply
+  url: https://www.ufh.ac.za/apply/apply-undergraduate
+  fee_cents: 12000
+  fee_note: "Not refunded. Your application is processed once it's paid."
+  windows:
+    - intake: 2027
+      source: s-ufh-admission
+      opens: null
+      closes: 2026-10-31
+
+programmes: []
+
+sources:
+  - id: s-ufh-apply
+    url: "https://www.ufh.ac.za/apply/apply-undergraduate"
+    publisher: "University of Fort Hare"
+    title: "Undergraduate application process"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ufh-admission
+    url: "https://www.ufh.ac.za/admission"
+    publisher: "University of Fort Hare"
+    title: "Admission"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"

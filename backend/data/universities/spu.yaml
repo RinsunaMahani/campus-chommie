@@ -1,0 +1,43 @@
+# Sol Plaatje University (SPU)
+#
+# Agent draft, read on 13 Oct 2026 (docs/research/universities.md). SPU's 2026 prospectus table doesn't
+# say how many subjects count, and its bonus depends on which language is a home language, which the app
+# doesn't ask: no points rule yet. Nobody has checked these values yet: release stays false until a person
+# has compared every one with its source.
+
+university: spu
+name: Sol Plaatje University
+city: Kimberley
+academic_year: 2027
+release: false
+max_choices: null
+
+points_rules: null
+points_note: "SPU's points table doesn't say how many subjects count, and its extra points depend on your home language, which we don't ask."
+
+applications:
+  source: s-spu-apply
+  url: https://www.spu.ac.za/index.php/how-to-apply/
+  windows:
+    - intake: 2027
+      source: s-spu-apply
+      opens: null
+      closes: 2026-10-31
+
+programmes: []
+
+sources:
+  - id: s-spu-apply
+    url: "https://www.spu.ac.za/index.php/how-to-apply/"
+    publisher: "Sol Plaatje University"
+    title: "How to apply"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-spu-prospectus
+    url: "https://www.spu.ac.za/wp-content/uploads/2025/04/2026-Undergraduate-Prospectus.pdf"
+    publisher: "Sol Plaatje University"
+    title: "2026 undergraduate prospectus (the APS table)"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"

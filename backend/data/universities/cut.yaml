@@ -1,0 +1,53 @@
+# Central University of Technology (CUT)
+#
+# Agent draft, read on 13 Oct 2026 (docs/research/universities.md). CUT's points table doesn't say how
+# many subjects count, so there's no points rule yet. Nobody has checked these values yet: release stays
+# false until a person has compared every one with its source.
+
+university: cut
+name: Central University of Technology
+city: Bloemfontein and Welkom
+academic_year: 2027
+release: false
+max_choices: 2
+
+points_rules: null
+points_note: "CUT's points table doesn't say how many subjects count."
+
+applications:
+  source: s-cut-apply
+  url: https://www.cut.ac.za/application-process/
+  how: "Apply online, with a first and a second programme choice."
+  fee_cents: 0
+  windows:
+    - intake: 2027
+      source: s-cut-faq
+      opens: null
+      closes: 2026-09-30
+      no_late_applications: true
+      note: "Applications opened in April 2026. Some programmes closed earlier when they had many applications."
+
+programmes: []
+
+sources:
+  - id: s-cut-apply
+    url: "https://www.cut.ac.za/application-process/"
+    publisher: "Central University of Technology"
+    title: "Application process"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-faq
+    url: "https://askcut.cut.ac.za/support/solutions/articles/103000016975-closing-date-for-cut-online-applications-for-local-and-international-"
+    publisher: "Central University of Technology"
+    title: "Ask CUT: closing date for online applications"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cut-ap
+    url: "https://www.cut.ac.za/admission-points-ap"
+    publisher: "Central University of Technology"
+    title: "Admission points (AP)"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"

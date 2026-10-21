@@ -1,0 +1,62 @@
+# University of South Africa (Unisa)
+#
+# Agent draft, from Unisa's own pages read on 13 Oct 2026 (docs/research/universities.md). Nobody has
+# checked these values yet: release stays false until a person has compared every one with its source.
+# Programmes aren't added yet: only how Unisa counts points, and how and when to apply.
+
+university: unisa
+name: University of South Africa
+city: Pretoria
+academic_year: 2027
+release: false
+max_choices: 3                 # "a maximum of three qualifications, ranked in order of preference"
+
+points_rules:
+  source: s-unisa-admission
+  subjects_counted: 6          # six recognised 20-credit subjects, at most 42
+  life_orientation: exclude
+  scale:
+    - {min_percent: 80, level: 7}
+    - {min_percent: 70, level: 6}
+    - {min_percent: 60, level: 5}
+    - {min_percent: 50, level: 4}
+    - {min_percent: 40, level: 3}
+    - {min_percent: 30, level: 2}
+    - {min_percent: 0, level: 1}
+
+applications:
+  source: s-unisa-apply
+  url: https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Apply-for-admission
+  how: "Apply online. Unisa offers places by how much room each qualification has, so being accepted isn't automatic."
+  fee_cents: 16000
+  fee_note: "Only first-time applicants pay it, by the closing date. Not refunded."
+  windows:
+    - intake: 2027
+      source: s-unisa-apply
+      opens: 2026-08-17
+      closes: 2026-10-09
+
+programmes: []
+
+sources:
+  - id: s-unisa-admission
+    url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/General-admission-requirements"
+    publisher: "University of South Africa"
+    title: "General admission requirements (the APS)"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-unisa-apply
+    url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Apply-for-admission"
+    publisher: "University of South Africa"
+    title: "Apply for admission to an undergraduate qualification"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-unisa-2027
+    url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Whats-new-for-2027"
+    publisher: "University of South Africa"
+    title: "2027 Unisa application information (how many qualifications)"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"

@@ -1,0 +1,53 @@
+# Mangosuthu University of Technology (MUT)
+#
+# Agent draft, read on 13 Oct 2026 (docs/research/universities.md). MUT doesn't say on its pages how it
+# counts points, so there's no points rule yet. Nobody has checked these values yet: release stays false
+# until a person has compared every one with its source.
+
+university: mut
+name: Mangosuthu University of Technology
+city: Umlazi, Durban
+academic_year: 2027
+release: false
+max_choices: null
+
+points_rules: null
+points_note: "MUT's pages don't say how it counts points."
+
+applications:
+  source: s-mut-apply
+  url: https://www.mut.ac.za/prospective-students/apply/
+  how: "Apply through the Central Applications Office (CAO): one application and one fee for more than one programme. MUT considers applicants who put it first or second."
+  fee_cents: 25000
+  fee_note: "The CAO's fee: R250 if it reaches the CAO by 31 October 2026, R470 from 1 November."
+  windows:
+    - intake: 2027
+      source: s-mut-apply
+      opens: null
+      closes: 2026-11-30
+      note: "Applications opened in January 2026 and closed on 30 September; MUT accepts late applications until 30 November, at the CAO's late fee."
+
+programmes: []
+
+sources:
+  - id: s-mut-apply
+    url: "https://www.mut.ac.za/prospective-students/apply/"
+    publisher: "Mangosuthu University of Technology"
+    title: "Apply"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-mut-how
+    url: "https://www.mut.ac.za/prospective-students/study-at-mut/how-to-apply-to-mut/"
+    publisher: "Mangosuthu University of Technology"
+    title: "How to apply to MUT (first or second choice)"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-cao-faq
+    url: "https://cao.ac.za/2027%20Entry%20FAQs.html"
+    publisher: "Central Applications Office"
+    title: "2027 entry FAQs (fees)"
+    retrieved: 2026-10-13
+    last_verified: null
+    verified_by: "agent draft, needs human check"
