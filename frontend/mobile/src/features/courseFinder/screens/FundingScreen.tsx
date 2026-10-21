@@ -1,8 +1,10 @@
 import { Feather } from '@expo/vector-icons';
 import { router } from 'expo-router';
-import { ComponentProps, useEffect, useMemo, useState } from 'react';
+import { ComponentProps, useCallback, useEffect, useMemo, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
+import { useSession } from '@/features/auth/session/SessionProvider';
+import { Button } from '@/shared/components/Button';
 import { HeroScreen } from '@/shared/components/HeroScreen';
 import { Card, InfoNote, Tag } from '@/shared/components/Parts';
 import { ErrorBox } from '@/shared/components/Status';
@@ -14,8 +16,8 @@ import { colors, fonts, radius } from '@/shared/theme/tokens';
 
 import { courseFinderApi } from '../api/courseFinderApi';
 import { useCourseFinder } from '../state';
-import { FundingCard, FundingListAnswer } from '../types';
-import { errorText } from '../words';
+import { FundingCard, FundingListAnswer, SavedFundingCard } from '../types';
+import { errorText, formatDay } from '../words';
 
 type TagTone = NonNullable<ComponentProps<typeof Tag>['tone']>;
 
@@ -31,13 +33,24 @@ function matchesGoalField(funder: FundingCard, goalFields: string[]): boolean {
   return funder.fields?.some((f) => goalFields.includes(f.id)) ?? false;
 }
 
+function useSignedIn(): boolean {
+  try {
+    return useSession().status === 'active';
+  } catch {
+    return false;
+  }
+}
+
 /**
- * Funding options: Choice between NSFAS and other bursaries and loans.
- * Public and read-only, nothing sent about the learner.
+ * Funding options: Choice between NSFAS and other bursaries and loans, plus
+ * saving funding when signed in.
  */
 export default function FundingScreen() {
   const cf = useCourseFinder();
+  const signedIn = useSignedIn();
   const [data, setData] = useState<FundingListAnswer | null>(null);
+  const [savedList, setSavedList] = useState<SavedFundingCard[]>([]);
+  const [signInPrompt, setSignInPrompt] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [filter, setFilter] = useState<string>('all');
@@ -49,6 +62,48 @@ export default function FundingScreen() {
       .catch((e) => setError(errorText(e)))
       .finally(() => setLoading(false));
   }, []);
+
+  useEffect(() => {
+    if (!signedIn) return;
+    courseFinderApi
+      .savedFundingList()
+      .then((res) => setSavedList(res.funders))
+      .catch(() => undefined);
+  }, [signedIn]);
+
+  const activeSavedList = useMemo(() => (signedIn ? savedList : []), [signedIn, savedList]);
+
+  const savedById = useMemo(() => {
+    const map: Record<string, SavedFundingCard> = {};
+    for (const f of activeSavedList) map[f.id] = f;
+    return map;
+  }, [activeSavedList]);
+
+  const toggleSave = useCallback(
+    async (funder: FundingCard) => {
+      if (!signedIn) {
+        setSignInPrompt(true);
+        return;
+      }
+      const existing = savedById[funder.id];
+      if (existing) {
+        setSavedList((prev) => prev.filter((x) => x.id !== funder.id));
+        try {
+          await courseFinderApi.unsaveFunder(funder.id);
+        } catch {
+          setSavedList((prev) => [...prev, existing]);
+        }
+      } else {
+        try {
+          const saved = await courseFinderApi.saveFunder(funder.id);
+          setSavedList((prev) => [...prev.filter((x) => x.id !== funder.id), saved]);
+        } catch (e) {
+          setError(errorText(e));
+        }
+      }
+    },
+    [signedIn, savedById],
+  );
 
   const goalFields = useMemo(() => cf.plan?.goal?.match.fields ?? [], [cf.plan?.goal?.match.fields]);
 
@@ -73,11 +128,12 @@ export default function FundingScreen() {
   }, [otherFunders, filter, goalFields]);
 
   const displayedFunders = useMemo(() => {
+    if (filter === 'saved') return activeSavedList;
     if (filter === 'all') return sortedOthers;
     return otherFunders.filter(
       (f) => f.any_field || f.fields?.some((field) => field.id === filter),
     );
-  }, [filter, sortedOthers, otherFunders]);
+  }, [filter, activeSavedList, sortedOthers, otherFunders]);
 
   const hasGoalMatches = useMemo(
     () => goalFields.length > 0 && otherFunders.some((f) => matchesGoalField(f, goalFields)),
@@ -114,6 +170,19 @@ export default function FundingScreen() {
             <InfoNote icon="info">{data.notice}</InfoNote>
           ) : null}
 
+          {signInPrompt && !signedIn ? (
+            <Card style={styles.signInCard}>
+              <Body>{t('courseFinder.saveSignInPrompt')}</Body>
+              <Button
+                title={t('courseFinder.saveSignInButton')}
+                variant="accent"
+                compact
+                icon="log-in"
+                onPress={() => router.push('/(auth)/sign-in')}
+              />
+            </Card>
+          ) : null}
+
           {/* Choice 1: NSFAS */}
           <Card
             onPress={() => router.push('/course-finder/funding/nsfas')}
@@ -123,9 +192,31 @@ export default function FundingScreen() {
                 <Overline>{t('courseFinder.nsfasTitle')}</Overline>
                 {nsfas?.name ? <Title style={styles.choiceTitle}>{nsfas.name}</Title> : null}
               </View>
-              {nsfas?.label ? (
-                <Tag label={nsfas.label} tone={tagTone(nsfas.status)} />
-              ) : null}
+              <View style={styles.actionsRow}>
+                {nsfas?.label ? (
+                  <Tag label={nsfas.label} tone={tagTone(nsfas.status)} />
+                ) : null}
+                {nsfas ? (
+                  <Pressable
+                    accessibilityRole="button"
+                    accessibilityLabel={
+                      savedById[nsfas.id]
+                        ? t('courseFinder.unsaveFunder', { name: nsfas.name })
+                        : t('courseFinder.saveFunder', { name: nsfas.name })
+                    }
+                    onPress={() => toggleSave(nsfas)}
+                    style={[styles.saveBtn, !!savedById[nsfas.id] && styles.saveBtnOn]}>
+                    <Feather
+                      name="bookmark"
+                      size={13}
+                      color={savedById[nsfas.id] ? colors.pillText : colors.ink}
+                    />
+                    <Text style={[styles.saveText, !!savedById[nsfas.id] && styles.saveTextOn]}>
+                      {savedById[nsfas.id] ? t('courseFinder.saved') : t('courseFinder.save')}
+                    </Text>
+                  </Pressable>
+                ) : null}
+              </View>
             </View>
             {nsfas ? (
               <View style={styles.metaRow}>
@@ -133,6 +224,9 @@ export default function FundingScreen() {
                 <Muted>·</Muted>
                 <Muted>{nsfas.sector_label}</Muted>
               </View>
+            ) : null}
+            {savedById.nsfas?.saved_on ? (
+              <Muted>{t('courseFinder.savedOn', { date: formatDay(savedById.nsfas.saved_on) })}</Muted>
             ) : null}
             {nsfas?.lines?.length ? (
               <Text style={styles.line}>{nsfas.lines[0]}</Text>
@@ -149,25 +243,29 @@ export default function FundingScreen() {
           <View style={{ gap: 12 }}>
             <Title style={styles.sectionTitle}>{t('courseFinder.otherFundingTitle')}</Title>
 
-            {data.fields.length > 0 ? (
-              <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.chips}>
-                {[['all', t('courseFinder.filterAll')], ...data.fields.map((f) => [f.id, f.label])].map(
-                  ([val, label]) => {
-                    const on = filter === val;
-                    return (
-                      <Pressable
-                        key={val}
-                        accessibilityRole="button"
-                        accessibilityState={{ selected: on }}
-                        onPress={() => setFilter(val)}
-                        style={[styles.chip, on && styles.chipOn]}>
-                        <Text style={[styles.chipText, on && styles.chipTextOn]}>{label}</Text>
-                      </Pressable>
-                    );
-                  },
-                )}
-              </ScrollView>
-            ) : null}
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.chips}>
+              {[
+                ['all', t('courseFinder.filterAll')],
+                ['saved', t('courseFinder.filterSaved')],
+                ...data.fields.map((f) => [f.id, f.label]),
+              ].map(([val, label]) => {
+                const on = filter === val;
+                return (
+                  <Pressable
+                    key={val}
+                    accessibilityRole="button"
+                    accessibilityLabel={label}
+                    accessibilityState={{ selected: on }}
+                    onPress={() => {
+                      setFilter(val);
+                      if (val === 'saved' && !signedIn) setSignInPrompt(true);
+                    }}
+                    style={[styles.chip, on && styles.chipOn]}>
+                    <Text style={[styles.chipText, on && styles.chipTextOn]}>{label}</Text>
+                  </Pressable>
+                );
+              })}
+            </ScrollView>
 
             {filter === 'all' && goalFieldLabel && hasGoalMatches ? (
               <InfoNote icon="award">
@@ -175,29 +273,61 @@ export default function FundingScreen() {
               </InfoNote>
             ) : null}
 
+            {filter === 'saved' && signedIn && displayedFunders.length === 0 ? (
+              <InfoNote icon="bookmark">{t('courseFinder.savedEmpty')}</InfoNote>
+            ) : null}
+
             <View style={{ gap: 10 }}>
-              {displayedFunders.map((funder, i) => (
-                <FadeIn key={funder.id} delay={Math.min(i, 8) * 30}>
-                  <Card
-                    onPress={() => router.push(`/course-finder/funding/${funder.id}`)}
-                    style={styles.funderCard}>
-                    <View style={styles.funderRow}>
-                      <Strong style={styles.funderName}>{funder.name}</Strong>
-                      <Tag label={funder.label} tone={tagTone(funder.status)} />
-                    </View>
-                    <View style={styles.metaRow}>
-                      <Muted>{funder.kind_label}</Muted>
-                      {funder.sector_label ? (
-                        <>
-                          <Muted>·</Muted>
-                          <Muted>{funder.sector_label}</Muted>
-                        </>
+              {displayedFunders.map((funder, i) => {
+                const savedEntry = savedById[funder.id];
+                const isSaved = !!savedEntry;
+                const savedOnDate = (funder as SavedFundingCard).saved_on ?? savedEntry?.saved_on;
+                return (
+                  <FadeIn key={funder.id} delay={Math.min(i, 8) * 30}>
+                    <Card
+                      onPress={() => router.push(`/course-finder/funding/${funder.id}`)}
+                      style={styles.funderCard}>
+                      <View style={styles.funderRow}>
+                        <Strong style={styles.funderName}>{funder.name}</Strong>
+                        <View style={styles.actionsRow}>
+                          <Tag label={funder.label} tone={tagTone(funder.status)} />
+                          <Pressable
+                            accessibilityRole="button"
+                            accessibilityLabel={
+                              isSaved
+                                ? t('courseFinder.unsaveFunder', { name: funder.name })
+                                : t('courseFinder.saveFunder', { name: funder.name })
+                            }
+                            onPress={() => toggleSave(funder)}
+                            style={[styles.saveBtn, isSaved && styles.saveBtnOn]}>
+                            <Feather
+                              name="bookmark"
+                              size={13}
+                              color={isSaved ? colors.pillText : colors.ink}
+                            />
+                            <Text style={[styles.saveText, isSaved && styles.saveTextOn]}>
+                              {isSaved ? t('courseFinder.saved') : t('courseFinder.save')}
+                            </Text>
+                          </Pressable>
+                        </View>
+                      </View>
+                      <View style={styles.metaRow}>
+                        <Muted>{funder.kind_label}</Muted>
+                        {funder.sector_label ? (
+                          <>
+                            <Muted>·</Muted>
+                            <Muted>{funder.sector_label}</Muted>
+                          </>
+                        ) : null}
+                      </View>
+                      {savedOnDate ? (
+                        <Muted>{t('courseFinder.savedOn', { date: formatDay(savedOnDate) })}</Muted>
                       ) : null}
-                    </View>
-                    {funder.why ? <Text style={styles.whyLine}>{funder.why}</Text> : null}
-                  </Card>
-                </FadeIn>
-              ))}
+                      {funder.why ? <Text style={styles.whyLine}>{funder.why}</Text> : null}
+                    </Card>
+                  </FadeIn>
+                );
+              })}
             </View>
           </View>
         </View>
@@ -208,9 +338,25 @@ export default function FundingScreen() {
 
 const styles = StyleSheet.create({
   summary: { fontFamily: fonts.medium, fontSize: 14, color: colors.text },
+  signInCard: { gap: 10, padding: 14 },
   choiceCard: { gap: 8, padding: 16 },
   choiceHeader: { flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', gap: 8 },
   choiceTitle: { fontSize: 17, lineHeight: 22, color: colors.text },
+  actionsRow: { flexDirection: 'row', alignItems: 'center', gap: 6, flexWrap: 'wrap' },
+  saveBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: radius.pill,
+    borderWidth: 1,
+    borderColor: colors.line,
+    backgroundColor: colors.white,
+  },
+  saveBtnOn: { backgroundColor: colors.ink, borderColor: colors.ink },
+  saveText: { fontFamily: fonts.semibold, fontSize: 12, color: colors.ink },
+  saveTextOn: { color: colors.pillText },
   metaRow: { flexDirection: 'row', alignItems: 'center', gap: 6 },
   line: { fontFamily: fonts.body, fontSize: 13.5, lineHeight: 20, color: colors.text },
   tapRow: { flexDirection: 'row', alignItems: 'center', gap: 4, marginTop: 4 },
