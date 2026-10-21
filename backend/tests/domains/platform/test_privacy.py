@@ -35,6 +35,7 @@ EXPORTED_TABLES = {
     "classes.announcements": "class_messages",
     "classes.event_flags": "class_messages",
     "platform.notifications": "alerts",
+    "platform.notification_switches": "alert_switches",
     # Not a student's own data: who confirmed or changed an event (cleared when they go), and which
     # account plays a demo persona.
     "classes.class_events": None,

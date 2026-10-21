@@ -123,6 +123,7 @@ def _register_exporters() -> None:
     privacy.register_exporter("classes", class_service.export_for)
     privacy.register_exporter("class_messages", events_service.export_for)
     privacy.register_exporter("alerts", notification_service.export_for)
+    privacy.register_exporter("alert_switches", notification_service.export_switches)
 
 
 def _register_blueprints(app: Flask) -> None:

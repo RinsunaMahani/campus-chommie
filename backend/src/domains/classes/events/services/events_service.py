@@ -41,6 +41,7 @@ from ..constants import (
 )
 from ..models import Announcement, ClassEvent, EventCandidate, EventChange, EventFlag
 from ..repositories import events_repository as repo
+from . import event_alerts
 
 WAITING_FOR_REP = "A class rep checks this before it goes live: until then it's unverified."
 
@@ -206,7 +207,28 @@ def confirm(user, candidate_id: uuid.UUID, body: dict) -> dict:
     announcement.status, announcement.decided_at = "confirmed", _now()
     repo.delete(candidate)
     db.session.commit()
+    _tell_the_class(user, m, event, body["change"], diffs if body["change"] else [])
     return {"event": _events([event], m, user)[0], "lines": lines}
+
+
+def _tell_the_class(user, m: classes.Membership, event: ClassEvent, change: str | None, diffs: list) -> None:
+    """Every other member hears about it; the rep who confirmed it already knows."""
+    others = [uid for uid in classes.member_ids(m.class_id) if uid != user.id]
+    if not others:
+        return
+    changed = {field: old for field, old, _ in diffs}
+    if change is None:
+        template, was = "class.event_new", None
+    elif change == "cancelled":
+        template, was = "class.event_cancelled", None
+    elif "on" in changed or "at" in changed:
+        template, was = "class.event_moved", (changed.get("on", event.on_date), changed.get("at", event.at_time))
+    else:
+        template, was = "class.event_changed", None  # only the venue: it isn't in the alert
+    event_alerts.tell_class(
+        others, template=template, class_id=m.class_id, event_id=event.id, version=event.version,
+        module=event.module, kind=event.kind, on=event.on_date, at=event.at_time, was=was,
+    )
 
 
 def discard(user, candidate_id: uuid.UUID) -> dict:

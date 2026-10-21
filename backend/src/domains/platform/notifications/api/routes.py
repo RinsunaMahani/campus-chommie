@@ -5,6 +5,8 @@
   GET  /me/notifications/unread                 {unread: {count, latest_id}}
   POST /me/notifications/<id>/read              {notification, unread}
   POST /me/notifications/read-all               -> {unread}
+  GET  /me/notifications/switches               {switches}: the topics a student may switch off
+  PUT  /me/notifications/switches               {class_updates: false} -> {switches}
 
 Thin: validate -> service -> answer. Rate-limited per user; another
 user's alert is the same 404 as one that doesn't exist.
@@ -22,7 +24,7 @@ from src.shared.rate_limit.keys import per_user
 from src.shared.rate_limit.limiter import limiter
 
 from ..constants import CHANGE_LIMIT, READ_LIMIT
-from ..schemas.notification_schemas import ListQuerySchema, ReadAllSchema, load
+from ..schemas.notification_schemas import ListQuerySchema, NoQuerySchema, ReadAllSchema, SwitchesSchema, load
 from ..services import notification_service as service
 
 BASE = "/me/notifications"
@@ -58,3 +60,19 @@ def read_notification(notification_id: uuid.UUID):
 def read_all_notifications():
     load(ReadAllSchema(), request.get_json(silent=True))
     return success_response({"unread": service.read_all(current_user())})
+
+
+@api_bp.get(f"{BASE}/switches")
+@limiter.limit(READ_LIMIT, key_func=per_user)
+@auth_required
+def my_notification_switches():
+    load(NoQuerySchema(), request.args.to_dict())
+    return success_response(service.switches(current_user()))
+
+
+@api_bp.put(f"{BASE}/switches")
+@limiter.limit(CHANGE_LIMIT, key_func=per_user)
+@auth_required
+def change_my_notification_switches():
+    changes = load(SwitchesSchema(), request.get_json(silent=True))
+    return success_response(service.set_switches(current_user(), changes))

@@ -144,6 +144,12 @@ views give counts.
 | `POST /candidates/<id>/discard` | none | a rep turns it down, or the student who sent it takes it back |
 | `GET /classes/<id>/events?from=&to=` | none | verified events with their `changes`; reps also get `flags` (how many and why, never who) |
 | `POST` / `DELETE /events/<id>/flag` | `{reason}` | `wrong_date`, `wrong_time`, `wrong_venue`, `not_happening`, `duplicate` or `other` |
+| `GET` / `PUT /me/notifications/switches` | `{class_updates: false}` | the alert topics a student may switch off (only class updates so far; security alerts are always on) |
+
+When a rep confirms a new, moved or cancelled event, every other member of the class gets an alert in
+`GET /me/notifications` (`class.event_new`, `class.event_moved`, `class.event_changed` or `class.event_cancelled`,
+linking to the class with `{type: "class", id}`). The wording is fixed: the module, the kind and the dates, never who
+and never a title or venue someone typed.
 | `GET /week?weeks=8&from=YYYY-MM-DD` | none | the week strip: each week `Manageable`, `Busy` or `Heavy` (`colour` green, amber or red) with a one-line `reason` and its verified `events`, and beside it the university's `calendar` for the student's campus, which never adds to the score |
 
 The engine reads announcements in English and the Afrikaans words students use for the same things (toets, eksamen,

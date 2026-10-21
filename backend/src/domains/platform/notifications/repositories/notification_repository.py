@@ -9,25 +9,36 @@ import uuid
 from datetime import datetime
 from typing import Optional
 
-from sqlalchemy import func, tuple_
+from sqlalchemy import func, select, tuple_
 from sqlalchemy.dialects.postgresql import insert
 
 from src.extensions import db
 
-from ..models import Notification
+from ..models import Notification, NotificationSwitch
 
 
-def insert_once(values: dict) -> bool:
+def insert_once(values: dict, topic: str | None = None) -> bool:
     """Write one alert in its own transaction, on ONE connection (the
     listener runs on the background queue, after the action's own commit),
     so a job never holds one connection open while it waits on another.
-    The same (user_id, dedupe_key) again is ignored. True when written."""
+    The same (user_id, dedupe_key) again is ignored, and so is an alert whose
+    `topic` the user switched off. True when written."""
     stmt = (
         insert(Notification.__table__)
         .values(id=uuid.uuid4(), created_at=func.now(), updated_at=func.now(), is_deleted=False, **values)
         .on_conflict_do_nothing(index_elements=["user_id", "dedupe_key"])
     )
     with db.engine.begin() as conn:
+        if topic is not None:
+            switched_off = conn.execute(
+                select(NotificationSwitch.id).where(
+                    NotificationSwitch.user_id == values["user_id"],
+                    NotificationSwitch.topic == topic,
+                    NotificationSwitch.enabled.is_(False),
+                )
+            ).first()
+            if switched_off is not None:
+                return False
         return conn.execute(stmt).rowcount == 1
 
 
@@ -75,3 +86,21 @@ def delete_before(cutoff: datetime) -> int:
 
 def all_for(user_id: uuid.UUID) -> list[Notification]:
     return Notification.query.filter_by(user_id=user_id).order_by(Notification.created_at).all()
+
+
+def switches_for(user_id: uuid.UUID) -> dict[str, bool]:
+    """The topics the student changed, and how: a topic missing here is on."""
+    return {s.topic: s.enabled for s in NotificationSwitch.query.filter_by(user_id=user_id)}
+
+
+def set_switch(user_id: uuid.UUID, topic: str, enabled: bool) -> None:
+    row = NotificationSwitch.query.filter_by(user_id=user_id, topic=topic).first()
+    if row is None:
+        db.session.add(NotificationSwitch(user_id=user_id, topic=topic, enabled=enabled))
+    else:
+        row.enabled = enabled
+
+
+def erase_all(user_id: uuid.UUID) -> None:
+    Notification.query.filter_by(user_id=user_id).delete(synchronize_session=False)
+    NotificationSwitch.query.filter_by(user_id=user_id).delete(synchronize_session=False)

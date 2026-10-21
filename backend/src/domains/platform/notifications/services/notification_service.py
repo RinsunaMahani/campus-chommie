@@ -11,6 +11,8 @@ owner.
                                    checks (shared.notifications.run_daily)
   read(user, id)                   -> (alert, unread)
   read_all(user)                   -> unread
+  switches(user)                   the topics a student may switch off, and theirs
+  set_switches(user, changes)      -> switches
 
 Every call about alerts acts on the signed-in user only: another user's
 alert is "not found". Publishers never call this module: they publish,
@@ -36,7 +38,7 @@ from src.shared.notifications.notification_types import NotificationEvent
 from ..constants import TIMEZONE
 from ..models import Notification
 from ..repositories import notification_repository as repo
-from ..templates import LINK_TYPES, TEMPLATES, missing, render
+from ..templates import LINK_TYPES, TEMPLATES, TOPICS, missing, render
 
 logger = logging.getLogger("campus_chommie.notifications")
 
@@ -92,7 +94,8 @@ def store(event: NotificationEvent) -> bool:
             "link_type": event.link_type,
             "link_id": str(event.link_id) if event.link_id is not None else None,
             "dedupe_key": event.dedupe_key[:160],
-        }
+        },
+        topic=TEMPLATES[event.template].topic,
     )
 
 
@@ -146,6 +149,37 @@ def read_all(user) -> dict:
 def export_for(user) -> list[dict]:
     """POPIA export: every alert kept for the student, read or not."""
     return [view(n) for n in repo.all_for(user.id)]
+
+
+def export_switches(user) -> dict[str, bool]:
+    """POPIA export: the student's alert switches, on or off."""
+    mine = repo.switches_for(user.id)
+    return {topic: mine.get(topic, True) for topic in TOPICS}
+
+
+def erase_all_for(user) -> None:
+    """Every alert and switch of this student, deleted: the demo's daily reset."""
+    repo.erase_all(user.id)
+    db.session.commit()
+
+
+# ------------------------------------------------------------------ switches
+
+
+def switches(user) -> dict:
+    """Every topic a student may switch off, with what it covers and whether it's on. Security alerts
+    aren't here: they're always on."""
+    mine = repo.switches_for(user.id)
+    return {
+        "switches": [{"topic": topic, "label": label, "on": mine.get(topic, True)} for topic, label in TOPICS.items()]
+    }
+
+
+def set_switches(user, changes: dict[str, bool]) -> dict:
+    for topic, enabled in changes.items():
+        repo.set_switch(user.id, topic, enabled)
+    db.session.commit()
+    return switches(user)
 
 
 def view(n: Notification) -> dict:

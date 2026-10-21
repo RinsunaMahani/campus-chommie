@@ -18,6 +18,7 @@ import yaml
 from src.domains.classes.classes.services import class_service
 from src.domains.classes.events.services import events_service
 from src.domains.identity.accounts.services import account_service
+from src.domains.platform.notifications.services import notification_service
 from src.domains.student.academics.services import academics_service
 from src.domains.student.money.services import money_service
 from src.domains.student.profile.services import profile_service
@@ -84,6 +85,7 @@ def rebase(today: date) -> int:
         events_service.erase_all_for(user)
         left += class_service.leave_all(user)
         profile_service.erase_for(user)
+        notification_service.erase_all_for(user)  # the rebuilt classes tell their members afresh
     class_service.delete_if_empty(left)
 
     people = [p for p in data["personas"] if p["id"] in users]
