@@ -302,8 +302,27 @@ support_services:
   - {kind: financial_aid, name: "Financial aid, Soshanguve South", contact: "012 382 9272; finaidsoshs@tut.ac.za",
      campuses: [soshanguve_south], source: s-tut-guide-2027}
 
-# Not researched yet (docs/OPEN_QUESTIONS.md).
-cheap_things: []
+# Places with their own page that states a price, read on 10 Oct 2026 (docs/research/cheap-things.md). `campuses`
+# lists the campuses in the same city. Agent draft: a person checks each price before release.
+cheap_things:
+  - {name: "Pretoria National Botanical Garden", category: outdoors,
+     cost_note: "Students R50 in peak season (September to March); adults R100; children 6 to 17 R30; under 6 free. The ticket page shows no off-peak prices.",
+     campuses: [arcadia, arts, pretoria], source: s-sanbi-pnbg-tickets}
+  - {name: "Freedom Park", category: heritage,
+     cost_note: "Kids, students and scholars R60; adults R90; pensioners and people with disabilities R60. Tours at 09:00, 12:00 and 15:00.",
+     campuses: [arcadia, arts, pretoria], address: "Corner Koch and 7th Avenue, Salvokop, Pretoria",
+     hours: "Every day, 08:00-16:30", source: s-freedompark}
+  - {name: "Voortrekker Monument", category: heritage,
+     cost_note: "Students at a recognised university R130; adults R250; the grounds only, without the museum, R55 for adults; parking R20 a car. The page says tickets bought online cost less, without saying how much.",
+     campuses: [arcadia, arts, pretoria], address: "Eeufees Road, Groenkloof, Pretoria", source: s-vtm-fees}
+  - {name: "DITSONG National Museum of Natural History", category: museum,
+     cost_note: "Adults R60 for a self-guided visit (no separate student price); children, learners and pensioners R40. Fees for 1 April 2026 to 31 March 2027.",
+     campuses: [arcadia, arts, pretoria], address: "432 Paul Kruger Street, Pretoria CBD",
+     hours: "Every day, 07:30-16:00; closed on Christmas Day, New Year's Day and Good Friday",
+     source: s-ditsong-nh-fees}
+  - {name: "Lowveld National Botanical Garden", category: outdoors,
+     cost_note: "Students R50 in peak season (September to March); adults R80; children 6 to 17 R30; under 6 free. The ticket page shows no off-peak prices.",
+     campuses: [mbombela], source: s-sanbi-lowveld-tickets}
 
 
 programmes:
@@ -2122,5 +2141,40 @@ sources:
     publisher: "Tshwane University of Technology"
     title: "2026 Prospectus, Part 9: Student Fees"
     retrieved: 2026-10-09
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-sanbi-pnbg-tickets
+    url: "https://www.sanbi.org/gardens/pretoria/information-5/buy-tickets-pretoria-nbg/"
+    publisher: "South African National Biodiversity Institute (SANBI)"
+    title: "Pretoria National Botanical Garden: buy tickets"
+    retrieved: 2026-10-10
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-freedompark
+    url: "https://www.freedompark.co.za/"
+    publisher: "Freedom Park"
+    title: "Freedom Park (entry fees on the home page)"
+    retrieved: 2026-10-10
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-vtm-fees
+    url: "https://vtm.org.za/entrance-fees/"
+    publisher: "Voortrekker Monument"
+    title: "Entrance fees"
+    retrieved: 2026-10-10
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ditsong-nh-fees
+    url: "https://ditsong.org.za/en/wp-content/uploads/2019/09/Natural-History-Museum-Admission-Fees.pdf"
+    publisher: "DITSONG Museums of South Africa"
+    title: "DITSONG: National Museum of Natural History admission fees, 1 April 2026 to 31 March 2027"
+    retrieved: 2026-10-10
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-sanbi-lowveld-tickets
+    url: "https://www.sanbi.org/gardens/lowveld/information-8/buy-tickets-lowveld-nbg/"
+    publisher: "South African National Biodiversity Institute (SANBI)"
+    title: "Lowveld National Botanical Garden: buy tickets"
+    retrieved: 2026-10-10
     last_verified: null
     verified_by: "agent draft, needs human check"

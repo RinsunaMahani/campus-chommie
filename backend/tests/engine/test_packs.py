@@ -298,3 +298,19 @@ def test_money_dates_carry_no_amounts(up, tut, smu):
             assert not re.search(r"\bR\s?\d", f"{f.name} {f.note or ''}"), f.name
     october = sorted((f.when, f.name) for f in tut.funding_cycles if f.when.month == 10)
     assert [d for d, _ in october] == [date(2026, 10, 30), date(2026, 10, 30), date(2026, 10, 31), date(2026, 10, 31)]
+
+
+# Cheap things: each place's own page (docs/research/cheap-things.md)
+
+
+def test_cheap_things_have_a_price_from_their_own_page(up, tut, smu):
+    for uni in (up, tut):
+        for thing in uni.cheap_things:
+            assert re.search(r"R\d+|free", thing.cost_note), thing.name
+            assert uni.source(thing.source).url.startswith("https://"), thing.name
+    pnbg = next(t for t in up.cheap_things if t.name == "Pretoria National Botanical Garden")
+    assert pnbg.cost_note.startswith("Students R50 in peak season")
+    lowveld = next(t for t in tut.cheap_things if t.name == "Lowveld National Botanical Garden")
+    assert lowveld.campuses == ["mbombela"]
+    assert "gibs" not in pnbg.campuses  # Sandton, not Pretoria
+    assert smu.cheap_things == []  # nothing sourced near Ga-Rankuwa yet
