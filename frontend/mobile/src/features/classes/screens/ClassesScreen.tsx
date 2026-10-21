@@ -10,13 +10,15 @@ import { Screen } from '@/shared/components/Screen';
 import { ErrorBox, Loading } from '@/shared/components/Status';
 import { Body, Muted, Strong, Title } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
-import { colors } from '@/shared/theme/tokens';
 
 import { classesApi } from '../api/classesApi';
 import { ClassSummary } from '../types';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
 
 /** The student's classes, as rep or student, with counts only: nobody is ever listed. */
 export default function ClassesScreen() {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   const [classes, setClasses] = useState<ClassSummary[] | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -59,6 +61,6 @@ export default function ClassesScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   card: { flexDirection: 'row', alignItems: 'center', gap: 12 },
 });

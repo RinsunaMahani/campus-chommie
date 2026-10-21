@@ -5,11 +5,13 @@ import { Card } from '@/shared/components/Parts';
 import { Muted, Overline } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
 import { percent } from '@/shared/lib/dates';
-import { colors, fonts } from '@/shared/theme/tokens';
+import { fonts } from '@/shared/theme/tokens';
 
 import { Module } from '../types';
+import { Palette, useStyles } from '@/shared/theme/palette';
 
 export function StandingCard({ module }: { module: Module }) {
+  const styles = useStyles(makeStyles);
   const s = module.standing;
   return (
     <Card style={{ gap: 6 }}>
@@ -22,6 +24,7 @@ export function StandingCard({ module }: { module: Module }) {
 }
 
 export function ProjectionCard({ module }: { module: Module }) {
+  const styles = useStyles(makeStyles);
   const p = module.projection;
   if (!p) return null;
   return (
@@ -34,7 +37,7 @@ export function ProjectionCard({ module }: { module: Module }) {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   big: { fontFamily: fonts.display, fontSize: 28, lineHeight: 34, color: colors.ink },
   line: { fontFamily: fonts.body, fontSize: 14, lineHeight: 21, color: colors.text },
   below: { color: colors.marigoldDeep },

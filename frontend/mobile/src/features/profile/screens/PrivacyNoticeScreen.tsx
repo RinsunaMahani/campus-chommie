@@ -6,13 +6,15 @@ import { InfoNote } from '@/shared/components/Parts';
 import { Screen } from '@/shared/components/Screen';
 import { Body, Overline, Title } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
-import { colors, fonts } from '@/shared/theme/tokens';
+import { fonts } from '@/shared/theme/tokens';
+import { Palette, useStyles } from '@/shared/theme/palette';
 
 /**
  * Onboarding, step 1: the privacy notice in plain words. Consent and the
  * 18-or-older confirmation were recorded at sign-up; this says what that means.
  */
 export default function PrivacyNoticeScreen() {
+  const styles = useStyles(makeStyles);
   return (
     <Screen footer={<Button title={t('onboarding.continue')} variant="accent" onPress={() => router.push('/onboarding/campus')} />}>
       <View style={{ gap: 6 }}>
@@ -29,6 +31,6 @@ export default function PrivacyNoticeScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   link: { fontFamily: fonts.bold, fontSize: 14, color: colors.accentDeep, textDecorationLine: 'underline' },
 });

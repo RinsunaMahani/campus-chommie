@@ -12,13 +12,15 @@ import { Money, Muted, Overline, Strong } from '@/shared/components/Text';
 import { MessageKey, t } from '@/shared/i18n';
 import { formatDay } from '@/shared/lib/dates';
 import { formatRand } from '@/shared/lib/money';
-import { colors, fonts, radius } from '@/shared/theme/tokens';
+import { fonts, radius } from '@/shared/theme/tokens';
 
 import { LifeFundState, SummaryReady } from '../types';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
 
 type IconName = ComponentProps<typeof Feather>['name'];
 
 function Lines({ lines, muted }: { lines: string[]; muted?: boolean }) {
+  const styles = useStyles(makeStyles);
   return (
     <>
       {lines.map((line, i) => (
@@ -32,6 +34,7 @@ function Lines({ lines, muted }: { lines: string[]; muted?: boolean }) {
 
 /** The balance now and how long it lasts. A runway that ends before the next payment is marked in words and colour. */
 export function RunwayCard({ summary }: { summary: SummaryReady }) {
+  const styles = useStyles(makeStyles);
   const { balance, runway, pace } = summary;
   const short = runway.short_before_next;
   return (
@@ -53,6 +56,7 @@ export function RunwayCard({ summary }: { summary: SummaryReady }) {
 
 /** What can go on extras each day, after essentials and the life-fund reserve. */
 export function SafeToSpendCard({ summary }: { summary: SummaryReady }) {
+  const styles = useStyles(makeStyles);
   const safe = summary.safe_to_spend;
   return (
     <Card style={{ gap: 6 }}>
@@ -63,16 +67,18 @@ export function SafeToSpendCard({ summary }: { summary: SummaryReady }) {
   );
 }
 
-const FUND_LOOK: Record<LifeFundState, { icon: IconName; bg: string; fg: string }> = {
+const fundLook = (colors: Palette): Record<LifeFundState, { icon: IconName; bg: string; fg: string }> => ({
   green: { icon: 'sun', bg: colors.jadeTint, fg: colors.jade },
   amber: { icon: 'alert-triangle', bg: colors.marigoldTint, fg: colors.marigoldDeep },
   paused: { icon: 'pause-circle', bg: colors.garnetTint, fg: colors.garnet },
-};
+});
 
 /** The life fund's state in words (green to go out, amber to go easy, paused), with why and when it comes back. */
 export function LifeFundCard({ summary }: { summary: SummaryReady }) {
+  const styles = useStyles(makeStyles);
   const fund = summary.life_fund;
-  const look = FUND_LOOK[fund.state] ?? FUND_LOOK.amber;
+  const looks = fundLook(usePalette());
+  const look = looks[fund.state] ?? looks.amber;
   return (
     <Card style={{ gap: 8 }}>
       <Overline>{t('money.lifeFund')}</Overline>
@@ -95,6 +101,7 @@ export function NextPaymentCard({
   summary: SummaryReady;
   onLate: (late: boolean) => void;
 }) {
+  const styles = useStyles(makeStyles);
   const next = summary.next_payment;
   return (
     <Card style={{ gap: 10 }}>
@@ -121,7 +128,7 @@ export function NextPaymentCard({
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   warn: { borderColor: colors.marigold, backgroundColor: colors.marigoldTint },
   rule: { height: 1, backgroundColor: colors.line },
   line: { fontFamily: fonts.body, fontSize: 14, lineHeight: 21, color: colors.text },

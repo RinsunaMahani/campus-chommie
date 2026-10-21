@@ -3,10 +3,13 @@ import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 
 import { Button } from '@/shared/components/Button';
 import { t } from '@/shared/i18n';
-import { colors, fonts, radius } from '@/shared/theme/tokens';
+import { fonts, radius } from '@/shared/theme/tokens';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
 
 /** A spinner with words, so a slow phone never shows a blank screen. */
 export function Loading({ label }: { label?: string }) {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   return (
     <View style={styles.loading} accessibilityLiveRegion="polite">
       <ActivityIndicator color={colors.ink} />
@@ -17,6 +20,8 @@ export function Loading({ label }: { label?: string }) {
 
 /** What went wrong, and a way to try again when trying again can help. */
 export function ErrorBox({ message, onRetry }: { message: string; onRetry?: () => void }) {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   return (
     <View style={styles.error} accessibilityRole="alert">
       <View style={styles.row}>
@@ -28,7 +33,7 @@ export function ErrorBox({ message, onRetry }: { message: string; onRetry?: () =
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   loading: { flexDirection: 'row', alignItems: 'center', gap: 10, paddingVertical: 16 },
   loadingText: { fontFamily: fonts.medium, fontSize: 14, color: colors.textMuted },
   error: { gap: 12, padding: 14, borderRadius: radius.md, backgroundColor: colors.garnetTint },

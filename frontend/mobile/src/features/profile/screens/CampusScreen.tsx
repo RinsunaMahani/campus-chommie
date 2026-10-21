@@ -9,17 +9,18 @@ import { SelectField } from '@/shared/components/SelectField';
 import { Body, Muted, Overline, Title } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
 import { takeUniversity } from '@/shared/lib/chosenUniversity';
-import { colors } from '@/shared/theme/tokens';
 
 import { profileApi } from '../api/profileApi';
 import { useProfile } from '../state';
 import { Campus, UniversityChoice } from '../types';
+import { usePalette } from '@/shared/theme/palette';
 
 /**
  * Onboarding, step 2: university and campus. Saving it ends onboarding: the
  * signed-in layout then opens the tabs by itself.
  */
 export default function CampusScreen() {
+  const colors = usePalette();
   const { university: universityParam } = useLocalSearchParams<{ university?: string }>();
   const { setProfile } = useProfile();
   const [universities, setUniversities] = useState<UniversityChoice[] | null>(null);

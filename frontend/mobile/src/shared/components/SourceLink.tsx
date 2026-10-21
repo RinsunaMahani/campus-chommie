@@ -3,7 +3,8 @@ import * as WebBrowser from 'expo-web-browser';
 import { Pressable, StyleSheet, Text } from 'react-native';
 
 import { t } from '@/shared/i18n';
-import { colors, fonts } from '@/shared/theme/tokens';
+import { fonts } from '@/shared/theme/tokens';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
 
 /** "smu.ac.za" from "https://www.smu.ac.za/students/apply/". */
 export function host(url: string): string {
@@ -13,6 +14,8 @@ export function host(url: string): string {
 
 /** Where a fact comes from: the official page, opened in the browser. Never a blank when nobody has checked it. */
 export function SourceLink({ url }: { url: string | null }) {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   if (!url) return <Text style={styles.none}>{t('courseFinder.noSource')}</Text>;
   const label = `${t('courseFinder.source')}: ${host(url)}`;
   return (
@@ -25,7 +28,7 @@ export function SourceLink({ url }: { url: string | null }) {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   row: { flexDirection: 'row', alignItems: 'center', gap: 6, alignSelf: 'flex-start' },
   link: { fontFamily: fonts.semibold, fontSize: 12.5, color: colors.accentDeep, textDecorationLine: 'underline' },
   none: { fontFamily: fonts.medium, fontSize: 12.5, color: colors.textMuted },

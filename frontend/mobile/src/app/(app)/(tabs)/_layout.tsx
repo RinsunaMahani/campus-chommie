@@ -4,11 +4,13 @@ import { ComponentProps } from 'react';
 import { ColorValue, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { colors, fonts } from '@/shared/theme/tokens';
+import { fonts } from '@/shared/theme/tokens';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
 
 type IconName = ComponentProps<typeof Feather>['name'];
 
 function TabIcon({ name, color, focused }: { name: IconName; color: ColorValue; focused: boolean }) {
+  const styles = useStyles(makeStyles);
   return (
     <View style={[styles.pill, focused && styles.pillOn]}>
       <Feather name={name} size={23} color={color} />
@@ -22,6 +24,7 @@ function TabIcon({ name, color, focused }: { name: IconName; color: ColorValue; 
  * the phone's own bottom inset so it never sits under the system navigation bar.
  */
 export default function TabsLayout() {
+  const colors = usePalette();
   const insets = useSafeAreaInsets();
   const tab = (title: string, icon: IconName) => ({
     title,
@@ -34,7 +37,8 @@ export default function TabsLayout() {
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: colors.ink,
+        // The tab you're on in mint: the student side's colour for "here" and for actions.
+        tabBarActiveTintColor: colors.accentDeep,
         tabBarInactiveTintColor: colors.textFaint,
         // A line height, or a label with a descender ('Money') loses its tail.
         tabBarLabelStyle: { fontFamily: fonts.bold, fontSize: 12.5, lineHeight: 18, marginTop: 2 },
@@ -67,7 +71,7 @@ export default function TabsLayout() {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   pill: { width: 60, height: 34, borderRadius: 17, alignItems: 'center', justifyContent: 'center' },
   pillOn: { backgroundColor: colors.accentTint },
 });

@@ -4,8 +4,9 @@
  */
 import { ReactNode, useState } from 'react';
 import { Animated, StyleSheet, View } from 'react-native';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
 
-import { colors } from '@/shared/theme/tokens';
+
 
 type Props<T> = {
   items: T[];
@@ -21,6 +22,8 @@ type Props<T> = {
 const GAP = 12;
 
 export function SnapCarousel<T>({ items, cardWidth, keyOf, render, label, bleed = 20 }: Props<T>) {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   const [scrollX] = useState(() => new Animated.Value(0));
   const step = cardWidth + GAP;
   return (
@@ -55,7 +58,7 @@ export function SnapCarousel<T>({ items, cardWidth, keyOf, render, label, bleed 
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   dots: { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: 6 },
   dot: { height: 7, borderRadius: 4 },
 });

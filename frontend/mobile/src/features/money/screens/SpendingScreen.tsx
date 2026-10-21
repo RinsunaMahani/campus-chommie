@@ -11,14 +11,17 @@ import { Body, Muted, Overline, Title } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
 import { addDays, formatDay, todaySast } from '@/shared/lib/dates';
 import { centsToInput, formatRand, parseRand } from '@/shared/lib/money';
-import { colors, fonts, radius } from '@/shared/theme/tokens';
+import { fonts, radius } from '@/shared/theme/tokens';
 
 import { moneyApi } from '../api/moneyApi';
 import { AmountField } from '../components/AmountField';
 import { SpendingDay } from '../types';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
 
 /** One spending number a day: today's or yesterday's, and the last 30 days. */
 export default function SpendingScreen() {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   const today = todaySast();
   const yesterday = addDays(today, -1);
   const [day, setDay] = useState(today);
@@ -128,7 +131,7 @@ export default function SpendingScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   chips: { flexDirection: 'row', gap: 8 },
   chip: { paddingHorizontal: 16, paddingVertical: 9, borderRadius: radius.pill, borderWidth: 1, borderColor: colors.line, backgroundColor: colors.white },
   chipOn: { backgroundColor: colors.ink, borderColor: colors.ink },

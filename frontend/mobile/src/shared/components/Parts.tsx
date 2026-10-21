@@ -5,14 +5,15 @@ import { FontAwesome, Feather } from '@expo/vector-icons';
 import { ComponentProps, ReactNode } from 'react';
 import { Platform, Pressable, StyleSheet, Switch, Text, View, ViewStyle } from 'react-native';
 
-import { colors, fonts, radius, sizes } from '@/shared/theme/tokens';
+import { fonts, radius, sizes } from '@/shared/theme/tokens';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
 
 type IconName = ComponentProps<typeof Feather>['name'];
 
 export function IconTile({
   name,
-  tint = colors.iconTile,
-  color = colors.ink,
+  tint,
+  color,
   size = sizes.tile,
 }: {
   name: IconName;
@@ -20,15 +21,19 @@ export function IconTile({
   color?: string;
   size?: number;
 }) {
+  const styles = useStyles(makeStyles);
+  const colors = usePalette();
   return (
-    <View style={[styles.tile, { backgroundColor: tint, width: size, height: size }]}>
-      <Feather name={name} size={size * 0.45} color={color} />
+    <View style={[styles.tile, { backgroundColor: tint ?? colors.iconTile, width: size, height: size }]}>
+      <Feather name={name} size={size * 0.45} color={color ?? colors.ink} />
     </View>
   );
 }
 
 /** Tinted note that says what's private, or what happens next. */
 export function InfoNote({ icon = 'lock', children, tone = 'info' }: { icon?: IconName; children: ReactNode; tone?: 'info' | 'ok' }) {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   const ok = tone === 'ok';
   return (
     <View style={[styles.note, ok && { backgroundColor: colors.jadeTint }]}>
@@ -39,6 +44,7 @@ export function InfoNote({ icon = 'lock', children, tone = 'info' }: { icon?: Ic
 }
 
 export function OrDivider({ label = 'or with email' }: { label?: string }) {
+  const styles = useStyles(makeStyles);
   return (
     <View style={styles.divider}>
       <View style={styles.rule} />
@@ -49,6 +55,7 @@ export function OrDivider({ label = 'or with email' }: { label?: string }) {
 }
 
 export function GoogleButton({ onPress }: { onPress: () => void }) {
+  const styles = useStyles(makeStyles);
   return (
     <Pressable
       accessibilityRole="button"
@@ -61,6 +68,7 @@ export function GoogleButton({ onPress }: { onPress: () => void }) {
 }
 
 export function Card({ children, style, onPress }: { children: ReactNode; style?: ViewStyle; onPress?: () => void }) {
+  const styles = useStyles(makeStyles);
   if (!onPress) return <View style={[styles.card, style]}>{children}</View>;
   return (
     <Pressable onPress={onPress} style={({ pressed }) => [styles.card, style, pressed && { opacity: 0.9 }]}>
@@ -87,6 +95,8 @@ export function ToggleRow({
   locked?: boolean;
   soon?: boolean;
 }) {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   return (
     <View style={[styles.card, styles.rowCard, soon && { opacity: 0.55 }]}>
       <IconTile name={icon} />
@@ -105,7 +115,7 @@ export function ToggleRow({
           // On: the white pill with a dark knob. Off: a faint track with a white knob.
           trackColor={{ false: colors.line, true: locked ? colors.textFaint : colors.ink }}
           thumbColor={value ? colors.pillText : colors.ink}
-          {...WEB_KNOB}
+          {...webKnob(colors)}
         />
       )}
     </View>
@@ -115,7 +125,8 @@ export function ToggleRow({
 type Tone = 'marigold' | 'jade' | 'info' | 'muted' | 'garnet';
 
 export function Tag({ label, tone = 'info' }: { label: string; tone?: Tone }) {
-  const t = tones[tone];
+  const styles = useStyles(makeStyles);
+  const t = tonesOf(usePalette())[tone];
   return (
     <View style={[styles.tag, { backgroundColor: t.bg }]}>
       <Text style={[styles.tagText, { color: t.fg }]}>{label}</Text>
@@ -124,15 +135,15 @@ export function Tag({ label, tone = 'info' }: { label: string; tone?: Tone }) {
 }
 
 // The web switch takes its "on" knob colour from a prop of its own, or it turns teal.
-const WEB_KNOB = Platform.OS === 'web' ? ({ activeThumbColor: colors.pillText } as object) : {};
+const webKnob = (colors: Palette) => (Platform.OS === 'web' ? ({ activeThumbColor: colors.pillText } as object) : {});
 
-const tones: Record<Tone, { bg: string; fg: string }> = {
+const tonesOf = (colors: Palette): Record<Tone, { bg: string; fg: string }> => ({
   marigold: { bg: colors.marigoldTint, fg: colors.marigoldDeep },
   jade: { bg: colors.jadeTint, fg: colors.jade },
   info: { bg: colors.infoTint, fg: colors.ink },
   muted: { bg: colors.iconTile, fg: colors.textMuted },
   garnet: { bg: colors.garnetTint, fg: colors.garnet },
-};
+});
 
 /** A tappable settings/list row inside a grouped card. */
 export function ListRow({
@@ -150,6 +161,8 @@ export function ListRow({
   danger?: boolean;
   last?: boolean;
 }) {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   return (
     // A row that opens nothing doesn't look tappable: no chevron, no press effect.
     <Pressable
@@ -172,7 +185,7 @@ export function ListRow({
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   tile: { borderRadius: radius.sm, alignItems: 'center', justifyContent: 'center' },
   note: {
     flexDirection: 'row',

@@ -4,7 +4,8 @@ import { Modal, Pressable, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Button } from './Button';
-import { colors, fonts } from '@/shared/theme/tokens';
+import { fonts } from '@/shared/theme/tokens';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
 
 /**
  * The ⓘ next to a question. Tapping it explains why we ask. It replaces a
@@ -12,6 +13,8 @@ import { colors, fonts } from '@/shared/theme/tokens';
  * in one tap, and whoever doesn't never has to read it.
  */
 export function InfoHint({ title, body, size = 18 }: { title: string; body: string | string[]; size?: number }) {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   const [open, setOpen] = useState(false);
   const paragraphs = Array.isArray(body) ? body : [body];
 
@@ -43,7 +46,7 @@ export function InfoHint({ title, body, size = 18 }: { title: string; body: stri
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   backdrop: { flex: 1, backgroundColor: colors.overlay },
   sheet: {
     backgroundColor: colors.white,

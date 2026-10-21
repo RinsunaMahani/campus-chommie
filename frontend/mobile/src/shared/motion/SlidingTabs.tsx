@@ -5,15 +5,17 @@
 import { useEffect, useState } from 'react';
 import { Animated, Pressable, StyleSheet, Text, View } from 'react-native';
 
-import { colors, fonts, radius } from '@/shared/theme/tokens';
+import { fonts, radius } from '@/shared/theme/tokens';
 
 import { motionOff, NATIVE } from './motion';
+import { Palette, useStyles } from '@/shared/theme/palette';
 
 type Props = { tabs: string[]; index: number; onChange: (index: number) => void };
 
 const PAD = 4;
 
 export function SlidingTabs({ tabs, index, onChange }: Props) {
+  const styles = useStyles(makeStyles);
   const [width, setWidth] = useState(0);
   const [at] = useState(() => new Animated.Value(index));
   useEffect(() => {
@@ -44,7 +46,7 @@ export function SlidingTabs({ tabs, index, onChange }: Props) {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   bar: {
     flexDirection: 'row',
     padding: PAD,

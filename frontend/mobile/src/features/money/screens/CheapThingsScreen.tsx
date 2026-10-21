@@ -9,10 +9,11 @@ import { ErrorBox, Loading } from '@/shared/components/Status';
 import { Body, Muted, Strong, Title } from '@/shared/components/Text';
 import { MessageKey, t } from '@/shared/i18n';
 import { formatDay } from '@/shared/lib/dates';
-import { colors, fonts } from '@/shared/theme/tokens';
+import { fonts } from '@/shared/theme/tokens';
 
 import { moneyApi } from '../api/moneyApi';
 import { CheapThing } from '../types';
+import { Palette, useStyles } from '@/shared/theme/palette';
 
 function categoryLabel(category: string): string {
   const key = `cheap.category.${category}` as MessageKey;
@@ -22,6 +23,7 @@ function categoryLabel(category: string): string {
 
 /** Cheap things near the student's campus, each with its price as the place's own page gives it. */
 export default function CheapThingsScreen() {
+  const styles = useStyles(makeStyles);
   const [things, setThings] = useState<CheapThing[] | null>(null);
   const [lines, setLines] = useState<string[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -65,6 +67,6 @@ export default function CheapThingsScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   cost: { fontFamily: fonts.medium, fontSize: 14, lineHeight: 20, color: colors.text },
 });

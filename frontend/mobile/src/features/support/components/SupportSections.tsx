@@ -12,9 +12,10 @@ import { Card } from '@/shared/components/Parts';
 import { Muted, Overline, Strong } from '@/shared/components/Text';
 import { MessageKey, t } from '@/shared/i18n';
 import { formatDay } from '@/shared/lib/dates';
-import { colors, fonts } from '@/shared/theme/tokens';
+import { fonts } from '@/shared/theme/tokens';
 
 import { Service, SupportKind } from '../types';
+import { Palette, useStyles } from '@/shared/theme/palette';
 
 export function kindLabel(kind: string): string {
   const key = `support.kind.${kind}` as MessageKey;
@@ -29,6 +30,7 @@ export function ServiceCard({
   service: Service;
   onShowOnMap?: () => void;
 }) {
+  const styles = useStyles(makeStyles);
   return (
     <Card style={{ gap: 4 }}>
       <Strong>{service.name}</Strong>
@@ -69,6 +71,7 @@ export function SupportSections({
   placeByService?: Record<string, string>;
   onShowOnMap?: (placeId: string) => void;
 }) {
+  const styles = useStyles(makeStyles);
   return (
     <View style={{ gap: 16 }}>
       {kinds.map((k) => (
@@ -91,7 +94,7 @@ export function SupportSections({
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   contact: { fontFamily: fonts.bold, fontSize: 14, color: colors.ink },
   note: { fontFamily: fonts.body, fontSize: 13, lineHeight: 19, color: colors.text },
   line: { fontFamily: fonts.medium, fontSize: 13.5, lineHeight: 20, color: colors.textMuted },

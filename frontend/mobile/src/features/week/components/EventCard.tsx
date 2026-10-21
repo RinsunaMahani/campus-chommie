@@ -13,9 +13,10 @@ import { Card, Tag } from '@/shared/components/Parts';
 import { Muted, Strong } from '@/shared/components/Text';
 import { MessageKey, t } from '@/shared/i18n';
 import { percent } from '@/shared/lib/dates';
-import { colors, fonts } from '@/shared/theme/tokens';
+import { fonts } from '@/shared/theme/tokens';
 
 import { ClassEvent, FLAG_REASONS, FlagReason } from '../types';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
 
 export function kindLabel(kind: string): string {
   return t(`week.kind.${kind}` as MessageKey);
@@ -33,6 +34,8 @@ type Props = {
 };
 
 export function EventCard({ event, onFlag, busy }: Props) {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   const kind = kindLabel(event.kind);
   // 'Quiz 3' already says it's a quiz: 'Quiz: Quiz 3' would say it twice.
   const title = !event.title ? kind : event.title.toLowerCase().startsWith(kind.toLowerCase()) ? event.title : `${kind}: ${event.title}`;
@@ -75,6 +78,8 @@ export function EventCard({ event, onFlag, busy }: Props) {
 
 /** "Something wrong?": a sheet of the six reasons. */
 function FlagButton({ onPick, busy }: { onPick: (reason: FlagReason) => void; busy?: boolean }) {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   const [open, setOpen] = useState(false);
   return (
     <>
@@ -108,7 +113,7 @@ function FlagButton({ onPick, busy }: { onPick: (reason: FlagReason) => void; bu
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   head: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 8 },
   when: { fontFamily: fonts.semibold, fontSize: 14, color: colors.text },
   struck: { textDecorationLine: 'line-through', color: colors.textMuted },

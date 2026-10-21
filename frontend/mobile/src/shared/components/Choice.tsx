@@ -6,8 +6,9 @@
 import { Feather } from '@expo/vector-icons';
 import { ReactNode } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
 
-import { colors } from '@/shared/theme/tokens';
+
 
 export function Checkbox({
   checked,
@@ -23,6 +24,8 @@ export function Checkbox({
   /** Accessible name for the box, since its visible label may contain links. */
   label: string;
 }) {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   return (
     <View style={styles.row}>
       <Pressable
@@ -39,7 +42,7 @@ export function Checkbox({
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   row: { flexDirection: 'row', alignItems: 'flex-start', gap: 12 },
   box: {
     width: 24,

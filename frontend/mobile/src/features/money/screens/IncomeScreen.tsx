@@ -11,14 +11,16 @@ import { ErrorBox, Loading } from '@/shared/components/Status';
 import { Body, Muted, Strong, Title } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
 import { formatRand } from '@/shared/lib/money';
-import { colors } from '@/shared/theme/tokens';
 
 import { moneyApi } from '../api/moneyApi';
 import { IncomeSource } from '../types';
 import { reliabilityLabel, scheduleText } from '../words';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
 
 /** Money coming in: each source, when it comes and how reliable it is. Tap one to change it. */
 export default function IncomeScreen() {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   const [sources, setSources] = useState<IncomeSource[] | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -57,6 +59,6 @@ export default function IncomeScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   card: { flexDirection: 'row', alignItems: 'center', gap: 12 },
 });

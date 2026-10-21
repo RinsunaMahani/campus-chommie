@@ -5,7 +5,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import { IconTile } from './Parts';
 import { BackButton, Screen } from './Screen';
 import { Body, Title } from './Text';
-import { colors, fonts } from '@/shared/theme/tokens';
+import { fonts } from '@/shared/theme/tokens';
+import { Palette, useStyles } from '@/shared/theme/palette';
 
 type Props = {
   title: string;
@@ -16,6 +17,7 @@ type Props = {
 
 /** A feature whose folder exists but whose screens aren't built yet. Never a dead end: says what's coming. */
 export function ComingSoon({ title, icon, message, back = true }: Props) {
+  const styles = useStyles(makeStyles);
   return (
     <Screen>
       <View style={styles.header}>
@@ -31,7 +33,7 @@ export function ComingSoon({ title, icon, message, back = true }: Props) {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   header: { flexDirection: 'row', alignItems: 'center', gap: 12 },
   title: { fontFamily: fonts.bold, fontSize: 17, color: colors.text },
   center: { alignItems: 'center', gap: 12, paddingTop: 100, paddingHorizontal: 12 },

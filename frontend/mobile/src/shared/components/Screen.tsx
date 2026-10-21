@@ -6,7 +6,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Wallpaper } from './Wallpaper';
 
-import { colors, radius, space } from '@/shared/theme/tokens';
+import { radius, space } from '@/shared/theme/tokens';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
 
 type Props = {
   children: ReactNode;
@@ -27,6 +28,8 @@ type Props = {
  * the floating dock.
  */
 export function Screen({ children, footer, back, tab, onRefresh, refreshing = false }: Props) {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   return (
     <View style={styles.root}>
       <Wallpaper />
@@ -49,6 +52,8 @@ export function Screen({ children, footer, back, tab, onRefresh, refreshing = fa
 }
 
 export function BackButton({ onPress }: { onPress?: () => void }) {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   return (
     <Pressable
       accessibilityRole="button"
@@ -64,7 +69,7 @@ export function BackButton({ onPress }: { onPress?: () => void }) {
 // The floating dock's height and the gap under it, so the last card isn't hidden behind it.
 export const DOCK_ROOM = 112;
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   root: { flex: 1, backgroundColor: colors.porcelain },
   safe: { flex: 1 },
   flex: { flex: 1 },

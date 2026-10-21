@@ -11,11 +11,12 @@ import { Muted, Overline, Strong, Title } from '@/shared/components/Text';
 import { TextField } from '@/shared/components/TextField';
 import { t } from '@/shared/i18n';
 import { percent } from '@/shared/lib/dates';
-import { colors, fonts } from '@/shared/theme/tokens';
+import { fonts } from '@/shared/theme/tokens';
 
 import { marksApi } from '../api/marksApi';
 import { ProjectionCard, StandingCard } from '../components/ModuleCards';
 import { Assessment, Module } from '../types';
+import { Palette, useStyles } from '@/shared/theme/palette';
 
 function asPercent(text: string): number | null | 'bad' {
   if (!text.trim()) return null;
@@ -25,6 +26,7 @@ function asPercent(text: string): number | null | 'bad' {
 
 /** One module: where the student stands and is heading, and its assessments (tap one to change it). */
 export default function ModuleScreen() {
+  const styles = useStyles(makeStyles);
   const { id } = useLocalSearchParams<{ id: string }>();
   const [module, setModule] = useState<Module | null>(null);
   const [editing, setEditing] = useState<Assessment | null>(null);
@@ -134,7 +136,7 @@ export default function ModuleScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   row: { flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 11 },
   rule: { borderBottomWidth: 1, borderBottomColor: colors.line },
   name: { fontFamily: fonts.semibold, fontSize: 14.5, color: colors.text },

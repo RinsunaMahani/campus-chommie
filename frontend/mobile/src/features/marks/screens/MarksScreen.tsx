@@ -11,13 +11,15 @@ import { ErrorBox, Loading } from '@/shared/components/Status';
 import { Body, Muted, Overline, Strong, Title } from '@/shared/components/Text';
 import { TextField } from '@/shared/components/TextField';
 import { t } from '@/shared/i18n';
-import { colors } from '@/shared/theme/tokens';
 
 import { marksApi } from '../api/marksApi';
 import { Module } from '../types';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
 
 /** My marks: each module with where the student stands. Only the student sees them (owner-only). */
 export default function MarksScreen() {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
   const [modules, setModules] = useState<Module[] | null>(null);
   const [code, setCode] = useState('');
   const [name, setName] = useState('');
@@ -83,6 +85,6 @@ export default function MarksScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+const makeStyles = (colors: Palette) => StyleSheet.create({
   card: { flexDirection: 'row', alignItems: 'center', gap: 12 },
 });
