@@ -84,6 +84,20 @@ def test_engine_only_imports_the_standard_library_pydantic_and_yaml():
     )
 
 
+def test_routes_never_call_the_engine():
+    """Services call the engine; routes never do (CLAUDE.md). A route validates, calls one
+    service and answers, so each rule lives in one place and is tested there."""
+    src = ENGINE.parent / "src"
+    violations = []
+    for path in sorted(p for p in src.rglob("*.py") if "__pycache__" not in p.parts):
+        if "api" not in path.relative_to(src).parts:
+            continue
+        for module, line in _imports(path):
+            if _top(module) == "campus_engine":
+                violations.append(f"\n  {path.relative_to(src.parent)}:{line} imports {module}")
+    assert not violations, "Routes must reach the engine through a service:" + "".join(violations)
+
+
 def test_the_boundary_test_would_catch_a_violation(tmp_path):
     """The parser really sees imports, including ones hidden inside a function."""
     sample = tmp_path / "sample.py"

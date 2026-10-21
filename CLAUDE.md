@@ -72,6 +72,8 @@ WhatsApp bot) must not start before Fri 23 Oct 2026 08:30 SAST.
 
 ## Workflow
 
+- Picking up work? Read [docs/HANDOVER.md](docs/HANDOVER.md) first: where the pull requests stand, what was decided,
+  and what comes next.
 - Branches are `<person>/<topic>` (`mandla/money-screens`, `rinsuna/engine-schema`). Merge into `main` only with CI
   green and the reviewer's approval.
 - Commits are small and name the feature or milestone (`F4: late-payment toggle`). **Never force-push or rewrite

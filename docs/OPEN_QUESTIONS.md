@@ -23,7 +23,8 @@ Research notes from official documents, read on 9 Oct 2026 and not yet checked b
 - [ ] **Changes to `smu.yaml`** that the research supports, for the team's OK: `max_choices: 2`; the BSc first-year
   requirements above; MBChB `places: 250`; the other SMU programmes; a considered route from SMU's first year into
   BDS (2 places); and the medicine foundation year's eligibility note, which leaves out SMU's population-group
-  restriction (details in [smu.md](research/smu.md), "Notes for the data pack").
+  restriction (details in [smu.md](research/smu.md), "Notes for the data pack"). Approved by Rinsuna on 9 Oct 2026;
+  applied with the packs.
 - [ ] **UP and TUT packs**, from official sources. Research done; the packs wait for the schema decisions below.
 - [ ] **Campuses** for each university (needed for F1 and the support screen). Found for all three; a person still
   checks them with the rest.
@@ -35,6 +36,8 @@ Research notes from official documents, read on 9 Oct 2026 and not yet checked b
   per programme appeared only in search snippets. UP's web pages refuse automated reading; open them and save as PDF.
 - [ ] **Programmes per application** at UP and TUT: not published in the documents read.
 - [ ] **TUT's APS:** how many subjects count (TUT says only "a minimum of six subjects", Life Orientation excluded).
+  Until TUT confirms, the TUT pack counts the six subjects besides Life Orientation and says so (Rinsuna, 9 Oct 2026):
+  if TUT counts more, we only under-count. An email to `admission@tut.ac.za` would settle it.
 - [ ] **Tuition per programme** at TUT (charged per module; TUT has an online quotation page).
 - [ ] **SMU 2027 calendar**, and **2028 entry dates** for UP and SMU (TUT's are published).
 - [ ] **NSFAS:** the 2027 application window and allowance dates (not researched yet).
@@ -55,16 +58,17 @@ Built on `rinsuna/engine-requirements` (not merged yet):
   programme's own `points_rules`, `count_from_level`, and the `SUBJECTS` list of known keys.
 - **Plan tests:** they now run on SMU's data only, plus one cross-university test with a fictional university.
 
-Decisions 3, 4, 5 and 9 are about the data and come with the packs. Decisions:
+Decisions 3, 4 and 9 were taken by Rinsuna on 9 Oct 2026 (below). Decision 5 is still open. Decisions:
 
 1. **Either/or subjects, each route with its own APS.** TUT almost everywhere ("Maths or Technical Maths 5, or Maths
    Literacy 7"; APS 26 or 28); UP in 6 programmes; SMU Oral Hygiene (28 or 31) and emergency care.
 2. **Percentage minimums.** UP's extended programmes: 65% each for the five-year BEng, 58% for the four-year BSc.
 3. **Fields** decide the cross-university safe choice (slot 3). Tagging UP's BSc Medical Sciences `health_sciences`
    makes it the safe choice for an SMU MBChB goal, which changes the current plan tests. Proposal: run those tests on
-   SMU's data only and add a cross-university test.
+   SMU's data only and add a cross-university test. **Decided:** tag honestly. Once UP's pack lands, the brief's M1
+   check (B Rad in slot 3 for the strong SMU learner) changes with it.
 4. **UP's MBChB route after a degree year:** a considered bridge with 36 places open to all; the 66 places for
-   designated groups go in its eligibility note only.
+   designated groups go in its eligibility note only. **Decided:** as proposed.
 5. **FLY@UP awards** can be worked out from course-finder marks. Show the 2026 amounts labelled "2026", or wait for
    2027's? Other awards keep UP's own eligibility wording, and we never ask.
 6. **A points rule per programme.** SMU Pharmacy scores 90-100% as 8; SMU's BSc and emergency care tables leave Life
@@ -74,6 +78,7 @@ Decisions 3, 4, 5 and 9 are about the data and come with the packs. Decisions:
    sciences, and "another language".
 9. **TUT ranks every programme.** Proposal: `selective: true` only where TUT adds a test, interview, portfolio or
    audition or calls it highly competitive; published "admitted from" levels become `competitive_points`.
+   **Decided:** as proposed.
 
 ## Privacy and legal (both)
 
@@ -92,6 +97,13 @@ Decisions 3, 4, 5 and 9 are about the data and come with the packs. Decisions:
   production (`MAIL_DEFAULT_SENDER`, `MAIL_REPLY_TO`)?
 
 ## App and accounts (Mandla)
+
+- [x] **Packs nobody has checked yet** are served, each labelled "Not yet confirmed by the team", so the demo works
+  (Rinsuna, 9 Oct 2026). Whether production hides them can wait.
+- [x] **Subjects a learner enters in the course finder:** the subjects admission rules name, plus up to three
+  "another subject" rows that count towards points only; anything else is refused (Rinsuna, 9 Oct 2026). The M2
+  marks screen offers these; see README, "Course finder". The API refuses a repeated subject, so the app keeps the
+  last mark, says so (the engine's `duplicate` text), and sends each subject once.
 
 - [ ] **F6 "Fund and apply"** (agreed by Rinsuna on 9 Oct 2026 for M1; Mandla to confirm). The challenge asks us to
   help learners "compare funding options" and "complete applications". F6 shows funding routes for each choice in

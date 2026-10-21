@@ -1,8 +1,8 @@
 # Security
 
-How Campus Chommie protects its users, kept current for the SSDLC form. Version for **M0** (foundation: accounts,
-sign-in, account security, notifications, audit; no student data yet). Update it whenever a milestone adds data or
-endpoints.
+How Campus Chommie protects its users, kept current for the SSDLC form. Version for **M1**: the M0 foundation
+(accounts, sign-in, account security, notifications, audit), plus the public course finder and university catalogue,
+which need no account and store nothing. Update it whenever a milestone adds data or endpoints.
 
 ## What we protect
 
@@ -13,7 +13,9 @@ endpoints.
 | Sign-in state | `identity.sessions`, `email_codes`, `trusted_phones`, `password_resets`, `devices` | hashes only: codes, reset tokens and phone tokens are stored as HMACs |
 | Alerts | `platform.notifications` | owner-only; templates can't carry personal details |
 | Audit trail | `audit.audit_events` | append-only (see the open question on the personal data it holds) |
-| Later milestones | marks, money, spending (owner-only); classes and announcements | the threat model grows with them |
+| Marks typed into the course finder | memory, for one request only | never stored or logged; learners using it may be under 18 |
+| University data packs | `backend/data/universities/*.yaml` | public facts, each citing its source; served read-only; changed only by pull request |
+| Later milestones | students' marks, money, spending (owner-only); classes and announcements | the threat model grows with them |
 
 ## Threats and controls
 
@@ -23,20 +25,22 @@ endpoints.
 | Stolen token | 15-minute access tokens tied to a live session; rotating refresh tokens, and a reused refresh token revokes the whole session; "sign out other phones" | `auth/models/credentials.py` (Session), `auth/services/jwt_callbacks.py`, `session_service.py` |
 | Fishing for which emails have accounts | sign-up, resend and forgot-password give the same answer whatever the email; an existing account's owner gets an email instead | `auth_service.register`, `forgot_password` |
 | Reading someone else's data (IDOR) | every query takes the signed-in user from the token; another user's row is the same 404 as a missing one | `core/decorators.py`, each feature's repository |
-| Junk or hostile input | strict schemas refuse unknown fields (422); requests over 1 MB refused (413); JSON deeper than 32 levels refused (400); NUL characters refused anywhere (400) | `domains/*/schemas`, `src/__init__.py` (`_register_input_guard`), `config.py` |
-| Flooding | a rate limit on every route, per user for signed-in routes | `@limiter.limit` on each route; `shared/rate_limit/` |
+| Junk or hostile input | strict schemas refuse unknown fields (422); requests over 1 MB refused (413); JSON deeper than 32 levels refused (400); NUL characters refused anywhere (400). The course finder takes 1 to 9 known subjects, each once, with marks from 0 to 100 (NaN and infinity refused) | `domains/*/schemas`, `src/__init__.py` (`_register_input_guard`), `config.py` |
+| Flooding | a rate limit on every route: per user for signed-in routes, per IP for public ones (the course finder and catalogue allow 120 a minute, because a school computer lab shares one address) | `@limiter.limit` on each route; `shared/rate_limit/` |
+| A learner's marks kept or leaked (POPIA; learners may be under 18) | the course finder needs no account, runs no database statement and never logs a mark; refusals never repeat a mark; its rate-limit refusals aren't audited, so no IP address is kept either | `domains/pathways/course_finder/` |
+| Wrong facts shown as true | every pack is validated as it loads: each fact's source must exist, subject keys must be known, levels 1 to 8, percentages 0 to 100; a pack nobody has checked yet is served with "Not yet confirmed by the team" | `campus_engine/schemas.py`, `domains/catalogue/universities/` |
 | Children's personal information (POPIA) | accounts require confirming 18 or older; only the JSON value `true` is accepted; recorded with the consent | `auth/schemas/auth_schemas.py`, `accounts/services/account_service.py` |
 | Collecting too much | sign-up takes email, password, consent and the age confirmation only; any other field is refused | `RegisterSchema` |
 | Secrets leaking | secrets only in git-ignored `.env`; the app refuses to start with missing or short (< 32 characters) keys; codes and reset links are never logged; production refuses the fake mail provider and requires an https base address | `config.py`, `shared/email/` |
 | Tampering with history | the database refuses UPDATE, DELETE and TRUNCATE on the audit trail (trigger) | `migrations/versions/0001_baseline.py` |
 | Spoofed client IP | forwarding headers are ignored unless the server sits behind Cloudflare alone (`BEHIND_CLOUDFLARE`) | `shared/net/client_ip.py` |
 | Browser attacks on API responses | `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy: no-referrer`, `Cache-Control: no-store`; CORS only in development | `src/__init__.py` |
-| Design rot | architecture tests: the engine imports no app, web or database code; `shared/` never imports a domain; identity stays sealed; finance stays a leaf; every route has a rate limit | `backend/tests/architecture/` |
+| Design rot | architecture tests: the engine imports no app, web or database code; routes never call the engine (services do); `shared/` never imports a domain; identity stays sealed; finance stays a leaf; every route has a rate limit | `backend/tests/architecture/` |
 | Vulnerable dependencies, committed secrets | CI runs `pip-audit` and an npm audit gate (any high or critical advisory fails, except the accepted ones below), and a gitleaks scan, on every pull request | `.github/workflows/ci.yml`, `frontend/mobile/scripts/check-audit.mjs` |
 
-## Test evidence (M0)
+## Test evidence (M1)
 
-Backend: **392 tests pass** on PostgreSQL 16 (9 Oct 2026), including:
+Backend: **457 tests pass** on PostgreSQL 16 (9 Oct 2026), including:
 
 | Tests | What they prove |
 |---|---|
@@ -46,8 +50,11 @@ Backend: **392 tests pass** on PostgreSQL 16 (9 Oct 2026), including:
 | `tests/domains/platform/test_notifications*.py` | owner-only alerts (404 for someone else's), strict queries, per-user limits |
 | `tests/domains/security/test_audit.py` | audit events are written, and the database refuses to edit or delete them |
 | `tests/shared/test_email.py` | sign-in codes never reach the logs; production refuses fake email |
-| `tests/architecture/` | the boundaries above, including every route having a rate limit |
-| `tests/engine/` | 83 engine tests, 96.8% coverage (the floor is 80%) |
+| `tests/domains/catalogue/test_universities_api.py` | the catalogue is public and read-only, labels unchecked packs, answers 404 for unknown universities, refuses query parameters and is limited per IP |
+| `tests/domains/pathways/test_course_finder_api.py` | the brief's M1 check (the strong SMU learner's plan), with reasons, a source and the check status on every card |
+| `tests/domains/pathways/test_course_finder_hostile.py` | odd bodies, impossible marks (out of range, NaN, infinity, text), repeated or unknown subjects, ten subjects, unknown fields (including an ID number), huge and deeply nested bodies are refused; no database statement runs and no mark reaches a log during a request; limited per IP |
+| `tests/architecture/` | the boundaries above, including every route having a rate limit and routes never calling the engine |
+| `tests/engine/` | 105 engine tests, 97.2% coverage (the floor is 80%), including data-pack validation |
 
 App: TypeScript check, ESLint (no warnings) and Jest pass, including a test of the exact sign-up request.
 
