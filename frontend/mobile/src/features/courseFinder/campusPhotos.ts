@@ -1,10 +1,10 @@
 /**
  * One real photo of each university's campus, from Wikimedia Commons, for the
  * top of its page. Each was checked by eye: no logo, crest or wordmark in the
- * frame (crops cut them out where needed), and a university with no such
- * photo (SMU, DUT, MUT, VUT, UMP, SPU) keeps its text monogram. Never an
- * AI image. Bundled in assets/images/campuses, cropped to 16:9 and resized;
- * the full credits are docs/image-credits.md (generated from the same table).
+ * frame (crops cut them out where needed). SMU has no photo on Commons and keeps
+ * its text monogram. Never an AI image. Bundled in assets/images/campuses at
+ * 1600 x 900, cropped to 16:9 from 1920 px copies; the full credits are
+ * docs/image-credits.md (generated from the same table).
  */
 import { ImageSourcePropType } from 'react-native';
 
@@ -31,6 +31,18 @@ export const CAMPUS_PHOTOS: Record<string, CampusPhoto> = {
     credit: 'Bobbyshabangu, CC0, Wikimedia Commons (cropped)',
     source: 'https://commons.wikimedia.org/wiki/File:Central_University_of_Technology,_Bloemfontein.jpg',
   },
+  dut: {
+    image: require('../../../assets/images/campuses/dut.jpg'),
+    caption: 'The courtyard, M.L. Sultan campus',
+    credit: 'Mhlophekaziz, CC BY 4.0, Wikimedia Commons (cropped)',
+    source: 'https://commons.wikimedia.org/wiki/File:DUT_M.L._Sultan_Courtyard.jpg',
+  },
+  mut: {
+    image: require('../../../assets/images/campuses/mut.jpg'),
+    caption: 'The Student Centre',
+    credit: 'Slippery slope302, CC BY 4.0, Wikimedia Commons (cropped)',
+    source: 'https://commons.wikimedia.org/wiki/File:Mangosuthu_University_of_Technology_student_centre.jpg',
+  },
   nmu: {
     image: require('../../../assets/images/campuses/nmu.jpg'),
     caption: 'South Campus',
@@ -49,11 +61,17 @@ export const CAMPUS_PHOTOS: Record<string, CampusPhoto> = {
     credit: 'Rossvdlinde at en.wikipedia, Public domain, Wikimedia Commons (cropped)',
     source: 'https://commons.wikimedia.org/wiki/File:Rhodes_oldcampus.jpg',
   },
+  spu: {
+    image: require('../../../assets/images/campuses/spu.jpg'),
+    caption: 'Moroka Hall, with its rock-engraving panels',
+    credit: 'LihleEQ, CC BY-SA 4.0, Wikimedia Commons (cropped)',
+    source: 'https://commons.wikimedia.org/wiki/File:Moroka_Hall_building.jpg',
+  },
   su: {
     image: require('../../../assets/images/campuses/su.jpg'),
-    caption: 'Stellenbosch campus, from the Merensky building',
+    caption: 'The Neethling Building, from the Rooiplein',
     credit: 'Lourie Pieterse, CC BY-SA 3.0, Wikimedia Commons (cropped)',
-    source: 'https://commons.wikimedia.org/wiki/File:Stellenbosch_university_campus.jpg',
+    source: 'https://commons.wikimedia.org/wiki/File:Neethling_Building_from_Rooiplein.jpg',
   },
   tut: {
     image: require('../../../assets/images/campuses/tut.jpg'),
@@ -97,6 +115,12 @@ export const CAMPUS_PHOTOS: Record<string, CampusPhoto> = {
     credit: 'TSHEPANG PINKANA, CC0, Wikimedia Commons (cropped)',
     source: 'https://commons.wikimedia.org/wiki/File:The_new_science_laboratory.jpg',
   },
+  ump: {
+    image: require('../../../assets/images/campuses/ump.jpg'),
+    caption: 'Classroom buildings, Siyabuswa campus',
+    credit: 'Bobbyshabangu, CC0, Wikimedia Commons (cropped)',
+    source: 'https://commons.wikimedia.org/wiki/File:University_of_Mpumalanga_3.jpg',
+  },
   unisa: {
     image: require('../../../assets/images/campuses/unisa.jpg'),
     caption: 'Main campus, Pretoria',
@@ -117,15 +141,21 @@ export const CAMPUS_PHOTOS: Record<string, CampusPhoto> = {
   },
   up: {
     image: require('../../../assets/images/campuses/up.jpg'),
-    caption: 'Old Arts Building, Hatfield campus',
-    credit: 'Markovic94, CC BY-SA 4.0, Wikimedia Commons (cropped)',
-    source: 'https://commons.wikimedia.org/wiki/File:Old_Arts_Building,_Hatfield_Campus,_University_of_Pretoria.jpg',
+    caption: 'The Old Arts Building, Hatfield campus, at dusk',
+    credit: 'Sian Tiley-Nel, CC BY-SA 4.0, Wikimedia Commons (cropped)',
+    source: 'https://commons.wikimedia.org/wiki/File:Old_Arts_Building_of_the_University_of_Pretoria_Museums,_South_Africa.jpg',
   },
   uwc: {
     image: require('../../../assets/images/campuses/uwc.jpg'),
     caption: 'The campus, with the Great Hall on the left',
     credit: 'Danmichaelo, CC BY-SA 3.0, Wikimedia Commons (cropped)',
     source: 'https://commons.wikimedia.org/wiki/File:University_of_the_Western_Cape_-_Campus.jpg',
+  },
+  vut: {
+    image: require('../../../assets/images/campuses/vut.jpg'),
+    caption: 'The main building, Vanderbijlpark',
+    credit: 'Herschal Jackson (WMZA), CC BY-SA 4.0, Wikimedia Commons (cropped)',
+    source: 'https://commons.wikimedia.org/wiki/File:Vaal_University_of_Technology02.jpg',
   },
   wits: {
     image: require('../../../assets/images/campuses/wits.jpg'),
