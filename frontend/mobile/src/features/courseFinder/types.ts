@@ -338,4 +338,45 @@ export type FirstStepsAnswer = Confirmation & {
   first_steps: FirstStepsIntake[];
 };
 
+export type LatLon = [number, number];
+
+export type MapPlace = {
+  id: string;
+  name: string | null;
+  kind: string;
+  centre: LatLon;
+  outline: LatLon[];
+  named_by_team: boolean;
+};
+
+export type MapSupportPlace = {
+  kind: string;
+  name: string;
+  place: string;
+};
+
+export type CampusMapView = {
+  id: string;
+  name: string;
+  mapped: boolean;
+  south_west: LatLon | null;
+  north_east: LatLon | null;
+  centre: LatLon | null;
+  outline: LatLon[][];
+  places: MapPlace[];
+  support: MapSupportPlace[];
+  lines: string[];
+  source_url: string | null;
+};
+
+export type UniversityMapAnswer = Confirmation & {
+  university: UniversitySummary;
+  campuses: CampusMapView[];
+  attribution: string;
+  attribution_url: string;
+  licence: string;
+  licence_url: string;
+};
+
+
 

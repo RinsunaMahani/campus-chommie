@@ -1,0 +1,112 @@
+{
+  "success": true,
+  "data": {
+    "university": {
+      "id": "up",
+      "name": "University of Pretoria",
+      "city": "Pretoria",
+      "academic_year": 2027,
+      "programmes": 182,
+      "confirmed": false,
+      "notice": "Not yet confirmed by the team."
+    },
+    "campuses": [
+      {
+        "id": "hatfield",
+        "name": "Hatfield campus",
+        "mapped": true,
+        "south_west": [-25.757621, 28.225087],
+        "north_east": [-25.750923, 28.236696],
+        "centre": [-25.754272, 28.2308915],
+        "outline": [
+          [
+            [-25.756126, 28.225363],
+            [-25.75645, 28.228247],
+            [-25.752107, 28.236505],
+            [-25.751, 28.232638]
+          ]
+        ],
+        "places": [
+          {
+            "id": "w302901952",
+            "name": "Merensky Library",
+            "kind": "library",
+            "centre": [-25.755079, 28.230328],
+            "outline": [
+              [-25.754646, 28.230583],
+              [-25.754683, 28.230815],
+              [-25.755059, 28.230742],
+              [-25.755294, 28.230694]
+            ],
+            "named_by_team": false
+          },
+          {
+            "id": "w484352680",
+            "name": "Student Health services",
+            "kind": "health",
+            "centre": [-25.753314, 28.231351],
+            "outline": [
+              [-25.75331, 28.231226],
+              [-25.753376, 28.231342],
+              [-25.753429, 28.231366],
+              [-25.753266, 28.231479]
+            ],
+            "named_by_team": false
+          },
+          {
+            "id": "n2496078814",
+            "name": "Artisan Coffee",
+            "kind": "food",
+            "centre": [-25.75401, 28.229108],
+            "outline": [],
+            "named_by_team": false
+          },
+          {
+            "id": "w1116385700",
+            "name": null,
+            "kind": "other",
+            "centre": [-25.7545, 28.231],
+            "outline": [
+              [-25.7544, 28.2309],
+              [-25.7546, 28.2309],
+              [-25.7546, 28.2311],
+              [-25.7544, 28.2311]
+            ],
+            "named_by_team": false
+          }
+        ],
+        "support": [
+          {
+            "kind": "health",
+            "name": "Student Health Services clinic",
+            "place": "w484352680"
+          }
+        ],
+        "lines": [
+          "4 buildings and places from OpenStreetMap, 3 with a name.",
+          "Buildings without a name show as shapes only: we never guess what they are."
+        ],
+        "source_url": "https://www.openstreetmap.org/way/123456"
+      },
+      {
+        "id": "groenkloof",
+        "name": "Groenkloof campus",
+        "mapped": false,
+        "south_west": null,
+        "north_east": null,
+        "centre": null,
+        "outline": [],
+        "places": [],
+        "support": [],
+        "lines": ["Groenkloof campus isn't mapped yet."],
+        "source_url": null
+      }
+    ],
+    "attribution": "© OpenStreetMap contributors",
+    "attribution_url": "https://www.openstreetmap.org/copyright",
+    "licence": "Open Database License (ODbL) 1.0",
+    "licence_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "confirmed": false,
+    "notice": "Not yet confirmed by the team."
+  }
+}

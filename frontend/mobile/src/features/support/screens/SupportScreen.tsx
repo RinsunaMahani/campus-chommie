@@ -1,7 +1,8 @@
-import { useFocusEffect } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
 import { useCallback, useState } from 'react';
 import { View } from 'react-native';
 
+import { courseFinderApi } from '@/features/courseFinder/api/courseFinderApi';
 import { DemoBanner } from '@/features/profile/components/DemoBanner';
 import { useProfile } from '@/features/profile/state';
 import { errorText } from '@/shared/api/errors';
@@ -19,6 +20,7 @@ import { SupportAnswer } from '../types';
 export default function SupportScreen() {
   const { mock } = useProfile();
   const [answer, setAnswer] = useState<SupportAnswer | null>(null);
+  const [placeByService, setPlaceByService] = useState<Record<string, string>>({});
   const [error, setError] = useState<string | null>(null);
 
   const load = useCallback(() => {
@@ -27,6 +29,18 @@ export default function SupportScreen() {
       .then((a) => {
         setAnswer(a);
         setError(null);
+        if (a.university?.id) {
+          courseFinderApi
+            .universityMap(a.university.id, a.campus ?? undefined)
+            .then((m) => {
+              const map: Record<string, string> = {};
+              for (const c of m.campuses) {
+                for (const s of c.support) map[s.name] = s.place;
+              }
+              setPlaceByService(map);
+            })
+            .catch(() => undefined);
+        }
       })
       .catch((e) => setError(errorText(e, t('common.error'))));
   }, []);
@@ -56,7 +70,23 @@ export default function SupportScreen() {
       ))}
       {error ? <ErrorBox message={error} onRetry={load} /> : null}
       {!mock && !error && !answer ? <Loading /> : null}
-      {answer ? <SupportSections kinds={answer.kinds} /> : null}
+      {answer ? (
+        <SupportSections
+          kinds={answer.kinds}
+          placeByService={placeByService}
+          onShowOnMap={(placeId) => {
+            if (!answer.university?.id) return;
+            router.push({
+              pathname: '/course-finder/map/[id]',
+              params: {
+                id: answer.university.id,
+                ...(answer.campus ? { campus: answer.campus } : {}),
+                place: placeId,
+              },
+            });
+          }}
+        />
+      ) : null}
     </Screen>
   );
 }
