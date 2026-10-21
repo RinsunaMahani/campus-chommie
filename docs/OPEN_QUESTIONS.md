@@ -81,7 +81,9 @@ sources, gaps and inconsistencies. Other apps and services, for the deck: [compe
   2027 date.
 - [ ] **Crisis lines** for a person to verify: UP crisis line 0800 006 428 and the UP Careline 0800 747 747 (with
   SADAG); TUT's 24-hour counselling line 0800 68 78 88. SMU publishes no 24-hour line; its clinic page sends students
-  to campus control or 079 417 9546 / 6278 after hours.
+  to campus control or 079 417 9546 / 6278 after hours. **Since M5 the Support screen holds every crisis line back
+  until this is done:** in the pack's sources, set `verified_by` to the checker's name and `last_verified` to the
+  date, by Thu 22 Oct so the judges see them.
 - [ ] **Smaller inconsistencies** are listed at the end of each research note (for example, two closing dates for TUT's
   Bachelor of Geomatics, and a UP table that ends mid-row).
 
@@ -231,16 +233,23 @@ cents, documents and next steps, each with its source. `funding.yaml` holds nati
   and TVET colleges go on the roadmap slide; the scope stays "SMU, UP or TUT for now".
 - [ ] **Links to opportunity sites** (Graduates24, bursary websites): leads for us only, never a source for a fact. A
   "more opportunities" link in the app points learners at someone else's site, so it needs Mandla's OK. Never copy or
-  scrape their listings.
+  scrape their listings. Rinsuna gave Graduates24's WhatsApp channel on 10 Oct 2026:
+  https://whatsapp.com/channel/0029Va9MQ0jB4hdYtf0Wml0A. If Mandla agrees, it could sit beside the careers office on
+  the Support screen; nothing in the app links to it yet.
 - [ ] **Vac work, light version** (agreed for M1 the same day; Mandla to confirm):
   - In F6, a sourced "includes vac work" note on bursaries that offer it.
   - In My week, a nudge before each recess ("Recess from [date]: look for vac work in your field"). It links to the
     careers office: UP Career Services, TUT career counselling, or SMU's counselling centre, which offers career
     counselling.
   - A full opportunities board goes on the roadmap slide, not into the build.
-- [ ] **Demo accounts and the email code.** Signing in on a new phone or browser asks for a code sent to the account's
-  email, and judges can't read the demo inbox. Decide before M5, for example: the team keeps the demo inbox and
-  pre-trusts nothing, or demo accounts (and only they) skip the new-phone code, with tighter rate limits.
+- [x] **Demo accounts and the email code.** Signing in on a new phone or browser asks for a code sent to the account's
+  email, and judges can't read the demo inbox. **Decided by Rinsuna on 10 Oct 2026:** demo accounts (made only by
+  `flask seed`, fictional data only) skip the new-phone code. They can't be locked by wrong passwords, with 20 sign-in
+  tries an hour per IP instead, and they can't change, reset or close. Built on `rinsuna/m5-alerts-support-demo`;
+  Mandla reviews the identity change.
+- [ ] **Module alerts** (added by Rinsuna's agent in M5; Mandla to confirm): besides the brief's combined, heavy-week
+  and money alerts, Home shows one when a module's target is out of reach, pointing to tutoring and counselling. Drop
+  it if Home should keep to the brief's three.
 - [ ] **Expo and EAS.** The reused app config's EAS project id and owner were removed. Whose Expo account owns Campus Chommie's
   project (`eas init`), and who builds the Android preview?
 - [ ] **Package name `za.campuschommie.app`.** Confirm before the first Play Store upload; it can't change after.
@@ -263,5 +272,5 @@ cents, documents and next steps, each with its source. `funding.yaml` holds nati
 - [x] M4: the money summary's life fund reads the student's week: done on `rinsuna/m4-my-week` (10 Oct 2026). The
   self-funded persona's heavy week now gives an amber life fund (the brief's M3 check); a student in no classes yet
   still sees "Your week isn't part of this yet".
-- M5: when a module's standing is out of reach, the alert should point to the campus's academic support from the
-  pack (wellbeing wording: never "at risk").
+- [x] M5: when a module's standing is out of reach, the alert points to the campus's tutoring and counselling from the
+  pack: done on `rinsuna/m5-alerts-support-demo` (10 Oct 2026).

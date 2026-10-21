@@ -12,7 +12,7 @@ git, so Mandla has his own copy; the M2 part is quoted below.
 
 ## Where things stand
 
-`main` holds only the empty first commit. All work sits in ten stacked pull requests:
+`main` holds only the empty first commit. All work sits in eleven stacked pull requests:
 
 | PR | Branch | What | Reviewer |
 |---|---|---|---|
@@ -25,11 +25,12 @@ git, so Mandla has his own copy; the M2 part is quoted below.
 | #7 | `rinsuna/m1-after-acceptance` | your points at every university; campuses, calendars, money dates and support in the packs; first steps from acceptance to the first lecture | Rinsuna for the engine and data; Mandla for the two new endpoints |
 | #8 | `rinsuna/m3-profile-and-money` | M3's backend: the student's profile (university and campus) and My money (settings, income, expected payments, spending, summary) | Mandla (API); Rinsuna for the migration |
 | #9 | `rinsuna/m1-cheap-things` | cheap things to do near campus, each priced from the place's own page | Rinsuna (data) |
+| #11 | `rinsuna/m5-alerts-support-demo` | M5's backend: alerts, the Support screen's data, cheap things for the campus, and the judges' demo accounts (`flask seed`, re-based daily) | Mandla (API and the identity change); Rinsuna for the engine, data and migration |
 | #10 | `rinsuna/m4-my-week` | M4's backend: classes, invite codes and reps, announcements to verified events (changes and flags), the week strip, My marks; the life fund reads the week; 44 labelled class messages | Mandla (API); Rinsuna for the engine and the migration |
 
 **How to merge:**
 - Each PR targets the branch below it, so its diff shows only its own work.
-- Merge in order: #1 into `main`, then #2 to #10, retargeting each to `main` once the one below has merged.
+- Merge in order: #1 into `main`, then #2 to #11, retargeting each to `main` once the one below has merged.
 - Use **Create a merge commit**, not squash or rebase, so every commit stays in `main`'s history (CLAUDE.md: never
   rewrite history).
 
@@ -73,6 +74,11 @@ Everything is recorded, with who and when, in [OPEN_QUESTIONS.md](OPEN_QUESTIONS
   - Reps see how many students flagged an event, never who (yours to confirm: OPEN_QUESTIONS, "Flag counts").
   - The engine also reads Afrikaans words in announcements; a fluent speaker is to check the list.
   - The brief's M3 check that waited for M4 passes: Sipho's heavy week makes his life fund amber.
+- **Alerts, support and demo (#11, 10 Oct):**
+  - Demo accounts skip the new-phone code, can't be locked by wrong passwords and can't change their password
+    (Rinsuna's decision on your open item; the identity change is yours to review).
+  - Crisis lines stay hidden on Support until a person checks them; every pack's are still agent drafts.
+  - Besides the brief's three alerts, a module out of reach gets one (yours to keep or drop).
 
 ## What we need from you
 
@@ -80,7 +86,6 @@ Everything is recorded, with who and when, in [OPEN_QUESTIONS.md](OPEN_QUESTIONS
 2. **Decide F6 "Fund and apply" and the vac-work nudge for M1** (OPEN_QUESTIONS, "App and accounts"): yes, no or
    change. Also there: which intakes a plan shows, "Add these dates to my calendar" and links to opportunity sites.
 3. **Your open items in OPEN_QUESTIONS:**
-   - demo accounts and the email code (before M5)
    - who owns the Expo/EAS project
    - the package name `za.campuschommie.app` (it can't change after the first Play Store upload)
    - app icon, colours and slogan
@@ -134,6 +139,16 @@ events"); the screen notes are in OPEN_QUESTIONS, "My week's screens":
 - **My marks:** `/academics/modules` and its assessments; every answer carries `standing`, `projection` and `lines`.
 - **Test helpers:** `tests/domains/classes/class_helpers.py` shows a rep making a class and confirming events.
 
+**Your M5 screens (Tue 20 to Wed 21 Oct) have their API in #11** (README, "Alerts, support and cheap things"):
+- **Home:** `GET /alerts`. Show each alert's `title`, `message` and `actions`; an action opens its `target` (Week,
+  Money, cheap things, My marks or Support), and a support action may already carry the campus's `service` (name,
+  contact, hours). `notes` say what's missing (no classes yet, no money entered).
+- **Support:** `GET /support`. One section per `kind`, in the order given; each service with its source and when a
+  person last checked it, or the `line` ("Not verified yet", or why crisis lines aren't shown yet).
+- **Cheap things:** `GET /money/cheap-things`, with cost notes and sources.
+- **Demo banner:** `GET /me` (and the sign-in answer's `user`) has `demo: true` on demo accounts: show "Demo data:
+  fictional student". The judges sign in with the three `*.demo@example.com` accounts (README, "Demo accounts").
+
 **What the screens must handle:**
 - **Cards:**
   - Each card has `tier`, `label`, `points`, `min_points`, `gap`, `failed`, `explanation` (the "why" lines) and
@@ -178,9 +193,9 @@ events"); the screen notes are in OPEN_QUESTIONS, "My week's screens":
 
 1. **Read first:** [CLAUDE.md](../CLAUDE.md) (AGENTS.md points every agent there), then this file.
 2. **Branch:**
-   - Start from the top of the stack: `git fetch origin`, then `git checkout rinsuna/m4-my-week`.
+   - Start from the top of the stack: `git fetch origin`, then `git checkout rinsuna/m5-alerts-support-demo`.
    - Branch `mandla/<topic>` from there, for example `mandla/course-finder-screens`.
-   - Once #1 to #10 are merged, branch from `main` instead.
+   - Once #1 to #11 are merged, branch from `main` instead.
 3. **Run the API** (README, "Backend"):
    - Use your own PostgreSQL, or Docker (option B uses port 5434).
    - Then `python scripts/make_env.py`, `flask db upgrade` and `python app.py`.
@@ -208,7 +223,8 @@ events"); the screen notes are in OPEN_QUESTIONS, "My week's screens":
   (SMU's list waits for places near Ga-Rankuwa).
 - **M3 backend:** done in #8 (profile and My money).
 - **M4 backend:** done in #10 (classes, reps, verified events, the week, My marks).
-- **Next:** M5's backend: alerts, the support endpoint, and demo accounts re-based daily at 02:00 SAST. The engine
-  already does the maths, so your screens can follow each endpoint as it lands.
+- **M5 backend:** done in #11 (alerts, support, cheap things, demo accounts).
+- **Next:** deploying needs the team's hosting decision (OPEN_QUESTIONS); a person checks the packs, crisis lines first;
+  M6 (the WhatsApp bot) only from Fri 23 Oct 08:30 SAST.
 
 All of this is in `backend/` and `docs/`; the app is yours.

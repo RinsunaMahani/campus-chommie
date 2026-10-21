@@ -16,6 +16,9 @@ from src.shared.audit.event_types.auth import AuthAuditEvent
 from src.shared.net.client_ip import client_ip_key
 
 LOGIN = "5 per minute"
+#: Demo accounts can't be locked by wrong passwords (anyone could lock the
+#: judges out), so each IP gets fewer tries on them instead.
+DEMO_LOGIN = "20 per hour"
 REGISTER = "5 per hour"
 VERIFY_EMAIL = "10 per 15 minutes"
 VERIFY_SIGN_IN = "10 per 15 minutes"  # each code also dies after 5 wrong tries
@@ -48,6 +51,16 @@ def login_key_func() -> str:
     email = payload.get("email")
     email = email.strip().lower() if isinstance(email, str) else ""
     return f"{client_ip_key()}:{email}" if email else client_ip_key()
+
+
+def not_a_demo_login() -> bool:
+    """DEMO_LOGIN's exemption: true unless the email being tried is a demo account's."""
+    from src.domains.identity.accounts.services import account_service
+
+    payload = request.get_json(silent=True) or {}
+    email = payload.get("email")
+    user = account_service.find_by_email(email) if isinstance(email, str) and email.strip() else None
+    return user is None or not user.is_demo
 
 
 # Which audit event a tripped limit records. Keys are Flask endpoint names

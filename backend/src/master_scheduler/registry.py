@@ -33,6 +33,9 @@ from src.domains.classes.events.schedulers.events_scheduler import (
 from src.domains.identity.auth.schedulers.identity_scheduler import (
     JOB_SPECS as IDENTITY_JOB_SPECS,
 )
+from src.domains.platform.demo.schedulers.demo_scheduler import (
+    JOB_SPECS as DEMO_JOB_SPECS,
+)
 from src.domains.platform.notifications.schedulers.notifications_scheduler import (
     JOB_SPECS as NOTIFICATIONS_JOB_SPECS,
 )
@@ -51,6 +54,7 @@ ALL_JOB_SPECS: list[JobSpec] = [
     *MONEY_JOB_SPECS,
     *CLASSES_JOB_SPECS,
     *EVENTS_JOB_SPECS,
+    *DEMO_JOB_SPECS,
     # Each new domain adds its own JOB_SPECS here the same way, from
     # domains/<area>/<feature>/schedulers/<feature>_scheduler.py
 ]

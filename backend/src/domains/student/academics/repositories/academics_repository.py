@@ -41,3 +41,8 @@ def add(row) -> None:
 
 def delete(row) -> None:
     db.session.delete(row)
+
+
+def erase_all(user_id: uuid.UUID) -> None:
+    Assessment.query.filter_by(user_id=user_id).delete(synchronize_session=False)
+    Module.query.filter_by(user_id=user_id).delete(synchronize_session=False)

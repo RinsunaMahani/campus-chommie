@@ -46,13 +46,18 @@ def _scored(class_ids: list, first: date, weeks: int) -> tuple[list[WeekLoad], d
     return loads, {id(ev): row for row, ev in pairs}
 
 
-def this_week(user, today: date) -> WeekLoad | None:
-    """This week's load, for the life fund; None for a student in no classes yet."""
+def loads(user, today: date, weeks: int) -> list[WeekLoad]:
+    """The engine's weeks from this one, for the alerts; empty for a student in no classes yet."""
     class_ids = [m.class_id for m in classes.memberships(user)]
     if not class_ids:
-        return None
-    loads, _ = _scored(class_ids, week_start(today), 1)
-    return loads[0]
+        return []
+    return _scored(class_ids, week_start(today), weeks)[0]
+
+
+def this_week(user, today: date) -> WeekLoad | None:
+    """This week's load, for the life fund; None for a student in no classes yet."""
+    weeks = loads(user, today, 1)
+    return weeks[0] if weeks else None
 
 
 def week(user, weeks: int, start: date | None) -> dict:

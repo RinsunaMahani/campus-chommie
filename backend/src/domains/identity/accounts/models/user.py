@@ -37,6 +37,9 @@ class User(BaseModel):
     signed_up_with = db.Column(db.String(10), nullable=False, default=SignUpMethod.EMAIL.value)
     email_verified_at = db.Column(db.DateTime(timezone=True), nullable=True)
     last_login_at = db.Column(db.DateTime(timezone=True), nullable=True)
+    #: A demo account for the judges, made by `flask seed` only: fictional data, re-based daily. It
+    #: skips the new-phone code, can't be locked by wrong passwords, and keeps its shared password.
+    is_demo = db.Column(db.Boolean, nullable=False, default=False, server_default=db.false())
 
     @property
     def is_active(self) -> bool:

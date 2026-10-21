@@ -11,6 +11,7 @@ from flask import current_app
 
 from src.core.base_model import utcnow
 from src.core.exceptions import ValidationError
+from src.shared.security.security import validate_password_complexity
 from src.shared.validation.identifiers import normalize_email
 
 from ..models import AccountStatus, Consent, LegalDocument, SignUpMethod, User
@@ -112,6 +113,8 @@ def public_view(user: User) -> dict:
         "status": user.status,
         "signed_up_with": user.signed_up_with,
         "email_verified": user.email_verified_at is not None,
+        # The app shows "Demo data: fictional student" on these.
+        "demo": user.is_demo,
     }
 
 
@@ -141,6 +144,41 @@ def delete_unverified(user: User) -> None:
     from src.extensions import db
 
     db.session.delete(user)
+
+
+#: Recorded with a demo account's consents, so nobody mistakes them for a person's.
+DEMO_USER_AGENT = "flask seed: demo account (fictional student)"
+
+
+def ensure_demo_account(email: str, password: str) -> User:
+    """A demo account for the judges, made or refreshed by `flask seed`: verified, consented, flagged as
+    demo, with the shared password from the environment. A real account is never turned into one.
+    The caller commits."""
+    user = find_by_email(email)
+    if user is not None and not user.is_demo:
+        raise ValueError(f"{normalized(email)} belongs to a real account, so it can't be a demo account.")
+    if user is None:
+        user = user_repository.add(
+            User(
+                email=normalized(email),
+                status=AccountStatus.UNVERIFIED.value,
+                signed_up_with=SignUpMethod.EMAIL.value,
+                is_demo=True,
+            )
+        )
+        mark_verified(user)
+        cfg = current_app.config
+        record_consents(user, cfg["PRIVACY_POLICY_VERSION"], cfg["TERMS_VERSION"], None, DEMO_USER_AGENT)
+    # auth owns passwords; imported here because auth imports this module.
+    from src.domains.identity.auth.services import auth_service
+
+    auth_service.set_demo_password(user, password)
+    return user
+
+
+def check_demo_password(password: str) -> list[str]:
+    """What's wrong with a demo password, by the same rule as everyone's (empty: nothing)."""
+    return validate_password_complexity(password or "")
 
 
 def create_verified(email: str, method: SignUpMethod) -> User:

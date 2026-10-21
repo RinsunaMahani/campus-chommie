@@ -66,6 +66,18 @@ Sign-up and new-phone sign-in send a 6-digit code by email, so real codes need t
 `backend/.env` (for example a Gmail account with an app password). Codes are never written to any log. The tests use a
 fake mail provider and need none of this.
 
+**Demo accounts for the judges.** Set `DEMO_PASSWORD` in `backend/.env` (your own choice; never commit it), then:
+
+```bash
+flask seed                         # safe to run again
+```
+
+This makes three fictional students from `backend/data/demo/personas.yaml`, entered through the real services:
+`naledi.demo@example.com` (short money, a heavy week ahead), `sipho.demo@example.com` (a heavy week now) and
+`thabo.demo@example.com` (a class rep with a classmate's message waiting). A scheduler job re-bases them every day
+from 02:00 SAST, so their dates stay current. They skip the new-phone code, can't be locked by wrong passwords and
+can't change their password; `GET /me` says `demo: true`, and the app shows "Demo data: fictional student".
+
 **Course finder (no account; nothing stored).** All under `/api/v1`, in the usual envelope:
 
 | Endpoint | Body | Answer |
@@ -129,6 +141,14 @@ views give counts.
 
 The engine reads announcements in English and the Afrikaans words students use for the same things (toets, eksamen,
 verskuif, gekanselleer, the months and days); greetings in any language are passed over.
+
+**Alerts, support and cheap things (signed in; worked out on each request, nothing stored):**
+
+| Endpoint | Body | Answer |
+|---|---|---|
+| `GET /alerts` | none | today's alerts, most pressing first: `combined` (a heavy week in the next 3 weeks while money runs short before the next payment), `heavy_week`, `money`, or `module` (a target out of reach). Each has a `title`, a `message` and `actions`; an action's `target` is `week`, `money`, `cheap_things`, `marks` or `support`, and a support action carries the campus's own `service` when the pack has one |
+| `GET /support` | none | every kind of support the brief lists for the student's campus (counselling, crisis lines, financial aid, food support, tutoring, chaplaincy, health, then careers and disability where listed), each with its `services` (contact, hours, source, when a person last checked it) or "Not verified yet". Crisis lines show only once a person has checked them |
+| `GET /money/cheap-things` | none | the pack's cheap things near the student's campus, with cost notes, sources and when a person last checked them |
 
 ## App
 

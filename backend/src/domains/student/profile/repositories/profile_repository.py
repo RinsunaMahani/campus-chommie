@@ -17,3 +17,7 @@ def save(user_id: uuid.UUID, university: str, campus: str | None) -> StudentProf
     profile.university, profile.campus = university, campus
     db.session.add(profile)
     return profile
+
+
+def erase(user_id: uuid.UUID) -> None:
+    StudentProfile.query.filter_by(user_id=user_id).delete(synchronize_session=False)

@@ -13,6 +13,7 @@
   PUT    /money/spending/<YYYY-MM-DD>          {amount_cents}: one number per day
   DELETE /money/spending/<YYYY-MM-DD>
   GET    /money/summary?late=true              balance, pace, runway, safe to spend, life fund, next payment
+  GET    /money/cheap-things                   the data pack's cheap things to do near the student's campus
 
 Amounts are integer cents. Thin: validate -> service -> answer. Rate-limited
 per student; another student's row is the same 404 as one that doesn't exist.
@@ -137,3 +138,11 @@ def delete_spending(spent_on: str):
 def my_money_summary():
     query = load(SummaryQuerySchema(), request.args.to_dict())
     return success_response(service.summary(current_user(), query["late"]))
+
+
+@api_bp.get(f"{BASE}/cheap-things")
+@limiter.limit(READ_LIMIT, key_func=per_user)
+@auth_required
+def cheap_things_near_me():
+    load(NoQuerySchema(), request.args.to_dict())
+    return success_response(service.cheap_things(current_user()))

@@ -1,6 +1,6 @@
 from datetime import date, datetime
 
-from campus_engine.alerts import alerts_for
+from campus_engine.alerts import TARGETS, alerts_for, module_alert
 from campus_engine.lifefund import life_fund_signal
 from campus_engine.runway import ExpectedPayment, project_runway
 from campus_engine.workload import AcademicEvent, weekly_load
@@ -71,3 +71,34 @@ def test_separate_alerts():
     assert [a.kind for a in alerts_for(red_week(), fine)] == ["heavy_week"]
     assert [a.kind for a in alerts_for(green_week(), short)] == ["money"]
     assert alerts_for(green_week(), fine) == []
+
+
+def test_alerts_without_money_entered_yet():
+    assert [a.kind for a in alerts_for(red_week(), None)] == ["heavy_week"]
+    assert alerts_for(green_week(), None) == []
+
+
+def test_every_action_says_where_it_leads():
+    short = project_runway(61_000, TODAY, [ALLOWANCE], 4_500)
+    fine = project_runway(300_000, TODAY, [ALLOWANCE], 5_000)
+    alerts = alerts_for(red_week(), short) + alerts_for(red_week(), fine) + alerts_for(green_week(), short)
+    alerts.append(module_alert("ANA201", 75, "Even 100% on the rest wouldn't reach 75%."))
+    for alert in alerts:
+        for action in alert.actions:
+            assert action.target in TARGETS
+            assert (action.target == "support") == (action.support_kind is not None)
+
+
+def test_heavier_alerts_point_to_counselling_and_never_label_the_student():
+    short = project_runway(61_000, TODAY, [ALLOWANCE], 4_500)
+    fine = project_runway(300_000, TODAY, [ALLOWANCE], 5_000)
+    for alert in alerts_for(red_week(), short) + alerts_for(red_week(), fine) + [module_alert("ANA201", 75, "x")]:
+        assert "counselling" in {a.support_kind for a in alert.actions}
+        words = " ".join([alert.title, alert.message] + [a.text for a in alert.actions]).lower()
+        assert "at risk" not in words and "failing" not in words
+
+
+def test_a_module_out_of_reach():
+    alert = module_alert("ANA201", 75, "Even 100% on the rest wouldn't reach 75%.")
+    assert (alert.kind, alert.title) == ("module", "ANA201: your 75% target is out of reach")
+    assert alert.message == "Even 100% on the rest wouldn't reach 75%."

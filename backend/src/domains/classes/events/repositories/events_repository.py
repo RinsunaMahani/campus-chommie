@@ -136,3 +136,9 @@ def add(row) -> None:
 
 def delete(row) -> None:
     db.session.delete(row)
+
+
+def erase_all(user_id: uuid.UUID) -> None:
+    """A student's announcements (their candidates go with them) and flags."""
+    Announcement.query.filter_by(submitted_by=user_id).delete(synchronize_session=False)
+    EventFlag.query.filter_by(user_id=user_id).delete(synchronize_session=False)

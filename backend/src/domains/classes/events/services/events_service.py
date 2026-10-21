@@ -323,6 +323,13 @@ def my_flags(user, event_ids: list[uuid.UUID]) -> dict[uuid.UUID, str]:
     return repo.my_flags(user.id, event_ids)
 
 
+def erase_all_for(user) -> None:
+    """The announcements this student sent and the flags they raised, deleted for real: the demo's daily
+    reset (and DELETE /me's later). Verified events stay with their class."""
+    repo.erase_all(user.id)
+    db.session.commit()
+
+
 # ------------------------------------------------------------- what's sent
 
 

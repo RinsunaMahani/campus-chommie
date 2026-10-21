@@ -30,6 +30,12 @@ def place_of(user) -> tuple[str | None, str | None]:
     return (profile.university, profile.campus) if profile else (None, None)
 
 
+def erase_for(user) -> None:
+    """The student's university and campus choice, deleted: the demo's daily reset (and DELETE /me's later)."""
+    repo.erase(user.id)
+    db.session.commit()
+
+
 def view(user) -> dict:
     profile = repo.for_user(user.id)
     consents = account_service.consents_view(user)

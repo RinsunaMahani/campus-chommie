@@ -26,3 +26,6 @@ forecast:
 
 applications:
   closing_soon_days: 14   # an open application window this close to its closing date is "Closing soon"
+
+alerts:
+  lookahead_weeks: 3      # a heavy week this many weeks ahead (this one included) raises an alert
