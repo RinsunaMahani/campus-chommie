@@ -1,8 +1,9 @@
 # University of Venda (UNIVEN)
 #
-# Agent draft, from UNIVEN's 2027 undergraduate prospectus and its How to apply page, read on 13 Oct
-# 2026 (docs/research/universities.md). Nobody has checked these values yet: release stays false until
-# a person has compared every one with its source. Programmes aren't added yet.
+# Agent draft, from UNIVEN's 2027 undergraduate prospectus (read on 13 and 14 Oct 2026;
+# docs/research/univen.md). Nobody has checked these values yet: release stays false until
+# a person has compared every one with its source. All 80 undergraduate programmes take
+# their requirements from the 2027 prospectus (pages 13 to 25).
 
 university: univen
 name: University of Venda
@@ -17,7 +18,7 @@ points_rules:
   life_orientation: exclude
   percent_points: {per_percent: 0.1, from_percent: 40}   # 75% scores 7.5; under 40% adds nothing
   note: "UNIVEN scores your marks, not levels: 75% is 7.5 points."
-  scale:                       # the levels beside UNIVEN's scoring scale
+  scale:                       # the levels beside UNIVEN's scoring scale (page 8)
     - {min_percent: 80, level: 7}
     - {min_percent: 70, level: 6}
     - {min_percent: 60, level: 5}
@@ -31,19 +32,886 @@ applications:
   url: https://www.univen.ac.za/students/student-support-services/how-to-apply/
   how: "Apply online on UNIVEN's application wizard. You can save it and come back later."
   fee_cents: 0
+  documents:
+    source: s-univen-prospectus
+    items:
+      - "Copy of ID document or passport in PDF format"
+      - "Grade 11 final (Term 4) report with the school's stamp if currently in Grade 12, or statement of Grade 12 results or copy of the Matric Certificate"
+      - "Academic record and certificate of good conduct if you have already studied at another tertiary institution"
+      - "Copy of study and residence permit, medical insurance and SAQA Evaluation Certificate for international applicants"
+  after:
+    - text: "Achievement of the minimum requirements does not guarantee an applicant admission to any programme."
+      source: s-univen-prospectus
+    - text: "The minimum points for admission to a bachelor's degree study are 26 and can be reviewed by the Senate from time to time."
+      source: s-univen-prospectus
   windows:
     - intake: 2027
       source: s-univen-prospectus
       opens: 2026-05-01
       closes: 2026-09-30
 
-programmes: []
+programmes:
+
+  # Faculty of Humanities, Social Sciences and Education (prospectus pages 13-14)
+  # Humanities and Social Sciences Stream
+
+  - id: ba_media_studies
+    name: "Bachelor of Arts (Media Studies)"
+    fields: [humanities, languages_and_communication]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 30
+      choices:
+        - one_of:
+            - subjects: {english: 4}
+            - subjects: {other_language: 4}
+      extras:
+        - "Adequate achievement (50-59%, level 4) or better in English or an African Language."
+
+  - id: ba
+    name: "Bachelor of Arts"
+    fields: [humanities]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 30
+      subject_minimums: {english: 4}
+
+  - id: ba_development_studies
+    name: "Bachelor of Arts (Development Studies)"
+    fields: [humanities, economics]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 30
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {history: 4}
+            - subjects: {economics: 4}
+
+  - id: b_indigenous_knowledge_systems
+    name: "Bachelor of Indigenous Knowledge Systems"
+    fields: [humanities]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 30
+      subject_minimums: {english: 4}
+
+  - id: ba_language_practice
+    name: "Bachelor of Arts in Language Practice"
+    fields: [humanities, languages_and_communication]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 30
+      subject_minimums: {english: 4, other_language: 4}
+      extras:
+        - "Requires level 4 (50-59%) in English and an African Language."
+
+  - id: ba_english_literature
+    name: "Bachelor of Arts (English Language and Literature)"
+    fields: [humanities, languages_and_communication]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 30
+      subject_minimums: {english: 4}
+
+  - id: ba_international_relations
+    name: "Bachelor of Arts in International Relations"
+    fields: [humanities, public_administration]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 30
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {history: 4}
+            - subjects: {economics: 4}
+
+  - id: ba_youth_development
+    name: "Bachelor of Arts in Youth Development"
+    fields: [humanities]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 30
+      subject_minimums: {english: 4}
+
+  - id: ba_history
+    name: "Bachelor of Arts (History)"
+    fields: [humanities]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 30
+      subject_minimums: {english: 4, history: 4}
+
+  - id: b_theology
+    name: "Bachelor of Theology"
+    fields: [theology, humanities]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 30
+      extras:
+        - "Admission is NSC 30 points, or Recognition of Prior Learning (RPL) according to University Policy."
+
+  - id: hcert_music
+    name: "Higher Certificate in Music"
+    fields: [music, performing_arts]
+    requirements:
+      source: s-univen-prospectus
+      min_points: null
+      subject_minimums: {english: 4}
+      extras:
+        - "UNIVEN publishes no points minimum for the Higher Certificate in Music: only an NSC and adequate achievement (50-59%, level 4) in English."
+
+  - id: b_social_work
+    name: "Bachelor of Social Work"
+    fields: [humanities]
+    selective: true
+    requirements:
+      source: s-univen-prospectus
+      min_points: 35
+      subject_minimums: {english: 4}
+
+  # Education Stream (page 13)
+
+  - id: bed_senior_phase_fet
+    name: "Bachelor of Education in Senior Phase and Further Education and Training"
+    fields: [education]
+    selective: true
+    requirements:
+      source: s-univen-prospectus
+      min_points: 36
+      subject_minimums: {english: 4}
+      extras:
+        - "Requires level 4 (50%) in English plus two subjects at level 4 (50%) from one of three streams: (1) Mathematics, Physical Sciences and Life Sciences; (2) Accounting, Business Studies and Economics; or (3) History, Geography, Sepedi, Tshivenda and Xitsonga."
+
+  - id: bed_foundation_phase
+    name: "Bachelor of Education in Foundation Phase Teaching"
+    fields: [education]
+    selective: true
+    requirements:
+      source: s-univen-prospectus
+      min_points: 36
+      subject_minimums: {english: 4, other_language: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "Requires level 4 (50%) in English, level 4 (50%) in an African Language (Tshivenda, Sepedi, or Xitsonga), and either Mathematics at level 3 (40%) or Mathematical Literacy at level 4 (50%)."
+
+  # Faculty of Health Sciences (prospectus page 15)
+
+  - id: b_nursing
+    name: "Bachelor of Nursing"
+    fields: [nursing, health_sciences]
+    selective: true
+    requirements:
+      source: s-univen-prospectus
+      min_points: 38
+      subject_minimums: {english: 5, life_sciences: 5, physical_sciences: 5, mathematics: 4}
+      extras:
+        - "Excludes Life Orientation. Requires 60-69% (level 5) in Life Sciences, English and Physical Sciences, and 50-59% (level 4) in Mathematics."
+
+  - id: bsc_nutrition
+    name: "BSc in Nutrition"
+    fields: [nutrition, health_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 34
+      subject_minimums: {english: 4, mathematics: 4, life_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+
+  - id: bsc_sport_exercise_science
+    name: "BSc in Sports and Exercise Science"
+    fields: [sport_science, health_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 34
+      subject_minimums: {english: 4, life_sciences: 4, physical_sciences: 4}
+
+  - id: bsc_biokinetics
+    name: "BSc in Biokinetics"
+    fields: [rehabilitation, health_sciences, sport_science]
+    selective: true
+    requirements:
+      source: s-univen-prospectus
+      min_points: 34
+      subject_minimums: {english: 4, mathematics: 4, life_sciences: 4, physical_sciences: 4}
+
+  - id: bsc_recreation_leisure
+    name: "BSc in Recreation and Leisure Studies"
+    fields: [sport_science, health_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 34
+      subject_minimums: {english: 4}
+
+  - id: b_psychology
+    name: "Bachelor of Psychology"
+    fields: [health_sciences, humanities]
+    selective: true
+    selection_note: "Departmental selection test required."
+    requirements:
+      source: s-univen-prospectus
+      min_points: 36
+      subject_minimums: {english: 4}
+      extras:
+        - "Selection test required by the Department of Psychology."
+
+  - id: dip_nursing
+    name: "Diploma in Nursing"
+    fields: [nursing, health_sciences]
+    selective: true
+    requirements:
+      source: s-univen-prospectus
+      min_points: 28
+      subject_minimums: {english: 4, life_sciences: 4, physical_sciences: 4, mathematics: 3}
+
+  # Faculty of Management, Commerce and Law (prospectus pages 18-19)
+  # Management and Commerce Stream
+
+  - id: badmin_public_admin
+    name: "Bachelor of Admin in Public Administration"
+    fields: [public_administration, management]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 32
+      subject_minimums: {english: 4}
+      additional_minimums: [3, 3, 3]
+
+  - id: bcom_accounting_sciences
+    name: "Bachelor of Commerce in Accounting Sciences"
+    fields: [accounting, commerce, finance]
+    selective: true
+    requirements:
+      source: s-univen-prospectus
+      min_points: 35
+      subject_minimums: {english: 4, mathematics: 4}
+
+  - id: bcom_tourism_management
+    name: "Bachelor of Commerce in Tourism Management"
+    fields: [tourism_and_hospitality, commerce]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 32
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "Requires moderate achievement (level 3, 40-49%) in any two of: Accounting, Business Studies, Economics, Information Technology, Geography, Tourism."
+
+  - id: bcom_accounting
+    name: "Bachelor of Commerce in Accounting"
+    fields: [accounting, commerce]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 32
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {accounting: 4}
+            - subjects: {mathematics: 4}
+
+  - id: bcom_business_information_systems
+    name: "Bachelor of Commerce in Business Information Systems"
+    fields: [computing, commerce]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 32
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 6}
+      extras:
+        - "Requires 75% (level 6) in Mathematical Literacy or moderate achievement (level 3, 40-49%) in Mathematics, plus moderate achievement in any two of: Accounting, Business Studies, Economics, Information Technology."
+
+  - id: bcom_business_management
+    name: "Bachelor of Commerce in Business Management"
+    fields: [management, commerce]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 32
+      subject_minimums: {english: 4, business_studies: 4}
+      extras:
+        - "Requires moderate achievement (level 3, 40-49%) in any two of: Accounting, Economics, Information Technology, Mathematics."
+
+  - id: bcom_cost_management_accounting
+    name: "Bachelor of Commerce in Cost and Management Accounting"
+    fields: [accounting, commerce, finance]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 32
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {accounting: 4}
+            - subjects: {mathematics: 4}
+
+  - id: bcom_economics
+    name: "Bachelor of Commerce in Economics"
+    fields: [economics, commerce]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 32
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {economics: 4}
+            - subjects: {mathematics: 4}
+      extras:
+        - "Requires moderate achievement (level 3, 40-49%) in any two of: Accounting, Business Studies, Information Technology."
+
+  - id: bcom_human_resource_management
+    name: "Bachelor of Commerce in Human Resource Management"
+    fields: [management, commerce]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 32
+      subject_minimums: {english: 4}
+      extras:
+        - "Requires moderate achievement (level 3, 40-49%) in any two of: Accounting, Business Studies, Economics, Information Technology, Mathematics."
+
+  - id: bcom_industrial_psychology
+    name: "Bachelor of Commerce in Industrial Psychology"
+    fields: [commerce, humanities]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 32
+      subject_minimums: {english: 4}
+      extras:
+        - "Requires moderate achievement (level 3, 40-49%) in any two of: Accounting, Business Studies, Economics, Information Technology, Mathematics."
+
+  # Law Stream (prospectus page 19)
+
+  - id: llb
+    name: "Bachelor of Laws"
+    fields: [law]
+    selective: true
+    requirements:
+      source: s-univen-prospectus
+      min_points: 38
+      subject_minimums: {english: 5}
+
+  - id: ba_criminal_justice
+    name: "Bachelor of Arts in Criminal Justice"
+    fields: [safety_and_justice, law]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 34
+      subject_minimums: {english: 4}
+
+  # Extended Degree Programmes (prospectus page 19)
+
+  - id: badmin_extended
+    name: "Extended Bachelor of Administration"
+    fields: [public_administration, management]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 28
+      subject_minimums: {english: 4}
+      extras:
+        - "For applicants with an APS of 28-31 who met bachelor's endorsement but did not meet the mainstream cut-off. Duration is 4 years."
+
+  - id: bcom_accounting_extended
+    name: "Extended Bachelor of Commerce (Accounting)"
+    fields: [accounting, commerce]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 28
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {accounting: 3}
+            - subjects: {mathematics: 3}
+      extras:
+        - "For applicants with an APS of 28-31 who met bachelor's endorsement but did not meet mainstream entry. Duration is 4 years."
+
+  - id: bcom_business_information_systems_extended
+    name: "Extended Bachelor of Commerce (Business Information Systems)"
+    fields: [computing, commerce]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 28
+      subject_minimums: {english: 4}
+      extras:
+        - "APS 28-31. Duration is 4 years."
+
+  - id: bcom_business_management_extended
+    name: "Extended Bachelor of Commerce (Business Management)"
+    fields: [management, commerce]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 28
+      subject_minimums: {english: 4}
+      extras:
+        - "APS 28-31. Duration is 4 years."
+
+  - id: bcom_cost_management_accounting_extended
+    name: "Extended Bachelor of Commerce (Cost and Management Accounting)"
+    fields: [accounting, commerce, finance]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 28
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {accounting: 3}
+            - subjects: {mathematics: 3}
+      extras:
+        - "APS 28-31. Duration is 4 years."
+
+  - id: bcom_economics_extended
+    name: "Extended Bachelor of Commerce (Economics)"
+    fields: [economics, commerce]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 28
+      subject_minimums: {english: 4}
+      extras:
+        - "APS 28-31. Duration is 4 years."
+
+  - id: bcom_human_resources_extended
+    name: "Extended Bachelor of Commerce (Human Resources Management)"
+    fields: [management, commerce]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 28
+      subject_minimums: {english: 4}
+      extras:
+        - "APS 28-31. Duration is 4 years."
+
+  # Faculty of Science, Engineering and Agriculture (prospectus pages 23-25)
+  # Diploma
+
+  - id: dip_freshwater_technology
+    name: "Diploma in Freshwater Technology"
+    fields: [natural_sciences, earth_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 24
+      subject_minimums: {english: 2}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+            - subjects: {physical_sciences: 4}
+            - subjects: {geography: 4}
+      additional_minimums: [3, 3, 3, 3]
+      extras:
+        - "NSC 24 with diploma endorsement, 30% (level 2) in English, 40-49% (level 3) in four recognised 20-credit subjects, and 50% (level 4) in Life Sciences, Agricultural Sciences, Physical Sciences, or Geography."
+
+  # Science Stream (prospectus pages 23-24)
+
+  - id: bsc_biochemistry_microbiology
+    name: "BSc (Biochemistry and Microbiology)"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+
+  - id: bsc_biochemistry_biology
+    name: "BSc (Biochemistry and Biology)"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+
+  - id: bsc_microbiology_botany
+    name: "BSc (Microbiology and Botany)"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+
+  - id: bsc_mathematics_applied_mathematics
+    name: "BSc (Mathematics and Applied Mathematics)"
+    fields: [natural_sciences, mathematical_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+
+  - id: bsc_mathematics_physics
+    name: "BSc (Mathematics and Physics)"
+    fields: [natural_sciences, mathematical_sciences, physical_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+
+  - id: bsc_mathematics_statistics
+    name: "BSc (Mathematics and Statistics)"
+    fields: [natural_sciences, mathematical_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+
+  - id: bsc_physics_chemistry
+    name: "BSc (Physics and Chemistry)"
+    fields: [natural_sciences, physical_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+
+  - id: bsc_chemistry_mathematics
+    name: "BSc (Chemistry and Mathematics)"
+    fields: [natural_sciences, physical_sciences, mathematical_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+
+  - id: bsc_chemistry_biochemistry
+    name: "BSc (Chemistry and Biochemistry)"
+    fields: [natural_sciences, physical_sciences, life_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+
+  - id: bsc_chemistry_applied_chemistry
+    name: "BSc in Chemistry and Applied Chemistry"
+    fields: [natural_sciences, physical_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+
+  - id: bsc_botany_zoology
+    name: "BSc (Botany and Zoology)"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+
+  - id: bsc_computer_science
+    name: "BSc (Computer Science)"
+    fields: [computing, natural_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+
+  - id: bsc_computer_science_mathematics
+    name: "BSc (Computer Science and Mathematics)"
+    fields: [computing, mathematical_sciences, natural_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+
+  # Environmental Sciences Stream (prospectus page 24)
+
+  - id: b_environmental_sciences
+    name: "Bachelor of Environmental Sciences"
+    fields: [earth_sciences, natural_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 32
+      subject_minimums: {english: 4, mathematics: 4}
+      choices:
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {life_sciences: 4}
+            - subjects: {geography: 4}
+            - subjects: {agricultural_sciences: 4}
+
+  - id: b_earth_sciences_mining_geology
+    name: "Bachelor of Earth Sciences in Mining and Environmental Geology"
+    fields: [earth_sciences, engineering]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 35
+      subject_minimums: {mathematics: 5, physical_sciences: 4, english: 4}
+      extras:
+        - "Requires level 5 (60-69%) in Mathematics, level 4 (50-59%) in Physical Sciences and English, plus level 4 in at least three of: Agricultural Sciences, Accounting, Life Sciences, Economics, Geography."
+
+  - id: b_earth_sciences_hydrology
+    name: "Bachelor of Earth Sciences in Hydrology and Water Resources"
+    fields: [earth_sciences, natural_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 35
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5}
+      extras:
+        - "Requires level 5 (60-69%) in English, Mathematics and Physical Sciences, plus level 4 in at least three of: Agricultural Sciences, Accounting, Life Sciences, Economics, Geography."
+
+  - id: b_urban_regional_planning
+    name: "Bachelor of Urban and Regional Planning"
+    fields: [built_environment, earth_sciences]
+    selective: true
+    requirements:
+      source: s-univen-prospectus
+      min_points: 35
+      subject_minimums: {english: 4, mathematics: 4}
+      extras:
+        - "Requires level 4 (50%) or better in English and Mathematics, plus level 4 in at least three of: Agricultural Sciences, Accounting, Life Sciences, Economics, Geography. Preference to higher levels in Physical Sciences, Mathematics, English, Technical Drawing, Geography."
+
+  - id: b_environmental_sciences_disaster_risk
+    name: "Bachelor of Environmental Sciences in Disaster Risk Reduction"
+    fields: [disaster_and_fire, earth_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 35
+      subject_minimums: {geography: 5, mathematics: 5, life_sciences: 5, english: 4, physical_sciences: 4, economics: 4}
+
+  # Agriculture Stream (prospectus page 24)
+
+  - id: bsc_agric_economics
+    name: "Bachelor of Science in Agriculture (Agricultural Economics)"
+    fields: [agriculture, economics]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+
+  - id: bsc_agric_agribusiness
+    name: "Bachelor of Science in Agriculture (Agribusiness Management)"
+    fields: [agriculture, management]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+
+  - id: bsc_agric_animal_science
+    name: "Bachelor of Science in Agriculture (Animal Science)"
+    fields: [agriculture, life_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+
+  - id: bsc_agric_horticulture
+    name: "Bachelor of Science in Agriculture (Horticultural Sciences)"
+    fields: [agriculture, life_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+
+  - id: bsc_agric_plant_production
+    name: "Bachelor of Science in Agriculture (Plant Production)"
+    fields: [agriculture, life_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+
+  - id: bsc_agric_soil_science
+    name: "Bachelor of Science in Soil Science"
+    fields: [agriculture, earth_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+
+  - id: bsc_forestry
+    name: "Bachelor of Science in Forestry"
+    fields: [agriculture, life_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+
+  - id: bsc_food_science_technology
+    name: "Bachelor of Science in Food Science and Technology"
+    fields: [food_science, agriculture]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 26
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+
+  # Extended BSc Degree Programmes (prospectus page 25)
+
+  - id: extended_bsc_biochemistry_microbiology
+    name: "Extended BSc (Biochemistry and Microbiology)"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 26
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3}
+      extras:
+        - "NSC 26 with a bachelor's endorsement and level 3 (40-49%) in English, Mathematics, Physical Sciences. Duration is 4 years."
+
+  - id: extended_bsc_biochemistry_biology
+    name: "Extended BSc (Biochemistry and Biology)"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 26
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3}
+      extras:
+        - "NSC 26 with a bachelor's endorsement and level 3 (40-49%) in English, Mathematics, Physical Sciences. Duration is 4 years."
+
+  - id: extended_bsc_microbiology_botany
+    name: "Extended BSc (Microbiology and Botany)"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 26
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3}
+      extras:
+        - "NSC 26 with a bachelor's endorsement and level 3 (40-49%) in English, Mathematics, Physical Sciences. Duration is 4 years."
+
+  - id: extended_bsc_mathematics_applied_mathematics
+    name: "Extended BSc (Mathematics and Applied Mathematics)"
+    fields: [natural_sciences, mathematical_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 26
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3}
+      extras:
+        - "NSC 26 with a bachelor's endorsement and level 3 (40-49%) in English, Mathematics, Physical Sciences. Duration is 4 years."
+
+  - id: extended_bsc_computer_science_mathematics
+    name: "Extended BSc (Computer Science and Mathematics)"
+    fields: [computing, mathematical_sciences, natural_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 26
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3}
+      extras:
+        - "NSC 26 with a bachelor's endorsement and level 3 (40-49%) in English, Mathematics, Physical Sciences. Duration is 4 years."
+
+  - id: extended_bsc_mathematics_physics
+    name: "Extended BSc (Mathematics and Physics)"
+    fields: [natural_sciences, mathematical_sciences, physical_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 24
+      subject_minimums: {english: 2}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+            - subjects: {physical_sciences: 4}
+            - subjects: {geography: 4}
+      additional_minimums: [3, 3, 3, 3]
+      extras:
+        - "NSC 24 with diploma endorsement, 30% (level 2) in English, 40-49% (level 3) in four recognised 20-credit subjects, and 50% (level 4) in Life Sciences, Agricultural Sciences, Physical Sciences, or Geography. Duration is 4 years."
+
+  - id: extended_bsc_mathematics_statistics
+    name: "Extended BSc (Mathematics and Statistics)"
+    fields: [natural_sciences, mathematical_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 24
+      subject_minimums: {english: 2}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+            - subjects: {physical_sciences: 4}
+            - subjects: {geography: 4}
+      additional_minimums: [3, 3, 3, 3]
+      extras:
+        - "NSC 24 with diploma endorsement, 30% (level 2) in English, 40-49% (level 3) in four recognised 20-credit subjects, and 50% (level 4) in Life Sciences, Agricultural Sciences, Physical Sciences, or Geography. Duration is 4 years."
+
+  - id: extended_bsc_physics_chemistry
+    name: "Extended BSc (Physics and Chemistry)"
+    fields: [natural_sciences, physical_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 24
+      subject_minimums: {english: 2}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+            - subjects: {physical_sciences: 4}
+            - subjects: {geography: 4}
+      additional_minimums: [3, 3, 3, 3]
+      extras:
+        - "NSC 24 with diploma endorsement, 30% (level 2) in English, 40-49% (level 3) in four recognised 20-credit subjects, and 50% (level 4) in Life Sciences, Agricultural Sciences, Physical Sciences, or Geography. Duration is 4 years."
+
+  - id: extended_bsc_chemistry_mathematics
+    name: "Extended BSc (Chemistry and Mathematics)"
+    fields: [natural_sciences, physical_sciences, mathematical_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 24
+      subject_minimums: {english: 2}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+            - subjects: {physical_sciences: 4}
+            - subjects: {geography: 4}
+      additional_minimums: [3, 3, 3, 3]
+      extras:
+        - "NSC 24 with diploma endorsement, 30% (level 2) in English, 40-49% (level 3) in four recognised 20-credit subjects, and 50% (level 4) in Life Sciences, Agricultural Sciences, Physical Sciences, or Geography. Duration is 4 years."
+
+  - id: extended_bsc_chemistry_biochemistry
+    name: "Extended BSc (Chemistry and Biochemistry)"
+    fields: [natural_sciences, physical_sciences, life_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 24
+      subject_minimums: {english: 2}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {agricultural_sciences: 4}
+            - subjects: {physical_sciences: 4}
+            - subjects: {geography: 4}
+      additional_minimums: [3, 3, 3, 3]
+      extras:
+        - "NSC 24 with diploma endorsement, 30% (level 2) in English, 40-49% (level 3) in four recognised 20-credit subjects, and 50% (level 4) in Life Sciences, Agricultural Sciences, Physical Sciences, or Geography. Duration is 4 years."
+
+  - id: extended_bsc_chemistry_applied_chemistry
+    name: "Extended BSc (Chemistry and Applied Chemistry)"
+    fields: [natural_sciences, physical_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 26
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3}
+      extras:
+        - "NSC 26 with a bachelor's endorsement and level 3 (40-49%) in English, Mathematics, Physical Sciences. Duration is 4 years."
+
+  - id: extended_bsc_botany_zoology
+    name: "Extended BSc (Botany and Zoology)"
+    fields: [natural_sciences, life_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 26
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3}
+      extras:
+        - "NSC 26 with a bachelor's endorsement and level 3 (40-49%) in English, Mathematics, Physical Sciences. Duration is 4 years."
+
+  - id: extended_bsc_computer_science
+    name: "Extended BSc (Computer Science)"
+    fields: [computing, natural_sciences]
+    requirements:
+      source: s-univen-prospectus
+      min_points: 26
+      subject_minimums: {english: 3, mathematics: 3, physical_sciences: 3}
+      extras:
+        - "NSC 26 with a bachelor's endorsement and level 3 (40-49%) in English, Mathematics, Physical Sciences. Duration is 4 years."
 
 sources:
   - id: s-univen-prospectus
     url: "https://www.univen.ac.za/wp-content/uploads/2026/09/2027-Univen-Undergraduate-Prospectus.pdf"
     publisher: "University of Venda"
-    title: "2027 Undergraduate Prospectus (scoring scale, pages 8 and 9)"
+    title: "2027 Undergraduate Prospectus"
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"

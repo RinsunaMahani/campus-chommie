@@ -2,8 +2,8 @@
 
 Agent draft, from 13 Oct 2026. On 13 Oct Rinsuna chose to cover all 26 public universities
 ([USAf's list](https://usaf.ac.za/prospective-students/)), starting with each one's own APS rule and how and when to
-apply. Programmes are at UP, TUT and SMU and, since #32 and #33, at VUT, WSU, UMP, MUT, SPU, UFS and UNIZULU, each with its own note in
-this folder (`ufs.md`, `unizulu.md`, `vut.md` and so on); the rest follow in waves. Every value below is an agent
+apply. Programmes are at UP, TUT and SMU and, since #32, #33 and wave 3, at VUT, WSU, UMP, MUT, SPU, UFS, UNIZULU, UNIVEN, UL, RU (Rhodes) and NWU, each with its own note in
+this folder (`nwu.md`, `ru.md`, `ufs.md`, `ul.md`, `univen.md`, `unizulu.md`, `vut.md` and so on); the rest follow in waves. Every value below is an agent
 draft: `release: false`, each source `verified_by: "agent draft, needs human check"`, and the app shows "Not yet
 confirmed by the team" until a person has checked it.
 
