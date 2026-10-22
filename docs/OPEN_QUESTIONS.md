@@ -211,6 +211,10 @@ and SMU and, since #32 and #33, at VUT, WSU, UMP, MUT, SPU, UFS and UNIZULU; the
   - **UCT, Stellenbosch and CUT** can't be checked yet (a Faculty Points Score, averages, and no stated subject
     count); their programmes show the published minimums.
   - **UWC** has no programmes: its site answers 403 to every honest request.
+- [ ] **Check DUT's course list** (89 programmes from Study Opportunities 2027, agent draft of 22 Oct;
+  [dut.md](research/dut.md) starts with what to check first). The ones that change what learners see: whether
+  "Mathematics OR / Mathematical Literacy OR / Accounting" rows make Accounting an option or a must (Accounting,
+  Taxation, Hospitality, Tourism), Drama's 22 or 24 points, and Electronic Engineering's Technical Mathematics.
 - [ ] **A local wave 4 nobody should push.** On the night of 14 Oct another session built `rinsuna/courses-wave-4`
   (12 universities in about 70 minutes), never pushed. Its values cite pages that don't hold them, and Fort Hare's
   came from the site that disallows Anthropic's agents. Rinsuna chose to redo it carefully (wave 5); the branch and
