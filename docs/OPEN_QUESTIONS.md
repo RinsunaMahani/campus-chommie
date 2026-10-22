@@ -169,8 +169,12 @@ and SMU and, since #32 and #33, at VUT, WSU, UMP, MUT, SPU, UFS and UNIZULU; the
 
 - [ ] **Check the 23 new packs** against their sources, in a browser: UJ, UKZN, DUT and CPUT were read through a
   search engine's copy (bot checks, an unreachable site, expired or broken certificates).
-- [ ] **No points rule yet** at DUT, MUT, CUT, SPU, CPUT and Fort Hare (not published, or not readable in full), and
-  none possible at UCT and Stellenbosch (a Faculty Points Score; averages). Each says why in the app.
+- [ ] **No points rule yet** at CUT, SPU, CPUT and Fort Hare (not published, or not readable in full), and none
+  possible at UCT and Stellenbosch (a Faculty Points Score; averages). Each says why in the app. DUT's rule was added
+  on 22 Oct 2026 from page 8 of its Study Opportunities 2027 (top six subjects without Life Orientation, levels 1 to
+  7): check it against the PDF. Still needed: CUT's Student Calendar 2026 (section 4.1.5; its host refuses bots),
+  Fort Hare's 2027 prospectus (its site refuses Anthropic's agents), CPUT's Issuu prospectus (Issuu refuses bots),
+  each downloaded in a browser; and SPU's answer to "how many subjects count?", which none of its documents says.
 - [ ] **Where the engine is close but not exact** (each pack's `note` says so): UMP, UWC, UFS, UKZN, NMU and WSU
   always count certain subjects; the engine counts the best ones, which is the same for a learner with seven
   subjects. NMU's 7 points for quintile 1 to 3 schools and SPU's home-language bonus need questions we don't ask.
