@@ -66,6 +66,12 @@ applications:
 
 # Every programme below comes from its own page in Wits's course finder (read 14 Oct 2026), which gives the 2027
 # intake's closing dates. Where a page states a wait-list range, it's in extras: the minimum is the "APS nn+" figure.
+# Campuses from the university's own page (s-wits-maps), read on 22 Oct 2026. Agent draft.
+campuses:
+  - {id: braamfontein, name: "Braamfontein (East and West)", note: "Wits's maps page names Braamfontein Campus East and West; OpenStreetMap doesn't tell them apart.", source: s-wits-maps}
+  - {id: education, name: "Education (Parktown)", source: s-wits-maps}
+  - {id: parktown, name: "Parktown (Medical School and Management)", source: s-wits-maps}
+
 programmes:
 
   # Commerce, Law and Management
@@ -1212,6 +1218,13 @@ programmes:
         - *wits_sci_nbt
 
 sources:
+  - id: s-wits-maps
+    url: "https://www.wits.ac.za/maps/"
+    publisher: "University of the Witwatersrand"
+    title: "Maps and directions: its campuses"
+    retrieved: 2026-10-22
+    last_verified: null
+    verified_by: "agent draft, needs human check"
   - id: s-wits-entry
     url: "https://www.wits.ac.za/undergraduate/entry-requirements/"
     publisher: "University of the Witwatersrand"

@@ -44,6 +44,9 @@ def test_smus_map_needs_no_account(client):
     building = campus["places"][0]
     assert set(building) == {"id", "name", "kind", "centre", "outline", "named_by_team"}
     assert re.fullmatch(r"\d+ buildings and places from OpenStreetMap, \d+ with a name\.", campus["lines"][0])
+    # The roads around the campus and the paths across it, drawn under the buildings.
+    assert campus["streets"] and {s["kind"] for s in campus["streets"]} <= {"road", "path"}
+    assert all(set(s) == {"kind", "name", "line"} and len(s["line"]) >= 2 for s in campus["streets"])
 
 
 def test_every_campus_is_listed_and_the_unmapped_ones_say_so(client):

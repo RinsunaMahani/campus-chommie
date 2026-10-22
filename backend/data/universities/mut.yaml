@@ -56,6 +56,11 @@ applications:
 # Requirements from the CAO's 2027 handbook (MUT's rows), which its 2026 faculty handbooks repeat, unless a
 # programme says otherwise. Where the CAO gives no points, the faculty handbook's minimum is used; where neither
 # gives one, min_points is null (MUT publishes none, so only the subjects are checked) and extras say so. Agent draft, 14 Oct 2026.
+# Campuses from the university's own page (s-mut-where), read on 22 Oct 2026. Agent draft.
+campuses:
+  - {id: main, name: "Main campus (Umlazi)", source: s-mut-where}
+  - {id: natural_sciences, name: "Faculty of Natural Sciences campus (Umlazi)", note: "MUT's directions pass it at the fourth set of robots, before the main gate.", source: s-mut-where}
+
 programmes:
 
   # Faculty of Management Sciences

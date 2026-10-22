@@ -38,9 +38,24 @@ applications:
       closing_time: "12:00"
       no_late_applications: true
 
+# Campuses from the university's own page (s-uj-maps-venues), read in a browser on 22 Oct 2026 (its site refuses
+# scripts; docs/research/campuses-uj-uwc.md). Agent draft.
+campuses:
+  - {id: apk, name: "Auckland Park Kingsway (APK)", source: s-uj-maps-venues}
+  - {id: apb, name: "Auckland Park Bunting Road (APB)", source: s-uj-maps-venues}
+  - {id: dfc, name: "Doornfontein (DFC)", source: s-uj-maps-venues}
+  - {id: swc, name: "Soweto (SWC)", source: s-uj-maps-venues}
+
 programmes: []
 
 sources:
+  - id: s-uj-maps-venues
+    url: "https://www.uj.ac.za/admission-aid/assessments/maps-venues/"
+    publisher: "University of Johannesburg"
+    title: "Maps & Venues"
+    retrieved: 2026-10-22
+    last_verified: null
+    verified_by: "agent draft, needs human check"
   - id: s-uj-yearbook
     url: "https://www.uj.ac.za/wp-content/uploads/2026/02/final-2026-science-apk-undergraduate-yearbook-jan2026.pdf"
     publisher: "University of Johannesburg"

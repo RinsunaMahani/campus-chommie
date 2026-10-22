@@ -31,6 +31,11 @@ applications:
       closes: 2026-07-31
       note: "The Diploma in Public Accountability closes on 15 December 2026."
 
+# Campuses from the university's own page (s-su-prospectus-2026), read on 22 Oct 2026. Agent draft.
+campuses:
+  - {id: stellenbosch, name: "Stellenbosch", source: s-su-prospectus-2026}
+  - {id: tygerberg, name: "Tygerberg (Health Sciences)", source: s-su-prospectus-2026}
+
 programmes:
 
   # Every requirement below (except the BEng extended programmes) is from SU's 2026 prospectus, pages 2 to 15. SU

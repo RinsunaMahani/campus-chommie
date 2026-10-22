@@ -53,6 +53,11 @@ applications:
 # Education programmes, the CAO's list of programmes added after the handbook. No 2027 document of UNIZULU's
 # own was found; where its 2026 brochure or faculty handbooks ask for more, extras say so. Each programme's
 # comment gives its CAO code and page. Agent draft, 14 Oct 2026.
+# Campuses from the university's own page (s-unizulu-where), read on 22 Oct 2026. Agent draft.
+campuses:
+  - {id: kwadlangezwa, name: "KwaDlangezwa", source: s-unizulu-where}
+  - {id: richards_bay, name: "Richards Bay", source: s-unizulu-where}
+
 programmes:
 
   # Faculty of Commerce, Administration and Law: KwaDlangezwa campus

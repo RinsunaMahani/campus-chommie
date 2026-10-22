@@ -373,6 +373,8 @@ export type MapSupportPlace = {
   place: string;
 };
 
+export type MapStreet = { kind: 'road' | 'path'; name: string | null; line: LatLon[] };
+
 export type CampusMapView = {
   id: string;
   name: string;
@@ -382,6 +384,8 @@ export type CampusMapView = {
   centre: LatLon | null;
   outline: LatLon[][];
   places: MapPlace[];
+  /** Roads around the campus and paths across it, drawn under the buildings (absent from an older API). */
+  streets?: MapStreet[];
   support: MapSupportPlace[];
   lines: string[];
   source_url: string | null;

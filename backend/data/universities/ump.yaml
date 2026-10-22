@@ -45,6 +45,11 @@ applications:
 # they win, and docs/research/ump.md lists every difference. No programme adds a test, interview or portfolio. Left
 # out: the old Diploma in Hospitality Management (phased out after 2023, for returning students only), advanced
 # diplomas and postgraduate programmes.
+# Campuses from the university's own page (s-ump-where), read on 22 Oct 2026. Agent draft.
+campuses:
+  - {id: mbombela, name: "Mbombela", source: s-ump-where}
+  - {id: siyabuswa, name: "Siyabuswa", source: s-ump-where}
+
 programmes:
 
   # Faculty of Agriculture and Natural Sciences: School of Agricultural Sciences

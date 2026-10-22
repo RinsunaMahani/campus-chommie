@@ -422,9 +422,24 @@ other official language, and the results say which; second additional languages 
 - [ ] **Campuses not mapped yet** ([maps](research/maps.md)): six have no outline in OpenStreetMap (UP Hillcrest and
   GIBS; TUT Soshanguve North, eMalahleni, Mbombela and Polokwane), and two have an outline with almost no buildings
   in it (UP Onderstepoort has 2, TUT Ga-Rankuwa none). A person could draw them in OpenStreetMap.
-- [ ] **The map's background** (an external service, so it's Rinsuna's call): our shapes on a plain background (no
-  service at all), OpenStreetMap's own tiles (free but best-effort, with rules for apps: its tile usage policy), or
-  a tile provider built on OpenStreetMap (usually an account and a key).
+- [x] **The map's background:** Rinsuna chose (22 Oct 2026) to draw the streets ourselves: the fetch script also
+  takes the roads within about 120 m of each campus and the paths across it from OpenStreetMap, and the app draws
+  them under the buildings with the main road names. No tile service, no account, works offline.
+- [ ] **Every university mapped** (asked by Rinsuna, 22 Oct 2026): 20 of 26 universities now list their campuses,
+  each from the university's own page (agent draft), and their OpenStreetMap outlines are in
+  `backend/data/maps/osm_campuses.yaml`. Check each pack's new `campuses:` against its source. Still to do:
+  - **UJ and UWC** (their sites answer 403 to honest requests) and **Fort Hare** (its robots.txt disallows
+    Anthropic's agents): a person reads their campus pages in a browser; OpenStreetMap already has their outlines
+    (UJ APK, APB, Doornfontein and Soweto; UWC Bellville; Fort Hare Alice, Bhisho and East London).
+  - **Campuses with no outline in OpenStreetMap:** CUT Welkom, DUT Brickfield and Riverside, MUT's Natural
+    Sciences campus, UKZN's Medical School and UMP Siyabuswa. The app says they aren't mapped yet.
+  - **Choices to check:** Wits's Braamfontein East and West are one campus (OpenStreetMap doesn't tell them apart),
+    and UCT's Upper, Middle and Lower are one (OpenStreetMap draws them as one); UL is Turfloop only (its about page
+    names Ga-Rankuwa only in its history, before MEDUNSA became SMU); Stellenbosch is Stellenbosch and Tygerberg,
+    the two its prospectus names (Elsenburg, where some students live, is the Elsenburg Agricultural Training
+    Institute, not an SU campus).
+  - **OpenStreetMap changes:** on 22 Oct SMU had 60 buildings, not 281: a data-repair account deleted 221 of them on
+    9 Jun 2026 (our 13 Oct copy came from an out-of-date server). UP Prinshof went from 19 to 271, newly mapped.
 - [ ] **"You are here"** (Rinsuna's call): a dot from the phone's own location. It would stay on the phone: the
   API takes no location and refuses one. It needs a location permission and a package the reused app removed.
 - [ ] **The ODbL** (with the legal check above): our map files and the names we add stay under the ODbL, never "all

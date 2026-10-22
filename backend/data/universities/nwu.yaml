@@ -55,6 +55,12 @@ applications:
           source: s-nwu-apply
       note: "Programmes with selection closed on 30 June 2026. General undergraduate applications closed on 31 August 2026."
 
+# Campuses from the university's own page (s-nwu-campuses), read on 22 Oct 2026. Agent draft.
+campuses:
+  - {id: potchefstroom, name: "Potchefstroom", source: s-nwu-campuses}
+  - {id: mahikeng, name: "Mahikeng", source: s-nwu-campuses}
+  - {id: vanderbijlpark, name: "Vanderbijlpark (Vaal)", source: s-nwu-campuses}
+
 programmes:
 
   # Faculty of Engineering (prospectus page 12)
@@ -1118,6 +1124,13 @@ programmes:
         - "Majors across Psychology, History, Geography, Politics, Philosophy, Sociology, Languages. Duration is 3 years."
 
 sources:
+  - id: s-nwu-campuses
+    url: "https://studies.nwu.ac.za/studies/our-campuses"
+    publisher: "North-West University"
+    title: "Our campuses"
+    retrieved: 2026-10-22
+    last_verified: null
+    verified_by: "agent draft, needs human check"
   - id: s-nwu-prospectus
     url: "https://studies.nwu.ac.za/sites/studies.nwu.ac.za/files/files/undergrad/2025-Grade-12-Prospectus.pdf"
     publisher: "North-West University"

@@ -8,7 +8,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-from .schemas import CampusMap, LatLon, Place, University, UniversityMap
+from .schemas import CampusMap, LatLon, Place, Street, University, UniversityMap
 from .text import plural
 
 #: The credit OpenStreetMap asks for wherever its data is shown, linking to its copyright page.
@@ -17,6 +17,9 @@ ATTRIBUTION_URL = "https://www.openstreetmap.org/copyright"
 #: The licence the data stays under, our copy included: named and linked wherever it goes out as data.
 LICENCE = "Open Database License (ODbL) 1.0"
 LICENCE_URL = "https://opendatacommons.org/licenses/odbl/1-0/"
+#: How far past the outline the map shows when it has streets (degrees, about 120 m), so the roads that lead in
+#: are on it.
+STREET_MARGIN = 0.0011
 
 
 @dataclass
@@ -38,6 +41,7 @@ class CampusView:
     north_east: LatLon | None = None
     centre: LatLon | None = None
     places: list[Place] = field(default_factory=list)
+    streets: list[Street] = field(default_factory=list)
     support: list[SupportPlace] = field(default_factory=list)
     lines: list[str] = field(default_factory=list)
     source_url: str | None = None
@@ -65,6 +69,9 @@ def campus_view(uni: University, umap: UniversityMap | None, campus_id: str) -> 
     if campus is None:
         return CampusView(campus_id, campus_name, False, lines=[f"{campus_name} isn't mapped yet."])
     south_west, north_east = campus.bounds
+    if campus.streets:
+        m = STREET_MARGIN
+        south_west, north_east = (south_west[0] - m, south_west[1] - m), (north_east[0] + m, north_east[1] + m)
     centre = ((south_west[0] + north_east[0]) / 2, (south_west[1] + north_east[1]) / 2)
     named = [p for p in campus.places if p.name]
     by_person = [p for p in named if p.name_source]
@@ -78,7 +85,7 @@ def campus_view(uni: University, umap: UniversityMap | None, campus_id: str) -> 
         lines.append(f"{plural(len(by_person), 'name')} added by the team on campus.")
     return CampusView(
         campus_id, campus_name, True, list(campus.outline), south_west, north_east, centre, list(campus.places),
-        _support(campus, uni), lines, source.url if source else None,
+        list(campus.streets), _support(campus, uni), lines, source.url if source else None,
     )
 
 

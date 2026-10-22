@@ -36,6 +36,14 @@ applications:
       closes_one_of: [2026-06-30, 2026-07-31, 2026-08-31, 2026-09-30]
       note: "Each CPUT programme has its own closing date."
 
+# Campuses from the university's own page (s-cput-campuses), read on 22 Oct 2026. Agent draft.
+campuses:
+  - {id: bellville, name: "Bellville", source: s-cput-campuses}
+  - {id: district_six, name: "District Six", source: s-cput-campuses}
+  - {id: granger_bay, name: "Granger Bay", source: s-cput-campuses}
+  - {id: mowbray, name: "Mowbray", source: s-cput-campuses}
+  - {id: wellington, name: "Wellington", source: s-cput-campuses}
+
 programmes:
 
   # ---------------------------------------------------------------------------------------------------------
@@ -1793,6 +1801,13 @@ programmes:
     requirements: null
 
 sources:
+  - id: s-cput-campuses
+    url: "https://www.cput.ac.za/about-cput/campuses"
+    publisher: "Cape Peninsula University of Technology"
+    title: "Campuses"
+    retrieved: 2026-10-22
+    last_verified: null
+    verified_by: "agent draft, needs human check"
   - id: s-cput-where
     url: "https://www.cput.ac.za/about-cput"
     publisher: "Cape Peninsula University of Technology"

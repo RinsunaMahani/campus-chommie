@@ -57,6 +57,10 @@ applications:
           source: s-ul-2027
       note: "MBChB (Medicine) and international applications closed on 30 July 2026. General undergraduate applications closed on 30 September 2026."
 
+# Campuses from the university's own page (s-ul-where), read on 22 Oct 2026. Agent draft.
+campuses:
+  - {id: turfloop, name: "Turfloop (Mankweng)", source: s-ul-where}
+
 programmes:
 
   # Faculty of Humanities (prospectus page 1)
