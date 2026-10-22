@@ -12,8 +12,8 @@ and its 24 migrations.
 
 **Permission to reuse Akayza in Campus Chommie**
 
-- [ ] Mandla Baloyi confirms: ____________________ (date)
-- [ ] Rinsuna Mahani confirms: ____________________ (date)
+- [x] Mandla Baloyi confirms: verbal permission given to Rinsuna Mahani, October 2026 (not yet in writing)
+- [x] Rinsuna Mahani confirms: 22 October 2026
 
 ## From Akayza
 
@@ -38,7 +38,8 @@ and its 24 migrations.
 Akayza's own REUSE.md declared that this code came from **TruConnect** (github.com/Mandla78/TRU-Connect), an earlier
 project by Mandla. Campus Chommie keeps it through Akayza, so its author must approve this reuse as well.
 
-- [ ] Mandla Baloyi approves reusing the TruConnect-origin code below in Campus Chommie: ____________________ (date)
+- [x] Mandla Baloyi approves reusing the TruConnect-origin code below in Campus Chommie: verbal permission given to
+  Rinsuna Mahani, October 2026 (not yet in writing)
 
 | Campus Chommie path | From TruConnect | What it does |
 |---|---|---|
