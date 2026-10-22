@@ -61,7 +61,7 @@ test('a university without a points rule or programmes says so, instead of a zer
   const bare = { ...tut, points: null, subjects: [], tiers: { competitive: 0, meets_minimum: 0, reach: 0, not_yet: 0, unverified: 0 } };
   render(<UniversityRow u={bare} onPress={jest.fn()} />);
   expect(screen.getByText('Programmes not added yet')).toBeTruthy();
-  expect(screen.getByText('No points rule yet')).toBeTruthy();
+  expect(screen.getByText('Counts points its own way')).toBeTruthy();
 });
 
 test("the points card: TUT's total, how it counts, and each subject named as the learner chose it", () => {

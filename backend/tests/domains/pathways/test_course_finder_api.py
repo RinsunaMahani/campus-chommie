@@ -64,7 +64,7 @@ def test_assess_lists_every_programme_best_tiers_first(client):
     assert r.status_code == 200
     data = r.get_json()["data"]
     assert data["university"]["id"] == "smu" and data["university"]["confirmed"] is True
-    order = ["competitive", "meets_minimum", "reach", "unverified", "not_yet"]
+    order = ["competitive", "meets_minimum", "reach", "subjects_met", "unverified", "not_yet"]
     ranks = [order.index(m["tier"]) for m in data["matches"]]
     assert ranks == sorted(ranks) and len(ranks) == 17
     mbchb = next(m for m in data["matches"] if m["programme"] == "mbchb")
@@ -181,10 +181,10 @@ def test_points_at_every_university_before_picking_one(client):
         assert u["lines"] and (u["confirmed"] is (u["university"] == "smu"))
         assert u["notice"] is None if u["confirmed"] else u["notice"].startswith("From ")
         if u["points"] is None:  # no points rule yet: said, with why
-            assert u["lines"][0] == "We don't have this university's points rule yet." and u["subjects"] == []
+            assert u["lines"][0].startswith("We can't add up your points here") and u["subjects"] == []
         else:
             assert u["source_url"].startswith("https://")
-        assert set(u["tiers"]) == {"competitive", "meets_minimum", "reach", "not_yet", "unverified"}
+        assert set(u["tiers"]) == {"competitive", "meets_minimum", "reach", "not_yet", "unverified", "subjects_met"}
     for k in ("smu", "tut", "up"):
         assert by_id[k]["summary"].startswith("You meet the minimum for ")
     assert sum(by_id["smu"]["tiers"].values()) == 17

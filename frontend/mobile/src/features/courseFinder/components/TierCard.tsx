@@ -24,6 +24,8 @@ const looks = (colors: Palette): Record<Tier, { icon: IconName; bg: string; fg: 
   competitive: { icon: 'check-circle', bg: colors.jadeTint, fg: colors.jade },
   meets_minimum: { icon: 'check', bg: colors.accentTint, fg: colors.accentDeep },
   reach: { icon: 'trending-up', bg: colors.marigoldTint, fg: colors.marigoldDeep },
+  // Subjects met, points to work out with the university: a tick, but not the green of a full match.
+  subjects_met: { icon: 'check-square', bg: colors.iconTile, fg: colors.accentDeep },
   not_yet: { icon: 'x-circle', bg: colors.garnetTint, fg: colors.garnet },
   unverified: { icon: 'help-circle', bg: colors.iconTile, fg: colors.textMuted },
 });

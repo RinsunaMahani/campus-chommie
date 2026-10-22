@@ -4,7 +4,7 @@ programmes the marks meet and how that university counts.
 """
 from __future__ import annotations
 
-from campus_engine.matching import COMPETITIVE, MEETS_MINIMUM, NOT_YET, REACH, UNVERIFIED
+from campus_engine.matching import COMPETITIVE, MEETS_MINIMUM, NOT_YET, REACH, SUBJECTS_MET, UNVERIFIED
 import pytest
 
 from campus_engine.overview import _how, _summary, points_everywhere, university_points
@@ -34,10 +34,13 @@ def test_universities_without_programmes_still_count_points_their_own_way(catalo
     assert by_id["nmu"].points == 481
     # UWC: English and Mathematics 13 each at 80%+, others 7, 7, 6, 6, Life Orientation 3.
     assert by_id["uwc"].points == 13 + 13 + 7 + 7 + 6 + 6 + 3
-    # No points rule: say so, and why.
-    assert by_id["uct"].points is None
-    assert by_id["uct"].lines[0] == "We don't have this university's points rule yet."
-    assert "Faculty Points Score" in by_id["uct"].lines[1]
+    # UCT: its Faculty Points Score, the six best percentages without Life Orientation, out of 600.
+    assert by_id["uct"].points == 82 + 81 + 80 + 85 + 74 + 79
+    # No points rule: subjects are still checked, and the university's own way of counting is quoted.
+    assert by_id["cut"].points is None
+    assert by_id["cut"].lines[0] == "We can't add up your points here, but your subjects are checked against every programme."
+    assert by_id["cut"].lines[1].startswith("CUT's scale gives 2 to 8 points a subject")
+    assert by_id["cut"].source_url == "https://www.cut.ac.za/Course-calculator"
     # No programmes yet (UJ waits for its prospectus): points, and the summary says why there's nothing to meet.
     assert by_id["uj"].summary == "We haven't added this university's programmes yet."
     assert by_id["wits"].summary.startswith("You meet the minimum for")
@@ -99,6 +102,10 @@ def test_the_summary_in_plain_words():
         "You meet the minimum for 4 of 10 programmes. 1 of them selects competitively, so it's a reach. "
         "We can't check 2 yet."
     )
+    assert _summary({COMPETITIVE: 0, MEETS_MINIMUM: 0, REACH: 0, SUBJECTS_MET: 3, UNVERIFIED: 0, NOT_YET: 1}) == (
+        "You meet the minimum for 0 of 4 programmes. Your subjects meet the minimum for 3 programmes whose points "
+        "the university counts its own way."
+    )
     assert _summary({COMPETITIVE: 0, MEETS_MINIMUM: 0, REACH: 0, UNVERIFIED: 0, NOT_YET: 1}) == (
         "You meet the minimum for 0 of 1 programme."
     )
@@ -146,8 +153,8 @@ def test_a_university_without_a_points_rule_says_so():
     )
     u = university_points(uni, {"english": 70})
     assert u.points is None and u.source_url is None
-    assert u.lines == ["We don't have this university's points rule yet."]
-    assert u.tiers[UNVERIFIED] == 1
+    assert u.lines == ["We can't add up your points here, but your subjects are checked against every programme."]
+    assert u.tiers[UNVERIFIED] == 1  # no requirements published for it at all
 
 
 def test_each_way_of_counting_life_orientation_is_said_plainly():

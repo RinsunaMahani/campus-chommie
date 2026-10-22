@@ -8,7 +8,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-from .matching import COMPETITIVE, MEETS_MINIMUM, REACH, TIER_RANK, UNVERIFIED, assess_all
+from .matching import COMPETITIVE, MEETS_MINIMUM, REACH, SUBJECTS_MET, TIER_RANK, UNVERIFIED, assess_all
 from .points import LIFE_ORIENTATION, PointsResult, compute_points
 from .schemas import PointsRule, University
 from .text import join, plural
@@ -72,7 +72,10 @@ def _summary(tiers: dict[str, int]) -> str:
         parts.append("1 of them selects competitively, so it's a reach.")
     elif tiers[REACH]:
         parts.append(f"{tiers[REACH]} of them select competitively, so each is a reach.")
-    if tiers[UNVERIFIED]:
+    if tiers.get(SUBJECTS_MET):
+        parts.append(f"Your subjects meet the minimum for {plural(tiers[SUBJECTS_MET], 'programme')} whose points "
+                     "the university counts its own way.")
+    if tiers.get(UNVERIFIED):
         parts.append(f"We can't check {tiers[UNVERIFIED]} yet.")
     return " ".join(parts)
 
@@ -85,7 +88,14 @@ def university_points(uni: University, marks: dict[str, float]) -> UniversityPoi
     out = UniversityPoints(uni.university, uni.name, None, tiers=tiers, summary=_summary(tiers))
     rule = uni.points_rules
     if rule is None:
-        out.lines = ["We don't have this university's points rule yet."] + ([uni.points_note] if uni.points_note else [])
+        how = uni.points_how
+        out.lines = ["We can't add up your points here, but your subjects are checked against every programme."]
+        if how is not None:
+            out.lines.append(how.text)
+            source = uni.source(how.source)
+            out.source_url = how.link or (source.url if source else None)
+        elif uni.points_note:
+            out.lines.append(uni.points_note)
         return out
     result = compute_points(marks, rule)
     source = uni.source(rule.source)

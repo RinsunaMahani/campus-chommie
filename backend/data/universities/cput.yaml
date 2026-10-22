@@ -23,6 +23,10 @@ max_choices: null
 
 points_rules: null
 points_note: "CPUT counts its APS differently from faculty to faculty, so we can't check most of its programmes yet; its health programmes show their own points."
+# From CPUT's "Calculating the APS score: Method 2" table on its engineering course pages. Agent draft.
+points_how:
+  source: s-cput-aps-method-2
+  text: "CPUT's faculties count points differently. Engineering uses its Method 2: English, Mathematics twice, Physical Sciences twice and your next best subject. Health and Wellness Sciences programmes show their own points; for the others, ask the faculty."
 
 applications:
   source: s-cput-apply

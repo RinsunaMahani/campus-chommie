@@ -5,6 +5,8 @@ Tiers:
 - reach: the minimum is met, but places are limited and selection is competitive
 - meets_minimum: the minimum is met for a programme without competitive selection
 - competitive: points reach a cut-off the university itself publishes
+- subjects_met: no points rule we can apply here, but every subject minimum is met; the card says how this
+  university counts points (or the average it selects on) and where to check
 - unverified: we have not verified this programme's requirements yet
 
 Either/or requirements ("Mathematics 5, or Mathematical Literacy 7 with 28 points") are met
@@ -16,7 +18,7 @@ from dataclasses import dataclass, field
 from itertools import product
 
 from .points import LIFE_ORIENTATION, compute_points
-from .schemas import Choice, Option, Programme, University
+from .schemas import Choice, Option, PointsRule, Programme, Requirements, University
 from .text import join, num
 
 COMPETITIVE = "competitive"
@@ -24,6 +26,7 @@ MEETS_MINIMUM = "meets_minimum"
 REACH = "reach"
 NOT_YET = "not_yet"
 UNVERIFIED = "unverified"
+SUBJECTS_MET = "subjects_met"
 
 TIER_LABELS = {
     COMPETITIVE: "Competitive",
@@ -31,8 +34,17 @@ TIER_LABELS = {
     REACH: "Reach",
     NOT_YET: "Not yet",
     UNVERIFIED: "Not verified yet",
+    SUBJECTS_MET: "Subjects met",
 }
-TIER_RANK = {COMPETITIVE: 0, MEETS_MINIMUM: 1, REACH: 2, UNVERIFIED: 3, NOT_YET: 4}
+TIER_RANK = {COMPETITIVE: 0, MEETS_MINIMUM: 1, REACH: 2, SUBJECTS_MET: 3, UNVERIFIED: 4, NOT_YET: 5}
+
+#: The national NSC achievement levels (80-100% = 7 down to 0-29% = 1), the same at every university: subject
+#: minimums are written in them, so a learner's subjects can be checked even where we can't add up points.
+NSC_LEVELS = PointsRule.model_validate({"source": "nsc", "life_orientation": "full", "scale": [
+    {"min_percent": 80, "level": 7}, {"min_percent": 70, "level": 6}, {"min_percent": 60, "level": 5},
+    {"min_percent": 50, "level": 4}, {"min_percent": 40, "level": 3}, {"min_percent": 30, "level": 2},
+    {"min_percent": 0, "level": 1},
+]})
 
 NO_GUARANTEE = "Meeting the minimum does not guarantee a place."
 
@@ -103,6 +115,55 @@ def _lower(a: float | None, b: float | None) -> bool:
     return b is not None and a < b
 
 
+def _check_subjects(req: Requirements, levels: dict[str, int], marks: dict[str, float]
+                    ) -> tuple[list[str], list[str], float | None]:
+    """What the subject requirements leave unmet, notes on either/or choices, and the minimum points the
+    learner's best route leads to."""
+    failed: list[str] = []
+    for subject, minimum in req.subject_minimums.items():
+        level = levels.get(subject)
+        if level is None:
+            failed.append(f"{_pretty(subject)} is required (level {minimum} or higher).")
+        elif level < minimum:
+            failed.append(f"{_pretty(subject)}: level {level}, needs {minimum}.")
+    for subject, minimum in req.subject_min_percents.items():
+        percent = marks.get(subject)
+        if percent is None:
+            failed.append(f"{_pretty(subject)} is required ({minimum}% or higher).")
+        elif percent < minimum:
+            failed.append(f"{_pretty(subject)}: {num(percent)}%, needs {minimum}%.")
+
+    route, min_points = _route(req.choices, levels, req.min_points)
+    route_notes: list[str] = []
+    named = set(req.subject_minimums) | set(req.subject_min_percents) | {LIFE_ORIENTATION}
+    for choice, option in zip(req.choices, route, strict=True):
+        listed = [s for o in choice.one_of for s in o.subjects]
+        if option is None:
+            line = f"Needs one of: {_either([_describe(o) for o in choice.one_of])}."
+            have = [s for s in dict.fromkeys(listed) if s in levels]
+            if have:
+                line += " You have " + join([f"{_pretty(s)} at level {levels[s]}" for s in have]) + "."
+            failed.append(line)
+            named |= set(listed)
+        else:
+            counted = join([f"{_pretty(s)} (level {levels[s]})" for s in option.subjects])
+            route_notes.append(f"Counted {counted} for an either/or requirement.")
+            named |= set(option.subjects)
+    if min_points != req.min_points:
+        cause = next(o for o in route if o is not None and o.min_points == min_points)
+        instead = "" if req.min_points is None else f" instead of {num(req.min_points)}"
+        route_notes.append(f"With {_describe(cause)}, the minimum is {num(min_points)} points{instead}.")
+
+    remaining = sorted((lvl for s, lvl in levels.items() if s not in named), reverse=True)
+    for i, minimum in enumerate(req.additional_minimums):
+        if i >= len(remaining):
+            failed.append(f"Additional subject {i + 1} is missing (needs level {minimum}).")
+        elif remaining[i] < minimum:
+            failed.append(f"Additional subject {i + 1}: level {remaining[i]}, needs {minimum}.")
+
+    return failed, route_notes, min_points
+
+
 def assess(uni: University, programme: Programme, marks: dict[str, float]) -> Match:
     """Assess one programme for one learner."""
     match = Match(
@@ -117,7 +178,9 @@ def assess(uni: University, programme: Programme, marks: dict[str, float]) -> Ma
     )
     req = programme.requirements
     rule = programme.points_rules or uni.points_rules
-    if req is None or rule is None:
+    if req is not None and rule is None:
+        return _subjects_only(uni, programme, req, marks, match)
+    if req is None:
         match.tier = UNVERIFIED
         match.explanation = [
             "We can't check this programme's requirements against your marks yet. "
@@ -131,50 +194,8 @@ def assess(uni: University, programme: Programme, marks: dict[str, float]) -> Ma
     match.source_url = source.url if source else None
     result = compute_points(marks, rule)
     match.points = result.total
-
-    failed: list[str] = []
-    for subject, minimum in req.subject_minimums.items():
-        level = result.levels.get(subject)
-        if level is None:
-            failed.append(f"{_pretty(subject)} is required (level {minimum} or higher).")
-        elif level < minimum:
-            failed.append(f"{_pretty(subject)}: level {level}, needs {minimum}.")
-    for subject, minimum in req.subject_min_percents.items():
-        percent = marks.get(subject)
-        if percent is None:
-            failed.append(f"{_pretty(subject)} is required ({minimum}% or higher).")
-        elif percent < minimum:
-            failed.append(f"{_pretty(subject)}: {num(percent)}%, needs {minimum}%.")
-
-    route, min_points = _route(req.choices, result.levels, req.min_points)
+    failed, route_notes, min_points = _check_subjects(req, result.levels, marks)
     match.min_points = min_points
-    route_notes: list[str] = []
-    named = set(req.subject_minimums) | set(req.subject_min_percents) | {LIFE_ORIENTATION}
-    for choice, option in zip(req.choices, route, strict=True):
-        listed = [s for o in choice.one_of for s in o.subjects]
-        if option is None:
-            line = f"Needs one of: {_either([_describe(o) for o in choice.one_of])}."
-            have = [s for s in dict.fromkeys(listed) if s in result.levels]
-            if have:
-                line += " You have " + join([f"{_pretty(s)} at level {result.levels[s]}" for s in have]) + "."
-            failed.append(line)
-            named |= set(listed)
-        else:
-            counted = join([f"{_pretty(s)} (level {result.levels[s]})" for s in option.subjects])
-            route_notes.append(f"Counted {counted} for an either/or requirement.")
-            named |= set(option.subjects)
-    if min_points != req.min_points:
-        cause = next(o for o in route if o is not None and o.min_points == min_points)
-        instead = "" if req.min_points is None else f" instead of {num(req.min_points)}"
-        route_notes.append(f"With {_describe(cause)}, the minimum is {num(min_points)} points{instead}.")
-
-    remaining = sorted((lvl for s, lvl in result.levels.items() if s not in named), reverse=True)
-    for i, minimum in enumerate(req.additional_minimums):
-        if i >= len(remaining):
-            failed.append(f"Additional subject {i + 1} is missing (needs level {minimum}).")
-        elif remaining[i] < minimum:
-            failed.append(f"Additional subject {i + 1}: level {remaining[i]}, needs {minimum}.")
-
     if min_points is None:
         explanation = [
             f"Your points: {num(result.total)}. The university publishes no points minimum for this "
@@ -216,3 +237,42 @@ def assess_all(uni: University, marks: dict[str, float]) -> list[Match]:
     """Assess every programme at a university, best tiers first."""
     matches = [assess(uni, p, marks) for p in uni.programmes]
     return sorted(matches, key=lambda m: (TIER_RANK[m.tier], m.programme_name))
+
+
+def _average(marks: dict[str, float], best: int) -> float | None:
+    """The average of the learner's best `best` subjects, Life Orientation left out (None if they gave fewer)."""
+    top = sorted((pct for s, pct in marks.items() if s != LIFE_ORIENTATION), reverse=True)[:best]
+    return round(sum(top) / best, 1) if len(top) == best else None
+
+
+def _subjects_only(uni: University, programme: Programme, req: Requirements, marks: dict[str, float],
+                   match: Match) -> Match:
+    """A university whose points we can't add up: check every subject requirement on the national NSC levels,
+    then say how this university counts points (or the average it selects on) and where to check."""
+    source = uni.source(req.source)
+    match.source_url = source.url if source else None
+    failed, route_notes, min_points = _check_subjects(req, compute_points(marks, NSC_LEVELS).levels, marks)
+    how = uni.points_how
+    points: list[str] = []
+    if min_points is not None:
+        points.append(f"It also asks for {num(min_points)} points, counted {uni.name}'s own way, which we can't "
+                      "add up for you.")
+    if how is not None:
+        points.append(how.text)
+        if how.average_of_best:
+            avg = _average(marks, how.average_of_best)
+            if avg is not None:
+                points.append(f"Your average of your best {how.average_of_best} subjects, without Life "
+                              f"Orientation: {num(avg)}%.")
+    elif uni.points_note:
+        points.append(uni.points_note)
+    if failed:
+        match.failed = failed
+        match.explanation = ["Not all of this programme's subject minimums are met."] + failed + points + req.extras
+        return match
+    match.tier = SUBJECTS_MET
+    selection = (["Places are limited and selection is competitive."]
+                 + ([programme.selection_note] if programme.selection_note else [])) if programme.selective else []
+    match.explanation = (["Your subjects meet this programme's minimums."] + route_notes + points + selection
+                         + req.extras + [NO_GUARANTEE])
+    return match

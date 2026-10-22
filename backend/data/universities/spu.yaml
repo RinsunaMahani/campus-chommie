@@ -18,6 +18,10 @@ max_choices: null
 
 points_rules: null
 points_note: "SPU's points table doesn't say how many subjects count, and its extra points depend on your home language, which we don't ask."
+# From SPU's 2027 prospectus, page 4 (the same table as 2026's and the website's). Agent draft.
+points_how:
+  source: s-spu-prospectus-2027
+  text: "SPU's scale: 90-100% is 8 points, down to 0-29% for 1. Mathematics, and a language you take as a home language, add 2 from 60% and 1 at 40-59%. Life Orientation scores 4, 3, 2 or 1 from 90, 80, 70 and 60%. SPU doesn't say how many subjects count, so ask SPU's admissions office."
 
 applications:
   source: s-spu-apply

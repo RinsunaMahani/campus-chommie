@@ -3,7 +3,8 @@
  * them, then each of your subjects with its mark, its level on that
  * university's scale and the points it adds, named as you chose them.
  */
-import { StyleSheet, Text, View } from 'react-native';
+import * as WebBrowser from 'expo-web-browser';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { t } from '@/shared/i18n';
 import { Expandable } from '@/shared/motion/Expandable';
@@ -36,6 +37,11 @@ export function ApsCard({ points, sent, rows }: Props) {
           {line}
         </Text>
       ))}
+      {points.points == null && points.source_url ? (
+        <Pressable accessibilityRole="link" onPress={() => WebBrowser.openBrowserAsync(points.source_url!)} hitSlop={6}>
+          <Text style={styles.link}>{t('courseFinder.checkOwnPoints')} ›</Text>
+        </Pressable>
+      ) : null}
       {points.subjects.length ? (
         <Expandable closedLabel={t('courseFinder.seeSubjects')} openLabel={t('courseFinder.hideSubjects')} color={colors.accentDeep}>
           <View style={styles.rows}>
@@ -77,6 +83,7 @@ const makeStyles = (colors: Palette) =>
   unit: { fontFamily: fonts.medium, fontSize: 16, letterSpacing: 0, color: colors.textMuted },
   none: { fontFamily: fonts.bold, fontSize: 18, color: colors.ink },
   line: { fontFamily: fonts.body, fontSize: 14.5, lineHeight: 19, color: colors.text },
+  link: { fontFamily: fonts.bold, fontSize: 14.5, color: colors.accentDeep, marginTop: 4 },
   rows: { marginTop: 8 },
   row: {
     flexDirection: 'row',
