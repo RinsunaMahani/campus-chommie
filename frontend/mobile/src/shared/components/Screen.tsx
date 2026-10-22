@@ -74,7 +74,7 @@ export function Screen({ children, footer, back, tab, onRefresh, refreshing = fa
       <Wallpaper />
       {backdrop && !isHero ? (
         <View style={styles.backdrop} pointerEvents="none">
-          <Image source={backdrop} style={StyleSheet.absoluteFill} resizeMode="cover" accessible={false} accessibilityIgnoresInvertColors />
+          <Image source={backdrop} style={styles.photo} resizeMode="cover" accessible={false} accessibilityIgnoresInvertColors />
           {/* Darker at the top for the title, then into the page colour, so the cards read on it. */}
           {/* Text-over-photo guidance: darken where the text sits (the top), check the lightest spot, then fade
               into the page. 0.6 black under the title keeps white text above 4.5:1 on a bright sky. */}
@@ -102,7 +102,7 @@ export function Screen({ children, footer, back, tab, onRefresh, refreshing = fa
               <View style={[styles.hero, { paddingTop: insets.top + space.md }]}>
                 {backdrop ? (
                   <View style={StyleSheet.absoluteFill} pointerEvents="none">
-                    <Image source={backdrop} style={StyleSheet.absoluteFill} resizeMode="cover" accessible={false} accessibilityIgnoresInvertColors />
+                    <Image source={backdrop} style={styles.photo} resizeMode="cover" accessible={false} accessibilityIgnoresInvertColors />
                     {/* 0.55 black keeps white words above 4.5:1 on a bright sky. */}
                     <View style={[StyleSheet.absoluteFill, { backgroundColor: 'rgba(0, 0, 0, 0.55)' }]} />
                   </View>
@@ -190,6 +190,8 @@ export const DOCK_ROOM = 112;
 
 const makeStyles = (colors: Palette) => StyleSheet.create({
   backdrop: { position: 'absolute', top: 0, left: 0, right: 0, height: BACKDROP_HEIGHT },
+  // Width and height spelled out: a bundled image carries its own size, which would win over insets alone.
+  photo: { position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' },
   root: { flex: 1, backgroundColor: colors.porcelain },
   safe: { flex: 1 },
   flex: { flex: 1 },

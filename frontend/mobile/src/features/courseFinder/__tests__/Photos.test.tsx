@@ -2,15 +2,26 @@
  * Campus and faculty photos: every one is credited and links to its Commons
  * page; the campus card shows what the photo is and opens that page; a
  * university without a photo shows nothing (its monogram stays in the lists).
+ * A page opening on a photo shows what it is and its credit on it, opening the
+ * Commons page; without a photo it opens on the wallpaper band, with no credit.
  */
 import { expect, jest, test } from '@jest/globals';
 import { fireEvent, render, screen } from '@testing-library/react-native';
-import { Linking } from 'react-native';
+import { Linking, Text } from 'react-native';
+
+import { PhotoHero } from '@/shared/components/PhotoHero';
 
 import { CAMPUS_PHOTOS } from '../campusPhotos';
 import { CampusPhotoCard } from '../components/CampusPhotoCard';
 import { PHOTOS } from '../facultyPhotos';
 import { funderMonogram, funderPhoto } from '../funderPhotos';
+
+jest.mock('@expo/vector-icons', () => ({ Feather: () => null, FontAwesome: () => null }));
+jest.mock('expo-router', () => ({ router: { back: jest.fn(), canGoBack: () => true, replace: jest.fn() } }));
+jest.mock('react-native-safe-area-context', () => {
+  const actual = jest.requireActual<object>('react-native-safe-area-context');
+  return { ...actual, useSafeAreaInsets: () => ({ top: 0, left: 0, right: 0, bottom: 0 }) };
+});
 
 const COMMONS = /^https:\/\/commons\.wikimedia\.org\/wiki\/File:/;
 const LICENCE = /, (CC0|Public domain|CC BY(-SA)? \d\.\d), Wikimedia Commons \(cropped\)$/;
@@ -37,6 +48,37 @@ test('the campus card shows what the photo is, and its credit opens the Commons 
   expect(open).toHaveBeenCalledWith(
     'https://commons.wikimedia.org/wiki/File:Old_Arts_Building_of_the_University_of_Pretoria_Museums,_South_Africa.jpg',
   );
+});
+
+test('a page opening on a photo says what it shows and credits it on the photo, opening the Commons page', () => {
+  const open = jest.spyOn(Linking, 'openURL').mockResolvedValue(true);
+  const onSave = jest.fn();
+  render(
+    <PhotoHero
+      photo={CAMPUS_PHOTOS.up}
+      action={{ icon: 'bookmark', label: 'Save this', on: false, onPress: onSave }}
+      head={<Text>University of Pretoria</Text>}>
+      <Text>Body</Text>
+    </PhotoHero>,
+  );
+  expect(screen.getByLabelText('The Old Arts Building, Hatfield campus, at dusk')).toBeTruthy();
+  fireEvent.press(
+    screen.getByText('The Old Arts Building, Hatfield campus, at dusk · Photo: Sian Tiley-Nel, CC BY-SA 4.0, Wikimedia Commons (cropped)'),
+  );
+  expect(open).toHaveBeenCalledWith(CAMPUS_PHOTOS.up!.source);
+  fireEvent.press(screen.getByRole('button', { name: 'Save this' }));
+  expect(onSave).toHaveBeenCalled();
+  expect(screen.getByRole('button', { name: 'Back' })).toBeTruthy();
+});
+
+test('a page without a photo has no credit to show', () => {
+  render(
+    <PhotoHero photo={undefined} head={<Text>Sefako Makgatho Health Sciences University</Text>}>
+      <Text>Body</Text>
+    </PhotoHero>,
+  );
+  expect(screen.getByText('Sefako Makgatho Health Sciences University')).toBeTruthy();
+  expect(screen.queryByText(/Photo:/)).toBeNull();
 });
 
 test('a university without a photo shows no card', () => {
