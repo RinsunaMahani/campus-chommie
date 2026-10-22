@@ -54,7 +54,1642 @@ campuses:
   - {id: indumiso, name: "Indumiso (Pietermaritzburg)", note: "One of DUT's two Midlands campuses.", source: s-dut-opportunities}
   - {id: riverside, name: "Riverside (Pietermaritzburg)", note: "One of DUT's two Midlands campuses.", source: s-dut-opportunities}
 
-programmes: []
+# Programmes from Study Opportunities 2027 (s-dut-opportunities), read on 22 Oct 2026: the NSC column of each
+# programme's "Entry Requirements" table only (the Senior Certificate and NC(V) columns are left out). Page numbers
+# in comments are the guide's printed ones. "English Home Language 3 OR First Additional 4" becomes english: 3 with
+# the full rule in extras; "recognised NSC 20-credit subjects" become additional_minimums. Where DUT gives no
+# points minimum, min_points is null and only the subjects are checked. Agent draft: docs/research/dut.md lists
+# every choice made. Nobody has checked these values yet.
+programmes:
+
+  # Faculty of Accounting and Informatics
+
+  - id: bridging_accounting
+    name: "Accounting Bridging Course"
+    faculty: "Faculty of Accounting and Informatics"
+    fields: [accounting]
+    requirements:
+      source: s-dut-opportunities           # p6
+      min_points: 20
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {accounting: 3}
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      extras:
+        - "A one-year bridging course, taught at Ritson Campus (Durban)."
+        - "It isn't funded by NSFAS: you pay the registration, tuition, study material and residence costs yourself."
+    bridges_to:
+      - to: dip_accounting
+        guarantee: considered
+        conditions: "Pass four subjects of the Accounting Bridging Course."
+        source: s-dut-opportunities
+
+  - id: bict
+    name: "Bachelor of Information and Communication Technology"
+    faculty: "Faculty of Accounting and Informatics"
+    fields: [computing]
+    requirements:
+      source: s-dut-opportunities           # p7
+      min_points: null
+      subject_minimums: {english: 4, mathematics: 4}
+      additional_minimums: [4, 4, 4]        # "at least ONE of the designated 20 credit subjects 4" and "TWO recognized NSC 20 credit subjects 4"
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "DUT publishes no points minimum for this degree: applicants are ranked on points."
+        - "Taught at Ritson Campus (Durban)."
+
+  - id: bict_iot
+    name: "Bachelor of Information and Communication Technology: Internet of Things"
+    faculty: "Faculty of Accounting and Informatics"
+    fields: [computing, engineering]
+    requirements:
+      source: s-dut-opportunities           # p8
+      min_points: null
+      subject_minimums: {english: 4, mathematics: 4}
+      choices:
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {information_technology: 4}
+      additional_minimums: [4, 4]
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "DUT publishes no points minimum for this degree."
+        - "Taught at Ritson Campus (Durban)."
+
+  - id: dip_accounting
+    name: "Diploma in Accounting"
+    faculty: "Faculty of Accounting and Informatics"
+    fields: [accounting, commerce]
+    requirements:
+      source: s-dut-opportunities           # p10
+      min_points: 26                        # "applicants with 26 points and above will be placed on the Three-Year programme"
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+            - subjects: {accounting: 4}
+      additional_minimums: [3, 3, 3]        # "Two NSC 20 credit subjects 3" and "One recognized NSC 20 credit subject 3"
+      extras:
+        - "English Home Language at level 3, or English First Additional Language at level 4."
+        - "DUT places applicants with 24 or 25 points on the four-year extended programme instead."
+        - "Selection is in order of merit and may include an interview."
+        - "Taught at Ritson Campus (Durban) and at Riverside Campus (Pietermaritzburg)."
+
+  - id: dip_accounting_ecp
+    name: "Diploma in Accounting (4 Year Extended Curriculum Programme)"
+    faculty: "Faculty of Accounting and Informatics"
+    fields: [accounting, commerce]
+    requirements:
+      source: s-dut-opportunities           # p10-11: the Diploma in Accounting's table
+      min_points: 24                        # "Applicant with a minimum of 24-25 points will be placed on Extended Curriculum"
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+            - subjects: {accounting: 4}
+      additional_minimums: [3, 3, 3]
+      extras:
+        - "English Home Language at level 3, or English First Additional Language at level 4."
+        - "The extended curriculum programme takes four years instead of three. DUT places applicants with 24 or 25 points here."
+        - "Taught at Ritson Campus (Durban) and at Riverside Campus (Pietermaritzburg)."
+
+  - id: dip_business_information_management
+    name: "Diploma in Business and Information Management"
+    faculty: "Faculty of Accounting and Informatics"
+    fields: [management, computing]
+    requirements:
+      source: s-dut-opportunities           # p12
+      min_points: null
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      additional_minimums: [3, 3, 3, 3]     # "a pass in FOUR (4) 20 credit subjects 3 (not more than one language)"
+      extras:
+        - "English Home Language at level 3, or English First Additional Language at level 4."
+        - "Of the four other subjects, no more than one may be a language."
+        - "DUT publishes no points minimum for this diploma: applicants are ranked on points."
+        - "Taught at Ritson Campus (Durban) and at Riverside Campus (Pietermaritzburg)."
+
+  - id: dip_business_information_management_ecp
+    name: "Diploma in Business and Information Management (4 Year Extended Curriculum Programme)"
+    faculty: "Faculty of Accounting and Informatics"
+    fields: [management, computing]
+    requirements:
+      source: s-dut-opportunities           # p12-13: the diploma's table
+      min_points: null
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      additional_minimums: [3, 3, 3, 3]
+      extras:
+        - "English Home Language at level 3, or English First Additional Language at level 4."
+        - "The extended curriculum programme takes four years instead of three. DUT may place applicants whose points put them at risk here."
+        - "Taught at Ritson Campus (Durban) only."
+
+  - id: dip_ict_applications_development
+    name: "Diploma in Information and Communications Technology: Applications Development"
+    faculty: "Faculty of Accounting and Informatics"
+    fields: [computing]
+    requirements:
+      source: s-dut-opportunities           # p14
+      min_points: null
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 6}
+      additional_minimums: [3, 3, 3]        # "TWO 20 credit subjects 3" and "ONE recognized NSC 20 credit subject 3"
+      extras:
+        - "English Home Language at level 3, or English First Additional Language at level 4."
+        - "Of the other subjects, no more than one may be a language."
+        - "DUT publishes no points minimum for this diploma: applicants are ranked on points."
+        - "Taught at Ritson Campus (Durban) and at Indumiso Campus (Pietermaritzburg)."
+
+  - id: dip_ict_applications_development_ecp
+    name: "Diploma in Information and Communications Technology: Applications Development (4-year Foundation Programme)"
+    faculty: "Faculty of Accounting and Informatics"
+    fields: [computing]
+    requirements:
+      source: s-dut-opportunities           # p15
+      min_points: null
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 6}
+      additional_minimums: [3, 3, 3]
+      extras:
+        - "English at level 3; DUT's table also lists English First Additional Language at level 4."
+        - "Of the other subjects, no more than one may be a language."
+        - "The foundation (extended curriculum) programme takes four years instead of three."
+        - "Taught at Ritson Campus (Durban)."
+
+  - id: dip_ict_business_analysis
+    name: "Diploma in Information and Communications Technology: Business Analysis"
+    faculty: "Faculty of Accounting and Informatics"
+    fields: [computing, management]
+    requirements:
+      source: s-dut-opportunities           # p17
+      min_points: null
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 6}
+      additional_minimums: [3, 3, 3]
+      extras:
+        - "English Home Language at level 3, or English First Additional Language at level 4."
+        - "Of the other subjects, no more than one may be a language."
+        - "The department may also rank applicants on academic merit and work experience."
+        - "Taught at Ritson Campus (Durban) and at Indumiso Campus (Pietermaritzburg)."
+
+  - id: dip_internal_auditing
+    name: "Diploma in Internal Auditing"
+    faculty: "Faculty of Accounting and Informatics"
+    fields: [accounting, finance]
+    requirements:
+      source: s-dut-opportunities           # p18: two routes
+      min_points: null
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {mathematics: 3, accounting: 4}
+            - subjects: {mathematical_literacy: 5, accounting: 4}
+      additional_minimums: [3, 3]           # route 1 asks three more subjects at 3, route 2 two: the smaller is used
+      extras:
+        - "English Home Language at level 3, or English First Additional Language at level 4."
+        - "With Mathematics at level 4 and no Accounting, DUT asks for three more subjects at level 3 (one of them a recognised 20-credit subject, no more than one language)."
+        - "DUT publishes no points minimum: it counts English and your next five best subjects, and may interview."
+        - "Taught at Ritson Campus (Durban)."
+
+  - id: dip_internal_auditing_ecp
+    name: "Diploma in Internal Auditing (4 Year Extended Curriculum Programme)"
+    faculty: "Faculty of Accounting and Informatics"
+    fields: [accounting, finance]
+    requirements:
+      source: s-dut-opportunities           # p18-19: the diploma's table
+      min_points: null
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {mathematics: 3, accounting: 4}
+            - subjects: {mathematical_literacy: 5, accounting: 4}
+      additional_minimums: [3, 3]
+      extras:
+        - "English Home Language at level 3, or English First Additional Language at level 4."
+        - "With Mathematics at level 4 and no Accounting, DUT asks for three more subjects at level 3."
+        - "The extended curriculum programme takes four years instead of three. DUT may place applicants whose points put them at risk here."
+        - "Taught at Ritson Campus (Durban)."
+
+  - id: dip_library_information_studies
+    name: "Diploma in Library and Information Studies"
+    faculty: "Faculty of Accounting and Informatics"
+    fields: [humanities]
+    selective: true
+    selection_note: "Applicants must pass an English test and an aptitude test, which leads to a one-on-one interview."
+    requirements:
+      source: s-dut-opportunities           # p20
+      min_points: null
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      additional_minimums: [3, 3, 3, 3]     # "FOUR 20 credit subjects 3 (Not more than ONE language)"
+      extras:
+        - "English Home Language at level 3, or English First Additional Language at level 4."
+        - "Of the four other subjects, no more than one may be a language."
+        - "Taught at Ritson Campus (Durban)."
+
+  - id: dip_management_accounting
+    name: "Diploma in Management Accounting"
+    faculty: "Faculty of Accounting and Informatics"
+    fields: [accounting, commerce]
+    requirements:
+      source: s-dut-opportunities           # p22: two routes
+      min_points: null
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {accounting: 4}
+            - subjects: {mathematical_literacy: 5, accounting: 4}
+      additional_minimums: [3, 3]           # route 1 asks three more subjects at 3, route 2 two: the smaller is used
+      extras:
+        - "English Home Language at level 3, or English First Additional Language at level 4."
+        - "With Mathematics at level 3 or Accounting at level 4, DUT asks for three more subjects at level 3 (no more than one language)."
+        - "DUT publishes no points minimum: selection is in order of merit and may include an interview."
+        - "Taught at Ritson Campus (Durban) and at Riverside Campus (Pietermaritzburg)."
+
+  - id: dip_taxation
+    name: "Diploma in Taxation"
+    faculty: "Faculty of Accounting and Informatics"
+    fields: [accounting, finance]
+    requirements:
+      source: s-dut-opportunities           # p23
+      min_points: null
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+            - subjects: {accounting: 4}
+      additional_minimums: [3, 3]           # "TWO 20 credit subjects 3"
+      extras:
+        - "English Home Language at level 3, or English First Additional Language at level 4."
+        - "DUT also asks for one more recognised 20-credit subject, without giving a level for it."
+        - "DUT publishes no points minimum: it counts English and your next five best subjects, and may interview."
+        - "Taught at Ritson Campus (Durban)."
+
+  - id: dip_taxation_ecp
+    name: "Diploma in Taxation (4 Year Extended Curriculum Programme)"
+    faculty: "Faculty of Accounting and Informatics"
+    fields: [accounting, finance]
+    requirements:
+      source: s-dut-opportunities           # p23-24: the diploma's table
+      min_points: null
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+            - subjects: {accounting: 4}
+      additional_minimums: [3, 3]
+      extras:
+        - "English Home Language at level 3, or English First Additional Language at level 4."
+        - "DUT also asks for one more recognised 20-credit subject, without giving a level for it."
+        - "The extended curriculum programme takes four years instead of three. DUT may place applicants whose points put them at risk here."
+        - "Taught at Ritson Campus (Durban)."
+
+  # Faculty of Applied Sciences
+
+  - id: bas_biotechnology
+    name: "Bachelor of Applied Science in Biotechnology"
+    faculty: "Faculty of Applied Sciences"
+    fields: [life_sciences, natural_sciences]
+    requirements:
+      source: s-dut-opportunities           # p26
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+      additional_minimums: [4]
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Taught at Steve Biko Campus (Durban)."
+
+  - id: bas_food_science_technology
+    name: "Bachelor of Applied Science in Food Science and Technology"
+    faculty: "Faculty of Applied Sciences"
+    fields: [food_science, natural_sciences]
+    requirements:
+      source: s-dut-opportunities           # p28
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+      additional_minimums: [4]
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Taught at Steve Biko Campus (Durban)."
+
+  - id: bas_industrial_chemistry
+    name: "Bachelor of Applied Science in Industrial Chemistry"
+    faculty: "Faculty of Applied Sciences"
+    fields: [physical_sciences, natural_sciences]
+    requirements:
+      source: s-dut-opportunities           # p29
+      min_points: null
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+      additional_minimums: [4, 4]
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "DUT publishes no points minimum for this degree, so only your subjects are checked."
+        - "Taught at Steve Biko Campus (Durban)."
+
+  - id: b_sport_science_management
+    name: "Bachelor of Sport Science and Management"
+    faculty: "Faculty of Applied Sciences"
+    fields: [sport_science, management]
+    requirements:
+      source: s-dut-opportunities           # p31
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4}
+      choices:
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {life_sciences: 4}
+      additional_minimums: [4, 4, 4]        # "THREE recognized NSC 20 credit subject 4"
+      extras:
+        - "DUT's table also lists Sports Science at level 4 after Physical Sciences and Life Sciences, which may be a third option. Check with DUT."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Taught at ML Sultan Campus (Durban)."
+
+  - id: bas_textile_science
+    name: "Bachelor of Applied Science in Textile Science"
+    faculty: "Faculty of Applied Sciences"
+    fields: [natural_sciences, engineering]
+    selective: true
+    selection_note: "Applicants also go through an interview."
+    requirements:
+      source: s-dut-opportunities           # p32
+      min_points: null
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+      additional_minimums: [4, 4]
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "DUT publishes no points minimum for this degree, so only your subjects are checked."
+        - "DUT's contents page calls it the Bachelor of Applied Science in Textile Technology."
+        - "Taught at Steve Biko Campus (Durban)."
+
+  - id: dip_analytical_chemistry
+    name: "Diploma in Analytical Chemistry"
+    faculty: "Faculty of Applied Sciences"
+    fields: [physical_sciences, natural_sciences]
+    requirements:
+      source: s-dut-opportunities           # p34
+      min_points: null
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 3}
+      additional_minimums: [3, 3]
+      extras:
+        - "DUT publishes no points minimum: with more applicants than places, it ranks on Physical Sciences and Mathematics."
+        - "Taught at Steve Biko Campus (Durban)."
+
+  - id: dip_clothing_management
+    name: "Diploma in Clothing Management"
+    faculty: "Faculty of Applied Sciences"
+    fields: [arts_and_design, management]
+    selective: true
+    selection_note: "Shortlisted applicants write DUT's SATAP English literacy and numeracy tests and attend an interview: results count 40%, tests 40% and the interview 20%. DUT says it gets about 900 applications for 35 places."
+    requirements:
+      source: s-dut-opportunities           # p36-37
+      min_points: null
+      subject_minimums: {english: 3}
+      additional_minimums: [3, 3, 3, 3]     # "THREE additional recognised 20 credit subjects 3" and "ONE recognized NSC 20 credit subject 3"
+      extras:
+        - "Of the other subjects, no more than one may be an additional language."
+        - "DUT has no points minimum but highly recommends 26 points or more for shortlisting."
+        - "Taught at Steve Biko Campus (Durban)."
+
+  - id: dip_consumer_sciences_food_nutrition
+    name: "Diploma in Consumer Sciences in Food and Nutrition"
+    faculty: "Faculty of Applied Sciences"
+    fields: [consumer_sciences, food_science, nutrition]
+    selective: true
+    selection_note: "Applicants must pass suitability and selection tests."
+    requirements:
+      source: s-dut-opportunities           # p38
+      min_points: null
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+        - one_of:
+            - subjects: {accounting: 3}
+            - subjects: {business_studies: 3}
+            - subjects: {consumer_studies: 3}
+            - subjects: {life_sciences: 3}
+            - subjects: {physical_sciences: 3}
+      additional_minimums: [3, 3, 3]
+      extras:
+        - "English Home Language at level 3, or English First Additional Language at level 4."
+        - "Registered students need a Hepatitis vaccination (paid by the department, or show proof) and a chef's uniform and equipment kit at their own cost."
+        - "Taught at Steve Biko Campus (Durban)."
+
+  - id: dip_nautical_studies
+    name: "Diploma in Nautical Studies (Sea Going)"
+    faculty: "Faculty of Applied Sciences"
+    fields: [engineering]
+    requirements:
+      source: s-dut-opportunities           # p40
+      min_points: null
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+      additional_minimums: [3, 3]
+      extras:
+        - "After a firm offer you need a SAMSA eyesight test."
+        - "DUT also accepts an N4 certificate in set subject combinations with NSC English at level 4."
+        - "Taught at Steve Biko Campus (Durban)."
+
+  - id: dip_shipping_logistics
+    name: "Diploma in Shipping and Logistics (Shore-based)"
+    faculty: "Faculty of Applied Sciences"
+    fields: [management, commerce]
+    selective: true
+    selection_note: "Selection is on your results in these subjects and on DUT's SATAP test in English and numeracy."
+    requirements:
+      source: s-dut-opportunities           # p41
+      min_points: null
+      subject_minimums: {english: 4, mathematics: 3}
+      additional_minimums: [4, 3, 3]        # the business subject at 4, then "TWO recognized NSC 20 credit subject 3"
+      extras:
+        - "One of your subjects must be a business, commerce or management subject at level 4."
+        - "Taught at Steve Biko Campus (Durban)."
+
+  - id: dip_sustainable_horticulture_landscaping
+    name: "Diploma in Sustainable Horticulture and Landscaping"
+    faculty: "Faculty of Applied Sciences"
+    fields: [agriculture, earth_sciences]
+    requirements:
+      source: s-dut-opportunities           # p43
+      min_points: null
+      subject_minimums: {english: 4, life_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      additional_minimums: [3, 3]
+      extras:
+        - "DUT also accepts a recognised equivalent of Life Sciences at level 4."
+        - "Preference goes to applicants with practical horticultural experience or an agricultural or horticultural background."
+        - "Taught at ML Sultan Campus (Durban)."
+
+  - id: hcert_applied_sciences
+    name: "Higher Certificate in Applied Sciences"
+    faculty: "Faculty of Applied Sciences"
+    fields: [natural_sciences, physical_sciences]
+    requirements:
+      source: s-dut-opportunities           # p44
+      min_points: null
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3, physical_sciences: 3}
+            - subjects: {technical_mathematics: 3, technical_sciences: 3}
+      extras:
+        - "A one-year course, taught at Steve Biko Campus (Durban)."
+        - "DUT also accepts N4 Engineering Mathematics and Engineering Science at 50% with English at level 4."
+
+  - id: hcert_sport_management_science
+    name: "Higher Certificate in Sport Management Science"
+    faculty: "Faculty of Applied Sciences"
+    fields: [sport_science, management]
+    requirements:
+      source: s-dut-opportunities           # p46
+      min_points: 24
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 3}
+            - subjects: {mathematics: 3}
+            - subjects: {physical_sciences: 3}
+      extras:
+        - "DUT's list also takes Sports Science at level 3 in place of these."
+        - "A one-year course, taught at ML Sultan Campus (Durban)."
+
+  # Faculty of Arts and Design
+
+  - id: bapparts_commercial_photography
+    name: "Bachelor of Applied Arts in Commercial Photography"
+    faculty: "Faculty of Arts and Design"
+    fields: [arts_and_design]
+    selective: true
+    selection_note: "Applicants write a test of photographic knowledge and submit a portfolio of 3 photographs."
+    requirements:
+      source: s-dut-opportunities           # p50
+      min_points: null
+      subject_minimums: {english: 3}
+      additional_minimums: [4, 4, 4, 4]     # "FOUR recognised 20 credit subjects 4"
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The portfolio's 3 images come from: landscape, documentary, social, architecture, wildlife and advertising."
+        - "Taught at ML Sultan Campus (Durban)."
+
+  - id: bapparts_screen_arts_technology
+    name: "Bachelor of Applied Arts in Screen Arts and Technology"
+    faculty: "Faculty of Arts and Design"
+    fields: [arts_and_design, performing_arts]
+    selective: true
+    selection_note: "Applicants must also complete an interview."
+    requirements:
+      source: s-dut-opportunities           # p52-53
+      min_points: null                      # DUT's 36 points use its own weighting (below), not the usual count
+      subject_minimums: {english: 4}
+      additional_minimums: [4, 4, 4, 4]
+      extras:
+        - "English Home Language at level 4, or English First Additional Language at level 5."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "You also need 36 points on DUT's own count: Mathematics, Physical Sciences, Information Technology, Engineering Graphics and Design, Visual Arts, Dramatic Arts and Music count three times; English, Life Sciences, Geography, History, Business Studies, Computer Applications Technology, Consumer Studies, Tourism and Electrical and Mechanical Technology count twice; Life Orientation counts nothing."
+        - "Taught at City Campus (Durban)."
+
+  - id: bdes_visual_communication_design
+    name: "Bachelor of Design in Visual Communication Design"
+    faculty: "Faculty of Arts and Design"
+    fields: [arts_and_design]
+    selective: true
+    selection_note: "Applicants write an entrance (aptitude) test, bring a portfolio of their own recent art or design work and attend an interview."
+    requirements:
+      source: s-dut-opportunities           # p55
+      min_points: null
+      subject_minimums: {english: 3}
+      additional_minimums: [4, 4, 4, 4]     # "FOUR 20 credit subjects (not more than one language) 4"
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Of the four other subjects, no more than one may be a language."
+        - "Don't send your portfolio to the CAO: bring it, with your CAO number, to the aptitude test and interview."
+        - "Taught at City Campus (Durban)."
+
+  - id: bed_sp_fet_ems
+    name: "Bachelor of Education in Senior Phase and FET Teaching: Economics and Management Sciences"
+    faculty: "Faculty of Arts and Design"
+    fields: [education, commerce]
+    requirements:
+      source: s-dut-opportunities           # p56
+      min_points: 28
+      subject_minimums: {english: 4, accounting: 4}
+      additional_minimums: [4, 4, 4]
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "A four-year degree, taught at Indumiso Campus (Pietermaritzburg)."
+
+  - id: bed_sp_fet_natural_sciences
+    name: "Bachelor of Education in Senior Phase and FET Teaching: Natural Sciences"
+    faculty: "Faculty of Arts and Design"
+    fields: [education, natural_sciences]
+    requirements:
+      source: s-dut-opportunities           # p57
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4}
+      choices:
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {life_sciences: 4}
+      additional_minimums: [4, 4]
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "A four-year degree, taught at Indumiso Campus (Pietermaritzburg)."
+
+  - id: bed_sp_fet_languages
+    name: "Bachelor of Education in Senior Phase and FET Teaching: Languages"
+    faculty: "Faculty of Arts and Design"
+    fields: [education, languages_and_communication]
+    requirements:
+      source: s-dut-opportunities           # p58
+      min_points: 28
+      subject_minimums: {english: 5, other_language: 5}
+      additional_minimums: [4, 4, 4]
+      extras:
+        - "Your other language at level 5 must be isiZulu or isiXhosa."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "A four-year degree, taught at Indumiso Campus (Pietermaritzburg)."
+
+  - id: bed_sp_fet_civil_technology
+    name: "Bachelor of Education in Senior Phase and FET Teaching: Technology (Civil Technology)"
+    faculty: "Faculty of Arts and Design"
+    fields: [education, engineering]
+    requirements:
+      source: s-dut-opportunities           # p59
+      min_points: 28
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+            - subjects: {technical_sciences: 4}
+            - subjects: {mathematical_literacy: 5}
+      additional_minimums: [4, 4, 4]
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "A four-year degree, taught at Indumiso Campus (Pietermaritzburg)."
+
+  - id: bed_sp_fet_electrical_technology
+    name: "Bachelor of Education in Senior Phase and FET Teaching: Technology (Electrical Technology)"
+    faculty: "Faculty of Arts and Design"
+    fields: [education, engineering]
+    requirements:
+      source: s-dut-opportunities           # p59-60
+      min_points: 28
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+            - subjects: {technical_sciences: 4}
+            - subjects: {electrical_technology: 4}
+      additional_minimums: [4, 4, 4]
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "A four-year degree, taught at Indumiso Campus (Pietermaritzburg)."
+
+  - id: bed_sp_fet_mechanical_technology
+    name: "Bachelor of Education in Senior Phase and FET Teaching: Technology (Mechanical Technology)"
+    faculty: "Faculty of Arts and Design"
+    fields: [education, engineering]
+    requirements:
+      source: s-dut-opportunities           # p60
+      min_points: 28
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 4}
+            - subjects: {technical_sciences: 4}
+            - subjects: {physical_sciences: 4}
+            - subjects: {mechanical_technology: 4}
+            - subjects: {mathematical_literacy: 5}
+      additional_minimums: [4, 4, 4]
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "A four-year degree, taught at Indumiso Campus (Pietermaritzburg)."
+
+  - id: bjournalism
+    name: "Bachelor of Journalism"
+    faculty: "Faculty of Arts and Design"
+    fields: [languages_and_communication, humanities]
+    selective: true
+    selection_note: "Candidates sit a selection test and, if successful, attend an interview."
+    requirements:
+      source: s-dut-opportunities           # p62-63
+      min_points: null
+      subject_minimums: {english: 5, other_language: 4}
+      additional_minimums: [4, 4, 4]
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "DUT publishes no points minimum for this degree, so only your subjects are checked."
+        - "Taught at City Campus (Durban)."
+
+  - id: dip_drama
+    name: "Diploma in Drama"
+    faculty: "Faculty of Arts and Design"
+    fields: [performing_arts]
+    selective: true
+    places: 50
+    selection_note: "Two audition rounds: an online video audition (closing 30 September), then an on-campus audition with an English test (SATAP) for about 200 to 220 applicants. Offers go to the top 50."
+    requirements:
+      source: s-dut-opportunities           # p64
+      min_points: 24                        # "Candidates must have achieved a minimum of 24 points"; the table's heading says 22
+      subject_minimums: {english: 4, other_language: 3}
+      additional_minimums: [3, 3, 3]
+      extras:
+        - "DUT's table heading says 22 points, but its note says you need at least 24: four subjects at level 4, two at level 3 and one at level 2. Check with DUT."
+        - "Taught at Ritson Campus (Durban)."
+
+  - id: dip_fashion_design
+    name: "Diploma in Fashion Design"
+    faculty: "Faculty of Arts and Design"
+    fields: [arts_and_design]
+    selective: true
+    selection_note: "Shortlisted candidates write an entrance test and bring a portfolio of at least 10 recent fashion or art pieces to an in-depth interview."
+    requirements:
+      source: s-dut-opportunities           # p67
+      min_points: 20
+      subject_minimums: {english: 3}
+      additional_minimums: [3, 3, 3, 3]     # "THREE 20 credit subjects 3" and "ONE recognized NSC 20 credit subject 3"
+      extras:
+        - "Of the other subjects, no more than one may be a language."
+        - "Mathematical Literacy and Visual Arts or Engineering Graphics and Design are recommended, not required."
+        - "Don't send portfolios to DUT or the CAO; electronic portfolios aren't accepted."
+        - "DUT also lists a 4-year extended curriculum programme for this diploma."
+        - "Taught at Brickfield Campus (Durban)."
+
+  - id: dip_fine_art
+    name: "Diploma in Fine Art"
+    faculty: "Faculty of Arts and Design"
+    fields: [arts_and_design]
+    selective: true
+    selection_note: "Selection looks for creativity, interest in art and adequate English: you bring a portfolio (at least 20 drawings from life and a self-portrait from a mirror) to an interview and write a 40-minute visual comprehension test."
+    requirements:
+      source: s-dut-opportunities           # p69
+      min_points: null
+      subject_minimums: {english: 3}
+      additional_minimums: [3, 3, 3, 3]     # "FOUR NSC 20 credit subjects (not more than one language) 3"
+      extras:
+        - "Of the four other subjects, no more than one may be a language. Art as a subject is an advantage."
+        - "DUT also lists a 4-year extended curriculum programme for this diploma."
+        - "Taught at City Campus (Durban)."
+
+  - id: dip_interior_design
+    name: "Diploma in Interior Design"
+    faculty: "Faculty of Arts and Design"
+    fields: [arts_and_design, built_environment]
+    selective: true
+    selection_note: "Selection is on a portfolio of 10 original drawings, a personal interview, a drawing test and a written questionnaire."
+    requirements:
+      source: s-dut-opportunities           # p70-71
+      min_points: null
+      subject_minimums: {english: 3}
+      additional_minimums: [3, 3, 3, 3]     # "FOUR 20 credit subjects (not more than one language) 3"
+      extras:
+        - "DUT only considers applicants who put Interior Design as their first or second choice."
+        - "Visual Arts, Design and Engineering Graphics and Design are recommended, not required."
+        - "DUT also lists a 4-year extended curriculum programme for this diploma."
+        - "Taught at City Campus (Durban)."
+
+  - id: dip_jewellery_design_manufacture
+    name: "Diploma in Jewellery Design and Manufacture"
+    faculty: "Faculty of Arts and Design"
+    fields: [arts_and_design]
+    selective: true
+    selection_note: "Applicants bring a portfolio of their work to a selection test and a personal interview with a panel, held in October to December 2026."
+    requirements:
+      source: s-dut-opportunities           # p72
+      min_points: null
+      subject_minimums: {english: 3}
+      additional_minimums: [3, 3, 3, 3]
+      extras:
+        - "Of the four other subjects, no more than one may be a language."
+        - "Students provide their own hand tools and art materials."
+        - "DUT also lists a 4-year extended curriculum programme for this diploma."
+        - "Taught at City Campus (Durban)."
+
+  - id: dip_language_practice
+    name: "Diploma in Language Practice"
+    faculty: "Faculty of Arts and Design"
+    fields: [languages_and_communication]
+    selective: true
+    selection_note: "You need an aggregate of 60% across a language proficiency test and interviews in your first and second languages."
+    requirements:
+      source: s-dut-opportunities           # p74
+      min_points: null
+      subject_minimums: {english: 4, other_language: 4}
+      additional_minimums: [3, 3, 3]
+      extras:
+        - "English Home Language at level 4, or English First Additional Language at level 5."
+        - "Your other language must be isiZulu or isiXhosa: Home Language at level 4, or First Additional Language at level 5."
+        - "Taught at ML Sultan Campus (Durban)."
+
+  - id: hcert_performing_arts_technology
+    name: "Higher Certificate in Performing Arts Technology"
+    faculty: "Faculty of Arts and Design"
+    fields: [performing_arts]
+    selective: true
+    places: 15
+    selection_note: "Everyone who meets the minimum books one online interview (mid-October to early November); the top 15 are offered places. Missed interviews aren't rescheduled."
+    requirements:
+      source: s-dut-opportunities           # p76
+      min_points: null
+      subject_minimums: {english: 3}
+      additional_minimums: [3, 3, 3]        # "THREE recognized NSC 20 credit subjects other than L.O, only one of which may be an additional language"
+      extras:
+        - "DUT asks for Mathematics at level 3 or Mathematical Literacy (it gives no level for Mathematical Literacy)."
+        - "Of the three other subjects, no more than one may be an additional language."
+        - "Taught at Ritson Campus (Durban)."
+
+  # Faculty of Engineering and the Built Environment
+
+  - id: bet_chemical_engineering
+    name: "Bachelor of Engineering Technology in Chemical Engineering"
+    faculty: "Faculty of Engineering and the Built Environment"
+    fields: [engineering]
+    requirements:
+      source: s-dut-opportunities           # p80
+      min_points: null
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 5}
+      additional_minimums: [4, 4]
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "DUT publishes no points minimum: it ranks on Mathematics plus Physical Sciences, which must add up to at least 100%."
+        - "Taught at Steve Biko Campus (Durban)."
+
+  - id: bet_civil_engineering
+    name: "Bachelor of Engineering Technology in Civil Engineering"
+    faculty: "Faculty of Engineering and the Built Environment"
+    fields: [engineering, built_environment]
+    requirements:
+      source: s-dut-opportunities           # p82
+      min_points: null
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 5}
+      additional_minimums: [4, 4]
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "DUT publishes no points minimum: it ranks on Mathematics plus Physical Sciences, which must add up to at least 120%."
+        - "DUT only considers applicants who put this degree as their first or second choice."
+        - "Taught at Steve Biko Campus (Durban)."
+
+  - id: bet_electronic_engineering
+    name: "Bachelor of Engineering Technology in Electronic Engineering"
+    faculty: "Faculty of Engineering and the Built Environment"
+    fields: [engineering]
+    requirements:
+      source: s-dut-opportunities           # p83-84
+      min_points: null
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
+      additional_minimums: [4, 4]
+      extras:
+        - "DUT's table also lists Technical Mathematics and Technical Sciences at level 5, but its note says neither replaces Mathematics or Physical Sciences for this degree. Check with DUT."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "DUT publishes no points minimum: it ranks on Mathematics plus Physical Sciences, which must add up to at least 100."
+        - "Taught at Steve Biko Campus (Durban)."
+
+  - id: bet_industrial_engineering
+    name: "Bachelor of Engineering Technology in Industrial Engineering"
+    faculty: "Faculty of Engineering and the Built Environment"
+    fields: [engineering, management]
+    requirements:
+      source: s-dut-opportunities           # p85-86
+      min_points: null
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 5}
+      additional_minimums: [4, 4]
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "DUT publishes no points minimum: it ranks on Mathematics plus Physical Sciences, which must add up to at least 100%."
+        - "Taught at Steve Biko Campus (Durban)."
+
+  - id: bet_mechanical_engineering
+    name: "Bachelor of Engineering Technology in Mechanical Engineering"
+    faculty: "Faculty of Engineering and the Built Environment"
+    fields: [engineering]
+    requirements:
+      source: s-dut-opportunities           # p87-88
+      min_points: null
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 5}
+      additional_minimums: [4, 4]
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "DUT publishes no points minimum: it ranks on Mathematics plus Physical Sciences, which must add up to at least 100%."
+        - "Taught at Steve Biko Campus (Durban)."
+
+  - id: bet_power_engineering
+    name: "Bachelor of Engineering Technology in Power Engineering"
+    faculty: "Faculty of Engineering and the Built Environment"
+    fields: [engineering]
+    requirements:
+      source: s-dut-opportunities           # p89-90
+      min_points: null
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 5}
+      additional_minimums: [4, 4]
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "DUT publishes no points minimum: it ranks on Mathematics plus Physical Sciences, which must add up to at least 100%. With more applicants than places, it selects on English, Mathematics and Physical Sciences."
+        - "Taught at Steve Biko Campus (Durban)."
+
+  - id: bbe_architecture
+    name: "Bachelor of the Built Environment in Architecture"
+    faculty: "Faculty of Engineering and the Built Environment"
+    fields: [built_environment, arts_and_design]
+    selective: true
+    selection_note: "The top 300 applicants write a selection test; offers are ranked on the test together with your Mathematics mark. Applicants who put Architecture at DUT first get preference."
+    requirements:
+      source: s-dut-opportunities           # p92
+      min_points: null
+      subject_minimums: {english: 4, mathematics: 4}
+      additional_minimums: [4, 4, 4]
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Technology, History, Art, Technical Drawing, Geography and Physics are recommended, not required."
+        - "Taught at Steve Biko Campus (Durban)."
+
+  - id: bbe_construction_studies
+    name: "Bachelor of the Built Environment in Construction Studies"
+    faculty: "Faculty of Engineering and the Built Environment"
+    fields: [built_environment, management]
+    requirements:
+      source: s-dut-opportunities           # p93-94
+      min_points: null
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 5}
+      additional_minimums: [4, 4]
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "DUT publishes no points minimum: it ranks on Mathematics plus Physical Sciences, which must add up to at least 100%."
+        - "Taught at Steve Biko Campus (Durban)."
+
+  - id: bbe_geomatics
+    name: "Bachelor of the Built Environment in Geomatics"
+    faculty: "Faculty of Engineering and the Built Environment"
+    fields: [built_environment, earth_sciences]
+    requirements:
+      source: s-dut-opportunities           # p95
+      min_points: null
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 5}
+      additional_minimums: [4, 4]
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "DUT publishes no points minimum: it ranks on Mathematics plus Physical Sciences, which must add up to at least 100%."
+        - "DUT only considers applicants who put this degree as one of their first four choices."
+        - "Taught at Steve Biko Campus (Durban)."
+
+  - id: bbe_urban_regional_planning
+    name: "Bachelor of the Built Environment in Urban and Regional Planning"
+    faculty: "Faculty of Engineering and the Built Environment"
+    fields: [built_environment]
+    selective: true
+    selection_note: "Applicants sit a placement test as part of the entry requirements."
+    requirements:
+      source: s-dut-opportunities           # p97
+      min_points: null
+      subject_minimums: {english: 4, mathematics: 4}
+      choices:
+        - one_of:                           # "any two of the additional compulsory subjects ... at a minimum level 4"
+            - subjects: {geography: 4, history: 4}
+            - subjects: {geography: 4, life_sciences: 4}
+            - subjects: {geography: 4, physical_sciences: 4}
+            - subjects: {history: 4, life_sciences: 4}
+            - subjects: {history: 4, physical_sciences: 4}
+            - subjects: {life_sciences: 4, physical_sciences: 4}
+      additional_minimums: [4]
+      extras:
+        - "English Home Language at level 4, or English First Additional Language at level 5."
+        - "Your last subject at level 4 can be any 20-credit subject except a language."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Taught at Steve Biko Campus (Durban)."
+
+  - id: dip_civil_engineering
+    name: "Diploma in Engineering Technology in Civil Engineering"
+    faculty: "Faculty of Engineering and the Built Environment"
+    fields: [engineering, built_environment]
+    requirements:
+      source: s-dut-opportunities           # p99
+      min_points: null
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 5}
+      additional_minimums: [4, 4]
+      extras:
+        - "DUT only considers applicants who put this diploma as their first or second choice."
+        - "DUT publishes no points minimum for this diploma, so only your subjects are checked."
+        - "Taught at Indumiso Campus (Pietermaritzburg)."
+
+  - id: dip_construction_studies
+    name: "Diploma in Built Environment in Construction Studies"
+    faculty: "Faculty of Engineering and the Built Environment"
+    fields: [built_environment, management]
+    requirements:
+      source: s-dut-opportunities           # p101
+      min_points: null
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {technical_mathematics: 5}
+        - one_of:
+            - subjects: {physical_sciences: 4}
+            - subjects: {technical_sciences: 5}
+      additional_minimums: [4, 4]
+      extras:
+        - "English Home Language or First Additional Language at level 4."
+        - "DUT publishes no points minimum for this diploma, so only your subjects are checked."
+        - "Taught at Indumiso Campus (Pietermaritzburg)."
+
+  - id: dip_pulp_paper_technology
+    name: "Diploma in Pulp and Paper Technology"
+    faculty: "Faculty of Engineering and the Built Environment"
+    fields: [engineering, physical_sciences]
+    requirements:
+      source: s-dut-opportunities           # p103
+      min_points: null
+      subject_minimums: {english: 3, mathematics: 4, physical_sciences: 4}
+      additional_minimums: [3, 3]
+      extras:
+        - "DUT publishes no points minimum for this diploma, so only your subjects are checked."
+        - "Taught at Steve Biko Campus (Durban)."
+
+  # Faculty of Health Sciences
+
+  - id: b_child_youth_care
+    name: "Bachelor of Child and Youth Care"
+    faculty: "Faculty of Health Sciences"
+    fields: [humanities, health_sciences]
+    selective: true
+    selection_note: "Applicants attend an interview and an entrance assessment, and bring proof of at least 20 hours' voluntary work (or employment) with children, youth, families or communities."
+    requirements:
+      source: s-dut-opportunities           # p107
+      min_points: null
+      subject_minimums: {english: 4}
+      additional_minimums: [4, 4, 4, 4]     # "Three 20 credit subjects 4" and "One recognized NSC 20 credit subject 4"
+      extras:
+        - "Of the other subjects, no more than one may be a language."
+        - "DUT only considers applicants who put this degree as their first, second or third choice."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Taught at Ritson Campus (Durban)."
+
+  - id: bhsc_chiropractic
+    name: "Bachelor of Health Sciences in Chiropractic"
+    faculty: "Faculty of Health Sciences"
+    fields: [health_sciences, rehabilitation]
+    selective: true
+    selection_note: "After an extensive screening, selected candidates are invited to interviews. Shortlisting starts from your Grade 11 and Grade 12 subject profile."
+    requirements:
+      source: s-dut-opportunities           # p109
+      min_points: null
+      subject_minimums: {english: 4, mathematics: 4, life_orientation: 4}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      additional_minimums: [4, 4]
+      extras:
+        - "First preference goes to applicants with both Physical Sciences and Life Sciences."
+        - "Applicants must be over 17 and physically fit."
+        - "Applications closed on 15 August 2026, earlier than DUT's other programmes."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Taught at Ritson Campus (Durban)."
+
+  - id: bhsc_clinical_technology
+    name: "Bachelor of Health Sciences in Clinical Technology"
+    faculty: "Faculty of Health Sciences"
+    fields: [health_sciences, medical_sciences]
+    selective: true
+    selection_note: "Applicants undergo interviews and may be asked to appear before a selection committee or write an aptitude test. Ranking the programme first or second also counts."
+    requirements:
+      source: s-dut-opportunities           # p111
+      min_points: null
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+      additional_minimums: [3, 3]
+      extras:
+        - "DUT has no points minimum but says applicants with 25 points or more stand a greater chance."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Taught at ML Sultan Campus (Durban)."
+
+  - id: bhsc_emergency_medical_care
+    name: "Bachelor of Health Sciences in Emergency Medical Care and Rescue"
+    faculty: "Faculty of Health Sciences"
+    fields: [emergency_care, health_sciences]
+    selective: true
+    selection_note: "Applicants must pass DUT's medical, physical and environmental fitness evaluations."
+    requirements:
+      source: s-dut-opportunities           # p112-113
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 4}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      additional_minimums: [4, 4]
+      extras:
+        - "DUT's table says Life Sciences \"and/or\" Physical Sciences at level 4."
+        - "Accepted students need a driver's licence by the end of the first year."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Taught at Ritson Campus (Durban)."
+
+  - id: bhsc_environmental_health
+    name: "Bachelor of Health Sciences in Environmental Health"
+    faculty: "Faculty of Health Sciences"
+    fields: [environmental_health]
+    selective: true
+    selection_note: "Applicants attend an interview and write an assessment test."
+    requirements:
+      source: s-dut-opportunities           # p114-115
+      min_points: null
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+      additional_minimums: [4, 4]
+      extras:
+        - "Of the other subjects, no more than one may be a language."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Taught at Ritson Campus (Durban)."
+
+  - id: bhsc_homoeopathy
+    name: "Bachelor of Health Sciences in Homoeopathy"
+    faculty: "Faculty of Health Sciences"
+    fields: [health_sciences]
+    selective: true
+    selection_note: "Applicants submit an assignment and attend interviews; placement also uses tests in Mathematics and English."
+    requirements:
+      source: s-dut-opportunities           # p116
+      min_points: null
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+      additional_minimums: [4, 4]
+      extras:
+        - "Of the other subjects, no more than one may be a language."
+        - "To practise you also need DUT's Master of Health Sciences in Homoeopathy and an internship."
+        - "DUT also lists an extended curriculum for applicants it places there."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Taught at Ritson Campus (Durban)."
+
+  - id: bhsc_medical_laboratory_science
+    name: "Bachelor of Health Sciences in Medical Laboratory Science"
+    faculty: "Faculty of Health Sciences"
+    fields: [medical_sciences, health_sciences]
+    selective: true
+    selection_note: "Applicants undergo an interview; shortlisting uses Grade 12 June and/or final results."
+    requirements:
+      source: s-dut-opportunities           # p118
+      min_points: null
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+      additional_minimums: [3, 3]
+      extras:
+        - "DUT has no points minimum but says more than 25 points increases your chances."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Taught at ML Sultan Campus (Durban)."
+
+  - id: bhsc_medical_orthotics_prosthetics
+    name: "Bachelor of Health Sciences in Medical Orthotics and Prosthetics"
+    faculty: "Faculty of Health Sciences"
+    fields: [rehabilitation, health_sciences]
+    selective: true
+    places: 30
+    selection_note: "Top applicants are invited to a placement test and an interview; the 30 highest-ranked are admitted."
+    requirements:
+      source: s-dut-opportunities           # p120
+      min_points: null
+      subject_minimums: {english: 3, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+      additional_minimums: [4, 4]
+      extras:
+        - "Of the other subjects, no more than one may be a language."
+        - "You're encouraged to do at least 8 hours' voluntary service in an orthotic and prosthetic setting and submit the report with your application."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Taught at Steve Biko and Ritson Campuses and Wentworth Hospital (Durban)."
+
+  - id: bhsc_diagnostic_radiography
+    name: "Bachelor of Health Sciences in Diagnostic Radiography"
+    faculty: "Faculty of Health Sciences"
+    fields: [radiography, health_sciences]
+    selective: true
+    selection_note: "Shortlisting on Grade 12 June or trial results (at least 28 points), then a placement test and interviews. You must put it as your first, second or third choice."
+    requirements:
+      source: s-dut-opportunities           # p121-123
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+      additional_minimums: [4]
+      extras:
+        - "You may need to visit clinical training centres and spend at least 8 hours in a radiography department (with a letter from its head)."
+        - "You must be 18 by the end of December 2026 and physically fit."
+        - "Applications closed on 31 August 2026."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Taught at Ritson Campus (Durban)."
+
+  - id: bhsc_diagnostic_sonography
+    name: "Bachelor of Health Sciences in Diagnostic Sonography"
+    faculty: "Faculty of Health Sciences"
+    fields: [radiography, health_sciences]
+    selective: true
+    selection_note: "Shortlisting on Grade 12 June or trial results (at least 28 points), then a placement test and interviews. You must put it as your first choice."
+    requirements:
+      source: s-dut-opportunities           # p121-123
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+      additional_minimums: [4]
+      extras:
+        - "You may need to visit clinical training centres and spend at least 8 hours in a radiography department (with a letter from its head)."
+        - "You must be 18 by the end of December 2026 and physically fit."
+        - "Applications closed on 31 August 2026."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Taught at Ritson Campus (Durban)."
+
+  - id: bhsc_radiotherapy
+    name: "Bachelor of Health Sciences in Radiotherapy"
+    faculty: "Faculty of Health Sciences"
+    fields: [radiography, health_sciences]
+    selective: true
+    selection_note: "Shortlisting on Grade 12 June or trial results (at least 28 points), then a placement test and interviews. You must put it as your first choice."
+    requirements:
+      source: s-dut-opportunities           # p121-123
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+      additional_minimums: [4]
+      extras:
+        - "You may need to visit clinical training centres and spend at least 8 hours in a radiography department (with a letter from its head)."
+        - "You must be 18 by the end of December 2026 and physically fit."
+        - "Applications closed on 31 August 2026."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Taught at Ritson Campus (Durban)."
+
+  - id: b_nursing
+    name: "Bachelor of Nursing"
+    faculty: "Faculty of Health Sciences"
+    fields: [nursing]
+    selective: true
+    selection_note: "DUT's SATAP test and an interview are used with your NSC results. First priority goes to the latest matriculants and applicants with no previous study."
+    requirements:
+      source: s-dut-opportunities           # p126-127
+      min_points: 28
+      subject_minimums: {english: 3, life_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 4}
+            - subjects: {mathematical_literacy: 6}
+            - subjects: {physical_sciences: 4}
+      additional_minimums: [4, 4]
+      extras:
+        - "Of the two other subjects, only one may be an additional language."
+        - "Graduates sign a contract to practise in South Africa for four years, including a year of community service."
+        - "DUT also lists a 5-year extended curriculum for this degree."
+        - "Your NSC must show admission to bachelor's degree study."
+        - "A four-year degree, taught at Indumiso Campus (Pietermaritzburg)."
+
+  - id: dip_somatology
+    name: "Diploma in Somatology"
+    faculty: "Faculty of Health Sciences"
+    fields: [health_sciences]
+    selective: true
+    selection_note: "Admission depends on an entrance test late in the year and a medical report showing a clean bill of health."
+    requirements:
+      source: s-dut-opportunities           # p128-129
+      min_points: null
+      subject_minimums: {english: 3, life_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+      additional_minimums: [3, 3]
+      extras:
+        - "Of the two other subjects, no more than one may be a language."
+        - "DUT also has 20 places on an extended programme that spreads the first year over two years; selection is on the entrance test."
+        - "DUT's table is headed \"NSC Degree Entry\": check with DUT whether you need a bachelor's pass for this diploma."
+        - "Taught at Ritson Campus (Durban)."
+
+  - id: hcert_dental_assisting
+    name: "Higher Certificate in Dental Assisting"
+    faculty: "Faculty of Health Sciences"
+    fields: [dentistry]
+    selective: true
+    selection_note: "Applicants attend interviews and entrance tests in early November; selection follows the interviews."
+    requirements:
+      source: s-dut-opportunities           # p130
+      min_points: null
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+        - one_of:
+            - subjects: {physical_sciences: 3}
+            - subjects: {life_sciences: 3}
+      additional_minimums: [3, 3]
+      extras:
+        - "Of the two other subjects, no more than one may be a language."
+        - "DUT's table is headed \"NSC Degree Entry\": check with DUT whether you need a bachelor's pass for this certificate."
+        - "Taught at ML Sultan Campus (Durban)."
+
+  # Faculty of Management Sciences
+
+  - id: dip_catering_management
+    name: "Diploma in Catering Management"
+    faculty: "Faculty of Management Sciences"
+    fields: [tourism_and_hospitality, food_science]
+    selective: true
+    selection_note: "All applicants write the department's suitability test; successful candidates may be shortlisted for an interview."
+    requirements:
+      source: s-dut-opportunities           # p133-134
+      min_points: null
+      subject_minimums: {english: 4, accounting: 3}   # "Please note that Accounting is a compulsory Admission Requirement"
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {mathematical_literacy: 3}
+      additional_minimums: [3, 3]
+      extras:
+        - "DUT publishes no points minimum: it may accept the applicants with the highest points."
+        - "You need a Hepatitis A vaccination (two doses), and a full uniform, kitchen toolkit and textbooks at your own cost."
+        - "Taught at Ritson Campus (Durban)."
+
+  - id: dip_ecotourism
+    name: "Diploma in Ecotourism"
+    faculty: "Faculty of Management Sciences"
+    fields: [tourism_and_hospitality, earth_sciences]
+    requirements:
+      source: s-dut-opportunities           # p135
+      min_points: 25
+      subject_minimums: {english: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+        - one_of:
+            - subjects: {agricultural_sciences: 4}
+            - subjects: {life_sciences: 4}
+            - subjects: {geography: 4}
+      additional_minimums: [3, 3]
+      extras:
+        - "English Home Language or First Additional Language at level 4."
+        - "Taught at Riverside Campus (Pietermaritzburg)."
+
+  - id: dip_hospitality_management
+    name: "Diploma in Hospitality Management"
+    faculty: "Faculty of Management Sciences"
+    fields: [tourism_and_hospitality]
+    selective: true
+    selection_note: "Everyone who meets the minimum requirements is interviewed."
+    requirements:
+      source: s-dut-opportunities           # p137
+      min_points: null
+      subject_minimums: {english: 4, accounting: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {mathematical_literacy: 3}
+      additional_minimums: [3, 3, 3]
+      extras:
+        - "DUT's table may also let Accounting stand in for Mathematics; we read it as required, as for Catering Management. Check with DUT."
+        - "Preference goes to applicants with Business Studies, Economics or hospitality subjects, or industry experience."
+        - "You need a Hepatitis A vaccination (two doses), and a full uniform and kitchen toolkit at your own cost."
+        - "Taught at Ritson Campus (Durban)."
+
+  - id: dip_business_administration
+    name: "Diploma in Management Sciences: Business Administration"
+    faculty: "Faculty of Management Sciences"
+    fields: [management, commerce]
+    requirements:
+      source: s-dut-opportunities           # p138-139
+      min_points: 25
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      additional_minimums: [3, 3, 3]        # "TWO 20 credit subjects 3" and "ONE recognized NSC 20 credit subject 3"
+      extras:
+        - "English Home Language at level 3, or English First Additional Language at level 4."
+        - "Of the other subjects, no more than one may be a language."
+        - "Taught at ML Sultan Campus (Durban) and at Riverside Campus (Pietermaritzburg)."
+
+  - id: dip_business_administration_ecp
+    name: "Diploma in Management Sciences: Business Administration (Extended Curriculum Programme)"
+    faculty: "Faculty of Management Sciences"
+    fields: [management, commerce]
+    requirements:
+      source: s-dut-opportunities           # p138-139: the diploma's table
+      min_points: 25
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      additional_minimums: [3, 3, 3]
+      extras:
+        - "English Home Language at level 3, or English First Additional Language at level 4."
+        - "DUT lists this extended curriculum programme with the diploma's requirements and no separate ones."
+        - "Taught at Riverside Campus (Pietermaritzburg) only."
+
+  - id: dip_business_law
+    name: "Diploma in Management Sciences: Business Law"
+    faculty: "Faculty of Management Sciences"
+    fields: [law, management]
+    requirements:
+      source: s-dut-opportunities           # p140-141
+      min_points: 25
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      additional_minimums: [3, 3, 3]
+      extras:
+        - "English Home Language at level 3, or English First Additional Language at level 4."
+        - "Of the other subjects, no more than one may be a language."
+        - "Taught at ML Sultan Campus (Durban)."
+
+  - id: dip_human_resources_management
+    name: "Diploma in Management Sciences: Human Resources Management"
+    faculty: "Faculty of Management Sciences"
+    fields: [management]
+    requirements:
+      source: s-dut-opportunities           # p142-143
+      min_points: 25
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      additional_minimums: [3, 3, 3]
+      extras:
+        - "English Home Language at level 3, or English First Additional Language at level 4."
+        - "Of the other subjects, no more than one may be a language."
+        - "Taught at ML Sultan Campus (Durban) and at Riverside Campus (Pietermaritzburg)."
+
+  - id: dip_marketing
+    name: "Diploma in Management Sciences: Marketing"
+    faculty: "Faculty of Management Sciences"
+    fields: [management, commerce]
+    requirements:
+      source: s-dut-opportunities           # p144-145
+      min_points: 25
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      additional_minimums: [3, 3, 3]
+      extras:
+        - "English Home Language at level 3, or English First Additional Language at level 4."
+        - "Of the other subjects, no more than one may be a language."
+        - "Taught at ML Sultan Campus (Durban)."
+
+  - id: dip_operations_management
+    name: "Diploma in Management Sciences: Operations Management"
+    faculty: "Faculty of Management Sciences"
+    fields: [management]
+    requirements:
+      source: s-dut-opportunities           # p146-147
+      min_points: 25
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      additional_minimums: [3, 3, 3]
+      extras:
+        - "English Home Language at level 3, or English First Additional Language at level 4."
+        - "Of the other subjects, no more than one may be a language."
+        - "Offered full-time and part-time, at ML Sultan Campus (Durban)."
+
+  - id: dip_public_relations_communication_management
+    name: "Diploma in Management Sciences: Public Relations and Communication Management"
+    faculty: "Faculty of Management Sciences"
+    fields: [languages_and_communication, management]
+    requirements:
+      source: s-dut-opportunities           # p148
+      min_points: 25
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      additional_minimums: [3, 3, 3]
+      extras:
+        - "English Home Language at level 3, or English First Additional Language at level 4."
+        - "Of the other subjects, no more than one may be a language."
+        - "DUT only considers applicants who put this diploma as their first, second or third choice."
+        - "Taught at ML Sultan Campus (Durban) and at Riverside Campus (Pietermaritzburg)."
+
+  - id: dip_retail_management
+    name: "Diploma in Management Sciences: Retail Management"
+    faculty: "Faculty of Management Sciences"
+    fields: [management, commerce]
+    requirements:
+      source: s-dut-opportunities           # p150
+      min_points: 25
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      additional_minimums: [3, 3, 3]
+      extras:
+        - "English Home Language at level 3, or English First Additional Language at level 4."
+        - "Of the other subjects, no more than one may be a language."
+        - "Taught at ML Sultan Campus (Durban)."
+
+  - id: dip_public_admin_disaster_risk_management
+    name: "Diploma in Public Administration: Disaster and Risk Management"
+    faculty: "Faculty of Management Sciences"
+    fields: [disaster_and_fire, public_administration]
+    requirements:
+      source: s-dut-opportunities           # p152-154
+      min_points: 25
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      additional_minimums: [3, 3, 3]
+      extras:
+        - "Taught at ML Sultan Campus (Durban)."
+
+  - id: dip_public_admin_local_government
+    name: "Diploma in Public Administration: Local Government"
+    faculty: "Faculty of Management Sciences"
+    fields: [public_administration]
+    requirements:
+      source: s-dut-opportunities           # p152-154
+      min_points: 25
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      additional_minimums: [3, 3, 3]
+      extras:
+        - "Taught at ML Sultan Campus (Durban)."
+
+  - id: dip_public_admin_public_management
+    name: "Diploma in Public Administration: Public Management"
+    faculty: "Faculty of Management Sciences"
+    fields: [public_administration, management]
+    requirements:
+      source: s-dut-opportunities           # p152-154
+      min_points: 25
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      additional_minimums: [3, 3, 3]
+      extras:
+        - "Taught at ML Sultan Campus (Durban) and at Riverside Campus (Pietermaritzburg)."
+
+  - id: dip_public_admin_supply_chain_management
+    name: "Diploma in Public Administration: Supply Chain Management"
+    faculty: "Faculty of Management Sciences"
+    fields: [public_administration, management]
+    requirements:
+      source: s-dut-opportunities           # p152-154
+      min_points: 25
+      subject_minimums: {english: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 4}
+      additional_minimums: [3, 3, 3]
+      extras:
+        - "Taught at ML Sultan Campus (Durban) and at Riverside Campus (Pietermaritzburg)."
+
+  - id: dip_tourism
+    name: "Diploma in Tourism"
+    faculty: "Faculty of Management Sciences"
+    fields: [tourism_and_hospitality]
+    requirements:
+      source: s-dut-opportunities           # p155
+      min_points: 26
+      subject_minimums: {english: 4, accounting: 3}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 2}
+            - subjects: {mathematical_literacy: 3}
+      additional_minimums: [3, 3, 3]
+      extras:
+        - "DUT's table may also let Accounting stand in for Mathematics; we read it as required, as for Catering Management. Check with DUT."
+        - "Preference goes to applicants with tourism, hospitality or food industry experience or related qualifications."
+        - "Taught at Ritson Campus (Durban)."
 
 sources:
   - id: s-dut-type
