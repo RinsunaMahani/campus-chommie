@@ -436,6 +436,8 @@ export const en = {
   'support.readOn': 'Read on the university\'s page on {date}',
   'support.checked': 'Checked by a person on {date}',
   'support.notVerified': 'Not verified yet',
+  'support.call': 'Call',
+  'support.email': 'Email',
 
   // Cheap things (M5)
   'cheap.title': 'Cheap things nearby',
