@@ -1,8 +1,8 @@
 # Durban University of Technology (DUT)
 #
 # Agent draft, read on 13 Oct 2026 (docs/research/universities.md). DUT's site certificate had expired
-# that day, so its 2027 study guide couldn't be opened: only the top of its points table was read, through
-# a search engine, so there's no points rule yet. Dates come from the Central Applications Office (CAO).
+# that day, so its 2027 study guide couldn't be opened then. It opened on 22 Oct 2026: the points rule below
+# is from its page 8. Dates come from the Central Applications Office (CAO).
 # Nobody has checked these values yet: release stays false until a person has compared every one with its
 # source.
 
@@ -15,8 +15,21 @@ institution_type_source: s-dut-type
 release: false
 max_choices: null
 
-points_rules: null
-points_note: "DUT's 2027 points table couldn't be read in full yet."
+# Study Opportunities 2027, page 8, "Points Calculation Tables": the NSC rating code for each mark, "calculated
+# for the top six subjects, excluding Life Orientation since it is not a 20-credit subject". Agent draft,
+# read on 22 Oct 2026: needs a person's check against the PDF.
+points_rules:
+  source: s-dut-opportunities
+  subjects_counted: 6
+  life_orientation: exclude
+  scale:
+    - {min_percent: 80, level: 7}
+    - {min_percent: 70, level: 6}
+    - {min_percent: 60, level: 5}
+    - {min_percent: 50, level: 4}
+    - {min_percent: 40, level: 3}
+    - {min_percent: 30, level: 2}
+    - {min_percent: 0, level: 1}
 
 applications:
   source: s-cao-faq
@@ -45,7 +58,7 @@ sources:
     url: "https://www.dut.ac.za/wp-content/uploads/2026/06/Study-Opportunities-2027.pdf"
     publisher: "Durban University of Technology"
     title: "Study Opportunities 2027"
-    retrieved: 2026-10-13
+    retrieved: 2026-10-22   # first seen through a search engine on 13 Oct; opened in full on 22 Oct
     last_verified: null
     verified_by: "agent draft, needs human check"
   - id: s-cao-faq
