@@ -40,10 +40,12 @@ SMU has no photo on Commons and keeps its text monogram.
 | WITS | The Great Hall, East Campus | Samuella99 at English Wikipedia | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) | [The Wits University Great Hall.jpg](https://commons.wikimedia.org/wiki/File:The_Wits_University_Great_Hall.jpg) |
 | WSU | Mthatha campus in 1986, then the University of Transkei | Gustav Neuenschwander | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | [ETH-BIB-Transkei, Umtata, University of Transkei (Unitra)-Dia 298-05971.jpg](https://commons.wikimedia.org/wiki/File:ETH-BIB-Transkei,_Umtata,_University_of_Transkei_(Unitra)-Dia_298-05971.jpg) |
 
-## Faculty headers and funders
+## Funders (field photos)
 
-The faculty photos also stand for funders: a bursary shows the photo of the field most of its fields share, and
-a funder open to any field shows the library. Never a funder's logo (their trademark).
+The field photos stand for funders: a funder's page opens on the photo of the field most of its fields share. A
+funder open to any field shows no photo (its page opens on the wallpaper band instead): a stock picture would say
+nothing about it. Never a funder's logo (their trademark). Since 22 Oct 2026 the faculty headers in Find my course
+show an icon, not a photo.
 
 | Faculty kind | Author | Licence | Original |
 |---|---|---|---|

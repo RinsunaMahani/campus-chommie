@@ -12,10 +12,10 @@ import { wallpaper } from '@/shared/theme/tokens';
 export function Wallpaper() {
   const palette = usePalette();
   if (!palette.wallpaper) {
-    return <View style={[StyleSheet.absoluteFill, { backgroundColor: palette.page }]} pointerEvents="none" />;
+    return <View style={[StyleSheet.absoluteFill, { backgroundColor: palette.page, pointerEvents: 'none' }]} />;
   }
   return (
-    <View style={StyleSheet.absoluteFill} pointerEvents="none">
+    <View style={[StyleSheet.absoluteFill, { pointerEvents: 'none' }]}>
       <LinearGradient colors={[...wallpaper.colors]} locations={[...wallpaper.stops]} style={StyleSheet.absoluteFill} />
       <View style={[StyleSheet.absoluteFill, { backgroundColor: wallpaper.veil }]} />
     </View>
