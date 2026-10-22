@@ -16,7 +16,7 @@ import { SupportSections } from '@/features/support/components/SupportSections';
 import { SupportKind } from '@/features/support/types';
 
 import { courseFinderApi } from '../api/courseFinderApi';
-import CampusMapScreen, { streetLabels } from '../screens/CampusMapScreen';
+import CampusMapScreen, { MAX_PLACE_LABELS, showsLabel, streetLabels } from '../screens/CampusMapScreen';
 import { UniversityMapAnswer } from '../types';
 import mapFixture from './fixtures/universityMap.json';
 
@@ -172,4 +172,13 @@ test('each named road is labelled once, on its longest stretch, longest roads fi
   expect(labels[0].x).toBeCloseTo(2805); // halfway along its first, longer stretch
   const many = Array.from({ length: 9 }, (_, i) => ({ kind: 'road' as const, name: `Road ${i}`, line: [[-25.6, 28], [-25.6, 28 + (i + 1) / 100]] as [number, number][] }));
   expect(streetLabels(many, flat)).toHaveLength(6);
+});
+
+test('a small campus names every place on the map; a big one names only the place you chose', () => {
+  const library = { id: 'w1', name: 'Library', kind: 'library', centre: [-25.6, 28.0], outline: [], named_by_team: false } as never;
+  const unnamed = { id: 'w2', name: null, kind: 'other', centre: [-25.6, 28.0], outline: [], named_by_team: false } as never;
+  expect(showsLabel(library, MAX_PLACE_LABELS, null)).toBe(true);
+  expect(showsLabel(library, 149, null)).toBe(false);
+  expect(showsLabel(library, 149, 'w1')).toBe(true);
+  expect(showsLabel(unnamed, 3, 'w2')).toBe(false);
 });

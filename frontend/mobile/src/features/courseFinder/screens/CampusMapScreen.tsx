@@ -90,6 +90,15 @@ function toPoints(ring: LatLon[], project: (pt: LatLon) => [number, number]): st
  * - Shows `attribution` linked to `attribution_url` and `licence` linked to `licence_url`.
  * - Shows `notice` when `confirmed` is false.
  */
+/** Above this many named places, the map names only the one you chose: dozens of names on a phone-sized map
+ * cover each other (Rhodes has 149). The list under the map still names them all. */
+export const MAX_PLACE_LABELS = 15;
+
+/** Whether a place's name is drawn on the map: every name on a small campus, only the chosen one on a big one. */
+export function showsLabel(place: MapPlace, namedCount: number, selectedId: string | null): boolean {
+  return !!place.name && (namedCount <= MAX_PLACE_LABELS || place.id === selectedId);
+}
+
 /** Most road names on one map: more would cover the buildings. */
 const MAX_STREET_LABELS = 6;
 
@@ -179,6 +188,8 @@ export default function CampusMapScreen() {
     () => activeCampus?.places.filter((p) => !p.name) ?? [],
     [activeCampus],
   );
+
+  const namedCount = useMemo(() => activeCampus?.places.filter((p) => p.name).length ?? 0, [activeCampus]);
 
   const projector = useMemo(() => {
     if (!activeCampus?.mapped || !activeCampus.south_west || !activeCampus.north_east) return null;
@@ -295,7 +306,7 @@ export default function CampusMapScreen() {
                         </SvgText>
                       ))}
 
-                      {/* Building outlines and point pins */}
+                      {/* Building outlines and point pins; names as showsLabel says */}
                       {activeCampus.places.map((place) => {
                         const selected = selectedPlaceId === place.id;
                         const hasOutline = place.outline && place.outline.length >= 3;
@@ -323,7 +334,7 @@ export default function CampusMapScreen() {
                                 {...tap(() => setSelectedPlaceId(place.id))}
                               />
                             )}
-                            {place.name ? (
+                            {showsLabel(place, namedCount, selectedPlaceId) ? (
                               <SvgText
                                 x={cx}
                                 y={cy - 6}
