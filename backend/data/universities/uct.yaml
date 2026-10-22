@@ -16,8 +16,23 @@ academic_year: 2027
 release: false
 max_choices: null
 
-points_rules: null
-points_note: "UCT ranks applicants by a Faculty Points Score that each faculty works out its own way."
+# UCT's 2027 prospectus, p15: "To calculate your APS (a score out of a maximum of 600), add English and the five
+# best other subjects percentages, excluding Life Orientation"; p17: in Commerce, Engineering and the Built
+# Environment, Humanities and Law the FPS is this APS. Agent draft, read on 22 Oct 2026.
+points_rules:
+  source: s-uct-prospectus-2027
+  subjects_counted: 6
+  life_orientation: exclude
+  percent_points: {per_percent: 1}
+  note: "Your Faculty Points Score: your six best percentages without Life Orientation, out of 600. UCT always counts English, so this is your FPS when English is among your six best. Health Sciences and Science adjust it their own way."
+  scale:
+    - {min_percent: 80, level: 7}
+    - {min_percent: 70, level: 6}
+    - {min_percent: 60, level: 5}
+    - {min_percent: 50, level: 4}
+    - {min_percent: 40, level: 3}
+    - {min_percent: 30, level: 2}
+    - {min_percent: 0, level: 1}
 
 applications:
   source: s-uct-apply

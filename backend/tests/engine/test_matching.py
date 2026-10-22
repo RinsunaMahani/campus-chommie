@@ -7,6 +7,7 @@ from campus_engine.matching import (
     NO_GUARANTEE,
     NOT_YET,
     REACH,
+    SUBJECTS_MET,
     TIER_RANK,
     UNVERIFIED,
     assess,
@@ -159,3 +160,51 @@ def test_a_faculty_name_is_never_empty():
     with pytest.raises(ValidationError):
         Programme.model_validate({"id": "x", "name": "X", "faculty": ""})
 
+
+
+def _no_rule_uni(**extra) -> University:
+    """A made-up university that counts points its own way (no rule we can apply), like CUT or Stellenbosch."""
+    return University.model_validate({
+        "university": "own", "name": "Own Way University", "city": "Kimberley", "academic_year": 2027,
+        "points_rules": None,
+        "programmes": [
+            {"id": "bsc", "name": "BSc", "requirements": {
+                "source": "s", "min_points": 30, "subject_minimums": {"mathematics": 5},
+                "choices": [{"one_of": [{"subjects": {"physical_sciences": 4}}, {"subjects": {"life_sciences": 4}}]}],
+            }},
+            {"id": "none", "name": "Not added", "requirements": None},
+        ],
+        "sources": [{"id": "s", "url": "https://example.org/own", "publisher": "Own"}],
+    } | extra)
+
+
+def test_without_a_points_rule_subjects_are_still_checked_on_the_national_levels():
+    uni = _no_rule_uni(points_how={"source": "s", "text": "Own Way counts 2 to 8 points a subject."})
+    m = assess(uni, uni.programme("bsc"), {"mathematics": 62, "life_sciences": 55, "english": 70})
+    assert m.tier == SUBJECTS_MET and m.label == "Subjects met" and m.points is None
+    assert m.explanation[0] == "Your subjects meet this programme's minimums."
+    assert "It also asks for 30 points, counted Own Way University's own way, which we can't add up for you." in m.explanation
+    assert "Own Way counts 2 to 8 points a subject." in m.explanation and m.explanation[-1] == NO_GUARANTEE
+    assert m.source_url == "https://example.org/own"
+    assert assess(uni, uni.programme("none"), {}).tier == UNVERIFIED  # nothing published to check
+
+
+def test_without_a_points_rule_a_missing_subject_is_still_not_yet():
+    uni = _no_rule_uni()
+    m = assess(uni, uni.programme("bsc"), {"mathematics": 55, "english": 70})
+    assert m.tier == NOT_YET
+    assert "Mathematics: level 4, needs 5." in m.failed
+    assert m.failed[1].startswith("Needs one of: Physical sciences level 4 or Life sciences level 4.")
+
+
+def test_where_a_university_selects_on_an_average_the_learner_sees_theirs():
+    uni = _no_rule_uni(points_how={"source": "s", "text": "Selects on your average.", "average_of_best": 3})
+    marks = {"mathematics": 80, "life_sciences": 70, "english": 60, "geography": 50, "life_orientation": 95}
+    m = assess(uni, uni.programme("bsc"), marks)
+    assert "Your average of your best 3 subjects, without Life Orientation: 70%." in m.explanation
+    few = assess(uni, uni.programme("bsc"), {"mathematics": 80, "life_sciences": 70})
+    assert not any("Your average" in line for line in few.explanation)  # fewer subjects than it averages
+
+
+def test_subjects_met_ranks_after_the_points_checked_tiers():
+    assert TIER_RANK[REACH] < TIER_RANK[SUBJECTS_MET] < TIER_RANK[UNVERIFIED] < TIER_RANK[NOT_YET]

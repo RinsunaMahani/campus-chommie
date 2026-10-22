@@ -135,6 +135,17 @@ class PercentPoints(_Strict):
     from_percent: int = Field(default=0, ge=0, le=100)
 
 
+class PointsHow(_Strict):
+    """How to work out your points where we can't add them up for you: the university's own words and source, its
+    own calculator where it has one, and, where it selects on an average, how many best subjects that average takes."""
+
+    text: str = Field(min_length=1)
+    source: str
+    link: str | None = None
+    # Stellenbosch: "the six best Matric subjects' percentages (excluding Life Orientation)".
+    average_of_best: int | None = Field(default=None, ge=1, le=9)
+
+
 class PointsRule(_Strict):
     """How one university turns school marks into points."""
 
@@ -510,6 +521,8 @@ class University(_Strict):
     points_rules: PointsRule | None = None
     # Why there's no points rule, when there isn't one: shown to the learner instead of a number.
     points_note: str | None = None
+    # How a learner works out their points (or average) here themselves, when we can't: quoted from the university.
+    points_how: PointsHow | None = None
     applications: Applications | None = None  # None: not verified yet
     campuses: list[Campus] = Field(default_factory=list)
     calendar: list[CalendarEntry] = Field(default_factory=list)
@@ -530,6 +543,8 @@ class University(_Strict):
             problems.append("programme ids must be unique")
         if self.points_rules and self.points_rules.source not in source_ids:
             problems.append(f"points_rules cites unknown source '{self.points_rules.source}'")
+        if self.points_how and self.points_how.source not in source_ids:
+            problems.append(f"points_how cites unknown source '{self.points_how.source}'")
         for value, source, what in ((self.province, self.province_source, "province"),
                                     (self.institution_type, self.institution_type_source, "institution_type")):
             if value is not None and (source is None or source not in source_ids):

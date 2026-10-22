@@ -17,6 +17,11 @@ max_choices: 3
 
 points_rules: null
 points_note: "Stellenbosch selects on averages of your marks, programme by programme, not on a points score."
+# From Stellenbosch's 2026 prospectus, page 10. Agent draft.
+points_how:
+  source: s-su-prospectus-2026
+  text: "Stellenbosch selects on your average, programme by programme: the average of your six best subjects' percentages, without Life Orientation. Each programme says the average it asks for."
+  average_of_best: 6
 
 applications:
   source: s-su-howto

@@ -5,7 +5,8 @@
  */
 
 /** Words for a tier come from the server's `label`; this is only for icons and colour. */
-export type Tier = 'reach' | 'meets_minimum' | 'competitive' | 'not_yet' | 'unverified';
+/** subjects_met: every subject minimum met where we can't add up the university's points (it counts its own way). */
+export type Tier = 'reach' | 'meets_minimum' | 'competitive' | 'subjects_met' | 'not_yet' | 'unverified';
 
 export type Confirmation = {
   /** False until a person on the team has checked the pack. */
@@ -68,7 +69,8 @@ export type UniversityPoints = Confirmation & {
   counted: string[];
   /** In the order the marks were sent; together they make `points`. */
   subjects: SubjectPoints[];
-  tiers: Record<Tier, number>;
+  /** How many programmes in each tier; an older API sends no subjects_met. */
+  tiers: Partial<Record<Tier, number>>;
   summary: string;
   lines: string[];
   source_url: string | null;
