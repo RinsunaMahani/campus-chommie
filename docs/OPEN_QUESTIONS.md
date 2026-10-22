@@ -19,6 +19,11 @@ Research notes from official documents, read on 9 and 10 Oct 2026 and not yet ch
   closed, CSIR as postgraduate only, the Reserve Bank's online form, UP's 2026 amounts and no commercial lenders.
   Added 12 Oct: Limpopo Public Works counts as open because its page offers the 2027 form (its rule: closes 31 October
   every year), and Old Mutual's 2027 round opened "in April", with no day given.
+- [x] **Rinsuna's fact check, 22 Oct 2026** (her fact-check sheet): every SMU fact (SMU is now `release: true`), the six
+  crisis lines (SMU, TUT, UP: they now show in Support), NSFAS's 2027 window, application and income limit, the
+  seven funders' income lines, and the flagged course-list rows (DUT 10, UKZN 5), all marked correct. Where she
+  checked only some facts from a source, those facts cite a `<source>-checked` copy carrying her name, so
+  `verified_by` never covers a fact she didn't check.
 - [ ] **Household income in the funding pack** (added 22 Oct 2026, `income` on seven funders): each is the funder's own
   words from a page the pack already cites, and decides who appears under "If your family earns too much for NSFAS"
   (a funder that names the missing middle, or a limit above NSFAS's R350 000). Check each against its source: NSFAS

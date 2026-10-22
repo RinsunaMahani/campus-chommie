@@ -43,11 +43,33 @@ def smu(catalogue):
     return catalogue["smu"]
 
 
-def test_every_draft_pack_stays_unreleased_until_a_person_checks_it(catalogue):
-    for uni in ("up", "tut"):
-        pack = catalogue[uni]
-        assert pack.release is False
-        assert all(s.verified_by == "agent draft, needs human check" for s in pack.sources)
+#: Who checked facts on her fact-check sheet, and when (22 Oct 2026).
+CHECKED = ("Rinsuna Mahani", date(2026, 10, 22))
+
+
+def honest(sources) -> bool:
+    """Every source is an agent draft nobody has checked, or carries the person who checked it; a
+    "<source>-checked" copy (the facts she checked from a source she checked in part) is its original's twin."""
+    by_id = {s.id: s for s in sources}
+    for s in sources:
+        draft = s.verified_by.startswith("agent") and s.last_verified is None
+        checked = (s.verified_by, s.last_verified) == CHECKED
+        if not (draft or checked):
+            return False
+        if s.id.endswith("-checked"):
+            twin = by_id.get(s.id.removesuffix("-checked"))
+            if not (checked and twin and (twin.url, twin.title) == (s.url, s.title)):
+                return False
+    return True
+
+
+def test_a_pack_is_released_only_once_a_person_checked_every_source(catalogue):
+    for uni, pack in catalogue.items():
+        assert honest(pack.sources), uni
+        if pack.release:
+            assert all((s.verified_by, s.last_verified) == CHECKED for s in pack.sources), uni
+    assert catalogue["smu"].release is True  # every SMU fact checked on 22 Oct 2026
+    assert catalogue["up"].release is False and catalogue["tut"].release is False
 
 
 # UP: s-up-req-2027 (2027 requirements tables) and s-up-mbchb-2027 (MBChB selection)
@@ -227,8 +249,7 @@ def test_smu_closed_on_31_july_with_no_late_applications(smu):
 
 def test_nsfas_2027_window_and_free_application():
     funding = load_funding()
-    assert funding.release is False
-    assert all(s.verified_by == "agent draft, needs human check" for s in funding.sources)
+    assert funding.release is False and honest(funding.sources)
     nsfas = funding.funder("nsfas")
     window = nsfas.applications.windows[0]
     assert (window.intake, window.opens, window.closes, window.closing_time) == (
@@ -257,8 +278,8 @@ def funding():
 
 
 def test_the_funding_pack_is_a_draft_with_every_source_its_own(funding):
-    assert funding.release is False
-    assert all(s.verified_by == "agent draft, needs human check" and s.last_verified is None for s in funding.sources)
+    assert funding.release is False and honest(funding.sources)
+    assert funding.source("s-nsfas-home-2027-checked").verified_by == "Rinsuna Mahani"
     assert all(s.url.startswith("https://") for s in funding.sources)
     assert [f.id for f in funding.funders if f.every_plan] == ["nsfas"]
     assert all(f.who_can_apply for f in funding.funders)
@@ -372,11 +393,15 @@ def test_smus_2027_calendar_isnt_published_yet(smu):
     assert first["first_lecture"].start == date(2026, 2, 2)
 
 
-def test_crisis_lines_wait_for_a_person_to_verify_them(up, tut, smu):
-    crisis = {u.university: [s.contact for s in u.support_services if s.kind == "crisis"] for u in (up, tut, smu)}
-    assert "0800 006 428" in crisis["up"] and "0800 68 78 88" in crisis["tut"]
-    assert crisis["smu"] == ["Campus control for ambulance services, or 079 417 9546 / 6278"]
-    assert not any(u.release for u in (up, tut, smu))  # nobody has checked them yet
+def test_crisis_lines_show_once_a_person_has_verified_them(up, tut, smu):
+    crisis = {u.university: [s for s in u.support_services if s.kind == "crisis"] for u in (up, tut, smu)}
+    assert "0800 006 428" in [s.contact for s in crisis["up"]] and "0800 68 78 88" in [s.contact for s in crisis["tut"]]
+    assert [s.contact for s in crisis["smu"]] == ["Campus control for ambulance services, or 079 417 9546 / 6278"]
+    # Rinsuna checked all six on 22 Oct 2026: each one's source carries her name.
+    for u in (up, tut, smu):
+        for s in crisis[u.university]:
+            source = u.source(s.source)
+            assert (source.verified_by, source.last_verified) == CHECKED, s.name
 
 
 def test_tut_has_a_financial_aid_office_at_every_campus(tut):

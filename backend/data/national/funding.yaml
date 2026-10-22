@@ -51,11 +51,11 @@ funders:
       text: "If NSFAS finds you eligible, your funding is confirmed once you register at a public university or TVET college."
       source: s-nsfas-apply-2027
     income:
-      source: s-nsfas-home-2027
+      source: s-nsfas-home-2027-checked
       says: "Students from households earning up to R350 000 a year (students with disabilities: up to R600 000 a year)"
       limit_cents: 35000000
     applications:
-      source: s-nsfas-apply-2027
+      source: s-nsfas-apply-2027-checked
       url: "https://my.nsfas.org.za/"
       how: "Apply online on myNSFAS or in the official NSFAS app. Create your profile with your South African ID number, your cellphone number and your email address, then fill in your personal and household information, give consent, upload your documents and submit. You can save and finish later."
       fee_cents: 0
@@ -84,7 +84,7 @@ funders:
           source: s-nsfas-apply-2027
       windows:
         - intake: 2027
-          source: s-nsfas-apply-2027
+          source: s-nsfas-apply-2027-checked
           opens: 2026-09-18
           closes: 2026-10-31            # the Minister's launch speech says 18 Nov 2026: see OPEN_QUESTIONS
           closing_time: "23:59"         # "South African time"
@@ -106,7 +106,7 @@ funders:
       items:
         - "The loans are repaid on their own terms and conditions."
     income:
-      source: s-nsfas-launch-2027
+      source: s-nsfas-launch-2027-checked
       says: "Students whose household income is above the NSFAS bursary threshold"
       missing_middle: true
     applications:
@@ -234,7 +234,7 @@ funders:
         - "Residence fees and accommodation"
         - "Academic, social and emotional support, work-readiness training and mentoring"
     income:
-      source: s-saica-thuthuka-apply
+      source: s-saica-thuthuka-apply-checked
       says: "A combined family income of R350 000 a year or less"
       limit_cents: 35000000
     applications:
@@ -378,7 +378,7 @@ funders:
         - "R1.5 million or more: tuition, tutoring and counselling"
         - "Funding is confirmed after the selection camp"
     income:
-      source: s-allangray-form-2027
+      source: s-allangray-form-2027-checked
       says: "Household income of R1 million a year or less: tuition, tutoring, counselling, university accommodation and meals, a book allowance and a monthly allowance. Less than R1.5 million: tuition, tutoring, counselling, and university accommodation and meals"
       limit_cents: 150000000
     applications:
@@ -639,7 +639,7 @@ funders:
         - "Academically deserving TUT students who face financial exclusion"
         - "Especially the missing middle: students who don't qualify for NSFAS but can't afford tuition, accommodation or basic living costs"
     income:
-      source: s-tut-bursary-fund
+      source: s-tut-bursary-fund-checked
       says: "Especially the missing middle: students who don't qualify for NSFAS but can't afford tuition, accommodation or basic living costs"
       missing_middle: true
     applications:
@@ -687,7 +687,7 @@ funders:
         - "Any UP student who wants to be considered for bursaries and other funding, whatever your household income, programme or year of study"
         - "Registering doesn't guarantee funding: UP offers it when suitable opportunities come up"
     income:
-      source: s-up-infoguide-2026
+      source: s-up-infoguide-2026-checked
       says: "Any UP student who wants to be considered for bursaries and other funding, whatever your household income, programme or year of study"
       missing_middle: true
     applications:
@@ -833,7 +833,7 @@ funders:
         - "A once-off computer and calculator allowance"
         - "Psycho-social support"
     income:
-      source: s-sasol-foundation
+      source: s-sasol-foundation-checked
       says: "A combined household income under R800 000 a year, and under 25 when you apply"
       limit_cents: 80000000
     applications:
@@ -885,6 +885,13 @@ sources:
     retrieved: 2026-10-10
     last_verified: null
     verified_by: "agent draft, needs human check"
+  - id: s-nsfas-apply-2027-checked
+    url: "https://nsfas.org.za/content/how-to-apply.html"
+    publisher: "National Student Financial Aid Scheme (NSFAS)"
+    title: "NSFAS 2027 Applications: how to apply"
+    retrieved: 2026-10-10
+    last_verified: 2026-10-22
+    verified_by: "Rinsuna Mahani"
   - id: s-nsfas-home-2027
     url: "https://www.nsfas.org.za/content/"
     publisher: "National Student Financial Aid Scheme (NSFAS)"
@@ -892,6 +899,13 @@ sources:
     retrieved: 2026-10-10
     last_verified: null
     verified_by: "agent draft, needs human check"
+  - id: s-nsfas-home-2027-checked
+    url: "https://www.nsfas.org.za/content/"
+    publisher: "National Student Financial Aid Scheme (NSFAS)"
+    title: "NSFAS 2027 Applications (home page)"
+    retrieved: 2026-10-10
+    last_verified: 2026-10-22
+    verified_by: "Rinsuna Mahani"
   - id: s-nsfas-launch-2027
     url: "https://www.gov.za/news/speeches/minister-buti-manamela-launch-nsfas-2027-application-cycle-18-sep-2026"
     publisher: "Government of South Africa"
@@ -899,6 +913,13 @@ sources:
     retrieved: 2026-10-11
     last_verified: null
     verified_by: "agent draft, needs human check"
+  - id: s-nsfas-launch-2027-checked
+    url: "https://www.gov.za/news/speeches/minister-buti-manamela-launch-nsfas-2027-application-cycle-18-sep-2026"
+    publisher: "Government of South Africa"
+    title: "Minister Buti Manamela: Launch of NSFAS 2027 application cycle (18 Sep 2026)"
+    retrieved: 2026-10-11
+    last_verified: 2026-10-22
+    verified_by: "Rinsuna Mahani"
   - id: s-funza-home-2027
     url: "https://www.funzalushaka.doe.gov.za/"
     publisher: "Department of Basic Education"
@@ -934,6 +955,13 @@ sources:
     retrieved: 2026-10-11
     last_verified: null
     verified_by: "agent draft, needs human check"
+  - id: s-saica-thuthuka-apply-checked
+    url: "https://www.saica.org.za/initiatives/thuthuka/apply-to-the-thuthuka-bursary-fund"
+    publisher: "South African Institute of Chartered Accountants (SAICA)"
+    title: "Apply to the Thuthuka Bursary"
+    retrieved: 2026-10-11
+    last_verified: 2026-10-22
+    verified_by: "Rinsuna Mahani"
   - id: s-thuthuka-portal
     url: "https://www.thuthukabursaryfund.co.za/"
     publisher: "Thuthuka Bursary Fund (SAICA)"
@@ -983,6 +1011,13 @@ sources:
     retrieved: 2026-10-11
     last_verified: null
     verified_by: "agent draft, needs human check"
+  - id: s-allangray-form-2027-checked
+    url: "https://allangrayorbis.org/wp-content/uploads/2026/02/Fellowship-Programme-Application-Form_2026.pdf"
+    publisher: "Allan Gray Orbis Foundation"
+    title: "University Fellowship Programme 2027: Grade 12 application form"
+    retrieved: 2026-10-11
+    last_verified: 2026-10-22
+    verified_by: "Rinsuna Mahani"
   - id: s-gcra-home
     url: "https://gcrabursary.gauteng.gov.za/"
     publisher: "Gauteng City Region Academy (Gauteng Provincial Government)"
@@ -1060,6 +1095,13 @@ sources:
     retrieved: 2026-10-11
     last_verified: null
     verified_by: "agent draft, needs human check"
+  - id: s-tut-bursary-fund-checked
+    url: "https://www.tut.ac.za/student-finance/undergraduate/tut-bursary-and-scholarship-fund/"
+    publisher: "Tshwane University of Technology"
+    title: "TUT Bursary and Scholarship Fund"
+    retrieved: 2026-10-11
+    last_verified: 2026-10-22
+    verified_by: "Rinsuna Mahani"
   - id: s-up-infoguide-2026
     url: "https://drupalwebprod-files.up.ac.za/Public/2025-12/UP_InfoGuide%202026_V5-c.pdf"
     publisher: "University of Pretoria"
@@ -1067,6 +1109,13 @@ sources:
     retrieved: 2026-10-11
     last_verified: null
     verified_by: "agent draft, needs human check"
+  - id: s-up-infoguide-2026-checked
+    url: "https://drupalwebprod-files.up.ac.za/Public/2025-12/UP_InfoGuide%202026_V5-c.pdf"
+    publisher: "University of Pretoria"
+    title: "InfoGuide 2026 (pp. 13-15: financial aid, the funding database and FLY@UP awards)"
+    retrieved: 2026-10-11
+    last_verified: 2026-10-22
+    verified_by: "Rinsuna Mahani"
   - id: s-feenix-fref-2027
     url: "https://bursaries.feenix.org/fref/apply-now/"
     publisher: "Feenix, for the FirstRand Empowerment Foundation"
@@ -1095,6 +1144,13 @@ sources:
     retrieved: 2026-10-12
     last_verified: null
     verified_by: "agent draft, needs human check"
+  - id: s-sasol-foundation-checked
+    url: "https://www.sasolbursaries.com/welcome/sasol-foundation-bursaries/"
+    publisher: "Sasol"
+    title: "Sasol Foundation Bursaries"
+    retrieved: 2026-10-12
+    last_verified: 2026-10-22
+    verified_by: "Rinsuna Mahani"
   - id: s-sasol-welcome
     url: "https://www.sasolbursaries.com/welcome/"
     publisher: "Sasol"
