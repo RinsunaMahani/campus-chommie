@@ -211,6 +211,10 @@ and SMU and, since #32 and #33, at VUT, WSU, UMP, MUT, SPU, UFS and UNIZULU; the
   - **UCT, Stellenbosch and CUT** can't be checked yet (a Faculty Points Score, averages, and no stated subject
     count); their programmes show the published minimums.
   - **UWC** has no programmes: its site answers 403 to every honest request.
+- [ ] **Check DUT's course list** (89 programmes from Study Opportunities 2027, agent draft of 22 Oct;
+  [dut.md](research/dut.md) starts with what to check first). The ones that change what learners see: whether
+  "Mathematics OR / Mathematical Literacy OR / Accounting" rows make Accounting an option or a must (Accounting,
+  Taxation, Hospitality, Tourism), Drama's 22 or 24 points, and Electronic Engineering's Technical Mathematics.
 - [ ] **Check UKZN's course list** (66 programmes from UKZN's 2027 prospectus, agent draft 22 Oct,
   [ukzn.md](research/ukzn.md)): a person should compare every value with the prospectus. First: 13 of its CAO codes
   are missing from the CAO's 2027 handbook (8) or spelled differently there (5): the B Sc streams appear there only

@@ -34,7 +34,7 @@ def test_smus_map_needs_no_account(client):
     assert data["university"]["id"] == "smu"
     assert (data["attribution"], data["attribution_url"]) == ("© OpenStreetMap contributors", "https://www.openstreetmap.org/copyright")
     assert (data["licence"], data["licence_url"]) == ("Open Database License (ODbL) 1.0", "https://opendatacommons.org/licenses/odbl/1-0/")
-    assert (data["confirmed"], data["notice"]) == (False, "Not yet confirmed by the team.")
+    assert data["confirmed"] is False and data["notice"].startswith("From OpenStreetMap, last read on ")
     (campus,) = data["campuses"]
     assert (campus["id"], campus["name"], campus["mapped"]) == ("ga_rankuwa", "Ga-Rankuwa (Molotlegi Street)", True)
     south, west = campus["south_west"]

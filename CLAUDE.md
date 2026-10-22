@@ -18,7 +18,10 @@ what came from our earlier project in [REUSE.md](REUSE.md).
   `docs/OPEN_QUESTIONS.md`.
 - Every fact in a data pack (`backend/data/universities/*.yaml`) cites a source id; the validator fails CI on a broken
   reference. A pack drafted by an agent from an official page sets `verified_by: "agent draft, needs human check"` and
-  keeps `release: false` until a human has checked every value.
+  keeps `release: false`; the app then says where its facts come from and when they were read ("From UP's own
+  documents, last read on ..."), never that a person checked them. A person checks the facts that can hurt someone
+  if wrong before they show or count: crisis numbers, NSFAS's dates and income limits, and the conflicts a research
+  note flags (Rinsuna, 22 Oct 2026). Only a value a person checked gets their name in `verified_by`.
 - Demo data is fictional and labelled ("Demo data: fictional student"), never presented as NSFAS or university figures.
 - Translations: never machine-translate for release. A language becomes visible only after a fluent speaker signs it
   off in `docs/translation_review.md`; a translated rule always shows beside its English original and source.

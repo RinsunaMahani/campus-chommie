@@ -243,8 +243,9 @@ def test_the_week_strip(client, rep, classmate, anatomy):
     data = client.get(f"{API}/week", headers=classmate.headers).get_json()["data"]
     weeks = data["weeks"]
     assert (data["today"], data["classes"], data["notes"], len(weeks)) == ("2026-10-12", 1, [], 8)
-    assert data["university"] == {
-        "id": "up", "name": "University of Pretoria", "confirmed": False, "notice": "Not yet confirmed by the team."}
+    uni = data["university"]
+    assert (uni["id"], uni["name"], uni["confirmed"]) == ("up", "University of Pretoria", False)
+    assert uni["notice"].startswith("From the University of Pretoria's own documents, last read on ")
     first, second = weeks[0], weeks[1]
     assert (first["week_start"], first["week_end"], first["this_week"], first["load"]) == ("2026-10-12", "2026-10-18", True, "Manageable")
     assert [e["title"] for e in first["events"]] == ["Quiz"]

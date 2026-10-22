@@ -16,10 +16,10 @@ from datetime import date
 from campus_engine import funding as engine
 from campus_engine.applications import Group, Guide, WindowStatus
 from campus_engine.schemas import FIELDS, Funder, FundingPack
+from campus_engine.text import read_from
 from src.core.exceptions import NotFoundError
 from src.shared.clock.clock import today_sast
 
-from ..constants import UNCONFIRMED_NOTICE
 from ..repositories.pack_repository import funding_pack
 
 
@@ -29,8 +29,9 @@ def pack() -> FundingPack:
 
 
 def confirmation(funding: FundingPack) -> dict:
-    """Whether a person has checked the pack, and the notice to show if not."""
-    return {"confirmed": funding.release, "notice": None if funding.release else UNCONFIRMED_NOTICE}
+    """Whether a person has checked the pack, and, if not, where its facts come from and when they were read."""
+    notice = read_from("each funder's own pages", [s.retrieved for s in funding.sources])
+    return {"confirmed": funding.release, "notice": None if funding.release else notice}
 
 
 def _today() -> date:

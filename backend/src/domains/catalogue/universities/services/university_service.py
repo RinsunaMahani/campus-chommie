@@ -12,11 +12,11 @@ from datetime import date
 from campus_engine.journey import FirstSteps
 from campus_engine.journey import first_steps as build_first_steps
 from campus_engine.schemas import University
+from campus_engine.text import read_from
 from src.core.exceptions import NotFoundError
 from src.domains.catalogue.funding.services import funding_service as funding
 from src.shared.clock.clock import today_sast
 
-from ..constants import UNCONFIRMED_NOTICE
 from ..repositories.pack_repository import all_packs
 
 
@@ -33,8 +33,10 @@ def get(university_id: str) -> University:
 
 
 def confirmation(uni: University) -> dict:
-    """Whether a person has checked this pack, and the notice to show if not."""
-    return {"confirmed": uni.release, "notice": None if uni.release else UNCONFIRMED_NOTICE}
+    """Whether a person has checked this pack, and, if not, where its facts come from and when they were read."""
+    name = f"the {uni.name}" if uni.name.startswith("University") else uni.name
+    notice = read_from(f"{name}'s own documents", [s.retrieved for s in uni.sources])
+    return {"confirmed": uni.release, "notice": None if uni.release else notice}
 
 
 #: How a university's type reads, where its own page states it.

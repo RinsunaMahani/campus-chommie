@@ -51,7 +51,7 @@ def test_every_card_has_its_reasons_source_and_check_status(client):
     for slot in [plan["goal"], plan["bridge"], plan["safe"], *plan["other_routes"]]:
         match = slot["match"]
         assert match["explanation"]
-        assert match["confirmed"] is False and match["notice"] == "Not yet confirmed by the team."
+        assert match["confirmed"] is False and match["notice"].startswith("From ")
         assert match["source_url"].startswith("https://")
     assert plan["goal"]["match"]["source_url"].startswith("https://www.smu.ac.za/")
     assert plan["safe"]["match"]["source_url"].startswith("https://drupalwebprod-files.up.ac.za/")
@@ -138,7 +138,7 @@ def test_a_plan_says_how_to_apply_on_todays_date(client, on_10_october):
     assert (nsfas["windows"][0]["status"], nsfas["windows"][0]["days"]) == ("open", 21)
     assert nsfas["warnings"]["items"][0] == "Never pay anyone to apply. NSFAS will never ask for your password or OTP."
     for guide in apply["universities"] + apply["funding"]:
-        assert guide["confirmed"] is False and guide["notice"] == "Not yet confirmed by the team."
+        assert guide["confirmed"] is False and guide["notice"].startswith("From ")
     assert apply["notes"]
 
 
@@ -177,7 +177,7 @@ def test_points_at_every_university_before_picking_one(client):
     assert names == sorted(names)
     assert {k: by_id[k]["points"] for k in ("smu", "tut", "up")} == {"smu": 47, "tut": 40, "up": 40}
     for u in universities:
-        assert u["lines"] and u["confirmed"] is False and u["notice"] == "Not yet confirmed by the team."
+        assert u["lines"] and u["confirmed"] is False and u["notice"].startswith("From ")
         if u["points"] is None:  # no points rule yet: said, with why
             assert u["lines"][0] == "We don't have this university's points rule yet." and u["subjects"] == []
         else:
