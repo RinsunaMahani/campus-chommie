@@ -43,9 +43,24 @@ applications:
       closes: 2026-09-30
       note: "Medicine closed on 30 June 2026, with no late applications."
 
+# Campuses from the university's own page (s-ukzn-campuses), read on 22 Oct 2026. Agent draft.
+campuses:
+  - {id: edgewood, name: "Edgewood (Pinetown)", source: s-ukzn-campuses}
+  - {id: howard_college, name: "Howard College (Durban)", source: s-ukzn-campuses}
+  - {id: medical_school, name: "Medical School (Durban)", source: s-ukzn-campuses}
+  - {id: pietermaritzburg, name: "Pietermaritzburg", source: s-ukzn-campuses}
+  - {id: westville, name: "Westville", source: s-ukzn-campuses}
+
 programmes: []
 
 sources:
+  - id: s-ukzn-campuses
+    url: "https://ukzn.ac.za/ukzn-campuses/"
+    publisher: "University of KwaZulu-Natal"
+    title: "UKZN campuses"
+    retrieved: 2026-10-22
+    last_verified: null
+    verified_by: "agent draft, needs human check"
   - id: s-ukzn-where
     url: "https://ukzn.ac.za/history/"
     publisher: "University of KwaZulu-Natal"

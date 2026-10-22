@@ -31,6 +31,16 @@ applications:
       closes_one_of: [2026-08-31, 2026-09-30]
       note: "Each DUT programme has its own closing date on the CAO's list: Diagnostic Radiography closed on 31 August 2026, Medical Laboratory Science on 30 September."
 
+# Campuses from the university's own page (s-dut-opportunities), read on 22 Oct 2026. Agent draft.
+campuses:
+  - {id: steve_biko, name: "Steve Biko (Durban)", source: s-dut-opportunities}
+  - {id: ritson, name: "Ritson (Durban)", source: s-dut-opportunities}
+  - {id: ml_sultan, name: "M.L. Sultan (Durban)", source: s-dut-opportunities}
+  - {id: city, name: "City (Durban)", source: s-dut-opportunities}
+  - {id: brickfield, name: "Brickfield (Durban)", source: s-dut-opportunities}
+  - {id: indumiso, name: "Indumiso (Pietermaritzburg)", note: "One of DUT's two Midlands campuses.", source: s-dut-opportunities}
+  - {id: riverside, name: "Riverside (Pietermaritzburg)", note: "One of DUT's two Midlands campuses.", source: s-dut-opportunities}
+
 programmes: []
 
 sources:

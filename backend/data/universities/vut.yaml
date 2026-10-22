@@ -46,6 +46,10 @@ applications:
 # Programmes: agent draft, 14 Oct 2026. Every requirement is from VUT's two-page 2027 poster (s-vut-requirements),
 # whose page 2 boxes were matched to their programmes on the page itself and on VUT's faculty web pages. Points
 # exclude Life Orientation; where a Mathematical Literacy route asks for more points, its option says so.
+# Campuses from the university's own page (s-vut-where), read on 22 Oct 2026. Agent draft.
+campuses:
+  - {id: vanderbijlpark, name: "Vanderbijlpark", source: s-vut-where}
+
 programmes:
 
   # Faculty of Applied and Computer Sciences (poster page 1)

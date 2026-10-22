@@ -1,7 +1,8 @@
 """Fetch campus maps from OpenStreetMap into backend/data/maps/<university>.yaml.
 
-For each campus in data/maps/osm_campuses.yaml: its outline, the buildings inside it, and the named
-places (a library, a clinic, a cafe) marked as points. Names a person added on campus come from
+For each campus in data/maps/osm_campuses.yaml: its outline, the buildings inside it, the named
+places (a library, a clinic, a cafe) marked as points, and the streets: roads within about 120 m of the
+outline and the footpaths across it. Names a person added on campus come from
 data/maps/names/<university>.yaml and win over OpenStreetMap's.
 
 The data is (c) OpenStreetMap contributors, under the Open Database License (ODbL) 1.0: the app
@@ -16,10 +17,10 @@ Fetching needs the network; tests use the parsing and naming functions on saved 
 from __future__ import annotations
 
 import argparse
+import http.client
 import json
 import sys
 import time
-import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import date
@@ -35,6 +36,11 @@ ENDPOINTS = (
     "https://overpass.kumi.systems/api/interpreter",
 )
 USER_AGENT = "CampusChommie/0.1 (student hackathon project; campus maps from OpenStreetMap)"
+#: Roads a student walks or drives in by; paths across the campus. Motorways and tracks aren't ways in.
+ROADS = ("trunk", "primary", "secondary", "tertiary", "unclassified", "residential", "living_street", "service")
+PATHS = ("pedestrian", "footway", "path", "steps")
+#: How far past the outline roads are fetched (metres): the ones that lead in.
+ROAD_RADIUS = 120
 POINT_AMENITIES = (
     "library", "clinic", "doctors", "pharmacy", "cafe", "restaurant", "fast_food", "food_court", "bank", "atm",
     "post_office", "police", "place_of_worship", "parking", "bus_station", "toilets",
@@ -96,7 +102,28 @@ def campus_query(elements: list[str]) -> str:
         ".buildings out tags geom;"
         f'(node["amenity"~"^({amenities})$"]["name"](area.a);)->.points;'
         ".points out body;"  # body: a node's tags and its position
+        f'(way(around.campus:{ROAD_RADIUS})["highway"~"^({"|".join(ROADS)})$"];'
+        f'way["highway"~"^({"|".join(PATHS)})$"](area.a);)->.streets;'
+        ".streets out tags geom;"
     )
+
+
+def street_of(el: dict) -> dict | None:
+    """A road or path from an Overpass way, or None for anything else."""
+    tags = el.get("tags", {})
+    highway = tags.get("highway", "")
+    if el.get("type") != "way" or highway not in ROADS + PATHS or len(el.get("geometry") or []) < 2:
+        return None
+    street = {"kind": "road" if highway in ROADS else "path", "line": [_point(n) for n in el["geometry"]]}
+    if tags.get("name"):
+        street["name"] = tags["name"].strip()
+    return street
+
+
+def parse_streets(answer: dict) -> list[dict]:
+    """The roads and paths in an Overpass answer: roads first, then by name, so the file diffs stay small."""
+    found = [s for el in answer.get("elements", []) if (s := street_of(el))]
+    return sorted(found, key=lambda s: (s["kind"] != "road", s.get("name") or "~", s["line"][0]))
 
 
 def parse_campus(answer: dict, elements: list[str]) -> tuple[list[list[list[float]]], list[dict]]:
@@ -114,6 +141,8 @@ def parse_campus(answer: dict, elements: list[str]) -> tuple[list[list[list[floa
                     rings.append(_ring(member["geometry"]))
             continue
         tags = el.get("tags", {})
+        if tags.get("highway"):
+            continue  # a street: parse_streets takes it
         if el["type"] == "way" and el.get("geometry"):
             ring = _ring(el["geometry"])
             if len(ring) < 3:
@@ -157,7 +186,9 @@ def _fetch(query: str) -> dict:
                 # Bandit B310 (file:// and other schemes): the ENDPOINTS above are fixed https addresses.
                 with urllib.request.urlopen(request, timeout=150) as response:  # nosec B310
                     return json.loads(response.read())
-            except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as exc:
+            # OSError covers URLError, timeouts and a server that hangs up (RemoteDisconnected); HTTPException a
+            # half-sent answer. Any of them: try the next server.
+            except (OSError, http.client.HTTPException, json.JSONDecodeError) as exc:
                 last = f"{endpoint}: {exc}"
                 time.sleep(10)  # a busy instance: give it a moment
     raise RuntimeError(f"every Overpass instance failed; last: {last}")
@@ -195,6 +226,9 @@ def write_map(university: str, campuses: list[dict], sources: list[dict], path: 
             lines += [f"      - {_flow(p)}" for p in c["places"]]
         else:
             lines.append("    places: []")
+        if c.get("streets"):
+            lines.append("    streets:")
+            lines += [f"      - {_flow(s)}" for s in c["streets"]]
     lines += ["", "sources:"]
     for s in sources:
         lines.append(f"  - id: {s['id']}")
@@ -264,6 +298,7 @@ def fetch_university(university: str, config: dict, today: date) -> None:
                 sources.append({k: v for k, v in old_sources[kept["source"]].items()})
             continue
         rings, places = parse_campus(answer, elements)
+        streets = parse_streets(answer)
         if not rings:
             print(f"{university}/{campus_id}: no outline came back; skipped", file=sys.stderr)
             continue
@@ -271,16 +306,17 @@ def fetch_university(university: str, config: dict, today: date) -> None:
         named = names.get("campuses", {}).get(campus_id, {})
         if named:
             apply_names(places, named, names["source"]["id"])
-        campuses.append({"campus": campus_id, "source": source_id, "outline": rings, "places": places})
+        campuses.append({"campus": campus_id, "source": source_id, "outline": rings, "places": places, "streets": streets})
         sources.append({
             "id": source_id,
             "url": f"https://www.openstreetmap.org/{elements[0]}",
             "publisher": "OpenStreetMap contributors",
-            "title": f"{entry['name']}: campus outline, buildings and named places (ODbL)",
+            "title": f"{entry['name']}: campus outline, buildings, named places and streets (ODbL)",
             "retrieved": today.isoformat(),
             "verified_by": "agent draft, needs human check",
         })
-        print(f"{university}/{campus_id}: {len(places)} places, {sum(1 for p in places if p.get('name'))} named")
+        print(f"{university}/{campus_id}: {len(places)} places, {sum(1 for p in places if p.get('name'))} named, "
+              f"{len(streets)} streets")
         time.sleep(3)  # Overpass is shared
     write_map(university, campuses, _with_names_source(sources, names), MAPS_DIR / f"{university}.yaml")
 

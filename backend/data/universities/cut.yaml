@@ -34,6 +34,11 @@ applications:
       no_late_applications: true
       note: "Applications opened in April 2026. Some programmes closed earlier when they had many applications."
 
+# Campuses from the university's own page (s-cut-campuses), read on 22 Oct 2026. Agent draft.
+campuses:
+  - {id: bloemfontein, name: "Bloemfontein", source: s-cut-campuses}
+  - {id: welkom, name: "Welkom", source: s-cut-campuses}
+
 programmes:
 
   # Engineering, Built Environment and Information Technology
@@ -664,6 +669,13 @@ programmes:
         - "Campus: Bloemfontein."
 
 sources:
+  - id: s-cut-campuses
+    url: "https://www.cut.ac.za/"
+    publisher: "Central University of Technology"
+    title: "Home page: its two campuses, Bloemfontein and Welkom"
+    retrieved: 2026-10-22
+    last_verified: null
+    verified_by: "agent draft, needs human check"
   - id: s-cut-where
     url: "https://www.cut.ac.za/cut-at-a-glance"
     publisher: "Central University of Technology"

@@ -3,7 +3,7 @@ import * as WebBrowser from 'expo-web-browser';
 import { useLocalSearchParams } from 'expo-router';
 import { ComponentProps, useEffect, useMemo, useState } from 'react';
 import { Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
-import Svg, { Circle, G, Polygon, Text as SvgText } from 'react-native-svg';
+import Svg, { Circle, G, Polygon, Polyline, Text as SvgText } from 'react-native-svg';
 
 import { HeroScreen } from '@/shared/components/HeroScreen';
 import { Card, IconTile, InfoNote } from '@/shared/components/Parts';
@@ -16,7 +16,7 @@ import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
 import { fonts, radius } from '@/shared/theme/tokens';
 
 import { courseFinderApi } from '../api/courseFinderApi';
-import { CampusMapView, LatLon, MapPlace, UniversityMapAnswer } from '../types';
+import { CampusMapView, LatLon, MapPlace, MapStreet, UniversityMapAnswer } from '../types';
 import { errorText } from '../words';
 
 type FeatherIcon = ComponentProps<typeof Feather>['name'];
@@ -90,6 +90,30 @@ function toPoints(ring: LatLon[], project: (pt: LatLon) => [number, number]): st
  * - Shows `attribution` linked to `attribution_url` and `licence` linked to `licence_url`.
  * - Shows `notice` when `confirmed` is false.
  */
+/** Most road names on one map: more would cover the buildings. */
+const MAX_STREET_LABELS = 6;
+
+/**
+ * Where each named road's name goes: once per name, in the middle of its longest stretch, longest roads first.
+ */
+export function streetLabels(streets: MapStreet[], project: (pt: LatLon) => [number, number]): { name: string; x: number; y: number }[] {
+  const longest = new Map<string, { len: number; mid: [number, number] }>();
+  for (const s of streets) {
+    if (s.kind !== 'road' || !s.name) continue;
+    const pts = s.line.map(project);
+    let len = 0;
+    for (let i = 1; i < pts.length; i++) len += Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]);
+    const best = longest.get(s.name);
+    // The middle: between the two middle points, so a two-point road is labelled halfway, not at an end.
+    const [a, b] = [pts[Math.floor((pts.length - 1) / 2)], pts[Math.ceil((pts.length - 1) / 2)]];
+    if (!best || len > best.len) longest.set(s.name, { len, mid: [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2] });
+  }
+  return [...longest.entries()]
+    .sort((a, b) => b[1].len - a[1].len)
+    .slice(0, MAX_STREET_LABELS)
+    .map(([name, v]) => ({ name, x: v.mid[0], y: v.mid[1] }));
+}
+
 /**
  * A tap on a map shape. On the web, react-native-svg turns onPress into a click and also hands the page
  * touch-responder props the browser doesn't know (React logs six "Unknown event handler" errors). There, a click
@@ -242,6 +266,33 @@ export default function CampusMapScreen() {
                           stroke={colors.accentDeep}
                           strokeWidth={1.5}
                         />
+                      ))}
+
+                      {/* Roads around the campus and paths across it, under the buildings */}
+                      {(activeCampus.streets ?? []).map((street, idx) => (
+                        <Polyline
+                          key={`street-${idx}`}
+                          points={street.line.map((pt) => projector(pt).join(',')).join(' ')}
+                          fill="none"
+                          stroke={street.kind === 'road' ? colors.textFaint : colors.accentDeep}
+                          strokeOpacity={street.kind === 'road' ? 0.45 : 0.5}
+                          strokeWidth={street.kind === 'road' ? 3 : 1}
+                          strokeDasharray={street.kind === 'path' ? '2,2' : undefined}
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      ))}
+                      {streetLabels(activeCampus.streets ?? [], projector).map((label) => (
+                        <SvgText
+                          key={`street-name-${label.name}`}
+                          x={label.x}
+                          y={label.y - 3}
+                          fill={colors.textMuted}
+                          fontSize="6"
+                          fontStyle="italic"
+                          textAnchor="middle">
+                          {label.name}
+                        </SvgText>
                       ))}
 
                       {/* Building outlines and point pins */}

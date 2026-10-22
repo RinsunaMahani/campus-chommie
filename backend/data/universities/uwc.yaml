@@ -78,9 +78,23 @@ applications:
       closes: 2026-09-30
       note: "Dentistry and Oral Health closed on 31 August 2026."
 
+# Campuses from the university's own page (s-uwc-campus-tour), read in a browser on 22 Oct 2026 (its site refuses
+# scripts; docs/research/campuses-uj-uwc.md). Agent draft.
+campuses:
+  - {id: main, name: "Main campus (Bellville)", source: s-uwc-campus-tour}
+  - {id: tygerberg, name: "Tygerberg (Faculty of Dentistry)", note: "At Tygerberg Hospital, Parow Valley.", source: s-uwc-campus-tour}
+  - {id: mitchells_plain, name: "Mitchell's Plain (Faculty of Dentistry)", note: "At Melomed Mitchells Plain Private Hospital.", source: s-uwc-campus-tour}
+
 programmes: []
 
 sources:
+  - id: s-uwc-campus-tour
+    url: "https://www.uwc.ac.za/about/uwc-at-a-glance/campus-tour"
+    publisher: "University of the Western Cape"
+    title: "Campus Tour"
+    retrieved: 2026-10-22
+    last_verified: null
+    verified_by: "agent draft, needs human check"
   - id: s-uwc-aps
     url: "https://www.uwc.ac.za/admission-point-score-calculator/south-african-aps-calculator"
     publisher: "University of the Western Cape"

@@ -91,6 +91,29 @@ def test_a_campus_with_its_shape_bounds_and_places():
     assert v.source_url == "https://www.openstreetmap.org/way/1"
 
 
+def test_streets_widen_the_map_so_the_roads_that_lead_in_show():
+    road = {"kind": "road", "name": "Lynnwood Road", "line": [[-25.7495, 28.21], [-25.7495, 28.24]]}
+    m = UniversityMap.model_validate(umap(place("w1", "Library")) | {
+        "campuses": [{"campus": "main", "source": "s-osm", "outline": [SQUARE], "places": [place("w1", "Library")],
+                      "streets": [road, {"kind": "path", "line": [[-25.755, 28.221], [-25.756, 28.229]]}]}],
+    })
+    v = campus_view(university(), m, "main")
+    assert [(s.kind, s.name) for s in v.streets] == [("road", "Lynnwood Road"), ("path", None)]
+    assert v.south_west == pytest.approx((-25.7611, 28.2189)) and v.north_east == pytest.approx((-25.7489, 28.2311))
+
+
+def test_a_street_is_a_line_in_south_africa():
+    with pytest.raises(ValidationError):
+        UniversityMap.model_validate(umap() | {"campuses": [{"campus": "main", "source": "s-osm", "outline": [SQUARE],
+                                                             "streets": [{"kind": "road", "line": [[-25.75, 28.22]]}]}]})
+    with pytest.raises(ValidationError, match="outside South Africa"):
+        UniversityMap.model_validate(umap() | {"campuses": [{"campus": "main", "source": "s-osm", "outline": [SQUARE],
+                                                             "streets": [{"kind": "road", "line": [[-25.75, 28.22], [51.5, -0.1]]}]}]})
+    with pytest.raises(ValidationError):
+        UniversityMap.model_validate(umap() | {"campuses": [{"campus": "main", "source": "s-osm", "outline": [SQUARE],
+                                                             "streets": [{"kind": "highway", "line": [[-25.75, 28.22], [-25.75, 28.23]]}]}]})
+
+
 def test_a_campus_whose_buildings_have_no_names_says_so():
     v = campus_view(university(), UniversityMap.model_validate(umap(place("w1"), place("w2"))), "main")
     assert v.lines == [
@@ -137,7 +160,7 @@ def test_the_credit_and_the_licence_openstreetmap_asks_for():
 
 def test_the_shipped_maps_load_and_name_only_campuses_we_have():
     maps, catalogue = load_maps(), load_catalogue()
-    assert set(maps) == {"up", "tut", "smu"}
+    assert {"up", "tut", "smu"} <= set(maps) <= set(catalogue)  # more universities as their maps are fetched
     for uni, m in maps.items():
         campus_ids = {c.id for c in catalogue[uni].campuses}
         assert {c.campus for c in m.campuses} <= campus_ids

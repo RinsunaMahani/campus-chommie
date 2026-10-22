@@ -16,7 +16,7 @@ import { SupportSections } from '@/features/support/components/SupportSections';
 import { SupportKind } from '@/features/support/types';
 
 import { courseFinderApi } from '../api/courseFinderApi';
-import CampusMapScreen from '../screens/CampusMapScreen';
+import CampusMapScreen, { streetLabels } from '../screens/CampusMapScreen';
 import { UniversityMapAnswer } from '../types';
 import mapFixture from './fixtures/universityMap.json';
 
@@ -154,4 +154,22 @@ test('SupportSections offers "Show on map" when a support service has a place on
   expect(showBtn).toBeTruthy();
   fireEvent.press(showBtn);
   expect(onShowOnMap).toHaveBeenCalledWith('w484352680');
+});
+
+test('each named road is labelled once, on its longest stretch, longest roads first, at most six', () => {
+  const flat = ([lat, lon]: [number, number]): [number, number] => [lon * 100, -lat * 100];
+  const labels = streetLabels(
+    [
+      { kind: 'road', name: 'Molotlegi Street', line: [[-25.6, 28.0], [-25.6, 28.1]] },
+      { kind: 'road', name: 'Molotlegi Street', line: [[-25.6, 28.1], [-25.6, 28.12], [-25.6, 28.14]] },
+      { kind: 'road', name: 'Short Lane', line: [[-25.61, 28.0], [-25.61, 28.01]] },
+      { kind: 'road', name: null, line: [[-25.62, 28.0], [-25.62, 28.2]] },
+      { kind: 'path', name: 'Campus Walk', line: [[-25.63, 28.0], [-25.63, 28.3]] },
+    ],
+    flat,
+  );
+  expect(labels.map((l) => l.name)).toEqual(['Molotlegi Street', 'Short Lane']); // no unnamed road, no path
+  expect(labels[0].x).toBeCloseTo(2805); // halfway along its first, longer stretch
+  const many = Array.from({ length: 9 }, (_, i) => ({ kind: 'road' as const, name: `Road ${i}`, line: [[-25.6, 28], [-25.6, 28 + (i + 1) / 100]] as [number, number][] }));
+  expect(streetLabels(many, flat)).toHaveLength(6);
 });

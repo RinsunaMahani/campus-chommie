@@ -31,6 +31,10 @@ applications:
 # Minimum points are on SPU's own scale (levels to 8, with extra points for Mathematics, a home language and
 # Life Orientation): the app can't check them until SPU says how many subjects count. Page numbers are the
 # online prospectus viewer's (docs/research/spu.md also gives the printed ones).
+# Campuses from the university's own page (s-spu-prospectus), read on 22 Oct 2026. Agent draft.
+campuses:
+  - {id: kimberley, name: "Kimberley", note: "OpenStreetMap draws it in two parts: the central site and South Campus.", source: s-spu-prospectus}
+
 programmes:
 
   # Faculty of Education (2027 prospectus, pages 7 to 9)

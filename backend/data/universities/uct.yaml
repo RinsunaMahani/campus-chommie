@@ -32,6 +32,11 @@ applications:
       closes: 2026-07-31
       note: "Fine Art portfolios were due by 31 August 2026."
 
+# Campuses from the university's own page (s-uct-prospectus-2027), read on 22 Oct 2026. Agent draft.
+campuses:
+  - {id: main, name: "Upper, Middle and Lower (Rondebosch)", note: "UCT's prospectus names its Upper, Middle and Lower campuses; OpenStreetMap draws them as one.", source: s-uct-prospectus-2027}
+  - {id: health_sciences, name: "Health Sciences (Observatory)", source: s-uct-prospectus-2027}
+
 programmes:
 
   # Commerce (prospectus pages 23 to 31). Applicants choose one of four codes (directions, page 17): Actuarial

@@ -1,6 +1,6 @@
 # Which OpenStreetMap outline is which of our campuses (scripts/fetch_osm_maps.py reads this).
 # A campus with two parts lists both. Campuses not here have no outline in OpenStreetMap yet:
-# UP Hillcrest and GIBS; TUT Soshanguve North, eMalahleni, Mbombela and Polokwane.
+# UP Hillcrest; TUT Soshanguve North and eMalahleni (checked 22 Oct 2026, docs/research/osm-missing-campuses.md).
 
 up:
   hatfield: {name: "University of Pretoria (Hatfield)", osm: [relation/17478004]}
@@ -8,6 +8,7 @@ up:
   prinshof: {name: "University of Pretoria (Prinshof Campus)", osm: [way/1010238957, way/1098735040]}
   onderstepoort: {name: "University of Pretoria, Onderstepoort Campus", osm: [way/427085320, way/236250989]}
   mamelodi: {name: "University of Pretoria Mamelodi Campus", osm: [way/1009606676]}
+  gibs: {name: "Gordon Institute of Business Science", osm: [way/644007262]}
 
 tut:
   pretoria: {name: "TUT Pretoria Campus", osm: [way/63131200]}
@@ -15,6 +16,109 @@ tut:
   arcadia: {name: "TUT Arcadia Campus", osm: [way/723941347]}
   ga_rankuwa: {name: "Tshwane University of Technology: Ga-Rankuwa Campus", osm: [way/293217287]}
   soshanguve_south: {name: "Tshwane University of Technology - Soshanguve South Campus", osm: [way/413120107]}
+  mbombela: {name: "Tshwane University of Technology (Mbombela)", osm: [way/797721704]}
+  polokwane: {name: "Tshwane University of Technology (Polokwane)", osm: [way/559239184]}
 
 smu:
   ga_rankuwa: {name: "Sefako Makgatho Health Sciences University", osm: [way/86253741]}
+
+cput:
+  bellville: {name: "Cape Peninsula University of Technology (Bellville Campus)", osm: [way/61135217]}
+  district_six: {name: "Cape Peninsula University of Technology (District Six Campus)", osm: [way/32441912]}
+  granger_bay: {name: "Cape Peninsula University of Technology (Granger Bay Campus)", osm: [way/253456002]}
+  mowbray: {name: "Cape Peninsula University of Technology (Mowbray Campus)", osm: [way/32442594]}
+  wellington: {name: "Cape Peninsula University of Technology (Wellington Campus)", osm: [way/244513838, way/911271720]}
+
+cut:
+  welkom: {name: "Central University of Technology (Welkom)", osm: [way/446516650]}
+
+dut:
+  steve_biko: {name: "DUT: Steve Biko Campus", osm: [way/712499206]}
+  ritson: {name: "DUT: Ritson Campus", osm: [way/712499215]}
+  ml_sultan: {name: "DUT: M.L. Sultan Campus", osm: [way/404322344]}
+  city: {name: "Durban University of Technology, City Campus", osm: [way/1165590128]}
+  indumiso: {name: "Durban University of Technology Indumiso Campus", osm: [way/193459917]}
+
+mut:
+  main: {name: "Mangosuthu University of Technology", osm: [way/539422331]}
+
+nmu:
+  south: {name: "Nelson Mandela University South Campus", osm: [way/29795905]}
+  north: {name: "Nelson Mandela University North Campus", osm: [way/29796659]}
+  second_avenue: {name: "Nelson Mandela University Second Avenue Campus", osm: [way/323461298]}
+  bird_street: {name: "Nelson Mandela University Bird Street Campus", osm: [way/568187014]}
+  missionvale: {name: "Nelson Mandela University Missionvale Campus", osm: [way/170403382]}
+  ocean_sciences: {name: "Nelson Mandela University Ocean Sciences Campus", osm: [way/568349151]}
+  george: {name: "NMU George Campus", osm: [way/798417463]}
+
+nwu:
+  potchefstroom: {name: "North West University (Potchefstroom)", osm: [way/169314363]}
+  mahikeng: {name: "North-West University, Mahikeng Campus", osm: [relation/18907305]}
+  vanderbijlpark: {name: "North-West University Vanderbijlpark Campus", osm: [way/147743194]}
+
+ru:
+  makhanda: {name: "Rhodes University", osm: [way/113898201]}
+
+spu:
+  kimberley: {name: "Sol Plaatje University", osm: [way/352140456, way/235221005]}
+
+ufs:
+  bloemfontein: {name: "University of the Free State", osm: [way/786907479]}
+  south: {name: "University of The Free State South Campus", osm: [way/402989184]}
+  qwaqwa: {name: "University of The Free State Qwaqwa Campus", osm: [way/404094260]}
+
+ukzn:
+  edgewood: {name: "University of KwaZulu-Natal (Edgewood College Campus)", osm: [way/444909398]}
+  howard_college: {name: "University of KwaZulu-Natal, Howard College", osm: [way/446701144]}
+  pietermaritzburg: {name: "University of Kwazulu-Natal Pietermaritzburg Campus", osm: [way/122850251]}
+  westville: {name: "University of KwaZulu-Natal, Westville", osm: [way/446703003]}
+
+ul:
+  turfloop: {name: "University of Limpopo", osm: [way/432100729]}
+
+ump:
+  mbombela: {name: "University of Mpumalanga", osm: [relation/20217879]}
+  siyabuswa: {name: "UMP Siyabuswa Campus", osm: [way/481126406]}
+
+unisa:
+  muckleneuk: {name: "University of South Africa - Muckleneuk Campus", osm: [way/259367736]}
+  sunnyside: {name: "UNISA Sunnyside Campus", osm: [way/42762484]}
+  science: {name: "UNISA Florida Campus", osm: [way/243127471]}
+
+univen:
+  thohoyandou: {name: "University of Venda", osm: [way/460936140]}
+
+unizulu:
+  kwadlangezwa: {name: "University of Zululand", osm: [way/204483052, way/798425829]}
+  richards_bay: {name: "University of Zululand Richards Bay Campus", osm: [way/442913612]}
+
+vut:
+  vanderbijlpark: {name: "Vaal University of Technology", osm: [way/89721394]}
+
+wsu:
+  mthatha: {name: "Walter Sisulu University (Mthatha)", osm: [way/104862876]}
+  butterworth: {name: "Walter Sisulu University (Butterworth)", osm: [way/437281755]}
+  buffalo_city: {name: "Walter Sisulu University - Chiselhurst Campus", osm: [way/1499545577, way/413622524]}
+  komani: {name: "Walter Sisulu University - Komani Campus", osm: [way/1532034786]}
+
+uct:
+  main: {name: "University of Cape Town", osm: [relation/2034106]}
+  health_sciences: {name: "University of Cape Town Medical School", osm: [way/32442588]}
+
+wits:
+  braamfontein: {name: "University of the Witwatersrand (Braamfontein)", osm: [way/26327830, way/532411578]}
+  education: {name: "University of the Witwatersrand Education Campus", osm: [way/26352932]}
+  parktown: {name: "University of the Witwatersrand Medical School", osm: [way/26352996, way/35933526]}
+
+su:
+  stellenbosch: {name: "Stellenbosch University", osm: [relation/17241949]}
+  tygerberg: {name: "Stellenbosch University, Health Sciences Faculty", osm: [way/51773802]}
+
+uj:
+  apk: {name: "University of Johannesburg Auckland Park Kingsway Campus", osm: [way/22568870]}
+  apb: {name: "University of Johannesburg APB Campus", osm: [way/250913366]}
+  dfc: {name: "University of Johannesburg - Doornfontein Campus", osm: [way/62217243]}
+  swc: {name: "UJ Soweto Campus", osm: [way/240445848]}
+
+uwc:
+  main: {name: "University of the Western Cape", osm: [way/61134873]}

@@ -56,6 +56,10 @@ applications:
       closes: 2026-09-30
       note: "Applications opened 1 April 2026 and closed 30 September 2026."
 
+# Campuses from the university's own page (s-ru-where), read on 22 Oct 2026. Agent draft.
+campuses:
+  - {id: makhanda, name: "Makhanda", source: s-ru-where}
+
 programmes:
 
   # Commerce Faculty (prospectus pages 11 and 12)

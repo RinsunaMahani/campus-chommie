@@ -56,6 +56,8 @@ def _campus(v: CampusView) -> dict:
             }
             for p in v.places
         ],
+        # Roads around the campus and paths across it, drawn under the buildings.
+        "streets": [{"kind": s.kind, "name": s.name, "line": s.line} for s in v.streets],
         "support": [{"kind": s.kind, "name": s.name, "place": s.place_id} for s in v.support],
         "lines": v.lines,
         "source_url": v.source_url,

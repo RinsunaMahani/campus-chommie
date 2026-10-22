@@ -713,13 +713,26 @@ class Place(_Strict):
     name_source: str | None = None  # set when a person named it on campus: their source
 
 
+StreetKind = Literal["road", "path"]
+
+
+class Street(_Strict):
+    """A road around a campus or a path across it, from OpenStreetMap, drawn under the buildings so a student can
+    find the way in. A name nobody gave stays None."""
+
+    kind: StreetKind
+    name: str | None = None
+    line: list[LatLon] = Field(min_length=2)
+
+
 class CampusMap(_Strict):
-    """One campus: its outline (one or more parts) and the places inside it."""
+    """One campus: its outline (one or more parts), the places inside it, and the streets around and across it."""
 
     campus: str
     source: str
     outline: list[Ring] = Field(min_length=1)
     places: list[Place] = Field(default_factory=list)
+    streets: list[Street] = Field(default_factory=list)
 
     @property
     def bounds(self) -> tuple[LatLon, LatLon]:
@@ -754,6 +767,7 @@ class UniversityMap(_Strict):
             if len(set(ids)) != len(ids):
                 problems.append(f"{c.campus}: place ids must be unique")
             points = [pt for ring in c.outline for pt in ring] + [p.centre for p in c.places]
+            points += [pt for s in c.streets for pt in s.line]
             if any(not (south <= lat <= north and west <= lon <= east) for lat, lon in points):
                 problems.append(f"{c.campus}: a point lies outside South Africa")
             (s, w), (n, e) = c.bounds
