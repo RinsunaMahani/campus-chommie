@@ -3,8 +3,8 @@
 # Agent draft, read on 13 Oct 2026 (docs/research/universities.md). UKZN's sites didn't answer from our
 # network that day, so these values came from a search engine's copy of UKZN's own pages; a person should
 # open each and check it. Nobody has checked these values yet: release stays false until a person has
-# compared every one with its source. Programmes aren't added yet: only how UKZN counts points, and how
-# and when to apply.
+# compared every one with its source. The 66 programmes, added on 22 Oct 2026, come from UKZN's own 2027
+# Undergraduate Prospectus, checked against the CAO's 2027 handbook (docs/research/ukzn.md).
 
 university: ukzn
 name: University of KwaZulu-Natal
@@ -41,6 +41,10 @@ applications:
       source: s-ukzn-2027
       opens: null
       closes: 2026-09-30
+      programme_closes:
+        - closes: 2026-06-30
+          source: s-ukzn-prospectus-2027   # printed p10 and p95: MBChB form and payment by 30 June 2026
+          programmes: [mbchb]
       note: "Medicine closed on 30 June 2026, with no late applications."
 
 # Campuses from the university's own page (s-ukzn-campuses), read on 22 Oct 2026. Agent draft.
@@ -51,9 +55,1126 @@ campuses:
   - {id: pietermaritzburg, name: "Pietermaritzburg", source: s-ukzn-campuses}
   - {id: westville, name: "Westville", source: s-ukzn-campuses}
 
-programmes: []
+# Requirements from UKZN's 2027 Undergraduate Prospectus (s-ukzn-prospectus-2027): its tables "The following
+# programmes are available in 2027" (printed pages 20 to 24) and its college sections (printed pages 80 to 124).
+# min_points is the bottom of the table's "APS range" (48-30 gives 30). Every requirement was compared with the
+# CAO's 2027 handbook (s-ukzn-cao-2027); where they differ, UKZN's own prospectus is used and an extras line says
+# what the CAO says. Each programme's comment gives its CAO code(s) and the prospectus page. Agent draft, 22 Oct 2026.
+#
+# "One of ... at level 5" in the College of Humanities' rule (Bus Stud, Cons Stud, Dram Arts, Econ, Geog, Hist,
+# Info Tech, Life Sci, Maths/Maths Lit, Music, Religion Stud, Vis Arts, any language HL/FAL 5): English itself
+# counts as "any language", so English sits inside each option (English 5, or English 4 with another subject at 5).
+# Religion Studies isn't a subject the app knows; extras say so.
+
+programmes:
+
+  # College of Agriculture, Engineering and Science: engineering and architecture (prospectus p20, p81-87)
+
+  - id: bsc_eng_agricultural                            # KN-P-BEA, p20, p83, p85
+    name: "Bachelor of Science in Engineering (Agricultural)"
+    faculty: "College of Agriculture, Engineering and Science"
+    fields: [engineering, agriculture]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 33
+      subject_minimums: {english: 4, life_orientation: 4}
+      subject_min_percents: {mathematics: 65, physical_sciences: 65}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Mathematics and Physical Sciences at level 5, with at least 65% in each. Mathematical Literacy isn't accepted in place of Mathematics."
+        - "First year at Pietermaritzburg, second year at Howard College, third and fourth years at Pietermaritzburg."
+
+  - id: bsc_eng_chemical                                # KN-H-BEC, p20, p83, p85
+    name: "Bachelor of Science in Engineering (Chemical)"
+    faculty: "College of Agriculture, Engineering and Science"
+    fields: [engineering]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 33
+      subject_minimums: {english: 4, life_orientation: 4}
+      subject_min_percents: {mathematics: 65, physical_sciences: 65}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Mathematics and Physical Sciences at level 5, with at least 65% in each. Mathematical Literacy isn't accepted in place of Mathematics."
+        - "Offered at Howard College only."
+
+  - id: bsc_eng_civil                                   # KN-H-BEV, KN-P-BEV, p20, p83, p85
+    name: "Bachelor of Science in Engineering (Civil)"
+    faculty: "College of Agriculture, Engineering and Science"
+    fields: [engineering]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 33
+      subject_minimums: {english: 4, life_orientation: 4}
+      subject_min_percents: {mathematics: 65, physical_sciences: 65}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Mathematics and Physical Sciences at level 5, with at least 65% in each. Mathematical Literacy isn't accepted in place of Mathematics."
+        - "First year at Howard College or Pietermaritzburg (each has its own CAO code); years two to four at Howard College."
+
+  - id: bsc_eng_computer                                # KN-H-BEK, KN-P-BEK, p20, p83, p85
+    name: "Bachelor of Science in Engineering (Computer)"
+    faculty: "College of Agriculture, Engineering and Science"
+    fields: [engineering, computing]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 33
+      subject_minimums: {english: 4, life_orientation: 4}
+      subject_min_percents: {mathematics: 65, physical_sciences: 65}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Mathematics and Physical Sciences at level 5, with at least 65% in each. Mathematical Literacy isn't accepted in place of Mathematics."
+        - "First year at Howard College or Pietermaritzburg (each has its own CAO code); years two to four at Howard College."
+
+  - id: bsc_eng_electrical                              # KN-H-BEE, KN-P-BEE, p20, p83, p85
+    name: "Bachelor of Science in Engineering (Electrical)"
+    faculty: "College of Agriculture, Engineering and Science"
+    fields: [engineering]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 33
+      subject_minimums: {english: 4, life_orientation: 4}
+      subject_min_percents: {mathematics: 65, physical_sciences: 65}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Mathematics and Physical Sciences at level 5, with at least 65% in each. Mathematical Literacy isn't accepted in place of Mathematics."
+        - "First year at Howard College or Pietermaritzburg (each has its own CAO code); years two to four at Howard College."
+
+  - id: bsc_eng_electronic                              # KN-H-BEF, KN-P-BEF, p20, p83, p85
+    name: "Bachelor of Science in Engineering (Electronic)"
+    faculty: "College of Agriculture, Engineering and Science"
+    fields: [engineering]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 33
+      subject_minimums: {english: 4, life_orientation: 4}
+      subject_min_percents: {mathematics: 65, physical_sciences: 65}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Mathematics and Physical Sciences at level 5, with at least 65% in each. Mathematical Literacy isn't accepted in place of Mathematics."
+        - "First year at Howard College or Pietermaritzburg (each has its own CAO code); years two to four at Howard College."
+
+  - id: bsc_eng_mechanical                              # KN-H-BEM, KN-P-BEM, p20, p83, p85
+    name: "Bachelor of Science in Engineering (Mechanical)"
+    faculty: "College of Agriculture, Engineering and Science"
+    fields: [engineering]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 33
+      subject_minimums: {english: 4, life_orientation: 4}
+      subject_min_percents: {mathematics: 65, physical_sciences: 65}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Mathematics and Physical Sciences at level 5, with at least 65% in each. Mathematical Literacy isn't accepted in place of Mathematics."
+        - "First year at Howard College or Pietermaritzburg (each has its own CAO code); years two to four at Howard College."
+
+  - id: bsc_land_surveying                              # KN-H-BSL, p20, p82-83, p87
+    name: "Bachelor of Science in Land Surveying"
+    faculty: "College of Agriculture, Engineering and Science"
+    fields: [built_environment, engineering]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 33
+      subject_minimums: {english: 4, life_orientation: 4}
+      subject_min_percents: {mathematics: 65, physical_sciences: 65}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Mathematics and Physical Sciences at level 5, with at least 65% in each. Mathematical Literacy isn't accepted in place of Mathematics."
+        - "Offered at Howard College only."
+
+  - id: b_architectural_studies                         # KN-H-BAR, p20, p81
+    name: "Bachelor of Architectural Studies"
+    faculty: "College of Agriculture, Engineering and Science"
+    fields: [built_environment, arts_and_design]
+    selective: true
+    selection_note: "You submit a portfolio of creative work, write an essay and complete a questionnaire; UKZN says these influence who is selected."
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 30
+      subject_minimums: {mathematics: 5, life_orientation: 4}
+      choices:
+        - one_of:
+            - subjects: {english: 5}
+            - subjects: {english: 4, other_language: 5}
+            - subjects: {english: 4, business_studies: 5}
+            - subjects: {english: 4, consumer_studies: 5}
+            - subjects: {english: 4, dramatic_arts: 5}
+            - subjects: {english: 4, economics: 5}
+            - subjects: {english: 4, geography: 5}
+            - subjects: {english: 4, history: 5}
+            - subjects: {english: 4, information_technology: 5}
+            - subjects: {english: 4, life_sciences: 5}
+            - subjects: {english: 4, music: 5}
+            - subjects: {english: 4, visual_arts: 5}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "English at level 4, and one of these at level 5: Business Studies, Consumer Studies, Dramatic Arts, Economics, Geography, History, Information Technology, Life Sciences, Music, Religion Studies, Visual Arts or any language. The app can't check Religion Studies: if that's yours, check with UKZN."
+        - "Offered at Howard College."
+
+  # College of Agriculture, Engineering and Science: agriculture (prospectus p20-21, p88-90; Pietermaritzburg only)
+
+  - id: bsc_agric_agricultural_economics                # KN-P-SAE, p20, p88
+    name: "Bachelor of Science in Agriculture (Agricultural Economics)"
+    faculty: "College of Agriculture, Engineering and Science"
+    fields: [agriculture, economics]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 28
+      subject_minimums: {english: 4, life_orientation: 4, mathematics: 4}
+      choices:
+        - one_of:
+            - subjects: {agricultural_sciences: 4}
+            - subjects: {economics: 4}
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Offered at Pietermaritzburg."
+
+  - id: b_agricultural_management                       # KN-P-BAQ, p20, p88-89
+    name: "Bachelor of Agricultural Management"
+    faculty: "College of Agriculture, Engineering and Science"
+    fields: [agriculture, management]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 28
+      subject_minimums: {english: 4, life_orientation: 4, mathematics: 4}
+      choices:
+        - one_of:
+            - subjects: {agricultural_sciences: 4}
+            - subjects: {economics: 4}
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Offered at Pietermaritzburg."
+
+  - id: bsc_agric_plant_sciences                        # KN-P-SAP, p20, p88, p90
+    name: "Bachelor of Science in Agriculture (Agricultural Plant Sciences)"
+    faculty: "College of Agriculture, Engineering and Science"
+    fields: [agriculture, life_sciences]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 28
+      subject_minimums: {english: 4, life_orientation: 4, mathematics: 4}
+      choices:
+        - one_of:
+            - subjects: {agricultural_sciences: 4}
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Offered at Pietermaritzburg."
+
+  - id: bsc_agric_agribusiness                          # KN-P-BSB, p20, p88, p90
+    name: "Bachelor of Science in Agriculture (Agribusiness)"
+    faculty: "College of Agriculture, Engineering and Science"
+    fields: [agriculture, commerce]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 28
+      subject_minimums: {english: 4, life_orientation: 4, mathematics: 4}
+      choices:
+        - one_of:
+            - subjects: {agricultural_sciences: 4}
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Offered at Pietermaritzburg."
+
+  - id: bsc_agric_plant_pathology                       # KN-P-BSP, p20, p88
+    name: "Bachelor of Science in Agriculture (Plant Pathology)"
+    faculty: "College of Agriculture, Engineering and Science"
+    fields: [agriculture, life_sciences]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 28
+      subject_minimums: {english: 4, life_orientation: 4, mathematics: 4}
+      choices:
+        - one_of:
+            - subjects: {agricultural_sciences: 4}
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Offered at Pietermaritzburg."
+
+  - id: bsc_agric_soil_science                          # KN-P-BS1 in the prospectus, KN-P-BSI in the CAO handbook; p21, p88
+    name: "Bachelor of Science in Agriculture (Soil Science)"
+    faculty: "College of Agriculture, Engineering and Science"
+    fields: [agriculture, earth_sciences]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 28        # the p21 table leaves the APS cell empty; p88 gives 28 for the B Sc in Agriculture
+      subject_minimums: {english: 4, life_orientation: 4, mathematics: 4}
+      choices:
+        - one_of:
+            - subjects: {agricultural_sciences: 4}
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Offered at Pietermaritzburg."
+        - "UKZN's prospectus gives the CAO code as KN-P-BS1; the CAO's handbook gives KN-P-BSI. Check the code with the CAO."
+
+  - id: bsc_agric_animal_poultry_science                # KN-P-SAA, p21, p88, p90
+    name: "Bachelor of Science in Agriculture (Animal and Poultry Science)"
+    faculty: "College of Agriculture, Engineering and Science"
+    fields: [agriculture]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 28        # the p21 table leaves the APS cell empty; p88 gives 28 for the B Sc in Agriculture
+      subject_minimums: {english: 4, life_orientation: 4, mathematics: 4}
+      choices:
+        - one_of:
+            - subjects: {agricultural_sciences: 4}
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Offered at Pietermaritzburg."
+
+  # College of Agriculture, Engineering and Science: science (prospectus p21, p86-89; Westville and Pietermaritzburg)
+
+  - id: bsc_life_earth_sciences                         # KN-P-BS2, KN-W-BS2, p21, p88-89
+    name: "Bachelor of Science (Life and Earth Sciences stream)"
+    faculty: "College of Agriculture, Engineering and Science"
+    fields: [natural_sciences, life_sciences, earth_sciences]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 28        # the p21 table leaves the APS cell empty; p88 (1a) gives 28 for the Life and Earth Sciences stream
+      subject_minimums: {english: 4, life_orientation: 4, mathematics: 4}
+      choices:
+        - one_of:
+            - subjects: {agricultural_sciences: 4}
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Two majors, such as Biochemistry, Biology, Genetics or Microbiology. Offered at Westville and Pietermaritzburg (each has its own CAO code); not every major is on both."
+        - "The CAO's 2027 handbook doesn't list this code: it lists a \"B Sc Generic Degree\" (KN-P-BG4, KN-W-BG4) at 28 points with the same subjects. Check which code to use with the CAO or UKZN."
+
+  - id: bsc_mathematical_stream                         # KN-P-BS3, KN-W-BS3, p21, p88-89
+    name: "Bachelor of Science (Mathematics stream)"
+    faculty: "College of Agriculture, Engineering and Science"
+    fields: [natural_sciences, mathematical_sciences, physical_sciences]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, life_orientation: 4, mathematics: 5}
+      choices:
+        - one_of:
+            - subjects: {agricultural_sciences: 4}
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "For majors with more Mathematics, such as Mathematics, Statistics, Physics and Computer Science. Offered at Westville and Pietermaritzburg (each has its own CAO code); not every major is on both."
+        - "The CAO's 2027 handbook doesn't list this code: it lists a \"B Sc Generic Degree\" (KN-P-BG4, KN-W-BG4) at 28 points with Mathematics at level 4. Check which code to use with the CAO or UKZN."
+
+  - id: bsc_gis_earth_observation                       # KN-P-GEO, p21
+    name: "Bachelor of Science in Geographic Information Systems and Earth Observation"
+    faculty: "College of Agriculture, Engineering and Science"
+    fields: [earth_sciences, computing]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, life_orientation: 4, mathematics: 5}
+      choices:
+        - one_of:
+            - subjects: {agricultural_sciences: 4}
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Offered at Pietermaritzburg."
+        - "The CAO's 2027 handbook asks for 28 points and Mathematics at level 4; UKZN's prospectus asks for 30 and level 5."
+
+  - id: bsc_applied_chemistry                           # KN-W-BSR, p21, p86
+    name: "Bachelor of Science in Applied Chemistry"
+    faculty: "College of Agriculture, Engineering and Science"
+    fields: [physical_sciences, natural_sciences]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 28
+      subject_minimums: {english: 4, life_orientation: 4, mathematics: 4}
+      choices:
+        - one_of:
+            - subjects: {agricultural_sciences: 4}
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Offered at Westville."
+        - "The CAO's 2027 handbook doesn't list this programme code; check it with the CAO or UKZN."
+
+  - id: bsc_chemistry_chemical_technology               # KN-P-SIK, p21, p86
+    name: "Bachelor of Science in Chemistry and Chemical Technology"
+    faculty: "College of Agriculture, Engineering and Science"
+    fields: [physical_sciences, natural_sciences]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 28
+      subject_minimums: {english: 4, life_orientation: 4, mathematics: 4}
+      choices:
+        - one_of:
+            - subjects: {agricultural_sciences: 4}
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Offered at Pietermaritzburg."
+        - "The CAO's 2027 handbook doesn't list this programme code; check it with the CAO or UKZN."
+
+  - id: bsc_computer_science_it                         # KN-P-BSU, KN-W-BSU, p21, p86
+    name: "Bachelor of Science in Computer Science and Information Technology"
+    faculty: "College of Agriculture, Engineering and Science"
+    fields: [computing]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, life_orientation: 4, mathematics: 5}
+      choices:
+        - one_of:
+            - subjects: {agricultural_sciences: 4}
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Offered at Westville and Pietermaritzburg (each has its own CAO code)."
+        - "The CAO's 2027 handbook asks for 28 points and Mathematics at level 4; UKZN's prospectus asks for 30 and level 5."
+
+  - id: bsc_crop_horticultural_science                  # KN-P-SIH, p21, p86
+    name: "Bachelor of Science in Crop and Horticultural Science"
+    faculty: "College of Agriculture, Engineering and Science"
+    fields: [agriculture, life_sciences]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 28
+      subject_minimums: {english: 4, life_orientation: 4, mathematics: 4}
+      choices:
+        - one_of:
+            - subjects: {agricultural_sciences: 4}
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Offered at Pietermaritzburg."
+        - "The CAO's 2027 handbook doesn't list this programme code; check it with the CAO or UKZN."
+
+  - id: bsc_environmental_science                       # KN-P-BSS, KN-W-BSS, p21, p86
+    name: "Bachelor of Science in Environmental Science"
+    faculty: "College of Agriculture, Engineering and Science"
+    fields: [earth_sciences, life_sciences]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 28
+      subject_minimums: {english: 4, life_orientation: 4, mathematics: 4}
+      choices:
+        - one_of:
+            - subjects: {agricultural_sciences: 4}
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Offered at Westville and Pietermaritzburg (each has its own CAO code)."
+
+  - id: bsc_environmental_earth_science                 # KN-P-EES, p21, p86
+    name: "Bachelor of Science in Environmental and Earth Science"
+    faculty: "College of Agriculture, Engineering and Science"
+    fields: [earth_sciences]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 28
+      subject_minimums: {english: 4, life_orientation: 4, mathematics: 4}
+      choices:
+        - one_of:
+            - subjects: {agricultural_sciences: 4}
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Offered at Pietermaritzburg."
+        - "The CAO's 2027 handbook doesn't list this programme code; check it with the CAO or UKZN."
+
+  - id: bsc_geological_science                          # KN-W-BSG, p21, p86-87
+    name: "Bachelor of Science in Geological Science"
+    faculty: "College of Agriculture, Engineering and Science"
+    fields: [earth_sciences]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 28
+      subject_minimums: {english: 4, life_orientation: 4, mathematics: 4}
+      choices:
+        - one_of:
+            - subjects: {agricultural_sciences: 4}
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Offered at Westville only."
+
+  - id: bsc_marine_biology                              # KN-W-BSM, p21, p86
+    name: "Bachelor of Science in Marine Biology"
+    faculty: "College of Agriculture, Engineering and Science"
+    fields: [life_sciences, natural_sciences]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 28
+      subject_minimums: {english: 4, life_orientation: 4, mathematics: 4}
+      choices:
+        - one_of:
+            - subjects: {agricultural_sciences: 4}
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Offered at Westville."
+        - "The CAO's 2027 handbook doesn't list this programme code; check it with the CAO or UKZN."
+
+  - id: bsc_augmented                                   # KN-P-BS4, KN-W-BS4, p21, p30, p88
+    name: "Bachelor of Science (Augmented Programme)"
+    faculty: "College of Agriculture, Engineering and Science"
+    fields: [natural_sciences]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 26
+      subject_minimums: {english: 4, life_orientation: 4, mathematics: 3}
+      choices:
+        - one_of:
+            - subjects: {agricultural_sciences: 3}
+            - subjects: {life_sciences: 3}
+            - subjects: {physical_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Four years: the first year is spread over two years, with extra support."
+        - "Only applicants from quintile 1 and 2 schools are considered."
+        - "Not open if you've already studied a full semester at a university or other tertiary institution."
+        - "UKZN says no financial aid is available for this programme."
+        - "Offered at Westville and Pietermaritzburg (each has its own CAO code)."
+
+  - id: bsc_engineering_access                          # KN-H-UNT in the prospectus, KN-H-UNP in the CAO handbook; p21, p29-30
+    name: "Bachelor of Science in Engineering Access Programme"
+    faculty: "College of Agriculture, Engineering and Science"
+    fields: [engineering]
+    selective: true
+    selection_note: "UKZN considers your academic record and personal circumstances, often uses aptitude or other tests, and may ask you to an interview."
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 28
+      subject_minimums: {english: 4, life_orientation: 4, mathematics: 4, physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Five years: an alternative route into the B Sc in Engineering for applicants from disadvantaged schools. Applications from quintile 1 and 2 schools are considered until places are full."
+        - "Not open if you've already studied a full semester at a university or other tertiary institution."
+        - "The CAO's 2027 handbook lists this as KN-H-UNP (B Sc Engineering Extended Programme) at 33 points; UKZN's prospectus gives KN-H-UNT at 28. Check the code and points with UKZN."
+        - "Offered at Howard College."
+
+  # College of Health Sciences (prospectus p22, p93-103)
+
+  - id: b_audiology                                     # KN-W-BPA, p22, p98
+    name: "Bachelor of Audiology"
+    faculty: "College of Health Sciences"
+    fields: [rehabilitation, health_sciences]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, life_orientation: 4, mathematics: 3}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 3}
+            - subjects: {physical_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Only applicants who put this programme as their first, second or third choice are considered."
+        - "Clinical placements outside Durban (some in rural KwaZulu-Natal) are compulsory; you pay your own travel, accommodation and living costs there."
+        - "No late applications. Offered at Westville."
+
+  - id: b_speech_language_therapy                       # KN-W-BPB, p22, p98
+    name: "Bachelor of Speech-Language Therapy"
+    faculty: "College of Health Sciences"
+    fields: [rehabilitation, health_sciences]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, life_orientation: 4, mathematics: 3}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 3}
+            - subjects: {physical_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Only applicants who put this programme as their first, second or third choice are considered."
+        - "Clinical placements outside Durban (some in rural KwaZulu-Natal) are compulsory; you pay your own travel, accommodation and living costs there."
+        - "No late applications. Offered at Westville."
+
+  - id: b_dental_therapy                                # KN-W-BDT, p22, p98-99
+    name: "Bachelor of Dental Therapy"
+    faculty: "College of Health Sciences"
+    fields: [dentistry]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, life_orientation: 4, life_sciences: 3, mathematics: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Only applicants who put this programme as their first, second or third choice are considered."
+        - "Clinical placements outside Durban (some in rural KwaZulu-Natal) are compulsory; you pay your own travel, accommodation and living costs there."
+        - "No late applications. Offered at Westville."
+
+  - id: b_medical_science_innovation_entrepreneurship   # KN-W-BMS-IE in the prospectus, KN-W-MSI in the CAO handbook; p22
+    name: "Bachelor of Medical Science, Innovation and Entrepreneurship"
+    faculty: "College of Health Sciences"
+    fields: [medical_sciences]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Only applicants who put this programme as their first, second or third choice are considered."
+        - "The CAO's 2027 handbook also asks for Life Orientation at level 4 and gives the code KN-W-MSI; UKZN's prospectus gives KN-W-BMS-IE. Check the code with the CAO."
+        - "Offered at Westville."
+
+  - id: b_occupational_therapy                          # KN-W-BOT, p22, p99-100
+    name: "Bachelor of Occupational Therapy"
+    faculty: "College of Health Sciences"
+    fields: [rehabilitation]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, life_orientation: 4, mathematics: 3}
+      choices:
+        - one_of:
+            - subjects: {life_sciences: 3}
+            - subjects: {physical_sciences: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Only applicants who put this programme as their first, second or third choice are considered."
+        - "Clinical placements outside Durban (some in rural KwaZulu-Natal) are compulsory; you pay your own travel, accommodation and living costs there."
+        - "No late applications. Offered at Westville."
+
+  - id: b_optometry                                     # KN-W-BOP, p22, p100-101
+    name: "Bachelor of Optometry"
+    faculty: "College of Health Sciences"
+    fields: [health_sciences]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 33
+      subject_minimums: {english: 4, life_orientation: 4, mathematics: 4, life_sciences: 4, physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Only applicants who put this programme as their first, second or third choice are considered."
+        - "Clinical placements outside Durban (some in rural KwaZulu-Natal) are compulsory; you pay your own travel, accommodation and living costs there."
+        - "No late applications. Offered at Westville."
+
+  - id: b_oral_hygiene                                  # KN-W-BON, p22, p99
+    name: "Bachelor of Oral Hygiene"
+    faculty: "College of Health Sciences"
+    fields: [dentistry]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, life_orientation: 4, life_sciences: 3, mathematics: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Only applicants who put this programme as their first, second or third choice are considered."
+        - "Clinical placements outside Durban (some in rural KwaZulu-Natal) are compulsory; you pay your own travel, accommodation and living costs there."
+        - "No late applications. Offered at Westville."
+
+  - id: b_pharmacy                                      # KN-W-BPR, p22, p101-102
+    name: "Bachelor of Pharmacy"
+    faculty: "College of Health Sciences"
+    fields: [pharmacy]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 33
+      subject_minimums: {english: 4, life_orientation: 4, mathematics: 4, life_sciences: 4, physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Only applicants who put this programme as their first, second or third choice are considered."
+        - "Clinical placements outside Durban (some in rural KwaZulu-Natal) are compulsory; you pay your own travel, accommodation and living costs there."
+        - "No late applications. Offered at Westville."
+
+  - id: b_physiotherapy                                 # KN-W-BPH, p22, p102
+    name: "Bachelor of Physiotherapy"
+    faculty: "College of Health Sciences"
+    fields: [rehabilitation]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, life_orientation: 4, mathematics: 4, life_sciences: 4, physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Only applicants who put this programme as their first, second or third choice are considered."
+        - "Clinical placements outside Durban (some in rural KwaZulu-Natal) are compulsory; you pay your own travel, accommodation and living costs there."
+        - "No late applications. Offered at Westville."
+
+  - id: bsc_dietetics_human_nutrition                   # KN-P-BSD, p22, p91, p102
+    name: "Bachelor of Science in Dietetics and Human Nutrition"
+    faculty: "College of Health Sciences"
+    fields: [nutrition]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 28
+      subject_minimums: {english: 4, life_orientation: 4, mathematics: 4}
+      choices:
+        - one_of:
+            - subjects: {agricultural_sciences: 4}
+            - subjects: {life_sciences: 4}
+            - subjects: {physical_sciences: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Places are limited: higher marks and applications sent on time come first."
+        - "Clinical placements outside Durban (some in rural KwaZulu-Natal) are compulsory; you pay your own travel, accommodation and living costs there."
+        - "No late applications. Offered at Pietermaritzburg only."
+
+  - id: b_sport_science                                 # KN-W-BRT, p22, p102-103
+    name: "Bachelor of Sport Science"
+    faculty: "College of Health Sciences"
+    fields: [sport_science]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, life_orientation: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Selection is on your Grade 12 results; UKZN prefers applicants who show a keen interest in sport, rehabilitation, high performance and community leisure."
+        - "Clinical placements outside Durban (some in rural KwaZulu-Natal) are compulsory; you pay your own travel, accommodation and living costs there."
+        - "No late applications. Offered at Westville."
+
+  - id: b_nursing                                       # KN-H-BN1, p22, p94
+    name: "Bachelor of Nursing"
+    faculty: "College of Health Sciences"
+    fields: [nursing]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, life_orientation: 4, life_sciences: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Only applicants who put this programme as their first choice are considered."
+        - "Clinical placements outside Durban (some in rural KwaZulu-Natal) are compulsory; you pay your own travel, accommodation and living costs there."
+        - "No late applications. Offered at Howard College."
+
+  - id: mbchb                                           # KN-M-MBC, p22, p94-96
+    name: "Bachelor of Medicine and Bachelor of Surgery (MBChB)"
+    faculty: "College of Health Sciences"
+    fields: [medicine]
+    selective: true
+    selection_note: "Ranked on the average of six subjects, including English, Mathematics, Physical Sciences and Life Sciences (not Life Orientation); places follow target groups set by UKZN's College of Health Sciences."
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: null      # the table gives "N/A": Medicine ranks on your average percentage, not on points
+      subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5, life_sciences: 5, life_orientation: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "At least 60% in each of English, Mathematics, Physical Sciences and Life Sciences, \"with an aggregate of 65%\"."
+        - "Most places go to learners writing Grade 12 in the year they apply. Seventy percent of those are pre-selected on Grade 11 final and Grade 12 mid-year results, then confirmed on the final results."
+        - "Upgraded matric results aren't accepted; selection uses your original results."
+        - "Closes 30 June 2026, with no late applications."
+        - "Clinical placements outside Durban (some in rural KwaZulu-Natal) are compulsory; you pay your own travel, accommodation and living costs there."
+        - "Offered at the Nelson R Mandela School of Medicine (Durban)."
+
+  # College of Humanities: education (prospectus p23, p105-106; Edgewood only)
+
+  - id: bed_foundation_phase                            # KN-E-BFP, p23, p106
+    name: "Bachelor of Education (Foundation Phase)"
+    faculty: "College of Humanities"
+    fields: [education]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 28
+      subject_minimums: {english: 4, life_orientation: 4, other_language: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematical_literacy: 4}
+            - subjects: {mathematics: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UKZN asks for isiZulu at level 4: the app checks your other language, so make sure it's isiZulu."
+        - "Foundation Phase students are expected to take English and isiZulu."
+        - "The CAO's 2027 handbook asks instead for any other official language at level 4 and Mathematics or Mathematical Literacy at level 4."
+        - "Offered at Edgewood."
+
+  - id: bed_intermediate_phase                          # KN-E-BIP, p23, p106
+    name: "Bachelor of Education (Intermediate Phase)"
+    faculty: "College of Humanities"
+    fields: [education]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 28
+      subject_minimums: {english: 4, life_orientation: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UKZN also asks for \"Level 5 in any two of Math, Math Lit, Technology, Life Science, Physical Science\". The app doesn't check this yet, because UKZN doesn't say which subjects count as Technology."
+        - "UKZN's Education page (p106) says instead \"Mathematics is Level 4 and Mathematical Literacy Level 5\"; the CAO's handbook lists more technology subjects. Check with UKZN."
+        - "Intermediate Phase students are expected to take English and isiZulu."
+        - "Offered at Edgewood."
+
+  - id: bed_senior_fet_phase                            # KN-E-BSN/FET in the prospectus, KN-E-FET in the CAO handbook; p23, p106
+    name: "Bachelor of Education (Senior Phase and Further Education and Training)"
+    faculty: "College of Humanities"
+    fields: [education]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 28
+      subject_minimums: {english: 4, life_orientation: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UKZN also asks for level 5 in any two NSC subjects that belong to the teaching package you choose. The app doesn't check this."
+        - "The CAO's 2027 handbook lists the packages: Accounting, Computer Science, Drama, English, History, Information Systems, Life Sciences, Life Orientation, Mathematics and Physical Sciences. When a package is full, you may be moved to another you qualify for."
+        - "Offered at Edgewood."
+
+  # College of Humanities: humanities and social sciences (prospectus p23-24, p107-113)
+
+  - id: ba_general_studies                              # KN-H-BA2, KN-P-BA2, p23, p108, p113
+    name: "Bachelor of Arts (General Studies)"
+    faculty: "College of Humanities"
+    fields: [humanities]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 28
+      subject_minimums: {life_orientation: 4}
+      choices: &ukzn_humanities_choice
+        - one_of:
+            - subjects: {english: 5}
+            - subjects: {english: 4, other_language: 5}
+            - subjects: {english: 4, business_studies: 5}
+            - subjects: {english: 4, consumer_studies: 5}
+            - subjects: {english: 4, dramatic_arts: 5}
+            - subjects: {english: 4, economics: 5}
+            - subjects: {english: 4, geography: 5}
+            - subjects: {english: 4, history: 5}
+            - subjects: {english: 4, information_technology: 5}
+            - subjects: {english: 4, life_sciences: 5}
+            - subjects: {english: 4, mathematics: 5}
+            - subjects: {english: 4, mathematical_literacy: 5}
+            - subjects: {english: 4, music: 5}
+            - subjects: {english: 4, visual_arts: 5}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "English at level 4, and one of these at level 5: Business Studies, Consumer Studies, Dramatic Arts, Economics, Geography, History, Information Technology, Life Sciences, Mathematics or Mathematical Literacy, Music, Religion Studies, Visual Arts or any language. The app can't check Religion Studies: if that's yours, check with UKZN."
+        - "Law modules need at least 30 points."
+        - "Offered at Howard College and Pietermaritzburg (each has its own CAO code)."
+
+  - id: ba_music                                        # KN-H-BAM, p23, p111
+    name: "Bachelor of Arts in Music"
+    faculty: "College of Humanities"
+    fields: [music, performing_arts]
+    selective: true
+    selection_note: "Auditions are required for UKZN's music programmes."
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 28
+      subject_minimums: {english: 4, life_orientation: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The CAO's 2027 handbook also asks for one of the College of Humanities' subjects at level 5 (as for the BA in General Studies); UKZN's prospectus asks only for English and Life Orientation at level 4."
+        - "Offered at Howard College."
+
+  - id: ba_music_foundation                             # KN-H-BMX (p23), KN-H-BAMUS4 (p31), KN-H-AMF in the CAO handbook
+    name: "Bachelor of Arts in Music (Foundation)"
+    faculty: "College of Humanities"
+    fields: [music, performing_arts]
+    selective: true
+    selection_note: "Auditions are required for UKZN's music programmes; the CAO adds diagnostic pre-entrance tests in theory and oral."
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 22
+      subject_minimums: {english: 4, life_orientation: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Four years: a foundation year, then the BA in Music. For applicants from disadvantaged schools and those with no formal music training."
+        - "Applicants from quintile 1 to 3 schools are preferred; others are considered if they have no previous formal music training and show exceptional potential."
+        - "UKZN's prospectus gives two codes (KN-H-BMX and KN-H-BAMUS4) and the CAO's handbook a third (KN-H-AMF). Check the code with the CAO."
+        - "Offered at Howard College."
+
+  - id: bsocsc_general_studies                          # KN-H-SO2, KN-P-SO2, p23, p108, p113
+    name: "Bachelor of Social Science (General Studies)"
+    faculty: "College of Humanities"
+    fields: [humanities]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 28
+      subject_minimums: {life_orientation: 4}
+      choices: *ukzn_humanities_choice
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "English at level 4, and one of these at level 5: Business Studies, Consumer Studies, Dramatic Arts, Economics, Geography, History, Information Technology, Life Sciences, Mathematics or Mathematical Literacy, Music, Religion Studies, Visual Arts or any language. The app can't check Religion Studies: if that's yours, check with UKZN."
+        - "Law modules need at least 30 points."
+        - "Offered at Howard College and Pietermaritzburg (each has its own CAO code)."
+
+  - id: bsocsc_geography_environmental_management       # KN-H-SGE, KN-P-SGE, p23, p109
+    name: "Bachelor of Social Science (Geography and Environmental Management)"
+    faculty: "College of Humanities"
+    fields: [humanities, earth_sciences]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 28
+      subject_minimums: {life_orientation: 4}
+      choices: *ukzn_humanities_choice
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "English at level 4, and one of these at level 5: Business Studies, Consumer Studies, Dramatic Arts, Economics, Geography, History, Information Technology, Life Sciences, Mathematics or Mathematical Literacy, Music, Religion Studies, Visual Arts or any language. The app can't check Religion Studies: if that's yours, check with UKZN."
+        - "Not required, but UKZN highly recommends Mathematics and Geography in Grade 12."
+        - "Offered at Howard College and Pietermaritzburg (each has its own CAO code)."
+        - "The CAO's 2027 handbook doesn't list this programme code; check it with the CAO or UKZN."
+
+  - id: bsocsc_housing                                  # KN-H-SOR, p23, p110-111
+    name: "Bachelor of Social Science (Housing)"
+    faculty: "College of Humanities"
+    fields: [built_environment, humanities]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 28
+      subject_minimums: {english: 4, mathematics: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "UKZN's table reads \"NSC-Deg with Eng and, Maths L4\". The CAO's 2027 handbook asks instead for English and Life Orientation at level 4 and one of the College of Humanities' subjects at level 5 (Mathematics or Mathematical Literacy among them). Check with UKZN."
+        - "Offered at Howard College."
+
+  - id: b_social_work                                   # KN-H-BSX, p23, p112
+    name: "Bachelor of Social Work"
+    faculty: "College of Humanities"
+    fields: [humanities]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 28
+      subject_minimums: {life_orientation: 4}
+      choices: *ukzn_humanities_choice
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "English at level 4, and one of these at level 5: Business Studies, Consumer Studies, Dramatic Arts, Economics, Geography, History, Information Technology, Life Sciences, Mathematics or Mathematical Literacy, Music, Religion Studies, Visual Arts or any language. The app can't check Religion Studies: if that's yours, check with UKZN."
+        - "Places are limited: 28 points doesn't guarantee a place."
+        - "Offered at Howard College."
+
+  - id: ba_philosophy_politics_law                      # KN-H-ABP, KN-P-ABP, p24, p111
+    name: "Bachelor of Arts (Philosophy, Politics and Law)"
+    faculty: "College of Humanities"
+    fields: [humanities, law]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 30
+      subject_minimums: {life_orientation: 4}
+      choices: *ukzn_humanities_choice
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "English at level 4, and one of these at level 5: Business Studies, Consumer Studies, Dramatic Arts, Economics, Geography, History, Information Technology, Life Sciences, Mathematics or Mathematical Literacy, Music, Religion Studies, Visual Arts or any language. The app can't check Religion Studies: if that's yours, check with UKZN."
+        - "Offered at Howard College and Pietermaritzburg (each has its own CAO code)."
+
+  - id: ba_visual_art                                   # KN-P-AAV, p24, p112
+    name: "Bachelor of Arts (Visual Art)"
+    faculty: "College of Humanities"
+    fields: [arts_and_design]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 28
+      subject_minimums: {life_orientation: 4}
+      choices: *ukzn_humanities_choice
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "English at level 4, and one of these at level 5: Business Studies, Consumer Studies, Dramatic Arts, Economics, Geography, History, Information Technology, Life Sciences, Mathematics or Mathematical Literacy, Music, Religion Studies, Visual Arts or any language. The app can't check Religion Studies: if that's yours, check with UKZN."
+        - "Most students have taken Art in Grade 12, but those who haven't are welcome to try the introductory courses."
+        - "Offered at Pietermaritzburg."
+
+  - id: bsocsc_government_business_ethics               # KN-P-SOG, p24, p109-110
+    name: "Bachelor of Social Science (Government, Business and Ethics)"
+    faculty: "College of Humanities"
+    fields: [humanities, management]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 28
+      subject_minimums: {life_orientation: 4}
+      choices: *ukzn_humanities_choice
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "English at level 4, and one of these at level 5: Business Studies, Consumer Studies, Dramatic Arts, Economics, Geography, History, Information Technology, Life Sciences, Mathematics or Mathematical Literacy, Music, Religion Studies, Visual Arts or any language. The app can't check Religion Studies: if that's yours, check with UKZN."
+        - "Offered at Pietermaritzburg."
+
+  - id: bsocsc_extended_curriculum                      # KN-H-SO4, KN-P-SO4, p24, p30, p108
+    name: "Bachelor of Social Science (Extended Curriculum)"
+    faculty: "College of Humanities"
+    fields: [humanities]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 20        # the table's "APS range" reads "20/27"; p108 says scores from 20 to 27
+      subject_minimums: {english: 4, life_orientation: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Four years, for applicants from disadvantaged schools with 20 to 27 points. Only applicants from quintile 1 and 2 schools are considered."
+        - "Not open if you've already studied a full semester at a university or other tertiary institution."
+        - "The CAO's 2027 handbook says quintile 1 to 3 schools, and also asks for one of the College of Humanities' subjects at level 5."
+        - "Offered at Howard College and Pietermaritzburg (each has its own CAO code)."
+
+  # College of Law and Management Studies (prospectus p24, p117-124)
+
+  - id: llb                                             # KN-H-BL1, KN-P-BL1, p24, p117-118
+    name: "Bachelor of Laws (LLB)"
+    faculty: "College of Law and Management Studies"
+    fields: [law]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 5, life_orientation: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "English Home Language at level 5, or English First Additional Language at level 6: the app checks level 5."
+        - "You can also first complete a BA or B Soc Sc with a law major (or another degree) and then apply; UKZN then looks for an average of 60% with no failed modules."
+        - "Offered at Howard College and Pietermaritzburg (each has its own CAO code)."
+
+  - id: llb_part_time                                   # KN-H-BLZ, p24, p118
+    name: "Bachelor of Laws (LLB) (part-time)"
+    faculty: "College of Law and Management Studies"
+    fields: [law]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 5, life_orientation: 4}
+      choices:
+        - one_of:
+            - subjects: {mathematics: 3}
+            - subjects: {mathematical_literacy: 5}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "English Home Language at level 5, or English First Additional Language at level 6: the app checks level 5."
+        - "Part-time over six years. Offered at Howard College."
+
+  - id: b_administration                                # KN-W-BAD, p24, p120
+    name: "Bachelor of Administration"
+    faculty: "College of Law and Management Studies"
+    fields: [public_administration, management]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 26
+      subject_minimums: {english: 4, life_orientation: 4, mathematics: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "With 32 points (and the same subjects) you can be considered for early selection."
+        - "The CAO's 2027 handbook gives 28 points; UKZN's prospectus gives 26."
+        - "Offered at Westville."
+
+  - id: b_business_administration                       # KN-W-BBA, KN-P-BBA, p24, p121
+    name: "Bachelor of Business Administration"
+    faculty: "College of Law and Management Studies"
+    fields: [management, commerce]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 26
+      subject_minimums: {english: 4, life_orientation: 4, mathematics: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "Classes are in the evening only, and UKZN offers no funding for this programme."
+        - "Offered at Westville and Pietermaritzburg (each has its own CAO code)."
+
+  - id: bbussc_finance                                  # KN-W-B5F, p24, p122
+    name: "Bachelor of Business Science in Finance"
+    faculty: "College of Law and Management Studies"
+    fields: [finance, commerce]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 33
+      subject_minimums: {english: 4, life_orientation: 4, mathematics: 6}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "With 37 points (and the same subjects) you can be considered for early selection."
+        - "Four years. Offered at Westville only."
+
+  - id: bbussc_investment_science                       # KN-W-B5I, p24, p122
+    name: "Bachelor of Business Science in Investment Science"
+    faculty: "College of Law and Management Studies"
+    fields: [finance, commerce]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 33
+      subject_minimums: {english: 4, life_orientation: 4, mathematics: 6}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "With 37 points (and the same subjects) you can be considered for early selection."
+        - "Four years. Offered at Westville only."
+
+  - id: bcom_general                                    # KN-P-BC1, KN-W-BC1, p24, p121
+    name: "Bachelor of Commerce (General)"
+    faculty: "College of Law and Management Studies"
+    fields: [commerce]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 30
+      subject_minimums: {english: 4, life_orientation: 4, mathematics: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "With 35 points and English, Life Orientation and Mathematics at level 5 you can be considered for early selection."
+        - "Offered at Westville and Pietermaritzburg (each has its own CAO code)."
+
+  - id: bcom_accounting                                 # KN-P-BCN, KN-W-BCN, p24, p122
+    name: "Bachelor of Commerce in Accounting"
+    faculty: "College of Law and Management Studies"
+    fields: [accounting, commerce]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 32
+      subject_minimums: {english: 4, life_orientation: 4, mathematics: 5}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "With 35 points and English, Life Orientation and Mathematics at level 5 you can be considered for early selection."
+        - "Offered at Westville and Pietermaritzburg (each has its own CAO code)."
+
+  - id: bcom_general_extended                           # KN-P-BCG, KN-W-BCG, p24, p31-32, p124
+    name: "Bachelor of Commerce (General) (Extended Curriculum)"
+    faculty: "College of Law and Management Studies"
+    fields: [commerce]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 26
+      subject_minimums: {english: 4, life_orientation: 4, mathematics: 3}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The three-year B Com over four years, with extra support. Applicants from quintile 1 to 3 schools are preferred."
+        - "Not open if you've already studied a full semester at a university or other tertiary institution."
+        - "Offered at Westville and Pietermaritzburg (each has its own CAO code)."
+
+  - id: bcom_accounting_extended                        # KN-P-BCO, KN-W-BCO, p24, p32, p124
+    name: "Bachelor of Commerce in Accounting (Extended Curriculum)"
+    faculty: "College of Law and Management Studies"
+    fields: [accounting, commerce]
+    requirements:
+      source: s-ukzn-prospectus-2027
+      min_points: 28
+      subject_minimums: {english: 4, life_orientation: 4, mathematics: 4}
+      extras:
+        - "Your NSC must show admission to bachelor's degree study."
+        - "The three-year B Com in Accounting over four years, with extra support. Applicants from quintile 1 to 3 schools are preferred."
+        - "Not open if you've already studied a full semester at a university or other tertiary institution."
+        - "Offered at Westville and Pietermaritzburg (each has its own CAO code)."
 
 sources:
+  - id: s-ukzn-prospectus-2027
+    url: "https://applications.ukzn.ac.za/wp-content/uploads/2026/05/2027-Undergrad.pdf"
+    publisher: "University of KwaZulu-Natal"
+    title: "Undergraduate Prospectus 2027 (programme tables p20-24, college sections p80-124)"
+    retrieved: 2026-10-22
+    last_verified: null
+    verified_by: "agent draft, needs human check"
+  - id: s-ukzn-cao-2027
+    url: "https://www.cao.ac.za/Download/CAO%20HANDBOOK%202027%20Entry%20web.pdf"
+    publisher: "Central Applications Office"
+    title: "CAO Handbook 2027 Entry (UKZN's rows; the cross-check for every programme)"
+    retrieved: 2026-10-22
+    last_verified: null
+    verified_by: "agent draft, needs human check"
   - id: s-ukzn-campuses
     url: "https://ukzn.ac.za/ukzn-campuses/"
     publisher: "University of KwaZulu-Natal"
