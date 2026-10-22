@@ -83,7 +83,7 @@ shape, never named by guess; a funder's page that says "open" without dates coun
 
 ## Test evidence (M5)
 
-Backend: **1168 tests pass** on PostgreSQL 16 (13 Oct 2026), including:
+Backend: **1,434 tests pass** on PostgreSQL 16 (22 Oct 2026), including:
 
 | Tests | What they prove |
 |---|---|
