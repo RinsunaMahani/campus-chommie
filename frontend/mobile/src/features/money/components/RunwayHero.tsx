@@ -2,13 +2,15 @@
  * The top of Money: how long the money lasts, in days first and big (research on "left to spend" apps: an exact
  * amount left nudges people to spend it, so days and a range come first and rands second), a bar from today to
  * the next payment with where the money runs out, and the balance and what's safe to spend under it.
+ * Daylight paper: a hero area, so it sits on Rinsuna's wallpaper with white words (the forest palette inside),
+ * a cream bar, and an amber "Runs short" pill when the money runs out before payday.
  */
 import { StyleSheet, Text, View } from 'react-native';
 
-import { Card } from '@/shared/components/Parts';
+import { Wallpaper } from '@/shared/components/Wallpaper';
 import { t } from '@/shared/i18n';
 import { formatRand } from '@/shared/lib/money';
-import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
+import { forest, Palette, paper, PaletteProvider, useStyles } from '@/shared/theme/palette';
 import { fonts, radius, space, type } from '@/shared/theme/tokens';
 
 import { SummaryReady } from '../types';
@@ -19,11 +21,17 @@ function daysBetween(from: string, to: string): number {
 }
 
 export function RunwayHero({ summary }: { summary: SummaryReady }) {
-  const colors = usePalette();
+  return (
+    <PaletteProvider palette={forest}>
+      <Runway summary={summary} />
+    </PaletteProvider>
+  );
+}
+
+function Runway({ summary }: { summary: SummaryReady }) {
   const styles = useStyles(makeStyles);
   const r = summary.runway;
   const short = r.short_before_next;
-  const tint = short ? colors.marigold : colors.accentDeep;
   const next = summary.next_payment;
   const toPay = next ? Math.max(1, daysBetween(summary.today, next.lands_on ?? next.expected_on)) : null;
   // The bar runs from today to the next payment; the money's part fills it, or all of it when it lasts.
@@ -35,16 +43,24 @@ export function RunwayHero({ summary }: { summary: SummaryReady }) {
         ? t('money.hero.until', { date: formatDay(r.runs_out_on) })
         : null;
   return (
-    <Card style={short ? { ...styles.card, borderColor: colors.marigold } : styles.card}>
-      <Text style={styles.label}>{t('money.hero.lasts')}</Text>
-      <Text style={[styles.big, { color: tint }]} accessibilityRole="header">
+    <View style={styles.card}>
+      <Wallpaper />
+      <View style={styles.labelRow}>
+        <Text style={styles.label}>{t('money.hero.lasts')}</Text>
+        {short ? (
+          <View style={styles.pill}>
+            <Text style={styles.pillText}>{t('home.shortBeforePay')}</Text>
+          </View>
+        ) : null}
+      </View>
+      <Text style={styles.big} accessibilityRole="header">
         {r.days == null ? t('money.hero.beyond') : t('money.hero.days', { n: r.days })}
       </Text>
       {range ? <Text style={styles.range}>{range}</Text> : null}
       {next ? (
         <View style={styles.barWrap} accessible accessibilityLabel={short ? t('money.hero.shortA11y') : t('money.hero.okA11y')}>
           <View style={styles.track}>
-            <View style={[styles.fill, { width: `${Math.round(fill * 100)}%`, backgroundColor: tint }]} />
+            <View style={[styles.fill, { width: `${Math.round(fill * 100)}%` }]} />
           </View>
           <View style={styles.barLabels}>
             <Text style={styles.barText}>{t('money.hero.today')}</Text>
@@ -62,23 +78,42 @@ export function RunwayHero({ summary }: { summary: SummaryReady }) {
           <Text style={styles.statLabel}>{t('money.hero.balance')}</Text>
         </View>
       </View>
-    </Card>
+    </View>
   );
 }
 
 const makeStyles = (colors: Palette) =>
   StyleSheet.create({
-    card: { gap: space.sm, padding: space.lg },
-    label: { fontFamily: fonts.semibold, ...type.label, color: colors.textMuted },
-    big: { fontFamily: fonts.display, fontSize: 44, lineHeight: 50, letterSpacing: -1, fontVariant: ['tabular-nums'] },
-    range: { fontFamily: fonts.medium, ...type.callout, color: colors.text },
+    // The forest palette is in force here: words in onAccent (white), soft white boxes for the two amounts.
+    card: {
+      gap: space.sm,
+      padding: space.lg,
+      borderRadius: radius.lg,
+      overflow: 'hidden',
+      boxShadow: '0 6px 18px rgba(28, 43, 30, 0.08)',
+    },
+    labelRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: space.sm },
+    label: { flex: 1, fontFamily: fonts.semibold, ...type.label, color: colors.onAccentSoft },
+    // The pill keeps the paper's amber, which reads on the wallpaper too.
+    pill: { paddingHorizontal: 10, paddingVertical: 3, borderRadius: radius.pill, backgroundColor: paper.marigoldTint },
+    pillText: { fontFamily: fonts.bold, fontSize: 13, lineHeight: 18, color: paper.marigold },
+    big: { fontFamily: fonts.display, fontSize: 44, lineHeight: 50, letterSpacing: -1, color: colors.onAccent, fontVariant: ['tabular-nums'] },
+    range: { fontFamily: fonts.medium, ...type.callout, color: colors.onAccentSoft },
     barWrap: { gap: 6, marginTop: space.xs },
-    track: { height: 10, borderRadius: radius.pill, backgroundColor: colors.iconTile, overflow: 'hidden' },
-    fill: { height: 10, borderRadius: radius.pill },
+    track: { height: 10, borderRadius: radius.pill, backgroundColor: 'rgba(0, 0, 0, 0.28)', overflow: 'hidden' },
+    fill: { height: 10, borderRadius: radius.pill, backgroundColor: paper.marigoldTint },
     barLabels: { flexDirection: 'row', justifyContent: 'space-between' },
-    barText: { fontFamily: fonts.medium, fontSize: 13, color: colors.textMuted },
-    stats: { flexDirection: 'row', gap: space.md, marginTop: space.sm, paddingTop: space.md, borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: colors.line },
-    stat: { flex: 1, gap: 2 },
-    statValue: { fontFamily: fonts.bold, fontSize: 20, lineHeight: 26, color: colors.ink, fontVariant: ['tabular-nums'] },
-    statLabel: { fontFamily: fonts.medium, fontSize: 13, color: colors.textMuted },
+    barText: { fontFamily: fonts.medium, fontSize: 13, color: colors.onAccentSoft },
+    stats: { flexDirection: 'row', gap: space.sm, marginTop: space.sm },
+    stat: {
+      flex: 1,
+      gap: 2,
+      padding: space.md,
+      borderRadius: radius.md,
+      backgroundColor: colors.onAccentTint,
+      borderWidth: 1,
+      borderColor: 'rgba(255, 255, 255, 0.22)',
+    },
+    statValue: { fontFamily: fonts.display, fontSize: 22, lineHeight: 28, color: colors.onAccent, fontVariant: ['tabular-nums'] },
+    statLabel: { fontFamily: fonts.medium, fontSize: 13, color: colors.onAccentSoft },
   });

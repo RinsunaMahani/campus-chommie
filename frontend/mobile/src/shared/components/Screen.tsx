@@ -3,12 +3,12 @@ import { router } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 import { ReactNode, useState } from 'react';
 import { Animated, Image, ImageSourcePropType, KeyboardAvoidingView, Platform, Pressable, RefreshControl, StyleSheet, Text, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Wallpaper } from './Wallpaper';
 
 import { fonts, radius, space, type } from '@/shared/theme/tokens';
-import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
+import { forest, Palette, PaletteProvider, usePalette, useStyles } from '@/shared/theme/palette';
 
 type Props = {
   children: ReactNode;
@@ -30,6 +30,15 @@ type Props = {
   headerRight?: ReactNode;
   /** On the title's line, at the right: one small action (the Help button). */
   titleAside?: ReactNode;
+  /**
+   * Daylight paper's hero area: the header (tag, title, Help) on a band of Rinsuna's wallpaper, edge to edge with
+   * a rounded bottom, in white words (the forest palette inside). With a backdrop, the band shows the photo instead.
+   */
+  hero?: boolean;
+  /** Hero only: a small line above the title (today's date). */
+  overline?: string;
+  /** Hero only: under the title, on the band (the university). */
+  band?: ReactNode;
 };
 
 /** How far the page scrolls before the slim title bar has fully faded in. */
@@ -41,15 +50,29 @@ const COLLAPSE_AT = 44;
  * bottom where the thumb is. A tab screen leaves room under its content for
  * the floating dock.
  */
-export function Screen({ children, footer, back, tab, onRefresh, refreshing = false, backdrop, title, subtitle, headerRight, titleAside }: Props) {
+export function Screen({ children, footer, back, tab, onRefresh, refreshing = false, backdrop, title, subtitle, headerRight, titleAside, hero, overline, band }: Props) {
   const colors = usePalette();
   const styles = useStyles(makeStyles);
   const [scrollY] = useState(() => new Animated.Value(0));
   const barOpacity = scrollY.interpolate({ inputRange: [COLLAPSE_AT * 0.5, COLLAPSE_AT], outputRange: [0, 1], extrapolate: 'clamp' });
+  const insets = useSafeAreaInsets();
+  const isHero = !!(hero && title);
+  const head = title ? (
+    <Head
+      title={title}
+      subtitle={subtitle}
+      back={back}
+      headerRight={headerRight}
+      titleAside={titleAside}
+      overline={isHero ? overline : undefined}
+      band={isHero ? band : undefined}
+      onBand={isHero}
+    />
+  ) : null;
   return (
     <View style={styles.root}>
       <Wallpaper />
-      {backdrop ? (
+      {backdrop && !isHero ? (
         <View style={styles.backdrop} pointerEvents="none">
           <Image source={backdrop} style={StyleSheet.absoluteFill} resizeMode="cover" accessible={false} accessibilityIgnoresInvertColors />
           {/* Darker at the top for the title, then into the page colour, so the cards read on it. */}
@@ -62,7 +85,8 @@ export function Screen({ children, footer, back, tab, onRefresh, refreshing = fa
           />
         </View>
       ) : null}
-      <SafeAreaView style={styles.safe} edges={tab ? ['top'] : ['top', 'bottom']}>
+      {/* A hero band runs up under the status bar, so it takes the top inset itself. */}
+      <SafeAreaView style={styles.safe} edges={isHero ? (tab ? [] : ['bottom']) : tab ? ['top'] : ['top', 'bottom']}>
       <KeyboardAvoidingView style={styles.flex} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         <Animated.ScrollView
           style={styles.flex}
@@ -73,27 +97,31 @@ export function Screen({ children, footer, back, tab, onRefresh, refreshing = fa
           showsVerticalScrollIndicator={false}
           refreshControl={onRefresh ? <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={colors.ink} /> : undefined}>
           {back && !title ? <BackButton /> : null}
-          {title ? (
-            <View style={styles.head}>
-              {back || headerRight ? (
-                <View style={styles.headRow}>
-                  {back ? <BackButton /> : <View />}
-                  {headerRight}
-                </View>
-              ) : null}
-              <View style={styles.titleRow}>
-                <Text style={[styles.largeTitle, { flex: 1 }]} accessibilityRole="header">
-                  {title}
-                </Text>
-                {titleAside}
+          {isHero ? (
+            <PaletteProvider palette={forest}>
+              <View style={[styles.hero, { paddingTop: insets.top + space.md }]}>
+                {backdrop ? (
+                  <View style={StyleSheet.absoluteFill} pointerEvents="none">
+                    <Image source={backdrop} style={StyleSheet.absoluteFill} resizeMode="cover" accessible={false} accessibilityIgnoresInvertColors />
+                    {/* 0.55 black keeps white words above 4.5:1 on a bright sky. */}
+                    <View style={[StyleSheet.absoluteFill, { backgroundColor: 'rgba(0, 0, 0, 0.55)' }]} />
+                  </View>
+                ) : (
+                  <Wallpaper />
+                )}
+                {head}
               </View>
-              {subtitle ? <Text style={styles.subtitle}>{subtitle}</Text> : null}
-            </View>
-          ) : null}
+            </PaletteProvider>
+          ) : (
+            head
+          )}
           {children}
         </Animated.ScrollView>
         {title ? (
-          <Animated.View style={[styles.bar, { opacity: barOpacity }]} pointerEvents="none" importantForAccessibility="no-hide-descendants">
+          <Animated.View
+            style={[styles.bar, isHero && { paddingTop: insets.top + space.md }, { opacity: barOpacity }]}
+            pointerEvents="none"
+            importantForAccessibility="no-hide-descendants">
             <Text style={styles.barTitle} numberOfLines={1}>
               {title}
             </Text>
@@ -102,6 +130,39 @@ export function Screen({ children, footer, back, tab, onRefresh, refreshing = fa
         {footer ? <View style={styles.footer}>{footer}</View> : null}
       </KeyboardAvoidingView>
       </SafeAreaView>
+    </View>
+  );
+}
+
+/** The large title and what sits around it; under the palette it's drawn in (paper, or forest on a hero band). */
+function Head({
+  title,
+  subtitle,
+  back,
+  headerRight,
+  titleAside,
+  overline,
+  band,
+  onBand,
+}: Pick<Props, 'subtitle' | 'back' | 'headerRight' | 'titleAside' | 'overline' | 'band'> & { title: string; onBand: boolean }) {
+  const styles = useStyles(makeStyles);
+  return (
+    <View style={styles.head}>
+      {back || headerRight ? (
+        <View style={styles.headRow}>
+          {back ? <BackButton /> : <View />}
+          {headerRight}
+        </View>
+      ) : null}
+      {overline ? <Text style={styles.overline}>{overline}</Text> : null}
+      <View style={styles.titleRow}>
+        <Text style={[styles.largeTitle, onBand && styles.onBand, { flex: 1 }]} accessibilityRole="header">
+          {title}
+        </Text>
+        {titleAside}
+      </View>
+      {subtitle ? <Text style={[styles.subtitle, onBand && styles.onBandSoft]}>{subtitle}</Text> : null}
+      {band}
     </View>
   );
 }
@@ -137,6 +198,19 @@ const makeStyles = (colors: Palette) => StyleSheet.create({
   titleRow: { flexDirection: 'row', alignItems: 'center', gap: space.md },
   largeTitle: { fontFamily: fonts.display, ...type.largeTitle, letterSpacing: -0.6, color: colors.ink },
   subtitle: { fontFamily: fonts.medium, ...type.callout, color: colors.textMuted },
+  overline: { fontFamily: fonts.semibold, ...type.callout, color: colors.onAccentSoft },
+  onBand: { color: colors.onAccent },
+  onBandSoft: { color: colors.onAccentSoft },
+  // The band reaches past the page's side and top padding to the screen's edges.
+  hero: {
+    overflow: 'hidden',
+    marginHorizontal: -20,
+    marginTop: -space.md,
+    paddingHorizontal: 20,
+    paddingBottom: space.xl,
+    borderBottomLeftRadius: 30,
+    borderBottomRightRadius: 30,
+  },
   // The slim bar: the title again, once the large one has scrolled away.
   bar: {
     position: 'absolute',

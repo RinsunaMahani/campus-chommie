@@ -12,16 +12,17 @@ import { updatesApi } from '@/features/updates/api/updatesApi';
 
 import { NextSteps } from '../components/NextSteps';
 import { TodayTiles } from '../components/TodayTiles';
-import { Button } from '@/shared/components/Button';
 import { Card, ListRow } from '@/shared/components/Parts';
 import { Screen } from '@/shared/components/Screen';
 import { Overline, Strong } from '@/shared/components/Text';
 import { UniMonogram } from '@/shared/components/UniMonogram';
 import { t } from '@/shared/i18n';
+import { formatDay, todaySast } from '@/shared/lib/dates';
 
 /**
- * Home tab: the student's campus photo behind the top (where we have one, with its credit at the foot),
- * today's alerts first, then updates and the course finder, and the way to account security and out.
+ * Home tab: a hero band at the top (Daylight paper) with today's date, the title and the student's university,
+ * on the student's campus photo where we have one (its credit at the foot) or the wallpaper; today's alerts
+ * first, then updates and the course finder, and the way to account security and out.
  */
 export default function HomeScreen() {
   const { signOut } = useSession();
@@ -40,17 +41,21 @@ export default function HomeScreen() {
   );
 
   return (
-    <Screen tab backdrop={photo?.image} title="Home" {...studentHeader()}>
-      <View style={{ gap: 6 }}>
-        {student?.university_name && student.university ? (
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+    <Screen
+      tab
+      hero
+      backdrop={photo?.image}
+      overline={formatDay(todaySast())}
+      title="Home"
+      band={
+        student?.university_name && student.university ? (
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 6 }}>
             <UniMonogram id={student.university} size={36} />
             <Strong style={{ flex: 1 }}>{student.university_name}</Strong>
           </View>
-        ) : null}
-      </View>
-      {/* Room for the campus photo to show before the cards rise over it. */}
-      {photo ? <View style={{ height: 70 }} /> : null}
+        ) : null
+      }
+      {...studentHeader()}>
 
       <Overline>{t('home.todayTitle')}</Overline>
       {mock ? null : <TodayTiles />}
@@ -61,22 +66,23 @@ export default function HomeScreen() {
       <Card style={{ paddingVertical: 4 }}>
         {mock ? null : (
           <ListRow
+            tone="mint"
             icon="bell"
-            title={unread ? `${t('alerts.updates')} · ${t('alerts.unread', { n: unread })}` : t('alerts.updates')}
-            subtitle={t('alerts.updatesSub')}
+            title={t('alerts.updates')}
+            subtitle={unread ? `${t('alerts.unread', { n: unread })}. ${t('alerts.updatesSub')}` : t('alerts.updatesSub')}
+            badge={unread || undefined}
             onPress={() => router.push('/updates')}
           />
         )}
-        <ListRow icon="compass" title={t('courseFinder.title')} subtitle={t('courseFinder.entrySub')} onPress={() => router.push('/course-finder')} />
-        <ListRow icon="tool" title={t('colleges.entry')} subtitle={t('colleges.entrySub')} onPress={() => router.push('/course-finder/colleges')} last />
+        <ListRow tone="mint" icon="compass" title={t('courseFinder.title')} subtitle={t('courseFinder.entrySub')} onPress={() => router.push('/course-finder')} />
+        <ListRow tone="mint" icon="tool" title={t('colleges.entry')} subtitle={t('colleges.entrySub')} onPress={() => router.push('/course-finder/colleges')} last />
       </Card>
 
       <Overline>Your account</Overline>
       <Card style={{ paddingVertical: 4 }}>
-        <ListRow icon="shield" title="Account security" subtitle="Phones, password and your account" onPress={() => router.push('/security')} last />
+        <ListRow tone="mint" icon="shield" title="Account security" subtitle="Phones, password and your account" onPress={() => router.push('/security')} />
+        <ListRow icon="log-out" title="Sign out" onPress={signOut} last />
       </Card>
-
-      <Button title="Sign out" variant="secondary" icon="log-out" onPress={signOut} />
       {photo ? <PhotoCredit credit={`${photo.caption}. ${photo.credit}`} source={photo.source} /> : null}
     </Screen>
   );
