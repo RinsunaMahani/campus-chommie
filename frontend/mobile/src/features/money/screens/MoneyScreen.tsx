@@ -6,7 +6,7 @@ import { studentHeader } from '@/features/profile/components/HeaderTools';
 import { useProfile } from '@/features/profile/state';
 import { errorText } from '@/shared/api/errors';
 import { Button } from '@/shared/components/Button';
-import { Card, InfoNote, ListRow, ToggleRow } from '@/shared/components/Parts';
+import { Card, InfoNote, ListRow, Tag, ToggleRow } from '@/shared/components/Parts';
 import { Screen } from '@/shared/components/Screen';
 import { Section } from '@/shared/components/Section';
 import { ErrorBox, Loading } from '@/shared/components/Status';
@@ -94,6 +94,8 @@ export default function MoneyScreen() {
             <Section
               first
               icon="calendar"
+              tint={colors.accentDeep}
+              tile={colors.accentTint}
               title={t('money.plan.title')}
               summary={plan?.payday ? t('money.plan.summary', { day: plan.payday.day, free: formatRand(plan.payday.free_cents) }) : t('money.plan.none')}>
               {plan?.payday ? (
@@ -120,6 +122,8 @@ export default function MoneyScreen() {
 
             <Section
               icon="target"
+              tint={colors.classColours[2]}
+              tile={`${colors.classColours[2]}1F`}
               title={t('money.goals.title')}
               summary={plan && plan.goals.length ? t('money.goals.summary', { n: plan.goals.length }) : t('money.goals.none')}>
               {plan?.goals.map((g) => (
@@ -155,7 +159,18 @@ export default function MoneyScreen() {
               <Button title={t('money.goals.add')} variant="secondary" icon="plus" compact onPress={() => router.push('/money/goal')} />
             </Section>
 
-            <Section icon="shield" title={t('money.lifeFund')} summary={t(`money.lifeFund.${ready.life_fund.state}` as MessageKey)}>
+            <Section
+              icon="shield"
+              tint={colors.marigold}
+              tile={colors.marigoldTint}
+              title={t('money.lifeFund')}
+              summary={t('money.lifeFund.sub')}
+              aside={
+                <Tag
+                  label={t(`money.lifeFund.${ready.life_fund.state}` as MessageKey)}
+                  tone={ready.life_fund.state === 'green' ? 'jade' : 'marigold'}
+                />
+              }>
               <Body>{ready.life_fund.reason}</Body>
               {ready.life_fund.resume_hint ? <Body>{ready.life_fund.resume_hint}</Body> : null}
               {ready.this_week ? <Body>{`${t('money.thisWeek')}: ${ready.this_week.reason}`}</Body> : null}
@@ -176,16 +191,16 @@ export default function MoneyScreen() {
         </>
       ) : null}
 
-      <Button title={t('money.logToday')} variant="secondary" icon="edit-3" onPress={() => router.push('/money/spending')} />
+      <Button title={t('money.logToday')} variant="soft" icon="edit-3" onPress={() => router.push('/money/spending')} />
 
       <Card style={{ paddingVertical: 4 }}>
-        <ListRow icon="sliders" title={t('money.settings')} subtitle={t('money.settingsSub')} onPress={() => router.push('/money/settings')} />
-        <ListRow icon="download" title={t('money.income')} subtitle={t('money.incomeSub')} onPress={() => router.push('/money/income')} />
-        <ListRow icon="calendar" title={t('money.payments')} subtitle={t('money.paymentsSub')} onPress={() => router.push('/money/payments')} />
-        <ListRow icon="bar-chart-2" title={t('money.spending')} subtitle={t('money.spendingSub')} onPress={() => router.push('/money/spending')} />
-        <ListRow icon="award" title={t('courseFinder.fundingTitle')} subtitle={t('courseFinder.fundingSub')} onPress={() => router.push('/course-finder/funding')} />
-        <ListRow icon="credit-card" title={t('wallet.title')} subtitle={t('wallet.entrySub')} onPress={() => router.push(WALLET)} />
-        <ListRow icon="map-pin" title={t('money.cheapThings')} subtitle={t('money.cheapThingsSub')} onPress={() => router.push('/money/cheap-things')} last />
+        <ListRow tone="mint" icon="sliders" title={t('money.settings')} subtitle={t('money.settingsSub')} onPress={() => router.push('/money/settings')} />
+        <ListRow tone="mint" icon="download" title={t('money.income')} subtitle={t('money.incomeSub')} onPress={() => router.push('/money/income')} />
+        <ListRow tone="mint" icon="calendar" title={t('money.payments')} subtitle={t('money.paymentsSub')} onPress={() => router.push('/money/payments')} />
+        <ListRow tone="mint" icon="bar-chart-2" title={t('money.spending')} subtitle={t('money.spendingSub')} onPress={() => router.push('/money/spending')} />
+        <ListRow tone="mint" icon="award" title={t('courseFinder.fundingTitle')} subtitle={t('courseFinder.fundingSub')} onPress={() => router.push('/course-finder/funding')} />
+        <ListRow tone="mint" icon="credit-card" title={t('wallet.title')} subtitle={t('wallet.entrySub')} onPress={() => router.push(WALLET)} />
+        <ListRow tone="mint" icon="map-pin" title={t('money.cheapThings')} subtitle={t('money.cheapThingsSub')} onPress={() => router.push('/money/cheap-things')} last />
       </Card>
     </Screen>
   );

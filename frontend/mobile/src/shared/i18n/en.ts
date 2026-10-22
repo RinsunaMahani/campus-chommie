@@ -236,6 +236,7 @@ export const en = {
   'money.lifeFund.green': 'Go out',
   'money.lifeFund.amber': 'Go easy',
   'money.lifeFund.paused': 'Paused',
+  'money.lifeFund.sub': 'Money kept aside for going out',
   'money.nextPayment': 'Next payment',
   'money.landsOn': 'Lands {date}',
   'money.late': 'What if it comes two weeks late?',

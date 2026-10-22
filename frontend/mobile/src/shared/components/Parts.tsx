@@ -145,6 +145,16 @@ const tonesOf = (colors: Palette): Record<Tone, { bg: string; fg: string }> => (
   garnet: { bg: colors.garnetTint, fg: colors.garnet },
 });
 
+/** An icon tile's colour by meaning: mint (a place to go), amber (attention), rose (urgent), sand (neutral). */
+export type RowTone = 'mint' | 'amber' | 'rose' | 'sand';
+
+export function toneColours(colors: Palette, tone: RowTone): { tint: string; color: string } {
+  if (tone === 'mint') return { tint: colors.accentTint, color: colors.accentDeep };
+  if (tone === 'amber') return { tint: colors.marigoldTint, color: colors.marigold };
+  if (tone === 'rose') return { tint: colors.garnetTint, color: colors.garnet };
+  return { tint: colors.iconTile, color: colors.ink };
+}
+
 /** A tappable settings/list row inside a grouped card. */
 export function ListRow({
   icon,
@@ -153,6 +163,8 @@ export function ListRow({
   onPress,
   danger,
   last,
+  tone = 'sand',
+  badge,
 }: {
   icon: IconName;
   title: string;
@@ -160,9 +172,14 @@ export function ListRow({
   onPress?: () => void;
   danger?: boolean;
   last?: boolean;
+  /** The icon tile's colour; sand unless a screen gives one. */
+  tone?: RowTone;
+  /** A small count before the chevron (Updates' unread). */
+  badge?: number;
 }) {
   const colors = usePalette();
   const styles = useStyles(makeStyles);
+  const tile = toneColours(colors, danger ? 'rose' : tone);
   return (
     // A row that opens nothing doesn't look tappable: no chevron, no press effect.
     <Pressable
@@ -170,16 +187,16 @@ export function ListRow({
       disabled={!onPress}
       accessibilityRole={onPress ? 'button' : undefined}
       style={({ pressed }) => [styles.listRow, !last && styles.listRule, pressed && { opacity: 0.7 }]}>
-      <IconTile
-        name={icon}
-        size={34}
-        tint={danger ? colors.garnetTint : colors.iconTile}
-        color={danger ? colors.garnet : colors.ink}
-      />
+      <IconTile name={icon} size={34} tint={tile.tint} color={tile.color} />
       <View style={{ flex: 1 }}>
         <Text style={[styles.rowTitle, danger && { color: colors.garnet }]}>{title}</Text>
         {subtitle ? <Text style={styles.rowSub}>{subtitle}</Text> : null}
       </View>
+      {badge ? (
+        <View style={styles.badge}>
+          <Text style={styles.badgeText}>{badge}</Text>
+        </View>
+      ) : null}
       {onPress ? <Feather name="chevron-right" size={18} color={colors.textFaint} /> : null}
     </Pressable>
   );
@@ -225,5 +242,7 @@ const makeStyles = (colors: Palette) => StyleSheet.create({
   tag: { borderRadius: radius.pill, paddingHorizontal: 10, paddingVertical: 4, alignSelf: 'flex-start', flexShrink: 1 },
   tagText: { fontFamily: fonts.bold, fontSize: 13, lineHeight: 18 },
   listRow: { flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 11 },
+  badge: { minWidth: 24, height: 24, paddingHorizontal: 7, borderRadius: radius.pill, backgroundColor: colors.accent, alignItems: 'center', justifyContent: 'center' },
+  badgeText: { fontFamily: fonts.bold, fontSize: 13, color: colors.pillText, fontVariant: ['tabular-nums'] },
   listRule: { borderBottomWidth: 1, borderBottomColor: colors.line },
 });

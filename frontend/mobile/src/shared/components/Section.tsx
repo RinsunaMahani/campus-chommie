@@ -20,13 +20,17 @@ type Props = {
   icon?: ComponentProps<typeof Feather>['name'];
   /** The icon's colour: a signal colour for attention, or the default. */
   tint?: string;
+  /** The icon tile's colour (a light wash of the icon's); sand if not given. */
+  tile?: string;
+  /** Before the chevron: one small pill (a state such as "Paused"). */
+  aside?: ReactNode;
   defaultOpen?: boolean;
   /** No rule above it: the first section in a card. */
   first?: boolean;
   children: ReactNode;
 };
 
-export function Section({ title, summary, icon, tint, defaultOpen = false, first, children }: Props) {
+export function Section({ title, summary, icon, tint, tile, aside, defaultOpen = false, first, children }: Props) {
   const colors = usePalette();
   const styles = useStyles(makeStyles);
   const [open, setOpen] = useState(defaultOpen);
@@ -43,7 +47,7 @@ export function Section({ title, summary, icon, tint, defaultOpen = false, first
         onPress={toggle}
         style={styles.head}>
         {icon ? (
-          <View style={[styles.icon, { backgroundColor: colors.iconTile }]}>
+          <View style={[styles.icon, { backgroundColor: tile ?? colors.iconTile }]}>
             <Feather name={icon} size={18} color={tint ?? colors.accentDeep} />
           </View>
         ) : null}
@@ -51,6 +55,7 @@ export function Section({ title, summary, icon, tint, defaultOpen = false, first
           <Text style={styles.title}>{title}</Text>
           {summary ? <Text style={styles.summary}>{summary}</Text> : null}
         </View>
+        {aside}
         <Feather name={open ? 'chevron-up' : 'chevron-down'} size={20} color={colors.textMuted} />
       </Pressable>
       {open ? <View style={styles.body}>{children}</View> : null}

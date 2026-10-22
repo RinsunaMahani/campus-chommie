@@ -1,11 +1,11 @@
 /**
  * Home's "Today": three tiles read at a glance, each one tap from its tab. The next class (or the one on now),
- * the next test or deadline, and how many days the money lasts, in amber when it runs out before the next
- * payment. Each tile says something useful even when its part isn't set up yet, with what to do.
+ * the next test or deadline, and how many days the money lasts. The number carries the meaning, no icons: forest
+ * for a class, rose for a deadline two days off or less, amber when the money runs out before the next payment.
+ * Each tile says something useful even when its part isn't set up yet, with what to do.
  */
-import { Feather } from '@expo/vector-icons';
 import { router, useFocusEffect } from 'expo-router';
-import { ComponentProps, useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { moneyApi } from '@/features/money/api/moneyApi';
@@ -19,8 +19,6 @@ import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
 import { fonts, radius, space } from '@/shared/theme/tokens';
 
 import { nextClass, nextDeadline, nowInSast } from '../today';
-
-type IconName = ComponentProps<typeof Feather>['name'];
 
 /** A big figure with a small unit under it, so the figure fits a narrow tile: "2" / "days", "Today". */
 function inDays(n: number): [string, string] {
@@ -47,14 +45,13 @@ export function TodayTiles() {
   const next = classes ? nextClass(classes, now) : null;
   const due = events ? nextDeadline(events, now.date, now.minutes) : null;
 
-  const tile = (icon: IconName, label: string, [value, unit]: [string, string], sub: string, onPress: () => void, tint?: string) => (
+  const tile = (label: string, [value, unit]: [string, string], sub: string, onPress: () => void, tint?: string) => (
     <Pressable
       key={label}
       accessibilityRole="button"
       accessibilityLabel={`${label}: ${value} ${unit}. ${sub}`}
       onPress={onPress}
       style={({ pressed }) => [styles.tile, pressed && { opacity: 0.8 }]}>
-      <Feather name={icon} size={18} color={tint ?? colors.accentDeep} />
       <Text style={styles.label}>{label}</Text>
       <Text style={[styles.value, value.length > 5 && styles.valueLong, tint ? { color: tint } : null]} numberOfLines={1}>
         {value}
@@ -72,33 +69,31 @@ export function TodayTiles() {
     <View style={styles.row}>
       {next
         ? tile(
-            'clock',
             next.now ? t('home.classNow') : t('home.nextClass'),
             next.daysAhead === 0 ? [next.entry.starts, ''] : inDays(next.daysAhead),
             `${next.entry.module}${next.entry.venue ? ` · ${next.entry.venue}` : ''}`,
             () => router.push('/timetable'),
+            colors.accentDeep,
           )
-        : tile('clock', t('home.nextClass'), ['—', ''], classes ? t('home.addClasses') : '', () => router.push('/timetable'))}
+        : tile(t('home.nextClass'), ['—', ''], classes ? t('home.addClasses') : '', () => router.push('/timetable'))}
       {due
         ? tile(
-            'flag',
             t('home.nextDue'),
             inDays(due.days),
             `${due.event.module} ${due.event.title ?? t(`week.kind.${due.event.kind}`)}`,
             () => router.push('/week'),
-            due.days <= 2 ? colors.marigold : undefined,
+            due.days <= 2 ? colors.garnet : undefined,
           )
-        : tile('flag', t('home.nextDue'), ['—', ''], events ? t('home.nothingDue') : '', () => router.push('/week'))}
+        : tile(t('home.nextDue'), ['—', ''], events ? t('home.nothingDue') : '', () => router.push('/week'))}
       {ready
         ? tile(
-            'credit-card',
             t('home.moneyLasts'),
             days == null ? [t('home.covered'), ''] : [String(days), days === 1 ? t('home.dayUnit') : t('home.daysUnit')],
             ready.runway.short_before_next ? t('home.shortBeforePay') : t('home.untilPay'),
             () => router.push('/money'),
-            ready.runway.short_before_next ? colors.marigold : undefined,
+            ready.runway.short_before_next ? colors.marigold : colors.accentDeep,
           )
-        : tile('credit-card', t('home.moneyLasts'), ['—', ''], money ? t('home.setUpMoney') : '', () => router.push('/money'))}
+        : tile(t('home.moneyLasts'), ['—', ''], money ? t('home.setUpMoney') : '', () => router.push('/money'))}
     </View>
   );
 }
@@ -115,6 +110,7 @@ const makeStyles = (colors: Palette) =>
       borderWidth: 1,
       borderColor: colors.line,
       backgroundColor: colors.white,
+      boxShadow: '0 6px 18px rgba(28, 43, 30, 0.08)',
     },
     label: { fontFamily: fonts.semibold, fontSize: 13, lineHeight: 17, color: colors.textMuted },
     value: { fontFamily: fonts.display, fontSize: 26, lineHeight: 32, color: colors.ink },

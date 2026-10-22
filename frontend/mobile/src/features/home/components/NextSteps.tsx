@@ -1,7 +1,8 @@
 /**
  * "Do this next" on Home: at most three steps the server worked out from everything the app knows about the
  * student (money, the week, exams, saved bursaries, goals), most urgent first. Each is one line, why in small
- * text, and where it leads; amber marks the urgent ones. Replaces the long alert cards ("Heads up").
+ * text, and where it leads; amber marks the urgent ones, a rose tile a deadline or test, mint the rest.
+ * Replaces the long alert cards ("Heads up").
  */
 import { Feather } from '@expo/vector-icons';
 import { Href, router, useFocusEffect } from 'expo-router';
@@ -9,7 +10,7 @@ import { ComponentProps, useCallback, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { api } from '@/shared/api/client';
-import { Card } from '@/shared/components/Parts';
+import { Card, RowTone, toneColours } from '@/shared/components/Parts';
 import { Overline } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
 import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
@@ -50,6 +51,13 @@ export const ROUTE: Record<NextStep['target'], Href> = {
   support: '/support',
 };
 
+/** A deadline or test reads as urgent (rose); anything the server marks for attention, amber. */
+function toneOf(s: NextStep): RowTone {
+  if (s.tone === 'attention') return 'amber';
+  if (s.kind === 'due' || s.kind === 'exam') return 'rose';
+  return 'mint';
+}
+
 export function NextSteps() {
   const colors = usePalette();
   const styles = useStyles(makeStyles);
@@ -71,6 +79,7 @@ export function NextSteps() {
       <Card style={{ paddingVertical: space.xs }}>
         {steps.map((s, i) => {
           const tint = s.tone === 'attention' ? colors.marigold : colors.accentDeep;
+          const tile = toneColours(colors, toneOf(s));
           return (
             <Pressable
               key={s.kind + i}
@@ -79,8 +88,8 @@ export function NextSteps() {
               accessibilityHint={s.why}
               onPress={() => router.push(ROUTE[s.target])}
               style={({ pressed }) => [styles.row, i > 0 && styles.rule, pressed && { opacity: 0.75 }]}>
-              <View style={[styles.icon, { backgroundColor: colors.iconTile }]}>
-                <Feather name={ICON[s.kind] ?? 'arrow-right'} size={18} color={tint} />
+              <View style={[styles.icon, { backgroundColor: tile.tint }]}>
+                <Feather name={ICON[s.kind] ?? 'arrow-right'} size={18} color={tile.color} />
               </View>
               <View style={{ flex: 1, gap: 3 }}>
                 <Text style={styles.line}>{s.line}</Text>

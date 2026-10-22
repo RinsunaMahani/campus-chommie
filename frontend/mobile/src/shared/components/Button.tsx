@@ -5,7 +5,7 @@ import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-nati
 import { fonts, radius, sizes } from '@/shared/theme/tokens';
 import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
 
-type Variant = 'primary' | 'secondary' | 'accent' | 'danger';
+type Variant = 'primary' | 'secondary' | 'accent' | 'danger' | 'soft';
 
 type Props = {
   title: string;
@@ -56,6 +56,8 @@ const variantsOf = (colors: Palette): Record<Variant, { bg: string; fg: string; 
   secondary: { bg: colors.white, fg: colors.ink, border: colors.line },
   accent: { bg: colors.accent, fg: colors.pillText, border: colors.accent },
   danger: { bg: colors.garnet, fg: colors.pillText, border: colors.garnet },
+  // A second action that still invites a tap: green words on a mint wash.
+  soft: { bg: colors.accentTint, fg: colors.accentDeep, border: colors.accentTint },
 });
 
 const makeStyles = (colors: Palette) => StyleSheet.create({
