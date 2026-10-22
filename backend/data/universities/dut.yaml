@@ -69,7 +69,7 @@ programmes:
     faculty: "Faculty of Accounting and Informatics"
     fields: [accounting]
     requirements:
-      source: s-dut-opportunities           # p6
+      source: s-dut-opportunities-checked           # p6
       min_points: 20
       subject_minimums: {english: 3}
       choices:
@@ -123,7 +123,7 @@ programmes:
     faculty: "Faculty of Accounting and Informatics"
     fields: [accounting, commerce]
     requirements:
-      source: s-dut-opportunities           # p10
+      source: s-dut-opportunities-checked           # p10
       min_points: 26                        # "applicants with 26 points and above will be placed on the Three-Year programme"
       subject_minimums: {english: 3}
       choices:
@@ -143,7 +143,7 @@ programmes:
     faculty: "Faculty of Accounting and Informatics"
     fields: [accounting, commerce]
     requirements:
-      source: s-dut-opportunities           # p10-11: the Diploma in Accounting's table
+      source: s-dut-opportunities-checked           # p10-11: the Diploma in Accounting's table
       min_points: 24                        # "Applicant with a minimum of 24-25 points will be placed on Extended Curriculum"
       subject_minimums: {english: 3}
       choices:
@@ -336,7 +336,7 @@ programmes:
     faculty: "Faculty of Accounting and Informatics"
     fields: [accounting, finance]
     requirements:
-      source: s-dut-opportunities           # p23
+      source: s-dut-opportunities-checked           # p23
       min_points: null
       subject_minimums: {english: 3}
       choices:
@@ -356,7 +356,7 @@ programmes:
     faculty: "Faculty of Accounting and Informatics"
     fields: [accounting, finance]
     requirements:
-      source: s-dut-opportunities           # p23-24: the diploma's table
+      source: s-dut-opportunities-checked           # p23-24: the diploma's table
       min_points: null
       subject_minimums: {english: 3}
       choices:
@@ -762,7 +762,7 @@ programmes:
     places: 50
     selection_note: "Two audition rounds: an online video audition (closing 30 September), then an on-campus audition with an English test (SATAP) for about 200 to 220 applicants. Offers go to the top 50."
     requirements:
-      source: s-dut-opportunities           # p64
+      source: s-dut-opportunities-checked           # p64
       min_points: 24                        # "Candidates must have achieved a minimum of 24 points"; the table's heading says 22
       subject_minimums: {english: 4, other_language: 3}
       additional_minimums: [3, 3, 3]
@@ -921,7 +921,7 @@ programmes:
     faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
     requirements:
-      source: s-dut-opportunities           # p83-84
+      source: s-dut-opportunities-checked           # p83-84
       min_points: null
       subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
       additional_minimums: [4, 4]
@@ -1409,7 +1409,7 @@ programmes:
     selective: true
     selection_note: "All applicants write the department's suitability test; successful candidates may be shortlisted for an interview."
     requirements:
-      source: s-dut-opportunities           # p133-134
+      source: s-dut-opportunities-checked           # p133-134
       min_points: null
       subject_minimums: {english: 4, accounting: 3}   # "Please note that Accounting is a compulsory Admission Requirement"
       choices:
@@ -1450,7 +1450,7 @@ programmes:
     selective: true
     selection_note: "Everyone who meets the minimum requirements is interviewed."
     requirements:
-      source: s-dut-opportunities           # p137
+      source: s-dut-opportunities-checked           # p137
       min_points: null
       subject_minimums: {english: 4, accounting: 3}
       choices:
@@ -1678,7 +1678,7 @@ programmes:
     faculty: "Faculty of Management Sciences"
     fields: [tourism_and_hospitality]
     requirements:
-      source: s-dut-opportunities           # p155
+      source: s-dut-opportunities-checked           # p155
       min_points: 26
       subject_minimums: {english: 4, accounting: 3}
       choices:
@@ -1706,6 +1706,13 @@ sources:
     retrieved: 2026-10-22   # first seen through a search engine on 13 Oct; opened in full on 22 Oct
     last_verified: null
     verified_by: "agent draft, needs human check"
+  - id: s-dut-opportunities-checked
+    url: "https://www.dut.ac.za/wp-content/uploads/2026/06/Study-Opportunities-2027.pdf"
+    publisher: "Durban University of Technology"
+    title: "Study Opportunities 2027"
+    retrieved: 2026-10-22   # first seen through a search engine on 13 Oct; opened in full on 22 Oct
+    last_verified: 2026-10-22
+    verified_by: "Rinsuna Mahani"
   - id: s-cao-faq
     url: "https://cao.ac.za/2027%20Entry%20FAQs.html"
     publisher: "Central Applications Office"

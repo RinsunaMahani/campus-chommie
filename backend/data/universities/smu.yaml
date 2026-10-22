@@ -12,7 +12,7 @@ city: Pretoria
 academic_year: 2027          # intake these rules apply to: verify with SMU
 province: Gauteng
 province_source: s-smu-where
-release: false
+release: true    # every value checked by Rinsuna Mahani on 22 Oct 2026 (her fact-check sheet)
 max_choices: 2               # "You are allowed to apply for only two study choices" (s-smu-apply-2027)
 
 points_rules:
@@ -521,117 +521,117 @@ sources:
     publisher: "Sefako Makgatho Health Sciences University"
     title: "Read for its province"
     retrieved: 2026-10-20
-    last_verified: null
-    verified_by: "agent draft, needs human check"
+    last_verified: 2026-10-22
+    verified_by: "Rinsuna Mahani"
   - id: s-smu-med
     url: https://www.smu.ac.za/schools/medicine/medicine-undergraduate-admission-requirements/
     publisher: Sefako Makgatho Health Sciences University
     title: Medicine Undergraduate Admission Requirements
     retrieved: 2026-09-30
-    last_verified: 2026-09-30
-    verified_by: Copied by Claude; to be re-checked by the team
+    last_verified: 2026-10-22
+    verified_by: "Rinsuna Mahani"
   - id: s-smu-apply-2027
     url: "https://www.smu.ac.za/students/apply/online-application/"
     publisher: "Sefako Makgatho Health Sciences University"
     title: "Online Application: submission of 2027 applications"
     retrieved: 2026-10-09
-    last_verified: null
-    verified_by: "agent draft, needs human check"
+    last_verified: 2026-10-22
+    verified_by: "Rinsuna Mahani"
   - id: s-smu-dent
     url: "https://www.smu.ac.za/schools/oral-health-sciences/oral-health-sciences-undergraduate-admission-requirements/"
     publisher: "Sefako Makgatho Health Sciences University"
     title: "Dentistry Undergraduate Admission Requirements"
     retrieved: 2026-10-09
-    last_verified: null
-    verified_by: "agent draft, needs human check"
+    last_verified: 2026-10-22
+    verified_by: "Rinsuna Mahani"
   - id: s-smu-pharm
     url: "https://www.smu.ac.za/schools/pharmacy/pharmacy-undergraduate-admission-requirements/"
     publisher: "Sefako Makgatho Health Sciences University"
     title: "Pharmacy Undergraduate Admission Requirements"
     retrieved: 2026-10-09
-    last_verified: null
-    verified_by: "agent draft, needs human check"
+    last_verified: 2026-10-22
+    verified_by: "Rinsuna Mahani"
   - id: s-smu-hcs
     url: "https://www.smu.ac.za/schools/health-care-sciences/health-care-sciences-undergraduate-admission-requirements/"
     publisher: "Sefako Makgatho Health Sciences University"
     title: "Health Care Sciences Undergraduate Admission Requirements"
     retrieved: 2026-10-09
-    last_verified: null
-    verified_by: "agent draft, needs human check"
+    last_verified: 2026-10-22
+    verified_by: "Rinsuna Mahani"
   - id: s-smu-sst
     url: "https://www.smu.ac.za/schools/science-and-technology/science-and-technology-undergraduate-admission-requirements/"
     publisher: "Sefako Makgatho Health Sciences University"
     title: "Science and Technology Undergraduate Admission Requirements"
     retrieved: 2026-10-09
-    last_verified: null
-    verified_by: "agent draft, needs human check"
+    last_verified: 2026-10-22
+    verified_by: "Rinsuna Mahani"
   - id: s-smu-cal-2026
     url: "https://www.smu.ac.za/download/221/applications/275117/general-calendar-2026_approved_23_jan"
     publisher: "Sefako Makgatho Health Sciences University"
     title: "2026 General Calendar (approved 23 Jan 2026)"
     retrieved: 2026-10-09
-    last_verified: null
-    verified_by: "agent draft, needs human check"
+    last_verified: 2026-10-22
+    verified_by: "Rinsuna Mahani"
   - id: s-smu-fees-2026
     url: "https://www.smu.ac.za/download/221/applications/275139/undergraduate-fees-2026.pdf"
     publisher: "Sefako Makgatho Health Sciences University"
     title: "Undergraduate student fees 2026"
     retrieved: 2026-10-09
-    last_verified: null
-    verified_by: "agent draft, needs human check"
+    last_verified: 2026-10-22
+    verified_by: "Rinsuna Mahani"
   - id: s-smu-health
     url: "https://www.smu.ac.za/students/student-affairs/campus-health-and-wellness/"
     publisher: "Sefako Makgatho Health Sciences University"
     title: "Campus Health and Wellness"
     retrieved: 2026-10-09
-    last_verified: null
-    verified_by: "agent draft, needs human check"
+    last_verified: 2026-10-22
+    verified_by: "Rinsuna Mahani"
   - id: s-smu-counselling
     url: "https://www.smu.ac.za/students/student-affairs/centre-for-student-counselling-and-development/"
     publisher: "Sefako Makgatho Health Sciences University"
     title: "Centre for Student Counselling and Development"
     retrieved: 2026-10-09
-    last_verified: null
-    verified_by: "agent draft, needs human check"
+    last_verified: 2026-10-22
+    verified_by: "Rinsuna Mahani"
   - id: s-smu-referral
     url: "https://www.smu.ac.za/students/campus-affairs/student-life-smu/student-support-referral-unit/"
     publisher: "Sefako Makgatho Health Sciences University"
     title: "Student Support Referral Unit"
     retrieved: 2026-10-09
-    last_verified: null
-    verified_by: "agent draft, needs human check"
+    last_verified: 2026-10-22
+    verified_by: "Rinsuna Mahani"
   - id: s-smu-reg-2026
     url: "https://www.smu.ac.za/students/apply/registrations/registration-guidelines/"
     publisher: "Sefako Makgatho Health Sciences University"
     title: "Registration guidelines and notices (2026): student fees and clearance"
     retrieved: 2026-10-11
-    last_verified: null
-    verified_by: "agent draft, needs human check"
+    last_verified: 2026-10-22
+    verified_by: "Rinsuna Mahani"
   - id: s-smu-life-gov
     url: "https://www.smu.ac.za/students/student-affairs/student-life-and-governance/"
     publisher: "Sefako Makgatho Health Sciences University"
     title: "Student Life and Governance: the Religious Desk"
     retrieved: 2026-10-11
-    last_verified: null
-    verified_by: "agent draft, needs human check"
+    last_verified: 2026-10-22
+    verified_by: "Rinsuna Mahani"
   - id: s-smu-garden-2026
     url: "https://www.smu.ac.za/2026/03/11/smu-garden-named-shoprite-competition-finalist/"
     publisher: "Sefako Makgatho Health Sciences University"
     title: "SMU garden named Shoprite competition finalist (11 Mar 2026)"
     retrieved: 2026-10-11
-    last_verified: null
-    verified_by: "agent draft, needs human check"
+    last_verified: 2026-10-22
+    verified_by: "Rinsuna Mahani"
   - id: s-tshwane-wonderboom
     url: "https://www.tshwane.gov.za/?page_id=5481"
     publisher: "City of Tshwane"
     title: "Wonderboom Nature Reserve: tariffs and visiting hours"
     retrieved: 2026-10-12
-    last_verified: null
-    verified_by: "agent draft, needs human check"
+    last_verified: 2026-10-22
+    verified_by: "Rinsuna Mahani"
   - id: s-ditsong-tswaing-fees
     url: "https://ditsong.org.za/en/wp-content/uploads/2019/09/Tswaing-Meteorite-Crater-Admission-Fees.pdf"
     publisher: "DITSONG Museums of South Africa"
     title: "DITSONG: Tswaing Meteorite Crater admission fees, 1 April 2026 to 31 March 2027"
     retrieved: 2026-10-12
-    last_verified: null
-    verified_by: "agent draft, needs human check"
+    last_verified: 2026-10-22
+    verified_by: "Rinsuna Mahani"

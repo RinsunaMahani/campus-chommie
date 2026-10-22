@@ -9,8 +9,6 @@ the student's campus's own.
 """
 from __future__ import annotations
 
-from datetime import date
-
 import pytest
 from student_helpers import DEMO_TODAY, fresh_password, on_day, seed_demo, sign_in_demo, student
 
@@ -123,26 +121,27 @@ def test_support_for_a_campus(client, me):
     assert kinds["counselling"]["line"] is None
     for missing in ("financial_aid", "food_support", "chaplaincy"):
         assert kinds[missing] == {"kind": missing, "services": [], "line": "Not verified yet"}
-    # Every crisis line in the pack is still an agent's draft: held back until a person checks it.
-    assert kinds["crisis"] == {"kind": "crisis", "services": [], "line": constants.CRISIS_HELD}
+    # UP's four crisis lines were checked by Rinsuna on 22 Oct 2026, so they show; the rest are agent drafts.
+    assert [s["contact"] for s in kinds["crisis"]["services"]][0] == "0800 006 428" and kinds["crisis"]["line"] is None
+    assert all(s["last_verified"] == "2026-10-22" for s in kinds["crisis"]["services"])
     for k in data["kinds"]:
         for s in k["services"]:
-            assert s["source_url"].startswith("https://") and s["last_verified"] is None
+            assert s["source_url"].startswith("https://")
+            if k["kind"] != "crisis":
+                assert s["last_verified"] is None
 
 
-def test_crisis_lines_show_once_a_person_has_checked_them(client, me, monkeypatch):
+def test_a_crisis_line_nobody_has_checked_is_held_back(client, me, monkeypatch):
     up = university_service.packs()["up"]
-    checked = up.model_copy(update={"sources": [
-        s.model_copy(update={"verified_by": "Rinsuna Mahani", "last_verified": date(2026, 10, 11)})
-        if s.id == "s-up-infoguide-2026" else s
+    unchecked = up.model_copy(update={"sources": [
+        s.model_copy(update={"verified_by": "agent draft, needs human check", "last_verified": None})
+        if s.id == "s-up-infoguide-2026-checked" else s
         for s in up.sources
     ]})
-    monkeypatch.setattr(university_service, "packs", lambda: {**university_service.all_packs(), "up": checked})
+    monkeypatch.setattr(university_service, "packs", lambda: {**university_service.all_packs(), "up": unchecked})
     place(client, me, "up", "hatfield")
     crisis = next(k for k in get(client, me.headers, "/support")["kinds"] if k["kind"] == "crisis")
-    assert crisis["line"] is None
-    assert crisis["services"][0]["name"] == "UP crisis line (toll-free)"
-    assert crisis["services"][0]["last_verified"] == "2026-10-11"
+    assert crisis == {"kind": "crisis", "services": [], "line": constants.CRISIS_HELD}
 
 
 def test_support_and_cheap_things_need_a_campus(client, me):

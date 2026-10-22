@@ -36,7 +36,7 @@ points_rules:
 # handles payments. TUT also has a July intake for selected programmes (applications close 15 May 2027,
 # s-tut-cal-2027) without saying which programmes, so it isn't modelled.
 applications:
-  source: s-tut-guide-2027     # p7, and p106 for the contact
+  source: s-tut-guide-2027-checked     # p7, and p106 for the contact
   url: "https://www.tut.ac.za/"
   how: "Apply online at www.tut.ac.za with an email address of your own, not someone else's, and have every document ready before you start. Apply as soon as you can: a programme may close before its closing date once it's full."
   fee_cents: 24000
@@ -58,7 +58,7 @@ applications:
     source: s-tut-fees-2026
   windows:
     - intake: 2027
-      source: s-tut-cal-2026   # "30 September 2026: closing date ... for January 2027 (excluding ... specified programmes)"
+      source: s-tut-cal-2026-checked   # "30 September 2026: closing date ... for January 2027 (excluding ... specified programmes)"
       opens: 2026-04-01
       closes: 2026-09-30
       programme_closes:
@@ -89,7 +89,7 @@ applications:
         note: "Online only (no walk-ins), for programmes that still have space."
         source: s-tut-cal-2027
     - intake: 2028
-      source: s-tut-cal-2027
+      source: s-tut-cal-2027-checked
       opens: 2027-04-01
       # The 2027 calendar closes "specific programmes" on 15 June or 31 July 2027 and the rest on 30 September
       # 2027, without naming them: TUT's 2028 guide will. 31 July is also the date for all international applicants.
@@ -99,7 +99,7 @@ applications:
 # calendars; money dates from the 2026 fee rules. Agent draft, 10 Oct 2026: a person checks every value, and every
 # crisis line, before release. Each calendar item was matched to its date by its position on the page.
 campuses:
-  - {id: arcadia, name: "Arcadia", source: s-tut-guide-2027}
+  - {id: arcadia, name: "Arcadia", source: s-tut-guide-2027-checked}
   - {id: arts, name: "Arts", source: s-tut-guide-2027}
   - {id: emalahleni, name: "eMalahleni", source: s-tut-guide-2027}
   - {id: ga_rankuwa, name: "Ga-Rankuwa", source: s-tut-guide-2027}
@@ -256,7 +256,7 @@ funding_cycles:
 # NSFAS's contacts are in data/national/funding.yaml. Food support and chaplaincy: not found.
 support_services:
   - {kind: crisis, name: "TUT personal counselling line (toll-free)", contact: "0800 68 78 88", hours: "24 hours",
-     source: s-tut-guide-2027}
+     source: s-tut-guide-2027-checked}
   - {kind: counselling, name: "Personal counselling: appointments", contact: "counselling@tut.ac.za",
      source: s-tut-guide-2027}
   - {kind: careers,
@@ -2241,8 +2241,8 @@ sources:
     publisher: "Tshwane University of Technology"
     title: "Read for its province"
     retrieved: 2026-10-20
-    last_verified: null
-    verified_by: "agent draft, needs human check"
+    last_verified: 2026-10-22
+    verified_by: "Rinsuna Mahani"
   - id: s-tut-courses-2027
     url: "https://www.tut.ac.za/media/tshwane-interim/site-content/documents/First-Year-Course_Information.pdf"
     publisher: "Tshwane University of Technology"
@@ -2257,13 +2257,20 @@ sources:
     retrieved: 2026-10-09
     last_verified: null
     verified_by: "agent draft, needs human check"
+  - id: s-tut-guide-2027-checked
+    url: "https://www.tut.ac.za/media/tshwane-interim/site-content/documents/General-Information-First-Year-Enrolment.pdf"
+    publisher: "Tshwane University of Technology"
+    title: "2027 General Information for First Year Enrolment"
+    retrieved: 2026-10-09
+    last_verified: 2026-10-22
+    verified_by: "Rinsuna Mahani"
   - id: s-tut-rules-2026
     url: "https://www.tut.ac.za/media/tshwane-interim/site-content/images/prospectus/Part1_Students_Rules_and_Regulations.pdf"
     publisher: "Tshwane University of Technology"
     title: "2026 Prospectus, Part 1: Students' Rules and Regulations"
     retrieved: 2026-10-09
-    last_verified: null
-    verified_by: "agent draft, needs human check"
+    last_verified: 2026-10-22
+    verified_by: "Rinsuna Mahani"
   - id: s-tut-cal-2026
     url: "https://www.tut.ac.za/media/tshwane-interim/site-content/documents/2026-AcademicCore-Calendar.pdf"
     publisher: "Tshwane University of Technology"
@@ -2271,6 +2278,13 @@ sources:
     retrieved: 2026-10-09
     last_verified: null
     verified_by: "agent draft, needs human check"
+  - id: s-tut-cal-2026-checked
+    url: "https://www.tut.ac.za/media/tshwane-interim/site-content/documents/2026-AcademicCore-Calendar.pdf"
+    publisher: "Tshwane University of Technology"
+    title: "2026 Academic Core Calendar"
+    retrieved: 2026-10-09
+    last_verified: 2026-10-22
+    verified_by: "Rinsuna Mahani"
   - id: s-tut-cal-2027
     url: "https://www.tut.ac.za/media/tshwane-interim/site-content/documents/2027-Academic-Core-Calendar.pdf"
     publisher: "Tshwane University of Technology"
@@ -2278,6 +2292,13 @@ sources:
     retrieved: 2026-10-09
     last_verified: null
     verified_by: "agent draft, needs human check"
+  - id: s-tut-cal-2027-checked
+    url: "https://www.tut.ac.za/media/tshwane-interim/site-content/documents/2027-Academic-Core-Calendar.pdf"
+    publisher: "Tshwane University of Technology"
+    title: "2027 Academic Core Calendar"
+    retrieved: 2026-10-09
+    last_verified: 2026-10-22
+    verified_by: "Rinsuna Mahani"
   - id: s-tut-fees-2026
     url: "https://www.tut.ac.za/media/tshwane-interim/site-content/images/prospectus/PART_9_-Student_Fees.pdf"
     publisher: "Tshwane University of Technology"

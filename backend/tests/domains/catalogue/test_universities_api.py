@@ -44,7 +44,10 @@ def test_the_list_needs_no_account_and_flags_unchecked_packs(client):
     # A university whose programmes aren't added yet is still listed, with none.
     assert universities["uj"]["programmes"] == 0
     assert universities["wits"]["programmes"] > 0
-    assert all(u["confirmed"] is False and u["notice"].startswith("From ") and "own documents" in u["notice"] for u in universities.values())
+    # SMU: every fact checked by Rinsuna (22 Oct 2026). The rest say where their facts come from.
+    assert (universities["smu"]["confirmed"], universities["smu"]["notice"]) == (True, None)
+    assert all(u["confirmed"] is False and u["notice"].startswith("From ") and "own documents" in u["notice"]
+               for k, u in universities.items() if k != "smu")
     assert universities["up"]["notice"].startswith("From the University of Pretoria's own documents, last read on ")
 
 
@@ -52,7 +55,7 @@ def test_one_university_shows_its_pack_and_sources(client):
     r = client.get(f"{BASE}/smu")
     assert r.status_code == 200
     uni = r.get_json()["data"]["university"]
-    assert uni["id"] == "smu" and "release" not in uni and uni["confirmed"] is False
+    assert uni["id"] == "smu" and "release" not in uni and uni["confirmed"] is True
     mbchb = next(p for p in uni["programmes"] if p["id"] == "mbchb")
     assert mbchb["requirements"]["min_points"] == 38
     assert mbchb["requirements"]["subject_minimums"]["mathematics"] == 6

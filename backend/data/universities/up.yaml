@@ -195,11 +195,11 @@ funding_cycles:
 # on an official page.
 support_services:
   - {kind: crisis, name: "UP crisis line (toll-free)", contact: "0800 006 428", hours: "24 hours",
-     source: s-up-infoguide-2026}
+     source: s-up-infoguide-2026-checked}
   - {kind: crisis, name: "UP Careline, with SADAG: telephone counselling for registered students",
-     contact: "0800 747 747; SMS 31393 for a call-back", hours: "24 hours, every day", source: s-up-infoguide-2026}
+     contact: "0800 747 747; SMS 31393 for a call-back", hours: "24 hours, every day", source: s-up-infoguide-2026-checked}
   - {kind: crisis, name: "Emergencies: UP's 24-hour Operational Management Centre",
-     contact: "012 420 2310 or 012 420 2760", hours: "24 hours", source: s-up-infoguide-2026}
+     contact: "012 420 2310 or 012 420 2760", hours: "24 hours", source: s-up-infoguide-2026-checked}
   - {kind: counselling, name: "Student Counselling Unit", contact: "012 420 2333; studentcounselling@up.ac.za",
      hours: "07:30-16:00", source: s-up-infoguide-2026}
   - {kind: health, name: "Student Health Services", contact: "012 420 2500; info.shs@up.ac.za",
@@ -207,7 +207,7 @@ support_services:
   - {kind: health, name: "Centre for Sexualities, AIDS and Gender", contact: "012 420 4391",
      source: s-up-infoguide-2026}
   - {kind: crisis, name: "Thuthuzela Care Centre (outside UP), after sexual assault", contact: "012 354 1874",
-     source: s-up-infoguide-2026}
+     source: s-up-infoguide-2026-checked}
   - {kind: disability, name: "Access, Disability and Inclusion Services (ADIS)", contact: "012 420 2064",
      source: s-up-infoguide-2026}
   - {kind: tutoring, name: "Academic success coaches, by faculty",
@@ -1460,6 +1460,13 @@ sources:
     retrieved: 2026-10-09
     last_verified: null
     verified_by: "agent draft, needs human check"
+  - id: s-up-infoguide-2026-checked
+    url: "https://drupalwebprod-files.up.ac.za/Public/2025-12/UP_InfoGuide%202026_V5-c.pdf"
+    publisher: "University of Pretoria"
+    title: "InfoGuide 2026"
+    retrieved: 2026-10-09
+    last_verified: 2026-10-22
+    verified_by: "Rinsuna Mahani"
   - id: s-sanbi-pnbg-tickets
     url: "https://www.sanbi.org/gardens/pretoria/information-5/buy-tickets-pretoria-nbg/"
     publisher: "South African National Biodiversity Institute (SANBI)"
