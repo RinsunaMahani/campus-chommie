@@ -73,7 +73,7 @@ export function Screen({ children, footer, back, tab, onRefresh, refreshing = fa
     <View style={styles.root}>
       <Wallpaper />
       {backdrop && !isHero ? (
-        <View style={styles.backdrop} pointerEvents="none">
+        <View style={styles.backdrop}>
           <Image source={backdrop} style={styles.photo} resizeMode="cover" accessible={false} accessibilityIgnoresInvertColors />
           {/* Darker at the top for the title, then into the page colour, so the cards read on it. */}
           {/* Text-over-photo guidance: darken where the text sits (the top), check the lightest spot, then fade
@@ -101,7 +101,7 @@ export function Screen({ children, footer, back, tab, onRefresh, refreshing = fa
             <PaletteProvider palette={forest}>
               <View style={[styles.hero, { paddingTop: insets.top + space.md }]}>
                 {backdrop ? (
-                  <View style={StyleSheet.absoluteFill} pointerEvents="none">
+                  <View style={[StyleSheet.absoluteFill, { pointerEvents: 'none' }]}>
                     <Image source={backdrop} style={styles.photo} resizeMode="cover" accessible={false} accessibilityIgnoresInvertColors />
                     {/* 0.55 black keeps white words above 4.5:1 on a bright sky. */}
                     <View style={[StyleSheet.absoluteFill, { backgroundColor: 'rgba(0, 0, 0, 0.55)' }]} />
@@ -120,7 +120,6 @@ export function Screen({ children, footer, back, tab, onRefresh, refreshing = fa
         {title ? (
           <Animated.View
             style={[styles.bar, isHero && { paddingTop: insets.top + space.md }, { opacity: barOpacity }]}
-            pointerEvents="none"
             importantForAccessibility="no-hide-descendants">
             <Text style={styles.barTitle} numberOfLines={1}>
               {title}
@@ -189,7 +188,8 @@ export const BACKDROP_HEIGHT = 380;
 export const DOCK_ROOM = 112;
 
 const makeStyles = (colors: Palette) => StyleSheet.create({
-  backdrop: { position: 'absolute', top: 0, left: 0, right: 0, height: BACKDROP_HEIGHT },
+  // pointerEvents in style: the prop is deprecated on the web.
+  backdrop: { position: 'absolute', top: 0, left: 0, right: 0, height: BACKDROP_HEIGHT, pointerEvents: 'none' },
   // Width and height spelled out: a bundled image carries its own size, which would win over insets alone.
   photo: { position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' },
   root: { flex: 1, backgroundColor: colors.porcelain },
@@ -215,6 +215,7 @@ const makeStyles = (colors: Palette) => StyleSheet.create({
   },
   // The slim bar: the title again, once the large one has scrolled away.
   bar: {
+    pointerEvents: 'none',
     position: 'absolute',
     top: 0,
     left: 0,

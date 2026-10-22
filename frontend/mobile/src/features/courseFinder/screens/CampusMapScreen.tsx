@@ -2,7 +2,7 @@ import { Feather } from '@expo/vector-icons';
 import * as WebBrowser from 'expo-web-browser';
 import { useLocalSearchParams } from 'expo-router';
 import { ComponentProps, useEffect, useMemo, useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import Svg, { Circle, G, Polygon, Text as SvgText } from 'react-native-svg';
 
 import { HeroScreen } from '@/shared/components/HeroScreen';
@@ -90,6 +90,13 @@ function toPoints(ring: LatLon[], project: (pt: LatLon) => [number, number]): st
  * - Shows `attribution` linked to `attribution_url` and `licence` linked to `licence_url`.
  * - Shows `notice` when `confirmed` is false.
  */
+/**
+ * A tap on a map shape. On the web, react-native-svg turns onPress into a click and also hands the page
+ * touch-responder props the browser doesn't know (React logs six "Unknown event handler" errors). There, a click
+ * alone: onPress must be null, not left out, or the library copies the missing onPress over our onClick.
+ */
+const tap = (fn: () => void): object => (Platform.OS === 'web' ? { onClick: fn, onPress: null } : { onPress: fn });
+
 export default function CampusMapScreen() {
   const colors = usePalette();
   const styles = useStyles(makeStyles);
@@ -251,7 +258,7 @@ export default function CampusMapScreen() {
                                 fill={selected ? colors.marigold : place.name ? colors.jadeTint : colors.line}
                                 stroke={selected ? colors.marigold : place.name ? colors.accentDeep : colors.textFaint}
                                 strokeWidth={selected ? 2 : 1}
-                                onPress={() => setSelectedPlaceId(place.id)}
+                                {...tap(() => setSelectedPlaceId(place.id))}
                               />
                             ) : (
                               <Circle
@@ -262,7 +269,7 @@ export default function CampusMapScreen() {
                                 fill={selected ? colors.marigold : colors.accentDeep}
                                 stroke={colors.ink}
                                 strokeWidth={1}
-                                onPress={() => setSelectedPlaceId(place.id)}
+                                {...tap(() => setSelectedPlaceId(place.id))}
                               />
                             )}
                             {place.name ? (

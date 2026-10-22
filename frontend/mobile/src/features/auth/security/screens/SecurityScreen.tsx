@@ -1,7 +1,7 @@
 import { Feather } from '@expo/vector-icons';
 import { router, useFocusEffect } from 'expo-router';
 import { useCallback, useState } from 'react';
-import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { AuthError } from '@/features/auth/types';
 import { Button } from '@/shared/components/Button';
@@ -19,13 +19,23 @@ function when(iso: string): string {
   return d.toLocaleDateString('en-ZA', { day: 'numeric', month: 'short' }) + ', ' + d.toLocaleTimeString('en-ZA', { hour: '2-digit', minute: '2-digit' });
 }
 
-/** Home -> Account security: where you're signed in, your password, your data, your account. */
+/** Phones shown before "Show N more": this one, then the most recently used. */
+const SHOWN = 4;
+
+/** This phone first, then the most recently used. */
+export function phoneOrder(phones: SignedInPhone[]): SignedInPhone[] {
+  return [...phones].sort((a, b) => Number(b.this_phone) - Number(a.this_phone) || b.last_used_at.localeCompare(a.last_used_at));
+}
+
+/** Home -> Account security: where you're signed in (this phone and the latest few, the rest a tap away), your
+ * password, your data, your account. */
 export default function SecurityScreen() {
   const colors = usePalette();
   const styles = useStyles(makeStyles);
   const [phones, setPhones] = useState<SignedInPhone[] | null>(null);
   const [message, setMessage] = useState('');
   const [busy, setBusy] = useState(false);
+  const [all, setAll] = useState(false);
 
   const load = useCallback(() => {
     securityApi
@@ -59,7 +69,7 @@ export default function SecurityScreen() {
         <ActivityIndicator color={colors.accent} />
       ) : (
         <Card style={{ gap: 12 }}>
-          {phones.map((p) => (
+          {(all ? phoneOrder(phones) : phoneOrder(phones).slice(0, SHOWN)).map((p) => (
             <View key={p.id} style={styles.phone}>
               <IconTile name="smartphone" size={36} />
               <View style={{ flex: 1 }}>
@@ -69,6 +79,12 @@ export default function SecurityScreen() {
               {p.this_phone ? <Tag label="This phone" tone="jade" /> : null}
             </View>
           ))}
+          {phones.length > SHOWN ? (
+            <Pressable accessibilityRole="button" onPress={() => setAll((a) => !a)} hitSlop={6} style={styles.more}>
+              <Text style={styles.moreText}>{all ? 'Show fewer' : `Show ${phones.length - SHOWN} more`}</Text>
+              <Feather name={all ? 'chevron-up' : 'chevron-down'} size={16} color={colors.accentDeep} />
+            </Pressable>
+          ) : null}
           {others > 0 ? <Button title="Sign out other phones" variant="secondary" icon="log-out" onPress={signOutOthers} loading={busy} /> : null}
         </Card>
       )}
@@ -95,6 +111,8 @@ const makeStyles = (colors: Palette) =>
   phone: { flexDirection: 'row', alignItems: 'center', gap: 12 },
   phoneName: { fontFamily: fonts.bold, fontSize: 15.5, color: colors.text },
   phoneSub: { fontFamily: fonts.body, fontSize: 13.5, color: colors.textMuted, marginTop: 2 },
+  more: { flexDirection: 'row', alignItems: 'center', gap: 4, alignSelf: 'flex-start', paddingVertical: 4 },
+  moreText: { fontFamily: fonts.bold, fontSize: 14.5, color: colors.accentDeep },
   note: { flexDirection: 'row', gap: 8, backgroundColor: colors.iconTile, borderRadius: 10, padding: 12 },
   noteText: { flex: 1, fontFamily: fonts.medium, fontSize: 14, color: colors.text },
 });
