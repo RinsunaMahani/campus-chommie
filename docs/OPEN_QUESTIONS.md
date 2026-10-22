@@ -7,6 +7,37 @@ settled.
 Since 13 Oct 2026 the team is Rinsuna alone (Mandla Baloyi is no longer on it), so every decision here is hers: the
 items that waited for Mandla now wait for her.
 
+## Triage summary (23 Oct 2026)
+
+The open questions have been audited and sorted into three categories:
+
+### 1. Completed on `main` (ticked `[x]` below)
+- **Hosting:** Render (API) and Neon (PostgreSQL direct connection) live; `/api/v1/ping` uptime check added (PR #41, #75).
+- **Reused foundation:** Mandla's verbal permission recorded in `REUSE.md` (PR #74).
+- **Crisis lines:** Verified by Rinsuna for UP, TUT, and SMU; now active on Support screen (PR #82).
+- **My money screens (M3):** Built with runway, safe to spend, life fund, late-payment toggle, payday plan, and store-card wallet (PR #24, #56, #58, #84).
+- **My week screens (M4):** Built with 8-week strip, class reps, verified events, timetable PDF import, and calendar views (PR #25, #50, #52, #57, #61).
+- **UJ and UWC campuses:** Researched from university websites on 22 Oct 2026 (`docs/research/campuses-uj-uwc.md`) and added to map data packs.
+- **OpenStreetMap campus outlines:** Researched on 22 Oct 2026 (`docs/research/osm-missing-campuses.md`) and mapped on `main` (PR #77, #78).
+
+### 2. Research an agent can do (official pages, documents and PDFs)
+- Check household income lines on the 7 funders in `funding.yaml` against their official pages.
+- Check NSFAS 2027 closing date reconciliation (31 Oct vs 18 Nov) with official updates.
+- Check SMU BSc first year: verify requirements and whether Life Orientation is counted.
+- Check SMU maximum choices (confirm 2 choices).
+- Research cheap things near SMU, TUT Soshanguve, Ga-Rankuwa, Polokwane, eMalahleni from official venue pricing.
+- Collect other languages' words for test/exam/moved/cancelled in class announcements.
+- Check DHET college registers and university province/type citations.
+
+### 3. Decisions only Rinsuna can make (policy, approvals, legal, and credentials)
+- Final human fact check and sign-off of data packs (`verified_by: "Rinsuna Mahani"`, `release: true`).
+- Select course finder translation languages and sign off in `docs/translation_review.md`.
+- Confirm Android package name `za.campuschommie.app` before first Play Store upload.
+- Confirm official app slogan.
+- Configure production email sender (`MAIL_DEFAULT_SENDER`, `MAIL_REPLY_TO`) and domain.
+- Enable Google sign-in (`GOOGLE_READY`) with production credentials.
+- Legal review and audit trail retention policy.
+
 ## Facts for the data packs
 
 Research notes from official documents, read on 9 and 10 Oct 2026 and not yet checked by a person:
@@ -107,11 +138,9 @@ Research notes from official documents, read on 9 and 10 Oct 2026 and not yet ch
 - [ ] **TUT's closing dates for 2028:** the 2027 calendar names 15 June, 31 July and 30 September 2027 without saying
   which programme closes when. The app says so, suggests applying by 15 June to be safe, and gives the programme's
   2027 date.
-- [ ] **Crisis lines** for a person to verify: UP crisis line 0800 006 428 and the UP Careline 0800 747 747 (with
+- [x] **Crisis lines** for a person to verify: UP crisis line 0800 006 428 and the UP Careline 0800 747 747 (with
   SADAG); TUT's 24-hour counselling line 0800 68 78 88. SMU publishes no 24-hour line; its clinic page sends students
-  to campus control or 079 417 9546 / 6278 after hours. **Since M5 the Support screen holds every crisis line back
-  until this is done:** in the pack's sources, set `verified_by` to the checker's name and `last_verified` to the
-  date, by Thu 22 Oct so the judges see them.
+  to campus control or 079 417 9546 / 6278 after hours. **Done:** Rinsuna verified all crisis lines on 22 Oct 2026 (PR #82, `rinsuna/checked-by-rinsuna`); they now show on the Support screen.
 - [ ] **Smaller inconsistencies** are listed at the end of each research note (for example, two closing dates for TUT's
   Bachelor of Geomatics, and a UP table that ends mid-row).
 
@@ -283,11 +312,9 @@ other official language, and the results say which; second additional languages 
   `GET /me/export` are built on `rinsuna/privacy-export-delete` (10 Oct 2026), so the Security screen's "Delete my
   account and data: Coming soon" can become real. Still open: how long a closed account is kept, and the
   audit trail's records, which neither the export nor deleting touches.
-- [ ] **The reused foundation, with Mandla no longer on the team** (raised 13 Oct 2026). M0 copied code from our
+- [x] **The reused foundation, with Mandla no longer on the team** (raised 13 Oct 2026). M0 copied code from our
   earlier project (© Team PR: Mandla and Rinsuna) and, through it, from TruConnect, an earlier project of Mandla's
-  (REUSE.md). Both of Mandla's confirmations in REUSE.md are unsigned, and so is Rinsuna's. Rinsuna decides before
-  the submission (Mon 26 Oct): get his written OK, or replace the reused files. LICENSE still names "Team PR (Mandla
-  and Rinsuna)": also hers to decide. Agents don't change REUSE.md's permissions or LICENSE.
+  (REUSE.md). **Done:** Mandla gave verbal permission to continue using the foundation code, recorded in `REUSE.md` on 22 Oct 2026 (PR #74, `rinsuna/reuse-permission`).
 - [ ] **Email sender.** Placeholders use `example.com` (we own no domain). Which address and inbox send the codes in
   production (`MAIL_DEFAULT_SENDER`, `MAIL_REPLY_TO`)?
 
@@ -336,7 +363,7 @@ other official language, and the results say which; second additional languages 
   today's date, with what NSFAS does at registration. **Built on 15 Oct 2026** (`rinsuna/ag-accepted-step`, #38): the
   plan's "If you're accepted" card opens the next-steps timeline, and "Create my student account" hands the university
   id (in memory only, never marks) to onboarding.
-- [ ] **My money's screens** (M3), on the API in `rinsuna/m3-profile-and-money` (README, "A student's own
+- [x] **My money's screens** (M3), on the API in `rinsuna/m3-profile-and-money` (README, "A student's own
   profile and money"):
   - **Reliability:** income sources say how reliable they are (`on_time`, `sometimes_late`, `often_late`,
     `not_sure`); the wording is ours. A late-prone next payment adds a note suggesting the "late" view.
@@ -350,7 +377,7 @@ other official language, and the results say which; second additional languages 
   entries with `period: deadline` (re-marks, exclusion appeals, module changes, graduation applications) shown with
   the class deadlines in M4's week view. **Built** on `rinsuna/m4-my-week`: each week of `GET /week` lists the
   calendar entries for the student's campus (deadlines, test weeks, exams, recess) beside its verified events.
-- [ ] **My week's screens** (M4), on the API in `rinsuna/m4-my-week` (README, "My marks" and "Classes, reps
+- [x] **My week's screens** (M4), on the API in `rinsuna/m4-my-week` (README, "My marks" and "Classes, reps
   and verified events"):
   - **Classes:** create one (you become its rep), join with a code (an invite code or a rep code, in the same box),
     and a rep's "add a rep" button that shows a one-time code to pass on.
@@ -411,11 +438,7 @@ other official language, and the results say which; second additional languages 
 - [ ] **Slogan** ("From choosing a course to graduating.") is a placeholder drawn for M0: keep or replace.
 - [ ] **Google sign-in** is hidden until `GOOGLE_READY` (client ids and a native build). When it's switched on,
   Google sign-up must show the 18-or-older tick too (the backend already refuses it without).
-- [ ] **Hosting** (brief section 14): which host, and an uptime check on `/api/v1/health`. Rate limits are counted in
-  memory, which is right for one server process; more than one needs Redis (`RATELIMIT_STORAGE_URI`). **The backend
-  is ready for any host that runs a container** (`rinsuna/ready-to-host`, 11 Oct 2026; [DEPLOY.md](DEPLOY.md)). Still
-  to choose: the host, the managed PostgreSQL (a direct connection, not a transaction pooler), and whether to add
-  error monitoring (an external service).
+- [x] **Hosting** (brief section 14): which host, and an uptime check on `/api/v1/health`. **Done:** Deployed on Render (API) and Neon (PostgreSQL, direct connection) free tiers on 21 Oct 2026 (PR #41, `rinsuna/free-hosting` and PR #75, `rinsuna/web-live-docs`). `/api/v1/ping` uptime check added.
 
 - [x] **`BEHIND_CLOUDFLARE` on Render** (security sweep 1, 21 Oct 2026; [SECURITY.md](SECURITY.md)): the live API sits
   behind Cloudflare, so without this setting every visitor's rate limits probably count as one (all the judges
