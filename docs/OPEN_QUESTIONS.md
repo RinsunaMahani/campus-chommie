@@ -215,6 +215,12 @@ and SMU and, since #32 and #33, at VUT, WSU, UMP, MUT, SPU, UFS and UNIZULU; the
   [dut.md](research/dut.md) starts with what to check first). The ones that change what learners see: whether
   "Mathematics OR / Mathematical Literacy OR / Accounting" rows make Accounting an option or a must (Accounting,
   Taxation, Hospitality, Tourism), Drama's 22 or 24 points, and Electronic Engineering's Technical Mathematics.
+- [ ] **Check UKZN's course list** (66 programmes from UKZN's 2027 prospectus, agent draft 22 Oct,
+  [ukzn.md](research/ukzn.md)): a person should compare every value with the prospectus. First: 13 of its CAO codes
+  are missing from the CAO's 2027 handbook (8) or spelled differently there (5): the B Sc streams appear there only
+  as a "B Sc Generic Degree", and the Engineering Access Programme is KN-H-UNT at 28 points in UKZN's prospectus but
+  KN-H-UNP at 33 in the CAO's handbook. Ten programmes ask different minimums in the two (among them CS and IT,
+  GIS, B Admin, Housing and B Ed Foundation Phase); the pack follows UKZN and says so in each one's extras.
 - [ ] **A local wave 4 nobody should push.** On the night of 14 Oct another session built `rinsuna/courses-wave-4`
   (12 universities in about 70 minutes), never pushed. Its values cite pages that don't hold them, and Fort Hare's
   came from the site that disallows Anthropic's agents. Rinsuna chose to redo it carefully (wave 5); the branch and
