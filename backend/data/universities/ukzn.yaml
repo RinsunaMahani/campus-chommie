@@ -305,7 +305,7 @@ programmes:
     faculty: "College of Agriculture, Engineering and Science"
     fields: [agriculture, earth_sciences]
     requirements:
-      source: s-ukzn-prospectus-2027
+      source: s-ukzn-prospectus-2027-checked
       min_points: 28        # the p21 table leaves the APS cell empty; p88 gives 28 for the B Sc in Agriculture
       subject_minimums: {english: 4, life_orientation: 4, mathematics: 4}
       choices:
@@ -323,7 +323,7 @@ programmes:
     faculty: "College of Agriculture, Engineering and Science"
     fields: [agriculture]
     requirements:
-      source: s-ukzn-prospectus-2027
+      source: s-ukzn-prospectus-2027-checked
       min_points: 28        # the p21 table leaves the APS cell empty; p88 gives 28 for the B Sc in Agriculture
       subject_minimums: {english: 4, life_orientation: 4, mathematics: 4}
       choices:
@@ -342,7 +342,7 @@ programmes:
     faculty: "College of Agriculture, Engineering and Science"
     fields: [natural_sciences, life_sciences, earth_sciences]
     requirements:
-      source: s-ukzn-prospectus-2027
+      source: s-ukzn-prospectus-2027-checked
       min_points: 28        # the p21 table leaves the APS cell empty; p88 (1a) gives 28 for the Life and Earth Sciences stream
       subject_minimums: {english: 4, life_orientation: 4, mathematics: 4}
       choices:
@@ -561,7 +561,7 @@ programmes:
     selective: true
     selection_note: "UKZN considers your academic record and personal circumstances, often uses aptitude or other tests, and may ask you to an interview."
     requirements:
-      source: s-ukzn-prospectus-2027
+      source: s-ukzn-prospectus-2027-checked
       min_points: 28
       subject_minimums: {english: 4, life_orientation: 4, mathematics: 4, physical_sciences: 4}
       extras:
@@ -773,7 +773,7 @@ programmes:
     selective: true
     selection_note: "Ranked on the average of six subjects, including English, Mathematics, Physical Sciences and Life Sciences (not Life Orientation); places follow target groups set by UKZN's College of Health Sciences."
     requirements:
-      source: s-ukzn-prospectus-2027
+      source: s-ukzn-prospectus-2027-checked
       min_points: null      # the table gives "N/A": Medicine ranks on your average percentage, not on points
       subject_minimums: {english: 5, mathematics: 5, physical_sciences: 5, life_sciences: 5, life_orientation: 4}
       extras:
@@ -1168,6 +1168,13 @@ sources:
     retrieved: 2026-10-22
     last_verified: null
     verified_by: "agent draft, needs human check"
+  - id: s-ukzn-prospectus-2027-checked
+    url: "https://applications.ukzn.ac.za/wp-content/uploads/2026/05/2027-Undergrad.pdf"
+    publisher: "University of KwaZulu-Natal"
+    title: "Undergraduate Prospectus 2027 (programme tables p20-24, college sections p80-124)"
+    retrieved: 2026-10-22
+    last_verified: 2026-10-22
+    verified_by: "Rinsuna Mahani"
   - id: s-ukzn-cao-2027
     url: "https://www.cao.ac.za/Download/CAO%20HANDBOOK%202027%20Entry%20web.pdf"
     publisher: "Central Applications Office"
