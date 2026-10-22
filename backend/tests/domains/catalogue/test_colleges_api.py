@@ -38,7 +38,8 @@ def test_the_list_needs_no_account_and_counts_every_status(client):
     assert data["summary"] == "357 colleges: 50 public, 141 registered, 59 provisionally registered, 107 cancelled."
     assert data["counts"]["total"] == data["total"] == 357
     assert (data["page"], data["pages"], len(data["colleges"])) == (1, 9, 40)
-    assert (data["confirmed"], data["notice"]) == (False, "Not yet confirmed by the team.")
+    assert data["confirmed"] is False
+    assert data["notice"].startswith("From the Department of Higher Education and Training's lists, last read on ")
     first = data["colleges"][0]
     assert set(first) == {"id", "name", "kind", "kind_label", "status", "label", "registration_number",
                           "provinces", "website", "website_problem", "lines"}

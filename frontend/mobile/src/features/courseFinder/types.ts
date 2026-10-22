@@ -10,7 +10,7 @@ export type Tier = 'reach' | 'meets_minimum' | 'competitive' | 'not_yet' | 'unve
 export type Confirmation = {
   /** False until a person on the team has checked the pack. */
   confirmed: boolean;
-  /** "Not yet confirmed by the team." when not confirmed. */
+  /** When not confirmed: where the facts come from and when they were read ("From UP's own documents, last read on ..."). */
   notice: string | null;
 };
 

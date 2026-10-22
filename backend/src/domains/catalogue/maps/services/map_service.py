@@ -8,10 +8,10 @@ checked is still served, with `confirmed: false` and the notice the app shows ne
 from __future__ import annotations
 
 from campus_engine.maps import ATTRIBUTION, ATTRIBUTION_URL, LICENCE, LICENCE_URL, CampusView, university_views
+from campus_engine.text import read_from
 from src.core.exceptions import NotFoundError
 from src.domains.catalogue.universities.services import university_service as catalogue
 
-from ..constants import UNCONFIRMED_NOTICE
 from ..repositories.map_repository import all_maps
 
 
@@ -32,7 +32,8 @@ def university_map(university_id: str, campus: str | None = None) -> dict:
         "licence": LICENCE,
         "licence_url": LICENCE_URL,
         "confirmed": confirmed,
-        "notice": None if confirmed else UNCONFIRMED_NOTICE,
+        # Where the map comes from and when it was fetched; the campus names come from the university's pack.
+        "notice": None if confirmed else read_from("OpenStreetMap", [s.retrieved for s in (umap.sources if umap else [])]),
     }
 
 

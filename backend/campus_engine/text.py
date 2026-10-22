@@ -57,3 +57,11 @@ def join(parts: list[str]) -> str:
 def num(x: float) -> str:
     """Print a number without a pointless '.0'."""
     return f"{x:g}"
+
+
+def read_from(who: str, read_on: list[date | None]) -> str:
+    """Where a pack's facts come from, and when they were last read: "From UP's own documents, last read on
+    Thu 22 Oct 2026." Said instead of "not confirmed": true of every agent draft, and the source link is on
+    every fact (Rinsuna, 22 Oct 2026)."""
+    dates = [d for d in read_on if d]
+    return f"From {who}, last read on {long_day(max(dates))}." if dates else f"From {who}."

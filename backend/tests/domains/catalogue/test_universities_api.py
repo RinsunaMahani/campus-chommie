@@ -44,7 +44,8 @@ def test_the_list_needs_no_account_and_flags_unchecked_packs(client):
     # A university whose programmes aren't added yet is still listed, with none.
     assert universities["uj"]["programmes"] == 0
     assert universities["wits"]["programmes"] > 0
-    assert all(u["confirmed"] is False and u["notice"] == "Not yet confirmed by the team." for u in universities.values())
+    assert all(u["confirmed"] is False and u["notice"].startswith("From ") and "own documents" in u["notice"] for u in universities.values())
+    assert universities["up"]["notice"].startswith("From the University of Pretoria's own documents, last read on ")
 
 
 def test_one_university_shows_its_pack_and_sources(client):

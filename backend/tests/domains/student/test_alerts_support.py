@@ -165,7 +165,7 @@ def test_cheap_things_near_the_campus(client, me):
     for c in data["cheap_things"]:
         assert c["cost_note"] and c["source_url"].startswith("https://") and c["read_on"]
         assert c["last_verified"] is None  # an agent read the price; no person has checked it yet
-    assert data["university"]["notice"] == "Not yet confirmed by the team." and data["lines"] == []
+    assert data["university"]["notice"].startswith("From ") and data["lines"] == []
 
     place(client, me, "up", "gibs")  # Johannesburg: the Pretoria list isn't for it
     assert get(client, me.headers, "/money/cheap-things")["cheap_things"] == []

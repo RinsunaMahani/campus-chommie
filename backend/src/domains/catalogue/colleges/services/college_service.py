@@ -12,10 +12,10 @@ import math
 from campus_engine import colleges as engine
 from campus_engine.config import load_config
 from campus_engine.schemas import College, CollegesPack, Source
+from campus_engine.text import read_from
 from src.core.exceptions import NotFoundError
 from src.core.exceptions import ValidationError as ApiValidationError
 
-from ..constants import UNCONFIRMED_NOTICE
 from ..repositories.pack_repository import colleges_pack
 
 
@@ -24,8 +24,9 @@ def pack() -> CollegesPack:
 
 
 def confirmation(colleges: CollegesPack) -> dict:
-    """Whether a person has checked the pack, and the notice to show if not."""
-    return {"confirmed": colleges.release, "notice": None if colleges.release else UNCONFIRMED_NOTICE}
+    """Whether a person has checked the pack, and, if not, where its facts come from and when they were read."""
+    notice = read_from("the Department of Higher Education and Training's lists", [s.retrieved for s in colleges.sources])
+    return {"confirmed": colleges.release, "notice": None if colleges.release else notice}
 
 
 def _min_chars(field: str, value: str | None) -> None:
