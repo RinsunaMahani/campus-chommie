@@ -1,13 +1,12 @@
-import { Feather } from '@expo/vector-icons';
 import * as WebBrowser from 'expo-web-browser';
 import { router, useLocalSearchParams } from 'expo-router';
 import { ComponentProps, useCallback, useEffect, useState } from 'react';
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 import { useSession } from '@/features/auth/session/SessionProvider';
 import { Button } from '@/shared/components/Button';
-import { HeroScreen } from '@/shared/components/HeroScreen';
 import { Card, Tag } from '@/shared/components/Parts';
+import { PhotoHero } from '@/shared/components/PhotoHero';
 import { SourceLink } from '@/shared/components/SourceLink';
 import { ErrorBox } from '@/shared/components/Status';
 import { Body, Muted, Overline, Strong } from '@/shared/components/Text';
@@ -15,15 +14,14 @@ import { Monogram } from '@/shared/components/UniMonogram';
 import { t } from '@/shared/i18n';
 import { formatRand } from '@/shared/lib/money';
 import { SkeletonCards } from '@/shared/motion/Shimmer';
-import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
-import { fonts, radius } from '@/shared/theme/tokens';
+import { Palette, useStyles } from '@/shared/theme/palette';
+import { fonts } from '@/shared/theme/tokens';
 
 import { courseFinderApi } from '../api/courseFinderApi';
 import { ApplyWindows } from '../components/ApplyBox';
-import { PhotoCredit } from '../components/CampusPhotoCard';
 import { funderMonogram, funderPhoto } from '../funderPhotos';
 import { ApplyWindow, FunderDetail } from '../types';
-import { daysLeft, errorText, formatDay } from '../words';
+import { errorText, formatDay } from '../words';
 
 type TagTone = NonNullable<ComponentProps<typeof Tag>['tone']>;
 
@@ -44,7 +42,8 @@ function useSignedIn(): boolean {
 
 /**
  * Funder detail screen: public information about one funder in full.
- * 1. Name, kind_label, sector_label, status, dates, and Save bookmark
+ * 1. The field's photo on top (none for a funder of any field) with Save on it; who runs it and what kind,
+ *    its name, and chips: status, closing date, fields, stages. The dates in full are in How to apply, once.
  * 2. What it covers (amount check or not published)
  * 3. Who can apply
  * 4. What you owe back (hidden if null)
@@ -52,7 +51,6 @@ function useSignedIn(): boolean {
  * 6. Sources with retrieval date
  */
 export default function FunderDetailScreen() {
-  const colors = usePalette();
   const styles = useStyles(makeStyles);
   const { id } = useLocalSearchParams<{ id: string }>();
   const signedIn = useSignedIn();
@@ -111,10 +109,43 @@ export default function FunderDetailScreen() {
   const photo = funder ? funderPhoto(funder) : null;
 
   return (
-    <HeroScreen
-      back
-      title={funder?.name ?? t('courseFinder.fundingTitle')}
-      subtitle={funder ? `${funder.kind_label} · ${funder.sector_label}` : undefined}>
+    <PhotoHero
+      photo={photo}
+      action={
+        funder
+          ? {
+              icon: 'bookmark',
+              label: activeSavedOn ? t('courseFinder.unsaveFunder', { name: funder.name }) : t('courseFinder.saveFunder', { name: funder.name }),
+              on: !!activeSavedOn,
+              onPress: toggleSave,
+            }
+          : undefined
+      }
+      head={
+        <>
+          {funder ? (
+            <View style={styles.headRow}>
+              <Monogram label={funderMonogram(funder)} size={48} />
+              <View style={{ flex: 1, gap: 2 }}>
+                <Text style={styles.kind}>{`${funder.sector_label} ${funder.kind_label?.toLowerCase() ?? ''}`.trim()}</Text>
+                {funder.short_name && funder.short_name !== funder.name ? <Strong>{funder.short_name}</Strong> : null}
+              </View>
+            </View>
+          ) : null}
+          <Text style={styles.title} accessibilityRole="header">
+            {funder?.name ?? t('courseFinder.fundingTitle')}
+          </Text>
+          {funder ? (
+            <View style={styles.chipRow}>
+              <Tag label={funder.label} tone={tagTone(funder.status)} />
+              {funder.closes ? <Tag label={formatDay(funder.closes)} tone="info" /> : null}
+              {funder.fields?.slice(0, 2).map((f) => <Tag key={f.id} label={f.label} tone="jade" />)}
+              {funder.stages?.map((st) => <Tag key={st.id} label={st.label} tone="info" />)}
+            </View>
+          ) : null}
+          {activeSavedOn ? <Muted>{t('courseFinder.savedOn', { date: formatDay(activeSavedOn) })}</Muted> : null}
+        </>
+      }>
       {loading ? <SkeletonCards count={3} /> : null}
 
       {error ? (
@@ -147,52 +178,6 @@ export default function FunderDetailScreen() {
               />
             </Card>
           ) : null}
-
-          {/* 1. Header card: the field's photo, status, dates, lines, save bookmark */}
-          <Card style={styles.headCard}>
-            {photo ? (
-              <Image source={photo.image} style={styles.photo} accessible={false} accessibilityIgnoresInvertColors />
-            ) : null}
-            <View style={styles.headBody}>
-              <View style={styles.headRow}>
-                <Monogram label={funderMonogram(funder)} size={48} />
-                <Strong style={styles.funderHeading}>{funder.heading ?? funder.name}</Strong>
-              </View>
-              <View style={styles.statusRow}>
-                  <Tag label={funder.label} tone={tagTone(funder.status)} />
-                  <Pressable
-                    accessibilityRole="button"
-                    accessibilityLabel={
-                      activeSavedOn
-                        ? t('courseFinder.unsaveFunder', { name: funder.name })
-                        : t('courseFinder.saveFunder', { name: funder.name })
-                    }
-                    onPress={toggleSave}
-                    style={[styles.saveBtn, !!activeSavedOn && styles.saveBtnOn]}>
-                    <Feather
-                      name="bookmark"
-                      size={13}
-                      color={activeSavedOn ? colors.pillText : colors.ink}
-                    />
-                    <Text style={[styles.saveText, !!activeSavedOn && styles.saveTextOn]}>
-                      {activeSavedOn ? t('courseFinder.saved') : t('courseFinder.save')}
-                    </Text>
-                  </Pressable>
-              </View>
-              {activeSavedOn ? (
-                <Muted>{t('courseFinder.savedOn', { date: formatDay(activeSavedOn) })}</Muted>
-              ) : null}
-              {funder.days != null ? (
-                <Text style={styles.countdown}>{daysLeft(funder.days)}</Text>
-              ) : null}
-              {funder.lines?.map((line, i) => (
-                <Text key={i} style={styles.line}>
-                  {line}
-                </Text>
-              ))}
-              {photo ? <PhotoCredit credit={photo.credit} source={photo.source} /> : null}
-            </View>
-          </Card>
 
           {/* 2. What it covers */}
           <Card style={styles.card}>
@@ -313,34 +298,17 @@ export default function FunderDetailScreen() {
           {!funder.confirmed && funder.notice ? <Muted>{funder.notice}</Muted> : null}
         </View>
       ) : null}
-    </HeroScreen>
+    </PhotoHero>
   );
 }
 
 const makeStyles = (colors: Palette) =>
   StyleSheet.create({
   card: { gap: 10, padding: 14 },
-  headCard: { padding: 0, overflow: 'hidden' },
-  photo: { width: '100%', height: 170 },
-  headBody: { gap: 10, padding: 14 },
   headRow: { flexDirection: 'row', alignItems: 'center', gap: 12 },
-  statusRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 8 },
-  funderHeading: { flex: 1, fontSize: 16, lineHeight: 21, color: colors.text },
-  saveBtn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 4,
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    borderRadius: radius.pill,
-    borderWidth: 1,
-    borderColor: colors.line,
-    backgroundColor: colors.white,
-  },
-  saveBtnOn: { backgroundColor: colors.ink, borderColor: colors.ink },
-  saveText: { fontFamily: fonts.semibold, fontSize: 13, color: colors.ink },
-  saveTextOn: { color: colors.pillText },
-  countdown: { fontFamily: fonts.bold, fontSize: 13.5, color: colors.marigoldDeep },
+  kind: { fontFamily: fonts.bold, fontSize: 13, letterSpacing: 0.8, textTransform: 'uppercase', color: colors.textMuted },
+  title: { fontFamily: fonts.display, fontSize: 28, lineHeight: 33, letterSpacing: -0.4, color: colors.ink },
+  chipRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
   line: { fontFamily: fonts.body, fontSize: 14.5, lineHeight: 20, color: colors.text },
   noteLine: { fontFamily: fonts.body, fontSize: 14, lineHeight: 19, color: colors.textMuted },
   item: { flexDirection: 'row', gap: 8 },

@@ -1,12 +1,12 @@
 /**
- * One faculty's programmes in the Courses tab: a header with the faculty's
- * picture, its name and its counts in words, which opens to the programme
- * cards. A field's photo (openly licensed, credited) where we have one, else
- * an icon on glass.
+ * One faculty's programmes in the Courses tab: a header with the field's icon
+ * on a mint tile, the faculty's name and its counts in words, which opens to
+ * the programme cards. Daylight paper: no photo here (dark words on a darkened
+ * photo didn't read); the field photos stay on funder pages.
  */
 import { Feather } from '@expo/vector-icons';
 import { ComponentProps, ReactNode, useState } from 'react';
-import { ImageBackground, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { t } from '@/shared/i18n';
 import { FadeIn } from '@/shared/motion/FadeIn';
@@ -14,8 +14,6 @@ import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
 import { fonts, radius } from '@/shared/theme/tokens';
 
 import { Art, FacultyGroup } from '../faculties';
-import { PHOTOS } from '../facultyPhotos';
-import { PhotoCredit } from './CampusPhotoCard';
 
 const ICONS: Record<Art, ComponentProps<typeof Feather>['name']> = {
   health: 'heart',
@@ -50,15 +48,12 @@ export function FacultySection({ group, startOpen, children }: Props) {
   const styles = useStyles(makeStyles);
   const [open, setOpen] = useState(startOpen);
   const name = group.faculty ?? t('courseFinder.otherFaculty');
-  const photo = PHOTOS[group.art];
 
   const head = (
-    <View style={[styles.headInner, photo && styles.headOnPhoto]}>
-      {photo ? null : (
-        <View style={styles.icon}>
-          <Feather name={ICONS[group.art]} size={20} color={colors.ink} />
-        </View>
-      )}
+    <View style={styles.headInner}>
+      <View style={styles.icon}>
+        <Feather name={ICONS[group.art]} size={20} color={colors.accentDeep} />
+      </View>
       <View style={{ flex: 1 }}>
         <Text style={styles.name}>{name}</Text>
         <Text style={styles.counts}>{facultyCounts(group)}</Text>
@@ -74,20 +69,12 @@ export function FacultySection({ group, startOpen, children }: Props) {
         accessibilityState={{ expanded: open }}
         accessibilityLabel={`${name}. ${facultyCounts(group)}`}
         onPress={() => setOpen((o) => !o)}>
-        {photo ? (
-          <ImageBackground source={photo.image} style={styles.photo} imageStyle={styles.photoImage} accessibilityIgnoresInvertColors>
-            <View style={styles.scrim} />
-            {head}
-          </ImageBackground>
-        ) : (
-          head
-        )}
+        {head}
       </Pressable>
       {open ? (
         <FadeIn>
           <View style={styles.body}>
             {children}
-            {photo ? <PhotoCredit credit={photo.credit} source={photo.source} /> : null}
           </View>
         </FadeIn>
       ) : null}
@@ -104,21 +91,16 @@ const makeStyles = (colors: Palette) =>
     backgroundColor: colors.white,
     overflow: 'hidden',
   },
-  photo: { minHeight: 112, justifyContent: 'flex-end' },
-  photoImage: { borderTopLeftRadius: radius.lg, borderTopRightRadius: radius.lg },
-  // Darkens the photo under the words, so white text stays readable on any picture.
-  scrim: { position: 'absolute', top: 0, right: 0, bottom: 0, left: 0, backgroundColor: colors.overlay },
   headInner: { flexDirection: 'row', alignItems: 'center', gap: 12, padding: 16 },
-  headOnPhoto: { paddingTop: 40 },
   icon: {
     width: 40,
     height: 40,
     borderRadius: radius.sm,
-    backgroundColor: colors.iconTile,
+    backgroundColor: colors.accentTint,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  name: { fontFamily: fonts.bold, fontSize: 15.5, lineHeight: 21, color: colors.ink },
+  name: { fontFamily: fonts.display, fontSize: 17, lineHeight: 22, color: colors.ink },
   counts: { fontFamily: fonts.medium, fontSize: 13.5, lineHeight: 18, color: colors.textMuted, marginTop: 2 },
   body: { gap: 12, padding: 12, paddingTop: 4 },
 });

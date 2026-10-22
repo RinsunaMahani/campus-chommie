@@ -1,38 +1,42 @@
 import { Redirect, router, useLocalSearchParams } from 'expo-router';
 import { useEffect, useMemo, useState } from 'react';
+import { Feather } from '@expo/vector-icons';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
-import { BandChip, HeroScreen } from '@/shared/components/HeroScreen';
-import { Card } from '@/shared/components/Parts';
+import { Card, Tag } from '@/shared/components/Parts';
+import { PhotoHero } from '@/shared/components/PhotoHero';
 import { ErrorBox } from '@/shared/components/Status';
 import { Body, Overline } from '@/shared/components/Text';
+import { UniMonogram } from '@/shared/components/UniMonogram';
 import { t } from '@/shared/i18n';
 import { FadeIn } from '@/shared/motion/FadeIn';
 import { SkeletonCards } from '@/shared/motion/Shimmer';
 import { SlidingTabs } from '@/shared/motion/SlidingTabs';
-import { Palette, useStyles } from '@/shared/theme/palette';
+import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
 import { fonts, radius } from '@/shared/theme/tokens';
 
 import { courseFinderApi } from '../api/courseFinderApi';
 import { ApplyWindows, GuideCard } from '../components/ApplyBox';
 import { ApsCard } from '../components/ApsCard';
-import { CampusPhotoCard } from '../components/CampusPhotoCard';
 import { FacultySection } from '../components/FacultySection';
 import { TestDateNote } from '../components/StillOpen';
 import { TierCard } from '../components/TierCard';
 import { groupByFaculty, hasFaculties } from '../faculties';
+import { CAMPUS_PHOTOS } from '../campusPhotos';
 import { checkRows } from '../marks';
 import { useCourseFinder } from '../state';
 import { Match, Tier } from '../types';
-import { errorText, placeLine } from '../words';
+import { errorText } from '../words';
 
 /**
- * Step 3: one university. Your points there, opening to each subject; then
- * its programmes grouped by faculty (best first), and how to apply there
- * today, on two sliding tabs.
+ * Step 3: one university, opening on its campus photo (where we have one). Its
+ * name, where it is, its type and how many programmes; your points there,
+ * opening to each subject; then its programmes grouped by faculty (best first),
+ * and how to apply there today, on two sliding tabs.
  * Choosing a programme as the goal builds the three-choice plan.
  */
 export default function UniversityScreen() {
+  const colors = usePalette();
   const styles = useStyles(makeStyles);
   const { id } = useLocalSearchParams<{ id: string }>();
   const cf = useCourseFinder();
@@ -81,20 +85,34 @@ export default function UniversityScreen() {
   }
 
   return (
-    <HeroScreen
-      back
-      overline={t('courseFinder.step', { n: 3 })}
-      title={here?.university.name ?? points?.university_name ?? ''}
-      subtitle={here ? placeLine(here.university) : undefined}
-      band={
-        here ? (
-          <View style={styles.bandChips}>
-            <BandChip label={t('courseFinder.programmesChip', { n: matches.length })} />
-            {!here.university.confirmed && here.university.notice ? <BandChip label={here.university.notice} /> : null}
+    <PhotoHero
+      photo={CAMPUS_PHOTOS[id]}
+      head={
+        <>
+          <Text style={styles.step}>{t('courseFinder.step', { n: 3 })}</Text>
+          <View style={styles.titleRow}>
+            <UniMonogram id={id} size={48} />
+            <Text style={styles.title} accessibilityRole="header">
+              {here?.university.name ?? points?.university_name ?? ''}
+            </Text>
           </View>
-        ) : null
+          {here ? (
+            <View style={styles.chipRow}>
+              {[here.university.city, here.university.province].filter(Boolean).length ? (
+                <Tag label={[here.university.city, here.university.province].filter(Boolean).join(', ')} tone="info" />
+              ) : null}
+              {here.university.institution_type_label ? <Tag label={here.university.institution_type_label} tone="info" /> : null}
+              <Tag label={t('courseFinder.programmesChip', { n: matches.length })} tone="jade" />
+            </View>
+          ) : null}
+          {here && !here.university.confirmed && here.university.notice ? (
+            <View style={styles.quiet}>
+              <Feather name="info" size={13} color={colors.textFaint} />
+              <Text style={styles.quietText}>{here.university.notice}</Text>
+            </View>
+          ) : null}
+        </>
       }>
-      <CampusPhotoCard university={id} />
       {points ? <ApsCard points={points} sent={sent} rows={cf.rows} /> : null}
       <SlidingTabs tabs={[t('courseFinder.tabCourses'), t('courseFinder.tabApply')]} index={tab} onChange={setTab} />
 
@@ -158,13 +176,19 @@ export default function UniversityScreen() {
           <GuideCard guide={here.apply.guide} />
         </View>
       ) : null}
-    </HeroScreen>
+    </PhotoHero>
   );
 }
 
 const makeStyles = (colors: Palette) =>
   StyleSheet.create({
-  bandChips: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
+  step: { fontFamily: fonts.bold, fontSize: 13, letterSpacing: 0.8, textTransform: 'uppercase', color: colors.accentDeep },
+  titleRow: { flexDirection: 'row', alignItems: 'center', gap: 12 },
+  title: { flex: 1, fontFamily: fonts.display, fontSize: 28, lineHeight: 33, letterSpacing: -0.4, color: colors.ink },
+  chipRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
+  // "Not confirmed" said once, quietly: one line, not a box.
+  quiet: { flexDirection: 'row', alignItems: 'center', gap: 6 },
+  quietText: { fontFamily: fonts.medium, fontSize: 13, color: colors.textFaint },
   chips: { gap: 8, paddingRight: 8 },
   chip: {
     paddingHorizontal: 14,

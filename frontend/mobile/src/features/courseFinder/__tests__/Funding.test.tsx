@@ -176,6 +176,27 @@ test("FundingScreen: the missing middle has its own group, in the funders' own w
   expect(screen.queryByText(/In their words: "Students from households/)).toBeNull();
 });
 
+test('FunderDetailScreen: the top names who runs it, the funder and its chips, and Save on the photo asks to sign in', async () => {
+  mockParams = { id: 'nsfas' };
+  jest.spyOn(courseFinderApi, 'funder').mockResolvedValue(nsfasData);
+
+  render(<FunderDetailScreen />);
+
+  expect(await screen.findByText('Government bursary')).toBeTruthy();
+  expect(screen.getByRole('header', { name: 'National Student Financial Aid Scheme (NSFAS)' })).toBeTruthy();
+  expect(screen.getByText('NSFAS')).toBeTruthy();
+  // Chips: status, closing date, stages (NSFAS is open to any field, so no field chip)
+  expect(screen.getAllByText('Open').length).toBeGreaterThan(0);
+  expect(screen.getAllByText('Sat 31 Oct 2026').length).toBeGreaterThan(0);
+  expect(screen.getByText('Starting university')).toBeTruthy();
+  expect(screen.getByText('Already studying')).toBeTruthy();
+
+  fireEvent.press(screen.getByRole('button', { name: 'Save National Student Financial Aid Scheme (NSFAS)' }));
+  expect(
+    screen.getByText('Sign in to save funding and get reminders when it opens and before it closes.'),
+  ).toBeTruthy();
+});
+
 test('FunderDetailScreen: a funder without covers shows "Not published by the funder."', async () => {
   mockParams = { id: 'nsfas' };
   jest.spyOn(courseFinderApi, 'funder').mockResolvedValue(nsfasData);
