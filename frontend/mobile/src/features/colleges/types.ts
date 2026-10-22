@@ -22,12 +22,17 @@ export type CollegeCard = {
 export type Source = { url: string; publisher: string; title: string | null; retrieved: string | null };
 export type WarningSigns = { items: string[]; source_url: string | null };
 
+/** One province's share of a list ("not_listed": DHET gives no province). */
+export type ProvinceGroup = { id: string; title: string; total: number; line: string };
+
 export type CollegeListAnswer = {
   summary: string;
   total: number;
   page: number;
   pages: number;
   colleges: CollegeCard[];
+  /** Absent from an API older than 22 Oct 2026: the screen then shows one list. */
+  provinces?: ProvinceGroup[];
   confirmed: boolean;
   notice: string | null;
 };

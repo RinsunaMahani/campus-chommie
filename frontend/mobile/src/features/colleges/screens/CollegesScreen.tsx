@@ -1,6 +1,7 @@
 /**
  * Colleges: public TVET colleges and DHET's registers of private institutions, searchable by name,
- * registration number or course ("electrician"), filtered by kind and province, a page at a time.
+ * registration number or course ("electrician"), filtered by kind and province. With no search and no province
+ * chosen, the list opens one province at a time, 20 colleges at a time, so it never scrolls on and on.
  * "Is this college registered?" sits on top: the check a learner needs before paying anyone.
  * Nothing is stored; a search is only a college's name or a course.
  */
@@ -13,6 +14,7 @@ import { errorText } from '@/features/courseFinder/words';
 import { Button } from '@/shared/components/Button';
 import { HeroScreen } from '@/shared/components/HeroScreen';
 import { Card, InfoNote } from '@/shared/components/Parts';
+import { Section } from '@/shared/components/Section';
 import { ErrorBox } from '@/shared/components/Status';
 import { Body, Muted, Strong } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
@@ -23,11 +25,13 @@ import { fonts, radius } from '@/shared/theme/tokens';
 
 import { collegesApi } from '../api/collegesApi';
 import { CollegeRow } from '../CollegeRow';
-import { CollegeCard, CollegeKind, CollegeListAnswer } from '../types';
+import { CollegeCard, CollegeKind, CollegeListAnswer, ProvinceGroup } from '../types';
 
 const PROVINCES = ['Eastern Cape', 'Free State', 'Gauteng', 'KwaZulu-Natal', 'Limpopo', 'Mpumalanga', 'North West', 'Northern Cape', 'Western Cape'];
 const MIN_CHARS = 3;
 const WAIT_MS = 350;
+/** Colleges shown at a time inside one province. */
+const STEP = 20;
 
 export default function CollegesScreen() {
   const colors = usePalette();
@@ -130,15 +134,87 @@ export default function CollegesScreen() {
         <View style={{ gap: 10 }}>
           <Body style={styles.summary}>{answer.summary}</Body>
           {!answer.confirmed && answer.notice ? <InfoNote icon="info">{answer.notice}</InfoNote> : null}
-          {shown.map((c, i) => (
-            <FadeIn key={c.id} delay={Math.min(i, 8) * 30}>
-              <CollegeRow college={c} />
-            </FadeIn>
-          ))}
-          {answer.page < answer.pages ? <Button title={t('colleges.more')} variant="secondary" icon="chevron-down" onPress={more} /> : null}
+          {!q && !province && answer.provinces?.length ? (
+            <View>
+              {answer.provinces.map((g, i) => (
+                <Section key={`${kind ?? 'all'}-${g.id}`} first={i === 0} title={g.title} summary={g.line} icon="map-pin">
+                  <ProvinceColleges group={g} kind={kind} />
+                </Section>
+              ))}
+            </View>
+          ) : (
+            <>
+              {shown.map((c, i) => (
+                <FadeIn key={c.id} delay={Math.min(i, 8) * 30}>
+                  <CollegeRow college={c} />
+                </FadeIn>
+              ))}
+              {answer.page < answer.pages ? <Button title={t('colleges.more')} variant="secondary" icon="chevron-down" onPress={more} /> : null}
+            </>
+          )}
         </View>
       ) : null}
     </HeroScreen>
+  );
+}
+
+/** One province's colleges, fetched when its section first opens and shown 20 at a time. */
+function ProvinceColleges({ group, kind }: { group: ProvinceGroup; kind?: CollegeKind }) {
+  const [loaded, setLoaded] = useState<CollegeCard[]>([]);
+  const [page, setPage] = useState(0);
+  const [count, setCount] = useState(STEP);
+  const [error, setError] = useState<string | null>(null);
+  const [attempt, setAttempt] = useState(0);
+
+  useEffect(() => {
+    let live = true;
+    collegesApi
+      .list({ kind, province: group.id, page: 1 })
+      .then((a) => {
+        if (!live) return;
+        setLoaded(a.colleges);
+        setPage(1);
+      })
+      .catch((e) => live && setError(errorText(e)));
+    return () => {
+      live = false;
+    };
+  }, [group.id, kind, attempt]);
+
+  async function more() {
+    const want = count + STEP;
+    if (want > loaded.length && loaded.length < group.total) {
+      try {
+        const next = await collegesApi.list({ kind, province: group.id, page: page + 1 });
+        setLoaded((s) => [...s, ...next.colleges]);
+        setPage(page + 1);
+      } catch (e) {
+        setError(errorText(e));
+        return;
+      }
+    }
+    setCount(want);
+  }
+
+  if (error) {
+    return (
+      <ErrorBox
+        message={error}
+        onRetry={() => {
+          setError(null);
+          setAttempt((n) => n + 1);
+        }}
+      />
+    );
+  }
+  if (!page) return <SkeletonCards count={2} />;
+  return (
+    <>
+      {loaded.slice(0, count).map((c) => (
+        <CollegeRow key={c.id} college={c} />
+      ))}
+      {count < group.total ? <Button title={t('colleges.more')} variant="secondary" icon="chevron-down" onPress={more} /> : null}
+    </>
   );
 }
 

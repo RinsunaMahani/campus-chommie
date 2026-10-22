@@ -79,6 +79,9 @@ export const en = {
   'courseFinder.otherFundingTitle': 'Other bursaries and loans',
   'courseFinder.otherFundingSub': 'Every other bursary, merit award and loan on the public list',
   'courseFinder.fundingGoalFirst': 'Funding for {field} first, from your goal',
+  'courseFinder.missingMiddleNote':
+    "These funders' own pages say they fund students whose families earn more than NSFAS's limit. Check each one's rule: we never ask what your family earns.",
+  'courseFinder.incomeRule': 'In their words: "{says}"',
   'courseFinder.funderCovers': 'What it covers',
   'courseFinder.funderWho': 'Who can apply',
   'courseFinder.funderOwe': 'What you owe back',

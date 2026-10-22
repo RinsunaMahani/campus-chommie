@@ -275,6 +275,18 @@ class SourcedList(_Strict):
     source: str
 
 
+class HouseholdIncome(_Strict):
+    """What a funder's own page says about household income, in its words. Shown, never asked: the app never asks a
+    learner about income. `limit_cents` is the highest household income the funder names (None when it names none);
+    `missing_middle` is True only when the funder's own words say it serves students above NSFAS's limit (the
+    "missing middle", or any household income)."""
+
+    says: str = Field(min_length=1)
+    source: str
+    limit_cents: int | None = Field(default=None, ge=0)
+    missing_middle: bool = False
+
+
 class ProgrammeClosing(_Strict):
     """Programmes that close on their own date instead of the window's usual one."""
 
@@ -603,6 +615,7 @@ class Funder(_Strict):
     tips: SourcedList | None = None  # e.g. the funder's own list of common document mistakes
     warnings: SourcedList | None = None  # e.g. "never pay anyone to apply"
     at_registration: SourcedText | None = None  # what happens to the funding when a student registers
+    income: HouseholdIncome | None = None  # the funder's own words on household income, where it says something
     applications: Applications
 
     @model_validator(mode="after")
@@ -655,6 +668,7 @@ class FundingPack(_Strict):
             for what, group in (
                 ("who_can_apply", f.who_can_apply), ("covers", f.covers), ("obligations", f.obligations),
                 ("tips", f.tips), ("warnings", f.warnings), ("at_registration", f.at_registration),
+                ("income", f.income),
             ):
                 if group:
                     cited.append((f"{f.id}: {what}", group.source))

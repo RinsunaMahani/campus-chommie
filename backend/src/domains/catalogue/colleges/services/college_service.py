@@ -52,6 +52,7 @@ def college_list(*, q: str | None = None, kind: str | None = None, province: str
         "page": page,
         "pages": pages,
         "colleges": [_card(c) for c in shown],
+        "provinces": [{"id": g.id, "title": g.title, "total": g.total, "line": g.line} for g in engine.by_province(found)],
         **confirmation(colleges),
     }
 

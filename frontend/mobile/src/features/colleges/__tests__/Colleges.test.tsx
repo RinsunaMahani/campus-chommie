@@ -1,5 +1,6 @@
 /**
- * Colleges: the list searches as you type (from 3 letters) and opens a college; a college shows its
+ * Colleges: the list opens one province at a time (20 colleges at a time), searches as you type (from 3
+ * letters) and opens a college; a college shows its
  * status, number, qualifications and sources, with DHET's warning signs when cancelled; the check
  * answers in words, lists what matched, and never sends fewer than 3 letters.
  */
@@ -10,7 +11,7 @@ import { collegesApi } from '../api/collegesApi';
 import CheckCollegeScreen from '../screens/CheckCollegeScreen';
 import CollegeScreen from '../screens/CollegeScreen';
 import CollegesScreen from '../screens/CollegesScreen';
-import { CheckAnswer, CollegeAnswer, CollegeCard, CollegeListAnswer } from '../types';
+import { CheckAnswer, CollegeAnswer, CollegeCard, CollegeListAnswer, ProvinceGroup } from '../types';
 
 const mockPush = jest.fn();
 let mockParams: Record<string, string> = { id: 'acme-college' };
@@ -39,12 +40,13 @@ const acme: CollegeCard = {
   website_problem: null,
   lines: ['Acme College (Pty) Ltd is registered with the Department of Higher Education and Training (registration number 2010/FE07/001).'],
 };
-const list = (colleges: CollegeCard[], page = 1, pages = 1): CollegeListAnswer => ({
+const list = (colleges: CollegeCard[], page = 1, pages = 1, provinces: ProvinceGroup[] = []): CollegeListAnswer => ({
   summary: `${colleges.length} colleges: ${colleges.length} registered.`,
   total: colleges.length,
   page,
   pages,
   colleges,
+  provinces,
   confirmed: false,
   notice: 'Not yet confirmed by the team.',
 });
@@ -75,15 +77,45 @@ test('the list loads, searches from three letters, and opens a college', async (
   expect(mockPush).toHaveBeenCalledWith('/course-finder/colleges/check');
 }, 15000);
 
-test('more colleges load a page at a time', async () => {
+test('with a province chosen, more colleges load a page at a time', async () => {
   const listSpy = jest.spyOn(collegesApi, 'list')
+    .mockResolvedValueOnce(list([acme], 1, 2))
     .mockResolvedValueOnce(list([acme], 1, 2))
     .mockResolvedValueOnce(list([{ ...acme, id: 'beta', name: 'Beta College' }], 2, 2));
   render(<CollegesScreen />);
+  fireEvent.press(await screen.findByText('Gauteng'));
   fireEvent.press(await screen.findByText('Show more colleges'));
   expect(await screen.findByText('Beta College')).toBeTruthy();
   expect(screen.getByText('Acme College (Pty) Ltd')).toBeTruthy();
-  expect(listSpy).toHaveBeenLastCalledWith({ q: undefined, kind: undefined, province: undefined, page: 2 });
+  expect(listSpy).toHaveBeenLastCalledWith({ q: undefined, kind: undefined, province: 'Gauteng', page: 2 });
+});
+
+test('the whole list opens one province at a time, 20 colleges at a time', async () => {
+  const many = (from: number, n: number) =>
+    Array.from({ length: n }, (_, i) => ({ ...acme, id: `c${from + i}`, name: `College ${from + i}` }));
+  const gauteng: ProvinceGroup = { id: 'Gauteng', title: 'Gauteng', total: 45, line: '45 colleges: 45 registered.' };
+  const unlisted: ProvinceGroup = { id: 'not_listed', title: 'Province not listed', total: 2, line: '2 colleges: 2 registered.' };
+  const listSpy = jest.spyOn(collegesApi, 'list')
+    .mockResolvedValueOnce(list(many(1, 40), 1, 2, [gauteng, unlisted]))
+    .mockResolvedValueOnce({ ...list(many(1, 40), 1, 2), total: 45 })
+    .mockResolvedValueOnce({ ...list(many(41, 5), 2, 2), total: 45 });
+  render(<CollegesScreen />);
+
+  const head = await screen.findByRole('button', { name: 'Gauteng. 45 colleges: 45 registered.' });
+  expect(screen.getByRole('button', { name: 'Province not listed. 2 colleges: 2 registered.' })).toBeTruthy();
+  expect(screen.queryByText('College 1')).toBeNull(); // closed until asked
+  fireEvent.press(head);
+  expect(await screen.findByText('College 20')).toBeTruthy();
+  expect(screen.queryByText('College 21')).toBeNull();
+  expect(listSpy).toHaveBeenLastCalledWith({ kind: undefined, province: 'Gauteng', page: 1 });
+
+  fireEvent.press(screen.getByText('Show more colleges'));
+  expect(await screen.findByText('College 40')).toBeTruthy();
+  expect(listSpy).toHaveBeenCalledTimes(2); // the page already held 40
+  fireEvent.press(screen.getByText('Show more colleges'));
+  expect(await screen.findByText('College 45')).toBeTruthy();
+  expect(listSpy).toHaveBeenLastCalledWith({ kind: undefined, province: 'Gauteng', page: 2 });
+  expect(screen.queryByText('Show more colleges')).toBeNull();
 });
 
 test('a college shows its status, number, qualifications, sources and no invented entry rules', async () => {

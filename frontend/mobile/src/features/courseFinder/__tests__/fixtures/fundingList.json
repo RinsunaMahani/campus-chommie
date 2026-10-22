@@ -149,7 +149,8 @@
         "status": "open",
         "study_at": "any",
         "url": "https://careers.clicksgroup.co.za/",
-        "why": null
+        "why": null,
+        "income_says": null
       },
       {
         "any_field": false,
@@ -206,7 +207,8 @@
         "status": "open",
         "study_at": "any",
         "url": "https://www.dpw.limpopo.gov.za/pages/def_bursary.php",
-        "why": null
+        "why": null,
+        "income_says": null
       },
       {
         "any_field": true,
@@ -246,7 +248,8 @@
         "status": "open",
         "study_at": "any",
         "url": "https://my.nsfas.org.za/",
-        "why": null
+        "why": null,
+        "income_says": "Students from households earning up to R350 000 a year (students with disabilities: up to R600 000 a year)"
       },
       {
         "any_field": false,
@@ -299,7 +302,8 @@
         "status": "open",
         "study_at": "any",
         "url": "https://bursaries.feenix.org/fref/apply-now/",
-        "why": null
+        "why": null,
+        "income_says": null
       },
       {
         "any_field": false,
@@ -344,7 +348,8 @@
         "status": "open",
         "study_at": "any",
         "url": "https://www.funzalushaka.doe.gov.za/",
-        "why": null
+        "why": null,
+        "income_says": null
       },
       {
         "any_field": false,
@@ -388,7 +393,8 @@
         "status": "via_university",
         "study_at": "any",
         "url": "https://www.hwseta.org.za/",
-        "why": null
+        "why": null,
+        "income_says": null
       },
       {
         "any_field": true,
@@ -433,7 +439,8 @@
           "tut"
         ],
         "url": "https://www.tut.ac.za/student-finance/undergraduate/tut-bursary-and-scholarship-fund/",
-        "why": null
+        "why": null,
+        "income_says": null
       },
       {
         "any_field": true,
@@ -470,7 +477,8 @@
           "up"
         ],
         "url": null,
-        "why": null
+        "why": null,
+        "income_says": null
       },
       {
         "any_field": true,
@@ -515,7 +523,8 @@
           "up"
         ],
         "url": "https://www.up.ac.za/article/2894107/financial-aid",
-        "why": null
+        "why": null,
+        "income_says": null
       },
       {
         "any_field": true,
@@ -558,7 +567,8 @@
         "status": "not_published",
         "study_at": "any",
         "url": "https://gcrabursary.gauteng.gov.za/",
-        "why": null
+        "why": null,
+        "income_says": null
       },
       {
         "any_field": true,
@@ -597,7 +607,8 @@
         "status": "not_published",
         "study_at": "any",
         "url": null,
-        "why": null
+        "why": null,
+        "income_says": null
       },
       {
         "any_field": false,
@@ -674,7 +685,8 @@
           "up"
         ],
         "url": "https://allangrayorbis.org/programmes/fellowship/",
-        "why": null
+        "why": null,
+        "income_says": null
       },
       {
         "any_field": false,
@@ -723,7 +735,8 @@
         "status": "closed",
         "study_at": "any",
         "url": "https://www.csir.co.za/careers/students-graduates/bursaries",
-        "why": null
+        "why": null,
+        "income_says": null
       },
       {
         "any_field": false,
@@ -777,7 +790,8 @@
         "status": "closed",
         "study_at": "any",
         "url": "https://www.dffe.gov.za/bursaries",
-        "why": null
+        "why": null,
+        "income_says": null
       },
       {
         "any_field": false,
@@ -822,7 +836,8 @@
         "status": "closed",
         "study_at": "any",
         "url": "https://www.ey.com/en_za/careers/apply-for-our-bursary-program",
-        "why": null
+        "why": null,
+        "income_says": null
       },
       {
         "any_field": true,
@@ -863,7 +878,8 @@
         "status": "closed",
         "study_at": "any",
         "url": "https://www.harmony.co.za/careers/opportunities-for-students/",
-        "why": null
+        "why": null,
+        "income_says": null
       },
       {
         "any_field": true,
@@ -907,7 +923,8 @@
           "smu"
         ],
         "url": "https://applyonline.isfap.org.za/",
-        "why": null
+        "why": null,
+        "income_says": null
       },
       {
         "any_field": false,
@@ -956,7 +973,8 @@
         "status": "closed",
         "study_at": "any",
         "url": "https://onlinebursary.ndmc.gov.za/",
-        "why": null
+        "why": null,
+        "income_says": null
       },
       {
         "any_field": false,
@@ -1014,7 +1032,8 @@
         "status": "closed",
         "study_at": "any",
         "url": "https://www.treasury.gov.za/",
-        "why": null
+        "why": null,
+        "income_says": null
       },
       {
         "any_field": false,
@@ -1076,7 +1095,8 @@
         "status": "closed",
         "study_at": "any",
         "url": "https://group.nedbank.co.za/careers/graduates-and-bursaries.html",
-        "why": null
+        "why": null,
+        "income_says": null
       },
       {
         "any_field": false,
@@ -1126,7 +1146,8 @@
         "status": "closed",
         "study_at": "any",
         "url": "https://www.oldmutual.co.za/careers/bursaries/",
-        "why": null
+        "why": null,
+        "income_says": null
       },
       {
         "any_field": false,
@@ -1199,7 +1220,8 @@
         "status": "closed",
         "study_at": "any",
         "url": "https://www.sasolbursaries.com/welcome/sasol-foundation-bursaries/",
-        "why": null
+        "why": null,
+        "income_says": "A combined household income under R800 000 a year, and under 25 when you apply"
       },
       {
         "any_field": true,
@@ -1236,7 +1258,8 @@
         "status": "closed",
         "study_at": "any",
         "url": "https://www.resbank.co.za/en/home/publications/bursaries",
-        "why": null
+        "why": null,
+        "income_says": null
       },
       {
         "any_field": false,
@@ -1281,12 +1304,79 @@
         "status": "closed",
         "study_at": "any",
         "url": "https://www.thuthukabursaryfund.co.za/",
-        "why": null
+        "why": null,
+        "income_says": null
       }
     ],
     "notice": "Not yet confirmed by the team.",
     "summary": "24 funding options: 5 open now.",
-    "today": "2026-10-15"
+    "today": "2026-10-15",
+    "sections": [
+      {
+        "id": "government",
+        "title": "Government",
+        "line": "11 funders: 3 open now.",
+        "funder_ids": [
+          "limpopo_public_works",
+          "nsfas",
+          "funza_lushaka",
+          "hwseta",
+          "gcra",
+          "nsfas_loans",
+          "csir",
+          "dffe",
+          "ndmc",
+          "national_treasury",
+          "sarb"
+        ]
+      },
+      {
+        "id": "company",
+        "title": "Companies",
+        "line": "6 funders: 1 open now.",
+        "funder_ids": [
+          "clicks_foundation",
+          "ey_ca_bursary",
+          "harmony",
+          "nedbank",
+          "old_mutual",
+          "sasol_foundation"
+        ]
+      },
+      {
+        "id": "non_profit",
+        "title": "Non-profits and foundations",
+        "line": "4 funders: 1 open now.",
+        "funder_ids": [
+          "feenix_fref",
+          "allan_gray_fellowship",
+          "isfap",
+          "thuthuka"
+        ]
+      },
+      {
+        "id": "university",
+        "title": "Through your university",
+        "line": "3 funders: 0 open now.",
+        "funder_ids": [
+          "tut_bursary_fund",
+          "up_flyup_awards",
+          "up_funding_database"
+        ]
+      }
+    ],
+    "missing_middle": {
+      "id": "missing_middle",
+      "title": "If your family earns too much for NSFAS",
+      "line": "5 funders: 0 open now.",
+      "funder_ids": [
+        "tut_bursary_fund",
+        "up_funding_database",
+        "nsfas_loans",
+        "allan_gray_fellowship",
+        "sasol_foundation"
+      ]
+    }
   },
   "message": "Success",
   "success": true

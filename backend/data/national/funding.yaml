@@ -50,6 +50,10 @@ funders:
     at_registration:
       text: "If NSFAS finds you eligible, your funding is confirmed once you register at a public university or TVET college."
       source: s-nsfas-apply-2027
+    income:
+      source: s-nsfas-home-2027
+      says: "Students from households earning up to R350 000 a year (students with disabilities: up to R600 000 a year)"
+      limit_cents: 35000000
     applications:
       source: s-nsfas-apply-2027
       url: "https://my.nsfas.org.za/"
@@ -101,6 +105,10 @@ funders:
       source: s-nsfas-launch-2027
       items:
         - "The loans are repaid on their own terms and conditions."
+    income:
+      source: s-nsfas-launch-2027
+      says: "Students whose household income is above the NSFAS bursary threshold"
+      missing_middle: true
     applications:
       source: s-nsfas-launch-2027
       how: "The Minister said in September 2026 that government is strengthening the missing-middle loan scheme as another way to fund eligible students, and that work has started on a system to manage the loans."
@@ -225,6 +233,10 @@ funders:
         - "Meals"
         - "Residence fees and accommodation"
         - "Academic, social and emotional support, work-readiness training and mentoring"
+    income:
+      source: s-saica-thuthuka-apply
+      says: "A combined family income of R350 000 a year or less"
+      limit_cents: 35000000
     applications:
       source: s-thuthuka-portal
       url: "https://www.thuthukabursaryfund.co.za/"
@@ -365,6 +377,10 @@ funders:
         - "Less than R1.5 million: tuition, tutoring, counselling, and university accommodation and meals"
         - "R1.5 million or more: tuition, tutoring and counselling"
         - "Funding is confirmed after the selection camp"
+    income:
+      source: s-allangray-form-2027
+      says: "Household income of R1 million a year or less: tuition, tutoring, counselling, university accommodation and meals, a book allowance and a monthly allowance. Less than R1.5 million: tuition, tutoring, counselling, and university accommodation and meals"
+      limit_cents: 150000000
     applications:
       source: s-allangray-fellowship
       url: "https://allangrayorbis.org/programmes/fellowship/"
@@ -622,6 +638,10 @@ funders:
       items:
         - "Academically deserving TUT students who face financial exclusion"
         - "Especially the missing middle: students who don't qualify for NSFAS but can't afford tuition, accommodation or basic living costs"
+    income:
+      source: s-tut-bursary-fund
+      says: "Especially the missing middle: students who don't qualify for NSFAS but can't afford tuition, accommodation or basic living costs"
+      missing_middle: true
     applications:
       source: s-tut-bursary-fund
       url: "https://www.tut.ac.za/student-finance/undergraduate/tut-bursary-and-scholarship-fund/"
@@ -666,6 +686,10 @@ funders:
       items:
         - "Any UP student who wants to be considered for bursaries and other funding, whatever your household income, programme or year of study"
         - "Registering doesn't guarantee funding: UP offers it when suitable opportunities come up"
+    income:
+      source: s-up-infoguide-2026
+      says: "Any UP student who wants to be considered for bursaries and other funding, whatever your household income, programme or year of study"
+      missing_middle: true
     applications:
       source: s-up-infoguide-2026
       url: "https://www.up.ac.za/article/2894107/financial-aid"
@@ -808,6 +832,10 @@ funders:
         - "A meal and accommodation allowance"
         - "A once-off computer and calculator allowance"
         - "Psycho-social support"
+    income:
+      source: s-sasol-foundation
+      says: "A combined household income under R800 000 a year, and under 25 when you apply"
+      limit_cents: 80000000
     applications:
       source: s-sasol-foundation
       url: "https://www.sasolbursaries.com/welcome/sasol-foundation-bursaries/"
