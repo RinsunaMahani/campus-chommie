@@ -49,7 +49,7 @@ def test_the_list_needs_no_account_and_counts_whats_open(client, on_11_october):
     assert data["today"] == "2026-10-11"
     assert data["summary"] == "24 funding options: 4 open now."
     assert data["counts"] == {"total": 24, "open_now": 4, "closing_soon": 0}
-    assert (data["confirmed"], data["notice"]) == (False, "Not yet confirmed by the team.")
+    assert data["confirmed"] is False and data["notice"].startswith("From each funder's own pages, last read on ")
     assert _ids(r)[:4] == ["clicks_foundation", "nsfas", "feenix_fref", "funza_lushaka"]
 
     clicks = data["funders"][0]

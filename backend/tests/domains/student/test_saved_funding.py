@@ -83,7 +83,7 @@ def test_save_see_and_unsave(client, lerato):
     assert data["summary"] == "3 funding options: 2 open now."
     assert [f["id"] for f in data["funders"]] == ["nsfas", "funza_lushaka", "thuthuka"]  # open first, soonest closing first
     assert all(f["saved_on"] == "2026-10-12" for f in data["funders"])
-    assert (data["confirmed"], data["notice"]) == (False, "Not yet confirmed by the team.")
+    assert data["confirmed"] is False and data["notice"].startswith("From each funder's own pages")
 
     assert ok(client.delete(f"{SAVED}/nsfas", headers=lerato.headers)) == {}
     assert saved_ids(client, lerato) == ["funza_lushaka", "thuthuka"]
