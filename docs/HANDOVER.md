@@ -14,58 +14,27 @@ repo folder but is kept out of git; the parts the screens need are quoted below.
 
 ## Where things stand
 
-`main` holds only the empty first commit. All work sits in thirty-eight stacked pull requests:
+`main` is fully current and healthy: all 83 pull requests through milestone 5 and polish waves have been reviewed and merged into `main` by Rinsuna. CI is green (1,434 backend tests and 253 app tests on `main`). The web app and backend are live on Render and Neon.
 
-| PR | Branch | What |
+Active work:
+- PR #84 (`rinsuna/ag-money-pots`): F4 Money pots (Family, Stokvel, Buffer, Big purchase) with engine deduction hierarchy, Alembic migration 0011, and mobile screens. 1,452 backend tests and 255 app tests passing.
+- Next upcoming milestone: M6 (WhatsApp bot), scheduled to start Friday 23 Oct 2026 at 08:30 SAST.
+
+### Milestones landed on `main` (PRs #1 – #83)
+
+| Milestone / Feature | Merged PRs | Summary |
 |---|---|---|
-| #1 | `rinsuna/m0-foundation` | M0: accounts, sign-in, security, notifications, audit, the app shell, the engine starter, CI |
-| #2 | `rinsuna/university-research` | research notes for UP, TUT and SMU, and the open questions they raise |
-| #3 | `rinsuna/engine-requirements` | engine: either/or subjects, percentage minimums, per-programme points tables |
-| #4 | `rinsuna/m1-course-finder-api` | the course-finder API and this file |
-| #5 | `rinsuna/m1-data-packs` | draft UP and TUT packs, the approved SMU changes, and how the plan picks its third choice |
-| #6 | `rinsuna/m1-how-to-apply` | how to apply, on today's date: each choice's application dates, NSFAS, fees, documents and next steps; notes on NSFAS and on other apps |
-| #7 | `rinsuna/m1-after-acceptance` | your points at every university; campuses, calendars, money dates and support in the packs; first steps from acceptance to the first lecture |
-| #8 | `rinsuna/m3-profile-and-money` | M3's backend: the student's profile (university and campus) and My money (settings, income, expected payments, spending, summary) |
-| #9 | `rinsuna/m1-cheap-things` | cheap things to do near campus, each priced from the place's own page |
-| #38 | `rinsuna/ag-accepted-step` | "If you're accepted at <university>" card on the plan and the next-steps screen (`GET /universities/<id>/first-steps`): timeline from accepting an offer to the first lecture with sources, Support and Money note, and in-memory university hand-off to account sign-up and onboarding (never marks) |
-| #37 | `rinsuna/ag-funding-button` | Funding button on the plan footer (with "Start again" under the subtitle), the Funding screen (NSFAS and the filterable list of 23 other bursaries, merit awards and loans, goal fields first) and the funder detail screen (`GET /funding`, `GET /funding/<id>`) |
-| #36 | `rinsuna/courses-by-faculty` | Find my course step 3 grouped by faculty: every programme at the 21 universities with programmes names its faculty, school or college from the pack's own sources (1,828 of 1,833); the Courses tab opens in one section per faculty with its counts in words; each university's short name on a text monogram tile (no logos, per the brief) |
-| #35 | `rinsuna/courses-wave-5` | full course lists, wave 5: Wits (85 programmes), UCT (34), UNISA (167), Stellenbosch (73, from its 2026 prospectus), Nelson Mandela (124), CPUT (119) and CUT (42), each from the university's own pages read with robots.txt respected; UWC refuses honest requests, so it has a download list only. (A local `rinsuna/courses-wave-4` from another session is untrusted and is never pushed.) |
-| #34 | `rinsuna/courses-wave-3` | full course lists, wave 3: UNIVEN (80 programmes), UL (54 programmes), Rhodes (16 programmes) and NWU (81 programmes) across 4 universities (231 programmes total), each from its official 2026/2027 prospectus with closing dates and selection criteria, and a research note per university (agent drafts, `release: false`) |
-| #33 | `rinsuna/courses-wave-2` | full course lists, wave 2: UFS (172 programmes) from its 2027 prospectus with closing dates, and UNIZULU (185 programmes) from the CAO's 2027 handbook, each with a research note per university (agent drafts, `release: false`) |
-| #32 | `rinsuna/courses-wave-1` | full course lists, wave 1: VUT (49 programmes), WSU (105), UMP (24), MUT (40) and SPU (26), each from the university's own 2027 documents, with a research note per university (agent drafts, `release: false`); a programme whose university publishes no points minimum checks the subjects only (`min_points: null`) |
-| #31 | `rinsuna/forest-theme` | the whole app in Rinsuna's forest theme, from her homescreen: every screen on her wallpaper (forest moss down to terracotta rose), dark forest-glass cards, the white pill for the main action, a floating glass dock, and her CC monogram as the mark, app icon, adaptive icon and splash; every text colour meets WCAG AA on every band of the wallpaper |
-| #30 | `rinsuna/all-universities` | all 26 public universities: each one's points rule where it publishes one the engine can follow, and how and when to apply (dates, fee, link, choices), from its own pages; agent drafts; two new ways of counting (a subject's own table, points from the percentage) and a general table; a university without a rule says why |
-| #29 | `rinsuna/qualify-first` | Find my course marks first: your marks, then where you qualify (every university with your points there and how many programmes you meet, funding open now), then one university (points card opening per subject, courses and how to apply on sliding tabs), then the plan; a violet header and movement from the HTML Rinsuna chose (press, shimmer, sliding tabs, swipe rows, opening sections), in the app's own colours; the points answer gives each subject's points, and the assess answer how to apply there |
-| #28 | `rinsuna/apply-preview` | "What you can still do now" at the top of the plan (open now, coming up, not published, closed), from the plan's own dates; a test date for previews only (`CAMPUS_PREVIEW_TODAY`, which production refuses), which the plan says it's using; tests for both |
-| #27 | `rinsuna/subject-picker` | Find my course's subject picker: every subject on the DBE's Grade 10 to 12 list in folders (languages, mathematics, sciences and so on), ticked in one go with every language by name; the best-marked language besides English goes as the other official language and the results say which; Jest tests for the picker and how marks reach the API |
-| #26 | `rinsuna/alerts-support-screens` | M5: Home's alerts (each action opening its screen) and updates with their switches; the Support tab (crisis lines held back until checked); cheap things nearby; "Delete my account and data" for real; Jest tests for alerts and support. The brief's judge flow runs end to end |
-| #25 | `rinsuna/week-screens` | M4: the Week tab (eight weeks, each load in words with its reason) and a week (events, flags, the university calendar); classes (start, join, invite and rep codes), the rep panel and confirming class messages; My marks; Jest tests for the week strip, the rep panel, confirming and marks |
-| #24 | `rinsuna/money-screens` | M3: onboarding (privacy notice, then university and campus) and the My money screens (the Money tab with runway, safe to spend, life fund and "two weeks late"; balance and budget, money coming in, expected payments, spending); the demo banner; Jest tests for the runway card and the life fund |
-| #23 | `rinsuna/course-finder-screens` | M2: the Find my course screens (university, marks, tier cards, the three-choice plan with how to apply), from the welcome screen and Home; Jest tests for the tier card, the plan and the marks |
-| #22 | `rinsuna/campus-maps` | campus maps from OpenStreetMap: each campus's outline, buildings and named places, `GET /universities/<id>/map` with the credit and the licence, the fetch script, and the validator's map checks |
-| #21 | `rinsuna/solo-team` | the rules and docs for a team of one: CLAUDE.md, this file, OPEN_QUESTIONS, and the README's status |
-| #20 | `rinsuna/more-funders` | five more funders from their own pages (24 in all; 5 open on 12 Oct) |
-| #19 | `rinsuna/smu-gaps` | SMU's financial aid office, food support and Religious Desk on the Support screen; cheap things in northern Tshwane for SMU and TUT's nearby campuses |
-| #18 | `rinsuna/saved-funding` | saving funding (UniApplyForMe's bookmark) with reminders when it opens and a week and a day before it closes; a switch for them; migration 0006 |
-| #17 | `rinsuna/funding-list` | funding like UniApplyForMe's: 19 funders from their own pages (NSFAS, bursaries, UP's merit awards, a loan scheme), `GET /funding` with "N open now, N closing soon" and filters, `GET /funding/<id>`, and each plan choice's funding |
-| #16 | `rinsuna/extraction-50` | the engine reads every date in a message (the new one in a "moved" message, ranges, bare hours) and asks the rep to check; 57 labelled class messages |
-| #15 | `rinsuna/ready-to-host` | the backend ready for any host: a container, gunicorn, one process running the background jobs, production CORS for the web build, and DEPLOY.md |
-| #14 | `rinsuna/class-update-alerts` | class updates as alerts (a rep's confirmation tells the rest of the class), with a switch to turn them off |
-| #13 | `rinsuna/privacy-export-delete` | POPIA: `GET /me/export` holds everything we keep about a student, and `DELETE /me` deletes the account and all of it |
-| #12 | `rinsuna/android-preview` | the installable Android app (EAS preview APK, built-in mock sign-in), under Rinsuna's Expo account |
-| #11 | `rinsuna/m5-alerts-support-demo` | M5's backend: alerts, the Support screen's data, cheap things for the campus, and the judges' demo accounts (`flask seed`, re-based daily) |
-| #10 | `rinsuna/m4-my-week` | M4's backend: classes, invite codes and reps, announcements to verified events (changes and flags), the week strip, My marks; the life fund reads the week; 44 labelled class messages |
+| **M0: Foundation** | #1 | Accounts, sign-in, security, notifications, audit, app shell, decision engine starter, CI |
+| **M1: Course Finder API & Packs** | #2 – #7, #9 | UP, TUT, SMU research notes, admission engine, how to apply, first steps after acceptance, cheap things |
+| **M2: Course Finder Screens & 26 Unis** | #23, #27 – #30, #32 – #36, #76, #79, #80, #83 | Marks first, subject picker folders, faculty groups, full programme coverage for public universities |
+| **M3: Profile & My Money** | #8, #24, #56, #58 | Runway, safe to spend, life fund, late-payment toggle, payday plan, Can I afford this?, card wallet |
+| **M4: My Week & Timetable** | #10, #16, #25, #50, #52, #57, #61 | 8-week strip, class reps & verified events, timetable PDF import, exams, calendar views, Find a time |
+| **M5: Alerts & Campus Support** | #11, #14, #19, #22, #26, #40, #55, #60, #71, #77, #78 | Actionable alerts, Do this next, Support with Call/Email, OpenStreetMap campus maps & pins |
+| **F6: Funding & Colleges** | #17, #18, #20, #37, #39, #44, #51, #69 | NSFAS & 23 funders, saved funding reminders, DHET TVET & private colleges register |
+| **UI & Theme** | #31, #43, #46, #47, #54, #67, #70, #72 | Forest theme, Daylight paper system, Night student mode, typography scale, real campus photos |
+| **Security, Pen Test & Deploys** | #12, #13, #15, #41, #53, #59, #62 – #65, #68, #73 – #75, #81, #82 | POPIA export/delete, 105 pen-test attack fixes, MobSF hardening, free hosting on Render & Neon |
 
-**Review:** Rinsuna reviews and merges every PR; agents open them but never merge. Look hardest at the ones that touch
-accounts or the database: #1, #8, #10, #11, #14 and #18 add migrations, #11 also lets demo accounts skip the
-new-phone code, and #13 deletes accounts.
-
-**How to merge:**
-- Each PR targets the branch below it, so its diff shows only its own work.
-- Merge in order: #1 into `main`, then #2 to #38, retargeting each to `main` once the one below has merged.
-- Use **Create a merge commit**, not squash or rebase, so every commit stays in `main`'s history (CLAUDE.md: never
-  rewrite history).
+**Review:** Rinsuna reviews and merges every PR; agents open them but never merge. Every merge commit preserves complete history.
 
 ## Decided so far
 
