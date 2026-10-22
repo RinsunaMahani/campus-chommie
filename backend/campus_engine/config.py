@@ -26,6 +26,7 @@ DEFAULTS: dict[str, Any] = {
     "timetable": {"day_starts": "07:00", "day_ends": "21:00", "buffer_minutes": 15, "step_minutes": 15, "per_day": 2, "suggestions": 5},
     "next_steps": {"max_steps": 3, "due_days": 3, "exam_days": 7, "funding_days": 14, "goal_days": 30, "heavy_weeks_ahead": 2},
     "timetable_import": {"line_tolerance": 2.0, "merge_gap_minutes": 10, "max_rows": 2000, "max_exam_minutes": 480},
+    "money_pots": {"buffer_paydays": 1},
 }
 
 

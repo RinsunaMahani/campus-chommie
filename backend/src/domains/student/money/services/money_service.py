@@ -21,7 +21,7 @@ from zoneinfo import ZoneInfo
 from campus_engine.config import load_config
 from campus_engine.forecast import forecast_runway, spending_pace
 from campus_engine.lifefund import life_fund_signal
-from campus_engine.money_plan import Goal, afford, goal_pace, payday_plan
+from campus_engine.money_plan import Goal, afford, goal_pace, payday_plan, pot_pace
 from campus_engine.runway import ExpectedPayment as Arrival
 from campus_engine.runway import RunwayResult, project_runway, safe_to_spend
 from campus_engine.text import long_day, rand
@@ -416,16 +416,17 @@ def can_i_afford(user, amount_cents: int) -> dict:
 
 
 def _goal(g: MoneyGoal, today: date) -> dict:
-    left = max(0, g.amount_cents - g.saved_cents)
-    per_week, line = goal_pace(left, g.due_on, today)
+    per_week, line = pot_pace(g.kind, g.amount_cents, g.saved_cents, g.due_on, today, g.stokvel_funded)
     return {
         "id": str(g.id),
         "label": g.label,
+        "kind": g.kind,
         "amount_cents": g.amount_cents,
         "saved_cents": g.saved_cents,
-        "due_on": g.due_on.isoformat(),
-        "due_day": long_day(g.due_on),
+        "due_on": g.due_on.isoformat() if g.due_on else None,
+        "due_day": long_day(g.due_on) if g.due_on else None,
         "from_university": g.from_university,
+        "stokvel_funded": g.stokvel_funded,
         "per_week_cents": per_week,
         "lines": [line],
     }
@@ -449,7 +450,7 @@ def university_dates(user, today: date) -> list[dict]:
 
 
 def plan(user) -> dict:
-    """Looking ahead: the payday plan for the next payment, the student's goals, and their university's fee dates
+    """Looking ahead: the payday plan for the next payment, the student's goals and pots, and their university's fee dates
     coming up (to turn into goals)."""
     today = _today()
     settings = repo.settings_for(user.id)
@@ -459,8 +460,25 @@ def plan(user) -> dict:
         return out | {"lines": [NO_SETTINGS]}
     rows = _payments(user.id, today)
     arrivals = [Arrival(p.source.label, p.expected_on, p.amount_cents, p.received_on is not None) for p in rows]
-    pp = payday_plan(arrivals, today, settings.essentials_per_day_cents,
-                     [Goal(g.label, max(0, g.amount_cents - g.saved_cents), g.due_on) for g in goals])
+    cfg = load_config()
+    buffer_paydays = cfg.get("money_pots", {}).get("buffer_paydays", 1)
+    pp = payday_plan(
+        arrivals,
+        today,
+        settings.essentials_per_day_cents,
+        [
+            Goal(
+                g.label,
+                max(0, g.amount_cents - g.saved_cents),
+                g.due_on,
+                kind=g.kind,
+                stokvel_funded=g.stokvel_funded,
+                amount_cents=g.amount_cents,
+            )
+            for g in goals
+        ],
+        buffer_paydays=buffer_paydays,
+    )
     if pp is None:
         return out | {"lines": ["Add the money you expect (an allowance, a transfer, a wage) to plan your next payday."]}
     out["payday"] = {
@@ -494,7 +512,14 @@ def _clean_goal(fields: dict) -> dict:
 
 def add_goal(user, body: dict) -> dict:
     today = _today()
-    _check_goal_day(body["due_on"], today)
+    kind = body.get("kind", "goal")
+    if kind in ("goal", "big_purchase"):
+        if not body.get("due_on"):
+            raise _field_error("due_on", "Choose a date for this goal.")
+        _check_goal_day(body["due_on"], today)
+    else:
+        if body.get("due_on") is not None:
+            raise _field_error("due_on", "This pot does not use a date.")
     if repo.count_goals(user.id) >= MAX_GOALS:
         raise _field_error("goals", f"You can keep up to {MAX_GOALS} goals.")
     row = repo.add_goal(user.id, _clean_goal(body))
@@ -505,9 +530,21 @@ def add_goal(user, body: dict) -> dict:
 def change_goal(user, goal_id: uuid.UUID, body: dict) -> dict:
     today = _today()
     row = _my_goal(user, goal_id)
-    if "due_on" in body:
-        _check_goal_day(body["due_on"], today)
-    for key, value in _clean_goal(body).items():
+    clean = _clean_goal(body)
+    new_kind = clean.get("kind", row.kind)
+    if "due_on" in clean:
+        if clean["due_on"] is not None:
+            if new_kind not in ("goal", "big_purchase"):
+                raise _field_error("due_on", "This pot does not use a date.")
+            _check_goal_day(clean["due_on"], today)
+        elif new_kind in ("goal", "big_purchase"):
+            raise _field_error("due_on", "Choose a date for this goal.")
+    elif "kind" in clean and clean["kind"] != row.kind:
+        if clean["kind"] in ("goal", "big_purchase") and row.due_on is None:
+            raise _field_error("due_on", "Choose a date for this goal.")
+        if clean["kind"] in ("family", "stokvel", "buffer") and row.due_on is not None:
+            row.due_on = None
+    for key, value in clean.items():
         setattr(row, key, value)
     if row.saved_cents > row.amount_cents:
         db.session.rollback()

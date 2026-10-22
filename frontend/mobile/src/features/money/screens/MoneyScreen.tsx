@@ -124,22 +124,47 @@ export default function MoneyScreen() {
               icon="target"
               tint={colors.classColours[2]}
               tile={`${colors.classColours[2]}1F`}
-              title={t('money.goals.title')}
-              summary={plan && plan.goals.length ? t('money.goals.summary', { n: plan.goals.length }) : t('money.goals.none')}>
-              {plan?.goals.map((g) => (
-                <Pressable key={g.id} accessibilityRole="button" onPress={() => router.push({ pathname: '/money/goal', params: { id: g.id } })} style={styles.goal}>
-                  <View style={styles.goalHead}>
-                    <Text style={[styles.potLabel, { flex: 1 }]}>{g.label}</Text>
-                    <Text style={styles.potCents}>
-                      {formatRand(g.saved_cents)} / {formatRand(g.amount_cents)}
-                    </Text>
-                  </View>
-                  <View style={styles.track}>
-                    <View style={[styles.fill, { width: `${Math.min(100, Math.round((g.saved_cents / g.amount_cents) * 100))}%` }]} />
-                  </View>
-                  <Text style={styles.potWhy}>{g.lines[0]}</Text>
-                </Pressable>
-              ))}
+              title={t('money.pots.title')}
+              summary={plan && plan.goals.length ? t('money.pots.summary', { n: plan.goals.length }) : t('money.pots.empty')}>
+              {plan && plan.goals.length === 0 ? (
+                <View style={{ gap: space.sm, paddingVertical: space.xs }}>
+                  <Body style={{ color: colors.textMuted }}>{t('money.pots.empty')}</Body>
+                  <Button title={t('money.pots.add')} variant="secondary" icon="plus" compact onPress={() => router.push('/money/goal')} />
+                </View>
+              ) : null}
+              {plan?.goals.map((g) => {
+                const kindBadge =
+                  g.kind === 'family'
+                    ? { label: 'Family', tone: 'info' as const }
+                    : g.kind === 'stokvel'
+                      ? { label: 'Stokvel', tone: 'jade' as const }
+                      : g.kind === 'buffer'
+                        ? { label: 'Buffer', tone: 'marigold' as const }
+                        : g.kind === 'big_purchase'
+                          ? { label: g.stokvel_funded ? 'Big purchase · stokvel' : 'Big purchase', tone: 'info' as const }
+                          : { label: 'Goal', tone: 'muted' as const };
+                const percent = Math.min(100, Math.round((g.saved_cents / Math.max(1, g.amount_cents)) * 100));
+                return (
+                  <Pressable key={g.id} accessibilityRole="button" onPress={() => router.push({ pathname: '/money/goal', params: { id: g.id } })} style={styles.goal}>
+                    <View style={styles.goalHead}>
+                      <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: space.xs, flexWrap: 'wrap' }}>
+                        <Text style={styles.potLabel}>{g.label}</Text>
+                        <Tag label={kindBadge.label} tone={kindBadge.tone} />
+                      </View>
+                      <Text style={styles.potCents}>
+                        {formatRand(g.saved_cents)} / {formatRand(g.amount_cents)}
+                      </Text>
+                    </View>
+                    <View style={styles.track}>
+                      <View style={[styles.fill, { width: `${percent}%` }]} />
+                    </View>
+                    <Text style={styles.potWhy}>{g.lines[0]}</Text>
+                  </Pressable>
+                );
+              })}
+              {plan && plan.goals.length > 0 ? (
+                <Button title={t('money.pots.add')} variant="secondary" icon="plus" compact onPress={() => router.push('/money/goal')} />
+              ) : null}
               {plan?.university_dates.length ? <Overline>{t('money.goals.fromUniversity')}</Overline> : null}
               {plan?.university_dates.map((d) => (
                 <View key={`${d.name}${d.on}`} style={styles.pot}>
@@ -156,7 +181,6 @@ export default function MoneyScreen() {
                   </Pressable>
                 </View>
               ))}
-              <Button title={t('money.goals.add')} variant="secondary" icon="plus" compact onPress={() => router.push('/money/goal')} />
             </Section>
 
             <Section

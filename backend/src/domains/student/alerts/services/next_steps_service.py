@@ -50,7 +50,7 @@ def facts(user, today: date) -> Facts:
             closing.append(Closing(c.get("short_name") or c["name"], closes))
     plan = money.plan(user)
     goals = [GoalDue(g["label"], date.fromisoformat(g["due_on"]), max(0, g["amount_cents"] - g["saved_cents"]),
-                     g["per_week_cents"]) for g in plan["goals"]]
+                     g.get("per_week_cents") or 0) for g in plan["goals"] if g.get("due_on")]
     return Facts(today, money.runway_for(user, today), weeks, due, closing, goals,
                  len(timetable_service.mine(user)["entries"]))
 

@@ -13,7 +13,7 @@ from marshmallow import ValidationError as MarshmallowError
 from src.core.exceptions import ValidationError
 from src.shared.finance import FinanceError, Money, format_amount, validate_non_negative, validate_positive
 
-from ..constants import GOAL_LABEL_MAX, LABEL_MAX, MAX_CENTS, RELIABILITY
+from ..constants import GOAL_KINDS, GOAL_LABEL_MAX, LABEL_MAX, MAX_CENTS, RELIABILITY
 
 
 class _Strict(Schema):
@@ -110,14 +110,16 @@ class AffordSchema(_Strict):
 
 
 class GoalSchema(_Strict):
-    """POST /money/goals: what it's for, how much, by when; how much is already aside; whether the date came from
-    the university's fee dates."""
+    """POST /money/goals: what it's for, kind, how much, by when (for date goals); how much is already aside;
+    whether the date came from the university's fee dates; whether a big purchase is paid through a stokvel."""
 
     label = fields.String(required=True, validate=validate.Length(min=1, max=GOAL_LABEL_MAX))
+    kind = fields.String(load_default="goal", validate=validate.OneOf(GOAL_KINDS))
     amount_cents = Cents(required=True, positive=True)
     saved_cents = Cents(load_default=0)
-    due_on = fields.Date(required=True)
+    due_on = fields.Date(load_default=None, allow_none=True)
     from_university = StrictBoolean(load_default=False)
+    stokvel_funded = StrictBoolean(load_default=False)
 
     @validates("label")
     def _plain(self, value, **kwargs):
@@ -125,7 +127,30 @@ class GoalSchema(_Strict):
             raise MarshmallowError("Use letters, numbers and punctuation only.")
 
     @validates_schema
-    def _not_more_than(self, data, **kwargs):
+    def _validate_goal(self, data, **kwargs):
+        if not self.partial:
+            kind = data.get("kind", "goal")
+            due_on = data.get("due_on")
+            if kind in ("goal", "big_purchase"):
+                if due_on is None:
+                    raise MarshmallowError({"due_on": ["Choose a date for this goal."]})
+            elif kind in ("family", "stokvel", "buffer"):
+                if due_on is not None:
+                    raise MarshmallowError({"due_on": ["This pot does not use a date."]})
+            if data.get("stokvel_funded") and kind != "big_purchase":
+                raise MarshmallowError({"stokvel_funded": ["Only a big purchase can be marked paying through a stokvel."]})
+            if data.get("from_university") and kind != "goal":
+                raise MarshmallowError({"from_university": ["Only fee goals can come from a university."]})
+        else:
+            kind = data.get("kind")
+            due_on = data.get("due_on")
+            if kind is not None:
+                if kind in ("family", "stokvel", "buffer") and due_on is not None:
+                    raise MarshmallowError({"due_on": ["This pot does not use a date."]})
+                if data.get("stokvel_funded") and kind != "big_purchase":
+                    raise MarshmallowError({"stokvel_funded": ["Only a big purchase can be marked paying through a stokvel."]})
+                if data.get("from_university") and kind != "goal":
+                    raise MarshmallowError({"from_university": ["Only fee goals can come from a university."]})
         if "saved_cents" in data and "amount_cents" in data and data["saved_cents"] > data["amount_cents"]:
             raise MarshmallowError({"saved_cents": ["That's more than the goal itself."]})
 
@@ -137,9 +162,11 @@ class GoalChangeSchema(GoalSchema):
         super().__init__(*args, partial=True, **kwargs)
 
     @validates_schema
-    def _something(self, data, **kwargs):
+    def _validate_change(self, data, **kwargs):
         if not data:
             raise MarshmallowError({"_schema": ["Send what changed."]})
+        if "saved_cents" in data and "amount_cents" in data and data["saved_cents"] > data["amount_cents"]:
+            raise MarshmallowError({"saved_cents": ["That's more than the goal itself."]})
 
 
 class NoQuerySchema(_Strict):

@@ -92,19 +92,31 @@ export type AffordAnswer = {
   lines: string[];
 };
 
+export type PotKind = 'goal' | 'family' | 'stokvel' | 'buffer' | 'big_purchase';
+
 export type MoneyGoal = {
   id: string;
   label: string;
+  kind: PotKind;
   amount_cents: number;
   saved_cents: number;
-  due_on: string;
-  due_day: string;
+  due_on: string | null;
+  due_day: string | null;
   from_university: boolean;
-  per_week_cents: number;
+  stokvel_funded: boolean;
+  per_week_cents: number | null;
   lines: string[];
 };
 
-export type GoalInput = { label: string; amount_cents: number; saved_cents: number; due_on: string; from_university: boolean };
+export type GoalInput = {
+  label: string;
+  kind?: PotKind;
+  amount_cents: number;
+  saved_cents?: number;
+  due_on?: string | null;
+  from_university?: boolean;
+  stokvel_funded?: boolean;
+};
 
 /** A fee date from the student's university's own page: never an amount. */
 export type UniversityDate = { name: string; kind: string; on: string; day: string; source_url: string | null };

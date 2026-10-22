@@ -61,3 +61,6 @@ next_steps:
   funding_days: 14        # a saved bursary closing this many days away (or nearer)
   goal_days: 30           # a money goal falling due this many days away (or nearer)
   heavy_weeks_ahead: 2    # a heavy week this many weeks ahead (this one included)
+
+money_pots:
+  buffer_paydays: 1       # paydays to fund the emergency buffer over
