@@ -5,13 +5,14 @@ university and the app adapts to it: programmes and admission rules, the academi
 support and student life. Our entry for the FNB App of the Year Hackathon 2026 ("Access to higher education"), by
 Team PR (Rinsuna Mahani).
 
-**Status: the backend and the app's screens are built, in pull requests that wait for review**
-([docs/HANDOVER.md](docs/HANDOVER.md)). The app has sign-up (with the 18-or-older confirmation and consent), email
+**Status: built, merged into `main` and live.** The API runs at https://campus-chommie.onrender.com and the web app at
+https://campus-chommie-web.onrender.com (both on free Render services, [docs/DEPLOY.md](docs/DEPLOY.md)); an Android
+preview build talks to the same API ([docs/HANDOVER.md](docs/HANDOVER.md)). The app has sign-up (with the 18-or-older confirmation and consent), email
 verification, two-factor sign-in and account security; Find my course, marks first, at all 26 public universities (your points and how to apply at each; programmes at 21 of them: UP, TUT, SMU, VUT, WSU, UMP, MUT, SPU, UFS, UNIZULU, UNIVEN, UL, Rhodes, NWU, Wits, UCT, UNISA, Stellenbosch, Nelson Mandela, CPUT and CUT), open without an account (M2);
 onboarding and My money (M3); My week with classes, reps and My marks (M4); and Home's alerts, Support, cheap things,
-updates and deleting an account (M5), all in Rinsuna's forest theme with her CC icon. The brief's judge flow runs end
-to end. Still to come: hosting, the WhatsApp bot
-during the hackathon (M6), and a person's check of the data packs and the funding list.
+updates and deleting an account (M5), on Daylight paper with Rinsuna's forest wallpaper in the hero areas and her CC
+icon. The brief's judge flow runs end to end. Still to come: the WhatsApp bot during the hackathon (M6), and a
+person's check of the data packs and the funding list.
 
 ## What's where
 

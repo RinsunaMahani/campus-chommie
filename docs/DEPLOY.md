@@ -126,9 +126,19 @@ them.
 Set up by Rinsuna as above; every secret is in Render's Environment only.
 
 - **API:** `https://campus-chommie.onrender.com` (Render service `campus-chommie`, Docker, root `backend`, Frankfurt,
-  Free). It deploys branch **`rinsuna/free-hosting`**, so a feature reaches the live API only once that branch has it.
-  Each start runs the migrations, then the demo seed. Checked 21 Oct: `/api/v1/ping` and `/api/v1/health` answer 200,
-  database ok.
+  Free). It deploys **`main`** since 21 Oct (it deployed `rinsuna/free-hosting` before). Each start runs the
+  migrations, then the demo seed. Checked 21 Oct: `/api/v1/ping` and `/api/v1/health` answer 200, database ok.
+  `BEHIND_CLOUDFLARE=true` (Render puts Cloudflare in front of every `onrender.com` service): checked from outside on
+  22 Oct, a request carrying its own `CF-Connecting-IP` is refused by Cloudflare (403, error 1000) and
+  `X-Forwarded-For` or `True-Client-IP` don't move the rate limit.
+- **Web app (since 22 Oct 2026):** `https://campus-chommie-web.onrender.com` (Render static site `campus-chommie-web`,
+  branch `main`, root `frontend/mobile`, build `npm ci && npx expo export --platform web --output-dir dist`, publish
+  `dist`). Its environment: `NODE_VERSION=22`, `EXPO_PUBLIC_API_URL=https://campus-chommie.onrender.com/api/v1`,
+  `EXPO_PUBLIC_USE_MOCK_API=false` (public, not secrets). One rewrite, `/*` to `/index.html`, so an address typed or
+  refreshed opens its screen, and three headers on `/*`: `X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`,
+  `Referrer-Policy: strict-origin-when-cross-origin`. The API's `CORS_ORIGINS` names this address. Checked 22 Oct,
+  signed out: Funding opens in its groups from the live API, a deep link answers 200, the headers and CORS are in
+  place. Rebuilt by Render whenever `main` changes.
 - **Database:** Neon project `campus-chommie`, Frankfurt, direct connection with `sslmode=require`.
 - **Email:** Brevo SMTP relay on port 2525. The sender is Rinsuna's own verified Gmail address for now: mail that says
   it's from a Gmail address but is sent by another service can land in spam, so send a sign-up code to a Gmail and an
