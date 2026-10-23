@@ -17,14 +17,19 @@ export type SignedInPhone = {
   label: string | null;
 };
 
+/** Closing or deleting: the password, or for an account that signs in with Google only, a fresh Google sign-in. */
+export type OwnerProof = { password: string } | { idToken: string };
+
+const proofBody = (proof: OwnerProof) => ('password' in proof ? { password: proof.password } : { id_token: proof.idToken });
+
 export interface SecurityApi {
   phones(): Promise<SignedInPhone[]>;
   signOutOthers(): Promise<number>;
   changePassword(current: string, next: string): Promise<number>;
   exportData(): Promise<Record<string, unknown>>;
-  closeAccount(password: string): Promise<void>;
+  closeAccount(proof: OwnerProof): Promise<void>;
   /** POPIA: delete the account and everything kept about the student (DELETE /me). */
-  deleteAccount(password: string): Promise<void>;
+  deleteAccount(proof: OwnerProof): Promise<void>;
 }
 
 async function call<T>(fn: () => Promise<T>): Promise<T> {
@@ -42,13 +47,13 @@ const http: SecurityApi = {
   changePassword: (current, next) =>
     call(async () => (await api<{ signed_out: number }>('POST', '/auth/change-password', { current_password: current, new_password: next }, { auth: true })).signed_out),
   exportData: () => call(() => api<Record<string, unknown>>('GET', '/me/export', undefined, { auth: true })),
-  closeAccount: (password) =>
+  closeAccount: (proof) =>
     call(async () => {
-      await api('POST', '/me/close-account', { password }, { auth: true });
+      await api('POST', '/me/close-account', proofBody(proof), { auth: true });
     }),
-  deleteAccount: (password) =>
+  deleteAccount: (proof) =>
     call(async () => {
-      await api('DELETE', '/me', { password }, { auth: true });
+      await api('DELETE', '/me', proofBody(proof), { auth: true });
     }),
 };
 
@@ -83,13 +88,13 @@ const mock: SecurityApi = {
     await wait();
     return { account: { note: 'Sample data (mock mode)' } };
   },
-  async closeAccount(password) {
+  async closeAccount(proof) {
     await wait();
-    if (password.length < 8) throw new AuthError('WRONG_PASSWORD', 'That password is incorrect.');
+    if ('password' in proof && proof.password.length < 8) throw new AuthError('WRONG_PASSWORD', 'That password is incorrect.');
   },
-  async deleteAccount(password) {
+  async deleteAccount(proof) {
     await wait();
-    if (password.length < 8) throw new AuthError('WRONG_PASSWORD', 'That password is incorrect.');
+    if ('password' in proof && proof.password.length < 8) throw new AuthError('WRONG_PASSWORD', 'That password is incorrect.');
   },
 };
 

@@ -3,8 +3,9 @@ import { useRef, useState } from 'react';
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 
 import { GOOGLE_READY } from '@/constants/config';
+import { GoogleSignIn } from '@/features/auth/google/GoogleSignIn';
 import { Button } from '@/shared/components/Button';
-import { GoogleButton, OrDivider } from '@/shared/components/Parts';
+import { OrDivider } from '@/shared/components/Parts';
 import { Screen } from '@/shared/components/Screen';
 import { Body, Title } from '@/shared/components/Text';
 import { TextField } from '@/shared/components/TextField';
@@ -82,7 +83,7 @@ export default function SignIn() {
       </View>
       {GOOGLE_READY ? (
         <>
-          <GoogleButton onPress={() => router.push('/google')} />
+          <GoogleSignIn consented={false} />
           <OrDivider />
         </>
       ) : null}

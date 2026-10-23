@@ -181,6 +181,29 @@ into the repo, a chat or a screenshot.
 What the bot keeps: a keyed hash of each linked number, a link code's hash for 10 minutes, and hashes of message ids
 for 48 hours. It never stores or logs a number, a message, or the access token.
 
+## Google sign-in
+
+Off until the settings below exist. Client IDs are public (not secrets); keep the Google Cloud project's own
+secrets out of the repo and chats.
+
+1. **Google Cloud:** a project with the OAuth consent screen set up (app name Campus Chommie, Rinsuna's support
+   email, scopes `openid`, `email`, `profile` only). While it's in "Testing", add each tester's Gmail as a test user.
+2. **Web client** (OAuth client ID, type "Web application"):
+   - Authorized JavaScript origins: `https://campus-chommie-web.onrender.com` (and `http://localhost:8081` for local
+     work).
+   - Authorized redirect URIs: `https://campus-chommie-web.onrender.com/oauthredirect` (and
+     `http://localhost:8081/oauthredirect`).
+3. **Android client** (type "Android"): package name `za.campuschommie.app`, and the SHA-1 of the APK's signing key
+   (`eas credentials`, Android, the keystore's SHA-1). Its ID isn't put anywhere: Google checks the APK against it.
+4. **Settings:**
+   - API (Render, `campus-chommie`): `GOOGLE_CLIENT_IDS` = the **web** client ID (the APK asks for tokens issued to
+     it too).
+   - Web app (Render, `campus-chommie-web`): `EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID` = the same web client ID, then a
+     rebuild.
+   - APK: `EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID` in `eas.json`'s `preview` and `production` env, then a new build.
+5. **Check it:** Sign in → Continue with Google, on the web and on the APK; a new Gmail is asked to tick the two
+   boxes, and a Gmail that already has a password account is asked for the password once.
+
 ## Still Rinsuna's to decide
 
 - **A paid host,** if the app outlives the hackathon (the free tiers above sleep and have monthly limits).

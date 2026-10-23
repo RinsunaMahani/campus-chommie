@@ -49,9 +49,12 @@ export const mockAuthApi: AuthApi = {
     await wait(300);
   },
 
-  async continueWithGoogle(email) {
+  // Mock: the "token" is the email picked on the mock account sheet.
+  async continueWithGoogle(email, consented) {
     await wait(400);
-    return ALREADY_REGISTERED.includes(email.toLowerCase()) ? 'link' : 'new';
+    if (ALREADY_REGISTERED.includes(email.toLowerCase())) return { kind: 'link', email };
+    if (!consented) return { kind: 'needs_consent', email };
+    return { kind: 'signed_in', profile: demoProfile(email, 'google') };
   },
 
   async linkGoogle(email, password) {
