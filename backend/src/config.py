@@ -131,6 +131,22 @@ class BaseConfig:
     # issued to one of these. Empty = Google sign-in switched off.
     GOOGLE_CLIENT_IDS = [c.strip() for c in os.environ.get("GOOGLE_CLIENT_IDS", "").split(",") if c.strip()]
 
+    # The WhatsApp bot (M6, Meta's WhatsApp Cloud API). All five secrets set = on; any missing = off, and
+    # its routes answer 404. VERIFY_TOKEN is the word Meta echoes when the webhook is set up; APP_SECRET
+    # signs every message Meta sends (X-Hub-Signature-256); ACCESS_TOKEN and PHONE_NUMBER_ID send replies;
+    # PHONE_KEY keys the hash a linked phone number is stored as (never the number itself).
+    WHATSAPP_VERIFY_TOKEN = os.environ.get("WHATSAPP_VERIFY_TOKEN", "")
+    WHATSAPP_APP_SECRET = os.environ.get("WHATSAPP_APP_SECRET", "")
+    WHATSAPP_ACCESS_TOKEN = os.environ.get("WHATSAPP_ACCESS_TOKEN", "")
+    WHATSAPP_PHONE_NUMBER_ID = os.environ.get("WHATSAPP_PHONE_NUMBER_ID", "")
+    WHATSAPP_PHONE_KEY = os.environ.get("WHATSAPP_PHONE_KEY", "")
+    # The bot's own number as students see it (not a secret), e.g. "+1 555 010 0000"; and the Graph API
+    # version Meta's dashboard shows for the app.
+    WHATSAPP_DISPLAY_NUMBER = os.environ.get("WHATSAPP_DISPLAY_NUMBER", "")
+    WHATSAPP_GRAPH_VERSION = os.environ.get("WHATSAPP_GRAPH_VERSION", "v23.0")
+    # Tests keep replies in a list instead of sending them (src/domains/classes/whatsapp/services/sender.py).
+    WHATSAPP_FAKE_SEND = False
+
     # Background jobs (clean-ups, the demo's re-base). Off in tests, which call jobs directly. A host may
     # switch them off (SCHEDULER_ENABLED=false); either way only one process runs them (master_scheduler/lock.py).
     SCHEDULER_ENABLED = _bool("SCHEDULER_ENABLED", "true")
@@ -159,6 +175,7 @@ class TestingConfig(BaseConfig):
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(minutes=5)
     MAIL_PROVIDER = "fake"
     MAIL_ASYNC = False  # send inline so tests can read the fake outbox
+    WHATSAPP_FAKE_SEND = True
     SCHEDULER_ENABLED = False
     # Limiter storage must exist so rate-limit tests can switch it on;
     # tests/conftest.py turns limiting OFF for every other test.
