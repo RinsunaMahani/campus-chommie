@@ -27,15 +27,24 @@ export class AuthError extends Error {
  */
 export type SignInResult = { kind: 'signed_in'; profile: Profile } | { kind: 'code_required'; challenge: string };
 
+/**
+ * Continue with Google: signed in; or a password account already uses the email (link it with the password once);
+ * or a new account that still needs the 18-or-older and Privacy and Terms boxes.
+ */
+export type GoogleResult =
+  | { kind: 'signed_in'; profile: Profile }
+  | { kind: 'link'; email: string }
+  | { kind: 'needs_consent'; email: string };
+
 /** Everything the auth screens ask of the server: the mock or the real backend. */
 export interface AuthApi {
   /** confirmed18OrOlder: accounts are for adults only; the server refuses anything but true. */
   createAccount(input: { email: string; password: string; consent: Consent; confirmed18OrOlder: boolean }): Promise<void>;
   verifyEmail(email: string, code: string): Promise<void>;
   resendCode(email: string): Promise<void>;
-  /** 'new' creates the account; 'link' means a password account already uses the email. */
-  continueWithGoogle(email: string): Promise<'new' | 'link'>;
-  linkGoogle(email: string, password: string): Promise<Profile>;
+  /** idToken: Google's ID token. consented: the 18-or-older and Privacy and Terms boxes were ticked (sent with it). */
+  continueWithGoogle(idToken: string, consented: boolean): Promise<GoogleResult>;
+  linkGoogle(idToken: string, password: string): Promise<Profile>;
   signIn(email: string, password: string): Promise<SignInResult>;
   /** Second step on a new phone: the code from the email. This phone is trusted afterwards. */
   verifySignIn(email: string, challenge: string, code: string): Promise<Profile>;
