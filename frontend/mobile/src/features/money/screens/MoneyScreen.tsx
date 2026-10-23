@@ -18,7 +18,7 @@ import { fonts, radius, space, type } from '@/shared/theme/tokens';
 
 import { moneyApi } from '../api/moneyApi';
 import { RunwayHero } from '../components/RunwayHero';
-import { MoneyPlan, Summary, SummaryReady } from '../types';
+import { CheckinStatus, FixedCost, MoneyPlan, Summary, SummaryReady } from '../types';
 
 // The wallet's index route; the generated route types list it as /wallet/index.
 const WALLET = '/wallet' as Href;
@@ -36,14 +36,23 @@ export default function MoneyScreen() {
   const [late, setLate] = useState(false);
   const [summary, setSummary] = useState<Summary | null>(null);
   const [plan, setPlan] = useState<MoneyPlan | null>(null);
+  const [checkin, setCheckin] = useState<CheckinStatus | null>(null);
+  const [fixedCosts, setFixedCosts] = useState<FixedCost[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [refreshing, setRefreshing] = useState(false);
 
   const load = useCallback((asLate: boolean) => {
-    Promise.all([moneyApi.summary(asLate), moneyApi.plan()])
-      .then(([s, p]) => {
+    Promise.all([
+      moneyApi.summary(asLate),
+      moneyApi.plan(),
+      moneyApi.checkinStatus().catch(() => null),
+      moneyApi.fixedCosts().catch(() => []),
+    ])
+      .then(([s, p, c, fcs]) => {
         setSummary(s);
         setPlan(p);
+        if (c) setCheckin(c);
+        if (fcs) setFixedCosts(fcs);
         setError(null);
       })
       .catch((e) => setError(errorText(e, t('common.error'))))
@@ -87,6 +96,29 @@ export default function MoneyScreen() {
 
       {ready ? (
         <>
+          {checkin ? (
+            <Pressable
+              accessibilityRole="button"
+              onPress={() => router.push('/money/checkin')}
+              style={styles.checkinBanner}>
+              <Text style={styles.checkinEmoji}>🔥</Text>
+              <View style={{ flex: 1, gap: 2 }}>
+                <Strong style={styles.checkinTitle}>{checkin.streak.line}</Strong>
+                <Text style={styles.checkinSub}>
+                  {checkin.checked_in_this_week
+                    ? t('money.checkin.done')
+                    : t('money.checkin.cardSub')}
+                </Text>
+              </View>
+              <Button
+                title={checkin.checked_in_this_week ? 'View' : t('money.checkin.submit')}
+                variant={checkin.checked_in_this_week ? 'secondary' : 'primary'}
+                compact
+                onPress={() => router.push('/money/checkin')}
+              />
+            </Pressable>
+          ) : null}
+
           <RunwayHero summary={ready} />
           <Button title={t('money.afford.title')} variant="primary" icon="help-circle" onPress={() => router.push('/money/afford')} />
 
@@ -184,6 +216,52 @@ export default function MoneyScreen() {
             </Section>
 
             <Section
+              icon="file-text"
+              tint={colors.classColours[1]}
+              tile={`${colors.classColours[1]}1F`}
+              title={t('money.fixedCosts.title')}
+              summary={
+                fixedCosts.length
+                  ? t('money.fixedCosts.summary', { n: fixedCosts.length })
+                  : t('money.fixedCosts.empty')
+              }>
+              {fixedCosts.length === 0 ? (
+                <View style={{ gap: space.sm, paddingVertical: space.xs }}>
+                  <Body style={{ color: colors.textMuted }}>{t('money.fixedCosts.empty')}</Body>
+                  <Button
+                    title={t('money.fixedCosts.add')}
+                    variant="secondary"
+                    icon="plus"
+                    compact
+                    onPress={() => router.push('/money/fixed-cost')}
+                  />
+                </View>
+              ) : null}
+              {fixedCosts.map((c) => (
+                <Pressable
+                  key={c.id}
+                  accessibilityRole="button"
+                  onPress={() => router.push({ pathname: '/money/fixed-cost', params: { id: c.id } })}
+                  style={styles.pot}>
+                  <View style={{ flex: 1, gap: 2 }}>
+                    <Text style={styles.potLabel}>{c.label}</Text>
+                    <Text style={styles.potWhy}>{`Day ${c.day_of_month} of each month`}</Text>
+                  </View>
+                  <Text style={styles.potCents}>{formatRand(c.amount_cents)}</Text>
+                </Pressable>
+              ))}
+              {fixedCosts.length > 0 ? (
+                <Button
+                  title={t('money.fixedCosts.add')}
+                  variant="secondary"
+                  icon="plus"
+                  compact
+                  onPress={() => router.push('/money/fixed-cost')}
+                />
+              ) : null}
+            </Section>
+
+            <Section
               icon="shield"
               tint={colors.marigold}
               tile={colors.marigoldTint}
@@ -218,6 +296,8 @@ export default function MoneyScreen() {
       <Button title={t('money.logToday')} variant="soft" icon="edit-3" onPress={() => router.push('/money/spending')} />
 
       <Card style={{ paddingVertical: 4 }}>
+        <ListRow tone="mint" icon="check-square" title={t('money.checkin.title')} subtitle={checkin ? checkin.streak.line : t('money.checkin.cardSub')} onPress={() => router.push('/money/checkin')} />
+        <ListRow tone="mint" icon="repeat" title={t('money.fixedCosts.title')} subtitle={t('money.fixedCosts.summary', { n: fixedCosts.length })} onPress={() => router.push('/money/fixed-cost')} />
         <ListRow tone="mint" icon="sliders" title={t('money.settings')} subtitle={t('money.settingsSub')} onPress={() => router.push('/money/settings')} />
         <ListRow tone="mint" icon="download" title={t('money.income')} subtitle={t('money.incomeSub')} onPress={() => router.push('/money/income')} />
         <ListRow tone="mint" icon="calendar" title={t('money.payments')} subtitle={t('money.paymentsSub')} onPress={() => router.push('/money/payments')} />
@@ -232,6 +312,29 @@ export default function MoneyScreen() {
 
 const makeStyles = (colors: Palette) =>
   StyleSheet.create({
+    checkinBanner: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: space.md,
+      backgroundColor: colors.white,
+      borderRadius: radius.lg,
+      borderWidth: 1,
+      borderColor: colors.line,
+      padding: space.md,
+    },
+    checkinEmoji: {
+      fontSize: 24,
+    },
+    checkinTitle: {
+      ...type.callout,
+      color: colors.ink,
+    },
+    checkinSub: {
+      fontFamily: fonts.body,
+      fontSize: 13,
+      lineHeight: 18,
+      color: colors.textMuted,
+    },
     pot: { flexDirection: 'row', alignItems: 'center', gap: space.md, paddingVertical: space.xs },
     potLabel: { fontFamily: fonts.bold, ...type.callout, color: colors.ink },
     potWhy: { fontFamily: fonts.medium, fontSize: 13, lineHeight: 18, color: colors.textMuted },

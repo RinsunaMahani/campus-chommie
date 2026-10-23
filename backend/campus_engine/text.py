@@ -59,6 +59,15 @@ def num(x: float) -> str:
     return f"{x:g}"
 
 
+def ordinal(n: int) -> str:
+    """Format an integer as '1st', '2nd', '3rd', '4th', '21st', etc."""
+    if 11 <= (n % 100) <= 13:
+        suffix = "th"
+    else:
+        suffix = {1: "st", 2: "nd", 3: "rd"}.get(n % 10, "th")
+    return f"{n}{suffix}"
+
+
 def read_from(who: str, read_on: list[date | None]) -> str:
     """Where a pack's facts come from, and when they were last read: "From UP's own documents, last read on
     Thu 22 Oct 2026." Said instead of "not confirmed": true of every agent draft, and the source link is on

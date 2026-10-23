@@ -18,11 +18,12 @@ from dataclasses import dataclass
 from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
 
+from campus_engine.checkin import checkin_streak, checkin_window, is_checkin_day, week_ending_date
 from campus_engine.config import load_config
 from campus_engine.forecast import forecast_runway, spending_pace
 from campus_engine.lifefund import life_fund_signal
 from campus_engine.money_plan import Goal, afford, goal_pace, payday_plan, pot_pace
-from campus_engine.runway import ExpectedPayment as Arrival
+from campus_engine.runway import ExpectedPayment as Arrival, FixedCost as EngineFixedCost
 from campus_engine.runway import RunwayResult, project_runway, safe_to_spend
 from campus_engine.text import long_day, rand
 from src.core.exceptions import NotFoundError, ValidationError
@@ -32,9 +33,29 @@ from src.domains.student.profile.services import profile_service as profile
 from src.extensions import db
 
 from ..constants import (
-    GOAL_DAYS_AHEAD, MAX_DAYS_BACK, MAX_GOALS, MAX_SOURCES, PACE_DAYS, PAST_DAYS, TIMEZONE, UNIVERSITY_DATES_AHEAD,
+    CHECKIN_DAYS,
+    DEFAULT_CHECKIN_DAY,
+    FIXED_COST_LABEL_MAX,
+    GOAL_DAYS_AHEAD,
+    MAX_CENTS,
+    MAX_DAYS_BACK,
+    MAX_FIXED_COSTS,
+    MAX_GOALS,
+    MAX_SOURCES,
+    PACE_DAYS,
+    PAST_DAYS,
+    TIMEZONE,
+    UNIVERSITY_DATES_AHEAD,
 )
-from ..models import ExpectedPayment, IncomeSource, MoneyGoal, MoneySettings, SpendingEntry
+from ..models import (
+    ExpectedPayment,
+    FixedCost,
+    IncomeSource,
+    MoneyGoal,
+    MoneySettings,
+    SpendingEntry,
+    WeeklyCheckin,
+)
 from ..repositories import money_repository as repo
 
 ISO_DAY = re.compile(r"^\d{4}-\d{2}-\d{2}$")
@@ -79,6 +100,8 @@ def get_settings(user) -> dict:
 
 def put_settings(user, body: dict) -> dict:
     _check_day("balance_on", body["balance_on"], _today(), back=MAX_DAYS_BACK, ahead=0)
+    if "checkin_day" in body and body["checkin_day"] not in CHECKIN_DAYS:
+        raise _field_error("checkin_day", "Choose a valid day of the week.")
     row = repo.save_settings(user.id, body)
     db.session.commit()
     return {"settings": _settings(row)}
@@ -254,6 +277,7 @@ class _Projection:
     latest: date | None
     runway_lines: list[str]
     pace_out: dict
+    fixed_costs: list[EngineFixedCost]
 
 
 def _project(user, settings: MoneySettings, today: date, late_days: int, cfg: dict) -> _Projection:
@@ -265,9 +289,16 @@ def _project(user, settings: MoneySettings, today: date, late_days: int, cfg: di
     balance, balance_lines = _balance(user.id, settings, today)
     history = [(e.spent_on, e.amount_cents) for e in repo.spending_since(user.id, today - timedelta(days=PACE_DAYS))]
     pace = spending_pace(history, cfg)
+    costs = repo.fixed_costs_for(user.id)
+    engine_fixed_costs = [
+        EngineFixedCost(label=c.label, amount_cents=c.amount_cents, day_of_month=c.day_of_month)
+        for c in costs
+    ]
     earliest = latest = None
     if pace is not None:
-        forecast = forecast_runway(balance, today, arrivals, pace, late_days, runway_cfg["horizon_days"])
+        forecast = forecast_runway(
+            balance, today, arrivals, pace, late_days, runway_cfg["horizon_days"], fixed_costs=engine_fixed_costs
+        )
         runway: RunwayResult = forecast.likely
         earliest, latest = forecast.earliest.runs_out_on, forecast.latest.runs_out_on
         runway_lines = [forecast.explanation]
@@ -281,7 +312,9 @@ def _project(user, settings: MoneySettings, today: date, late_days: int, cfg: di
         }
     else:
         essentials = settings.essentials_per_day_cents
-        runway = project_runway(balance, today, arrivals, essentials, late_days, runway_cfg["horizon_days"])
+        runway = project_runway(
+            balance, today, arrivals, essentials, late_days, runway_cfg["horizon_days"], fixed_costs=engine_fixed_costs
+        )
         runway_lines = [runway.explanation]
         pace_out = {
             "from": "essentials",
@@ -294,7 +327,9 @@ def _project(user, settings: MoneySettings, today: date, late_days: int, cfg: di
                 f"Until then this uses your essentials: {rand(essentials)} a day."
             ],
         }
-    return _Projection(rows, arrivals, balance, balance_lines, runway, earliest, latest, runway_lines, pace_out)
+    return _Projection(
+        rows, arrivals, balance, balance_lines, runway, earliest, latest, runway_lines, pace_out, engine_fixed_costs
+    )
 
 
 def runway_for(user, today: date) -> RunwayResult | None:
@@ -329,7 +364,7 @@ def summary(user, late: bool) -> dict:
 
     safe = safe_to_spend(
         balance, today, arrivals, settings.essentials_per_day_cents, settings.life_fund_reserve_cents,
-        late_days=late_days,
+        late_days=late_days, fixed_costs=p.fixed_costs,
     )
     week = week_service.this_week(user, today)
     fund = life_fund_signal(runway, week, today, runway_cfg["buffer_days"])
@@ -370,6 +405,7 @@ def summary(user, late: bool) -> dict:
             "per_day_cents": safe.per_day_cents,
             "days_until_next": safe.days_until_next,
             "essentials_cents": safe.essentials_cents,
+            "fixed_costs_cents": safe.fixed_costs_cents,
             "reserve_cents": safe.reserve_cents,
             "lines": [safe.explanation],
         },
@@ -405,7 +441,8 @@ def can_i_afford(user, amount_cents: int) -> dict:
     settings = _need_settings(user)
     p = _project(user, settings, today, 0, cfg)
     a = afford(amount_cents, p.balance, today, p.arrivals, p.runway.daily_spend_cents,
-               settings.essentials_per_day_cents, settings.life_fund_reserve_cents, cfg["runway"]["horizon_days"])
+               settings.essentials_per_day_cents, settings.life_fund_reserve_cents, cfg["runway"]["horizon_days"],
+               fixed_costs=p.fixed_costs)
     return {
         "verdict": a.verdict,
         "days_before": a.days_before,
@@ -450,12 +487,22 @@ def university_dates(user, today: date) -> list[dict]:
 
 
 def plan(user) -> dict:
-    """Looking ahead: the payday plan for the next payment, the student's goals and pots, and their university's fee dates
+    """Looking ahead: the payday plan for the next payment, the student's goals and pots, fixed costs, and their university's fee dates
     coming up (to turn into goals)."""
     today = _today()
     settings = repo.settings_for(user.id)
     goals = repo.goals_for(user.id)
-    out = {"goals": [_goal(g, today) for g in goals], "university_dates": university_dates(user, today), "payday": None}
+    costs = repo.fixed_costs_for(user.id)
+    engine_fixed_costs = [
+        EngineFixedCost(label=c.label, amount_cents=c.amount_cents, day_of_month=c.day_of_month)
+        for c in costs
+    ]
+    out = {
+        "goals": [_goal(g, today) for g in goals],
+        "fixed_costs": [_fixed_cost(c) for c in costs],
+        "university_dates": university_dates(user, today),
+        "payday": None,
+    }
     if settings is None:
         return out | {"lines": [NO_SETTINGS]}
     rows = _payments(user.id, today)
@@ -478,6 +525,7 @@ def plan(user) -> dict:
             for g in goals
         ],
         buffer_paydays=buffer_paydays,
+        fixed_costs=engine_fixed_costs,
     )
     if pp is None:
         return out | {"lines": ["Add the money you expect (an allowance, a transfer, a wage) to plan your next payday."]}
@@ -605,6 +653,8 @@ def export_for(user) -> dict:
         "payments": [_payment(p, today) for p in repo.all_payments(user.id)],
         "spending": [_spending(e) for e in repo.all_spending(user.id)],
         "goals": [_goal(g, today) for g in repo.goals_for(user.id)],
+        "fixed_costs": [_fixed_cost(c) for c in repo.all_fixed_costs(user.id)],
+        "weekly_checkins": [_checkin_entry(c) for c in repo.all_checkins(user.id)],
     }
 
 
@@ -612,6 +662,136 @@ def erase_all_for(user) -> None:
     """Every money record of this student, deleted for real: the demo's daily reset (and DELETE /me's later)."""
     repo.erase_all(user.id)
     db.session.commit()
+
+
+# ------------------------------------------------------------- fixed costs
+
+
+def _fixed_cost(c: FixedCost) -> dict:
+    return {
+        "id": str(c.id),
+        "label": c.label,
+        "amount_cents": c.amount_cents,
+        "day_of_month": c.day_of_month,
+    }
+
+
+def _clean_fixed_cost(fields: dict) -> dict:
+    out = dict(fields)
+    if "label" in out:
+        out["label"] = " ".join(out["label"].split())
+    return out
+
+
+def list_fixed_costs(user) -> dict:
+    return {"fixed_costs": [_fixed_cost(c) for c in repo.fixed_costs_for(user.id)]}
+
+
+def add_fixed_cost(user, body: dict) -> dict:
+    if repo.count_fixed_costs(user.id) >= MAX_FIXED_COSTS:
+        raise _field_error("fixed_costs", f"You can keep up to {MAX_FIXED_COSTS} fixed costs.")
+    clean = _clean_fixed_cost(body)
+    row = repo.add_fixed_cost(user.id, clean)
+    db.session.commit()
+    return {"fixed_cost": _fixed_cost(row)}
+
+
+def replace_fixed_cost(user, cost_id: uuid.UUID, body: dict) -> dict:
+    row = repo.fixed_cost(user.id, cost_id)
+    if row is None:
+        raise NotFoundError("That fixed cost isn't one of yours.", code="FIXED_COST_NOT_FOUND")
+    clean = _clean_fixed_cost(body)
+    for key, value in clean.items():
+        setattr(row, key, value)
+    db.session.commit()
+    return {"fixed_cost": _fixed_cost(row)}
+
+
+def delete_fixed_cost(user, cost_id: uuid.UUID) -> dict:
+    row = repo.fixed_cost(user.id, cost_id)
+    if row is None:
+        raise NotFoundError("That fixed cost isn't one of yours.", code="FIXED_COST_NOT_FOUND")
+    repo.delete(row)
+    db.session.commit()
+    return {}
+
+
+# ----------------------------------------------------------- weekly checkin
+
+
+def _checkin_entry(c: WeeklyCheckin) -> dict:
+    return {
+        "id": str(c.id),
+        "week_end": c.week_end.isoformat(),
+        "amount_cents": c.amount_cents,
+        "skipped": c.skipped,
+    }
+
+
+def get_checkin_status(user, today: date | None = None) -> dict:
+    today = today or _today()
+    settings = repo.settings_for(user.id)
+    checkin_day = (
+        getattr(settings, "checkin_day", DEFAULT_CHECKIN_DAY) or DEFAULT_CHECKIN_DAY
+        if settings
+        else DEFAULT_CHECKIN_DAY
+    )
+    curr_week_end = week_ending_date(today, checkin_day)
+    start_date, end_date = checkin_window(curr_week_end)
+    is_today_checkin = is_checkin_day(today, checkin_day)
+    checkins = repo.checkins_for(user.id)
+    checked_dates = [c.week_end for c in checkins]
+    checked_this_week = curr_week_end in set(checked_dates)
+    this_week_checkin = next((c for c in checkins if c.week_end == curr_week_end), None)
+    streak = checkin_streak(checked_dates, today, checkin_day)
+    return {
+        "checkin_day": checkin_day,
+        "is_checkin_day": is_today_checkin,
+        "checked_in_this_week": checked_this_week,
+        "week_start": start_date.isoformat(),
+        "week_end": curr_week_end.isoformat(),
+        "this_week": _checkin_entry(this_week_checkin) if this_week_checkin else None,
+        "streak": {
+            "weeks": streak.weeks,
+            "line": streak.line,
+        },
+        "recent_checkins": [_checkin_entry(c) for c in checkins[:10]],
+    }
+
+
+def submit_checkin(user, body: dict) -> dict:
+    today = _today()
+    settings = repo.settings_for(user.id)
+    checkin_day = (
+        getattr(settings, "checkin_day", DEFAULT_CHECKIN_DAY) or DEFAULT_CHECKIN_DAY
+        if settings
+        else DEFAULT_CHECKIN_DAY
+    )
+    week_end = body.get("week_end") or week_ending_date(today, checkin_day)
+    _check_day("week_end", week_end, today, back=MAX_DAYS_BACK, ahead=6)
+
+    skipped = body.get("skipped", False)
+    amount_cents = body.get("amount_cents")
+    if skipped and amount_cents is not None:
+        raise _field_error("amount_cents", "Leave amount empty when skipping check-in.")
+    if not skipped and amount_cents is None:
+        raise _field_error("amount_cents", "Enter this week's total spending or choose skip.")
+
+    repo.add_or_update_checkin(user.id, week_end, amount_cents, skipped)
+
+    if not skipped and amount_cents is not None:
+        start_date, _ = checkin_window(week_end)
+        daily = amount_cents // 7
+        remainder = amount_cents % 7
+        for i in range(7):
+            day_date = start_date + timedelta(days=i)
+            day_amount = daily + (remainder if i == 6 else 0)
+            entry = repo.spending_on(user.id, day_date) or SpendingEntry(user_id=user.id, spent_on=day_date)
+            entry.amount_cents = day_amount
+            repo.add(entry)
+
+    db.session.commit()
+    return get_checkin_status(user, today)
 
 
 # ------------------------------------------------------------- what's sent
@@ -623,6 +803,7 @@ def _settings(s: MoneySettings) -> dict:
         "balance_on": s.balance_on.isoformat(),
         "essentials_per_day_cents": s.essentials_per_day_cents,
         "life_fund_reserve_cents": s.life_fund_reserve_cents,
+        "checkin_day": getattr(s, "checkin_day", DEFAULT_CHECKIN_DAY) or DEFAULT_CHECKIN_DAY,
     }
 
 

@@ -21,10 +21,16 @@ logger = logging.getLogger(__name__)
 def run() -> JobResult:
     try:
         today = datetime.now(ZoneInfo(TIMEZONE)).date()
-        n = repo.delete_spending_before(today - timedelta(days=SPENDING_RETENTION_DAYS))
+        cutoff = today - timedelta(days=SPENDING_RETENTION_DAYS)
+        n = repo.delete_spending_before(cutoff)
+        n_checkins = repo.delete_checkins_before(cutoff)
         db.session.commit()
     except Exception:  # noqa: BLE001
         db.session.rollback()
         logger.exception("money: forgetting old spending failed")
         return JobResult(success=False, count=0, detail="forgetting old spending failed")
-    return JobResult(success=True, count=n, detail=f"{n} spending entries older than {SPENDING_RETENTION_DAYS} days deleted")
+    return JobResult(
+        success=True,
+        count=n + n_checkins,
+        detail=f"{n} spending entries and {n_checkins} check-ins older than {SPENDING_RETENTION_DAYS} days deleted",
+    )

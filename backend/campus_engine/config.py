@@ -27,6 +27,7 @@ DEFAULTS: dict[str, Any] = {
     "next_steps": {"max_steps": 3, "due_days": 3, "exam_days": 7, "funding_days": 14, "goal_days": 30, "heavy_weeks_ahead": 2},
     "timetable_import": {"line_tolerance": 2.0, "merge_gap_minutes": 10, "max_rows": 2000, "max_exam_minutes": 480},
     "money_pots": {"buffer_paydays": 1},
+    "money_checkin": {"default_day": "sunday", "max_fixed_costs": 20},
 }
 
 

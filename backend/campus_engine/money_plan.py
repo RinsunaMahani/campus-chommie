@@ -11,12 +11,13 @@ university's fee dates come from its data pack; their amounts always come from t
 """
 from __future__ import annotations
 
+import calendar
 import math
 from dataclasses import dataclass, field, replace
 from datetime import date, timedelta
 
-from .runway import ExpectedPayment, arrivals, project_runway, safe_to_spend
-from .text import long_day, plural, rand
+from .runway import ExpectedPayment, FixedCost, arrivals, project_runway, safe_to_spend
+from .text import long_day, ordinal, plural, rand
 
 
 @dataclass
@@ -41,11 +42,12 @@ def afford(
     essentials_per_day_cents: int,
     reserve_cents: int,
     horizon_days: int = 120,
+    fixed_costs: list[FixedCost] | None = None,
 ) -> Afford:
     """Buying it today, compared with not buying it: how long the money lasts either way, and whether the
     extras budget until the next payment covers it."""
-    before = project_runway(balance_cents, today, payments, daily_cents, 0, horizon_days)
-    after = project_runway(balance_cents - amount_cents, today, payments, daily_cents, 0, horizon_days)
+    before = project_runway(balance_cents, today, payments, daily_cents, 0, horizon_days, fixed_costs=fixed_costs)
+    after = project_runway(balance_cents - amount_cents, today, payments, daily_cents, 0, horizon_days, fixed_costs=fixed_costs)
     landing = arrivals(payments, today)
     nxt_on = landing[0][0] if landing else None
     until = f"your next payment on {long_day(nxt_on)}" if nxt_on else "the next 30 days"
@@ -69,7 +71,7 @@ def afford(
             # Buy it out of the next payment instead: does the money then last to the payment after it?
             first_on, first = landing[0]
             from_pay = [replace(p, amount_cents=p.amount_cents - amount_cents) if p is first else p for p in payments]
-            later = project_runway(balance_cents, today, from_pay, daily_cents, 0, horizon_days)
+            later = project_runway(balance_cents, today, from_pay, daily_cents, 0, horizon_days, fixed_costs=fixed_costs)
             # It must last to the payment after that one, or a month past this one if none is expected.
             lasts_to = landing[1][0] if len(landing) > 1 else first_on + timedelta(days=30)
             if not later.short_before_next and (later.runs_out_on is None or later.runs_out_on >= lasts_to):
@@ -81,7 +83,7 @@ def afford(
                              "week as a goal could get you there.")
         return Afford("not_now", before.days, after.days, wait, lines)
 
-    safe = safe_to_spend(balance_cents, today, payments, essentials_per_day_cents, reserve_cents)
+    safe = safe_to_spend(balance_cents, today, payments, essentials_per_day_cents, reserve_cents, fixed_costs=fixed_costs)
     spare = safe.per_day_cents * safe.days_until_next
     if amount_cents <= spare:
         left = (spare - amount_cents) // max(1, safe.days_until_next)
@@ -182,12 +184,13 @@ def payday_plan(
     today: date,
     essentials_per_day_cents: int,
     goals: list[Goal],
+    fixed_costs: list[FixedCost] | None = None,
     fallback_days: int = 30,
     buffer_paydays: int = 1,
 ) -> PaydayPlan | None:
-    """A split for the next payment: essentials until the payment after it, family and stokvel monthly
-    contributions first, then emergency buffer, then a fair share for each date-based goal, and what's free.
-    None when no payment is expected."""
+    """A split for the next payment: essentials until the payment after it, fixed costs on their day,
+    family and stokvel monthly contributions, then emergency buffer, then a fair share for each
+    date-based goal, and what's free. None when no payment is expected."""
     landing = arrivals(payments, today)
     if not landing:
         return None
@@ -198,7 +201,20 @@ def payday_plan(
                 f"{rand(essentials_per_day_cents)} a day for {plural(days, 'day')}"
                 + (f", until your payment on {long_day(following)}" if following else ""))]
 
-    # 1. Family and Stokvel monthly commitments (family first, then stokvel)
+    # 1. Fixed costs (rent, transport, data, phone on their day)
+    fcs = fixed_costs or []
+    for fc in sorted(fcs, key=lambda x: (x.day_of_month, x.label)):
+        occurs = 0
+        for d in range(days):
+            cur = lands_on + timedelta(days=d)
+            last_day = calendar.monthrange(cur.year, cur.month)[1]
+            if cur.day == min(fc.day_of_month, last_day):
+                occurs += 1
+        if occurs > 0:
+            share = fc.amount_cents * occurs
+            pots.append(Pot(fc.label, share, f"{rand(fc.amount_cents)} on the {ordinal(fc.day_of_month)} each month"))
+
+    # 2. Family and Stokvel monthly commitments (family first, then stokvel)
     monthly_pots = sorted([g for g in goals if g.kind in ("family", "stokvel")],
                           key=lambda x: (0 if x.kind == "family" else 1, x.label))
     for g in monthly_pots:
@@ -215,7 +231,7 @@ def payday_plan(
                    else f"{rand(share)} still to find for stokvel ({rand(g.amount_cents)} monthly)")
         pots.append(Pot(g.label, share, why))
 
-    # 2. Emergency buffer
+    # 3. Emergency buffer
     for g in [g for g in goals if g.kind == "buffer"]:
         if g.left_cents <= 0:
             continue
@@ -226,7 +242,7 @@ def payday_plan(
             why = f"{rand(g.left_cents)} to reach your {rand(g.amount_cents)} buffer"
         pots.append(Pot(g.label, share, why))
 
-    # 3. Date-based goals and big purchases
+    # 4. Date-based goals and big purchases
     date_goals = [g for g in goals if g.kind in ("goal", "big_purchase")]
     for g in sorted(date_goals, key=lambda x: x.due_on or date.max):
         if g.left_cents <= 0 or (g.due_on is not None and g.due_on < lands_on):
@@ -246,6 +262,8 @@ def payday_plan(
         lines = [f"When {rand(pay.amount_cents)} lands on {long_day(lands_on)}: {rand(spoken_for)} is spoken for, "
                  f"and {rand(free)} is yours to spend freely."]
     else:
+        has_fixed = bool(fixed_costs and any(p.label in [fc.label for fc in fixed_costs] for p in pots))
+        first = "Essentials and fixed costs come first" if has_fixed else "Essentials come first"
         lines = [f"When {rand(pay.amount_cents)} lands on {long_day(lands_on)}, it's {rand(-free)} short of covering "
-                 "these. Essentials come first: the goals can wait for a later payday."]
+                 f"these. {first}: the goals can wait for a later payday."]
     return PaydayPlan(lands_on, pay.amount_cents, pots, max(0, free), lines)

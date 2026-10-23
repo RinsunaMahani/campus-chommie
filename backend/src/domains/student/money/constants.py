@@ -13,8 +13,12 @@ MAX_CENTS = 100_000_000
 
 MAX_SOURCES = 10
 MAX_GOALS = 10
+MAX_FIXED_COSTS = 20
+FIXED_COST_LABEL_MAX = 60
 GOAL_LABEL_MAX = 80
 GOAL_KINDS = ("goal", "family", "stokvel", "buffer", "big_purchase")
+CHECKIN_DAYS = ("monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday")
+DEFAULT_CHECKIN_DAY = "sunday"
 #: A goal's date: from today to this many days ahead (a fee date for next year fits).
 GOAL_DAYS_AHEAD = 731
 #: University fee dates shown this far ahead.

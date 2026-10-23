@@ -33,7 +33,13 @@ def get(client, who, path, **query):
     return r.get_json()["data"]
 
 
-SETTINGS = {"balance_cents": 100000, "balance_on": "2026-10-12", "essentials_per_day_cents": 4000, "life_fund_reserve_cents": 10000}
+SETTINGS = {
+    "balance_cents": 100000,
+    "balance_on": "2026-10-12",
+    "essentials_per_day_cents": 4000,
+    "life_fund_reserve_cents": 10000,
+    "checkin_day": "sunday",
+}
 
 
 @pytest.mark.parametrize(

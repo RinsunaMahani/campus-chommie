@@ -5,12 +5,22 @@
 
 export type Reliability = 'on_time' | 'sometimes_late' | 'often_late' | 'not_sure';
 
+export type CheckinDay =
+  | 'monday'
+  | 'tuesday'
+  | 'wednesday'
+  | 'thursday'
+  | 'friday'
+  | 'saturday'
+  | 'sunday';
+
 export type Settings = {
   balance_cents: number;
   /** The day the balance was true. */
   balance_on: string;
   essentials_per_day_cents: number;
   life_fund_reserve_cents: number;
+  checkin_day?: CheckinDay;
 };
 
 /** Money the student expects: monthly on `day_of_month`, or once on `expected_on`. */
@@ -59,7 +69,14 @@ export type SummaryReady = SummaryBase & {
     short_before_next: boolean;
     lines: string[];
   };
-  safe_to_spend: { per_day_cents: number; days_until_next: number | null; essentials_cents: number; reserve_cents: number; lines: string[] };
+  safe_to_spend: {
+    per_day_cents: number;
+    days_until_next: number | null;
+    essentials_cents: number;
+    fixed_costs_cents?: number;
+    reserve_cents: number;
+    lines: string[];
+  };
   life_fund: { state: LifeFundState; reason: string; resume_hint: string | null; reserve_cents: number };
   /** This week's load (My week): null until the student has classes. */
   this_week: { colour: 'green' | 'amber' | 'red'; reason: string } | null;
@@ -121,9 +138,48 @@ export type GoalInput = {
 /** A fee date from the student's university's own page: never an amount. */
 export type UniversityDate = { name: string; kind: string; on: string; day: string; source_url: string | null };
 
+export type FixedCost = {
+  id: string;
+  label: string;
+  amount_cents: number;
+  day_of_month: number;
+};
+
+export type FixedCostInput = Omit<FixedCost, 'id'>;
+
+export type WeeklyCheckinEntry = {
+  id: string;
+  week_end: string;
+  amount_cents: number | null;
+  skipped: boolean;
+};
+
+export type CheckinStreak = {
+  weeks: number;
+  line: string;
+};
+
+export type CheckinStatus = {
+  checkin_day: CheckinDay;
+  is_checkin_day: boolean;
+  checked_in_this_week: boolean;
+  week_start: string;
+  week_end: string;
+  this_week: WeeklyCheckinEntry | null;
+  streak: CheckinStreak;
+  recent_checkins: WeeklyCheckinEntry[];
+};
+
+export type CheckinInput = {
+  amount_cents?: number | null;
+  skipped?: boolean;
+  week_end?: string | null;
+};
+
 export type MoneyPlan = {
   payday: { lands_on: string; day: string; amount_cents: number; pots: { label: string; cents: number; why: string }[]; free_cents: number } | null;
   goals: MoneyGoal[];
+  fixed_costs?: FixedCost[];
   university_dates: UniversityDate[];
   lines: string[];
 };

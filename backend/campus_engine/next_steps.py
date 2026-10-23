@@ -70,6 +70,9 @@ class Facts:
     closing: list[Closing] = field(default_factory=list)
     goals: list[GoalDue] = field(default_factory=list)
     classes: int = 0
+    checkin_due: bool = False
+    checkin_day: str = "sunday"
+    streak_weeks: int = 0
 
 
 def _when(d: Due, today: date) -> str:
@@ -134,6 +137,16 @@ def next_steps(f: Facts, cfg: dict) -> list[Step]:
         steps.append(Step(
             "heavy_week", f"Heavy week from {day(heavy.week_start)}. Start on the biggest piece now.",
             heavy.reason, "Plan my week", "week", 60))
+
+    if f.checkin_due:
+        why = (
+            f"{f.streak_weeks} weeks in a row. A quick check-in keeps your runway accurate."
+            if f.streak_weeks > 1
+            else "A quick check-in keeps your runway and safe-to-spend accurate."
+        )
+        steps.append(Step(
+            "checkin", "Weekly money check-in: log this week's spending.",
+            why, "Check in", "money", 65))
 
     for c in sorted(f.closing, key=lambda c: c.closes):
         n = (c.closes - today).days

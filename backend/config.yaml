@@ -64,3 +64,7 @@ next_steps:
 
 money_pots:
   buffer_paydays: 1       # paydays to fund the emergency buffer over
+
+money_checkin:
+  default_day: "sunday"   # default weekly check-in day
+  max_fixed_costs: 20     # maximum fixed costs a student can track

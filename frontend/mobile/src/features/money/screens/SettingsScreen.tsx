@@ -6,6 +6,7 @@ import { errorText } from '@/shared/api/errors';
 import { Button } from '@/shared/components/Button';
 import { InfoNote } from '@/shared/components/Parts';
 import { Screen } from '@/shared/components/Screen';
+import { SelectField, SelectOption } from '@/shared/components/SelectField';
 import { ErrorBox, Loading } from '@/shared/components/Status';
 import { Muted, Title } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
@@ -14,9 +15,19 @@ import { centsToInput, parseRand } from '@/shared/lib/money';
 
 import { moneyApi } from '../api/moneyApi';
 import { AmountField } from '../components/AmountField';
-import { Settings } from '../types';
+import { CheckinDay, Settings } from '../types';
 
 type Field = 'balance' | 'essentials' | 'reserve';
+
+const CHECKIN_DAY_OPTIONS: SelectOption<CheckinDay>[] = [
+  { value: 'sunday', label: 'Sunday' },
+  { value: 'monday', label: 'Monday' },
+  { value: 'tuesday', label: 'Tuesday' },
+  { value: 'wednesday', label: 'Wednesday' },
+  { value: 'thursday', label: 'Thursday' },
+  { value: 'friday', label: 'Friday' },
+  { value: 'saturday', label: 'Saturday' },
+];
 
 /**
  * Balance and budget. The balance is true on a day: a new one is today's; an
@@ -26,6 +37,7 @@ type Field = 'balance' | 'essentials' | 'reserve';
 export default function SettingsScreen() {
   const [saved, setSaved] = useState<Settings | null | undefined>(undefined);
   const [values, setValues] = useState<Record<Field, string>>({ balance: '', essentials: '', reserve: '' });
+  const [checkinDay, setCheckinDay] = useState<CheckinDay>('sunday');
   const [errors, setErrors] = useState<Partial<Record<Field, string>>>({});
   const [failure, setFailure] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
@@ -41,6 +53,9 @@ export default function SettingsScreen() {
             essentials: centsToInput(s.essentials_per_day_cents),
             reserve: centsToInput(s.life_fund_reserve_cents),
           });
+          if (s.checkin_day) {
+            setCheckinDay(s.checkin_day);
+          }
         }
       })
       .catch((e) => setFailure(errorText(e, t('common.error'))));
@@ -72,6 +87,7 @@ export default function SettingsScreen() {
         balance_on: sameBalance && saved ? saved.balance_on : todaySast(),
         essentials_per_day_cents: cents.essentials as number,
         life_fund_reserve_cents: cents.reserve as number,
+        checkin_day: checkinDay,
       });
       router.back();
     } catch (e) {
@@ -91,6 +107,13 @@ export default function SettingsScreen() {
         {saved ? <Muted>{t('money.balanceAsOf', { date: formatDay(saved.balance_on) })}</Muted> : null}
         <AmountField label={t('money.essentials')} value={values.essentials} onChange={(v) => set('essentials', v)} hint={t('money.essentialsHint')} error={errors.essentials} />
         <AmountField label={t('money.reserve')} value={values.reserve} onChange={(v) => set('reserve', v)} hint={t('money.reserveHint')} error={errors.reserve} />
+        <SelectField<CheckinDay>
+          label={t('money.checkin.day')}
+          value={checkinDay}
+          options={CHECKIN_DAY_OPTIONS}
+          onChange={setCheckinDay}
+        />
+        <Muted>{t('money.checkin.dayHint')}</Muted>
       </View>
       <InfoNote icon="lock">{t('onboarding.privacyNever')}</InfoNote>
     </Screen>

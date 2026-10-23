@@ -11,7 +11,7 @@ from datetime import date
 from math import sqrt
 
 from .config import load_config
-from .runway import ExpectedPayment, RunwayResult, project_runway
+from .runway import ExpectedPayment, FixedCost, RunwayResult, project_runway
 from .standing import Assessment
 from .text import day, num, rand
 
@@ -68,9 +68,10 @@ def forecast_runway(
     pace: SpendingPace,
     late_days: int = 0,
     horizon_days: int = 120,
+    fixed_costs: list[FixedCost] | None = None,
 ) -> RunwayForecast:
     def run(spend: int) -> RunwayResult:
-        return project_runway(balance_cents, today, payments, spend, late_days, horizon_days)
+        return project_runway(balance_cents, today, payments, spend, late_days, horizon_days, fixed_costs=fixed_costs)
 
     likely, earliest, latest = run(pace.daily_cents), run(pace.high_cents), run(pace.low_cents)
     if likely.runs_out_on is None:

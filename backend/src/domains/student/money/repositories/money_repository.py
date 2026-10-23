@@ -16,7 +16,15 @@ from sqlalchemy.dialects.postgresql import insert
 
 from src.extensions import db
 
-from ..models import ExpectedPayment, IncomeSource, MoneyGoal, MoneySettings, SpendingEntry
+from ..models import (
+    ExpectedPayment,
+    FixedCost,
+    IncomeSource,
+    MoneyGoal,
+    MoneySettings,
+    SpendingEntry,
+    WeeklyCheckin,
+)
 
 # ------------------------------------------------------------------ settings
 
@@ -147,7 +155,9 @@ def delete_spending_before(cutoff: date) -> int:
 
 
 def erase_all(user_id: uuid.UUID) -> None:
-    """Everything the student entered: spending, payments, income sources, goals and settings."""
+    """Everything the student entered: spending, check-ins, payments, income sources, fixed costs, goals and settings."""
+    WeeklyCheckin.query.filter_by(user_id=user_id).delete(synchronize_session=False)
+    FixedCost.query.filter_by(user_id=user_id).delete(synchronize_session=False)
     MoneyGoal.query.filter_by(user_id=user_id).delete(synchronize_session=False)
     SpendingEntry.query.filter_by(user_id=user_id).delete(synchronize_session=False)
     ExpectedPayment.query.filter_by(user_id=user_id).delete(synchronize_session=False)
@@ -179,3 +189,58 @@ def add_goal(user_id: uuid.UUID, fields: dict) -> MoneyGoal:
     row = MoneyGoal(user_id=user_id, **fields)
     db.session.add(row)
     return row
+
+
+# --------------------------------------------------------------- fixed costs
+
+
+def fixed_costs_for(user_id: uuid.UUID) -> list[FixedCost]:
+    return FixedCost.query.filter_by(user_id=user_id).order_by(FixedCost.day_of_month, FixedCost.label).all()
+
+
+def fixed_cost(user_id: uuid.UUID, cost_id: uuid.UUID) -> FixedCost | None:
+    return FixedCost.query.filter_by(user_id=user_id, id=cost_id).first()
+
+
+def count_fixed_costs(user_id: uuid.UUID) -> int:
+    return db.session.query(func.count(FixedCost.id)).filter(FixedCost.user_id == user_id).scalar()
+
+
+def add_fixed_cost(user_id: uuid.UUID, fields: dict) -> FixedCost:
+    row = FixedCost(user_id=user_id, **fields)
+    db.session.add(row)
+    return row
+
+
+def all_fixed_costs(user_id: uuid.UUID) -> list[FixedCost]:
+    return FixedCost.query.filter_by(user_id=user_id).order_by(FixedCost.day_of_month).all()
+
+
+# ----------------------------------------------------------- weekly checkins
+
+
+def checkins_for(user_id: uuid.UUID) -> list[WeeklyCheckin]:
+    return WeeklyCheckin.query.filter_by(user_id=user_id).order_by(WeeklyCheckin.week_end.desc()).all()
+
+
+def checkin_on_week(user_id: uuid.UUID, week_end: date) -> WeeklyCheckin | None:
+    return WeeklyCheckin.query.filter_by(user_id=user_id, week_end=week_end).first()
+
+
+def add_or_update_checkin(
+    user_id: uuid.UUID, week_end: date, amount_cents: int | None, skipped: bool
+) -> WeeklyCheckin:
+    row = checkin_on_week(user_id, week_end) or WeeklyCheckin(user_id=user_id, week_end=week_end)
+    row.amount_cents = amount_cents
+    row.skipped = skipped
+    db.session.add(row)
+    return row
+
+
+def delete_checkins_before(cutoff: date) -> int:
+    """Everyone's check-ins before `cutoff` (the scheduler's rolling year)."""
+    return WeeklyCheckin.query.filter(WeeklyCheckin.week_end < cutoff).delete(synchronize_session=False)
+
+
+def all_checkins(user_id: uuid.UUID) -> list[WeeklyCheckin]:
+    return WeeklyCheckin.query.filter_by(user_id=user_id).order_by(WeeklyCheckin.week_end).all()

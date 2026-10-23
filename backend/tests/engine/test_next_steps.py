@@ -74,3 +74,14 @@ def test_a_new_student_is_told_what_to_set_up_and_never_more_than_three():
                  due=[Due("A", "Test", TODAY + timedelta(days=d), "09:00") for d in (0, 1, 2)], classes=0)
     assert len(next_steps(busy, CFG)) == 3
     assert "setup_classes" not in kinds(busy)
+
+
+def test_checkin_due_surfaces_nudge():
+    f = Facts(TODAY, checkin_due=True, streak_weeks=3, classes=5)
+    steps = next_steps(f, CFG)
+    checkin_step = next((s for s in steps if s.kind == "checkin"), None)
+    assert checkin_step is not None
+    assert checkin_step.line == "Weekly money check-in: log this week's spending."
+    assert "3 weeks in a row" in checkin_step.why
+    assert checkin_step.target == "money"
+    assert checkin_step.action == "Check in"

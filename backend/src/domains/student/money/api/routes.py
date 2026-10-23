@@ -38,6 +38,9 @@ from src.shared.rate_limit.limiter import limiter
 from ..constants import CHANGE_LIMIT, READ_LIMIT
 from ..schemas.money_schemas import (
     AffordSchema,
+    CheckinSchema,
+    FixedCostChangeSchema,
+    FixedCostSchema,
     GoalChangeSchema,
     GoalSchema,
     NoQuerySchema,
@@ -197,3 +200,69 @@ def change_money_goal(goal_id: uuid.UUID):
 def delete_money_goal(goal_id: uuid.UUID):
     load(NoQuerySchema(), request.args.to_dict())
     return success_response(service.delete_goal(current_user(), goal_id))
+
+
+# ------------------------------------------------------------- fixed costs
+
+
+@api_bp.get(f"{BASE}/fixed-costs")
+@limiter.limit(READ_LIMIT, key_func=per_user)
+@auth_required
+def my_fixed_costs():
+    load(NoQuerySchema(), request.args.to_dict())
+    return success_response(service.list_fixed_costs(current_user()))
+
+
+@api_bp.post(f"{BASE}/fixed-costs")
+@limiter.limit(CHANGE_LIMIT, key_func=per_user)
+@auth_required
+def add_fixed_cost():
+    load(NoQuerySchema(), request.args.to_dict())
+    body = load(FixedCostSchema(), request.get_json(silent=True))
+    return success_response(service.add_fixed_cost(current_user(), body), status_code=201)
+
+
+@api_bp.put(f"{BASE}/fixed-costs/<uuid:cost_id>")
+@limiter.limit(CHANGE_LIMIT, key_func=per_user)
+@auth_required
+def replace_fixed_cost(cost_id: uuid.UUID):
+    load(NoQuerySchema(), request.args.to_dict())
+    body = load(FixedCostSchema(), request.get_json(silent=True))
+    return success_response(service.replace_fixed_cost(current_user(), cost_id, body))
+
+
+@api_bp.patch(f"{BASE}/fixed-costs/<uuid:cost_id>")
+@limiter.limit(CHANGE_LIMIT, key_func=per_user)
+@auth_required
+def change_fixed_cost(cost_id: uuid.UUID):
+    load(NoQuerySchema(), request.args.to_dict())
+    body = load(FixedCostChangeSchema(), request.get_json(silent=True))
+    return success_response(service.replace_fixed_cost(current_user(), cost_id, body))
+
+
+@api_bp.delete(f"{BASE}/fixed-costs/<uuid:cost_id>")
+@limiter.limit(CHANGE_LIMIT, key_func=per_user)
+@auth_required
+def delete_fixed_cost(cost_id: uuid.UUID):
+    load(NoQuerySchema(), request.args.to_dict())
+    return success_response(service.delete_fixed_cost(current_user(), cost_id))
+
+
+# ----------------------------------------------------------- weekly checkin
+
+
+@api_bp.get(f"{BASE}/checkin")
+@limiter.limit(READ_LIMIT, key_func=per_user)
+@auth_required
+def my_checkin_status():
+    load(NoQuerySchema(), request.args.to_dict())
+    return success_response(service.get_checkin_status(current_user()))
+
+
+@api_bp.post(f"{BASE}/checkin")
+@limiter.limit(CHANGE_LIMIT, key_func=per_user)
+@auth_required
+def submit_checkin():
+    load(NoQuerySchema(), request.args.to_dict())
+    body = load(CheckinSchema(), request.get_json(silent=True))
+    return success_response(service.submit_checkin(current_user(), body))
