@@ -5,7 +5,7 @@ The password RULE itself is checked in the service, with a single message.
 """
 from __future__ import annotations
 
-from marshmallow import RAISE, Schema, ValidationError as MarshmallowError, fields, pre_load, validate
+from marshmallow import RAISE, Schema, ValidationError as MarshmallowError, fields, pre_load, validate, validates_schema
 
 from src.core.exceptions import ValidationError
 
@@ -120,8 +120,17 @@ class ChangePasswordSchema(_Strict):
     new_password = _password
 
 
-class PasswordConfirmSchema(_Strict):
-    password = _password
+class OwnerConfirmSchema(_Strict):
+    """Closing or deleting an account: the password, or (an account that signs in with Google only) a fresh
+    Google sign-in. Exactly one of the two."""
+
+    password = fields.String(load_default=None, validate=validate.Length(min=1, max=128))
+    id_token = fields.String(load_default=None, validate=validate.Length(min=20, max=4096))
+
+    @validates_schema
+    def _one_proof(self, data, **kwargs):
+        if (data.get("password") is None) == (data.get("id_token") is None):
+            raise MarshmallowError("Send your password, or sign in with Google again.", field_name="password")
 
 
 class ResetPasswordSchema(_Strict):

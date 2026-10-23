@@ -21,7 +21,7 @@ from ..schemas.auth_schemas import (
     GoogleLinkSchema,
     GoogleSignInSchema,
     LoginSchema,
-    PasswordConfirmSchema,
+    OwnerConfirmSchema,
     RegisterSchema,
     ResetPasswordSchema,
     VerifyEmailSchema,
@@ -169,8 +169,8 @@ def change_password():
 @limiter.limit(policies.CLOSE_ACCOUNT)
 @auth_required
 def close_account():
-    data = load(PasswordConfirmSchema(), request.get_json(silent=True))
-    auth_service.close_account(current_user(), _sid(), data["password"])
+    data = load(OwnerConfirmSchema(), request.get_json(silent=True))
+    auth_service.close_account(current_user(), _sid(), data["password"], data["id_token"])
     return success_response({}, message="Your account is closed.")
 
 
@@ -178,9 +178,10 @@ def close_account():
 @limiter.limit(policies.DELETE_ACCOUNT)
 @auth_required
 def delete_account():
-    """POPIA: the account and everything it holds, gone for good. Needs the password."""
-    data = load(PasswordConfirmSchema(), request.get_json(silent=True))
-    auth_service.delete_account(current_user(), _sid(), data["password"])
+    """POPIA: the account and everything it holds, gone for good. Needs the password (or, for an account that
+    signs in with Google only, a fresh Google sign-in)."""
+    data = load(OwnerConfirmSchema(), request.get_json(silent=True))
+    auth_service.delete_account(current_user(), _sid(), data["password"], data["id_token"])
     return success_response({}, message="Your account and everything in it are deleted.")
 
 

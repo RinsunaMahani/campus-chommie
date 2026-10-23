@@ -2,6 +2,8 @@ import { Feather } from '@expo/vector-icons';
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+import { GOOGLE_READY } from '@/constants/config';
+import { ConfirmWithGoogle } from '@/features/auth/google/ConfirmWithGoogle';
 import { useSession } from '@/features/auth/session/SessionProvider';
 import { AuthError } from '@/features/auth/types';
 import { Button } from '@/shared/components/Button';
@@ -28,12 +30,22 @@ export default function CloseAccountScreen() {
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
 
+  async function withGoogle(idToken: string) {
+    setError('');
+    try {
+      await securityApi.closeAccount({ idToken });
+      signOut();
+    } catch (e) {
+      setError(e instanceof AuthError ? e.message : 'Something went wrong. Try again.');
+    }
+  }
+
   async function close() {
     if (!password) return setError('Enter your password to confirm.');
     setBusy(true);
     setError('');
     try {
-      await securityApi.closeAccount(password);
+      await securityApi.closeAccount({ password });
       signOut(); // the session is already ended on the server
     } catch (e) {
       setError(e instanceof AuthError ? e.message : 'Something went wrong. Try again.');
@@ -53,6 +65,7 @@ export default function CloseAccountScreen() {
         ))}
       </View>
       <TextField label="Your password" password value={password} onChangeText={setPassword} autoComplete="current-password" error={error} />
+      {GOOGLE_READY ? <ConfirmWithGoogle title="Signed up with Google? Confirm with Google" onToken={withGoogle} /> : null}
     </Screen>
   );
 }
