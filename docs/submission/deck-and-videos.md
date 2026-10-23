@@ -25,7 +25,7 @@ login goes on slide 9.
 7. **Alerts and support.** The combined alert (heavy week and short money) pointing to campus counselling and
    financial aid; crisis lines only once verified.
 8. **Built honestly and securely.** Every fact cites its official source; no ID, bank or NSFAS details; marks and
-   money owner-only; the course finder stores nothing. 1,416 backend tests and 175 app tests on every change, with
+   money owner-only; the course finder stores nothing. 1,434 backend tests and 253 app tests on every change, with
    code, dependency and secrets scans. We attacked it ourselves: 105 attacks (forged tokens, other students' data,
    hostile input, booby-trapped PDFs), three problems found and fixed the same day, 105 of 105 now blocked. The APK:
    no trackers, no secrets, only the permissions it needs.

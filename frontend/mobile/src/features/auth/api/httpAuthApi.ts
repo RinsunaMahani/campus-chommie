@@ -12,7 +12,7 @@ import { clearTokens, setTokens } from '@/shared/api/tokenStore';
 import { getTrustedToken, phoneInfo, setTrustedToken } from '@/shared/api/trustedPhone';
 
 import { consentNow, emptyProfile } from '../profile';
-import { AuthApi, AuthError, Profile } from '../types';
+import { AuthApi, AuthError, GoogleResult, Profile } from '../types';
 
 type ServerUser = {
   id: string;
@@ -46,17 +46,18 @@ async function keep(result: SignedIn): Promise<Profile> {
   };
 }
 
+/** The document versions the student agreed to (the app's own copies). */
+function consentBody() {
+  return { privacy_version: PRIVACY_POLICY.version, terms_version: TERMS_OF_USE.version };
+}
+
 export const httpAuthApi: AuthApi = {
   createAccount: (input) =>
     call(async () => {
       await api('POST', '/auth/register', {
         email: input.email,
         password: input.password,
-        consent: {
-          privacy_version: PRIVACY_POLICY.version,
-          terms_version: TERMS_OF_USE.version,
-          confirmed_18_or_older: input.confirmed18OrOlder,
-        },
+        consent: { ...consentBody(), confirmed_18_or_older: input.confirmed18OrOlder },
       });
     }),
 
@@ -70,13 +71,24 @@ export const httpAuthApi: AuthApi = {
       await api('POST', '/auth/resend-code', { email });
     }),
 
-  continueWithGoogle: async () => {
-    throw new AuthError('GOOGLE_UNAVAILABLE', "Google sign-in isn't available yet. Use your email for now.");
+  continueWithGoogle: async (idToken, consented): Promise<GoogleResult> => {
+    try {
+      const body = {
+        id_token: idToken,
+        ...(consented ? { consent: { ...consentBody(), confirmed_18_or_older: true } } : {}),
+      };
+      return { kind: 'signed_in', profile: await keep(await api<SignedIn>('POST', '/auth/google', body)) };
+    } catch (e) {
+      const email = e instanceof ApiError ? String((e.data as { email?: string } | undefined)?.email ?? '') : '';
+      if (e instanceof ApiError && e.code === 'GOOGLE_LINK_REQUIRED') return { kind: 'link', email };
+      if (e instanceof ApiError && e.code === 'GOOGLE_SIGNUP_DETAILS_REQUIRED') return { kind: 'needs_consent', email };
+      if (e instanceof ApiError) throw new AuthError(e.code, e.message);
+      throw e;
+    }
   },
 
-  linkGoogle: async () => {
-    throw new AuthError('GOOGLE_UNAVAILABLE', "Google sign-in isn't available yet. Use your email for now.");
-  },
+  linkGoogle: (idToken, password) =>
+    call(async () => keep(await api<SignedIn>('POST', '/auth/google/link', { id_token: idToken, password }))),
 
   signIn: (email, password) =>
     call(async () => {
