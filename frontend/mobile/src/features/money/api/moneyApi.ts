@@ -1,7 +1,24 @@
 /** My money's calls: signed in, and only ever the student's own (the server scopes every one). */
 import { api } from '@/shared/api/client';
 
-import { AffordAnswer, CheapThing, GoalInput, IncomeInput, IncomeSource, MoneyGoal, MoneyPlan, Payment, Settings, SpendingDay, Summary } from '../types';
+import {
+  AffordAnswer,
+  CheapThing,
+  CheckinInput,
+  CheckinStatus,
+  FixedCost,
+  FixedCostInput,
+  GoalInput,
+  IncomeInput,
+  IncomeSource,
+  MoneyGoal,
+  MoneyHealth,
+  MoneyPlan,
+  Payment,
+  Settings,
+  SpendingDay,
+  Summary,
+} from '../types';
 
 const auth = { auth: true };
 
@@ -40,4 +57,18 @@ export const moneyApi = {
 
   cheapThings: () =>
     api<{ cheap_things: CheapThing[]; lines: string[] }>('GET', '/money/cheap-things', undefined, auth),
+
+  fixedCosts: () =>
+    api<{ fixed_costs: FixedCost[] }>('GET', '/money/fixed-costs', undefined, auth).then((d) => d.fixed_costs),
+  addFixedCost: (input: FixedCostInput) =>
+    api<{ fixed_cost: FixedCost }>('POST', '/money/fixed-costs', input, auth).then((d) => d.fixed_cost),
+  updateFixedCost: (id: string, input: Partial<FixedCostInput>) =>
+    api<{ fixed_cost: FixedCost }>('PATCH', `/money/fixed-costs/${encodeURIComponent(id)}`, input, auth).then((d) => d.fixed_cost),
+  removeFixedCost: (id: string) =>
+    api<Record<string, never>>('DELETE', `/money/fixed-costs/${encodeURIComponent(id)}`, undefined, auth),
+
+  checkinStatus: () => api<CheckinStatus>('GET', '/money/checkin', undefined, auth),
+  submitCheckin: (input: CheckinInput) => api<CheckinStatus>('POST', '/money/checkin', input, auth),
+
+  health: () => api<MoneyHealth>('GET', '/money/health', undefined, auth),
 };

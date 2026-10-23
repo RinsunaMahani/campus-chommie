@@ -38,6 +38,8 @@ EXPORTED_TABLES = {
     "platform.notification_switches": "alert_switches",
     "student.saved_funders": "saved_funding",
     "student.money_goals": "money",
+    "student.fixed_costs": "money",
+    "student.weekly_checkins": "money",
     "student.timetable_entries": "timetable",
     "student.exam_entries": "timetable",
     "student.activities": "timetable",
@@ -139,7 +141,10 @@ def test_the_export_holds_nothing_about_anyone_else(client, me, other):
 def test_a_new_student_exports_empty_sections(client, me):
     data = export(client, me)
     assert data["profile"] is None and data["marks"] == [] and data["classes"] == []
-    assert data["money"] == {"settings": None, "income_sources": [], "payments": [], "spending": [], "goals": []}
+    assert data["money"] == {
+        "settings": None, "income_sources": [], "payments": [], "spending": [], "goals": [],
+        "fixed_costs": [], "weekly_checkins": [],
+    }
     assert data["class_messages"] == {"announcements": [], "flags": []}
     assert data["saved_funding"] == {"saved": []}
 
@@ -156,6 +161,7 @@ def _rows_for(user_id: str) -> dict[str, int]:
         ("student.spending_entries", "user_id"), ("student.modules", "user_id"), ("student.assessments", "user_id"),
         ("classes.class_members", "user_id"), ("classes.announcements", "submitted_by"),
         ("classes.event_flags", "user_id"), ("platform.notifications", "user_id"),
+        ("student.fixed_costs", "user_id"), ("student.weekly_checkins", "user_id"),
     ]:
         counts[table] = db.session.execute(
             text(f"SELECT count(*) FROM {table} WHERE {column} = :id"), {"id": uuid.UUID(user_id)}

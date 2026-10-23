@@ -95,9 +95,9 @@ def test_the_plan_splits_the_next_payday_and_shares_each_goal(client, me):
     assert [p["label"] for p in plan["payday"]["pots"]] == ["Essentials", "Registration fee"]
     assert plan["payday"]["pots"][0]["cents"] == 4000 * 29  # 30 Jan to the next payday, 28 Feb
     assert plan["goals"][0] | {"id": "x"} == {
-        "id": "x", "label": "Registration fee", "amount_cents": 90000, "saved_cents": 20000, "due_on": "2026-03-31",
-        "due_day": "Tue 31 Mar 2026", "from_university": False, "per_week_cents": 5834,
-        "lines": ["About R58.34 a week for 12 weeks gets you there by Tue 31 Mar 2026."],
+        "id": "x", "label": "Registration fee", "kind": "goal", "amount_cents": 90000, "saved_cents": 20000,
+        "due_on": "2026-03-31", "due_day": "Tue 31 Mar 2026", "from_university": False, "stokvel_funded": False,
+        "per_week_cents": 5834, "lines": ["About R58.34 a week for 12 weeks gets you there by Tue 31 Mar 2026."],
     }
 
 
@@ -155,3 +155,87 @@ def test_goals_are_in_the_export(client, me):
     export = ok(client.get("/api/v1/me/export", headers=me.headers))
     assert [g["label"] for g in export["money"]["goals"]] == ["Registration fee"]
     assert export["money"]["goals"][0]["from_university"] is True
+
+
+def test_pots_crud_and_payday_plan_priorities(client, me):
+    set_up(client, me)
+    # Family pot: monthly amount, no date
+    fam = ok(client.post(f"{MONEY}/goals", json={
+        "label": "Family support", "kind": "family", "amount_cents": 30000, "saved_cents": 10000,
+    }, headers=me.headers), 201)["goal"]
+    assert fam["kind"] == "family"
+    assert fam["due_on"] is None
+    assert fam["due_day"] is None
+    assert fam["lines"] == ["R300 monthly support for family: R100 aside so far, R200 still to find."]
+
+    # Stokvel pot: monthly contribution, no date
+    stok = ok(client.post(f"{MONEY}/goals", json={
+        "label": "Groceries stokvel", "kind": "stokvel", "amount_cents": 20000,
+    }, headers=me.headers), 201)["goal"]
+    assert stok["kind"] == "stokvel"
+    assert stok["due_on"] is None
+    assert stok["lines"] == ["R200 a month for your stokvel contribution."]
+
+    # Buffer pot: emergency target, no date
+    buf = ok(client.post(f"{MONEY}/goals", json={
+        "label": "Emergency buffer", "kind": "buffer", "amount_cents": 50000,
+    }, headers=me.headers), 201)["goal"]
+    assert buf["kind"] == "buffer"
+    assert buf["due_on"] is None
+    assert buf["per_week_cents"] is None
+    assert buf["lines"] == ["R500 emergency buffer to keep aside."]
+
+    # Big purchase with stokvel funding
+    bp = ok(client.post(f"{MONEY}/goals", json={
+        "label": "New laptop", "kind": "big_purchase", "amount_cents": 90000, "due_on": "2026-03-31",
+        "stokvel_funded": True,
+    }, headers=me.headers), 201)["goal"]
+    assert bp["kind"] == "big_purchase"
+    assert bp["stokvel_funded"] is True
+    assert "Paying through a stokvel." in bp["lines"][0]
+
+    # Check payday plan order: Essentials -> Family -> Stokvel -> Buffer -> Big purchase
+    plan = ok(client.get(f"{MONEY}/plan", headers=me.headers))
+    pot_labels = [p["label"] for p in plan["payday"]["pots"]]
+    assert pot_labels == ["Essentials", "Family support", "Groceries stokvel", "Emergency buffer", "New laptop"]
+
+    # Update family pot
+    updated_fam = ok(client.patch(f"{MONEY}/goals/{fam['id']}", json={"saved_cents": 30000}, headers=me.headers))["goal"]
+    assert updated_fam["lines"] == ["Done: you've set aside your family support for this month."]
+
+    # Delete buffer
+    ok(client.delete(f"{MONEY}/goals/{buf['id']}", headers=me.headers))
+    goals_after = ok(client.get(f"{MONEY}/plan", headers=me.headers))["goals"]
+    assert not any(g["id"] == buf["id"] for g in goals_after)
+
+
+@pytest.mark.parametrize("bad_body", [
+    {"label": "Test", "kind": "unknown", "amount_cents": 10000},
+    {"label": "Family", "kind": "family", "amount_cents": 10000, "due_on": "2026-03-31"},
+    {"label": "Stokvel", "kind": "stokvel", "amount_cents": 10000, "due_on": "2026-03-31"},
+    {"label": "Buffer", "kind": "buffer", "amount_cents": 10000, "due_on": "2026-03-31"},
+    {"label": "Goal", "kind": "goal", "amount_cents": 10000},  # missing due_on
+    {"label": "Big purchase", "kind": "big_purchase", "amount_cents": 10000},  # missing due_on
+    {"label": "Family", "kind": "family", "amount_cents": 10000, "stokvel_funded": True},
+    {"label": "Goal", "kind": "goal", "amount_cents": 10000, "due_on": "2026-03-31", "stokvel_funded": True},
+    {"label": "Family", "kind": "family", "amount_cents": 10000, "from_university": True},
+    {"label": "Family", "kind": "family", "amount_cents": -5000},
+    {"label": "Family", "kind": "family", "amount_cents": 10**11},
+    {"label": "Family", "kind": "family", "amount_cents": 10000, "saved_cents": 20000},
+    {"label": "Family", "kind": "family", "amount_cents": 10000, "extra_field": "disallowed"},
+])
+def test_hostile_pot_inputs_are_refused(client, me, bad_body):
+    set_up(client, me)
+    assert client.post(f"{MONEY}/goals", json=bad_body, headers=me.headers).status_code == 422
+
+
+def test_pots_are_owner_only_on_idor(client, me, other):
+    fam = ok(client.post(f"{MONEY}/goals", json={
+        "label": "Family support", "kind": "family", "amount_cents": 30000,
+    }, headers=me.headers), 201)["goal"]
+    # Other student trying to patch or delete answers 404
+    r_patch = client.patch(f"{MONEY}/goals/{fam['id']}", json={"amount_cents": 40000}, headers=other.headers)
+    assert r_patch.status_code == 404 and r_patch.get_json()["code"] == "MONEY_GOAL_NOT_FOUND"
+
+    r_del = client.delete(f"{MONEY}/goals/{fam['id']}", headers=other.headers)
+    assert r_del.status_code == 404 and r_del.get_json()["code"] == "MONEY_GOAL_NOT_FOUND"
