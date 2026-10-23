@@ -15,13 +15,13 @@ import { httpAuthApi } from '@/features/auth/api/httpAuthApi';
 import { GoogleSignIn } from '../GoogleSignIn';
 import { forgetGoogleToken, pendingGoogleToken } from '../pendingGoogle';
 
-const signedIn = jest.fn();
-const getIdToken = jest.fn<() => Promise<string | null>>();
+const mockSignedIn = jest.fn();
+const mockGetIdToken = jest.fn<() => Promise<string | null>>();
 
 jest.mock('@expo/vector-icons', () => ({ Feather: () => null, FontAwesome: () => null }));
 jest.mock('expo-router', () => ({ router: { push: jest.fn(), replace: jest.fn(), back: jest.fn() } }));
-jest.mock('@/features/auth/session/SessionProvider', () => ({ useSession: () => ({ signedIn }) }));
-jest.mock('../useGoogleIdToken', () => ({ useGoogleIdToken: () => ({ getIdToken }) }));
+jest.mock('@/features/auth/session/SessionProvider', () => ({ useSession: () => ({ signedIn: mockSignedIn }) }));
+jest.mock('../useGoogleIdToken', () => ({ useGoogleIdToken: () => ({ getIdToken: mockGetIdToken }) }));
 jest.mock('@/shared/api/tokenStore', () => ({
   getTokens: async () => null,
   setTokens: async () => undefined,
@@ -39,14 +39,14 @@ const profile = { email: 'nomsa@gmail.com', signedUpWith: 'google' as const, con
 beforeEach(() => {
   jest.clearAllMocks();
   forgetGoogleToken();
-  getIdToken.mockResolvedValue(TOKEN);
+  mockGetIdToken.mockResolvedValue(TOKEN);
 });
 
 test('signed in straight away when Google says so', async () => {
   jest.spyOn(authApi, 'continueWithGoogle').mockResolvedValue({ kind: 'signed_in', profile });
   render(<GoogleSignIn consented={false} />);
   fireEvent.press(screen.getByText('Continue with Google'));
-  await waitFor(() => expect(signedIn).toHaveBeenCalledWith(profile));
+  await waitFor(() => expect(mockSignedIn).toHaveBeenCalledWith(profile));
   expect(authApi.continueWithGoogle).toHaveBeenCalledWith(TOKEN, false);
   expect(pendingGoogleToken()).toBeNull();
 });
@@ -61,21 +61,21 @@ test('a password account goes to linking, and a new one to the sign-up boxes, wi
   cont.mockResolvedValueOnce({ kind: 'needs_consent', email: 'nomsa@gmail.com' });
   fireEvent.press(screen.getByText('Continue with Google'));
   await waitFor(() => expect(router.push).toHaveBeenCalledWith({ pathname: '/google-sign-up', params: { email: 'nomsa@gmail.com' } }));
-  expect(signedIn).not.toHaveBeenCalled();
+  expect(mockSignedIn).not.toHaveBeenCalled();
 });
 
 test('closing Google’s window does nothing, and unticked boxes stop it before Google opens', async () => {
   const cont = jest.spyOn(authApi, 'continueWithGoogle');
-  getIdToken.mockResolvedValueOnce(null);
+  mockGetIdToken.mockResolvedValueOnce(null);
   const { rerender } = render(<GoogleSignIn consented={false} />);
   fireEvent.press(screen.getByText('Continue with Google'));
-  await waitFor(() => expect(getIdToken).toHaveBeenCalled());
+  await waitFor(() => expect(mockGetIdToken).toHaveBeenCalled());
   expect(cont).not.toHaveBeenCalled();
 
-  getIdToken.mockClear();
+  mockGetIdToken.mockClear();
   rerender(<GoogleSignIn consented ready={() => false} />);
   fireEvent.press(screen.getByText('Continue with Google'));
-  expect(getIdToken).not.toHaveBeenCalled();
+  expect(mockGetIdToken).not.toHaveBeenCalled();
 });
 
 test('the backend’s answers map to the three outcomes, and the boxes are sent only when ticked', async () => {
