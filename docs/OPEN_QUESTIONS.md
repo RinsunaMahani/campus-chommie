@@ -35,7 +35,10 @@ The open questions have been audited and sorted into three categories:
 - Confirm Android package name `za.campuschommie.app` before first Play Store upload.
 - Confirm official app slogan.
 - Configure production email sender (`MAIL_DEFAULT_SENDER`, `MAIL_REPLY_TO`) and domain.
-- Enable Google sign-in (`GOOGLE_READY`) with production credentials.
+- Switch on Google sign-in (built in PR #94): the Google Cloud web and Android clients and their IDs in Render and
+  `eas.json` (DEPLOY.md, "Google sign-in").
+- Switch on the WhatsApp bot (built in PR #93): Meta's app, test number and keys in Render (DEPLOY.md, "The
+  WhatsApp bot (M6)").
 - Legal review and audit trail retention policy.
 
 ## Facts for the data packs
@@ -438,7 +441,9 @@ other official language, and the results say which; second additional languages 
 - [ ] **Slogan** ("From choosing a course to graduating.") is a placeholder drawn for M0: keep or replace.
 - [ ] **Google sign-in** is hidden until `GOOGLE_READY` (client ids and a native build). When it's switched on,
   Google sign-up must show the 18-or-older tick too (the backend already refuses it without).
-- [x] **Hosting** (brief section 14): which host, and an uptime check on `/api/v1/health`. **Done:** Deployed on Render (API) and Neon (PostgreSQL, direct connection) free tiers on 21 Oct 2026 (PR #41, `rinsuna/free-hosting` and PR #75, `rinsuna/web-live-docs`). `/api/v1/ping` uptime check added.
+- [x] **Hosting** (brief section 14): which host, and an uptime check on `/api/v1/health`. **Done:** Deployed on Render (API) and Neon (PostgreSQL, direct connection) free tiers on 21 Oct 2026 (PR #41, `rinsuna/free-hosting` and PR #75, `rinsuna/web-live-docs`). `/api/v1/ping` uptime check added. Rate limits are counted in memory, which is
+  right for one server process; more than one needs Redis (`RATELIMIT_STORAGE_URI`). Still open: whether to add error
+  monitoring (an external service).
 
 - [x] **`BEHIND_CLOUDFLARE` on Render** (security sweep 1, 21 Oct 2026; [SECURITY.md](SECURITY.md)): the live API sits
   behind Cloudflare, so without this setting every visitor's rate limits probably count as one (all the judges
