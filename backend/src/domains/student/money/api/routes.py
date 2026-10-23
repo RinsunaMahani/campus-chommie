@@ -266,3 +266,15 @@ def submit_checkin():
     load(NoQuerySchema(), request.args.to_dict())
     body = load(CheckinSchema(), request.get_json(silent=True))
     return success_response(service.submit_checkin(current_user(), body))
+
+
+# ----------------------------------------------------------- money health
+
+
+@api_bp.get(f"{BASE}/health")
+@limiter.limit(READ_LIMIT, key_func=per_user)
+@auth_required
+def my_money_health():
+    load(NoQuerySchema(), request.args.to_dict())
+    return success_response(service.get_money_health(current_user()))
+

@@ -12,6 +12,7 @@ import {
   IncomeInput,
   IncomeSource,
   MoneyGoal,
+  MoneyHealth,
   MoneyPlan,
   Payment,
   Settings,
@@ -68,4 +69,6 @@ export const moneyApi = {
 
   checkinStatus: () => api<CheckinStatus>('GET', '/money/checkin', undefined, auth),
   submitCheckin: (input: CheckinInput) => api<CheckinStatus>('POST', '/money/checkin', input, auth),
+
+  health: () => api<MoneyHealth>('GET', '/money/health', undefined, auth),
 };

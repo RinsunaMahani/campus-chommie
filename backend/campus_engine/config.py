@@ -28,6 +28,7 @@ DEFAULTS: dict[str, Any] = {
     "timetable_import": {"line_tolerance": 2.0, "merge_gap_minutes": 10, "max_rows": 2000, "max_exam_minutes": 480},
     "money_pots": {"buffer_paydays": 1},
     "money_checkin": {"default_day": "sunday", "max_fixed_costs": 20},
+    "money_health": {"min_buffer_cents": 1},
 }
 
 

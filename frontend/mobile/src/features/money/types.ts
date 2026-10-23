@@ -183,3 +183,21 @@ export type MoneyPlan = {
   university_dates: UniversityDate[];
   lines: string[];
 };
+
+export type HealthCheckStatus = 'done' | 'not yet' | "can't tell";
+
+export type HealthCheck = {
+  id: 'runway' | 'buffer' | 'spending' | 'goals' | 'checkin' | string;
+  title: string;
+  status: HealthCheckStatus;
+  line: string;
+  action: string | null;
+  target: string | null;
+};
+
+export type MoneyHealth = {
+  checks: HealthCheck[];
+  done_count: number;
+  total_count: number;
+  line: string;
+};

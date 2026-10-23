@@ -119,10 +119,13 @@ class Goal:
     kind: str = "goal"  # goal | family | stokvel | buffer | big_purchase
     stokvel_funded: bool = False
     amount_cents: int = 0
+    saved_cents: int = 0
 
     def __post_init__(self):
         if not self.amount_cents:
             self.amount_cents = self.left_cents
+        if not self.saved_cents and self.amount_cents > self.left_cents:
+            self.saved_cents = self.amount_cents - self.left_cents
 
 
 def goal_pace(left_cents: int, due_on: date, today: date) -> tuple[int, str]:

@@ -22,6 +22,7 @@ from campus_engine.checkin import checkin_streak, checkin_window, is_checkin_day
 from campus_engine.config import load_config
 from campus_engine.forecast import forecast_runway, spending_pace
 from campus_engine.lifefund import life_fund_signal
+from campus_engine.money_health import check_money_health
 from campus_engine.money_plan import Goal, afford, goal_pace, payday_plan, pot_pace
 from campus_engine.runway import ExpectedPayment as Arrival, FixedCost as EngineFixedCost
 from campus_engine.runway import RunwayResult, project_runway, safe_to_spend
@@ -792,6 +793,91 @@ def submit_checkin(user, body: dict) -> dict:
 
     db.session.commit()
     return get_checkin_status(user, today)
+
+
+def get_money_health(user, today: date | None = None) -> dict:
+    """The student's five money health checks, strictly non-shaming and actionable."""
+    today = today or _today()
+    cfg = load_config()
+    settings = repo.settings_for(user.id)
+    raw_goals = repo.goals_for(user.id)
+    engine_goals = [
+        Goal(
+            g.label,
+            left_cents=max(0, g.amount_cents - g.saved_cents),
+            due_on=g.due_on,
+            kind=g.kind,
+            stokvel_funded=g.stokvel_funded,
+            amount_cents=g.amount_cents,
+            saved_cents=g.saved_cents,
+        )
+        for g in raw_goals
+    ]
+
+    checkin_st = get_checkin_status(user, today)
+    checked_in_this_week = checkin_st["checked_in_this_week"]
+    streak_weeks = checkin_st["streak"]["weeks"]
+
+    if settings is not None:
+        p = _project(user, settings, today, 0, cfg)
+        runway = p.runway
+        safe = safe_to_spend(
+            p.balance,
+            today,
+            p.arrivals,
+            settings.essentials_per_day_cents,
+            settings.life_fund_reserve_cents,
+            fixed_costs=p.fixed_costs,
+        )
+        safe_daily = safe.per_day_cents
+        plan = payday_plan(
+            p.arrivals,
+            today,
+            p.runway.daily_spend_cents,
+            engine_goals,
+            fixed_costs=p.fixed_costs,
+            buffer_paydays=cfg.get("money_pots", {}).get("buffer_paydays", 1),
+        )
+        checkin_day = (
+            getattr(settings, "checkin_day", DEFAULT_CHECKIN_DAY) or DEFAULT_CHECKIN_DAY
+        )
+        curr_week_end = week_ending_date(today, checkin_day)
+        start_date, _ = checkin_window(curr_week_end)
+        this_week_spend = repo.spending_between(user.id, start_date - timedelta(days=1), today)
+    else:
+        runway = None
+        safe_daily = None
+        plan = None
+        this_week_spend = None
+
+    health = check_money_health(
+        today=today,
+        runway=runway,
+        goals=engine_goals,
+        this_week_spend_cents=this_week_spend,
+        safe_per_day_cents=safe_daily,
+        plan=plan,
+        checked_in_this_week=checked_in_this_week,
+        streak_weeks=streak_weeks,
+        min_buffer_cents=cfg.get("money_health", {}).get("min_buffer_cents", 1),
+    )
+
+    return {
+        "checks": [
+            {
+                "id": c.id,
+                "title": c.title,
+                "status": c.status,
+                "line": c.line,
+                "action": c.action,
+                "target": c.target,
+            }
+            for c in health.checks
+        ],
+        "done_count": health.done_count,
+        "total_count": health.total_count,
+        "line": health.line,
+    }
 
 
 # ------------------------------------------------------------- what's sent

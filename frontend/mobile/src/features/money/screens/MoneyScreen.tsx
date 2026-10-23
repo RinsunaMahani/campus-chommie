@@ -17,8 +17,9 @@ import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
 import { fonts, radius, space, type } from '@/shared/theme/tokens';
 
 import { moneyApi } from '../api/moneyApi';
+import { MoneyHealthCard } from '../components/MoneyHealthCard';
 import { RunwayHero } from '../components/RunwayHero';
-import { CheckinStatus, FixedCost, MoneyPlan, Summary, SummaryReady } from '../types';
+import { CheckinStatus, FixedCost, MoneyHealth, MoneyPlan, Summary, SummaryReady } from '../types';
 
 // The wallet's index route; the generated route types list it as /wallet/index.
 const WALLET = '/wallet' as Href;
@@ -38,6 +39,7 @@ export default function MoneyScreen() {
   const [plan, setPlan] = useState<MoneyPlan | null>(null);
   const [checkin, setCheckin] = useState<CheckinStatus | null>(null);
   const [fixedCosts, setFixedCosts] = useState<FixedCost[]>([]);
+  const [health, setHealth] = useState<MoneyHealth | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [refreshing, setRefreshing] = useState(false);
 
@@ -47,12 +49,14 @@ export default function MoneyScreen() {
       moneyApi.plan(),
       moneyApi.checkinStatus().catch(() => null),
       moneyApi.fixedCosts().catch(() => []),
+      moneyApi.health().catch(() => null),
     ])
-      .then(([s, p, c, fcs]) => {
+      .then(([s, p, c, fcs, h]) => {
         setSummary(s);
         setPlan(p);
         if (c) setCheckin(c);
         if (fcs) setFixedCosts(fcs);
+        if (h) setHealth(h);
         setError(null);
       })
       .catch((e) => setError(errorText(e, t('common.error'))))
@@ -121,6 +125,8 @@ export default function MoneyScreen() {
 
           <RunwayHero summary={ready} />
           <Button title={t('money.afford.title')} variant="primary" icon="help-circle" onPress={() => router.push('/money/afford')} />
+
+          {health ? <MoneyHealthCard health={health} /> : null}
 
           <Card style={{ paddingVertical: space.xs }}>
             <Section
