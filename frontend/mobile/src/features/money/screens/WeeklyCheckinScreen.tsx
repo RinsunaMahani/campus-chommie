@@ -9,7 +9,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { errorText } from '@/shared/api/errors';
 import { Button } from '@/shared/components/Button';
-import { Card, InfoNote } from '@/shared/components/Parts';
+import { Card, IconTile, InfoNote } from '@/shared/components/Parts';
 import { Screen } from '@/shared/components/Screen';
 import { ErrorBox, Loading } from '@/shared/components/Status';
 import { Body, Strong, Title } from '@/shared/components/Text';
@@ -105,7 +105,7 @@ export default function WeeklyCheckinScreen() {
       {status ? (
         <View style={{ gap: 14 }}>
           <Card style={styles.streakCard}>
-            <Text style={styles.streakEmoji}>🔥</Text>
+            <IconTile name="trending-up" size={44} />
             <View style={{ flex: 1, gap: 2 }}>
               <Strong style={styles.streakTitle}>{status.streak.line}</Strong>
               <Text style={styles.streakSub}>{t('money.checkin.cardSub')}</Text>
@@ -153,9 +153,6 @@ const makeStyles = (colors: Palette) =>
       gap: space.md,
       backgroundColor: colors.accentTint,
       borderColor: colors.accentDeep,
-    },
-    streakEmoji: {
-      fontSize: 28,
     },
     streakTitle: {
       ...type.callout,

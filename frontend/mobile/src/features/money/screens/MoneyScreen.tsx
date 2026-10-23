@@ -6,7 +6,7 @@ import { studentHeader } from '@/features/profile/components/HeaderTools';
 import { useProfile } from '@/features/profile/state';
 import { errorText } from '@/shared/api/errors';
 import { Button } from '@/shared/components/Button';
-import { Card, InfoNote, ListRow, Tag, ToggleRow } from '@/shared/components/Parts';
+import { Card, IconTile, InfoNote, ListRow, Tag, ToggleRow } from '@/shared/components/Parts';
 import { Screen } from '@/shared/components/Screen';
 import { Section } from '@/shared/components/Section';
 import { ErrorBox, Loading } from '@/shared/components/Status';
@@ -105,7 +105,7 @@ export default function MoneyScreen() {
               accessibilityRole="button"
               onPress={() => router.push('/money/checkin')}
               style={styles.checkinBanner}>
-              <Text style={styles.checkinEmoji}>🔥</Text>
+              <IconTile name="trending-up" size={44} />
               <View style={{ flex: 1, gap: 2 }}>
                 <Strong style={styles.checkinTitle}>{checkin.streak.line}</Strong>
                 <Text style={styles.checkinSub}>
@@ -327,9 +327,6 @@ const makeStyles = (colors: Palette) =>
       borderWidth: 1,
       borderColor: colors.line,
       padding: space.md,
-    },
-    checkinEmoji: {
-      fontSize: 24,
     },
     checkinTitle: {
       ...type.callout,
