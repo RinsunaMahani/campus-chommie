@@ -451,6 +451,24 @@ export const en = {
   'money.cheapThings': 'Cheap things nearby',
   'money.cheapThingsSub': 'Places to go that cost little, with prices',
 
+  // WhatsApp (M6)
+  'whatsapp.title': 'WhatsApp',
+  'whatsapp.entrySub': 'Confirm class announcements and see your week in WhatsApp',
+  'whatsapp.off': 'Campus Chommie on WhatsApp isn’t switched on yet. Check back soon.',
+  'whatsapp.intro': 'Link your WhatsApp number to use Campus Chommie in a private chat.',
+  'whatsapp.whatItDoes': 'What it does',
+  'whatsapp.reps': 'Class rep? Forward an announcement to the bot. It reads the test, date and venue, and you tap Confirm so your class sees it.',
+  'whatsapp.week': 'Send WEEK for your class tests and deadlines in the next 7 days.',
+  'whatsapp.stop': 'Send STOP to unlink your number.',
+  'whatsapp.linked': 'A WhatsApp number is linked (since {day}).',
+  'whatsapp.link': 'Link WhatsApp',
+  'whatsapp.linkAnother': 'Link another number',
+  'whatsapp.yourCode': 'Your code',
+  'whatsapp.codeSteps': 'Send “{message}” to {number} on WhatsApp. The code works once, for {minutes} minutes.',
+  'whatsapp.openWhatsApp': 'Open WhatsApp and send it',
+  'whatsapp.unlink': 'Unlink WhatsApp',
+  'whatsapp.privacy': 'We keep only a scrambled form of your number, never the number itself. The bot never asks for passwords, ID numbers or bank details, and never shows your money or marks.',
+
   // Updates (M5)
   'updates.title': 'Updates',
   'updates.none': 'When your class confirms a test or a funder you saved opens, you hear it here.',

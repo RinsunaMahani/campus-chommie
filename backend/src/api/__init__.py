@@ -46,6 +46,7 @@ from src.domains.catalogue.maps.api import routes as _maps_routes  # noqa: E402,
 from src.domains.catalogue.universities.api import routes as _universities_routes  # noqa: E402,F401
 from src.domains.classes.classes.api import routes as _classes_routes  # noqa: E402,F401
 from src.domains.classes.events.api import routes as _events_routes  # noqa: E402,F401
+from src.domains.classes.whatsapp.api import routes as _whatsapp_routes  # noqa: E402,F401
 from src.domains.identity.accounts.api import routes as _accounts_routes  # noqa: E402,F401
 from src.domains.identity.auth.api import routes as _auth_routes  # noqa: E402,F401
 from src.domains.pathways.course_finder.api import routes as _course_finder_routes  # noqa: E402,F401

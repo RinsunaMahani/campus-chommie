@@ -28,7 +28,7 @@ from src.shared.rate_limit.limiter import limiter  # noqa: E402
 IDENTITY_TABLES = ["google_identities", "sessions", "trusted_phones", "devices", "email_codes", "password_resets", "password_credentials", "consents", "users"]
 # Tables that point at no user, so the CASCADE above doesn't reach them (a
 # class keeps no creator); their own rows cascade from these.
-OTHER_TABLES = ["classes.classes"]
+OTHER_TABLES = ["classes.classes", "classes.whatsapp_seen"]
 
 
 @pytest.fixture(scope="session")
