@@ -40,6 +40,7 @@ request and never stored; and the judges' demo accounts. Update it whenever a mi
 | Threat | Control | Where |
 |---|---|---|
 | Stolen or guessed password | bcrypt hashing; 5 wrong passwords lock the account for 15 minutes; rate limits per IP and per IP + email; a new phone needs a 6-digit code from the email (two factors) | `domains/identity/auth/services/auth_service.py`, `auth/rate_limit/policies.py`, `auth/models/trusted_phone.py` |
+| Google sign-in abused | the backend verifies every Google ID token itself (Google's signature, issuer, expiry, our web client as its audience, a verified email); an email with a password account is never merged silently (the password links it once); an unverified email sign-up is taken over only by the Google-proven owner, and its password is deleted (pre-hijack defence); a new account needs the same 18-or-older and consent boxes. The app keeps the token in memory for the next step only, never stored or logged. Closing or deleting a Google-only account needs a fresh Google sign-in with the same linked Google account; a password account still needs its password | `identity/auth/services/google_verifier.py`, `auth_service.google_sign_in`, `_require_owner`; `frontend/mobile/src/features/auth/google/` |
 | Stolen token | 15-minute access tokens tied to a live session; rotating refresh tokens, and a reused refresh token revokes the whole session; "sign out other phones" | `auth/models/credentials.py` (Session), `auth/services/jwt_callbacks.py`, `session_service.py` |
 | Fishing for which emails have accounts | sign-up, resend and forgot-password give the same answer whatever the email; an existing account's owner gets an email instead | `auth_service.register`, `forgot_password` |
 | Reading someone else's data (IDOR) | every query takes the signed-in user from the token; another user's row is the same 404 as a missing one (alerts, profile, every money record, modules and assessments). Alerts and support read only the signed-in student's own records. Classes are reached only through the student's own membership: a class they're not in, and its candidates, events and flags, are the same 404 as ones that don't exist | `core/decorators.py`, each feature's repository, `classes/classes/services/class_service.py` (`membership`) |
@@ -87,7 +88,7 @@ shape, never named by guess; a funder's page that says "open" without dates coun
 
 ## Test evidence (M5)
 
-Backend: **1168 tests pass** on PostgreSQL 16 (13 Oct 2026), including:
+Backend: **1,434 tests pass** on PostgreSQL 16 (22 Oct 2026), including:
 
 | Tests | What they prove |
 |---|---|
@@ -237,7 +238,6 @@ Tracked with options in [OPEN_QUESTIONS.md](OPEN_QUESTIONS.md):
   removes a closed account's data yet (OPEN_QUESTIONS, "Retention").
 - Neither the export nor deleting reaches the audit trail's security records, which nothing may change; they keep
   the email and IP address of past sign-ins (OPEN_QUESTIONS). The record of a deletion keeps no email.
-- A Google-only account has no password, so it can't confirm `DELETE /me` yet (Google sign-in is switched off).
 - Reps see how many students flagged an event from the first flag (never who). We read CLAUDE.md's 5-student rule
   as covering aggregates of marks and money; the team confirms or changes this in OPEN_QUESTIONS.
 - A student's announcement text is seen by the class's reps by design: it's how they check it.

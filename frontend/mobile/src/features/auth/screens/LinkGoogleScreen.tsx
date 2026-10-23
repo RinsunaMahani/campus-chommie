@@ -8,6 +8,7 @@ import { Screen } from '@/shared/components/Screen';
 import { Body, Title } from '@/shared/components/Text';
 import { TextField } from '@/shared/components/TextField';
 import { AuthError, authApi } from '@/features/auth/api/authApi';
+import { forgetGoogleToken, pendingGoogleToken } from '@/features/auth/google/pendingGoogle';
 import { useSession } from '@/features/auth/session/SessionProvider';
 import { Palette, useStyles } from '@/shared/theme/palette';
 import { fonts } from '@/shared/theme/tokens';
@@ -24,8 +25,16 @@ export default function LinkGoogle() {
   async function link() {
     setBusy(true);
     setError('');
+    const token = pendingGoogleToken();
+    if (!token) {
+      setError('Google sign-in timed out. Go back and continue with Google again.');
+      setBusy(false);
+      return;
+    }
     try {
-      signedIn(await authApi.linkGoogle(email, password));
+      const profile = await authApi.linkGoogle(token, password);
+      forgetGoogleToken();
+      signedIn(profile);
     } catch (e) {
       setError(e instanceof AuthError ? e.message : 'Something went wrong. Try again.');
     } finally {

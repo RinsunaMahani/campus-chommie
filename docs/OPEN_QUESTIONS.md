@@ -439,8 +439,10 @@ other official language, and the results say which; second additional languages 
   and a white pill for the main action), for the whole app, and her interlocking CC as the app icon, adaptive icon and
   splash. Text colours were checked for WCAG AA on every band of the wallpaper.
 - [ ] **Slogan** ("From choosing a course to graduating.") is a placeholder drawn for M0: keep or replace.
-- [ ] **Google sign-in** is hidden until `GOOGLE_READY` (client ids and a native build). When it's switched on,
-  Google sign-up must show the 18-or-older tick too (the backend already refuses it without).
+- [ ] **Google sign-in** (built 23 Oct 2026): the button shows once `EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID` is set, on
+  the web app and the APK (never in Expo Go, which lacks the native module). Rinsuna makes the Google Cloud clients
+  and sets the settings (DEPLOY.md, "Google sign-in"). Google sign-up asks the same 18-or-older and Privacy and Terms
+  boxes as email sign-up. Until the Google Cloud consent screen is published, only its test users can sign in.
 - [x] **Hosting** (brief section 14): which host, and an uptime check on `/api/v1/health`. **Done:** Deployed on Render (API) and Neon (PostgreSQL, direct connection) free tiers on 21 Oct 2026 (PR #41, `rinsuna/free-hosting` and PR #75, `rinsuna/web-live-docs`). `/api/v1/ping` uptime check added. Rate limits are counted in memory, which is
   right for one server process; more than one needs Redis (`RATELIMIT_STORAGE_URI`). Still open: whether to add error
   monitoring (an external service).
