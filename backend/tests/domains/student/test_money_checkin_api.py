@@ -299,6 +299,47 @@ def test_weekly_checkin_and_streak(client, me):
         assert entry["amount_cents"] == 10_000
 
 
+def _spent(client, me) -> dict:
+    rows = ok(client.get(f"{MONEY}/spending?days=7", headers=me.headers))["spending"]
+    return {r["spent_on"]: r["amount_cents"] for r in rows}
+
+
+def test_a_checkin_never_overwrites_the_students_own_logs(client, me):
+    ok(client.put(f"{MONEY}/settings", json=SETTINGS, headers=me.headers))
+    ok(client.put(f"{MONEY}/spending/2026-10-13", json={"amount_cents": 25_000}, headers=me.headers))
+    ok(client.post(f"{MONEY}/checkin", json={"amount_cents": 70_000}, headers=me.headers))
+    spent = _spent(client, me)
+    assert spent["2026-10-13"] == 25_000  # theirs, untouched
+    assert sum(spent.values()) == 70_000  # the rest spread over the other six days
+    assert len(spent) == 7
+
+
+def test_a_checkin_sent_again_replaces_only_its_own_figures(client, me):
+    ok(client.put(f"{MONEY}/settings", json=SETTINGS, headers=me.headers))
+    ok(client.post(f"{MONEY}/checkin", json={"amount_cents": 70_000}, headers=me.headers))
+    ok(client.put(f"{MONEY}/spending/2026-10-14", json={"amount_cents": 1_000}, headers=me.headers))  # they correct a day
+    ok(client.post(f"{MONEY}/checkin", json={"amount_cents": 40_000}, headers=me.headers))
+    spent = _spent(client, me)
+    assert spent["2026-10-14"] == 1_000
+    assert sum(spent.values()) == 40_000
+
+
+def test_a_checkin_mid_week_fills_no_day_still_to_come(client, me, monkeypatch):
+    ok(client.put(f"{MONEY}/settings", json=SETTINGS, headers=me.headers))
+    monkeypatch.setattr(money_service, "_today", lambda: date(2026, 10, 14))  # a Wednesday; the week ends Sunday 18th
+    ok(client.post(f"{MONEY}/checkin", json={"amount_cents": 30_000}, headers=me.headers))
+    spent = _spent(client, me)
+    assert sorted(spent) == ["2026-10-12", "2026-10-13", "2026-10-14"]
+    assert sum(spent.values()) == 30_000
+
+
+def test_a_checkin_below_what_they_logged_adds_nothing(client, me):
+    ok(client.put(f"{MONEY}/settings", json=SETTINGS, headers=me.headers))
+    ok(client.put(f"{MONEY}/spending/2026-10-12", json={"amount_cents": 50_000}, headers=me.headers))
+    ok(client.post(f"{MONEY}/checkin", json={"amount_cents": 20_000}, headers=me.headers))
+    assert _spent(client, me) == {"2026-10-12": 50_000}
+
+
 def test_weekly_checkin_skip(client, me):
     ok(client.put(f"{MONEY}/settings", json=SETTINGS, headers=me.headers))
 

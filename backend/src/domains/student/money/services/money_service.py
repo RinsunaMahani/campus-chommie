@@ -778,21 +778,39 @@ def submit_checkin(user, body: dict) -> dict:
     if not skipped and amount_cents is None:
         raise _field_error("amount_cents", "Enter this week's total spending or choose skip.")
 
-    repo.add_or_update_checkin(user.id, week_end, amount_cents, skipped)
-
-    if not skipped and amount_cents is not None:
-        start_date, _ = checkin_window(week_end)
-        daily = amount_cents // 7
-        remainder = amount_cents % 7
-        for i in range(7):
-            day_date = start_date + timedelta(days=i)
-            day_amount = daily + (remainder if i == 6 else 0)
-            entry = repo.spending_on(user.id, day_date) or SpendingEntry(user_id=user.id, spent_on=day_date)
-            entry.amount_cents = day_amount
-            repo.add(entry)
+    row = repo.add_or_update_checkin(user.id, week_end, amount_cents, skipped)
+    row.filled = _fill_week(user.id, week_end, today, amount_cents, dict(row.filled or {}))
 
     db.session.commit()
     return get_checkin_status(user, today)
+
+
+def _fill_week(user_id, week_end: date, today: date, total: int | None, before: dict) -> dict:
+    """The week's total as daily spending, without touching the student's own logs: first the days this check-in
+    filled last time are taken back (only where the figure is still ours), then what the total leaves after the
+    student's own logs is spread over the days up to today they didn't log. Future days are never filled.
+    Returns the days filled now, {"YYYY-MM-DD": cents}."""
+    start, _ = checkin_window(week_end)
+    days = [start + timedelta(days=i) for i in range(7)]
+    for iso, cents in before.items():
+        entry = repo.spending_on(user_id, date.fromisoformat(iso))
+        if entry is not None and entry.amount_cents == cents:
+            repo.delete(entry)
+    db.session.flush()
+    if total is None:
+        return {}
+    own = {d: e.amount_cents for d in days if (e := repo.spending_on(user_id, d)) is not None}
+    open_days = [d for d in days if d <= today and d not in own]
+    left = max(0, total - sum(own.values()))
+    if not open_days or left == 0:
+        return {}
+    share, extra = divmod(left, len(open_days))
+    filled = {}
+    for i, d in enumerate(open_days):
+        cents = share + (extra if i == len(open_days) - 1 else 0)
+        repo.add(SpendingEntry(user_id=user_id, spent_on=d, amount_cents=cents))
+        filled[d.isoformat()] = cents
+    return filled
 
 
 def get_money_health(user, today: date | None = None) -> dict:

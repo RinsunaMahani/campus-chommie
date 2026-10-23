@@ -1,7 +1,7 @@
 """Money pots (Family, Stokvel, Buffer, Big purchase).
 
-Revision ID: 0011_money_pots
-Revises: 0010_activities
+Revision ID: 0012_money_pots
+Revises: 0011_whatsapp
 Create Date: 2026-10-22
 
 Extends student.money_goals to support named pots:
@@ -15,8 +15,8 @@ import sqlalchemy as sa
 from alembic import op
 
 # revision identifiers, used by Alembic.
-revision = '0011_money_pots'
-down_revision = '0010_activities'
+revision = '0012_money_pots'
+down_revision = '0011_whatsapp'
 branch_labels = None
 depends_on = None
 
