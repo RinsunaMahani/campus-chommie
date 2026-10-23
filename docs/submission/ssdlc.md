@@ -1,7 +1,7 @@
 # SSDLC answers for Sonke (draft)
 
 Draft answers for the SSDLC form on the team page, from [SECURITY.md](../SECURITY.md), which holds the full threat
-model and test evidence. Rinsuna fits these into the form's own questions. Numbers were true on 21 Oct 2026; re-check
+model and test evidence. Rinsuna fits these into the form's own questions. Numbers were true on 22 Oct 2026; re-check
 the test counts the day you submit.
 
 ## 1. Requirements: what we protect and why
@@ -55,10 +55,10 @@ We listed each threat and its control (full table in SECURITY.md). The main ones
 
 ## 4. Testing
 
-- **Automated tests on every pull request** (GitHub Actions): 1,416 backend tests on PostgreSQL 16, including
+- **Automated tests on every pull request** (GitHub Actions): 1,434 backend tests on PostgreSQL 16, including
   hostile-input tests for every endpoint, rate-limit tests, IDOR tests (404 for someone else's data), privacy
   export and deletion tests, and audit-trail tamper tests, with 99% engine coverage. The app: TypeScript check,
-  ESLint and 175 Jest tests.
+  ESLint and 253 Jest tests.
 - **Security scanning in CI:** Bandit (code; a medium or high finding fails the build), `pip-audit` and an npm audit
   gate (a high or critical advisory fails the build), and a gitleaks secrets scan of every branch's history.
 - **Our own pen test (21 Oct 2026):** a script of 105 attacks on a copy of the API running with the production config
