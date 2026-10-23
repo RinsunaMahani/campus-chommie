@@ -19,7 +19,12 @@ jest.mock('react-native-safe-area-context', () => {
 });
 jest.mock('expo-router', () => ({
   router: { push: jest.fn(), back: jest.fn() },
-  useFocusEffect: jest.fn(),
+  useFocusEffect: (cb: () => void) => {
+    const React = jest.requireActual<typeof import('react')>('react');
+    React.useEffect(() => {
+      cb();
+    }, [cb]);
+  },
 }));
 jest.mock('expo-web-browser', () => ({ openBrowserAsync: jest.fn() }));
 jest.mock('@/features/profile/state', () => ({
@@ -40,7 +45,7 @@ test('renders a fixture with cards, details, cost notes, hours, dates and source
   expect(screen.getByText('Places near your campus, each priced from its own page.')).toBeTruthy();
 
   // University and unconfirmed notice
-  expect(screen.getByText('University of Pretoria · hatfield')).toBeTruthy();
+  expect(screen.getByText('University of Pretoria')).toBeTruthy();
   expect(screen.getByText('Not yet confirmed by the team.')).toBeTruthy();
 
   // All 3 places rendered
@@ -125,6 +130,17 @@ test('"Free" badge appears only when free is true', async () => {
   fireEvent.press(screen.getByRole('button', { name: 'Outdoors' }));
   expect(screen.getByText('Pretoria National Botanical Garden')).toBeTruthy();
   expect(screen.getAllByText('Free')).toHaveLength(1);
+});
+
+test('with no place marked free (the packs today), there is no Free chip', async () => {
+  const noneFree = { ...fixture, cheap_things: fixture.cheap_things.map((c) => ({ ...c, free: undefined })) };
+  jest.spyOn(moneyApi, 'cheapThings').mockResolvedValue(noneFree as never);
+
+  render(<CheapThingsScreen />);
+
+  expect(await screen.findByText('Pretoria National Botanical Garden')).toBeTruthy();
+  expect(screen.queryByRole('button', { name: 'Free' })).toBeNull();
+  expect(screen.getByRole('button', { name: 'All' })).toBeTruthy();
 });
 
 test('empty state: "Nothing listed near your campus yet."', async () => {

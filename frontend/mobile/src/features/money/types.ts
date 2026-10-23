@@ -79,9 +79,8 @@ export type CheapThing = {
   source_url: string | null;
   read_on: string | null;
   last_verified: string | null;
+  /** Not in the data packs yet: the Free filter shows only once a place says it's free. */
   free?: boolean;
-  photo_url?: string | null;
-  photo?: string | null;
 };
 
 /** "Can I afford this?": nothing is stored. */

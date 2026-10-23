@@ -1,7 +1,7 @@
 import { Feather } from '@expo/vector-icons';
 import { useFocusEffect } from 'expo-router';
-import { ComponentProps, useCallback, useEffect, useMemo, useState } from 'react';
-import { Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ComponentProps, useCallback, useMemo, useState } from 'react';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { studentHeader } from '@/features/profile/components/HeaderTools';
 import { errorText } from '@/shared/api/errors';
@@ -84,10 +84,6 @@ export default function CheapThingsScreen({
       .finally(() => setRefreshing(false));
   }, []);
 
-  useEffect(() => {
-    load();
-  }, [load]);
-
   useFocusEffect(
     useCallback(() => {
       load();
@@ -106,10 +102,11 @@ export default function CheapThingsScreen({
   const chips = useMemo(() => {
     return [
       { id: 'all', label: 'All' },
-      { id: 'free', label: 'Free' },
+      // Only when the data marks a place as free: the packs don't say so yet.
+      ...(things?.some((c) => c.free) ? [{ id: 'free', label: 'Free' }] : []),
       ...categories.map((cat) => ({ id: cat, label: categoryLabel(cat) })),
     ];
-  }, [categories]);
+  }, [categories, things]);
 
   const filtered = useMemo(() => {
     if (!things) return [];
@@ -136,7 +133,7 @@ export default function CheapThingsScreen({
       {...studentHeader(false)}>
       {campus && university ? (
         <View style={styles.metaRow}>
-          <Muted>{`${university.name} · ${campus}`}</Muted>
+          <Muted>{university.name}</Muted>
         </View>
       ) : null}
 
@@ -188,11 +185,7 @@ export default function CheapThingsScreen({
       {filtered.map((c, i) => (
         <Card key={`${c.name}-${i}`} style={styles.card}>
           <View style={styles.cardHeader}>
-            {c.photo_url || c.photo ? (
-              <Image source={{ uri: c.photo_url || c.photo || '' }} style={styles.photo} resizeMode="cover" accessible={false} />
-            ) : (
-              <IconTile name={categoryIcon(c.category)} size={44} />
-            )}
+            <IconTile name={categoryIcon(c.category)} size={44} />
             <View style={{ flex: 1, gap: 4 }}>
               <View style={styles.badgeRow}>
                 <Tag label={categoryLabel(c.category)} tone="info" />
@@ -262,12 +255,6 @@ const makeStyles = (colors: Palette) =>
       flexWrap: 'wrap',
       gap: 6,
       alignItems: 'center',
-    },
-    photo: {
-      width: 44,
-      height: 44,
-      borderRadius: radius.sm,
-      backgroundColor: colors.iconTile,
     },
     cost: {
       fontFamily: fonts.medium,
