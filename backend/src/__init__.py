@@ -104,6 +104,7 @@ def _register_models() -> None:
     # classes schema: classes, members, reps, announcements and verified events
     from src.domains.classes.classes import models as _classes  # noqa: F401
     from src.domains.classes.events import models as _events  # noqa: F401
+    from src.domains.classes.whatsapp import models as _whatsapp  # noqa: F401
 
 
 def _register_listeners(app: Flask) -> None:
@@ -127,6 +128,7 @@ def _register_exporters() -> None:
     that stores personal data; identity's own part is added by its export."""
     from src.domains.classes.classes.services import class_service
     from src.domains.classes.events.services import events_service
+    from src.domains.classes.whatsapp.services import whatsapp_service
     from src.domains.platform.notifications.services import notification_service
     from src.domains.student.academics.services import academics_service
     from src.domains.student.money.services import money_service
@@ -144,6 +146,7 @@ def _register_exporters() -> None:
     privacy.register_exporter("alert_switches", notification_service.export_switches)
     privacy.register_exporter("saved_funding", saved_funding_service.export_for)
     privacy.register_exporter("timetable", timetable_service.export_for)
+    privacy.register_exporter("whatsapp", whatsapp_service.export_for)
 
 
 def _register_daily_checks() -> None:

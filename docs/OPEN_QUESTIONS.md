@@ -523,6 +523,22 @@ comprehensive). The app shows only these.
   teaching model "comprehensive", not the university.
 - [ ] **WSU** says it is "one of six" comprehensive universities; DHET's 2022 statistics count nine.
 
+## WhatsApp bot (M6)
+
+- [ ] **WhatsApp test number:** Meta's free test number only talks to phones on its recipient list (added and
+  confirmed in the Meta app), so judges can't message it unless their numbers are added. For the hackathon: show the
+  bot in the demo video, and say so on the slide. Talking to anyone needs a real business number, which needs Meta's
+  business verification: Rinsuna's call, after the hackathon.
+- [ ] **The access token:** API Setup's temporary token stops after 24 hours; Render needs a system user's token
+  (DEPLOY.md, "The WhatsApp bot"). Rinsuna sets it, never in the repo or a chat.
+- [x] **"Salted hashes" for numbers (decided 23 Oct 2026):** a number is kept as HMAC-SHA256 with a server key
+  (`WHATSAPP_PHONE_KEY`), not with a per-row salt: a message arrives with only the number, so the hash has to be
+  found by the number, which a per-row salt prevents. Without the key, a leaked table can't be tested against any
+  number. Changing the key unlinks everyone.
+- [ ] **Push reminders over WhatsApp** (new events, 24 hours before a deadline): not built. They would need each
+  number kept so the bot can start a chat, plus Meta's approved message templates. Class updates keep going to the
+  app's Updates instead.
+
 ## Reminders for later milestones
 
 - [x] M3: the first endpoint that takes numbers (money) gets the NaN/Infinity hostile-input test again: done on
