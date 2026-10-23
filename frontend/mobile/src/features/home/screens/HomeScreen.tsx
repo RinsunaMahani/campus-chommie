@@ -80,6 +80,7 @@ export default function HomeScreen() {
 
       <Overline>Your account</Overline>
       <Card style={{ paddingVertical: 4 }}>
+        <ListRow tone="mint" icon="message-circle" title={t('whatsapp.title')} subtitle={t('whatsapp.entrySub')} onPress={() => router.push('/whatsapp')} />
         <ListRow tone="mint" icon="shield" title="Account security" subtitle="Phones, password and your account" onPress={() => router.push('/security')} />
         <ListRow icon="log-out" title="Sign out" onPress={signOut} last />
       </Card>

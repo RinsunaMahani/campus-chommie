@@ -39,6 +39,7 @@ Everything comes from the host's environment. Production refuses to start if a r
 | `BEHIND_CLOUDFLARE` | `true` only when the API is reachable through Cloudflare alone | no |
 | `SCHEDULER_ENABLED` | `true` (the default) runs the background jobs in the web process | no |
 | `GUNICORN_THREADS` | threads in the one process; 8 if not set | no |
+| `WHATSAPP_*` | the WhatsApp bot's settings ("The WhatsApp bot (M6)" below); any of the five secrets missing = bot off | for the bot |
 
 Never put these in the repo, the image or a log. The host's secret settings are the place for them.
 
@@ -146,6 +147,39 @@ Set up by Rinsuna as above; every secret is in Render's Environment only.
 - **Keep-awake:** cron-job.org job "Campus Chommie Ping", `GET /api/v1/ping` every 10 minutes (SAST).
 - **The app:** `eas.json`'s `preview` (the APK) and `production` profiles point at
   `https://campus-chommie.onrender.com/api/v1` with the mock off. That address is public, not a secret.
+
+## The WhatsApp bot (M6)
+
+The bot is off until all five secrets below are in Render's Environment; then `GET /api/v1/me/whatsapp` says
+`available: true` and the app's Home → WhatsApp screen offers a link code. Every value goes into Render only, never
+into the repo, a chat or a screenshot.
+
+1. **A Meta app.** At developers.facebook.com, create an app for WhatsApp (business type) and add the WhatsApp
+   product. Meta gives it a free **test number**.
+2. **Who can talk to the test number.** On WhatsApp's API Setup page, add each phone that will use the bot to the
+   test number's recipient list and confirm it with the code WhatsApp sends. A test number only talks to the numbers
+   on that list (OPEN_QUESTIONS, "WhatsApp test number").
+3. **The values Render needs:**
+
+   | Setting | Where it comes from |
+   |---|---|
+   | `WHATSAPP_PHONE_NUMBER_ID` | API Setup: the test number's "Phone number ID" (not the phone number) |
+   | `WHATSAPP_ACCESS_TOKEN` | a **system user** token with `whatsapp_business_messaging` (Business settings → System users). API Setup's temporary token stops after 24 hours |
+   | `WHATSAPP_APP_SECRET` | App settings → Basic → App secret |
+   | `WHATSAPP_VERIFY_TOKEN` | a random word you make: `python -c "import secrets; print(secrets.token_urlsafe(24))"` |
+   | `WHATSAPP_PHONE_KEY` | another random value made the same way (48 characters); it keys the hash numbers are kept as, so changing it unlinks everyone |
+   | `WHATSAPP_DISPLAY_NUMBER` | the test number as people dial it, e.g. `+1 555 …` (public, not a secret) |
+   | `WHATSAPP_GRAPH_VERSION` | the Graph API version API Setup's sample request uses, e.g. `v23.0` (public) |
+
+4. **Deploy** (Render restarts with the new settings; the migration `0011_whatsapp` runs on start).
+5. **The webhook.** In WhatsApp → Configuration: Callback URL `https://campus-chommie.onrender.com/api/v1/webhooks/whatsapp`,
+   Verify token = the same `WHATSAPP_VERIFY_TOKEN`, then "Verify and save". Under Webhook fields, subscribe to
+   **messages**.
+6. **Check it.** In the app: Home → WhatsApp → Link WhatsApp → "Open WhatsApp and send it". The bot answers "Linked."
+   Then send `WEEK`, and as a class rep forward an announcement and tap Confirm.
+
+What the bot keeps: a keyed hash of each linked number, a link code's hash for 10 minutes, and hashes of message ids
+for 48 hours. It never stores or logs a number, a message, or the access token.
 
 ## Still Rinsuna's to decide
 
