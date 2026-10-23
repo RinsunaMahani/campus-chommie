@@ -34,38 +34,20 @@ function tagTone(status?: string | null): TagTone {
 }
 
 /**
- * Applications status in words: open, closes on <date>, closed, or not published.
- * An unknown or missing status always returns "Not published".
+ * Applications status in words: the closing or opening date when we have it, otherwise the server's own label for
+ * the status ("No application needed", "Apply through the university", "Check the dates"...). Only a funder with
+ * neither says "Not published".
  */
-export function applicationStatusWords(funder: { status?: string | null; closes?: string | null; label?: string }): string {
-  const status = funder.status;
-  if (!status) return 'Not published';
-
-  if (status === 'closing_soon' && funder.closes) {
-    return `Closes on ${formatDay(funder.closes)}`;
-  }
-  if (status === 'open') {
-    return 'Open';
-  }
-  if (status === 'closed') {
-    return 'Closed';
-  }
-  if (status === 'not_published') {
-    return 'Not published';
-  }
-  if (status === 'closing_soon') {
-    return funder.label || 'Closing soon';
-  }
-  if (status === 'late_open') {
-    return funder.label || 'Late applications open';
-  }
-  if (status === 'opens_later' && funder.closes) {
-    return `Opens on ${formatDay(funder.closes)}`;
-  }
-  if (status === 'opens_later') {
-    return funder.label || 'Opens later';
-  }
-  return 'Not published';
+export function applicationStatusWords(funder: {
+  status?: string | null;
+  label?: string | null;
+  opens?: string | null;
+  closes?: string | null;
+}): string {
+  const { status, label, opens, closes } = funder;
+  if (status === 'closing_soon' && closes) return `Closes on ${formatDay(closes)}`;
+  if (status === 'opens_later' && opens) return `Opens on ${formatDay(opens)}`;
+  return label || 'Not published';
 }
 
 function useSignedIn(): boolean {

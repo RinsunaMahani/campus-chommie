@@ -279,11 +279,12 @@ test('FunderDetailScreen: one with almost nothing shows only its sections and no
   expect(screen.queryByRole('button', { name: 'Apply on their page' })).toBeNull();
 });
 
-test('FunderDetailScreen: an unknown status says "Not published"', async () => {
+test('FunderDetailScreen: an unknown status with no label says "Not published"', async () => {
   mockParams = { id: 'nsfas' };
   const unknownFunder: FunderDetail = {
     ...nsfasData,
     status: 'custom_status_unknown' as unknown as FunderDetail['status'],
+    label: '',
   };
   jest.spyOn(courseFinderApi, 'funder').mockResolvedValue(unknownFunder);
 
@@ -299,8 +300,14 @@ test('FunderDetailScreen: an unknown status says "Not published"', async () => {
   expect(applicationStatusWords({ status: null })).toBe('Not published');
   expect(applicationStatusWords({})).toBe('Not published');
   expect(applicationStatusWords({ status: 'unknown' })).toBe('Not published');
-  expect(applicationStatusWords({ status: 'open' })).toBe('Open');
-  expect(applicationStatusWords({ status: 'closed' })).toBe('Closed');
+  expect(applicationStatusWords({ status: 'open', label: 'Open' })).toBe('Open');
+  expect(applicationStatusWords({ status: 'closed', label: 'Closed' })).toBe('Closed');
+  // Statuses with no date of their own keep the server's words, never "Not published".
+  expect(applicationStatusWords({ status: 'automatic', label: 'No application needed' })).toBe('No application needed');
+  expect(applicationStatusWords({ status: 'via_university', label: 'Apply through the university' })).toBe('Apply through the university');
+  expect(applicationStatusWords({ status: 'late_ahead', label: 'Closed, late applications ahead' })).toBe('Closed, late applications ahead');
+  // "Opens on" is the opening date, never the closing one.
+  expect(applicationStatusWords({ status: 'opens_later', label: 'Not open yet', opens: '2026-11-02', closes: '2027-01-31' })).toBe('Opens on Mon 2 Nov 2026');
   expect(applicationStatusWords({ status: 'closing_soon', closes: '2026-10-31' })).toBe('Closes on Sat 31 Oct 2026');
 });
 
