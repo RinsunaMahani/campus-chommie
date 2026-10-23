@@ -14,13 +14,19 @@ repo folder but is kept out of git; the parts the screens need are quoted below.
 
 ## Where things stand
 
-`main` is fully current and healthy: all 83 pull requests through milestone 5 and polish waves have been reviewed and merged into `main` by Rinsuna. CI is green (1,434 backend tests and 253 app tests on `main`). The web app and backend are live on Render and Neon.
+`main` holds everything merged so far (PRs #1 to #94): every merge waited for green CI and Rinsuna's approval. The
+web app and the API are live on Render, with the database on Neon (DEPLOY.md). Test counts change with each merge:
+run the suites for today's numbers.
 
-Active work:
-- PR #84 (`rinsuna/ag-money-pots`): F4 Money pots (Family, Stokvel, Buffer, Big purchase) with engine deduction hierarchy, Alembic migration 0011, and mobile screens. 1,452 backend tests and 255 app tests passing.
-- Next upcoming milestone: M6 (WhatsApp bot), scheduled to start Friday 23 Oct 2026 at 08:30 SAST.
+Since the hackathon started (Fri 23 Oct 2026, 08:30 SAST):
+- **M6, the WhatsApp bot** (#93): link a number with a one-time code; a rep forwards an announcement and confirms
+  it; WEEK, HELP, STOP. Off until Meta's keys are in Render (DEPLOY.md, "The WhatsApp bot (M6)").
+- **Google sign-in** (#94): web app and APK, hidden until the Google Cloud client IDs are set (DEPLOY.md, "Google
+  sign-in").
+- **In review:** Money pots, weekly check-in and money health (#84, #88, #89), the Outdoors tab (#90), funder page
+  sections (#91), and these docs (#85, #87).
 
-### Milestones landed on `main` (PRs #1 – #83)
+### Milestones landed on `main` (PRs #1 – #94)
 
 | Milestone / Feature | Merged PRs | Summary |
 |---|---|---|
@@ -32,9 +38,10 @@ Active work:
 | **M5: Alerts & Campus Support** | #11, #14, #19, #22, #26, #40, #55, #60, #71, #77, #78 | Actionable alerts, Do this next, Support with Call/Email, OpenStreetMap campus maps & pins |
 | **F6: Funding & Colleges** | #17, #18, #20, #37, #39, #44, #51, #69 | NSFAS & 23 funders, saved funding reminders, DHET TVET & private colleges register |
 | **UI & Theme** | #31, #43, #46, #47, #54, #67, #70, #72 | Forest theme, Daylight paper system, Night student mode, typography scale, real campus photos |
-| **Security, Pen Test & Deploys** | #12, #13, #15, #41, #53, #59, #62 – #65, #68, #73 – #75, #81, #82 | POPIA export/delete, 105 pen-test attack fixes, MobSF hardening, free hosting on Render & Neon |
+| **Security, Pen Test & Deploys** | #12, #13, #15, #41, #53, #59, #62 – #65, #68, #73 – #75, #81, #82 | POPIA export/delete, our own pen test (105 attacks, 3 problems found and fixed), MobSF hardening, free hosting on Render & Neon |
+| **M6: WhatsApp bot & Google sign-in** | #93, #94 | Signed webhook, one-time link codes, rep confirms from WhatsApp; Continue with Google on web and APK |
 
-**Review:** Rinsuna reviews and merges every PR; agents open them but never merge. Every merge commit preserves complete history.
+**Review:** nothing merges without green CI and Rinsuna's approval; agents never merge on their own. Merge commits only (never squash or rebase), so the history stays complete.
 
 ## Decided so far
 
