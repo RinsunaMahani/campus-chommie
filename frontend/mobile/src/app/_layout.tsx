@@ -15,6 +15,8 @@ import { useEffect } from 'react';
 import { Platform } from 'react-native';
 
 import { SessionProvider, useSession } from '@/features/auth/session/SessionProvider';
+import { wakeServer } from '@/shared/api/client';
+import { WakingBanner } from '@/shared/components/WakingBanner';
 import { usePalette } from '@/shared/theme/palette';
 
 export { ErrorBoundary } from 'expo-router';
@@ -53,6 +55,11 @@ function RootNavigator() {
 
   const ready = loaded && (fontsLoaded || !!fontError);
 
+  // Start waking the server while the first screen loads (free hosting sleeps and restarts).
+  useEffect(() => {
+    wakeServer();
+  }, []);
+
   useEffect(() => {
     if (ready) SplashScreen.hideAsync();
   }, [ready]);
@@ -73,6 +80,7 @@ function RootNavigator() {
         <Stack.Screen name="(legal)" />
         <Stack.Screen name="course-finder" />
       </Stack>
+      <WakingBanner />
     </>
   );
 }

@@ -7,7 +7,9 @@
  *    if several requests fail together) and retries.
  *  - If the session was ended elsewhere (logout, password change, new
  *    phone, stolen token detected), tells the app to sign out.
- *  - Times out instead of hanging on a bad network.
+ *  - Times out instead of hanging on a bad network. The free server can take up to a minute to wake after a
+ *    restart, so a slow request tells the app (it shows "Waking up the server"), and a read (GET) that times out
+ *    or finds no connection is tried once more before giving up. Writes are never repeated here.
  *  - Extra headers per call (e.g. Idempotency-Key), kept on the retry.
  *  - A FormData body (a file upload) goes as multipart: fetch sets its content type and boundary.
  */
@@ -30,7 +32,32 @@ export class ApiError extends Error {
 
 type Envelope<T> = { success: boolean; message?: string; data?: T; code?: string; errors?: unknown };
 
-const TIMEOUT_MS = 15000;
+const TIMEOUT_MS = 30000;
+/** After this long a request counts as slow: the app says the server is waking up. */
+const SLOW_MS = 4000;
+
+/** "Slow" listeners: told when the first request turns slow and when the last slow one ends. */
+const slowListeners = new Set<(slow: boolean) => void>();
+let slowCount = 0;
+
+export function onSlowRequests(listener: (slow: boolean) => void): () => void {
+  slowListeners.add(listener);
+  return () => slowListeners.delete(listener);
+}
+
+function slow(delta: 1 | -1) {
+  const was = slowCount > 0;
+  slowCount = Math.max(0, slowCount + delta);
+  if (was !== slowCount > 0) slowListeners.forEach((l) => l(slowCount > 0));
+}
+
+/** Opening the app: a quick ping so the server starts waking while the student reads the first screen. */
+export function wakeServer(): void {
+  fetch(`${API_BASE_URL}/ping`, { method: 'GET' }).catch(() => undefined);
+}
+
+export const TIMED_OUT = 'Campus Chommie is taking long to answer. Try again in a minute.';
+export const NO_CONNECTION = "Can't reach Campus Chommie. Check your connection and try again.";
 
 let onSessionEnded: (() => void) | null = null;
 /** The session provider registers how to sign out when the server says the session is over. */
@@ -43,6 +70,11 @@ type Headers = Record<string, string>;
 async function raw<T>(method: string, path: string, body?: unknown, token?: string, extra: Headers = {}): Promise<{ status: number; json: Envelope<T> }> {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
+  let isSlow = false;
+  const slowTimer = setTimeout(() => {
+    isSlow = true;
+    slow(1);
+  }, SLOW_MS);
   const form = typeof FormData !== 'undefined' && body instanceof FormData;
   try {
     const res = await fetch(`${API_BASE_URL}${path}`, {
@@ -65,13 +97,25 @@ async function raw<T>(method: string, path: string, body?: unknown, token?: stri
     }
     return { status: res.status, json };
   } catch {
-    throw new ApiError(0, 'NETWORK', "Can't reach Campus Chommie. Check your connection and try again.");
+    throw new ApiError(0, 'NETWORK', controller.signal.aborted ? TIMED_OUT : NO_CONNECTION);
   } finally {
     clearTimeout(timer);
+    clearTimeout(slowTimer);
+    if (isSlow) slow(-1);
   }
 }
 
 let refreshing: Promise<boolean> | null = null;
+
+/** A read that times out or finds no connection gets one more try (the server may have been waking up). */
+async function readOnceMore<T>(method: string, path: string, body?: unknown, token?: string, extra: Headers = {}) {
+  try {
+    return await raw<T>(method, path, body, token, extra);
+  } catch (e) {
+    if (e instanceof ApiError && e.status === 0) return raw<T>(method, path, body, token, extra);
+    throw e;
+  }
+}
 
 /** Single-flight refresh: concurrent 401s share one refresh call. */
 async function refreshTokens(): Promise<boolean> {
@@ -118,7 +162,7 @@ export async function api<T>(
   opts: { auth?: boolean; headers?: Headers } = {},
 ): Promise<T> {
   const token = opts.auth ? (await getTokens())?.accessToken : undefined;
-  let { status, json } = await raw<T>(method, path, body, token, opts.headers);
+  let { status, json } = await (method === 'GET' ? readOnceMore : raw)<T>(method, path, body, token, opts.headers);
 
   if (opts.auth && status === 401 && json.code === 'TOKEN_EXPIRED') {
     if (await refreshTokens()) {
