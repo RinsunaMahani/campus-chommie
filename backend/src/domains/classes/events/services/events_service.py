@@ -41,6 +41,7 @@ from ..constants import (
 )
 from ..models import Announcement, ClassEvent, EventCandidate, EventChange, EventFlag
 from ..repositories import events_repository as repo
+from ..schemas.events_schemas import AnnouncementSchema, ConfirmSchema, load
 from . import event_alerts
 
 WAITING_FOR_REP = "A class rep checks this before it goes live: until then it's unverified."
@@ -229,6 +230,22 @@ def _tell_the_class(user, m: classes.Membership, event: ClassEvent, change: str 
         others, template=template, class_id=m.class_id, event_id=event.id, version=event.version,
         module=event.module, kind=event.kind, on=event.on_date, at=event.at_time, was=was,
     )
+
+
+def announce_text(user, class_id: uuid.UUID, text: str) -> dict:
+    """An announcement forwarded to the WhatsApp bot: checked like the app's, sent today."""
+    return announce(user, class_id, load(AnnouncementSchema(), {"text": text}))
+
+
+def confirm_as_read(user, candidate_id: uuid.UUID) -> dict:
+    """The rep's Confirm button in WhatsApp: the event exactly as the confirm form would start, checked the same
+    way. Anything missing (a date the message didn't give) is a ValidationError: the rep finishes it in the app."""
+    candidate, m = _find_candidate(user, candidate_id)
+    if not m.is_rep:
+        raise ForbiddenError("Only a class rep can confirm this. Until a rep does, it stays unverified.", code="REP_ONLY")
+    target = candidate.event if candidate.event is not None and not candidate.event.cancelled else None
+    proposed = {k: v for k, v in _proposed(candidate, target).items() if v is not None}
+    return confirm(user, candidate_id, load(ConfirmSchema(), proposed))
 
 
 def discard(user, candidate_id: uuid.UUID) -> dict:
