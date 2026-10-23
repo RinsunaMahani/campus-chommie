@@ -203,6 +203,10 @@ export type FunderDetail = Confirmation & FundingCard & {
   obligations: Group;
   apply: FunderApply;
   sources: FunderSource[];
+  at_registration?: { text: string; source_url: string | null } | Group | string | null;
+  tips?: Group;
+  warnings?: Group;
+  income_limit?: string | { text?: string; items?: string[]; source_url?: string | null } | null;
 };
 
 export type FunderAnswer = Confirmation & {
