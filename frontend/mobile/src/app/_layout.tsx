@@ -10,7 +10,9 @@ import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
+import * as WebBrowser from 'expo-web-browser';
 import { useEffect } from 'react';
+import { Platform } from 'react-native';
 
 import { SessionProvider, useSession } from '@/features/auth/session/SessionProvider';
 import { usePalette } from '@/shared/theme/palette';
@@ -18,6 +20,10 @@ import { usePalette } from '@/shared/theme/palette';
 export { ErrorBoundary } from 'expo-router';
 
 SplashScreen.preventAutoHideAsync();
+
+// Web: Google's sign-in window comes back to /oauthredirect; this hands its answer to the page that opened it and
+// closes the window (a no-op on any other page).
+if (Platform.OS === 'web') WebBrowser.maybeCompleteAuthSession();
 
 export default function RootLayout() {
   return (

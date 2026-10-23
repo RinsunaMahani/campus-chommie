@@ -3,10 +3,11 @@ import { useRef, useState } from 'react';
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 
 import { GOOGLE_READY } from '@/constants/config';
+import { GoogleSignIn } from '@/features/auth/google/GoogleSignIn';
 import { AgeCheckbox } from '@/shared/components/AgeCheckbox';
 import { Button } from '@/shared/components/Button';
 import { ConsentCheckbox } from '@/shared/components/ConsentCheckbox';
-import { GoogleButton, OrDivider } from '@/shared/components/Parts';
+import { OrDivider } from '@/shared/components/Parts';
 import { Screen } from '@/shared/components/Screen';
 import { Title } from '@/shared/components/Text';
 import { TextField } from '@/shared/components/TextField';
@@ -108,15 +109,13 @@ export default function CreateAccount() {
       {/* Only once Google sign-in is set up: never a "coming soon" button. */}
       {GOOGLE_READY ? (
         <>
-          <GoogleButton
-            onPress={() => {
+          <GoogleSignIn
+            consented
+            ready={() => {
               // Google sign-up needs the same agreement and age as email sign-up.
-              if (!agreed || !adult) {
-                setConsentError(!agreed);
-                setAdultError(!adult);
-                return;
-              }
-              router.push({ pathname: '/google', params: { consent: '1' } });
+              setConsentError(!agreed);
+              setAdultError(!adult);
+              return agreed && adult;
             }}
           />
           <OrDivider />

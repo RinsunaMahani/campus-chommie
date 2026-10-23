@@ -6,14 +6,15 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { GOOGLE_READY, USE_MOCK_AUTH } from '@/constants/config';
 import { authApi } from '@/features/auth/api/authApi';
+import { keepGoogleToken } from '@/features/auth/google/pendingGoogle';
 import { useSession } from '@/features/auth/session/SessionProvider';
 import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
 import { fonts, radius } from '@/shared/theme/tokens';
 
 /**
- * MOCK of Android's own Google account picker. The real one comes from
- * Google Sign-In once the backend can verify Google ID tokens; Campus Chommie
- * gets name, email and photo, never the password.
+ * MOCK of Android's own Google account picker, for the mock backend only. The real flow is
+ * features/auth/google/GoogleSignIn (Google's own picker); Campus Chommie gets name, email and photo, never the
+ * password.
  */
 const accounts = [
   { name: 'Lindiwe Mokoena', email: 'lindiwe.student@gmail.com', tint: '#1C2B1E' },
@@ -51,8 +52,10 @@ export default function GooglePicker() {
 
   async function pick(email: string) {
     setPicked(email);
-    const result = await authApi.continueWithGoogle(email);
-    if (result === 'link') {
+    // Mock only: the picked email stands in for Google's token.
+    const result = await authApi.continueWithGoogle(email, true);
+    if (result.kind === 'link') {
+      keepGoogleToken(email);
       router.replace({ pathname: '/link-google', params: { email } });
     } else {
       startGoogleSignUp(email, consent === '1'); // the signed-in screens open on their own
