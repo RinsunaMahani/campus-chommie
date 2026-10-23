@@ -201,6 +201,7 @@ export const en = {
 
   // Shared
   'common.error': 'Something went wrong. Try again.',
+  'common.waking': 'Waking up the server, one moment…',
   'common.retry': 'Try again',
   'common.loading': 'Loading…',
 
