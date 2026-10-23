@@ -79,6 +79,9 @@ export type CheapThing = {
   source_url: string | null;
   read_on: string | null;
   last_verified: string | null;
+  free?: boolean;
+  photo_url?: string | null;
+  photo?: string | null;
 };
 
 /** "Can I afford this?": nothing is stored. */
