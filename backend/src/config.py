@@ -67,6 +67,9 @@ class BaseConfig:
     # A test date for previews only (src/shared/clock). Only DevelopmentConfig sets it.
     PREVIEW_TODAY: date | None = None
     SQLALCHEMY_ENGINE_OPTIONS = {"pool_pre_ping": True}
+    # The longest any one SQL statement may run. Our slowest takes milliseconds; a stuck one would otherwise hold
+    # a database connection, and a server thread with it, for ever.
+    DB_STATEMENT_TIMEOUT_MS = 30_000
     # Requests are small JSON. Anything bigger is refused before it is
     # read (413).
     MAX_CONTENT_LENGTH = 1 * 1024 * 1024
