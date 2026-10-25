@@ -164,10 +164,12 @@ def _register_exporters() -> None:
 
 def _register_daily_checks() -> None:
     """Checks that may publish alerts on a student's first poll of the day (shared.notifications)."""
+    from src.domains.student.alerts.services import review_service
     from src.domains.student.saved_funding.services import saved_funding_service
     from src.shared.notifications import notifications as shared_notifications
 
     shared_notifications.register_daily(saved_funding_service.daily_reminders)
+    shared_notifications.register_daily(review_service.daily_ready)
 
 
 def _register_blueprints(app: Flask) -> None:

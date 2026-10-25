@@ -846,6 +846,28 @@ export const en = {
   'help.label': 'Get help now: campus support and crisis lines',
   'week.now': 'Now',
   'week.noClasses': "Your classes aren't in yet. Tap here to add them in Timetable, and they show in your calendar.",
+
+  // Your week in review
+  'review.title': 'Your week in review',
+  'review.entrySub': "What you got done, what's coming, your marks and your money",
+  'review.homeThis': 'Your week in review',
+  'review.homeLast': 'Last week in review',
+  'review.thisWeek': 'This week',
+  'review.lastWeek': 'Last week',
+  'review.weeksAgo': '{n} wk ago',
+  'review.span': '{start} to {end}',
+  'review.spanSoFar': '{start} to {end}, so far',
+  'review.done': 'Done',
+  'review.doneEmpty': 'Nothing from your classes, exams or money this week yet.',
+  'review.doneEmptyLast': 'Nothing from your classes, exams or money that week.',
+  'review.coming': 'Coming up',
+  'review.comingEmpty': 'Nothing in the next 7 days from your classes, exams, saved funding or goals.',
+  'review.marks': 'Your marks',
+  'review.spending': 'Your spending',
+  'review.nothingLogged': 'nothing logged',
+  'review.noLog': 'no log',
+  'review.openSupport': 'Open Support',
+  'review.private': 'Only you see your week in review. Nothing new is saved to make it.',
 } as const;
 
 export type MessageKey = keyof typeof en;
