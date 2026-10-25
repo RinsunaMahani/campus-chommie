@@ -42,6 +42,9 @@ from src.domains.platform.notifications.schedulers.notifications_scheduler impor
 from src.domains.student.money.schedulers.money_scheduler import (
     JOB_SPECS as MONEY_JOB_SPECS,
 )
+from src.domains.security.audit.schedulers.audit_scheduler import (
+    JOB_SPECS as AUDIT_JOB_SPECS,
+)
 from src.master_scheduler import runner
 from src.master_scheduler.interfaces import JobSpec, SchedulerEngine
 
@@ -55,6 +58,7 @@ ALL_JOB_SPECS: list[JobSpec] = [
     *CLASSES_JOB_SPECS,
     *EVENTS_JOB_SPECS,
     *DEMO_JOB_SPECS,
+    *AUDIT_JOB_SPECS,
     # Each new domain adds its own JOB_SPECS here the same way, from
     # domains/<area>/<feature>/schedulers/<feature>_scheduler.py
 ]

@@ -2,7 +2,8 @@
 # PostgreSQL (engine and architecture tests included, engine coverage at
 # least 80%), the data packs, the migrations against the models, the app's
 # type check, tests, lint and web build, a dependency audit, a secrets scan
-# and the repository's own rules. The same checks we run by hand before a merge.
+# and the repository's own rules, and a scan of the container image for known
+# flaws. The same checks we run by hand before a merge.
 name: CI
 
 on:
@@ -16,6 +17,9 @@ concurrency:
 
 permissions:
   contents: read
+
+# Actions are pinned to a commit, not a tag: a tag can be moved to other code, as happened to 76 of trivy-action's
+# 77 tags in March 2026 (CVE-2026-33634). The comment names the release; update both together (security sweep 3).
 
 jobs:
   backend:
@@ -48,8 +52,8 @@ jobs:
       run:
         working-directory: backend
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: "3.12"
           cache: pip
@@ -81,9 +85,16 @@ jobs:
           --health-cmd "pg_isready -U campus_chommie"
           --health-interval 5s --health-timeout 5s --health-retries 20
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
       - name: Build the image
         run: docker build -t campus-chommie-api backend
+      # Known flaws in the image (Debian, the Python runtime and our packages): fail on a high or critical one that has
+      # a fix we haven't taken. Trivy's official image, pinned by digest to 0.75.0, never trivy-action (see above).
+      - name: Scan the image (Trivy)
+        run: >-
+          docker run --rm -v /var/run/docker.sock:/var/run/docker.sock
+          aquasec/trivy@sha256:af6acf9a6b85dfe389a1941505c0ce9efef52a4719635e1a962f022a3d855daa
+          image --quiet --scanners vuln --severity HIGH,CRITICAL --ignore-unfixed --exit-code 1 campus-chommie-api
       - name: Start it as a host would, against an empty database
         # Made-up values for CI only; no real secret is used or needed.
         run: >-
@@ -114,8 +125,8 @@ jobs:
       run:
         working-directory: frontend/mobile
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: 22
           cache: npm
@@ -134,8 +145,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: "3.12"
       # PYSEC-2026-4146 (PyJWT), accepted on 9 Oct, is no longer reported (21 Oct 2026), so nothing is ignored.
@@ -143,7 +154,7 @@ jobs:
       # Code scan: fail on any medium or high finding. The two reviewed false positives carry "# nosec <rule>", with the reason on the line above
       # where they are (docs/SECURITY.md, security sweep 1).
       - run: pip install bandit==1.9.4 && bandit -r backend/src backend/campus_engine backend/scripts -ll -q
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: 22
       # What the app depends on: fail on any high or critical advisory except
@@ -158,7 +169,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           fetch-depth: 0
       - run: |
@@ -170,7 +181,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
       # Only REUSE.md may name the project this one reuses (brief section 4).
       # The name is split in two so this file doesn't match itself.
       - run: |
