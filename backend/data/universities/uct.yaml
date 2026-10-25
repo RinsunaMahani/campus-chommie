@@ -642,6 +642,20 @@ programmes:
         - *uct_sci_nbt
 
 sources:
+  - id: s-uct-terms-2027
+    url: https://uct.ac.za/calendar/terms
+    publisher: University of Cape Town
+    title: Senate and Council approved 2027 terms, updated 8 May 2026
+    retrieved: '2026-10-25'
+    verified_by: agent, official university source
+    verification_basis: official_university
+  - id: s-uct-contacts-2026
+    url: https://uct.ac.za/general-contacts
+    publisher: University of Cape Town
+    title: 'General contacts: student services'
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official university source
   - id: s-uct-apply
     url: "https://uct.ac.za/students/applications-apply-undergraduate-qualifications/application-procedure"
     publisher: "University of Cape Town"
@@ -649,6 +663,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-uct-directions
     url: "https://uct.ac.za/sites/default/files/media/documents/ug-directions-for-applicants-2027.pdf"
     publisher: "University of Cape Town"
@@ -656,6 +671,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-uct-prospectus-2027
     url: "https://uct.ac.za/sites/default/files/media/documents/2027-uct-undergraduate-prospectus-1-april-2026.pdf"
     publisher: "University of Cape Town"
@@ -663,3 +679,84 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
+
+support_services:
+- kind: financial_aid
+  name: Undergraduate Financial Aid
+  contact: 021 650 3545; financialaid@uct.ac.za
+  source: s-uct-contacts-2026
+- kind: disability
+  name: Disability Service
+  contact: 021 650 2427; dsa-disabilityservice@uct.ac.za
+  source: s-uct-contacts-2026
+- kind: careers
+  name: UCT Careers Service
+  contact: 021 650 2497; careers.service@uct.ac.za
+  source: s-uct-contacts-2026
+
+calendar:
+- period: term
+  name: Quarter 1
+  start: '2027-02-08'
+  end: '2027-03-19'
+  source: s-uct-terms-2027
+  campuses:
+  - main
+  note: General university terms, not individual lecture or examination timetables.
+    Health Sciences has separate dates. Confirm changes with the Registrar.
+  step: first_lecture
+- period: recess
+  name: First vacation
+  start: '2027-03-20'
+  end: '2027-03-29'
+  source: s-uct-terms-2027
+  campuses:
+  - main
+  note: General university terms, not individual lecture or examination timetables.
+    Health Sciences has separate dates. Confirm changes with the Registrar.
+- period: term
+  name: Quarter 2
+  start: '2027-03-30'
+  end: '2027-06-07'
+  source: s-uct-terms-2027
+  campuses:
+  - main
+  note: General university terms, not individual lecture or examination timetables.
+    Health Sciences has separate dates. Confirm changes with the Registrar.
+- period: recess
+  name: Mid-year vacation
+  start: '2027-06-08'
+  end: '2027-07-11'
+  source: s-uct-terms-2027
+  campuses:
+  - main
+  note: General university terms, not individual lecture or examination timetables.
+    Health Sciences has separate dates. Confirm changes with the Registrar.
+- period: term
+  name: Quarter 3
+  start: '2027-07-12'
+  end: '2027-08-20'
+  source: s-uct-terms-2027
+  campuses:
+  - main
+  note: General university terms, not individual lecture or examination timetables.
+    Health Sciences has separate dates. Confirm changes with the Registrar.
+- period: recess
+  name: Mid-term vacation
+  start: '2027-08-21'
+  end: '2027-08-29'
+  source: s-uct-terms-2027
+  campuses:
+  - main
+  note: General university terms, not individual lecture or examination timetables.
+    Health Sciences has separate dates. Confirm changes with the Registrar.
+- period: term
+  name: Quarter 4
+  start: '2027-08-30'
+  end: '2027-12-17'
+  source: s-uct-terms-2027
+  campuses:
+  - main
+  note: General university terms, not individual lecture or examination timetables.
+    Health Sciences has separate dates. Confirm changes with the Registrar.

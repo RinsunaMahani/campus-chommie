@@ -9,7 +9,7 @@
 export type Tier = 'reach' | 'meets_minimum' | 'competitive' | 'subjects_met' | 'not_yet' | 'unverified';
 
 export type Confirmation = {
-  /** False until a person on the team has checked the pack. */
+  /** Requires a release-ready pack and accepted source evidence. */
   confirmed: boolean;
   /** When not confirmed: where the facts come from and when they were read ("From UP's own documents, last read on ..."). */
   notice: string | null;
@@ -336,7 +336,7 @@ export type Plan = {
 };
 
 /** One row the learner sends. Subject keys are in subjects.ts. */
-export type Mark = { subject: string; percent: number };
+export type Mark = { subject: string; percent: number; language_level?: 'home' | 'first_additional' };
 
 export type FirstStep = {
   key: string;

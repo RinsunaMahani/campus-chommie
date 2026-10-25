@@ -996,6 +996,13 @@ programmes:
         - "NSC 26 with a bachelor's endorsement and level 3 (40-49%) in English, Mathematics, Physical Sciences. Duration is 4 years."
 
 sources:
+  - id: s-univen-student-support-2026
+    url: https://www.univen.ac.za/about/directorates-centres-and-institutes/centre-for-higher-education-teaching-and-learning/student-counseling-and-career-development-unit/
+    publisher: University of Venda
+    title: Student Counselling and Career Development Unit
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official university source
   - id: s-univen-where
     url: "https://www.univen.ac.za/about/"
     publisher: "University of Venda"
@@ -1003,6 +1010,7 @@ sources:
     retrieved: 2026-10-20
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-univen-prospectus
     url: "https://www.univen.ac.za/wp-content/uploads/2026/09/2027-Univen-Undergraduate-Prospectus.pdf"
     publisher: "University of Venda"
@@ -1010,6 +1018,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-univen-apply
     url: "https://www.univen.ac.za/students/student-support-services/how-to-apply/"
     publisher: "University of Venda"
@@ -1017,3 +1026,21 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
+
+support_services:
+- kind: counselling
+  name: Student Counselling and Career Development
+  contact: 015 962 8746 / 015 962 8466
+  source: s-univen-student-support-2026
+- kind: careers
+  name: Career Development
+  contact: 015 962 8746 / 015 962 8466
+  source: s-univen-student-support-2026
+  note: Career guidance, CV preparation, work readiness and job-search support.
+- kind: food_support
+  name: Thohoyanzie Programme
+  contact: 015 962 8746 / 015 962 8466
+  source: s-univen-student-support-2026
+  note: Contact the unit about donor-supported non-perishable food and personal-hygiene
+    support for unfunded students.

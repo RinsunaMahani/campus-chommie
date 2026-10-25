@@ -298,6 +298,20 @@ programmes:
         - "Offers provisional acceptance from 45 points, and considers 40 to 44 points at the Dean's discretion. Duration is 3 years."
 
 sources:
+  - id: s-ru-calendar-2027
+    url: https://www.ru.ac.za/media/rhodesuniversity/content/registrar/rhodesuniversitytermdates2023/termdates/Term_Dates_for_2027.pdf
+    publisher: Rhodes University
+    title: TERM DATES 2027 - RHODES UNIVERSITY
+    retrieved: '2026-10-25'
+    verified_by: agent, official university source
+    verification_basis: official_university
+  - id: s-ru-counselling-2026
+    url: https://www.ru.ac.za/orientationgateway/thingstoknow/counsellingcentre/
+    publisher: Rhodes University
+    title: 'Counselling Centre: university orientation guide'
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official university source
   - id: s-ru-where
     url: "https://www.ru.ac.za/introducingrhodes/"
     publisher: "Rhodes University"
@@ -305,6 +319,7 @@ sources:
     retrieved: 2026-10-20
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ru-prospectus
     url: "https://www.ru.ac.za/media/rhodesuniversity/content/registrar/documents/information/studentrecruitment/RU_READY_Undergraduate_Prospectus_2026_DIGITAL_A5_Landscape_24pp_18Mar2026.pdf"
     publisher: "Rhodes University"
@@ -312,6 +327,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ru-fees
     url: "https://www.ru.ac.za/admissiongateway/application/paymentoffees/"
     publisher: "Rhodes University"
@@ -319,3 +335,85 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
+
+support_services:
+- kind: counselling
+  name: Student Counselling Centre
+  contact: 046 603 7070; counsellingcentre@ru.ac.za
+  source: s-ru-counselling-2026
+  hours: Monday–Friday 08:00–16:30
+  note: Free service for Rhodes students. Book an appointment; top floor of the Bantu
+    Stephen Biko Building.
+
+calendar:
+- period: orientation
+  name: Academic Orientation Week
+  start: '2027-02-01'
+  source: s-ru-calendar-2027
+  end: '2027-02-04'
+  note: Published 2027 academic diary, subject to change. Terms include assessment
+    periods; lectures finish earlier in terms 2 and 4.
+- period: term
+  name: First Term
+  start: '2027-02-08'
+  source: s-ru-calendar-2027
+  end: '2027-03-25'
+  note: Published 2027 academic diary, subject to change. Terms include assessment
+    periods; lectures finish earlier in terms 2 and 4.
+- period: recess
+  name: First Vacation
+  start: '2027-03-26'
+  source: s-ru-calendar-2027
+  end: '2027-04-04'
+  note: Published 2027 academic diary, subject to change. Terms include assessment
+    periods; lectures finish earlier in terms 2 and 4.
+- period: term
+  name: Second Term
+  start: '2027-04-05'
+  source: s-ru-calendar-2027
+  end: '2027-06-11'
+  note: Published 2027 academic diary, subject to change. Terms include assessment
+    periods; lectures finish earlier in terms 2 and 4.
+- period: exam
+  name: First Semester Examinations
+  start: '2027-05-21'
+  source: s-ru-calendar-2027
+  end: '2027-06-11'
+  note: Published 2027 academic diary, subject to change. Terms include assessment
+    periods; lectures finish earlier in terms 2 and 4.
+- period: recess
+  name: Mid-Year Vacation
+  start: '2027-06-12'
+  source: s-ru-calendar-2027
+  end: '2027-07-04'
+  note: Published 2027 academic diary, subject to change. Terms include assessment
+    periods; lectures finish earlier in terms 2 and 4.
+- period: term
+  name: Third Term
+  start: '2027-07-05'
+  source: s-ru-calendar-2027
+  end: '2027-08-13'
+  note: Published 2027 academic diary, subject to change. Terms include assessment
+    periods; lectures finish earlier in terms 2 and 4.
+- period: recess
+  name: Third Vacation
+  start: '2027-08-14'
+  source: s-ru-calendar-2027
+  end: '2027-08-22'
+  note: Published 2027 academic diary, subject to change. Terms include assessment
+    periods; lectures finish earlier in terms 2 and 4.
+- period: term
+  name: Fourth Term
+  start: '2027-08-23'
+  source: s-ru-calendar-2027
+  end: '2027-11-05'
+  note: Published 2027 academic diary, subject to change. Terms include assessment
+    periods; lectures finish earlier in terms 2 and 4.
+- period: exam
+  name: Second Semester Examinations
+  start: '2027-10-13'
+  source: s-ru-calendar-2027
+  end: '2027-11-05'
+  note: Published 2027 academic diary, subject to change. Terms include assessment
+    periods; lectures finish earlier in terms 2 and 4.

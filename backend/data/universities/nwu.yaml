@@ -1124,6 +1124,20 @@ programmes:
         - "Majors across Psychology, History, Geography, Politics, Philosophy, Sociology, Languages. Duration is 3 years."
 
 sources:
+  - id: s-nwu-orientation-2027
+    url: https://studies.nwu.ac.za/studies/first-year-students-2027
+    publisher: North-West University
+    title: 2027 first-year welcome and orientation
+    retrieved: '2026-10-25'
+    verified_by: agent, official university source
+    verification_basis: official_university
+  - id: s-nwu-counselling-2026
+    url: https://services.nwu.ac.za/student-counselling-and-development/contact-us
+    publisher: North-West University
+    title: Student Counselling and Development contacts
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official university source
   - id: s-nwu-campuses
     url: "https://studies.nwu.ac.za/studies/our-campuses"
     publisher: "North-West University"
@@ -1131,6 +1145,7 @@ sources:
     retrieved: 2026-10-22
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-nwu-prospectus
     url: "https://studies.nwu.ac.za/sites/studies.nwu.ac.za/files/files/undergrad/2025-Grade-12-Prospectus.pdf"
     publisher: "North-West University"
@@ -1138,6 +1153,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-nwu-apply
     url: "https://studies.nwu.ac.za/studies/apply"
     publisher: "North-West University"
@@ -1145,3 +1161,49 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
+
+support_services:
+- kind: counselling
+  name: Student Counselling and Development
+  contact: 018 389 2592; MC-SCD@nwu.ac.za
+  source: s-nwu-counselling-2026
+  campuses:
+  - mahikeng
+  hours: Monday–Friday 08:00–16:30
+- kind: counselling
+  name: Student Counselling and Development
+  contact: 018 299 2893; SCDPotch@nwu.ac.za
+  source: s-nwu-counselling-2026
+  campuses:
+  - potchefstroom
+  hours: Monday–Friday 08:00–16:30
+- kind: counselling
+  name: Student Counselling and Development
+  contact: 016 910 3195; scdvc@nwu.ac.za
+  source: s-nwu-counselling-2026
+  campuses:
+  - vanderbijlpark
+  hours: Monday–Friday 08:00–16:30
+
+calendar:
+- period: orientation
+  name: First-year orientation
+  start: '2027-01-30'
+  end: '2027-02-06'
+  who: first_years
+  step: orientation
+  source: s-nwu-orientation-2027
+  note: The dated table starts orientation on 30 January; residence move-in starts
+    28 January. Check your campus programme.
+- period: orientation
+  name: Faculty and school welcome
+  start: '2027-02-05'
+  who: first_years
+  source: s-nwu-orientation-2027
+- period: term
+  name: Classes commence
+  start: '2027-02-08'
+  step: first_lecture
+  source: s-nwu-orientation-2027
+  note: Start date only; consult the academic framework for later terms and examinations.

@@ -9,6 +9,8 @@
 # (prospectus.cput.ac.za, one course page per qualification code, noted beside each programme), with the
 # Health and Wellness Sciences APS tables and department pages where the course page is blank;
 # docs/research/cput.md says what was read, what was left out and what to check first.
+# On 24 Oct 2026 the supplied 2027 PDF filled 40 missing requirements; see
+# docs/research/2027-local-prospectuses.md for page references and remaining ambiguities.
 
 university: cput
 name: Cape Peninsula University of Technology
@@ -22,11 +24,11 @@ release: false
 max_choices: null
 
 points_rules: null
-points_note: "CPUT counts its APS differently from faculty to faculty, so we can't check most of its programmes yet; its health programmes show their own points."
+points_note: "CPUT uses different APS methods. Programmes with a sourced method show calculated points; others check subjects and ask you to confirm APS with CPUT."
 # From CPUT's "Calculating the APS score: Method 2" table on its engineering course pages. Agent draft.
 points_how:
-  source: s-cput-aps-method-2
-  text: "CPUT's faculties count points differently. Engineering uses its Method 2: English, Mathematics twice, Physical Sciences twice and your next best subject. Health and Wellness Sciences programmes show their own points; for the others, ask the faculty."
+  source: s-cput-prospectus-2027
+  text: "CPUT's faculties count points differently. For engineering programmes that use Method 2, add English, Mathematics twice, Physical Sciences twice and your next best subject's percentages, then divide by 10. Check the programme's own method; Construction uses NSC levels."
 
 applications:
   source: s-cput-apply
@@ -554,157 +556,1268 @@ programmes:
     name: "Diploma in Business and Information Administration"
     faculty: "Faculty of Business and Management Sciences"
     fields: [management]
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 26
+      subject_minimums:
+        english: 4
+      extras:
+      - Part-time applicants must supply proof of full-time employment and meet the programme-specific
+        experience requirements; see prospectus p.9.
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 2
+          min_points: 26
+        - subjects:
+            mathematical_literacy: 4
+          min_points: 28
+      - one_of:
+        - subjects:
+            economics: 1
+        - subjects:
+            business_studies: 1
+        - subjects:
+            accounting: 1
+        - subjects:
+            computer_applications_technology: 1
+        - subjects:
+            information_technology: 1
+    points_rules:
+      source: s-cput-prospectus-2027
+      subjects_counted: 6
+      life_orientation: exclude
+      scale:
+      - min_percent: 80
+        level: 7
+      - min_percent: 70
+        level: 6
+      - min_percent: 60
+        level: 5
+      - min_percent: 50
+        level: 4
+      - min_percent: 40
+        level: 3
+      - min_percent: 30
+        level: 2
+      - min_percent: 0
+        level: 1
+      percent_points:
+        per_percent: 0.1
+        from_percent: 0
+      note: 'CPUT Method 1: total percentages for the best six subjects including required
+        subjects, excluding Life Orientation, divided by 10. For more than six non-LO
+        subjects, confirm that required subjects are included.'
 
   - id: dip_business_information_administration_ecp   # D3BSIX
     name: "Diploma in Business and Information Administration (Extended Curriculum Programme)"
     faculty: "Faculty of Business and Management Sciences"
     fields: [management]
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 24
+      subject_minimums:
+        english: 4
+      extras: []
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 2
+          min_points: 24
+        - subjects:
+            mathematical_literacy: 4
+          min_points: 26
+      - one_of:
+        - subjects:
+            economics: 1
+        - subjects:
+            business_studies: 1
+        - subjects:
+            accounting: 1
+        - subjects:
+            computer_applications_technology: 1
+        - subjects:
+            information_technology: 1
+    points_rules:
+      source: s-cput-prospectus-2027
+      subjects_counted: 6
+      life_orientation: exclude
+      scale:
+      - min_percent: 80
+        level: 7
+      - min_percent: 70
+        level: 6
+      - min_percent: 60
+        level: 5
+      - min_percent: 50
+        level: 4
+      - min_percent: 40
+        level: 3
+      - min_percent: 30
+        level: 2
+      - min_percent: 0
+        level: 1
+      percent_points:
+        per_percent: 0.1
+        from_percent: 0
+      note: 'CPUT Method 1: total percentages for the best six subjects including required
+        subjects, excluding Life Orientation, divided by 10. For more than six non-LO
+        subjects, confirm that required subjects are included.'
 
   - id: dip_hospitality_hotel_management   # D3HSPH
     name: "Diploma in Hospitality and Hotel Management"
     faculty: "Faculty of Business and Management Sciences"
     fields: [tourism_and_hospitality]
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 26
+      subject_minimums:
+        english: 4
+      extras:
+      - Work experience is recommended. An informative discussion about the hospitality
+        sector is required.
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 2
+          min_points: 26
+        - subjects:
+            mathematical_literacy: 4
+          min_points: 28
+      - one_of:
+        - subjects:
+            accounting: 1
+        - subjects:
+            consumer_studies: 1
+        - subjects:
+            business_studies: 1
+        - subjects:
+            hospitality_studies: 1
+        - subjects:
+            life_sciences: 1
+        - subjects:
+            tourism: 1
+    points_rules:
+      source: s-cput-prospectus-2027
+      subjects_counted: 6
+      life_orientation: exclude
+      scale:
+      - min_percent: 80
+        level: 7
+      - min_percent: 70
+        level: 6
+      - min_percent: 60
+        level: 5
+      - min_percent: 50
+        level: 4
+      - min_percent: 40
+        level: 3
+      - min_percent: 30
+        level: 2
+      - min_percent: 0
+        level: 1
+      percent_points:
+        per_percent: 0.1
+        from_percent: 0
+      note: 'CPUT Method 1: total percentages for the best six subjects including required
+        subjects, excluding Life Orientation, divided by 10. For more than six non-LO
+        subjects, confirm that required subjects are included.'
 
   - id: dip_hospitality_professional_cookery   # D3HSPC
     name: "Diploma in Hospitality and Professional Cookery"
     faculty: "Faculty of Business and Management Sciences"
     fields: [tourism_and_hospitality]
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 26
+      subject_minimums:
+        english: 4
+      extras:
+      - Work experience is recommended. An informative discussion about the hospitality
+        sector is required.
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 2
+          min_points: 26
+        - subjects:
+            mathematical_literacy: 4
+          min_points: 28
+      - one_of:
+        - subjects:
+            accounting: 1
+        - subjects:
+            consumer_studies: 1
+        - subjects:
+            business_studies: 1
+        - subjects:
+            hospitality_studies: 1
+        - subjects:
+            life_sciences: 1
+        - subjects:
+            tourism: 1
+    points_rules:
+      source: s-cput-prospectus-2027
+      subjects_counted: 6
+      life_orientation: exclude
+      scale:
+      - min_percent: 80
+        level: 7
+      - min_percent: 70
+        level: 6
+      - min_percent: 60
+        level: 5
+      - min_percent: 50
+        level: 4
+      - min_percent: 40
+        level: 3
+      - min_percent: 30
+        level: 2
+      - min_percent: 0
+        level: 1
+      percent_points:
+        per_percent: 0.1
+        from_percent: 0
+      note: 'CPUT Method 1: total percentages for the best six subjects including required
+        subjects, excluding Life Orientation, divided by 10. For more than six non-LO
+        subjects, confirm that required subjects are included.'
 
   - id: dip_hospitality_food_beverage_management   # D3HSPF
     name: "Diploma in Hospitality and Food and Beverage Management"
     faculty: "Faculty of Business and Management Sciences"
     fields: [tourism_and_hospitality]
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 26
+      subject_minimums:
+        english: 4
+      extras:
+      - Work experience is recommended. An informative discussion about the hospitality
+        sector is required.
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 2
+          min_points: 26
+        - subjects:
+            mathematical_literacy: 4
+          min_points: 28
+      - one_of:
+        - subjects:
+            accounting: 1
+        - subjects:
+            consumer_studies: 1
+        - subjects:
+            business_studies: 1
+        - subjects:
+            hospitality_studies: 1
+        - subjects:
+            life_sciences: 1
+        - subjects:
+            tourism: 1
+    points_rules:
+      source: s-cput-prospectus-2027
+      subjects_counted: 6
+      life_orientation: exclude
+      scale:
+      - min_percent: 80
+        level: 7
+      - min_percent: 70
+        level: 6
+      - min_percent: 60
+        level: 5
+      - min_percent: 50
+        level: 4
+      - min_percent: 40
+        level: 3
+      - min_percent: 30
+        level: 2
+      - min_percent: 0
+        level: 1
+      percent_points:
+        per_percent: 0.1
+        from_percent: 0
+      note: 'CPUT Method 1: total percentages for the best six subjects including required
+        subjects, excluding Life Orientation, divided by 10. For more than six non-LO
+        subjects, confirm that required subjects are included.'
 
   - id: bachelor_paralegal_studies         # BGPLGL
     name: "Bachelor of Paralegal Studies"
     faculty: "Faculty of Business and Management Sciences"
     fields: [law]
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 30
+      subject_minimums:
+        english: 4
+        other_language: 4
+      extras: []
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 3
+          min_points: 30
+        - subjects:
+            mathematical_literacy: 4
+          min_points: 30
+    points_rules:
+      source: s-cput-prospectus-2027
+      subjects_counted: 6
+      life_orientation: exclude
+      scale:
+      - min_percent: 80
+        level: 7
+      - min_percent: 70
+        level: 6
+      - min_percent: 60
+        level: 5
+      - min_percent: 50
+        level: 4
+      - min_percent: 40
+        level: 3
+      - min_percent: 30
+        level: 2
+      - min_percent: 0
+        level: 1
+      percent_points:
+        per_percent: 0.1
+        from_percent: 0
+      note: 'CPUT Method 1: total percentages for the best six subjects including required
+        subjects, excluding Life Orientation, divided by 10. For more than six non-LO
+        subjects, confirm that required subjects are included.'
 
   - id: dip_public_administration          # D3PBAD
     name: "Diploma in Public Administration"
     faculty: "Faculty of Business and Management Sciences"
     fields: [public_administration]
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 28
+      subject_minimums:
+        english: 4
+      extras: []
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 2
+          min_points: 28
+        - subjects:
+            mathematical_literacy: 4
+          min_points: 28
+      - one_of:
+        - subjects:
+            economics: 3
+        - subjects:
+            business_studies: 3
+        - subjects:
+            accounting: 3
+    points_rules:
+      source: s-cput-prospectus-2027
+      subjects_counted: 6
+      life_orientation: exclude
+      scale:
+      - min_percent: 80
+        level: 7
+      - min_percent: 70
+        level: 6
+      - min_percent: 60
+        level: 5
+      - min_percent: 50
+        level: 4
+      - min_percent: 40
+        level: 3
+      - min_percent: 30
+        level: 2
+      - min_percent: 0
+        level: 1
+      percent_points:
+        per_percent: 0.1
+        from_percent: 0
+      note: 'CPUT Method 1: total percentages for the best six subjects including required
+        subjects, excluding Life Orientation, divided by 10. For more than six non-LO
+        subjects, confirm that required subjects are included.'
 
   - id: dip_public_administration_ecp      # D3PBAX
     name: "Diploma in Public Administration and Governance (Extended Curriculum Programme)"
     faculty: "Faculty of Business and Management Sciences"
     fields: [public_administration]
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 24
+      subject_minimums:
+        english: 4
+      extras: []
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 2
+          min_points: 24
+        - subjects:
+            mathematical_literacy: 3
+          min_points: 24
+      - one_of:
+        - subjects:
+            economics: 2
+        - subjects:
+            business_studies: 2
+        - subjects:
+            accounting: 2
+    points_rules:
+      source: s-cput-prospectus-2027
+      subjects_counted: 6
+      life_orientation: exclude
+      scale:
+      - min_percent: 80
+        level: 7
+      - min_percent: 70
+        level: 6
+      - min_percent: 60
+        level: 5
+      - min_percent: 50
+        level: 4
+      - min_percent: 40
+        level: 3
+      - min_percent: 30
+        level: 2
+      - min_percent: 0
+        level: 1
+      percent_points:
+        per_percent: 0.1
+        from_percent: 0
+      note: 'CPUT Method 1: total percentages for the best six subjects including required
+        subjects, excluding Life Orientation, divided by 10. For more than six non-LO
+        subjects, confirm that required subjects are included.'
 
   - id: bachelor_business_informatics      # BGBICS
     name: "Bachelor of Business Informatics"
     faculty: "Faculty of Business and Management Sciences"
     fields: [computing, commerce]
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 25
+      subject_minimums:
+        english: 4
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 3
+          min_points: 25
+        - subjects:
+            mathematical_literacy: 4
+          min_points: 27
+      extras:
+      - The prospectus p.9 does not identify an APS method for this row. Confirm your
+        APS with CPUT.
 
   - id: dip_human_resource_management      # D3HRMT
     name: "Diploma in Human Resource Management"
     faculty: "Faculty of Business and Management Sciences"
     fields: [management]
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 26
+      subject_minimums:
+        english: 4
+      extras:
+      - Part-time applicants must supply proof of full-time employment and meet the programme-specific
+        experience requirements; see prospectus p.9.
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 2
+          min_points: 26
+        - subjects:
+            mathematical_literacy: 4
+          min_points: 28
+      - one_of:
+        - subjects:
+            economics: 1
+        - subjects:
+            business_studies: 1
+        - subjects:
+            accounting: 1
+    points_rules:
+      source: s-cput-prospectus-2027
+      subjects_counted: 6
+      life_orientation: exclude
+      scale:
+      - min_percent: 80
+        level: 7
+      - min_percent: 70
+        level: 6
+      - min_percent: 60
+        level: 5
+      - min_percent: 50
+        level: 4
+      - min_percent: 40
+        level: 3
+      - min_percent: 30
+        level: 2
+      - min_percent: 0
+        level: 1
+      percent_points:
+        per_percent: 0.1
+        from_percent: 0
+      note: 'CPUT Method 1: total percentages for the best six subjects including required
+        subjects, excluding Life Orientation, divided by 10. For more than six non-LO
+        subjects, confirm that required subjects are included.'
 
   - id: dip_human_resource_management_ecp  # D3HRMX
     name: "Diploma in Human Resource Management (Extended Curriculum Programme)"
     faculty: "Faculty of Business and Management Sciences"
     fields: [management]
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 24
+      subject_minimums:
+        english: 4
+      extras: []
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 2
+          min_points: 24
+        - subjects:
+            mathematical_literacy: 4
+          min_points: 26
+      - one_of:
+        - subjects:
+            economics: 1
+        - subjects:
+            business_studies: 1
+        - subjects:
+            accounting: 1
+    points_rules:
+      source: s-cput-prospectus-2027
+      subjects_counted: 6
+      life_orientation: exclude
+      scale:
+      - min_percent: 80
+        level: 7
+      - min_percent: 70
+        level: 6
+      - min_percent: 60
+        level: 5
+      - min_percent: 50
+        level: 4
+      - min_percent: 40
+        level: 3
+      - min_percent: 30
+        level: 2
+      - min_percent: 0
+        level: 1
+      percent_points:
+        per_percent: 0.1
+        from_percent: 0
+      note: 'CPUT Method 1: total percentages for the best six subjects including required
+        subjects, excluding Life Orientation, divided by 10. For more than six non-LO
+        subjects, confirm that required subjects are included.'
 
   - id: dip_management                     # D3MNGT
     name: "Diploma in Management"
     faculty: "Faculty of Business and Management Sciences"
     fields: [management]
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 28
+      subject_minimums:
+        english: 4
+      extras:
+      - Part-time applicants must supply proof of full-time employment and meet the programme-specific
+        experience requirements; see prospectus p.9.
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 2
+          min_points: 28
+        - subjects:
+            mathematical_literacy: 4
+          min_points: 30
+      - one_of:
+        - subjects:
+            economics: 1
+        - subjects:
+            business_studies: 1
+        - subjects:
+            accounting: 1
+    points_rules:
+      source: s-cput-prospectus-2027
+      subjects_counted: 6
+      life_orientation: exclude
+      scale:
+      - min_percent: 80
+        level: 7
+      - min_percent: 70
+        level: 6
+      - min_percent: 60
+        level: 5
+      - min_percent: 50
+        level: 4
+      - min_percent: 40
+        level: 3
+      - min_percent: 30
+        level: 2
+      - min_percent: 0
+        level: 1
+      percent_points:
+        per_percent: 0.1
+        from_percent: 0
+      note: 'CPUT Method 1: total percentages for the best six subjects including required
+        subjects, excluding Life Orientation, divided by 10. For more than six non-LO
+        subjects, confirm that required subjects are included.'
 
   - id: dip_management_ecp                 # D3MNGX
     name: "Diploma in Management (Extended Curriculum Programme)"
     faculty: "Faculty of Business and Management Sciences"
     fields: [management]
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 24
+      subject_minimums:
+        english: 4
+      extras: []
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 2
+          min_points: 24
+        - subjects:
+            mathematical_literacy: 4
+          min_points: 26
+      - one_of:
+        - subjects:
+            economics: 1
+        - subjects:
+            business_studies: 1
+        - subjects:
+            accounting: 1
+    points_rules:
+      source: s-cput-prospectus-2027
+      subjects_counted: 6
+      life_orientation: exclude
+      scale:
+      - min_percent: 80
+        level: 7
+      - min_percent: 70
+        level: 6
+      - min_percent: 60
+        level: 5
+      - min_percent: 50
+        level: 4
+      - min_percent: 40
+        level: 3
+      - min_percent: 30
+        level: 2
+      - min_percent: 0
+        level: 1
+      percent_points:
+        per_percent: 0.1
+        from_percent: 0
+      note: 'CPUT Method 1: total percentages for the best six subjects including required
+        subjects, excluding Life Orientation, divided by 10. For more than six non-LO
+        subjects, confirm that required subjects are included.'
 
   - id: dip_operations_management          # D3OPMT
     name: "Diploma in Operations Management"
     faculty: "Faculty of Business and Management Sciences"
     fields: [management]
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 28
+      subject_minimums:
+        english: 4
+        mathematics: 3
+      extras: []
+    points_rules:
+      source: s-cput-prospectus-2027
+      subjects_counted: 6
+      life_orientation: exclude
+      scale:
+      - min_percent: 80
+        level: 7
+      - min_percent: 70
+        level: 6
+      - min_percent: 60
+        level: 5
+      - min_percent: 50
+        level: 4
+      - min_percent: 40
+        level: 3
+      - min_percent: 30
+        level: 2
+      - min_percent: 0
+        level: 1
+      percent_points:
+        per_percent: 0.1
+        from_percent: 0
+      note: 'CPUT Method 1: total percentages for the best six subjects including required
+        subjects, excluding Life Orientation, divided by 10. For more than six non-LO
+        subjects, confirm that required subjects are included.'
 
   - id: dip_entrepreneurship               # D3ENTP
     name: "Diploma in Entrepreneurship"
     faculty: "Faculty of Business and Management Sciences"
     fields: [management, commerce]
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 26
+      subject_minimums:
+        english: 4
+      extras: []
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 2
+          min_points: 26
+        - subjects:
+            mathematical_literacy: 4
+          min_points: 26
+        - subjects:
+            technical_mathematics: 5
+          min_points: 26
+      - one_of:
+        - subjects:
+            economics: 4
+        - subjects:
+            business_studies: 4
+        - subjects:
+            accounting: 4
+        - subjects:
+            consumer_studies: 4
+    points_rules:
+      source: s-cput-prospectus-2027
+      subjects_counted: 6
+      life_orientation: exclude
+      scale:
+      - min_percent: 80
+        level: 7
+      - min_percent: 70
+        level: 6
+      - min_percent: 60
+        level: 5
+      - min_percent: 50
+        level: 4
+      - min_percent: 40
+        level: 3
+      - min_percent: 30
+        level: 2
+      - min_percent: 0
+        level: 1
+      percent_points:
+        per_percent: 0.1
+        from_percent: 0
+      note: 'CPUT Method 1: total percentages for the best six subjects including required
+        subjects, excluding Life Orientation, divided by 10. For more than six non-LO
+        subjects, confirm that required subjects are included.'
 
   - id: dip_entrepreneurship_ecp           # D3ENTX
     name: "Diploma in Entrepreneurship (Extended Curriculum Programme)"
     faculty: "Faculty of Business and Management Sciences"
     fields: [management, commerce]
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 22
+      subject_minimums:
+        english: 4
+      extras: []
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 2
+          min_points: 22
+        - subjects:
+            mathematical_literacy: 4
+          min_points: 22
+        - subjects:
+            technical_mathematics: 5
+          min_points: 22
+      - one_of:
+        - subjects:
+            economics: 4
+        - subjects:
+            business_studies: 4
+        - subjects:
+            accounting: 4
+        - subjects:
+            consumer_studies: 4
+    points_rules:
+      source: s-cput-prospectus-2027
+      subjects_counted: 6
+      life_orientation: exclude
+      scale:
+      - min_percent: 80
+        level: 7
+      - min_percent: 70
+        level: 6
+      - min_percent: 60
+        level: 5
+      - min_percent: 50
+        level: 4
+      - min_percent: 40
+        level: 3
+      - min_percent: 30
+        level: 2
+      - min_percent: 0
+        level: 1
+      percent_points:
+        per_percent: 0.1
+        from_percent: 0
+      note: 'CPUT Method 1: total percentages for the best six subjects including required
+        subjects, excluding Life Orientation, divided by 10. For more than six non-LO
+        subjects, confirm that required subjects are included.'
 
   - id: dip_banking                        # D3BNKG
     name: "Diploma in Banking"
     faculty: "Faculty of Business and Management Sciences"
     fields: [finance]
+    selection_note: "2027 prospectus p.9: APS 24 with Mathematics, 26 with Mathematical Literacy; English 4, Mathematics 3 or Mathematical Literacy 4. The additional subject list mixes ICT/Accounting and vocational subjects without an unambiguous NSC equivalent or an APS method. Ask the faculty to assess this route. Part-time students need proof of full-time employment."
     requirements: null
 
   - id: dip_marketing                      # D3MRKG
     name: "Diploma in Marketing"
     faculty: "Faculty of Business and Management Sciences"
     fields: [commerce, management]
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 26
+      subject_minimums:
+        english: 4
+      extras:
+      - Part-time applicants must supply proof of full-time employment and meet the programme-specific
+        experience requirements; see prospectus p.9.
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 2
+          min_points: 26
+        - subjects:
+            mathematical_literacy: 4
+          min_points: 28
+      - one_of:
+        - subjects:
+            economics: 4
+        - subjects:
+            business_studies: 4
+        - subjects:
+            accounting: 4
+    points_rules:
+      source: s-cput-prospectus-2027
+      subjects_counted: 6
+      life_orientation: exclude
+      scale:
+      - min_percent: 80
+        level: 7
+      - min_percent: 70
+        level: 6
+      - min_percent: 60
+        level: 5
+      - min_percent: 50
+        level: 4
+      - min_percent: 40
+        level: 3
+      - min_percent: 30
+        level: 2
+      - min_percent: 0
+        level: 1
+      percent_points:
+        per_percent: 0.1
+        from_percent: 0
+      note: 'CPUT Method 1: total percentages for the best six subjects including required
+        subjects, excluding Life Orientation, divided by 10. For more than six non-LO
+        subjects, confirm that required subjects are included.'
 
   - id: dip_marketing_ecp                  # D3MRKX
     name: "Diploma in Marketing (Extended Curriculum Programme)"
     faculty: "Faculty of Business and Management Sciences"
     fields: [commerce, management]
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 24
+      subject_minimums:
+        english: 4
+      extras: []
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 2
+          min_points: 24
+        - subjects:
+            mathematical_literacy: 4
+          min_points: 26
+      - one_of:
+        - subjects:
+            economics: 4
+        - subjects:
+            business_studies: 4
+        - subjects:
+            accounting: 4
+    points_rules:
+      source: s-cput-prospectus-2027
+      subjects_counted: 6
+      life_orientation: exclude
+      scale:
+      - min_percent: 80
+        level: 7
+      - min_percent: 70
+        level: 6
+      - min_percent: 60
+        level: 5
+      - min_percent: 50
+        level: 4
+      - min_percent: 40
+        level: 3
+      - min_percent: 30
+        level: 2
+      - min_percent: 0
+        level: 1
+      percent_points:
+        per_percent: 0.1
+        from_percent: 0
+      note: 'CPUT Method 1: total percentages for the best six subjects including required
+        subjects, excluding Life Orientation, divided by 10. For more than six non-LO
+        subjects, confirm that required subjects are included.'
 
   - id: dip_sport_leisure_management       # D3SPMT
     name: "Diploma in Sport and Leisure Management"
     faculty: "Faculty of Business and Management Sciences"
     fields: [sport_science, management]
     selection_note: &cput_sport_q "Applicants complete CPUT's Sport Management questionnaire about their involvement in sport, culture and leadership."
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 25
+      subject_minimums:
+        english: 4
+      extras:
+      - Complete the Non-Academic Review Component for Sport Management. Sporting, cultural
+        and leadership involvement is considered.
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 2
+          min_points: 25
+        - subjects:
+            mathematical_literacy: 4
+          min_points: 27
+    points_rules:
+      source: s-cput-prospectus-2027
+      subjects_counted: 6
+      life_orientation: exclude
+      scale:
+      - min_percent: 80
+        level: 7
+      - min_percent: 70
+        level: 6
+      - min_percent: 60
+        level: 5
+      - min_percent: 50
+        level: 4
+      - min_percent: 40
+        level: 3
+      - min_percent: 30
+        level: 2
+      - min_percent: 0
+        level: 1
+      percent_points:
+        per_percent: 0.1
+        from_percent: 0
+      note: 'CPUT Method 1: total percentages for the best six subjects including required
+        subjects, excluding Life Orientation, divided by 10. For more than six non-LO
+        subjects, confirm that required subjects are included.'
 
   - id: dip_sport_leisure_management_ecp   # D3SPMX
     name: "Diploma in Sport and Leisure Management (Extended Curriculum Programme)"
     faculty: "Faculty of Business and Management Sciences"
     fields: [sport_science, management]
     selection_note: *cput_sport_q
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 23
+      subject_minimums:
+        english: 4
+      extras:
+      - Complete the Non-Academic Review Component for Sport Management. Sporting, cultural
+        and leadership involvement is considered.
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 2
+          min_points: 23
+        - subjects:
+            mathematical_literacy: 4
+          min_points: 25
+    points_rules:
+      source: s-cput-prospectus-2027
+      subjects_counted: 6
+      life_orientation: exclude
+      scale:
+      - min_percent: 80
+        level: 7
+      - min_percent: 70
+        level: 6
+      - min_percent: 60
+        level: 5
+      - min_percent: 50
+        level: 4
+      - min_percent: 40
+        level: 3
+      - min_percent: 30
+        level: 2
+      - min_percent: 0
+        level: 1
+      percent_points:
+        per_percent: 0.1
+        from_percent: 0
+      note: 'CPUT Method 1: total percentages for the best six subjects including required
+        subjects, excluding Life Orientation, divided by 10. For more than six non-LO
+        subjects, confirm that required subjects are included.'
 
   - id: dip_event_management               # D3EVMT
     name: "Diploma in Event Management"
     faculty: "Faculty of Business and Management Sciences"
     fields: [tourism_and_hospitality, management]
     selection_note: &cput_event_letter "Applicants send a motivational letter explaining why they want to follow this programme and what they understand of the industry."
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 28
+      subject_minimums:
+        english: 4
+      extras:
+      - Submit a motivation letter explaining your interest and understanding of the industry.
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 2
+          min_points: 28
+        - subjects:
+            mathematical_literacy: 4
+          min_points: 30
+      - one_of:
+        - subjects:
+            tourism: 1
+        - subjects:
+            economics: 1
+        - subjects:
+            hospitality_studies: 1
+        - subjects:
+            business_studies: 1
+        - subjects:
+            accounting: 1
+        - subjects:
+            computer_applications_technology: 1
+        - subjects:
+            information_technology: 1
+    points_rules:
+      source: s-cput-prospectus-2027
+      subjects_counted: 6
+      life_orientation: exclude
+      scale:
+      - min_percent: 80
+        level: 7
+      - min_percent: 70
+        level: 6
+      - min_percent: 60
+        level: 5
+      - min_percent: 50
+        level: 4
+      - min_percent: 40
+        level: 3
+      - min_percent: 30
+        level: 2
+      - min_percent: 0
+        level: 1
+      percent_points:
+        per_percent: 0.1
+        from_percent: 0
+      note: 'CPUT Method 1: total percentages for the best six subjects including required
+        subjects, excluding Life Orientation, divided by 10. For more than six non-LO
+        subjects, confirm that required subjects are included.'
 
   - id: dip_event_management_ecp           # D3EVTX
     name: "Diploma in Event Management (Extended Curriculum Programme)"
     faculty: "Faculty of Business and Management Sciences"
     fields: [tourism_and_hospitality, management]
     selection_note: *cput_event_letter
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 24
+      subject_minimums:
+        english: 4
+      extras:
+      - Submit a motivation letter explaining your interest and understanding of the industry.
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 2
+          min_points: 24
+        - subjects:
+            mathematical_literacy: 4
+          min_points: 26
+      - one_of:
+        - subjects:
+            tourism: 1
+        - subjects:
+            economics: 1
+        - subjects:
+            hospitality_studies: 1
+        - subjects:
+            business_studies: 1
+        - subjects:
+            accounting: 1
+        - subjects:
+            computer_applications_technology: 1
+        - subjects:
+            information_technology: 1
+    points_rules:
+      source: s-cput-prospectus-2027
+      subjects_counted: 6
+      life_orientation: exclude
+      scale:
+      - min_percent: 80
+        level: 7
+      - min_percent: 70
+        level: 6
+      - min_percent: 60
+        level: 5
+      - min_percent: 50
+        level: 4
+      - min_percent: 40
+        level: 3
+      - min_percent: 30
+        level: 2
+      - min_percent: 0
+        level: 1
+      percent_points:
+        per_percent: 0.1
+        from_percent: 0
+      note: 'CPUT Method 1: total percentages for the best six subjects including required
+        subjects, excluding Life Orientation, divided by 10. For more than six non-LO
+        subjects, confirm that required subjects are included.'
 
   - id: dip_tourism_management             # D3TMNG
     name: "Diploma in Tourism Management"
     faculty: "Faculty of Business and Management Sciences"
     fields: [tourism_and_hospitality]
     selection_note: *cput_event_letter
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 28
+      subject_minimums:
+        english: 4
+      extras:
+      - Submit a motivation letter explaining your interest and understanding of the industry.
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 2
+          min_points: 28
+        - subjects:
+            mathematical_literacy: 4
+          min_points: 30
+      - one_of:
+        - subjects:
+            tourism: 1
+        - subjects:
+            economics: 1
+        - subjects:
+            hospitality_studies: 1
+        - subjects:
+            business_studies: 1
+        - subjects:
+            accounting: 1
+        - subjects:
+            consumer_studies: 1
+        - subjects:
+            history: 1
+        - subjects:
+            geography: 1
+    points_rules:
+      source: s-cput-prospectus-2027
+      subjects_counted: 6
+      life_orientation: exclude
+      scale:
+      - min_percent: 80
+        level: 7
+      - min_percent: 70
+        level: 6
+      - min_percent: 60
+        level: 5
+      - min_percent: 50
+        level: 4
+      - min_percent: 40
+        level: 3
+      - min_percent: 30
+        level: 2
+      - min_percent: 0
+        level: 1
+      percent_points:
+        per_percent: 0.1
+        from_percent: 0
+      note: 'CPUT Method 1: total percentages for the best six subjects including required
+        subjects, excluding Life Orientation, divided by 10. For more than six non-LO
+        subjects, confirm that required subjects are included.'
 
   - id: dip_tourism_management_ecp         # D3TMNX
     name: "Diploma in Tourism Management (Extended Curriculum Programme)"
     faculty: "Faculty of Business and Management Sciences"
     fields: [tourism_and_hospitality]
     selection_note: *cput_event_letter
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 24
+      subject_minimums:
+        english: 4
+      extras:
+      - Submit a motivation letter explaining your interest and understanding of the industry.
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 2
+          min_points: 24
+        - subjects:
+            mathematical_literacy: 4
+          min_points: 26
+      - one_of:
+        - subjects:
+            tourism: 1
+        - subjects:
+            economics: 1
+        - subjects:
+            hospitality_studies: 1
+        - subjects:
+            business_studies: 1
+        - subjects:
+            accounting: 1
+        - subjects:
+            consumer_studies: 1
+        - subjects:
+            history: 1
+        - subjects:
+            geography: 1
+    points_rules:
+      source: s-cput-prospectus-2027
+      subjects_counted: 6
+      life_orientation: exclude
+      scale:
+      - min_percent: 80
+        level: 7
+      - min_percent: 70
+        level: 6
+      - min_percent: 60
+        level: 5
+      - min_percent: 50
+        level: 4
+      - min_percent: 40
+        level: 3
+      - min_percent: 30
+        level: 2
+      - min_percent: 0
+        level: 1
+      percent_points:
+        per_percent: 0.1
+        from_percent: 0
+      note: 'CPUT Method 1: total percentages for the best six subjects including required
+        subjects, excluding Life Orientation, divided by 10. For more than six non-LO
+        subjects, confirm that required subjects are included.'
 
   # ---------------------------------------------------------------------------------------------------------
   # Education. Course pages: course-details?q=<code>&f=100. The Diploma in Grade R Teaching and the Diploma in
@@ -742,6 +1855,7 @@ programmes:
     name: "Bachelor of Education in Senior Phase and FET Teaching"
     faculty: "Faculty of Education"
     fields: [education]
+    selection_note: "2027 prospectus p.10: APS 32; Afrikaans, English or isiXhosa Home Language 4 and First Additional Language 3, with one being the campus language of instruction. Three electives at level 4 are required. The app cannot distinguish the language roles or the chosen teaching electives; faculty assessment is needed."
     requirements: null
 
   # ---------------------------------------------------------------------------------------------------------
@@ -1104,61 +2218,322 @@ programmes:
         - *cput_maritime_ecp
         - *cput_samsa
 
-  - id: dip_clothing_textile_technology    # D3CLOT
-    name: "Diploma in Clothing and Textile Technology"
-    faculty: "Faculty of Engineering and the Built Environment"
-    fields: [engineering]
-    selection_note: &cput_clothing_letter "Applicants send a motivational letter with their application."
-    requirements: null
+  - id: dip_clothing_textile_technology
+    selective: true
+    name: Diploma in Clothing and Textile Technology
+    faculty: Faculty of Engineering and the Built Environment
+    fields:
+    - engineering
+    selection_note: '2027 prospectus p.15: Method 1; online selection test. APS 26 for
+      Mathematics and 28 for Mathematical Literacy. The Technical Mathematics APS threshold
+      is not published; confirm with CPUT.'
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: null
+      points_threshold_incomplete: true
+      subject_minimums:
+        english: 4
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 3
+          min_points: 26
+        - subjects:
+            mathematical_literacy: 4
+          min_points: 28
+        - subjects:
+            technical_mathematics: 5
+      extras:
+      - '2027 prospectus p.15: Method 1; online selection test. APS 26 for Mathematics
+        and 28 for Mathematical Literacy. The Technical Mathematics APS threshold is
+        not published; confirm with CPUT.'
+    points_rules:
+      source: s-cput-prospectus-2027
+      subjects_counted: 6
+      life_orientation: exclude
+      scale:
+      - min_percent: 80
+        level: 7
+      - min_percent: 70
+        level: 6
+      - min_percent: 60
+        level: 5
+      - min_percent: 50
+        level: 4
+      - min_percent: 40
+        level: 3
+      - min_percent: 30
+        level: 2
+      - min_percent: 0
+        level: 1
+      percent_points:
+        per_percent: 0.1
+        from_percent: 0
+      note: 'CPUT Method 1: total percentages for the best six subjects including required
+        subjects, excluding Life Orientation, divided by 10. For more than six non-LO
+        subjects, confirm that required subjects are included.'
 
-  - id: dip_clothing_textile_technology_ecp   # D3CLOX
-    name: "Diploma in Clothing and Textile Technology (Extended Curriculum Programme)"
-    faculty: "Faculty of Engineering and the Built Environment"
-    fields: [engineering]
-    selection_note: *cput_clothing_letter
-    requirements: null
+  - id: dip_clothing_textile_technology_ecp
+    selective: true
+    name: Diploma in Clothing and Textile Technology (Extended Curriculum Programme)
+    faculty: Faculty of Engineering and the Built Environment
+    fields:
+    - engineering
+    selection_note: '2027 prospectus p.15: Method 1; online selection test. APS 26 for
+      Mathematics and 28 for Mathematical Literacy. The Technical Mathematics APS threshold
+      is not published; confirm with CPUT.'
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: null
+      points_threshold_incomplete: true
+      subject_minimums:
+        english: 4
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 3
+          min_points: 26
+        - subjects:
+            mathematical_literacy: 4
+          min_points: 28
+        - subjects:
+            technical_mathematics: 5
+      extras:
+      - '2027 prospectus p.15: Method 1; online selection test. APS 26 for Mathematics
+        and 28 for Mathematical Literacy. The Technical Mathematics APS threshold is
+        not published; confirm with CPUT.'
+    points_rules:
+      source: s-cput-prospectus-2027
+      subjects_counted: 6
+      life_orientation: exclude
+      scale:
+      - min_percent: 80
+        level: 7
+      - min_percent: 70
+        level: 6
+      - min_percent: 60
+        level: 5
+      - min_percent: 50
+        level: 4
+      - min_percent: 40
+        level: 3
+      - min_percent: 30
+        level: 2
+      - min_percent: 0
+        level: 1
+      percent_points:
+        per_percent: 0.1
+        from_percent: 0
+      note: 'CPUT Method 1: total percentages for the best six subjects including required
+        subjects, excluding Life Orientation, divided by 10. For more than six non-LO
+        subjects, confirm that required subjects are included.'
 
   - id: dip_construction                   # D3CSRN
     name: "Diploma in Construction"
     faculty: "Faculty of Engineering and the Built Environment"
     fields: [built_environment]
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 25
+      subject_minimums:
+        english: 4
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 4
+        - subjects:
+            technical_mathematics: 5
+      extras:
+      - Uses NSC levels, excluding Life Orientation.
+    points_rules:
+      source: s-cput-prospectus-2027
+      subjects_counted: 6
+      life_orientation: exclude
+      scale:
+      - min_percent: 80
+        level: 7
+      - min_percent: 70
+        level: 6
+      - min_percent: 60
+        level: 5
+      - min_percent: 50
+        level: 4
+      - min_percent: 40
+        level: 3
+      - min_percent: 30
+        level: 2
+      - min_percent: 0
+        level: 1
 
   - id: dip_construction_ecp               # D3CSRX
     name: "Diploma in Construction (Extended Curriculum Programme)"
     faculty: "Faculty of Engineering and the Built Environment"
     fields: [built_environment]
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 23
+      subject_minimums:
+        english: 4
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 4
+        - subjects:
+            technical_mathematics: 5
+      extras:
+      - 'Uses NSC levels, not percentage-based Method 1 or Method 2. ECP band: 23?24 points.'
+    points_rules:
+      source: s-cput-prospectus-2027
+      subjects_counted: 6
+      life_orientation: exclude
+      scale:
+      - min_percent: 80
+        level: 7
+      - min_percent: 70
+        level: 6
+      - min_percent: 60
+        level: 5
+      - min_percent: 50
+        level: 4
+      - min_percent: 40
+        level: 3
+      - min_percent: 30
+        level: 2
+      - min_percent: 0
+        level: 1
 
   - id: dip_industrial_engineering         # D3IENG
     name: "Diploma in Industrial Engineering"
     faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 30
+      subject_minimums:
+        english: 4
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 4
+        - subjects:
+            technical_mathematics: 5
+      - one_of:
+        - subjects:
+            physical_sciences: 4
+        - subjects:
+            technical_sciences: 5
+      extras:
+      - 'CPUT Method 2: (English + 2 x Mathematics + 2 x Physical Science + best other
+        subject percentage) / 10, excluding Life Orientation. Confirm the substitutions
+        for Technical Maths/Science with CPUT.'
 
   - id: dip_industrial_engineering_ecp     # D3IENX
     name: "Diploma in Industrial Engineering (Extended Curriculum Programme)"
     faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 27
+      subject_minimums:
+        english: 4
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 4
+        - subjects:
+            technical_mathematics: 5
+      - one_of:
+        - subjects:
+            physical_sciences: 4
+        - subjects:
+            technical_sciences: 5
+      extras:
+      - 'CPUT Method 2: (English + 2 x Mathematics + 2 x Physical Science + best other
+        subject percentage) / 10, excluding Life Orientation. Confirm the substitutions
+        for Technical Maths/Science with CPUT.'
+      - ECP APS range 27?29; 23?26 is wait-list consideration. Subject to space, one of
+        Maths/Physical Science may be 45?49% if the other is at least 50%, or one technical
+        subject 55?59% if the other is at least 60%. These discretionary alternatives
+        need faculty assessment.
 
   - id: dip_mechanical_engineering         # D3MCNE
     name: "Diploma in Mechanical Engineering"
     faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 30
+      subject_minimums:
+        english: 4
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 4
+        - subjects:
+            technical_mathematics: 5
+      - one_of:
+        - subjects:
+            physical_sciences: 4
+        - subjects:
+            technical_sciences: 5
+      extras:
+      - 'CPUT Method 2: (English + 2 x Mathematics + 2 x Physical Science + best other
+        subject percentage) / 10, excluding Life Orientation. Confirm the substitutions
+        for Technical Maths/Science with CPUT.'
 
   - id: dip_mechanical_engineering_ecp     # D3MCNX
     name: "Diploma in Mechanical Engineering (Extended Curriculum Programme)"
     faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 27
+      subject_minimums:
+        english: 4
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 4
+        - subjects:
+            technical_mathematics: 5
+      - one_of:
+        - subjects:
+            physical_sciences: 4
+        - subjects:
+            technical_sciences: 5
+      extras:
+      - 'CPUT Method 2: (English + 2 x Mathematics + 2 x Physical Science + best other
+        subject percentage) / 10, excluding Life Orientation. Confirm the substitutions
+        for Technical Maths/Science with CPUT.'
+      - ECP APS range 27?29; 23?26 is wait-list consideration. Subject to space, one of
+        Maths/Physical Science may be 45?49% if the other is at least 50%, or one technical
+        subject 55?59% if the other is at least 60%. These discretionary alternatives
+        need faculty assessment.
 
   - id: dip_mechanical_engineering_mechatronics   # D3MECS
     name: "Diploma in Mechanical Engineering in Mechatronics"
     faculty: "Faculty of Engineering and the Built Environment"
     fields: [engineering]
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 30
+      subject_minimums:
+        english: 4
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 4
+        - subjects:
+            technical_mathematics: 5
+      - one_of:
+        - subjects:
+            physical_sciences: 4
+        - subjects:
+            technical_sciences: 5
+      extras:
+      - 'CPUT Method 2: (English + 2 x Mathematics + 2 x Physical Science + best other
+        subject percentage) / 10, excluding Life Orientation. Confirm the substitutions
+        for Technical Maths/Science with CPUT.'
 
   # ---------------------------------------------------------------------------------------------------------
   # Health and Wellness Sciences. Course pages: course-details?q=<code>&f=180, each showing the faculty's APS
@@ -1754,57 +3129,209 @@ programmes:
     name: "Diploma in ICT in Applications Development"
     faculty: "Faculty of Informatics and Design"
     fields: [computing]
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 28
+      subject_minimums:
+        english: 4
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 3
+          min_points: 28
+        - subjects:
+            mathematical_literacy: 5
+          min_points: 30
+      extras:
+      - NSC route from prospectus p.13. The table says its Technical Maths column caters
+        for TVET students; those applicants must ask CPUT to assess their route. The APS
+        method is not identified in this table; confirm points with the faculty.
 
   - id: dip_ict_multimedia_applications    # D3ICTM
     name: "Diploma in ICT in Multimedia Applications"
     faculty: "Faculty of Informatics and Design"
     fields: [computing]
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 28
+      subject_minimums:
+        english: 4
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 3
+          min_points: 28
+        - subjects:
+            mathematical_literacy: 5
+          min_points: 30
+      extras:
+      - NSC route from prospectus p.13. The table says its Technical Maths column caters
+        for TVET students; those applicants must ask CPUT to assess their route. The APS
+        method is not identified in this table; confirm points with the faculty.
 
   - id: dip_ict_communication_networks     # DPICTC
     name: "Diploma in ICT in Communication Networks"
     faculty: "Faculty of Informatics and Design"
     fields: [computing]
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 28
+      subject_minimums:
+        english: 4
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 3
+          min_points: 28
+        - subjects:
+            mathematical_literacy: 5
+          min_points: 30
+      extras:
+      - NSC route from prospectus p.13. The table says its Technical Maths column caters
+        for TVET students; those applicants must ask CPUT to assess their route. The APS
+        method is not identified in this table; confirm points with the faculty.
 
   - id: hc_ict                             # HCINCT
     name: "Higher Certificate in Information and Communication Technology"
     faculty: "Faculty of Informatics and Design"
     fields: [computing]
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 24
+      subject_minimums:
+        english: 4
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 3
+          min_points: 24
+        - subjects:
+            mathematical_literacy: 5
+          min_points: 26
+      extras:
+      - NSC route from prospectus p.13. The table says its Technical Maths column caters
+        for TVET students; those applicants must ask CPUT to assess their route. The APS
+        method is not identified in this table; confirm points with the faculty.
 
   - id: dip_public_relations_communication # D3PRCN
     name: "Diploma in Public Relations and Communication"
     faculty: "Faculty of Informatics and Design"
     fields: [languages_and_communication]
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 28
+      subject_minimums:
+        english: 5
+        other_language: 4
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 2
+          min_points: 28
+        - subjects:
+            mathematical_literacy: 4
+          min_points: 30
+      extras:
+      - NSC route from prospectus p.13. The table says its Technical Maths column caters
+        for TVET students; those applicants must ask CPUT to assess their route. The APS
+        method is not identified in this table; confirm points with the faculty.
 
   - id: dip_film_production                # D3FMPD
     name: "Diploma in Film Production"
     faculty: "Faculty of Informatics and Design"
     fields: [arts_and_design]
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 30
+      subject_minimums:
+        english: 5
+      extras:
+      - Prospectus p.13 does not identify the APS method. Ask the department to check
+        your points and any selection/portfolio requirements.
 
   - id: dip_journalism                     # D3JURN
     name: "Diploma in Journalism"
     faculty: "Faculty of Informatics and Design"
     fields: [languages_and_communication]
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 28
+      subject_minimums:
+        english: 5
+        other_language: 4
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 3
+          min_points: 28
+        - subjects:
+            mathematical_literacy: 4
+          min_points: 30
+      extras:
+      - NSC route from prospectus p.13. The table says its Technical Maths column caters
+        for TVET students; those applicants must ask CPUT to assess their route. The APS
+        method is not identified in this table; confirm points with the faculty.
 
   - id: dip_photography                    # D3PHGY
     name: "Diploma in Photography"
     faculty: "Faculty of Informatics and Design"
     fields: [arts_and_design]
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 30
+      subject_minimums:
+        english: 4
+      extras:
+      - Prospectus p.13 does not identify the APS method. Ask the department to check
+        your points and any selection/portfolio requirements.
 
   - id: dip_urban_regional_planning        # D3URPG
     name: "Diploma in Urban and Regional Planning"
     faculty: "Faculty of Informatics and Design"
     fields: [built_environment]
-    requirements: null
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 28
+      subject_minimums:
+        english: 4
+        other_language: 4
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 4
+          min_points: 28
+        - subjects:
+            mathematical_literacy: 5
+          min_points: 30
+      - one_of:
+        - subjects:
+            geography: 4
+        - subjects:
+            economics: 4
+        - subjects:
+            business_studies: 4
+        - subjects:
+            tourism: 4
+      extras:
+      - NSC route from prospectus p.13. The table says its Technical Maths column caters
+        for TVET students; those applicants must ask CPUT to assess their route. The APS
+        method is not identified in this table; confirm points with the faculty.
 
 sources:
+  - id: s-cput-calendar-2027
+    url: https://www.cput.ac.za/images/News/Newsflash/2026/July/Final-Approved-Term-Dates-2027.pdf
+    publisher: Cape Peninsula University of Technology
+    title: 'TERM DATES: 2027 - CPUT'
+    retrieved: '2026-10-25'
+    verified_by: agent, official university source
+    verification_basis: official_university
+  - id: s-cput-counselling-2026
+    url: https://www.cput.ac.za/student/support-services/dsa/student-counselling/contact-us
+    publisher: Cape Peninsula University of Technology
+    title: Student Counselling contacts
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official university source
   - id: s-cput-campuses
     url: "https://www.cput.ac.za/about-cput/campuses"
     publisher: "Cape Peninsula University of Technology"
@@ -1812,6 +3339,7 @@ sources:
     retrieved: 2026-10-22
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cput-where
     url: "https://www.cput.ac.za/about-cput"
     publisher: "Cape Peninsula University of Technology"
@@ -1819,6 +3347,7 @@ sources:
     retrieved: 2026-10-20
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cput-apply
     url: "https://www.cput.ac.za/study-at-cput/undergraduate/apply"
     publisher: "Cape Peninsula University of Technology"
@@ -1826,6 +3355,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cput-fee
     url: "https://www.cput.ac.za/help/content/19/82/en/07-do-i-have-to-pay-any-application-fee-if-applying-online.html"
     publisher: "Cape Peninsula University of Technology"
@@ -1833,6 +3363,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cput-online-prospectus
     url: "https://prospectus.cput.ac.za/"
     publisher: "Cape Peninsula University of Technology"
@@ -1840,6 +3371,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cput-aps-method-2
     url: "https://www.cput.ac.za/images/Faculties/Engineering-and-the-Built-Environment/Documents-and-Resources/APS-Method-2.jpg"
     publisher: "Cape Peninsula University of Technology"
@@ -1847,6 +3379,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cput-aps-bpmlsc
     url: "https://www.cput.ac.za/images/Faculties/Health-and-Wellness-Sciences/Documents-and-Resources/APS-Scores/BHSc-in-Medical-Laboratory-Science-APS.jpg"
     publisher: "Cape Peninsula University of Technology"
@@ -1854,6 +3387,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cput-aps-bpmlsx
     url: "https://www.cput.ac.za/images/Faculties/Health-and-Wellness-Sciences/Documents-and-Resources/APS-Scores/BHSc-in-Medical-Laboratory-Science-ECP-APS.jpg"
     publisher: "Cape Peninsula University of Technology"
@@ -1861,6 +3395,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cput-aps-bpemca
     url: "https://www.cput.ac.za/images/Faculties/Health-and-Wellness-Sciences/Documents-and-Resources/APS-Scores/Bachelor-of-Emergency-Medical-Care-APS.jpg"
     publisher: "Cape Peninsula University of Technology"
@@ -1868,6 +3403,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cput-aps-bpemcx
     url: "https://www.cput.ac.za/images/Faculties/Health-and-Wellness-Sciences/Documents-and-Resources/APS-Scores/Bachelor-of-Emergency-Medical-Care-ECP-APS.jpg"
     publisher: "Cape Peninsula University of Technology"
@@ -1875,6 +3411,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cput-aps-d2emca
     url: "https://www.cput.ac.za/images/Faculties/Health-and-Wellness-Sciences/Documents-and-Resources/APS-Scores/Diploma-in-Emergency-Care-APS.jpg"
     publisher: "Cape Peninsula University of Technology"
@@ -1882,6 +3419,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cput-aps-hcemdc
     url: "https://www.cput.ac.za/images/Faculties/Health-and-Wellness-Sciences/Documents-and-Resources/APS-Scores/Higher-Certificate-in-Emergency-Medical-Care-APS.jpg"
     publisher: "Cape Peninsula University of Technology"
@@ -1889,6 +3427,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cput-aps-bpsdgr
     url: "https://www.cput.ac.za/images/Faculties/Health-and-Wellness-Sciences/Documents-and-Resources/APS-Scores/BSc-in-Diagnostic-Radiography-APS.jpg"
     publisher: "Cape Peninsula University of Technology"
@@ -1896,6 +3435,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cput-aps-bpsdgu
     url: "https://www.cput.ac.za/images/Faculties/Health-and-Wellness-Sciences/Documents-and-Resources/APS-Scores/BSc-in-Diagnostic-Ultrasound-APS.jpg"
     publisher: "Cape Peninsula University of Technology"
@@ -1903,6 +3443,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cput-aps-bpsnum
     url: "https://www.cput.ac.za/images/Faculties/Health-and-Wellness-Sciences/Documents-and-Resources/APS-Scores/BSc-in-Nuclear-Medicine-Technology-APS.jpg"
     publisher: "Cape Peninsula University of Technology"
@@ -1910,6 +3451,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cput-aps-bpsrdt
     url: "https://www.cput.ac.za/images/Faculties/Health-and-Wellness-Sciences/Documents-and-Resources/APS-Scores/BSc-in-Radiation-Therapy-APS.jpg"
     publisher: "Cape Peninsula University of Technology"
@@ -1917,6 +3459,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cput-aps-bpnurs
     url: "https://www.cput.ac.za/images/Faculties/Health-and-Wellness-Sciences/Documents-and-Resources/APS-Scores/Bachelor-of-Nursing-APS.jpg"
     publisher: "Cape Peninsula University of Technology"
@@ -1924,6 +3467,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cput-aps-bpnurx
     url: "https://www.cput.ac.za/images/Faculties/Health-and-Wellness-Sciences/Documents-and-Resources/APS-Scores/Bachelor-of-Nursing-ECP-APS.jpg"
     publisher: "Cape Peninsula University of Technology"
@@ -1931,6 +3475,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cput-aps-bgopty
     url: "https://www.cput.ac.za/images/Faculties/Health-and-Wellness-Sciences/Documents-and-Resources/APS-Scores/Bachelor-of-Health-Science-in-Opticianry-APS.jpg"
     publisher: "Cape Peninsula University of Technology"
@@ -1938,6 +3483,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cput-aps-d3soma
     url: "https://www.cput.ac.za/images/Faculties/Health-and-Wellness-Sciences/Documents-and-Resources/APS-Scores/Diploma-in-Somatology-APS.jpg"
     publisher: "Cape Peninsula University of Technology"
@@ -1945,6 +3491,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cput-aps-hcdnas
     url: "https://www.cput.ac.za/images/Faculties/Health-and-Wellness-Sciences/Documents-and-Resources/APS-Scores/Higher-Certificate-in-Dental-Assisting-APS.jpg"
     publisher: "Cape Peninsula University of Technology"
@@ -1952,6 +3499,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cput-accounting
     url: "https://www.cput.ac.za/faculties/fbms/departments/accounting-sciences"
     publisher: "Cape Peninsula University of Technology"
@@ -1959,6 +3507,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cput-retail
     url: "https://www.cput.ac.za/faculties/fbms/departments/retail-business-management"
     publisher: "Cape Peninsula University of Technology"
@@ -1966,6 +3515,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cput-real-estate
     url: "https://www.cput.ac.za/faculties/fbms/departments/unit-for-applied-economics-real-estate"
     publisher: "Cape Peninsula University of Technology"
@@ -1973,6 +3523,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cput-fashion
     url: "https://www.cput.ac.za/faculties/fid/departments/applied-design/fashion-design"
     publisher: "Cape Peninsula University of Technology"
@@ -1980,6 +3531,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cput-jewellery
     url: "https://www.cput.ac.za/faculties/fid/departments/applied-design/jewellery-design-and-manufacture"
     publisher: "Cape Peninsula University of Technology"
@@ -1987,6 +3539,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cput-product-design
     url: "https://www.cput.ac.za/faculties/fid/departments/applied-design/product-and-industrial-design"
     publisher: "Cape Peninsula University of Technology"
@@ -1994,6 +3547,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cput-vcd
     url: "https://www.cput.ac.za/faculties/fid/departments/applied-design/visual-communication-design"
     publisher: "Cape Peninsula University of Technology"
@@ -2001,6 +3555,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cput-design-ecp
     url: "https://www.cput.ac.za/faculties/fid/departments/applied-design/design-extended-curriculum-programmes"
     publisher: "Cape Peninsula University of Technology"
@@ -2008,6 +3563,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cput-supporting-docs-2027
     url: "https://www.cput.ac.za/images/Study-at-CPUT/Documents/2027-Supporting-Documentation-040526.pdf"
     publisher: "Cape Peninsula University of Technology"
@@ -2015,3 +3571,113 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
+  - id: s-cput-prospectus-2027
+    url: https://www.cput.ac.za/study-at-cput/undergraduate/apply/step-1
+    publisher: Cape Peninsula University of Technology
+    title: 2027 Prospectus, edition 2/2026, pp.3,9?10,13?15 (user-supplied PDF; see docs/research/2027-local-prospectuses.md)
+    retrieved: '2026-10-24'
+    last_verified: null
+    verified_by: agent draft, needs human check
+    verification_basis: official_university
+
+support_services:
+- kind: counselling
+  name: Student Counselling
+  contact: 021 460 3237
+  source: s-cput-counselling-2026
+  campuses:
+  - district_six
+  note: Room 2.700, Administration Building.
+- kind: counselling
+  name: Student Counselling
+  contact: 021 959 6182
+  source: s-cput-counselling-2026
+  campuses:
+  - bellville
+  note: Ground level, Library extension.
+- kind: counselling
+  name: Student Counselling
+  contact: 021 680 1574
+  source: s-cput-counselling-2026
+  campuses:
+  - mowbray
+  note: Ground level, Barkley Davies Building.
+- kind: counselling
+  name: Student Counselling
+  contact: 021 864 5206
+  source: s-cput-counselling-2026
+  campuses:
+  - wellington
+  note: Administration Building extension.
+
+calendar:
+- period: term
+  name: First Term
+  start: '2027-02-01'
+  source: s-cput-calendar-2027
+  end: '2027-03-19'
+  note: Approved 2027 calendar; dates may change. Assessment dates are flexible within
+    the published period; consult your faculty timetable.
+- period: term
+  name: Second Term
+  start: '2027-03-30'
+  source: s-cput-calendar-2027
+  end: '2027-06-11'
+  note: Approved 2027 calendar; dates may change. Assessment dates are flexible within
+    the published period; consult your faculty timetable.
+- period: graduation
+  name: Autumn Graduation
+  start: '2027-04-12'
+  source: s-cput-calendar-2027
+  end: '2027-04-23'
+  note: Approved 2027 calendar; dates may change. Assessment dates are flexible within
+    the published period; consult your faculty timetable.
+- period: revision
+  name: Semester 1 Study Week
+  start: '2027-05-10'
+  source: s-cput-calendar-2027
+  end: '2027-05-14'
+  note: Approved 2027 calendar; dates may change. Assessment dates are flexible within
+    the published period; consult your faculty timetable.
+- period: exam
+  name: Semester 1 Assessment Period
+  start: '2027-05-17'
+  source: s-cput-calendar-2027
+  end: '2027-06-04'
+  note: Approved 2027 calendar; dates may change. Assessment dates are flexible within
+    the published period; consult your faculty timetable.
+- period: term
+  name: Third Term
+  start: '2027-07-05'
+  source: s-cput-calendar-2027
+  end: '2027-08-27'
+  note: Approved 2027 calendar; dates may change. Assessment dates are flexible within
+    the published period; consult your faculty timetable.
+- period: term
+  name: Fourth Term
+  start: '2027-09-06'
+  source: s-cput-calendar-2027
+  end: '2027-12-10'
+  note: Approved 2027 calendar; dates may change. Assessment dates are flexible within
+    the published period; consult your faculty timetable.
+- period: revision
+  name: Semester 2 Study Week
+  start: '2027-10-18'
+  source: s-cput-calendar-2027
+  end: '2027-10-22'
+  note: Approved 2027 calendar; dates may change. Assessment dates are flexible within
+    the published period; consult your faculty timetable.
+- period: exam
+  name: Semester 2 Assessment Period
+  start: '2027-10-25'
+  source: s-cput-calendar-2027
+  end: '2027-11-19'
+  note: Approved 2027 calendar; dates may change. Assessment dates are flexible within
+    the published period; consult your faculty timetable.
+- period: graduation
+  name: Summer Graduation
+  start: '2027-12-09'
+  source: s-cput-calendar-2027
+  note: Approved 2027 calendar; dates may change. Assessment dates are flexible within
+    the published period; consult your faculty timetable.

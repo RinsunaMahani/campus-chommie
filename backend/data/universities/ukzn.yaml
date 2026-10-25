@@ -1161,6 +1161,13 @@ programmes:
         - "Offered at Westville and Pietermaritzburg (each has its own CAO code)."
 
 sources:
+  - id: s-ukzn-support-2026
+    url: https://ulop.ukzn.ac.za/help-contacts/
+    publisher: University of KwaZulu-Natal
+    title: Student support help contacts
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official university source
   - id: s-ukzn-prospectus-2027
     url: "https://applications.ukzn.ac.za/wp-content/uploads/2026/05/2027-Undergrad.pdf"
     publisher: "University of KwaZulu-Natal"
@@ -1168,6 +1175,7 @@ sources:
     retrieved: 2026-10-22
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ukzn-prospectus-2027-checked
     url: "https://applications.ukzn.ac.za/wp-content/uploads/2026/05/2027-Undergrad.pdf"
     publisher: "University of KwaZulu-Natal"
@@ -1189,6 +1197,7 @@ sources:
     retrieved: 2026-10-22
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ukzn-where
     url: "https://ukzn.ac.za/history/"
     publisher: "University of KwaZulu-Natal"
@@ -1196,6 +1205,7 @@ sources:
     retrieved: 2026-10-20
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ukzn-selection
     url: "https://applications.ukzn.ac.za/selection-procedure/undergraduate-selection-procedure/"
     publisher: "University of KwaZulu-Natal"
@@ -1203,6 +1213,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ukzn-2027
     url: "https://applications.ukzn.ac.za/uncategorized/2026-applications/"
     publisher: "University of KwaZulu-Natal"
@@ -1210,6 +1221,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cao-faq
     url: "https://cao.ac.za/2027%20Entry%20FAQs.html"
     publisher: "Central Applications Office"
@@ -1217,3 +1229,10 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+
+support_services:
+- kind: counselling
+  name: Student Support Services
+  contact: 080 080 0017
+  source: s-ukzn-support-2026
+  note: University student support toll-free number.

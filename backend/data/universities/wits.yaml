@@ -1225,6 +1225,7 @@ sources:
     retrieved: 2026-10-22
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-entry
     url: "https://www.wits.ac.za/undergraduate/entry-requirements/"
     publisher: "University of the Witwatersrand"
@@ -1232,6 +1233,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-apply
     url: "https://www.wits.ac.za/undergraduate/apply-to-wits/"
     publisher: "University of the Witwatersrand"
@@ -1239,6 +1241,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-timelines
     url: "https://www.wits.ac.za/undergraduate/apply-to-wits/timelines/"
     publisher: "University of the Witwatersrand"
@@ -1246,6 +1249,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-clm-bcom
     url: "https://www.wits.ac.za/course-finder/undergraduate/clm/bcom/"
     publisher: "University of the Witwatersrand"
@@ -1253,6 +1257,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-clm-accounting
     url: "https://www.wits.ac.za/course-finder/undergraduate/clm/accounting/"
     publisher: "University of the Witwatersrand"
@@ -1260,6 +1265,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-clm-baccsc
     url: "https://www.wits.ac.za/course-finder/undergraduate/clm/accounting-science-baccsc/"
     publisher: "University of the Witwatersrand"
@@ -1267,6 +1273,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-clm-financial-sciences
     url: "https://www.wits.ac.za/course-finder/undergraduate/clm/bcom-financial-sciences/"
     publisher: "University of the Witwatersrand"
@@ -1274,6 +1281,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-clm-beconsc
     url: "https://www.wits.ac.za/course-finder/undergraduate/clm/economic-science/"
     publisher: "University of the Witwatersrand"
@@ -1281,6 +1289,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-clm-economics
     url: "https://www.wits.ac.za/course-finder/undergraduate/clm/economics/"
     publisher: "University of the Witwatersrand"
@@ -1288,6 +1297,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-clm-finance
     url: "https://www.wits.ac.za/course-finder/undergraduate/clm/finance/"
     publisher: "University of the Witwatersrand"
@@ -1295,6 +1305,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-clm-hrm
     url: "https://www.wits.ac.za/course-finder/undergraduate/clm/human-resource-management/"
     publisher: "University of the Witwatersrand"
@@ -1302,6 +1313,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-clm-information-systems
     url: "https://www.wits.ac.za/course-finder/undergraduate/clm/information-systems/"
     publisher: "University of the Witwatersrand"
@@ -1309,6 +1321,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-clm-irm
     url: "https://www.wits.ac.za/course-finder/undergraduate/clm/insurance-and-risk-management/"
     publisher: "University of the Witwatersrand"
@@ -1316,6 +1329,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-clm-management
     url: "https://www.wits.ac.za/course-finder/undergraduate/clm/management/"
     publisher: "University of the Witwatersrand"
@@ -1323,6 +1337,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-clm-marketing
     url: "https://www.wits.ac.za/course-finder/undergraduate/clm/marketing/"
     publisher: "University of the Witwatersrand"
@@ -1330,6 +1345,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-clm-ppe
     url: "https://www.wits.ac.za/course-finder/undergraduate/clm/ppe/"
     publisher: "University of the Witwatersrand"
@@ -1337,6 +1353,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-clm-bcom-law
     url: "https://www.wits.ac.za/course-finder/undergraduate/clm/law/"
     publisher: "University of the Witwatersrand"
@@ -1344,6 +1361,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-clm-llb
     url: "https://www.wits.ac.za/course-finder/undergraduate/clm/llb-law/"
     publisher: "University of the Witwatersrand"
@@ -1351,6 +1369,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-clm-bcom-part-time
     url: "https://www.wits.ac.za/course-finder/undergraduate/clm/bcom-part-time/"
     publisher: "University of the Witwatersrand"
@@ -1358,6 +1377,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-clm-bcom-part-time-law
     url: "https://www.wits.ac.za/course-finder/undergraduate/clm/bcom-part-time-with-law/"
     publisher: "University of the Witwatersrand"
@@ -1365,6 +1385,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-ebe-aeronautical
     url: "https://www.wits.ac.za/course-finder/undergraduate/ebe/aeronautical-engineering/"
     publisher: "University of the Witwatersrand"
@@ -1372,6 +1393,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-ebe-chemical
     url: "https://www.wits.ac.za/course-finder/undergraduate/ebe/chemical-engineering/"
     publisher: "University of the Witwatersrand"
@@ -1379,6 +1401,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-ebe-civil
     url: "https://www.wits.ac.za/course-finder/undergraduate/ebe/civil-engineering/"
     publisher: "University of the Witwatersrand"
@@ -1386,6 +1409,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-ebe-electrical
     url: "https://www.wits.ac.za/course-finder/undergraduate/ebe/electrical-engineering/"
     publisher: "University of the Witwatersrand"
@@ -1393,6 +1417,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-ebe-industrial
     url: "https://www.wits.ac.za/course-finder/undergraduate/ebe/industrial-engineering/"
     publisher: "University of the Witwatersrand"
@@ -1400,6 +1425,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-ebe-information
     url: "https://www.wits.ac.za/course-finder/undergraduate/ebe/information-engineering/"
     publisher: "University of the Witwatersrand"
@@ -1407,6 +1433,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-ebe-mechanical
     url: "https://www.wits.ac.za/course-finder/undergraduate/ebe/mechanical-engineering/"
     publisher: "University of the Witwatersrand"
@@ -1414,6 +1441,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-ebe-metallurgy
     url: "https://www.wits.ac.za/course-finder/undergraduate/ebe/metallurgy-and-materials-engineering/"
     publisher: "University of the Witwatersrand"
@@ -1421,6 +1449,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-ebe-mining
     url: "https://www.wits.ac.za/course-finder/undergraduate/ebe/mining-engineering/"
     publisher: "University of the Witwatersrand"
@@ -1428,6 +1457,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-ebe-biomedical
     url: "https://www.wits.ac.za/course-finder/undergraduate/ebe/biomedical-engineering/"
     publisher: "University of the Witwatersrand"
@@ -1435,6 +1465,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-ebe-digital-arts
     url: "https://www.wits.ac.za/course-finder/undergraduate/ebe/digital-arts/"
     publisher: "University of the Witwatersrand"
@@ -1442,6 +1473,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-ebe-part-time
     url: "https://www.wits.ac.za/course-finder/undergraduate/ebe/bsc-engineering-part-time/"
     publisher: "University of the Witwatersrand"
@@ -1449,6 +1481,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-ebe-bas
     url: "https://www.wits.ac.za/course-finder/undergraduate/ebe/architectural-studies/"
     publisher: "University of the Witwatersrand"
@@ -1456,6 +1489,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-ebe-construction
     url: "https://www.wits.ac.za/course-finder/undergraduate/ebe/construction-studies/"
     publisher: "University of the Witwatersrand"
@@ -1463,6 +1497,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-ebe-property
     url: "https://www.wits.ac.za/course-finder/undergraduate/ebe/property-studies/"
     publisher: "University of the Witwatersrand"
@@ -1470,6 +1505,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-ebe-urp
     url: "https://www.wits.ac.za/course-finder/undergraduate/ebe/urban-and-regional-planning/"
     publisher: "University of the Witwatersrand"
@@ -1477,6 +1513,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-health-biokinetics
     url: "https://www.wits.ac.za/course-finder/undergraduate/health/biokinetics/"
     publisher: "University of the Witwatersrand"
@@ -1484,6 +1521,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-health-biomedical-sciences
     url: "https://www.wits.ac.za/course-finder/undergraduate/health/biomedical-sciences/"
     publisher: "University of the Witwatersrand"
@@ -1491,6 +1529,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-health-health-systems
     url: "https://www.wits.ac.za/course-finder/undergraduate/health/health-systems-science/"
     publisher: "University of the Witwatersrand"
@@ -1498,6 +1537,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-health-bcmp
     url: "https://www.wits.ac.za/course-finder/undergraduate/health/clinical-medical-practice/"
     publisher: "University of the Witwatersrand"
@@ -1505,6 +1545,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-health-bds
     url: "https://www.wits.ac.za/course-finder/undergraduate/health/dental-science/"
     publisher: "University of the Witwatersrand"
@@ -1512,6 +1553,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-health-mbbch
     url: "https://www.wits.ac.za/course-finder/undergraduate/health/medicine-and-surgery/"
     publisher: "University of the Witwatersrand"
@@ -1519,6 +1561,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-health-nursing
     url: "https://www.wits.ac.za/course-finder/undergraduate/health/nursing/"
     publisher: "University of the Witwatersrand"
@@ -1526,6 +1569,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-health-ot
     url: "https://www.wits.ac.za/course-finder/undergraduate/health/occupational-therapy/"
     publisher: "University of the Witwatersrand"
@@ -1533,6 +1577,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-health-bohsc
     url: "https://www.wits.ac.za/course-finder/undergraduate/health/oral-health-sciences/"
     publisher: "University of the Witwatersrand"
@@ -1540,6 +1585,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-health-pharmacy
     url: "https://www.wits.ac.za/course-finder/undergraduate/health/pharmacy/"
     publisher: "University of the Witwatersrand"
@@ -1547,6 +1593,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-health-physiotherapy
     url: "https://www.wits.ac.za/course-finder/undergraduate/health/physiotherapy/"
     publisher: "University of the Witwatersrand"
@@ -1554,6 +1601,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-hum-ba
     url: "https://www.wits.ac.za/course-finder/undergraduate/humanities/ba/"
     publisher: "University of the Witwatersrand"
@@ -1561,6 +1609,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-hum-ba-part-time
     url: "https://www.wits.ac.za/course-finder/undergraduate/humanities/ba-part-time/"
     publisher: "University of the Witwatersrand"
@@ -1568,6 +1617,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-hum-ba-part-time-law
     url: "https://www.wits.ac.za/course-finder/undergraduate/humanities/ba-part-time-with-law/"
     publisher: "University of the Witwatersrand"
@@ -1575,6 +1625,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-hum-ba-law
     url: "https://www.wits.ac.za/course-finder/undergraduate/humanities/law/"
     publisher: "University of the Witwatersrand"
@@ -1582,6 +1633,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-hum-digital-arts
     url: "https://www.wits.ac.za/course-finder/undergraduate/humanities/digital-arts/"
     publisher: "University of the Witwatersrand"
@@ -1589,6 +1641,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-hum-film-tv
     url: "https://www.wits.ac.za/course-finder/undergraduate/humanities/film-and-television/"
     publisher: "University of the Witwatersrand"
@@ -1596,6 +1649,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-hum-fine-arts
     url: "https://www.wits.ac.za/course-finder/undergraduate/humanities/fine-arts/"
     publisher: "University of the Witwatersrand"
@@ -1603,6 +1657,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-hum-music
     url: "https://www.wits.ac.za/course-finder/undergraduate/humanities/music/"
     publisher: "University of the Witwatersrand"
@@ -1610,6 +1665,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-hum-theatre
     url: "https://www.wits.ac.za/course-finder/undergraduate/humanities/theatre-and-performance/"
     publisher: "University of the Witwatersrand"
@@ -1617,6 +1673,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-hum-social-work
     url: "https://www.wits.ac.za/course-finder/undergraduate/humanities/social-work/"
     publisher: "University of the Witwatersrand"
@@ -1624,6 +1681,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-hum-audiology
     url: "https://www.wits.ac.za/course-finder/undergraduate/humanities/audiology/"
     publisher: "University of the Witwatersrand"
@@ -1631,6 +1689,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-hum-slp
     url: "https://www.wits.ac.za/course-finder/undergraduate/humanities/speech-language-pathology/"
     publisher: "University of the Witwatersrand"
@@ -1638,6 +1697,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-hum-bed-foundation
     url: "https://www.wits.ac.za/course-finder/undergraduate/humanities/bed-foundation-phase-teaching/"
     publisher: "University of the Witwatersrand"
@@ -1645,6 +1705,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-hum-bed-intermediate
     url: "https://www.wits.ac.za/course-finder/undergraduate/humanities/bed-intermediate-phase-teaching/"
     publisher: "University of the Witwatersrand"
@@ -1652,6 +1713,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-hum-bed-senior
     url: "https://www.wits.ac.za/course-finder/undergraduate/humanities/bed-senior-phase-teaching/"
     publisher: "University of the Witwatersrand"
@@ -1659,6 +1721,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-sci-bsc
     url: "https://www.wits.ac.za/course-finder/undergraduate/science/bsc/"
     publisher: "University of the Witwatersrand"
@@ -1666,6 +1729,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-sci-actuarial
     url: "https://www.wits.ac.za/course-finder/undergraduate/science/actuarial-science/"
     publisher: "University of the Witwatersrand"
@@ -1673,6 +1737,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-sci-applied-bioinformatics
     url: "https://www.wits.ac.za/course-finder/undergraduate/science/applied-bioinformatics/"
     publisher: "University of the Witwatersrand"
@@ -1680,6 +1745,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-sci-applied-ecology
     url: "https://www.wits.ac.za/course-finder/undergraduate/science/applied-ecology-and-global-change/"
     publisher: "University of the Witwatersrand"
@@ -1687,6 +1753,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-sci-astronomy
     url: "https://www.wits.ac.za/course-finder/undergraduate/science/astronomy-and-astrophysics/"
     publisher: "University of the Witwatersrand"
@@ -1694,6 +1761,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-sci-biochemistry
     url: "https://www.wits.ac.za/course-finder/undergraduate/science/biochemistry-and-cell-biology/"
     publisher: "University of the Witwatersrand"
@@ -1701,6 +1769,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-sci-biodiversity
     url: "https://www.wits.ac.za/course-finder/undergraduate/science/biodiversity/"
     publisher: "University of the Witwatersrand"
@@ -1708,6 +1777,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-sci-chemistry
     url: "https://www.wits.ac.za/course-finder/undergraduate/science/chemistry/"
     publisher: "University of the Witwatersrand"
@@ -1715,6 +1785,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-sci-chem-eng
     url: "https://www.wits.ac.za/course-finder/undergraduate/science/chemistry-with-chemical-engineering/"
     publisher: "University of the Witwatersrand"
@@ -1722,6 +1793,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-sci-cam
     url: "https://www.wits.ac.za/course-finder/undergraduate/science/computational-and-applied-mathematics/"
     publisher: "University of the Witwatersrand"
@@ -1729,6 +1801,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-sci-computer-science
     url: "https://www.wits.ac.za/course-finder/undergraduate/science/computer-science/"
     publisher: "University of the Witwatersrand"
@@ -1736,6 +1809,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-sci-environmental-studies
     url: "https://www.wits.ac.za/course-finder/undergraduate/science/environmental-studies/"
     publisher: "University of the Witwatersrand"
@@ -1743,6 +1817,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-sci-genetics
     url: "https://www.wits.ac.za/course-finder/undergraduate/science/genetics-and-developmental-biology/"
     publisher: "University of the Witwatersrand"
@@ -1750,6 +1825,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-sci-geographical-archaeological
     url: "https://www.wits.ac.za/course-finder/undergraduate/science/geographical-and-archaeological-sciences/"
     publisher: "University of the Witwatersrand"
@@ -1757,6 +1833,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-sci-geological
     url: "https://www.wits.ac.za/course-finder/undergraduate/science/geological-sciences/"
     publisher: "University of the Witwatersrand"
@@ -1764,6 +1841,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-sci-geospatial
     url: "https://www.wits.ac.za/course-finder/undergraduate/science/geospatial-sciences/"
     publisher: "University of the Witwatersrand"
@@ -1771,6 +1849,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-sci-mathematical-sciences
     url: "https://www.wits.ac.za/course-finder/undergraduate/science/mathematical-sciences/"
     publisher: "University of the Witwatersrand"
@@ -1778,6 +1857,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-sci-microbiology
     url: "https://www.wits.ac.za/course-finder/undergraduate/science/microbiology-and-biotechnology/"
     publisher: "University of the Witwatersrand"
@@ -1785,6 +1865,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-sci-physics
     url: "https://www.wits.ac.za/course-finder/undergraduate/science/physics/"
     publisher: "University of the Witwatersrand"
@@ -1792,6 +1873,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-sci-physics-finance
     url: "https://www.wits.ac.za/course-finder/undergraduate/science/physics-and-finance/"
     publisher: "University of the Witwatersrand"
@@ -1799,6 +1881,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-sci-physics-philosophy
     url: "https://www.wits.ac.za/course-finder/undergraduate/science/physics-and-philosophy/"
     publisher: "University of the Witwatersrand"
@@ -1806,6 +1889,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wits-sci-physics-ecology
     url: "https://www.wits.ac.za/course-finder/undergraduate/science/physics-ecology-and-sustainability/"
     publisher: "University of the Witwatersrand"
@@ -1813,3 +1897,160 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
+
+  - id: s-wits-calendar-2027
+    url: https://www.wits.ac.za/students/academic-matters/term-dates/2027-term-dates/
+    publisher: University of the Witwatersrand
+    title: 2027 Term Dates
+    retrieved: '2026-10-24'
+    last_verified: null
+    verified_by: agent draft, needs human check
+    verification_basis: official_university
+  - id: s-wits-support-2026
+    url: https://www.wits.ac.za/teaching-and-learning/student-support/
+    publisher: University of the Witwatersrand
+    title: Student Support
+    retrieved: '2026-10-24'
+    last_verified: null
+    verified_by: agent draft, needs human check
+    verification_basis: official_university
+  - id: s-wits-financial-aid-2026
+    url: https://www.wits.ac.za/study-at-wits/financial-aid-and-scholarships-administration/
+    publisher: University of the Witwatersrand
+    title: Financial Aid and Scholarships Administration
+    retrieved: '2026-10-24'
+    last_verified: null
+    verified_by: agent draft, needs human check
+    verification_basis: official_university
+  - id: s-wits-wam-2026
+    url: https://www.wits.ac.za/wam/visit-us/
+    publisher: University of the Witwatersrand
+    title: 'Wits Art Museum: Visit Us'
+    retrieved: '2026-10-24'
+    last_verified: null
+    verified_by: agent draft, needs human check
+    verification_basis: official_university
+
+calendar:
+- period: registration
+  name: Returning student registration
+  start: '2027-01-04'
+  end: '2027-02-05'
+  source: s-wits-calendar-2027
+  note: Health Sciences dates may differ. Check faculty and registration-cohort dates
+    with Wits.
+  who: returning
+  step: register
+- period: orientation
+  name: Gateway to Success orientation
+  start: '2027-01-25'
+  end: '2027-02-05'
+  source: s-wits-calendar-2027
+  note: Health Sciences dates may differ. Check faculty and registration-cohort dates
+    with Wits.
+  who: first_years
+  step: orientation
+- period: term
+  name: First teaching block
+  start: '2027-02-08'
+  end: '2027-03-24'
+  source: s-wits-calendar-2027
+  note: Health Sciences dates may differ. Check faculty and registration-cohort dates
+    with Wits.
+  step: first_lecture
+- period: recess
+  name: Mid-term break
+  start: '2027-03-25'
+  end: '2027-04-11'
+  source: s-wits-calendar-2027
+  note: Health Sciences dates may differ. Check faculty and registration-cohort dates
+    with Wits.
+- period: term
+  name: Second teaching block
+  start: '2027-04-12'
+  end: '2027-05-27'
+  source: s-wits-calendar-2027
+  note: Health Sciences dates may differ. Check faculty and registration-cohort dates
+    with Wits.
+- period: revision
+  name: Study break
+  start: '2027-05-28'
+  end: '2027-05-30'
+  source: s-wits-calendar-2027
+  note: Health Sciences dates may differ. Check faculty and registration-cohort dates
+    with Wits.
+- period: exam
+  name: Examinations and assessments
+  start: '2027-05-31'
+  end: '2027-06-28'
+  source: s-wits-calendar-2027
+  note: Health Sciences dates may differ. Check faculty and registration-cohort dates
+    with Wits.
+- period: recess
+  name: Winter break
+  start: '2027-06-29'
+  end: '2027-07-18'
+  source: s-wits-calendar-2027
+  note: Health Sciences dates may differ. Check faculty and registration-cohort dates
+    with Wits.
+- period: term
+  name: Third teaching block
+  start: '2027-07-19'
+  end: '2027-09-03'
+  source: s-wits-calendar-2027
+  note: Health Sciences dates may differ. Check faculty and registration-cohort dates
+    with Wits.
+- period: recess
+  name: Mid-term break
+  start: '2027-09-04'
+  end: '2027-09-12'
+  source: s-wits-calendar-2027
+  note: Health Sciences dates may differ. Check faculty and registration-cohort dates
+    with Wits.
+- period: term
+  name: Fourth teaching block
+  start: '2027-09-13'
+  end: '2027-10-26'
+  source: s-wits-calendar-2027
+  note: Health Sciences dates may differ. Check faculty and registration-cohort dates
+    with Wits.
+- period: revision
+  name: Study break
+  start: '2027-10-27'
+  end: '2027-10-31'
+  source: s-wits-calendar-2027
+  note: Health Sciences dates may differ. Check faculty and registration-cohort dates
+    with Wits.
+- period: exam
+  name: Examinations and assessments
+  start: '2027-11-01'
+  end: '2027-11-26'
+  source: s-wits-calendar-2027
+  note: Health Sciences dates may differ. Check faculty and registration-cohort dates
+    with Wits.
+support_services:
+- kind: counselling
+  name: Counselling and Careers Development Unit
+  contact: 011 717 9140; info.ccdu@wits.ac.za
+  source: s-wits-support-2026
+- kind: careers
+  name: Counselling and Careers Development Unit
+  contact: 011 717 9140; info.ccdu@wits.ac.za
+  source: s-wits-support-2026
+- kind: financial_aid
+  name: Financial Aid and Scholarships Office
+  contact: 011 717 1566
+  hours: 'Walk-in visits: 08:00?12:00 at Solomon Mahlangu House and Education Campus.'
+  note: Log queries at https://witshelp-ism.saasiteu.com; student queries are not
+    handled by email.
+  source: s-wits-financial-aid-2026
+cheap_things:
+- name: Wits Art Museum
+  category: museum
+  cost_note: Free admission; donations welcome.
+  campuses:
+  - braamfontein
+  address: Entrance at the corner of Jorissen and Bertha streets, Braamfontein.
+  hours: Tuesday?Saturday, 10:00?16:00.
+  source: s-wits-wam-2026

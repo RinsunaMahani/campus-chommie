@@ -780,6 +780,13 @@ programmes:
         - "Duration is 4 years."
 
 sources:
+  - id: s-ul-support-2026
+    url: https://www.ul.ac.za/student-counselling/
+    publisher: University of Limpopo
+    title: Centre for Student Counselling and Development
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official university source
   - id: s-ul-where
     url: "https://www.ul.ac.za/about-us/"
     publisher: "University of Limpopo"
@@ -787,6 +794,7 @@ sources:
     retrieved: 2026-10-20
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ul-prospectus-2027
     url: "https://www.ul.ac.za/wp-content/uploads/2025/03/Undergraduate-Prospectus-2027.pdf"
     publisher: "University of Limpopo"
@@ -794,6 +802,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ul-2027
     url: "https://www.ul.ac.za/study-with-us-university-of-limpopo-2027-application-now-open/"
     publisher: "University of Limpopo"
@@ -801,3 +810,12 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
+
+support_services:
+- kind: counselling
+  name: Student Counselling and Development
+  contact: 015 268 2437
+  source: s-ul-support-2026
+  hours: Monday to Friday, 07:30–16:00
+  note: Reception in D Block.

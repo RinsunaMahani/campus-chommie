@@ -1,5 +1,7 @@
 # CPUT: undergraduate programmes for 2027 (research note)
 
+**24 October update:** the user-supplied 2027 PDF fills 40 of the 44 missing requirement records described below. See [the source review](2027-local-prospectuses.md) for current evidence and unresolved rules. The following notes preserve the earlier online-source audit.
+
 Agent draft, 15 Oct 2026. Pack: `backend/data/universities/cput.yaml`. Nothing here has been checked by a person yet;
 `release` stays `false`.
 
@@ -101,6 +103,11 @@ No pack-wide rule: CPUT counts its APS differently by faculty, so `points_rules`
    diplomas (the Design ECP page says the mainstream diplomas add portfolio or entrance test requirements).
 
 ## Check first
+
+25 October follow-up: the supplied official 2027 PDF fills 42 of the 44 previously empty requirements.
+Banking and Senior/FET BEd remain unresolved. Clothing/Textile routes with unpublished Technical Mathematics
+APS return only a subject check. See [the current review](2027-local-prospectuses.md) for the import and
+[coverage queue](../DATA_READINESS.md) for current gaps; the list below records the earlier research questions.
 
 1. Download the 2027 prospectus from Issuu (above) and fill the 44 programmes with `requirements: null`, starting with
    Business and Management Sciences.

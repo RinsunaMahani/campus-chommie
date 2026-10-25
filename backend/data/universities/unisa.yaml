@@ -2491,6 +2491,13 @@ programmes:
         - "Unisa asks this mark in \"the language of teaching and learning\"; it teaches in English (2026 Unisa Rules for Students)."
 
 sources:
+  - id: s-unisa-counselling-2026
+    url: https://www.unisa.ac.za/sites/myunisa/default/Learner-support-&-regions/Counselling-and-career-development/Contact-us
+    publisher: University of South Africa
+    title: Counselling and Career Development contacts, updated 14 May 2026
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official university source
   - id: s-unisa-campuses
     url: "https://www.unisa.ac.za/sites/corporate/default/Contact-us/Campus-maps-&-addresses"
     publisher: "University of South Africa"
@@ -2498,6 +2505,7 @@ sources:
     retrieved: 2026-10-22
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-admission
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/General-admission-requirements"
     publisher: "University of South Africa"
@@ -2505,6 +2513,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-apply
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Apply-for-admission"
     publisher: "University of South Africa"
@@ -2512,6 +2521,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-2027
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Whats-new-for-2027"
     publisher: "University of South Africa"
@@ -2519,6 +2529,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98201
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Higher-Certificate-in-Accounting-Sciences-(98201)"
     publisher: "University of South Africa"
@@ -2526,6 +2537,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90098
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Higher-Certificate-in-Animal-Welfare-(90098)"
     publisher: "University of South Africa"
@@ -2533,6 +2545,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98577
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Higher-Certificate-in-Archives-and-Records-Management-(98577)"
     publisher: "University of South Africa"
@@ -2540,6 +2553,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98225
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Higher-Certificate-in-Banking-(98225)"
     publisher: "University of South Africa"
@@ -2547,6 +2561,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90006
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Higher-Certificate-in-Criminal-Justice-(90006)"
     publisher: "University of South Africa"
@@ -2554,6 +2569,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98237
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Higher-Certificate-in-Economic-and-Management-Sciences-(98237)"
     publisher: "University of South Africa"
@@ -2561,6 +2577,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90093-fip
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Higher-Certificate-in-Education-Foundation-Phase-and-Intermediate-Phase-(90093-%E2%80%93-FIP)"
     publisher: "University of South Africa"
@@ -2568,6 +2585,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90093-sms
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Higher-Certificate-in-Education-Senior-Phase-Maths-and-Science-Education-(90093-%E2%80%93-SMS)"
     publisher: "University of South Africa"
@@ -2575,6 +2593,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90093-spf
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Higher-Certificate-in-Education-Senior-Phase-and-Further-Education-and-Training-Teaching-(90093-%E2%80%93-SPF)"
     publisher: "University of South Africa"
@@ -2582,6 +2601,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98751
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Higher-Certificate-in-Law-(98751)"
     publisher: "University of South Africa"
@@ -2589,6 +2609,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98366
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Higher-Certificate-in-Life-and-Environmental-Sciences-(98366)"
     publisher: "University of South Africa"
@@ -2596,6 +2617,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98229
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Higher-Certificate-in-Marketing-(98229)"
     publisher: "University of South Africa"
@@ -2603,6 +2625,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90129
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Higher-Certificate-in-Mathematics-and-Statistics-(90129)"
     publisher: "University of South Africa"
@@ -2610,6 +2633,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90194
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Higher-Certificate-in-Music-(90194)"
     publisher: "University of South Africa"
@@ -2617,6 +2641,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90101
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Higher-Certificate-in-Physical-Sciences-(90101)"
     publisher: "University of South Africa"
@@ -2624,6 +2649,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90014
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Higher-Certificate-in-Retailing-(90014)"
     publisher: "University of South Africa"
@@ -2631,6 +2657,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90011
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Higher-Certificate-in-Social-Auxiliary-Work-Not-Applicable-(90011-%E2%80%93-NEW)"
     publisher: "University of South Africa"
@@ -2638,6 +2665,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90015
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Higher-Certificate-in-Supervisory-Management-(90015)"
     publisher: "University of South Africa"
@@ -2645,6 +2673,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98226
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Higher-Certificate-in-Tourism-Management-(98226)"
     publisher: "University of South Africa"
@@ -2652,6 +2681,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98200
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Diploma-in-Accounting-Sciences-(98200)"
     publisher: "University of South Africa"
@@ -2659,6 +2689,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98216
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Diploma-in-Administrative-Management-(98216)"
     publisher: "University of South Africa"
@@ -2666,6 +2697,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90189-get
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Diploma-in-Adult-and-Community-Education-and-Training-General-Education-and-Training-Certificate-for-Adults-(90189-%E2%80%93-GET)"
     publisher: "University of South Africa"
@@ -2673,6 +2705,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90097
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Diploma-in-Agricultural-Management-(90097)"
     publisher: "University of South Africa"
@@ -2680,6 +2713,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98026-ahe
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Diploma-in-Animal-Health-(98026-%E2%80%93-AHE)"
     publisher: "University of South Africa"
@@ -2687,6 +2721,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90130
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Diploma-in-Chemical-Engineering-(90130)"
     publisher: "University of South Africa"
@@ -2694,6 +2729,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90137
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Diploma-in-Civil-Engineering-(90137)"
     publisher: "University of South Africa"
@@ -2701,6 +2737,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98218
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Diploma-in-Corrections-Management-(98218)"
     publisher: "University of South Africa"
@@ -2708,6 +2745,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90187
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Diploma-in-Early-Childhood-Care-and-Education-(90187)"
     publisher: "University of South Africa"
@@ -2715,6 +2753,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90138
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Diploma-in-Electrical-Engineering-(90138)"
     publisher: "University of South Africa"
@@ -2722,6 +2761,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98211
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Diploma-in-Human-Resource-Management-(98211)"
     publisher: "University of South Africa"
@@ -2729,6 +2769,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90136
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Diploma-in-Industrial-Engineering-(90136)"
     publisher: "University of South Africa"
@@ -2736,6 +2777,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98806-ite
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Diploma-in-Information-Technology-(98806-%E2%80%93-ITE)"
     publisher: "University of South Africa"
@@ -2743,6 +2785,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98750
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Diploma-in-Law-(98750)"
     publisher: "University of South Africa"
@@ -2750,6 +2793,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90083
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Diploma-in-Local-Government-Finance-(90083)"
     publisher: "University of South Africa"
@@ -2757,6 +2801,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98202
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Diploma-in-Marketing-Management-(98202)"
     publisher: "University of South Africa"
@@ -2764,6 +2809,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90132
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Diploma-in-Mechanical-Engineering-(90132)"
     publisher: "University of South Africa"
@@ -2771,6 +2817,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90140
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Diploma-in-Mining-Engineering-(90140)"
     publisher: "University of South Africa"
@@ -2778,6 +2825,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98024-nco
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Diploma-in-Nature-Conservation-(98024-%E2%80%93-NCO)"
     publisher: "University of South Africa"
@@ -2785,6 +2833,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90183
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Diploma-in-Operations-Management-(90183)"
     publisher: "University of South Africa"
@@ -2792,6 +2841,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98025-hor
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Diploma-in-Ornamental-Horticulture-(98025-%E2%80%93-HOR)"
     publisher: "University of South Africa"
@@ -2799,6 +2849,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98220
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Diploma-in-Policing-(98220)"
     publisher: "University of South Africa"
@@ -2806,6 +2857,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98203
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Diploma-in-Public-Administration-and-Management-(98203)"
     publisher: "University of South Africa"
@@ -2813,6 +2865,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90077
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Diploma-in-Public-Relations-(90077)"
     publisher: "University of South Africa"
@@ -2820,6 +2873,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90141
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Diploma-in-Pulp-and-Paper-Technology-(90141)"
     publisher: "University of South Africa"
@@ -2827,6 +2881,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90107
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Diploma-in-Safety-Management-(90107)"
     publisher: "University of South Africa"
@@ -2834,6 +2889,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98221
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Diploma-in-Security-Management-(98221)"
     publisher: "University of South Africa"
@@ -2841,6 +2897,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90073
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Diploma-in-Small-Business-Management-(90073)"
     publisher: "University of South Africa"
@@ -2848,6 +2905,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98223
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Diploma-in-Tourism-Management-(98223)"
     publisher: "University of South Africa"
@@ -2855,6 +2913,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98302-fa1
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Accounting-Sciences-in-Financial-Accounting-(Revised-Curriculum-2020)-(98302-%E2%80%93-FA1)"
     publisher: "University of South Africa"
@@ -2862,6 +2921,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98303-aui
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Accounting-Sciences-in-Internal-Auditing-Internal-Auditing-(98303-%E2%80%93-AUI)"
     publisher: "University of South Africa"
@@ -2869,6 +2929,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98304-ma1
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Accounting-Sciences-in-Management-Accounting-(Revised-Curriculum-2020)-(98304-%E2%80%93-MA1)"
     publisher: "University of South Africa"
@@ -2876,6 +2937,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98318-tax
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Accounting-Sciences-in-Taxation-(98318-%E2%80%93-TAX)"
     publisher: "University of South Africa"
@@ -2883,6 +2945,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98315-bad
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Administration-(98315-%E2%80%93-BAD)"
     publisher: "University of South Africa"
@@ -2890,6 +2953,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90016-hsm
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Administration-in-Human-Settlements-Management-(90016-%E2%80%93-HSM)"
     publisher: "University of South Africa"
@@ -2897,6 +2961,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-99311-gen
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Arts-(General)-(99311-%E2%80%93-GEN)"
     publisher: "University of South Africa"
@@ -2904,6 +2969,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90186
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Arts-in-Communication-Studies-(90186)"
     publisher: "University of South Africa"
@@ -2911,6 +2977,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98618
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Arts-in-Community-Development-(98618)"
     publisher: "University of South Africa"
@@ -2918,6 +2985,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-99313
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Arts-in-Creative-Writing-(99313)"
     publisher: "University of South Africa"
@@ -2925,6 +2993,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98681
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Arts-in-Criminology-(98681)"
     publisher: "University of South Africa"
@@ -2932,6 +3001,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-99312
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Arts-in-Development-Studies-(99312)"
     publisher: "University of South Africa"
@@ -2939,6 +3009,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98055
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Arts-in-Environmental-Management-(98055)"
     publisher: "University of South Africa"
@@ -2946,6 +3017,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90002
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Arts-in-Forensic-Science-and-Technology-(90002)"
     publisher: "University of South Africa"
@@ -2953,6 +3025,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-99301
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Arts-in-Government,-Administration-and-Development-(99301)"
     publisher: "University of South Africa"
@@ -2960,6 +3033,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-99302
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Arts-in-International-Relations-(99302)"
     publisher: "University of South Africa"
@@ -2967,6 +3041,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98683
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Arts-in-Police-Science-(98683)"
     publisher: "University of South Africa"
@@ -2974,6 +3049,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-99303
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Arts-in-Policy-Studies-(99303)"
     publisher: "University of South Africa"
@@ -2981,6 +3057,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-99304
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Arts-in-Political-Leadership-and-Citizenship-(99304)"
     publisher: "University of South Africa"
@@ -2988,6 +3065,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90079
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Arts-in-Politics,-Philosophy-and-Economics-(90079)"
     publisher: "University of South Africa"
@@ -2995,6 +3073,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90180
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Arts-in-Psychology-(90180)"
     publisher: "University of South Africa"
@@ -3002,6 +3081,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90091
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Arts-in-Visual-Multimedia-Arts-(90091)"
     publisher: "University of South Africa"
@@ -3009,6 +3089,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98316-bba
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Business-Administration-(98316-%E2%80%93-BBA)"
     publisher: "University of South Africa"
@@ -3016,6 +3097,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98314-gen
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Commerce-(98314-%E2%80%93-GEN)"
     publisher: "University of South Africa"
@@ -3023,6 +3105,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98300-bis
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Commerce-in-Business-Informatics-(98300-%E2%80%93-BIS)"
     publisher: "University of South Africa"
@@ -3030,6 +3113,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98310-bsm
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Commerce-in-Business-Management-(98310-%E2%80%93-BSM)"
     publisher: "University of South Africa"
@@ -3037,6 +3121,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98305-ecs
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Commerce-in-Economics-(98305-%E2%80%93-ECS)"
     publisher: "University of South Africa"
@@ -3044,6 +3129,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98305-qec
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Commerce-in-Economics-Quantitative-Economics-(98305-%E2%80%93-QEC)"
     publisher: "University of South Africa"
@@ -3051,6 +3137,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90106-ent
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Commerce-in-Entrepreneurship-(90106-%E2%80%93-ENT)"
     publisher: "University of South Africa"
@@ -3058,6 +3145,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98306-fmn
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Commerce-in-Financial-Management-(98306-%E2%80%93-FMN)"
     publisher: "University of South Africa"
@@ -3065,6 +3153,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98307-hrm
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Commerce-in-Human-Resource-Management-(98307-%E2%80%93-HRM)"
     publisher: "University of South Africa"
@@ -3072,6 +3161,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98308-iop
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Commerce-in-Industrial-and-Organisational-Psychology-(98308-%E2%80%93-IOP)"
     publisher: "University of South Africa"
@@ -3079,6 +3169,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90123-law
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Commerce-in-Law-(90123-%E2%80%93-LAW)"
     publisher: "University of South Africa"
@@ -3086,6 +3177,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98301-mkt
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Commerce-in-Marketing-Management-(98301-%E2%80%93-MKT)"
     publisher: "University of South Africa"
@@ -3093,6 +3185,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98767-ppm
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Commerce-in-Public-Procurement-Management-(98767-%E2%80%93-PPM)"
     publisher: "University of South Africa"
@@ -3100,6 +3193,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98311-qma
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Commerce-in-Quantitative-Management-(98311-%E2%80%93-QMA)"
     publisher: "University of South Africa"
@@ -3107,6 +3201,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98766-scm
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Commerce-in-Supply-Chain-and-Operations-Management-(98766-%E2%80%93-SCM)"
     publisher: "University of South Africa"
@@ -3114,6 +3209,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98312-trt
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Commerce-in-Tourism-Management-(98312-%E2%80%93-TRT)"
     publisher: "University of South Africa"
@@ -3121,6 +3217,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98313-trl
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Commerce-in-Transport-and-Logistics-(98313-%E2%80%93-TRL)"
     publisher: "University of South Africa"
@@ -3128,6 +3225,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98005-far
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Consumer-Science-Fashion-Retail-Management-(98005-%E2%80%93-FAR)"
     publisher: "University of South Africa"
@@ -3135,6 +3233,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98005-fsb
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Consumer-Science-Fashion-Small%E2%80%93Business-Management-(98005-%E2%80%93-FSB)"
     publisher: "University of South Africa"
@@ -3142,6 +3241,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98005-fsm
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Consumer-Science-Food-Service-Management-(98005-%E2%80%93-FSM)"
     publisher: "University of South Africa"
@@ -3149,6 +3249,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98005-fcl
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Consumer-Science-Food-and-Clothing-(98005-%E2%80%93-FCL)"
     publisher: "University of South Africa"
@@ -3156,6 +3257,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98005-fnu
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Consumer-Science-Food-and-Nutrition-(98005-%E2%80%93-FNU)"
     publisher: "University of South Africa"
@@ -3163,6 +3265,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98005-hom
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Consumer-Science-Hospitality-Management-(98005-%E2%80%93-HOM)"
     publisher: "University of South Africa"
@@ -3170,6 +3273,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90102
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Education-in-Foundation-Phase-Teaching-(90102)"
     publisher: "University of South Africa"
@@ -3177,6 +3281,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90103-mls
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Education-in-Intermediate-Phase-Teaching-School-subject-combination:-Mathematics-and-Life-Skills-(90103-%E2%80%93-MLS)"
     publisher: "University of South Africa"
@@ -3184,6 +3289,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90103-mnt
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Education-in-Intermediate-Phase-Teaching-School-subject-combination:-Mathematics-and-Natural-Sciences-and-Technology-(90103-%E2%80%93-MNT)"
     publisher: "University of South Africa"
@@ -3191,6 +3297,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90103-mss
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Education-in-Intermediate-Phase-Teaching-School-subject-combination:-Mathematics-and-Social-Science-(90103-%E2%80%93-MSS)"
     publisher: "University of South Africa"
@@ -3198,6 +3305,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90104-arp
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Education-in-Senior-Phase-and-Further-Education-and-Training-Teaching-School-subject-combination:--Art-and-Life-Orientation-(90104-%E2%80%93-ARP)"
     publisher: "University of South Africa"
@@ -3205,6 +3313,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90104-ags
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Education-in-Senior-Phase-and-Further-Education-and-Training-Teaching-School-subject-combination:-Agricultural-Science-(90104-%E2%80%93-AGS)"
     publisher: "University of South Africa"
@@ -3212,6 +3321,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90104-agt
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Education-in-Senior-Phase-and-Further-Education-and-Training-Teaching-School-subject-combination:-Agricultural-Technology-(90104-%E2%80%93-AGT)"
     publisher: "University of South Africa"
@@ -3219,6 +3329,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90104-agm
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Education-in-Senior-Phase-and-Further-Education-and-Training-Teaching-School-subject-combination:-Agriculture-and-Management-(90104-%E2%80%93-AGM)"
     publisher: "University of South Africa"
@@ -3226,6 +3337,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90104-arl
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Education-in-Senior-Phase-and-Further-Education-and-Training-Teaching-School-subject-combination:-Art-and-Languages-(90104-%E2%80%93-ARL)"
     publisher: "University of South Africa"
@@ -3233,6 +3345,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90104-cat
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Education-in-Senior-Phase-and-Further-Education-and-Training-Teaching-School-subject-combination:-Computer-Application-Technology-(90104-%E2%80%93-CAT)"
     publisher: "University of South Africa"
@@ -3240,6 +3353,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90104-con
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Education-in-Senior-Phase-and-Further-Education-and-Training-Teaching-School-subject-combination:-Consumer-Studies-(90104-%E2%80%93-CON)"
     publisher: "University of South Africa"
@@ -3247,6 +3361,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90104-ems
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Education-in-Senior-Phase-and-Further-Education-and-Training-Teaching-School-subject-combination:-Economics-and-Management-Science-(90104-%E2%80%93-EMS)"
     publisher: "University of South Africa"
@@ -3254,6 +3369,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90104-fac
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Education-in-Senior-Phase-and-Further-Education-and-Training-Teaching-School-subject-combination:-Financial-Accounting-(90104-%E2%80%93-FAC)"
     publisher: "University of South Africa"
@@ -3261,6 +3377,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90104-gel
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Education-in-Senior-Phase-and-Further-Education-and-Training-Teaching-School-subject-combination:-Geography-and-Languages-(90104-%E2%80%93-GEL)"
     publisher: "University of South Africa"
@@ -3268,6 +3385,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90104-hig
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Education-in-Senior-Phase-and-Further-Education-and-Training-Teaching-School-subject-combination:-History-and-Geography-(90104-%E2%80%93-HIG)"
     publisher: "University of South Africa"
@@ -3275,6 +3393,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90104-hsb
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Education-in-Senior-Phase-and-Further-Education-and-Training-Teaching-School-subject-combination:-Hospitality-Studies-and-Business-Studies-(90104-%E2%80%93-HSB)"
     publisher: "University of South Africa"
@@ -3282,6 +3401,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90104-hst
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Education-in-Senior-Phase-and-Further-Education-and-Training-Teaching-School-subject-combination:-Hospitality-Studies-and-Tourism-(90104-%E2%80%93-HST)"
     publisher: "University of South Africa"
@@ -3289,6 +3409,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90104-ift
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Education-in-Senior-Phase-and-Further-Education-and-Training-Teaching-School-subject-combination:-Information-Technology-(90104-%E2%80%93-IFT)"
     publisher: "University of South Africa"
@@ -3296,6 +3417,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90104-lan
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Education-in-Senior-Phase-and-Further-Education-and-Training-Teaching-School-subject-combination:-Language-(90104-%E2%80%93-LAN)"
     publisher: "University of South Africa"
@@ -3303,6 +3425,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90104-lol
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Education-in-Senior-Phase-and-Further-Education-and-Training-Teaching-School-subject-combination:-Life-Orientation-and-Language-(90104-%E2%80%93-LOL)"
     publisher: "University of South Africa"
@@ -3310,6 +3433,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90104-lsm
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Education-in-Senior-Phase-and-Further-Education-and-Training-Teaching-School-subject-combination:-Life-Science-and-Mathematics-(90104-%E2%80%93-LSM)"
     publisher: "University of South Africa"
@@ -3317,6 +3441,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90104-bio
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Education-in-Senior-Phase-and-Further-Education-and-Training-Teaching-School-subject-combination:-Life-Sciences-(90104-%E2%80%93-BIO)"
     publisher: "University of South Africa"
@@ -3324,6 +3449,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90104-mle
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Education-in-Senior-Phase-and-Further-Education-and-Training-Teaching-School-subject-combination:-Mathematical-Literacy-and-Economics-(90104-%E2%80%93-MLE)"
     publisher: "University of South Africa"
@@ -3331,6 +3457,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90104-mfa
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Education-in-Senior-Phase-and-Further-Education-and-Training-Teaching-School-subject-combination:-Mathematical-Literacy-and-Financial-Accounting-(90104-%E2%80%93-MFA)"
     publisher: "University of South Africa"
@@ -3338,6 +3465,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90104-mte
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Education-in-Senior-Phase-and-Further-Education-and-Training-Teaching-School-subject-combination:-Mathematics-and-English-(90104-%E2%80%93-MTE)"
     publisher: "University of South Africa"
@@ -3345,6 +3473,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90104-mml
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Education-in-Senior-Phase-and-Further-Education-and-Training-Teaching-School-subject-combination:-Mathematics-and-Mathematical-Literacy-(90104-%E2%80%93-MML)"
     publisher: "University of South Africa"
@@ -3352,6 +3481,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90104-psm
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Education-in-Senior-Phase-and-Further-Education-and-Training-Teaching-School-subject-combination:-Physical-Science-and-Mathematics-(90104-%E2%80%93-PSM)"
     publisher: "University of South Africa"
@@ -3359,6 +3489,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90104-res
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Education-in-Senior-Phase-and-Further-Education-and-Training-Teaching-School-subject-combination:-Religious-Studies-(90104-%E2%80%93-RES)"
     publisher: "University of South Africa"
@@ -3366,6 +3497,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90104-tec
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Education-in-Senior-Phase-and-Further-Education-and-Training-Teaching-School-subject-combination:-Technology-(90104-%E2%80%93-TEC)"
     publisher: "University of South Africa"
@@ -3373,6 +3505,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90104-trg
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Education-in-Senior-Phase-and-Further-Education-and-Training-Teaching-School-subject-combination:-Tourism-and-Geography-(90104-%E2%80%93-TRG)"
     publisher: "University of South Africa"
@@ -3380,6 +3513,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90104-trm
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Education-in-Senior-Phase-and-Further-Education-and-Training-Teaching-School-subject-combination:-Tourism-and-Management-(90104-%E2%80%93-TRM)"
     publisher: "University of South Africa"
@@ -3387,6 +3521,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90188
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Information-Science-(90188)"
     publisher: "University of South Africa"
@@ -3394,6 +3529,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98680
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Laws-(98680-%E2%80%93-NEW)"
     publisher: "University of South Africa"
@@ -3401,6 +3537,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90089
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Music-(90089)"
     publisher: "University of South Africa"
@@ -3408,6 +3545,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98801-amc
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-Applied-Mathematics-and-Computer-Science-(98801-%E2%80%93-AMC)"
     publisher: "University of South Africa"
@@ -3415,6 +3553,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98801-amp
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-Applied-Mathematics-and-Physics-(98801-%E2%80%93-AMP)"
     publisher: "University of South Africa"
@@ -3422,6 +3561,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98801-ams
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-Applied-Mathematics-and-Statistics-(98801-%E2%80%93-AMS)"
     publisher: "University of South Africa"
@@ -3429,6 +3569,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98801-cam
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-Chemistry-and-Applied-Mathematics-(98801-%E2%80%93-CAM)"
     publisher: "University of South Africa"
@@ -3436,6 +3577,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98801-ccs
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-Chemistry-and-Computer-Science-(98801-%E2%80%93-CCS)"
     publisher: "University of South Africa"
@@ -3443,6 +3585,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98801-cis
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-Chemistry-and-Information-Systems-(98801-%E2%80%93-CIS)"
     publisher: "University of South Africa"
@@ -3450,6 +3593,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98801-cap
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-Chemistry-and-Physics-(98801-%E2%80%93-CAP)"
     publisher: "University of South Africa"
@@ -3457,6 +3601,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98801-cas
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-Chemistry-and-Statistics-(98801-%E2%80%93-CAS)"
     publisher: "University of South Africa"
@@ -3464,6 +3609,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98801-gen
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-General-(98801-%E2%80%93-GEN)"
     publisher: "University of South Africa"
@@ -3471,6 +3617,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98801-mam
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-Mathematics-and-Applied-Mathematics-(98801-%E2%80%93-MAM)"
     publisher: "University of South Africa"
@@ -3478,6 +3625,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98801-mac
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-Mathematics-and-Chemistry-(98801-%E2%80%93-MAC)"
     publisher: "University of South Africa"
@@ -3485,6 +3633,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98801-mcs
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-Mathematics-and-Computer-Science-(98801-%E2%80%93-MCS)"
     publisher: "University of South Africa"
@@ -3492,6 +3641,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98801-mis
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-Mathematics-and-Information-Systems-(98801-%E2%80%93-MIS)"
     publisher: "University of South Africa"
@@ -3499,6 +3649,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98801-map
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-Mathematics-and-Physics-(98801-%E2%80%93-MAP)"
     publisher: "University of South Africa"
@@ -3506,6 +3657,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98801-mas
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-Mathematics-and-Statistics-(98801-%E2%80%93-MAS)"
     publisher: "University of South Africa"
@@ -3513,6 +3665,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98801-stp
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-Statistics-and-Physics-(98801-%E2%80%93-STP)"
     publisher: "University of South Africa"
@@ -3520,6 +3673,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90082-abm
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-in-Agricultural-Science-Agricultural-Business-and-Management-(90082-%E2%80%93-ABM)"
     publisher: "University of South Africa"
@@ -3527,6 +3681,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90082-ans
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-in-Agricultural-Science-Animal-Science-(90082-%E2%80%93-ANS)"
     publisher: "University of South Africa"
@@ -3534,6 +3689,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90082-pls
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-in-Agricultural-Science-Plant-Science-(90082-%E2%80%93-PLS)"
     publisher: "University of South Africa"
@@ -3541,6 +3697,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98906-com
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-in-Computing-(98906-%E2%80%93-COM)"
     publisher: "University of South Africa"
@@ -3548,6 +3705,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98052-ebo
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-in-Environmental-Management-Botany-(98052-%E2%80%93-EBO)"
     publisher: "University of South Africa"
@@ -3555,6 +3713,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98052-ech
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-in-Environmental-Management-Chemistry-(98052-%E2%80%93-ECH)"
     publisher: "University of South Africa"
@@ -3562,6 +3721,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98052-ezo
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-in-Environmental-Management-Zoology-(98052-%E2%80%93-EZO)"
     publisher: "University of South Africa"
@@ -3569,6 +3729,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98907-inf
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-in-Informatics-(98907-%E2%80%93-INF)"
     publisher: "University of South Africa"
@@ -3576,6 +3737,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98053-bbm
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-in-Life-Sciences-Biochemistry-(or-Physiology-or-Microbiology)-with-Business-Management-(98053-%E2%80%93-BBM)"
     publisher: "University of South Africa"
@@ -3583,6 +3745,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98053-bab
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-in-Life-Sciences-Biochemistry-and-Botany-(98053-%E2%80%93-BAB)"
     publisher: "University of South Africa"
@@ -3590,6 +3753,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98053-bam
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-in-Life-Sciences-Biochemistry-and-Microbiology-(98053-%E2%80%93-BAM)"
     publisher: "University of South Africa"
@@ -3597,6 +3761,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98053-bap
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-in-Life-Sciences-Biochemistry-and-Physiology-(98053-%E2%80%93-BAP)"
     publisher: "University of South Africa"
@@ -3604,6 +3769,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98053-baz
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-in-Life-Sciences-Biochemistry-and-Zoology-(98053-%E2%80%93-BAZ)"
     publisher: "University of South Africa"
@@ -3611,6 +3777,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98053-bmi
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-in-Life-Sciences-Biomedical-Sciences-(98053-%E2%80%93-BMI)"
     publisher: "University of South Africa"
@@ -3618,6 +3785,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98053-bit
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-in-Life-Sciences-Biotechnology-(98053-%E2%80%93-BIT)"
     publisher: "University of South Africa"
@@ -3625,6 +3793,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98053-bnm
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-in-Life-Sciences-Botany-and-Microbiology-(98053-%E2%80%93-BNM)"
     publisher: "University of South Africa"
@@ -3632,6 +3801,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98053-bzg
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-in-Life-Sciences-Botany-and-Zoology-(with-Geography)-(98053-%E2%80%93-BZG)"
     publisher: "University of South Africa"
@@ -3639,6 +3809,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98053-gzb
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-in-Life-Sciences-Genetics-and-Zoology-(or-Botany,-Microbiology,-Physiology-or-Biochemistry)-(98053-%E2%80%93-GZB)"
     publisher: "University of South Africa"
@@ -3646,6 +3817,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98053-map
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-in-Life-Sciences-Microbiology-and-Physiology-(98053-%E2%80%93-MAP)"
     publisher: "University of South Africa"
@@ -3653,6 +3825,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98053-maz
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-in-Life-Sciences-Microbiology-and-Zoology-(98053-%E2%80%93-MAZ)"
     publisher: "University of South Africa"
@@ -3660,6 +3833,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98053-paz
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-in-Life-Sciences-Physiology-and-Zoology-(98053-%E2%80%93-PAZ)"
     publisher: "University of South Africa"
@@ -3667,6 +3841,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-98053-ppg
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Science-in-Life-Sciences-Psychology-and-Physiology-(with-Genetics)-(98053-%E2%80%93-PPG)"
     publisher: "University of South Africa"
@@ -3674,6 +3849,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90088
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Social-Work-(90088)"
     publisher: "University of South Africa"
@@ -3681,6 +3857,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-q-90160
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications/Bachelor-of-Theology-(90160)"
     publisher: "University of South Africa"
@@ -3688,6 +3865,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-rules-2026
     url: "https://www.unisa.ac.za/static/myunisa/Content/Learner%20support%20&%20regions/Documents/Unisa%20Student%20Rules_2026.pdf"
     publisher: "University of South Africa"
@@ -3695,6 +3873,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unisa-all-qualifications
     url: "https://www.unisa.ac.za/sites/corporate/default/Apply-for-admission/Undergraduate-qualifications/Qualifications/All-qualifications"
     publisher: "University of South Africa"
@@ -3702,3 +3881,17 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
+
+support_services:
+- kind: counselling
+  name: Counselling and Career Development
+  contact: 012 441 5385; counselling@unisa.ac.za
+  source: s-unisa-counselling-2026
+  note: Central service; online appointments and regional contacts are available on
+    the source page.
+- kind: careers
+  name: Counselling and Career Development
+  contact: counselling@unisa.ac.za
+  source: s-unisa-counselling-2026
+  note: Career and study decisions; contact the central service or book online.
