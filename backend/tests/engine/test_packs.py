@@ -457,3 +457,19 @@ def test_a_province_or_type_must_cite_a_source_in_the_same_pack():
     uni["province_source"], uni["institution_type"] = "s-cut-where", None
     with pytest.raises(ValueError, match="institution_type_source given without"):
         University.model_validate(uni)
+
+
+def test_the_fast_yaml_parser_reads_every_pack_exactly_as_the_python_one():
+    """catalogue.py parses with libyaml when it's there (a cold start on a free host is mostly parsing);
+    it must never change what a pack says."""
+    from pathlib import Path
+
+    import yaml
+    from campus_engine.catalogue import ROOT, _SafeLoader
+
+    if not yaml.__with_libyaml__:
+        pytest.skip("PyYAML built without libyaml: catalogue.py uses the Python parser")
+    assert _SafeLoader is yaml.CSafeLoader
+    for path in sorted(Path(ROOT, "data").rglob("*.yaml")):
+        text = path.read_text(encoding="utf-8")
+        assert yaml.load(text, Loader=yaml.CSafeLoader) == yaml.load(text, Loader=yaml.SafeLoader), path.name
