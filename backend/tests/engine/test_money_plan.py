@@ -6,7 +6,7 @@ from __future__ import annotations
 
 from datetime import date, timedelta
 
-from campus_engine.money_plan import Goal, afford, goal_pace, payday_plan
+from campus_engine.money_plan import Goal, afford, goal_pace, payday_plan, pot_pace
 from campus_engine.runway import ExpectedPayment
 
 TODAY = date(2026, 10, 12)
@@ -88,3 +88,74 @@ def test_a_goals_weekly_pace():
         35_000, "About R350 a week for 2 weeks gets you there by Mon 26 Oct 2026.")
     assert goal_pace(0, TODAY, TODAY) == (0, "Done: you've put it all aside.")
     assert goal_pace(5_000, TODAY, TODAY) == (5_000, "Due now: R50 still to find.")
+
+
+def test_payday_plan_prioritizes_family_stokvel_buffer_then_goals():
+    payments = [ExpectedPayment("Allowance", PAYDAY, 350_000)]
+    goals = [
+        Goal("Laptop", 60_000, PAYDAY + timedelta(days=60), kind="big_purchase", stokvel_funded=True, amount_cents=60_000),
+        Goal("Fees", 30_000, PAYDAY + timedelta(days=30), kind="goal", amount_cents=30_000),
+        Goal("Emergency buffer", 40_000, None, kind="buffer", amount_cents=40_000),
+        Goal("Stokvel contribution", 30_000, None, kind="stokvel", amount_cents=30_000),
+        Goal("Family support", 50_000, None, kind="family", amount_cents=50_000),
+    ]
+    plan = payday_plan(payments, TODAY, 4_000, goals)
+    assert plan is not None
+    labels = [p.label for p in plan.pots]
+    # Priority order: Essentials -> Family & Stokvel -> Buffer -> Date goals
+    assert labels == ["Essentials", "Family support", "Stokvel contribution", "Emergency buffer", "Fees", "Laptop"]
+    # Check amounts and explanations
+    assert [(p.label, p.cents) for p in plan.pots] == [
+        ("Essentials", 120_000),
+        ("Family support", 50_000),
+        ("Stokvel contribution", 30_000),
+        ("Emergency buffer", 40_000),
+        ("Fees", 15_000),  # 30_000 over 2 paydays = 15_000
+        ("Laptop", 20_000),  # 60_000 over 3 paydays = 20_000
+    ]
+    assert plan.pots[1].why == "R500 monthly support for family"
+    assert plan.pots[2].why == "R300 monthly stokvel contribution"
+    assert plan.pots[3].why == "R400 to reach your R400 buffer"
+    assert "(paying through stokvel)" in plan.pots[5].why
+    assert plan.free_cents == 75_000  # 350k - 275k = 75k
+
+
+def test_buffer_paydays_spreads_buffer():
+    payments = [ExpectedPayment("Allowance", PAYDAY, 200_000)]
+    goals = [Goal("Emergency buffer", 40_000, None, kind="buffer", amount_cents=40_000)]
+    plan = payday_plan(payments, TODAY, 4_000, goals, buffer_paydays=2)
+    assert plan is not None
+    assert [(p.label, p.cents) for p in plan.pots] == [("Essentials", 120_000), ("Emergency buffer", 20_000)]
+    assert plan.pots[1].why == "R400 still to put aside for your R400 buffer, over 2 paydays"
+
+
+def test_pot_pace_for_all_kinds():
+    # Family
+    assert pot_pace("family", 50_000, 0, None, TODAY) == (12_500, "R500 a month to support family.")
+    assert pot_pace("family", 50_000, 20_000, None, TODAY) == (
+        7_500, "R500 monthly support for family: R200 aside so far, R300 still to find.")
+    assert pot_pace("family", 50_000, 50_000, None, TODAY) == (
+        0, "Done: you've set aside your family support for this month.")
+
+    # Stokvel
+    assert pot_pace("stokvel", 30_000, 0, None, TODAY) == (7_500, "R300 a month for your stokvel contribution.")
+    assert pot_pace("stokvel", 30_000, 10_000, None, TODAY) == (
+        5_000, "R300 monthly stokvel contribution: R100 aside so far, R200 still to find.")
+    assert pot_pace("stokvel", 30_000, 30_000, None, TODAY) == (
+        0, "Done: your stokvel contribution for this month is put aside.")
+
+    # Buffer
+    assert pot_pace("buffer", 100_000, 0, None, TODAY) == (None, "R1 000 emergency buffer to keep aside.")
+    assert pot_pace("buffer", 100_000, 40_000, None, TODAY) == (
+        None, "R1 000 emergency buffer: R400 aside so far, R600 still to find.")
+    assert pot_pace("buffer", 100_000, 100_000, None, TODAY) == (0, "Done: your buffer is fully funded.")
+
+    # Big purchase with stokvel funding
+    due = TODAY + timedelta(days=14)
+    per_week, line = pot_pace("big_purchase", 70_000, 0, due, TODAY, stokvel_funded=True)
+    assert per_week == 35_000
+    assert "About R350 a week for 2 weeks gets you there by Mon 26 Oct 2026. Paying through a stokvel." == line
+
+    per_week_done, line_done = pot_pace("big_purchase", 70_000, 70_000, due, TODAY, stokvel_funded=True)
+    assert per_week_done == 0
+    assert line_done == "Done: you've put it all aside (paying through your stokvel)."

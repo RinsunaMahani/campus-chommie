@@ -54,10 +54,11 @@ def build_plan(
     university: str,
     goal_programme: str,
     marks: dict[str, float],
+    english_language_level: str | None = None,
 ) -> Plan:
     uni = catalogue[university]
     goal = uni.programme(goal_programme)
-    goal_match = assess(uni, goal, marks)
+    goal_match = assess(uni, goal, marks, english_language_level)
     plan_notes: list[str] = []
 
     # Slot 2: a programme with a published route into the goal. Routes the learner
@@ -69,7 +70,7 @@ def build_plan(
         for b in p.bridges_to:
             if b.to != goal.id:
                 continue
-            m = assess(uni, p, marks)
+            m = assess(uni, p, marks, english_language_level)
             key = (
                 m.tier == NOT_YET,
                 b.eligibility_note is not None,
@@ -102,7 +103,7 @@ def build_plan(
             shared = goal_fields & set(p.fields)
             if (u.university, p.id) in used or not shared:
                 continue
-            m = assess(u, p, marks)
+            m = assess(u, p, marks, english_language_level)
             if m.tier == NOT_YET:
                 continue
             closeness = len(shared) / len(goal_fields | set(p.fields))

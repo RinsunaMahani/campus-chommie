@@ -39,6 +39,7 @@ Everything comes from the host's environment. Production refuses to start if a r
 | `BEHIND_CLOUDFLARE` | `true` only when the API is reachable through Cloudflare alone | no |
 | `SCHEDULER_ENABLED` | `true` (the default) runs the background jobs in the web process | no |
 | `GUNICORN_THREADS` | threads in the one process; 8 if not set | no |
+| `WHATSAPP_*` | the WhatsApp bot's settings ("The WhatsApp bot (M6)" below); any of the five secrets missing = bot off | for the bot |
 
 Never put these in the repo, the image or a log. The host's secret settings are the place for them.
 
@@ -63,6 +64,8 @@ flask seed
   awake all month and use up its compute hours.
 - **The log** shows `master scheduler: started` in exactly one process. Every other process logs
   `another process runs the jobs`.
+- **The log** also shows `data packs: loaded` a few seconds after the worker boots: the packs are read then, in the
+  background, so the first student after a wake doesn't wait for them (`gunicorn.conf.py`).
 
 ## Background jobs
 
@@ -146,6 +149,62 @@ Set up by Rinsuna as above; every secret is in Render's Environment only.
 - **Keep-awake:** cron-job.org job "Campus Chommie Ping", `GET /api/v1/ping` every 10 minutes (SAST).
 - **The app:** `eas.json`'s `preview` (the APK) and `production` profiles point at
   `https://campus-chommie.onrender.com/api/v1` with the mock off. That address is public, not a secret.
+
+## The WhatsApp bot (M6)
+
+The bot is off until all five secrets below are in Render's Environment; then `GET /api/v1/me/whatsapp` says
+`available: true` and the app's Home → WhatsApp screen offers a link code. Every value goes into Render only, never
+into the repo, a chat or a screenshot.
+
+1. **A Meta app.** At developers.facebook.com, create an app for WhatsApp (business type) and add the WhatsApp
+   product. Meta gives it a free **test number**.
+2. **Who can talk to the test number.** On WhatsApp's API Setup page, add each phone that will use the bot to the
+   test number's recipient list and confirm it with the code WhatsApp sends. A test number only talks to the numbers
+   on that list (OPEN_QUESTIONS, "WhatsApp test number").
+3. **The values Render needs:**
+
+   | Setting | Where it comes from |
+   |---|---|
+   | `WHATSAPP_PHONE_NUMBER_ID` | API Setup: the test number's "Phone number ID" (not the phone number) |
+   | `WHATSAPP_ACCESS_TOKEN` | a **system user** token with `whatsapp_business_messaging` (Business settings → System users). API Setup's temporary token stops after 24 hours |
+   | `WHATSAPP_APP_SECRET` | App settings → Basic → App secret |
+   | `WHATSAPP_VERIFY_TOKEN` | a random word you make: `python -c "import secrets; print(secrets.token_urlsafe(24))"` |
+   | `WHATSAPP_PHONE_KEY` | another random value made the same way (48 characters); it keys the hash numbers are kept as, so changing it unlinks everyone |
+   | `WHATSAPP_DISPLAY_NUMBER` | the test number as people dial it, e.g. `+1 555 …` (public, not a secret) |
+   | `WHATSAPP_GRAPH_VERSION` | the Graph API version API Setup's sample request uses, e.g. `v23.0` (public) |
+
+4. **Deploy** (Render restarts with the new settings; the migration `0011_whatsapp` runs on start).
+5. **The webhook.** In WhatsApp → Configuration: Callback URL `https://campus-chommie.onrender.com/api/v1/webhooks/whatsapp`,
+   Verify token = the same `WHATSAPP_VERIFY_TOKEN`, then "Verify and save". Under Webhook fields, subscribe to
+   **messages**.
+6. **Check it.** In the app: Home → WhatsApp → Link WhatsApp → "Open WhatsApp and send it". The bot answers "Linked."
+   Then send `WEEK`, and as a class rep forward an announcement and tap Confirm.
+
+What the bot keeps: a keyed hash of each linked number, a link code's hash for 10 minutes, and hashes of message ids
+for 48 hours. It never stores or logs a number, a message, or the access token.
+
+## Google sign-in
+
+Off until the settings below exist. Client IDs are public (not secrets); keep the Google Cloud project's own
+secrets out of the repo and chats.
+
+1. **Google Cloud:** a project with the OAuth consent screen set up (app name Campus Chommie, Rinsuna's support
+   email, scopes `openid`, `email`, `profile` only). While it's in "Testing", add each tester's Gmail as a test user.
+2. **Web client** (OAuth client ID, type "Web application"):
+   - Authorized JavaScript origins: `https://campus-chommie-web.onrender.com` (and `http://localhost:8081` for local
+     work).
+   - Authorized redirect URIs: `https://campus-chommie-web.onrender.com/oauthredirect` (and
+     `http://localhost:8081/oauthredirect`).
+3. **Android client** (type "Android"): package name `za.campuschommie.app`, and the SHA-1 of the APK's signing key
+   (`eas credentials`, Android, the keystore's SHA-1). Its ID isn't put anywhere: Google checks the APK against it.
+4. **Settings:**
+   - API (Render, `campus-chommie`): `GOOGLE_CLIENT_IDS` = the **web** client ID (the APK asks for tokens issued to
+     it too).
+   - Web app (Render, `campus-chommie-web`): `EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID` = the same web client ID, then a
+     rebuild.
+   - APK: `EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID` in `eas.json`'s `preview` and `production` env, then a new build.
+5. **Check it:** Sign in → Continue with Google, on the web and on the APK; a new Gmail is asked to tick the two
+   boxes, and a Gmail that already has a password account is asked for the password once.
 
 ## Still Rinsuna's to decide
 

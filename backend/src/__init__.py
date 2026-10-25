@@ -59,6 +59,8 @@ def _register_extensions(app: Flask) -> None:
     from src.shared.rate_limit.limiter import limiter
 
     db.init_app(app)
+    with app.app_context():
+        _cap_statement_time(db.engine, app.config["DB_STATEMENT_TIMEOUT_MS"])
     migrate.init_app(app, db)
     jwt.init_app(app)
     from src.domains.identity.auth.services import jwt_callbacks
@@ -74,6 +76,17 @@ def _register_extensions(app: Flask) -> None:
         from flask_cors import CORS
 
         CORS(app, resources={r"/api/*": {"origins": app.config["CORS_ORIGINS"]}}, supports_credentials=False)
+
+
+def _cap_statement_time(engine, ms: int) -> None:
+    """Every new connection gets the statement timeout. A plain SET, not a connection option, so it works through
+    any host's proxy (Neon's included)."""
+    from sqlalchemy import event
+
+    @event.listens_for(engine, "connect")
+    def _set_timeout(dbapi_connection, _record):
+        with dbapi_connection.cursor() as cursor:
+            cursor.execute("SET statement_timeout = %s", (int(ms),))
 
 
 def _register_models() -> None:
@@ -104,6 +117,7 @@ def _register_models() -> None:
     # classes schema: classes, members, reps, announcements and verified events
     from src.domains.classes.classes import models as _classes  # noqa: F401
     from src.domains.classes.events import models as _events  # noqa: F401
+    from src.domains.classes.whatsapp import models as _whatsapp  # noqa: F401
 
 
 def _register_listeners(app: Flask) -> None:
@@ -127,6 +141,7 @@ def _register_exporters() -> None:
     that stores personal data; identity's own part is added by its export."""
     from src.domains.classes.classes.services import class_service
     from src.domains.classes.events.services import events_service
+    from src.domains.classes.whatsapp.services import whatsapp_service
     from src.domains.platform.notifications.services import notification_service
     from src.domains.student.academics.services import academics_service
     from src.domains.student.money.services import money_service
@@ -144,14 +159,17 @@ def _register_exporters() -> None:
     privacy.register_exporter("alert_switches", notification_service.export_switches)
     privacy.register_exporter("saved_funding", saved_funding_service.export_for)
     privacy.register_exporter("timetable", timetable_service.export_for)
+    privacy.register_exporter("whatsapp", whatsapp_service.export_for)
 
 
 def _register_daily_checks() -> None:
     """Checks that may publish alerts on a student's first poll of the day (shared.notifications)."""
+    from src.domains.student.alerts.services import review_service
     from src.domains.student.saved_funding.services import saved_funding_service
     from src.shared.notifications import notifications as shared_notifications
 
     shared_notifications.register_daily(saved_funding_service.daily_reminders)
+    shared_notifications.register_daily(review_service.daily_ready)
 
 
 def _register_blueprints(app: Flask) -> None:

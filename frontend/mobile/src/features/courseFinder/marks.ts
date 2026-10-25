@@ -7,7 +7,7 @@ import { MessageKey } from '@/shared/i18n';
 import { ANOTHER_SUBJECT_KEYS, inOrder, SUBJECTS } from './subjects';
 import { Mark } from './types';
 
-export type MarkRow = { subject: string; percent: string };
+export type MarkRow = { subject: string; percent: string; language_level?: Mark['language_level'] };
 
 /** Two subjects most learners take, to start from; the picker changes them. */
 export function startingRows(): MarkRow[] {
@@ -19,8 +19,8 @@ export function startingRows(): MarkRow[] {
 
 /** Rows for the chosen subjects, in the picker's order, keeping every mark already typed. */
 export function rowsFor(chosen: string[], current: MarkRow[]): MarkRow[] {
-  const typed = new Map(current.map((r) => [r.subject, r.percent]));
-  return inOrder(chosen).map((subject) => ({ subject, percent: typed.get(subject) ?? '' }));
+  const typed = new Map(current.map((r) => [r.subject, r]));
+  return inOrder(chosen).map((subject) => typed.get(subject) ?? { subject, percent: '' });
 }
 
 /** Digits only, at most three: what the mark box keeps of what was typed. */
@@ -28,7 +28,7 @@ export function cleanPercent(text: string): string {
   return text.replace(/[^0-9]/g, '').slice(0, 3);
 }
 
-type Entered = { subject: string; percent: number };
+type Entered = Mark;
 
 export type Sent = {
   marks: Mark[];
@@ -52,7 +52,7 @@ export function toApiMarks(entered: Entered[]): Sent {
   const marks: Mark[] = [];
   const names: Record<string, string> = {};
   const send = (key: string, e: Entered) => {
-    marks.push({ subject: key, percent: e.percent });
+    marks.push({ subject: key, percent: e.percent, ...(key === 'english' && e.language_level ? { language_level: e.language_level } : {}) });
     names[key] = e.subject;
   };
   const pointsOnly: Entered[] = [];
@@ -80,7 +80,7 @@ export function checkRows(rows: MarkRow[]): Checked {
     const text = row.percent.trim();
     if (!text) errors[row.subject] = 'courseFinder.markMissing';
     else if (!/^\d{1,3}$/.test(text) || Number(text) > 100) errors[row.subject] = 'courseFinder.markRange';
-    else entered.push({ subject: row.subject, percent: Number(text) });
+    else entered.push({ subject: row.subject, percent: Number(text), ...(row.language_level ? { language_level: row.language_level } : {}) });
   }
   const sent = toApiMarks(entered);
   for (const subject of sent.overflow) errors[subject] = 'courseFinder.pointsOnlyFull';

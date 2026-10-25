@@ -623,9 +623,26 @@ def signed_in_phones(user, current_sid: str) -> list[dict]:
     return out
 
 
-def close_account(user, current_sid: str, password: str) -> None:
+def _require_owner(user, password: Optional[str], id_token_value: Optional[str], failed_event) -> None:
+    """Before closing or deleting: the password, or for an account that signs in with Google only, a fresh
+    Google sign-in with the same Google account that's linked (a token for any other Google account fails)."""
+    if db.session.get(PasswordCredential, user.id) is not None:
+        if password is None:
+            raise AppError("Enter your password to confirm.", status_code=422, code="PASSWORD_REQUIRED")
+        _require_password(user, password, failed_event)
+        return
+    if id_token_value is None:
+        raise AppError("This account has no password. Sign in with Google again to confirm.", status_code=400, code="NO_PASSWORD")
+    link = db.session.get(GoogleIdentity, user.id)
+    claims = _google_claims(id_token_value)
+    if link is None or claims.sub != link.google_sub:
+        auth_audit.record(failed_event, False, user_id=user.id, email=user.email, reason="wrong_google_account")
+        raise AppError("That isn't the Google account this account signs in with.", status_code=400, code="WRONG_GOOGLE_ACCOUNT")
+
+
+def close_account(user, current_sid: str, password: Optional[str], id_token_value: Optional[str] = None) -> None:
     _refuse_demo(user)
-    _require_password(user, password, E.ACCOUNT_DISABLED)
+    _require_owner(user, password, id_token_value, E.ACCOUNT_DISABLED)
     account_service.deactivate(user)
     ended = session_service.revoke_all(user.id, session_service.RevokeReason.ACCOUNT_CLOSED)
     keys = device_service.revoke_all(user.id)
@@ -634,14 +651,14 @@ def close_account(user, current_sid: str, password: str) -> None:
     auth_audit.record(E.ACCOUNT_DISABLED, user_id=user.id, email=user.email, session_id=current_sid, sessions_ended=ended, device_keys_revoked=keys)
 
 
-def delete_account(user, current_sid: str, password: str) -> None:
+def delete_account(user, current_sid: str, password: Optional[str], id_token_value: Optional[str] = None) -> None:
     """POPIA: the account and everything it holds, deleted for real, after the password. Every
     feature's rows go with it (ON DELETE CASCADE): profile, money, marks, class memberships,
     announcements, flags, alerts, sessions and consents. Events a rep confirmed stay with their class,
     with no name on them. Not the audit trail's security records, which nothing may change
     (OPEN_QUESTIONS); the record of this deletion keeps no email."""
     _refuse_demo(user)
-    _require_password(user, password, E.ACCOUNT_DELETED)
+    _require_owner(user, password, id_token_value, E.ACCOUNT_DELETED)
     user_id = user.id
     account_service.delete_account(user)
     db.session.commit()

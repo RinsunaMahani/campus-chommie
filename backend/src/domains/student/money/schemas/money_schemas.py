@@ -13,7 +13,16 @@ from marshmallow import ValidationError as MarshmallowError
 from src.core.exceptions import ValidationError
 from src.shared.finance import FinanceError, Money, format_amount, validate_non_negative, validate_positive
 
-from ..constants import GOAL_LABEL_MAX, LABEL_MAX, MAX_CENTS, RELIABILITY
+from ..constants import (
+    CHECKIN_DAYS,
+    DEFAULT_CHECKIN_DAY,
+    FIXED_COST_LABEL_MAX,
+    GOAL_KINDS,
+    GOAL_LABEL_MAX,
+    LABEL_MAX,
+    MAX_CENTS,
+    RELIABILITY,
+)
 
 
 class _Strict(Schema):
@@ -60,6 +69,55 @@ class SettingsSchema(_Strict):
     balance_on = fields.Date(required=True)
     essentials_per_day_cents = Cents(required=True)
     life_fund_reserve_cents = Cents(load_default=0)
+    checkin_day = fields.String(load_default=DEFAULT_CHECKIN_DAY, validate=validate.OneOf(CHECKIN_DAYS))
+
+
+class FixedCostSchema(_Strict):
+    """POST /money/fixed-costs: recurring fixed monthly cost (rent, transport, data, phone)."""
+
+    label = fields.String(required=True, validate=validate.Length(min=1, max=FIXED_COST_LABEL_MAX))
+    amount_cents = Cents(required=True, positive=True)
+    day_of_month = fields.Integer(required=True, strict=True, validate=validate.Range(min=1, max=31))
+
+    @validates("label")
+    def _plain(self, value, **kwargs):
+        if not value.strip() or any(ord(c) < 32 or ord(c) == 127 for c in value):
+            raise MarshmallowError("Use letters, numbers and punctuation only.")
+
+
+class FixedCostChangeSchema(_Strict):
+    """PUT /money/fixed-costs/<id>: change any of the fixed cost's fields."""
+
+    label = fields.String(validate=validate.Length(min=1, max=FIXED_COST_LABEL_MAX))
+    amount_cents = Cents(positive=True)
+    day_of_month = fields.Integer(strict=True, validate=validate.Range(min=1, max=31))
+
+    @validates("label")
+    def _plain(self, value, **kwargs):
+        if not value.strip() or any(ord(c) < 32 or ord(c) == 127 for c in value):
+            raise MarshmallowError("Use letters, numbers and punctuation only.")
+
+    @validates_schema
+    def _something(self, data, **kwargs):
+        if not data:
+            raise MarshmallowError({"_schema": ["Send what changed: label, amount_cents or day_of_month."]})
+
+
+class CheckinSchema(_Strict):
+    """POST /money/checkin: weekly check-in total spending or skip."""
+
+    amount_cents = Cents(load_default=None, allow_none=True)
+    skipped = StrictBoolean(load_default=False)
+    week_end = fields.Date(load_default=None, allow_none=True)
+
+    @validates_schema
+    def _check_state(self, data, **kwargs):
+        skipped = data.get("skipped", False)
+        amount = data.get("amount_cents")
+        if skipped and amount is not None:
+            raise MarshmallowError({"amount_cents": ["Leave amount empty when skipping check-in."]})
+        if not skipped and amount is None:
+            raise MarshmallowError({"amount_cents": ["Enter this week's total spending or choose skip."]})
 
 
 class SourceSchema(_Strict):
@@ -110,14 +168,16 @@ class AffordSchema(_Strict):
 
 
 class GoalSchema(_Strict):
-    """POST /money/goals: what it's for, how much, by when; how much is already aside; whether the date came from
-    the university's fee dates."""
+    """POST /money/goals: what it's for, kind, how much, by when (for date goals); how much is already aside;
+    whether the date came from the university's fee dates; whether a big purchase is paid through a stokvel."""
 
     label = fields.String(required=True, validate=validate.Length(min=1, max=GOAL_LABEL_MAX))
+    kind = fields.String(load_default="goal", validate=validate.OneOf(GOAL_KINDS))
     amount_cents = Cents(required=True, positive=True)
     saved_cents = Cents(load_default=0)
-    due_on = fields.Date(required=True)
+    due_on = fields.Date(load_default=None, allow_none=True)
     from_university = StrictBoolean(load_default=False)
+    stokvel_funded = StrictBoolean(load_default=False)
 
     @validates("label")
     def _plain(self, value, **kwargs):
@@ -125,7 +185,30 @@ class GoalSchema(_Strict):
             raise MarshmallowError("Use letters, numbers and punctuation only.")
 
     @validates_schema
-    def _not_more_than(self, data, **kwargs):
+    def _validate_goal(self, data, **kwargs):
+        if not self.partial:
+            kind = data.get("kind", "goal")
+            due_on = data.get("due_on")
+            if kind in ("goal", "big_purchase"):
+                if due_on is None:
+                    raise MarshmallowError({"due_on": ["Choose a date for this goal."]})
+            elif kind in ("family", "stokvel", "buffer"):
+                if due_on is not None:
+                    raise MarshmallowError({"due_on": ["This pot does not use a date."]})
+            if data.get("stokvel_funded") and kind != "big_purchase":
+                raise MarshmallowError({"stokvel_funded": ["Only a big purchase can be marked paying through a stokvel."]})
+            if data.get("from_university") and kind != "goal":
+                raise MarshmallowError({"from_university": ["Only fee goals can come from a university."]})
+        else:
+            kind = data.get("kind")
+            due_on = data.get("due_on")
+            if kind is not None:
+                if kind in ("family", "stokvel", "buffer") and due_on is not None:
+                    raise MarshmallowError({"due_on": ["This pot does not use a date."]})
+                if data.get("stokvel_funded") and kind != "big_purchase":
+                    raise MarshmallowError({"stokvel_funded": ["Only a big purchase can be marked paying through a stokvel."]})
+                if data.get("from_university") and kind != "goal":
+                    raise MarshmallowError({"from_university": ["Only fee goals can come from a university."]})
         if "saved_cents" in data and "amount_cents" in data and data["saved_cents"] > data["amount_cents"]:
             raise MarshmallowError({"saved_cents": ["That's more than the goal itself."]})
 
@@ -137,9 +220,11 @@ class GoalChangeSchema(GoalSchema):
         super().__init__(*args, partial=True, **kwargs)
 
     @validates_schema
-    def _something(self, data, **kwargs):
+    def _validate_change(self, data, **kwargs):
         if not data:
             raise MarshmallowError({"_schema": ["Send what changed."]})
+        if "saved_cents" in data and "amount_cents" in data and data["saved_cents"] > data["amount_cents"]:
+            raise MarshmallowError({"saved_cents": ["That's more than the goal itself."]})
 
 
 class NoQuerySchema(_Strict):

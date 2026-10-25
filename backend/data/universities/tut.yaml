@@ -2250,6 +2250,7 @@ sources:
     retrieved: 2026-10-09
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-tut-guide-2027
     url: "https://www.tut.ac.za/media/tshwane-interim/site-content/documents/General-Information-First-Year-Enrolment.pdf"
     publisher: "Tshwane University of Technology"
@@ -2257,6 +2258,7 @@ sources:
     retrieved: 2026-10-09
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-tut-guide-2027-checked
     url: "https://www.tut.ac.za/media/tshwane-interim/site-content/documents/General-Information-First-Year-Enrolment.pdf"
     publisher: "Tshwane University of Technology"
@@ -2278,6 +2280,7 @@ sources:
     retrieved: 2026-10-09
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-tut-cal-2026-checked
     url: "https://www.tut.ac.za/media/tshwane-interim/site-content/documents/2026-AcademicCore-Calendar.pdf"
     publisher: "Tshwane University of Technology"
@@ -2292,6 +2295,7 @@ sources:
     retrieved: 2026-10-09
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-tut-cal-2027-checked
     url: "https://www.tut.ac.za/media/tshwane-interim/site-content/documents/2027-Academic-Core-Calendar.pdf"
     publisher: "Tshwane University of Technology"
@@ -2306,6 +2310,7 @@ sources:
     retrieved: 2026-10-09
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-sanbi-pnbg-tickets
     url: "https://www.sanbi.org/gardens/pretoria/information-5/buy-tickets-pretoria-nbg/"
     publisher: "South African National Biodiversity Institute (SANBI)"

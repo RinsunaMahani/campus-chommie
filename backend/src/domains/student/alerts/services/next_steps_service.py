@@ -50,9 +50,23 @@ def facts(user, today: date) -> Facts:
             closing.append(Closing(c.get("short_name") or c["name"], closes))
     plan = money.plan(user)
     goals = [GoalDue(g["label"], date.fromisoformat(g["due_on"]), max(0, g["amount_cents"] - g["saved_cents"]),
-                     g["per_week_cents"]) for g in plan["goals"]]
-    return Facts(today, money.runway_for(user, today), weeks, due, closing, goals,
-                 len(timetable_service.mine(user)["entries"]))
+                     g.get("per_week_cents") or 0) for g in plan["goals"] if g.get("due_on")]
+    checkin = money.get_checkin_status(user, today)
+    checkin_due = checkin["is_checkin_day"] and not checkin["checked_in_this_week"]
+    streak_weeks = checkin["streak"]["weeks"]
+    checkin_day = checkin["checkin_day"]
+    return Facts(
+        today,
+        money.runway_for(user, today),
+        weeks,
+        due,
+        closing,
+        goals,
+        len(timetable_service.mine(user)["entries"]),
+        checkin_due=checkin_due,
+        checkin_day=checkin_day,
+        streak_weeks=streak_weeks,
+    )
 
 
 def mine(user) -> dict:

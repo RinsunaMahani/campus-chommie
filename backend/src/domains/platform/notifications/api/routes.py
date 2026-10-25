@@ -6,7 +6,7 @@
   POST /me/notifications/<id>/read              {notification, unread}
   POST /me/notifications/read-all               -> {unread}
   GET  /me/notifications/switches               {switches}: the topics a student may switch off
-  PUT  /me/notifications/switches               {class_updates: false, funding_reminders: false} -> {switches}
+  PUT  /me/notifications/switches               {class_updates: false, funding_reminders: false, week_review: false} -> {switches}
 
 Thin: validate -> service -> answer. Rate-limited per user; another
 user's alert is the same 404 as one that doesn't exist.

@@ -2,6 +2,8 @@ import { Feather } from '@expo/vector-icons';
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+import { GOOGLE_READY } from '@/constants/config';
+import { ConfirmWithGoogle } from '@/features/auth/google/ConfirmWithGoogle';
 import { useSession } from '@/features/auth/session/SessionProvider';
 import { AuthError } from '@/features/auth/types';
 import { Button } from '@/shared/components/Button';
@@ -27,12 +29,22 @@ export default function DeleteAccountScreen() {
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
 
+  async function withGoogle(idToken: string) {
+    setError('');
+    try {
+      await securityApi.deleteAccount({ idToken });
+      signOut();
+    } catch (e) {
+      setError(e instanceof AuthError ? e.message : t('common.error'));
+    }
+  }
+
   async function remove() {
     if (!password) return setError(t('delete.passwordMissing'));
     setBusy(true);
     setError('');
     try {
-      await securityApi.deleteAccount(password);
+      await securityApi.deleteAccount({ password });
       signOut(); // the account is gone on the server
     } catch (e) {
       setError(e instanceof AuthError ? e.message : t('common.error'));
@@ -52,6 +64,7 @@ export default function DeleteAccountScreen() {
         ))}
       </View>
       <TextField label={t('delete.password')} password value={password} onChangeText={setPassword} autoComplete="current-password" error={error} />
+      {GOOGLE_READY ? <ConfirmWithGoogle title="Signed up with Google? Confirm with Google" onToken={withGoogle} /> : null}
     </Screen>
   );
 }

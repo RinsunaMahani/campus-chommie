@@ -18,9 +18,10 @@ Our entry for the FNB App of the Year Hackathon 2026, challenge "Access to highe
 
 - **F1: University profile:** All 26 South African public universities with verified campus locations, academic calendars, financial aid desks, and local student support.
 - **F2: Find my course:** Type marks once; instant eligibility across 26 universities with custom scoring (including APS, UCT FPS, and Stellenbosch formulas); 3-choice pathway plans (goal, bridge route, safe alternative); live intake dates; document checklists; and 24 funding options (NSFAS + 23 bursaries).
-- **F3: My week:** Unified student schedule linking university terms with class assessments; 8-week workload indicator (Manageable, Busy, Heavy); class rep announcement verification; target mark tracking with grade projections.
-- **F4: My money:** Money runway calculation, daily safe-to-spend figure, life fund buffer responsive to academic load, expected payments tracking with a "two weeks late" allowance buffer toggle, and store-card wallet. No money movement.
-- **F5: Alerts and support:** Early warnings when an upcoming heavy academic week collides with a depleted allowance, directly linking the student to verified on-campus counselling, financial aid, or food relief.
+- **F3: My week:** Unified student schedule linking university terms with class assessments; 8-week workload indicator (Manageable, Busy, Heavy); class rep announcement verification, also from WhatsApp; target mark tracking with grade projections; and **your week in review** on the student's check-in day (done, coming up, marks moved, spending against their usual).
+- **F4: My money:** Money runway calculation, daily safe-to-spend figure, life fund buffer responsive to academic load, expected payments tracking with a "two weeks late" allowance buffer toggle, store-card wallet, and **Outdoors** (the centre button): free and cheap places near campus, each with a photo slideshow, its price, hours and "Open in maps". No money movement.
+- **F5: Alerts and support:** **Do this next** on Home picks the three things that matter most today; early warnings when an upcoming heavy academic week collides with a depleted allowance link the student to verified on-campus counselling, financial aid, or food relief.
+- **Also:** the WhatsApp bot (class reps confirm tests from WhatsApp; WEEK sends the next 7 days) and Continue with Google.
 
 ## How to try it
 
@@ -36,7 +37,7 @@ Our entry for the FNB App of the Year Hackathon 2026, challenge "Access to highe
 
 ## How it's built
 
-- **App (`frontend/mobile`):** Expo / React Native on Android and web. Token-based theme ("Daylight paper" look) with zero hex codes, responsive down to 360 px width.
+- **App (`frontend/mobile`):** Expo / React Native on Android and web. Colours and type only from the theme tokens (the "Daylight paper" look), responsive down to 360 px width.
 - **API (`backend/src`):** Python Flask REST API structured into domain modules (identity, student, catalogue, platform, classes) with strict Marshmallow/Pydantic validation schemas.
 - **Decision Engine (`backend/campus_engine`):** Pure Python domain engine with zero database or web dependencies, running admission scoring, workload analysis, and financial runway math.
 - **Database:** PostgreSQL on Neon (cloud) or Docker (local), with immutable audit triggers.
@@ -47,14 +48,15 @@ Our entry for the FNB App of the Year Hackathon 2026, challenge "Access to highe
 - **POPIA first:** The course finder needs no account, runs no database statements, and never stores or logs typed marks.
 - **Collect the minimum:** No ID numbers, bank accounts, NSFAS logins, race, religion, or health data. Accounts require confirming age 18 or older and consent.
 - **Owner-only data:** Marks, spending, and money are visible exclusively to their owner. No administrator or class rep can view an individual's personal figures.
-- **Tested defenses:** 1,434 backend tests and 253 mobile tests pass on every change. 105 automated hostile penetration test attacks (token forgery, IDOR, SQLi, deep JSON, malicious PDFs) pass 105/105. Rate limiting on every endpoint; strict Content-Security-Policy; zero secrets in code.
+- **Tested defenses:** over 1,600 backend tests and 300 mobile tests pass on every change. Our own pen test, 145 attacks (forged tokens, other students' data, SQL injection, deep JSON, booby-trapped PDFs, forged Google tokens and WhatsApp messages), all blocked after two security sweeps (`docs/SECURITY.md`). Rate limiting on every endpoint; strict Content-Security-Policy; zero secrets in code.
 
 ## Quick start (Local development)
 
 ```bash
 # Backend (Python 3.12+, PostgreSQL 16)
-cd backend && python -m venv .venv && .venv/Scripts/activate
-pip install -r requirements.txt && python app.py
+cd backend && python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
+pip install -r requirements.txt   # then the database: backend/scripts/setup_db.sql and make_env.py
+flask db upgrade && python app.py
 
 # Mobile / Web (Node 22+)
 cd frontend/mobile && npm install && npx expo start --web

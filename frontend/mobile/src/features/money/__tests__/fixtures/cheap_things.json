@@ -1,0 +1,45 @@
+{
+  "university": {
+    "id": "up",
+    "name": "University of Pretoria",
+    "confirmed": false,
+    "notice": "Not yet confirmed by the team."
+  },
+  "campus": "hatfield",
+  "cheap_things": [
+    {
+      "name": "Pretoria National Botanical Garden",
+      "category": "outdoors",
+      "cost_note": "Students R50 in peak season (September to March); adults R100; children 6 to 17 R30; under 6 free.",
+      "address": "2 Cussonia Avenue, Brummeria, Pretoria",
+      "hours": "Every day, 08:00-18:00",
+      "source_url": "https://www.sanbi.org/gardens/pretoria/",
+      "read_on": "2026-10-09",
+      "last_verified": null,
+      "free": false
+    },
+    {
+      "name": "Freedom Park Grounds",
+      "category": "heritage",
+      "cost_note": "Free entry to the garden and sanctuary on public holidays.",
+      "address": "Corner Koch and 7th Avenue, Salvokop, Pretoria",
+      "hours": "Every day, 08:00-16:30",
+      "source_url": "https://www.freedompark.co.za",
+      "read_on": "2026-10-10",
+      "last_verified": null,
+      "free": true
+    },
+    {
+      "name": "DITSONG National Museum of Natural History",
+      "category": "museum",
+      "cost_note": "Adults R45, learners R25. No separate university student price.",
+      "address": "432 Paul Kruger Street, Pretoria",
+      "hours": "Daily 07:30-16:00",
+      "source_url": "https://ditsong.org.za/en/national-museum-of-natural-history/",
+      "read_on": null,
+      "last_verified": null,
+      "free": false
+    }
+  ],
+  "lines": []
+}

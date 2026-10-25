@@ -674,6 +674,13 @@ programmes:
         - "Campus: Bloemfontein."
 
 sources:
+  - id: s-cut-wellness-2026
+    url: https://www.cut.ac.za/student-life-wellness
+    publisher: Central University of Technology
+    title: Wellness Centre, updated 5 October 2026
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official university source
   - id: s-cut-campuses
     url: "https://www.cut.ac.za/"
     publisher: "Central University of Technology"
@@ -681,6 +688,7 @@ sources:
     retrieved: 2026-10-22
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-where
     url: "https://www.cut.ac.za/cut-at-a-glance"
     publisher: "Central University of Technology"
@@ -688,6 +696,7 @@ sources:
     retrieved: 2026-10-20
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-apply
     url: "https://www.cut.ac.za/application-process/"
     publisher: "Central University of Technology"
@@ -695,6 +704,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-faq
     url: "https://askcut.cut.ac.za/support/solutions/articles/103000016975-closing-date-for-cut-online-applications-for-local-and-international-"
     publisher: "Central University of Technology"
@@ -702,6 +712,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-ap
     url: "https://www.cut.ac.za/admission-points-ap"
     publisher: "Central University of Technology"
@@ -709,6 +720,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-programmes-offered
     url: "https://www.cut.ac.za/programmes-offered"
     publisher: "Central University of Technology"
@@ -716,6 +728,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-course-calculator
     url: "https://www.cut.ac.za/Course-calculator"
     publisher: "Central University of Technology"
@@ -723,6 +736,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-ecp
     url: "https://www.cut.ac.za/extended-curriculum-programme-ecp"
     publisher: "Central University of Technology"
@@ -730,6 +744,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-hcert-construction
     url: "https://www.cut.ac.za/programmes/hcert-construction"
     publisher: "Central University of Technology"
@@ -737,6 +752,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-hcert-it
     url: "https://www.cut.ac.za/programmes/hcert-information-technology"
     publisher: "Central University of Technology"
@@ -744,6 +760,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-hcert-maths-eng
     url: "https://www.cut.ac.za/programmes/hc-mathematics-for-engineering-technology"
     publisher: "Central University of Technology"
@@ -751,6 +768,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-hcert-renewable
     url: "https://www.cut.ac.za/programmes/hcert-renewable-energy-technologies"
     publisher: "Central University of Technology"
@@ -758,6 +776,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-dip-networking
     url: "https://www.cut.ac.za/programmes/dip-computer-networking"
     publisher: "Central University of Technology"
@@ -765,6 +784,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-dip-it
     url: "https://www.cut.ac.za/programmes/dp-information-technology"
     publisher: "Central University of Technology"
@@ -772,6 +792,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-dip-civil
     url: "https://www.cut.ac.za/programmes/dip-eng-tech-civil-engineering"
     publisher: "Central University of Technology"
@@ -779,6 +800,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-dip-electrical
     url: "https://www.cut.ac.za/programmes/dp-engineering-technology-in-electrical-engineer"
     publisher: "Central University of Technology"
@@ -786,6 +808,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-dip-mechanical
     url: "https://www.cut.ac.za/programmes/dip-eng-tech-mechanical-engineering"
     publisher: "Central University of Technology"
@@ -793,6 +816,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-beng-civil
     url: "https://www.cut.ac.za/programmes/bachelor-eng-tech-civil-engineering"
     publisher: "Central University of Technology"
@@ -800,6 +824,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-beng-electrical
     url: "https://www.cut.ac.za/programmes/bachelor-eng-tech-electrical-engineer"
     publisher: "Central University of Technology"
@@ -807,6 +832,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-beng-mechanical
     url: "https://www.cut.ac.za/programmes/bachelor-eng-tech-mechanical-engineering"
     publisher: "Central University of Technology"
@@ -814,6 +840,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-bconst-cm
     url: "https://www.cut.ac.za/programmes/bachelors-construction-management"
     publisher: "Central University of Technology"
@@ -821,6 +848,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-bconst-hs
     url: "https://www.cut.ac.za/programmes/bachelor-health-and-safety-management"
     publisher: "Central University of Technology"
@@ -828,6 +856,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-bconst-qs
     url: "https://www.cut.ac.za/programmes/bachelor-quantity-surveying"
     publisher: "Central University of Technology"
@@ -835,6 +864,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-dental-assisting
     url: "https://www.cut.ac.za/programmes/dental-assisting"
     publisher: "Central University of Technology"
@@ -842,6 +872,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-dip-agric
     url: "https://www.cut.ac.za/programmes/dip-agricultural-management"
     publisher: "Central University of Technology"
@@ -849,6 +880,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-dip-somatology
     url: "https://www.cut.ac.za/programmes/dip-somatology"
     publisher: "Central University of Technology"
@@ -856,6 +888,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-bhsc-clinical
     url: "https://www.cut.ac.za/programmes/bachelor-health-sciences-clinical-tech"
     publisher: "Central University of Technology"
@@ -863,6 +896,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-bhsc-medlab
     url: "https://www.cut.ac.za/programmes/bachelor-health-sciences-medical-lab-science"
     publisher: "Central University of Technology"
@@ -870,6 +904,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-radiography
     url: "https://www.cut.ac.za/programmes/radiography-in-diagnostics"
     publisher: "Central University of Technology"
@@ -877,6 +912,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-bsc-envhealth
     url: "https://www.cut.ac.za/programmes/bachelor-environmental-health"
     publisher: "Central University of Technology"
@@ -884,6 +920,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-dip-design
     url: "https://www.cut.ac.za/programmes/design-and-studio-art"
     publisher: "Central University of Technology"
@@ -891,6 +928,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-dip-language
     url: "https://www.cut.ac.za/programmes/dip-language-practice-and-media-studies"
     publisher: "Central University of Technology"
@@ -898,6 +936,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-bed-foundation
     url: "https://www.cut.ac.za/programmes/foundation-phase-teaching"
     publisher: "Central University of Technology"
@@ -905,6 +944,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-bed-cs
     url: "https://www.cut.ac.za/programmes/computer-science"
     publisher: "Central University of Technology"
@@ -912,6 +952,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-bed-ems
     url: "https://www.cut.ac.za/programmes/economic-and-management-sciences"
     publisher: "Central University of Technology"
@@ -919,6 +960,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-bed-language
     url: "https://www.cut.ac.za/programmes/language-education"
     publisher: "Central University of Technology"
@@ -926,6 +968,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-bed-maths
     url: "https://www.cut.ac.za/programmes/mathematics"
     publisher: "Central University of Technology"
@@ -933,6 +976,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-bed-natsci
     url: "https://www.cut.ac.za/programmes/natural-sciences"
     publisher: "Central University of Technology"
@@ -940,6 +984,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-bed-technology
     url: "https://www.cut.ac.za/programmes/BEd-technology"
     publisher: "Central University of Technology"
@@ -947,6 +992,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-hcert-cdw
     url: "https://www.cut.ac.za/programmes/hcert-community-development-work"
     publisher: "Central University of Technology"
@@ -954,6 +1000,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-hcert-retail
     url: "https://www.cut.ac.za/programmes/hcert-retail-management"
     publisher: "Central University of Technology"
@@ -961,6 +1008,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-dip-public
     url: "https://www.cut.ac.za/programmes/dip-public-management"
     publisher: "Central University of Technology"
@@ -968,6 +1016,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-dip-hospitality
     url: "https://www.cut.ac.za/programmes/dip-hospitality-management"
     publisher: "Central University of Technology"
@@ -975,6 +1024,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-dip-tourism
     url: "https://www.cut.ac.za/programmes/dip-tourism-management"
     publisher: "Central University of Technology"
@@ -982,6 +1032,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-dip-hrm
     url: "https://www.cut.ac.za/programmes/dip-human-resources-management"
     publisher: "Central University of Technology"
@@ -989,6 +1040,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-dip-management
     url: "https://www.cut.ac.za/programmes/diploma-management"
     publisher: "Central University of Technology"
@@ -996,6 +1048,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-dip-marketing
     url: "https://www.cut.ac.za/programmes/dip-marketing-management"
     publisher: "Central University of Technology"
@@ -1003,6 +1056,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-dip-omt
     url: "https://www.cut.ac.za/programmes/dip-office-management-and-technology"
     publisher: "Central University of Technology"
@@ -1010,6 +1064,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-bms-accountancy
     url: "https://www.cut.ac.za/programmes/bachelor-management-sciences-in-accountancy"
     publisher: "Central University of Technology"
@@ -1017,6 +1072,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cut-prog-bms-auditing
     url: "https://www.cut.ac.za/programmes/bachelor-internal-auditing"
     publisher: "Central University of Technology"
@@ -1024,3 +1080,28 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
+
+support_services:
+- kind: counselling
+  name: Wellness Centre
+  contact: 051 507 3154; wellness@cut.ac.za
+  source: s-cut-wellness-2026
+  campuses:
+  - bloemfontein
+  note: Free confidential services for enrolled students; book an appointment.
+- kind: counselling
+  name: Wellness Centre
+  contact: 051 910 3569; wellness@cut.ac.za
+  source: s-cut-wellness-2026
+  campuses:
+  - welkom
+  note: Free confidential services for enrolled students; book an appointment.
+- kind: health
+  name: Medical Centre
+  contact: 051 507 3735
+  source: s-cut-wellness-2026
+  campuses:
+  - bloemfontein
+  hours: Monday to Friday 08:00–16:30
+  note: Behind Welgemoed residence.

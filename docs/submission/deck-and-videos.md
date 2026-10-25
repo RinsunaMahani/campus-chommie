@@ -35,10 +35,12 @@ See `docs/submission/video-script.md` for full shot-by-shot video scripts and `d
 
 6. **The enrolled student side (My week & My money).**
    - **First steps:** Timeline from acceptance to the first lecture.
-   - **Home dashboard:** Today tiles showing next class with venue countdown, next due assessment, and remaining money runway.
+   - **Home dashboard:** Today tiles showing next class with venue countdown, next due assessment, and remaining money runway; **Do this next** picks the three things that matter most today and says why.
+   - **Your week in review:** on the student's check-in day, what they got done, what's coming in the next 7 days, how their marks moved and their spending against their own usual, with an alert that it's ready.
    - **My week:** Monthly calendar with activity dots, 8-week workload indicator (*Manageable*, *Busy*, *Heavy*), class timetables, and class rep announcement verification.
    - **My marks:** Target mark tracking, current standing, and projected final marks with likely ranges.
-   - **My money:** Whole-cents runway dial, daily safe-to-spend limit, life fund buffer adapting to academic workload, expected payment tracking with a "two weeks late" allowance buffer toggle, cheap things nearby, and store-card wallet.
+   - **My money:** Whole-cents runway dial, daily safe-to-spend limit, life fund buffer adapting to academic workload, expected payment tracking with a "two weeks late" allowance buffer toggle, and store-card wallet.
+   - **Outdoors:** the centre button opens free and cheap places near campus, each previewed with a slideshow of real photos, its price, hours and "Open in maps".
 
 7. **Alerts and campus support.**
    - Proactive early warnings: combined alert triggers when an upcoming heavy academic week coincides with tightening finances before the next payment.
@@ -48,8 +50,8 @@ See `docs/submission/video-script.md` for full shot-by-shot video scripts and `d
 8. **Built honestly and securely.**
    - **Zero invented facts:** Every rule, fee, date, and contact cites its official source URL.
    - **Privacy by design:** Course finder stores no marks and requires no account. Enrolled marks and money are strictly owner-only.
-   - **Rigorous verification:** 1,434 backend tests and 253 mobile tests pass on every change.
-   - **Hostile penetration tests:** 105 automated attack scenarios (token replay, IDOR, SQL injection, deep JSON, malicious PDFs) all blocked (105/105 pass).
+   - **Rigorous verification:** Over 1,600 backend tests and 300 mobile tests pass on every change, with code, dependency and secrets scans.
+   - **Hostile penetration tests:** 145 attack scenarios (forged and replayed tokens, other students' data, SQL injection, deep JSON, booby-trapped PDFs, forged Google tokens and WhatsApp messages), all blocked (145/145), after two security sweeps that found and fixed every problem the same day.
    - **Clean APK:** Zero third-party trackers, zero advertising SDKs, zero secrets in code, only essential permissions.
 
 9. **Live demo.**
@@ -60,7 +62,8 @@ See `docs/submission/video-script.md` for full shot-by-shot video scripts and `d
 
 10. **Architecture and what's next.**
     - Stack: Expo / React Native (Android + web), Python Flask API, pure Python decision engine, PostgreSQL on Neon, hosted on Render.
-    - What's next: Human verification sign-off across all 26 university data packs, integration with DHET's TVET and private colleges register, and the WhatsApp bot.
+    - Also built: the WhatsApp bot (class reps confirm tests from WhatsApp; WEEK sends the next 7 days) and Continue with Google.
+    - What's next: Human verification sign-off across all 26 university data packs, and integration with DHET's TVET and private colleges register.
 
 ---
 

@@ -108,13 +108,27 @@
         ]
       },
       "applying": "direct",
+      "at_registration": {
+        "source_url": "https://nsfas.org.za/content/how-to-apply.html",
+        "text": "If NSFAS finds you eligible, your funding is confirmed once you register at a public university or TVET college."
+      },
       "checked": "2026-10-10",
       "closes": "2026-10-31",
-      "covers": null,
+      "covers": {
+        "items": [
+          "Registration fees",
+          "Tuition fees",
+          "Prescribed textbooks allowance",
+          "Accommodation or transport allowance",
+          "Personal care allowance"
+        ],
+        "source_url": "https://www.nsfas.org.za/content/"
+      },
       "days": 16,
       "fields": [],
       "heading": "Funding for 2027",
       "id": "nsfas",
+      "income_says": "Students from households earning up to R350 000 a year (students with disabilities: up to R600 000 a year)",
       "intake": 2027,
       "kind": "bursary",
       "kind_label": "Bursary",
@@ -126,7 +140,16 @@
       "name": "National Student Financial Aid Scheme (NSFAS)",
       "next_date": "2026-10-31",
       "not_fields": [],
-      "obligations": null,
+      "obligations": {
+        "items": [
+          "Pass your modules each year",
+          "Adhere to university rules",
+          "Attend all required academic lectures",
+          "Inform the financial aid office if your status changes",
+          "Maintain satisfactory academic standing"
+        ],
+        "source_url": "https://www.nsfas.org.za/content/"
+      },
       "opens": "2026-09-18",
       "sector": "government",
       "sector_label": "Government",
@@ -166,9 +189,64 @@
           "South African citizens studying or planning to study at a public university or TVET college",
           "SASSA grant recipients",
           "Students from households earning up to R350 000 a year",
-          "Students with disabilities from households earning up to R600 000 a year"
+          "Students with disabilities from households earning up to R600 000 a year",
+          "Must be admitted to an accredited higher education programme"
         ],
         "source_url": "https://www.nsfas.org.za/content/"
+      },
+      "why": null
+    },
+    "minimal_funder": {
+      "any_field": true,
+      "apply": {
+        "after": [],
+        "contact": null,
+        "documents": null,
+        "fee_cents": null,
+        "fee_note": null,
+        "how": null,
+        "lines": [],
+        "source_url": null,
+        "tips": null,
+        "url": null,
+        "warnings": null,
+        "windows": []
+      },
+      "applying": "direct",
+      "at_registration": null,
+      "checked": null,
+      "closes": null,
+      "confirmed": true,
+      "covers": null,
+      "days": null,
+      "fields": [],
+      "id": "minimal",
+      "income_says": null,
+      "intake": null,
+      "kind": "bursary",
+      "kind_label": "Bursary",
+      "label": "Open",
+      "lines": [],
+      "name": "Minimal Foundation",
+      "next_date": null,
+      "not_fields": [],
+      "notice": null,
+      "obligations": null,
+      "opens": null,
+      "sector": "company",
+      "sector_label": "Company",
+      "short_name": "Minimal",
+      "source_url": null,
+      "sources": [],
+      "stages": [],
+      "status": "open",
+      "study_at": "any",
+      "url": null,
+      "who_can_apply": {
+        "items": [
+          "South African citizens studying full-time"
+        ],
+        "source_url": "https://example.com/minimal"
       },
       "why": null
     },

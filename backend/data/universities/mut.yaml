@@ -888,6 +888,13 @@ programmes:
         - "Every student registers with the Health Professions Council of South Africa (HPCSA)."
 
 sources:
+  - id: s-mut-contacts-2026
+    url: https://www.mut.ac.za/prospective-students/study-at-mut/contacting-mut/
+    publisher: Mangosuthu University of Technology
+    title: Contacting MUT
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official university source
   - id: s-mut-where
     url: "https://www.mut.ac.za/contact-us/"
     publisher: "Mangosuthu University of Technology"
@@ -895,6 +902,7 @@ sources:
     retrieved: 2026-10-20
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-mut-type
     url: "https://www.mut.ac.za/about-mut/our-story/"
     publisher: "Mangosuthu University of Technology"
@@ -902,6 +910,7 @@ sources:
     retrieved: 2026-10-20
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-mut-apply
     url: "https://www.mut.ac.za/prospective-students/apply/"
     publisher: "Mangosuthu University of Technology"
@@ -909,6 +918,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-mut-how
     url: "https://www.mut.ac.za/prospective-students/study-at-mut/how-to-apply-to-mut/"
     publisher: "Mangosuthu University of Technology"
@@ -916,6 +926,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cao-faq
     url: "https://cao.ac.za/2027%20Entry%20FAQs.html"
     publisher: "Central Applications Office"
@@ -930,6 +941,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-mut-cao-2027
     url: "https://www.cao.ac.za/Download/CAO%20HANDBOOK%202027%20Entry%20web.pdf"
     publisher: "Central Applications Office"
@@ -944,6 +956,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-mut-ms-2026
     url: "https://www.mut.ac.za/wp-content/uploads/2025/12/2026-Management-Sciences-Prospectus.pdf"
     publisher: "Mangosuthu University of Technology"
@@ -951,6 +964,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-mut-ahs-2026
     url: "https://www.mut.ac.za/wp-content/uploads/2025/12/2026-Applied-and-Health-Sciences-Handbook.pdf"
     publisher: "Mangosuthu University of Technology"
@@ -958,6 +972,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-mut-eng-2026
     url: "https://www.mut.ac.za/wp-content/uploads/2025/12/2026-Engineering-Faculty-Prospectus_.pdf"
     publisher: "Mangosuthu University of Technology"
@@ -965,6 +980,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-mut-cmqs-2026
     url: "https://www.mut.ac.za/wp-content/uploads/2026/05/2026-CM-AND-QS-Prospectus.pdf"
     publisher: "Mangosuthu University of Technology"
@@ -972,6 +988,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-mut-rules-2026
     url: "https://www.mut.ac.za/wp-content/uploads/2026/01/2026-General-Rules-and-Regulation-Handbook-14-Jan-2026.pdf"
     publisher: "Mangosuthu University of Technology"
@@ -979,3 +996,10 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
+
+support_services:
+- kind: financial_aid
+  name: Financial Aid Bureau
+  contact: 031 907 7106
+  source: s-mut-contacts-2026

@@ -15,7 +15,7 @@ import { updatesApi } from '@/features/updates/api/updatesApi';
 import UpdatesScreen from '@/features/updates/screens/UpdatesScreen';
 
 import { courseFinderApi } from '../api/courseFinderApi';
-import FunderDetailScreen from '../screens/FunderDetailScreen';
+import FunderDetailScreen, { applicationStatusWords } from '../screens/FunderDetailScreen';
 import FundingScreen from '../screens/FundingScreen';
 import PlanScreen from '../screens/PlanScreen';
 import { FunderDetail, FundingListAnswer, Plan, SavedFundingCard, SavedFundingListAnswer } from '../types';
@@ -80,6 +80,7 @@ jest.mock('../state', () => ({
 
 const fundingListData = (fundingListFixture as unknown as { data: FundingListAnswer }).data;
 const nsfasData = (nsfasFixture as unknown as { data: { funder: FunderDetail } }).data.funder;
+const minimalFunderData = (nsfasFixture as unknown as { data: { minimal_funder: FunderDetail } }).data.minimal_funder;
 
 beforeEach(() => {
   jest.clearAllMocks();
@@ -197,7 +198,7 @@ test('FunderDetailScreen: the top names who runs it, the funder and its chips, a
   ).toBeTruthy();
 });
 
-test('FunderDetailScreen: a funder without covers shows "Not published by the funder."', async () => {
+test('FunderDetailScreen: a funder with every part shows all sections in order, long lists show first 4 then Show all, and bottom apply button', async () => {
   mockParams = { id: 'nsfas' };
   jest.spyOn(courseFinderApi, 'funder').mockResolvedValue(nsfasData);
 
@@ -207,12 +208,107 @@ test('FunderDetailScreen: a funder without covers shows "Not published by the fu
     expect(screen.getByText('National Student Financial Aid Scheme (NSFAS)')).toBeTruthy();
   });
 
-  // Covers is null on NSFAS -> shows "Not published by the funder."
-  expect(screen.getByText('Not published by the funder.')).toBeTruthy();
-  // Obligations is null -> section heading is hidden
-  expect(screen.queryByText('What you owe back')).toBeNull();
-  // Sources is present
-  expect(screen.getByText('Sources')).toBeTruthy();
+  // Verify all 9 sections in exact order
+  const headings = [
+    'Who can apply',
+    'What it covers',
+    'What you give back',
+    'Income limit',
+    'How to apply',
+    'Dates',
+    'At registration',
+    'Tips',
+    'Watch out',
+  ];
+
+  const tree = screen.toJSON();
+  const jsonStr = JSON.stringify(tree);
+  let lastIndex = -1;
+  for (const h of headings) {
+    expect(screen.getByText(h)).toBeTruthy();
+    const idx = jsonStr.indexOf(`"${h}"`);
+    expect(idx).toBeGreaterThan(lastIndex);
+    lastIndex = idx;
+  }
+
+  // Long lists show first 4 items, then a "Show all" button
+  expect(
+    screen.getByText('South African citizens studying or planning to study at a public university or TVET college')
+  ).toBeTruthy();
+  expect(screen.queryByText('Must be admitted to an accredited higher education programme')).toBeNull();
+
+  const showAllButtons = screen.getAllByRole('button', { name: 'Show all' });
+  expect(showAllButtons.length).toBeGreaterThan(0);
+  fireEvent.press(showAllButtons[0]);
+  expect(screen.getByText('Must be admitted to an accredited higher education programme')).toBeTruthy();
+
+  // Bottom button: "Apply on their page"
+  const applyButton = screen.getByRole('button', { name: 'Apply on their page' });
+  expect(applyButton).toBeTruthy();
+});
+
+test('FunderDetailScreen: one with almost nothing shows only its sections and no empty headings', async () => {
+  mockParams = { id: 'minimal' };
+  jest.spyOn(courseFinderApi, 'funder').mockResolvedValue(minimalFunderData);
+
+  render(<FunderDetailScreen />);
+
+  await waitFor(() => {
+    expect(screen.getByText('Minimal Foundation')).toBeTruthy();
+  });
+
+  // Only its section appears
+  expect(screen.getByText('Who can apply')).toBeTruthy();
+  expect(screen.getByText('South African citizens studying full-time')).toBeTruthy();
+
+  // No empty headings / other sections
+  expect(screen.queryByText('What it covers')).toBeNull();
+  expect(screen.queryByText('What you give back')).toBeNull();
+  expect(screen.queryByText('Income limit')).toBeNull();
+  expect(screen.queryByText('How to apply')).toBeNull();
+  expect(screen.queryByText('Dates')).toBeNull();
+  expect(screen.queryByText('At registration')).toBeNull();
+  expect(screen.queryByText('Tips')).toBeNull();
+  expect(screen.queryByText('Watch out')).toBeNull();
+
+  // No empty placeholder text
+  expect(screen.queryByText('Not published by the funder.')).toBeNull();
+  expect(screen.queryByText('No fee published')).toBeNull();
+
+  // No bottom apply button
+  expect(screen.queryByRole('button', { name: 'Apply on their page' })).toBeNull();
+});
+
+test('FunderDetailScreen: an unknown status with no label says "Not published"', async () => {
+  mockParams = { id: 'nsfas' };
+  const unknownFunder: FunderDetail = {
+    ...nsfasData,
+    status: 'custom_status_unknown' as unknown as FunderDetail['status'],
+    label: '',
+  };
+  jest.spyOn(courseFinderApi, 'funder').mockResolvedValue(unknownFunder);
+
+  render(<FunderDetailScreen />);
+
+  await waitFor(() => {
+    expect(screen.getByText('National Student Financial Aid Scheme (NSFAS)')).toBeTruthy();
+  });
+
+  expect(screen.getByText('Not published')).toBeTruthy();
+
+  // Unit tests on applicationStatusWords helper
+  expect(applicationStatusWords({ status: null })).toBe('Not published');
+  expect(applicationStatusWords({})).toBe('Not published');
+  expect(applicationStatusWords({ status: 'unknown' })).toBe('Not published');
+  expect(applicationStatusWords({ status: 'open', label: 'Open' })).toBe('Open');
+  expect(applicationStatusWords({ status: 'closed', label: 'Closed' })).toBe('Closed');
+  // Statuses with no date of their own keep the server's words, never "Not published".
+  expect(applicationStatusWords({ status: 'automatic', label: 'No application needed' })).toBe('No application needed');
+  expect(applicationStatusWords({ status: 'via_university', label: 'Apply through the university' })).toBe('Apply through the university');
+  expect(applicationStatusWords({ status: 'late_ahead', label: 'Closed, late applications ahead' })).toBe('Closed, late applications ahead');
+  // "Opens on" is the opening date, never the closing one.
+  expect(applicationStatusWords({ status: 'opens_later', label: 'Not open yet', opens: '2026-11-02', closes: '2027-01-31' })).toBe('Opens on Mon 2 Nov 2026');
+  expect(applicationStatusWords({ status: 'closing_soon', closes: '2026-10-31' })).toBe('Closes on Sat 31 Oct 2026');
 });
 
 test('FunderDetailScreen: a funder whose covers name no amount shows the "doesn\'t publish an amount" line', async () => {

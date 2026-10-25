@@ -5,7 +5,7 @@
  */
 import { beforeEach, expect, jest, test } from '@jest/globals';
 
-import { api, newIdempotencyKey } from '../client';
+import { api, newIdempotencyKey, NO_CONNECTION, onSlowRequests, TIMED_OUT } from '../client';
 
 let mockTokens: { accessToken: string; refreshToken: string } | null = { accessToken: 'old', refreshToken: 'r1' };
 jest.mock('../tokenStore', () => ({
@@ -62,4 +62,55 @@ test('the retry after a token refresh sends the same Idempotency-Key', async () 
 test('idempotency keys are unique', () => {
   const keys = new Set(Array.from({ length: 1000 }, newIdempotencyKey));
   expect(keys.size).toBe(1000);
+});
+
+// ------------------------------------------------- a server waking up
+
+test('a read that finds no connection is tried once more, and then succeeds', async () => {
+  let n = 0;
+  global.fetch = jest.fn(() => {
+    n += 1;
+    return n === 1 ? Promise.reject(new TypeError('Network request failed')) : respond(200, { success: true, data: { ok: 1 } });
+  }) as unknown as typeof fetch;
+  await expect(api('GET', '/universities')).resolves.toEqual({ ok: 1 });
+  expect(n).toBe(2);
+});
+
+test('a write is never sent twice by the client', async () => {
+  let n = 0;
+  global.fetch = jest.fn(() => {
+    n += 1;
+    return Promise.reject(new TypeError('Network request failed'));
+  }) as unknown as typeof fetch;
+  await expect(api('POST', '/money/spending', { a: 1 })).rejects.toMatchObject({ code: 'NETWORK', message: NO_CONNECTION });
+  expect(n).toBe(1);
+});
+
+test('a slow request tells the app, and the all-clear comes when it ends', async () => {
+  jest.useFakeTimers();
+  const seen: boolean[] = [];
+  const stop = onSlowRequests((s) => seen.push(s));
+  let answer: (v: unknown) => void = () => undefined;
+  global.fetch = jest.fn(() => new Promise((r) => (answer = r))) as unknown as typeof fetch;
+  const pending = api('GET', '/universities');
+  await jest.advanceTimersByTimeAsync(5000);
+  expect(seen).toEqual([true]);
+  answer({ status: 200, json: () => Promise.resolve({ success: true, data: {} }) });
+  await pending;
+  expect(seen).toEqual([true, false]);
+  stop();
+  jest.useRealTimers();
+});
+
+test('a request that times out says the server is taking long, not that the phone is offline', async () => {
+  jest.useFakeTimers();
+  global.fetch = jest.fn(
+    (_url: string, init: { signal: AbortSignal }) =>
+      new Promise((_r, reject) => init.signal.addEventListener('abort', () => reject(new Error('aborted')))),
+  ) as unknown as typeof fetch;
+  const pending = api('POST', '/money/spending', { a: 1 });
+  const check = expect(pending).rejects.toMatchObject({ code: 'NETWORK', message: TIMED_OUT });
+  await jest.advanceTimersByTimeAsync(31000);
+  await check;
+  jest.useRealTimers();
 });

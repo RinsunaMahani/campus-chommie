@@ -1,7 +1,7 @@
 import { Feather } from '@expo/vector-icons';
-import { Tabs } from 'expo-router';
+import { router, Tabs } from 'expo-router';
 import { ComponentProps } from 'react';
-import { ColorValue, StyleSheet, View } from 'react-native';
+import { ColorValue, Pressable, StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { fonts } from '@/shared/theme/tokens';
@@ -19,9 +19,30 @@ function TabIcon({ name, color, focused }: { name: IconName; color: ColorValue; 
 }
 
 /**
- * Bottom bar. Each feature adds its tab as it's built (Week, Money, Course,
- * Support). Big enough to hit with a thumb on a small phone, and it adds
- * the phone's own bottom inset so it never sits under the system navigation bar.
+ * The centre button, like YouTube's and Standard Bank's: raised above the bar, round and filled, and it opens the
+ * Outdoors sheet over the screen you're on instead of switching tabs.
+ */
+function OutdoorsButton({ style }: { style?: StyleProp<ViewStyle> }) {
+  const colors = usePalette();
+  const styles = useStyles(makeStyles);
+  return (
+    <View style={[style, styles.centreSlot]} pointerEvents="box-none">
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel="Outdoors"
+        accessibilityHint="Opens places near your campus"
+        onPress={() => router.push('/places')}
+        style={({ pressed }) => [styles.centre, pressed && { transform: [{ scale: 0.94 }] }]}>
+        <Feather name="sun" size={26} color={colors.pillText} />
+      </Pressable>
+      <Text style={styles.centreLabel}>Outdoors</Text>
+    </View>
+  );
+}
+
+/**
+ * Bottom bar: Home, Week, Outdoors in the centre, Money, Support. Big enough to hit with a thumb on a small phone,
+ * and it adds the phone's own bottom inset so it never sits under the system navigation bar.
  */
 export default function TabsLayout() {
   const colors = usePalette();
@@ -60,11 +81,14 @@ export default function TabsLayout() {
           borderColor: colors.line,
           backgroundColor: colors.dock,
           elevation: 0,
+          // The centre button rises above the bar.
+          overflow: 'visible',
         },
         sceneStyle: { backgroundColor: colors.porcelain },
       }}>
       <Tabs.Screen name="home" options={tab('Home', 'home')} />
       <Tabs.Screen name="week" options={tab('Week', 'calendar')} />
+      <Tabs.Screen name="outdoors" options={{ title: 'Outdoors', tabBarButton: ({ style }) => <OutdoorsButton style={style} /> }} />
       <Tabs.Screen name="money" options={tab('Money', 'credit-card')} />
       <Tabs.Screen name="support" options={tab('Support', 'life-buoy')} />
     </Tabs>
@@ -74,4 +98,19 @@ export default function TabsLayout() {
 const makeStyles = (colors: Palette) => StyleSheet.create({
   pill: { width: 60, height: 34, borderRadius: 17, alignItems: 'center', justifyContent: 'center' },
   pillOn: { backgroundColor: colors.accentTint },
+  centreSlot: { flex: 1, alignItems: 'center', justifyContent: 'flex-end', paddingBottom: 9 },
+  centre: {
+    position: 'absolute',
+    top: -22,
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.accent,
+    // A ring the colour of the page, so the button reads as lifted off the bar.
+    borderWidth: 4,
+    borderColor: colors.porcelain,
+  },
+  centreLabel: { fontFamily: fonts.bold, fontSize: 11.5, lineHeight: 18, color: colors.accentDeep },
 });

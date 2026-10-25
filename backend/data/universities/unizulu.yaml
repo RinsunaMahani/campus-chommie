@@ -2763,6 +2763,13 @@ programmes:
         - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
 
 sources:
+  - id: s-unizulu-support-2026
+    url: https://www.unizulu.ac.za/ssd/
+    publisher: University of Zululand
+    title: Student Services Department
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official university source
   - id: s-unizulu-where
     url: "https://www.unizulu.ac.za/overview/"
     publisher: "University of Zululand"
@@ -2770,6 +2777,7 @@ sources:
     retrieved: 2026-10-20
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unizulu-policy
     url: "https://www.unizulu.ac.za/wp-content/uploads/2018/07/Policy-and-Procedures-on-Admissions.pdf"
     publisher: "University of Zululand"
@@ -2777,6 +2785,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unizulu-apply
     url: "https://www.unizulu.ac.za/apply/"
     publisher: "University of Zululand"
@@ -2784,6 +2793,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-cao-faq
     url: "https://cao.ac.za/2027%20Entry%20FAQs.html"
     publisher: "Central Applications Office"
@@ -2812,6 +2822,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unizulu-fhss-2026
     url: "https://reg.unizulu.ac.za/wp-content/uploads/2026/01/FHSS-Undergrad-Handbook-2026.pdf"
     publisher: "University of Zululand"
@@ -2819,6 +2830,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unizulu-fsae-2026
     url: "https://reg.unizulu.ac.za/wp-content/uploads/2026/01/FSAE-Undergraduate-Handbook-2026.cleaned.pdf"
     publisher: "University of Zululand"
@@ -2826,6 +2838,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unizulu-fcal-2026
     url: "https://reg.unizulu.ac.za/wp-content/uploads/2026/01/FCAL-Handbook-2026.pdf"
     publisher: "University of Zululand"
@@ -2833,6 +2846,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unizulu-fedu-2026
     url: "https://reg.unizulu.ac.za/wp-content/uploads/2026/01/FEDU-Undergraduate-Handbook-2026.pdf"
     publisher: "University of Zululand"
@@ -2840,6 +2854,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-unizulu-rb-2026
     url: "https://reg.unizulu.ac.za/wp-content/uploads/2026/01/2026-Richards-Bay-Campus-Handbook.pdf"
     publisher: "University of Zululand"
@@ -2847,3 +2862,12 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
+
+support_services:
+- kind: counselling
+  name: 'Student Services: counselling referral'
+  contact: 035 902 6449; ncokazit@unizulu.ac.za
+  source: s-unizulu-support-2026
+  note: Dean of Students office. Ask for referral to guidance and counselling; this
+    is not a direct counselling line.

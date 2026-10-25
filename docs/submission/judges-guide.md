@@ -59,7 +59,7 @@ Welcome, judges! Campus Chommie tackles the **"Access to higher education"** cha
 ---
 
 ### Technical & Architectural Integrity
-* **1,434 Backend Tests & 253 Mobile Tests** pass on every change.
-* **105 Automated Hostile Security Tests** passing (token replay, IDOR, SQLi, deep JSON, malicious PDFs).
+* **Over 1,600 backend tests and 300 mobile tests** pass on every change, with code, dependency and secrets scans.
+* **145 hostile security tests**, all blocked (forged and replayed tokens, other students' data, SQL injection, deep JSON, booby-trapped PDFs, forged Google tokens and WhatsApp messages), after two security sweeps.
 * **Zero Inventory of Facts:** Every admission rule, closing date, fee, and contact cites its official source URL.
 * **Zero Hex Codes / 360 px Responsive:** Full token styling with flawless mobile wrapping.

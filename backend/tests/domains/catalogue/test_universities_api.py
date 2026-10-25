@@ -41,8 +41,8 @@ def test_the_list_needs_no_account_and_flags_unchecked_packs(client):
     smu = universities["smu"]
     assert smu["name"] == "Sefako Makgatho Health Sciences University"
     assert smu["programmes"] == 17
-    # A university whose programmes aren't added yet is still listed, with none.
-    assert universities["uj"]["programmes"] == 0
+    # The supplied official prospectus now populates UJ too.
+    assert universities["uj"]["programmes"] == 175
     assert universities["wits"]["programmes"] > 0
     # SMU: every fact checked by Rinsuna (22 Oct 2026). The rest say where their facts come from.
     assert (universities["smu"]["confirmed"], universities["smu"]["notice"]) == (True, None)

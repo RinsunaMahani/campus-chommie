@@ -17,6 +17,13 @@ import { daysLeft, formatDay, placeLine } from '../words';
 const BACKEND = resolve(__dirname, '../../../../../../backend');
 const row = (subject: string, percent: string): MarkRow => ({ subject, percent });
 
+test('English language level survives subject selection and is sent without duplicating the mark', () => {
+  const english: MarkRow = { subject: 'english', percent: '55', language_level: 'home' };
+  const rows = rowsFor(['english', 'mathematics'], [english]);
+  expect(rows.find((r) => r.subject === 'english')).toEqual(english);
+  expect(checkRows([english]).marks).toEqual([{ subject: 'english', percent: 55, language_level: 'home' }]);
+});
+
 test('every mark goes under a key the API takes, and a missing or out-of-range mark gets a message', () => {
   const { marks, errors } = checkRows([row('english', '82'), row('mathematics', '100'), row('life_orientation', '0')]);
   expect(errors).toEqual({});

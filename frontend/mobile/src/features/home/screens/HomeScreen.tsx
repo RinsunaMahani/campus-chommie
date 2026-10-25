@@ -10,6 +10,8 @@ import { studentHeader } from '@/features/profile/components/HeaderTools';
 import { useProfile } from '@/features/profile/state';
 import { updatesApi } from '@/features/updates/api/updatesApi';
 
+import { HomeReviewCard } from '@/features/review/components/HomeReviewCard';
+
 import { NextSteps } from '../components/NextSteps';
 import { TodayTiles } from '../components/TodayTiles';
 import { Card, ListRow } from '@/shared/components/Parts';
@@ -59,6 +61,7 @@ export default function HomeScreen() {
 
       <Overline>{t('home.todayTitle')}</Overline>
       {mock ? null : <TodayTiles />}
+      {mock ? null : <HomeReviewCard />}
       {mock ? null : <NextSteps />}
 
       <Overline>{t('home.more')}</Overline>
@@ -74,12 +77,16 @@ export default function HomeScreen() {
             onPress={() => router.push('/updates')}
           />
         )}
+        {mock ? null : (
+          <ListRow tone="mint" icon="bar-chart-2" title={t('review.title')} subtitle={t('review.entrySub')} onPress={() => router.push('/review')} />
+        )}
         <ListRow tone="mint" icon="compass" title={t('courseFinder.title')} subtitle={t('courseFinder.entrySub')} onPress={() => router.push('/course-finder')} />
         <ListRow tone="mint" icon="tool" title={t('colleges.entry')} subtitle={t('colleges.entrySub')} onPress={() => router.push('/course-finder/colleges')} last />
       </Card>
 
       <Overline>Your account</Overline>
       <Card style={{ paddingVertical: 4 }}>
+        <ListRow tone="mint" icon="message-circle" title={t('whatsapp.title')} subtitle={t('whatsapp.entrySub')} onPress={() => router.push('/whatsapp')} />
         <ListRow tone="mint" icon="shield" title="Account security" subtitle="Phones, password and your account" onPress={() => router.push('/security')} />
         <ListRow icon="log-out" title="Sign out" onPress={signOut} last />
       </Card>

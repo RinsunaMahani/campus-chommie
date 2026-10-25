@@ -41,6 +41,7 @@ class SwitchesSchema(_Strict):
 
     class_updates = StrictBoolean()
     funding_reminders = StrictBoolean()
+    week_review = StrictBoolean()
 
     @validates_schema
     def _something(self, data, **kwargs):

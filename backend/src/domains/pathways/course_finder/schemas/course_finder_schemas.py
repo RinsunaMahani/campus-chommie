@@ -19,10 +19,16 @@ class _Strict(Schema):
 
 
 class MarkSchema(_Strict):
+    language_level = fields.String(validate=validate.OneOf(["home", "first_additional"]))
     subject = fields.String(required=True, validate=validate.OneOf(sorted(SUBJECT_KEYS), error="We don't know that subject."))
     percent = fields.Float(
         required=True, allow_nan=False, validate=validate.Range(min=0, max=100, error="A mark is from 0 to 100.")
     )
+
+    @validates_schema
+    def _language_only_for_english(self, data, **kwargs):
+        if "language_level" in data and data.get("subject") != "english":
+            raise MarshmallowError({"language_level": ["Language level applies to English only."]})
 
 
 class PointsSchema(_Strict):

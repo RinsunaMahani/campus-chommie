@@ -1432,6 +1432,7 @@ sources:
     retrieved: 2026-10-09
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-up-mbchb-2027
     url: "https://drupalwebprod-files.up.ac.za/Public/2026-04/2026%20for%202027%20Selection%20of%20MBChB%20students_13April%202026%20(2).pdf?VersionId=Zhz6Br5WLsS8ahAYQXZ3RDGUkfIq_RNy"
     publisher: "University of Pretoria"
@@ -1439,6 +1440,7 @@ sources:
     retrieved: 2026-10-09
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-up-cal-2026
     url: "https://linus.up.ac.za/calendars/2026_MAINDATES.pdf"
     publisher: "University of Pretoria"
@@ -1446,6 +1448,7 @@ sources:
     retrieved: 2026-10-09
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-up-cal-2027
     url: "https://linus.up.ac.za/calendars/2027_MAINDATES.pdf"
     publisher: "University of Pretoria"
@@ -1453,6 +1456,7 @@ sources:
     retrieved: 2026-10-09
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-up-infoguide-2026
     url: "https://drupalwebprod-files.up.ac.za/Public/2025-12/UP_InfoGuide%202026_V5-c.pdf"
     publisher: "University of Pretoria"
@@ -1460,6 +1464,7 @@ sources:
     retrieved: 2026-10-09
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-up-infoguide-2026-checked
     url: "https://drupalwebprod-files.up.ac.za/Public/2025-12/UP_InfoGuide%202026_V5-c.pdf"
     publisher: "University of Pretoria"

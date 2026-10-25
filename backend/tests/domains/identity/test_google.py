@@ -9,6 +9,7 @@ from src.domains.identity.auth.services.google_verifier import GoogleClaims, Inv
 
 CONSENT = {"privacy_version": "0.1-draft", "terms_version": "0.1-draft", "confirmed_18_or_older": True}
 NOMSA = "google-token-for-nomsa-xxxxxxxxxxxx"
+LERATO = "google-token-for-lerato-xxxxxxxxxxx"
 PASSWORD = "Campus2026!"
 
 
@@ -19,6 +20,8 @@ def fake_google(monkeypatch):
     def verify(token):
         if token == NOMSA:
             return GoogleClaims(sub="google-sub-123", email="nomsa.g@example.com", name="Nomsa Dlamini")
+        if token == LERATO:
+            return GoogleClaims(sub="google-sub-456", email="lerato.g@example.com", name="Lerato M")
         raise InvalidGoogleToken("Google sign-in failed. Please try again.")
 
     monkeypatch.setattr(google_verifier, "verify", verify)
@@ -85,3 +88,97 @@ def test_bad_google_token_is_rejected(client, fake_google):
 def test_outdated_consent_rejected_on_google_path(client, fake_google):
     r = google(client, consent={"privacy_version": "0.0-old", "terms_version": "0.1-draft", "confirmed_18_or_older": True})
     assert r.status_code == 422 and r.get_json()["code"] == "CONSENT_OUTDATED"
+
+
+# ---------------------------------------- closing or deleting a Google-only account
+
+
+def _google_only(client) -> dict:
+    token = google(client, consent=CONSENT).get_json()["data"]["access_token"]
+    return {"Authorization": f"Bearer {token}"}
+
+
+def test_a_google_only_account_is_deleted_after_signing_in_with_google_again(client, fake_google):
+    headers = _google_only(client)
+    assert client.delete("/api/v1/me", headers=headers, json={}).status_code == 422
+    no_proof = client.delete("/api/v1/me", headers=headers, json={"password": "Campus2026!"})
+    assert no_proof.status_code == 400 and no_proof.get_json()["code"] == "NO_PASSWORD"
+    other = client.delete("/api/v1/me", headers=headers, json={"id_token": LERATO})
+    assert other.status_code == 400 and other.get_json()["code"] == "WRONG_GOOGLE_ACCOUNT"
+    forged = client.delete("/api/v1/me", headers=headers, json={"id_token": "forged-token-xxxxxxxxxxxxxxxxxxxx"})
+    assert forged.status_code == 401
+    both = client.delete("/api/v1/me", headers=headers, json={"id_token": NOMSA, "password": "x"})
+    assert both.status_code == 422
+
+    assert client.delete("/api/v1/me", headers=headers, json={"id_token": NOMSA}).status_code == 200
+    assert google(client).get_json()["code"] == "GOOGLE_SIGNUP_DETAILS_REQUIRED"  # gone: a new sign-up
+
+
+def test_a_google_only_account_is_closed_with_google(client, fake_google):
+    headers = _google_only(client)
+    assert client.post("/api/v1/me/close-account", headers=headers, json={"id_token": LERATO}).status_code == 400
+    assert client.post("/api/v1/me/close-account", headers=headers, json={"id_token": NOMSA}).status_code == 200
+    assert google(client).status_code == 403  # closed
+
+
+def test_a_password_account_still_needs_its_password(client, fake_google, outbox):
+    import re
+
+    client.post("/api/v1/auth/register", json={"email": "thabo@example.com", "password": PASSWORD, "consent": CONSENT})
+    code = re.search(r">(\d{6})<", outbox[-1]["html_body"]).group(1)
+    token = client.post("/api/v1/auth/verify-email", json={"email": "thabo@example.com", "code": code}).get_json()["data"]["access_token"]
+    headers = {"Authorization": f"Bearer {token}"}
+    r = client.delete("/api/v1/me", headers=headers, json={"id_token": NOMSA})
+    assert r.status_code == 422 and r.get_json()["code"] == "PASSWORD_REQUIRED"
+
+
+def test_google_out_of_reach_is_a_clear_503_not_a_crash(app, client, monkeypatch):
+    """Google's keys can't be fetched (slow or down): the student is told, the server doesn't 500."""
+    from google.auth.exceptions import TransportError
+    from google.oauth2 import id_token
+
+    def unreachable(*args, **kwargs):
+        raise TransportError("timed out")
+
+    monkeypatch.setitem(app.config, "GOOGLE_CLIENT_IDS", ["our-client.apps.googleusercontent.com"])
+    monkeypatch.setattr(id_token, "verify_oauth2_token", unreachable)
+    r = google(client)
+    assert r.status_code == 503 and r.get_json()["code"] == "GOOGLE_UNREACHABLE"
+
+
+class _FakeResponse:
+    def __init__(self, cache_control: str | None):
+        self.status, self.data = 200, b"{}"
+        self.headers = {"cache-control": cache_control} if cache_control else {}
+
+
+def test_googles_keys_are_fetched_with_a_short_timeout_and_kept_while_fresh(monkeypatch):
+    calls = []
+
+    def inner(url, method="GET", **kwargs):
+        calls.append(kwargs.get("timeout"))
+        return _FakeResponse("public, max-age=19800")
+
+    keys = google_verifier._KeysRequest(inner)
+    first = keys("https://www.googleapis.com/oauth2/v1/certs")
+    assert keys("https://www.googleapis.com/oauth2/v1/certs") is first
+    assert calls == [google_verifier.KEYS_TIMEOUT_SECONDS]
+
+    # Kept an hour at most, however long Google says.
+    now = google_verifier.time.monotonic()
+    monkeypatch.setattr(google_verifier.time, "monotonic", lambda: now + google_verifier.KEYS_FRESH_MAX_SECONDS + 1)
+    keys("https://www.googleapis.com/oauth2/v1/certs")
+    assert len(calls) == 2
+
+
+def test_googles_keys_without_a_freshness_are_never_kept():
+    calls = []
+
+    def inner(url, method="GET", **kwargs):
+        calls.append(url)
+        return _FakeResponse(None)
+
+    keys = google_verifier._KeysRequest(inner)
+    keys("https://www.googleapis.com/oauth2/v1/certs")
+    keys("https://www.googleapis.com/oauth2/v1/certs")
+    assert len(calls) == 2
