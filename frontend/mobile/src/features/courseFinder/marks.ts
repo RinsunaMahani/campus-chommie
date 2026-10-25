@@ -43,8 +43,8 @@ export type Sent = {
 /**
  * The marks under the API's keys. Of the official languages besides English,
  * the best-marked goes as the other official language (on a tie, the first in
- * the picker); the rest, and every subject no rule names, count towards
- * points only.
+ * the picker); the rest use additional-subject slots. Named languages keep
+ * their identity and optional role for admission checks without adding a mark.
  */
 export function toApiMarks(entered: Entered[]): Sent {
   const languages = entered.filter((e) => SUBJECTS[e.subject]?.kind === 'language');
@@ -52,7 +52,10 @@ export function toApiMarks(entered: Entered[]): Sent {
   const marks: Mark[] = [];
   const names: Record<string, string> = {};
   const send = (key: string, e: Entered) => {
-    marks.push({ subject: key, percent: e.percent, ...(key === 'english' && e.language_level ? { language_level: e.language_level } : {}) });
+    const namedLanguage = SUBJECTS[e.subject]?.kind === 'language';
+    marks.push({ subject: key, percent: e.percent,
+      ...(namedLanguage ? { language_name: e.subject } : {}),
+      ...((key === 'english' || namedLanguage) && e.language_level ? { language_level: e.language_level } : {}) });
     names[key] = e.subject;
   };
   const pointsOnly: Entered[] = [];

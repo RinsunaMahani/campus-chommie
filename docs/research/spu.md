@@ -114,3 +114,18 @@ every SPU programme as "can't check yet"; the minimums (25 and 30) are on SPU's 
    prospectus doesn't. It wasn't for school-leavers, so it's left out.
 10. **Geology's English**: its table says "4 (Home Language)" or "5 (1st Language)", which I read as First Additional
     Language, as SPU's general rule says.
+
+## Official APS image supplied on 26 October 2026
+
+Rinsuna supplied `WhatsApp Image 2026-10-25 at 20.27.04.jpeg`, downloaded from the official SPU page.
+SHA-256: `39728233b96277c6ab1ae8a72ebb19a755ad2874c6ad90f8d87d9376904c06fd`.
+It matches the [image](https://www.spu.ac.za/wp-content/uploads/2018/11/SPU-Admission-calculator-295x300.png)
+linked under “Calculating the SPU Admissions Points Score (APS)” on the
+[official admissions page](https://www.spu.ac.za/index.php/admission-requirements-2/), checked on 26 October.
+That page currently describes admission for 2026; the image does not carry a year.
+The new dated official-university source backs `points_how`, not the separate Adobe prospectus's programme rules.
+
+The image confirms the existing scale, Mathematics/Home Language bonuses and Life Orientation scores.
+It does not state the number or selection of subjects to sum. The app now accepts optional language roles, so
+that former input limitation is removed from the explanation. Total APS remains manual until the subject-count
+rule is supported. Search results from third-party calculators are not used to fill the missing official rule.

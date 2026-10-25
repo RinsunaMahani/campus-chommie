@@ -50,7 +50,7 @@ These remain `requirements: null`:
 - **UFH (3):** Education Commerce names Business management; Education Science names Computer science;
   mainstream Crops omits the English level. Extended LLB now checks its published subject routes while leaving
   the missing Mathematics-route APS unassessed.
-- **UJ (12):** Geography BEd's ambiguous alternative; three BEd routes needing named non-English language roles;
+- **UJ (9):** Geography BEd's ambiguous alternative;
   four extended engineering rows without an explicit
   science-column OR; four Physical Sciences rows whose Mathematics footnote differs from the table.
 - **CPUT (2):** Banking mixes vocational/NSC terminology and omits its APS method; Senior/FET BEd requires
@@ -145,7 +145,10 @@ effective 1 July 2026, checked visually. The [August erratum](https://www.polokw
 does not alter that schedule. UNIZULU's Science Centre listing explicitly describes educational group visits,
 minimum group charges and the need to confirm eligibility; no individual walk-in price is inferred.
 
-Remaining software limitations include named non-English language roles/teaching electives. Remaining evidence
+Optional named-language roles now resolve UJ Afrikaans, isiZulu and Sepedi BEd requirements (2027 prospectus p.55):
+APS 28, English HL 5/FAL 6 and the named language HL 4/FAL 5. Language identity travels on its existing mark row;
+additional languages never add duplicate APS entries. Old clients without identity remain unverified for these rules.
+Remaining software limitations include teaching elective combinations. Remaining evidence
 gaps include conflicting UFS/MUT rules, UJ science alternatives/footnotes, missing UFH English/subject equivalence,
 and faculty-selected or prior-degree routes. Official source acceptance does not settle these contradictions.
 SPU's externally hosted 2027 prospectus remains the one university source without accepted verification metadata:
@@ -156,10 +159,9 @@ The Adobe domain was not broadly approved and the existing citation/retrieval hi
 ## Validation of this change
 
 - Pack validator: zero errors after the 25 October support/calendar imports; coverage warnings remain.
-- Frontend: TypeScript and Expo lint passed; 35 Jest suites / 280 tests passed.
-- Full backend run after the UJ band and venue additions: 1,616 passed; two existing Flask-Migrate
-  deprecation warnings. After the final crisis-gate restriction, 49 boundary/source tests and all 23 affected
-  support API/verification tests passed.
+- Frontend: TypeScript and Expo lint passed; 35 Jest suites / 281 tests passed.
+- Full backend run including named-language assessment: 1,641 passed; two existing Flask-Migrate
+  deprecation warnings. SPU image provenance/text follow-up is checked separately by the catalogue tests.
 - English-role and source-verification regression tests passed. Database tests used an isolated agent-owned
   PostgreSQL database on port 55439.
 - No production database was used. Work remains on `rinsuna/data-completeness`, undeployed.

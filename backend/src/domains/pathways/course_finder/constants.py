@@ -1,7 +1,7 @@
 """The course finder's limits and the subjects a learner can enter."""
 from __future__ import annotations
 
-from campus_engine.schemas import SUBJECTS
+from campus_engine.schemas import LANGUAGE_NAMES, SUBJECTS
 
 #: Per IP: no account, so no user to count by. A school computer lab shares
 #: one address, so this leaves room for a class asking at the same time.

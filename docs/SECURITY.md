@@ -8,9 +8,10 @@ request and never stored; and the judges' demo accounts. Update it whenever a mi
 
 ## What we protect
 
-Data completeness update (25 October 2026): optional English Home/First Additional Language metadata travels
+Data completeness update (25 October 2026): optional English and named-language Home/First Additional Language metadata travels
 only with the existing transient course-finder request. It is neither persisted nor logged. Strict input validation
-rejects language roles on other subjects. University source acceptance requires a dated HTTPS URL on an allowlisted
+rejects language roles on non-language subjects, unknown names and duplicate named languages across APS slots.
+Language identity stays on the existing mark row and never creates a second points entry. University source acceptance requires a dated HTTPS URL on an allowlisted
 university domain; subdomain-boundary checks reject lookalikes and URL credentials. It does not create a human
 sign-off. Rinsuna also accepted dated official funder, government and venue publications on 25 October; these use
 an explicit publisher-domain allowlist and retain existing review history. Missing route-specific APS cannot produce an eligibility claim, and unknown

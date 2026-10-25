@@ -240,9 +240,14 @@ class Choice(_Strict):
     one_of: list[Option] = Field(min_length=2)
 
 
+LANGUAGE_NAMES = frozenset({"afrikaans", "isindebele", "isixhosa", "isizulu", "sepedi", "sesotho",
+                            "setswana", "siswati", "tshivenda", "xitsonga", "sign_language"})
+
+
 class Requirements(_Strict):
     source: str
     english_language_levels: dict[Literal["home", "first_additional"], Level] = Field(default_factory=dict)
+    named_language_levels: dict[str, dict[Literal["home", "first_additional"], Level]] = Field(default_factory=dict)
     # Some subject routes have a published APS while another route's threshold is omitted.
     points_threshold_incomplete: bool = False
     # Above a published bounded range, refer to the university instead of extrapolating eligibility.
@@ -268,6 +273,10 @@ class Requirements(_Strict):
     @model_validator(mode="after")
     def _check_subjects(self):
         problems: list[str] = []
+        if set(self.named_language_levels) - LANGUAGE_NAMES:
+            problems.append("named language requirements must use recognised non-English language names")
+        if any(not levels for levels in self.named_language_levels.values()):
+            problems.append("named language requirements need at least one language level")
         if self.max_assessed_points is not None:
             minima = [self.min_points] + [o.min_points for c in self.choices for o in c.one_of]
             if any(m is not None and m > self.max_assessed_points for m in minima):

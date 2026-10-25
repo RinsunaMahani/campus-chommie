@@ -165,9 +165,31 @@ def _check_subjects(req: Requirements, levels: dict[str, int], marks: dict[str, 
 
 
 def assess(uni: University, programme: Programme, marks: dict[str, float],
-           english_language_level: str | None = None) -> Match:
+           english_language_level: str | None = None,
+           language_marks: dict[str, tuple[float, str | None]] | None = None) -> Match:
     match = _assess(uni, programme, marks)
     req = programme.requirements
+    if req:
+        for language, levels in req.named_language_levels.items():
+            entry = (language_marks or {}).get(language)
+            label = {"isizulu": "isiZulu", "isixhosa": "isiXhosa"}.get(language, _pretty(language))
+            if entry is None:
+                if match.tier != NOT_YET:
+                    match.tier = UNVERIFIED
+                match.explanation.append(f"Enter your {label} mark and language level to check this programme.")
+                continue
+            percent, role = entry
+            level = compute_points({language: percent}, NSC_LEVELS).levels[language]
+            needed = levels.get(role) if role is not None else None
+            if (needed is not None and level < needed) or level < min(levels.values()):
+                message = f"{label}: level {level}, needs {needed or min(levels.values())}."
+                match.tier = NOT_YET
+                match.failed.append(message)
+                match.explanation.append(message)
+            elif needed is None and (role is not None or level < max(levels.values())):
+                if match.tier != NOT_YET:
+                    match.tier = UNVERIFIED
+                match.explanation.append(f"Choose the published Home or First Additional Language route for {label}.")
     if req and req.max_assessed_points is not None:
         if match.points is not None and match.points > req.max_assessed_points and match.tier != NOT_YET:
             match.tier = UNVERIFIED
@@ -285,9 +307,10 @@ def _assess(uni: University, programme: Programme, marks: dict[str, float]) -> M
     return match
 
 
-def assess_all(uni: University, marks: dict[str, float], english_language_level: str | None = None) -> list[Match]:
+def assess_all(uni: University, marks: dict[str, float], english_language_level: str | None = None,
+               language_marks: dict[str, tuple[float, str | None]] | None = None) -> list[Match]:
     """Assess every programme at a university, best tiers first."""
-    matches = [assess(uni, p, marks, english_language_level) for p in uni.programmes]
+    matches = [assess(uni, p, marks, english_language_level, language_marks) for p in uni.programmes]
     return sorted(matches, key=lambda m: (TIER_RANK[m.tier], m.programme_name))
 
 

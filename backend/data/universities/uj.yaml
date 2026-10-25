@@ -1345,9 +1345,19 @@ programmes:
   - education
   selective: true
   selection_note: '2027 prospectus p.55: APS 28; English Home Language 5 or First
-    Additional Language 6. Afrikaans HL 4 or FAL 5. The app cannot distinguish these
-    language routes; check with UJ.'
-  requirements: null
+    Additional Language 6. Afrikaans HL 4 or FAL 5. Selection and available places apply.'
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 28
+    subject_minimums:
+      english: 5
+    english_language_levels:
+      home: 5
+      first_additional: 6
+    named_language_levels:
+      afrikaans:
+        home: 4
+        first_additional: 5
 - id: uj_b5lazq
   name: 'BEd Senior Phase and FET: isiZulu'
   faculty: Education
@@ -1355,9 +1365,19 @@ programmes:
   - education
   selective: true
   selection_note: '2027 prospectus p.55: APS 28; English Home Language 5 or First
-    Additional Language 6. isiZulu HL 4 or FAL 5. The app cannot distinguish these
-    language routes; check with UJ.'
-  requirements: null
+    Additional Language 6. isiZulu HL 4 or FAL 5. Selection and available places apply.'
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 28
+    subject_minimums:
+      english: 5
+    english_language_levels:
+      home: 5
+      first_additional: 6
+    named_language_levels:
+      isizulu:
+        home: 4
+        first_additional: 5
 - id: uj_b5lasq
   name: 'BEd Senior Phase and FET: Sepedi'
   faculty: Education
@@ -1365,9 +1385,19 @@ programmes:
   - education
   selective: true
   selection_note: '2027 prospectus p.55: APS 28; English Home Language 5 or First
-    Additional Language 6. Sepedi HL 4 or FAL 5. The app cannot distinguish these
-    language routes; check with UJ.'
-  requirements: null
+    Additional Language 6. Sepedi HL 4 or FAL 5. Selection and available places apply.'
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 28
+    subject_minimums:
+      english: 5
+    english_language_levels:
+      home: 5
+      first_additional: 6
+    named_language_levels:
+      sepedi:
+        home: 4
+        first_additional: 5
 - id: uj_b6cs0q
   name: BEng Civil Engineering
   faculty: Engineering and the Built Environment

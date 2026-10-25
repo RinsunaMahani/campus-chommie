@@ -1,11 +1,9 @@
 # Sol Plaatje University (SPU)
 #
-# Agent draft, read on 13 Oct 2026 (docs/research/universities.md). SPU's 2026 prospectus table doesn't
-# say how many subjects count, and its bonus depends on which language is a home language, which the app
-# doesn't ask: no points rule yet. Nobody has checked these values yet: release stays false until a person
-# has compared every one with its source. Programmes come from SPU's 2027 undergraduate prospectus, read on
-# 14 Oct 2026 (docs/research/spu.md), whose points table matches 2026's; the three found only on SPU's
-# faculty pages each carry a line asking learners to check that SPU takes first-years in them in 2027.
+# Official-source acceptance follows the owner's 25 October 2026 decision. Incomplete pack.
+# The APS image supplied on 26 October matches the official admissions page's image.
+# Its subject-count rule is still unpublished here, so total APS remains manual.
+# Programmes come from the 2027 online prospectus and faculty pages; see docs/research/spu.md.
 
 university: spu
 name: Sol Plaatje University
@@ -17,10 +15,10 @@ release: false
 max_choices: null
 
 points_rules: null
-points_note: "SPU's points table doesn't say how many subjects count, and its extra points depend on your home language, which we don't ask."
-# From SPU's 2027 prospectus, page 4 (the same table as 2026's and the website's). Agent draft.
+points_note: "SPU's published table gives subject points and bonuses, but does not state how many subjects count. Ask SPU to confirm your total APS."
+# Official admissions-page table, corroborated by the user-supplied image on 26 October 2026.
 points_how:
-  source: s-spu-prospectus-2027
+  source: s-spu-aps-image
   text: "SPU's scale: 90-100% is 8 points, down to 0-29% for 1. Mathematics, and a language you take as a home language, add 2 from 60% and 1 at 40-59%. Life Orientation scores 4, 3, 2 or 1 from 90, 80, 70 and 60%. SPU doesn't say how many subjects count, so ask SPU's admissions office."
 
 applications:
@@ -459,6 +457,14 @@ programmes:
         - "Your NSC must show admission to bachelor's degree study."
 
 sources:
+  - id: s-spu-aps-image
+    url: https://www.spu.ac.za/wp-content/uploads/2018/11/SPU-Admission-calculator-295x300.png
+    publisher: Sol Plaatje University
+    title: APS table linked from the official admissions page; matches user-supplied image
+    retrieved: 2026-10-26
+    last_verified: null
+    verified_by: agent comparison of official page and user-supplied image
+    verification_basis: official_university
   - id: s-whag-fees-2026
     url: https://whag.co.za/
     publisher: William Humphreys Art Gallery

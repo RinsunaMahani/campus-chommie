@@ -15,7 +15,7 @@ repo folder but is kept out of git; the parts the screens need are quoted below.
 ## Where things stand
 
 **Local data work (25 Oct 2026, not merged):** `rinsuna/data-completeness` in `.worktrees/data-completeness`;
-the earlier data work is committed in `da43d4d`, with the test correction in `8e4439b` and main merged in `a25839e`.
+the official-source follow-up is committed in `51ba037`; the earlier data work is committed in `da43d4d`, with the test correction in `8e4439b` and main merged in `a25839e`.
 Supplied official PDFs add 175 UJ, 39 UWC and 52 UFH programme entries and fill 40 empty CPUT
 requirements. UJ/UWC/Wits support and Wits 2027 dates are added. On 25 October Rinsuna accepted official
 university publications as sufficient verification. Dated official sources now carry explicit verification basis;
@@ -24,10 +24,14 @@ five more programmes have supported subject routes, with unpublished route APS e
 All 26 universities now have at least one support contact. CPUT, DUT, Rhodes and UCT 2027 calendars and NWU
 first-year dates are added. The latest follow-up accepts dated official funder/government/venue sources, fills
 UP Food Management, both UP Music routes, SU Public Accountability, UFH extended LLB and four UJ extended BA rules,
-with external qualifications and out-of-band APS referred for assessment. There are still 26 programmes with missing
+with external qualifications and out-of-band APS referred for assessment. Three UJ language BEd rules now use optional named-language roles without changing APS totals.
+There are still 23 programmes with missing
 requirements; calendars and activity listings cover all 26 universities, and 93 support contacts span all 26.
 Counts include different calendar years and incomplete campus coverage. See [the source review](research/2027-local-prospectuses.md) and
 [coverage queue](DATA_READINESS.md). Incomplete campus coverage and contradictory admissions rules remain open.
+On 26 October, Rinsuna supplied SPU's APS image. It matches the official admissions-page image and now backs the
+points explanation; it does not publish the subject-count rule needed to calculate total APS. Named-language
+checks passed the full backend suite (1,641 tests), with 281 mobile tests, TypeScript and lint passing.
 
 `main` holds everything merged so far (PRs #1 to #94): every merge waited for green CI and Rinsuna's approval. The
 web app and the API are live on Render, with the database on Neon (DEPLOY.md). Test counts change with each merge:
