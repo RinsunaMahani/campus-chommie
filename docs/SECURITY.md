@@ -47,7 +47,7 @@ English roles cannot pass a role-dependent boundary. Regression tests cover thes
 | Threat | Control | Where |
 |---|---|---|
 | Stolen or guessed password | bcrypt hashing; 5 wrong passwords lock the account for 15 minutes; rate limits per IP and per IP + email; a new phone needs a 6-digit code from the email (two factors) | `domains/identity/auth/services/auth_service.py`, `auth/rate_limit/policies.py`, `auth/models/trusted_phone.py` |
-| Google sign-in abused | the backend verifies every Google ID token itself (Google's signature, issuer, expiry, our web client as its audience, a verified email); an email with a password account is never merged silently (the password links it once); an unverified email sign-up is taken over only by the Google-proven owner, and its password is deleted (pre-hijack defence); a new account needs the same 18-or-older and consent boxes. The app keeps the token in memory for the next step only, never stored or logged. Closing or deleting a Google-only account needs a fresh Google sign-in with the same linked Google account; a password account still needs its password | `identity/auth/services/google_verifier.py`, `auth_service.google_sign_in`, `_require_owner`; `frontend/mobile/src/features/auth/google/` |
+| Google sign-in abused | the backend verifies every Google ID token itself (Google's signature, issuer, expiry, our web client as its audience, a verified email); an email with a password account is never merged silently (the password links it once); an unverified email sign-up is taken over only by the Google-proven owner, and its password is deleted (pre-hijack defence); a new account needs the same 18-or-older and consent boxes. The app keeps the token in memory for the next step only, never stored or logged. Closing or deleting a Google-only account needs a fresh Google sign-in with the same linked Google account; a password account still needs its password. Google's keys are fetched with a 5-second timeout and kept while Google says they're fresh (an hour at most), so a slow Google can't hold the server's threads; if Google can't be reached, sign-in says so (503), never a crash | `identity/auth/services/google_verifier.py`, `auth_service.google_sign_in`, `_require_owner`; `frontend/mobile/src/features/auth/google/` |
 | Stolen token | 15-minute access tokens tied to a live session; rotating refresh tokens, and a reused refresh token revokes the whole session; "sign out other phones" | `auth/models/credentials.py` (Session), `auth/services/jwt_callbacks.py`, `session_service.py` |
 | Fishing for which emails have accounts | sign-up, resend and forgot-password give the same answer whatever the email; an existing account's owner gets an email instead | `auth_service.register`, `forgot_password` |
 | Reading someone else's data (IDOR) | every query takes the signed-in user from the token; another user's row is the same 404 as a missing one (alerts, profile, every money record, modules and assessments). Alerts and support read only the signed-in student's own records. Classes are reached only through the student's own membership: a class they're not in, and its candidates, events and flags, are the same 404 as ones that don't exist | `core/decorators.py`, each feature's repository, `classes/classes/services/class_service.py` (`membership`) |
@@ -58,7 +58,7 @@ English roles cannot pass a role-dependent boundary. Regression tests cover thes
 | A wrong crisis number shown as true | crisis lines show only once a person has checked their source (a name, not an agent draft, and a date); until then Support says so. Every other support entry shows its source and when a person last checked it, or "Not verified yet" | `domains/student/alerts/services/alert_service.py` |
 | An alert that leaks who did what, or carries someone's words | class updates go to the other members only, with fixed wording: the module, the kind and the dates; never who confirmed it, and never a title or venue someone typed. A student can switch class updates off; security alerts have no switch. A test fails if a template is added without the migration the alerts table's checks need | `platform/notifications/templates.py`, `classes/events/services/event_alerts.py`, `tests/domains/classes/test_class_alerts.py` |
 | Wording that labels or frightens a student | alerts describe the situation and end in things to do; they never say "at risk" and never diagnose, and the heavier ones always point to campus counselling (engine tests check the words) | `campus_engine/alerts.py` |
-| A forged or replayed WhatsApp message | the webhook is a 404 while the bot is off; Meta's handshake needs our verify token (constant-time compare) and echoes only a plain challenge, as text; every POST must carry `X-Hub-Signature-256`, HMAC-SHA256 of the raw body with the app secret (constant-time compare; 401 otherwise, nothing read); only our own business number's messages are read; a message more than 5 minutes old (or 1 minute ahead) is dropped, and one seen before is answered once (Meta retries); group messages are ignored (private chats only); any other shape is ignored | `classes/whatsapp/services/signature.py`, `whatsapp_service.receive`, `tests/domains/classes/test_whatsapp.py` |
+| A forged or replayed WhatsApp message | the webhook is a 404 while the bot is off; Meta's handshake needs our verify token (constant-time compare) and echoes only a plain challenge, as text; every POST must carry `X-Hub-Signature-256`, HMAC-SHA256 of the raw body with the app secret (constant-time compare; 401 otherwise, nothing read); only our own business number's messages are read; a message more than 5 minutes old (or 1 minute ahead) is dropped, and one seen before is answered once (Meta retries); group messages are ignored (private chats only); any other shape, and a button id that isn't a well-formed id, is ignored | `classes/whatsapp/services/signature.py`, `whatsapp_service.receive`, `tests/domains/classes/test_whatsapp.py` |
 | Someone else's number linked to an account, or acting as a rep from WhatsApp | linking needs a one-time code shown only in the signed-in app: 8 characters from 31 (about 850 billion codes), valid 10 minutes, once, stored as an HMAC, and a new code ends the last; LINK tries are limited to 5 an hour per number, every number to 30 messages a minute and 300 a day. Once linked, the bot acts as that account through the same services as the app: Confirm and Discard go through the rep checks (a student can't confirm; another class's announcement is not found), an incomplete one is finished in the app, and STOP or the app unlinks | `classes/whatsapp/`, `classes/events/services/events_service.py` (`announce_text`, `confirm_as_read`) |
 | Phone numbers or messages leaked | numbers are never stored or logged (only their keyed hash); the bot replies to the number a message came from, so it never needs one; message text goes only into the announcement (kept as in the app); a failed reply logs Meta's status code only, never the number, the words or the token; the access token stays in the host's settings | `classes/whatsapp/services/sender.py` |
 | Spam through announcements | 60 an hour per student, at most 10 waiting per student in one class, at most 2 000 characters; the text is never logged | `classes/events/constants.py`, `events_service.announce` |
@@ -86,6 +86,7 @@ shape, never named by guess; a funder's page that says "open" without dates coun
 | Wrong dates shown because of a preview's test date | `CAMPUS_PREVIEW_TODAY` is read by the development settings only. Production, and any environment but development, refuses to start with it set, and anything but a plain date stops the start; tests ignore it. A plan worked out on a test date says so (`test_date`) and the app shows a note. A client can never send a date | `src/shared/clock/clock.py`, `config.py`, `tests/shared/test_clock.py` |
 | Secrets leaking | secrets only in git-ignored `.env`; the app refuses to start with missing or short (< 32 characters) keys; codes and reset links are never logged; production refuses the fake mail provider and requires an https base address | `config.py`, `shared/email/` |
 | Tampering with history | the database refuses UPDATE, DELETE and TRUNCATE on the audit trail (trigger) | `migrations/versions/0001_baseline.py` |
+| A stuck or slow query holding the server | every database connection gets `statement_timeout` = 30 s (`DB_STATEMENT_TIMEOUT_MS`), set with a plain `SET` as it opens, so it works behind any host's proxy | `src/__init__.py` (`_cap_statement_time`), `tests/hosting/test_hosting.py` |
 | Spoofed client IP | forwarding headers are ignored unless the server sits behind Cloudflare alone (`BEHIND_CLOUDFLARE`) | `shared/net/client_ip.py` |
 | Browser attacks on API responses | `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy: no-referrer`, `Cache-Control: no-store`; CORS in development, and in production only for the https addresses in `CORS_ORIGINS` (none by default; `*` and plain http refused at start-up) | `src/__init__.py`, `src/config.py` |
 | Background jobs running twice, or racing a migration | only the process holding a PostgreSQL advisory lock runs the jobs, across every worker and instance; a one-off command (`flask db upgrade`, `flask seed`) never starts them | `src/master_scheduler/lock.py`, `trigger.py`, `src/__init__.py` (`_one_off_command`) |
@@ -221,6 +222,56 @@ The fixes take effect from the next build. The first APK was 140 MB, 58 MB of it
   only wrong ones count (20 an hour per address and persona), plus a flood guard of 60 sign-ins a minute, since
   each one writes a session row (`test_judges_can_sign_in_as_often_as_they_need`).
 
+## Security sweep 2 (25 Oct 2026)
+
+A second pass after the WhatsApp bot (M6), Google sign-in, money pots and the weekly check-in, and the data
+completeness work: the same rules as sweep 1, only ever a copy on this computer (the API with the production config
+on 127.0.0.1, its own sandbox database, every secret made up for the run, the bot and Google sign-in switched on with
+made-up values). Nothing was sent to the live server.
+
+| Tool | What it covered | Result |
+|---|---|---|
+| Backend tests | the full suite on PostgreSQL 16, engine coverage 98.9% | all pass |
+| App checks | `tsc`, 280 Jest tests, ESLint with no warnings | all pass |
+| Bandit 1.9.4 | the backend's code, 19,618 lines | 27 low findings, all names of events, limits or messages containing "password" or "token", and two type-narrowing `assert`s; nothing medium or high |
+| Semgrep 1.182 (the open `semgrep-rules`: Flask, Python, JWT, SQLAlchemy, requests, cryptography, secrets, React, browser JavaScript) | backend and app code | 11 security findings, all the false positives sweep 1 reviewed: log lines that log only ids, a masked email and a reason; the plain-text email templates; fixed https addresses in scripts |
+| pip-audit | the backend's dependencies | none |
+| npm audit | the app's dependencies | high: only the two accepted below; two new moderate ones, accepted below |
+| gitleaks 8.28 | 246 commits on every branch, and the working tree | nothing beyond the reviewed false positives in `.gitleaksignore` |
+| Manual review | every backend and auth file changed since sweep 1 (75 files): the WhatsApp webhook and bot, Google sign-in, the money routes, the app's API client and token storage, raw SQL | two problems, below; every new money query is scoped to its owner, and there is no SQL built from text |
+| Our pen test | **145 attacks** (105 from sweep 1, plus 40 new) | **145 pass** after the fixes below (144 before) |
+
+The pen test's new attacks:
+
+- **Someone else's data:** A's fixed cost, changed (PUT, PATCH) and deleted by B by its id: 404 each, unchanged,
+  and not in B's list or export.
+- **Google sign-in:** forged ID tokens (garbage, `alg: none`, a made-up key id, HS256 signed with a guessed key) can
+  neither sign in nor link an account; an email beside the token and an over-long token are refused.
+- **The WhatsApp webhook, unsigned:** a wrong verify token, a script as the challenge (refused, never echoed), an
+  extra handshake parameter, no signature, a wrong one, a SHA-1 one: all refused.
+- **The WhatsApp webhook, signed** (with the run's made-up app secret): a body changed after signing; a message
+  answered once and its replay ignored; one 10 minutes old and one from the future dropped; group chats, another
+  business number and a sender that isn't a phone number dropped; a body of the wrong shape ignored; a link code
+  that works once; and, from a linked number, buttons for someone else's announcement, a malformed id and an
+  unknown action, none of which change anything or crash.
+
+### Found and fixed
+
+| Finding | Severity | Fix |
+|---|---|---|
+| A WhatsApp button id made of 36 uuid characters in the wrong shape (`confirm:----…`) passed the check, then crashed the webhook (500), and Meta retried it | Low: signed by Meta, so only from a reply our own buttons allow; no data exposed | only a well-formed id is read; anything else is ignored (`test_made_up_buttons_do_nothing`) |
+| Google sign-in crashed (500) when Google's keys couldn't be fetched, fetched them on every sign-in (the code's comment said they were cached), and waited up to two minutes for a slow answer: a few sign-ins during a slow Google could hold every server thread | Low: availability only | a 5-second timeout; the keys kept while Google says they're fresh, an hour at most; out of reach is a clear 503, `GOOGLE_UNREACHABLE` (`test_google_out_of_reach_is_a_clear_503_not_a_crash`, `test_googles_keys_are_fetched_with_a_short_timeout_and_kept_while_fresh`) |
+| No limit on how long a database statement may run | Low (hardening) | `statement_timeout` = 30 s on every connection (`test_every_connection_caps_how_long_a_statement_may_run`); migrations, `flask db check` and the seed run well within it on an empty database |
+
+### Open, for the team
+
+- **The app's database role owns its tables.** On Neon the API connects as the role that owns the schema, so if an
+  attacker ever got SQL through (nothing found, and no SQL is built from text), they could drop the audit trail's
+  append-only trigger. The fix is a second role for the running API with no right to change tables (and the owner
+  kept for migrations only). It's a hosting change, so Rinsuna decides; nothing is changed until she does.
+- **gunicorn's `Server` header** names gunicorn on a local run. Live, Cloudflare replaces it with its own, so nothing
+  leaks; accepted.
+
 ## Accepted dependency risks
 
 Checked 9 Oct 2026. Werkzeug (3.1.9) and PyJWT (2.15.0) were upgraded and the Expo SDK 57 packages patched, which
@@ -232,6 +283,13 @@ once it passes.
 | GHSA-vfj7-8cjw-p6xm | braces | denial of service through nested glob patterns, reached only through build tooling (Metro, Jest) with our own patterns; not in the app or web bundle | 6 Nov 2026 |
 | GHSA-mrhx-c7xc-m3w5 | zod | memory exhaustion on oversized input, reached only through the Expo CLI (`@expo/cli` pins zod 3.25.76) that builds the app on the developer's computer; not in the app or web bundle; the only offered fix is an old Expo | 8 Nov 2026 |
 | GHSA-86w9-cpqp-85rv | node-forge | signature-check flaw in the Expo CLI's code-signing helper, which we don't use; not in the app or web bundle | 6 Nov 2026 |
+
+Moderate advisories (CI fails only on high or critical), checked 25 Oct 2026:
+
+| Advisory | Package | Why it's accepted for now | Review by |
+|---|---|---|---|
+| GHSA-vcc3-ghjq-m6fr | decode-uri-component 0.2.2 | slow decoding of a crafted, malformed address. In the web build through expo-router's `query-string`, so at worst a crafted link freezes the tab of the person who opens it; nothing reaches the server. The fixed release is ESM-only and `query-string` 7 loads it with `require()`, so an override would break routing; the fix arrives with expo-router 58 (Expo SDK 58) | 8 Nov 2026 |
+| GHSA-w5hq-g745-h8pq | uuid 3.4.0, 7.0.3 | a missing bounds check when a caller passes its own buffer. Reached only through build tooling (`@expo/ngrok`, the iOS project writer `xcode`); not in the app or web bundle; no fixed release for those major versions | 8 Nov 2026 |
 
 The `.gitleaksignore` file holds three reviewed false positives: the testing config's placeholder JWT key, and a
 storage key's name in two files on the closed, unmerged tabs branch. PyJWT's PYSEC-2026-4146, accepted on 9 Oct,

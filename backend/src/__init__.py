@@ -59,6 +59,8 @@ def _register_extensions(app: Flask) -> None:
     from src.shared.rate_limit.limiter import limiter
 
     db.init_app(app)
+    with app.app_context():
+        _cap_statement_time(db.engine, app.config["DB_STATEMENT_TIMEOUT_MS"])
     migrate.init_app(app, db)
     jwt.init_app(app)
     from src.domains.identity.auth.services import jwt_callbacks
@@ -74,6 +76,17 @@ def _register_extensions(app: Flask) -> None:
         from flask_cors import CORS
 
         CORS(app, resources={r"/api/*": {"origins": app.config["CORS_ORIGINS"]}}, supports_credentials=False)
+
+
+def _cap_statement_time(engine, ms: int) -> None:
+    """Every new connection gets the statement timeout. A plain SET, not a connection option, so it works through
+    any host's proxy (Neon's included)."""
+    from sqlalchemy import event
+
+    @event.listens_for(engine, "connect")
+    def _set_timeout(dbapi_connection, _record):
+        with dbapi_connection.cursor() as cursor:
+            cursor.execute("SET statement_timeout = %s", (int(ms),))
 
 
 def _register_models() -> None:
