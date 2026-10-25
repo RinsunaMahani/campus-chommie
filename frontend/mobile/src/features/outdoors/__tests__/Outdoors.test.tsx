@@ -114,6 +114,7 @@ test('a slideshow needs at least 3 photos and shows at most 5', () => {
   expect(photosFor('Garden', many)).toHaveLength(MAX_PHOTOS);
   expect(photosFor('Two', many)).toEqual([]);
   expect(placeKey('Wonderboom Nature Reserve: a fig tree over 1 000 years old')).toBe('wonderboom-nature-reserve');
+  expect(placeKey('DITSONG: Tswaing Meteorite Crater')).toBe('ditsong-tswaing-meteorite-crater');
 });
 
 test('a place with enough photos opens on a slideshow that moves on by itself, with each credit', async () => {

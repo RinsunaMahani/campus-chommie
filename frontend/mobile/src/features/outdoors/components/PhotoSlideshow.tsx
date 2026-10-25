@@ -50,6 +50,7 @@ export function PhotoSlideshow({ photos, place }: { photos: PlacePhoto[]; place:
             ref={scroller}
             horizontal
             pagingEnabled
+            style={{ height: Math.round((width * 9) / 16) }}
             showsHorizontalScrollIndicator={false}
             onScrollBeginDrag={() => setTouched(true)}
             onMomentumScrollEnd={onSettle}
@@ -58,7 +59,8 @@ export function PhotoSlideshow({ photos, place }: { photos: PlacePhoto[]; place:
               <Image
                 key={p.source}
                 source={p.image}
-                style={{ width, aspectRatio: 16 / 9 }}
+                // An explicit height: inside a horizontal scroll, the web ignores aspectRatio and shows the photo tall.
+                style={{ width, height: Math.round((width * 9) / 16) }}
                 resizeMode="cover"
                 accessible
                 accessibilityLabel={`${t('outdoors.photoOf', { n: i + 1, total: photos.length })}: ${p.caption}`}
