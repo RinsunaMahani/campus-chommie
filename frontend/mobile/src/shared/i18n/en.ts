@@ -884,6 +884,8 @@ export const en = {
   'outdoors.where': 'Where',
   'outdoors.noAddress': 'No address published yet',
   'outdoors.openMaps': 'Open in maps',
+  'outdoors.photos': 'Photos of {place}',
+  'outdoors.photoOf': 'Photo {n} of {total}',
 } as const;
 
 export type MessageKey = keyof typeof en;

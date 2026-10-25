@@ -3,7 +3,7 @@
  * hours, where) and hands its public address to the phone's maps app, never guessing one; Close puts it away.
  */
 import { beforeEach, expect, jest, test } from '@jest/globals';
-import { fireEvent, render, screen } from '@testing-library/react-native';
+import { act, fireEvent, render, screen } from '@testing-library/react-native';
 import { router } from 'expo-router';
 import { Linking } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -11,8 +11,12 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { moneyApi } from '@/features/money/api/moneyApi';
 import { CheapThing } from '@/features/money/types';
 
+import { MAX_PHOTOS, PlacePhoto, placeKey } from '../placePhotos';
 import { mapsUrl } from '../places';
 import OutdoorsSheet from '../screens/OutdoorsSheet';
+
+// The real rule, not the stand-in below.
+const { photosFor } = jest.requireActual<typeof import('../placePhotos')>('../placePhotos');
 
 const wrap = (ui: React.ReactElement) =>
   render(
@@ -24,6 +28,14 @@ const wrap = (ui: React.ReactElement) =>
 
 jest.mock('@expo/vector-icons', () => ({ Feather: () => null, FontAwesome: () => null }));
 jest.mock('expo-web-browser', () => ({ openBrowserAsync: jest.fn() }));
+// A stand-in photo list (no real images in tests): Freedom Park has four photos, Voortrekker Monument only two.
+const photo = (n: number) => ({ image: { uri: `https://example.test/${n}.jpg` }, caption: `View ${n}`, credit: `Author ${n}, CC BY 4.0`,
+  source: `https://commons.wikimedia.org/wiki/File:${n}.jpg` });
+jest.mock('../placePhotos', () => {
+  const actual = jest.requireActual<typeof import('../placePhotos')>('../placePhotos');
+  const list = { 'freedom-park': [1, 2, 3, 4].map(photo), 'voortrekker-monument': [1, 2].map(photo) };
+  return { ...actual, PLACE_PHOTOS: list, photosFor: (name: string) => actual.photosFor(name, list) };
+});
 jest.mock('expo-router', () => ({
   router: { push: jest.fn(), back: jest.fn(), replace: jest.fn(), canGoBack: () => true },
 }));
@@ -89,4 +101,58 @@ test('maps links carry only the place, in the right app for each phone', () => {
   expect(mapsUrl(place, 'ios')).toBe(`maps:?q=${q}`);
   expect(mapsUrl(place, 'web')).toBe(`https://www.openstreetmap.org/search?query=${q}`);
   expect(mapsUrl({ name: 'Somewhere', address: null }, 'android')).toBeNull();
+});
+
+
+// ---------------------------------------------------------------- the slideshow
+
+
+const ONE = { image: { uri: 'x' }, caption: 'c', credit: 'a', source: 's' } as PlacePhoto;
+
+test('a slideshow needs at least 3 photos and shows at most 5', () => {
+  const many = { garden: Array.from({ length: 7 }, (_, i) => ({ ...ONE, source: `s${i}` })), two: [ONE, ONE] };
+  expect(photosFor('Garden', many)).toHaveLength(MAX_PHOTOS);
+  expect(photosFor('Two', many)).toEqual([]);
+  expect(placeKey('Wonderboom Nature Reserve: a fig tree over 1 000 years old')).toBe('wonderboom-nature-reserve');
+});
+
+test('a place with enough photos opens on a slideshow that moves on by itself, with each credit', async () => {
+  jest.useFakeTimers();
+  try {
+    wrap(<OutdoorsSheet />);
+    await act(async () => {
+      await Promise.resolve();
+    });
+    fireEvent.press(screen.getByText('Freedom Park'));
+    fireEvent(screen.getByTestId('slideshow-frame'), 'layout', { nativeEvent: { layout: { width: 320, height: 180 } } });
+    expect(screen.getByText('1 / 4', { includeHiddenElements: true })).toBeTruthy();
+    expect(screen.getByText('View 1')).toBeTruthy();
+    expect(screen.getByText('Photo: Author 1, CC BY 4.0')).toBeTruthy();
+    expect(screen.getByLabelText('Photo 1 of 4: View 1')).toBeTruthy();
+    act(() => {
+      jest.advanceTimersByTime(4000);
+    });
+    expect(screen.getByText('2 / 4', { includeHiddenElements: true })).toBeTruthy();
+    expect(screen.getByText('View 2')).toBeTruthy();
+
+    // Once the student swipes, it stays where they put it.
+    fireEvent(screen.getByLabelText('Photos of Freedom Park'), 'scrollBeginDrag');
+    act(() => {
+      jest.advanceTimersByTime(12000);
+    });
+    expect(screen.getByText('2 / 4', { includeHiddenElements: true })).toBeTruthy();
+  } finally {
+    jest.useRealTimers();
+  }
+});
+
+test('a place with fewer than 3 photos keeps its icon, never a short slideshow', async () => {
+  const monument: CheapThing = { name: 'Voortrekker Monument', category: 'heritage', cost_note: 'Students R60', address: 'Eeufees Road, Pretoria',
+    hours: null, source_url: null, read_on: null, last_verified: null };
+  jest.spyOn(moneyApi, 'cheapThings').mockResolvedValue({ cheap_things: [...PLACES, monument], lines: [] } as never);
+  wrap(<OutdoorsSheet />);
+  fireEvent.press(await screen.findByText('Voortrekker Monument'));
+  expect(screen.getByText('Eeufees Road, Pretoria')).toBeTruthy();
+  expect(screen.queryByLabelText('Photos of Voortrekker Monument')).toBeNull();
+  expect(screen.queryByText(/ \/ /)).toBeNull();
 });

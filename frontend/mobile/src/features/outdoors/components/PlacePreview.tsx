@@ -1,6 +1,7 @@
 /**
- * One place, previewed in the Outdoors sheet: what it is, what it costs as its own page says, when it's open and
- * where, with "Open in maps" (the phone's own maps app, searching its public address) and its source.
+ * One place, previewed in the Outdoors sheet: a slideshow of its photos (3 to 5, when we have them), what it is,
+ * what it costs as its own page says, when it's open and where, with "Open in maps" (the phone's own maps app,
+ * searching its public address) and its source.
  */
 import { Linking, StyleSheet, Text, View } from 'react-native';
 
@@ -14,15 +15,19 @@ import { formatDay } from '@/shared/lib/dates';
 import { Palette, useStyles } from '@/shared/theme/palette';
 import { fonts, radius, space, type } from '@/shared/theme/tokens';
 
+import { photosFor } from '../placePhotos';
 import { categoryIcon, categoryLabel, mapsUrl } from '../places';
+import { PhotoSlideshow } from './PhotoSlideshow';
 
 export function PlacePreview({ place }: { place: CheapThing }) {
   const styles = useStyles(makeStyles);
   const url = mapsUrl(place);
+  const photos = photosFor(place.name);
   return (
     <View style={{ gap: space.md }}>
+      {photos.length ? <PhotoSlideshow photos={photos} place={place.name} /> : null}
       <View style={styles.head}>
-        <IconTile name={categoryIcon(place.category)} size={56} />
+        {photos.length ? null : <IconTile name={categoryIcon(place.category)} size={56} />}
         <View style={{ flex: 1, gap: 6 }}>
           <View style={styles.tags}>
             <Tag label={categoryLabel(place.category)} tone="info" />

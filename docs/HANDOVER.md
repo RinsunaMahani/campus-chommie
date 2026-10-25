@@ -17,7 +17,12 @@ repo folder but is kept out of git; the parts the screens need are quoted below.
 **Outdoors in the centre (25 Oct 2026, `rinsuna/outdoors-centre`):** the tab bar is Home, Week, Outdoors, Money,
 Support, with Outdoors a raised round button in the middle (like YouTube's and Standard Bank's). It opens a sheet over
 the screen you're on (`/places`, a transparent modal) listing the free and cheap places near campus; tapping one
-previews it (cost, hours, where, Open in maps, source) and "See all places" opens the full list.
+previews it (a slideshow of 3 to 5 photos, cost, hours, where, Open in maps, source) and "See all places" opens the
+full list. **Photos still to add:** the slideshow shows only once a place has 3 checked Wikimedia Commons photos
+(`features/outdoors/placePhotos.ts`, credits in `docs/image-credits.md`); until then the preview shows the place's
+icon. The 8 places: Pretoria National Botanical Garden, Freedom Park, Voortrekker Monument, DITSONG National Museum
+of Natural History, Wonderboom Nature Reserve, DITSONG: Tswaing Meteorite Crater, Lowveld National Botanical Garden,
+Wits Art Museum.
 
 **Your week in review (25 Oct 2026, `rinsuna/week-review`):** at the end of each week (the week the money check-in
 uses, ending on the student's check-in day) the student sees what they got done, what's coming in the next 7 days,
