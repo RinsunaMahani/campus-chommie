@@ -223,6 +223,7 @@ once it passes.
 | Advisory | Package | Why it's accepted for now | Review by |
 |---|---|---|---|
 | GHSA-vfj7-8cjw-p6xm | braces | denial of service through nested glob patterns, reached only through build tooling (Metro, Jest) with our own patterns; not in the app or web bundle | 6 Nov 2026 |
+| GHSA-mrhx-c7xc-m3w5 | zod | memory exhaustion on oversized input, reached only through the Expo CLI (`@expo/cli` pins zod 3.25.76) that builds the app on the developer's computer; not in the app or web bundle; the only offered fix is an old Expo | 8 Nov 2026 |
 | GHSA-86w9-cpqp-85rv | node-forge | signature-check flaw in the Expo CLI's code-signing helper, which we don't use; not in the app or web bundle | 6 Nov 2026 |
 
 The `.gitleaksignore` file holds three reviewed false positives: the testing config's placeholder JWT key, and a
