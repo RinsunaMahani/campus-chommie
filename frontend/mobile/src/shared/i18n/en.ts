@@ -868,6 +868,24 @@ export const en = {
   'review.noLog': 'no log',
   'review.openSupport': 'Open Support',
   'review.private': 'Only you see your week in review. Nothing new is saved to make it.',
+
+  // Outdoors: the centre button's sheet
+  'outdoors.title': 'Where to?',
+  'outdoors.sub': 'Free and cheap places near your campus. Tap one to see it.',
+  'outdoors.preview': 'Place',
+  'outdoors.previewHint': 'Shows what it costs, when it opens and where it is',
+  'outdoors.backToPlaces': 'Back to places',
+  'outdoors.close': 'Close',
+  'outdoors.all': 'All',
+  'outdoors.seeAll': 'See all places',
+  'outdoors.cost': 'Cost',
+  'outdoors.hours': 'Open',
+  'outdoors.hoursUnknown': 'Hours not published: check before you go',
+  'outdoors.where': 'Where',
+  'outdoors.noAddress': 'No address published yet',
+  'outdoors.openMaps': 'Open in maps',
+  'outdoors.photos': 'Photos of {place}',
+  'outdoors.photoOf': 'Photo {n} of {total}',
 } as const;
 
 export type MessageKey = keyof typeof en;
