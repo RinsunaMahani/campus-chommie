@@ -4,11 +4,12 @@ import { useCallback, useState } from 'react';
 import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { AuthError } from '@/features/auth/types';
+import { studentHeader } from '@/features/profile/components/HeaderTools';
 import { Button } from '@/shared/components/Button';
 import { Card, IconTile, ListRow, Tag } from '@/shared/components/Parts';
 import { Screen } from '@/shared/components/Screen';
 import { t } from '@/shared/i18n';
-import { Overline, Title } from '@/shared/components/Text';
+import { Overline } from '@/shared/components/Text';
 import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
 import { fonts } from '@/shared/theme/tokens';
 
@@ -61,9 +62,7 @@ export default function SecurityScreen() {
   }
 
   return (
-    <Screen back>
-      <Title>Security</Title>
-
+    <Screen back title="Security" {...studentHeader(false)}>
       <Overline>Where you&apos;re signed in</Overline>
       {!phones ? (
         <ActivityIndicator color={colors.accent} />

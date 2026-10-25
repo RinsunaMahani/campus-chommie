@@ -171,6 +171,8 @@ export const en = {
   'courseFinder.fundingOpens': 'Opens {date}',
   'courseFinder.apsEach': 'Your points at each university',
   'courseFinder.meetsOf': 'You meet {met} of {total} programmes',
+  'courseFinder.subjectsMetOf': 'Your subjects meet {met} of {total} programmes. It counts points its own way.',
+  'courseFinder.meetsWithSubjectsMet': 'You meet {met} of {total} programmes. Your subjects meet {sm} whose points it counts its own way.',
   'courseFinder.noProgrammesYet': 'Programmes not added yet',
   'courseFinder.programmesNotAdded': "We haven't added this university's programmes yet. Your points and how to apply are here.",
   'courseFinder.apsLabel': 'APS',

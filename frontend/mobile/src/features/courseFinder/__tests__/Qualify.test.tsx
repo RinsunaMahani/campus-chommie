@@ -64,6 +64,34 @@ test('a university without a points rule or programmes says so, instead of a zer
   expect(screen.getByText('Counts points its own way')).toBeTruthy();
 });
 
+test('a university with only subjects_met programmes says how many subjects meet, not 0 of N', () => {
+  const onlySubjectsMet = {
+    ...tut,
+    tiers: { competitive: 0, meets_minimum: 0, reach: 0, subjects_met: 12, not_yet: 61, unverified: 0 },
+  };
+  render(<UniversityRow u={onlySubjectsMet} onPress={jest.fn()} />);
+  expect(screen.getByText('Your subjects meet 12 of 73 programmes. It counts points its own way.')).toBeTruthy();
+  expect(screen.queryByText('You meet 0 of 73 programmes')).toBeNull();
+});
+
+test('a university with a mix of met and subjects_met programmes names both', () => {
+  const mix = {
+    ...tut,
+    tiers: { competitive: 2, meets_minimum: 3, reach: 0, subjects_met: 7, not_yet: 61, unverified: 0 },
+  };
+  render(<UniversityRow u={mix} onPress={jest.fn()} />);
+  expect(screen.getByText('You meet 5 of 73 programmes. Your subjects meet 7 whose points it counts its own way.')).toBeTruthy();
+});
+
+test('a university with no programmes met says 0 of N programmes', () => {
+  const none = {
+    ...tut,
+    tiers: { competitive: 0, meets_minimum: 0, reach: 0, subjects_met: 0, not_yet: 73, unverified: 0 },
+  };
+  render(<UniversityRow u={none} onPress={jest.fn()} />);
+  expect(screen.getByText('You meet 0 of 73 programmes')).toBeTruthy();
+});
+
 test("the points card: TUT's total, how it counts, and each subject named as the learner chose it", () => {
   render(<ApsCard points={tut} sent={checkRows(rows)} rows={rows} />);
   expect(screen.getByText('Your points here')).toBeTruthy();

@@ -1,14 +1,14 @@
 import { router, useFocusEffect } from 'expo-router';
 import { useCallback, useState } from 'react';
-import { View } from 'react-native';
 
+import { studentHeader } from '@/features/profile/components/HeaderTools';
 import { errorText } from '@/shared/api/errors';
 import { Button } from '@/shared/components/Button';
 import { EmptyState } from '@/shared/components/EmptyState';
 import { Card, Tag } from '@/shared/components/Parts';
 import { Screen } from '@/shared/components/Screen';
 import { ErrorBox, Loading } from '@/shared/components/Status';
-import { Body, Muted, Strong, Title } from '@/shared/components/Text';
+import { Body, Strong } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
 import { formatDay } from '@/shared/lib/dates';
 import { formatRand } from '@/shared/lib/money';
@@ -48,11 +48,7 @@ export default function PaymentsScreen() {
   }
 
   return (
-    <Screen back>
-      <View style={{ gap: 4 }}>
-        <Title>{t('money.payments')}</Title>
-        <Muted>{t('money.paymentsSub')}</Muted>
-      </View>
+    <Screen back title={t('money.payments')} subtitle={t('money.paymentsSub')} {...studentHeader(false)}>
       {error ? <ErrorBox message={error} /> : null}
       {!error && !payments ? <Loading /> : null}
       {payments && !payments.length ? (

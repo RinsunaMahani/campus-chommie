@@ -66,6 +66,12 @@ def test_the_list_opens_one_province_at_a_time_and_none_is_left_out():
     assert e.by_province(e.search(_pack(), query="hogwarts")) == []
 
 
+def test_a_group_with_registered_and_provisionally_registered_colleges_names_both_correctly():
+    groups = e.by_province(e.search(_pack()))
+    not_listed = next(g for g in groups if g.id == e.NO_PROVINCE)
+    assert not_listed.line == "3 colleges: 1 registered, 1 provisionally registered, 1 cancelled."
+
+
 def test_each_status_reads_in_plain_words():
     p = _pack()
     lines = {c.college.id: c.lines for c in e.search(p).cards}
