@@ -27,7 +27,7 @@ def test_english_role_reaches_assessment_plan_and_university_overview(client):
         assert response.get_json()['data']['plan']['goal']['match']['tier'] == tier
         response = client.post(POINTS, json={'marks': rows})
         assert response.status_code == 200
-        summary = next(u for u in response.get_json()['data']['universities'] if u['id'] == 'uwc')
+        summary = next(u for u in response.get_json()['data']['universities'] if u['university'] == 'uwc')
         assert summary['tiers']['unverified'] == 0
 
 
