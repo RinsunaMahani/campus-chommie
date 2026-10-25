@@ -48,7 +48,7 @@ Our entry for the FNB App of the Year Hackathon 2026, challenge "Access to highe
 - **POPIA first:** The course finder needs no account, runs no database statements, and never stores or logs typed marks.
 - **Collect the minimum:** No ID numbers, bank accounts, NSFAS logins, race, religion, or health data. Accounts require confirming age 18 or older and consent.
 - **Owner-only data:** Marks, spending, and money are visible exclusively to their owner. No administrator or class rep can view an individual's personal figures.
-- **Tested defenses:** over 1,600 backend tests and 300 mobile tests pass on every change. Our own pen test, 145 attacks (forged tokens, other students' data, SQL injection, deep JSON, booby-trapped PDFs, forged Google tokens and WhatsApp messages), all blocked after two security sweeps (`docs/SECURITY.md`). Rate limiting on every endpoint; strict Content-Security-Policy; zero secrets in code.
+- **Tested defenses:** over 1,600 backend tests and 300 mobile tests pass on every change. Our own pen test, 159 attacks (forged tokens, other students' data, SQL injection, deep JSON, booby-trapped PDFs, forged Google tokens and WhatsApp messages, malformed input), all blocked after three security sweeps, the third organised by the OWASP Top 10 2025 (`docs/SECURITY.md`). Every route is sent malformed input in CI, and the container image is scanned for known flaws. Rate limiting on every endpoint; strict Content-Security-Policy; zero secrets in code.
 
 ## Quick start (Local development)
 
