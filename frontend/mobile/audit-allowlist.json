@@ -12,6 +12,12 @@
       "package": "node-forge",
       "reason": "RSA signature verification flaw. Reached only through the Expo CLI's code-signing helper (@expo/code-signing-certificates), which we don't use; nothing in the app or the web bundle includes it. No fixed release exists (latest node-forge is 1.4.0; the advisory covers <= 1.4.0): checked 9 and 21 Oct 2026.",
       "review_by": "2026-11-06"
+    },
+    {
+      "id": "GHSA-mrhx-c7xc-m3w5",
+      "package": "zod",
+      "reason": "Memory exhaustion while validating oversized constrained collections (fixed in zod 4.6.6). Reached only through the Expo CLI (@expo/cli 57.0.28 pins zod 3.25.76), which runs on the developer's computer to build the app and validates our own config; nothing in the app or the web bundle includes it. npm's only offered fix is downgrading expo to 44, which isn't one: checked 25 Oct 2026. Look again when Expo releases an @expo/cli with zod >= 4.6.6.",
+      "review_by": "2026-11-08"
     }
   ]
 }
