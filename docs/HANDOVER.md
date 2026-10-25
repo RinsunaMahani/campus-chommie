@@ -1,8 +1,7 @@
 # Handover: start here
 
-First written on 9 Oct 2026 for Mandla Baloyi, and kept current by Rinsuna's coding agents. Since 13 Oct 2026 Rinsuna
-Mahani works alone: Mandla is no longer on the team, so the app, the API, the engine and the data are all hers, and so
-is every review and decision. This file is for her and for any coding agent picking up the work. It covers:
+Kept current by Rinsuna's coding agents. Rinsuna Mahani builds Campus Chommie alone: the app, the API, the engine and
+the data are all hers, and so is every review and decision. This file is for her and for any coding agent picking up the work. It covers:
 - where the build stands
 - what was decided
 - what only Rinsuna can do
@@ -73,9 +72,8 @@ Since the hackathon started (Fri 23 Oct 2026, 08:30 SAST):
 
 Everything is recorded, with who and when, in [OPEN_QUESTIONS.md](OPEN_QUESTIONS.md).
 
-- **The team (13 Oct):** Rinsuna works alone from now on. The app screens, which were Mandla's, are ours to build.
-  Everything that waited for Mandla in OPEN_QUESTIONS now waits for Rinsuna, and F6 (fund and apply), which she agreed
-  on 9 Oct, is in CLAUDE.md's Scope.
+- **Working alone (13 Oct):** Rinsuna builds everything, the app screens included, and every open question waits for
+  her. F6 (fund and apply), which she agreed on 9 Oct, is in CLAUDE.md's Scope.
 - **The look (13 Oct, #31):** Rinsuna's forest theme for the whole app, sampled from her homescreen, and her CC
   monogram as the icon. The colours are in `src/shared/theme/tokens.ts`, the six icon images in `assets/images`.
 - **M1 started early** (Fri 9 Oct) as stacked PRs, because the brief gives it only Mon 12 to Tue 13 Oct.
@@ -131,11 +129,10 @@ Everything is recorded, with who and when, in [OPEN_QUESTIONS.md](OPEN_QUESTIONS
 2. **Check the facts by Thu 22 Oct:** the packs (crisis lines first: Support hides them until then) and the funding
    pack. Compare every value with its source, then set `last_verified`, `verified_by` and `release: true`
    (OPEN_QUESTIONS, "Facts for the data packs").
-3. **The reused foundation** (REUSE.md; OPEN_QUESTIONS, "Privacy and legal"). #1 copies code from our earlier project
-   (© Team PR: Mandla and Rinsuna) and, through it, from TruConnect, an earlier project of Mandla's. Mandla's
-   confirmations in REUSE.md are still unsigned. Before the submission, get his written OK or replace the reused
-   files. LICENSE still names "Team PR (Mandla and Rinsuna)". Agents don't change REUSE.md's permissions or
-   LICENSE: they're Rinsuna's call.
+3. **The reused foundation** (REUSE.md; OPEN_QUESTIONS, "Privacy and legal"). #1 copied code from an earlier
+   project (REUSE.md). A written transfer of all rights in that code to Rinsuna is expected on 26 Oct 2026; once it's
+   signed, LICENSE and REUSE.md name Rinsuna alone. Agents don't change REUSE.md's permissions or LICENSE before
+   then: they're Rinsuna's call.
 4. **Name SMU's buildings** on campus, the Clinpath and Natural Science buildings first (OPEN_QUESTIONS, "Campus
    maps").
 5. **Download what agents may not fetch,** in a browser, into Downloads (OPEN_QUESTIONS, "All 26 universities"):
@@ -161,7 +158,7 @@ Everything is recorded, with who and when, in [OPEN_QUESTIONS.md](OPEN_QUESTIONS
 
 ## Next build: the app screens, M2 to M5
 
-The screens were Mandla's; since 13 Oct they're ours. The brief gives M2 Wed 14 to Thu 15 Oct, M3 Fri 16 to Sat 17,
+The brief gives M2 Wed 14 to Thu 15 Oct, M3 Fri 16 to Sat 17,
 M4 Sun 18 to Mon 19 and M5 Tue 20 to Wed 21. M2 to M5 are built (#23 to #26, 13 Oct), and the judge flow runs end to end. #27 (13 Oct) replaces the marks screen's one-subject-at-a-time rows with a picker in folders, #28 puts what a learner can still do at the top of the plan, #29 puts the marks first, #30 covers all 26 universities, #31 puts the whole app in Rinsuna's forest theme, and #32 and #33 add the full course lists of seven more universities (VUT, WSU, UMP, MUT, SPU in wave 1; UFS and UNIZULU in wave 2; the others follow in waves). Next: hosting (Azure for Students, once Rinsuna activates it), a preview APK on the hosted API, polish (the plan screen is long), and M6 from Fri 23 Oct.
 
 **M2, the Find my course screens.** From the brief: "University, then marks (add or remove rows, up to 9), then tier
