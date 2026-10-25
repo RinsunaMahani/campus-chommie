@@ -17,11 +17,12 @@ what came from our earlier project in [REUSE.md](REUSE.md).
   places. If a value is missing, use `null`, show "Not verified yet" in the app, and add the gap to
   `docs/OPEN_QUESTIONS.md`.
 - Every fact in a data pack (`backend/data/universities/*.yaml`) cites a source id; the validator fails CI on a broken
-  reference. A pack drafted by an agent from an official page sets `verified_by: "agent draft, needs human check"` and
-  keeps `release: false`; the app then says where its facts come from and when they were read ("From UP's own
-  documents, last read on ..."), never that a person checked them. A person checks the facts that can hurt someone
-  if wrong before they show or count: crisis numbers, NSFAS's dates and income limits, and the conflicts a research
-  note flags (Rinsuna, 22 Oct 2026). Only a value a person checked gets their name in `verified_by`.
+  reference. Official university publications are sufficient verification (Rinsuna, 25 Oct 2026): record
+  `verification_basis: official_university` with the source URL and its actual retrieval date. This accepts
+  provenance without claiming a person checked it; preserve existing `verified_by` and `last_verified` history.
+  Incomplete packs keep `release: false`. Contradictory or missing rules remain unresolved until evidence settles
+  them. Non-university sources, including NSFAS dates and income limits, retain their existing review requirements.
+  Only a value a person checked gets their name in `verified_by`.
 - Demo data is fictional and labelled ("Demo data: fictional student"), never presented as NSFAS or university figures.
 - Translations: never machine-translate for release. A language becomes visible only after a fluent speaker signs it
   off in `docs/translation_review.md`; a translated rule always shows beside its English original and source.
@@ -49,7 +50,7 @@ what came from our earlier project in [REUSE.md](REUSE.md).
   with the app secret) and reject unsigned or stale requests. Private chats only, never groups. Phone numbers stored
   as salted hashes.
 - **Wellbeing wording.** Never call a student "at risk", never diagnose, always point to campus support. Crisis
-  contacts are verified by a human before release.
+  contacts require human review or a dated official university source before release.
 - **No university logos or trademarks.** University names in text only.
 - **SSDLC.** Keep `docs/SECURITY.md` current: threat model, controls, test evidence.
 

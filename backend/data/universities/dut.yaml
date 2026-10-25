@@ -1692,6 +1692,27 @@ programmes:
         - "Taught at Ritson Campus (Durban)."
 
 sources:
+  - id: s-dut-calendar-2027
+    url: https://www.dut.ac.za/wp-content/uploads/2026/10/2027-Skeletal-Academic-Calendar-and-Term-Dates.pdf
+    publisher: Durban University of Technology
+    title: 2027 academic calendar, approved September 2026, pp.1–2
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official university source
+  - id: s-dut-counselling-2026
+    url: https://www.dut.ac.za/student_services/student_counselling_and_health/location/
+    publisher: Durban University of Technology
+    title: Student Counselling locations
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official university source
+  - id: s-dut-financial-aid-2026
+    url: https://www.dut.ac.za/student_services/financial-aid-unit/contact/
+    publisher: Durban University of Technology
+    title: Financial Aid Unit contacts
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official university source
   - id: s-dut-type
     url: "https://www.dut.ac.za/about-dut/"
     publisher: "Durban University of Technology"
@@ -1699,6 +1720,7 @@ sources:
     retrieved: 2026-10-20
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-dut-opportunities
     url: "https://www.dut.ac.za/wp-content/uploads/2026/06/Study-Opportunities-2027.pdf"
     publisher: "Durban University of Technology"
@@ -1706,6 +1728,7 @@ sources:
     retrieved: 2026-10-22   # first seen through a search engine on 13 Oct; opened in full on 22 Oct
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-dut-opportunities-checked
     url: "https://www.dut.ac.za/wp-content/uploads/2026/06/Study-Opportunities-2027.pdf"
     publisher: "Durban University of Technology"
@@ -1727,3 +1750,107 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+
+support_services:
+- kind: financial_aid
+  name: 'Financial Aid: Durban'
+  contact: 031 373 2553; Finaiddbn@dut.ac.za
+  source: s-dut-financial-aid-2026
+  campuses:
+  - steve_biko
+  - ritson
+  - ml_sultan
+  - city
+  - brickfield
+- kind: financial_aid
+  name: 'Financial Aid: Pietermaritzburg'
+  contact: 031 373 6057; finaidpmb@dut.ac.za
+  source: s-dut-financial-aid-2026
+  campuses:
+  - indumiso
+  - riverside
+- kind: counselling
+  name: 'Student Counselling: Durban'
+  contact: 031 373 2266; counsbookingdbn@dut.ac.za
+  source: s-dut-counselling-2026
+  campuses:
+  - steve_biko
+  - ritson
+  - ml_sultan
+  - city
+  - brickfield
+  hours: Monday–Thursday 08:00–16:30; Friday 08:00–15:00
+  note: Registered students only. Book an appointment; main office at Steve Biko,
+    lower library complex.
+- kind: counselling
+  name: 'Student Counselling: Midlands'
+  contact: counsbookingpmb@dut.ac.za
+  source: s-dut-counselling-2026
+  campuses:
+  - indumiso
+  - riverside
+  note: Registered students only. Riverside J-104; Indumiso Campus Clinic Unit 1.
+    After-hours emails wait until the next working day.
+
+calendar:
+- period: registration
+  name: Undergraduate registration
+  start: '2027-01-11'
+  end: '2027-02-05'
+  source: s-dut-calendar-2027
+  step: register
+  note: New and returning undergraduate students; postgraduate dates differ.
+- period: term
+  name: Term 1
+  start: '2027-02-08'
+  end: '2027-03-25'
+  source: s-dut-calendar-2027
+  step: first_lecture
+- period: term
+  name: Term 2
+  start: '2027-04-05'
+  end: '2027-06-18'
+  source: s-dut-calendar-2027
+- period: term
+  name: Term 3
+  start: '2027-07-12'
+  end: '2027-09-17'
+  source: s-dut-calendar-2027
+- period: term
+  name: Term 4
+  start: '2027-09-27'
+  end: '2027-12-17'
+  source: s-dut-calendar-2027
+- period: revision
+  name: First-semester study period
+  start: '2027-05-26'
+  end: '2027-05-30'
+  source: s-dut-calendar-2027
+- period: revision
+  name: Annual-course study period
+  start: '2027-09-29'
+  end: '2027-10-03'
+  source: s-dut-calendar-2027
+- period: revision
+  name: Second-semester study period
+  start: '2027-10-14'
+  end: '2027-10-18'
+  source: s-dut-calendar-2027
+- period: exam
+  name: First-semester examinations
+  start: '2027-05-31'
+  end: '2027-06-15'
+  source: s-dut-calendar-2027
+  note: Check the programme timetable. No examinations on 11 October or 28 October.
+- period: exam
+  name: Annual-course examinations
+  start: '2027-10-04'
+  end: '2027-10-18'
+  source: s-dut-calendar-2027
+  note: Check the programme timetable. No examinations on 11 October or 28 October.
+- period: exam
+  name: Second-semester examinations
+  start: '2027-10-19'
+  end: '2027-11-04'
+  source: s-dut-calendar-2027
+  note: Check the programme timetable. No examinations on 11 October or 28 October.

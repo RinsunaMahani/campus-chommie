@@ -1619,6 +1619,13 @@ programmes:
       subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
 
 sources:
+  - id: s-wsu-support-2026
+    url: https://wsu.ac.za/index.php/en/contact-student-affairs
+    publisher: Walter Sisulu University
+    title: Student Affairs campus contacts
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official university source
   - id: s-wsu-where
     url: "https://www.wsu.ac.za/en/home-wsu/discovery-wsu/important-facts"
     publisher: "Walter Sisulu University"
@@ -1626,6 +1633,7 @@ sources:
     retrieved: 2026-10-20
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wsu-brochure
     url: "https://wsu.ac.za/media/attachments/2026/05/27/2027-information-brochure-admission-requirements.pdf"
     publisher: "Walter Sisulu University"
@@ -1633,6 +1641,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wsu-apply
     url: "https://www.wsu.ac.za/index.php/en/study-with-us/application-and-registration/how-to-apply-the-process"
     publisher: "Walter Sisulu University"
@@ -1640,6 +1649,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-wsu-brochure-2027
     url: "https://wsu.ac.za/media/attachments/2026/05/27/2027-information-brochure-admission-requirements.pdf"
     publisher: "Walter Sisulu University"
@@ -1647,3 +1657,31 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
+
+support_services:
+- kind: counselling
+  name: Student Counselling Unit
+  contact: 047 502 1904; kntakana@wsu.ac.za
+  source: s-wsu-support-2026
+  campuses:
+  - mthatha
+- kind: counselling
+  name: Student Counselling Unit
+  contact: 047 401 6008; nsidinile@wsu.ac.za
+  source: s-wsu-support-2026
+  campuses:
+  - butterworth
+- kind: counselling
+  name: Student Counselling Unit
+  contact: 043 709 4758; syantolo@wsu.ac.za
+  source: s-wsu-support-2026
+  campuses:
+  - buffalo_city
+- kind: counselling
+  name: Student Counselling Unit
+  contact: 072 283 7818; ndaweti@wsu.ac.za
+  source: s-wsu-support-2026
+  campuses:
+  - komani
+  note: Social worker contact within the Student Counselling Unit.

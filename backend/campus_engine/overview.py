@@ -80,10 +80,10 @@ def _summary(tiers: dict[str, int]) -> str:
     return " ".join(parts)
 
 
-def university_points(uni: University, marks: dict[str, float]) -> UniversityPoints:
+def university_points(uni: University, marks: dict[str, float], english_language_level: str | None = None) -> UniversityPoints:
     """One university's points for these marks, and how many of its programmes they meet."""
     tiers = dict.fromkeys(TIER_RANK, 0)
-    for m in assess_all(uni, marks):
+    for m in assess_all(uni, marks, english_language_level):
         tiers[m.tier] += 1
     out = UniversityPoints(uni.university, uni.name, None, tiers=tiers, summary=_summary(tiers))
     rule = uni.points_rules
@@ -117,7 +117,7 @@ def _subjects(result: PointsResult) -> list[SubjectPoints]:
     return [SubjectPoints(s, level, result.adds[s], s in result.counted) for s, level in result.levels.items()]
 
 
-def points_everywhere(catalogue: dict[str, University], marks: dict[str, float]) -> list[UniversityPoints]:
+def points_everywhere(catalogue: dict[str, University], marks: dict[str, float], english_language_level: str | None = None) -> list[UniversityPoints]:
     """Every university we cover, in name order: none is ranked above another."""
-    return [university_points(uni, marks) for uni in sorted(catalogue.values(), key=lambda u: u.name)]
+    return [university_points(uni, marks, english_language_level) for uni in sorted(catalogue.values(), key=lambda u: u.name)]
 

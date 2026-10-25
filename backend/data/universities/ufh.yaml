@@ -14,7 +14,7 @@ release: false
 max_choices: null
 
 points_rules: null
-points_note: "UFH's points table wasn't found on its pages."
+points_note: "The 2027 study guide publishes programme APS thresholds but no complete university-wide points table. Confirm APS with UFH; subject requirements can be checked here."
 
 applications:
   source: s-ufh-apply
@@ -27,9 +27,1317 @@ applications:
       opens: null
       closes: 2026-10-31
 
-programmes: []
+campuses:
+- id: alice
+  name: Alice
+  source: s-ufh-guide-2027
+- id: bisho
+  name: Bisho
+  source: s-ufh-guide-2027
+- id: east_london
+  name: East London
+  source: s-ufh-guide-2027
+programmes:
+- id: ufh_500491
+  name: Bachelor of Education Senior and FET Phase (Agriculture specialisation)
+  faculty: Education
+  fields:
+  - education
+  - agriculture
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 28
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      agricultural_sciences: 4
+      life_sciences: 4
+    additional_minimums:
+    - 4
+    - 4
+    extras:
+    - NSC admission to the qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+        min_points: 28
+      - subjects:
+          mathematical_literacy: 5
+        min_points: 29
+- id: ufh_500492
+  name: Bachelor of Education Senior and FET Phase (Commerce specialisation)
+  faculty: Education
+  fields:
+  - education
+  - commerce
+  selective: true
+  selection_note: 'Published requirements need confirmation before assessment. {''english'':
+    4, ''life_orientation'': 4}; APS 28. NSC admission to the qualification is required.
+    The guide calls the third commerce subject Business management; confirm whether
+    your NSC Business Studies is accepted.'
+  requirements: null
+- id: ufh_500493
+  name: Bachelor of Education Senior and FET Phase (Science specialisation)
+  faculty: Education
+  fields:
+  - education
+  - natural_sciences
+  selective: true
+  selection_note: '2027 guide p.1: APS 28; English, Mathematics and Life Orientation
+    level 4; Physical Science OR Life Science OR Geography OR Computer science level
+    4; three other subjects level 4. Computer science is not an NSC subject key supported
+    by the app; confirm with the faculty.'
+  requirements: null
+- id: ufh_500494
+  name: Bachelor of Education Senior and FET Phase (Social Science specialisation)
+  faculty: Education
+  fields:
+  - education
+  - humanities
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 28
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      other_language: 4
+    additional_minimums:
+    - 4
+    - 4
+    - 4
+    extras:
+    - NSC admission to the qualification is required.
+    - The additional language must be isiXhosa or Afrikaans, at Home or First Additional
+      Language level (level 4). The app does not identify that language.
+    choices:
+    - one_of:
+      - subjects:
+          history: 4
+      - subjects:
+          geography: 4
+- id: ufh_50045
+  name: Bachelor of Education in Foundation Phase Teaching
+  faculty: Education
+  fields:
+  - education
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 28
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      other_language: 4
+    additional_minimums:
+    - 4
+    - 4
+    - 4
+    extras:
+    - NSC admission to the qualification is required.
+    - The additional language must be isiXhosa or Afrikaans, at Home or First Additional
+      Language level (level 4). The app does not identify that language.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+        min_points: 28
+      - subjects:
+          mathematical_literacy: 5
+        min_points: 29
+- id: ufh_50046
+  name: Bachelor of Education in Intermediate Phase Teaching
+  faculty: Education
+  fields:
+  - education
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 28
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      other_language: 4
+    additional_minimums:
+    - 4
+    - 4
+    - 4
+    extras:
+    - NSC admission to the qualification is required.
+    - The additional language must be isiXhosa or Afrikaans, at Home or First Additional
+      Language level (level 4). The app does not identify that language.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+        min_points: 28
+      - subjects:
+          mathematical_literacy: 5
+        min_points: 29
+- id: ufh_21525
+  name: Bachelor of Laws
+  faculty: Law
+  fields:
+  - law
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 30
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+    additional_minimums:
+    - 4
+    - 4
+    - 4
+    - 4
+    extras:
+    - NSC admission to the qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+      - subjects:
+          mathematical_literacy: 4
+      - subjects:
+          technical_mathematics: 4
+- id: ufh_21526
+  name: Bachelor of Laws (Extended Programme)
+  faculty: Law
+  fields:
+  - law
+  selective: true
+  selection_note: '2027 guide p.1: English 4; Maths 2 OR Maths Literacy/Technical
+    Maths 4; four other subjects 4; Life Orientation 4. APS 28 is stated only for
+    Maths Literacy/Technical Maths. Mathematics-route APS needs faculty confirmation.
+    International applicants cannot apply for extended programmes.'
+  requirements: null
+- id: ufh_21527
+  name: Bachelor of Commerce in Law
+  faculty: Law
+  fields:
+  - law
+  - commerce
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 28
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+    additional_minimums:
+    - 4
+    - 4
+    - 4
+    - 4
+    extras:
+    - NSC admission to the qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+        min_points: 28
+      - subjects:
+          mathematical_literacy: 5
+        min_points: 29
+      - subjects:
+          technical_mathematics: 5
+        min_points: 29
+- id: ufh_84001
+  name: Bachelor of Health Sciences in Human Movement Science
+  faculty: Health Sciences
+  fields:
+  - sport_science
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 28
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      life_sciences: 4
+    additional_minimums:
+    - 4
+    - 4
+    - 4
+    extras:
+    - NSC admission to the qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+        min_points: 28
+      - subjects:
+          mathematical_literacy: 5
+        min_points: 29
+- id: ufh_84033
+  name: Bachelor of Science in Speech Language Pathology
+  faculty: Health Sciences
+  fields:
+  - rehabilitation
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 28
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      physical_sciences: 4
+      life_sciences: 4
+    additional_minimums:
+    - 4
+    - 4
+    extras:
+    - NSC admission to the qualification is required.
+    - Contact the faculty for programme availability.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+        min_points: 28
+      - subjects:
+          mathematical_literacy: 5
+        min_points: 29
+- id: ufh_84040
+  name: Bachelor of Nursing
+  faculty: Health Sciences
+  fields:
+  - nursing
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 28
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      physical_sciences: 4
+      life_sciences: 4
+    additional_minimums:
+    - 4
+    - 4
+    extras:
+    - NSC admission to the qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+        min_points: 28
+      - subjects:
+          mathematical_literacy: 5
+        min_points: 29
+- id: ufh_62005
+  name: Bachelor of Administration in Public Administration
+  faculty: Management and Commerce
+  fields:
+  - public_administration
+  selective: true
+  selection_note: 2027 Study Guide p.2 explicitly lists two other subjects at level
+    4. Confirm your APS with UFH; the guide does not supply a complete points calculation
+    method.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 26
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 2
+        min_points: 26
+      - subjects:
+          mathematical_literacy: 4
+        min_points: 28
+    additional_minimums:
+    - 4
+    - 4
+    extras:
+    - 2027 Study Guide p.2 explicitly lists two other subjects at level 4. Confirm
+      your APS with UFH; the guide does not supply a complete points calculation method.
+
+- id: ufh_60025
+  name: Bachelor of Commerce
+  faculty: Management and Commerce
+  fields: &id001
+  - commerce
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 28
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      mathematics: 4
+    additional_minimums:
+    - 4
+    - 4
+    - 4
+    - 4
+    extras:
+    - NSC admission to the qualification is required.
+- id: ufh_61025
+  name: Bachelor of Commerce (Extended Curriculum Programme)
+  faculty: Management and Commerce
+  fields: *id001
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 27
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      mathematics: 3
+    additional_minimums:
+    - 4
+    - 4
+    - 4
+    - 4
+    extras:
+    - NSC admission to the qualification is required.
+    - International applicants are not eligible for extended programmes.
+- id: ufh_600251
+  name: Bachelor of Commerce (Economics)
+  faculty: Management and Commerce
+  fields: &id002
+  - economics
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 28
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      mathematics: 4
+    additional_minimums:
+    - 4
+    - 4
+    - 4
+    - 4
+    extras:
+    - NSC admission to the qualification is required.
+- id: ufh_610251
+  name: Bachelor of Commerce (Economics) (Extended Curriculum Programme)
+  faculty: Management and Commerce
+  fields: *id002
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 27
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      mathematics: 3
+    additional_minimums:
+    - 4
+    - 4
+    - 4
+    - 4
+    extras:
+    - NSC admission to the qualification is required.
+    - International applicants are not eligible for extended programmes.
+- id: ufh_600252
+  name: Bachelor of Commerce (Industrial Psychology)
+  faculty: Management and Commerce
+  fields: &id003
+  - commerce
+  - humanities
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 28
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      mathematics: 4
+    additional_minimums:
+    - 4
+    - 4
+    - 4
+    - 4
+    extras:
+    - NSC admission to the qualification is required.
+- id: ufh_610252
+  name: Bachelor of Commerce (Industrial Psychology) (Extended Curriculum Programme)
+  faculty: Management and Commerce
+  fields: *id003
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 27
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      mathematics: 3
+    additional_minimums:
+    - 4
+    - 4
+    - 4
+    - 4
+    extras:
+    - NSC admission to the qualification is required.
+    - International applicants are not eligible for extended programmes.
+- id: ufh_60021
+  name: Bachelor of Commerce in Information Systems
+  faculty: Management and Commerce
+  fields: &id004
+  - commerce
+  - computing
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 28
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      mathematics: 4
+    additional_minimums:
+    - 4
+    - 4
+    - 4
+    - 4
+    extras:
+    - NSC admission to the qualification is required.
+- id: ufh_60201
+  name: Bachelor of Commerce in Information Systems (Extended Curriculum Programme)
+  faculty: Management and Commerce
+  fields: *id004
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 27
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      mathematics: 3
+    additional_minimums:
+    - 4
+    - 4
+    - 4
+    - 4
+    extras:
+    - NSC admission to the qualification is required.
+    - International applicants are not eligible for extended programmes.
+- id: ufh_60001
+  name: Bachelor of Commerce in Accounting
+  faculty: Management and Commerce
+  fields: &id005
+  - accounting
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 32
+    subject_minimums:
+      english: 5
+      life_orientation: 4
+      mathematics: 5
+    additional_minimums:
+    - 5
+    - 5
+    - 4
+    - 4
+    extras:
+    - NSC admission to the qualification is required.
+- id: ufh_60006
+  name: Bachelor of Commerce in Accounting (Extended Curriculum Programme)
+  faculty: Management and Commerce
+  fields: *id005
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 28
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      mathematics: 4
+    additional_minimums:
+    - 5
+    - 5
+    - 4
+    - 4
+    extras:
+    - NSC admission to the qualification is required.
+    - International applicants are not eligible for extended programmes.
+- id: ufh_30000
+  name: Bachelor of Arts
+  faculty: Social Science and Humanities
+  fields:
+  - humanities
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 27
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      other_language: 4
+    additional_minimums:
+    - 4
+    - 4
+    - 4
+    - 3
+    extras:
+    - NSC admission to the qualification is required.
+- id: ufh_30040
+  name: Bachelor of Arts (Extended Programme)
+  faculty: Social Science and Humanities
+  fields:
+  - humanities
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 26
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      other_language: 4
+    additional_minimums:
+    - 4
+    - 4
+    - 4
+    - 2
+    extras:
+    - NSC admission to the qualification is required.
+    - International applicants are not eligible for extended programmes.
+- id: ufh_30100
+  name: Bachelor of Fine Art
+  faculty: Social Science and Humanities
+  fields:
+  - arts_and_design
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 27
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      other_language: 4
+    additional_minimums:
+    - 4
+    - 4
+    - 4
+    - 3
+    extras:
+    - NSC admission to the qualification is required.
+- id: ufh_32000
+  name: Bachelor of Library and Information Science
+  faculty: Social Science and Humanities
+  fields:
+  - humanities
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 27
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      other_language: 4
+    additional_minimums:
+    - 4
+    - 4
+    - 4
+    - 3
+    extras:
+    - NSC admission to the qualification is required.
+- id: ufh_30003
+  name: Bachelor of Music
+  faculty: Social Science and Humanities
+  fields:
+  - music
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 27
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      other_language: 4
+    additional_minimums:
+    - 4
+    - 4
+    - 4
+    - 3
+    extras:
+    - NSC admission to the qualification is required.
+- id: ufh_30002
+  name: Bachelor of Social Science
+  faculty: Social Science and Humanities
+  fields:
+  - humanities
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 27
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      other_language: 4
+    additional_minimums:
+    - 4
+    - 4
+    - 4
+    - 3
+    extras:
+    - NSC admission to the qualification is required.
+- id: ufh_30041
+  name: Bachelor of Social Science (Extended Programme)
+  faculty: Social Science and Humanities
+  fields:
+  - humanities
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 26
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      other_language: 4
+    additional_minimums:
+    - 4
+    - 4
+    - 4
+    - 2
+    extras:
+    - NSC admission to the qualification is required.
+    - International applicants are not eligible for extended programmes.
+- id: ufh_30201
+  name: Bachelor of Social Science in Communication
+  faculty: Social Science and Humanities
+  fields:
+  - languages_and_communication
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 27
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      other_language: 4
+    additional_minimums:
+    - 4
+    - 4
+    - 4
+    - 3
+    extras:
+    - NSC admission to the qualification is required.
+- id: ufh_33002
+  name: Bachelor of Social Work
+  faculty: Social Science and Humanities
+  fields:
+  - humanities
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 27
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      other_language: 4
+    additional_minimums:
+    - 4
+    - 4
+    - 4
+    - 3
+    extras:
+    - NSC admission to the qualification is required.
+- id: ufh_30006
+  name: Bachelor of Arts in Philosophy, Politics and Law
+  faculty: Social Science and Humanities
+  fields:
+  - humanities
+  - law
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 27
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      other_language: 4
+    additional_minimums:
+    - 4
+    - 4
+    - 4
+    - 3
+    extras:
+    - NSC admission to the qualification is required.
+- id: ufh_35000
+  name: Diploma in Fine Art
+  faculty: Social Science and Humanities
+  fields:
+  - arts_and_design
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 22
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+    additional_minimums:
+    - 3
+    - 3
+    - 3
+    - 3
+    - 2
+    extras:
+    - NSC admission to the qualification is required.
+- id: ufh_40000
+  name: Bachelor of Science
+  faculty: Science and Agriculture
+  fields:
+  - natural_sciences
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 28
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      mathematics: 4
+      physical_sciences: 4
+    additional_minimums:
+    - 4
+    - 4
+    extras:
+    - NSC admission to the qualification is required.
+    choices:
+    - &id006
+      one_of:
+      - subjects:
+          life_sciences: 4
+      - subjects:
+          geography: 4
+      - subjects:
+          agricultural_sciences: 4
+      - subjects:
+          information_technology: 4
+- id: ufh_40400
+  name: Bachelor of Science (Extended Programme)
+  faculty: Science and Agriculture
+  fields:
+  - natural_sciences
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 27
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+    additional_minimums:
+    - 4
+    - 4
+    extras:
+    - NSC admission to the qualification is required.
+    - International applicants are not eligible for extended programmes.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+          physical_sciences: 4
+      - subjects:
+          mathematics: 4
+          physical_sciences: 3
+    - *id006
+- id: ufh_71522
+  name: Bachelor of Science in Agriculture (Soil Science)
+  faculty: Science and Agriculture
+  fields:
+  - agriculture
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 28
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      mathematics: 4
+      physical_sciences: 4
+    additional_minimums:
+    - 4
+    - 4
+    extras:
+    - NSC admission to the qualification is required.
+    choices:
+    - *id006
+- id: ufh_71422
+  name: Bachelor of Science in Agriculture (Soil Science) (Extended Programme)
+  faculty: Science and Agriculture
+  fields:
+  - agriculture
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 27
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+    additional_minimums:
+    - 4
+    - 4
+    extras:
+    - NSC admission to the qualification is required.
+    - International applicants are not eligible for extended programmes.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+          physical_sciences: 4
+      - subjects:
+          mathematics: 4
+          physical_sciences: 3
+    - *id006
+- id: ufh_71523
+  name: Bachelor of Science in Agriculture (Horticulture)
+  faculty: Science and Agriculture
+  fields:
+  - agriculture
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 28
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      mathematics: 4
+      physical_sciences: 4
+    additional_minimums:
+    - 4
+    - 4
+    extras:
+    - NSC admission to the qualification is required.
+    choices:
+    - *id006
+- id: ufh_71423
+  name: Bachelor of Science in Agriculture (Horticulture) (Extended Programme)
+  faculty: Science and Agriculture
+  fields:
+  - agriculture
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 27
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+    additional_minimums:
+    - 4
+    - 4
+    extras:
+    - NSC admission to the qualification is required.
+    - International applicants are not eligible for extended programmes.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+          physical_sciences: 4
+      - subjects:
+          mathematics: 4
+          physical_sciences: 3
+    - *id006
+- id: ufh_71524
+  name: Bachelor of Science in Agriculture (Crops)
+  faculty: Science and Agriculture
+  fields:
+  - agriculture
+  selective: true
+  selection_note: '2027 guide p.2: APS 28; Mathematics and Physical Sciences 4; Life
+    Sciences/Geography/Agriculture/IT 4; two other subjects 4; Life Orientation 4.
+    The English level is blank in this row and needs faculty confirmation.'
+  requirements: null
+- id: ufh_71424
+  name: Bachelor of Science in Agriculture (Crops) (Extended Programme)
+  faculty: Science and Agriculture
+  fields:
+  - agriculture
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 27
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+    additional_minimums:
+    - 4
+    - 4
+    extras:
+    - NSC admission to the qualification is required.
+    - International applicants are not eligible for extended programmes.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+          physical_sciences: 4
+      - subjects:
+          mathematics: 4
+          physical_sciences: 3
+    - *id006
+- id: ufh_71525
+  name: Bachelor of Science in Agriculture (Animal Production)
+  faculty: Science and Agriculture
+  fields:
+  - agriculture
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 28
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      mathematics: 4
+      physical_sciences: 4
+    additional_minimums:
+    - 4
+    - 4
+    extras:
+    - NSC admission to the qualification is required.
+    choices:
+    - *id006
+- id: ufh_71425
+  name: Bachelor of Science in Agriculture (Animal Production) (Extended Programme)
+  faculty: Science and Agriculture
+  fields:
+  - agriculture
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 27
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+    additional_minimums:
+    - 4
+    - 4
+    extras:
+    - NSC admission to the qualification is required.
+    - International applicants are not eligible for extended programmes.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+          physical_sciences: 4
+      - subjects:
+          mathematics: 4
+          physical_sciences: 3
+    - *id006
+- id: ufh_71526
+  name: Bachelor of Science in Agriculture (Pasture Science)
+  faculty: Science and Agriculture
+  fields:
+  - agriculture
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 28
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      mathematics: 4
+      physical_sciences: 4
+    additional_minimums:
+    - 4
+    - 4
+    extras:
+    - NSC admission to the qualification is required.
+    choices:
+    - *id006
+- id: ufh_71426
+  name: Bachelor of Science in Agriculture (Pasture Science) (Extended Programme)
+  faculty: Science and Agriculture
+  fields:
+  - agriculture
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 27
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+    additional_minimums:
+    - 4
+    - 4
+    extras:
+    - NSC admission to the qualification is required.
+    - International applicants are not eligible for extended programmes.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+          physical_sciences: 4
+      - subjects:
+          mathematics: 4
+          physical_sciences: 3
+    - *id006
+- id: ufh_71521
+  name: Bachelor of Science in Agriculture (Agricultural Economics)
+  faculty: Science and Agriculture
+  fields:
+  - agriculture
+  - economics
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 28
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      mathematics: 4
+      life_sciences: 4
+    additional_minimums:
+    - 4
+    - 4
+    extras:
+    - NSC admission to the qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          agricultural_sciences: 4
+      - subjects:
+          geography: 4
+      - subjects:
+          information_technology: 4
+- id: ufh_71421
+  name: Bachelor of Science in Agriculture (Agricultural Economics) (Extended Programme)
+  faculty: Science and Agriculture
+  fields:
+  - agriculture
+  - economics
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 27
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      mathematics: 4
+      life_sciences: 3
+    additional_minimums:
+    - 4
+    - 4
+    extras:
+    - NSC admission to the qualification is required.
+    - International applicants are not eligible for extended programmes.
+    choices:
+    - one_of:
+      - subjects:
+          agricultural_sciences: 4
+      - subjects:
+          geography: 4
+      - subjects:
+          information_technology: 4
+- id: ufh_70001
+  name: Bachelor of Agriculture
+  faculty: Science and Agriculture
+  fields:
+  - agriculture
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 28
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      agricultural_sciences: 4
+    additional_minimums:
+    - 4
+    - 4
+    - 4
+    extras:
+    - NSC admission to the qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+        min_points: 28
+      - subjects:
+          mathematical_literacy: 5
+        min_points: 29
+- id: ufh_70401
+  name: Bachelor of Agriculture (Extended Programme)
+  faculty: Science and Agriculture
+  fields:
+  - agriculture
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 27
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      agricultural_sciences: 4
+    additional_minimums:
+    - 4
+    - 4
+    - 4
+    extras:
+    - NSC admission to the qualification is required.
+    - International applicants are not eligible for extended programmes.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+        min_points: 27
+      - subjects:
+          mathematical_literacy: 4
+        min_points: 28
+- id: ufh_70002
+  name: Bachelor of Agriculture (Agricultural Extension)
+  faculty: Science and Agriculture
+  fields:
+  - agriculture
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 28
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      agricultural_sciences: 4
+    additional_minimums:
+    - 4
+    - 4
+    - 4
+    extras:
+    - NSC admission to the qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+        min_points: 28
+      - subjects:
+          mathematical_literacy: 5
+        min_points: 29
+- id: ufh_70402
+  name: Bachelor of Agriculture (Agricultural Extension) (Extended Programme)
+  faculty: Science and Agriculture
+  fields:
+  - agriculture
+  selective: true
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    merit.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 27
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      agricultural_sciences: 4
+    additional_minimums:
+    - 4
+    - 4
+    - 4
+    extras:
+    - NSC admission to the qualification is required.
+    - International applicants are not eligible for extended programmes.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+        min_points: 27
+      - subjects:
+          mathematical_literacy: 4
+        min_points: 28
 
 sources:
+  - id: s-ufh-support-2026
+    url: https://fye.ufh.ac.za/faq-base/student-counselling-wellbeing/
+    publisher: University of Fort Hare
+    title: Student Counselling and Wellbeing, updated 16 April 2026
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official university source
   - id: s-ufh-where
     url: "https://www.ufh.ac.za/student/our-campuses"
     publisher: "University of Fort Hare"
@@ -37,6 +1345,7 @@ sources:
     retrieved: 2026-10-20
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ufh-apply
     url: "https://www.ufh.ac.za/apply/apply-undergraduate"
     publisher: "University of Fort Hare"
@@ -44,6 +1353,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ufh-admission
     url: "https://www.ufh.ac.za/admission"
     publisher: "University of Fort Hare"
@@ -51,3 +1361,26 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
+  - id: s-ufh-guide-2027
+    url: https://www.ufh.ac.za/admission
+    publisher: University of Fort Hare
+    title: Study Guide 2027, pp. 1–2 (user-supplied official PDF; see docs/research/2027-local-prospectuses.md)
+    retrieved: '2026-10-24'
+    last_verified: null
+    verified_by: agent draft, needs human check
+    verification_basis: official_university
+
+support_services:
+- kind: counselling
+  name: Student Counselling
+  contact: 040 602 2279; PMzilikazi@ufh.ac.za
+  source: s-ufh-support-2026
+  campuses:
+  - alice
+- kind: counselling
+  name: Student Counselling
+  contact: 043 704 7017; PMzilikazi@ufh.ac.za
+  source: s-ufh-support-2026
+  campuses:
+  - east_london

@@ -13,6 +13,24 @@ from course_finder_helpers import ASSESS, PLAN, POINTS, STRONG, marks
 from src.domains.pathways.course_finder.services import course_finder_service
 
 
+def test_english_role_reaches_assessment_plan_and_university_overview(client):
+    rows = [dict(subject=s, percent=p) for s, p in dict(english=50, mathematics=80, other_language=80,
+            life_sciences=80, geography=80, history=80, life_orientation=80).items()]
+    for role, tier in [('home', 'reach'), ('first_additional', 'not_yet')]:
+        rows[0]['language_level'] = role
+        response = client.post(ASSESS, json={'university': 'uwc', 'marks': rows})
+        assert response.status_code == 200
+        data = response.get_json()['data']
+        assert next(m for m in data['matches'] if m['programme'] == 'uwc_social_work')['tier'] == tier
+        response = client.post(PLAN, json={'university': 'uwc', 'goal': 'uwc_social_work', 'marks': rows})
+        assert response.status_code == 200
+        assert response.get_json()['data']['plan']['goal']['match']['tier'] == tier
+        response = client.post(POINTS, json={'marks': rows})
+        assert response.status_code == 200
+        summary = next(u for u in response.get_json()['data']['universities'] if u['id'] == 'uwc')
+        assert summary['tiers']['unverified'] == 0
+
+
 @pytest.fixture
 def on_10_october(monkeypatch):
     """Today is fixed, so these answers don't change as real dates pass."""
@@ -191,7 +209,8 @@ def test_points_at_every_university_before_picking_one(client):
     # A university whose programmes aren't added yet: its points, and why there's nothing to meet.
     assert by_id["wits"]["points"] == 47
     assert by_id["wits"]["summary"].startswith("You meet the minimum for")
-    assert by_id["uj"]["summary"] == "We haven't added this university's programmes yet."
+    assert by_id["uj"]["summary"].startswith("You meet the minimum for")
+    assert sum(by_id["uj"]["tiers"].values()) == 175
     # Each subject's level and points there, in the order sent: together they make the total.
     for u in (u for u in universities if u["points"] is not None):
         assert [s["subject"] for s in u["subjects"]] == [m["subject"] for m in STRONG]

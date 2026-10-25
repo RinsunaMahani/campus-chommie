@@ -2088,6 +2088,13 @@ programmes:
         - "You can't apply for this directly: apply for the mainstream programme, and UFS places you here if you qualify and space allows, higher scores first (2027 prospectus)."
 
 sources:
+  - id: s-ufs-counselling-2026
+    url: https://www.ufs.ac.za/supportservices/departments/student-counselling-development-home/general/contact-us
+    publisher: University of the Free State
+    title: Student Counselling and Development contacts
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official university source
   - id: s-ufs-campuses
     url: "https://www.ufs.ac.za/"
     publisher: "University of the Free State"
@@ -2095,6 +2102,7 @@ sources:
     retrieved: 2026-10-22
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ufs-where
     url: "https://www.ufs.ac.za/about-the-ufs"
     publisher: "University of the Free State"
@@ -2102,6 +2110,7 @@ sources:
     retrieved: 2026-10-20
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ufs-rules
     url: "https://www.ufs.ac.za/docs/librariesprovider25/default-document-library/2027-mbchb-selection-rules.pdf?sfvrsn=34af520_0"
     publisher: "University of the Free State"
@@ -2109,6 +2118,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ufs-scale
     url: "https://www.ufs.ac.za/docs/librariesprovider44/default-document-library/conversion-table.pdf?sfvrsn=50268d21_2"
     publisher: "University of the Free State"
@@ -2116,6 +2126,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ufs-prospective
     url: "https://www.ufs.ac.za/prospective"
     publisher: "University of the Free State"
@@ -2123,6 +2134,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ufs-prospectus-2027
     url: "https://www.ufs.ac.za/docs/librariesprovider44/undergraduate/ufs---ug-prospectus-2027---jan.pdf?sfvrsn=f3a0f820_1"
     publisher: "University of the Free State"
@@ -2130,6 +2142,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ufs-shrs-policy
     url: "https://www.ufs.ac.za/docs/librariesprovider25/default-document-library/shrs-selection-policye87e7ee75b146fc79f4fff0600aa9400.pdf?sfvrsn=4c6a1120_0"
     publisher: "University of the Free State"
@@ -2137,6 +2150,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ufs-bmedsc-rules-2027
     url: "https://www.ufs.ac.za/docs/librariesprovider25/default-document-library/2027-bmedsc-(radiation-science)-selection-rules555f9ae75b146fc79f4fff0600aa9400.pdf?sfvrsn=f14bf520_0"
     publisher: "University of the Free State"
@@ -2144,6 +2158,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ufs-nursing-policy
     url: "https://www.ufs.ac.za/docs/librariesprovider25/default-document-library/SoN_Bachelor_of_Nursing_selection_policy_2025"
     publisher: "University of the Free State"
@@ -2151,6 +2166,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ufs-rb-ems-2026
     url: "https://www.ufs.ac.za/docs/librariesprovider23/year-books/2026/ufs-ems-rulebook-2026-website.pdf?sfvrsn=3400fb20_1"
     publisher: "University of the Free State"
@@ -2158,6 +2174,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ufs-rb-edu-2026
     url: "https://www.ufs.ac.za/docs/librariesprovider24/2026-documents/education-2026-rulebook.pdf?sfvrsn=363cf920_1"
     publisher: "University of the Free State"
@@ -2165,6 +2182,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ufs-rb-law-2026
     url: "https://www.ufs.ac.za/docs/librariesprovider21/rulebooks/ufs---law-combined-rulebook-2026.pdf?sfvrsn=49adfb20_3"
     publisher: "University of the Free State"
@@ -2172,6 +2190,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ufs-rb-nas-2026
     url: "https://www.ufs.ac.za/docs/librariesprovider22/rulebooks/nas-rule-book-2026-final.pdf?sfvrsn=ecaae220_1"
     publisher: "University of the Free State"
@@ -2179,6 +2198,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ufs-rb-hum-2026
     url: "https://www.ufs.ac.za/docs/librariesprovider20/rule-books/2026/the-humanities_rule-book_2026.pdf?sfvrsn=86c7fc20_1"
     publisher: "University of the Free State"
@@ -2186,6 +2206,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ufs-rb-theo-2026
     url: "https://www.ufs.ac.za/docs/librariesprovider19/all-documents/2026rulebook-theology-and-religion-final.pdf?sfvrsn=e866fc20_1"
     publisher: "University of the Free State"
@@ -2193,3 +2214,24 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
+
+support_services:
+- kind: counselling
+  name: Student Counselling and Development
+  contact: 051 401 2853; scd@ufs.ac.za
+  source: s-ufs-counselling-2026
+  campuses:
+  - bloemfontein
+- kind: counselling
+  name: Student Counselling and Development
+  contact: 058 718 5125; SCDQQ@ufs.ac.za
+  source: s-ufs-counselling-2026
+  campuses:
+  - qwaqwa
+- kind: counselling
+  name: Student Counselling and Development
+  contact: 051 401 1989; SCDSouth@ufs.ac.za
+  source: s-ufs-counselling-2026
+  campuses:
+  - south

@@ -8,6 +8,13 @@ request and never stored; and the judges' demo accounts. Update it whenever a mi
 
 ## What we protect
 
+Data completeness update (25 October 2026): optional English Home/First Additional Language metadata travels
+only with the existing transient course-finder request. It is neither persisted nor logged. Strict input validation
+rejects language roles on other subjects. University source acceptance requires a dated HTTPS URL on an allowlisted
+university domain; subdomain-boundary checks reject lookalikes and URL credentials. It does not create a human
+sign-off. Funding retains human review. Missing route-specific APS cannot produce an eligibility claim, and unknown
+English roles cannot pass a role-dependent boundary. Regression tests cover these decisions in the engine and API.
+
 | Asset | Where | Notes |
 |---|---|---|
 | Accounts | `identity.users`, `identity.password_credentials` | email and a bcrypt password hash; nothing else is asked at sign-up |

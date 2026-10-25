@@ -7,8 +7,8 @@ leads to campus support carries the campus's own service from the data pack
 when it has one. Nothing is stored, and everything read is the signed-in
 student's own.
 
-Crisis lines are shown only once a person on the team has checked their
-source (CLAUDE.md: crisis contacts are verified by a human before release).
+Crisis lines require human review or dated official university provenance,
+under Rinsuna's verification decision of 25 October 2026.
 """
 from __future__ import annotations
 
@@ -33,13 +33,8 @@ def _today() -> date:
 
 
 def _checked(source: Source | None) -> bool:
-    """A person, not an agent drafting from the page, has checked this source."""
-    return bool(
-        source is not None
-        and source.last_verified is not None
-        and source.verified_by
-        and not source.verified_by.lower().startswith("agent")
-    )
+    """Accepted source evidence, without conflating provenance with personal review."""
+    return source is not None and source.verified
 
 
 def _campus(user) -> tuple[University | None, str | None]:

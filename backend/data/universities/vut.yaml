@@ -756,6 +756,13 @@ programmes:
         - "The extended programme takes four years instead of three."
 
 sources:
+  - id: s-vut-support-2026
+    url: https://vut.ac.za/nso/student-counselling/
+    publisher: Vaal University of Technology
+    title: Student Counselling and Support
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official university source
   - id: s-vut-where
     url: "https://vut.ac.za/history/"
     publisher: "Vaal University of Technology"
@@ -763,6 +770,7 @@ sources:
     retrieved: 2026-10-20
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-vut-requirements
     url: "https://vut.ac.za/wp-content/uploads/2026/03/2027-Undergraduate-Minimum-Admission-Requirements.pdf"
     publisher: "Vaal University of Technology"
@@ -770,6 +778,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-vut-apply
     url: "https://vut.ac.za/how-to-apply/"
     publisher: "Vaal University of Technology"
@@ -777,6 +786,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-vut-facs-prospectus-2026
     url: "https://vut.ac.za/wp-content/uploads/2026/01/Faculty-of-Applied-and-Computer-Sciences-Prospectus-info-2026.pdf"
     publisher: "Vaal University of Technology"
@@ -784,6 +794,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-vut-fhs-prospectus-2026
     url: "https://vut.ac.za/wp-content/uploads/2026/03/Prospectus-Faculty-of-Human-Sciences-2025.pdf"
     publisher: "Vaal University of Technology"
@@ -791,3 +802,11 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
+
+support_services:
+- kind: counselling
+  name: Student Counselling and Support
+  contact: scs@vut.ac.za
+  source: s-vut-support-2026
+  note: P Block, room P021, ground floor.

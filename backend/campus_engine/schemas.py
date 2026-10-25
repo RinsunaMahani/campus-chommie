@@ -6,6 +6,8 @@ source id, and validation fails if a citation or a programme reference is broken
 from __future__ import annotations
 
 from datetime import date
+import re
+from urllib.parse import urlsplit
 from typing import Annotated, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
@@ -114,6 +116,38 @@ class Source(_Strict):
     retrieved: date | None = None
     last_verified: date | None = None
     verified_by: str | None = None
+    verification_basis: Literal["official_university"] | None = None
+
+    @model_validator(mode="after")
+    def _official_origin(self):
+        if self.verification_basis == "official_university":
+            parsed = urlsplit(self.url)
+            host = (parsed.hostname or "").lower()
+            domains = ("cput.ac.za", "cut.ac.za", "dut.ac.za", "mut.ac.za", "mandela.ac.za",
+                       "nwu.ac.za", "ru.ac.za", "smu.ac.za", "spu.ac.za", "sun.ac.za", "tut.ac.za",
+                       "uct.ac.za", "ufh.ac.za", "ufs.ac.za", "uj.ac.za", "ukzn.ac.za", "ul.ac.za",
+                       "ump.ac.za", "unisa.ac.za", "univen.ac.za", "unizulu.ac.za", "up.ac.za",
+                       "uwc.ac.za", "vut.ac.za", "wits.ac.za", "wsu.ac.za")
+            if (parsed.scheme != "https" or parsed.username or parsed.password or not self.retrieved
+                    or not any(host == d or host.endswith("." + d) for d in domains)):
+                raise ValueError("Official university verification needs a dated university HTTPS source")
+        return self
+
+    @property
+    def verified(self) -> bool:
+        """Official university provenance is sufficient under Rinsuna's 25 October decision."""
+        return self.human_verified or self.verification_basis == "official_university"
+
+    @property
+    def evidence_date(self) -> date | None:
+        return self.last_verified if self.human_verified else self.retrieved if self.verified else None
+
+    @property
+    def human_verified(self) -> bool:
+        """A dated, named human review; retrieval or an agent's review is not sign-off."""
+        reviewer = (self.verified_by or "").strip().casefold()
+        automated = re.match(r"(?:agent|ai|codex|claude|chatgpt|gpt|automated)(?:\b|_)", reviewer)
+        return bool(self.last_verified and reviewer and not automated)
 
 
 class ScaleBand(_Strict):
@@ -199,6 +233,9 @@ class Choice(_Strict):
 
 class Requirements(_Strict):
     source: str
+    english_language_levels: dict[Literal["home", "first_additional"], Level] = Field(default_factory=dict)
+    # Some subject routes have a published APS while another route's threshold is omitted.
+    points_threshold_incomplete: bool = False
     # null when the university publishes no points minimum for this programme: only the subjects are checked.
     # The key is still required, so a pack says so on purpose.
     min_points: float | None = Field(ge=0)
@@ -474,7 +511,7 @@ SupportKind = Literal[
 
 
 class SupportService(_Strict):
-    """Campus support. A crisis line is shown only once a person has verified it (CLAUDE.md)."""
+    """Campus support. Crisis lines require accepted verification evidence (CLAUDE.md)."""
 
     kind: SupportKind
     name: str
