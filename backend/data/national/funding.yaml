@@ -885,6 +885,7 @@ sources:
     retrieved: 2026-10-10
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-nsfas-apply-2027-checked
     url: "https://nsfas.org.za/content/how-to-apply.html"
     publisher: "National Student Financial Aid Scheme (NSFAS)"
@@ -899,6 +900,7 @@ sources:
     retrieved: 2026-10-10
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-nsfas-home-2027-checked
     url: "https://www.nsfas.org.za/content/"
     publisher: "National Student Financial Aid Scheme (NSFAS)"
@@ -913,6 +915,7 @@ sources:
     retrieved: 2026-10-11
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-nsfas-launch-2027-checked
     url: "https://www.gov.za/news/speeches/minister-buti-manamela-launch-nsfas-2027-application-cycle-18-sep-2026"
     publisher: "Government of South Africa"
@@ -927,6 +930,7 @@ sources:
     retrieved: 2026-10-11
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-funza-notes-2027
     url: "https://www.funzalushaka.doe.gov.za/Content/Documents/Funza%20Lushaka%20Bursary%20Application%20Notes%202027.pdf"
     publisher: "Department of Basic Education"
@@ -934,6 +938,7 @@ sources:
     retrieved: 2026-10-11
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-isfap-students
     url: "https://www.isfap.org.za/students"
     publisher: "Ikusasa Student Financial Aid Programme (ISFAP)"
@@ -941,6 +946,7 @@ sources:
     retrieved: 2026-10-11
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-isfap-portal
     url: "https://applyonline.isfap.org.za/content/welcome-isfap-online-applications"
     publisher: "Ikusasa Student Financial Aid Programme (ISFAP)"
@@ -948,6 +954,7 @@ sources:
     retrieved: 2026-10-11
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-saica-thuthuka-apply
     url: "https://www.saica.org.za/initiatives/thuthuka/apply-to-the-thuthuka-bursary-fund"
     publisher: "South African Institute of Chartered Accountants (SAICA)"
@@ -955,6 +962,7 @@ sources:
     retrieved: 2026-10-11
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-saica-thuthuka-apply-checked
     url: "https://www.saica.org.za/initiatives/thuthuka/apply-to-the-thuthuka-bursary-fund"
     publisher: "South African Institute of Chartered Accountants (SAICA)"
@@ -969,6 +977,7 @@ sources:
     retrieved: 2026-10-11
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-treasury-2027
     url: "https://www.treasury.gov.za/graduate/2027%20External%20Bursary%20Advert%20e-Recruitment%20v3.pdf"
     publisher: "National Treasury"
@@ -976,6 +985,7 @@ sources:
     retrieved: 2026-10-11
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-ndmc-advert-2027
     url: "https://onlinebursary.ndmc.gov.za/docs/2027BursaryAdvertisement.jpg"
     publisher: "Department of Cooperative Governance: National Disaster Management Centre"
@@ -983,6 +993,7 @@ sources:
     retrieved: 2026-10-11
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-ndmc-portal-2027
     url: "https://onlinebursary.ndmc.gov.za/"
     publisher: "Department of Cooperative Governance: National Disaster Management Centre"
@@ -990,6 +1001,7 @@ sources:
     retrieved: 2026-10-11
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-sarb-2027
     url: "https://www.resbank.co.za/content/dam/sarb/publications/bursary/2026/external-bursary-2027.pdf"
     publisher: "South African Reserve Bank"
@@ -997,6 +1009,7 @@ sources:
     retrieved: 2026-10-11
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-allangray-fellowship
     url: "https://allangrayorbis.org/programmes/fellowship/"
     publisher: "Allan Gray Orbis Foundation"
@@ -1004,6 +1017,7 @@ sources:
     retrieved: 2026-10-11
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-allangray-form-2027
     url: "https://allangrayorbis.org/wp-content/uploads/2026/02/Fellowship-Programme-Application-Form_2026.pdf"
     publisher: "Allan Gray Orbis Foundation"
@@ -1011,6 +1025,7 @@ sources:
     retrieved: 2026-10-11
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-allangray-form-2027-checked
     url: "https://allangrayorbis.org/wp-content/uploads/2026/02/Fellowship-Programme-Application-Form_2026.pdf"
     publisher: "Allan Gray Orbis Foundation"
@@ -1025,6 +1040,7 @@ sources:
     retrieved: 2026-10-11
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-gcra-faq
     url: "https://gcrabursary.gauteng.gov.za/Home/FAQ"
     publisher: "Gauteng City Region Academy (Gauteng Provincial Government)"
@@ -1032,6 +1048,7 @@ sources:
     retrieved: 2026-10-11
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-clicks-bursary
     url: "https://careers.clicksgroup.co.za/applicant/index.php?controller=Page&name=bursarypage"
     publisher: "Clicks Group"
@@ -1039,6 +1056,7 @@ sources:
     retrieved: 2026-10-11
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-csir-bursaries-2027
     url: "https://www.csir.co.za/careers/students-graduates/bursaries"
     publisher: "Council for Scientific and Industrial Research (CSIR)"
@@ -1046,6 +1064,7 @@ sources:
     retrieved: 2026-10-11
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-csir-guidelines-2026
     url: "https://www.csir.co.za/sites/default/files/2026-07/2026%20CSIR%20Bursary-Guidelines.pdf"
     publisher: "Council for Scientific and Industrial Research (CSIR)"
@@ -1053,6 +1072,7 @@ sources:
     retrieved: 2026-10-11
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-harmony-students
     url: "https://www.harmony.co.za/careers/opportunities-for-students/"
     publisher: "Harmony Gold Mining Company"
@@ -1060,6 +1080,7 @@ sources:
     retrieved: 2026-10-11
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-nedbank-bursaries
     url: "https://group.nedbank.co.za/careers/graduates-and-bursaries.html"
     publisher: "Nedbank Group"
@@ -1067,6 +1088,7 @@ sources:
     retrieved: 2026-10-11
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-ey-bursary-2027
     url: "https://www.ey.com/en_za/careers/apply-for-our-bursary-program"
     publisher: "EY South Africa"
@@ -1074,6 +1096,7 @@ sources:
     retrieved: 2026-10-11
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-hwseta-funding
     url: "https://www.hwseta.org.za/employers/access-to-funding/"
     publisher: "Health and Welfare Sector Education and Training Authority (HWSETA)"
@@ -1081,6 +1104,7 @@ sources:
     retrieved: 2026-10-11
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-hwseta-eoi-2026
     url: "https://www.hwseta.org.za/expression-of-interest-for-funding-2026-2027-closing-date-20-february-2026/"
     publisher: "Health and Welfare Sector Education and Training Authority (HWSETA)"
@@ -1088,6 +1112,7 @@ sources:
     retrieved: 2026-10-11
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-tut-bursary-fund
     url: "https://www.tut.ac.za/student-finance/undergraduate/tut-bursary-and-scholarship-fund/"
     publisher: "Tshwane University of Technology"
@@ -1095,6 +1120,7 @@ sources:
     retrieved: 2026-10-11
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-tut-bursary-fund-checked
     url: "https://www.tut.ac.za/student-finance/undergraduate/tut-bursary-and-scholarship-fund/"
     publisher: "Tshwane University of Technology"
@@ -1109,6 +1135,7 @@ sources:
     retrieved: 2026-10-11
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-up-infoguide-2026-checked
     url: "https://drupalwebprod-files.up.ac.za/Public/2025-12/UP_InfoGuide%202026_V5-c.pdf"
     publisher: "University of Pretoria"
@@ -1123,6 +1150,7 @@ sources:
     retrieved: 2026-10-12
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-limpopo-dpw-bursary
     url: "https://www.dpw.limpopo.gov.za/pages/def_bursary.php"
     publisher: "Limpopo Department of Public Works, Roads and Infrastructure"
@@ -1130,6 +1158,7 @@ sources:
     retrieved: 2026-10-12
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-dffe-bursaries-2027
     url: "https://www.dffe.gov.za/bursaries"
     publisher: "Department of Forestry, Fisheries and the Environment"
@@ -1137,6 +1166,7 @@ sources:
     retrieved: 2026-10-12
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-sasol-foundation
     url: "https://www.sasolbursaries.com/welcome/sasol-foundation-bursaries/"
     publisher: "Sasol"
@@ -1144,6 +1174,7 @@ sources:
     retrieved: 2026-10-12
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-sasol-foundation-checked
     url: "https://www.sasolbursaries.com/welcome/sasol-foundation-bursaries/"
     publisher: "Sasol"
@@ -1158,6 +1189,7 @@ sources:
     retrieved: 2026-10-12
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-oldmutual-bursaries
     url: "https://www.oldmutual.co.za/careers/bursaries/"
     publisher: "Old Mutual"
@@ -1165,3 +1197,4 @@ sources:
     retrieved: 2026-10-12
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher

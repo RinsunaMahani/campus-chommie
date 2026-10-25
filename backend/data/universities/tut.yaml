@@ -309,6 +309,13 @@ support_services:
 # Places with their own page that states a price, read on 10 Oct 2026 (docs/research/cheap-things.md). `campuses`
 # lists the campuses in the same city. Agent draft: a person checks each price before release.
 cheap_things:
+  - name: Bakone Malapa Open Air Museum
+    category: heritage
+    cost_note: 'From 1 July 2026: adult admission R20.06; children R12.99. Advance group
+      bookings: adults R16.25 each, children R11.37 each. Transport is separate.'
+    campuses:
+    - polokwane
+    source: s-polokwane-museum-tariffs-2026
   - {name: "Pretoria National Botanical Garden", category: outdoors,
      cost_note: "Students R50 in peak season (September to March); adults R100; children 6 to 17 R30; under 6 free. The ticket page shows no off-peak prices.",
      campuses: [arcadia, arts, pretoria], source: s-sanbi-pnbg-tickets}
@@ -2236,6 +2243,13 @@ programmes:
             - subjects: {technical_sciences: 3}
 
 sources:
+  - id: s-polokwane-museum-tariffs-2026
+    url: https://www.polokwane.gov.za/wp-content/uploads/APPROVED-TARIFFS-2026-2027-GAZETTE-NO.3828.pdf
+    publisher: Polokwane Municipality
+    title: Approved tariffs 2026/2027, Gazette 3828, Schedule 10, printed page 158
+    retrieved: '2026-10-25'
+    verification_basis: official_publisher
+    verified_by: agent, official publication
   - id: s-tut-where
     url: "https://www.tut.ac.za/about/"
     publisher: "Tshwane University of Technology"
@@ -2318,6 +2332,7 @@ sources:
     retrieved: 2026-10-10
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-freedompark
     url: "https://www.freedompark.co.za/"
     publisher: "Freedom Park"
@@ -2325,6 +2340,7 @@ sources:
     retrieved: 2026-10-10
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-vtm-fees
     url: "https://vtm.org.za/entrance-fees/"
     publisher: "Voortrekker Monument"
@@ -2332,6 +2348,7 @@ sources:
     retrieved: 2026-10-10
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-ditsong-nh-fees
     url: "https://ditsong.org.za/en/wp-content/uploads/2019/09/Natural-History-Museum-Admission-Fees.pdf"
     publisher: "DITSONG Museums of South Africa"
@@ -2339,6 +2356,7 @@ sources:
     retrieved: 2026-10-10
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-sanbi-lowveld-tickets
     url: "https://www.sanbi.org/gardens/lowveld/information-8/buy-tickets-lowveld-nbg/"
     publisher: "South African National Biodiversity Institute (SANBI)"
@@ -2346,6 +2364,7 @@ sources:
     retrieved: 2026-10-10
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-tshwane-wonderboom
     url: "https://www.tshwane.gov.za/?page_id=5481"
     publisher: "City of Tshwane"
@@ -2353,6 +2372,7 @@ sources:
     retrieved: 2026-10-12
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-ditsong-tswaing-fees
     url: "https://ditsong.org.za/en/wp-content/uploads/2019/09/Tswaing-Meteorite-Crater-Admission-Fees.pdf"
     publisher: "DITSONG Museums of South Africa"
@@ -2360,3 +2380,4 @@ sources:
     retrieved: 2026-10-12
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher

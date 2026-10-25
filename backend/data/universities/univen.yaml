@@ -44,6 +44,14 @@ applications:
       - "Academic record and certificate of good conduct if you have already studied at another tertiary institution"
       - "Copy of study and residence permit, medical insurance and SAQA Evaluation Certificate for international applicants"
   after:
+    - text: "Admissions enquiries: 015 962 8974; admissions@univen.ac.za or thizwilondi.nefale@univen.ac.za."
+      source: s-univen-support-directory-2026
+    - text: "Student Affairs: 015 962 8506; azwidohwi.mukheli@univen.ac.za."
+      source: s-univen-support-directory-2026
+    - text: "Examination enquiries: 015 962 8885; grace.shitlhavani@univen.ac.za."
+      source: s-univen-support-directory-2026
+    - text: "Student Secretary: 015 962 8319; Faith.Nemaxwi@univen.ac.za."
+      source: s-univen-support-directory-2026
     - text: "Achievement of the minimum requirements does not guarantee an applicant admission to any programme."
       source: s-univen-prospectus
     - text: "The minimum points for admission to a bachelor's degree study are 26 and can be reviewed by the Senate from time to time."
@@ -996,6 +1004,27 @@ programmes:
         - "NSC 26 with a bachelor's endorsement and level 3 (40-49%) in English, Mathematics, Physical Sciences. Duration is 4 years."
 
 sources:
+  - id: s-sanbi-thohoyandou-2026
+    url: https://www.sanbi.org/gardens/thohoyandou/visitor-information/
+    publisher: South African National Biodiversity Institute
+    title: Thohoyandou National Botanical Garden visitor information
+    retrieved: '2026-10-25'
+    verification_basis: official_publisher
+    verified_by: agent, official publication
+  - id: s-univen-calendar-final-2026
+    url: https://www.univen.ac.za/wp-content/uploads/2026/09/2026-PART-ONE-General-Rules-and-Regulations-Calendar-1.pdf
+    publisher: UNIVEN
+    title: 2026 academic calendar
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official publication
+  - id: s-univen-support-directory-2026
+    url: https://www.univen.ac.za/student-affairs/student-support-services/
+    publisher: University of Venda
+    title: Student Support Services (user-supplied page text, checked against official page)
+    retrieved: 2026-10-25
+    verification_basis: official_university
+    verified_by: agent, official university source
   - id: s-univen-student-support-2026
     url: https://www.univen.ac.za/about/directorates-centres-and-institutes/centre-for-higher-education-teaching-and-learning/student-counseling-and-career-development-unit/
     publisher: University of Venda
@@ -1029,6 +1058,11 @@ sources:
     verification_basis: official_university
 
 support_services:
+- kind: health
+  name: Campus Health Clinic
+  contact: "015 962 9154; Edward.Dongola@univen.ac.za"
+  note: "Head of Campus Health Clinic, as listed in the university's support directory."
+  source: s-univen-support-directory-2026
 - kind: counselling
   name: Student Counselling and Career Development
   contact: 015 962 8746 / 015 962 8466
@@ -1044,3 +1078,44 @@ support_services:
   source: s-univen-student-support-2026
   note: Contact the unit about donor-supported non-perishable food and personal-hygiene
     support for unfunded students.
+
+calendar:
+- period: orientation
+  name: First-year orientation opening
+  start: '2026-01-30'
+  source: s-univen-calendar-final-2026
+  note: 2026 general calendar, pages 7–8. Health Sciences has separate arrangements.
+- period: orientation
+  name: Compulsory first-year orientation
+  start: '2026-02-02'
+  source: s-univen-calendar-final-2026
+  note: 2026 general calendar, pages 7–8. Health Sciences has separate arrangements.
+  end: '2026-02-07'
+- period: registration
+  name: Late registration
+  start: '2026-02-02'
+  source: s-univen-calendar-final-2026
+  note: 2026 general calendar, pages 7–8. Health Sciences has separate arrangements.
+  end: '2026-02-13'
+- period: term
+  name: Lectures commence
+  start: '2026-02-09'
+  source: s-univen-calendar-final-2026
+  note: 2026 general calendar, pages 7–8. Health Sciences has separate arrangements.
+- period: exam
+  name: Special examinations
+  start: '2026-01-26'
+  source: s-univen-calendar-final-2026
+  note: 2026 general calendar, pages 7–8. Health Sciences has separate arrangements.
+  end: '2026-02-04'
+
+cheap_things:
+- name: Thohoyandou National Botanical Garden
+  category: outdoors
+  cost_note: 'Students: R35 April–August; R40 September–March. Adults: R45 April–August;
+    R50 September–March.'
+  address: 451 Garden Route, Thohoyandou Unit D, Thohoyandou 0950
+  hours: 'Daily: winter 08:00–17:00; summer 08:00–18:00.'
+  campuses:
+  - thohoyandou
+  source: s-sanbi-thohoyandou-2026

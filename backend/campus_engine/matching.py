@@ -168,6 +168,27 @@ def assess(uni: University, programme: Programme, marks: dict[str, float],
            english_language_level: str | None = None) -> Match:
     match = _assess(uni, programme, marks)
     req = programme.requirements
+    if req and req.max_assessed_points is not None:
+        if match.points is not None and match.points > req.max_assessed_points and match.tier != NOT_YET:
+            match.tier = UNVERIFIED
+            match.explanation.append(
+                f"The published entry bands end at {num(req.max_assessed_points)} points. "
+                "Your score is above those bands; ask the university which entry route applies."
+            )
+        elif match.points is None:
+            match.explanation.append(
+                f"The published entry bands end at {num(req.max_assessed_points)} points; "
+                "the university needs to check your score against those bands."
+            )
+    if req and req.alternative_entry:
+        match.explanation.append(req.alternative_entry)
+        alternatives = req.alternative_entry_subjects
+        if match.tier == NOT_YET and not match.gap and (not alternatives or all(
+            any(failure.startswith(_pretty(subject) + suffix) for subject in alternatives for suffix in (" is required", ":"))
+            for failure in match.failed
+        )):
+            match.tier = UNVERIFIED
+            match.explanation.append("Your school marks do not meet this route. An alternative entry route needs the university to check your other qualifications or experience.")
     if not req or not req.english_language_levels:
         return match
     levels = req.english_language_levels

@@ -21,7 +21,8 @@ what came from our earlier project in [REUSE.md](REUSE.md).
   `verification_basis: official_university` with the source URL and its actual retrieval date. This accepts
   provenance without claiming a person checked it; preserve existing `verified_by` and `last_verified` history.
   Incomplete packs keep `release: false`. Contradictory or missing rules remain unresolved until evidence settles
-  them. Non-university sources, including NSFAS dates and income limits, retain their existing review requirements.
+  them. Rinsuna also accepted dated official funder, government and venue sources on 25 October 2026:
+  use `verification_basis: official_publisher` for these publications, preserving retrieval and review history.
   Only a value a person checked gets their name in `verified_by`.
 - Demo data is fictional and labelled ("Demo data: fictional student"), never presented as NSFAS or university figures.
 - Translations: never machine-translate for release. A language becomes visible only after a fluent speaker signs it

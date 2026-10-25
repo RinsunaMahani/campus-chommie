@@ -84,7 +84,7 @@ sources:
 def test_shipped_funding_pack_has_no_errors():
     errors, warnings = check_funding(FUNDING_PATH, TODAY)
     assert errors == [], errors
-    assert any("never verified" in w for w in warnings)  # a draft: warnings until a person checks it
+    assert not any("never verified" in w for w in warnings)  # dated official publishers are now accepted
 
 
 def test_shipped_funding_pack_names_only_universities_we_have():

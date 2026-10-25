@@ -2264,9 +2264,23 @@ programmes:
   - humanities
   selective: true
   selection_note: '2027 prospectus p.76: APS 24–26 with English 5, or APS 27 with
-    English 4; interview required. The published upper APS range cannot be represented
-    by a minimum-only rule; confirm the route with UJ.'
-  requirements: null
+    English 4. An interview is required. Scores above the published bands need university
+    assessment.'
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 24
+    max_assessed_points: 27
+    choices:
+    - one_of:
+      - subjects:
+          english: 5
+        min_points: 24
+      - subjects:
+          english: 4
+        min_points: 27
+    extras:
+    - NSC admission to a bachelor degree is required. Meeting these bands does not
+      guarantee admission.
 - id: uj_b7ex3q
   name: BA Linguistics (Extended)
   faculty: Humanities
@@ -2274,9 +2288,23 @@ programmes:
   - humanities
   selective: true
   selection_note: '2027 prospectus p.76: APS 24–26 with English 5, or APS 27 with
-    English 4; interview required. The published upper APS range cannot be represented
-    by a minimum-only rule; confirm the route with UJ.'
-  requirements: null
+    English 4. An interview is required. Scores above the published bands need university
+    assessment.'
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 24
+    max_assessed_points: 27
+    choices:
+    - one_of:
+      - subjects:
+          english: 5
+        min_points: 24
+      - subjects:
+          english: 4
+        min_points: 27
+    extras:
+    - NSC admission to a bachelor degree is required. Meeting these bands does not
+      guarantee admission.
 - id: uj_b7ex4q
   name: BA Linguistics and Language Practice (Extended)
   faculty: Humanities
@@ -2284,9 +2312,23 @@ programmes:
   - humanities
   selective: true
   selection_note: '2027 prospectus p.76: APS 24–26 with English 5, or APS 27 with
-    English 4; interview required. The published upper APS range cannot be represented
-    by a minimum-only rule; confirm the route with UJ.'
-  requirements: null
+    English 4. An interview is required. Scores above the published bands need university
+    assessment.'
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 24
+    max_assessed_points: 27
+    choices:
+    - one_of:
+      - subjects:
+          english: 5
+        min_points: 24
+      - subjects:
+          english: 4
+        min_points: 27
+    extras:
+    - NSC admission to a bachelor degree is required. Meeting these bands does not
+      guarantee admission.
 - id: uj_b7ex5q
   name: BA Strategic Communication (Extended)
   faculty: Humanities
@@ -2294,9 +2336,23 @@ programmes:
   - humanities
   selective: true
   selection_note: '2027 prospectus p.76: APS 24–26 with English 5, or APS 27 with
-    English 4; interview required. The published upper APS range cannot be represented
-    by a minimum-only rule; confirm the route with UJ.'
-  requirements: null
+    English 4. An interview is required. Scores above the published bands need university
+    assessment.'
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 24
+    max_assessed_points: 27
+    choices:
+    - one_of:
+      - subjects:
+          english: 5
+        min_points: 24
+      - subjects:
+          english: 4
+        min_points: 27
+    extras:
+    - NSC admission to a bachelor degree is required. Meeting these bands does not
+      guarantee admission.
 - id: uj_d7002q
   name: Diploma in Public Relations and Communication
   faculty: Humanities
@@ -3436,6 +3492,21 @@ programmes:
     - 2027 prospectus p.94. NSC admission to this qualification is required.
 
 sources:
+  - id: s-uj-calendar-final-2026
+    url: https://www.uj.ac.za/wp-content/uploads/2021/09/e-uj-abridged-academic-calendar-2026.pdf
+    publisher: UJ
+    title: 2026 academic calendar
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official publication
+  - id: s-wits-wam-2026
+    url: https://www.wits.ac.za/wam/visit-us/
+    publisher: University of the Witwatersrand
+    title: 'Wits Art Museum: Visit Us'
+    retrieved: '2026-10-24'
+    last_verified: null
+    verified_by: agent draft, needs human check
+    verification_basis: official_university
   - id: s-uj-maps-venues
     url: "https://www.uj.ac.za/admission-aid/assessments/maps-venues/"
     publisher: "University of Johannesburg"
@@ -3507,3 +3578,102 @@ support_services:
   campuses:
   - dfc
   source: s-uj-prospectus-2027
+
+cheap_things:
+- name: Wits Art Museum
+  category: museum
+  cost_note: Free admission; donations welcome.
+  campuses:
+  - apk
+  - apb
+  - dfc
+  - swc
+  address: Entrance at the corner of Jorissen and Bertha streets, Braamfontein.
+  hours: Tuesday?Saturday, 10:00?16:00.
+  source: s-wits-wam-2026
+
+calendar:
+- period: registration
+  name: Online registration
+  start: '2026-01-12'
+  source: s-uj-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-02-06'
+- period: orientation
+  name: First-year orientation
+  start: '2026-02-02'
+  source: s-uj-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-02-06'
+- period: term
+  name: Term 1
+  start: '2026-02-09'
+  source: s-uj-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-03-27'
+- period: term
+  name: Term 2
+  start: '2026-04-07'
+  source: s-uj-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-05-22'
+- period: term
+  name: Term 3
+  start: '2026-07-13'
+  source: s-uj-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-08-28'
+- period: term
+  name: Term 4
+  start: '2026-09-07'
+  source: s-uj-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-10-16'
+- period: revision
+  name: First-semester study period
+  start: '2026-05-23'
+  source: s-uj-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-05-27'
+- period: exam
+  name: First-semester final assessment
+  start: '2026-05-28'
+  source: s-uj-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-06-19'
+- period: exam
+  name: First-semester supplementary assessment
+  start: '2026-07-06'
+  source: s-uj-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-07-10'
+- period: recess
+  name: Winter vacation
+  start: '2026-06-20'
+  source: s-uj-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-07-05'
+- period: recess
+  name: Second-semester mid-term recess
+  start: '2026-08-29'
+  source: s-uj-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-09-06'
+- period: revision
+  name: Second-semester study period
+  start: '2026-10-17'
+  source: s-uj-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-10-21'
+- period: exam
+  name: Second-semester final assessment
+  start: '2026-10-22'
+  source: s-uj-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-11-13'
+- period: exam
+  name: Second-semester supplementary assessment
+  start: '2026-11-23'
+  source: s-uj-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-11-27'

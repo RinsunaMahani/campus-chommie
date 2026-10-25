@@ -2491,6 +2491,21 @@ programmes:
         - "Unisa asks this mark in \"the language of teaching and learning\"; it teaches in English (2026 Unisa Rules for Students)."
 
 sources:
+  - id: s-sanbi-pnbg-tickets
+    url: https://www.sanbi.org/gardens/pretoria/information-5/buy-tickets-pretoria-nbg/
+    publisher: South African National Biodiversity Institute (SANBI)
+    title: 'Pretoria National Botanical Garden: buy tickets'
+    retrieved: 2026-10-10
+    last_verified: null
+    verified_by: agent draft, needs human check
+    verification_basis: official_publisher
+  - id: s-unisa-calendar-followup-2026
+    url: https://www.unisa.ac.za/sites/corporate/default/Register-to-study-through-Unisa
+    publisher: UNISA
+    title: 2026 published academic dates
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official publication
   - id: s-unisa-counselling-2026
     url: https://www.unisa.ac.za/sites/myunisa/default/Learner-support-&-regions/Counselling-and-career-development/Contact-us
     publisher: University of South Africa
@@ -3895,3 +3910,21 @@ support_services:
   contact: counselling@unisa.ac.za
   source: s-unisa-counselling-2026
   note: Career and study decisions; contact the central service or book online.
+
+calendar:
+- period: registration
+  name: 'Semester 2 registration: undergraduate, honours and postgraduate diploma
+    semester modules'
+  start: '2026-06-29'
+  source: s-unisa-calendar-followup-2026
+  end: '2026-07-23'
+
+cheap_things:
+- name: Pretoria National Botanical Garden
+  category: outdoors
+  cost_note: Students R50 in peak season (September to March); adults R100; children
+    6 to 17 R30; under 6 free. The ticket page shows no off-peak prices.
+  campuses:
+  - muckleneuk
+  - sunnyside
+  source: s-sanbi-pnbg-tickets

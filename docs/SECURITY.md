@@ -12,8 +12,15 @@ Data completeness update (25 October 2026): optional English Home/First Addition
 only with the existing transient course-finder request. It is neither persisted nor logged. Strict input validation
 rejects language roles on other subjects. University source acceptance requires a dated HTTPS URL on an allowlisted
 university domain; subdomain-boundary checks reject lookalikes and URL credentials. It does not create a human
-sign-off. Funding retains human review. Missing route-specific APS cannot produce an eligibility claim, and unknown
+sign-off. Rinsuna also accepted dated official funder, government and venue publications on 25 October; these use
+an explicit publisher-domain allowlist and retain existing review history. Missing route-specific APS cannot produce an eligibility claim, and unknown
 English roles cannot pass a role-dependent boundary. Regression tests cover these decisions in the engine and API.
+The crisis-contact gate remains limited to human review or dated official university sources; accepting a venue
+or funder source does not make it sufficient evidence for a crisis contact.
+
+Alternative entry based on external qualifications or experience is referred for university assessment; the app
+does not collect or assume those qualifications. Published APS bands are assessed only within their recorded
+range. Scores above that range remain unverified, rather than extrapolating an eligibility claim.
 
 | Asset | Where | Notes |
 |---|---|---|
