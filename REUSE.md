@@ -1,6 +1,6 @@
 # Reused code
 
-Campus Chommie is built by Team PR on its own earlier project, **Akayza** (github.com/MandlaBaloyi/KasiFlow),
+Campus Chommie, by Rinsuna Mahani, is built on an earlier project, **Akayza** (github.com/MandlaBaloyi/KasiFlow),
 © Team PR (Mandla and Rinsuna), all rights reserved. The files listed below were copied from Akayza's `main` branch at
 commit `bf8359c` on 9 October 2026, without its git history, and then adapted. The first commit in this repository
 (`M0: Akayza foundation, keep list only, unchanged`) holds them exactly as copied, so the history shows what was reused
