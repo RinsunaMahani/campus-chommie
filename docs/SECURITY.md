@@ -231,7 +231,7 @@ made-up values). Nothing was sent to the live server.
 
 | Tool | What it covered | Result |
 |---|---|---|
-| Backend tests | the full suite on PostgreSQL 16, engine coverage 98.9% | all pass |
+| Backend tests | 1,603 tests on PostgreSQL 16, engine coverage 98.9% | all pass |
 | App checks | `tsc`, 280 Jest tests, ESLint with no warnings | all pass |
 | Bandit 1.9.4 | the backend's code, 19,618 lines | 27 low findings, all names of events, limits or messages containing "password" or "token", and two type-narrowing `assert`s; nothing medium or high |
 | Semgrep 1.182 (the open `semgrep-rules`: Flask, Python, JWT, SQLAlchemy, requests, cryptography, secrets, React, browser JavaScript) | backend and app code | 11 security findings, all the false positives sweep 1 reviewed: log lines that log only ids, a masked email and a reason; the plain-text email templates; fixed https addresses in scripts |
