@@ -3,7 +3,7 @@ import { router } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 import { ReactNode, useState } from 'react';
 import { Animated, Image, ImageSourcePropType, KeyboardAvoidingView, Platform, Pressable, RefreshControl, StyleSheet, Text, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Wallpaper } from './Wallpaper';
 
@@ -55,6 +55,7 @@ export function Screen({ children, footer, back, tab, onRefresh, refreshing = fa
   const styles = useStyles(makeStyles);
   const [scrollY] = useState(() => new Animated.Value(0));
   const barOpacity = scrollY.interpolate({ inputRange: [COLLAPSE_AT * 0.5, COLLAPSE_AT], outputRange: [0, 1], extrapolate: 'clamp' });
+  const insets = useSafeAreaInsets();
   const isHero = !!(hero && title);
   const head = title ? (
     <Head
@@ -84,7 +85,8 @@ export function Screen({ children, footer, back, tab, onRefresh, refreshing = fa
           />
         </View>
       ) : null}
-      <SafeAreaView style={styles.safe} edges={tab ? ['top'] : ['top', 'bottom']}>
+      {/* A hero band runs up under the status bar, so it takes the top inset itself. */}
+      <SafeAreaView style={styles.safe} edges={isHero ? (tab ? [] : ['bottom']) : tab ? ['top'] : ['top', 'bottom']}>
       <KeyboardAvoidingView style={styles.flex} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         <Animated.ScrollView
           style={styles.flex}
@@ -97,7 +99,7 @@ export function Screen({ children, footer, back, tab, onRefresh, refreshing = fa
           {back && !title ? <BackButton /> : null}
           {isHero ? (
             <PaletteProvider palette={forest}>
-              <View style={styles.hero}>
+              <View style={[styles.hero, { paddingTop: insets.top + space.md }]}>
                 {backdrop ? (
                   <View style={[StyleSheet.absoluteFill, { pointerEvents: 'none' }]}>
                     <Image source={backdrop} style={styles.photo} resizeMode="cover" accessible={false} accessibilityIgnoresInvertColors />
@@ -117,7 +119,7 @@ export function Screen({ children, footer, back, tab, onRefresh, refreshing = fa
         </Animated.ScrollView>
         {title ? (
           <Animated.View
-            style={[styles.bar, { opacity: barOpacity }]}
+            style={[styles.bar, isHero && { paddingTop: insets.top + space.md }, { opacity: barOpacity }]}
             importantForAccessibility="no-hide-descendants">
             <Text style={styles.barTitle} numberOfLines={1}>
               {title}
@@ -207,7 +209,6 @@ const makeStyles = (colors: Palette) => StyleSheet.create({
     marginHorizontal: -20,
     marginTop: -space.md,
     paddingHorizontal: 20,
-    paddingTop: space.md,
     paddingBottom: space.xl,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,

@@ -29,7 +29,7 @@ jest.mock('react-native-safe-area-context', () => {
   };
 });
 
-test('hero screen uses top safe-area edges on tab screen so banner has proper top spacing', () => {
+test("a tab screen's hero band runs up under the status bar and takes the top inset itself", () => {
   render(
     <Screen
       tab
@@ -41,8 +41,9 @@ test('hero screen uses top safe-area edges on tab screen so banner has proper to
     </Screen>,
   );
 
+  // The photo fills the status bar's space: no top edge on the safe area (the band pads itself by the inset).
   const safeArea = screen.getByTestId('safe-area');
-  expect(safeArea.props.accessibilityLabel).toBe('top');
+  expect(safeArea.props.accessibilityLabel).toBe('');
   expect(screen.getByText('Home')).toBeTruthy();
   expect(screen.getByText('SMU · Sefako Makgatho Health Sciences University')).toBeTruthy();
 });
