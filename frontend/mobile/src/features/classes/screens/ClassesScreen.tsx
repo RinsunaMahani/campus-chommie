@@ -3,13 +3,14 @@ import { router, useFocusEffect } from 'expo-router';
 import { useCallback, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
+import { studentHeader } from '@/features/profile/components/HeaderTools';
 import { errorText } from '@/shared/api/errors';
 import { Button } from '@/shared/components/Button';
 import { EmptyState } from '@/shared/components/EmptyState';
 import { Card, Tag } from '@/shared/components/Parts';
 import { Screen } from '@/shared/components/Screen';
 import { ErrorBox, Loading } from '@/shared/components/Status';
-import { Muted, Strong, Title } from '@/shared/components/Text';
+import { Muted, Strong } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
 
 import { classesApi } from '../api/classesApi';
@@ -38,13 +39,14 @@ export default function ClassesScreen() {
   return (
     <Screen
       back
+      title={t('classes.title')}
+      {...studentHeader(false)}
       footer={
         <View style={{ flexDirection: 'row', gap: 10 }}>
           <Button compact title={t('classes.create')} variant="secondary" icon="plus" onPress={() => router.push('/classes/new')} />
           <Button compact title={t('classes.join')} variant="accent" icon="log-in" onPress={() => router.push('/classes/join')} />
         </View>
       }>
-      <Title>{t('classes.title')}</Title>
       {error ? <ErrorBox message={error} /> : null}
       {!error && !classes ? <Loading /> : null}
       {classes && !classes.length ? <EmptyState icon="users" title={t('classes.emptyTitle')} body={t('classes.empty')} /> : null}

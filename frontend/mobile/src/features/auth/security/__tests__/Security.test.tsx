@@ -23,6 +23,11 @@ jest.mock('react-native-safe-area-context', () => {
   return { ...actual, useSafeAreaInsets: () => ({ top: 0, left: 0, right: 0, bottom: 0 }) };
 });
 
+let mockDemo = false;
+jest.mock('@/features/profile/state', () => ({
+  useProfile: () => ({ demo: mockDemo, mock: false, profile: null }),
+}));
+
 const phone = (n: number, extra: Partial<SignedInPhone> = {}): SignedInPhone => ({
   id: `p${n}`,
   this_phone: false,
@@ -52,4 +57,19 @@ test('four phones show, the rest behind "Show N more", and it folds back', async
   for (const n of [4, 2, 1]) expect(screen.getByText(`Phone ${n}`)).toBeTruthy();
   fireEvent.press(screen.getByText('Show fewer'));
   expect(screen.queryByText('Phone 1')).toBeNull();
+});
+
+test('shows the demo banner on a demo account and omits it on a normal account', async () => {
+  jest.spyOn(securityApi, 'phones').mockResolvedValue([]);
+
+  mockDemo = true;
+  const { unmount } = render(<SecurityScreen />);
+  expect(screen.getByText('Demo data: fictional student')).toBeTruthy();
+  await screen.findByText("Where you're signed in");
+  unmount();
+
+  mockDemo = false;
+  render(<SecurityScreen />);
+  expect(screen.queryByText('Demo data: fictional student')).toBeNull();
+  await screen.findByText("Where you're signed in");
 });
