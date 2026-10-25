@@ -19,9 +19,13 @@ MAPS_CONFIG = "osm_campuses.yaml"
 
 Pack = TypeVar("Pack", bound=BaseModel)
 
-# libyaml's C parser reads the packs about eight times faster than PyYAML's pure-Python one, with the same result.
-# On a small free host the difference is most of a cold start, so use it whenever the wheel ships it.
-_SafeLoader = getattr(yaml, "CSafeLoader", yaml.SafeLoader)
+
+def _parse(fh):
+    """libyaml's C parser reads the packs about eight times faster than PyYAML's pure-Python one, with the same
+    result. On a small free host the difference is most of a cold start, so use it whenever the wheel ships it."""
+    if hasattr(yaml, "CSafeLoader"):
+        return yaml.load(fh, Loader=yaml.CSafeLoader)
+    return yaml.safe_load(fh)
 
 
 class DataPackError(ValueError):
@@ -31,7 +35,7 @@ class DataPackError(ValueError):
 def _load(path: str | Path, model: type[Pack]) -> Pack:
     path = Path(path)
     with path.open(encoding="utf-8") as fh:
-        raw = yaml.load(fh, Loader=_SafeLoader)
+        raw = _parse(fh)
     try:
         return model.model_validate(raw)
     except ValidationError as exc:

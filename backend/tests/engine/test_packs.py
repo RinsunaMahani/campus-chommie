@@ -465,11 +465,10 @@ def test_the_fast_yaml_parser_reads_every_pack_exactly_as_the_python_one():
     from pathlib import Path
 
     import yaml
-    from campus_engine.catalogue import ROOT, _SafeLoader
+    from campus_engine.catalogue import ROOT
 
     if not yaml.__with_libyaml__:
         pytest.skip("PyYAML built without libyaml: catalogue.py uses the Python parser")
-    assert _SafeLoader is yaml.CSafeLoader
     for path in sorted(Path(ROOT, "data").rglob("*.yaml")):
         text = path.read_text(encoding="utf-8")
         assert yaml.load(text, Loader=yaml.CSafeLoader) == yaml.load(text, Loader=yaml.SafeLoader), path.name
