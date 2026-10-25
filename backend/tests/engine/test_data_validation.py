@@ -6,7 +6,7 @@ from campus_engine.catalogue import FUNDING_PATH, DataPackError, load_catalogue,
 from campus_engine.i18n import t
 from scripts.validate_data import _campus_ids, check, check_funding, check_maps, main
 
-TODAY = date(2026, 10, 9)
+TODAY = date(2026, 10, 25)
 
 BROKEN = """
 university: broken

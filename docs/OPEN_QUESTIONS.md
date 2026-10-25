@@ -1,5 +1,14 @@
 # Open questions
 
+## Data completeness follow-up (24 October 2026)
+
+Rinsuna supplied official UJ, UWC, UFH and CPUT 2027 PDFs and authorised edits. All 26 public-university packs now
+have programmes. Forty-two existing CPUT gaps are filled. On 25 October Rinsuna accepted dated official university
+sources as sufficient verification. Every university now has a sourced support contact; 35 programme requirements
+remain unresolved, alongside calendar and activity gaps. Use [DATA_READINESS.md](DATA_READINESS.md) for current counts and
+[the source review](research/2027-local-prospectuses.md) for the exact documents and blocked rules; older research
+notes below describe the earlier state. Only facts a person actually checked may receive their name/date.
+
 Facts we don't have yet and decisions only the team can make. The app shows "Not verified yet" wherever a fact is
 missing; nothing here may be guessed. Tick an item and add a line (who, when, the answer or a link) when it's
 settled.

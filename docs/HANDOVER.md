@@ -14,6 +14,16 @@ repo folder but is kept out of git; the parts the screens need are quoted below.
 
 ## Where things stand
 
+**Local data work (24 Oct 2026, not merged):** `rinsuna/data-completeness` in `.worktrees/data-completeness`, based
+on `fcba075`. Supplied official PDFs add 175 UJ, 39 UWC and 52 UFH programme entries and fill 40 empty CPUT
+requirements. UJ/UWC/Wits support and Wits 2027 dates are added. On 25 October Rinsuna accepted official
+university publications as sufficient verification. Dated official sources now carry explicit verification basis;
+personal review history is preserved. English Home/First Additional Language input resolves 15 programme rules;
+five more programmes have supported subject routes, with unpublished route APS explicitly left unassessed.
+All 26 universities now have at least one support contact. CPUT, DUT, Rhodes and UCT 2027 calendars and NWU
+first-year dates are added. There are still 35 programmes with missing requirements. See [the source review](research/2027-local-prospectuses.md) and
+[coverage queue](DATA_READINESS.md). Incomplete campus coverage and contradictory admissions rules remain open.
+
 `main` holds everything merged so far (PRs #1 to #94): every merge waited for green CI and Rinsuna's approval. The
 web app and the API are live on Render, with the database on Neon (DEPLOY.md). Test counts change with each merge:
 run the suites for today's numbers.

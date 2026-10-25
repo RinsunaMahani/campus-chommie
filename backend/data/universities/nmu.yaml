@@ -2337,6 +2337,13 @@ programmes:
         - "Only offered on the George Campus."
 
 sources:
+  - id: s-nmu-support-2026
+    url: https://finaid.mandela.ac.za/
+    publisher: Nelson Mandela University
+    title: Financial Aid contact centre
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official university source
   - id: s-nmu-campuses
     url: "https://www.mandela.ac.za/About-us/Campuses"
     publisher: "Nelson Mandela University"
@@ -2344,6 +2351,7 @@ sources:
     retrieved: 2026-10-22
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-nmu-as
     url: "https://myfuture.mandela.ac.za/Applicant-Score"
     publisher: "Nelson Mandela University"
@@ -2351,6 +2359,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-nmu-closing
     url: "https://www.mandela.ac.za/Study-at-Mandela/Application/Closing-dates"
     publisher: "Nelson Mandela University"
@@ -2358,6 +2367,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-nmu-ug-guide-2027
     url: "https://www.mandela.ac.za/getmedia/c574ec69-1adc-42c0-9075-04525b58202e/MandelaUni-Undergraduate-Guide"
     publisher: "Nelson Mandela University"
@@ -2365,3 +2375,11 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
+
+support_services:
+- kind: financial_aid
+  name: Financial Aid
+  contact: 041 504 1111; financialaid@mandela.ac.za
+  source: s-nmu-support-2026
+  note: Contact centre for financial assistance enquiries.

@@ -459,6 +459,13 @@ programmes:
         - "Your NSC must show admission to bachelor's degree study."
 
 sources:
+  - id: s-spu-support-2026
+    url: https://www.spu.ac.za/index.php/first-year-students-important-contacts/
+    publisher: Sol Plaatje University
+    title: 'First-year students: important contacts'
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official university source
   - id: s-spu-where
     url: "https://www.spu.ac.za/index.php/about-spu/"
     publisher: "Sol Plaatje University"
@@ -466,6 +473,7 @@ sources:
     retrieved: 2026-10-20
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-spu-apply
     url: "https://www.spu.ac.za/index.php/how-to-apply/"
     publisher: "Sol Plaatje University"
@@ -473,6 +481,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-spu-prospectus
     url: "https://www.spu.ac.za/wp-content/uploads/2025/04/2026-Undergraduate-Prospectus.pdf"
     publisher: "Sol Plaatje University"
@@ -480,6 +489,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-spu-prospectus-2027
     url: "https://indd.adobe.com/view/57eda609-9efc-43e8-b806-791d2e347328"
     publisher: "Sol Plaatje University"
@@ -494,6 +504,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-spu-hum-programmes
     url: "https://www.spu.ac.za/index.php/faculty-of-hum-programmes/"
     publisher: "Sol Plaatje University"
@@ -501,6 +512,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-spu-nas-programmes
     url: "https://www.spu.ac.za/index.php/spu-nas-programmes/"
     publisher: "Sol Plaatje University"
@@ -508,3 +520,18 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
+
+support_services:
+- kind: counselling
+  name: Student Counsellor
+  contact: unique.modise@spu.ac.za
+  source: s-spu-support-2026
+- kind: careers
+  name: Career Services
+  contact: 053 491 0043; zipho.msimango@spu.ac.za
+  source: s-spu-support-2026
+- kind: financial_aid
+  name: Financial Aid
+  contact: 053 491 0105; elda.albertus@spu.ac.za
+  source: s-spu-support-2026

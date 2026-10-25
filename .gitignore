@@ -36,6 +36,7 @@ Thumbs.db
 
 # --- local tooling ---
 .claude/
+backend/.data-review-cache/
 
 # Mandla's private notes (never committed)
 docs/mandla/

@@ -74,9 +74,9 @@ applications:
   windows:
     - intake: 2027
       source: s-uwc-apply
-      opens: 2026-04-01
-      closes: 2026-09-30
-      note: "Dentistry and Oral Health closed on 31 August 2026."
+      opens: null
+      closes_one_of: [2026-08-31, 2026-09-30]
+      note: "Sources disagree: the 2027 admissions brochure (s-uwc-admissions-2027, p.1) says applications opened 2 April and all programmes closed 30 September 2026; the earlier admissions page gave 1 April and a 31 August deadline for Dentistry and Oral Health. Confirm the programme-specific dates with UWC."
 
 # Campuses from the university's own page (s-uwc-campus-tour), read in a browser on 22 Oct 2026 (its site refuses
 # scripts; docs/research/campuses-uj-uwc.md). Agent draft.
@@ -85,7 +85,836 @@ campuses:
   - {id: tygerberg, name: "Tygerberg (Faculty of Dentistry)", note: "At Tygerberg Hospital, Parow Valley.", source: s-uwc-campus-tour}
   - {id: mitchells_plain, name: "Mitchell's Plain (Faculty of Dentistry)", note: "At Melomed Mitchells Plain Private Hospital.", source: s-uwc-campus-tour}
 
-programmes: []
+programmes:
+- id: uwc_social_work
+  name: Bachelor of Social Work
+  faculty: Community and Health Sciences
+  fields:
+  - humanities
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 34
+    english_language_levels:
+      home: 4
+      first_additional: 5
+    subject_minimums:
+      english: 4
+      other_language: 4
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+      - subjects:
+          mathematical_literacy: 4
+  selection_note: Selection and available places apply. English Home Language level
+    4 or First Additional Language level 5; see the 2027 Admissions Criteria, page
+    2.
+
+- id: uwc_community_development
+  name: Bachelor of Community Development
+  faculty: Community and Health Sciences
+  fields:
+  - humanities
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 30
+    english_language_levels:
+      home: 4
+      first_additional: 5
+    subject_minimums:
+      english: 4
+      other_language: 4
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+      - subjects:
+          mathematical_literacy: 4
+  selection_note: Selection and available places apply. English Home Language level
+    4 or First Additional Language level 5; see the 2027 Admissions Criteria, page
+    2.
+
+- id: uwc_sport_recreation
+  name: BA Sport, Recreation and Exercise Science
+  faculty: Community and Health Sciences
+  fields:
+  - sport_science
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 30
+    subject_minimums:
+      english: 4
+      other_language: 3
+    extras:
+    - NSC Bachelors admission is required. Meeting minimum requirements does not guarantee
+      a place.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+      - subjects:
+          mathematical_literacy: 4
+- id: uwc_dietetics
+  name: Bachelor of Science in Dietetics
+  faculty: Community and Health Sciences
+  fields:
+  - nutrition
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 33
+    subject_minimums:
+      english: 4
+      other_language: 3
+      life_sciences: 4
+    extras:
+    - NSC Bachelors admission is required. Meeting minimum requirements does not guarantee
+      a place.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+      - subjects:
+          mathematical_literacy: 6
+- id: uwc_sport_exercise
+  name: BSc Sport and Exercise Science
+  faculty: Community and Health Sciences
+  fields:
+  - sport_science
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 33
+    subject_minimums:
+      english: 4
+      other_language: 3
+      life_sciences: 4
+    extras:
+    - NSC Bachelors admission is required. Meeting minimum requirements does not guarantee
+      a place.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+      - subjects:
+          mathematical_literacy: 6
+- id: uwc_occupational_therapy
+  name: BSc Occupational Therapy
+  faculty: Community and Health Sciences
+  fields:
+  - rehabilitation
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 33
+    subject_minimums:
+      english: 4
+      other_language: 3
+      life_sciences: 4
+    extras:
+    - NSC Bachelors admission is required. Meeting minimum requirements does not guarantee
+      a place.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+      - subjects:
+          mathematical_literacy: 5
+- id: uwc_physiotherapy
+  name: BSc Physiotherapy
+  faculty: Community and Health Sciences
+  fields:
+  - rehabilitation
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 39
+    subject_minimums:
+      english: 4
+      other_language: 3
+      life_sciences: 4
+      physical_sciences: 4
+    extras:
+    - NSC Bachelors admission is required. Meeting minimum requirements does not guarantee
+      a place.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+      - subjects:
+          mathematical_literacy: 6
+- id: uwc_nursing
+  name: Bachelor of Nursing
+  faculty: Community and Health Sciences
+  fields:
+  - nursing
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 30
+    subject_minimums:
+      english: 4
+      other_language: 3
+      life_sciences: 4
+    extras:
+    - NSC Bachelors admission is required. Meeting minimum requirements does not guarantee
+      a place.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+      - subjects:
+          mathematical_literacy: 6
+- id: uwc_administration
+  name: BAdmin
+  faculty: Economic and Management Sciences
+  fields:
+  - public_administration
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 30
+    subject_minimums:
+      english: 4
+      other_language: 3
+    extras:
+    - NSC Bachelors admission is required. Meeting minimum requirements does not guarantee
+      a place.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+      - subjects:
+          mathematical_literacy: 5
+- id: uwc_commerce
+  name: BCom
+  faculty: Economic and Management Sciences
+  fields:
+  - commerce
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 30
+    subject_minimums:
+      english: 4
+      other_language: 3
+      mathematics: 4
+    extras:
+    - NSC Bachelors admission is required. Meeting minimum requirements does not guarantee
+      a place.
+- id: uwc_financial_accounting
+  name: BCom Financial Accounting
+  faculty: Economic and Management Sciences
+  fields:
+  - accounting
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 30
+    subject_minimums:
+      english: 4
+      other_language: 3
+      mathematics: 4
+    extras:
+    - NSC Bachelors admission is required. Meeting minimum requirements does not guarantee
+      a place.
+- id: uwc_information_systems
+  name: BCom Information Systems
+  faculty: Economic and Management Sciences
+  fields:
+  - computing
+  - commerce
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 30
+    subject_minimums:
+      english: 4
+      other_language: 3
+      mathematics: 4
+    extras:
+    - NSC Bachelors admission is required. Meeting minimum requirements does not guarantee
+      a place.
+- id: uwc_accounting
+  name: BCom Accounting (3 years)
+  faculty: Economic and Management Sciences
+  fields:
+  - accounting
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 30
+    subject_minimums:
+      english: 4
+      other_language: 3
+    extras:
+    - NSC Bachelors admission is required. Meeting minimum requirements does not guarantee
+      a place.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+          accounting: 5
+      - subjects:
+          mathematics: 5
+- id: uwc_commerce_extended
+  name: BCom (4 years)
+  faculty: Economic and Management Sciences
+  fields:
+  - commerce
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 30
+    subject_minimums:
+      english: 3
+      other_language: 3
+    extras:
+    - NSC Bachelors admission is required. Meeting minimum requirements does not guarantee
+      a place.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 2
+      - subjects:
+          mathematical_literacy: 6
+- id: uwc_accounting_extended
+  name: BCom Accounting (4 years)
+  faculty: Economic and Management Sciences
+  fields:
+  - accounting
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 30
+    subject_minimums:
+      english: 3
+      other_language: 3
+    extras:
+    - NSC Bachelors admission is required. Meeting minimum requirements does not guarantee
+      a place.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+          accounting: 4
+      - subjects:
+          mathematics: 4
+- id: uwc_arts
+  name: Bachelor of Arts
+  faculty: Arts and Humanities
+  fields:
+  - humanities
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 35
+    subject_minimums:
+      english: 4
+    extras:
+    - NSC Bachelors admission is required. Meeting minimum requirements does not guarantee
+      a place.
+    - At least one other NSC subject at code 4. Geography and Environmental Studies,
+      Psychology and Industrial Psychology require Mathematics 3 or Mathematical Literacy
+      4.
+- id: uwc_theology
+  name: Bachelor of Theology
+  faculty: Arts and Humanities
+  fields:
+  - theology
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 35
+    subject_minimums:
+      english: 4
+    extras:
+    - NSC Bachelors admission is required. Meeting minimum requirements does not guarantee
+      a place.
+    - At least one other NSC subject at code 4. Geography and Environmental Studies,
+      Psychology and Industrial Psychology require Mathematics 3 or Mathematical Literacy
+      4.
+- id: uwc_library
+  name: Bachelor of Library and Information Studies
+  faculty: Arts and Humanities
+  fields:
+  - humanities
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 35
+    subject_minimums:
+      english: 4
+    extras:
+    - NSC Bachelors admission is required. Meeting minimum requirements does not guarantee
+      a place.
+    - At least one other NSC subject at code 4.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+      - subjects:
+          mathematical_literacy: 4
+- id: uwc_environment_water
+  name: BSc Environment and Water Science
+  faculty: Natural Sciences
+  fields:
+  - natural_sciences
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 33
+    subject_minimums:
+      english: 4
+      other_language: 3
+      mathematics: 4
+    extras:
+    - NSC Bachelors admission is required. Meeting minimum requirements does not guarantee
+      a place.
+    choices:
+    - one_of:
+      - subjects:
+          physical_sciences: 4
+      - subjects:
+          life_sciences: 4
+- id: uwc_biotechnology
+  name: BSc Biotechnology
+  faculty: Natural Sciences
+  fields:
+  - natural_sciences
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 33
+    subject_minimums:
+      english: 4
+      other_language: 3
+      mathematics: 4
+    extras:
+    - NSC Bachelors admission is required. Meeting minimum requirements does not guarantee
+      a place.
+    choices:
+    - one_of:
+      - subjects:
+          physical_sciences: 4
+      - subjects:
+          life_sciences: 4
+- id: uwc_biodiversity
+  name: BSc Biodiversity and Conservation Biology
+  faculty: Natural Sciences
+  fields:
+  - natural_sciences
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 33
+    subject_minimums:
+      english: 4
+      other_language: 3
+      mathematics: 4
+    extras:
+    - NSC Bachelors admission is required. Meeting minimum requirements does not guarantee
+      a place.
+    choices:
+    - one_of:
+      - subjects:
+          physical_sciences: 4
+      - subjects:
+          life_sciences: 4
+- id: uwc_medical_bioscience
+  name: BSc Medical Bioscience
+  faculty: Natural Sciences
+  fields:
+  - medical_sciences
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 33
+    subject_minimums:
+      english: 4
+      other_language: 3
+      mathematics: 4
+      life_sciences: 4
+    extras:
+    - NSC Bachelors admission is required. Meeting minimum requirements does not guarantee
+      a place.
+- id: uwc_chemical_sciences
+  name: BSc Chemical Sciences
+  faculty: Natural Sciences
+  fields:
+  - physical_sciences
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 33
+    subject_minimums:
+      english: 4
+      other_language: 3
+      mathematics: 4
+      physical_sciences: 4
+    extras:
+    - NSC Bachelors admission is required. Meeting minimum requirements does not guarantee
+      a place.
+- id: uwc_applied_geology
+  name: BSc Applied Geology
+  faculty: Natural Sciences
+  fields:
+  - earth_sciences
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 33
+    subject_minimums:
+      english: 4
+      other_language: 3
+      mathematics: 4
+      physical_sciences: 4
+    extras:
+    - NSC Bachelors admission is required. Meeting minimum requirements does not guarantee
+      a place.
+- id: uwc_physical_science
+  name: BSc Physical Science
+  faculty: Natural Sciences
+  fields:
+  - physical_sciences
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 33
+    subject_minimums:
+      english: 4
+      other_language: 3
+      mathematics: 5
+      physical_sciences: 4
+    extras:
+    - NSC Bachelors admission is required. Meeting minimum requirements does not guarantee
+      a place.
+- id: uwc_mathematics_statistics
+  name: BSc Mathematics and Statistical Sciences
+  faculty: Natural Sciences
+  fields:
+  - mathematical_sciences
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 33
+    subject_minimums:
+      english: 4
+      other_language: 3
+      mathematics: 5
+    extras:
+    - NSC Bachelors admission is required. Meeting minimum requirements does not guarantee
+      a place.
+    choices:
+    - one_of:
+      - subjects:
+          physical_sciences: 4
+      - subjects:
+          life_sciences: 4
+      - subjects:
+          information_technology: 4
+- id: uwc_computer_science
+  name: BSc Computer Science
+  faculty: Natural Sciences
+  fields:
+  - computing
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 33
+    subject_minimums:
+      english: 4
+      other_language: 3
+      mathematics: 5
+    extras:
+    - NSC Bachelors admission is required. Meeting minimum requirements does not guarantee
+      a place.
+    choices:
+    - one_of:
+      - subjects:
+          physical_sciences: 4
+      - subjects:
+          life_sciences: 4
+      - subjects:
+          information_technology: 4
+- id: uwc_pharmacy
+  name: Bachelor of Pharmacy
+  faculty: Natural Sciences
+  fields:
+  - pharmacy
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 38
+    subject_minimums:
+      english: 4
+      other_language: 3
+      mathematics: 4
+      physical_sciences: 4
+      life_sciences: 4
+    extras:
+    - NSC Bachelors admission is required. Meeting minimum requirements does not guarantee
+      a place.
+- id: uwc_dentistry
+  name: Bachelor of Dental Surgery
+  faculty: Dentistry
+  fields:
+  - dentistry
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 40
+    subject_minimums:
+      english: 4
+      other_language: 3
+      mathematics: 4
+      physical_sciences: 4
+      life_sciences: 4
+    extras:
+    - NSC Bachelors admission is required. Meeting minimum requirements does not guarantee
+      a place.
+- id: uwc_oral_health
+  name: Bachelor of Oral Health
+  faculty: Dentistry
+  fields:
+  - dentistry
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 33
+    subject_minimums:
+      english: 4
+      other_language: 3
+      life_sciences: 4
+    extras:
+    - NSC Bachelors admission is required. Meeting minimum requirements does not guarantee
+      a place.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+      - subjects:
+          mathematical_literacy: 4
+- id: uwc_llb
+  name: Bachelor of Laws (4 years)
+  faculty: Law
+  fields:
+  - law
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 37
+    subject_minimums:
+      english: 4
+      other_language: 3
+    extras:
+    - NSC Bachelors admission is required. Meeting minimum requirements does not guarantee
+      a place.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+      - subjects:
+          mathematical_literacy: 5
+- id: uwc_ba_law
+  name: Bachelor of Arts in Law (3 years)
+  faculty: Law
+  fields:
+  - law
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 37
+    subject_minimums:
+      english: 4
+      other_language: 3
+    extras:
+    - NSC Bachelors admission is required. Meeting minimum requirements does not guarantee
+      a place.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+      - subjects:
+          mathematical_literacy: 5
+- id: uwc_bcom_law
+  name: BCom Law
+  faculty: Law
+  fields:
+  - law
+  - commerce
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 30
+    subject_minimums:
+      english: 4
+      other_language: 3
+      mathematics: 4
+    extras:
+    - NSC Bachelors admission is required. Meeting minimum requirements does not guarantee
+      a place.
+- id: uwc_education_commerce
+  name: BEd Accounting (FET), Economic and Management Sciences (SP) and Mathematics
+    (SP)
+  faculty: Education
+  fields:
+  - education
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 33
+    subject_minimums:
+      english: 4
+      other_language: 3
+    extras:
+    - NSC Bachelors admission is required. Meeting minimum requirements does not guarantee
+      a place.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+      - subjects:
+          mathematical_literacy: 6
+    - one_of:
+      - subjects:
+          accounting: 4
+      - subjects:
+          business_studies: 4
+      - subjects:
+          economics: 4
+- id: uwc_education_science
+  name: BEd Mathematics (SP), Mathematical Literacy (SP and FET) and Natural Science
+    (SP)
+  faculty: Education
+  fields:
+  - education
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 33
+    subject_minimums:
+      english: 4
+      other_language: 3
+    extras:
+    - NSC Bachelors admission is required. Meeting minimum requirements does not guarantee
+      a place.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+      - subjects:
+          mathematical_literacy: 6
+    - one_of:
+      - subjects:
+          life_sciences: 4
+      - subjects:
+          physical_sciences: 4
+- id: uwc_education_languages_lo
+  name: BEd Languages (SP and FET) and Life Orientation (SP)
+  faculty: Education
+  fields:
+  - education
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 33
+    english_language_levels:
+      home: 4
+      first_additional: 5
+    subject_minimums:
+      english: 4
+      other_language: 4
+      life_orientation: 4
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+      - subjects:
+          mathematical_literacy: 5
+  selection_note: Selection and available places apply. English Home Language level
+    4 or First Additional Language level 5; see the 2027 Admissions Criteria, page
+    2.
+
+- id: uwc_education_languages_math
+  name: BEd Languages (SP and FET) and Mathematics (SP)
+  faculty: Education
+  fields:
+  - education
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 33
+    english_language_levels:
+      home: 4
+      first_additional: 5
+    subject_minimums:
+      english: 4
+      other_language: 4
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+      - subjects:
+          mathematical_literacy: 6
+  selection_note: Selection and available places apply. English Home Language level
+    4 or First Additional Language level 5; see the 2027 Admissions Criteria, page
+    2.
+
+- id: uwc_education_languages_social
+  name: BEd Languages (SP and FET) and Social Sciences (SP)
+  faculty: Education
+  fields:
+  - education
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 33
+    english_language_levels:
+      home: 4
+      first_additional: 5
+    subject_minimums:
+      english: 4
+      other_language: 4
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+      - subjects:
+          mathematical_literacy: 5
+    - one_of:
+      - subjects:
+          history: 4
+      - subjects:
+          geography: 4
+  selection_note: Selection and available places apply. English Home Language level
+    4 or First Additional Language level 5; see the 2027 Admissions Criteria, page
+    2.
+
+- id: uwc_education_foundation
+  name: BEd Foundation Phase Teaching
+  faculty: Education
+  fields:
+  - education
+  selective: true
+  requirements:
+    source: s-uwc-admissions-2027
+    min_points: 33
+    subject_minimums:
+      english: 4
+      other_language: 4
+    extras:
+    - NSC Bachelors admission is required. Meeting minimum requirements does not guarantee
+      a place.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+      - subjects:
+          mathematical_literacy: 5
 
 sources:
   - id: s-uwc-campus-tour
@@ -95,6 +924,7 @@ sources:
     retrieved: 2026-10-22
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-uwc-aps
     url: "https://www.uwc.ac.za/admission-point-score-calculator/south-african-aps-calculator"
     publisher: "University of the Western Cape"
@@ -102,6 +932,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-uwc-apply
     url: "https://www.uwc.ac.za/admission-and-financial-aid/apply/undergraduate-applications"
     publisher: "University of the Western Cape"
@@ -109,3 +940,18 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
+  - id: s-uwc-admissions-2027
+    url: https://www.uwc.ac.za/admission-and-financial-aid/undergraduate-admission/application-information
+    publisher: University of the Western Cape
+    title: General Admissions Criteria for 2027, pp.1–2 (user-supplied PDF; see docs/research/2027-local-prospectuses.md)
+    retrieved: '2026-10-24'
+    last_verified: null
+    verified_by: agent draft, needs human check
+    verification_basis: official_university
+
+support_services:
+- kind: financial_aid
+  name: Financial Aid Office
+  contact: 021 959 9753; finaid@uwc.ac.za
+  source: s-uwc-admissions-2027

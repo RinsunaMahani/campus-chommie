@@ -50,6 +50,8 @@ def check(path: Path, today: date) -> tuple[list[str], list[str]]:
         problem(f"{uni.university}: no points rules yet")
     if uni.max_choices is None:
         problem(f"{uni.university}: max_choices not verified")
+    if not uni.programmes:
+        problem(f"{uni.university}: no programmes yet")
     for p in uni.programmes:
         if p.requirements is None:
             problem(f"{uni.university}/{p.id}: requirements not verified yet")
@@ -170,11 +172,17 @@ def _check_applications(who: str, apps: Applications | None, problem) -> None:
 
 
 def _check_sources(who: str, sources: list[Source], today: date, problem, warnings: list[str]) -> None:
+    if not sources:
+        problem(f"{who}: no sources")
     for s in sources:
-        if s.last_verified is None:
+        if not s.verified and s.last_verified is None:
             problem(f"{who}/{s.id}: never verified")
-        elif (today - s.last_verified).days > STALE_AFTER_DAYS:
-            warnings.append(f"{who}/{s.id}: last verified {s.last_verified}, re-check it")
+        elif not s.verified:
+            problem(f"{who}/{s.id}: verification needs a named human reviewer, not an agent")
+        elif s.evidence_date > today:
+            problem(f"{who}/{s.id}: verification evidence is in the future")
+        elif (today - s.evidence_date).days > STALE_AFTER_DAYS:
+            problem(f"{who}/{s.id}: last verified {s.evidence_date}, re-check it")
 
 
 def main(argv: list[str] | None = None) -> int:

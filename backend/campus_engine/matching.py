@@ -164,7 +164,33 @@ def _check_subjects(req: Requirements, levels: dict[str, int], marks: dict[str, 
     return failed, route_notes, min_points
 
 
-def assess(uni: University, programme: Programme, marks: dict[str, float]) -> Match:
+def assess(uni: University, programme: Programme, marks: dict[str, float],
+           english_language_level: str | None = None) -> Match:
+    match = _assess(uni, programme, marks)
+    req = programme.requirements
+    if not req or not req.english_language_levels:
+        return match
+    levels = req.english_language_levels
+    level = compute_points({"english": marks["english"]}, NSC_LEVELS).levels["english"] if "english" in marks else 0
+    if english_language_level in levels:
+        needed = levels[english_language_level]
+        if level < needed:
+            message = f"English {english_language_level.replace('_', ' ')} language needs level {needed}; yours is {level}."
+            match.tier = NOT_YET
+            match.failed.append(message)
+            match.explanation.append(message)
+    elif level < min(levels.values()):
+        match.tier = NOT_YET
+        message = f"English needs at least level {min(levels.values())}."
+        match.failed.append(message)
+        match.explanation.append(message)
+    elif level < max(levels.values()) and match.tier != NOT_YET:
+        match.tier = UNVERIFIED
+        match.explanation.append("Choose English Home Language or First Additional Language on the marks screen to check this requirement.")
+    return match
+
+
+def _assess(uni: University, programme: Programme, marks: dict[str, float]) -> Match:
     """Assess one programme for one learner."""
     match = Match(
         university=uni.university,
@@ -197,7 +223,7 @@ def assess(uni: University, programme: Programme, marks: dict[str, float]) -> Ma
     failed, route_notes, min_points = _check_subjects(req, result.levels, marks)
     match.min_points = min_points
     if min_points is None:
-        explanation = [
+        explanation = ["The source does not state the points threshold for your subject route. Only your subjects were checked."] if req.points_threshold_incomplete else [
             f"Your points: {num(result.total)}. The university publishes no points minimum for this "
             "programme, so only your subjects were checked."
         ]
@@ -217,6 +243,11 @@ def assess(uni: University, programme: Programme, marks: dict[str, float]) -> Ma
         match.explanation = explanation + failed + req.extras
         return match
 
+    if min_points is None and req.points_threshold_incomplete:
+        match.tier = SUBJECTS_MET
+        match.explanation = explanation + req.extras + [NO_GUARANTEE]
+        return match
+
     if programme.selective:
         match.tier = REACH
         notes = ["Places are limited and selection is competitive."]
@@ -233,9 +264,9 @@ def assess(uni: University, programme: Programme, marks: dict[str, float]) -> Ma
     return match
 
 
-def assess_all(uni: University, marks: dict[str, float]) -> list[Match]:
+def assess_all(uni: University, marks: dict[str, float], english_language_level: str | None = None) -> list[Match]:
     """Assess every programme at a university, best tiers first."""
-    matches = [assess(uni, p, marks) for p in uni.programmes]
+    matches = [assess(uni, p, marks, english_language_level) for p in uni.programmes]
     return sorted(matches, key=lambda m: (TIER_RANK[m.tier], m.programme_name))
 
 

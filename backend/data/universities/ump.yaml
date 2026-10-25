@@ -441,6 +441,13 @@ programmes:
         - "UMP admits you provisionally on your final Grade 11 results; final admission rests on your final Grade 12 results."
 
 sources:
+  - id: s-ump-support-2026
+    url: https://www.ump.ac.za/Student-Life/Health-and-Well-being/Counselling-Services.aspx
+    publisher: University of Mpumalanga
+    title: Counselling Services
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official university source
   - id: s-ump-where
     url: "https://www.ump.ac.za/About-us/UMP-at-a-Glance"
     publisher: "University of Mpumalanga"
@@ -448,6 +455,7 @@ sources:
     retrieved: 2026-10-20
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ump-aps
     url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Education/School-of-Early-Childhood-Education/Bachelor-of-Education-in-Foundation-Phase-Teaching.aspx"
     publisher: "University of Mpumalanga"
@@ -455,6 +463,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ump-apply
     url: "https://www.ump.ac.za/Study-with-us/Application-Process/Online-Applications"
     publisher: "University of Mpumalanga"
@@ -462,6 +471,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ump-ug-leaflet
     url: "https://www.ump.ac.za/getattachment/Study-with-us/Application-Process/Online-Applications/Undergraduate-Programmes.pdf.aspx?lang=en-US"
     publisher: "University of Mpumalanga"
@@ -469,6 +479,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ump-fees-2026
     url: "https://www.ump.ac.za/getattachment/Study-with-us/Fee-Structure/UMP-2026-Fees-Handbook.pdf.aspx?lang=en-US"
     publisher: "University of Mpumalanga"
@@ -476,6 +487,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ump-dip-plant-production
     url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Agriculture-and-Natural-Sciences/School-of-Agricultural-Sciences/Diploma-in-Agriculture-in-Plant-Production.aspx"
     publisher: "University of Mpumalanga"
@@ -483,6 +495,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ump-dip-animal-production
     url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Agriculture-and-Natural-Sciences/School-of-Agricultural-Sciences/Diploma-in-Animal-Production.aspx"
     publisher: "University of Mpumalanga"
@@ -490,6 +503,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ump-bagric-extension
     url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Agriculture-and-Natural-Sciences/School-of-Agricultural-Sciences/Bachelor-of-Agriculture-in-Agricultural-Extension-.aspx"
     publisher: "University of Mpumalanga"
@@ -497,6 +511,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ump-bsc-agriculture
     url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Agriculture-and-Natural-Sciences/School-of-Agricultural-Sciences/Bachelor-of-Science-in-Agriculture.aspx"
     publisher: "University of Mpumalanga"
@@ -504,6 +519,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ump-bsc-forestry
     url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Agriculture-and-Natural-Sciences/School-of-Agricultural-Sciences/Bachelor-of-Science-in-Forestry.aspx"
     publisher: "University of Mpumalanga"
@@ -511,6 +527,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ump-dip-nature-conservation
     url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Agriculture-and-Natural-Sciences/School-of-Biology-and-Environmental-Sciences/Diploma-in-Nature-Conservation.aspx"
     publisher: "University of Mpumalanga"
@@ -518,6 +535,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ump-bsc
     url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Agriculture-and-Natural-Sciences/School-of-Biology-and-Environmental-Sciences/Bachelor-of-Science-Degree.aspx"
     publisher: "University of Mpumalanga"
@@ -525,6 +543,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ump-bsc-environmental
     url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Agriculture-and-Natural-Sciences/School-of-Biology-and-Environmental-Sciences/Bachelor-of-Science-in-Environmental-Science.aspx"
     publisher: "University of Mpumalanga"
@@ -532,6 +551,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ump-hcert-ict
     url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Agriculture-and-Natural-Sciences/School-of-Computing-and-Mathematical-Sciences/Higher-Certificate-in-Information-Communication-Te.aspx"
     publisher: "University of Mpumalanga"
@@ -539,6 +559,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ump-dip-ict
     url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Agriculture-and-Natural-Sciences/School-of-Computing-and-Mathematical-Sciences/Diploma-in-ICT-in-Applications-Development.aspx"
     publisher: "University of Mpumalanga"
@@ -546,6 +567,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ump-bict
     url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Agriculture-and-Natural-Sciences/School-of-Computing-and-Mathematical-Sciences/Bachelor-of-Information-and-Communication-Technolo.aspx"
     publisher: "University of Mpumalanga"
@@ -553,6 +575,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ump-badmin
     url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Economics,-Development-and-Business-Sci/School-of-Development-Studies/Bachelor-of-Administration.aspx"
     publisher: "University of Mpumalanga"
@@ -560,6 +583,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ump-bcom
     url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Economics,-Development-and-Business-Sci/School-of-Development-Studies/Bachelor-of-Commerce.aspx"
     publisher: "University of Mpumalanga"
@@ -567,6 +591,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ump-bdev
     url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Economics,-Development-and-Business-Sci/School-of-Development-Studies/Bachelor-of-Development-Studies.aspx"
     publisher: "University of Mpumalanga"
@@ -574,6 +599,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ump-llb
     url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Economics,-Development-and-Business-Sci/School-of-Development-Studies/Bachelor-of-Laws.aspx"
     publisher: "University of Mpumalanga"
@@ -581,6 +607,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ump-dip-entrepreneurship
     url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Economics,-Development-and-Business-Sci/School-of-Development-Studies/Diploma-in-Entrepreneurship.aspx"
     publisher: "University of Mpumalanga"
@@ -588,6 +615,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ump-hcert-events
     url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Economics,-Development-and-Business-Sci/School-of-Hospitality-and-Tourism-Management/Higher-Certificate-in-Event-Management.aspx"
     publisher: "University of Mpumalanga"
@@ -595,6 +623,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ump-dip-hospitality
     url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Economics,-Development-and-Business-Sci/School-of-Hospitality-and-Tourism-Management/Diploma-in-Hospitality-Management-(Revised-Curricu.aspx"
     publisher: "University of Mpumalanga"
@@ -602,6 +631,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ump-dip-culinary
     url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Economics,-Development-and-Business-Sci/School-of-Hospitality-and-Tourism-Management/Diploma-in-Culinary-Arts.aspx"
     publisher: "University of Mpumalanga"
@@ -609,6 +639,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ump-ba
     url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Economics,-Development-and-Business-Sci/School-of-Social-Sciences/Bachelor-of-Arts-General.aspx"
     publisher: "University of Mpumalanga"
@@ -616,6 +647,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ump-ba-media
     url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Economics,-Development-and-Business-Sci/School-of-Social-Sciences/Bachelor-of-Arts-in-Media,-Communication-and-Cultu.aspx"
     publisher: "University of Mpumalanga"
@@ -623,6 +655,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-ump-bsw
     url: "https://www.ump.ac.za/Study-with-us/Faculties-and-Schools/Faculty-of-Economics,-Development-and-Business-Sci/School-of-Social-Sciences/Bachelor-of-Social-Work.aspx"
     publisher: "University of Mpumalanga"
@@ -630,3 +663,13 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
+
+support_services:
+- kind: counselling
+  name: Student Counselling
+  contact: 013 002 0179; studentcounselling@ump.ac.za
+  source: s-ump-support-2026
+  hours: Monday to Friday, 08:00–16:30
+  note: 'Online and in-person support for registered students. Physical office: Mbombela,
+    building 7, second floor.'

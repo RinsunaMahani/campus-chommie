@@ -1326,6 +1326,13 @@ programmes:
         - "The prospectus also mentions a motivational letter from your church or minister about your involvement and why they recommend you for Theology studies."
 
 sources:
+  - id: s-su-support-2026
+    url: https://blogs.sun.ac.za/tpsc/support-services/counselling-services/
+    publisher: Stellenbosch University
+    title: Tygerberg counselling services
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official university source
   - id: s-su-howto
     url: "https://blogs.sun.ac.za/open-day/files/2026/03/How-to-Apply-Undergraduate-programmes-2027-intake.pdf"
     publisher: "Stellenbosch University"
@@ -1333,6 +1340,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-su-prospectus-2026
     url: "https://blogs.sun.ac.za/open-day/files/2025/02/Prospectus.pdf"
     publisher: "Stellenbosch University"
@@ -1340,6 +1348,7 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-su-eng-faq-2027
     url: "https://blogs.sun.ac.za/open-day/files/2026/03/Faculty-FAQ-Eng.pdf"
     publisher: "Stellenbosch University"
@@ -1347,3 +1356,13 @@ sources:
     retrieved: 2026-10-15
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
+
+support_services:
+- kind: counselling
+  name: Centre for Student Counselling and Development
+  contact: 021 938 9590; supportus@sun.ac.za
+  source: s-su-support-2026
+  campuses:
+  - tygerberg
+  note: Tygerberg campus counselling contact.

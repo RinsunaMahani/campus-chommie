@@ -2,8 +2,8 @@
 #
 # Agent draft, 13 Oct 2026. UJ's site sits behind a bot check that stops automated readers, so these
 # values were read from a search engine's copy of UJ's own pages (docs/research/universities.md says
-# which). A person should open each page and check every value before release. Programmes aren't
-# added yet: only how UJ counts points, and how and when to apply.
+# which). Programmes and support were added from the user-supplied 2027 prospectus on 24 Oct 2026;
+# see docs/research/2027-local-prospectuses.md. Sources remain agent drafts.
 
 university: uj
 name: University of Johannesburg
@@ -46,7 +46,3394 @@ campuses:
   - {id: dfc, name: "Doornfontein (DFC)", source: s-uj-maps-venues}
   - {id: swc, name: "Soweto (SWC)", source: s-uj-maps-venues}
 
-programmes: []
+programmes:
+- id: uj_b8ba3q
+  name: Bachelor of Architecture
+  faculty: Art, Design and Architecture
+  fields:
+  - built_environment
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 30
+    subject_minimums:
+      english: 5
+      mathematics: 5
+    extras:
+    - 2027 prospectus p.32. NSC admission to this qualification is required.
+- id: uj_b8cd2q
+  name: BA Communication Design
+  faculty: Art, Design and Architecture
+  fields:
+  - arts_and_design
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 25
+    subject_minimums:
+      english: 5
+    extras:
+    - 2027 prospectus p.32. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+        min_points: 25
+      - subjects:
+          mathematical_literacy: 4
+        min_points: 26
+- id: uj_b8dm3q
+  name: BA Digital Media Design
+  faculty: Art, Design and Architecture
+  fields:
+  - arts_and_design
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 25
+    subject_minimums:
+      english: 5
+    extras:
+    - 2027 prospectus p.32. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+        min_points: 25
+      - subjects:
+          mathematical_literacy: 4
+        min_points: 26
+- id: uj_b8id1q
+  name: BA Industrial Design
+  faculty: Art, Design and Architecture
+  fields:
+  - arts_and_design
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 25
+    subject_minimums:
+      english: 5
+    extras:
+    - 2027 prospectus p.32. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+        min_points: 25
+      - subjects:
+          mathematical_literacy: 5
+        min_points: 26
+- id: uj_b8ba6q
+  name: BA Interior Design
+  faculty: Art, Design and Architecture
+  fields:
+  - arts_and_design
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 25
+    subject_minimums:
+      english: 5
+    extras:
+    - 2027 prospectus p.33. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+        min_points: 25
+      - subjects:
+          mathematical_literacy: 5
+        min_points: 26
+- id: uj_b8fd1q
+  name: BA Fashion Design
+  faculty: Art, Design and Architecture
+  fields:
+  - arts_and_design
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 25
+    subject_minimums:
+      english: 5
+    extras:
+    - 2027 prospectus p.33. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+        min_points: 25
+      - subjects:
+          mathematical_literacy: 5
+        min_points: 26
+- id: uj_b8ba7q
+  name: BA Visual Art
+  faculty: Art, Design and Architecture
+  fields:
+  - arts_and_design
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 25
+    subject_minimums:
+      english: 5
+    extras:
+    - 2027 prospectus p.33. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+        min_points: 25
+      - subjects:
+          mathematical_literacy: 4
+        min_points: 26
+      - subjects:
+          technical_mathematics: 3
+        min_points: 25
+- id: uj_d8at1q
+  name: Diploma in Architecture
+  faculty: Art, Design and Architecture
+  fields:
+  - built_environment
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 25
+    subject_minimums:
+      english: 5
+    extras:
+    - 2027 prospectus p.34. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+        min_points: 25
+      - subjects:
+          technical_mathematics: 5
+        min_points: 26
+- id: uj_d8fp1q
+  name: Diploma in Fashion Production
+  faculty: Art, Design and Architecture
+  fields:
+  - arts_and_design
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 22
+    subject_minimums:
+      english: 5
+    extras:
+    - 2027 prospectus p.34. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+        min_points: 22
+      - subjects:
+          mathematical_literacy: 4
+        min_points: 23
+- id: uj_d8jd1q
+  name: Diploma in Jewellery Design and Manufacture
+  faculty: Art, Design and Architecture
+  fields:
+  - arts_and_design
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 20
+    subject_minimums:
+      english: 5
+    extras:
+    - 2027 prospectus p.34. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+        min_points: 20
+      - subjects:
+          mathematical_literacy: 4
+        min_points: 21
+      - subjects:
+          technical_mathematics: 5
+        min_points: 22
+- id: uj_b34caq
+  name: Bachelor of Accounting (CA)
+  faculty: College of Business and Economics
+  fields:
+  - accounting
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 33
+    subject_minimums:
+      english: 4
+      mathematics: 5
+    extras:
+    - 2027 prospectus p.40. NSC admission to this qualification is required.
+- id: uj_b34hnq
+  name: Bachelor of Hospitality Management
+  faculty: College of Business and Economics
+  fields:
+  - tourism_and_hospitality
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 26
+    subject_minimums:
+      english: 5
+    extras:
+    - 2027 prospectus p.40. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+        min_points: 26
+      - subjects:
+          mathematical_literacy: 5
+        min_points: 28
+      - subjects:
+          technical_mathematics: 4
+        min_points: 26
+- id: uj_b34hrq
+  name: Bachelor of Human Resource Management
+  faculty: College of Business and Economics
+  fields:
+  - management
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 28
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.40. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+        min_points: 28
+      - subjects:
+          mathematical_literacy: 5
+        min_points: 28
+      - subjects:
+          technical_mathematics: 4
+        min_points: 28
+- id: uj_b34i7q
+  name: Bachelor of Industrial Psychology
+  faculty: College of Business and Economics
+  fields:
+  - humanities
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 26
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.40. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+        min_points: 26
+      - subjects:
+          mathematical_literacy: 5
+        min_points: 28
+- id: uj_b34tdq
+  name: Bachelor of Tourism Development and Management
+  faculty: College of Business and Economics
+  fields:
+  - tourism_and_hospitality
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 26
+    subject_minimums:
+      english: 5
+    extras:
+    - 2027 prospectus p.40. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+        min_points: 26
+      - subjects:
+          mathematical_literacy: 4
+        min_points: 28
+      - subjects:
+          technical_mathematics: 3
+        min_points: 26
+- id: uj_b34pkq
+  name: BA Public Management and Governance (APK / SWC)
+  faculty: College of Business and Economics
+  fields:
+  - public_administration
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 26
+    subject_minimums:
+      english: 5
+    extras:
+    - 2027 prospectus p.41. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+        min_points: 26
+      - subjects:
+          mathematical_literacy: 5
+        min_points: 28
+      - subjects:
+          technical_mathematics: 3
+        min_points: 26
+- id: uj_b34a5q
+  name: BCom Accounting
+  faculty: College of Business and Economics
+  fields:
+  - accounting
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 28
+    subject_minimums:
+      english: 4
+      mathematics: 4
+    extras:
+    - 2027 prospectus p.41. NSC admission to this qualification is required.
+- id: uj_b34bmq
+  name: BCom Business Management
+  faculty: College of Business and Economics
+  fields:
+  - management
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 26
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.41. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+      - subjects:
+          technical_mathematics: 4
+- id: uj_b3n14q
+  name: BCom Economics and Econometrics
+  faculty: College of Business and Economics
+  fields:
+  - economics
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 28
+    subject_minimums:
+      english: 4
+      mathematics: 4
+    extras:
+    - 2027 prospectus p.41. NSC admission to this qualification is required.
+- id: uj_b1cemq
+  name: BCom Entrepreneurial Management
+  faculty: College of Business and Economics
+  fields:
+  - management
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 26
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.41. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+      - subjects:
+          technical_mathematics: 4
+- id: uj_b34f5q
+  name: BCom Finance
+  faculty: College of Business and Economics
+  fields:
+  - finance
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 28
+    subject_minimums:
+      english: 4
+      mathematics: 4
+    extras:
+    - 2027 prospectus p.41. NSC admission to this qualification is required.
+- id: uj_b1cisq
+  name: BCom Information Systems
+  faculty: College of Business and Economics
+  fields:
+  - computing
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 26
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.42. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+      - subjects:
+          technical_mathematics: 4
+- id: uj_b1cmmq
+  name: BCom Marketing Management
+  faculty: College of Business and Economics
+  fields:
+  - commerce
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 26
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.42. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+      - subjects:
+          technical_mathematics: 4
+- id: uj_b34tlq
+  name: BCom Transport and Logistics Management
+  faculty: College of Business and Economics
+  fields:
+  - management
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 27
+    subject_minimums:
+      english: 5
+    extras:
+    - 2027 prospectus p.42. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+      - subjects:
+          technical_mathematics: 4
+- id: uj_b34imq
+  name: BCom Information Management
+  faculty: College of Business and Economics
+  fields:
+  - commerce
+  selective: true
+  selection_note: 2027 prospectus p.42 publishes APS 28 only for Mathematical Literacy.
+    Mathematics and Technical Mathematics applicants must confirm their APS threshold
+    with UJ.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: null
+    points_threshold_incomplete: true
+    subject_minimums:
+      english: 4
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+      - subjects:
+          technical_mathematics: 4
+      - subjects:
+          mathematical_literacy: 6
+        min_points: 28
+    extras:
+    - 2027 prospectus p.42 publishes APS 28 only for Mathematical Literacy. Mathematics
+      and Technical Mathematics applicants must confirm their APS threshold with UJ.
+
+- id: uj_b34aeq
+  name: BCom Accounting (Extended)
+  faculty: College of Business and Economics
+  fields:
+  - commerce
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 25
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.43. NSC admission to this qualification is required.
+    - Only first-time entrants who have never enrolled at a higher education institution
+      are considered.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+        min_points: 25
+      - subjects:
+          mathematical_literacy: 6
+        min_points: 28
+- id: uj_b34beq
+  name: BCom Business Management (Extended)
+  faculty: College of Business and Economics
+  fields:
+  - commerce
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 25
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.43. NSC admission to this qualification is required.
+    - Only first-time entrants who have never enrolled at a higher education institution
+      are considered.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+        min_points: 25
+      - subjects:
+          mathematical_literacy: 6
+        min_points: 28
+      - subjects:
+          technical_mathematics: 3
+        min_points: 25
+- id: uj_b3ne4q
+  name: BCom Economics and Econometrics (Extended)
+  faculty: College of Business and Economics
+  fields:
+  - commerce
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 25
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.43. NSC admission to this qualification is required.
+    - Only first-time entrants who have never enrolled at a higher education institution
+      are considered.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+        min_points: 25
+      - subjects:
+          mathematical_literacy: 6
+        min_points: 28
+- id: uj_b34feq
+  name: BCom Finance (Extended)
+  faculty: College of Business and Economics
+  fields:
+  - commerce
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 25
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.43. NSC admission to this qualification is required.
+    - Only first-time entrants who have never enrolled at a higher education institution
+      are considered.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+        min_points: 25
+      - subjects:
+          mathematical_literacy: 6
+        min_points: 28
+- id: uj_d3a15q
+  name: Diploma in Accountancy
+  faculty: College of Business and Economics
+  fields:
+  - commerce
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 22
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.44. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+        min_points: 22
+      - subjects:
+          mathematical_literacy: 5
+        min_points: 24
+      - subjects:
+          technical_mathematics: 3
+        min_points: 22
+- id: uj_di1401
+  name: Diploma in Business Information Technology
+  faculty: College of Business and Economics
+  fields:
+  - commerce
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 22
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.44. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+        min_points: 22
+      - subjects:
+          mathematical_literacy: 6
+        min_points: 24
+      - subjects:
+          technical_mathematics: 3
+        min_points: 22
+- id: uj_d34f9q
+  name: Diploma in Financial Services Operations
+  faculty: College of Business and Economics
+  fields:
+  - commerce
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 22
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.44. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+        min_points: 22
+      - subjects:
+          mathematical_literacy: 5
+        min_points: 24
+      - subjects:
+          technical_mathematics: 3
+        min_points: 22
+- id: uj_d34fbq
+  name: Diploma in Food and Beverage Operations
+  faculty: College of Business and Economics
+  fields:
+  - commerce
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 22
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.44. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+        min_points: 22
+      - subjects:
+          mathematical_literacy: 5
+        min_points: 24
+      - subjects:
+          technical_mathematics: 3
+        min_points: 22
+- id: uj_d34lgq
+  name: Diploma in Logistics
+  faculty: College of Business and Economics
+  fields:
+  - commerce
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 24
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.45. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+        min_points: 24
+      - subjects:
+          mathematical_literacy: 5
+        min_points: 26
+      - subjects:
+          technical_mathematics: 3
+        min_points: 24
+- id: uj_d34mkq
+  name: Diploma in Marketing
+  faculty: College of Business and Economics
+  fields:
+  - commerce
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 22
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.45. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+        min_points: 22
+      - subjects:
+          mathematical_literacy: 5
+        min_points: 24
+      - subjects:
+          technical_mathematics: 3
+        min_points: 22
+- id: uj_d34p2q
+  name: Diploma in People Management
+  faculty: College of Business and Economics
+  fields:
+  - commerce
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 22
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.45. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+        min_points: 22
+      - subjects:
+          mathematical_literacy: 5
+        min_points: 24
+      - subjects:
+          technical_mathematics: 3
+        min_points: 22
+- id: uj_d34rmq
+  name: Diploma in Retail Business Management
+  faculty: College of Business and Economics
+  fields:
+  - commerce
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 22
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.46. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+        min_points: 22
+      - subjects:
+          mathematical_literacy: 5
+        min_points: 24
+      - subjects:
+          technical_mathematics: 3
+        min_points: 22
+- id: uj_d34sbq
+  name: Diploma in Small Business Management
+  faculty: College of Business and Economics
+  fields:
+  - commerce
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 22
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.46. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+        min_points: 22
+      - subjects:
+          mathematical_literacy: 5
+        min_points: 24
+      - subjects:
+          technical_mathematics: 3
+        min_points: 22
+- id: uj_d34tmq
+  name: Diploma in Tourism Management
+  faculty: College of Business and Economics
+  fields:
+  - commerce
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 22
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.46. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+        min_points: 22
+      - subjects:
+          mathematical_literacy: 5
+        min_points: 24
+      - subjects:
+          technical_mathematics: 3
+        min_points: 22
+- id: uj_d34trq
+  name: Diploma in Transportation Management
+  faculty: College of Business and Economics
+  fields:
+  - commerce
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 24
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.46. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+        min_points: 24
+      - subjects:
+          mathematical_literacy: 5
+        min_points: 26
+      - subjects:
+          technical_mathematics: 3
+        min_points: 24
+- id: uj_d34leq
+  name: Diploma in Logistics (Extended)
+  faculty: College of Business and Economics
+  fields:
+  - commerce
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 22
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.46. NSC admission to this qualification is required.
+    - Extended programmes are restricted to first-time entrants with no prior higher
+      education enrolment.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+        min_points: 22
+      - subjects:
+          mathematical_literacy: 5
+        min_points: 24
+      - subjects:
+          technical_mathematics: 3
+        min_points: 22
+- id: uj_d34peq
+  name: Diploma in People Management (Extended)
+  faculty: College of Business and Economics
+  fields:
+  - commerce
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 19
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.46. NSC admission to this qualification is required.
+    - Extended programmes are restricted to first-time entrants with no prior higher
+      education enrolment.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+        min_points: 19
+      - subjects:
+          mathematical_literacy: 4
+        min_points: 21
+      - subjects:
+          technical_mathematics: 3
+        min_points: 19
+- id: uj_d34seq
+  name: Diploma in Small Business Management (Extended)
+  faculty: College of Business and Economics
+  fields:
+  - commerce
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 19
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.46. NSC admission to this qualification is required.
+    - Extended programmes are restricted to first-time entrants with no prior higher
+      education enrolment.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+        min_points: 19
+      - subjects:
+          mathematical_literacy: 4
+        min_points: 21
+      - subjects:
+          technical_mathematics: 3
+        min_points: 19
+- id: uj_d34teq
+  name: Diploma in Transportation Management (Extended)
+  faculty: College of Business and Economics
+  fields:
+  - commerce
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 22
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.47. NSC admission to this qualification is required.
+    - Extended programmes are restricted to first-time entrants with no prior higher
+      education enrolment.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+        min_points: 22
+      - subjects:
+          mathematical_literacy: 5
+        min_points: 24
+      - subjects:
+          technical_mathematics: 3
+        min_points: 22
+- id: uj_b34acc
+  name: BCom Accountancy (Online)
+  faculty: College of Business and Economics
+  fields:
+  - accounting
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 28
+    subject_minimums:
+      english: 4
+      mathematics: 4
+    extras:
+    - 2027 prospectus p.47. NSC admission to this qualification is required.
+    - 'Online applications: https://online.uj.ac.za'
+- id: uj_b34hrc
+  name: Bachelor of Human Resource Management (Online)
+  faculty: College of Business and Economics
+  fields:
+  - management
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 28
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.47. NSC admission to this qualification is required.
+    - 'Online applications: https://online.uj.ac.za'
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+        min_points: 28
+      - subjects:
+          mathematical_literacy: 5
+        min_points: 28
+      - subjects:
+          technical_mathematics: 4
+        min_points: 28
+- id: uj_b5bfpq
+  name: BEd Foundation Phase Teaching
+  faculty: Education
+  fields:
+  - education
+  selective: true
+  selection_note: Selection and available places apply. English Home Language level
+    5 or First Additional Language level 6; 2027 prospectus pp.54–55.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 28
+    english_language_levels:
+      home: 5
+      first_additional: 6
+    subject_minimums:
+      english: 5
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+      - subjects:
+          mathematical_literacy: 5
+      - subjects:
+          technical_mathematics: 5
+
+- id: uj_b5bitq
+  name: BEd Intermediate Phase Teaching
+  faculty: Education
+  fields:
+  - education
+  selective: true
+  selection_note: Selection and available places apply. English Home Language level
+    5 or First Additional Language level 6; 2027 prospectus pp.54–55.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 28
+    english_language_levels:
+      home: 5
+      first_additional: 6
+    subject_minimums:
+      english: 5
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+      - subjects:
+          mathematical_literacy: 5
+      - subjects:
+          technical_mathematics: 5
+
+- id: uj_b5bsaq
+  name: 'BEd Senior Phase and FET: Accounting'
+  faculty: Education
+  fields:
+  - education
+  selective: true
+  selection_note: Selection and available places apply. English Home Language level
+    5 or First Additional Language level 6; 2027 prospectus pp.54–55.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 28
+    english_language_levels:
+      home: 5
+      first_additional: 6
+    subject_minimums:
+      english: 5
+      mathematics: 4
+    choices: []
+
+- id: uj_b5bsbq
+  name: 'BEd Senior Phase and FET: Business Management'
+  faculty: Education
+  fields:
+  - education
+  selective: true
+  selection_note: Selection and available places apply. English Home Language level
+    5 or First Additional Language level 6; 2027 prospectus pp.54–55.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 28
+    english_language_levels:
+      home: 5
+      first_additional: 6
+    subject_minimums:
+      english: 5
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+      - subjects:
+          mathematical_literacy: 5
+      - subjects:
+          technical_mathematics: 5
+
+- id: uj_b5bseq
+  name: 'BEd Senior Phase and FET: Economics'
+  faculty: Education
+  fields:
+  - education
+  selective: true
+  selection_note: Selection and available places apply. English Home Language level
+    5 or First Additional Language level 6; 2027 prospectus pp.54–55.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 28
+    english_language_levels:
+      home: 5
+      first_additional: 6
+    subject_minimums:
+      english: 5
+      mathematics: 4
+    choices: []
+
+- id: uj_b5lopq
+  name: 'BEd Senior Phase and FET: Life Orientation (Psychology)'
+  faculty: Education
+  fields:
+  - education
+  selective: true
+  selection_note: Selection and available places apply. English Home Language level
+    5 or First Additional Language level 6; 2027 prospectus pp.54–55.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 28
+    english_language_levels:
+      home: 5
+      first_additional: 6
+    subject_minimums:
+      english: 5
+    choices: []
+
+- id: uj_b5sgeq
+  name: 'BEd Senior Phase and FET: Geography'
+  faculty: Education
+  fields:
+  - education
+  selective: true
+  selection_note: '2027 prospectus p.55: APS 28; English Home Language 5 or First
+    Additional Language 6. Subject alternatives in the table also need faculty confirmation.
+    The app cannot distinguish these language routes; check with UJ.'
+  requirements: null
+- id: uj_b5slsq
+  name: 'BEd Senior Phase and FET: Life Sciences'
+  faculty: Education
+  fields:
+  - education
+  selective: true
+  selection_note: Selection and available places apply. English Home Language level
+    5 or First Additional Language level 6; 2027 prospectus pp.54–55.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 28
+    english_language_levels:
+      home: 5
+      first_additional: 6
+    subject_minimums:
+      english: 5
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+      - subjects:
+          technical_mathematics: 4
+      - subjects:
+          mathematical_literacy: 6
+    - one_of:
+      - subjects:
+          physical_sciences: 4
+      - subjects:
+          life_sciences: 4
+
+- id: uj_b5smmq
+  name: 'BEd Senior Phase and FET: Mathematics'
+  faculty: Education
+  fields:
+  - education
+  selective: true
+  selection_note: Selection and available places apply. English Home Language level
+    5 or First Additional Language level 6; 2027 prospectus pp.54–55.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 28
+    english_language_levels:
+      home: 5
+      first_additional: 6
+    subject_minimums:
+      english: 5
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+      - subjects:
+          technical_mathematics: 4
+      - subjects:
+          mathematical_literacy: 6
+
+- id: uj_b5spsq
+  name: 'BEd Senior Phase and FET: Physical Science'
+  faculty: Education
+  fields:
+  - education
+  selective: true
+  selection_note: Selection and available places apply. English Home Language level
+    5 or First Additional Language level 6; 2027 prospectus pp.54–55.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 28
+    english_language_levels:
+      home: 5
+      first_additional: 6
+    subject_minimums:
+      english: 5
+      physical_sciences: 4
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+      - subjects:
+          technical_mathematics: 4
+
+- id: uj_b5laeq
+  name: 'BEd Senior Phase and FET: English'
+  faculty: Education
+  fields:
+  - education
+  selective: true
+  selection_note: Selection and available places apply. English Home Language level
+    5 or First Additional Language level 6; 2027 prospectus pp.54–55.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 28
+    english_language_levels:
+      home: 5
+      first_additional: 6
+    subject_minimums:
+      english: 5
+    choices: []
+
+- id: uj_b5lafq
+  name: 'BEd Senior Phase and FET: Afrikaans'
+  faculty: Education
+  fields:
+  - education
+  selective: true
+  selection_note: '2027 prospectus p.55: APS 28; English Home Language 5 or First
+    Additional Language 6. Afrikaans HL 4 or FAL 5. The app cannot distinguish these
+    language routes; check with UJ.'
+  requirements: null
+- id: uj_b5lazq
+  name: 'BEd Senior Phase and FET: isiZulu'
+  faculty: Education
+  fields:
+  - education
+  selective: true
+  selection_note: '2027 prospectus p.55: APS 28; English Home Language 5 or First
+    Additional Language 6. isiZulu HL 4 or FAL 5. The app cannot distinguish these
+    language routes; check with UJ.'
+  requirements: null
+- id: uj_b5lasq
+  name: 'BEd Senior Phase and FET: Sepedi'
+  faculty: Education
+  fields:
+  - education
+  selective: true
+  selection_note: '2027 prospectus p.55: APS 28; English Home Language 5 or First
+    Additional Language 6. Sepedi HL 4 or FAL 5. The app cannot distinguish these
+    language routes; check with UJ.'
+  requirements: null
+- id: uj_b6cs0q
+  name: BEng Civil Engineering
+  faculty: Engineering and the Built Environment
+  fields:
+  - engineering
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 32
+    subject_minimums:
+      english: 5
+      physical_sciences: 5
+    extras:
+    - 2027 prospectus p.60. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 5
+      - subjects:
+          technical_mathematics: 5
+- id: uj_b6es0q
+  name: BEng Electrical and Electronic Engineering
+  faculty: Engineering and the Built Environment
+  fields:
+  - engineering
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 32
+    subject_minimums:
+      english: 5
+      physical_sciences: 5
+    extras:
+    - 2027 prospectus p.60. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 5
+      - subjects:
+          technical_mathematics: 5
+- id: uj_b6ms0q
+  name: BEng Mechanical Engineering
+  faculty: Engineering and the Built Environment
+  fields:
+  - engineering
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 32
+    subject_minimums:
+      english: 5
+      physical_sciences: 5
+    extras:
+    - 2027 prospectus p.60. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 5
+      - subjects:
+          technical_mathematics: 5
+- id: uj_b6ce1q
+  name: BEngTech Chemical Engineering
+  faculty: Engineering and the Built Environment
+  fields:
+  - engineering
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 30
+    subject_minimums:
+      english: 4
+      physical_sciences: 5
+    extras:
+    - 2027 prospectus p.60. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 5
+      - subjects:
+          technical_mathematics: 5
+- id: uj_b6cv3q
+  name: BEngTech Civil Engineering
+  faculty: Engineering and the Built Environment
+  fields:
+  - engineering
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 28
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.60. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 5
+      - subjects:
+          technical_mathematics: 5
+    - one_of:
+      - subjects:
+          physical_sciences: 5
+      - subjects:
+          technical_sciences: 5
+- id: uj_b6el1q
+  name: BEngTech Electrical Engineering
+  faculty: Engineering and the Built Environment
+  fields:
+  - engineering
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 30
+    subject_minimums:
+      english: 4
+      physical_sciences: 5
+    extras:
+    - 2027 prospectus p.60. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 5
+      - subjects:
+          technical_mathematics: 5
+- id: uj_b6extq
+  name: BEngTech Extraction Metallurgy
+  faculty: Engineering and the Built Environment
+  fields:
+  - engineering
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 30
+    subject_minimums:
+      english: 4
+      physical_sciences: 5
+    extras:
+    - 2027 prospectus p.60. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 5
+      - subjects:
+          technical_mathematics: 5
+- id: uj_b6in2q
+  name: BEngTech Industrial Engineering
+  faculty: Engineering and the Built Environment
+  fields:
+  - engineering
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 30
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.60. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 5
+      - subjects:
+          technical_mathematics: 5
+    - one_of:
+      - subjects:
+          physical_sciences: 5
+      - subjects:
+          technical_sciences: 5
+- id: uj_b6mc2q
+  name: BEngTech Mechanical Engineering
+  faculty: Engineering and the Built Environment
+  fields:
+  - engineering
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 30
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.60. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 5
+      - subjects:
+          technical_mathematics: 5
+    - one_of:
+      - subjects:
+          physical_sciences: 5
+      - subjects:
+          technical_sciences: 5
+- id: uj_b6minq
+  name: BEngTech Mining Engineering
+  faculty: Engineering and the Built Environment
+  fields:
+  - engineering
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 23
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.60. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 5
+      - subjects:
+          technical_mathematics: 5
+    - one_of:
+      - subjects:
+          physical_sciences: 5
+      - subjects:
+          technical_sciences: 5
+- id: uj_b6py2q
+  name: BEngTech Physical Metallurgy
+  faculty: Engineering and the Built Environment
+  fields:
+  - engineering
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 30
+    subject_minimums:
+      english: 4
+      physical_sciences: 5
+    extras:
+    - 2027 prospectus p.60. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 5
+      - subjects:
+          technical_mathematics: 5
+- id: uj_b6su0q
+  name: Bachelor of Mine Surveying
+  faculty: Engineering and the Built Environment
+  fields:
+  - built_environment
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 23
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.61. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 5
+      - subjects:
+          technical_mathematics: 5
+    - one_of:
+      - subjects:
+          physical_sciences: 5
+      - subjects:
+          technical_sciences: 5
+- id: uj_b6cn0q
+  name: BSc Construction
+  faculty: Engineering and the Built Environment
+  fields:
+  - built_environment
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 30
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.61. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 5
+      - subjects:
+          technical_mathematics: 5
+    - one_of:
+      - subjects:
+          physical_sciences: 5
+      - subjects:
+          technical_sciences: 5
+- id: uj_b6up0q
+  name: Bachelor of Urban and Regional Planning
+  faculty: Engineering and the Built Environment
+  fields:
+  - built_environment
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 27
+    subject_minimums:
+      english: 4
+      geography: 5
+    extras:
+    - 2027 prospectus p.61. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 5
+      - subjects:
+          technical_mathematics: 5
+- id: uj_b6sc0q
+  name: BSc Construction (Extended)
+  faculty: Engineering and the Built Environment
+  fields:
+  - built_environment
+  selective: true
+  selection_note: 'Published requirements need confirmation before assessment. {''english'':
+    4}; APS 26. 2027 prospectus p.63. NSC admission to this qualification is required.
+    Confirm the Physical Science/Technical Science alternative with the faculty: p.63
+    lists both columns without an explicit OR.'
+  requirements: null
+- id: uj_b6cx3q
+  name: BEngTech Civil Engineering (Extended)
+  faculty: Engineering and the Built Environment
+  fields:
+  - engineering
+  selective: true
+  selection_note: 'Published requirements need confirmation before assessment. {''english'':
+    4}; APS 26. 2027 prospectus p.63. NSC admission to this qualification is required.
+    Confirm the Physical Science/Technical Science alternative with the faculty: p.63
+    lists both columns without an explicit OR.'
+  requirements: null
+- id: uj_b6l1xq
+  name: BEngTech Electrical Engineering (Extended)
+  faculty: Engineering and the Built Environment
+  fields:
+  - engineering
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 26
+    subject_minimums:
+      english: 4
+      physical_sciences: 5
+    extras:
+    - 2027 prospectus p.63. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 5
+      - subjects:
+          technical_mathematics: 5
+- id: uj_b6ex0q
+  name: BEngTech Extraction Metallurgy (Extended)
+  faculty: Engineering and the Built Environment
+  fields:
+  - engineering
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 22
+    subject_minimums:
+      english: 4
+      physical_sciences: 4
+    extras:
+    - 2027 prospectus p.63. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+      - subjects:
+          technical_mathematics: 4
+- id: uj_b6ix2q
+  name: BEngTech Industrial Engineering (Extended)
+  faculty: Engineering and the Built Environment
+  fields:
+  - engineering
+  selective: true
+  selection_note: 'Published requirements need confirmation before assessment. {''english'':
+    4}; APS 24. 2027 prospectus p.63. NSC admission to this qualification is required.
+    Confirm the Physical Science/Technical Science alternative with the faculty: p.63
+    lists both columns without an explicit OR.'
+  requirements: null
+- id: uj_b6mx2q
+  name: BEngTech Mechanical Engineering (Extended)
+  faculty: Engineering and the Built Environment
+  fields:
+  - engineering
+  selective: true
+  selection_note: 'Published requirements need confirmation before assessment. {''english'':
+    4}; APS 24. 2027 prospectus p.63. NSC admission to this qualification is required.
+    Confirm the Physical Science/Technical Science alternative with the faculty: p.63
+    lists both columns without an explicit OR.'
+  requirements: null
+- id: uj_b6px2q
+  name: BEngTech Physical Metallurgy (Extended)
+  faculty: Engineering and the Built Environment
+  fields:
+  - engineering
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 22
+    subject_minimums:
+      english: 4
+      physical_sciences: 4
+    extras:
+    - 2027 prospectus p.63. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+      - subjects:
+          technical_mathematics: 4
+- id: uj_d6masq
+  name: Diploma in Management Services
+  faculty: Engineering and the Built Environment
+  fields:
+  - management
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 19
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.62. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+        min_points: 19
+      - subjects:
+          mathematical_literacy: 5
+        min_points: 21
+      - subjects:
+          technical_mathematics: 3
+        min_points: 19
+- id: uj_d6opmq
+  name: Diploma in Operations Management
+  faculty: Engineering and the Built Environment
+  fields:
+  - management
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 20
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.62. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+        min_points: 20
+      - subjects:
+          mathematical_literacy: 5
+        min_points: 22
+      - subjects:
+          technical_mathematics: 3
+        min_points: 20
+- id: uj_d6maeq
+  name: Diploma in Management Services (Extended)
+  faculty: Engineering and the Built Environment
+  fields:
+  - management
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 19
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.63. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+        min_points: 19
+      - subjects:
+          mathematical_literacy: 5
+        min_points: 21
+      - subjects:
+          technical_mathematics: 3
+        min_points: 19
+- id: uj_d6opeq
+  name: Diploma in Operations Management (Extended)
+  faculty: Engineering and the Built Environment
+  fields:
+  - management
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 20
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.63. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+        min_points: 20
+      - subjects:
+          mathematical_literacy: 5
+        min_points: 22
+      - subjects:
+          technical_mathematics: 3
+        min_points: 20
+- id: uj_b9s15q
+  name: Bachelor of Biokinetics
+  faculty: Health Sciences
+  fields:
+  - rehabilitation
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 32
+    subject_minimums:
+      english: 5
+    extras:
+    - 2027 prospectus p.66. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+        min_points: 32
+      - subjects:
+          mathematical_literacy: 5
+        min_points: 33
+- id: uj_b9m01q
+  name: Bachelor of Diagnostic Radiography
+  faculty: Health Sciences
+  fields:
+  - radiography
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 31
+    subject_minimums:
+      english: 5
+      mathematics: 4
+      physical_sciences: 4
+      life_sciences: 5
+    extras:
+    - 2027 prospectus p.66. NSC admission to this qualification is required.
+- id: uj_b9m03q
+  name: Bachelor of Diagnostic Ultrasound
+  faculty: Health Sciences
+  fields:
+  - radiography
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 31
+    subject_minimums:
+      english: 5
+      mathematics: 4
+      physical_sciences: 4
+      life_sciences: 5
+    extras:
+    - 2027 prospectus p.66. NSC admission to this qualification is required.
+- id: uj_b9m02q
+  name: Bachelor of Nuclear Medicine
+  faculty: Health Sciences
+  fields:
+  - radiography
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 31
+    subject_minimums:
+      english: 5
+      mathematics: 4
+      physical_sciences: 4
+      life_sciences: 5
+    extras:
+    - 2027 prospectus p.66. NSC admission to this qualification is required.
+- id: uj_b9m04q
+  name: Bachelor of Radiation Therapy
+  faculty: Health Sciences
+  fields:
+  - radiography
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 31
+    subject_minimums:
+      english: 5
+      mathematics: 4
+      physical_sciences: 4
+      life_sciences: 5
+    extras:
+    - 2027 prospectus p.66. NSC admission to this qualification is required.
+- id: uj_b9c01q
+  name: Bachelor of Health Science in Chiropractic
+  faculty: Health Sciences
+  fields:
+  - health_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 28
+    subject_minimums:
+      english: 5
+      mathematics: 4
+    extras:
+    - 2027 prospectus p.67. NSC admission to this qualification is required.
+    - Questionnaire, recommendations/observations from two practising chiropractors
+      and interview. A masters qualification is required for AHPCSA registration.
+    choices:
+    - one_of:
+      - subjects:
+          physical_sciences: 4
+      - subjects:
+          life_sciences: 4
+- id: uj_b9cm1q
+  name: Bachelor of Health Science in Complementary Medicine
+  faculty: Health Sciences
+  fields:
+  - health_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 28
+    subject_minimums:
+      english: 5
+      mathematics: 4
+    extras:
+    - 2027 prospectus p.67. NSC admission to this qualification is required.
+    - No applicants currently upgrading matric. Assignment, clinic visit and practitioner
+      recommendation required; further masters study is needed for Homeopathy/Phytotherapy
+      registration.
+    choices:
+    - one_of:
+      - subjects:
+          physical_sciences: 4
+      - subjects:
+          life_sciences: 4
+- id: uj_b9e01q
+  name: Bachelor of Health Science in Emergency Medical Care
+  faculty: Health Sciences
+  fields:
+  - emergency_care
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 27
+    subject_minimums:
+      english: 5
+      mathematics: 4
+      physical_sciences: 4
+      life_sciences: 4
+    extras:
+    - 2027 prospectus p.67. NSC admission to this qualification is required.
+    - Fitness assessment, phobias evaluation and medical examination required.
+- id: uj_b9p01q
+  name: Bachelor of Health Science in Podiatry
+  faculty: Health Sciences
+  fields:
+  - health_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 28
+    subject_minimums:
+      english: 5
+      mathematics: 4
+      physical_sciences: 4
+      life_sciences: 4
+    extras:
+    - 2027 prospectus p.67. NSC admission to this qualification is required.
+- id: uj_b9n02q
+  name: Bachelor of Nursing
+  faculty: Health Sciences
+  fields:
+  - nursing
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 30
+    subject_minimums:
+      english: 5
+      mathematics: 4
+      physical_sciences: 4
+      life_sciences: 4
+    extras:
+    - 2027 prospectus p.68. NSC admission to this qualification is required.
+- id: uj_b9o02q
+  name: Bachelor of Optometry
+  faculty: Health Sciences
+  fields:
+  - health_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 34
+    subject_minimums:
+      english: 5
+      mathematics: 5
+      physical_sciences: 5
+      life_sciences: 5
+    extras:
+    - 2027 prospectus p.68. NSC admission to this qualification is required.
+- id: uj_b9env1
+  name: Bachelor of Environmental Health
+  faculty: Health Sciences
+  fields:
+  - environmental_health
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 24
+    subject_minimums:
+      english: 4
+      mathematics: 4
+      physical_sciences: 4
+      life_sciences: 4
+    extras:
+    - 2027 prospectus p.68. NSC admission to this qualification is required.
+- id: uj_b9b01q
+  name: Bachelor of Health Science in Medical Laboratory Science
+  faculty: Health Sciences
+  fields:
+  - medical_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 30
+    subject_minimums:
+      english: 5
+      physical_sciences: 4
+      life_sciences: 5
+    extras:
+    - 2027 prospectus p.67. NSC admission to this qualification is required.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+      - subjects:
+          technical_mathematics: 4
+- id: uj_b9se1q
+  name: Bachelor of Health Sciences in Sport and Exercise Science
+  faculty: Health Sciences
+  fields:
+  - sport_science
+  selective: true
+  selection_note: 2027 prospectus p.69 omits the Technical Mathematics APS threshold;
+    confirm it with UJ. Selection and available places apply.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: null
+    points_threshold_incomplete: true
+    subject_minimums:
+      english: 5
+      life_sciences: 4
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+        min_points: 27
+      - subjects:
+          mathematical_literacy: 4
+        min_points: 28
+      - subjects:
+          technical_mathematics: 4
+    extras:
+    - 2027 prospectus p.69 omits the Technical Mathematics APS threshold; confirm
+      it with UJ. Selection and available places apply.
+
+- id: uj_b9s14q
+  name: BCom Sport Management
+  faculty: Health Sciences
+  fields:
+  - sport_science
+  - management
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 23
+    subject_minimums:
+      english: 4
+      mathematics: 4
+    extras:
+    - 2027 prospectus p.69. NSC admission to this qualification is required.
+- id: uj_b7025q
+  name: Bachelor of Social Work
+  faculty: Humanities
+  fields:
+  - humanities
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 31
+    subject_minimums:
+      english: 5
+    extras:
+    - 2027 prospectus p.74. NSC admission to this qualification is required.
+- id: uj_b7023q
+  name: Bachelor of Arts
+  faculty: Humanities
+  fields:
+  - humanities
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 27
+    subject_minimums:
+      english: 5
+    extras:
+    - 2027 prospectus p.75. NSC admission to this qualification is required.
+    - BA module choices outside Humanities must meet the offering faculty requirements;
+      Mathematics as a major requires Mathematics 4. Technical Mathematics is not
+      accepted.
+- id: uj_b7026q
+  name: BA Language Practice
+  faculty: Humanities
+  fields:
+  - humanities
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 27
+    subject_minimums:
+      english: 5
+    extras:
+    - 2027 prospectus p.75. NSC admission to this qualification is required.
+- id: uj_b7024q
+  name: BA Politics, Economics and Technology
+  faculty: Humanities
+  fields:
+  - humanities
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 27
+    subject_minimums:
+      english: 5
+      mathematics: 4
+    extras:
+    - 2027 prospectus p.75. NSC admission to this qualification is required.
+- id: uj_b7015q
+  name: BA Community Development and Leadership
+  faculty: Humanities
+  fields:
+  - humanities
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 27
+    subject_minimums:
+      english: 5
+    extras:
+    - 2027 prospectus p.75. NSC admission to this qualification is required.
+- id: uj_b7ex2q
+  name: BA Development Studies (Extended)
+  faculty: Humanities
+  fields:
+  - humanities
+  selective: true
+  selection_note: '2027 prospectus p.76: APS 24–26 with English 5, or APS 27 with
+    English 4; interview required. The published upper APS range cannot be represented
+    by a minimum-only rule; confirm the route with UJ.'
+  requirements: null
+- id: uj_b7ex3q
+  name: BA Linguistics (Extended)
+  faculty: Humanities
+  fields:
+  - humanities
+  selective: true
+  selection_note: '2027 prospectus p.76: APS 24–26 with English 5, or APS 27 with
+    English 4; interview required. The published upper APS range cannot be represented
+    by a minimum-only rule; confirm the route with UJ.'
+  requirements: null
+- id: uj_b7ex4q
+  name: BA Linguistics and Language Practice (Extended)
+  faculty: Humanities
+  fields:
+  - humanities
+  selective: true
+  selection_note: '2027 prospectus p.76: APS 24–26 with English 5, or APS 27 with
+    English 4; interview required. The published upper APS range cannot be represented
+    by a minimum-only rule; confirm the route with UJ.'
+  requirements: null
+- id: uj_b7ex5q
+  name: BA Strategic Communication (Extended)
+  faculty: Humanities
+  fields:
+  - humanities
+  selective: true
+  selection_note: '2027 prospectus p.76: APS 24–26 with English 5, or APS 27 with
+    English 4; interview required. The published upper APS range cannot be represented
+    by a minimum-only rule; confirm the route with UJ.'
+  requirements: null
+- id: uj_d7002q
+  name: Diploma in Public Relations and Communication
+  faculty: Humanities
+  fields:
+  - languages_and_communication
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 25
+    subject_minimums:
+      english: 5
+    extras:
+    - 2027 prospectus p.76. NSC admission to this qualification is required.
+- id: uj_d7ex2q
+  name: Diploma in Public Relations and Communication (Extended)
+  faculty: Humanities
+  fields:
+  - languages_and_communication
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 24
+    subject_minimums:
+      english: 4
+    extras:
+    - 2027 prospectus p.76. NSC admission to this qualification is required.
+- id: uj_b4a01q
+  name: BA Law
+  faculty: Law
+  fields:
+  - law
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 31
+    subject_minimums:
+      english: 5
+      other_language: 4
+    extras:
+    - 2027 prospectus p.82. NSC admission to this qualification is required.
+    - NCV, NASCA and Amended Senior Certificate are not accepted.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+        min_points: 31
+      - subjects:
+          mathematical_literacy: 4
+        min_points: 32
+- id: uj_b4l03q
+  name: Bachelor of Laws
+  faculty: Law
+  fields:
+  - law
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 31
+    subject_minimums:
+      english: 5
+      other_language: 4
+    extras:
+    - 2027 prospectus p.82. NSC admission to this qualification is required.
+    - NCV, NASCA and Amended Senior Certificate are not accepted.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+        min_points: 31
+      - subjects:
+          mathematical_literacy: 4
+        min_points: 32
+- id: uj_b4c01q
+  name: BCom Law
+  faculty: Law
+  fields:
+  - law
+  - commerce
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 31
+    subject_minimums:
+      english: 5
+      other_language: 4
+      mathematics: 4
+    extras:
+    - 2027 prospectus p.82. NSC admission to this qualification is required.
+    - NCV, NASCA and Amended Senior Certificate are not accepted.
+- id: uj_b2i01q
+  name: BSc Information Technology
+  faculty: Science
+  fields:
+  - computing
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 30
+    subject_minimums:
+      english: 5
+      mathematics: 6
+    extras:
+    - 2027 prospectus p.86. NSC admission to this qualification is required.
+- id: uj_b2i02q
+  name: BSc Computer Science and Informatics
+  faculty: Science
+  fields:
+  - computing
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 30
+    subject_minimums:
+      english: 5
+      mathematics: 6
+    extras:
+    - 2027 prospectus p.86. NSC admission to this qualification is required.
+- id: uj_b2i04q
+  name: BSc Computer Science and Informatics specialising in Artificial Intelligence
+  faculty: Science
+  fields:
+  - computing
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 34
+    subject_minimums:
+      english: 5
+      mathematics: 7
+    extras:
+    - 2027 prospectus p.86. NSC admission to this qualification is required.
+- id: uj_b2l10q
+  name: 'BSc Life and Environmental Sciences: Biochemistry and Botany'
+  faculty: Science
+  fields:
+  - life_sciences
+  - natural_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 30
+    subject_minimums:
+      english: 5
+      mathematics: 5
+      physical_sciences: 4
+      life_sciences: 4
+    extras:
+    - 2027 prospectus p.87. NSC admission to this qualification is required.
+    - Mathematics 6 is required for Mathematics 1A (5 for Mathematics 1C). Physical
+      Science 5 is required for Chemistry 1A or Physics 1A/S1 (4 for the other listed
+      modules). Confirm your intended module combination with the faculty.
+- id: uj_b2l11q
+  name: 'BSc Life and Environmental Sciences: Botany and Chemistry'
+  faculty: Science
+  fields:
+  - life_sciences
+  - natural_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 30
+    subject_minimums:
+      english: 5
+      mathematics: 6
+      physical_sciences: 4
+      life_sciences: 4
+    extras:
+    - 2027 prospectus p.87. NSC admission to this qualification is required.
+    - Mathematics 6 is required for Mathematics 1A (5 for Mathematics 1C). Physical
+      Science 5 is required for Chemistry 1A or Physics 1A/S1 (4 for the other listed
+      modules). Confirm your intended module combination with the faculty.
+- id: uj_b2l12q
+  name: 'BSc Life and Environmental Sciences: Botany and Zoology'
+  faculty: Science
+  fields:
+  - life_sciences
+  - natural_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 30
+    subject_minimums:
+      english: 5
+      mathematics: 5
+      physical_sciences: 4
+      life_sciences: 4
+    extras:
+    - 2027 prospectus p.87. NSC admission to this qualification is required.
+    - Mathematics 6 is required for Mathematics 1A (5 for Mathematics 1C). Physical
+      Science 5 is required for Chemistry 1A or Physics 1A/S1 (4 for the other listed
+      modules). Confirm your intended module combination with the faculty.
+- id: uj_b2l13q
+  name: 'BSc Life and Environmental Sciences: Zoology and Biochemistry'
+  faculty: Science
+  fields:
+  - life_sciences
+  - natural_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 30
+    subject_minimums:
+      english: 5
+      mathematics: 5
+      physical_sciences: 4
+      life_sciences: 4
+    extras:
+    - 2027 prospectus p.87. NSC admission to this qualification is required.
+    - Mathematics 6 is required for Mathematics 1A (5 for Mathematics 1C). Physical
+      Science 5 is required for Chemistry 1A or Physics 1A/S1 (4 for the other listed
+      modules). Confirm your intended module combination with the faculty.
+- id: uj_b2l14q
+  name: 'BSc Life and Environmental Sciences: Zoology and Chemistry'
+  faculty: Science
+  fields:
+  - life_sciences
+  - natural_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 30
+    subject_minimums:
+      english: 5
+      mathematics: 6
+      physical_sciences: 4
+      life_sciences: 4
+    extras:
+    - 2027 prospectus p.87. NSC admission to this qualification is required.
+    - Mathematics 6 is required for Mathematics 1A (5 for Mathematics 1C). Physical
+      Science 5 is required for Chemistry 1A or Physics 1A/S1 (4 for the other listed
+      modules). Confirm your intended module combination with the faculty.
+- id: uj_b2l15q
+  name: 'BSc Life and Environmental Sciences: Zoology and Environmental Management'
+  faculty: Science
+  fields:
+  - life_sciences
+  - natural_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 30
+    subject_minimums:
+      english: 5
+      mathematics: 5
+      physical_sciences: 4
+      life_sciences: 4
+    extras:
+    - 2027 prospectus p.87. NSC admission to this qualification is required.
+    - Mathematics 6 is required for Mathematics 1A (5 for Mathematics 1C). Physical
+      Science 5 is required for Chemistry 1A or Physics 1A/S1 (4 for the other listed
+      modules). Confirm your intended module combination with the faculty.
+- id: uj_b2l16q
+  name: 'BSc Life and Environmental Sciences: Zoology and Geography'
+  faculty: Science
+  fields:
+  - life_sciences
+  - natural_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 30
+    subject_minimums:
+      english: 5
+      mathematics: 5
+      physical_sciences: 4
+      life_sciences: 4
+    extras:
+    - 2027 prospectus p.87. NSC admission to this qualification is required.
+    - Mathematics 6 is required for Mathematics 1A (5 for Mathematics 1C). Physical
+      Science 5 is required for Chemistry 1A or Physics 1A/S1 (4 for the other listed
+      modules). Confirm your intended module combination with the faculty.
+- id: uj_b2l17q
+  name: 'BSc Life and Environmental Sciences: Zoology and Physiology'
+  faculty: Science
+  fields:
+  - life_sciences
+  - natural_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 30
+    subject_minimums:
+      english: 5
+      mathematics: 5
+      physical_sciences: 4
+      life_sciences: 4
+    extras:
+    - 2027 prospectus p.87. NSC admission to this qualification is required.
+    - Mathematics 6 is required for Mathematics 1A (5 for Mathematics 1C). Physical
+      Science 5 is required for Chemistry 1A or Physics 1A/S1 (4 for the other listed
+      modules). Confirm your intended module combination with the faculty.
+- id: uj_b2l18q
+  name: 'BSc Life and Environmental Sciences: Physiology and Biochemistry'
+  faculty: Science
+  fields:
+  - life_sciences
+  - natural_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 30
+    subject_minimums:
+      english: 5
+      mathematics: 5
+      physical_sciences: 4
+      life_sciences: 4
+    extras:
+    - 2027 prospectus p.87. NSC admission to this qualification is required.
+    - Mathematics 6 is required for Mathematics 1A (5 for Mathematics 1C). Physical
+      Science 5 is required for Chemistry 1A or Physics 1A/S1 (4 for the other listed
+      modules). Confirm your intended module combination with the faculty.
+- id: uj_b2l26q
+  name: 'BSc Life and Environmental Sciences: Physiology and Psychology'
+  faculty: Science
+  fields:
+  - life_sciences
+  - natural_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 30
+    subject_minimums:
+      english: 5
+      mathematics: 5
+      physical_sciences: 4
+      life_sciences: 4
+    extras:
+    - 2027 prospectus p.87. NSC admission to this qualification is required.
+    - Mathematics 6 is required for Mathematics 1A (5 for Mathematics 1C). Physical
+      Science 5 is required for Chemistry 1A or Physics 1A/S1 (4 for the other listed
+      modules). Confirm your intended module combination with the faculty.
+- id: uj_b2l20q
+  name: 'BSc Life and Environmental Sciences: Geography and Environmental Management'
+  faculty: Science
+  fields:
+  - life_sciences
+  - natural_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 30
+    subject_minimums:
+      english: 5
+      mathematics: 5
+      physical_sciences: 4
+      life_sciences: 4
+    extras:
+    - 2027 prospectus p.88. NSC admission to this qualification is required.
+    - Mathematics 6 is required for Mathematics 1A (5 for Mathematics 1C). Physical
+      Science 5 is required for Chemistry 1A or Physics 1A/S1 (4 for the other listed
+      modules). Confirm your intended module combination with the faculty.
+- id: uj_b2l24q
+  name: 'BSc Life and Environmental Sciences: Geology and Environmental Management'
+  faculty: Science
+  fields:
+  - life_sciences
+  - natural_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 30
+    subject_minimums:
+      english: 5
+      mathematics: 5
+      physical_sciences: 4
+      life_sciences: 4
+    extras:
+    - 2027 prospectus p.88. NSC admission to this qualification is required.
+    - Mathematics 6 is required for Mathematics 1A (5 for Mathematics 1C). Physical
+      Science 5 is required for Chemistry 1A or Physics 1A/S1 (4 for the other listed
+      modules). Confirm your intended module combination with the faculty.
+- id: uj_b2l25q
+  name: 'BSc Life and Environmental Sciences: Geology and Geography'
+  faculty: Science
+  fields:
+  - life_sciences
+  - natural_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 30
+    subject_minimums:
+      english: 5
+      mathematics: 5
+      physical_sciences: 4
+      life_sciences: 4
+    extras:
+    - 2027 prospectus p.88. NSC admission to this qualification is required.
+    - Mathematics 6 is required for Mathematics 1A (5 for Mathematics 1C). Physical
+      Science 5 is required for Chemistry 1A or Physics 1A/S1 (4 for the other listed
+      modules). Confirm your intended module combination with the faculty.
+- id: uj_b2m40q
+  name: 'BSc Mathematical Sciences: Applied Mathematics and Computer Science'
+  faculty: Science
+  fields:
+  - mathematical_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 31
+    subject_minimums:
+      english: 5
+      mathematics: 6
+      physical_sciences: 4
+    extras:
+    - 2027 prospectus p.89. NSC admission to this qualification is required.
+    - Physical Science 5 is required for Chemistry 1A or Physics 1A; 4 for Chemistry
+      1C or Physics G1. Confirm module choices.
+- id: uj_b2m41q
+  name: 'BSc Mathematical Sciences: Applied Mathematics and Mathematical Statistics'
+  faculty: Science
+  fields:
+  - mathematical_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 31
+    subject_minimums:
+      english: 5
+      mathematics: 6
+      physical_sciences: 4
+    extras:
+    - 2027 prospectus p.89. NSC admission to this qualification is required.
+    - Physical Science 5 is required for Chemistry 1A or Physics 1A; 4 for Chemistry
+      1C or Physics G1. Confirm module choices.
+- id: uj_b2m42q
+  name: 'BSc Mathematical Sciences: Applied Mathematics and Mathematics'
+  faculty: Science
+  fields:
+  - mathematical_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 31
+    subject_minimums:
+      english: 5
+      mathematics: 6
+      physical_sciences: 4
+    extras:
+    - 2027 prospectus p.89. NSC admission to this qualification is required.
+    - Physical Science 5 is required for Chemistry 1A or Physics 1A; 4 for Chemistry
+      1C or Physics G1. Confirm module choices.
+- id: uj_b2m43q
+  name: 'BSc Mathematical Sciences: Computational Science'
+  faculty: Science
+  fields:
+  - mathematical_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 33
+    subject_minimums:
+      english: 5
+      mathematics: 7
+      physical_sciences: 5
+    extras:
+    - 2027 prospectus p.89. NSC admission to this qualification is required.
+    - Physical Science 5 is required for Chemistry 1A or Physics 1A; 4 for Chemistry
+      1C or Physics G1. Confirm module choices.
+- id: uj_b2m44q
+  name: 'BSc Mathematical Sciences: Mathematical Statistics and Computer Science'
+  faculty: Science
+  fields:
+  - mathematical_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 31
+    subject_minimums:
+      english: 5
+      mathematics: 6
+    extras:
+    - 2027 prospectus p.89. NSC admission to this qualification is required.
+- id: uj_b2m45q
+  name: 'BSc Mathematical Sciences: Mathematics and Computer Science'
+  faculty: Science
+  fields:
+  - mathematical_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 31
+    subject_minimums:
+      english: 5
+      mathematics: 6
+    extras:
+    - 2027 prospectus p.89. NSC admission to this qualification is required.
+- id: uj_b2m46q
+  name: 'BSc Mathematical Sciences: Mathematics and Informatics'
+  faculty: Science
+  fields:
+  - mathematical_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 31
+    subject_minimums:
+      english: 5
+      mathematics: 6
+    extras:
+    - 2027 prospectus p.89. NSC admission to this qualification is required.
+- id: uj_b2m47q
+  name: 'BSc Mathematical Sciences: Mathematics and Mathematical Statistics'
+  faculty: Science
+  fields:
+  - mathematical_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 31
+    subject_minimums:
+      english: 5
+      mathematics: 6
+    extras:
+    - 2027 prospectus p.89. NSC admission to this qualification is required.
+- id: uj_b2m54q
+  name: 'BSc Mathematical Sciences: Mathematics and Psychology'
+  faculty: Science
+  fields:
+  - mathematical_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 31
+    subject_minimums:
+      english: 5
+      mathematics: 6
+      physical_sciences: 4
+    extras:
+    - 2027 prospectus p.89. NSC admission to this qualification is required.
+    - Physical Science 5 is required for Chemistry 1A or Physics 1A; 4 for Chemistry
+      1C or Physics G1. Confirm module choices.
+- id: uj_b2m55q
+  name: 'BSc Mathematical Sciences: Mathematics and Mathematical Statistics (Financial
+    Orientation)'
+  faculty: Science
+  fields:
+  - mathematical_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 33
+    subject_minimums:
+      english: 5
+      mathematics: 6
+    extras:
+    - 2027 prospectus p.89. NSC admission to this qualification is required.
+- id: uj_b2m56q
+  name: 'BSc Mathematical Sciences: Mathematical Statistics and Economics (Financial
+    Orientation)'
+  faculty: Science
+  fields:
+  - mathematical_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 33
+    subject_minimums:
+      english: 5
+      mathematics: 6
+    extras:
+    - 2027 prospectus p.90. NSC admission to this qualification is required.
+- id: uj_b2m57q
+  name: 'BSc Mathematical Sciences: Mathematics and Economics (Financial Orientation)'
+  faculty: Science
+  fields:
+  - mathematical_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 33
+    subject_minimums:
+      english: 5
+      mathematics: 6
+    extras:
+    - 2027 prospectus p.90. NSC admission to this qualification is required.
+- id: uj_b2m52q
+  name: 'BSc Mathematical Sciences: Actuarial Science'
+  faculty: Science
+  fields:
+  - mathematical_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 40
+    subject_minimums:
+      english: 5
+      mathematics: 7
+    extras:
+    - 2027 prospectus p.90. NSC admission to this qualification is required.
+- id: uj_b2p70q
+  name: 'BSc Physical Sciences: Biochemistry and Chemistry'
+  faculty: Science
+  fields:
+  - physical_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 31
+    subject_minimums:
+      english: 5
+      mathematics: 6
+      physical_sciences: 5
+      life_sciences: 4
+    extras:
+    - 2027 prospectus p.90. NSC admission to this qualification is required.
+    - Physical Science 5 is required where Chemistry 1A or Physics 1A/1S is included.
+      The Mathematics footnote on p.91 differs from its table (6); confirm with UJ.
+- id: uj_b2p71q
+  name: 'BSc Physical Sciences: Chemistry and Mathematics'
+  faculty: Science
+  fields:
+  - physical_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 31
+    subject_minimums:
+      english: 5
+      mathematics: 6
+      physical_sciences: 5
+    extras:
+    - 2027 prospectus p.90. NSC admission to this qualification is required.
+    - Physical Science 5 is required where Chemistry 1A or Physics 1A/1S is included.
+      The Mathematics footnote on p.91 differs from its table (6); confirm with UJ.
+- id: uj_b2p72q
+  name: 'BSc Physical Sciences: Chemistry and Physics'
+  faculty: Science
+  fields:
+  - physical_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 31
+    subject_minimums:
+      english: 5
+      mathematics: 6
+      physical_sciences: 5
+    extras:
+    - 2027 prospectus p.90. NSC admission to this qualification is required.
+    - Physical Science 5 is required where Chemistry 1A or Physics 1A/1S is included.
+      The Mathematics footnote on p.91 differs from its table (6); confirm with UJ.
+- id: uj_b2p81q
+  name: 'BSc Physical Sciences: Geology and Chemistry'
+  faculty: Science
+  fields:
+  - physical_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 31
+    subject_minimums:
+      english: 5
+      mathematics: 6
+      physical_sciences: 4
+      life_sciences: 4
+    extras:
+    - 2027 prospectus p.90. NSC admission to this qualification is required.
+    - Physical Science 5 is required where Chemistry 1A or Physics 1A/1S is included.
+      The Mathematics footnote on p.91 differs from its table (6); confirm with UJ.
+- id: uj_b2p82q
+  name: 'BSc Physical Sciences: Geology and Mathematics'
+  faculty: Science
+  fields:
+  - physical_sciences
+  selective: true
+  selection_note: 'Published requirements need confirmation before assessment. {''english'':
+    5, ''mathematics'': 6, ''physical_sciences'': 4}; APS 31. 2027 prospectus p.91.
+    NSC admission to this qualification is required. Physical Science 5 is required
+    where Chemistry 1A or Physics 1A/1S is included. The Mathematics footnote on p.91
+    differs from its table (6); confirm with UJ.'
+  requirements: null
+- id: uj_b2p83q
+  name: 'BSc Physical Sciences: Geology and Physics'
+  faculty: Science
+  fields:
+  - physical_sciences
+  selective: true
+  selection_note: 'Published requirements need confirmation before assessment. {''english'':
+    5, ''mathematics'': 6, ''physical_sciences'': 4}; APS 31. 2027 prospectus p.91.
+    NSC admission to this qualification is required. Physical Science 5 is required
+    where Chemistry 1A or Physics 1A/1S is included. The Mathematics footnote on p.91
+    differs from its table (6); confirm with UJ.'
+  requirements: null
+- id: uj_b2p77q
+  name: 'BSc Physical Sciences: Physics and Applied Mathematics'
+  faculty: Science
+  fields:
+  - physical_sciences
+  selective: true
+  selection_note: 'Published requirements need confirmation before assessment. {''english'':
+    5, ''mathematics'': 6, ''physical_sciences'': 5}; APS 31. 2027 prospectus p.91.
+    NSC admission to this qualification is required. Physical Science 5 is required
+    where Chemistry 1A or Physics 1A/1S is included. The Mathematics footnote on p.91
+    differs from its table (6); confirm with UJ.'
+  requirements: null
+- id: uj_b2p78q
+  name: 'BSc Physical Sciences: Physics and Mathematics'
+  faculty: Science
+  fields:
+  - physical_sciences
+  selective: true
+  selection_note: 'Published requirements need confirmation before assessment. {''english'':
+    5, ''mathematics'': 6, ''physical_sciences'': 5}; APS 31. 2027 prospectus p.91.
+    NSC admission to this qualification is required. Physical Science 5 is required
+    where Chemistry 1A or Physics 1A/1S is included. The Mathematics footnote on p.91
+    differs from its table (6); confirm with UJ.'
+  requirements: null
+- id: uj_b2e02q
+  name: 'BSc Information Technology: Computer Science and Informatics (Extended)'
+  faculty: Science
+  fields:
+  - computing
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 26
+    subject_minimums:
+      english: 4
+      mathematics: 5
+    extras:
+    - 2027 prospectus p.91. NSC admission to this qualification is required.
+- id: uj_b2e10q
+  name: 'BSc Life and Environmental Sciences: Biochemistry and Botany (Extended)'
+  faculty: Science
+  fields:
+  - life_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 26
+    subject_minimums:
+      english: 4
+      mathematics: 5
+      physical_sciences: 4
+      life_sciences: 4
+    extras:
+    - 2027 prospectus p.91. NSC admission to this qualification is required.
+- id: uj_b2e11q
+  name: 'BSc Life and Environmental Sciences: Botany and Chemistry (Extended)'
+  faculty: Science
+  fields:
+  - life_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 26
+    subject_minimums:
+      english: 4
+      mathematics: 5
+      physical_sciences: 4
+      life_sciences: 4
+    extras:
+    - 2027 prospectus p.91. NSC admission to this qualification is required.
+- id: uj_b2e12q
+  name: 'BSc Life and Environmental Sciences: Botany and Zoology (Extended)'
+  faculty: Science
+  fields:
+  - life_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 26
+    subject_minimums:
+      english: 4
+      mathematics: 5
+      physical_sciences: 4
+      life_sciences: 4
+    extras:
+    - 2027 prospectus p.91. NSC admission to this qualification is required.
+- id: uj_b2e13q
+  name: 'BSc Life and Environmental Sciences: Geography and Environmental Management
+    (Extended)'
+  faculty: Science
+  fields:
+  - life_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 26
+    subject_minimums:
+      english: 4
+      mathematics: 5
+      physical_sciences: 4
+      life_sciences: 4
+    extras:
+    - 2027 prospectus p.92. NSC admission to this qualification is required.
+- id: uj_b2e14q
+  name: 'BSc Life and Environmental Sciences: Physiology and Biochemistry (Extended)'
+  faculty: Science
+  fields:
+  - life_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 26
+    subject_minimums:
+      english: 4
+      mathematics: 5
+      physical_sciences: 4
+      life_sciences: 4
+    extras:
+    - 2027 prospectus p.92. NSC admission to this qualification is required.
+- id: uj_b2e22q
+  name: 'BSc Life and Environmental Sciences: Physiology and Psychology (Extended)'
+  faculty: Science
+  fields:
+  - life_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 26
+    subject_minimums:
+      english: 4
+      mathematics: 5
+      physical_sciences: 4
+      life_sciences: 4
+    extras:
+    - 2027 prospectus p.92. NSC admission to this qualification is required.
+- id: uj_b2e17q
+  name: 'BSc Life and Environmental Sciences: Zoology and Biochemistry (Extended)'
+  faculty: Science
+  fields:
+  - life_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 26
+    subject_minimums:
+      english: 4
+      mathematics: 5
+      physical_sciences: 4
+      life_sciences: 4
+    extras:
+    - 2027 prospectus p.92. NSC admission to this qualification is required.
+- id: uj_b2e18q
+  name: 'BSc Life and Environmental Sciences: Zoology and Chemistry (Extended)'
+  faculty: Science
+  fields:
+  - life_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 26
+    subject_minimums:
+      english: 4
+      mathematics: 5
+      physical_sciences: 4
+      life_sciences: 4
+    extras:
+    - 2027 prospectus p.92. NSC admission to this qualification is required.
+- id: uj_b2e19q
+  name: 'BSc Life and Environmental Sciences: Zoology and Environmental Management
+    (Extended)'
+  faculty: Science
+  fields:
+  - life_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 26
+    subject_minimums:
+      english: 4
+      mathematics: 5
+      physical_sciences: 4
+      life_sciences: 4
+    extras:
+    - 2027 prospectus p.92. NSC admission to this qualification is required.
+- id: uj_b2e20q
+  name: 'BSc Life and Environmental Sciences: Zoology and Geography (Extended)'
+  faculty: Science
+  fields:
+  - life_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 26
+    subject_minimums:
+      english: 4
+      mathematics: 5
+      physical_sciences: 4
+      life_sciences: 4
+    extras:
+    - 2027 prospectus p.92. NSC admission to this qualification is required.
+- id: uj_b2e40q
+  name: 'BSc Mathematical Sciences: Applied Mathematics and Computer Science (Extended)'
+  faculty: Science
+  fields:
+  - mathematical_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 26
+    subject_minimums:
+      english: 4
+      mathematics: 5
+      physical_sciences: 4
+    extras:
+    - 2027 prospectus p.93. NSC admission to this qualification is required.
+- id: uj_b2e41q
+  name: 'BSc Mathematical Sciences: Applied Mathematics and Mathematical Statistics
+    (Extended)'
+  faculty: Science
+  fields:
+  - mathematical_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 26
+    subject_minimums:
+      english: 4
+      mathematics: 5
+    extras:
+    - 2027 prospectus p.93. NSC admission to this qualification is required.
+- id: uj_b2e42q
+  name: 'BSc Mathematical Sciences: Applied Mathematics and Mathematics (Extended)'
+  faculty: Science
+  fields:
+  - mathematical_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 26
+    subject_minimums:
+      english: 4
+      mathematics: 5
+      physical_sciences: 4
+    extras:
+    - 2027 prospectus p.93. NSC admission to this qualification is required.
+- id: uj_b2e43q
+  name: 'BSc Mathematical Sciences: Mathematical Statistics and Computer Science (Extended)'
+  faculty: Science
+  fields:
+  - mathematical_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 26
+    subject_minimums:
+      english: 4
+      mathematics: 5
+    extras:
+    - 2027 prospectus p.93. NSC admission to this qualification is required.
+- id: uj_b2e44q
+  name: 'BSc Mathematical Sciences: Mathematics and Computer Science (Extended)'
+  faculty: Science
+  fields:
+  - mathematical_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 26
+    subject_minimums:
+      english: 4
+      mathematics: 5
+    extras:
+    - 2027 prospectus p.93. NSC admission to this qualification is required.
+- id: uj_b2e45q
+  name: 'BSc Mathematical Sciences: Mathematics and Informatics (Extended)'
+  faculty: Science
+  fields:
+  - mathematical_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 26
+    subject_minimums:
+      english: 4
+      mathematics: 5
+    extras:
+    - 2027 prospectus p.93. NSC admission to this qualification is required.
+- id: uj_b2e46q
+  name: 'BSc Mathematical Sciences: Mathematics and Mathematical Statistics (Extended)'
+  faculty: Science
+  fields:
+  - mathematical_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 26
+    subject_minimums:
+      english: 4
+      mathematics: 5
+    extras:
+    - 2027 prospectus p.93. NSC admission to this qualification is required.
+- id: uj_b2e49q
+  name: 'BSc Mathematical Sciences: Mathematics and Psychology (Extended)'
+  faculty: Science
+  fields:
+  - mathematical_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 26
+    subject_minimums:
+      english: 4
+      mathematics: 5
+    extras:
+    - 2027 prospectus p.93. NSC admission to this qualification is required.
+- id: uj_b2e70q
+  name: 'BSc Physical Sciences: Biochemistry and Chemistry (Extended)'
+  faculty: Science
+  fields:
+  - physical_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 26
+    subject_minimums:
+      english: 4
+      mathematics: 5
+      physical_sciences: 4
+      life_sciences: 4
+    extras:
+    - 2027 prospectus p.94. NSC admission to this qualification is required.
+- id: uj_b2e71q
+  name: 'BSc Physical Sciences: Chemistry and Mathematics (Extended)'
+  faculty: Science
+  fields:
+  - physical_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 26
+    subject_minimums:
+      english: 4
+      mathematics: 5
+      physical_sciences: 4
+    extras:
+    - 2027 prospectus p.94. NSC admission to this qualification is required.
+- id: uj_b2e72q
+  name: 'BSc Physical Sciences: Chemistry and Physics (Extended)'
+  faculty: Science
+  fields:
+  - physical_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 26
+    subject_minimums:
+      english: 4
+      mathematics: 5
+      physical_sciences: 4
+    extras:
+    - 2027 prospectus p.94. NSC admission to this qualification is required.
+- id: uj_b2e73q
+  name: 'BSc Physical Sciences: Physics and Applied Mathematics (Extended)'
+  faculty: Science
+  fields:
+  - physical_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 26
+    subject_minimums:
+      english: 4
+      mathematics: 5
+      physical_sciences: 4
+    extras:
+    - 2027 prospectus p.94. NSC admission to this qualification is required.
+- id: uj_b2e74q
+  name: 'BSc Physical Sciences: Physics and Mathematics (Extended)'
+  faculty: Science
+  fields:
+  - physical_sciences
+  selective: true
+  selection_note: Selection depends on academic merit and available places.
+  requirements:
+    source: s-uj-prospectus-2027
+    min_points: 26
+    subject_minimums:
+      english: 4
+      mathematics: 5
+      physical_sciences: 4
+    extras:
+    - 2027 prospectus p.94. NSC admission to this qualification is required.
 
 sources:
   - id: s-uj-maps-venues
@@ -56,6 +3443,7 @@ sources:
     retrieved: 2026-10-22
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-uj-yearbook
     url: "https://www.uj.ac.za/wp-content/uploads/2026/02/final-2026-science-apk-undergraduate-yearbook-jan2026.pdf"
     publisher: "University of Johannesburg"
@@ -63,6 +3451,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
   - id: s-uj-undergrad
     url: "https://www.uj.ac.za/admission-aid/new/"
     publisher: "University of Johannesburg"
@@ -70,3 +3459,51 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_university
+  - id: s-uj-prospectus-2027
+    url: https://www.uj.ac.za/admission-aid/undergraduate/
+    publisher: University of Johannesburg
+    title: Undergraduate Prospectus 2027, 25 June 2026 version, pp.16,32–94 (user-supplied
+      PDF; see docs/research/2027-local-prospectuses.md)
+    retrieved: '2026-10-24'
+    last_verified: null
+    verified_by: agent draft, needs human check
+    verification_basis: official_university
+
+support_services:
+- kind: counselling
+  name: PsyCaD Psychological Services
+  contact: 011 559 3324
+  source: s-uj-prospectus-2027
+- kind: careers
+  name: PsyCaD Career Services
+  contact: 011 559 3333; psycadinfo@uj.ac.za
+  source: s-uj-prospectus-2027
+- kind: disability
+  name: Disability Unit
+  contact: 011 559 3745; disabilityunit@uj.ac.za
+  source: s-uj-prospectus-2027
+- kind: health
+  name: Centre for Student Health and Wellness
+  contact: 011 559 1238
+  campuses:
+  - apb
+  source: s-uj-prospectus-2027
+- kind: health
+  name: Centre for Student Health and Wellness
+  contact: 011 559 3837
+  campuses:
+  - apk
+  source: s-uj-prospectus-2027
+- kind: health
+  name: Centre for Student Health and Wellness
+  contact: 011 559 5571
+  campuses:
+  - swc
+  source: s-uj-prospectus-2027
+- kind: health
+  name: Centre for Student Health and Wellness
+  contact: 011 559 6544
+  campuses:
+  - dfc
+  source: s-uj-prospectus-2027

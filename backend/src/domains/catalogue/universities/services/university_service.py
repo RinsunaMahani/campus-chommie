@@ -33,10 +33,11 @@ def get(university_id: str) -> University:
 
 
 def confirmation(uni: University) -> dict:
-    """Whether a person has checked this pack, and, if not, where its facts come from and when they were read."""
+    """Pack completeness and accepted source evidence are separate from personal sign-off."""
     name = f"the {uni.name}" if uni.name.startswith("University") else uni.name
     notice = read_from(f"{name}'s own documents", [s.retrieved for s in uni.sources])
-    return {"confirmed": uni.release, "notice": None if uni.release else notice}
+    confirmed = uni.release and bool(uni.sources) and all(s.verified for s in uni.sources)
+    return {"confirmed": confirmed, "notice": None if confirmed else notice}
 
 
 #: How a university's type reads, where its own page states it.

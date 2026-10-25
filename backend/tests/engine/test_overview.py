@@ -41,8 +41,9 @@ def test_universities_without_programmes_still_count_points_their_own_way(catalo
     assert by_id["cut"].lines[0] == "We can't add up your points here, but your subjects are checked against every programme."
     assert by_id["cut"].lines[1].startswith("CUT's scale gives 2 to 8 points a subject")
     assert by_id["cut"].source_url == "https://www.cut.ac.za/Course-calculator"
-    # No programmes yet (UJ waits for its prospectus): points, and the summary says why there's nothing to meet.
-    assert by_id["uj"].summary == "We haven't added this university's programmes yet."
+    # UJ's supplied 2027 prospectus now supplies programmes as well as its points scale.
+    assert "You meet the minimum" in by_id["uj"].summary
+    assert catalogue["uj"].programmes
     assert by_id["wits"].summary.startswith("You meet the minimum for")
     assert sum(by_id["wits"].subjects[i].points for i in range(len(strong_marks))) == 47
 
