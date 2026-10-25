@@ -19,14 +19,16 @@ import string
 from typing import Any, NamedTuple
 
 #: What tapping an alert opens (the app maps each to a screen): "class" opens that class's events,
-#: "funding" that funder (link_id is its id in the funding pack).
-LINK_TYPES = ("security", "class", "funding")
+#: "funding" that funder (link_id is its id in the funding pack), "review" the week in review (link_id is the
+#: week's last day).
+LINK_TYPES = ("security", "class", "funding", "review")
 
 #: Alerts a student may switch off, by topic, with what the switch covers. Security alerts have no
 #: topic: they're always on.
 TOPICS = {
     "class_updates": "New, moved and cancelled tests and deadlines from your class reps",
     "funding_reminders": "Funding you saved: when it opens, and before it closes",
+    "week_review": "Your week in review, on your check-in day",
 }
 
 
@@ -57,6 +59,10 @@ TEMPLATES: dict[str, Template] = {
     ),
     "funding.closing": Template(
         "clock", "Funding you saved closes soon", "{funder}: applications for {intake} funding close {when}.", "funding_reminders"
+    ),
+    # The week in review, on the student's check-in day: no params, so nothing about the week is in the alert.
+    "review.ready": Template(
+        "bar-chart-2", "Your week in review", "See what you got done, what's coming up and how your money went this week.", "week_review"
     ),
 }
 

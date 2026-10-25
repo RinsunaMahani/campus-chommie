@@ -29,6 +29,7 @@ DEFAULTS: dict[str, Any] = {
     "money_pots": {"buffer_paydays": 1},
     "money_checkin": {"default_day": "sunday", "max_fixed_costs": 20},
     "money_health": {"min_buffer_cents": 1},
+    "weekly_review": {"coming_days": 7, "compare_weeks": 4, "same_band": 0.1, "max_items": 8},
 }
 
 
