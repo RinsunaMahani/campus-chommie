@@ -2,7 +2,7 @@
 #
 # Official-source acceptance follows the owner's 25 October 2026 decision. Incomplete pack.
 # The APS image supplied on 26 October matches the official admissions page's image.
-# Its subject-count rule is still unpublished here, so total APS remains manual.
+# Owner accepted University Qualifications' seven-subject rule on 26 October 2026.
 # Programmes come from the 2027 online prospectus and faculty pages; see docs/research/spu.md.
 
 university: spu
@@ -14,12 +14,50 @@ province_source: s-spu-where
 release: false
 max_choices: null
 
-points_rules: null
-points_note: "SPU's published table gives subject points and bonuses, but does not state how many subjects count. Ask SPU to confirm your total APS."
+points_rules:
+  source: s-spu-seven-subjects
+  subjects_counted: 7
+  exact_subject_count: true
+  life_orientation: full
+  note: "All seven NSC subjects count. The seven-subject rule comes from University Qualifications, an independent calculator; the points table matches SPU's official image. Mathematics and Home Language receive bonuses; Mathematical Literacy and First Additional Language do not."
+  scale:
+    - {min_percent: 80, level: 7}
+    - {min_percent: 70, level: 6}
+    - {min_percent: 60, level: 5}
+    - {min_percent: 50, level: 4}
+    - {min_percent: 40, level: 3}
+    - {min_percent: 30, level: 2}
+    - {min_percent: 0, level: 1}
+  other_points:
+    - {min_percent: 90, points: 8}
+    - {min_percent: 80, points: 7}
+    - {min_percent: 70, points: 6}
+    - {min_percent: 60, points: 5}
+    - {min_percent: 50, points: 4}
+    - {min_percent: 40, points: 3}
+    - {min_percent: 30, points: 2}
+    - {min_percent: 0, points: 1}
+  home_language_points: &spu_bonus_points
+    - {min_percent: 90, points: 10}
+    - {min_percent: 80, points: 9}
+    - {min_percent: 70, points: 8}
+    - {min_percent: 60, points: 7}
+    - {min_percent: 50, points: 5}
+    - {min_percent: 40, points: 4}
+    - {min_percent: 30, points: 2}
+    - {min_percent: 0, points: 1}
+  subject_points:
+    mathematics: *spu_bonus_points
+    life_orientation:
+      - {min_percent: 90, points: 4}
+      - {min_percent: 80, points: 3}
+      - {min_percent: 70, points: 2}
+      - {min_percent: 60, points: 1}
+      - {min_percent: 0, points: 0}
 # Official admissions-page table, corroborated by the user-supplied image on 26 October 2026.
 points_how:
   source: s-spu-aps-image
-  text: "SPU's scale: 90-100% is 8 points, down to 0-29% for 1. Mathematics, and a language you take as a home language, add 2 from 60% and 1 at 40-59%. Life Orientation scores 4, 3, 2 or 1 from 90, 80, 70 and 60%. SPU doesn't say how many subjects count, so ask SPU's admissions office."
+  text: "SPU's scale: 90-100% is 8 points, down to 0-29% for 1. Mathematics and Home Language add 2 from 60% and 1 at 40-59%. Life Orientation scores 4, 3, 2 or 1 from 90, 80, 70 and 60%. The seven-subject total uses the independent University Qualifications calculator."
 
 applications:
   source: s-spu-apply
@@ -31,7 +69,7 @@ applications:
       closes: 2026-10-31
 
 # Minimum points are on SPU's own scale (levels to 8, with extra points for Mathematics, a home language and
-# Life Orientation): the app can't check them until SPU says how many subjects count. Page numbers are the
+# Life Orientation). The owner accepted the independent seven-subject rule. Page numbers are the
 # online prospectus viewer's (docs/research/spu.md also gives the printed ones).
 # Campuses from the university's own page (s-spu-prospectus), read on 22 Oct 2026. Agent draft.
 campuses:
@@ -48,6 +86,7 @@ programmes:
     requirements:
       source: s-spu-prospectus-2027       # page 7
       min_points: 30
+      english_language_levels: {home: 4, first_additional: 5}
       subject_minimums: {english: 4, other_language: 4}
       choices:
         - one_of:
@@ -65,6 +104,7 @@ programmes:
     requirements:
       source: s-spu-prospectus-2027       # page 7
       min_points: 30
+      english_language_levels: {home: 4, first_additional: 5}
       subject_minimums: {english: 4, other_language: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
       extras:
         - "English Home Language at level 4, or English First Additional Language at level 5."
@@ -78,6 +118,7 @@ programmes:
     requirements:
       source: s-spu-prospectus-2027       # page 7
       min_points: 30
+      english_language_levels: {home: 4, first_additional: 5}
       subject_minimums: {english: 4, other_language: 4}
       choices:
         - one_of:
@@ -95,6 +136,7 @@ programmes:
     requirements:
       source: s-spu-prospectus-2027       # page 8
       min_points: 30
+      english_language_levels: {home: 4, first_additional: 5}
       subject_minimums: {english: 4, mathematics: 4, life_sciences: 4}
       extras:
         - "English Home Language at level 4, or English First Additional Language at level 5."
@@ -107,6 +149,7 @@ programmes:
     requirements:
       source: s-spu-prospectus-2027       # page 8
       min_points: 30
+      english_language_levels: {home: 4, first_additional: 5}
       subject_minimums: {english: 4, other_language: 4}
       extras:
         - "English Home Language at level 4, or English First Additional Language at level 5."
@@ -121,6 +164,7 @@ programmes:
     requirements:
       source: s-spu-prospectus-2027       # page 8
       min_points: 30
+      english_language_levels: {home: 4, first_additional: 5}
       subject_minimums: {english: 4, other_language: 4, geography: 4, history: 4}
       extras:
         - "English Home Language at level 4, or English First Additional Language at level 5."
@@ -134,6 +178,7 @@ programmes:
     requirements:
       source: s-spu-prospectus-2027       # page 9
       min_points: 30
+      english_language_levels: {home: 4, first_additional: 5}
       subject_minimums: {english: 4}
       choices:
         - one_of:                         # "any two of" Accounting, Business Studies and Economics
@@ -153,6 +198,7 @@ programmes:
     requirements:
       source: s-spu-prospectus-2027       # page 13
       min_points: 25
+      english_language_levels: {home: 4, first_additional: 5}
       subject_minimums: {english: 4}
       choices:
         - one_of:
@@ -173,6 +219,7 @@ programmes:
     requirements:
       source: s-spu-prospectus-2027       # page 14
       min_points: 25
+      english_language_levels: {home: 4, first_additional: 5}
       subject_minimums: {english: 4}
       choices:
         - one_of:
@@ -193,6 +240,7 @@ programmes:
     requirements:
       source: s-spu-prospectus-2027       # page 15
       min_points: 30
+      english_language_levels: {home: 4, first_additional: 5}
       subject_minimums: {english: 4}
       choices:
         - one_of:
@@ -209,6 +257,7 @@ programmes:
     requirements:
       source: s-spu-prospectus-2027       # page 16
       min_points: 30
+      english_language_levels: {home: 4, first_additional: 5}
       subject_minimums: {english: 4}
       choices:
         - one_of:
@@ -226,6 +275,7 @@ programmes:
     requirements:
       source: s-spu-ems-programmes
       min_points: 30
+      english_language_levels: {home: 4, first_additional: 5}
       subject_minimums: {english: 4}
       choices:
         - one_of:
@@ -243,6 +293,7 @@ programmes:
     requirements:
       source: s-spu-ems-programmes
       min_points: 30
+      english_language_levels: {home: 4, first_additional: 5}
       subject_minimums: {english: 4}
       choices:
         - one_of:
@@ -262,6 +313,7 @@ programmes:
     requirements:
       source: s-spu-prospectus-2027       # page 18
       min_points: 25
+      english_language_levels: {home: 4, first_additional: 5}
       subject_minimums: {english: 4}
       choices:
         - one_of:
@@ -283,6 +335,7 @@ programmes:
     requirements:
       source: s-spu-prospectus-2027       # page 19
       min_points: 25
+      english_language_levels: {home: 4, first_additional: 5}
       subject_minimums: {english: 4, other_language: 4}
       extras:
         - "English Home Language at level 4, or English First Additional Language at level 5."
@@ -302,6 +355,7 @@ programmes:
     requirements:
       source: s-spu-prospectus-2027       # page 20
       min_points: 30
+      english_language_levels: {home: 4, first_additional: 5}
       subject_minimums: {english: 4}
       choices:
         - one_of:
@@ -323,6 +377,7 @@ programmes:
     requirements:
       source: s-spu-prospectus-2027       # page 22
       min_points: 25
+      english_language_levels: {home: 4, first_additional: 5}
       subject_minimums: {english: 4, physical_sciences: 3}
       choices:
         - one_of:
@@ -342,6 +397,7 @@ programmes:
     requirements:
       source: s-spu-prospectus-2027       # page 24
       min_points: 25
+      english_language_levels: {home: 4, first_additional: 5}
       subject_minimums: {english: 4}
       choices:
         - one_of:
@@ -359,6 +415,7 @@ programmes:
     requirements:
       source: s-spu-prospectus-2027       # page 26
       min_points: 30
+      english_language_levels: {home: 4, first_additional: 5}
       subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
       extras:
         - "English Home Language at level 4, or English First Additional Language at level 5."
@@ -372,6 +429,7 @@ programmes:
     requirements:
       source: s-spu-prospectus-2027       # page 27
       min_points: 30
+      english_language_levels: {home: 4, first_additional: 5}
       subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
       extras:
         - "English Home Language at level 4, or English First Additional Language at level 5."
@@ -385,6 +443,7 @@ programmes:
     requirements:
       source: s-spu-prospectus-2027       # page 27
       min_points: 30
+      english_language_levels: {home: 4, first_additional: 5}
       subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
       extras:
         - "English Home Language at level 4, or English First Additional Language at level 5."
@@ -398,6 +457,7 @@ programmes:
     requirements:
       source: s-spu-prospectus-2027       # page 27
       min_points: 30
+      english_language_levels: {home: 4, first_additional: 5}
       subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
       extras:
         - "English Home Language at level 4, or English First Additional Language at level 5."
@@ -411,6 +471,7 @@ programmes:
     requirements:
       source: s-spu-prospectus-2027       # page 27
       min_points: 30
+      english_language_levels: {home: 4, first_additional: 5}
       subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
       extras:
         - "English Home Language at level 4, or English First Additional Language at level 5."
@@ -424,6 +485,7 @@ programmes:
     requirements:
       source: s-spu-prospectus-2027       # page 27
       min_points: 30
+      english_language_levels: {home: 4, first_additional: 5}
       subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
       extras:
         - "English Home Language at level 4, or English First Additional Language at level 5."
@@ -437,6 +499,7 @@ programmes:
     requirements:
       source: s-spu-nas-programmes
       min_points: 30
+      english_language_levels: {home: 4, first_additional: 5}
       subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4, life_sciences: 4}
       extras:
         - "SPU's faculty page lists this programme, but its 2027 prospectus doesn't: check with SPU that it takes first-years in 2027."
@@ -450,6 +513,7 @@ programmes:
     requirements:
       source: s-spu-prospectus-2027       # page 28
       min_points: 30
+      english_language_levels: {home: 4, first_additional: 5}
       subject_minimums: {english: 4, mathematics: 5}
       extras:
         - "English Home Language at level 4, or English First Additional Language at level 5."
@@ -457,6 +521,13 @@ programmes:
         - "Your NSC must show admission to bachelor's degree study."
 
 sources:
+  - id: s-spu-seven-subjects
+    url: https://universityqualifications.co.za/guest/aps/spu
+    publisher: University Qualifications (independent publisher)
+    title: SPU APS calculator; seven-subject rule accepted as a source exception by Rinsuna
+    retrieved: 2026-10-26
+    last_verified: 2026-10-26
+    verified_by: Rinsuna (explicit acceptance of supplied calculator on 26 October 2026)
   - id: s-spu-aps-image
     url: https://www.spu.ac.za/wp-content/uploads/2018/11/SPU-Admission-calculator-295x300.png
     publisher: Sol Plaatje University

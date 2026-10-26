@@ -14,7 +14,7 @@ Dated official university, funder, government and venue sources are accepted und
 | nwu | 81 | 0 | 0 | 3 | 3 | 3 | 1 | 0 |
 | ru | 16 | 1 | 0 | 1 | 10 | 1 | 1 | 0 |
 | smu | 17 | 0 | 0 | 1 | 23 | 7 | 2 | 0 |
-| spu | 26 | 0 | 26 | 1 | 13 | 3 | 1 | 1 |
+| spu | 26 | 0 | 0 | 1 | 13 | 3 | 1 | 1 |
 | su | 73 | 2 | 71 | 2 | 11 | 2 | 1 | 0 |
 | tut | 124 | 2 | 0 | 9 | 60 | 20 | 8 | 0 |
 | uct | 34 | 0 | 0 | 2 | 7 | 3 | 1 | 0 |

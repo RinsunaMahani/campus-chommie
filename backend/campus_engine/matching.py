@@ -167,7 +167,7 @@ def _check_subjects(req: Requirements, levels: dict[str, int], marks: dict[str, 
 def assess(uni: University, programme: Programme, marks: dict[str, float],
            english_language_level: str | None = None,
            language_marks: dict[str, tuple[float, str | None]] | None = None) -> Match:
-    match = _assess(uni, programme, marks)
+    match = _assess(uni, programme, marks, english_language_level, language_marks)
     req = programme.requirements
     if req:
         for language, levels in req.named_language_levels.items():
@@ -233,7 +233,9 @@ def assess(uni: University, programme: Programme, marks: dict[str, float],
     return match
 
 
-def _assess(uni: University, programme: Programme, marks: dict[str, float]) -> Match:
+def _assess(uni: University, programme: Programme, marks: dict[str, float],
+            english_language_level: str | None = None,
+            language_marks: dict[str, tuple[float, str | None]] | None = None) -> Match:
     """Assess one programme for one learner."""
     match = Match(
         university=uni.university,
@@ -261,7 +263,11 @@ def _assess(uni: University, programme: Programme, marks: dict[str, float]) -> M
 
     source = uni.source(req.source)
     match.source_url = source.url if source else None
-    result = compute_points(marks, rule)
+    result = compute_points(marks, rule, english_language_level, language_marks)
+    if not result.complete:
+        match = _subjects_only(uni, programme, req, marks, match)
+        match.explanation += result.notes
+        return match
     match.points = result.total
     failed, route_notes, min_points = _check_subjects(req, result.levels, marks)
     match.min_points = min_points

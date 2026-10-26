@@ -205,6 +205,8 @@ class PointsRule(_Strict):
     subject_points: dict[str, list[PointsBand]] = Field(default_factory=dict)
     # Every other subject's points, where the university gives them a table too (UWC: 8 at 90%, nothing under 20%).
     other_points: list[PointsBand] = Field(default_factory=list)
+    home_language_points: list[PointsBand] = Field(default_factory=list)
+    exact_subject_count: bool = False
     # Set when a subject's points come straight from its percentage instead of its level.
     percent_points: PercentPoints | None = None
 
@@ -215,8 +217,10 @@ class PointsRule(_Strict):
         tables = dict(self.subject_points)
         if self.other_points:
             tables["other subjects"] = self.other_points
+        if self.home_language_points:
+            tables["home languages"] = self.home_language_points
         for subject, table in tables.items():
-            if subject not in SUBJECTS and subject != "other subjects":
+            if subject not in SUBJECTS and subject not in ("other subjects", "home languages"):
                 raise ValueError(f"subject_points names unknown subject '{subject}'")
             if not any(band.min_percent == 0 for band in table):
                 raise ValueError(f"{subject}'s points table must include a band starting at 0%")
