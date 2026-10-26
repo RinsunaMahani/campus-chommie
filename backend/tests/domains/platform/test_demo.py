@@ -86,6 +86,24 @@ def test_seeding_twice_changes_nothing_but_the_password(app, client, seeded):
     sign_in(client, "sipho", newer)
 
 
+def test_the_server_starting_builds_data_only_for_a_new_account(app, seeded):
+    """flask start-up seeds with rebuild=False: existing data waits for the scheduler's re-base, so the server
+    answers sooner; a brand-new account still gets its data straight away."""
+    calls = []
+    real = demo_service.rebase
+    with app.app_context():
+        demo_service.rebase = lambda today: calls.append(today) or real(today)
+        try:
+            demo_service.seed(seeded, today=TODAY + timedelta(days=1), rebuild=False)
+            assert calls == []  # already built: left to the scheduler
+            assert all(a.rebased_on == TODAY for a in DemoAccount.query)
+            DemoAccount.query.filter_by(persona="sipho").one().rebased_on = None  # as if just made
+            demo_service.seed(seeded, today=TODAY, rebuild=False)
+            assert calls == [TODAY]
+        finally:
+            demo_service.rebase = real
+
+
 def test_a_real_account_is_never_turned_into_a_demo_one(app, client, outbox, password):
     client.post(f"{API}/auth/register", json={"email": EMAILS["naledi"], "password": PASSWORD, "consent": CONSENT})
     with app.app_context(), pytest.raises(ValueError, match="real account"):

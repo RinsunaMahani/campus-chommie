@@ -26,3 +26,23 @@ def recent(user_id: Optional[uuid.UUID] = None, event_name: Optional[str] = None
     if event_name is not None:
         q = q.filter_by(event_name=event_name)
     return q.order_by(AuditEventRecord.timestamp.desc()).limit(limit).all()
+
+
+def failures_between(since, until) -> tuple[dict[str, int], int]:
+    """Failed events from `since` up to `until`, counted by name, and how many different addresses sent them.
+    Counts only: nothing here names a person or an address."""
+    from sqlalchemy import func
+
+    window = (AuditEventRecord.timestamp >= since, AuditEventRecord.timestamp < until, AuditEventRecord.status == "failure")
+    rows = (
+        db.session.query(AuditEventRecord.event_name, func.count())
+        .filter(*window)
+        .group_by(AuditEventRecord.event_name)
+        .all()
+    )
+    sources = (
+        db.session.query(func.count(func.distinct(AuditEventRecord.ip_address)))
+        .filter(*window)
+        .scalar()
+    )
+    return {name: n for name, n in rows}, int(sources or 0)

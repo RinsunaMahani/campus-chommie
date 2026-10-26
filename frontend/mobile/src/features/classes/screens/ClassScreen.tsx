@@ -9,6 +9,7 @@ import { errorText } from '@/shared/api/errors';
 import { Button } from '@/shared/components/Button';
 import { Card } from '@/shared/components/Parts';
 import { Screen } from '@/shared/components/Screen';
+import { ConfirmSheet } from '@/shared/components/Sheet';
 import { ErrorBox, Loading } from '@/shared/components/Status';
 import { Body, Muted, Overline, Strong, Title } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
@@ -20,7 +21,7 @@ import { Candidate, ClassSummary, RepCode } from '../types';
 /**
  * One class: its invite code, the rep's tools for reps, a way for students to
  * pass a message to their rep, and the confirmed tests and deadlines (each can
- * be flagged; reps see the counts).
+ * be flagged; reps see the counts). A student can leave the class; the only rep is told nobody else can confirm.
  */
 export default function ClassScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -30,6 +31,7 @@ export default function ClassScreen() {
   const [repCode, setRepCode] = useState<RepCode | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState<string | null>(null);
+  const [leaving, setLeaving] = useState(false);
 
   useFocusEffect(
     useCallback(() => {
@@ -64,6 +66,19 @@ export default function ClassScreen() {
     } catch (e) {
       setError(errorText(e, t('common.error')));
     } finally {
+      setBusy(null);
+    }
+  }
+
+  async function leave() {
+    setLeaving(false);
+    setBusy('leave');
+    setError(null);
+    try {
+      await classesApi.leave(id);
+      router.back();
+    } catch (e) {
+      setError(errorText(e, t('common.error')));
       setBusy(null);
     }
   }
@@ -106,6 +121,16 @@ export default function ClassScreen() {
           {events?.map((e) => (
             <EventCard key={e.id} event={e} onFlag={(r) => flag(e, r)} busy={busy === e.id} />
           ))}
+          <Button title={t('classes.leave')} variant="secondary" icon="log-out" loading={busy === 'leave'} onPress={() => setLeaving(true)} />
+          <ConfirmSheet
+            visible={leaving}
+            title={t('classes.leaveTitle', { code: cls.module_code })}
+            message={rep && cls.reps <= 1 ? t('classes.leaveLastRep') : t('classes.leaveSure')}
+            confirmLabel={t('classes.leave')}
+            danger
+            onConfirm={leave}
+            onCancel={() => setLeaving(false)}
+          />
         </>
       ) : null}
     </Screen>

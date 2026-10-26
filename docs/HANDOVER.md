@@ -13,6 +13,21 @@ repo folder but is kept out of git; the parts the screens need are quoted below.
 
 ## Where things stand
 
+**Leaving a class (26 Oct 2026, `rinsuna/leave-class`):** the class screen has "Leave this class", behind an "are
+you sure" sheet (`DELETE /classes/<id>/membership`, which the API had since M4 but the app never offered). The
+class's dates leave the student's week; the class stays for everyone else. The only rep is told nobody else can
+confirm its tests and deadlines once they go, and to make a rep code for a classmate first.
+
+**Faster starts on the free tier (26 Oct 2026, #108):** a start (each deploy, or Render restarting the service) took
+212 s at Render Free's size and now takes 121 s, and the data packs load 6 s after it rather than 75 s
+(DEPLOY.md, "Speed on the free tier"). The container runs `flask start-up` (migrations and the demo seed in one
+process), compiles our code at build, and keeps the packs as JSON too; the app wakes the database when it opens.
+
+**Security sweep 3 (25 Oct 2026, #107):** organised by the OWASP Top 10 2025, after PHP2Shell (which doesn't reach
+us: no PHP). Every route is sent malformed input in CI (two crashes found and fixed), the container image is scanned
+with Trivy, Actions are pinned to commits, outbound calls are limited to three reviewed files, and an hourly attack
+watch logs `security_alert` lines (SECURITY.md).
+
 **Outdoors in the centre (25 Oct 2026, `rinsuna/outdoors-centre`):** the tab bar is Home, Week, Outdoors, Money,
 Support, with Outdoors a raised round button in the middle (like YouTube's and Standard Bank's). It opens a sheet over
 the screen you're on (`/places`, a transparent modal) listing the free and cheap places near campus; tapping one
@@ -48,8 +63,8 @@ On 26 October, Rinsuna supplied SPU's APS image. It matches the official admissi
 points explanation; it does not publish the subject-count rule needed to calculate total APS. Named-language
 checks passed the full backend suite (1,641 tests), with 281 mobile tests, TypeScript and lint passing.
 
-`main` includes the week review, Outdoors centre button and submission updates through PR #105. PR #106
-contains the current data and language follow-up. The
+`main` includes the week review, Outdoors centre button and submission updates through PR #109. PR #106 is merged; the additional campus contacts, calendar dates and release notes
+are on `rinsuna/release-data-followup`. The
 web app and the API are live on Render, with the database on Neon (DEPLOY.md). Test counts change with each merge:
 run the suites for today's numbers.
 

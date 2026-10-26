@@ -284,6 +284,54 @@ The pen test's new attacks:
 - **gunicorn's `Server` header** names gunicorn on a local run. Live, Cloudflare replaces it with its own, so nothing
   leaks; accepted.
 
+## Security sweep 3 (25 Oct 2026): OWASP Top 10 2025 and PHP2Shell
+
+A third pass, organised by the [OWASP Top 10 2025](https://owasp.org/Top10/2025/0x00_2025-Introduction/), prompted
+by PHP2Shell (CVE-2026-109618 and CVE-2026-109619, disclosed 21 Oct 2026): unauthenticated remote code execution in
+PHP itself, exploited before it was announced. Same rules as before: a copy on this computer only, with the production
+config, its own sandbox database and made-up secrets.
+
+**PHP2Shell does not affect Campus Chommie.** It has no PHP code, no `composer` file and no PHP runtime; the API is
+Python in a `python` image. The lesson we took from it: that flaw was in the language runtime, not in anyone's own
+code, and until now CI checked our Python and npm packages but not the runtime or the image under them. Sweep 3
+closes that gap (A03 below).
+
+| # | OWASP 2025 | What we have | Added in sweep 3 |
+|---|---|---|---|
+| A01 | Broken Access Control | every query scoped to its owner, "not yours" is a 404; IDOR attacks on every private record | **SSRF ruled out and kept out:** the server calls only three fixed hosts from config (SMTP, Meta's Graph API, Google's sign-in keys), never an address a student sent, and `tests/architecture/test_outbound_calls.py` fails the build if any other file imports an HTTP or socket library. Week review refuses a `user_id` in the query |
+| A02 | Security Misconfiguration | security headers, CORS for our own sites only, production config checked by the pen test | nothing new found |
+| A03 | Software Supply Chain Failures | pip-audit, npm audit, gitleaks, Bandit in CI | **the image is scanned:** CI runs Trivy on the built container (Debian, the Python runtime and our packages) and fails on a high or critical flaw that has a fix. **The Python release is pinned** (`python:3.12.15-slim`). **Every GitHub Action is pinned to a commit**, not a tag, and Trivy runs from its official image pinned by digest, never `trivy-action`, whose tags were moved to credential-stealing code in March 2026 ([CVE-2026-33634](https://github.com/aquasecurity/trivy/security/advisories/GHSA-69fq-xp46-6x23)) |
+| A04 | Cryptographic Failures | bcrypt passwords, signed tokens with rotation, HMAC-checked webhooks, salted phone hashes, TLS end to end | nothing new found |
+| A05 | Injection | SQLAlchemy with bound parameters only, strict schemas, SQL and script payloads in the pen test | week review's `week` with SQL, unknown values and doubled parameters: refused |
+| A06 | Insecure Design | the money rules (integer cents, nothing moves money), owner-only marks and money | nothing new found |
+| A07 | Authentication Failures | lockout, emailed codes for new phones, rate limits on every route, forged Google tokens refused | nothing new found |
+| A08 | Software or Data Integrity Failures | Meta-signed webhooks, an append-only audit trail, data packs validated against their sources in CI | Actions and Trivy pinned (A03) |
+| A09 | Security Logging and Alerting Failures | the audit trail records every failed sign-in, code and signature | **an hourly attack watch:** when the last hour's failures look like an attack (50 of one kind, or 200 in all) it logs one `security_alert` line with counts only (no email, address or id), which the host's log alerts can match (`test_attack_watch.py`) |
+| A10 | Mishandling of Exceptional Conditions | sweep 2 fixed three crashes | **every route, every odd input:** a test reads the app's own route map and sends every one of its routes (115 today) 12 malformed bodies, 7 hostile query strings and 6 odd headers, signed in; any 500 fails the build (`test_every_route_fails_closed.py`). It found two crashes, below |
+
+| Tool | What it covered | Result |
+|---|---|---|
+| Backend tests | 1,643 tests on PostgreSQL 16, with the new A10, SSRF and attack-watch tests; engine coverage 99% | all pass |
+| Trivy 0.75.0 | the built container: Debian 13.7, Python 3.12.15 and every installed package | Python packages: none. Debian: 44 high or critical with **no fix released yet**, so none we can take; CI fails the day a fix appears and we haven't rebuilt |
+| Bandit 1.9.4 | backend code | nothing medium or high |
+| Our pen test | **159 attacks** (145 from sweep 2, plus 14 new: the crashes below, odd encodings, XML with an entity, an oversized token, week review's query) | **159 pass**, no traceback in the server's log |
+
+### Found and fixed
+
+| Finding | Severity | Fix |
+|---|---|---|
+| A lone surrogate (`\ud800`, half of a UTF-16 pair) in an otherwise good title passed every schema and crashed the insert (500): PostgreSQL can't store it | Low: availability only, the student's own request | the input guard refuses it anywhere in a request, like NUL: 400 `INVALID_CHARACTERS` (`test_unstorable_text_in_a_well_formed_body_is_refused`) |
+| A NUL in a text id in the path (`DELETE /me/funding/x%00y`) reached the database and crashed the query (500) | Low: availability only | the guard checks the path, and query and form keys, too (`test_a_nul_in_the_path_is_refused`) |
+
+### Open, for the team
+
+- **The image carries the test tools.** `requirements.txt` installs pytest and pytest-cov in the production image;
+  nothing runs them there, but splitting a `requirements-dev.txt` would take them out. Small; not done before the
+  deadline.
+- **The attack watch writes to the log; it doesn't page anyone.** To be told, set a log alert on `security_alert`
+  in Render's dashboard (a hosting setting, so Rinsuna's call).
+- **Debian's unfixed flaws** are watched by CI, not fixed: rebuilding the image picks up Debian's fixes once they ship.
+
 ## Accepted dependency risks
 
 Checked 9 Oct 2026. Werkzeug (3.1.9) and PyJWT (2.15.0) were upgraded and the Expo SDK 57 packages patched, which

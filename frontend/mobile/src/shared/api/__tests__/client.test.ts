@@ -5,7 +5,7 @@
  */
 import { beforeEach, expect, jest, test } from '@jest/globals';
 
-import { api, newIdempotencyKey, NO_CONNECTION, onSlowRequests, TIMED_OUT } from '../client';
+import { api, newIdempotencyKey, NO_CONNECTION, onSlowRequests, TIMED_OUT, wakeServer } from '../client';
 
 let mockTokens: { accessToken: string; refreshToken: string } | null = { accessToken: 'old', refreshToken: 'r1' };
 jest.mock('../tokenStore', () => ({
@@ -113,4 +113,13 @@ test('a request that times out says the server is taking long, not that the phon
   await jest.advanceTimersByTimeAsync(31000);
   await check;
   jest.useRealTimers();
+});
+
+test('opening the app wakes the database too, and a failure there is silent', async () => {
+  const fetchMock = jest.fn(() => Promise.reject(new Error('offline')));
+  global.fetch = fetchMock as unknown as typeof fetch;
+  wakeServer();
+  await Promise.resolve();
+  expect(fetchMock).toHaveBeenCalledTimes(1);
+  expect(String((fetchMock.mock.calls[0] as unknown[])[0])).toMatch(/\/health$/);
 });

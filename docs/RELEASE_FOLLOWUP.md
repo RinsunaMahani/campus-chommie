@@ -4,7 +4,7 @@ This is the current queue; older checklists in HANDOVER and OPEN_QUESTIONS also 
 Source acceptance is resolved: dated official university/funder/government/venue publications are sufficient.
 Incomplete packs stay unreleased, and contradictory facts remain unresolved.
 
-## Completed in the PR branch
+## Completed in PR #106 and the follow-up branch
 
 - Combined latest main (through PR #105) with the data/language changes, preserving the week-review and Outdoors work.
 - Twelve additional programme rules and named-language Home/First Additional checks; marks remain transient.
@@ -20,7 +20,7 @@ Incomplete packs stay unreleased, and contradictory facts remain unresolved.
 
 | Area | Evidence and next step |
 |---|---|
-| PR #106 | Resolve conflicts, run the combined branch checks and push; merge only after CI passes and owner approval. |
+| PR status | PR #106 merged with passing CI while this follow-up was being tested. Further support/calendar/documentation changes are on `rinsuna/release-data-followup`, integrated with main through PR #109. |
 | Public availability | On 26 October the API `/api/v1/ping` and web root both returned HTTP 200. Public `/universities` returned 26 institutions and `/colleges` returned a total of 357 entries, both with success envelopes. This verifies public reads, not authenticated journeys or deployment of the PR. |
 | Android/web release | After merge, confirm deployed revisions, build an updated APK and exercise course finder, sign-in, week, money, support and account deletion/export with test accounts. No deployment or account changes were performed during this follow-up. |
 | Google sign-in | Implementation and public web client ID exist. Confirm production backend audience, web origins and Android signing fingerprint through an actual sign-in on each platform. Do not publish secrets. |
@@ -38,8 +38,11 @@ whether Google or WhatsApp is configured; that status must not be inferred from 
 
 ## Local validation
 
-The combined branch passed 1,673 backend tests (two existing Flask-Migrate deprecation warnings),
+Before main advanced through PR #109, the combined branch passed 1,673 backend tests (two existing Flask-Migrate deprecation warnings),
 40 mobile suites / 305 tests, TypeScript, Expo lint and the web production export.
 After the final UJ/CUT calendar additions, all 596 affected engine, architecture, catalogue and support tests passed.
 The data validator reports zero errors; incomplete-pack and OSM review warnings remain.
 GitHub CI must also pass on the pushed revision before merge.
+
+After integration with main through PR #109: 574 engine/architecture checks and 29 affected API checks passed.
+The API checks were rerun after restarting the isolated test database; the initial connection errors were environmental.

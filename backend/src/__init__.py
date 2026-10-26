@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import logging
 import os
+import re
 
 import click
 from flask import Flask
@@ -215,10 +216,11 @@ def _register_error_handlers(app: Flask) -> None:
 
 
 def _register_input_guard(app: Flask) -> None:
-    """Refuse any request carrying the NUL character anywhere (JSON, form,
-    query). PostgreSQL can't store it and no human types it; it only
-    arrives in attacks and broken clients. Fields also clean their own text
-    (shared/validation/text.py); this is the net under them."""
+    """Refuse any request carrying the NUL character or a lone surrogate
+    anywhere (path, JSON, form, query). PostgreSQL can't store either and no
+    human types them; they only arrive in attacks and broken clients.
+    Fields also clean their own text (shared/validation/text.py); this is
+    the net under them."""
     from flask import request
 
     from src.core.responses import error_response
@@ -226,7 +228,11 @@ def _register_input_guard(app: Flask) -> None:
     class _TooDeep(Exception):
         pass
 
-    def _has_nul(value) -> bool:
+    # A lone surrogate (half of a UTF-16 pair, written as \ud800 in JSON) can't be encoded as UTF-8: a title
+    # carrying one passed every schema and crashed the insert (security sweep 3).
+    unstorable = re.compile("[\x00\ud800-\udfff]")
+
+    def _unstorable(value) -> bool:
         """Walks the JSON with its own stack, not recursion: a body nested
         thousands deep can't overflow Python's stack (found by Risuna's
         hostile-input tests). No request of ours nests past a few levels."""
@@ -236,7 +242,7 @@ def _register_input_guard(app: Flask) -> None:
             if depth > MAX_JSON_DEPTH:
                 raise _TooDeep()
             if isinstance(item, str):
-                if "\x00" in item:
+                if unstorable.search(item):
                     return True
             elif isinstance(item, dict):
                 stack.extend((k, depth + 1) for k in item.keys())
@@ -246,11 +252,16 @@ def _register_input_guard(app: Flask) -> None:
         return False
 
     @app.before_request
-    def _refuse_nul():
+    def _refuse_unstorable():
         try:
-            found = any(_has_nul(v) for v in request.args.values()) or any(_has_nul(v) for v in request.form.values())
+            # The path too: an id like "x%00y" reached the database and crashed it (security sweep 3).
+            found = (
+                unstorable.search(request.path)
+                or any(_unstorable(k) or _unstorable(v) for k, v in request.args.items(multi=True))
+                or any(_unstorable(k) or _unstorable(v) for k, v in request.form.items(multi=True))
+            )
             if not found and request.is_json:
-                found = _has_nul(request.get_json(silent=True))
+                found = _unstorable(request.get_json(silent=True))
         except (_TooDeep, RecursionError):  # RecursionError: the JSON parser itself gave up
             return error_response(message="The request isn't in a shape we accept.", status_code=400, code="INVALID_BODY")
         if found:
