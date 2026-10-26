@@ -12,15 +12,15 @@ Dated official university, funder, government and venue sources are accepted und
 | mut | 40 | 1 | 0 | 2 | 6 | 1 | 1 | 0 |
 | nmu | 124 | 0 | 0 | 7 | 14 | 1 | 1 | 0 |
 | nwu | 81 | 0 | 0 | 3 | 3 | 3 | 1 | 0 |
-| ru | 16 | 1 | 0 | 1 | 10 | 1 | 1 | 0 |
+| ru | 16 | 0 | 0 | 1 | 10 | 1 | 1 | 0 |
 | smu | 17 | 0 | 0 | 1 | 23 | 7 | 2 | 0 |
 | spu | 26 | 0 | 26 | 1 | 34 | 3 | 1 | 1 |
-| su | 73 | 2 | 71 | 2 | 11 | 2 | 1 | 0 |
-| tut | 124 | 2 | 0 | 9 | 60 | 20 | 8 | 0 |
+| su | 73 | 0 | 71 | 2 | 11 | 2 | 1 | 0 |
+| tut | 124 | 1 | 0 | 9 | 60 | 20 | 8 | 0 |
 | uct | 34 | 0 | 0 | 2 | 7 | 3 | 1 | 0 |
-| ufh | 52 | 3 | 49 | 3 | 3 | 6 | 1 | 0 |
-| ufs | 172 | 2 | 0 | 3 | 13 | 3 | 1 | 0 |
-| uj | 175 | 5 | 0 | 4 | 29 | 7 | 1 | 0 |
+| ufh | 52 | 1 | 51 | 3 | 3 | 6 | 1 | 0 |
+| ufs | 172 | 1 | 0 | 3 | 13 | 3 | 1 | 0 |
+| uj | 175 | 3 | 0 | 4 | 29 | 7 | 1 | 0 |
 | ukzn | 66 | 0 | 0 | 5 | 4 | 1 | 1 | 0 |
 | ul | 54 | 0 | 0 | 1 | 2 | 1 | 1 | 0 |
 | ump | 24 | 1 | 0 | 2 | 14 | 1 | 1 | 0 |
@@ -72,13 +72,25 @@ These entries remain unassessed. See each pack's selection note and research not
 
 - **cput**: `dip_banking`, `bed_senior_phase_fet`
 - **mut**: `dip_community_extension`
+- **tut**: `bed_sp_fet_technology`
+- **ufh**: `ufh_71524`
+- **ufs**: `b_sustainable_food_systems_extended`
+- **uj**: `uj_b5sgeq`, `uj_b2p82q`, `uj_b2p83q`
+- **ump**: `bsocsci`
+
+## Partially assessed requirements
+
+Known subject routes are checked; other published alternatives still need clarification. These are not fully resolved records.
+
+- **ufh**: `ufh_500492`, `ufh_500493`
+
+## Published routes requiring university assessment
+
+These are documented prior-qualification or faculty-placement routes, not automated school-mark matches. They are separate from missing requirements; no eligibility is claimed.
+
 - **ru**: `pgce`
 - **su**: `ba_extended`, `bsc_extended`
-- **tut**: `bed_foundation_phase`, `bed_sp_fet_technology`
-- **ufh**: `ufh_500492`, `ufh_500493`, `ufh_71524`
-- **ufs**: `bed_extended`, `b_sustainable_food_systems_extended`
-- **uj**: `uj_b5sgeq`, `uj_b2p82q`, `uj_b2p83q`, `uj_b2p77q`, `uj_b2p78q`
-- **ump**: `bsocsci`
+- **ufs**: `bed_extended`
 
 Funding: 24 funders; release=false; 0 sources need source review or re-check.
 

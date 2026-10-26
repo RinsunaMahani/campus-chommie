@@ -53,7 +53,7 @@ def check(path: Path, today: date) -> tuple[list[str], list[str]]:
     if not uni.programmes:
         problem(f"{uni.university}: no programmes yet")
     for p in uni.programmes:
-        if p.requirements is None:
+        if p.requirements is None and p.manual_admission is None:
             problem(f"{uni.university}/{p.id}: requirements not verified yet")
     for section, label in (
         (uni.campuses, "campuses"), (uni.calendar, "calendar"), (uni.support_services, "support services"),

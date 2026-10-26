@@ -237,17 +237,39 @@ class Option(_Strict):
 class Choice(_Strict):
     """An either/or requirement: the learner needs one of the options."""
 
-    one_of: list[Option] = Field(min_length=2)
+    one_of: list[Option] = Field(min_length=1)
+    unassessed_alternative: str | None = Field(default=None, min_length=1)
+
+    @model_validator(mode="after")
+    def _enough_options(self):
+        if len(self.one_of) < 2 and not self.unassessed_alternative:
+            raise ValueError("one_of needs at least 2 items or an explicitly unassessed alternative")
+        return self
 
 
 LANGUAGE_NAMES = frozenset({"afrikaans", "isindebele", "isixhosa", "isizulu", "sepedi", "sesotho",
                             "setswana", "siswati", "tshivenda", "xitsonga", "sign_language"})
 
 
+class LanguageGroup(_Strict):
+    role: Literal["home", "first_additional"]
+    min_level: Level
+    languages: list[str] = Field(min_length=1)
+
+    @model_validator(mode="after")
+    def _known_languages(self):
+        if set(self.languages) - (LANGUAGE_NAMES | {"english"}):
+            raise ValueError("language groups must name recognised languages")
+        if len(set(self.languages)) != len(self.languages):
+            raise ValueError("language groups must not repeat a language")
+        return self
+
+
 class Requirements(_Strict):
     source: str
     english_language_levels: dict[Literal["home", "first_additional"], Level] = Field(default_factory=dict)
     named_language_levels: dict[str, dict[Literal["home", "first_additional"], Level]] = Field(default_factory=dict)
+    language_groups: list[LanguageGroup] = Field(default_factory=list)
     # Some subject routes have a published APS while another route's threshold is omitted.
     points_threshold_incomplete: bool = False
     # Above a published bounded range, refer to the university instead of extrapolating eligibility.
@@ -317,6 +339,12 @@ class Bridge(_Strict):
     eligibility_note: str | None = None
 
 
+class ManualAdmission(_Strict):
+    source: str
+    reason: Literal["prior_qualification", "faculty_placement"]
+    text: str = Field(min_length=1)
+
+
 class Programme(_Strict):
     id: str
     name: str
@@ -328,12 +356,15 @@ class Programme(_Strict):
     # None where the source doesn't say: the app groups those under "Other programmes".
     faculty: str | None = Field(default=None, min_length=1)
     requirements: Requirements | None = None  # None means not verified yet
+    manual_admission: ManualAdmission | None = None
     # Only set when this programme counts points differently from the rest of the university.
     points_rules: PointsRule | None = None
     bridges_to: list[Bridge] = Field(default_factory=list)
 
     @model_validator(mode="after")
     def _known_fields(self):
+        if self.manual_admission and self.requirements:
+            raise ValueError("manual admission cannot also claim a school-mark requirements rule")
         problems = _unknown_fields(self.fields)
         if problems:
             raise ValueError(f"{self.id}: " + "; ".join(problems))
@@ -622,6 +653,8 @@ class University(_Strict):
         for p in self.programmes:
             if p.requirements and p.requirements.source not in source_ids:
                 problems.append(f"{p.id}: requirements cite unknown source '{p.requirements.source}'")
+            if p.manual_admission and p.manual_admission.source not in source_ids:
+                problems.append(f"{p.id}: manual admission cites unknown source '{p.manual_admission.source}'")
             if p.points_rules and p.points_rules.source not in source_ids:
                 problems.append(f"{p.id}: points_rules cite unknown source '{p.points_rules.source}'")
             for b in p.bridges_to:

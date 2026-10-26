@@ -75,11 +75,35 @@ programmes:
   - education
   - commerce
   selective: true
-  selection_note: 'Published requirements need confirmation before assessment. {''english'':
-    4, ''life_orientation'': 4}; APS 28. NSC admission to the qualification is required.
-    The guide calls the third commerce subject Business management; confirm whether
-    your NSC Business Studies is accepted.'
-  requirements: null
+  selection_note: Known subject routes can be checked, but one published alternative
+    remains unresolved. Admission is subject to faculty selection and confirmation
+    of APS.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 28
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+    extras:
+    - NSC admission to degree study is required. UFH must confirm the total APS.
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 3
+        min_points: 27
+      - subjects:
+          mathematical_literacy: 4
+        min_points: 28
+    - one_of:
+      - subjects:
+          accounting: 4
+          economics: 4
+      unassessed_alternative: The guide also allows pairs involving Business management.
+        Whether NSC Business Studies is equivalent needs UFH confirmation; that alternative
+        is not assessed here.
+    additional_minimums:
+    - 4
+    - 4
 - id: ufh_500493
   name: Bachelor of Education Senior and FET Phase (Science specialisation)
   faculty: Education
@@ -87,11 +111,32 @@ programmes:
   - education
   - natural_sciences
   selective: true
-  selection_note: '2027 guide p.1: APS 28; English, Mathematics and Life Orientation
-    level 4; Physical Science OR Life Science OR Geography OR Computer science level
-    4; three other subjects level 4. Computer science is not an NSC subject key supported
-    by the app; confirm with the faculty.'
-  requirements: null
+  selection_note: Known subject routes can be checked, but one published alternative
+    remains unresolved. Admission is subject to faculty selection and confirmation
+    of APS.
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: 28
+    subject_minimums:
+      english: 4
+      life_orientation: 4
+      mathematics: 4
+    extras:
+    - NSC admission to degree study is required. UFH must confirm the total APS.
+    choices:
+    - one_of:
+      - subjects:
+          physical_sciences: 4
+      - subjects:
+          life_sciences: 4
+      - subjects:
+          geography: 4
+      unassessed_alternative: The guide also lists Computer science. Equivalence to
+        NSC IT or CAT needs UFH confirmation; that alternative is not assessed here.
+    additional_minimums:
+    - 4
+    - 4
+    - 4
 - id: ufh_500494
   name: Bachelor of Education Senior and FET Phase (Social Science specialisation)
   faculty: Education

@@ -564,14 +564,20 @@ programmes:
         - "UFS's 2026 Education rule book counts only the subjects it lists towards the AP; Computer Applications Technology, Tourism and Hospitality Studies are among those not listed, so your AP here may be lower than shown."
 
   - id: bed_extended
-    name: "Bachelor of Education (extended curriculum programme)"
-    faculty: "Faculty of Education"
-    fields: [education]
-    selection_note: "UFS's 2027 prospectus lists an extended BEd in its fee table but publishes no requirements for it; apply for a mainstream BEd and UFS places students in extended programmes if space allows."
-    requirements: null       # no requirements published: the 2027 prospectus and the 2026 Education rule book give none
-
-  # Health Sciences, Bloemfontein Campus (prospectus pages 18 and 19). Every one is subject to selection and
-  # must be your first choice.
+    name: Bachelor of Education (extended curriculum programme)
+    faculty: Faculty of Education
+    fields:
+    - education
+    selection_note: UFS's 2027 prospectus lists an extended BEd in its fee table but
+      publishes no requirements for it; apply for a mainstream BEd and UFS places students
+      in extended programmes if space allows.
+    requirements: null
+    manual_admission:
+      reason: faculty_placement
+      source: s-ufs-prospectus-2027
+      text: The 2027 prospectus lists the extended BEd but does not publish a separate
+        school-mark entry threshold. Apply for a mainstream BEd and ask UFS about extended
+        placement; placement depends on faculty assessment and available space.
 
   - id: bmedsc_radiation_science
     name: "Bachelor of Medical Science with specialisation in Radiation Science (BMedSc)"

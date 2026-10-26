@@ -13,6 +13,27 @@ from course_finder_helpers import ASSESS, PLAN, POINTS, STRONG, marks
 from src.domains.pathways.course_finder.services import course_finder_service
 
 
+def test_grouped_language_route_and_manual_admission_are_visible(client):
+    rows = [dict(subject=s, percent=p) for s,p in dict(english=50, mathematics=50, other_language=60,
+            history=80, geography=80, life_sciences=80).items()]
+    rows[0]['language_level'] = 'first_additional'
+    rows[2].update(language_name='sepedi',language_level='home')
+    response = client.post(ASSESS,json={'university':'tut','marks':rows})
+    assert response.status_code == 200
+    match = next(m for m in response.get_json()['data']['matches'] if m['programme']=='bed_foundation_phase')
+    assert match['tier']=='reach'
+    rows[2]['language_level']='first_additional'
+    response = client.post(ASSESS,json={'university':'tut','marks':rows})
+    match = next(m for m in response.get_json()['data']['matches'] if m['programme']=='bed_foundation_phase')
+    assert match['tier']=='not_yet'
+    response = client.post(ASSESS,json={'university':'ru','marks':rows})
+    match = next(m for m in response.get_json()['data']['matches'] if m['programme']=='pgce')
+    assert match['tier']=='unverified'
+    assert match['points'] is None
+    assert match['source_url'].startswith('https://www.ru.ac.za/')
+    assert any('degree' in line for line in match['explanation'])
+
+
 def test_english_role_reaches_assessment_plan_and_university_overview(client):
     rows = [dict(subject=s, percent=p) for s, p in dict(english=50, mathematics=80, other_language=80,
             life_sciences=80, geography=80, history=80, life_orientation=80).items()]
