@@ -528,6 +528,14 @@ sources:
     retrieved: 2026-10-26
     last_verified: 2026-10-26
     verified_by: Rinsuna (explicit acceptance of supplied calculator on 26 October 2026)
+  - id: s-spu-calendar-2027
+    url: https://www.spu.ac.za/wp-content/uploads/2026/09/S-2026-51-14-2027-Academic-Calendar-FINAL.pdf
+    publisher: Sol Plaatje University
+    title: Final academic calendar 2027, S-2026-51-14
+    retrieved: '2026-10-26'
+    last_verified: null
+    verified_by: agent, official publication
+    verification_basis: official_university
   - id: s-spu-aps-image
     url: https://www.spu.ac.za/wp-content/uploads/2018/11/SPU-Admission-calculator-295x300.png
     publisher: Sol Plaatje University
@@ -628,6 +636,117 @@ support_services:
   source: s-spu-support-2026
 
 calendar:
+- period: registration
+  name: Returning undergraduate, honours and postgraduate diploma online registration
+  start: '2027-01-13'
+  source: s-spu-calendar-2027
+  end: '2027-02-05'
+  who: returning
+- period: registration
+  name: 'First-year residence students: on-campus academic registration'
+  start: '2027-01-22'
+  source: s-spu-calendar-2027
+  end: '2027-01-23'
+  who: first_years
+  note: For first-year residence students only; residence arrival is on the same dates.
+- period: registration
+  name: First-year online registration
+  start: '2027-01-25'
+  source: s-spu-calendar-2027
+  end: '2027-02-05'
+  who: first_years
+  step: register
+- period: orientation
+  name: First-year orientation
+  start: '2027-01-25'
+  source: s-spu-calendar-2027
+  end: '2027-02-05'
+  who: first_years
+  step: orientation
+  note: On campus, scheduled around registration.
+- period: orientation
+  name: Vice-Chancellor welcome to first-year students
+  start: '2027-02-06'
+  source: s-spu-calendar-2027
+  who: first_years
+- period: term
+  name: Teaching block 1
+  start: '2027-02-08'
+  source: s-spu-calendar-2027
+  end: '2027-03-19'
+  step: first_lecture
+- period: registration
+  name: First-semester module changes
+  start: '2027-02-08'
+  source: s-spu-calendar-2027
+  end: '2027-02-19'
+- period: recess
+  name: Student recess
+  start: '2027-03-22'
+  source: s-spu-calendar-2027
+  end: '2027-04-02'
+- period: term
+  name: Teaching block 2
+  start: '2027-04-05'
+  source: s-spu-calendar-2027
+  end: '2027-05-14'
+- period: closed
+  name: SPU holiday
+  start: '2027-04-26'
+  source: s-spu-calendar-2027
+- period: exam
+  name: Main mid-year examinations
+  start: '2027-05-17'
+  source: s-spu-calendar-2027
+  end: '2027-06-04'
+- period: exam
+  name: Mid-year supplementary examinations
+  start: '2027-06-21'
+  source: s-spu-calendar-2027
+  end: '2027-07-02'
+- period: recess
+  name: Student recess
+  start: '2027-07-05'
+  source: s-spu-calendar-2027
+  end: '2027-07-09'
+- period: term
+  name: Teaching block 3
+  start: '2027-07-12'
+  source: s-spu-calendar-2027
+  end: '2027-08-20'
+- period: registration
+  name: Second-semester module changes
+  start: '2027-07-12'
+  source: s-spu-calendar-2027
+  end: '2027-07-23'
+- period: recess
+  name: Student recess
+  start: '2027-08-23'
+  source: s-spu-calendar-2027
+  end: '2027-08-27'
+- period: term
+  name: Teaching block 4
+  start: '2027-08-30'
+  source: s-spu-calendar-2027
+  end: '2027-10-15'
+- period: closed
+  name: SPU holiday
+  start: '2027-09-23'
+  source: s-spu-calendar-2027
+- period: exam
+  name: Main year-end examinations
+  start: '2027-10-18'
+  source: s-spu-calendar-2027
+  end: '2027-11-05'
+- period: exam
+  name: Year-end supplementary examinations
+  start: '2027-11-22'
+  source: s-spu-calendar-2027
+  end: '2027-12-03'
+- period: closed
+  name: University closes
+  start: '2027-12-15'
+  source: s-spu-calendar-2027
 - period: registration
   name: First-year online registration
   start: '2026-01-26'

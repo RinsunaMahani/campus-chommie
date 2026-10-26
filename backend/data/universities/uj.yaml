@@ -1239,7 +1239,7 @@ programmes:
   selective: true
   selection_note: '2027 prospectus p.55: APS 28; English Home Language 5 or First
     Additional Language 6. Subject alternatives in the table also need faculty confirmation.
-    The app cannot distinguish these language routes; check with UJ.'
+    English language roles are supported; the outstanding subject-combination ambiguity needs UJ confirmation.'
   requirements: null
 - id: uj_b5slsq
   name: 'BEd Senior Phase and FET: Life Sciences'
@@ -1722,22 +1722,52 @@ programmes:
   fields:
   - built_environment
   selective: true
-  selection_note: 'Published requirements need confirmation before assessment. {''english'':
-    4}; APS 26. 2027 prospectus p.63. NSC admission to this qualification is required.
-    Confirm the Physical Science/Technical Science alternative with the faculty: p.63
-    lists both columns without an explicit OR.'
-  requirements: null
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    academic merit and available places.
+  requirements:
+    source: s-uj-b6sc0q-course
+    min_points: 26
+    subject_minimums:
+      english: 4
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 5
+      - subjects:
+          technical_mathematics: 5
+    - one_of:
+      - subjects:
+          physical_sciences: 5
+      - subjects:
+          technical_sciences: 5
+    extras:
+    - NSC admission to degree study is required.
 - id: uj_b6cx3q
   name: BEngTech Civil Engineering (Extended)
   faculty: Engineering and the Built Environment
   fields:
   - engineering
   selective: true
-  selection_note: 'Published requirements need confirmation before assessment. {''english'':
-    4}; APS 26. 2027 prospectus p.63. NSC admission to this qualification is required.
-    Confirm the Physical Science/Technical Science alternative with the faculty: p.63
-    lists both columns without an explicit OR.'
-  requirements: null
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    academic merit and available places.
+  requirements:
+    source: s-uj-b6cx3q-course
+    min_points: 26
+    subject_minimums:
+      english: 4
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+      - subjects:
+          technical_mathematics: 4
+    - one_of:
+      - subjects:
+          physical_sciences: 4
+      - subjects:
+          technical_sciences: 4
+    extras:
+    - NSC admission to degree study is required.
 - id: uj_b6l1xq
   name: BEngTech Electrical Engineering (Extended)
   faculty: Engineering and the Built Environment
@@ -1786,22 +1816,52 @@ programmes:
   fields:
   - engineering
   selective: true
-  selection_note: 'Published requirements need confirmation before assessment. {''english'':
-    4}; APS 24. 2027 prospectus p.63. NSC admission to this qualification is required.
-    Confirm the Physical Science/Technical Science alternative with the faculty: p.63
-    lists both columns without an explicit OR.'
-  requirements: null
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    academic merit and available places.
+  requirements:
+    source: s-uj-b6ix2q-course
+    min_points: 24
+    subject_minimums:
+      english: 4
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 5
+      - subjects:
+          technical_mathematics: 5
+    - one_of:
+      - subjects:
+          physical_sciences: 5
+      - subjects:
+          technical_sciences: 5
+    extras:
+    - NSC admission to degree study is required.
 - id: uj_b6mx2q
   name: BEngTech Mechanical Engineering (Extended)
   faculty: Engineering and the Built Environment
   fields:
   - engineering
   selective: true
-  selection_note: 'Published requirements need confirmation before assessment. {''english'':
-    4}; APS 24. 2027 prospectus p.63. NSC admission to this qualification is required.
-    Confirm the Physical Science/Technical Science alternative with the faculty: p.63
-    lists both columns without an explicit OR.'
-  requirements: null
+  selection_note: Minimum requirements do not guarantee admission; selection is on
+    academic merit and available places.
+  requirements:
+    source: s-uj-b6mx2q-course
+    min_points: 24
+    subject_minimums:
+      english: 4
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 5
+      - subjects:
+          technical_mathematics: 5
+    - one_of:
+      - subjects:
+          physical_sciences: 5
+      - subjects:
+          technical_sciences: 5
+    extras:
+    - NSC admission to degree study is required.
 - id: uj_b6px2q
   name: BEngTech Physical Metallurgy (Extended)
   faculty: Engineering and the Built Environment
@@ -3522,6 +3582,38 @@ programmes:
     - 2027 prospectus p.94. NSC admission to this qualification is required.
 
 sources:
+  - id: s-uj-b6sc0q-course
+    url: https://www.uj.ac.za/university-courses/bachelor-of-science-in-construction-extended/
+    publisher: University of Johannesburg
+    title: 'BSc Construction (Extended): explicit subject alternatives'
+    retrieved: '2026-10-26'
+    last_verified: null
+    verified_by: agent, official publication
+    verification_basis: official_university
+  - id: s-uj-b6cx3q-course
+    url: https://www.uj.ac.za/university-courses/beng-tech-in-civil-engineering-extended/
+    publisher: University of Johannesburg
+    title: 'BEngTech Civil Engineering (Extended): explicit subject alternatives'
+    retrieved: '2026-10-26'
+    last_verified: null
+    verified_by: agent, official publication
+    verification_basis: official_university
+  - id: s-uj-b6ix2q-course
+    url: https://www.uj.ac.za/university-courses/beng-tech-in-industrial-engineering-extended/
+    publisher: University of Johannesburg
+    title: 'BEngTech Industrial Engineering (Extended): explicit subject alternatives'
+    retrieved: '2026-10-26'
+    last_verified: null
+    verified_by: agent, official publication
+    verification_basis: official_university
+  - id: s-uj-b6mx2q-course
+    url: https://www.uj.ac.za/university-courses/beng-tech-in-mechanical-engineering-extended/
+    publisher: University of Johannesburg
+    title: 'BEngTech Mechanical Engineering (Extended): explicit subject alternatives'
+    retrieved: '2026-10-26'
+    last_verified: null
+    verified_by: agent, official publication
+    verification_basis: official_university
   - id: s-uj-calendar-2027-indexed
     url: https://www.uj.ac.za/wp-content/uploads/2025/06/2027-academic-calendar.pdf
     publisher: University of Johannesburg
