@@ -220,12 +220,19 @@ programmes:
         - "Requires Mathematics 3 (40%) or Mathematical Literacy 4 (50%), and Life Orientation 4 (50%). Duration is 4 years."
 
   - id: pgce
-    name: "Postgraduate Certificate in Education (PGCE)"
-    faculty: "Faculty of Education"
-    fields: [education]
+    name: Postgraduate Certificate in Education (PGCE)
+    faculty: Faculty of Education
+    fields:
+    - education
     requirements: null
-
-  # Law Faculty (prospectus page 16)
+    manual_admission:
+      reason: prior_qualification
+      source: s-ru-pgce-entry
+      text: 'A relevant bachelor or higher degree is required, with an undergraduate
+        average of at least 60%. Teaching-method subjects and their university year
+        levels must meet Rhodes requirements (including the published method-subject
+        averages). Apply for Senior Phase/FET; the faculty must assess your transcript.
+        The linked page is labelled for 2026: confirm requirements for your intake.'
 
   - id: llb
     name: "Bachelor of Laws (LLB)"
@@ -298,6 +305,15 @@ programmes:
         - "Offers provisional acceptance from 45 points, and considers 40 to 44 points at the Dean's discretion. Duration is 3 years."
 
 sources:
+  - id: s-ru-pgce-entry
+    url: https://www.ru.ac.za/facultyofeducation/studying/pgce/index.html
+    publisher: Rhodes University
+    title: 'PGCE entry: appropriate degree, academic average and teaching-method prerequisites;
+      page labelled 2026'
+    retrieved: '2026-10-26'
+    last_verified: null
+    verified_by: agent, official publication
+    verification_basis: official_university
   - id: s-amazwi-visit-2026
     url: https://www.amazwi.museum/contact-us/
     publisher: Amazwi South African Museum of Literature

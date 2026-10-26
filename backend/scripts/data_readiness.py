@@ -37,7 +37,9 @@ def report(as_of: date) -> dict:
             "name": uni.name,
             "release": uni.release,
             "programmes": len(uni.programmes),
-            "requirements_missing": [p.id for p in uni.programmes if p.requirements is None],
+            "requirements_missing": [p.id for p in uni.programmes if p.requirements is None and p.manual_admission is None],
+            "manual_admission": [p.id for p in uni.programmes if p.manual_admission is not None],
+            "partial_requirements": [p.id for p in uni.programmes if p.requirements and (p.requirements.unassessed_conditions or any(c.unassessed_alternative for c in p.requirements.choices))],
             "manual_points": sum(p.requirements is not None and not (p.points_rules or uni.points_rules) for p in uni.programmes),
             "campuses": len(uni.campuses),
             "calendar_entries": len(uni.calendar),
@@ -81,6 +83,16 @@ def markdown(data: dict) -> str:
     for uni in data["universities"]:
         if uni["requirements_missing"]:
             lines.append(f"- **{uni['id']}**: " + ", ".join(f"`{pid}`" for pid in uni["requirements_missing"]))
+    lines += ["", "## Partially assessed requirements", "",
+              "Known requirements are checked; other published alternatives or admission conditions still need clarification. These are not fully resolved records.", ""]
+    for uni in data["universities"]:
+        if uni["partial_requirements"]:
+            lines.append(f"- **{uni['id']}**: " + ", ".join(f"`{pid}`" for pid in uni["partial_requirements"]))
+    lines += ["", "## Published routes requiring university assessment", "",
+              "These are documented prior-qualification or faculty-placement routes, not automated school-mark matches. They are separate from missing requirements; no eligibility is claimed.", ""]
+    for uni in data["universities"]:
+        if uni["manual_admission"]:
+            lines.append(f"- **{uni['id']}**: " + ", ".join(f"`{pid}`" for pid in uni["manual_admission"]))
     funding = data["funding"]
     pending = sum(s["review_status"] not in ("human reviewed", "official publisher source") for s in funding["sources"])
     lines += ["", f"Funding: {funding['funders']} funders; release={str(funding['release']).lower()}; {pending} sources need source review or re-check.", "",

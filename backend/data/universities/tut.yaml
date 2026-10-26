@@ -940,10 +940,52 @@ programmes:
             - subjects: {technical_sciences: 3}
 
   - id: bed_foundation_phase
-    name: "BEd in Foundation Phase Teaching"
-    faculty: "Faculty of Humanities"
-    fields: [education]
-    requirements: null       # needs a home language the programme offers at 5 and a first additional language at 4, which the schema can't hold yet
+    name: BEd in Foundation Phase Teaching
+    faculty: Faculty of Humanities
+    fields:
+    - education
+    requirements:
+      source: s-tut-courses-2027
+      min_points: 25
+      subject_minimums:
+        english: 3
+      language_groups:
+      - role: home
+        min_level: 5
+        languages:
+        - sepedi
+        - setswana
+        - xitsonga
+        - isizulu
+      - role: first_additional
+        min_level: 4
+        languages:
+        - english
+        - afrikaans
+        - isindebele
+        - isixhosa
+        - isizulu
+        - sepedi
+        - sesotho
+        - setswana
+        - siswati
+        - tshivenda
+        - xitsonga
+        - sign_language
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 4
+        - subjects:
+            mathematical_literacy: 5
+      extras:
+      - NSC admission to bachelor degree study is required.
+      - 'Home Language options are listed in the official 2026 Humanities faculty prospectus,
+        pages 126-128: https://www.tut.ac.za/media/tshwane-interim/site-content/images/prospectus/PART_5_Humanities_Prospectus_-2026.pdf'
+    selective: true
+    selection_note: Admission is subject to capacity and degree endorsement. The published
+      2026 faculty curriculum lists Sepedi, Setswana, Xitsonga and isiZulu Home Language
+      options; confirm the offered language for your intake.
 
   - id: bed_intermediate_phase
     name: "BEd in Intermediate Phase Teaching"
@@ -1076,10 +1118,50 @@ programmes:
             - subjects: {physical_sciences: 4}
 
   - id: bed_sp_fet_technology
-    name: "BEd in Senior Phase and FET Teaching (Technology)"
-    faculty: "Faculty of Humanities"
-    fields: [education, engineering]
-    requirements: null       # TUT's "and/or" list of technology subjects can't be read as a clear rule; ask TUT
+    name: BEd in Senior Phase and FET Teaching (Technology)
+    faculty: Faculty of Humanities
+    fields:
+    - education
+    - engineering
+    requirements:
+      source: s-tut-humanities-2026
+      min_points: 24
+      subject_minimums:
+        english: 4
+      choices:
+      - one_of:
+        - subjects:
+            civil_technology: 4
+        - subjects:
+            electrical_technology: 4
+        - subjects:
+            mechanical_technology: 4
+        - subjects:
+            physical_sciences: 4
+        - subjects:
+            technical_sciences: 4
+      - one_of:
+        - subjects:
+            engineering_graphics_and_design: 4
+        - subjects:
+            mathematics: 4
+        - subjects:
+            technical_mathematics: 4
+      extras:
+      - NSC degree endorsement is required. Uses the 2026 faculty rules, pages 179-181;
+        confirm offerings for your intake.
+      - Choose an offered Civil, Electrical or Mechanical Technology specialisation
+        paired with Engineering Graphics and Design or Technical Mathematics. The calculator
+        checks whether at least one published combination is available from your marks,
+        not admission to every specialisation.
+      - A Civil/Electrical/Mechanical Technology mark qualifies for that corresponding
+        specialisation. Physical or Technical Sciences qualifies for any of those three.
+        The second specialisation needs EGD 4, or Mathematics/Technical Mathematics
+        4.
+    selective: true
+    selection_note: The detailed specialisation prerequisites (page 179) and six permitted
+      curriculum pairs (page 181) govern over the abbreviated and/or subject list. APS
+      24 excluding Life Orientation. Selection is ranked and capacity dependent.
 
   - id: dip_acet_civil_technology
     name: "Diploma in Adult and Community Education and Training (Civil Technology)"
@@ -2243,6 +2325,14 @@ programmes:
             - subjects: {technical_sciences: 3}
 
 sources:
+  - id: s-tut-humanities-2026
+    url: https://www.tut.ac.za/media/tshwane-interim/site-content/images/prospectus/PART_5_Humanities_Prospectus_-2026.pdf
+    publisher: Tshwane University of Technology
+    title: '2026 Humanities prospectus: Foundation Phase languages, pages 126-128; Technology prerequisites and subject pairs, pages 179-181'
+    retrieved: '2026-10-26'
+    last_verified: null
+    verified_by: agent, official publication
+    verification_basis: official_university
   - id: s-polokwane-museum-tariffs-2026
     url: https://www.polokwane.gov.za/wp-content/uploads/APPROVED-TARIFFS-2026-2027-GAZETTE-NO.3828.pdf
     publisher: Polokwane Municipality

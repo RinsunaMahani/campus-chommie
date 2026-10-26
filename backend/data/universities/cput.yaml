@@ -1366,12 +1366,37 @@ programmes:
         subjects, excluding Life Orientation, divided by 10. For more than six non-LO
         subjects, confirm that required subjects are included.'
 
-  - id: dip_banking                        # D3BNKG
-    name: "Diploma in Banking"
-    faculty: "Faculty of Business and Management Sciences"
-    fields: [finance]
-    selection_note: "2027 prospectus p.9: APS 24 with Mathematics, 26 with Mathematical Literacy; English 4, Mathematics 3 or Mathematical Literacy 4. The additional subject list mixes ICT/Accounting and vocational subjects without an unambiguous NSC equivalent or an APS method. Ask the faculty to assess this route. Part-time students need proof of full-time employment."
-    requirements: null
+  - id: dip_banking
+    name: Diploma in Banking
+    faculty: Faculty of Business and Management Sciences
+    fields:
+    - finance
+    selection_note: English and Mathematics/Mathematical Literacy minimums can now be
+      checked from the official 2027 prospectus, page 9. The mixed NSC/vocational subject
+      condition remains university-assessed; passing these checks does not establish
+      eligibility.
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 24
+      subject_minimums:
+        english: 4
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 3
+          min_points: 24
+        - subjects:
+            mathematical_literacy: 4
+          min_points: 26
+      unassessed_conditions:
+      - The 2027 prospectus also requires ICT AND Accounting, OR Economics, OR Business
+        Studies, OR Consumer Studies, OR Management Practice, OR Financial Management,
+        OR Marketing at NQF Level 4. CPUT must assess this mixed subject list and qualification
+        equivalence. NQF Level 4 is not an NSC achievement level of 4.
+      - CPUT must confirm the Banking APS calculation method and total.
+      extras:
+      - Part-time applicants must provide proof of full-time employment, preferably
+        in banking.
 
   - id: dip_marketing                      # D3MRKG
     name: "Diploma in Marketing"
@@ -1851,17 +1876,43 @@ programmes:
         - *cput_bed_lang
         - "You also need level 4 or more in subjects related to the teaching electives you choose, such as Mathematics, Accounting, Life Sciences and Physical Sciences."
 
-  - id: bed_senior_phase_fet               # BESPFT
-    name: "Bachelor of Education in Senior Phase and FET Teaching"
-    faculty: "Faculty of Education"
-    fields: [education]
-    selection_note: "2027 prospectus p.10: APS 32; Afrikaans, English or isiXhosa Home Language 4 and First Additional Language 3, with one being the campus language of instruction. Three electives at level 4 are required. The app accepts language roles, but cannot yet assess the campus-specific language combination and chosen teaching electives; faculty assessment is needed."
-    requirements: null
-
-  # ---------------------------------------------------------------------------------------------------------
-  # Engineering and the Built Environment. Course pages: course-details?q=<code>&f=140. Every APS here is
-  # counted with CPUT's Method 2 (s-cput-aps-method-2), which the app can't count yet.
-  # ---------------------------------------------------------------------------------------------------------
+  - id: bed_senior_phase_fet
+    name: Bachelor of Education in Senior Phase and FET Teaching
+    faculty: Faculty of Education
+    fields:
+    - education
+    selection_note: Published Home and First Additional Language requirements are checked
+      from the official 2027 prospectus, page 10. Campus, three-subject/elective conditions
+      and APS remain university-assessed; no full eligibility result is claimed.
+    requirements:
+      source: s-cput-prospectus-2027
+      min_points: 32
+      language_groups:
+      - role: home
+        min_level: 4
+        languages:
+        - afrikaans
+        - english
+        - isixhosa
+      - role: first_additional
+        min_level: 3
+        languages:
+        - afrikaans
+        - english
+        - isixhosa
+      unassessed_conditions:
+      - The faculty must assess the three subjects at level 4 and your chosen teaching
+        electives. Mathematics, Mathematical Literacy, Accounting, Physical Sciences
+        and Life Sciences electives require at least 50% in the corresponding NSC subject.
+      - 'One submitted language must match the campus language of instruction: English
+        at Mowbray or Afrikaans at Wellington. Confirm your campus and elective combination
+        with CPUT.'
+      - The published APS minimum is 32; CPUT must confirm the applicable calculation
+        and total.
+      extras:
+      - NSC degree endorsement is required. Choice 1 applications are prioritised because
+        places are limited.
+    selective: true
 
   - id: dip_chemical_engineering           # D3CHME
     name: "Diploma in Chemical Engineering"

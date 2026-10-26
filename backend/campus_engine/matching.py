@@ -18,7 +18,7 @@ from dataclasses import dataclass, field
 from itertools import product
 
 from .points import LIFE_ORIENTATION, compute_points
-from .schemas import Choice, Option, PointsRule, Programme, Requirements, University
+from .schemas import LANGUAGE_NAMES, Choice, Option, PointsRule, Programme, Requirements, University
 from .text import join, num
 
 COMPETITIVE = "competitive"
@@ -76,8 +76,10 @@ def _pretty(subject: str) -> str:
 
 
 def _either(parts: list[str]) -> str:
-    """Join a choice's options (always two or more) with a final 'or'. Options naming several
+    """Join a choice's known options with a final 'or'. Options naming several
     subjects are kept apart with semicolons."""
+    if len(parts) == 1:
+        return parts[0]
     if any(" and " in p for p in parts):
         return "; ".join(parts[:-1]) + "; or " + parts[-1]
     return ", ".join(parts[:-1]) + " or " + parts[-1]
@@ -167,9 +169,49 @@ def _check_subjects(req: Requirements, levels: dict[str, int], marks: dict[str, 
 def assess(uni: University, programme: Programme, marks: dict[str, float],
            english_language_level: str | None = None,
            language_marks: dict[str, tuple[float, str | None]] | None = None) -> Match:
-    match = _assess(uni, programme, marks)
+    match = _assess(uni, programme, marks, english_language_level, language_marks)
     req = programme.requirements
     if req:
+        nsc_levels = compute_points(marks, NSC_LEVELS).levels
+        for choice in req.choices:
+            if choice.unassessed_alternative:
+                match.explanation.append(choice.unassessed_alternative)
+                if not any(_meets(option, nsc_levels) for option in choice.one_of):
+                    definite_failure = (
+                        any(nsc_levels.get(s, 0) < minimum for s, minimum in req.subject_minimums.items())
+                        or any(marks.get(s, -1) < minimum for s, minimum in req.subject_min_percents.items())
+                        or any(not c.unassessed_alternative and not any(_meets(o, nsc_levels) for o in c.one_of) for c in req.choices)
+                        or bool(match.gap)
+                    )
+                    if not definite_failure:
+                        match.tier = UNVERIFIED
+                    match.explanation.append("The listed subject route is not met. Another published route needs university confirmation before it can be checked.")
+        languages = {name: entry for name, entry in (language_marks or {}).items()
+                     if name in {name for group in req.language_groups for name in group.languages}}
+        if "english" in marks:
+            languages["english"] = (marks["english"], english_language_level)
+        for group in req.language_groups:
+            candidates = [(name, percent, role) for name, (percent, role) in languages.items()
+                          if name in group.languages]
+            if any(role == group.role and compute_points({name: percent}, NSC_LEVELS).levels[name] >= group.min_level
+                   for name, percent, role in candidates):
+                continue
+            names = join([_pretty(name) for name in group.languages])
+            message = f"Needs {group.role.replace('_', ' ')} language level {group.min_level} in one of: {names}."
+            # Unnamed or unclassified language rows must prompt for details, not reject a learner.
+            unknown = (english_language_level is None and 'english' in marks) or any(
+                role is None for _, role in (language_marks or {}).values())
+            named_count = len({name for name in (language_marks or {}) if name in LANGUAGE_NAMES})
+            if 'other_language' in marks and named_count == 0:
+                unknown = True
+            if unknown:
+                if match.tier != NOT_YET:
+                    match.tier = UNVERIFIED
+                match.explanation.append(message + " Enter the language name and Home/First Additional role to check.")
+            else:
+                match.tier = NOT_YET
+                match.failed.append(message)
+                match.explanation.append(message)
         for language, levels in req.named_language_levels.items():
             entry = (language_marks or {}).get(language)
             label = {"isizulu": "isiZulu", "isixhosa": "isiXhosa"}.get(language, _pretty(language))
@@ -211,6 +253,13 @@ def assess(uni: University, programme: Programme, marks: dict[str, float],
         )):
             match.tier = UNVERIFIED
             match.explanation.append("Your school marks do not meet this route. An alternative entry route needs the university to check your other qualifications or experience.")
+    if req and req.unassessed_conditions:
+        if match.tier != NOT_YET:
+            match.tier = UNVERIFIED
+        match.explanation = [line for line in match.explanation
+                             if line != "Your subjects meet this programme's minimums."]
+        match.explanation.append("Only the listed checks were assessed; further admission conditions need university assessment.")
+        match.explanation.extend(req.unassessed_conditions)
     if not req or not req.english_language_levels:
         return match
     levels = req.english_language_levels
@@ -233,7 +282,9 @@ def assess(uni: University, programme: Programme, marks: dict[str, float],
     return match
 
 
-def _assess(uni: University, programme: Programme, marks: dict[str, float]) -> Match:
+def _assess(uni: University, programme: Programme, marks: dict[str, float],
+            english_language_level: str | None = None,
+            language_marks: dict[str, tuple[float, str | None]] | None = None) -> Match:
     """Assess one programme for one learner."""
     match = Match(
         university=uni.university,
@@ -247,6 +298,13 @@ def _assess(uni: University, programme: Programme, marks: dict[str, float]) -> M
     )
     req = programme.requirements
     rule = programme.points_rules or uni.points_rules
+    if programme.manual_admission:
+        entry = programme.manual_admission
+        source = uni.source(entry.source)
+        match.tier = UNVERIFIED
+        match.source_url = source.url if source else None
+        match.explanation = [entry.text, "School marks alone cannot determine admission to this programme."]
+        return match
     if req is not None and rule is None:
         return _subjects_only(uni, programme, req, marks, match)
     if req is None:
@@ -261,7 +319,11 @@ def _assess(uni: University, programme: Programme, marks: dict[str, float]) -> M
 
     source = uni.source(req.source)
     match.source_url = source.url if source else None
-    result = compute_points(marks, rule)
+    result = compute_points(marks, rule, english_language_level, language_marks)
+    if not result.complete:
+        match = _subjects_only(uni, programme, req, marks, match)
+        match.explanation += result.notes
+        return match
     match.points = result.total
     failed, route_notes, min_points = _check_subjects(req, result.levels, marks)
     match.min_points = min_points

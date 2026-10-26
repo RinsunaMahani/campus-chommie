@@ -1124,6 +1124,15 @@ programmes:
         - "Majors across Psychology, History, Geography, Politics, Philosophy, Sociology, Languages. Duration is 3 years."
 
 sources:
+  - id: s-nwu-campus-gems
+    url: https://blog.nwu.ac.za/blog/general/top-10-hidden-gems-campus-you-wont-want-miss
+    publisher: North-West University
+    title: 'Official campus guide: locations, student access and free visits; retrieved
+      October 2026'
+    retrieved: '2026-10-26'
+    last_verified: null
+    verified_by: agent, official publication
+    verification_basis: official_university
   - id: s-nwu-garden-2026
     url: https://natural-sciences.nwu.ac.za/botanical-garden/home
     publisher: North-West University
@@ -1216,6 +1225,27 @@ calendar:
   note: Start date only; consult the academic framework for later terms and examinations.
 
 cheap_things:
+- name: Vaal River campus walk
+  category: outdoors
+  campuses:
+  - vanderbijlpark
+  cost_note: Free to visit for students, according to NWU. Follow campus access rules
+    and local signage.
+  source: s-nwu-campus-gems
+- name: Student Centre pond
+  category: outdoors
+  campuses:
+  - vanderbijlpark
+  cost_note: Free to visit for students; a quiet spot for a study break. Follow campus
+    access rules.
+  source: s-nwu-campus-gems
+- name: Mahikeng dance and performance studios
+  category: arts
+  campuses:
+  - mahikeng
+  cost_note: NWU lists free student visits. Ask the dance team about rehearsal access;
+    this does not promise free membership or classes.
+  source: s-nwu-campus-gems
 - name: NWU Botanical Garden
   category: outdoors
   cost_note: Free entrance. Groups need prior arrangement; no photo shoots.

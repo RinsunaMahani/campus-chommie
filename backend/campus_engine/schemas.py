@@ -205,6 +205,8 @@ class PointsRule(_Strict):
     subject_points: dict[str, list[PointsBand]] = Field(default_factory=dict)
     # Every other subject's points, where the university gives them a table too (UWC: 8 at 90%, nothing under 20%).
     other_points: list[PointsBand] = Field(default_factory=list)
+    home_language_points: list[PointsBand] = Field(default_factory=list)
+    exact_subject_count: bool = False
     # Set when a subject's points come straight from its percentage instead of its level.
     percent_points: PercentPoints | None = None
 
@@ -215,8 +217,10 @@ class PointsRule(_Strict):
         tables = dict(self.subject_points)
         if self.other_points:
             tables["other subjects"] = self.other_points
+        if self.home_language_points:
+            tables["home languages"] = self.home_language_points
         for subject, table in tables.items():
-            if subject not in SUBJECTS and subject != "other subjects":
+            if subject not in SUBJECTS and subject not in ("other subjects", "home languages"):
                 raise ValueError(f"subject_points names unknown subject '{subject}'")
             if not any(band.min_percent == 0 for band in table):
                 raise ValueError(f"{subject}'s points table must include a band starting at 0%")
@@ -237,17 +241,42 @@ class Option(_Strict):
 class Choice(_Strict):
     """An either/or requirement: the learner needs one of the options."""
 
-    one_of: list[Option] = Field(min_length=2)
+    one_of: list[Option] = Field(min_length=1)
+    unassessed_alternative: str | None = Field(default=None, min_length=1)
+
+    @model_validator(mode="after")
+    def _enough_options(self):
+        if len(self.one_of) < 2 and not self.unassessed_alternative:
+            raise ValueError("one_of needs at least 2 items or an explicitly unassessed alternative")
+        return self
 
 
 LANGUAGE_NAMES = frozenset({"afrikaans", "isindebele", "isixhosa", "isizulu", "sepedi", "sesotho",
                             "setswana", "siswati", "tshivenda", "xitsonga", "sign_language"})
 
 
+class LanguageGroup(_Strict):
+    role: Literal["home", "first_additional"]
+    min_level: Level
+    languages: list[str] = Field(min_length=1)
+
+    @model_validator(mode="after")
+    def _known_languages(self):
+        if set(self.languages) - (LANGUAGE_NAMES | {"english"}):
+            raise ValueError("language groups must name recognised languages")
+        if len(set(self.languages)) != len(self.languages):
+            raise ValueError("language groups must not repeat a language")
+        return self
+
+
 class Requirements(_Strict):
     source: str
+    # Published conditions not expressible from the supplied school marks. Passing
+    # the known checks must still return unverified, never complete eligibility.
+    unassessed_conditions: list[Annotated[str, Field(min_length=1)]] = Field(default_factory=list)
     english_language_levels: dict[Literal["home", "first_additional"], Level] = Field(default_factory=dict)
     named_language_levels: dict[str, dict[Literal["home", "first_additional"], Level]] = Field(default_factory=dict)
+    language_groups: list[LanguageGroup] = Field(default_factory=list)
     # Some subject routes have a published APS while another route's threshold is omitted.
     points_threshold_incomplete: bool = False
     # Above a published bounded range, refer to the university instead of extrapolating eligibility.
@@ -317,6 +346,12 @@ class Bridge(_Strict):
     eligibility_note: str | None = None
 
 
+class ManualAdmission(_Strict):
+    source: str
+    reason: Literal["prior_qualification", "faculty_placement"]
+    text: str = Field(min_length=1)
+
+
 class Programme(_Strict):
     id: str
     name: str
@@ -328,12 +363,15 @@ class Programme(_Strict):
     # None where the source doesn't say: the app groups those under "Other programmes".
     faculty: str | None = Field(default=None, min_length=1)
     requirements: Requirements | None = None  # None means not verified yet
+    manual_admission: ManualAdmission | None = None
     # Only set when this programme counts points differently from the rest of the university.
     points_rules: PointsRule | None = None
     bridges_to: list[Bridge] = Field(default_factory=list)
 
     @model_validator(mode="after")
     def _known_fields(self):
+        if self.manual_admission and self.requirements:
+            raise ValueError("manual admission cannot also claim a school-mark requirements rule")
         problems = _unknown_fields(self.fields)
         if problems:
             raise ValueError(f"{self.id}: " + "; ".join(problems))
@@ -622,6 +660,8 @@ class University(_Strict):
         for p in self.programmes:
             if p.requirements and p.requirements.source not in source_ids:
                 problems.append(f"{p.id}: requirements cite unknown source '{p.requirements.source}'")
+            if p.manual_admission and p.manual_admission.source not in source_ids:
+                problems.append(f"{p.id}: manual admission cites unknown source '{p.manual_admission.source}'")
             if p.points_rules and p.points_rules.source not in source_ids:
                 problems.append(f"{p.id}: points_rules cite unknown source '{p.points_rules.source}'")
             for b in p.bridges_to:

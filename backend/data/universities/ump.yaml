@@ -414,12 +414,16 @@ programmes:
 
   # In UMP's 2026 Fees Handbook (s-ump-fees-2026 p15, first year only), but with no programme page or requirements.
   - id: bsocsci
-    name: "Bachelor of Social Sciences"
-    faculty: "Faculty of Economics, Development and Business Sciences"
-    fields: [humanities]
+    name: Bachelor of Social Sciences
+    faculty: Faculty of Economics, Development and Business Sciences
+    fields:
+    - humanities
     requirements: null
+    selection_note: Listed in the official 2026 Fees Handbook, page 15, but an intake-specific
+      admission table has not been located. Confirm whether this exact Bachelor of Social
+      Sciences accepts new applicants and request its APS and subject requirements.
+      Do not use the separate BA General or Social Work thresholds.
 
-  # Faculty of Education: School of Early Childhood Education
   - id: bed_foundation_phase
     name: "Bachelor of Education in Foundation Phase Teaching"
     faculty: "Faculty of Education"

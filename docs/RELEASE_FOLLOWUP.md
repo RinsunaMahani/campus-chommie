@@ -12,7 +12,7 @@ Incomplete packs stay unreleased, and contradictory facts remain unresolved.
 - Added five contacts from official CPUT/UFH publications: 98 total. Every listed campus has at least one service
   or central telephone contact, not necessarily an on-site office or every service category.
 - Added 15 UJ 2027 academic periods from its official indexed PDF and three CUT 2027 registration/change windows from its current page.
-- SPU's user-supplied APS table matched its official image. The subject-count rule is still absent, so no guessed total.
+- SPU APS now counts seven subjects using University Qualifications under Rinsuna's explicit 26 October source exception. The official image supplies the points table. Home Language bonuses use selected roles; missing roles or a subject count other than seven require clarification.
 - Updated submission claims: college-register lookup is built, official-source acceptance replaces universal
   human sign-off, and test totals must refer to a dated run rather than a permanent promise.
 
@@ -25,7 +25,7 @@ Incomplete packs stay unreleased, and contradictory facts remain unresolved.
 | Android/web release | After merge, confirm deployed revisions, build an updated APK and exercise course finder, sign-in, week, money, support and account deletion/export with test accounts. No deployment or account changes were performed during this follow-up. |
 | Google sign-in | Implementation and public web client ID exist. Confirm production backend audience, web origins and Android signing fingerprint through an actual sign-in on each platform. Do not publish secrets. |
 | WhatsApp | Implementation exists. Meta credentials, recipient eligibility, webhook verification and LINK/WEEK/rep confirmation need a live test with an authorised account/number. No messages were sent. |
-| Programme rules | 19 missing requirement records after resolving four UJ extended engineering/construction routes from explicit official course-page alternatives. See DATA_READINESS and research/verified-data-2026-10-26.md for unresolved cases. |
+| Programme rules | Of the 19 records remaining after PR #112, ten now have complete subject rules, four have partial checks and four have documented university-assessed routes. UMP Social Sciences alone still lacks usable requirements; five including partial records need clarification. See research/last-admission-gaps-2026-10-26.md and DATA_READINESS for the current gaps. |
 | Calendar/activity coverage | Added 21 SPU 2027 entries from the final official calendar. Other 2027 calendars, allowance schedules and campus-local activities remain partial. |
 | SPU provenance | Official APS image accepted; separately hosted Adobe prospectus still needs its exact official-link provenance confirmed. |
 | Privacy/legal | Audit records still include email/IP and an append-only database guard prevents ordinary deletion. Retention requires an explicit policy and a designed migration/job, not merely a scheduled DELETE. Privacy/Terms still need legal review. |
@@ -46,3 +46,6 @@ GitHub CI must also pass on the pushed revision before merge.
 
 After integration with main through PR #109: 574 engine/architecture checks and 29 affected API checks passed.
 The API checks were rerun after restarting the isolated test database; the initial connection errors were environmental.
+
+After the SPU seven-subject change: 618 engine, architecture, course-finder API and catalogue verification tests
+passed, with two existing Flask-Migrate deprecation warnings. Data validation reports zero errors.

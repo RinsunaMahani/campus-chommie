@@ -1237,10 +1237,36 @@ programmes:
   fields:
   - education
   selective: true
-  selection_note: '2027 prospectus p.55: APS 28; English Home Language 5 or First
-    Additional Language 6. Subject alternatives in the table also need faculty confirmation.
-    English language roles are supported; the outstanding subject-combination ambiguity needs UJ confirmation.'
-  requirements: null
+  selection_note: 'Uses the current official course page for the 2026 application
+    window: a maths alternative AND a science alternative AND Geography. This programme-specific
+    wording takes precedence over the general prospectus table layout.'
+  requirements:
+    source: s-uj-geography-current
+    min_points: 28
+    english_language_levels:
+      home: 5
+      first_additional: 6
+    subject_minimums:
+      english: 5
+      geography: 3
+    choices:
+    - one_of:
+      - subjects:
+          mathematics: 4
+      - subjects:
+          technical_mathematics: 4
+      - subjects:
+          mathematical_literacy: 6
+    - one_of:
+      - subjects:
+          physical_sciences: 3
+      - subjects:
+          life_sciences: 3
+    extras:
+    - NSC degree endorsement and competitive selection apply. English Second Additional
+      Language applicants need a university assessment; the calculator accepts Home
+      and First Additional roles.
+
 - id: uj_b5slsq
   name: 'BEd Senior Phase and FET: Life Sciences'
   faculty: Education
@@ -3147,48 +3173,84 @@ programmes:
   fields:
   - physical_sciences
   selective: true
-  selection_note: 'Published requirements need confirmation before assessment. {''english'':
-    5, ''mathematics'': 6, ''physical_sciences'': 4}; APS 31. 2027 prospectus p.91.
-    NSC admission to this qualification is required. Physical Science 5 is required
-    where Chemistry 1A or Physics 1A/1S is included. The Mathematics footnote on p.91
-    differs from its table (6); confirm with UJ.'
-  requirements: null
+  selection_note: 'The programme-specific 2026 Science faculty yearbook table governs
+    this assessment: English 5, Mathematics 6 and Physical Sciences 5. The general
+    prospectus and course page retain a 4/5 Physical Sciences range; faculty curriculum
+    and placement may permit another route. Minimums do not guarantee admission.'
+  requirements:
+    source: s-uj-science-yearbook-2026
+    min_points: 31
+    subject_minimums:
+      english: 5
+      mathematics: 6
+      physical_sciences: 5
+    extras:
+    - NSC degree endorsement is required. Uses the 2026 faculty yearbook admission
+      table, page 10; check the next intake rules when published.
+
 - id: uj_b2p83q
   name: 'BSc Physical Sciences: Geology and Physics'
   faculty: Science
   fields:
   - physical_sciences
   selective: true
-  selection_note: 'Published requirements need confirmation before assessment. {''english'':
-    5, ''mathematics'': 6, ''physical_sciences'': 4}; APS 31. 2027 prospectus p.91.
-    NSC admission to this qualification is required. Physical Science 5 is required
-    where Chemistry 1A or Physics 1A/1S is included. The Mathematics footnote on p.91
-    differs from its table (6); confirm with UJ.'
-  requirements: null
+  selection_note: 'The programme-specific 2026 Science faculty yearbook table governs
+    this assessment: English 5, Mathematics 6 and Physical Sciences 5. The general
+    prospectus and course page retain a 4/5 Physical Sciences range; faculty curriculum
+    and placement may permit another route. Minimums do not guarantee admission.'
+  requirements:
+    source: s-uj-science-yearbook-2026
+    min_points: 31
+    subject_minimums:
+      english: 5
+      mathematics: 6
+      physical_sciences: 5
+    extras:
+    - NSC degree endorsement is required. Uses the 2026 faculty yearbook admission
+      table, page 10; check the next intake rules when published.
+
 - id: uj_b2p77q
   name: 'BSc Physical Sciences: Physics and Applied Mathematics'
   faculty: Science
   fields:
   - physical_sciences
   selective: true
-  selection_note: 'Published requirements need confirmation before assessment. {''english'':
-    5, ''mathematics'': 6, ''physical_sciences'': 5}; APS 31. 2027 prospectus p.91.
-    NSC admission to this qualification is required. Physical Science 5 is required
-    where Chemistry 1A or Physics 1A/1S is included. The Mathematics footnote on p.91
-    differs from its table (6); confirm with UJ.'
-  requirements: null
+  selection_note: Selection is on academic merit and available places. The current
+    programme page and 2026 faculty yearbook agree on Mathematics level 6; this takes
+    precedence over the conflicting lower Mathematics footnote in the general prospectus.
+  requirements:
+    source: s-uj-b2p77q-entry
+    min_points: 31
+    subject_minimums:
+      english: 5
+      mathematics: 6
+      physical_sciences: 5
+    extras:
+    - NSC admission to degree study is required. Technical Mathematics and Technical
+      Sciences are not accepted.
+    - The faculty yearbook requires Mathematics 1A and Physics S1A for this programme.
+
 - id: uj_b2p78q
   name: 'BSc Physical Sciences: Physics and Mathematics'
   faculty: Science
   fields:
   - physical_sciences
   selective: true
-  selection_note: 'Published requirements need confirmation before assessment. {''english'':
-    5, ''mathematics'': 6, ''physical_sciences'': 5}; APS 31. 2027 prospectus p.91.
-    NSC admission to this qualification is required. Physical Science 5 is required
-    where Chemistry 1A or Physics 1A/1S is included. The Mathematics footnote on p.91
-    differs from its table (6); confirm with UJ.'
-  requirements: null
+  selection_note: Selection is on academic merit and available places. The current
+    programme page and 2026 faculty yearbook agree on Mathematics level 6; this takes
+    precedence over the conflicting lower Mathematics footnote in the general prospectus.
+  requirements:
+    source: s-uj-b2p78q-entry
+    min_points: 31
+    subject_minimums:
+      english: 5
+      mathematics: 6
+      physical_sciences: 5
+    extras:
+    - NSC admission to degree study is required. Technical Mathematics and Technical
+      Sciences are not accepted.
+    - The faculty yearbook requires Mathematics 1A and Physics S1A for this programme.
+
 - id: uj_b2e02q
   name: 'BSc Information Technology: Computer Science and Informatics (Extended)'
   faculty: Science
@@ -3582,6 +3644,42 @@ programmes:
     - 2027 prospectus p.94. NSC admission to this qualification is required.
 
 sources:
+  - id: s-uj-geography-current
+    url: https://www.uj.ac.za/university-courses/bed-in-senior-phase-and-fet-teaching-geography/
+    publisher: University of Johannesburg
+    title: 'Geography BEd: explicit subject combinations, applications April-October
+      2026'
+    retrieved: '2026-10-26'
+    last_verified: null
+    verified_by: agent, official publication
+    verification_basis: official_university
+  - id: s-uj-science-yearbook-2026
+    url: https://www.uj.ac.za/wp-content/uploads/2026/02/final-2026-science-apk-undergraduate-yearbook-jan2026.pdf
+    publisher: University of Johannesburg
+    title: '2026 Science APK undergraduate yearbook: entry table pages 9-10 and Physics
+      curricula pages 92-93'
+    retrieved: '2026-10-26'
+    last_verified: null
+    verified_by: agent, official publication
+    verification_basis: official_university
+  - id: s-uj-b2p78q-entry
+    url: https://www.uj.ac.za/university-courses/bsc-in-physical-sciences-physics-and-mathematics/
+    publisher: University of Johannesburg
+    title: Current programme admission requirements; corroborated by 2026 Science APK
+      yearbook
+    retrieved: '2026-10-26'
+    last_verified: null
+    verified_by: agent, official publication
+    verification_basis: official_university
+  - id: s-uj-b2p77q-entry
+    url: https://www.uj.ac.za/university-courses/bsc-in-physical-sciences-physics-and-applied-mathematics/
+    publisher: University of Johannesburg
+    title: Current programme admission requirements; corroborated by 2026 Science APK
+      yearbook
+    retrieved: '2026-10-26'
+    last_verified: null
+    verified_by: agent, official publication
+    verification_basis: official_university
   - id: s-uj-b6sc0q-course
     url: https://www.uj.ac.za/university-courses/bachelor-of-science-in-construction-extended/
     publisher: University of Johannesburg

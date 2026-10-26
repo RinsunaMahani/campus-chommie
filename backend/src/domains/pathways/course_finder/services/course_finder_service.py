@@ -40,8 +40,13 @@ def _english_level(rows: list[dict]) -> str | None:
 
 
 def _language_marks(rows: list[dict]) -> dict[str, tuple[float, str | None]]:
-    return {row["language_name"]: (row["percent"], row.get("language_level"))
-            for row in rows if "language_name" in row}
+    result = {}
+    for row in rows:
+        if "language_name" in row:
+            entry = (row["percent"], row.get("language_level"))
+            result[row["language_name"]] = entry
+            result[row["subject"]] = entry
+    return result
 
 
 def points(rows: list[dict]) -> dict:

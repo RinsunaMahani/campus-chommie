@@ -31,6 +31,7 @@ class PointsResult:
     counted: list[str]
     notes: list[str] = field(default_factory=list)
     adds: dict[str, float] = field(default_factory=dict)  # what each subject added: 0 when not counted
+    complete: bool = True
 
 
 def subject_points(subject: str, percent: float, level: int, rule: PointsRule) -> float:
@@ -51,7 +52,8 @@ def points_for(level: int, rule: PointsRule) -> int:
     return level if level >= rule.count_from_level else 0
 
 
-def compute_points(marks: dict[str, float], rule: PointsRule) -> PointsResult:
+def compute_points(marks: dict[str, float], rule: PointsRule, english_language_level: str | None = None,
+                   language_marks: dict[str, tuple[float, str | None]] | None = None) -> PointsResult:
     """Total points for one learner.
 
     `marks` maps a subject key (for example 'mathematics') to a percentage.
@@ -62,6 +64,23 @@ def compute_points(marks: dict[str, float], rule: PointsRule) -> PointsResult:
     levels = {subject: level_for(pct, rule) for subject, pct in marks.items()}
     worth = {subject: subject_points(subject, marks[subject], lvl, rule) for subject, lvl in levels.items()}
     notes: list[str] = []
+    complete = True
+    if rule.exact_subject_count and (len(marks) != rule.subjects_counted or LIFE_ORIENTATION not in marks):
+        complete = False
+        notes.append(f"Enter exactly {rule.subjects_counted} NSC subjects including Life Orientation to calculate this APS; ask the university how to handle extra subjects.")
+    if rule.home_language_points:
+        roles = {s: entry[1] for s, entry in (language_marks or {}).items() if s in marks}
+        if "english" in marks:
+            roles["english"] = english_language_level
+        if "other_language" in marks:
+            roles.setdefault("other_language", None)
+        for subject, role in roles.items():
+            if role == "home":
+                worth[subject] = next(b.points for b in sorted(rule.home_language_points, key=lambda b: b.min_percent, reverse=True)
+                                      if marks[subject] >= b.min_percent)
+            elif role != "first_additional":
+                complete = False
+                notes.append(f"Choose Home or First Additional Language for {subject.replace('_', ' ')} to calculate its APS bonus.")
     has_lo = LIFE_ORIENTATION in levels
     lo_counts = has_lo and rule.life_orientation != "exclude"
     lo_points = 0.0
@@ -95,4 +114,4 @@ def compute_points(marks: dict[str, float], rule: PointsRule) -> PointsResult:
         notes.append(
             f"Only {plural(len(marks), 'subject')} entered; this university counts {rule.subjects_counted}."
         )
-    return PointsResult(total=total, levels=levels, counted=counted, notes=notes, adds=adds)
+    return PointsResult(total=total, levels=levels, counted=counted, notes=notes, adds=adds, complete=complete)

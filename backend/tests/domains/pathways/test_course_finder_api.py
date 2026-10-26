@@ -13,6 +13,47 @@ from course_finder_helpers import ASSESS, PLAN, POINTS, STRONG, marks
 from src.domains.pathways.course_finder.services import course_finder_service
 
 
+def test_grouped_language_route_and_manual_admission_are_visible(client):
+    rows = [dict(subject=s, percent=p) for s,p in dict(english=50, mathematics=50, other_language=60,
+            history=80, geography=80, life_sciences=80).items()]
+    rows[0]['language_level'] = 'first_additional'
+    rows[2].update(language_name='sepedi',language_level='home')
+    response = client.post(ASSESS,json={'university':'tut','marks':rows})
+    assert response.status_code == 200
+    match = next(m for m in response.get_json()['data']['matches'] if m['programme']=='bed_foundation_phase')
+    assert match['tier']=='reach'
+    rows[2]['language_level']='first_additional'
+    response = client.post(ASSESS,json={'university':'tut','marks':rows})
+    match = next(m for m in response.get_json()['data']['matches'] if m['programme']=='bed_foundation_phase')
+    assert match['tier']=='not_yet'
+    response = client.post(ASSESS,json={'university':'ru','marks':rows})
+    match = next(m for m in response.get_json()['data']['matches'] if m['programme']=='pgce')
+    assert match['tier']=='unverified'
+    assert match['points'] is None
+    assert match['source_url'].startswith('https://www.ru.ac.za/')
+    assert any('degree' in line for line in match['explanation'])
+
+
+def test_spu_language_bonus_reaches_points_assessment_and_plan(client):
+    rows = [dict(subject=s, percent=60) for s in ('english', 'mathematics', 'other_language',
+            'history', 'geography', 'life_sciences', 'life_orientation')]
+    rows[0]['language_level'] = 'first_additional'
+    rows[2].update(language_name='setswana', language_level='home')
+    for language_subject in ('other_language', 'another_subject_1'):
+        rows[2]['subject'] = language_subject
+        response = client.post(POINTS, json={'marks': rows})
+        assert response.status_code == 200
+        spu = next(u for u in response.get_json()['data']['universities'] if u['university'] == 'spu')
+        assert spu['points'] == 35
+        assert next(s for s in spu['subjects'] if s['subject'] == language_subject)['points'] == 7
+        response = client.post(ASSESS, json={'university': 'spu', 'marks': rows})
+        assert response.status_code == 200
+        assert all(m['points'] == 35 for m in response.get_json()['data']['matches'])
+        response = client.post(PLAN, json={'university': 'spu', 'goal': 'bed_foundation_phase', 'marks': rows})
+        assert response.status_code == 200
+        assert response.get_json()['data']['plan']['goal']['match']['points'] == 35
+
+
 def test_english_role_reaches_assessment_plan_and_university_overview(client):
     rows = [dict(subject=s, percent=p) for s, p in dict(english=50, mathematics=80, other_language=80,
             life_sciences=80, geography=80, history=80, life_orientation=80).items()]

@@ -518,12 +518,23 @@ programmes:
         - "Routes: Fine Arts; Jewellery and Metal Design; Visual Communication Design. Four years."
 
   - id: ba_extended
-    name: "BA extended curriculum programmes (four years)"
-    faculty: "Faculty of Arts and Social Sciences"
-    fields: [humanities]
+    name: BA extended curriculum programmes (four years)
+    faculty: Faculty of Arts and Social Sciences
+    fields:
+    - humanities
     selective: true
-    selection_note: "Available for the BA in Humanities, Language and Culture, Development and the Environment, Human Resource Management and International Studies. SU selects students for them at the faculty's discretion."
+    selection_note: Available for the BA in Humanities, Language and Culture, Development
+      and the Environment, Human Resource Management and International Studies. SU selects
+      students for them at the faculty's discretion.
     requirements: null
+    manual_admission:
+      reason: faculty_placement
+      source: s-su-prospectus-2026
+      text: Faculty placement is required; this is not an automatic school-mark route.
+        Available for the BA in Humanities, Language and Culture, Development and the
+        Environment, Human Resource Management and International Studies. SU selects
+        students for them at the faculty's discretion. These details are from the 2026
+        prospectus; confirm placement for your intake.
 
   - id: dip_sustainable_development
     name: "Diploma in Sustainable Development"
@@ -1279,14 +1290,23 @@ programmes:
         - "Focal areas: Biomedical Mathematical Sciences; Applied Medicinal Chemistry; Bioinformatics and Computational Biology; Biomathematics. Three years."
 
   - id: bsc_extended
-    name: "BSc extended curriculum programmes (four years)"
-    faculty: "Faculty of Science"
-    fields: [natural_sciences]
+    name: BSc extended curriculum programmes (four years)
+    faculty: Faculty of Science
+    fields:
+    - natural_sciences
     selective: true
-    selection_note: "A foundation year, then a mainstream BSc. SU offers these places in October, or on request in January, to applicants in its designated diversity and socio-economic categories who don't meet a BSc's selection requirements."
+    selection_note: A foundation year, then a mainstream BSc. SU offers these places
+      in October, or on request in January, to applicants in its designated diversity
+      and socio-economic categories who don't meet a BSc's selection requirements.
     requirements: null
-
-  # Faculty of Theology (prospectus page 15)
+    manual_admission:
+      reason: faculty_placement
+      source: s-su-prospectus-2026
+      text: Faculty placement is required; this is not an automatic school-mark route.
+        A foundation year, then a mainstream BSc. SU offers these places in October,
+        or on request in January, to applicants in its designated diversity and socio-economic
+        categories who don't meet a BSc's selection requirements. These details are
+        from the 2026 prospectus; confirm placement for your intake.
 
   - id: bth
     name: "BTh (Bachelor of Theology)"
