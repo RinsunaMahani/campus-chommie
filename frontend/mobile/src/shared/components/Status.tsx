@@ -25,7 +25,9 @@ export function ErrorBox({ message, onRetry }: { message: string; onRetry?: () =
   return (
     <View style={styles.error} accessibilityRole="alert">
       <View style={styles.row}>
-        <Feather name="alert-circle" size={16} color={colors.garnet} style={{ marginTop: 2 }} />
+        <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants" aria-hidden={true}>
+          <Feather name="alert-circle" size={16} color={colors.garnet} style={{ marginTop: 2 }} />
+        </View>
         <Text style={styles.errorText}>{message}</Text>
       </View>
       {onRetry ? <Button title={t('common.retry')} variant="secondary" icon="refresh-cw" onPress={onRetry} /> : null}

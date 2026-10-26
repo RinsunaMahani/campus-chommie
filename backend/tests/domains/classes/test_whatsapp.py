@@ -345,7 +345,11 @@ def test_a_button_for_someone_elses_class_is_not_found(client, bot, outbox, rep,
     assert events_of(client, rep, anatomy["id"]) == []
 
 
-@pytest.mark.parametrize("button", ["confirm:not-a-uuid", "delete:" + str(uuid.uuid4()), "", "x" * 300])
+@pytest.mark.parametrize("button", [
+    "confirm:not-a-uuid", "delete:" + str(uuid.uuid4()), "", "x" * 300,
+    # 36 characters a uuid is made of, in shapes that aren't one: these used to crash the webhook (a 500).
+    "confirm:" + "-" * 36, "discard:" + "a" * 36, "confirm:" + str(uuid.uuid4()).replace("-", "a", 1),
+])
 def test_made_up_buttons_do_nothing(client, bot, rep, anatomy, button):
     link(client, bot, rep, REP_PHONE)
     sent = len(bot)

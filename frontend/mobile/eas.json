@@ -15,14 +15,16 @@
       },
       "env": {
         "EXPO_PUBLIC_API_URL": "https://campus-chommie.onrender.com/api/v1",
-        "EXPO_PUBLIC_USE_MOCK_API": "false"
+        "EXPO_PUBLIC_USE_MOCK_API": "false",
+        "EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID": "908923991776-13narb029bqrfglb4iaktfrrcpitnjt0.apps.googleusercontent.com"
       }
     },
     "production": {
       "autoIncrement": true,
       "env": {
         "EXPO_PUBLIC_API_URL": "https://campus-chommie.onrender.com/api/v1",
-        "EXPO_PUBLIC_USE_MOCK_API": "false"
+        "EXPO_PUBLIC_USE_MOCK_API": "false",
+        "EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID": "908923991776-13narb029bqrfglb4iaktfrrcpitnjt0.apps.googleusercontent.com"
       }
     }
   },

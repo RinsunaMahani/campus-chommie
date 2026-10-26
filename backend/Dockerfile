@@ -1,7 +1,9 @@
 # The backend as a container any host can run (docs/DEPLOY.md). From the repo root:
 #   docker build -t campus-chommie-api backend
 # Settings come from the host's environment, never from a file in the image.
-FROM python:3.12-slim
+# The Python release is pinned, so a new one arrives as a reviewed change; Debian's own fixes still arrive each time
+# the tag is rebuilt upstream. CI scans the built image and fails on a fixable high or critical flaw (security sweep 3).
+FROM python:3.12.15-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \

@@ -47,7 +47,11 @@ export function Section({ title, summary, icon, tint, tile, aside, defaultOpen =
         onPress={toggle}
         style={styles.head}>
         {icon ? (
-          <View style={[styles.icon, { backgroundColor: tile ?? colors.iconTile }]}>
+          <View
+            accessibilityElementsHidden
+            importantForAccessibility="no-hide-descendants"
+            aria-hidden={true}
+            style={[styles.icon, { backgroundColor: tile ?? colors.iconTile }]}>
             <Feather name={icon} size={18} color={tint ?? colors.accentDeep} />
           </View>
         ) : null}
@@ -56,7 +60,9 @@ export function Section({ title, summary, icon, tint, tile, aside, defaultOpen =
           {summary ? <Text style={styles.summary}>{summary}</Text> : null}
         </View>
         {aside}
-        <Feather name={open ? 'chevron-up' : 'chevron-down'} size={20} color={colors.textMuted} />
+        <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants" aria-hidden={true}>
+          <Feather name={open ? 'chevron-up' : 'chevron-down'} size={20} color={colors.textMuted} />
+        </View>
       </Pressable>
       {open ? <View style={styles.body}>{children}</View> : null}
     </View>

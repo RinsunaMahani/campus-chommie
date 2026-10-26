@@ -185,3 +185,21 @@ def test_the_container_seeds_the_demo_only_when_asked():
     # Migrations still come first, and the API still starts after a failed seed.
     assert dockerfile.index("flask db upgrade") < dockerfile.index("flask seed") < dockerfile.index("exec gunicorn")
 
+
+
+# --------------------------------------------------------------- database
+
+
+def test_every_connection_caps_how_long_a_statement_may_run(app):
+    """A stuck query can't hold a connection (and a server thread) for ever."""
+    from sqlalchemy import text
+    from sqlalchemy.exc import OperationalError
+
+    with app.app_context():
+        with db.engine.connect() as conn:
+            assert conn.execute(text("SHOW statement_timeout")).scalar() == "30s"
+            conn.execute(text("SET statement_timeout = 200"))  # this connection only, so the test is quick
+            with pytest.raises(OperationalError, match="statement timeout"):
+                conn.execute(text("SELECT pg_sleep(2)"))
+            conn.rollback()
+            conn.execute(text("SET statement_timeout = 30000"))

@@ -2,13 +2,14 @@ import { router } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { View } from 'react-native';
 
+import { studentHeader } from '@/features/profile/components/HeaderTools';
 import { errorText } from '@/shared/api/errors';
 import { Button } from '@/shared/components/Button';
 import { InfoNote } from '@/shared/components/Parts';
 import { Screen } from '@/shared/components/Screen';
 import { SelectField, SelectOption } from '@/shared/components/SelectField';
 import { ErrorBox, Loading } from '@/shared/components/Status';
-import { Muted, Title } from '@/shared/components/Text';
+import { Muted } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
 import { formatDay, todaySast } from '@/shared/lib/dates';
 import { centsToInput, parseRand } from '@/shared/lib/money';
@@ -98,8 +99,11 @@ export default function SettingsScreen() {
   }
 
   return (
-    <Screen back footer={<Button title={t('money.save')} variant="accent" onPress={save} loading={busy} disabled={saved === undefined} />}>
-      <Title>{t('money.settings')}</Title>
+    <Screen
+      back
+      title={t('money.settings')}
+      {...studentHeader(false)}
+      footer={<Button title={t('money.save')} variant="accent" onPress={save} loading={busy} disabled={saved === undefined} />}>
       {saved === undefined && !failure ? <Loading /> : null}
       {failure ? <ErrorBox message={failure} /> : null}
       <View style={{ gap: 14 }}>

@@ -103,11 +103,17 @@ def test_the_summary_in_plain_words():
         "You meet the minimum for 4 of 10 programmes. 1 of them selects competitively, so it's a reach. "
         "We can't check 2 yet."
     )
+    # Only subjects_met: say how many subjects meet, never "0 of N".
     assert _summary({COMPETITIVE: 0, MEETS_MINIMUM: 0, REACH: 0, SUBJECTS_MET: 3, UNVERIFIED: 0, NOT_YET: 1}) == (
-        "You meet the minimum for 0 of 4 programmes. Your subjects meet the minimum for 3 programmes whose points "
-        "the university counts its own way."
+        "Your subjects meet 3 of 4 programmes. It counts points its own way."
     )
-    assert _summary({COMPETITIVE: 0, MEETS_MINIMUM: 0, REACH: 0, UNVERIFIED: 0, NOT_YET: 1}) == (
+    # A mix of meets and subjects_met: names both.
+    assert _summary({COMPETITIVE: 1, MEETS_MINIMUM: 2, REACH: 1, SUBJECTS_MET: 3, UNVERIFIED: 0, NOT_YET: 1}) == (
+        "You meet the minimum for 4 of 8 programmes. 1 of them selects competitively, so it's a reach. "
+        "Your subjects meet the minimum for 3 programmes whose points the university counts its own way."
+    )
+    # None met and no subjects_met: 0 of N programmes.
+    assert _summary({COMPETITIVE: 0, MEETS_MINIMUM: 0, REACH: 0, SUBJECTS_MET: 0, UNVERIFIED: 0, NOT_YET: 1}) == (
         "You meet the minimum for 0 of 1 programme."
     )
     # A university whose programmes we haven't added yet: its points still show.

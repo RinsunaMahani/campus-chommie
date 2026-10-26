@@ -42,6 +42,8 @@ function AppStack() {
       </Stack.Protected>
       <Stack.Protected guard={!needsOnboarding}>
         <Stack.Screen name="(tabs)" />
+        {/* Outdoors, from the tab bar's centre button: a sheet over the screen you're on (it slides itself up). */}
+        <Stack.Screen name="places" options={{ presentation: 'transparentModal', animation: 'none', contentStyle: { backgroundColor: 'transparent' } }} />
       </Stack.Protected>
     </Stack>
   );

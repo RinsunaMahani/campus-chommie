@@ -1,6 +1,5 @@
-import { Feather } from '@expo/vector-icons';
 import { useFocusEffect } from 'expo-router';
-import { ComponentProps, useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { studentHeader } from '@/features/profile/components/HeaderTools';
@@ -10,33 +9,14 @@ import { Screen } from '@/shared/components/Screen';
 import { SourceLink } from '@/shared/components/SourceLink';
 import { ErrorBox, Loading } from '@/shared/components/Status';
 import { Body, Muted, Strong } from '@/shared/components/Text';
-import { MessageKey, t } from '@/shared/i18n';
+import { categoryIcon, categoryLabel } from '@/features/outdoors/places';
+import { t } from '@/shared/i18n';
 import { formatDay } from '@/shared/lib/dates';
 import { Palette, useStyles } from '@/shared/theme/palette';
 import { fonts, radius } from '@/shared/theme/tokens';
 
 import { moneyApi } from '../api/moneyApi';
 import { CheapThing } from '../types';
-
-type IconName = ComponentProps<typeof Feather>['name'];
-
-function categoryIcon(category?: string | null): IconName {
-  const cat = (category || '').toLowerCase();
-  if (cat.includes('outdoor') || cat.includes('park') || cat.includes('nature') || cat.includes('garden')) return 'sun';
-  if (cat.includes('museum') || cat.includes('art') || cat.includes('gallery')) return 'bookmark';
-  if (cat.includes('heritage') || cat.includes('history') || cat.includes('monument')) return 'compass';
-  if (cat.includes('sport') || cat.includes('walk') || cat.includes('hike')) return 'activity';
-  if (cat.includes('market') || cat.includes('shop')) return 'shopping-bag';
-  return 'map-pin';
-}
-
-function categoryLabel(category?: string | null): string {
-  if (!category) return '';
-  const key = `cheap.category.${category.toLowerCase()}` as MessageKey;
-  const label = t(key);
-  if (label !== key) return label;
-  return category.charAt(0).toUpperCase() + category.slice(1);
-}
 
 type UniversityMeta = {
   id: string;

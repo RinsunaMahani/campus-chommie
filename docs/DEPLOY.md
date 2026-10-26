@@ -64,6 +64,8 @@ flask seed
   awake all month and use up its compute hours.
 - **The log** shows `master scheduler: started` in exactly one process. Every other process logs
   `another process runs the jobs`.
+- **The log** also shows `data packs: loaded` a few seconds after the worker boots: the packs are read then, in the
+  background, so the first student after a wake doesn't wait for them (`gunicorn.conf.py`).
 
 ## Background jobs
 

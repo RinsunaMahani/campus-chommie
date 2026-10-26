@@ -10,7 +10,7 @@ from __future__ import annotations
 def mask_email(email: str) -> str:
     """Masks an email address for safe logging (originally) --
     "LOGGING"/"SECURITY" -- never log sensitive values in full).
-    Example: "mandla@example.com" -> "m***a@example.com".
+    Example: "naledi@example.com" -> "n***i@example.com".
 
     """
     if "@" not in email:

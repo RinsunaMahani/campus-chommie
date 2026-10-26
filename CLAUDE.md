@@ -2,9 +2,8 @@
 
 Campus Chommie takes a South African student from choosing a course to graduating: course finder, the student's
 week (calendar, class deadlines, workload, marks), their money (runway, safe to spend, life fund), alerts and campus
-support. Our entry for the FNB App of the Year Hackathon 2026, challenge "Access to higher education", by Team PR,
-which since 13 Oct 2026 is Rinsuna Mahani alone (Mandla Baloyi is no longer on the team): she builds the app, the
-API, the engine and the data, and reviews every change.
+support. Our entry for the FNB App of the Year Hackathon 2026, challenge "Access to higher education", by Rinsuna
+Mahani: she builds the app, the API, the engine and the data, and reviews every change.
 
 Shape: one Expo app (Android + web build) in `frontend/mobile`, a Flask API with PostgreSQL in `backend/src`, and a
 pure Python engine in `backend/campus_engine` that does the thinking. Gaps and decisions for the team are in

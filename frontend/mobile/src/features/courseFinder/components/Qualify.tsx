@@ -52,11 +52,26 @@ export function QualifyStats({ points }: { points: PointsAnswer }) {
   );
 }
 
+/** One-line sentence for a university card: points met, or subjects met where the university counts its own way. */
+export function qualifySentence(u: UniversityPoints): string {
+  const { met, total } = metAt(u);
+  if (!total) {
+    return t('courseFinder.noProgrammesYet');
+  }
+  const sm = u.tiers?.subjects_met ?? 0;
+  if (met === 0 && sm > 0) {
+    return t('courseFinder.subjectsMetOf', { met: sm, total });
+  }
+  if (met > 0 && sm > 0) {
+    return t('courseFinder.meetsWithSubjectsMet', { met, total, sm });
+  }
+  return t('courseFinder.meetsOf', { met, total });
+}
+
 export function UniversityRow({ u, onPress }: { u: UniversityPoints; onPress: () => void }) {
   const colors = usePalette();
   const styles = useStyles(makeStyles);
-  const { met, total } = metAt(u);
-  const sub = total ? t('courseFinder.meetsOf', { met, total }) : t('courseFinder.noProgrammesYet');
+  const sub = qualifySentence(u);
   return (
     <PressScale accessibilityRole="button" accessibilityLabel={`${u.university_name}: ${aps(u)}. ${sub}`} onPress={onPress} style={styles.row}>
       <UniMonogram id={u.university} size={40} />

@@ -25,6 +25,7 @@ export function Button({ title, onPress, variant = 'primary', icon, leading, loa
   return (
     <Pressable
       accessibilityRole="button"
+      accessibilityLabel={title}
       accessibilityState={{ disabled: !!inactive, busy: !!loading }}
       onPress={onPress}
       disabled={inactive}
@@ -39,8 +40,16 @@ export function Button({ title, onPress, variant = 'primary', icon, leading, loa
         <ActivityIndicator color={v.fg} />
       ) : (
         <View style={styles.row}>
-          {leading}
-          {icon ? <Feather name={icon} size={17} color={v.fg} /> : null}
+          {leading ? (
+            <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants" aria-hidden={true}>
+              {leading}
+            </View>
+          ) : null}
+          {icon ? (
+            <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants" aria-hidden={true}>
+              <Feather name={icon} size={17} color={v.fg} />
+            </View>
+          ) : null}
           <Text style={[styles.label, { color: v.fg }]}>{title}</Text>
         </View>
       )}

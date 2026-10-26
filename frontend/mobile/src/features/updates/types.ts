@@ -6,7 +6,7 @@ export type Update = {
   title: string;
   body: string;
   icon: string | null;
-  /** Where it leads: a class ({type: "class", id}) or a funder ({type: "funding", id}). */
+  /** Where it leads: a class ({type: "class", id}), a funder ({type: "funding", id}) or the week in review ({type: "review", id}). */
   link: { type: string; id: string } | null;
   created_at: string;
   read_at: string | null;
