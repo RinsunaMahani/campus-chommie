@@ -1855,7 +1855,7 @@ programmes:
     name: "Bachelor of Education in Senior Phase and FET Teaching"
     faculty: "Faculty of Education"
     fields: [education]
-    selection_note: "2027 prospectus p.10: APS 32; Afrikaans, English or isiXhosa Home Language 4 and First Additional Language 3, with one being the campus language of instruction. Three electives at level 4 are required. The app cannot distinguish the language roles or the chosen teaching electives; faculty assessment is needed."
+    selection_note: "2027 prospectus p.10: APS 32; Afrikaans, English or isiXhosa Home Language 4 and First Additional Language 3, with one being the campus language of instruction. Three electives at level 4 are required. The app accepts language roles, but cannot yet assess the campus-specific language combination and chosen teaching electives; faculty assessment is needed."
     requirements: null
 
   # ---------------------------------------------------------------------------------------------------------
