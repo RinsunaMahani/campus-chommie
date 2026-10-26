@@ -267,6 +267,9 @@ class LanguageGroup(_Strict):
 
 class Requirements(_Strict):
     source: str
+    # Published conditions not expressible from the supplied school marks. Passing
+    # the known checks must still return unverified, never complete eligibility.
+    unassessed_conditions: list[Annotated[str, Field(min_length=1)]] = Field(default_factory=list)
     english_language_levels: dict[Literal["home", "first_additional"], Level] = Field(default_factory=dict)
     named_language_levels: dict[str, dict[Literal["home", "first_additional"], Level]] = Field(default_factory=dict)
     language_groups: list[LanguageGroup] = Field(default_factory=list)

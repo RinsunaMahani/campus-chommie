@@ -1072,10 +1072,34 @@ programmes:
   fields:
   - agriculture
   selective: true
-  selection_note: '2027 guide p.2: APS 28; Mathematics and Physical Sciences 4; Life
-    Sciences/Geography/Agriculture/IT 4; two other subjects 4; Life Orientation 4.
-    The English level is blank in this row and needs faculty confirmation.'
-  requirements: null
+  selection_note: The current official Crop Science course page (SAQA 101000) supplies
+    English level 4, filling the blank English cell in the 2027 study guide. All remaining
+    subject thresholds agree with that guide. Selection and available places apply.
+  requirements:
+    source: s-ufh-crop-current
+    min_points: 28
+    subject_minimums:
+      english: 4
+      mathematics: 4
+      physical_sciences: 4
+      life_orientation: 4
+    choices:
+    - one_of:
+      - subjects:
+          life_sciences: 4
+      - subjects:
+          geography: 4
+      - subjects:
+          agricultural_sciences: 4
+      - subjects:
+          information_technology: 4
+    additional_minimums:
+    - 4
+    - 4
+    extras:
+    - NSC degree endorsement is required. APS 28 is retained from the official 2027
+      guide (s-ufh-guide-2027); UFH must confirm the total APS.
+
 - id: ufh_71424
   name: Bachelor of Science in Agriculture (Crops) (Extended Programme)
   faculty: Science and Agriculture
@@ -1390,6 +1414,15 @@ programmes:
         min_points: 28
 
 sources:
+  - id: s-ufh-crop-current
+    url: https://www.ufh.ac.za/course/bachelor-of-science-agriculture-in-crop-science
+    publisher: University of Fort Hare
+    title: 'Crop Science SAQA 101000: current course entry requirements including English
+      level 4'
+    retrieved: '2026-10-26'
+    last_verified: null
+    verified_by: agent, official publication
+    verification_basis: official_university
   - id: s-ufh-orientation-support-2026
     url: https://fye.ufh.ac.za/wp-content/uploads/2026/01/2026-Orientation-Guide.pdf
     publisher: University of Fort Hare

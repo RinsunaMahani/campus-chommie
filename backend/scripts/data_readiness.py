@@ -39,7 +39,7 @@ def report(as_of: date) -> dict:
             "programmes": len(uni.programmes),
             "requirements_missing": [p.id for p in uni.programmes if p.requirements is None and p.manual_admission is None],
             "manual_admission": [p.id for p in uni.programmes if p.manual_admission is not None],
-            "partial_requirements": [p.id for p in uni.programmes if p.requirements and any(c.unassessed_alternative for c in p.requirements.choices)],
+            "partial_requirements": [p.id for p in uni.programmes if p.requirements and (p.requirements.unassessed_conditions or any(c.unassessed_alternative for c in p.requirements.choices))],
             "manual_points": sum(p.requirements is not None and not (p.points_rules or uni.points_rules) for p in uni.programmes),
             "campuses": len(uni.campuses),
             "calendar_entries": len(uni.calendar),
@@ -84,7 +84,7 @@ def markdown(data: dict) -> str:
         if uni["requirements_missing"]:
             lines.append(f"- **{uni['id']}**: " + ", ".join(f"`{pid}`" for pid in uni["requirements_missing"]))
     lines += ["", "## Partially assessed requirements", "",
-              "Known subject routes are checked; other published alternatives still need clarification. These are not fully resolved records.", ""]
+              "Known requirements are checked; other published alternatives or admission conditions still need clarification. These are not fully resolved records.", ""]
     for uni in data["universities"]:
         if uni["partial_requirements"]:
             lines.append(f"- **{uni['id']}**: " + ", ".join(f"`{pid}`" for pid in uni["partial_requirements"]))

@@ -253,6 +253,13 @@ def assess(uni: University, programme: Programme, marks: dict[str, float],
         )):
             match.tier = UNVERIFIED
             match.explanation.append("Your school marks do not meet this route. An alternative entry route needs the university to check your other qualifications or experience.")
+    if req and req.unassessed_conditions:
+        if match.tier != NOT_YET:
+            match.tier = UNVERIFIED
+        match.explanation = [line for line in match.explanation
+                             if line != "Your subjects meet this programme's minimums."]
+        match.explanation.append("Only the listed checks were assessed; further admission conditions need university assessment.")
+        match.explanation.extend(req.unassessed_conditions)
     if not req or not req.english_language_levels:
         return match
     levels = req.english_language_levels

@@ -6,7 +6,7 @@ Dated official university, funder, government and venue sources are accepted und
 
 | University | Programmes | Missing requirements | Manual points | Campuses | Calendar entries | Support | Activities | Sources needing review |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
-| cput | 119 | 2 | 75 | 5 | 10 | 5 | 2 | 0 |
+| cput | 119 | 0 | 77 | 5 | 10 | 5 | 2 | 0 |
 | cut | 42 | 0 | 42 | 2 | 5 | 3 | 1 | 0 |
 | dut | 89 | 0 | 0 | 7 | 11 | 4 | 1 | 0 |
 | mut | 40 | 0 | 0 | 2 | 6 | 1 | 1 | 0 |
@@ -16,9 +16,9 @@ Dated official university, funder, government and venue sources are accepted und
 | smu | 17 | 0 | 0 | 1 | 24 | 7 | 2 | 0 |
 | spu | 26 | 0 | 26 | 1 | 34 | 3 | 1 | 1 |
 | su | 73 | 0 | 71 | 2 | 11 | 2 | 1 | 0 |
-| tut | 124 | 1 | 0 | 9 | 60 | 20 | 8 | 0 |
+| tut | 124 | 0 | 0 | 9 | 60 | 20 | 8 | 0 |
 | uct | 34 | 0 | 0 | 2 | 7 | 3 | 1 | 0 |
-| ufh | 52 | 1 | 51 | 3 | 3 | 6 | 1 | 0 |
+| ufh | 52 | 0 | 52 | 3 | 3 | 6 | 1 | 0 |
 | ufs | 172 | 0 | 0 | 3 | 13 | 4 | 1 | 0 |
 | uj | 175 | 0 | 0 | 4 | 29 | 7 | 1 | 0 |
 | ukzn | 66 | 0 | 0 | 5 | 4 | 1 | 1 | 0 |
@@ -70,15 +70,13 @@ An entry count does not establish a complete calendar or a complete range of sup
 
 These entries remain unassessed. See each pack's selection note and research notes for the exact ambiguity or missing rule.
 
-- **cput**: `dip_banking`, `bed_senior_phase_fet`
-- **tut**: `bed_sp_fet_technology`
-- **ufh**: `ufh_71524`
 - **ump**: `bsocsci`
 
 ## Partially assessed requirements
 
-Known subject routes are checked; other published alternatives still need clarification. These are not fully resolved records.
+Known requirements are checked; other published alternatives or admission conditions still need clarification. These are not fully resolved records.
 
+- **cput**: `dip_banking`, `bed_senior_phase_fet`
 - **ufh**: `ufh_500492`, `ufh_500493`
 
 ## Published routes requiring university assessment
