@@ -61,7 +61,7 @@ test('the list loads, searches from three letters, and opens a college', async (
   const listSpy = jest.spyOn(collegesApi, 'list').mockResolvedValue(list([acme]));
   render(<CollegesScreen />);
   expect(await screen.findByText('1 colleges: 1 registered.')).toBeTruthy();
-  expect(screen.getByText('Not yet confirmed by the team.')).toBeTruthy();
+  expect(screen.queryByText('Not yet confirmed by the team.')).toBeNull(); // provenance notes aren't shown
 
   fireEvent.changeText(screen.getByLabelText('Search by name, registration number or course'), 'ac');
   expect(screen.getByText('Type at least 3 letters.')).toBeTruthy();

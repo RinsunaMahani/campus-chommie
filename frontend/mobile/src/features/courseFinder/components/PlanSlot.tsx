@@ -57,7 +57,6 @@ export function PlanSlot({ title, slot, empty, planUniversity }: Props) {
             </View>
           ) : null}
           {slot.funding ? <SlotFundingBox funding={slot.funding} /> : null}
-          {!slot.match.confirmed && slot.match.notice ? <Muted>{slot.match.notice}</Muted> : null}
         </Card>
       )}
     </View>

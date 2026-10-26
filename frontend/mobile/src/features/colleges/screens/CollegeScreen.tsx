@@ -58,7 +58,6 @@ export default function CollegeScreen() {
 
       {c && answer ? (
         <View style={{ gap: 14 }}>
-          {!answer.confirmed && answer.notice ? <InfoNote icon="info">{answer.notice}</InfoNote> : null}
 
           <Card style={styles.card}>
             <Tag label={c.label} tone={statusTone(c.status)} />

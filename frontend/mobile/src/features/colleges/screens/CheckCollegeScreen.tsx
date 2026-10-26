@@ -10,7 +10,7 @@ import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { errorText } from '@/features/courseFinder/words';
 import { Button } from '@/shared/components/Button';
 import { HeroScreen } from '@/shared/components/HeroScreen';
-import { Card, InfoNote, Tag } from '@/shared/components/Parts';
+import { Card, Tag } from '@/shared/components/Parts';
 import { SourceLink } from '@/shared/components/SourceLink';
 import { ErrorBox } from '@/shared/components/Status';
 import { Muted, Overline, Strong } from '@/shared/components/Text';
@@ -69,7 +69,6 @@ export default function CheckCollegeScreen() {
 
       {answer ? (
         <FadeIn style={{ gap: 14 }}>
-          {!answer.confirmed && answer.notice ? <InfoNote icon="info">{answer.notice}</InfoNote> : null}
           <Card style={styles.card}>
             <Tag label={answer.label} tone={statusTone(answer.verdict)} />
             {answer.lines.map((line, i) => (

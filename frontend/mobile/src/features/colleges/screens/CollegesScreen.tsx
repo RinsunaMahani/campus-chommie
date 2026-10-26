@@ -13,7 +13,7 @@ import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-
 import { errorText } from '@/features/courseFinder/words';
 import { Button } from '@/shared/components/Button';
 import { HeroScreen } from '@/shared/components/HeroScreen';
-import { Card, InfoNote } from '@/shared/components/Parts';
+import { Card } from '@/shared/components/Parts';
 import { Section } from '@/shared/components/Section';
 import { ErrorBox } from '@/shared/components/Status';
 import { Body, Muted, Strong } from '@/shared/components/Text';
@@ -133,7 +133,6 @@ export default function CollegesScreen() {
       {answer ? (
         <View style={{ gap: 10 }}>
           <Body style={styles.summary}>{answer.summary}</Body>
-          {!answer.confirmed && answer.notice ? <InfoNote icon="info">{answer.notice}</InfoNote> : null}
           {!q && !province && answer.provinces?.length ? (
             <View>
               {answer.provinces.map((g, i) => (

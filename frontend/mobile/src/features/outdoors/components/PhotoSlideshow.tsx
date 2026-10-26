@@ -6,7 +6,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Image, LayoutChangeEvent, NativeScrollEvent, NativeSyntheticEvent, ScrollView, StyleSheet, Text, View } from 'react-native';
 
-import { PhotoCredit } from '@/features/courseFinder/components/CampusPhotoCard';
 import { t } from '@/shared/i18n';
 import { motionOff } from '@/shared/motion/motion';
 import { Palette, useStyles } from '@/shared/theme/palette';
@@ -83,7 +82,6 @@ export function PhotoSlideshow({ photos, place }: { photos: PlacePhoto[]; place:
         ))}
       </View>
       <Text style={styles.caption}>{photo.caption}</Text>
-      <PhotoCredit credit={photo.credit} source={photo.source} />
     </View>
   );
 }

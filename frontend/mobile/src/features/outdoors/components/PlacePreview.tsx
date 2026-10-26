@@ -9,9 +9,8 @@ import { CheapThing } from '@/features/money/types';
 import { Button } from '@/shared/components/Button';
 import { IconTile, Tag } from '@/shared/components/Parts';
 import { SourceLink } from '@/shared/components/SourceLink';
-import { Muted, Strong } from '@/shared/components/Text';
+import { Strong } from '@/shared/components/Text';
 import { t } from '@/shared/i18n';
-import { formatDay } from '@/shared/lib/dates';
 import { Palette, useStyles } from '@/shared/theme/palette';
 import { fonts, radius, space, type } from '@/shared/theme/tokens';
 
@@ -52,7 +51,6 @@ export function PlacePreview({ place }: { place: CheapThing }) {
         />
       ) : null}
       <SourceLink url={place.source_url} />
-      <Muted>{place.read_on ? t('cheap.priced', { date: formatDay(place.read_on) }) : t('support.notVerified')}</Muted>
     </View>
   );
 }

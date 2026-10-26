@@ -16,7 +16,6 @@ import { SourceLink } from '@/shared/components/SourceLink';
 import { Card, RowTone, toneColours } from '@/shared/components/Parts';
 import { Muted, Overline, Strong } from '@/shared/components/Text';
 import { MessageKey, t } from '@/shared/i18n';
-import { formatDay } from '@/shared/lib/dates';
 import { fonts, radius, space } from '@/shared/theme/tokens';
 
 import { Service, SupportKind } from '../types';
@@ -113,13 +112,6 @@ export function ServiceCard({
         />
       ) : null}
       <SourceLink url={service.source_url} />
-      {service.last_verified ? (
-        <Muted>{t('support.checked', { date: formatDay(service.last_verified) })}</Muted>
-      ) : service.read_on ? (
-        <Muted>{t('support.readOn', { date: formatDay(service.read_on) })}</Muted>
-      ) : (
-        <Muted>{t('support.notVerified')}</Muted>
-      )}
     </Card>
   );
 }

@@ -176,7 +176,6 @@ export default function WeekScreen() {
         {chip(view === 'calendar', t('week.calendarView'), () => setView('calendar'), 'cal')}
         {chip(view === 'load', t('week.load'), () => setView('load'), 'load')}
       </View>
-      {load?.university && !load.university.confirmed && load.university.notice ? <InfoNote icon="alert-circle">{load.university.notice}</InfoNote> : null}
       {error ? <ErrorBox message={error} onRetry={own} /> : null}
 
       {view === 'calendar' ? (

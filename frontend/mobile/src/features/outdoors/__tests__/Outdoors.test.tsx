@@ -128,7 +128,7 @@ test('a place with enough photos opens on a slideshow that moves on by itself, w
     fireEvent(screen.getByTestId('slideshow-frame'), 'layout', { nativeEvent: { layout: { width: 320, height: 180 } } });
     expect(screen.getByText('1 / 4', { includeHiddenElements: true })).toBeTruthy();
     expect(screen.getByText('View 1')).toBeTruthy();
-    expect(screen.getByText('Photo: Author 1, CC BY 4.0')).toBeTruthy();
+    expect(screen.queryByText('Photo: Author 1, CC BY 4.0')).toBeNull(); // credits are on the Photo credits page
     expect(screen.getByLabelText('Photo 1 of 4: View 1')).toBeTruthy();
     act(() => {
       jest.advanceTimersByTime(4000);

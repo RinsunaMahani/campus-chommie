@@ -46,7 +46,7 @@ test('renders a fixture with cards, details, cost notes, hours, dates and source
 
   // University and unconfirmed notice
   expect(screen.getByText('University of Pretoria')).toBeTruthy();
-  expect(screen.getByText('Not yet confirmed by the team.')).toBeTruthy();
+  expect(screen.queryByText('Not yet confirmed by the team.')).toBeNull(); // provenance notes aren't shown
 
   // All 3 places rendered
   expect(screen.getByText('Pretoria National Botanical Garden')).toBeTruthy();
@@ -66,9 +66,8 @@ test('renders a fixture with cards, details, cost notes, hours, dates and source
   expect(screen.getByText('Hours: Daily 07:30-16:00')).toBeTruthy();
 
   // Price date formatted, and not verified when missing
-  expect(screen.getByText('Price read on its page on Fri 9 Oct 2026')).toBeTruthy();
-  expect(screen.getByText('Price read on its page on Sat 10 Oct 2026')).toBeTruthy();
-  expect(screen.getByText('Not verified yet')).toBeTruthy();
+  // The price's reading date isn't shown any more (provenance stays in the data).
+  expect(screen.queryByText('Price read on its page on Fri 9 Oct 2026')).toBeNull();
 
   // Source links
   expect(screen.getByText('Source: sanbi.org')).toBeTruthy();

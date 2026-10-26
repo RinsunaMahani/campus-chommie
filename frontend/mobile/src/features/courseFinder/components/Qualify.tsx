@@ -78,7 +78,6 @@ export function UniversityRow({ u, onPress }: { u: UniversityPoints; onPress: ()
       <View style={{ flex: 1, gap: 3 }}>
         <Text style={styles.name}>{u.university_name}</Text>
         <Text style={styles.sub}>{sub}</Text>
-        {!u.confirmed && u.notice ? <Text style={styles.notice}>{u.notice}</Text> : null}
       </View>
       <View style={styles.score}>
         <Text style={styles.points}>{u.points == null ? '–' : fmt(u.points)}</Text>

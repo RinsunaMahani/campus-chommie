@@ -3,7 +3,6 @@ import { useCallback, useState } from 'react';
 import { View } from 'react-native';
 
 import { CAMPUS_PHOTOS } from '@/features/courseFinder/campusPhotos';
-import { PhotoCredit } from '@/features/courseFinder/components/CampusPhotoCard';
 
 import { useSession } from '@/features/auth/session/SessionProvider';
 import { studentHeader } from '@/features/profile/components/HeaderTools';
@@ -88,9 +87,9 @@ export default function HomeScreen() {
       <Card style={{ paddingVertical: 4 }}>
         <ListRow tone="mint" icon="message-circle" title={t('whatsapp.title')} subtitle={t('whatsapp.entrySub')} onPress={() => router.push('/whatsapp')} />
         <ListRow tone="mint" icon="shield" title="Account security" subtitle="Phones, password and your account" onPress={() => router.push('/security')} />
+        <ListRow icon="image" title="Photo credits" subtitle="Where the app's photos come from" onPress={() => router.push('/photo-credits')} />
         <ListRow icon="log-out" title="Sign out" onPress={signOut} last />
       </Card>
-      {photo ? <PhotoCredit credit={`${photo.caption}. ${photo.credit}`} source={photo.source} /> : null}
     </Screen>
   );
 }

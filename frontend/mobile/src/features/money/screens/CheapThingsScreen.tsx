@@ -11,7 +11,6 @@ import { ErrorBox, Loading } from '@/shared/components/Status';
 import { Body, Muted, Strong } from '@/shared/components/Text';
 import { categoryIcon, categoryLabel } from '@/features/outdoors/places';
 import { t } from '@/shared/i18n';
-import { formatDay } from '@/shared/lib/dates';
 import { Palette, useStyles } from '@/shared/theme/palette';
 import { fonts, radius } from '@/shared/theme/tokens';
 
@@ -117,9 +116,6 @@ export default function CheapThingsScreen({
         </View>
       ) : null}
 
-      {university && !university.confirmed && university.notice ? (
-        <InfoNote icon="info">{university.notice}</InfoNote>
-      ) : null}
 
       {lines
         .filter((line) => line !== t('cheap.none'))
@@ -178,11 +174,6 @@ export default function CheapThingsScreen({
           {c.address ? <Muted>{c.address}</Muted> : null}
           {c.hours ? <Muted>{t('support.hours', { hours: c.hours })}</Muted> : null}
           <SourceLink url={c.source_url} />
-          {c.read_on ? (
-            <Muted>{t('cheap.priced', { date: formatDay(c.read_on) })}</Muted>
-          ) : (
-            <Muted>{t('support.notVerified')}</Muted>
-          )}
         </Card>
       ))}
     </Screen>

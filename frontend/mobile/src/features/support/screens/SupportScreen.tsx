@@ -57,9 +57,6 @@ export default function SupportScreen() {
         {answer?.campus_name && answer.university ? <Muted>{`${answer.university.name} · ${answer.campus_name}`}</Muted> : null}
       </View>
       {mock ? <InfoNote icon="info">{t('money.mockNotice')}</InfoNote> : null}
-      {answer?.university && !answer.university.confirmed && answer.university.notice ? (
-        <InfoNote icon="alert-circle">{answer.university.notice}</InfoNote>
-      ) : null}
       {answer?.lines.map((line, i) => (
         <InfoNote key={i} icon="info">
           {line}
