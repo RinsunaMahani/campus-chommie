@@ -13,6 +13,11 @@ repo folder but is kept out of git; the parts the screens need are quoted below.
 
 ## Where things stand
 
+**Submitted (26 Oct 2026):** Campus Chommie was submitted on Sonke for the FNB App of the Year Hackathon 2026; the
+organisers' confirmation graphic is [submission/submitted-2026.png](submission/submitted-2026.png) (their graphic, kept as a
+record; its logos are the organisers' and sponsors', not used in the app). Judging follows: avoid merges that restart
+the live server while judges may be testing.
+
 **Leaving a class (26 Oct 2026, `rinsuna/leave-class`):** the class screen has "Leave this class", behind an "are
 you sure" sheet (`DELETE /classes/<id>/membership`, which the API had since M4 but the app never offered). The
 class's dates leave the student's week; the class stays for everyone else. The only rep is told nobody else can
