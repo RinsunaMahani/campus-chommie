@@ -44,9 +44,12 @@ def personas() -> dict:
     return yaml.safe_load(PERSONAS_PATH.read_text(encoding="utf-8"))
 
 
-def seed(password: str, today: date | None = None) -> list[str]:
+def seed(password: str, today: date | None = None, rebuild: bool = True) -> list[str]:
     """Make (or refresh) the demo accounts with the shared password, then build their data on today's
-    date. Safe to run again. Returns the accounts' emails; never the password."""
+    date. Safe to run again. Returns the accounts' emails; never the password. rebuild=False (the server
+    starting) builds data only for an account that has none yet: rebuilding everything took most of a minute
+    on a free host, before the server could answer anyone, and the scheduler's re-base (run as the server
+    starts) brings stale data up to today in the background."""
     problems = account_service.check_demo_password(password)
     if problems:
         raise DemoPasswordError(
@@ -57,7 +60,8 @@ def seed(password: str, today: date | None = None) -> list[str]:
         user = account_service.ensure_demo_account(p["email"], password)
         repo.ensure(user.id, p["id"])
     db.session.commit()
-    rebase(today or _today())
+    if rebuild or any(r.rebased_on is None for r in repo.all_accounts()):
+        rebase(today or _today())
     return [p["email"] for p in people]
 
 
