@@ -46,7 +46,7 @@ Welcome, judges! Campus Chommie tackles the **"Access to higher education"** cha
    * **Runway Dial:** Shows 12 days remaining based on R610 balance and R40/day essential spending.
    * **Life Fund Buffer:** Reserve set aside for emergencies, which automatically adjusts its status based on the student's academic stress.
    * **"Two Weeks Late" Toggle:** Tap the toggle to simulate an allowance delay; the runway recalculates immediately so students can plan ahead safely.
-   * **Cheap Things Nearby:** Curated, verified activities and budget meals near the Ga-Rankuwa campus.
+   * **Cheap Things Nearby:** Sourced free and low-cost activities accessible from the Ga-Rankuwa area; check travel distance and costs.
 
 ### Minute 5: Alerts, Support & Class Rep Workflow
 1. Return to **Home** and tap the proactive alert (*"Heavy week and short money"*).
@@ -59,7 +59,7 @@ Welcome, judges! Campus Chommie tackles the **"Access to higher education"** cha
 ---
 
 ### Technical & Architectural Integrity
-* **Over 1,600 backend tests and 300 mobile tests** pass on every change, with code, dependency and secrets scans.
+* **CI checks** backend and mobile tests, types, data, dependencies and secrets; see the current PR run for exact counts.
 * **145 hostile security tests**, all blocked (forged and replayed tokens, other students' data, SQL injection, deep JSON, booby-trapped PDFs, forged Google tokens and WhatsApp messages), after two security sweeps.
 * **Zero Inventory of Facts:** Every admission rule, closing date, fee, and contact cites its official source URL.
-* **Zero Hex Codes / 360 px Responsive:** Full token styling with flawless mobile wrapping.
+* **Zero Hex Codes / 360 px Responsive:** Token-based styling; verify narrow-screen wrapping on the current release build.

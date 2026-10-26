@@ -1,5 +1,14 @@
 # Open questions
 
+## Current follow-up (26 October 2026)
+
+Use [RELEASE_FOLLOWUP.md](RELEASE_FOLLOWUP.md) for current release work and
+[DATA_READINESS.md](DATA_READINESS.md) for generated coverage. The older checklists below are historical:
+SMU admissions/choices, checked income limits, college-register lookup, privacy export/delete, and the core
+money/week features are already implemented. Dated official sources are accepted under the owner's decision;
+universal human sign-off is no longer required. Missing or contradictory facts still remain unresolved.
+Google's public web client ID is in the APK build configuration; this alone does not verify live OAuth.
+
 ## Data completeness follow-up (24 October 2026)
 
 Rinsuna supplied official UJ, UWC, UFH and CPUT 2027 PDFs and authorised edits. All 26 public-university packs now
@@ -11,7 +20,7 @@ remain unresolved, alongside calendar and activity gaps. Use [DATA_READINESS.md]
 notes below describe the earlier state. Only facts a person actually checked may receive their name/date.
 
 The follow-up adds published dates and activity listings at all 26 universities (mixed 2026/2027 coverage), and
-93 support contacts. Funding source acceptance is resolved; incomplete packs remain unreleased. The remaining
+98 support contacts. Funding source acceptance is resolved; incomplete packs remain unreleased. The remaining
 admission gaps include teaching elective combinations not yet supported by the app, faculty placement or prior-degree
 assessment, and conflicting or missing published rules. These are not all source-verification failures.
 Named-language Home/First Additional roles now resolve the three UJ Afrikaans, isiZulu and Sepedi BEd rules.

@@ -44,13 +44,13 @@ See `docs/submission/video-script.md` for full shot-by-shot video scripts and `d
 
 7. **Alerts and campus support.**
    - Proactive early warnings: combined alert triggers when an upcoming heavy academic week coincides with tightening finances before the next payment.
-   - One-tap links directly to verified on-campus student support (counselling, health centre, financial aid office, food relief) with human-checked contact details.
-   - Crisis lines displayed only once verified by a person.
+   - One-tap links directly to verified on-campus student support (counselling, health centre, financial aid office, food relief) with dated official-university sources or recorded human review.
+   - Crisis lines require recorded human review or a dated official-university source.
 
 8. **Built honestly and securely.**
    - **Zero invented facts:** Every rule, fee, date, and contact cites its official source URL.
    - **Privacy by design:** Course finder stores no marks and requires no account. Enrolled marks and money are strictly owner-only.
-   - **Rigorous verification:** Over 1,600 backend tests and 300 mobile tests pass on every change, with code, dependency and secrets scans.
+   - **Rigorous verification:** CI runs backend and mobile tests, type checks, data validation, code, dependency and secrets scans; use the current PR run for exact counts.
    - **Hostile penetration tests:** 145 attack scenarios (forged and replayed tokens, other students' data, SQL injection, deep JSON, booby-trapped PDFs, forged Google tokens and WhatsApp messages), all blocked (145/145), after two security sweeps that found and fixed every problem the same day.
    - **Clean APK:** Zero third-party trackers, zero advertising SDKs, zero secrets in code, only essential permissions.
 
@@ -63,7 +63,7 @@ See `docs/submission/video-script.md` for full shot-by-shot video scripts and `d
 10. **Architecture and what's next.**
     - Stack: Expo / React Native (Android + web), Python Flask API, pure Python decision engine, PostgreSQL on Neon, hosted on Render.
     - Also built: the WhatsApp bot (class reps confirm tests from WhatsApp; WEEK sends the next 7 days) and Continue with Google.
-    - What's next: Human verification sign-off across all 26 university data packs, and integration with DHET's TVET and private colleges register.
+    - What's next: Resolve the 23 outstanding programme rules, expand 2027 and campus-specific coverage, and verify the released web and Android builds. DHET college-register lookup is already implemented.
 
 ---
 

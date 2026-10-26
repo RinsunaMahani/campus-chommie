@@ -1345,6 +1345,14 @@ programmes:
         min_points: 28
 
 sources:
+  - id: s-ufh-orientation-support-2026
+    url: https://fye.ufh.ac.za/wp-content/uploads/2026/01/2026-Orientation-Guide.pdf
+    publisher: University of Fort Hare
+    title: 2026 Orientation Guide, printed pp.24–25, 37 and 42
+    retrieved: '2026-10-26'
+    last_verified: null
+    verified_by: agent read official publication
+    verification_basis: official_university
   - id: s-ufh-registration-2026-indexed
     url: https://www.ufh.ac.za/registration-information-2026
     publisher: University of Fort Hare
@@ -1401,6 +1409,38 @@ sources:
     verification_basis: official_university
 
 support_services:
+- kind: financial_aid
+  name: Financial Aid Office
+  contact: Finaid@ufh.ac.za
+  campuses:
+  - alice
+  - east_london
+  hours: Monday–Thursday 09:00–15:30; Friday 09:00–13:00. Closed for lunch 13:00–14:00.
+  source: s-ufh-orientation-support-2026
+  note: Financial aid advice and administration; applications go to the funders. 2026
+    orientation guide, printed pp.24–25.
+- kind: disability
+  name: Disability Rights Unit — Alice
+  contact: 040 602 2054; nbuwa@ufh.ac.za
+  campuses:
+  - alice
+  source: s-ufh-orientation-support-2026
+  note: Ground floor, Student Affairs Building, office 20. Printed p.37.
+- kind: disability
+  name: Disability Rights Unit — East London
+  contact: 043 704 7059; amakinana@ufh.ac.za
+  campuses:
+  - east_london
+  source: s-ufh-orientation-support-2026
+  note: Ground floor, 50 Church Street; ask at the kiosk for directions. Printed p.37.
+- kind: crisis
+  name: Gender-Based Violence Prevention and Gender Diversity Office
+  contact: 072 684 5864; 040 602 2001; gbv@ufh.ac.za
+  source: s-ufh-orientation-support-2026
+  note: University-wide telephone support for GBV and safety threats, including Bhisho
+    students. The guide lists physical offices only at Alice (House 73) and East London
+    (44 Church Street). Emergency line available 24/7; call-centre hours are not published.
+    Printed p.42.
 - kind: counselling
   name: Student Counselling
   contact: 040 602 2279; PMzilikazi@ufh.ac.za

@@ -56,14 +56,15 @@ first-year dates are added. The latest follow-up accepts dated official funder/g
 UP Food Management, both UP Music routes, SU Public Accountability, UFH extended LLB and four UJ extended BA rules,
 with external qualifications and out-of-band APS referred for assessment. Three UJ language BEd rules now use optional named-language roles without changing APS totals.
 There are still 23 programmes with missing
-requirements; calendars and activity listings cover all 26 universities, and 93 support contacts span all 26.
+requirements; calendars and activity listings cover all 26 universities, and 98 support contacts span all 26.
 Counts include different calendar years and incomplete campus coverage. See [the source review](research/2027-local-prospectuses.md) and
 [coverage queue](DATA_READINESS.md). Incomplete campus coverage and contradictory admissions rules remain open.
 On 26 October, Rinsuna supplied SPU's APS image. It matches the official admissions-page image and now backs the
 points explanation; it does not publish the subject-count rule needed to calculate total APS. Named-language
 checks passed the full backend suite (1,641 tests), with 281 mobile tests, TypeScript and lint passing.
 
-`main` holds everything merged so far (PRs #1 to #94): every merge waited for green CI and Rinsuna's approval. The
+`main` includes the week review, Outdoors centre button and submission updates through PR #109. PR #106 is merged; the additional campus contacts, calendar dates and release notes
+are on `rinsuna/release-data-followup`. The
 web app and the API are live on Render, with the database on Neon (DEPLOY.md). Test counts change with each merge:
 run the suites for today's numbers.
 
@@ -72,8 +73,8 @@ Since the hackathon started (Fri 23 Oct 2026, 08:30 SAST):
   it; WEEK, HELP, STOP. Off until Meta's keys are in Render (DEPLOY.md, "The WhatsApp bot (M6)").
 - **Google sign-in** (#94): web app and APK, hidden until the Google Cloud client IDs are set (DEPLOY.md, "Google
   sign-in").
-- **In review:** Money pots, weekly check-in and money health (#84, #88, #89), the Outdoors tab (#90), funder page
-  sections (#91), and these docs (#85, #87).
+- Money pots, weekly check-in, money health, Outdoors and funder sections are already on `main`.
+- Remaining work and dated validation evidence: [release follow-up](RELEASE_FOLLOWUP.md).
 
 ### Milestones landed on `main` (PRs #1 – #94)
 

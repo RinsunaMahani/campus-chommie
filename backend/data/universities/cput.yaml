@@ -3318,6 +3318,14 @@ programmes:
         method is not identified in this table; confirm points with the faculty.
 
 sources:
+  - id: s-cput-campus-contacts-2026
+    url: https://www.cput.ac.za/about-cput/contact-details
+    publisher: Cape Peninsula University of Technology
+    title: Official campus contact directory
+    retrieved: '2026-10-26'
+    last_verified: null
+    verified_by: agent read official publication
+    verification_basis: official_university
   - id: s-iziko-fees-2026
     url: https://www.iziko.org.za/visit/
     publisher: Iziko Museums of South Africa
@@ -3596,6 +3604,14 @@ sources:
     verification_basis: official_university
 
 support_services:
+- kind: crisis
+  name: Granger Bay Campus Security
+  contact: 021 440 5726; 021 440 5735; 083 322 4526
+  campuses:
+  - granger_bay
+  source: s-cput-campus-contacts-2026
+  note: Campus security for immediate safety assistance. This is not a counselling
+    service.
 - kind: counselling
   name: Student Counselling
   contact: 021 460 3237
