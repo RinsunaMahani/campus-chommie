@@ -14,13 +14,13 @@ Dated official university, funder, government and venue sources are accepted und
 | nwu | 81 | 0 | 0 | 3 | 3 | 3 | 1 | 0 |
 | ru | 16 | 1 | 0 | 1 | 10 | 1 | 1 | 0 |
 | smu | 17 | 0 | 0 | 1 | 23 | 7 | 2 | 0 |
-| spu | 26 | 0 | 26 | 1 | 13 | 3 | 1 | 1 |
+| spu | 26 | 0 | 26 | 1 | 34 | 3 | 1 | 1 |
 | su | 73 | 2 | 71 | 2 | 11 | 2 | 1 | 0 |
 | tut | 124 | 2 | 0 | 9 | 60 | 20 | 8 | 0 |
 | uct | 34 | 0 | 0 | 2 | 7 | 3 | 1 | 0 |
 | ufh | 52 | 3 | 49 | 3 | 3 | 6 | 1 | 0 |
 | ufs | 172 | 2 | 0 | 3 | 13 | 3 | 1 | 0 |
-| uj | 175 | 9 | 0 | 4 | 29 | 7 | 1 | 0 |
+| uj | 175 | 5 | 0 | 4 | 29 | 7 | 1 | 0 |
 | ukzn | 66 | 0 | 0 | 5 | 4 | 1 | 1 | 0 |
 | ul | 54 | 0 | 0 | 1 | 2 | 1 | 1 | 0 |
 | ump | 24 | 1 | 0 | 2 | 14 | 1 | 1 | 0 |
@@ -47,7 +47,7 @@ An entry count does not establish a complete calendar or a complete range of sup
 | nwu | 2027: 3 | None | mahikeng, vanderbijlpark |
 | ru | 2027: 10 | None | None |
 | smu | 2026: 23 | None | None |
-| spu | 2026: 13 | None | None |
+| spu | 2026: 13, 2027: 21 | None | None |
 | su | 2027: 11 | None | tygerberg |
 | tut | 2026: 28, 2027: 31, 2028: 1 | None | emalahleni |
 | uct | 2027: 7 | None | None |
@@ -77,7 +77,7 @@ These entries remain unassessed. See each pack's selection note and research not
 - **tut**: `bed_foundation_phase`, `bed_sp_fet_technology`
 - **ufh**: `ufh_500492`, `ufh_500493`, `ufh_71524`
 - **ufs**: `bed_extended`, `b_sustainable_food_systems_extended`
-- **uj**: `uj_b5sgeq`, `uj_b6sc0q`, `uj_b6cx3q`, `uj_b6ix2q`, `uj_b6mx2q`, `uj_b2p82q`, `uj_b2p83q`, `uj_b2p77q`, `uj_b2p78q`
+- **uj**: `uj_b5sgeq`, `uj_b2p82q`, `uj_b2p83q`, `uj_b2p77q`, `uj_b2p78q`
 - **ump**: `bsocsci`
 
 Funding: 24 funders; release=false; 0 sources need source review or re-check.
