@@ -2763,6 +2763,20 @@ programmes:
         - "Applications close on 30 November 2026: the CAO lists this programme among those added after its 2027 handbook."
 
 sources:
+  - id: s-unizulu-science-visits-2026
+    url: https://www.sciencecentre.unizulu.ac.za/
+    publisher: University of Zululand
+    title: 'Science Centre: organising a visit in 2026'
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official publication
+  - id: s-unizulu-calendar-final-2026
+    url: https://www.unizulu.ac.za/wp-content/uploads/2026/02/2026-UNIZULU-General-Calendar-2.pdf
+    publisher: UNIZULU
+    title: 2026 academic calendar
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official publication
   - id: s-unizulu-support-2026
     url: https://www.unizulu.ac.za/ssd/
     publisher: University of Zululand
@@ -2801,6 +2815,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-unizulu-cao-2027
     url: "https://www.cao.ac.za/Download/CAO%20HANDBOOK%202027%20Entry%20web.pdf"
     publisher: "Central Applications Office"
@@ -2808,6 +2823,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-unizulu-cao-new-2027
     url: "https://www.cao.ac.za/download/New_Programmes.html"
     publisher: "Central Applications Office"
@@ -2815,6 +2831,7 @@ sources:
     retrieved: 2026-10-14
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-unizulu-brochure-2026
     url: "https://www.unizulu.ac.za/wp-content/uploads/2025/02/2026-Brochure-for-undergraduate.pdf"
     publisher: "University of Zululand"
@@ -2871,3 +2888,69 @@ support_services:
   source: s-unizulu-support-2026
   note: Dean of Students office. Ask for referral to guidance and counselling; this
     is not a direct counselling line.
+
+calendar:
+- period: registration
+  name: First-time entering student registration
+  start: '2026-01-26'
+  source: s-unizulu-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-01-30'
+- period: registration
+  name: Returning undergraduate and coursework postgraduate registration
+  start: '2026-02-02'
+  source: s-unizulu-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-02-06'
+- period: orientation
+  name: First-time entering student orientation
+  start: '2026-02-02'
+  source: s-unizulu-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-02-06'
+- period: term
+  name: Term 1 lectures
+  start: '2026-02-09'
+  source: s-unizulu-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-03-27'
+- period: term
+  name: Term 2 lectures
+  start: '2026-04-07'
+  source: s-unizulu-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-05-15'
+- period: term
+  name: Term 3 lectures
+  start: '2026-07-06'
+  source: s-unizulu-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-08-21'
+- period: term
+  name: Term 4 lectures
+  start: '2026-08-31'
+  source: s-unizulu-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-10-09'
+- period: exam
+  name: Semester 1 examinations
+  start: '2026-05-25'
+  source: s-unizulu-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-06-12'
+- period: exam
+  name: Semester 2 examinations
+  start: '2026-10-19'
+  source: s-unizulu-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-11-06'
+
+cheap_things:
+- name: 'UNIZULU Science Centre: booked group visit'
+  category: museum
+  cost_note: 'Educational group visits: R15 per local learner, minimum R450 per group;
+    outside the designated area R20 per learner, minimum R600. Book ahead and confirm
+    eligibility; an individual walk-in price is not published.'
+  campuses:
+  - richards_bay
+  source: s-unizulu-science-visits-2026

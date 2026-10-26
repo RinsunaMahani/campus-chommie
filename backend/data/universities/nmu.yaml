@@ -2337,6 +2337,20 @@ programmes:
         - "Only offered on the George Campus."
 
 sources:
+  - id: s-nmu-calendar-followup-2026
+    url: https://www.mandela.ac.za/Staff/Academic-Calendar-2026
+    publisher: NMU
+    title: 2026 published academic dates
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official publication
+  - id: s-mandela-artmuseum-2026
+    url: https://www.artmuseum.co.za/Content.aspx?pageID=72
+    publisher: Nelson Mandela Metropolitan Art Museum
+    title: Nelson Mandela Metropolitan Art Museum
+    retrieved: '2026-10-25'
+    verification_basis: official_publisher
+    verified_by: agent, official publication
   - id: s-nmu-support-2026
     url: https://finaid.mandela.ac.za/
     publisher: Nelson Mandela University
@@ -2383,3 +2397,116 @@ support_services:
   contact: 041 504 1111; financialaid@mandela.ac.za
   source: s-nmu-support-2026
   note: Contact centre for financial assistance enquiries.
+
+cheap_things:
+- name: Nelson Mandela Metropolitan Art Museum
+  category: museum
+  cost_note: Free admission except events with advertised fees.
+  campuses:
+  - south
+  - north
+  - second_avenue
+  - bird_street
+  - missionvale
+  - ocean_sciences
+  source: s-mandela-artmuseum-2026
+  address: 1 Park Drive, Central, Gqeberha
+
+calendar:
+- period: recess
+  name: New Year Student Recess
+  start: '2026-01-01'
+  source: s-nmu-calendar-followup-2026
+  end: '2026-01-04'
+  note: General 2026 calendar. Medical School has separate teaching and assessment
+    dates; consult the programme calendar.
+- period: orientation
+  name: First Year Student Success Programme
+  start: '2026-01-26'
+  source: s-nmu-calendar-followup-2026
+  end: '2026-02-06'
+  note: General 2026 calendar. Medical School has separate teaching and assessment
+    dates; consult the programme calendar.
+- period: term
+  name: Teaching Cycle 1
+  start: '2026-02-09'
+  source: s-nmu-calendar-followup-2026
+  end: '2026-03-25'
+  note: General 2026 calendar. Medical School has separate teaching and assessment
+    dates; consult the programme calendar.
+- period: recess
+  name: First teaching cycle recess
+  start: '2026-03-26'
+  source: s-nmu-calendar-followup-2026
+  end: '2026-04-06'
+  note: General 2026 calendar. Medical School has separate teaching and assessment
+    dates; consult the programme calendar.
+- period: term
+  name: Teaching Cycle 2
+  start: '2026-04-07'
+  source: s-nmu-calendar-followup-2026
+  end: '2026-05-22'
+  note: General 2026 calendar. Medical School has separate teaching and assessment
+    dates; consult the programme calendar.
+- period: exam
+  name: Mid-Year Assessment Period
+  start: '2026-06-01'
+  source: s-nmu-calendar-followup-2026
+  end: '2026-06-22'
+  note: General 2026 calendar. Medical School has separate teaching and assessment
+    dates; consult the programme calendar.
+- period: recess
+  name: Second teaching cycle recess
+  start: '2026-06-23'
+  source: s-nmu-calendar-followup-2026
+  end: '2026-07-05'
+  note: General 2026 calendar. Medical School has separate teaching and assessment
+    dates; consult the programme calendar.
+- period: term
+  name: Teaching Cycle 3
+  start: '2026-07-13'
+  source: s-nmu-calendar-followup-2026
+  end: '2026-08-26'
+  note: General 2026 calendar. Medical School has separate teaching and assessment
+    dates; consult the programme calendar.
+- period: recess
+  name: Third teaching cycle recess
+  start: '2026-08-27'
+  source: s-nmu-calendar-followup-2026
+  end: '2026-09-02'
+  note: General 2026 calendar. Medical School has separate teaching and assessment
+    dates; consult the programme calendar.
+- period: term
+  name: Teaching Cycle 4
+  start: '2026-09-03'
+  source: s-nmu-calendar-followup-2026
+  end: '2026-10-21'
+  note: General 2026 calendar. Medical School has separate teaching and assessment
+    dates; consult the programme calendar.
+- period: exam
+  name: Year-End Assessment Period
+  start: '2026-10-22'
+  source: s-nmu-calendar-followup-2026
+  end: '2026-11-13'
+  note: General 2026 calendar. Medical School has separate teaching and assessment
+    dates; consult the programme calendar.
+- period: recess
+  name: November Student Recess
+  start: '2026-11-14'
+  source: s-nmu-calendar-followup-2026
+  end: '2026-11-29'
+  note: General 2026 calendar. Medical School has separate teaching and assessment
+    dates; consult the programme calendar.
+- period: recess
+  name: Year-End Student Recess
+  start: '2026-12-09'
+  source: s-nmu-calendar-followup-2026
+  end: '2026-12-31'
+  note: General 2026 calendar. Medical School has separate teaching and assessment
+    dates; consult the programme calendar.
+- period: closed
+  name: University Closes
+  start: '2026-12-22'
+  source: s-nmu-calendar-followup-2026
+  note: General 2026 calendar. Medical School has separate teaching and assessment
+    dates; consult the programme calendar.

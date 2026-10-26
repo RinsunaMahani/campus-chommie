@@ -1124,6 +1124,13 @@ programmes:
         - "Majors across Psychology, History, Geography, Politics, Philosophy, Sociology, Languages. Duration is 3 years."
 
 sources:
+  - id: s-nwu-garden-2026
+    url: https://natural-sciences.nwu.ac.za/botanical-garden/home
+    publisher: North-West University
+    title: NWU Botanical Garden
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official publication
   - id: s-nwu-orientation-2027
     url: https://studies.nwu.ac.za/studies/first-year-students-2027
     publisher: North-West University
@@ -1207,3 +1214,12 @@ calendar:
   step: first_lecture
   source: s-nwu-orientation-2027
   note: Start date only; consult the academic framework for later terms and examinations.
+
+cheap_things:
+- name: NWU Botanical Garden
+  category: outdoors
+  cost_note: Free entrance. Groups need prior arrangement; no photo shoots.
+  campuses:
+  - potchefstroom
+  source: s-nwu-garden-2026
+  hours: Monday–Friday 07:30–16:00

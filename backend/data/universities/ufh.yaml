@@ -223,7 +223,21 @@ programmes:
     Maths 4; four other subjects 4; Life Orientation 4. APS 28 is stated only for
     Maths Literacy/Technical Maths. Mathematics-route APS needs faculty confirmation.
     International applicants cannot apply for extended programmes.'
-  requirements: null
+  requirements:
+    source: s-ufh-guide-2027
+    min_points: null
+    points_threshold_incomplete: true
+    subject_minimums: {english: 4, life_orientation: 4}
+    additional_minimums: [4, 4, 4, 4]
+    choices:
+    - one_of:
+      - subjects: {mathematics: 2}
+      - subjects: {mathematical_literacy: 4}
+        min_points: 28
+      - subjects: {technical_mathematics: 4}
+        min_points: 28
+    extras:
+    - "Confirm APS with UFH: the guide omits the Mathematics-route APS and a complete points calculation table. International applicants cannot apply for extended programmes."
 - id: ufh_21527
   name: Bachelor of Commerce in Law
   faculty: Law
@@ -1331,6 +1345,21 @@ programmes:
         min_points: 28
 
 sources:
+  - id: s-ufh-registration-2026-indexed
+    url: https://www.ufh.ac.za/registration-information-2026
+    publisher: University of Fort Hare
+    title: 2026 registration information — official search-index excerpt reviewed 25
+      October 2026
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official publication
+  - id: s-east-london-museum-2026
+    url: https://elmuseum.za.org/plan-your-visit/
+    publisher: East London Museum
+    title: 'Plan your visit: admission and opening hours'
+    retrieved: '2026-10-25'
+    verification_basis: official_publisher
+    verified_by: agent, official publication
   - id: s-ufh-support-2026
     url: https://fye.ufh.ac.za/faq-base/student-counselling-wellbeing/
     publisher: University of Fort Hare
@@ -1384,3 +1413,39 @@ support_services:
   source: s-ufh-support-2026
   campuses:
   - east_london
+
+cheap_things:
+- name: East London Museum
+  category: museum
+  cost_note: Adult admission R30; children R20; pensioners R25.
+  address: 319 Oxford Street, East London 5201
+  hours: Monday–Thursday 09:00–16:00; Friday 09:00–15:30; Saturday 09:00–13:00. Closed
+    Sundays and public holidays.
+  campuses:
+  - east_london
+  source: s-east-london-museum-2026
+
+calendar:
+- period: orientation
+  name: 'First-year orientation: Alice and East London'
+  start: '2026-01-26'
+  end: '2026-01-30'
+  source: s-ufh-registration-2026-indexed
+  campuses:
+  - alice
+  - east_london
+  note: 2026 dates published in the official university search-index excerpt. Direct
+    page access is disallowed by the university robots policy.
+- period: registration
+  name: 'Late registration: selected programmes'
+  start: '2026-02-02'
+  end: '2026-02-20'
+  source: s-ufh-registration-2026-indexed
+  note: Selected programmes only; confirm availability with admissions. Official university
+    search-index excerpt.
+- period: term
+  name: Academic programme begins
+  start: '2026-02-02'
+  source: s-ufh-registration-2026-indexed
+  note: Published 2026 start only; no end date inferred. Official university search-index
+    excerpt.

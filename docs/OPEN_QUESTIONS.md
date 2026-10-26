@@ -4,10 +4,18 @@
 
 Rinsuna supplied official UJ, UWC, UFH and CPUT 2027 PDFs and authorised edits. All 26 public-university packs now
 have programmes. Forty-two existing CPUT gaps are filled. On 25 October Rinsuna accepted dated official university
-sources as sufficient verification. Every university now has a sourced support contact; 35 programme requirements
+sources as sufficient verification, followed by dated official funder, government and venue publications.
+Every university now has a sourced support contact; 23 programme requirements
 remain unresolved, alongside calendar and activity gaps. Use [DATA_READINESS.md](DATA_READINESS.md) for current counts and
 [the source review](research/2027-local-prospectuses.md) for the exact documents and blocked rules; older research
 notes below describe the earlier state. Only facts a person actually checked may receive their name/date.
+
+The follow-up adds published dates and activity listings at all 26 universities (mixed 2026/2027 coverage), and
+93 support contacts. Funding source acceptance is resolved; incomplete packs remain unreleased. The remaining
+admission gaps include teaching elective combinations not yet supported by the app, faculty placement or prior-degree
+assessment, and conflicting or missing published rules. These are not all source-verification failures.
+Named-language Home/First Additional roles now resolve the three UJ Afrikaans, isiZulu and Sepedi BEd rules.
+See the latest [research follow-up](research/2027-local-prospectuses.md#internet-follow-up-25-october-2026).
 
 Facts we don't have yet and decisions only the team can make. The app shows "Not verified yet" wherever a fact is
 missing; nothing here may be guessed. Tick an item and add a line (who, when, the answer or a link) when it's

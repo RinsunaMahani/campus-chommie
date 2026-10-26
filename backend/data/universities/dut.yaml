@@ -1692,6 +1692,13 @@ programmes:
         - "Taught at Ritson Campus (Durban)."
 
 sources:
+  - id: s-durban-natural-science-2026
+    url: https://www.durban.gov.za/page/parks-recreation-culture-amenities
+    publisher: eThekwini Municipality
+    title: Durban Natural Science Museum
+    retrieved: '2026-10-25'
+    verification_basis: official_publisher
+    verified_by: agent, official publication
   - id: s-dut-calendar-2027
     url: https://www.dut.ac.za/wp-content/uploads/2026/10/2027-Skeletal-Academic-Calendar-and-Term-Dates.pdf
     publisher: Durban University of Technology
@@ -1743,6 +1750,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-cao-changes
     url: "https://cao.ac.za/download/Entry%20Requirement%20Changes%202027%20Entry%20-%2024.07.2026.pdf"
     publisher: "Central Applications Office"
@@ -1750,6 +1758,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
 
 support_services:
 - kind: financial_aid
@@ -1854,3 +1863,17 @@ calendar:
   end: '2027-11-04'
   source: s-dut-calendar-2027
   note: Check the programme timetable. No examinations on 11 October or 28 October.
+
+cheap_things:
+- name: Durban Natural Science Museum
+  category: museum
+  cost_note: Free entrance.
+  campuses:
+  - steve_biko
+  - ritson
+  - ml_sultan
+  - city
+  - brickfield
+  source: s-durban-natural-science-2026
+  address: 234 Anton Lembede Street, first floor Cultural Block, City Hall, Durban
+  hours: Monday–Saturday 08:30–15:45; Sunday and public holidays 11:00–16:00

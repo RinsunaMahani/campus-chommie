@@ -33,8 +33,8 @@ def _today() -> date:
 
 
 def _checked(source: Source | None) -> bool:
-    """Accepted source evidence, without conflating provenance with personal review."""
-    return source is not None and source.verified
+    """Crisis contacts retain the human-review or official-university evidence requirement."""
+    return source is not None and (source.human_verified or source.verification_basis == "official_university")
 
 
 def _campus(user) -> tuple[University | None, str | None]:

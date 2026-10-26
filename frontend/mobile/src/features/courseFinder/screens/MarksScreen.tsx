@@ -110,13 +110,14 @@ export default function MarksScreen() {
                     <Feather name="x" size={18} color={colors.textMuted} />
                   </Pressable>
                 </View>
-                {row.subject === 'english' ? (
+                {row.subject === 'english' || SUBJECTS[row.subject]?.kind === 'language' ? (
                   <View style={{ gap: 4 }}>
-                    <Text style={styles.level}>English language level (optional)</Text>
+                    <Text style={styles.level}>{name} language level (optional)</Text>
                     {(['home', 'first_additional'] as const).map((role) => (
                       <Pressable key={role} accessibilityRole="radio"
+                        accessibilityLabel={`${name}: ${role === 'home' ? 'Home Language' : 'First Additional Language'}`}
                         accessibilityState={{ checked: row.language_level === role }}
-                        onPress={() => cf.setRows(rows.map((r) => r.subject === 'english'
+                        onPress={() => cf.setRows(rows.map((r) => r.subject === row.subject
                           ? { ...r, language_level: r.language_level === role ? undefined : role } : r))}
                         style={{ minHeight: 44, flexDirection: 'row', alignItems: 'center', gap: 8 }}>
                         <Feather name={row.language_level === role ? 'check-circle' : 'circle'} size={18} color={colors.text} />

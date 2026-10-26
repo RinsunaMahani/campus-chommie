@@ -674,6 +674,20 @@ programmes:
         - "Campus: Bloemfontein."
 
 sources:
+  - id: s-cut-calendar-followup-2026
+    url: https://www.cut.ac.za/events/details/278
+    publisher: CUT
+    title: 2026 published academic dates
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official publication
+  - id: s-oliewenhuis-trails-2026
+    url: https://nationalmuseum.co.za/wp-content/uploads/2019/01/Oliewenhuis-Art-Museum-Hiking-Trail-Map-leaflet.pdf
+    publisher: National Museum, Bloemfontein
+    title: Oliewenhuis Art Museum and hiking trails
+    retrieved: '2026-10-25'
+    verification_basis: official_publisher
+    verified_by: agent, official publication
   - id: s-cut-wellness-2026
     url: https://www.cut.ac.za/student-life-wellness
     publisher: Central University of Technology
@@ -1105,3 +1119,25 @@ support_services:
   - bloemfontein
   hours: Monday to Friday 08:00–16:30
   note: Behind Welgemoed residence.
+
+cheap_things:
+- name: Oliewenhuis Art Museum and hiking trails
+  category: museum
+  cost_note: Museum and hiking-trail entrance is free. Parking and optional activities
+    are separate.
+  campuses:
+  - bloemfontein
+  source: s-oliewenhuis-trails-2026
+  address: 16 Harry Smith Street, Bloemfontein
+
+calendar:
+- period: registration
+  name: First-year registration
+  start: '2026-01-19'
+  source: s-cut-calendar-followup-2026
+  end: '2026-01-23'
+- period: registration
+  name: Returning-student registration
+  start: '2026-01-27'
+  source: s-cut-calendar-followup-2026
+  end: '2026-01-30'

@@ -1161,6 +1161,20 @@ programmes:
         - "Offered at Westville and Pietermaritzburg (each has its own CAO code)."
 
 sources:
+  - id: s-ukzn-calendar-final-2026
+    url: https://registration.ukzn.ac.za/important-dates-for-2026-registration/
+    publisher: UKZN
+    title: 2026 academic calendar
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official publication
+  - id: s-durban-natural-science-2026
+    url: https://www.durban.gov.za/page/parks-recreation-culture-amenities
+    publisher: eThekwini Municipality
+    title: Durban Natural Science Museum
+    retrieved: '2026-10-25'
+    verification_basis: official_publisher
+    verified_by: agent, official publication
   - id: s-ukzn-support-2026
     url: https://ulop.ukzn.ac.za/help-contacts/
     publisher: University of KwaZulu-Natal
@@ -1190,6 +1204,7 @@ sources:
     retrieved: 2026-10-22
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-ukzn-campuses
     url: "https://ukzn.ac.za/ukzn-campuses/"
     publisher: "University of KwaZulu-Natal"
@@ -1229,6 +1244,7 @@ sources:
     retrieved: 2026-10-13
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
 
 support_services:
 - kind: counselling
@@ -1236,3 +1252,39 @@ support_services:
   contact: 080 080 0017
   source: s-ukzn-support-2026
   note: University student support toll-free number.
+
+cheap_things:
+- name: Durban Natural Science Museum
+  category: museum
+  cost_note: Free entrance.
+  campuses:
+  - edgewood
+  - howard_college
+  - medical_school
+  - westville
+  source: s-durban-natural-science-2026
+  address: 234 Anton Lembede Street, first floor Cultural Block, City Hall, Durban
+  hours: Monday–Saturday 08:30–15:45; Sunday and public holidays 11:00–16:00
+
+calendar:
+- period: registration
+  name: Remote online registration opens
+  start: '2026-01-06'
+  source: s-ukzn-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+- period: registration
+  name: First-time entering undergraduate registration week
+  start: '2026-02-02'
+  source: s-ukzn-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-02-07'
+- period: registration
+  name: First-semester academic registration deadline
+  start: '2026-02-13'
+  source: s-ukzn-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+- period: term
+  name: Lectures commence
+  start: '2026-02-09'
+  source: s-ukzn-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.

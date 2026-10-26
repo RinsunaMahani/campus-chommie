@@ -2088,6 +2088,20 @@ programmes:
         - "You can't apply for this directly: apply for the mainstream programme, and UFS places you here if you qualify and space allows, higher scores first (2027 prospectus)."
 
 sources:
+  - id: s-ufs-calendar-2027-approved
+    url: https://www.ufs.ac.za/docs/librariesprovider31/default-document-library/senate-approved-2026_2027-academic-calendarse89894e75b146fc79f4fff0600aa9400.pdf?sfvrsn=4c8cfb20_0
+    publisher: University of the Free State
+    title: 2027 academic calendar, approved by Senate 27 May 2025
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official publication
+  - id: s-oliewenhuis-trails-2026
+    url: https://nationalmuseum.co.za/wp-content/uploads/2019/01/Oliewenhuis-Art-Museum-Hiking-Trail-Map-leaflet.pdf
+    publisher: National Museum, Bloemfontein
+    title: Oliewenhuis Art Museum and hiking trails
+    retrieved: '2026-10-25'
+    verification_basis: official_publisher
+    verified_by: agent, official publication
   - id: s-ufs-counselling-2026
     url: https://www.ufs.ac.za/supportservices/departments/student-counselling-development-home/general/contact-us
     publisher: University of the Free State
@@ -2235,3 +2249,107 @@ support_services:
   source: s-ufs-counselling-2026
   campuses:
   - south
+
+cheap_things:
+- name: Oliewenhuis Art Museum and hiking trails
+  category: museum
+  cost_note: Museum and hiking-trail entrance is free. Parking and optional activities
+    are separate.
+  campuses:
+  - bloemfontein
+  - south
+  source: s-oliewenhuis-trails-2026
+  address: 16 Harry Smith Street, Bloemfontein
+
+calendar:
+- period: registration
+  name: First-year and returning-student registration
+  start: '2027-01-11'
+  end: '2027-02-05'
+  source: s-ufs-calendar-2027-approved
+  note: Senate-approved 2027 calendar. Academic break within quarter 4 is listed separately;
+    programme-specific timetables may differ.
+- period: term
+  name: Quarter 1
+  start: '2027-02-08'
+  end: '2027-03-19'
+  source: s-ufs-calendar-2027-approved
+  note: Senate-approved 2027 calendar. Academic break within quarter 4 is listed separately;
+    programme-specific timetables may differ.
+- period: recess
+  name: Academic break
+  start: '2027-03-23'
+  end: '2027-04-02'
+  source: s-ufs-calendar-2027-approved
+  note: Senate-approved 2027 calendar. Academic break within quarter 4 is listed separately;
+    programme-specific timetables may differ.
+- period: term
+  name: Quarter 2
+  start: '2027-04-05'
+  end: '2027-05-28'
+  source: s-ufs-calendar-2027-approved
+  note: Senate-approved 2027 calendar. Academic break within quarter 4 is listed separately;
+    programme-specific timetables may differ.
+- period: exam
+  name: Main mid-year examinations
+  start: '2027-05-31'
+  end: '2027-06-19'
+  source: s-ufs-calendar-2027-approved
+  note: Senate-approved 2027 calendar. Academic break within quarter 4 is listed separately;
+    programme-specific timetables may differ.
+- period: exam
+  name: Mid-year supplementary examinations
+  start: '2027-06-21'
+  end: '2027-06-26'
+  source: s-ufs-calendar-2027-approved
+  note: Senate-approved 2027 calendar. Academic break within quarter 4 is listed separately;
+    programme-specific timetables may differ.
+- period: recess
+  name: Academic break
+  start: '2027-06-28'
+  end: '2027-07-09'
+  source: s-ufs-calendar-2027-approved
+  note: Senate-approved 2027 calendar. Academic break within quarter 4 is listed separately;
+    programme-specific timetables may differ.
+- period: registration
+  name: Semester 2 registration
+  start: '2027-07-12'
+  end: '2027-07-16'
+  source: s-ufs-calendar-2027-approved
+  note: Senate-approved 2027 calendar. Academic break within quarter 4 is listed separately;
+    programme-specific timetables may differ.
+- period: term
+  name: Quarter 3
+  start: '2027-07-12'
+  end: '2027-08-27'
+  source: s-ufs-calendar-2027-approved
+  note: Senate-approved 2027 calendar. Academic break within quarter 4 is listed separately;
+    programme-specific timetables may differ.
+- period: term
+  name: Quarter 4
+  start: '2027-08-30'
+  end: '2027-10-22'
+  source: s-ufs-calendar-2027-approved
+  note: Senate-approved 2027 calendar. Academic break within quarter 4 is listed separately;
+    programme-specific timetables may differ.
+- period: recess
+  name: Academic break within quarter 4
+  start: '2027-09-27'
+  end: '2027-10-01'
+  source: s-ufs-calendar-2027-approved
+  note: Senate-approved 2027 calendar. Academic break within quarter 4 is listed separately;
+    programme-specific timetables may differ.
+- period: exam
+  name: Main year-end examinations
+  start: '2027-10-25'
+  end: '2027-11-13'
+  source: s-ufs-calendar-2027-approved
+  note: Senate-approved 2027 calendar. Academic break within quarter 4 is listed separately;
+    programme-specific timetables may differ.
+- period: exam
+  name: Year-end supplementary examinations
+  start: '2027-11-15'
+  end: '2027-11-20'
+  source: s-ufs-calendar-2027-approved
+  note: Senate-approved 2027 calendar. Academic break within quarter 4 is listed separately;
+    programme-specific timetables may differ.

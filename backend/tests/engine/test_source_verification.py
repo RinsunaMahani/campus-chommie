@@ -9,6 +9,23 @@ from scripts.validate_data import _check_sources, check
 TODAY = date(2026, 10, 24)
 
 
+@pytest.mark.parametrize('url', ['https://www.nsfas.org.za/content/', 'https://www.gov.za/',
+                                 'https://www.sanbi.org/', 'https://www.saica.org.za/'])
+def test_dated_official_publishers_are_accepted_without_personal_signoff(url):
+    source = Source(id='s', url=url, publisher='Official publisher', retrieved=TODAY,
+                    verification_basis='official_publisher', verified_by='agent')
+    assert source.verified and not source.human_verified
+    assert source.evidence_date == TODAY
+
+
+@pytest.mark.parametrize('url', ['https://nsfas.org.za.evil.org', 'https://fakegov.za',
+                                 'https://gov.za@evil.org', 'https://blog.example.org'])
+def test_official_publisher_status_does_not_accept_lookalikes(url):
+    with pytest.raises(ValidationError):
+        Source(id='s',url=url,publisher='Official publisher',retrieved=TODAY,
+               verification_basis='official_publisher')
+
+
 def test_official_university_provenance_is_sufficient_without_claiming_human_review():
     source = Source(id="s", url="https://www.uj.ac.za/admission-aid/", publisher="UJ",
                     retrieved=TODAY, verification_basis="official_university",

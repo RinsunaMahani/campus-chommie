@@ -441,6 +441,21 @@ programmes:
         - "UMP admits you provisionally on your final Grade 11 results; final admission rests on your final Grade 12 results."
 
 sources:
+  - id: s-ump-calendar-final-2026
+    url: https://www.ump.ac.za/Study-with-us/Almanac
+    publisher: UMP
+    title: 2026 academic calendar
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official publication
+  - id: s-sanbi-lowveld-tickets
+    url: https://www.sanbi.org/gardens/lowveld/information-8/buy-tickets-lowveld-nbg/
+    publisher: South African National Biodiversity Institute (SANBI)
+    title: 'Lowveld National Botanical Garden: buy tickets'
+    retrieved: 2026-10-10
+    last_verified: null
+    verified_by: agent draft, needs human check
+    verification_basis: official_publisher
   - id: s-ump-support-2026
     url: https://www.ump.ac.za/Student-Life/Health-and-Well-being/Counselling-Services.aspx
     publisher: University of Mpumalanga
@@ -673,3 +688,98 @@ support_services:
   hours: Monday to Friday, 08:00–16:30
   note: 'Online and in-person support for registered students. Physical office: Mbombela,
     building 7, second floor.'
+
+cheap_things:
+- name: Lowveld National Botanical Garden
+  category: outdoors
+  cost_note: Students R50 in peak season (September to March); adults R80; children
+    6 to 17 R30; under 6 free. The ticket page shows no off-peak prices.
+  campuses:
+  - mbombela
+  source: s-sanbi-lowveld-tickets
+
+calendar:
+- period: registration
+  name: New student registration
+  start: '2026-01-26'
+  source: s-ump-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-01-30'
+- period: registration
+  name: Returning student registration
+  start: '2026-02-02'
+  source: s-ump-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-02-06'
+- period: registration
+  name: Semester 2 registration
+  start: '2026-07-20'
+  source: s-ump-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-07-31'
+- period: orientation
+  name: New student orientation
+  start: '2026-02-02'
+  source: s-ump-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-02-06'
+- period: term
+  name: Term 1
+  start: '2026-02-09'
+  source: s-ump-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-04-02'
+- period: term
+  name: Term 2
+  start: '2026-04-13'
+  source: s-ump-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-05-29'
+- period: term
+  name: Term 3
+  start: '2026-07-20'
+  source: s-ump-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-09-11'
+- period: term
+  name: Term 4
+  start: '2026-09-21'
+  source: s-ump-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-10-23'
+- period: recess
+  name: Mid-year recess
+  start: '2026-06-29'
+  source: s-ump-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-07-17'
+- period: recess
+  name: September recess
+  start: '2026-09-14'
+  source: s-ump-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-09-18'
+- period: exam
+  name: Semester 1 examinations
+  start: '2026-06-01'
+  source: s-ump-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-06-22'
+- period: exam
+  name: Semester 2 examinations
+  start: '2026-10-26'
+  source: s-ump-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-11-16'
+- period: exam
+  name: Semester 1 re-examinations
+  start: '2026-07-14'
+  source: s-ump-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-07-17'
+- period: exam
+  name: Semester 2 re-examinations
+  start: '2026-12-07'
+  source: s-ump-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-12-11'

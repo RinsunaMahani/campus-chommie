@@ -336,7 +336,7 @@ export type Plan = {
 };
 
 /** One row the learner sends. Subject keys are in subjects.ts. */
-export type Mark = { subject: string; percent: number; language_level?: 'home' | 'first_additional' };
+export type Mark = { subject: string; percent: number; language_level?: 'home' | 'first_additional'; language_name?: string };
 
 export type FirstStep = {
   key: string;

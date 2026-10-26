@@ -298,6 +298,13 @@ programmes:
         - "Offers provisional acceptance from 45 points, and considers 40 to 44 points at the Dean's discretion. Duration is 3 years."
 
 sources:
+  - id: s-amazwi-visit-2026
+    url: https://www.amazwi.museum/contact-us/
+    publisher: Amazwi South African Museum of Literature
+    title: Amazwi South African Museum of Literature
+    retrieved: '2026-10-25'
+    verification_basis: official_publisher
+    verified_by: agent, official publication
   - id: s-ru-calendar-2027
     url: https://www.ru.ac.za/media/rhodesuniversity/content/registrar/rhodesuniversitytermdates2023/termdates/Term_Dates_for_2027.pdf
     publisher: Rhodes University
@@ -417,3 +424,13 @@ calendar:
   end: '2027-11-05'
   note: Published 2027 academic diary, subject to change. Terms include assessment
     periods; lectures finish earlier in terms 2 and 4.
+
+cheap_things:
+- name: Amazwi South African Museum of Literature
+  category: museum
+  cost_note: Free admission.
+  campuses:
+  - makhanda
+  source: s-amazwi-visit-2026
+  address: 25A Worcester Street, Makhanda
+  hours: Weekdays 08:30–13:00 and 14:00–16:30; weekends and public holidays by appointment.

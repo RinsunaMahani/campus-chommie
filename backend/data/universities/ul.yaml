@@ -780,6 +780,20 @@ programmes:
         - "Duration is 4 years."
 
 sources:
+  - id: s-polokwane-museum-tariffs-2026
+    url: https://www.polokwane.gov.za/wp-content/uploads/APPROVED-TARIFFS-2026-2027-GAZETTE-NO.3828.pdf
+    publisher: Polokwane Municipality
+    title: Approved tariffs 2026/2027, Gazette 3828, Schedule 10, printed page 158
+    retrieved: '2026-10-25'
+    verification_basis: official_publisher
+    verified_by: agent, official publication
+  - id: s-ul-calendar-final-2026
+    url: https://www.ul.ac.za/university-of-limpopo-registration-for-first-time-entering-students-2026/
+    publisher: UL
+    title: 2026 academic calendar
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official publication
   - id: s-ul-support-2026
     url: https://www.ul.ac.za/student-counselling/
     publisher: University of Limpopo
@@ -819,3 +833,26 @@ support_services:
   source: s-ul-support-2026
   hours: Monday to Friday, 07:30–16:00
   note: Reception in D Block.
+
+calendar:
+- period: registration
+  name: First-time entering student registration
+  start: '2026-01-22'
+  source: s-ul-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-01-30'
+- period: registration
+  name: First-time entering student late registration
+  start: '2026-02-02'
+  source: s-ul-calendar-final-2026
+  note: Official 2026 dates; not a 2027 calendar.
+  end: '2026-02-06'
+
+cheap_things:
+- name: Bakone Malapa Open Air Museum
+  category: heritage
+  cost_note: 'From 1 July 2026: adult admission R20.06; children R12.99. Advance group
+    bookings: adults R16.25 each, children R11.37 each. Transport is separate.'
+  campuses:
+  - turfloop
+  source: s-polokwane-museum-tariffs-2026

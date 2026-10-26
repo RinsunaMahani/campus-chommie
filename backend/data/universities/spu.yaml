@@ -1,11 +1,9 @@
 # Sol Plaatje University (SPU)
 #
-# Agent draft, read on 13 Oct 2026 (docs/research/universities.md). SPU's 2026 prospectus table doesn't
-# say how many subjects count, and its bonus depends on which language is a home language, which the app
-# doesn't ask: no points rule yet. Nobody has checked these values yet: release stays false until a person
-# has compared every one with its source. Programmes come from SPU's 2027 undergraduate prospectus, read on
-# 14 Oct 2026 (docs/research/spu.md), whose points table matches 2026's; the three found only on SPU's
-# faculty pages each carry a line asking learners to check that SPU takes first-years in them in 2027.
+# Official-source acceptance follows the owner's 25 October 2026 decision. Incomplete pack.
+# The APS image supplied on 26 October matches the official admissions page's image.
+# Its subject-count rule is still unpublished here, so total APS remains manual.
+# Programmes come from the 2027 online prospectus and faculty pages; see docs/research/spu.md.
 
 university: spu
 name: Sol Plaatje University
@@ -17,10 +15,10 @@ release: false
 max_choices: null
 
 points_rules: null
-points_note: "SPU's points table doesn't say how many subjects count, and its extra points depend on your home language, which we don't ask."
-# From SPU's 2027 prospectus, page 4 (the same table as 2026's and the website's). Agent draft.
+points_note: "SPU's published table gives subject points and bonuses, but does not state how many subjects count. Ask SPU to confirm your total APS."
+# Official admissions-page table, corroborated by the user-supplied image on 26 October 2026.
 points_how:
-  source: s-spu-prospectus-2027
+  source: s-spu-aps-image
   text: "SPU's scale: 90-100% is 8 points, down to 0-29% for 1. Mathematics, and a language you take as a home language, add 2 from 60% and 1 at 40-59%. Life Orientation scores 4, 3, 2 or 1 from 90, 80, 70 and 60%. SPU doesn't say how many subjects count, so ask SPU's admissions office."
 
 applications:
@@ -459,6 +457,28 @@ programmes:
         - "Your NSC must show admission to bachelor's degree study."
 
 sources:
+  - id: s-spu-aps-image
+    url: https://www.spu.ac.za/wp-content/uploads/2018/11/SPU-Admission-calculator-295x300.png
+    publisher: Sol Plaatje University
+    title: APS table linked from the official admissions page; matches user-supplied image
+    retrieved: 2026-10-26
+    last_verified: null
+    verified_by: agent comparison of official page and user-supplied image
+    verification_basis: official_university
+  - id: s-whag-fees-2026
+    url: https://whag.co.za/
+    publisher: William Humphreys Art Gallery
+    title: William Humphreys Art Gallery
+    retrieved: '2026-10-25'
+    verification_basis: official_publisher
+    verified_by: agent, official publication
+  - id: s-spu-calendar-followup-2026
+    url: https://www.spu.ac.za/wp-content/uploads/2025/12/S-2025-48-64-2026-Academic-Calendar.pdf
+    publisher: SPU
+    title: 2026 published academic dates
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official publication
   - id: s-spu-support-2026
     url: https://www.spu.ac.za/index.php/first-year-students-important-contacts/
     publisher: Sol Plaatje University
@@ -535,3 +555,81 @@ support_services:
   name: Financial Aid
   contact: 053 491 0105; elda.albertus@spu.ac.za
   source: s-spu-support-2026
+
+calendar:
+- period: registration
+  name: First-year online registration
+  start: '2026-01-26'
+  source: s-spu-calendar-followup-2026
+  end: '2026-02-06'
+- period: orientation
+  name: First-year orientation
+  start: '2026-01-26'
+  source: s-spu-calendar-followup-2026
+  end: '2026-02-06'
+- period: term
+  name: Teaching block 1
+  start: '2026-02-09'
+  source: s-spu-calendar-followup-2026
+  end: '2026-03-20'
+- period: recess
+  name: Student recess
+  start: '2026-03-23'
+  source: s-spu-calendar-followup-2026
+  end: '2026-03-27'
+- period: term
+  name: Teaching block 2
+  start: '2026-03-30'
+  source: s-spu-calendar-followup-2026
+  end: '2026-05-15'
+- period: exam
+  name: Main mid-year examinations
+  start: '2026-05-18'
+  source: s-spu-calendar-followup-2026
+  end: '2026-06-05'
+- period: exam
+  name: Mid-year supplementary examinations
+  start: '2026-06-22'
+  source: s-spu-calendar-followup-2026
+  end: '2026-07-03'
+- period: recess
+  name: Student recess
+  start: '2026-07-06'
+  source: s-spu-calendar-followup-2026
+  end: '2026-07-10'
+- period: term
+  name: Teaching block 3
+  start: '2026-07-13'
+  source: s-spu-calendar-followup-2026
+  end: '2026-08-21'
+- period: recess
+  name: Student recess
+  start: '2026-08-24'
+  source: s-spu-calendar-followup-2026
+  end: '2026-08-28'
+- period: term
+  name: Teaching block 4
+  start: '2026-08-31'
+  source: s-spu-calendar-followup-2026
+  end: '2026-10-16'
+- period: exam
+  name: Main year-end examinations
+  start: '2026-10-19'
+  source: s-spu-calendar-followup-2026
+  end: '2026-11-06'
+- period: exam
+  name: Year-end supplementary examinations
+  start: '2026-11-23'
+  source: s-spu-calendar-followup-2026
+  end: '2026-12-04'
+
+cheap_things:
+- name: William Humphreys Art Gallery
+  category: museum
+  cost_note: Students free with a student card; adults R10. Guided tours from R50.
+  campuses:
+  - kimberley
+  source: s-whag-fees-2026
+  address: 1 Cullinan Crescent, Civic Centre, Kimberley
+  hours: Monday–Friday 08:00–16:30; Saturday 09:00–14:00; public holidays 09:00–12:00.
+    Closed Sundays, Good Friday and 25 December–1 January.

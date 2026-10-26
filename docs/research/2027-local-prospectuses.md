@@ -40,21 +40,22 @@ a smaller warning count alone is not proof of complete data. See [the queue](../
 
 ## Rules requiring confirmation before assessment
 
-The 25 October follow-up reduces 55 missing requirements to 35. Optional English Home/First Additional
+The first 25 October follow-up reduced 55 missing requirements to 35. Optional English Home/First Additional
 Language input resolves five UWC and ten UJ BEd/social-science rules. UJ Information Management and Sport and
 Exercise Science, CPUT Clothing/Textile mainstream and ECP, and UFH Public Administration now encode the
 published subject routes. Where a route omits its APS, the result is only "Subjects met", never an eligibility claim.
 
 These remain `requirements: null`:
 
-- **UFH (4):** Education Commerce names Business management; Education Science names Computer science;
-  extended LLB omits Mathematics-route APS; mainstream Crops omits the English level.
-- **UJ (16):** Geography BEd's ambiguous alternative; three BEd routes needing named non-English language roles;
-  four extended Humanities routes with bounded APS ranges; four extended engineering rows without an explicit
+- **UFH (3):** Education Commerce names Business management; Education Science names Computer science;
+  mainstream Crops omits the English level. Extended LLB now checks its published subject routes while leaving
+  the missing Mathematics-route APS unassessed.
+- **UJ (9):** Geography BEd's ambiguous alternative;
+  four extended engineering rows without an explicit
   science-column OR; four Physical Sciences rows whose Mathematics footnote differs from the table.
 - **CPUT (2):** Banking mixes vocational/NSC terminology and omits its APS method; Senior/FET BEd requires
   named language roles and electives.
-- **Other universities (13):** unresolved placement, prior-qualification, audition and language conditions or
+- **Other universities (9):** unresolved placement, prior-qualification and language conditions or
   contradictory/unpublished rules. Programme IDs are listed in [the generated queue](../DATA_READINESS.md).
 
 UWC application dates remain contradictory: opening is unknown, and both published closing-date possibilities
@@ -72,7 +73,7 @@ Wits public pages were read on 24 October after checking robots rules:
   walk-in hours and the query portal rather than obsolete email instructions.
 - [Art Museum](https://www.wits.ac.za/wam/visit-us/): free entry, published opening hours and entrance.
 
-On 25 October, further official pages brought support coverage to **91 contacts across all 26 universities**.
+On 25 October, further official pages brought support coverage to **92 contacts across all 26 universities**.
 Coverage is still uneven by campus and service type. Each added contact cites its own page. General switchboards
 and referral offices are labelled as such; unpublished hours were omitted. Fort Hare's current counselling email
 differs from the downloaded research CSV: the official FYE page takes precedence. UNIVEN's exact counselling-unit
@@ -81,8 +82,8 @@ URL supplied in that research resolved the earlier unavailable links.
 Official PDFs/pages add CPUT (10), DUT (11), Rhodes (10), UCT (7) and NWU first-year (3) calendar entries.
 CPUT revision periods are not labelled tests, inferred recesses are omitted, and Rhodes's tentative shutdown
 is excluded. Terms can include assessment periods; campus/cohort exceptions are preserved in notes.
-Seventeen universities still have no calendar entries and 22 have no priced/free activities. These remain
-research gaps, not verification failures. The downloaded `calendar.csv` is a discovery aid, not sufficient
+At that stage, seventeen universities had no calendar entries and 22 had no priced/free activities; the internet
+follow-up below fills those empty sections. The downloaded `calendar.csv` is a discovery aid, not sufficient
 evidence by itself: some entries infer dates not actually stated in their cited document.
 
 ## Verification decision, 25 October 2026
@@ -91,7 +92,9 @@ Rinsuna instructed: "for verification if it is from the official university that
 The 471 dated sources hosted by the universities now explicitly use `verification_basis: official_university`.
 Acceptance is based on their recorded provenance, not a claim that every URL was fetched again on 25 October.
 Source URLs, retrieval dates, existing human sign-offs and agent attribution are preserved. No new personal
-verification dates were invented. Non-university publications retain their existing review requirements.
+verification dates were invented. Rinsuna subsequently accepted dated official funder, government and venue
+publications too. These use `verification_basis: official_publisher`; 57 existing dated official sources were
+accepted without rewriting retrieval dates or claiming they were all freshly fetched.
 The schema rejects lookalike domains and missing retrieval dates. Contradictions and missing programme rules
 remain separate from source authenticity, as does incomplete calendar/support/activity coverage.
 
@@ -104,12 +107,61 @@ Preserve the existing SMU and critical funding/crisis sign-offs.
 
 The validator flags empty programme/source lists and requires accepted source evidence for releases.
 Stale and future evidence dates are release errors. University confirmation and crisis visibility accept dated
-official university evidence as well as human review. Funding sources retain the existing human-review gate.
+official university evidence as well as human review. Funding accepts approved official publisher provenance
+and still requires the pack's separate release flag.
+
+## Internet follow-up, 25 October 2026
+
+The subsequent search fills nine more programme rules: UP Food Management, both UP Music programmes,
+SU Public Accountability, UFH extended LLB, and four UJ extended BA programmes. There are **26 remaining null
+requirements**. The Music alternatives require university assessment of external qualifications; SU's experience
+or prior-qualification route is likewise not assumed from school marks. UJ's published APS 24–26/27 bands are
+checked with the appropriate English thresholds; a higher APS is referred to UJ instead of extrapolated.
+
+New admission evidence:
+
+- [UP 2027 Natural and Agricultural Sciences brochure](https://drupalwebprod-files.up.ac.za/Public/2026-01/UP_FB%20Natural%20and%20Agricultural%20Sciences%202027_DevV6_web.pdf?VersionId=EDlRCPB_tAeNHibkLpQTK5Ug.QvByUSZ): Food Management, English 5, Mathematics 4, APS 28.
+- [SU Public Accountability](https://www.su.ac.za/en/faculties/economy/departments/public-leadership/study-spl/diploma-public-accountability): NSC route and alternative experience/qualification routes.
+- [UJ official 2027 prospectus](https://www.uj.ac.za/wp-content/uploads/2026/06/uj_undergrad_prospectus2027.pdf), p.76, corroborates the supplied PDF's extended BA bands and interview condition.
+- [MUT department page](https://www.mut.ac.za/faculty-of-applied-and-health-sciences/department-of-community-extension/) still differs from its general prospectus and [2026 admissions notice](https://www.mut.ac.za/notice-to-prospective-students-and-parent/). No invented reconciliation.
+- [CPUT Banking course page](https://prospectus.cput.ac.za/index.php/course-details?f=60&q=D3BNKG) directs applicants to general requirements and does not settle the supplied table's additional-subject ambiguity.
+
+All 26 universities now have some calendar, support and activity coverage, with **93 support contacts**. This is
+not a claim of complete campus/service coverage or complete 2027 calendars. The generated readiness report lists
+calendar counts by year and uncovered campuses. Sources for every imported entry are in its pack.
+
+Calendar checks include VUT's official spreadsheet (merged cells determine date spans), the UNIVEN general
+calendar (rendered pages 7–8), UNIZULU's general calendar, WSU's 2026 prospectus (rendered p.16), UFS's senate-approved
+2027 calendar, SU's published 2027 dates, and the universities' current registration/almanac pages. CUT's separate
+registration cohorts replace the research CSV's combined window. UWC's revised second semester takes precedence.
+WSU's inconsistent public-holiday column was not imported. Fort Hare's 2026 orientation, late-registration and
+lecture-start dates came from the **official page's search-index excerpt**, explicitly identified in source title
+and entry notes; no direct request bypassed its robots policy.
+
+Activities use official venue, university or municipality publications. These include SANBI's Thohoyandou visitor
+prices for UNIVEN; East London Museum for UFH/WSU; and Bakone Malapa for UL/TUT. The latter uses Schedule 10,
+printed p.158 of [Gazette 3828](https://www.polokwane.gov.za/wp-content/uploads/APPROVED-TARIFFS-2026-2027-GAZETTE-NO.3828.pdf),
+effective 1 July 2026, checked visually. The [August erratum](https://www.polokwane.gov.za/wp-content/uploads/ERRATUM-TARIFFS-GAZETTE-NO.3851.pdf)
+does not alter that schedule. UNIZULU's Science Centre listing explicitly describes educational group visits,
+minimum group charges and the need to confirm eligibility; no individual walk-in price is inferred.
+
+Optional named-language roles now resolve UJ Afrikaans, isiZulu and Sepedi BEd requirements (2027 prospectus p.55):
+APS 28, English HL 5/FAL 6 and the named language HL 4/FAL 5. Language identity travels on its existing mark row;
+additional languages never add duplicate APS entries. Old clients without identity remain unverified for these rules.
+Remaining software limitations include teaching elective combinations. Remaining evidence
+gaps include conflicting UFS/MUT rules, UJ science alternatives/footnotes, missing UFH English/subject equivalence,
+and faculty-selected or prior-degree routes. Official source acceptance does not settle these contradictions.
+SPU's externally hosted 2027 prospectus remains the one university source without accepted verification metadata:
+its [official prospectus page](https://www.spu.ac.za/index.php/prospectus-2026/) links through a protected redirect
+that stops at a Mimecast portal, so the current destination could not be matched to the existing Adobe document.
+The Adobe domain was not broadly approved and the existing citation/retrieval history was preserved.
 
 ## Validation of this change
 
 - Pack validator: zero errors after the 25 October support/calendar imports; coverage warnings remain.
-- Frontend: TypeScript and Expo lint passed; 35 Jest suites / 280 tests passed.
-- Focused English-role and verification regression tests passed. The fresh complete backend suite is running
-  against an isolated agent-owned PostgreSQL database; replace this line with its final result when complete.
-- No production database was used. Work remains local to `rinsuna/data-completeness`, uncommitted and undeployed.
+- Frontend: TypeScript and Expo lint passed; 35 Jest suites / 281 tests passed.
+- Full backend run including named-language assessment: 1,641 passed; two existing Flask-Migrate
+  deprecation warnings. SPU image provenance/text follow-up is checked separately by the catalogue tests.
+- English-role and source-verification regression tests passed. Database tests used an isolated agent-owned
+  PostgreSQL database on port 55439.
+- No production database was used. Work remains on `rinsuna/data-completeness`, undeployed.

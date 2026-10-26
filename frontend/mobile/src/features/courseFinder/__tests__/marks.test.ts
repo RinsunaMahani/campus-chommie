@@ -45,7 +45,7 @@ test('one language besides English goes as the other official language', () => {
   ]);
   expect(marks).toEqual([
     { subject: 'english', percent: 70 },
-    { subject: 'other_language', percent: 81 },
+    { subject: 'other_language', percent: 81, language_name: 'sepedi' },
   ]);
   expect(otherLanguage).toBeNull();
 });
@@ -61,8 +61,8 @@ test('with several, the best-marked goes as the other official language and the 
   expect(otherLanguage).toBe('isizulu');
   expect(marks).toEqual([
     { subject: 'english', percent: 70 },
-    { subject: 'other_language', percent: 77 },
-    { subject: 'another_subject_1', percent: 64 },
+    { subject: 'other_language', percent: 77, language_name: 'isizulu' },
+    { subject: 'another_subject_1', percent: 64, language_name: 'afrikaans' },
     { subject: 'another_subject_2', percent: 90 },
     { subject: 'another_subject_3', percent: 58 },
   ]);
@@ -151,4 +151,14 @@ test('the place line shows only what a source states', () => {
   );
   expect(placeLine({ city: 'Pretoria', province: null, institution_type_label: null })).toBe('Pretoria');
   expect(placeLine({ city: null })).toBeUndefined();
+});
+
+ test('a lower-scored language retains its name and role without an extra mark', () => {
+  expect(toApiMarks([
+    { subject: 'sepedi', percent: 80 },
+    { subject: 'afrikaans', percent: 55, language_level: 'home' },
+  ]).marks).toEqual([
+    { subject: 'other_language', percent: 80, language_name: 'sepedi' },
+    { subject: 'another_subject_1', percent: 55, language_name: 'afrikaans', language_level: 'home' },
+  ]);
 });

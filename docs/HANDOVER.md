@@ -29,15 +29,24 @@ it on the check-in day and the two days after; on the check-in day one alert say
 `0014_week_review` (the alert's checks only: no new table). It stores nothing new; marks are compared using each
 mark's own save time, so a mark corrected this week counts as this week's.
 
-**Local data work (24 Oct 2026, not merged):** `rinsuna/data-completeness` in `.worktrees/data-completeness`, based
-on `fcba075`. Supplied official PDFs add 175 UJ, 39 UWC and 52 UFH programme entries and fill 40 empty CPUT
+**Local data work (25 Oct 2026, not merged):** `rinsuna/data-completeness` in `.worktrees/data-completeness`;
+the official-source follow-up is committed in `51ba037`; the earlier data work is committed in `da43d4d`, with the test correction in `8e4439b` and main merged in `a25839e`.
+Supplied official PDFs add 175 UJ, 39 UWC and 52 UFH programme entries and fill 40 empty CPUT
 requirements. UJ/UWC/Wits support and Wits 2027 dates are added. On 25 October Rinsuna accepted official
 university publications as sufficient verification. Dated official sources now carry explicit verification basis;
 personal review history is preserved. English Home/First Additional Language input resolves 15 programme rules;
 five more programmes have supported subject routes, with unpublished route APS explicitly left unassessed.
 All 26 universities now have at least one support contact. CPUT, DUT, Rhodes and UCT 2027 calendars and NWU
-first-year dates are added. There are still 35 programmes with missing requirements. See [the source review](research/2027-local-prospectuses.md) and
+first-year dates are added. The latest follow-up accepts dated official funder/government/venue sources, fills
+UP Food Management, both UP Music routes, SU Public Accountability, UFH extended LLB and four UJ extended BA rules,
+with external qualifications and out-of-band APS referred for assessment. Three UJ language BEd rules now use optional named-language roles without changing APS totals.
+There are still 23 programmes with missing
+requirements; calendars and activity listings cover all 26 universities, and 93 support contacts span all 26.
+Counts include different calendar years and incomplete campus coverage. See [the source review](research/2027-local-prospectuses.md) and
 [coverage queue](DATA_READINESS.md). Incomplete campus coverage and contradictory admissions rules remain open.
+On 26 October, Rinsuna supplied SPU's APS image. It matches the official admissions-page image and now backs the
+points explanation; it does not publish the subject-count rule needed to calculate total APS. Named-language
+checks passed the full backend suite (1,641 tests), with 281 mobile tests, TypeScript and lint passing.
 
 `main` holds everything merged so far (PRs #1 to #94): every merge waited for green CI and Rinsuna's approval. The
 web app and the API are live on Render, with the database on Neon (DEPLOY.md). Test counts change with each merge:
