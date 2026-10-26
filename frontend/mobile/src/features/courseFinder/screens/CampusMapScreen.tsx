@@ -6,7 +6,7 @@ import { Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-n
 import Svg, { Circle, G, Polygon, Polyline, Text as SvgText } from 'react-native-svg';
 
 import { HeroScreen } from '@/shared/components/HeroScreen';
-import { Card, IconTile, InfoNote } from '@/shared/components/Parts';
+import { Card, IconTile } from '@/shared/components/Parts';
 import { SourceLink } from '@/shared/components/SourceLink';
 import { ErrorBox } from '@/shared/components/Status';
 import { Body, Muted, Overline, Strong, Title } from '@/shared/components/Text';
@@ -221,9 +221,6 @@ export default function CampusMapScreen() {
 
       {!loading && !error && data ? (
         <View style={{ gap: 14 }}>
-          {!data.confirmed && data.notice ? (
-            <InfoNote icon="info">{data.notice}</InfoNote>
-          ) : null}
 
           {/* Campus picker */}
           {data.campuses.length > 1 ? (

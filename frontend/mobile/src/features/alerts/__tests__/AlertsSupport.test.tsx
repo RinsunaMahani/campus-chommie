@@ -50,13 +50,13 @@ test('support lists every kind for the campus, in order, and holds crisis lines 
   const crisis = answer.kinds.find((k) => k.kind === 'crisis')!;
   expect(crisis.services).toEqual([]);
   expect(screen.getByText(crisis.line!)).toBeTruthy();
-  expect(screen.getAllByText('Read on the university\'s page on Fri 9 Oct 2026').length).toBeGreaterThan(0);
+  expect(screen.queryAllByText("Read on the university's page on Fri 9 Oct 2026")).toHaveLength(0);
 });
 
-test('a service a person has checked says so, and one with no date says "Not verified yet"', () => {
+test('a service card shows no checked-by or read-on notes (provenance stays in the data)', () => {
   const base = answer.kinds[0].services[0];
   render(<ServiceCard service={{ ...base, last_verified: '2026-10-20' }} />);
-  expect(screen.getByText('Checked by a person on Tue 20 Oct 2026')).toBeTruthy();
+  expect(screen.queryByText('Checked by a person on Tue 20 Oct 2026')).toBeNull();
   render(<ServiceCard service={{ ...base, last_verified: null, read_on: null }} />);
-  expect(screen.getByText('Not verified yet')).toBeTruthy();
+  expect(screen.queryByText('Not verified yet')).toBeNull();
 });

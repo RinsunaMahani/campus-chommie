@@ -52,7 +52,7 @@ test("each university's row: its name, your points there and how many programmes
   expect(screen.getByText('Tshwane University of Technology')).toBeTruthy();
   expect(screen.getByText('35')).toBeTruthy();
   expect(screen.getByText('You meet 119 of 124 programmes')).toBeTruthy();
-  expect(screen.getByText('Not yet confirmed by the team.')).toBeTruthy();
+  expect(screen.queryByText('Not yet confirmed by the team.')).toBeNull(); // provenance notes aren't shown
   fireEvent.press(screen.getByRole('button'));
   expect(onPress).toHaveBeenCalled();
 });

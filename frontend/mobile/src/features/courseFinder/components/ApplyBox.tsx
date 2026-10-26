@@ -138,7 +138,6 @@ export function GuideCard({ guide }: { guide: Guide }) {
       {guide.contact ? <Muted>{guide.contact}</Muted> : null}
       {url ? <Button title={t('courseFinder.applyOpen')} variant="secondary" icon="external-link" onPress={() => WebBrowser.openBrowserAsync(url)} /> : null}
       <SourceLink url={guide.source_url} />
-      {!guide.confirmed && guide.notice ? <Muted>{guide.notice}</Muted> : null}
     </Card>
   );
 }

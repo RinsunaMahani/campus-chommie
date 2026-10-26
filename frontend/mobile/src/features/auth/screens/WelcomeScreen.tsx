@@ -57,6 +57,10 @@ function Welcome() {
           <Pressable accessibilityRole="link" onPress={() => router.push('/terms-of-use')} hitSlop={8}>
             <Text style={styles.legalText}>Terms of Use</Text>
           </Pressable>
+          <Text style={styles.legalDot}>·</Text>
+          <Pressable accessibilityRole="link" onPress={() => router.push('/photo-credits')} hitSlop={8}>
+            <Text style={styles.legalText}>Photo credits</Text>
+          </Pressable>
         </View>
       </SafeAreaView>
     </View>

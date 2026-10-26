@@ -8,10 +8,9 @@
 import { Feather } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import { ComponentProps, ReactNode } from 'react';
-import { Image, ImageSourcePropType, KeyboardAvoidingView, Linking, Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Image, ImageSourcePropType, KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { t } from '@/shared/i18n';
 import { FadeIn } from '@/shared/motion/FadeIn';
 import { forest, Palette, PaletteProvider, usePalette, useStyles } from '@/shared/theme/palette';
 import { fonts, radius, space } from '@/shared/theme/tokens';
@@ -72,19 +71,6 @@ export function PhotoHero({ photo, action, head, footer, children }: Props) {
               <RoundButton icon="chevron-left" label="Back" onPress={() => (router.canGoBack() ? router.back() : router.replace('/'))} />
               {action ? <RoundButton icon={action.icon} label={action.label} on={action.on} onPress={action.onPress} /> : null}
             </View>
-            {photo ? (
-              <Pressable
-                accessibilityRole="link"
-                accessibilityHint={t('courseFinder.photoSourceHint')}
-                hitSlop={6}
-                onPress={() => Linking.openURL(photo.source)}
-                style={[styles.credit, { bottom: OVERLAP + space.sm }]}>
-                <Text style={styles.creditText} numberOfLines={2}>
-                  {photo.caption ? `${photo.caption} · ` : ''}
-                  {t('courseFinder.photoCredit', { credit: photo.credit })}
-                </Text>
-              </Pressable>
-            ) : null}
           </View>
           <View style={styles.sheet}>
             {head ? <View style={styles.head}>{head}</View> : null}

@@ -25,7 +25,7 @@ test('a card says its tier in words, every why line, its source and the notice',
   expect(screen.getByText(match.programme_name)).toBeTruthy();
   for (const line of match.explanation) expect(screen.getByText(line)).toBeTruthy();
   expect(screen.getByText(`Source: ${host(match.source_url!)}`)).toBeTruthy();
-  expect(screen.getByText('Not yet confirmed by the team.')).toBeTruthy();
+  expect(screen.queryByText('Not yet confirmed by the team.')).toBeNull(); // provenance notes aren't shown
 });
 
 test('a learner short of a requirement sees it, and a card without a source says so', () => {

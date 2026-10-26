@@ -64,7 +64,7 @@ test('CampusMapScreen renders mapped campus, named places, attribution, ODbL lic
   });
 
   // Unconfirmed notice
-  expect(screen.getByText('Not yet confirmed by the team.')).toBeTruthy();
+  expect(screen.queryByText('Not yet confirmed by the team.')).toBeNull(); // provenance notes aren't shown
 
   // Campus summary lines
   expect(screen.getByText('4 buildings and places from OpenStreetMap, 3 with a name.')).toBeTruthy();

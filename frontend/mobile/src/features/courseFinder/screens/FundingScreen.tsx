@@ -269,9 +269,6 @@ export default function FundingScreen() {
         <View style={{ gap: 16 }}>
           <Body style={styles.summary}>{data.summary}</Body>
 
-          {!data.confirmed && data.notice ? (
-            <InfoNote icon="info">{data.notice}</InfoNote>
-          ) : null}
 
           {signInPrompt && !signedIn ? (
             <Card style={styles.signInCard}>

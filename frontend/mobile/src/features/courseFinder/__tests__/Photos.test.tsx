@@ -11,6 +11,7 @@ import { Linking, Text } from 'react-native';
 
 import { PhotoHero } from '@/shared/components/PhotoHero';
 
+import PhotoCreditsScreen, { photoCredits } from '@/features/legal/screens/PhotoCreditsScreen';
 import { CAMPUS_PHOTOS } from '../campusPhotos';
 import { CampusPhotoCard } from '../components/CampusPhotoCard';
 import { PHOTOS } from '../facultyPhotos';
@@ -40,18 +41,22 @@ test('SMU, with no logo-free photo on Commons, keeps its monogram; the other 25 
   expect(Object.keys(CAMPUS_PHOTOS)).toHaveLength(25);
 });
 
-test('the campus card shows what the photo is, and its credit opens the Commons page', () => {
-  const open = jest.spyOn(Linking, 'openURL').mockResolvedValue(true);
+test('the campus card shows what the photo is, with no credit under it (credits are on the Photo credits page)', () => {
   render(<CampusPhotoCard university="up" />);
   expect(screen.getByText('The Old Arts Building, Hatfield campus, at dusk')).toBeTruthy();
-  fireEvent.press(screen.getByText('Photo: Sian Tiley-Nel, CC BY-SA 4.0, Wikimedia Commons (cropped)'));
-  expect(open).toHaveBeenCalledWith(
-    'https://commons.wikimedia.org/wiki/File:Old_Arts_Building_of_the_University_of_Pretoria_Museums,_South_Africa.jpg',
-  );
+  expect(screen.queryByText('Photo: Sian Tiley-Nel, CC BY-SA 4.0, Wikimedia Commons (cropped)')).toBeNull();
 });
 
-test('a page opening on a photo says what it shows and credits it on the photo, opening the Commons page', () => {
+test('the Photo credits page lists every campus photo with its credit, opening its Commons page', () => {
   const open = jest.spyOn(Linking, 'openURL').mockResolvedValue(true);
+  render(<PhotoCreditsScreen />);
+  const credits = photoCredits().flatMap((s) => s.items);
+  expect(credits.length).toBeGreaterThanOrEqual(Object.keys(CAMPUS_PHOTOS).length);
+  fireEvent.press(screen.getByText('UP: The Old Arts Building, Hatfield campus, at dusk'));
+  expect(open).toHaveBeenCalledWith(CAMPUS_PHOTOS.up!.source);
+});
+
+test('a page opening on a photo says what it shows, with no credit on the photo', () => {
   const onSave = jest.fn();
   render(
     <PhotoHero
@@ -62,10 +67,7 @@ test('a page opening on a photo says what it shows and credits it on the photo, 
     </PhotoHero>,
   );
   expect(screen.getByLabelText('The Old Arts Building, Hatfield campus, at dusk')).toBeTruthy();
-  fireEvent.press(
-    screen.getByText('The Old Arts Building, Hatfield campus, at dusk · Photo: Sian Tiley-Nel, CC BY-SA 4.0, Wikimedia Commons (cropped)'),
-  );
-  expect(open).toHaveBeenCalledWith(CAMPUS_PHOTOS.up!.source);
+  expect(screen.queryByText(/Photo: Sian Tiley-Nel/)).toBeNull();
   fireEvent.press(screen.getByRole('button', { name: 'Save this' }));
   expect(onSave).toHaveBeenCalled();
   expect(screen.getByRole('button', { name: 'Back' })).toBeTruthy();

@@ -4,9 +4,8 @@
  * (author, licence, the original). Nothing for a university without a photo:
  * its monogram stays in the lists.
  */
-import { Image, Linking, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 
-import { t } from '@/shared/i18n';
 import { Palette, useStyles } from '@/shared/theme/palette';
 import { fonts, radius } from '@/shared/theme/tokens';
 
@@ -28,25 +27,11 @@ export function CampusPhotoCard({ university }: { university: string }) {
       />
       <View style={styles.words}>
         <Text style={styles.caption}>{photo.caption}</Text>
-        <PhotoCredit credit={photo.credit} source={photo.source} />
       </View>
     </View>
   );
 }
 
-/** "Photo: author, licence, Wikimedia Commons", opening the photo's page. */
-export function PhotoCredit({ credit, source }: { credit: string; source: string }) {
-  const styles = useStyles(makeStyles);
-  return (
-    <Pressable
-      accessibilityRole="link"
-      accessibilityHint={t('courseFinder.photoSourceHint')}
-      hitSlop={6}
-      onPress={() => Linking.openURL(source)}>
-      <Text style={styles.credit}>{t('courseFinder.photoCredit', { credit })}</Text>
-    </Pressable>
-  );
-}
 
 const makeStyles = (colors: Palette) =>
   StyleSheet.create({

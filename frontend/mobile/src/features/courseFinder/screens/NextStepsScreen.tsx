@@ -95,9 +95,6 @@ export default function NextStepsScreen() {
 
       {!loading && !error && data ? (
         <View style={{ gap: 16 }}>
-          {!data.university.confirmed && data.university.notice ? (
-            <InfoNote icon="info">{data.university.notice}</InfoNote>
-          ) : null}
 
           {empty ? (
             <Card style={{ gap: 12, padding: 16 }}>

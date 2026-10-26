@@ -1,6 +1,5 @@
 import { Redirect, router, useLocalSearchParams } from 'expo-router';
 import { useEffect, useMemo, useState } from 'react';
-import { Feather } from '@expo/vector-icons';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { Card, Tag } from '@/shared/components/Parts';
@@ -12,7 +11,7 @@ import { t } from '@/shared/i18n';
 import { FadeIn } from '@/shared/motion/FadeIn';
 import { SkeletonCards } from '@/shared/motion/Shimmer';
 import { SlidingTabs } from '@/shared/motion/SlidingTabs';
-import { Palette, usePalette, useStyles } from '@/shared/theme/palette';
+import { Palette, useStyles } from '@/shared/theme/palette';
 import { fonts, radius } from '@/shared/theme/tokens';
 
 import { courseFinderApi } from '../api/courseFinderApi';
@@ -36,7 +35,6 @@ import { errorText } from '../words';
  * Choosing a programme as the goal builds the three-choice plan.
  */
 export default function UniversityScreen() {
-  const colors = usePalette();
   const styles = useStyles(makeStyles);
   const { id } = useLocalSearchParams<{ id: string }>();
   const cf = useCourseFinder();
@@ -103,12 +101,6 @@ export default function UniversityScreen() {
               ) : null}
               {here.university.institution_type_label ? <Tag label={here.university.institution_type_label} tone="info" /> : null}
               <Tag label={t('courseFinder.programmesChip', { n: matches.length })} tone="jade" />
-            </View>
-          ) : null}
-          {here && !here.university.confirmed && here.university.notice ? (
-            <View style={styles.quiet}>
-              <Feather name="info" size={13} color={colors.textFaint} />
-              <Text style={styles.quietText}>{here.university.notice}</Text>
             </View>
           ) : null}
         </>
@@ -188,7 +180,6 @@ const makeStyles = (colors: Palette) =>
   chipRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
   // "Not confirmed" said once, quietly: one line, not a box.
   quiet: { flexDirection: 'row', alignItems: 'center', gap: 6 },
-  quietText: { fontFamily: fonts.medium, fontSize: 13, color: colors.textFaint },
   chips: { gap: 8, paddingRight: 8 },
   chip: {
     paddingHorizontal: 14,

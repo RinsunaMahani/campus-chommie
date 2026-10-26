@@ -82,7 +82,6 @@ export function TierCard({ match, showUniversity, onPick, picking }: Props) {
       </View>
       <WhyLines lines={match.explanation} />
       <SourceLink url={match.source_url} />
-      {!match.confirmed && match.notice ? <Muted>{match.notice}</Muted> : null}
       {onPick ? <Button title={t('courseFinder.pickGoal')} variant="secondary" onPress={onPick} loading={picking} /> : null}
     </Card>
   );

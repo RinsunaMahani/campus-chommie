@@ -460,7 +460,6 @@ export default function FunderDetailScreen() {
             </Card>
           ) : null}
 
-          {!funder.confirmed && funder.notice ? <Muted>{funder.notice}</Muted> : null}
         </View>
       ) : null}
     </PhotoHero>
