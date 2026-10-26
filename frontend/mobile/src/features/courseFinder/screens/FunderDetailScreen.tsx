@@ -448,14 +448,7 @@ export default function FunderDetailScreen() {
             <Card style={styles.card}>
               <SectionHeader icon="book-open" title={t('courseFinder.funderSources')} />
               {funder.sources.map((s, i) => (
-                <View key={`${s.url}-${i}`} style={{ gap: 2 }}>
-                  <SourceLink url={s.url} />
-                  {s.retrieved ? (
-                    <Muted style={{ fontSize: 13 }}>
-                      {t('courseFinder.readOn', { date: formatDay(s.retrieved) })}
-                    </Muted>
-                  ) : null}
-                </View>
+                <SourceLink key={`${s.url}-${i}`} url={s.url} />
               ))}
             </Card>
           ) : null}
