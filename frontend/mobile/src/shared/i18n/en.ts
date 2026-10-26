@@ -361,6 +361,10 @@ export const en = {
   'classes.events': 'Confirmed tests and deadlines',
   'classes.noEvents': 'Nothing confirmed yet.',
   'classes.flags': 'Flagged by {n}: {reasons}',
+  'classes.leave': 'Leave this class',
+  'classes.leaveTitle': 'Leave {code}?',
+  'classes.leaveSure': "Its tests and deadlines leave your week. You can join again with the invite code.",
+  'classes.leaveLastRep': "You're its only class rep: once you leave, nobody can confirm its tests and deadlines. Make a rep code for a classmate first.",
 
   // Confirming a message (class reps)
   'confirm.title': 'Check and confirm',
