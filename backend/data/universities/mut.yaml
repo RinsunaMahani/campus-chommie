@@ -720,10 +720,46 @@ programmes:
         - "The extended curriculum programme takes four years instead of three."
 
   - id: dip_community_extension
-    name: "Diploma in Community Extension"
-    faculty: "Faculty of Applied and Health Sciences"
-    fields: [agriculture, consumer_sciences]
-    requirements: null       # the CAO, MUT's handbook and its prospectus word the subject rule three different ways; ask MUT
+    name: Diploma in Community Extension
+    faculty: Faculty of Applied and Health Sciences
+    fields:
+    - agriculture
+    - consumer_sciences
+    requirements:
+      source: s-mut-extension-notice-2026
+      min_points: 22
+      subject_minimums:
+        english: 4
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 3
+        - subjects:
+            mathematical_literacy: 3
+      - one_of:
+        - subjects:
+            agricultural_sciences: 4
+        - subjects:
+            consumer_studies: 4
+        - subjects:
+            life_sciences: 4
+            geography: 4
+        - subjects:
+            life_sciences: 4
+            economics: 4
+        - subjects:
+            life_sciences: 4
+            business_studies: 4
+      extras:
+      - Subject alternatives follow the official 25 February 2026 registrar notice and
+        2026 Applied and Health Sciences handbook, page 35. Confirm the next intake.
+      - APS 22 is from the official CAO 2027 programme row (source s-mut-cao-2027).
+        NSC diploma endorsement is required.
+    selective: true
+    selection_note: The dated registrar notice and faculty handbook take precedence
+      over the abbreviated departmental bullet list. English plus a maths option and
+      one agricultural/consumer subject or Life Sciences pair are required. The March
+      2026 vacancy dates are not current application dates.
 
   - id: dip_nature_conservation
     name: "Diploma in Nature Conservation"
@@ -888,6 +924,14 @@ programmes:
         - "Every student registers with the Health Professions Council of South Africa (HPCSA)."
 
 sources:
+  - id: s-mut-extension-notice-2026
+    url: https://www.mut.ac.za/notice-to-prospective-students-and-parent/
+    publisher: Mangosuthu University of Technology
+    title: 'Registrar notice, 25 February 2026: Community Extension subject alternatives'
+    retrieved: '2026-10-26'
+    last_verified: null
+    verified_by: agent, official publication
+    verification_basis: official_university
   - id: s-mut-calendar-followup-2026
     url: https://www.mut.ac.za/wp-content/uploads/2026/01/Term-dates-2026.pdf
     publisher: MUT

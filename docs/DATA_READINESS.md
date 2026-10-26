@@ -9,18 +9,18 @@ Dated official university, funder, government and venue sources are accepted und
 | cput | 119 | 2 | 75 | 5 | 10 | 5 | 2 | 0 |
 | cut | 42 | 0 | 42 | 2 | 5 | 3 | 1 | 0 |
 | dut | 89 | 0 | 0 | 7 | 11 | 4 | 1 | 0 |
-| mut | 40 | 1 | 0 | 2 | 6 | 1 | 1 | 0 |
+| mut | 40 | 0 | 0 | 2 | 6 | 1 | 1 | 0 |
 | nmu | 124 | 0 | 0 | 7 | 14 | 1 | 1 | 0 |
-| nwu | 81 | 0 | 0 | 3 | 3 | 3 | 1 | 0 |
+| nwu | 81 | 0 | 0 | 3 | 3 | 3 | 4 | 0 |
 | ru | 16 | 0 | 0 | 1 | 10 | 1 | 1 | 0 |
-| smu | 17 | 0 | 0 | 1 | 23 | 7 | 2 | 0 |
+| smu | 17 | 0 | 0 | 1 | 24 | 7 | 2 | 0 |
 | spu | 26 | 0 | 26 | 1 | 34 | 3 | 1 | 1 |
 | su | 73 | 0 | 71 | 2 | 11 | 2 | 1 | 0 |
 | tut | 124 | 1 | 0 | 9 | 60 | 20 | 8 | 0 |
 | uct | 34 | 0 | 0 | 2 | 7 | 3 | 1 | 0 |
 | ufh | 52 | 1 | 51 | 3 | 3 | 6 | 1 | 0 |
-| ufs | 172 | 1 | 0 | 3 | 13 | 3 | 1 | 0 |
-| uj | 175 | 3 | 0 | 4 | 29 | 7 | 1 | 0 |
+| ufs | 172 | 0 | 0 | 3 | 13 | 4 | 1 | 0 |
+| uj | 175 | 0 | 0 | 4 | 29 | 7 | 1 | 0 |
 | ukzn | 66 | 0 | 0 | 5 | 4 | 1 | 1 | 0 |
 | ul | 54 | 0 | 0 | 1 | 2 | 1 | 1 | 0 |
 | ump | 24 | 1 | 0 | 2 | 14 | 1 | 1 | 0 |
@@ -44,9 +44,9 @@ An entry count does not establish a complete calendar or a complete range of sup
 | dut | 2027: 11 | None | indumiso, riverside |
 | mut | 2026: 6 | None | None |
 | nmu | 2026: 14 | None | george |
-| nwu | 2027: 3 | None | mahikeng, vanderbijlpark |
+| nwu | 2027: 3 | None | None |
 | ru | 2027: 10 | None | None |
-| smu | 2026: 23 | None | None |
+| smu | 2026: 23, 2027: 1 | None | None |
 | spu | 2026: 13, 2027: 21 | None | None |
 | su | 2027: 11 | None | tygerberg |
 | tut | 2026: 28, 2027: 31, 2028: 1 | None | emalahleni |
@@ -71,11 +71,8 @@ An entry count does not establish a complete calendar or a complete range of sup
 These entries remain unassessed. See each pack's selection note and research notes for the exact ambiguity or missing rule.
 
 - **cput**: `dip_banking`, `bed_senior_phase_fet`
-- **mut**: `dip_community_extension`
 - **tut**: `bed_sp_fet_technology`
 - **ufh**: `ufh_71524`
-- **ufs**: `b_sustainable_food_systems_extended`
-- **uj**: `uj_b5sgeq`, `uj_b2p82q`, `uj_b2p83q`
 - **ump**: `bsocsci`
 
 ## Partially assessed requirements

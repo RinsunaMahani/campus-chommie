@@ -1790,14 +1790,32 @@ programmes:
         - "Apply for the mainstream programme and UFS may offer you this one if space allows (2027 prospectus); with your final NSC results you can also apply for it directly (2026 rule book)."
 
   - id: b_sustainable_food_systems_extended
-    name: "Bachelor of Sustainable Food Systems (extended curriculum programme)"
-    faculty: "Faculty of Natural and Agricultural Sciences"
-    fields: [agriculture, food_science]
-    selection_note: "UFS's 2026 rule book gives two different Mathematics rules for this programme (Mathematics 3, or Mathematics 2 or Mathematical Literacy 5, both with an AP of 27); ask UFS."
-    requirements: null       # the 2026 rule book's NAS 2.2 and section 12.2 disagree on Mathematics
-
-  # The Humanities, Bloemfontein Campus (prospectus pages 34 to 37). The advanced diplomas in Music and Opera
-  # Studies are left out: they need a Diploma in Music first.
+    name: Bachelor of Sustainable Food Systems (extended curriculum programme)
+    faculty: Faculty of Natural and Agricultural Sciences
+    fields:
+    - agriculture
+    - food_science
+    selection_note: 'Uses the specific extended Sustainable Food Systems admission table
+      in section 12.2, printed page 64, corroborated by the programme tables on pages
+      50 and 60: AP 27, tuition language 50%, Mathematics 30% or Mathematical Literacy
+      60%. This takes precedence over the conflicting general Mathematics rule.'
+    requirements:
+      source: s-ufs-rb-nas-2026
+      min_points: 27
+      subject_minimums:
+        english: 4
+      choices:
+      - one_of:
+        - subjects:
+            mathematics: 2
+        - subjects:
+            mathematical_literacy: 5
+      extras:
+      - NSC degree endorsement is required. Requirements use the 2026 rule book; confirm
+        the next intake.
+      - Apply for the mainstream programme; extended placement depends on available
+        space and faculty selection.
+    selective: true
 
   - id: hcert_music_performance
     name: "Higher Certificate in Music Performance"
@@ -2094,6 +2112,14 @@ programmes:
         - "You can't apply for this directly: apply for the mainstream programme, and UFS places you here if you qualify and space allows, higher scores first (2027 prospectus)."
 
 sources:
+  - id: s-ufs-food-environment
+    url: https://www.ufs.ac.za/kovsielife/kovsie-life-home/food-environment-programme
+    publisher: University of the Free State
+    title: 'Food Environment Programme: office contact and 2026 programme updates'
+    retrieved: '2026-10-26'
+    last_verified: null
+    verified_by: agent, official publication
+    verification_basis: official_university
   - id: s-ufs-calendar-2027-approved
     url: https://www.ufs.ac.za/docs/librariesprovider31/default-document-library/senate-approved-2026_2027-academic-calendarse89894e75b146fc79f4fff0600aa9400.pdf?sfvrsn=4c8cfb20_0
     publisher: University of the Free State
@@ -2237,6 +2263,12 @@ sources:
     verification_basis: official_university
 
 support_services:
+- kind: food_support
+  name: Food Environment Office
+  contact: 'Annelize Visagie; 051 401 3258; FoodEnvironment@ufs.ac.za'
+  campuses: [bloemfontein]
+  note: Ask about food-security support and the Food Environment Programme; eligibility and assistance are assessed by the university.
+  source: s-ufs-food-environment
 - kind: counselling
   name: Student Counselling and Development
   contact: 051 401 2853; scd@ufs.ac.za

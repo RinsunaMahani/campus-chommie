@@ -70,6 +70,11 @@ campuses:
   - {id: ga_rankuwa, name: "Ga-Rankuwa (Molotlegi Street)", note: "SMU's only campus.", source: s-smu-cal-2026}
 
 calendar:
+  - period: term
+    name: University resumes for 2027
+    start: 2027-01-05
+    source: s-smu-cal-2026
+    note: Reopening date in the approved 2026 calendar. This is not a confirmed registration or lecture start date.
   # 2026 (s-smu-cal-2026)
   - {period: registration, name: "University resumes; returning students register", start: 2026-01-05, who: returning,
      source: s-smu-cal-2026}
