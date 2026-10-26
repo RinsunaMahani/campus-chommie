@@ -51,9 +51,13 @@ function slow(delta: 1 | -1) {
   if (was !== slowCount > 0) slowListeners.forEach((l) => l(slowCount > 0));
 }
 
-/** Opening the app: a quick ping so the server starts waking while the student reads the first screen. */
+/**
+ * Opening the app: wake the server and its database while the student reads the first screen. /health touches the
+ * database (/ping doesn't), so a database that slept after a quiet spell is awake by the time they sign in. Only
+ * an app opening wakes it this way; the uptime pinger keeps using /ping so the database can still sleep.
+ */
 export function wakeServer(): void {
-  fetch(`${API_BASE_URL}/ping`, { method: 'GET' }).catch(() => undefined);
+  fetch(`${API_BASE_URL}/health`, { method: 'GET' }).catch(() => undefined);
 }
 
 export const TIMED_OUT = 'Campus Chommie is taking long to answer. Try again in a minute.';

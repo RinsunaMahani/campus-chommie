@@ -19,6 +19,11 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 COPY . .
+# Compiled once here, not on every start in every process: on a free host's slice of a CPU, compiling our code took
+# a quarter of the time it took to load the app.
+RUN python -m compileall -q src campus_engine migrations app.py gunicorn.conf.py
+# The data packs as JSON, read about ten times faster than the YAML (campus_engine/catalogue.py, CACHE_DIR).
+RUN python -c "from campus_engine.catalogue import build_cache; print(build_cache(), 'data packs cached')"
 
 # Never as root.
 RUN useradd --create-home --uid 10001 campus
@@ -31,7 +36,7 @@ EXPOSE 8000
 HEALTHCHECK --interval=30s --timeout=5s --start-period=40s --retries=3 \
   CMD python -c "import os, urllib.request; urllib.request.urlopen('http://127.0.0.1:' + os.environ.get('PORT', '8000') + '/api/v1/ping', timeout=4)"
 
-# Migrations first (safe to repeat); then, where the host has no shell for one-off commands (Render's free tier),
-# the demo accounts when SEED_DEMO_ON_START=true (also safe to repeat; a failure is logged and the API still starts);
-# then the API. Start one instance at a time (DEPLOY.md).
-CMD ["sh", "-c", "flask db upgrade && { [ \"$SEED_DEMO_ON_START\" != true ] || flask seed || echo 'Demo seed failed: see above.'; } && exec gunicorn -c gunicorn.conf.py app:app"]
+# Migrations first (safe to repeat), then, where the host has no shell for one-off commands (Render's free tier), the
+# demo accounts when SEED_DEMO_ON_START=true (also safe to repeat; a failure is logged and the API still starts), all
+# in one process (`flask start-up`); then the API. Start one instance at a time (DEPLOY.md).
+CMD ["sh", "-c", "flask start-up && exec gunicorn -c gunicorn.conf.py app:app"]
