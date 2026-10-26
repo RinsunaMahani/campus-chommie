@@ -39,6 +39,8 @@ class UniversityPoints:
 
 def _how(rule: PointsRule) -> str:
     n = rule.subjects_counted
+    if rule.exact_subject_count:
+        return f"Counts all {n} NSC subjects, including Life Orientation on its own scale."
     if rule.life_orientation == "exclude":
         return f"Counts your best {n} subjects, leaving out Life Orientation."
     if rule.life_orientation == "half":
@@ -103,8 +105,12 @@ def university_points(uni: University, marks: dict[str, float], english_language
         elif uni.points_note:
             out.lines.append(uni.points_note)
         return out
-    result = compute_points(marks, rule)
+    result = compute_points(marks, rule, english_language_level, language_marks)
     source = uni.source(rule.source)
+    if not result.complete:
+        out.lines = ["We can't add up your points here until the missing details below are resolved."] + result.notes
+        out.source_url = source.url if source else None
+        return out
     out.points, out.counted = result.total, result.counted
     out.subjects = _subjects(result)
     out.source_url = source.url if source else None

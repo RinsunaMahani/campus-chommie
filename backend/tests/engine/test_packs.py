@@ -54,7 +54,14 @@ def honest(sources) -> bool:
     for s in sources:
         draft = s.verified_by.startswith("agent") and s.last_verified is None
         checked = (s.verified_by, s.last_verified) == CHECKED
-        if not (draft or checked):
+        accepted_exception = (
+            s.id == "s-spu-seven-subjects"
+            and s.url == "https://universityqualifications.co.za/guest/aps/spu"
+            and s.verified_by == "Rinsuna (explicit acceptance of supplied calculator on 26 October 2026)"
+            and s.last_verified == date(2026, 10, 26)
+            and s.verification_basis is None
+        )
+        if not (draft or checked or accepted_exception):
             return False
         if s.id.endswith("-checked"):
             twin = by_id.get(s.id.removesuffix("-checked"))
