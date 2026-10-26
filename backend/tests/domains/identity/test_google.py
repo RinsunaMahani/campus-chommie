@@ -130,3 +130,55 @@ def test_a_password_account_still_needs_its_password(client, fake_google, outbox
     headers = {"Authorization": f"Bearer {token}"}
     r = client.delete("/api/v1/me", headers=headers, json={"id_token": NOMSA})
     assert r.status_code == 422 and r.get_json()["code"] == "PASSWORD_REQUIRED"
+
+
+def test_google_out_of_reach_is_a_clear_503_not_a_crash(app, client, monkeypatch):
+    """Google's keys can't be fetched (slow or down): the student is told, the server doesn't 500."""
+    from google.auth.exceptions import TransportError
+    from google.oauth2 import id_token
+
+    def unreachable(*args, **kwargs):
+        raise TransportError("timed out")
+
+    monkeypatch.setitem(app.config, "GOOGLE_CLIENT_IDS", ["our-client.apps.googleusercontent.com"])
+    monkeypatch.setattr(id_token, "verify_oauth2_token", unreachable)
+    r = google(client)
+    assert r.status_code == 503 and r.get_json()["code"] == "GOOGLE_UNREACHABLE"
+
+
+class _FakeResponse:
+    def __init__(self, cache_control: str | None):
+        self.status, self.data = 200, b"{}"
+        self.headers = {"cache-control": cache_control} if cache_control else {}
+
+
+def test_googles_keys_are_fetched_with_a_short_timeout_and_kept_while_fresh(monkeypatch):
+    calls = []
+
+    def inner(url, method="GET", **kwargs):
+        calls.append(kwargs.get("timeout"))
+        return _FakeResponse("public, max-age=19800")
+
+    keys = google_verifier._KeysRequest(inner)
+    first = keys("https://www.googleapis.com/oauth2/v1/certs")
+    assert keys("https://www.googleapis.com/oauth2/v1/certs") is first
+    assert calls == [google_verifier.KEYS_TIMEOUT_SECONDS]
+
+    # Kept an hour at most, however long Google says.
+    now = google_verifier.time.monotonic()
+    monkeypatch.setattr(google_verifier.time, "monotonic", lambda: now + google_verifier.KEYS_FRESH_MAX_SECONDS + 1)
+    keys("https://www.googleapis.com/oauth2/v1/certs")
+    assert len(calls) == 2
+
+
+def test_googles_keys_without_a_freshness_are_never_kept():
+    calls = []
+
+    def inner(url, method="GET", **kwargs):
+        calls.append(url)
+        return _FakeResponse(None)
+
+    keys = google_verifier._KeysRequest(inner)
+    keys("https://www.googleapis.com/oauth2/v1/certs")
+    keys("https://www.googleapis.com/oauth2/v1/certs")
+    assert len(calls) == 2

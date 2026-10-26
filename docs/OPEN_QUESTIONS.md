@@ -1,5 +1,14 @@
 # Open questions
 
+## Current follow-up (26 October 2026)
+
+Use [RELEASE_FOLLOWUP.md](RELEASE_FOLLOWUP.md) for current release work and
+[DATA_READINESS.md](DATA_READINESS.md) for generated coverage. The older checklists below are historical:
+SMU admissions/choices, checked income limits, college-register lookup, privacy export/delete, and the core
+money/week features are already implemented. Dated official sources are accepted under the owner's decision;
+universal human sign-off is no longer required. Missing or contradictory facts still remain unresolved.
+Google's public web client ID is in the APK build configuration; this alone does not verify live OAuth.
+
 ## Data completeness follow-up (24 October 2026)
 
 Rinsuna supplied official UJ, UWC, UFH and CPUT 2027 PDFs and authorised edits. All 26 public-university packs now
@@ -11,7 +20,7 @@ remain unresolved, alongside calendar and activity gaps. Use [DATA_READINESS.md]
 notes below describe the earlier state. Only facts a person actually checked may receive their name/date.
 
 The follow-up adds published dates and activity listings at all 26 universities (mixed 2026/2027 coverage), and
-93 support contacts. Funding source acceptance is resolved; incomplete packs remain unreleased. The remaining
+98 support contacts. Funding source acceptance is resolved; incomplete packs remain unreleased. The remaining
 admission gaps include teaching elective combinations not yet supported by the app, faculty placement or prior-degree
 assessment, and conflicting or missing published rules. These are not all source-verification failures.
 Named-language Home/First Additional roles now resolve the three UJ Afrikaans, isiZulu and Sepedi BEd rules.
@@ -21,8 +30,7 @@ Facts we don't have yet and decisions only the team can make. The app shows "Not
 missing; nothing here may be guessed. Tick an item and add a line (who, when, the answer or a link) when it's
 settled.
 
-Since 13 Oct 2026 the team is Rinsuna alone (Mandla Baloyi is no longer on it), so every decision here is hers: the
-items that waited for Mandla now wait for her.
+Rinsuna builds Campus Chommie alone, so every decision here is hers.
 
 ## Triage summary (23 Oct 2026)
 
@@ -30,7 +38,7 @@ The open questions have been audited and sorted into three categories:
 
 ### 1. Completed on `main` (ticked `[x]` below)
 - **Hosting:** Render (API) and Neon (PostgreSQL direct connection) live; `/api/v1/ping` uptime check added (PR #41, #75).
-- **Reused foundation:** Mandla's verbal permission recorded in `REUSE.md` (PR #74).
+- **Reused foundation:** permission recorded in `REUSE.md` (PR #74); a written transfer of rights is expected on 26 Oct 2026.
 - **Crisis lines:** Verified by Rinsuna for UP, TUT, and SMU; now active on Support screen (PR #82).
 - **My money screens (M3):** Built with runway, safe to spend, life fund, late-payment toggle, payday plan, and store-card wallet (PR #24, #56, #58, #84).
 - **My week screens (M4):** Built with 8-week strip, class reps, verified events, timetable PDF import, and calendar views (PR #25, #50, #52, #57, #61).
@@ -332,9 +340,9 @@ other official language, and the results say which; second additional languages 
   `GET /me/export` are built on `rinsuna/privacy-export-delete` (10 Oct 2026), so the Security screen's "Delete my
   account and data: Coming soon" can become real. Still open: how long a closed account is kept, and the
   audit trail's records, which neither the export nor deleting touches.
-- [x] **The reused foundation, with Mandla no longer on the team** (raised 13 Oct 2026). M0 copied code from our
-  earlier project (© Team PR: Mandla and Rinsuna) and, through it, from TruConnect, an earlier project of Mandla's
-  (REUSE.md). **Done:** Mandla gave verbal permission to continue using the foundation code, recorded in `REUSE.md` on 22 Oct 2026 (PR #74, `rinsuna/reuse-permission`).
+- [ ] **The reused foundation** (raised 13 Oct 2026). M0 copied code from an earlier project (REUSE.md). Permission to
+  keep using it is recorded in `REUSE.md` (22 Oct 2026, PR #74). **Next:** the written transfer of all rights in that code
+  to Rinsuna, expected on 26 Oct 2026; then LICENSE and REUSE.md name Rinsuna alone.
 - [ ] **Email sender.** Placeholders use `example.com` (we own no domain). Which address and inbox send the codes in
   production (`MAIL_DEFAULT_SENDER`, `MAIL_REPLY_TO`)?
 

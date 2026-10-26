@@ -6,8 +6,8 @@ Dated official university, funder, government and venue sources are accepted und
 
 | University | Programmes | Missing requirements | Manual points | Campuses | Calendar entries | Support | Activities | Sources needing review |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
-| cput | 119 | 2 | 75 | 5 | 10 | 4 | 2 | 0 |
-| cut | 42 | 0 | 42 | 2 | 2 | 3 | 1 | 0 |
+| cput | 119 | 2 | 75 | 5 | 10 | 5 | 2 | 0 |
+| cut | 42 | 0 | 42 | 2 | 5 | 3 | 1 | 0 |
 | dut | 89 | 0 | 0 | 7 | 11 | 4 | 1 | 0 |
 | mut | 40 | 1 | 0 | 2 | 6 | 1 | 1 | 0 |
 | nmu | 124 | 0 | 0 | 7 | 14 | 1 | 1 | 0 |
@@ -18,9 +18,9 @@ Dated official university, funder, government and venue sources are accepted und
 | su | 73 | 2 | 71 | 2 | 11 | 2 | 1 | 0 |
 | tut | 124 | 2 | 0 | 9 | 60 | 20 | 8 | 0 |
 | uct | 34 | 0 | 0 | 2 | 7 | 3 | 1 | 0 |
-| ufh | 52 | 3 | 49 | 3 | 3 | 2 | 1 | 0 |
+| ufh | 52 | 3 | 49 | 3 | 3 | 6 | 1 | 0 |
 | ufs | 172 | 2 | 0 | 3 | 13 | 3 | 1 | 0 |
-| uj | 175 | 9 | 0 | 4 | 14 | 7 | 1 | 0 |
+| uj | 175 | 9 | 0 | 4 | 29 | 7 | 1 | 0 |
 | ukzn | 66 | 0 | 0 | 5 | 4 | 1 | 1 | 0 |
 | ul | 54 | 0 | 0 | 1 | 2 | 1 | 1 | 0 |
 | ump | 24 | 1 | 0 | 2 | 14 | 1 | 1 | 0 |
@@ -39,8 +39,8 @@ An entry count does not establish a complete calendar or a complete range of sup
 
 | University | Calendar entries by year | Campuses without support | Campuses without activities |
 |---|---|---|---|
-| cput | 2027: 10 | granger_bay | wellington |
-| cut | 2026: 2 | None | welkom |
+| cput | 2027: 10 | None | wellington |
+| cut | 2026: 2, 2027: 3 | None | welkom |
 | dut | 2027: 11 | None | indumiso, riverside |
 | mut | 2026: 6 | None | None |
 | nmu | 2026: 14 | None | george |
@@ -51,9 +51,9 @@ An entry count does not establish a complete calendar or a complete range of sup
 | su | 2027: 11 | None | tygerberg |
 | tut | 2026: 28, 2027: 31, 2028: 1 | None | emalahleni |
 | uct | 2027: 7 | None | None |
-| ufh | 2026: 3 | bisho | alice, bisho |
+| ufh | 2026: 3 | None | alice, bisho |
 | ufs | 2027: 13 | None | qwaqwa |
-| uj | 2026: 14 | None | None |
+| uj | 2026: 14, 2027: 15 | None | None |
 | ukzn | 2026: 4 | None | pietermaritzburg |
 | ul | 2026: 2 | None | None |
 | ump | 2026: 14 | None | siyabuswa |

@@ -71,3 +71,9 @@ money_checkin:
 
 money_health:
   min_buffer_cents: 1     # minimum saved cents in buffer pot to count as funded
+
+weekly_review:
+  coming_days: 7          # "Coming up" looks this many days ahead of today
+  compare_weeks: 4        # this week's spending is compared with the average of this many weeks before it
+  same_band: 0.1          # within 10% of the usual reads "about the same"
+  max_items: 8            # at most this many dated lines in "Done" and in "Coming up"

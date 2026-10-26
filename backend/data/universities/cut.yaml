@@ -674,6 +674,14 @@ programmes:
         - "Campus: Bloemfontein."
 
 sources:
+  - id: s-cut-registration-2027
+    url: https://www.cut.ac.za/enrolment-process
+    publisher: Central University of Technology
+    title: 2027 registration dates and course-control period
+    retrieved: '2026-10-26'
+    last_verified: null
+    verified_by: agent read official publication
+    verification_basis: official_university
   - id: s-cut-calendar-followup-2026
     url: https://www.cut.ac.za/events/details/278
     publisher: CUT
@@ -1131,6 +1139,27 @@ cheap_things:
   address: 16 Harry Smith Street, Bloemfontein
 
 calendar:
+- period: registration
+  name: 2027 first-year registration
+  start: '2027-01-18'
+  end: '2027-01-22'
+  who: first_years
+  step: register
+  source: s-cut-registration-2027
+- period: registration
+  name: 2027 senior registration
+  start: '2027-01-26'
+  end: '2027-01-29'
+  who: returning
+  step: register
+  source: s-cut-registration-2027
+- period: registration
+  name: 2027 course-control period
+  start: '2027-02-01'
+  end: '2027-02-05'
+  note: Late registration and programme/subject changes or cancellations for all faculties
+    and campuses.
+  source: s-cut-registration-2027
 - period: registration
   name: First-year registration
   start: '2026-01-19'

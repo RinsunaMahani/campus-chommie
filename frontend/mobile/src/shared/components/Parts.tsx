@@ -24,7 +24,11 @@ export function IconTile({
   const styles = useStyles(makeStyles);
   const colors = usePalette();
   return (
-    <View style={[styles.tile, { backgroundColor: tint ?? colors.iconTile, width: size, height: size }]}>
+    <View
+      accessibilityElementsHidden
+      importantForAccessibility="no-hide-descendants"
+      aria-hidden={true}
+      style={[styles.tile, { backgroundColor: tint ?? colors.iconTile, width: size, height: size }]}>
       <Feather name={name} size={size * 0.45} color={color ?? colors.ink} />
     </View>
   );
@@ -37,7 +41,9 @@ export function InfoNote({ icon = 'lock', children, tone = 'info' }: { icon?: Ic
   const ok = tone === 'ok';
   return (
     <View style={[styles.note, ok && { backgroundColor: colors.jadeTint }]}>
-      <Feather name={icon} size={14} color={ok ? colors.jade : colors.ink} style={{ marginTop: 1 }} />
+      <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants" aria-hidden={true}>
+        <Feather name={icon} size={14} color={ok ? colors.jade : colors.ink} style={{ marginTop: 1 }} />
+      </View>
       <Text style={[styles.noteText, ok && { color: colors.jade }]}>{children}</Text>
     </View>
   );
@@ -59,9 +65,12 @@ export function GoogleButton({ onPress }: { onPress: () => void }) {
   return (
     <Pressable
       accessibilityRole="button"
+      accessibilityLabel="Continue with Google"
       onPress={onPress}
       style={({ pressed }) => [styles.google, pressed && { opacity: 0.85 }]}>
-      <FontAwesome name="google" size={17} color="#4285F4" />
+      <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants" aria-hidden={true}>
+        <FontAwesome name="google" size={17} color="#4285F4" />
+      </View>
       <Text style={styles.googleText}>Continue with Google</Text>
     </Pressable>
   );
@@ -197,7 +206,11 @@ export function ListRow({
           <Text style={styles.badgeText}>{badge}</Text>
         </View>
       ) : null}
-      {onPress ? <Feather name="chevron-right" size={18} color={colors.textFaint} /> : null}
+      {onPress ? (
+        <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants" aria-hidden={true}>
+          <Feather name="chevron-right" size={18} color={colors.textFaint} />
+        </View>
+      ) : null}
     </Pressable>
   );
 }

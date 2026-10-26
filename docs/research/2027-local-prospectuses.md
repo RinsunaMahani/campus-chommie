@@ -165,3 +165,27 @@ The Adobe domain was not broadly approved and the existing citation/retrieval hi
 - English-role and source-verification regression tests passed. Database tests used an isolated agent-owned
   PostgreSQL database on port 55439.
 - No production database was used. Work remains on `rinsuna/data-completeness`, undeployed.
+
+## Campus support follow-up, 26 October 2026
+
+The [CPUT official directory](https://www.cput.ac.za/about-cput/contact-details) supplies Granger Bay campus
+security contacts, explicitly labelled security rather than counselling.
+The [UFH 2026 orientation guide](https://fye.ufh.ac.za/wp-content/uploads/2026/01/2026-Orientation-Guide.pdf)
+adds financial aid for Alice/East London (printed pp.24–25), disability desks in each city (p.37), and the
+university-wide GBV/safety telephone service (p.42). Relevant PDF pages were rendered and checked visually.
+The central telephone service can be used by Bhisho students; its only published physical offices are Alice
+and East London, and the app states that distinction. These five additions bring support contacts to 98.
+All listed campuses now have at least one contact; this does not establish complete on-site service coverage.
+The guide's calendar heading and weekdays are inconsistent, so no new calendar dates were inferred from it.
+Both sites' robots rules allowed these document paths. No blocked UFH main-site page was fetched.
+
+## Additional 2027 dates, 26 October 2026
+
+[UJ's 2027 academic calendar](https://www.uj.ac.za/wp-content/uploads/2025/06/2027-academic-calendar.pdf)
+(Senate S 221/2025) supplies 15 student registration, teaching, assessment, revision and recess periods.
+The official search index exposed the complete table; direct retrieval was robots-blocked and was not attempted
+through another tool. Source title and calendar notes explicitly identify indexed evidence. Semesters retain their
+published span, including recesses; no orientation dates or December holiday end were inferred.
+[CUT's registration page](https://www.cut.ac.za/enrolment-process) now publishes 2027 first-year registration,
+senior registration and course-control dates. The first two have separate cohort labels. The postgraduate-only
+window is omitted from this school-leaver flow. These additions retain the existing 2026 calendar records.

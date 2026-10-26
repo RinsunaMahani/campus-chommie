@@ -79,7 +79,8 @@ DISCARDED = "Discarded. Nothing changes for your class."
 
 _LINK = re.compile(r"^\s*link\s+([A-Za-z0-9][A-Za-z0-9 -]{5,20})\s*$", re.IGNORECASE)
 _WORD = re.compile(r"^\s*([A-Za-z]+)\s*[.!?]*\s*$")
-_BUTTON = re.compile(r"^(confirm|discard):([0-9a-f-]{36})$")
+# A well-formed id only: anything else is ignored, never parsed (a malformed one used to crash the webhook).
+_BUTTON = re.compile(r"^(confirm|discard):([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$")
 _PHONE = re.compile(r"^\d{8,15}$")
 
 

@@ -15,7 +15,9 @@ export function DemoBanner() {
   if (!demo) return null;
   return (
     <View style={styles.banner} accessibilityRole="text">
-      <Feather name="info" size={14} color={colors.marigoldDeep} />
+      <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants" aria-hidden={true}>
+        <Feather name="info" size={14} color={colors.marigoldDeep} />
+      </View>
       <Text style={styles.text}>{t('common.demoBanner')}</Text>
     </View>
   );

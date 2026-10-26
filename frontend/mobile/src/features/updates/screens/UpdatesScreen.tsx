@@ -48,6 +48,7 @@ export default function UpdatesScreen() {
     }
     if (u.link?.type === 'class') router.push({ pathname: '/classes/[id]', params: { id: u.link.id } });
     if (u.link?.type === 'funding') router.push({ pathname: '/course-finder/funding/[id]', params: { id: u.link.id } });
+    if (u.link?.type === 'review') router.push('/review');
   }
 
   async function readAll() {

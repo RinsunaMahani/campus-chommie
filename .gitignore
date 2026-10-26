@@ -38,5 +38,5 @@ Thumbs.db
 .claude/
 backend/.data-review-cache/
 
-# Mandla's private notes (never committed)
-docs/mandla/
+# Private notes (never committed)
+docs/private/

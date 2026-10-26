@@ -5,7 +5,7 @@ account. Always on (no switch). Called AFTER db.session.commit(); publish
 never raises, so sign-in can't fail because of an alert.
 
 Never an IP, a place, an email address or a device name in them, and the
-locked alert never says why (Mandla, Q6).
+locked alert never says why (OPEN_QUESTIONS, Q6).
 """
 from __future__ import annotations
 

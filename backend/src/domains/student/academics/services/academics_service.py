@@ -11,6 +11,7 @@ rest counts as still to come, so "what you need" never forgets it.
 from __future__ import annotations
 
 import uuid
+from datetime import datetime
 
 from sqlalchemy.exc import IntegrityError
 
@@ -149,6 +150,34 @@ def out_of_reach(user) -> list[tuple[str, float, str]]:
         if s is not None and s["status"] == "out_of_reach":
             out.append((m.code, m.target, s["message"]))
     return out
+
+
+def week_marks(user, start: datetime, end: datetime) -> tuple[list[tuple[str, str, float]], list[tuple[str, float, float | None, float | None, bool]]]:
+    """For the week in review: the marks the student entered (or changed) between start and end, as (module,
+    assessment, mark), and, for each module with one, its average on the marks written before the week and after it,
+    as (code, target, before, after, out of reach after). No history is kept: a mark last saved after a moment counts
+    as not yet written at that moment."""
+    entered, modules = [], []
+    for m in repo.modules_for(user.id):
+        new = [a for a in m.assessments if a.mark is not None and start <= a.updated_at <= end]
+        if not new:
+            continue
+        entered += [(m.code, a.name, a.mark) for a in new]
+        before = _average_as_of(m, start, inclusive=False)
+        after = _average_as_of(m, end, inclusive=True)
+        marks = [Mark(a.name, a.weight, a.mark if a.updated_at <= end else None) for a in m.assessments]
+        entered_weight = sum(a.weight for a in m.assessments)
+        if entered_weight < 100 - 1e-9:
+            marks.append(Mark(NOT_ENTERED, 100 - entered_weight, None))
+        modules.append((m.code, m.target, before, after, standing(marks, m.target).status == "out_of_reach"))
+    return entered, modules
+
+
+def _average_as_of(m: Module, moment: datetime, *, inclusive: bool) -> float | None:
+    """The weighted average of the marks written by `moment` (None before any)."""
+    done = [a for a in m.assessments if a.mark is not None and (a.updated_at <= moment if inclusive else a.updated_at < moment)]
+    weight = sum(a.weight for a in done)
+    return sum(a.weight * a.mark for a in done) / weight if weight else None
 
 
 def export_for(user) -> list[dict]:

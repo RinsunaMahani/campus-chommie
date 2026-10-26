@@ -24,3 +24,29 @@ keepalive = 5
 accesslog = "-"
 errorlog = "-"
 access_log_format = '"%(m)s %(U)s" %(s)s %(B)s %(L)ss'
+
+
+def post_worker_init(worker):
+    """Read the data packs as the worker starts, not on the first request.
+
+    Each pack is cached once per process. Without this, the first student
+    after a wake waits while every pack is parsed. A daemon thread keeps
+    /ping and sign-in answering meanwhile."""
+    import threading
+
+    def warm():
+        from src.domains.catalogue.colleges.repositories import pack_repository as colleges
+        from src.domains.catalogue.funding.repositories import pack_repository as funding
+        from src.domains.catalogue.maps.repositories import map_repository as maps
+        from src.domains.catalogue.universities.repositories import pack_repository as universities
+
+        try:
+            universities.all_packs()
+            funding.funding_pack()
+            colleges.colleges_pack()
+            maps.all_maps()
+            worker.log.info("data packs: loaded")
+        except Exception:  # a broken pack fails CI; here it simply waits for its first request
+            worker.log.exception("data packs: preload failed")
+
+    threading.Thread(target=warm, name="pack-preload", daemon=True).start()

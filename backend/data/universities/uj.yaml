@@ -3522,6 +3522,14 @@ programmes:
     - 2027 prospectus p.94. NSC admission to this qualification is required.
 
 sources:
+  - id: s-uj-calendar-2027-indexed
+    url: https://www.uj.ac.za/wp-content/uploads/2025/06/2027-academic-calendar.pdf
+    publisher: University of Johannesburg
+    title: 2027 academic calendar, Senate S 221/2025; official search-index table
+    retrieved: '2026-10-26'
+    last_verified: null
+    verified_by: agent read official publication
+    verification_basis: official_university
   - id: s-uj-calendar-final-2026
     url: https://www.uj.ac.za/wp-content/uploads/2021/09/e-uj-abridged-academic-calendar-2026.pdf
     publisher: UJ
@@ -3623,6 +3631,127 @@ cheap_things:
   source: s-wits-wam-2026
 
 calendar:
+- period: registration
+  name: 2027 online enrolment
+  start: '2027-01-11'
+  end: '2027-02-05'
+  source: s-uj-calendar-2027-indexed
+  note: Senate-approved 2027 calendar (S 221/2025), read from the official PDF search
+    index; direct retrieval is blocked by robots rules. Semesters include recesses;
+    consult your timetable.
+  step: register
+- period: exam
+  name: Prior-year special assessments
+  start: '2027-01-11'
+  end: '2027-01-15'
+  source: s-uj-calendar-2027-indexed
+  note: Senate-approved 2027 calendar (S 221/2025), read from the official PDF search
+    index; direct retrieval is blocked by robots rules. Semesters include recesses;
+    consult your timetable.
+- period: term
+  name: Semester 1 teaching
+  start: '2027-02-08'
+  end: '2027-05-21'
+  source: s-uj-calendar-2027-indexed
+  note: Senate-approved 2027 calendar (S 221/2025), read from the official PDF search
+    index; direct retrieval is blocked by robots rules. Semesters include recesses;
+    consult your timetable.
+- period: recess
+  name: Semester 1 break
+  start: '2027-03-27'
+  end: '2027-04-04'
+  source: s-uj-calendar-2027-indexed
+  note: Senate-approved 2027 calendar (S 221/2025), read from the official PDF search
+    index; direct retrieval is blocked by robots rules. Semesters include recesses;
+    consult your timetable.
+- period: revision
+  name: Semester 1 preparation
+  start: '2027-05-24'
+  end: '2027-05-26'
+  source: s-uj-calendar-2027-indexed
+  note: Senate-approved 2027 calendar (S 221/2025), read from the official PDF search
+    index; direct retrieval is blocked by robots rules. Semesters include recesses;
+    consult your timetable.
+- period: exam
+  name: Semester 1 finals
+  start: '2027-05-27'
+  end: '2027-06-18'
+  source: s-uj-calendar-2027-indexed
+  note: Senate-approved 2027 calendar (S 221/2025), read from the official PDF search
+    index; direct retrieval is blocked by robots rules. Semesters include recesses;
+    consult your timetable.
+- period: recess
+  name: Winter break
+  start: '2027-06-21'
+  end: '2027-07-02'
+  source: s-uj-calendar-2027-indexed
+  note: Senate-approved 2027 calendar (S 221/2025), read from the official PDF search
+    index; direct retrieval is blocked by robots rules. Semesters include recesses;
+    consult your timetable.
+- period: exam
+  name: Semester 1 supplementary exams
+  start: '2027-07-05'
+  end: '2027-07-09'
+  source: s-uj-calendar-2027-indexed
+  note: Senate-approved 2027 calendar (S 221/2025), read from the official PDF search
+    index; direct retrieval is blocked by robots rules. Semesters include recesses;
+    consult your timetable.
+- period: term
+  name: Semester 2 teaching
+  start: '2027-07-12'
+  end: '2027-10-15'
+  source: s-uj-calendar-2027-indexed
+  note: Senate-approved 2027 calendar (S 221/2025), read from the official PDF search
+    index; direct retrieval is blocked by robots rules. Semesters include recesses;
+    consult your timetable.
+- period: exam
+  name: Semester 1 special exams
+  start: '2027-07-26'
+  end: '2027-07-30'
+  source: s-uj-calendar-2027-indexed
+  note: Senate-approved 2027 calendar (S 221/2025), read from the official PDF search
+    index; direct retrieval is blocked by robots rules. Semesters include recesses;
+    consult your timetable.
+- period: recess
+  name: Semester 2 break
+  start: '2027-08-30'
+  end: '2027-09-03'
+  source: s-uj-calendar-2027-indexed
+  note: Senate-approved 2027 calendar (S 221/2025), read from the official PDF search
+    index; direct retrieval is blocked by robots rules. Semesters include recesses;
+    consult your timetable.
+- period: revision
+  name: Semester 2 preparation
+  start: '2027-10-18'
+  end: '2027-10-20'
+  source: s-uj-calendar-2027-indexed
+  note: Senate-approved 2027 calendar (S 221/2025), read from the official PDF search
+    index; direct retrieval is blocked by robots rules. Semesters include recesses;
+    consult your timetable.
+- period: exam
+  name: Semester 2 finals
+  start: '2027-10-21'
+  end: '2027-11-12'
+  source: s-uj-calendar-2027-indexed
+  note: Senate-approved 2027 calendar (S 221/2025), read from the official PDF search
+    index; direct retrieval is blocked by robots rules. Semesters include recesses;
+    consult your timetable.
+- period: revision
+  name: Supplementary exam preparation
+  start: '2027-11-15'
+  end: '2027-11-19'
+  source: s-uj-calendar-2027-indexed
+  note: Senate-approved 2027 calendar (S 221/2025), read from the official PDF search
+    index; direct retrieval is blocked by robots rules. Semesters include recesses;
+    consult your timetable.
+- period: exam
+  name: Semester 2 supplementary exams
+  start: '2027-11-22'
+  end: '2027-11-26'
+  source: s-uj-calendar-2027-indexed
+  note: Senate-approved 2027 calendar (S 221/2025), read from the official PDF search
+    index; direct retrieval is blocked by robots rules. Semesters include recesses;
+    consult your timetable.
 - period: registration
   name: Online registration
   start: '2026-01-12'

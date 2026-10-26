@@ -3,13 +3,14 @@ import { router, useFocusEffect } from 'expo-router';
 import { useCallback, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
+import { studentHeader } from '@/features/profile/components/HeaderTools';
 import { errorText } from '@/shared/api/errors';
 import { Button } from '@/shared/components/Button';
 import { EmptyState } from '@/shared/components/EmptyState';
 import { Card } from '@/shared/components/Parts';
 import { Screen } from '@/shared/components/Screen';
 import { ErrorBox, Loading } from '@/shared/components/Status';
-import { Muted, Overline, Strong, Title } from '@/shared/components/Text';
+import { Muted, Overline, Strong } from '@/shared/components/Text';
 import { TextField } from '@/shared/components/TextField';
 import { t } from '@/shared/i18n';
 
@@ -61,8 +62,7 @@ export default function MarksScreen() {
   }
 
   return (
-    <Screen back>
-      <Title>{t('marks.title')}</Title>
+    <Screen back title={t('marks.title')} {...studentHeader(false)}>
       {error ? <ErrorBox message={error} /> : null}
       {!error && !modules ? <Loading /> : null}
       {modules && !modules.length ? <EmptyState icon="bar-chart-2" title={t('marks.emptyTitle')} body={t('marks.empty')} /> : null}

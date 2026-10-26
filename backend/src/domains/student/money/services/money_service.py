@@ -231,6 +231,18 @@ def list_spending(user, days: int) -> dict:
     return {"spending": [_spending(e) for e in reversed(rows)]}
 
 
+def weekly_spending(user, week_end: date, weeks: int) -> list[int | None]:
+    """For the week in review: what the student logged in each of `weeks` weeks ending on week_end, newest first.
+    None for a week with nothing logged (not even a zero), so it isn't mistaken for a week without spending."""
+    first = week_end - timedelta(days=7 * weeks - 1)
+    totals: list[int | None] = [None] * weeks
+    for e in repo.spending_since(user.id, first):
+        back = (week_end - e.spent_on).days // 7
+        if 0 <= back < weeks:
+            totals[back] = (totals[back] or 0) + e.amount_cents
+    return totals
+
+
 def put_spending(user, spent_on_text: str, amount_cents: int) -> dict:
     """One number per day: logging a day again replaces it."""
     spent_on = _parse_day("spent_on", spent_on_text)

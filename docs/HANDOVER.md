@@ -1,8 +1,7 @@
 # Handover: start here
 
-First written on 9 Oct 2026 for Mandla Baloyi, and kept current by Rinsuna's coding agents. Since 13 Oct 2026 Rinsuna
-Mahani works alone: Mandla is no longer on the team, so the app, the API, the engine and the data are all hers, and so
-is every review and decision. This file is for her and for any coding agent picking up the work. It covers:
+Kept current by Rinsuna's coding agents. Rinsuna Mahani builds Campus Chommie alone: the app, the API, the engine and
+the data are all hers, and so is every review and decision. This file is for her and for any coding agent picking up the work. It covers:
 - where the build stands
 - what was decided
 - what only Rinsuna can do
@@ -13,6 +12,22 @@ The rules are in [CLAUDE.md](../CLAUDE.md); this file doesn't change them. The b
 repo folder but is kept out of git; the parts the screens need are quoted below.
 
 ## Where things stand
+
+**Outdoors in the centre (25 Oct 2026, `rinsuna/outdoors-centre`):** the tab bar is Home, Week, Outdoors, Money,
+Support, with Outdoors a raised round button in the middle (like YouTube's and Standard Bank's). It opens a sheet over
+the screen you're on (`/places`, a transparent modal) listing the free and cheap places near campus; tapping one
+previews it (a slideshow of 3 to 5 photos, cost, hours, where, Open in maps, source) and "See all places" opens the
+full list. Seven places have 3 to 5 checked Wikimedia Commons photos each (30 in all,
+`features/outdoors/placePhotos.ts`, credits in `docs/image-credits.md`); Wits Art Museum has none of its own on
+Commons yet and keeps its icon. A new place gets a slideshow once it has 3.
+
+**Your week in review (25 Oct 2026, `rinsuna/week-review`):** at the end of each week (the week the money check-in
+uses, ending on the student's check-in day) the student sees what they got done, what's coming in the next 7 days,
+how their marks moved with the marks they entered that week, and their spending against their own usual. Home shows
+it on the check-in day and the two days after; on the check-in day one alert says it's ready (switch:
+`week_review`). `GET /me/week-review?week=auto|this|last`, `campus_engine/weekly_review.py`, migration
+`0014_week_review` (the alert's checks only: no new table). It stores nothing new; marks are compared using each
+mark's own save time, so a mark corrected this week counts as this week's.
 
 **Local data work (25 Oct 2026, not merged):** `rinsuna/data-completeness` in `.worktrees/data-completeness`;
 the official-source follow-up is committed in `51ba037`; the earlier data work is committed in `da43d4d`, with the test correction in `8e4439b` and main merged in `a25839e`.
@@ -26,14 +41,15 @@ first-year dates are added. The latest follow-up accepts dated official funder/g
 UP Food Management, both UP Music routes, SU Public Accountability, UFH extended LLB and four UJ extended BA rules,
 with external qualifications and out-of-band APS referred for assessment. Three UJ language BEd rules now use optional named-language roles without changing APS totals.
 There are still 23 programmes with missing
-requirements; calendars and activity listings cover all 26 universities, and 93 support contacts span all 26.
+requirements; calendars and activity listings cover all 26 universities, and 98 support contacts span all 26.
 Counts include different calendar years and incomplete campus coverage. See [the source review](research/2027-local-prospectuses.md) and
 [coverage queue](DATA_READINESS.md). Incomplete campus coverage and contradictory admissions rules remain open.
 On 26 October, Rinsuna supplied SPU's APS image. It matches the official admissions-page image and now backs the
 points explanation; it does not publish the subject-count rule needed to calculate total APS. Named-language
 checks passed the full backend suite (1,641 tests), with 281 mobile tests, TypeScript and lint passing.
 
-`main` holds everything merged so far (PRs #1 to #94): every merge waited for green CI and Rinsuna's approval. The
+`main` includes the week review, Outdoors centre button and submission updates through PR #105. PR #106
+contains the current data and language follow-up. The
 web app and the API are live on Render, with the database on Neon (DEPLOY.md). Test counts change with each merge:
 run the suites for today's numbers.
 
@@ -42,8 +58,8 @@ Since the hackathon started (Fri 23 Oct 2026, 08:30 SAST):
   it; WEEK, HELP, STOP. Off until Meta's keys are in Render (DEPLOY.md, "The WhatsApp bot (M6)").
 - **Google sign-in** (#94): web app and APK, hidden until the Google Cloud client IDs are set (DEPLOY.md, "Google
   sign-in").
-- **In review:** Money pots, weekly check-in and money health (#84, #88, #89), the Outdoors tab (#90), funder page
-  sections (#91), and these docs (#85, #87).
+- Money pots, weekly check-in, money health, Outdoors and funder sections are already on `main`.
+- Remaining work and dated validation evidence: [release follow-up](RELEASE_FOLLOWUP.md).
 
 ### Milestones landed on `main` (PRs #1 – #94)
 
@@ -66,9 +82,8 @@ Since the hackathon started (Fri 23 Oct 2026, 08:30 SAST):
 
 Everything is recorded, with who and when, in [OPEN_QUESTIONS.md](OPEN_QUESTIONS.md).
 
-- **The team (13 Oct):** Rinsuna works alone from now on. The app screens, which were Mandla's, are ours to build.
-  Everything that waited for Mandla in OPEN_QUESTIONS now waits for Rinsuna, and F6 (fund and apply), which she agreed
-  on 9 Oct, is in CLAUDE.md's Scope.
+- **Working alone (13 Oct):** Rinsuna builds everything, the app screens included, and every open question waits for
+  her. F6 (fund and apply), which she agreed on 9 Oct, is in CLAUDE.md's Scope.
 - **The look (13 Oct, #31):** Rinsuna's forest theme for the whole app, sampled from her homescreen, and her CC
   monogram as the icon. The colours are in `src/shared/theme/tokens.ts`, the six icon images in `assets/images`.
 - **M1 started early** (Fri 9 Oct) as stacked PRs, because the brief gives it only Mon 12 to Tue 13 Oct.
@@ -124,11 +139,10 @@ Everything is recorded, with who and when, in [OPEN_QUESTIONS.md](OPEN_QUESTIONS
 2. **Check the facts by Thu 22 Oct:** the packs (crisis lines first: Support hides them until then) and the funding
    pack. Compare every value with its source, then set `last_verified`, `verified_by` and `release: true`
    (OPEN_QUESTIONS, "Facts for the data packs").
-3. **The reused foundation** (REUSE.md; OPEN_QUESTIONS, "Privacy and legal"). #1 copies code from our earlier project
-   (© Team PR: Mandla and Rinsuna) and, through it, from TruConnect, an earlier project of Mandla's. Mandla's
-   confirmations in REUSE.md are still unsigned. Before the submission, get his written OK or replace the reused
-   files. LICENSE still names "Team PR (Mandla and Rinsuna)". Agents don't change REUSE.md's permissions or
-   LICENSE: they're Rinsuna's call.
+3. **The reused foundation** (REUSE.md; OPEN_QUESTIONS, "Privacy and legal"). #1 copied code from an earlier
+   project (REUSE.md). A written transfer of all rights in that code to Rinsuna is expected on 26 Oct 2026; once it's
+   signed, LICENSE and REUSE.md name Rinsuna alone. Agents don't change REUSE.md's permissions or LICENSE before
+   then: they're Rinsuna's call.
 4. **Name SMU's buildings** on campus, the Clinpath and Natural Science buildings first (OPEN_QUESTIONS, "Campus
    maps").
 5. **Download what agents may not fetch,** in a browser, into Downloads (OPEN_QUESTIONS, "All 26 universities"):
@@ -154,7 +168,7 @@ Everything is recorded, with who and when, in [OPEN_QUESTIONS.md](OPEN_QUESTIONS
 
 ## Next build: the app screens, M2 to M5
 
-The screens were Mandla's; since 13 Oct they're ours. The brief gives M2 Wed 14 to Thu 15 Oct, M3 Fri 16 to Sat 17,
+The brief gives M2 Wed 14 to Thu 15 Oct, M3 Fri 16 to Sat 17,
 M4 Sun 18 to Mon 19 and M5 Tue 20 to Wed 21. M2 to M5 are built (#23 to #26, 13 Oct), and the judge flow runs end to end. #27 (13 Oct) replaces the marks screen's one-subject-at-a-time rows with a picker in folders, #28 puts what a learner can still do at the top of the plan, #29 puts the marks first, #30 covers all 26 universities, #31 puts the whole app in Rinsuna's forest theme, and #32 and #33 add the full course lists of seven more universities (VUT, WSU, UMP, MUT, SPU in wave 1; UFS and UNIZULU in wave 2; the others follow in waves). Next: hosting (Azure for Students, once Rinsuna activates it), a preview APK on the hosted API, polish (the plan screen is long), and M6 from Fri 23 Oct.
 
 **M2, the Find my course screens.** From the brief: "University, then marks (add or remove rows, up to 9), then tier

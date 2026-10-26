@@ -67,14 +67,19 @@ def _summary(tiers: dict[str, int]) -> str:
     if not total:
         return "We haven't added this university's programmes yet."
     meets = tiers[COMPETITIVE] + tiers[MEETS_MINIMUM] + tiers[REACH]
-    parts = [f"You meet the minimum for {meets} of {plural(total, 'programme')}."]
-    if tiers[REACH] == 1:
-        parts.append("1 of them selects competitively, so it's a reach.")
-    elif tiers[REACH]:
-        parts.append(f"{tiers[REACH]} of them select competitively, so each is a reach.")
-    if tiers.get(SUBJECTS_MET):
-        parts.append(f"Your subjects meet the minimum for {plural(tiers[SUBJECTS_MET], 'programme')} whose points "
-                     "the university counts its own way.")
+    sm = tiers.get(SUBJECTS_MET, 0)
+    parts = []
+    if meets == 0 and sm > 0:
+        parts.append(f"Your subjects meet {sm} of {plural(total, 'programme')}. It counts points its own way.")
+    else:
+        parts.append(f"You meet the minimum for {meets} of {plural(total, 'programme')}.")
+        if tiers[REACH] == 1:
+            parts.append("1 of them selects competitively, so it's a reach.")
+        elif tiers[REACH]:
+            parts.append(f"{tiers[REACH]} of them select competitively, so each is a reach.")
+        if sm:
+            parts.append(f"Your subjects meet the minimum for {plural(sm, 'programme')} whose points "
+                         "the university counts its own way.")
     if tiers.get(UNVERIFIED):
         parts.append(f"We can't check {tiers[UNVERIFIED]} yet.")
     return " ".join(parts)
