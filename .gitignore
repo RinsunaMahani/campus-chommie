@@ -37,6 +37,7 @@ Thumbs.db
 # --- local tooling ---
 .claude/
 backend/.data-review-cache/
+backend/data/.cache/
 
 # Private notes (never committed)
 docs/private/

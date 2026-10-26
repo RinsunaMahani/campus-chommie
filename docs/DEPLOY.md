@@ -150,6 +150,42 @@ Set up by Rinsuna as above; every secret is in Render's Environment only.
 - **The app:** `eas.json`'s `preview` (the APK) and `production` profiles point at
   `https://campus-chommie.onrender.com/api/v1` with the mock off. That address is public, not a secret.
 
+### Speed on the free tier (measured 26 Oct 2026)
+
+Measured on this sandbox, not on Render: the container run with Render Free's size (`--cpus=0.1 --memory=512m`)
+against a local database.
+
+| | Before | After |
+|---|---|---|
+| A start (deploy, or Render restarting the service) until the API answers | 212 s | 121 s |
+| Data packs loaded after the server starts (requests are slow until then) | 75 s | 6 s |
+| First requests after a start: `/me/next-steps`, `/me`, unread alerts | 12.5 s, 6.3 s, 8.0 s | 2.4 s, 0.5 s, 0.2 s |
+| Signing in, once warm | 3 s | 3 s |
+
+What changed, all free:
+
+- The image compiles our code once at build (`compileall`) instead of on every start.
+- `flask start-up` runs the migrations and the demo seed in one process; loading the app took most of a minute each
+  time. On a start the seed only makes missing accounts; stale demo data is re-based by the scheduler in the
+  background, once the API is already answering.
+- The packs are stored in the image as JSON too (`campus_engine/catalogue.py`, `CACHE_DIR`), which pydantic reads
+  about ten times faster than YAML. A changed pack never meets an old copy: each copy is named by its YAML's hash.
+- The app wakes the database as well as the server when it opens (`wakeServer` calls `/health`), so a database
+  that slept after a quiet spell is awake by the time a judge signs in. The uptime pinger keeps using `/ping`.
+
+Signing in stays at about 3 s: that's the password check (bcrypt), and making it cheaper would weaken every stored
+password. Only more CPU (a paid instance) makes it faster.
+
+What helps without code, while judges may be using the app:
+
+- **Don't merge into `main` after the submission.** Every merge redeploys the API, a two-minute restart.
+- **Keep the cron-job.org ping** on `/api/v1/ping` every 10 minutes. It's what stops the 15-minute sleep.
+- **Render's 750 free hours are per workspace.** One service running all month uses about 744. Any other free web
+  service in the same Render account shares them, and when they run out every free service stops until the next
+  month. The static web app doesn't count.
+- **Neon's 100 compute-hours a month** are why the database is left to sleep. Keeping it awake all the time would
+  run out mid-month and stop the database until the next month.
+
 ## The WhatsApp bot (M6)
 
 The bot is off until all five secrets below are in Render's Environment; then `GET /api/v1/me/whatsapp` says

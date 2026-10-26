@@ -86,6 +86,7 @@ def test_the_demo_rebase_runs_as_a_sleeping_server_wakes():
         ("true", "run", False),  # flask run: a development server
         ("true", "upgrade", True),  # flask db upgrade
         ("true", "seed", True),  # flask seed
+        ("true", "start-up", True),  # flask start-up: the container, before the server
         ("true", None, True),
     ],
 )
@@ -125,7 +126,7 @@ def test_the_container_runs_as_a_normal_user_with_a_health_check():
     assert user_lines and user_lines[-1] != "USER root"
     # Docker's check uses /ping, which never touches the database, so a free database can sleep.
     assert any(line.startswith("HEALTHCHECK") for line in lines) and "/api/v1/ping" in dockerfile
-    assert "gunicorn -c gunicorn.conf.py app:app" in dockerfile and "flask db upgrade" in dockerfile
+    assert "gunicorn -c gunicorn.conf.py app:app" in dockerfile and "flask start-up" in dockerfile
     assert "FLASK_ENV=production" in dockerfile  # production settings: they refuse weak secrets and fake email
 
 
@@ -179,12 +180,44 @@ def test_ping_answers_without_the_database(client, monkeypatch):
     assert r.status_code == 200 and r.get_json()["data"] == {"status": "ok"}
 
 
-def test_the_container_seeds_the_demo_only_when_asked():
+def test_the_container_loads_the_app_once_before_the_server():
+    """Loading the app took most of a minute on a free host (26 Oct 2026): the migrations and the seed share one
+    process, the server starts after them, and our code is compiled into the image, not on every start."""
     dockerfile = (BACKEND / "Dockerfile").read_text(encoding="utf-8")
-    assert '[ \\"$SEED_DEMO_ON_START\\" != true ] || flask seed' in dockerfile
-    # Migrations still come first, and the API still starts after a failed seed.
-    assert dockerfile.index("flask db upgrade") < dockerfile.index("flask seed") < dockerfile.index("exec gunicorn")
+    assert "flask start-up && exec gunicorn" in dockerfile
+    assert "flask db upgrade" not in dockerfile.split("CMD", 1)[1] and "flask seed" not in dockerfile.split("CMD", 1)[1]
+    assert "python -m compileall" in dockerfile and dockerfile.index("COPY . .") < dockerfile.index("python -m compileall")
 
+
+def test_start_up_runs_the_migrations_and_seeds_only_when_asked(app, monkeypatch):
+    from src.domains.platform.demo.services import demo_service
+
+    calls = []
+    monkeypatch.setattr("flask_migrate.upgrade", lambda *a, **k: calls.append("upgrade"))
+    monkeypatch.setattr(demo_service, "seed", lambda password, rebuild=True: calls.append(("seed", rebuild)) or [])
+    runner = app.test_cli_runner()
+
+    monkeypatch.delenv("SEED_DEMO_ON_START", raising=False)
+    assert runner.invoke(args=["start-up"]).exit_code == 0 and calls == ["upgrade"]
+
+    calls.clear()
+    monkeypatch.setenv("SEED_DEMO_ON_START", "true")
+    assert runner.invoke(args=["start-up"]).exit_code == 0 and calls == ["upgrade", ("seed", False)]
+
+
+def test_start_up_still_starts_the_server_after_a_failed_seed_but_not_a_failed_migration(app, monkeypatch):
+    from src.domains.platform.demo.services import demo_service
+
+    def broken(*_a, **_k):
+        raise RuntimeError("seed broke")
+
+    monkeypatch.setenv("SEED_DEMO_ON_START", "true")
+    monkeypatch.setattr("flask_migrate.upgrade", lambda *a, **k: None)
+    monkeypatch.setattr(demo_service, "seed", broken)
+    assert app.test_cli_runner().invoke(args=["start-up"]).exit_code == 0
+
+    monkeypatch.setattr("flask_migrate.upgrade", broken)
+    assert app.test_cli_runner().invoke(args=["start-up"]).exit_code != 0
 
 
 # --------------------------------------------------------------- database
