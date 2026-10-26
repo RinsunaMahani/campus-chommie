@@ -34,6 +34,26 @@ def test_grouped_language_route_and_manual_admission_are_visible(client):
     assert any('degree' in line for line in match['explanation'])
 
 
+def test_spu_language_bonus_reaches_points_assessment_and_plan(client):
+    rows = [dict(subject=s, percent=60) for s in ('english', 'mathematics', 'other_language',
+            'history', 'geography', 'life_sciences', 'life_orientation')]
+    rows[0]['language_level'] = 'first_additional'
+    rows[2].update(language_name='setswana', language_level='home')
+    for language_subject in ('other_language', 'another_subject_1'):
+        rows[2]['subject'] = language_subject
+        response = client.post(POINTS, json={'marks': rows})
+        assert response.status_code == 200
+        spu = next(u for u in response.get_json()['data']['universities'] if u['university'] == 'spu')
+        assert spu['points'] == 35
+        assert next(s for s in spu['subjects'] if s['subject'] == language_subject)['points'] == 7
+        response = client.post(ASSESS, json={'university': 'spu', 'marks': rows})
+        assert response.status_code == 200
+        assert all(m['points'] == 35 for m in response.get_json()['data']['matches'])
+        response = client.post(PLAN, json={'university': 'spu', 'goal': 'bed_foundation_phase', 'marks': rows})
+        assert response.status_code == 200
+        assert response.get_json()['data']['plan']['goal']['match']['points'] == 35
+
+
 def test_english_role_reaches_assessment_plan_and_university_overview(client):
     rows = [dict(subject=s, percent=p) for s, p in dict(english=50, mathematics=80, other_language=80,
             life_sciences=80, geography=80, history=80, life_orientation=80).items()]

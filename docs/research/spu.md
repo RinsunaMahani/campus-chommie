@@ -129,3 +129,23 @@ The image confirms the existing scale, Mathematics/Home Language bonuses and Lif
 It does not state the number or selection of subjects to sum. The app now accepts optional language roles, so
 that former input limitation is removed from the explanation. Total APS remains manual until the subject-count
 rule is supported. Search results from third-party calculators are not used to fill the missing official rule.
+
+
+## Seven-subject source exception accepted on 26 October 2026
+
+Rinsuna supplied the [University Qualifications SPU calculator](https://universityqualifications.co.za/guest/aps/spu)
+and explicitly instructed “lets go using this then” after being told it is independent, not an SPU publication.
+This supersedes the earlier decision above to leave total APS manual. The exception applies to this calculator,
+not to third-party sources generally, and does not verify the separate Adobe prospectus.
+
+The app now counts exactly seven NSC subjects including Life Orientation. SPU's official image corroborates
+the base table, Mathematics/Home Language bonuses and Life Orientation scale. The independent calculator
+supplies the seven-subject rule. Its citation records the owner's acceptance without claiming official provenance.
+Mathematical Literacy and First Additional Language receive no bonus. Home Language bonuses use the selected
+language role, including named languages on additional-subject rows. Missing language roles, fewer/more than
+seven subjects or missing Life Orientation leave the total uncalculated with an explanation. No best-seven
+selection rule is inferred for learners offering extra subjects.
+
+English HL level 4 / FAL level 5 requirements, already present in programme notes, are now enforced by the engine.
+NSC achievement levels remain separate from SPU's points (90% is NSC level 7 but eight base APS points).
+Other programme-specific language/selection notes and incomplete source provenance remain as recorded above.

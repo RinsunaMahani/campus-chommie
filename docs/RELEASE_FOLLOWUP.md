@@ -12,7 +12,7 @@ Incomplete packs stay unreleased, and contradictory facts remain unresolved.
 - Added five contacts from official CPUT/UFH publications: 98 total. Every listed campus has at least one service
   or central telephone contact, not necessarily an on-site office or every service category.
 - Added 15 UJ 2027 academic periods from its official indexed PDF and three CUT 2027 registration/change windows from its current page.
-- SPU's user-supplied APS table matched its official image. The subject-count rule is still absent, so no guessed total.
+- SPU APS now counts seven subjects using University Qualifications under Rinsuna's explicit 26 October source exception. The official image supplies the points table. Home Language bonuses use selected roles; missing roles or a subject count other than seven require clarification.
 - Updated submission claims: college-register lookup is built, official-source acceptance replaces universal
   human sign-off, and test totals must refer to a dated run rather than a permanent promise.
 
@@ -46,3 +46,6 @@ GitHub CI must also pass on the pushed revision before merge.
 
 After integration with main through PR #109: 574 engine/architecture checks and 29 affected API checks passed.
 The API checks were rerun after restarting the isolated test database; the initial connection errors were environmental.
+
+After the SPU seven-subject change: 618 engine, architecture, course-finder API and catalogue verification tests
+passed, with two existing Flask-Migrate deprecation warnings. Data validation reports zero errors.
