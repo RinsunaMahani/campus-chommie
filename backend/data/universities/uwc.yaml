@@ -917,6 +917,27 @@ programmes:
           mathematical_literacy: 5
 
 sources:
+  - id: s-uwc-calendar-followup-2027
+    url: https://www.uwc.ac.za/study/academic-administration/academic-calendar
+    publisher: UWC
+    title: 2027 published academic dates
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official publication
+  - id: s-uwc-calendar-followup-2026
+    url: https://www.uwc.ac.za/study/academic-administration/academic-calendar
+    publisher: UWC
+    title: 2026 published academic dates
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official publication
+  - id: s-sanlam-gallery-2026
+    url: https://www.sanlamartcollection.co.za/visit
+    publisher: Sanlam Art Collection
+    title: Sanlam Art Gallery, Bellville
+    retrieved: '2026-10-25'
+    verification_basis: official_publisher
+    verified_by: agent, official publication
   - id: s-uwc-campus-tour
     url: "https://www.uwc.ac.za/about/uwc-at-a-glance/campus-tour"
     publisher: "University of the Western Cape"
@@ -955,3 +976,90 @@ support_services:
   name: Financial Aid Office
   contact: 021 959 9753; finaid@uwc.ac.za
   source: s-uwc-admissions-2027
+
+cheap_things:
+- name: Sanlam Art Gallery, Bellville
+  category: museum
+  cost_note: Free admission; walk-in viewing.
+  campuses:
+  - main
+  - tygerberg
+  source: s-sanlam-gallery-2026
+  address: 2 Strand Road, Bellville
+  hours: Monday–Friday 09:00–16:30
+
+calendar:
+- period: term
+  name: Term 1 begins
+  start: '2027-02-08'
+  source: s-uwc-calendar-followup-2027
+  note: Published start only; no end date inferred.
+- period: registration
+  name: Semester 2 registration
+  start: '2026-07-13'
+  source: s-uwc-calendar-followup-2026
+  end: '2026-07-16'
+  note: Revised Senate-approved 2026 calendar. Some exams occur on Saturdays; 16 December
+    is excluded. Professional programmes may follow separate timelines.
+- period: exam
+  name: Deferred semester 1 final examinations
+  start: '2026-07-13'
+  source: s-uwc-calendar-followup-2026
+  end: '2026-07-22'
+  note: Revised Senate-approved 2026 calendar. Some exams occur on Saturdays; 16 December
+    is excluded. Professional programmes may follow separate timelines.
+- period: exam
+  name: Semester 1 supplementary examinations
+  start: '2026-07-29'
+  source: s-uwc-calendar-followup-2026
+  end: '2026-08-07'
+  note: Revised Senate-approved 2026 calendar. Some exams occur on Saturdays; 16 December
+    is excluded. Professional programmes may follow separate timelines.
+- period: term
+  name: Term 3
+  start: '2026-08-19'
+  source: s-uwc-calendar-followup-2026
+  end: '2026-10-01'
+  note: Revised Senate-approved 2026 calendar. Some exams occur on Saturdays; 16 December
+    is excluded. Professional programmes may follow separate timelines.
+- period: recess
+  name: Mid-term vacation
+  start: '2026-10-02'
+  source: s-uwc-calendar-followup-2026
+  end: '2026-10-04'
+  note: Revised Senate-approved 2026 calendar. Some exams occur on Saturdays; 16 December
+    is excluded. Professional programmes may follow separate timelines.
+- period: term
+  name: Term 4
+  start: '2026-10-05'
+  source: s-uwc-calendar-followup-2026
+  end: '2026-11-13'
+  note: Revised Senate-approved 2026 calendar. Some exams occur on Saturdays; 16 December
+    is excluded. Professional programmes may follow separate timelines.
+- period: revision
+  name: Study period
+  start: '2026-11-14'
+  source: s-uwc-calendar-followup-2026
+  end: '2026-11-18'
+  note: Revised Senate-approved 2026 calendar. Some exams occur on Saturdays; 16 December
+    is excluded. Professional programmes may follow separate timelines.
+- period: exam
+  name: Year-end final examinations
+  start: '2026-11-19'
+  source: s-uwc-calendar-followup-2026
+  end: '2026-12-02'
+  note: Revised Senate-approved 2026 calendar. Some exams occur on Saturdays; 16 December
+    is excluded. Professional programmes may follow separate timelines.
+- period: exam
+  name: Supplementary examinations
+  start: '2026-12-10'
+  source: s-uwc-calendar-followup-2026
+  end: '2026-12-17'
+  note: Revised Senate-approved 2026 calendar. Some exams occur on Saturdays; 16 December
+    is excluded. Professional programmes may follow separate timelines.
+- period: results
+  name: Final results publication
+  start: '2026-12-23'
+  source: s-uwc-calendar-followup-2026
+  note: Revised Senate-approved 2026 calendar. Some exams occur on Saturdays; 16 December
+    is excluded. Professional programmes may follow separate timelines.

@@ -43,7 +43,7 @@ def test_unknown_points_methods_and_missing_thresholds_do_not_claim_eligibility(
     strong = dict(english=90, mathematics=90, physical_sciences=90, life_sciences=90, geography=90, other_language=90, life_orientation=90)
     ufh = catalogue["ufh"]
     assert assess(ufh, ufh.programme("ufh_84040"), strong).tier == "subjects_met"
-    assert assess(ufh, ufh.programme("ufh_21526"), strong).tier == "unverified"
+    assert assess(ufh, ufh.programme("ufh_21526"), strong).tier == "subjects_met"
     uj = catalogue["uj"]
     assert assess(uj, uj.programme("uj_b34imq"), strong).tier == "subjects_met"
 
@@ -56,3 +56,12 @@ def test_imports_stay_drafts_and_do_not_change_existing_human_signoff(catalogue)
         fresh = [s for s in uni.sources if s.retrieved and s.retrieved.isoformat() == "2026-10-24"]
         assert fresh
         assert all(s.last_verified is None and not s.human_verified for s in fresh)
+
+
+def test_up_food_management_boundary_from_complete_faculty_table(catalogue):
+    uni = catalogue['up']
+    programme = uni.programme('bconsumer_food_management')
+    marks = dict(english=60,mathematics=50,geography=70,history=70,other_language=70,life_sciences=70)
+    assert assess(uni,programme,marks).tier != 'not_yet'
+    marks['mathematics']=49
+    assert assess(uni,programme,marks).tier == 'not_yet'

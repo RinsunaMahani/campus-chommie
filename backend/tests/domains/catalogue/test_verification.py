@@ -39,3 +39,17 @@ def test_official_university_source_is_accepted_without_enabling_unrelated_fundi
     assert university_confirmation(uni)["confirmed"]
     assert _checked(source)
     assert not source.human_verified
+
+
+def test_official_funder_source_still_requires_pack_release():
+    source = Source(id="s", url="https://www.nsfas.org.za/", publisher="NSFAS",
+                    retrieved=date(2026, 10, 25), verification_basis="official_publisher")
+    funding = FundingPack.model_validate({
+        "release": True, "sources": [source],
+        "funders": [{"id": "example", "name": "Example", "short_name": "Example", "sector": "government",
+                     "fields": "any", "stages": ["first_year"], "applications": {"source": "s"}}],
+    })
+    assert funding_confirmation(funding)["confirmed"]
+    assert not source.human_verified
+    assert not _checked(source)  # Funder/venue acceptance must not widen the crisis-contact gate.
+    assert not funding_confirmation(funding.model_copy(update={"release": False}))["confirmed"]

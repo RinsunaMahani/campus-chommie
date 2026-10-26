@@ -8123,6 +8123,7 @@ sources:
   retrieved: '2026-10-20'
   last_verified: null
   verified_by: agent draft, needs human check
+  verification_basis: official_publisher
 - id: s-dhet-private-colleges-2026-07
   url: https://www.dhet.gov.za/Registers_DocLib/Register%20of%20Private%20Colleges%20%2015%20July%202026.pdf
   publisher: Department of Higher Education and Training
@@ -8130,6 +8131,7 @@ sources:
   retrieved: '2026-10-20'
   last_verified: null
   verified_by: agent draft, needs human check
+  verification_basis: official_publisher
 - id: s-dhet-tvet-contacts
   url: https://www.dhet.gov.za/RegionalOffices/educational-institutions/technical-vocational-education-and-training-colleges-tvet-colleges.html
   publisher: Department of Higher Education and Training
@@ -8137,6 +8139,7 @@ sources:
   retrieved: '2026-10-20'
   last_verified: null
   verified_by: agent draft, needs human check
+  verification_basis: official_publisher
 - id: s-dhet-tvet-occupational-2026
   url: https://www.dhet.gov.za/Technical%20and%20Vocational%20Education%20and%20Training%20Co/List%20of%20Occupational%20Programmes%20updated%20for%202026%20for%20website.pdf
   publisher: Department of Higher Education and Training
@@ -8144,3 +8147,4 @@ sources:
   retrieved: '2026-10-20'
   last_verified: null
   verified_by: agent draft, needs human check
+  verification_basis: official_publisher

@@ -39,10 +39,15 @@ def _english_level(rows: list[dict]) -> str | None:
     return next((row.get("language_level") for row in rows if row["subject"] == "english"), None)
 
 
+def _language_marks(rows: list[dict]) -> dict[str, tuple[float, str | None]]:
+    return {row["language_name"]: (row["percent"], row.get("language_level"))
+            for row in rows if "language_name" in row}
+
+
 def points(rows: list[dict]) -> dict:
     """The learner's points at every university we cover, each by its own rule, in name order."""
     packs = catalogue.packs()
-    return {"universities": [_points(u, packs) for u in points_everywhere(packs, _marks(rows), _english_level(rows))]}
+    return {"universities": [_points(u, packs) for u in points_everywhere(packs, _marks(rows), _english_level(rows), _language_marks(rows))]}
 
 
 def assess(university_id: str, rows: list[dict]) -> dict:
@@ -55,7 +60,7 @@ def assess(university_id: str, rows: list[dict]) -> dict:
     guide.windows = university_windows(uni, today)
     return {
         "university": catalogue.summary(uni),
-        "matches": [_match(m, packs) for m in assess_all(uni, _marks(rows), _english_level(rows))],
+        "matches": [_match(m, packs) for m in assess_all(uni, _marks(rows), _english_level(rows), _language_marks(rows))],
         "apply": {
             "today": today.isoformat(),
             "test_date": preview_date() is not None,
@@ -70,7 +75,7 @@ def plan(university_id: str, goal: str, rows: list[dict]) -> dict:
     if all(p.id != goal for p in uni.programmes):
         raise NotFoundError("That university has no such programme.", code="PROGRAMME_NOT_FOUND")
     packs = catalogue.packs()
-    built = build_plan(packs, uni.university, goal, _marks(rows), _english_level(rows))
+    built = build_plan(packs, uni.university, goal, _marks(rows), _english_level(rows), _language_marks(rows))
     guide = apply_guide(packs, funding.pack(), built, _today())
     return {"plan": _plan(built, packs, guide)}
 

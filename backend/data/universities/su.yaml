@@ -736,7 +736,12 @@ programmes:
     faculty: "Faculty of Economic and Management Sciences"
     fields: [public_administration]
     selective: false
-    requirements: null
+    requirements:
+      source: s-su-public-accountability-2026
+      min_points: null
+      subject_minimums: {english: 3}
+      additional_minimums: [3, 3, 3]
+      alternative_entry: "Other published routes: English level 2, four other NSC subjects at level 3 (excluding LO), plus three years of relevant work experience; OR a completed higher-education certificate, diploma or degree. SU must assess qualifications and experience."
 
   # Faculty of Education (prospectus page 9)
 
@@ -1326,6 +1331,34 @@ programmes:
         - "The prospectus also mentions a motivational letter from your church or minister about your involvement and why they recommend you for Theology studies."
 
 sources:
+  - id: s-su-cscd-stellenbosch-2026
+    url: https://www.su.ac.za/en/students/support/counselling
+    publisher: Stellenbosch University
+    title: 'Centre for Student Counselling and Development: campus contacts'
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official publication
+  - id: s-su-term-dates-2027
+    url: https://www.su.ac.za/en/staff/services/communication-marketing/node/13551
+    publisher: Stellenbosch University
+    title: Term and assessment dates 2026/2027
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official publication
+  - id: s-su-public-accountability-2026
+    url: https://www.su.ac.za/en/faculties/economy/departments/public-leadership/study-spl/diploma-public-accountability
+    publisher: Stellenbosch University
+    title: Diploma in Public Accountability, entry requirements
+    retrieved: 2026-10-25
+    verification_basis: official_university
+    verified_by: agent, official university publication
+  - id: s-su-garden-visit-2026
+    url: https://www.su.ac.za/en/visitors/outdoor/botanical-garden/visit-us
+    publisher: Stellenbosch University
+    title: Stellenbosch University Botanical Garden
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official publication
   - id: s-su-support-2026
     url: https://blogs.sun.ac.za/tpsc/support-services/counselling-services/
     publisher: Stellenbosch University
@@ -1361,8 +1394,107 @@ sources:
 support_services:
 - kind: counselling
   name: Centre for Student Counselling and Development
+  contact: 021 808 4707 / 021 808 4994
+  hours: Office hours
+  campuses:
+  - stellenbosch
+  note: 37 Victoria Street, Stellenbosch. Contact the centre for psychological, developmental
+    and support services.
+  source: s-su-cscd-stellenbosch-2026
+- kind: counselling
+  name: Centre for Student Counselling and Development
   contact: 021 938 9590; supportus@sun.ac.za
   source: s-su-support-2026
   campuses:
   - tygerberg
   note: Tygerberg campus counselling contact.
+
+cheap_things:
+- name: Stellenbosch University Botanical Garden
+  category: outdoors
+  cost_note: Free for SU students and staff with a valid card. General admission R15;
+    seniors R10. Groups need prior arrangement.
+  campuses:
+  - stellenbosch
+  source: s-su-garden-visit-2026
+  hours: September–May 08:00–17:00; June–August 09:00–17:00. Closed New Year’s Day
+    and Good Friday.
+
+calendar:
+- period: term
+  name: Term 1
+  start: '2027-02-08'
+  end: '2027-03-25'
+  source: s-su-term-dates-2027
+  note: General 2027 term and assessment dates. Programme-specific arrangements may
+    differ.
+- period: term
+  name: Term 2
+  start: '2027-04-05'
+  end: '2027-05-14'
+  source: s-su-term-dates-2027
+  note: General 2027 term and assessment dates. Programme-specific arrangements may
+    differ.
+- period: term
+  name: Term 3
+  start: '2027-07-19'
+  end: '2027-09-03'
+  source: s-su-term-dates-2027
+  note: General 2027 term and assessment dates. Programme-specific arrangements may
+    differ.
+- period: term
+  name: Term 4
+  start: '2027-09-13'
+  end: '2027-10-22'
+  source: s-su-term-dates-2027
+  note: General 2027 term and assessment dates. Programme-specific arrangements may
+    differ.
+- period: recess
+  name: First mid-semester recess
+  start: '2027-03-26'
+  end: '2027-04-04'
+  source: s-su-term-dates-2027
+  note: General 2027 term and assessment dates. Programme-specific arrangements may
+    differ.
+- period: recess
+  name: Mid-year recess
+  start: '2027-06-26'
+  end: '2027-07-18'
+  source: s-su-term-dates-2027
+  note: General 2027 term and assessment dates. Programme-specific arrangements may
+    differ.
+- period: recess
+  name: Second mid-semester recess
+  start: '2027-09-04'
+  end: '2027-09-12'
+  source: s-su-term-dates-2027
+  note: General 2027 term and assessment dates. Programme-specific arrangements may
+    differ.
+- period: exam
+  name: June A2 assessments
+  start: '2027-05-17'
+  end: '2027-06-07'
+  source: s-su-term-dates-2027
+  note: General 2027 term and assessment dates. Programme-specific arrangements may
+    differ.
+- period: exam
+  name: June A3 assessments
+  start: '2027-06-08'
+  end: '2027-06-22'
+  source: s-su-term-dates-2027
+  note: General 2027 term and assessment dates. Programme-specific arrangements may
+    differ.
+- period: exam
+  name: November A2 assessments
+  start: '2027-10-25'
+  end: '2027-11-15'
+  source: s-su-term-dates-2027
+  note: General 2027 term and assessment dates. Programme-specific arrangements may
+    differ.
+- period: exam
+  name: November A3 assessments
+  start: '2027-11-16'
+  end: '2027-11-29'
+  source: s-su-term-dates-2027
+  note: General 2027 term and assessment dates. Programme-specific arrangements may
+    differ.

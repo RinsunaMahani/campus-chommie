@@ -121,9 +121,9 @@ def test_up_mbchb_places_and_route_after_a_degree_year(up):
     assert "66 more for designated groups" in route.eligibility_note
 
 
-def test_up_rules_the_schema_cannot_hold_yet_stay_unverified(up):
-    for pid in ("bmus", "bmus_extended", "bconsumer_food_management"):
-        assert up.programme(pid).requirements is None
+def test_up_music_keeps_external_qualifications_for_university_assessment(up):
+    for pid in ("bmus", "bmus_extended"):
+        assert up.programme(pid).requirements.alternative_entry_subjects == ['music']
 
 
 # TUT: s-tut-courses-2027 (course list), s-tut-guide-2027 (programme pages), s-tut-rules-2026 (APS rule)

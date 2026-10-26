@@ -1619,6 +1619,27 @@ programmes:
       subject_minimums: {english: 4, mathematics: 4, physical_sciences: 4}
 
 sources:
+  - id: s-east-london-museum-2026
+    url: https://elmuseum.za.org/plan-your-visit/
+    publisher: East London Museum
+    title: 'Plan your visit: admission and opening hours'
+    retrieved: '2026-10-25'
+    verification_basis: official_publisher
+    verified_by: agent, official publication
+  - id: s-wsu-calendar-final-2026
+    url: https://wsu.ac.za/images/WSU20General20Prospectus20202620online201.pdf
+    publisher: WSU
+    title: 2026 academic calendar
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official publication
+  - id: s-mandela-museum-visit-2026
+    url: https://www.nelsonmandelamuseum.org.za/about-us/
+    publisher: Nelson Mandela Museum
+    title: Nelson Mandela Museum, Bhunga Building
+    retrieved: '2026-10-25'
+    verification_basis: official_publisher
+    verified_by: agent, official publication
   - id: s-wsu-support-2026
     url: https://wsu.ac.za/index.php/en/contact-student-affairs
     publisher: Walter Sisulu University
@@ -1685,3 +1706,95 @@ support_services:
   campuses:
   - komani
   note: Social worker contact within the Student Counselling Unit.
+
+cheap_things:
+- name: East London Museum
+  category: museum
+  cost_note: Adult admission R30; children R20; pensioners R25.
+  address: 319 Oxford Street, East London 5201
+  hours: Monday–Thursday 09:00–16:00; Friday 09:00–15:30; Saturday 09:00–13:00. Closed
+    Sundays and public holidays.
+  campuses:
+  - buffalo_city
+  source: s-east-london-museum-2026
+- name: Nelson Mandela Museum, Bhunga Building
+  category: museum
+  cost_note: Free entrance; donations encouraged. Confirm public-holiday access with
+    the museum.
+  campuses:
+  - mthatha
+  source: s-mandela-museum-visit-2026
+  address: Corner Nelson Mandela Drive and Owen Street, Mthatha
+  hours: Monday–Friday 09:00–16:00; Saturday 09:00–13:00. Closed Sundays.
+
+calendar:
+- period: term
+  name: Term 1 classes
+  start: '2026-02-09'
+  source: s-wsu-calendar-final-2026
+  note: 2026 general prospectus, printed page 16. Teaching and assessment dates only;
+    the public-holiday column contains year inconsistencies and is not imported.
+  end: '2026-03-27'
+- period: term
+  name: Term 2 classes
+  start: '2026-04-07'
+  source: s-wsu-calendar-final-2026
+  note: 2026 general prospectus, printed page 16. Teaching and assessment dates only;
+    the public-holiday column contains year inconsistencies and is not imported.
+  end: '2026-05-13'
+- period: term
+  name: Term 3 classes
+  start: '2026-07-20'
+  source: s-wsu-calendar-final-2026
+  note: 2026 general prospectus, printed page 16. Teaching and assessment dates only;
+    the public-holiday column contains year inconsistencies and is not imported.
+  end: '2026-08-28'
+- period: term
+  name: Term 4 classes
+  start: '2026-09-07'
+  source: s-wsu-calendar-final-2026
+  note: 2026 general prospectus, printed page 16. Teaching and assessment dates only;
+    the public-holiday column contains year inconsistencies and is not imported.
+  end: '2026-10-16'
+- period: revision
+  name: First-semester study period
+  start: '2026-05-13'
+  source: s-wsu-calendar-final-2026
+  note: 2026 general prospectus, printed page 16. Teaching and assessment dates only;
+    the public-holiday column contains year inconsistencies and is not imported.
+  end: '2026-05-19'
+- period: exam
+  name: First-semester standard examinations
+  start: '2026-05-20'
+  source: s-wsu-calendar-final-2026
+  note: 2026 general prospectus, printed page 16. Teaching and assessment dates only;
+    the public-holiday column contains year inconsistencies and is not imported.
+  end: '2026-06-09'
+- period: exam
+  name: First-semester supplementary examinations
+  start: '2026-07-06'
+  source: s-wsu-calendar-final-2026
+  note: 2026 general prospectus, printed page 16. Teaching and assessment dates only;
+    the public-holiday column contains year inconsistencies and is not imported.
+  end: '2026-07-10'
+- period: revision
+  name: Second-semester study period
+  start: '2026-10-21'
+  source: s-wsu-calendar-final-2026
+  note: 2026 general prospectus, printed page 16. Teaching and assessment dates only;
+    the public-holiday column contains year inconsistencies and is not imported.
+  end: '2026-10-27'
+- period: exam
+  name: Second-semester standard examinations
+  start: '2026-10-28'
+  source: s-wsu-calendar-final-2026
+  note: 2026 general prospectus, printed page 16. Teaching and assessment dates only;
+    the public-holiday column contains year inconsistencies and is not imported.
+  end: '2026-11-19'
+- period: exam
+  name: Second-semester supplementary examinations
+  start: '2026-12-07'
+  source: s-wsu-calendar-final-2026
+  note: 2026 general prospectus, printed page 16. Teaching and assessment dates only;
+    the public-holiday column contains year inconsistencies and is not imported.
+  end: '2026-12-11'

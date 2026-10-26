@@ -29,9 +29,9 @@ def pack() -> FundingPack:
 
 
 def confirmation(funding: FundingPack) -> dict:
-    """Whether a person has checked the pack, and, if not, where its facts come from and when they were read."""
+    """Whether the pack is released with accepted sources, and the provenance of its facts."""
     notice = read_from("each funder's own pages", [s.retrieved for s in funding.sources])
-    confirmed = funding.release and bool(funding.sources) and all(s.human_verified for s in funding.sources)
+    confirmed = funding.release and bool(funding.sources) and all(s.verified for s in funding.sources)
     return {"confirmed": confirmed, "notice": None if confirmed else notice}
 
 

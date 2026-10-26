@@ -642,6 +642,13 @@ programmes:
         - *uct_sci_nbt
 
 sources:
+  - id: s-iziko-fees-2026
+    url: https://www.iziko.org.za/visit/
+    publisher: Iziko Museums of South Africa
+    title: Iziko South African Museum
+    retrieved: '2026-10-25'
+    verification_basis: official_publisher
+    verified_by: agent, official publication
   - id: s-uct-terms-2027
     url: https://uct.ac.za/calendar/terms
     publisher: University of Cape Town
@@ -760,3 +767,14 @@ calendar:
   - main
   note: General university terms, not individual lecture or examination timetables.
     Health Sciences has separate dates. Confirm changes with the Registrar.
+
+cheap_things:
+- name: Iziko South African Museum
+  category: museum
+  cost_note: 'South African students with valid identification and student card: R40;
+    free on Fridays. Other visitor categories have different fees. Planetarium admission
+    is separate.'
+  campuses:
+  - main
+  - health_sciences
+  source: s-iziko-fees-2026

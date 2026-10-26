@@ -756,6 +756,20 @@ programmes:
         - "The extended programme takes four years instead of three."
 
 sources:
+  - id: s-gauteng-sharpeville-2026
+    url: https://visit.gauteng.net/visit/sharpeville-heritage-precinct
+    publisher: Gauteng Tourism Authority
+    title: Sharpeville Heritage Precinct
+    retrieved: '2026-10-25'
+    verification_basis: official_publisher
+    verified_by: agent, official publication
+  - id: s-vut-calendar-2026
+    url: https://vut.ac.za/wp-content/uploads/2026/02/VUT-University-Calender-2026.xlsx
+    publisher: Vaal University of Technology
+    title: University calendar 2026
+    retrieved: '2026-10-25'
+    verification_basis: official_university
+    verified_by: agent, official publication
   - id: s-vut-support-2026
     url: https://vut.ac.za/nso/student-counselling/
     publisher: Vaal University of Technology
@@ -810,3 +824,76 @@ support_services:
   contact: scs@vut.ac.za
   source: s-vut-support-2026
   note: P Block, room P021, ground floor.
+
+calendar:
+- period: registration
+  name: Online student registration
+  start: '2026-01-12'
+  source: s-vut-calendar-2026
+  note: Published 2026 calendar. A single date is a milestone, not an inferred period.
+  end: '2026-01-29'
+- period: registration
+  name: First-year registration
+  start: '2026-01-19'
+  source: s-vut-calendar-2026
+  note: Published 2026 calendar. A single date is a milestone, not an inferred period.
+- period: registration
+  name: Senior-student registration
+  start: '2026-01-23'
+  source: s-vut-calendar-2026
+  note: Published 2026 calendar. A single date is a milestone, not an inferred period.
+- period: orientation
+  name: First-year orientation
+  start: '2026-01-26'
+  source: s-vut-calendar-2026
+  note: Published 2026 calendar. A single date is a milestone, not an inferred period.
+  end: '2026-01-30'
+- period: term
+  name: First-semester classes commence
+  start: '2026-02-02'
+  source: s-vut-calendar-2026
+  note: Published 2026 calendar. A single date is a milestone, not an inferred period.
+- period: term
+  name: Second-semester classes commence
+  start: '2026-07-20'
+  source: s-vut-calendar-2026
+  note: Published 2026 calendar. A single date is a milestone, not an inferred period.
+- period: recess
+  name: March student recess
+  start: '2026-03-30'
+  source: s-vut-calendar-2026
+  note: Published 2026 calendar. A single date is a milestone, not an inferred period.
+  end: '2026-03-31'
+- period: recess
+  name: April student recess
+  start: '2026-04-01'
+  source: s-vut-calendar-2026
+  note: Published 2026 calendar. A single date is a milestone, not an inferred period.
+  end: '2026-04-02'
+- period: recess
+  name: July student recess
+  start: '2026-07-13'
+  source: s-vut-calendar-2026
+  note: Published 2026 calendar. A single date is a milestone, not an inferred period.
+  end: '2026-07-17'
+- period: recess
+  name: September student recess
+  start: '2026-09-28'
+  source: s-vut-calendar-2026
+  note: Published 2026 calendar. A single date is a milestone, not an inferred period.
+  end: '2026-09-30'
+- period: recess
+  name: October student recess
+  start: '2026-10-01'
+  source: s-vut-calendar-2026
+  note: Published 2026 calendar. A single date is a milestone, not an inferred period.
+  end: '2026-10-02'
+
+cheap_things:
+- name: Sharpeville Heritage Precinct
+  category: heritage
+  cost_note: Free to visit.
+  address: Sharpeville Township, Vereeniging, Sedibeng, Gauteng
+  campuses:
+  - vanderbijlpark
+  source: s-gauteng-sharpeville-2026

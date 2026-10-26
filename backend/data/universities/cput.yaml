@@ -3318,6 +3318,20 @@ programmes:
         method is not identified in this table; confirm points with the faculty.
 
 sources:
+  - id: s-iziko-fees-2026
+    url: https://www.iziko.org.za/visit/
+    publisher: Iziko Museums of South Africa
+    title: Iziko South African Museum
+    retrieved: '2026-10-25'
+    verification_basis: official_publisher
+    verified_by: agent, official publication
+  - id: s-sanlam-gallery-2026
+    url: https://www.sanlamartcollection.co.za/visit
+    publisher: Sanlam Art Collection
+    title: Sanlam Art Gallery, Bellville
+    retrieved: '2026-10-25'
+    verification_basis: official_publisher
+    verified_by: agent, official publication
   - id: s-cput-calendar-2027
     url: https://www.cput.ac.za/images/News/Newsflash/2026/July/Final-Approved-Term-Dates-2027.pdf
     publisher: Cape Peninsula University of Technology
@@ -3681,3 +3695,23 @@ calendar:
   source: s-cput-calendar-2027
   note: Approved 2027 calendar; dates may change. Assessment dates are flexible within
     the published period; consult your faculty timetable.
+
+cheap_things:
+- name: Iziko South African Museum
+  category: museum
+  cost_note: 'South African students with valid identification and student card: R40;
+    free on Fridays. Other visitor categories have different fees. Planetarium admission
+    is separate.'
+  campuses:
+  - district_six
+  - granger_bay
+  - mowbray
+  source: s-iziko-fees-2026
+- name: Sanlam Art Gallery, Bellville
+  category: museum
+  cost_note: Free admission; walk-in viewing.
+  campuses:
+  - bellville
+  source: s-sanlam-gallery-2026
+  address: 2 Strand Road, Bellville
+  hours: Monday–Friday 09:00–16:30

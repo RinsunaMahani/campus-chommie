@@ -946,14 +946,30 @@ programmes:
     faculty: "Faculty of Humanities"
     fields: [music, performing_arts]
     selection_note: "UP asks for English 5 and 30 points, and Music at level 4 (50-59%) or Grade VII Practical and Grade V Theory (Unisa, Royal Schools or Trinity) or a comparable standard, plus a practical audition and theory test passed with 60%."
-    requirements: null       # needs Music 4 or external music grades and an audition, which the schema can't hold yet
+    selective: true
+    requirements:
+      source: s-up-req-2027
+      min_points: 30
+      subject_minimums: {english: 5, music: 4}
+      alternative_entry_subjects: [music]
+      alternative_entry: "Instead of NSC Music, UP accepts Grade VII Practical and Grade V Theory (Unisa, Royal Schools or Trinity), or a comparable standard. UP must assess these external qualifications."
+      extras:
+      - "A practical audition and theory test passed with 60% are required. School-mark matching does not assess these selection requirements."
 
   - id: bmus_extended
     name: "Bachelor of Music (five-year programme)"
     faculty: "Faculty of Humanities"
     fields: [music, performing_arts]
     selection_note: "UP asks for English 4 and 26 points, and Music at level 4 (50-59%) or Grade V Practical and Grade III Theory (Unisa, Royal Schools or Trinity) or a comparable standard, plus a practical audition and theory test passed with 50%."
-    requirements: null       # needs Music 4 or external music grades and an audition, which the schema can't hold yet
+    selective: true
+    requirements:
+      source: s-up-req-2027
+      min_points: 26
+      subject_minimums: {english: 4, music: 4}
+      alternative_entry_subjects: [music]
+      alternative_entry: "Instead of NSC Music, UP accepts Grade V Practical and Grade III Theory (Unisa, Royal Schools or Trinity), or a comparable standard. UP must assess these external qualifications."
+      extras:
+      - "A practical audition and theory test passed with 50% are required. School-mark matching does not assess these selection requirements."
 
   - id: bth
     name: "Bachelor of Theology"
@@ -1422,9 +1438,19 @@ programmes:
     name: "Bachelor of Consumer Science specialising in Food Management"
     faculty: "Faculty of Natural and Agricultural Sciences"
     fields: [consumer_sciences, food_science]
-    requirements: null       # UP's table ends after this row's name, so its values are missing
+    requirements:
+      source: s-up-nas-brochure-2027
+      min_points: 28
+      subject_minimums: {english: 5, mathematics: 4}
 
 sources:
+  - id: s-up-nas-brochure-2027
+    url: https://drupalwebprod-files.up.ac.za/Public/2026-01/UP_FB%20Natural%20and%20Agricultural%20Sciences%202027_DevV6_web.pdf?VersionId=EDlRCPB_tAeNHibkLpQTK5Ug.QvByUSZ
+    publisher: University of Pretoria
+    title: Natural and Agricultural Sciences 2027 faculty brochure, Food Management table
+    retrieved: 2026-10-25
+    verification_basis: official_university
+    verified_by: agent, official university publication
   - id: s-up-req-2027
     url: "https://drupalwebprod-files.up.ac.za/Public/2026-03/UP_DESA_Application%20requirements%20tables_2027_web.pdf?VersionId=vw30gCBk2BMAXzOhFSBflmkFOHOMFOoa"
     publisher: "University of Pretoria"
@@ -1479,6 +1505,7 @@ sources:
     retrieved: 2026-10-10
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-freedompark
     url: "https://www.freedompark.co.za/"
     publisher: "Freedom Park"
@@ -1486,6 +1513,7 @@ sources:
     retrieved: 2026-10-10
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-vtm-fees
     url: "https://vtm.org.za/entrance-fees/"
     publisher: "Voortrekker Monument"
@@ -1493,6 +1521,7 @@ sources:
     retrieved: 2026-10-10
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher
   - id: s-ditsong-nh-fees
     url: "https://ditsong.org.za/en/wp-content/uploads/2019/09/Natural-History-Museum-Admission-Fees.pdf"
     publisher: "DITSONG Museums of South Africa"
@@ -1500,3 +1529,4 @@ sources:
     retrieved: 2026-10-10
     last_verified: null
     verified_by: "agent draft, needs human check"
+    verification_basis: official_publisher

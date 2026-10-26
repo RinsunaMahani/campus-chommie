@@ -116,27 +116,36 @@ class Source(_Strict):
     retrieved: date | None = None
     last_verified: date | None = None
     verified_by: str | None = None
-    verification_basis: Literal["official_university"] | None = None
+    verification_basis: Literal["official_university", "official_publisher"] | None = None
 
     @model_validator(mode="after")
     def _official_origin(self):
-        if self.verification_basis == "official_university":
+        if self.verification_basis is not None:
             parsed = urlsplit(self.url)
             host = (parsed.hostname or "").lower()
             domains = ("cput.ac.za", "cut.ac.za", "dut.ac.za", "mut.ac.za", "mandela.ac.za",
                        "nwu.ac.za", "ru.ac.za", "smu.ac.za", "spu.ac.za", "sun.ac.za", "tut.ac.za",
                        "uct.ac.za", "ufh.ac.za", "ufs.ac.za", "uj.ac.za", "ukzn.ac.za", "ul.ac.za",
                        "ump.ac.za", "unisa.ac.za", "univen.ac.za", "unizulu.ac.za", "up.ac.za",
-                       "uwc.ac.za", "vut.ac.za", "wits.ac.za", "wsu.ac.za")
+                       "uwc.ac.za", "vut.ac.za", "wits.ac.za", "wsu.ac.za", "su.ac.za")
+            if self.verification_basis == "official_publisher":
+                domains += ("gov.za", "nsfas.org.za", "isfap.org.za", "saica.org.za",
+                            "thuthukabursaryfund.co.za", "resbank.co.za", "allangrayorbis.org",
+                            "clicksgroup.co.za", "csir.co.za", "harmony.co.za", "nedbank.co.za",
+                            "ey.com", "hwseta.org.za", "feenix.org", "sasolbursaries.com",
+                            "oldmutual.co.za", "cao.ac.za", "ditsong.org.za", "vtm.org.za",
+                            "freedompark.co.za", "sanbi.org", "nationalmuseum.co.za",
+                            "artmuseum.co.za", "sanlamartcollection.co.za", "whag.co.za", "iziko.org.za",
+                            "amazwi.museum", "nelsonmandelamuseum.org.za", "gauteng.net", "elmuseum.za.org")
             if (parsed.scheme != "https" or parsed.username or parsed.password or not self.retrieved
                     or not any(host == d or host.endswith("." + d) for d in domains)):
-                raise ValueError("Official university verification needs a dated university HTTPS source")
+                raise ValueError("Official verification needs a dated HTTPS source on an approved publisher domain")
         return self
 
     @property
     def verified(self) -> bool:
-        """Official university provenance is sufficient under Rinsuna's 25 October decision."""
-        return self.human_verified or self.verification_basis == "official_university"
+        """Dated official provenance is sufficient under Rinsuna's 25 October decision."""
+        return self.human_verified or self.verification_basis is not None
 
     @property
     def evidence_date(self) -> date | None:
@@ -231,11 +240,21 @@ class Choice(_Strict):
     one_of: list[Option] = Field(min_length=2)
 
 
+LANGUAGE_NAMES = frozenset({"afrikaans", "isindebele", "isixhosa", "isizulu", "sepedi", "sesotho",
+                            "setswana", "siswati", "tshivenda", "xitsonga", "sign_language"})
+
+
 class Requirements(_Strict):
     source: str
     english_language_levels: dict[Literal["home", "first_additional"], Level] = Field(default_factory=dict)
+    named_language_levels: dict[str, dict[Literal["home", "first_additional"], Level]] = Field(default_factory=dict)
     # Some subject routes have a published APS while another route's threshold is omitted.
     points_threshold_incomplete: bool = False
+    # Above a published bounded range, refer to the university instead of extrapolating eligibility.
+    max_assessed_points: float | None = Field(default=None, ge=0)
+    # Published routes involving prior qualifications/experience cannot be checked from school marks.
+    alternative_entry: str | None = None
+    alternative_entry_subjects: list[str] = Field(default_factory=list)
     # null when the university publishes no points minimum for this programme: only the subjects are checked.
     # The key is still required, so a pack says so on purpose.
     min_points: float | None = Field(ge=0)
@@ -254,6 +273,18 @@ class Requirements(_Strict):
     @model_validator(mode="after")
     def _check_subjects(self):
         problems: list[str] = []
+        if set(self.named_language_levels) - LANGUAGE_NAMES:
+            problems.append("named language requirements must use recognised non-English language names")
+        if any(not levels for levels in self.named_language_levels.values()):
+            problems.append("named language requirements need at least one language level")
+        if self.max_assessed_points is not None:
+            minima = [self.min_points] + [o.min_points for c in self.choices for o in c.one_of]
+            if any(m is not None and m > self.max_assessed_points for m in minima):
+                problems.append("assessed points maximum must not be below a route minimum")
+        if self.alternative_entry_subjects and not self.alternative_entry:
+            problems.append("alternative entry subjects need a published alternative entry note")
+        if set(self.alternative_entry_subjects) - (set(self.subject_minimums) | set(self.subject_min_percents)):
+            problems.append("alternative entry subjects must name a required subject")
         rules: list[tuple[str, set[str]]] = [
             ("a minimum level", set(self.subject_minimums)),
             ("a minimum percentage", set(self.subject_min_percents)),

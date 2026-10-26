@@ -10,7 +10,7 @@ from marshmallow import ValidationError as MarshmallowError
 
 from src.core.exceptions import ValidationError
 
-from ..constants import MAX_SUBJECTS, SUBJECT_KEYS
+from ..constants import ANOTHER_SUBJECTS, LANGUAGE_NAMES, MAX_SUBJECTS, SUBJECT_KEYS
 
 
 class _Strict(Schema):
@@ -20,15 +20,18 @@ class _Strict(Schema):
 
 class MarkSchema(_Strict):
     language_level = fields.String(validate=validate.OneOf(["home", "first_additional"]))
+    language_name = fields.String(validate=validate.OneOf(sorted(LANGUAGE_NAMES)))
     subject = fields.String(required=True, validate=validate.OneOf(sorted(SUBJECT_KEYS), error="We don't know that subject."))
     percent = fields.Float(
         required=True, allow_nan=False, validate=validate.Range(min=0, max=100, error="A mark is from 0 to 100.")
     )
 
     @validates_schema
-    def _language_only_for_english(self, data, **kwargs):
-        if "language_level" in data and data.get("subject") != "english":
-            raise MarshmallowError({"language_level": ["Language level applies to English only."]})
+    def _language_metadata(self, data, **kwargs):
+        if "language_name" in data and data.get("subject") not in ("other_language", *ANOTHER_SUBJECTS):
+            raise MarshmallowError({"language_name": ["Language name applies to an additional language row only."]})
+        if "language_level" in data and data.get("subject") != "english" and "language_name" not in data:
+            raise MarshmallowError({"language_level": ["Choose the language before its level."]})
 
 
 class PointsSchema(_Strict):
@@ -46,6 +49,9 @@ class PointsSchema(_Strict):
         repeated = sorted({s for s in subjects if subjects.count(s) > 1})
         if repeated:
             raise MarshmallowError({"marks": [f"Enter each subject once: {', '.join(repeated)} is repeated."]})
+        languages = [mark["language_name"] for mark in data.get("marks", []) if "language_name" in mark]
+        if len(languages) != len(set(languages)):
+            raise MarshmallowError({"marks": ["Enter each named language once."]})
 
 
 class AssessSchema(PointsSchema):
