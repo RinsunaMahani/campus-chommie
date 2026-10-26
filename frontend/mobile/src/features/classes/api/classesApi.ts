@@ -1,4 +1,4 @@
-/** A student's classes: join, start, the rep's tools, announcements and their confirmation. */
+/** A student's classes: join, start, leave, the rep's tools, announcements and their confirmation. */
 import { api } from '@/shared/api/client';
 import { ClassEvent } from '@/features/week/types';
 
@@ -27,6 +27,9 @@ export const classesApi = {
 
   confirm: (candidateId: string, body: ConfirmBody) =>
     api<{ event: ClassEvent; lines: string[] }>('POST', `/candidates/${candidateId}/confirm`, body, auth),
+
+  /** Leave the class. Its confirmed dates go from your week; the class stays for everyone else. */
+  leave: (classId: string) => api<Record<string, never>>('DELETE', `/classes/${classId}/membership`, undefined, auth),
 
   discard: (candidateId: string) => api<Record<string, never>>('POST', `/candidates/${candidateId}/discard`, undefined, auth),
 };
