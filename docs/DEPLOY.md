@@ -216,6 +216,11 @@ into the repo, a chat or a screenshot.
 6. **Check it.** In the app: Home → WhatsApp → Link WhatsApp → "Open WhatsApp and send it". The bot answers "Linked."
    Then send `WEEK`, and as a class rep forward an announcement and tap Confirm.
 
+If Meta reports callback verification HTTP 422, look for `whatsapp_handshake_invalid` in the host log.
+It reports only fixed parameter names (present, alternate spellings and invalid expected fields) and a count of
+unknown keys. It never logs values, the verify token, challenge text or arbitrary parameter names. A successful
+manual challenge does not prove Meta's request has the same shape; use that diagnostic before changing validation.
+
 What the bot keeps: a keyed hash of each linked number, a link code's hash for 10 minutes, and hashes of message ids
 for 48 hours. It never stores or logs a number, a message, or the access token.
 
