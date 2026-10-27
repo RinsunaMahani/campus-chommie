@@ -357,6 +357,10 @@ is no longer reported (21 Oct).
 
 ## Known gaps
 
+WhatsApp callback HTTP 422 diagnostics log only fixed parameter labels and an unknown-key count, never query
+values or arbitrary names. `test_whatsapp_handshake_diagnostics.py` checks both secret redaction and unchanged
+validation. These diagnostics do not relax the handshake schema, token comparison or POST signature verification.
+
 Tracked with options in [OPEN_QUESTIONS.md](OPEN_QUESTIONS.md):
 
 - The audit trail (inherited) stores full email addresses and IP addresses with no deletion rule.

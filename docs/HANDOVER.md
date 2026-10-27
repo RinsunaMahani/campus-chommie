@@ -13,6 +13,11 @@ repo folder but is kept out of git; the parts the screens need are quoted below.
 
 ## Where things stand
 
+**WhatsApp activation diagnostics (27 Oct 2026, `rinsuna/whatsapp-handshake-diagnostics`):** backend-only logging
+for rejected Meta verification requests. It records fixed field labels and counts, never credential values or
+arbitrary parameter names. This does not change validation or activate a working inbound bot: Meta callback
+verification still needs diagnosis and a real reply test. The submitted APK must not be rebuilt or replaced.
+
 **Submitted (26 Oct 2026):** Campus Chommie was submitted on Sonke for the FNB App of the Year Hackathon 2026; the
 organisers' confirmation graphic is [submission/submitted-2026.png](submission/submitted-2026.png) (their graphic, kept as a
 record; its logos are the organisers' and sponsors', not used in the app). Judging follows: avoid merges that restart
